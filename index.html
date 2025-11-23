@@ -277,73 +277,73 @@
             );
         };
 
-        // --- LISTA LATERAL ---
-        const SideList = ({ seriesData, onEpisodeSelect, currentUrl, relatedItems, onItemSelect }) => {
+        // --- COMPONENTE SEASON LIST (SERIES) ---
+        const SeasonList = ({ seriesData, onEpisodeSelect, currentUrl }) => {
             const [openSeasons, setOpenSeasons] = useState({ 0: true });
             const toggleSeason = (idx) => setOpenSeasons(prev => ({...prev, [idx]: !prev[idx]}));
 
-            if (seriesData) {
-                // MODO SERIES
-                if (!seriesData.temporadas || seriesData.temporadas.length === 0) return <div className="p-4 text-gray-500 text-sm">Sin temporadas.</div>;
-                const sortedSeasons = [...seriesData.temporadas].sort((a,b) => (a.numeroTemporada||0) - (b.numeroTemporada||0));
+            if (!seriesData || !seriesData.temporadas || seriesData.temporadas.length === 0) return <div className="p-4 text-gray-500 text-sm">Sin temporadas.</div>;
 
-                return (
-                    <div className="flex flex-col gap-2 pb-10 select-none">
-                        <h3 className="text-lg font-bold mb-2 px-2 text-white flex items-center gap-2"><Icon name="film" className="w-4 h-4 text-brand-red"/> Temporadas</h3>
-                        {sortedSeasons.map((temp, idx) => {
-                            const eps = temp.episodios || temp.capitulos || [];
-                            const isOpen = openSeasons[idx];
-                            return (
-                                <div key={idx} className="bg-[#1f1f1f] rounded-lg overflow-hidden border border-white/5">
-                                    <div onClick={() => toggleSeason(idx)} className="p-3 flex justify-between items-center cursor-pointer hover:bg-[#2a2a2a] transition-colors">
-                                        <span className="font-bold text-sm text-gray-200">Temporada {temp.numeroTemporada || idx+1}</span>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-gray-400">{eps.length}</span>
-                                            <Icon name={isOpen ? 'chevron-up' : 'chevron-down'} className="w-4 h-4 text-gray-500"/>
-                                        </div>
+            const sortedSeasons = [...seriesData.temporadas].sort((a,b) => (a.numeroTemporada||0) - (b.numeroTemporada||0));
+
+            return (
+                <div className="flex flex-col gap-2 pb-10 select-none">
+                    <h3 className="text-lg font-bold mb-2 px-2 text-white flex items-center gap-2"><Icon name="film" className="w-4 h-4 text-brand-red"/> Temporadas</h3>
+                    {sortedSeasons.map((temp, idx) => {
+                        const eps = temp.episodios || temp.capitulos || [];
+                        const isOpen = openSeasons[idx];
+                        return (
+                            <div key={idx} className="bg-[#1f1f1f] rounded-lg overflow-hidden border border-white/5">
+                                <div onClick={() => toggleSeason(idx)} className="p-3 flex justify-between items-center cursor-pointer hover:bg-[#2a2a2a] transition-colors">
+                                    <span className="font-bold text-sm text-gray-200">Temporada {temp.numeroTemporada || idx+1}</span>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-gray-400">{eps.length}</span>
+                                        <Icon name={isOpen ? 'chevron-up' : 'chevron-down'} className="w-4 h-4 text-gray-500"/>
                                     </div>
-                                    {isOpen && (
-                                        <div className="border-t border-white/5 bg-[#181818]">
-                                            {eps.map((ep, eIdx) => {
-                                                const url = ep.urlDrive || ep.url;
-                                                const rawTitle = ep.tituloEpisodio || ep.titulo || ep.name;
-                                                const displayTitle = rawTitle ? rawTitle : `Episodio ${eIdx + 1}`;
-                                                const isSelected = currentUrl === url;
-                                                return (
-                                                    <div key={eIdx} className={`episode-row p-3 border-l-4 border-transparent cursor-pointer transition-colors flex justify-between items-center ${isSelected ? 'active bg-[#252525]' : 'hover:bg-[#222]'}`}
-                                                        onClick={() => { if(url) onEpisodeSelect(url, displayTitle); else alert("No disponible"); }}>
-                                                        <div className="flex gap-3 items-center overflow-hidden">
-                                                            <span className="text-xs text-gray-500 font-mono">{eIdx+1}</span>
-                                                            <span className={`text-sm truncate ${isSelected ? 'text-brand-red font-bold' : 'text-gray-300'}`}>{displayTitle}</span>
-                                                        </div>
-                                                        {isSelected && <Icon name="play" className="w-3 h-3 text-brand-red shrink-0"/>}
+                                </div>
+                                {isOpen && (
+                                    <div className="border-t border-white/5 bg-[#181818]">
+                                        {eps.map((ep, eIdx) => {
+                                            const url = ep.urlDrive || ep.url;
+                                            const rawTitle = ep.tituloEpisodio || ep.titulo || ep.name;
+                                            const displayTitle = rawTitle ? rawTitle : `Episodio ${eIdx + 1}`;
+                                            const isSelected = currentUrl === url;
+                                            return (
+                                                <div key={eIdx} className={`episode-row p-3 border-l-4 border-transparent cursor-pointer transition-colors flex justify-between items-center ${isSelected ? 'active bg-[#252525]' : 'hover:bg-[#222]'}`}
+                                                    onClick={() => { if(url) onEpisodeSelect(url, displayTitle); else alert("No disponible"); }}>
+                                                    <div className="flex gap-3 items-center overflow-hidden">
+                                                        <span className="text-xs text-gray-500 font-mono">{eIdx+1}</span>
+                                                        <span className={`text-sm truncate ${isSelected ? 'text-brand-red font-bold' : 'text-gray-300'}`}>{displayTitle}</span>
                                                     </div>
-                                                );
-                                            })}
-                                        </div>
-                                    )}
-                                </div>
-                            );
-                        })}
-                    </div>
-                );
-            } else {
-                // MODO RELACIONADOS (CINE/TV)
-                return (
-                    <div className="flex flex-col gap-2">
-                        <h3 className="font-bold text-lg mb-2 px-2 text-white">Sugerencias</h3>
-                        {relatedItems.slice(0,20).map(item => (
-                            <div key={item.id} onClick={() => onItemSelect(item)} className="flex items-center gap-3 p-2 hover:bg-[#222] cursor-pointer rounded-lg transition-colors group">
-                                <img src={item.image} className="w-20 h-12 object-cover bg-gray-800 rounded border border-white/5 group-hover:border-white/20" />
-                                <div className="flex flex-col overflow-hidden">
-                                    <span className="text-sm font-medium line-clamp-1 text-gray-200 group-hover:text-white">{item.title}</span>
-                                    <span className="text-[10px] text-gray-500">{item.subtitle}</span>
-                                </div>
+                                                    {isSelected && <Icon name="play" className="w-3 h-3 text-brand-red shrink-0"/>}
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                )}
                             </div>
-                        ))}
-                    </div>
-                );
-            }
+                        );
+                    })}
+                </div>
+            );
+        };
+
+        // --- COMPONENTE SIDE LIST (RECOMENDACIONES) ---
+        const SideList = ({ relatedItems, onItemSelect }) => {
+            return (
+                <div className="flex flex-col gap-2">
+                    <h3 className="font-bold text-lg mb-2 px-2 text-white">Sugerencias</h3>
+                    {relatedItems.slice(0,20).map(item => (
+                        <div key={item.id} onClick={() => onItemSelect(item)} className="flex items-center gap-3 p-2 hover:bg-[#222] cursor-pointer rounded-lg transition-colors group">
+                            <img src={item.image} className="w-20 h-12 object-cover bg-gray-800 rounded border border-white/5 group-hover:border-white/20" />
+                            <div className="flex flex-col overflow-hidden">
+                                <span className="text-sm font-medium line-clamp-1 text-gray-200 group-hover:text-white">{item.title}</span>
+                                <span className="text-[10px] text-gray-500">{item.subtitle}</span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            );
         };
 
         // --- BARRA NAVEGACIÓN MÓVIL ---
