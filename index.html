@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>StreamTube V31 - Jorge</title>
+    <title>StreamTube V32 - Jorge</title>
     
     <!-- Librerías -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,8 +23,8 @@
                     },
                     colors: {
                         brand: {
-                            red: '#E50914', // Rojo estilo Netflix
-                            dark: '#000000', // Negro Puro
+                            red: '#E50914',
+                            dark: '#000000',
                             gray: '#1a1a1a',
                             gold: '#FFD700'
                         }
@@ -32,11 +32,14 @@
                     animation: {
                         'fade-in': 'fadeIn 1.5s ease-out',
                         'slide-up': 'slideUp 1s ease-out',
+                        'slide-down': 'slideDown 0.5s ease-out',
                         'pulse-mic': 'pulseMic 1.5s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
                     },
                     keyframes: {
                         fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
                         slideUp: { '0%': { transform: 'translateY(30px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        slideDown: { '0%': { transform: 'translateY(-20px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
                         pulseMic: { '0%': { boxShadow: '0 0 0 0 rgba(229, 9, 20, 0.7)' }, '70%': { boxShadow: '0 0 0 10px rgba(229, 9, 20, 0)' }, '100%': { boxShadow: '0 0 0 0 rgba(229, 9, 20, 0)' } }
                     }
                 }
@@ -108,7 +111,9 @@
                 history: <path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />,
                 info: <path d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />,
                 heart: <path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />,
-                arrowLeft: <path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                arrowLeft: <path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />,
+                mic: <path d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />,
+                dice: <path d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
             };
             return (
                 <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
@@ -117,7 +122,7 @@
             );
         };
 
-        // --- PANTALLA DE INTRODUCCIÓN (NEGRO PROFUNDO) ---
+        // --- PANTALLA DE INTRODUCCIÓN (NEGRO PROFUNDO + TEXTO RESALTADO) ---
         const IntroScreen = ({ onEnter }) => {
             return (
                 <div className="fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden font-sans">
@@ -143,9 +148,10 @@
                         
                         <div className="h-px w-32 bg-gradient-to-r from-transparent via-brand-red to-transparent mx-auto mb-8 opacity-50"></div>
 
-                        <p className="text-sm md:text-base text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed">
+                        {/* TEXTO RESALTADO EXACTO SOLICITADO */}
+                        <p className="text-sm md:text-xl text-white font-medium mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
                             Accede al instante a la mejor colección de series clásicas, cine de culto y televisión en vivo. 
-                            Sin suscripciones, sin límites.
+                            Sin suscripciones, sin límites. Tu universo de entretenimiento personal.
                         </p>
 
                         <button 
@@ -197,19 +203,10 @@
                                 <span className="bg-brand-red text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest shadow-lg shadow-brand-red/20">
                                     {item.type === 'series' ? 'Serie Recomendada' : item.type === 'movie' ? 'Película Destacada' : 'En Vivo Ahora'}
                                 </span>
-                                <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight drop-shadow-xl line-clamp-2">
-                                    {item.title}
-                                </h1>
-                                <p className="text-gray-400 text-sm md:text-base max-w-xl line-clamp-3 drop-shadow-md">
-                                    {item.subtitle || 'Disfruta de este contenido seleccionado especialmente para ti. Disponible ahora en StreamTube.'}
-                                </p>
+                                <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white leading-tight drop-shadow-xl line-clamp-2">{item.title}</h1>
+                                <p className="text-gray-400 text-sm md:text-base max-w-xl line-clamp-3 drop-shadow-md">{item.subtitle || 'Disfruta de este contenido seleccionado especialmente para ti. Disponible ahora en StreamTube.'}</p>
                                 <div className="flex gap-4 mt-2">
-                                    <button 
-                                        onClick={() => onPlay(item)}
-                                        className="bg-white text-black px-6 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-200 transition-all hover:scale-105 shadow-lg shadow-white/10"
-                                    >
-                                        <Icon name="play" className="w-5 h-5 fill-black" /> Reproducir
-                                    </button>
+                                    <button onClick={() => onPlay(item)} className="bg-white text-black px-6 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-200 transition-all hover:scale-105 shadow-lg shadow-white/10"><Icon name="play" className="w-5 h-5 fill-black" /> Reproducir</button>
                                 </div>
                             </div>
                         </div>
@@ -222,11 +219,7 @@
         const LockScreen = ({ onUnlock, correctCode, onCancel }) => {
             const [input, setInput] = useState('');
             const [error, setError] = useState(false);
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                if (input.trim() === correctCode.toString().trim()) onUnlock(); 
-                else { setError(true); setInput(''); if(navigator.vibrate) navigator.vibrate(200); }
-            };
+            const handleSubmit = (e) => { e.preventDefault(); if (input.trim() === correctCode.toString().trim()) onUnlock(); else { setError(true); setInput(''); if(navigator.vibrate) navigator.vibrate(200); } };
             return (
                 <div className="w-full h-full bg-black flex flex-col items-center justify-center p-6 relative z-50">
                     <div className="z-10 flex flex-col items-center max-w-sm w-full animate-fade-in">
@@ -238,10 +231,7 @@
                         <form onSubmit={handleSubmit} className="w-full flex flex-col gap-3">
                             <input type="password" value={input} onChange={(e) => {setInput(e.target.value); setError(false);}} placeholder="PIN" className="w-full bg-[#111] border border-[#333] text-white px-4 py-3 rounded-lg text-center text-lg tracking-widest focus:border-brand-red focus:outline-none transition-all" autoFocus />
                             {error && <p className="text-brand-red text-xs text-center font-bold">Código incorrecto</p>}
-                            <div className="flex gap-3 mt-2">
-                                <button type="button" onClick={onCancel} className="flex-1 border border-gray-700 text-gray-400 py-2.5 rounded hover:bg-gray-800 transition-colors">Salir</button>
-                                <button type="submit" className="flex-1 bg-brand-red text-white py-2.5 rounded hover:bg-red-700 font-bold transition-colors shadow-lg shadow-red-900/30">Desbloquear</button>
-                            </div>
+                            <div className="flex gap-3 mt-2"><button type="button" onClick={onCancel} className="flex-1 border border-gray-700 text-gray-400 py-2.5 rounded hover:bg-gray-800 transition-colors">Salir</button><button type="submit" className="flex-1 bg-brand-red text-white py-2.5 rounded hover:bg-red-700 font-bold transition-colors shadow-lg shadow-red-900/30">Desbloquear</button></div>
                         </form>
                     </div>
                 </div>
@@ -307,69 +297,58 @@
 
         // --- ELEMENTO LISTA TV ---
         const TvListItem = ({ item, onClick }) => (
-            <div onClick={() => onClick(item)} className="group cursor-pointer flex items-center gap-4 p-3 hover:bg-[#1a1a1a] rounded-lg transition-colors border-b border-[#1a1a1a] last:border-0 animate-fade-in">
-                <div className="relative w-16 h-12 md:w-24 md:h-16 bg-[#111] rounded overflow-hidden flex-shrink-0 border border-[#333] group-hover:border-gray-500 transition-all">
-                    <img 
-                        src={item.image} 
-                        alt={item.title} 
-                        className="w-full h-full object-contain p-1"
-                        onError={(e) => e.target.src = `https://placehold.co/200x200/222/fff?text=${item.title.charAt(0)}`}
-                    />
+            <div onClick={() => onClick(item)} className="group cursor-pointer flex items-center gap-4 p-3 hover:bg-[#222] rounded-lg transition-colors border-b border-[#222] last:border-0 animate-fade-in">
+                <div className="relative w-16 h-12 md:w-24 md:h-16 bg-[#151515] rounded overflow-hidden flex-shrink-0 border border-[#333] group-hover:border-gray-500 transition-all">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-contain p-1" onError={(e) => e.target.src = `https://placehold.co/200x200/222/fff?text=${item.title.charAt(0)}`}/>
                 </div>
-                <div className="flex-1 min-w-0">
-                    <h3 className="text-base md:text-lg font-bold text-white truncate group-hover:text-brand-red transition-colors">{item.title}</h3>
-                    <p className="text-xs text-gray-500 mt-0.5">En Vivo</p>
-                </div>
-                <div className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity">
-                    <Icon name="play" className="w-8 h-8 text-white fill-current"/>
-                </div>
+                <div className="flex-1 min-w-0"><h3 className="text-base md:text-lg font-bold text-white truncate group-hover:text-brand-red transition-colors">{item.title}</h3><p className="text-xs text-gray-400 mt-0.5">En Vivo</p></div>
             </div>
         );
 
-        // --- TARJETA (CINE/SERIES/HOME) ---
+        // --- TARJETA ---
         const Card = ({ item, onClick }) => {
             let typeLabel = item.type === 'series' ? 'SERIE' : item.type === 'tv' ? 'LIVE' : 'CINE';
             const hasLock = item.data && (item.data.codigo || item.data.password || item.data.clave || item.data.pin);
-            
-            const imgClass = item.type === 'tv' 
-                ? "w-full h-full object-contain p-4 scale-90 group-hover:scale-100 transition-transform duration-500 bg-[#151515]" 
-                : "w-full h-full object-cover group-hover:scale-110 transition-transform duration-500";
-
+            const imgClass = item.type === 'tv' ? "w-full h-full object-contain p-4 scale-90 group-hover:scale-100 transition-transform duration-500 bg-[#151515]" : "w-full h-full object-cover group-hover:scale-110 transition-transform duration-500";
             return (
-                <div onClick={() => onClick(item)} className="group cursor-pointer flex flex-col gap-3 animate-fade-in">
+                <div onClick={() => onClick(item)} className="group cursor-pointer flex flex-col gap-3 animate-fade-in min-w-[140px]">
                     <div className="relative aspect-[2/3] md:aspect-video bg-[#1a1a1a] rounded-lg overflow-hidden shadow-lg group-hover:shadow-2xl group-hover:shadow-brand-red/20 transition-all duration-300 border border-transparent group-hover:border-white/10">
-                        <img 
-                            src={item.image} 
-                            alt={item.title} 
-                            className={imgClass}
-                            onError={(e) => e.target.src = `https://placehold.co/400x600/222/fff?text=${item.title.charAt(0)}`}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                            <Icon name="play" className="w-10 h-10 text-white fill-white drop-shadow-lg" />
-                        </div>
-
+                        <img src={item.image} alt={item.title} className={imgClass} onError={(e) => e.target.src = `https://placehold.co/400x600/222/fff?text=${item.title.charAt(0)}`}/>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"><Icon name="play" className="w-10 h-10 text-white fill-white drop-shadow-lg" /></div>
                         <div className="absolute top-2 right-2 flex gap-1">
                              {hasLock && <span className="bg-black/80 text-yellow-400 p-1 rounded-md backdrop-blur-sm"><Icon name="lock" className="w-3 h-3" /></span>}
                              <span className="bg-black/60 backdrop-blur-md text-[10px] font-bold px-2 py-0.5 rounded text-white tracking-wide border border-white/10">{typeLabel}</span>
                         </div>
                     </div>
-                    <div className="px-1">
-                        <h3 className="text-sm font-bold text-white line-clamp-1 group-hover:text-brand-red transition-colors">{item.title}</h3>
-                        <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{item.subtitle}</p>
+                    <div className="px-1"><h3 className="text-sm font-bold text-white line-clamp-1 group-hover:text-brand-red transition-colors">{item.title}</h3></div>
+                </div>
+            );
+        };
+
+        // --- SECCIÓN HORIZONTAL (CARRUSEL) ---
+        const SectionRow = ({ title, items, onClick }) => {
+            return (
+                <div className="mb-8 animate-fade-in">
+                    <h3 className="text-xl font-bold text-white mb-4 px-2 flex items-center gap-2 border-l-4 border-brand-red pl-3">
+                        {title} <span className="text-xs font-normal text-gray-500 bg-white/10 px-2 py-0.5 rounded-full">{items.length}</span>
+                    </h3>
+                    <div className="flex gap-4 overflow-x-auto pb-4 px-2 no-scrollbar scroll-smooth">
+                        {items.map(item => (
+                            <div key={item.id} className="w-36 md:w-48 flex-shrink-0">
+                                <Card item={item} onClick={onClick} />
+                            </div>
+                        ))}
                     </div>
                 </div>
             );
         };
 
-        // --- LISTA DE TEMPORADAS (SERIES) ---
+        // --- LISTA DE TEMPORADAS & SIDE LIST ---
         const SeasonList = ({ seriesData, onEpisodeSelect, currentUrl }) => {
             const [openSeasons, setOpenSeasons] = useState({ 0: true });
             const toggleSeason = (idx) => setOpenSeasons(prev => ({...prev, [idx]: !prev[idx]}));
-
             if (!seriesData || !seriesData.temporadas || seriesData.temporadas.length === 0) return <div className="p-4 text-gray-500 text-sm">Sin temporadas.</div>;
-
             const sortedSeasons = [...seriesData.temporadas].sort((a,b) => (a.numeroTemporada||0) - (b.numeroTemporada||0));
-
             return (
                 <div className="flex flex-col gap-2 pb-10 select-none">
                     <h3 className="text-lg font-bold mb-2 px-2 text-white flex items-center gap-2"><Icon name="film" className="w-4 h-4 text-brand-red"/> Temporadas</h3>
@@ -378,33 +357,8 @@
                         const isOpen = openSeasons[idx];
                         return (
                             <div key={idx} className="bg-[#1f1f1f] rounded-lg overflow-hidden border border-white/5">
-                                <div onClick={() => toggleSeason(idx)} className="p-3 flex justify-between items-center cursor-pointer hover:bg-[#2a2a2a] transition-colors">
-                                    <span className="font-bold text-sm text-gray-200">Temporada {temp.numeroTemporada || idx+1}</span>
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-gray-400">{eps.length} caps</span>
-                                        <Icon name={isOpen ? 'chevron-up' : 'chevron-down'} className="w-4 h-4 text-gray-500"/>
-                                    </div>
-                                </div>
-                                {isOpen && (
-                                    <div className="border-t border-white/5 bg-[#181818]">
-                                        {eps.map((ep, eIdx) => {
-                                            const url = ep.urlDrive || ep.url;
-                                            const rawTitle = ep.tituloEpisodio || ep.titulo || ep.name;
-                                            const displayTitle = rawTitle ? rawTitle : `Episodio ${eIdx + 1}`;
-                                            const isSelected = currentUrl === url;
-                                            return (
-                                                <div key={eIdx} className={`episode-row p-3 border-l-4 border-transparent cursor-pointer transition-colors flex justify-between items-center ${isSelected ? 'active bg-[#252525]' : 'hover:bg-[#222]'}`}
-                                                    onClick={() => { if(url) onEpisodeSelect(url, displayTitle); else alert("No disponible"); }}>
-                                                    <div className="flex gap-3 items-center overflow-hidden">
-                                                        <span className="text-xs text-gray-500 font-mono">{eIdx+1}</span>
-                                                        <span className={`text-sm truncate ${isSelected ? 'text-brand-red font-bold' : 'text-gray-300'}`}>{displayTitle}</span>
-                                                    </div>
-                                                    {isSelected && <Icon name="play" className="w-3 h-3 text-brand-red shrink-0"/>}
-                                                </div>
-                                            );
-                                        })}
-                                    </div>
-                                )}
+                                <div onClick={() => toggleSeason(idx)} className="p-3 flex justify-between items-center cursor-pointer hover:bg-[#2a2a2a] transition-colors"><span className="font-bold text-sm text-gray-200">Temporada {temp.numeroTemporada || idx+1}</span><div className="flex items-center gap-2"><span className="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-gray-400">{eps.length} caps</span><Icon name={isOpen ? 'chevron-up' : 'chevron-down'} className="w-4 h-4 text-gray-500"/></div></div>
+                                {isOpen && <div className="border-t border-white/5 bg-[#181818]">{eps.map((ep, eIdx) => { const url = ep.urlDrive || ep.url; const displayTitle = ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx+1}`; const isSelected = currentUrl === url; return (<div key={eIdx} className={`episode-row p-3 border-l-4 border-transparent cursor-pointer transition-colors flex justify-between items-center ${isSelected ? 'active bg-[#252525]' : 'hover:bg-[#222]'}`} onClick={() => { if(url) onEpisodeSelect(url, displayTitle); else alert("No disponible"); }}><div className="flex gap-3 items-center overflow-hidden"><span className="text-xs text-gray-500 font-mono">{eIdx+1}</span><span className={`text-sm truncate ${isSelected ? 'text-brand-red font-bold' : 'text-gray-300'}`}>{displayTitle}</span></div>{isSelected && <Icon name="play" className="w-3 h-3 text-brand-red shrink-0"/>}</div>); })}</div>}
                             </div>
                         );
                     })}
@@ -412,35 +366,16 @@
             );
         };
 
-        // --- LISTA LATERAL (RECOMENDACIONES) ---
-        const SideList = ({ relatedItems, onItemSelect }) => {
-            return (
-                <div className="flex flex-col gap-2">
-                    <h3 className="font-bold text-lg mb-2 px-2 text-white">Sugerencias</h3>
-                    {relatedItems.slice(0,20).map(item => (
-                        <div key={item.id} onClick={() => onItemSelect(item)} className="flex items-center gap-3 p-2 hover:bg-[#222] cursor-pointer rounded-lg transition-colors group">
-                            <img src={item.image} className="w-20 h-12 object-cover bg-gray-800 rounded border border-white/5 group-hover:border-white/20" />
-                            <div className="flex flex-col overflow-hidden">
-                                <span className="text-sm font-medium line-clamp-1 text-gray-200 group-hover:text-white">{item.title}</span>
-                                <span className="text-[10px] text-gray-500">{item.subtitle}</span>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            );
-        };
+        const SideList = ({ relatedItems, onItemSelect }) => (
+            <div className="flex flex-col gap-2"><h3 className="font-bold text-lg mb-2 px-2 text-white">Sugerencias</h3>{relatedItems.map(item => (<div key={item.id} onClick={() => onItemSelect(item)} className="flex items-center gap-3 p-2 hover:bg-[#222] cursor-pointer rounded-lg transition-colors group"><img src={item.image} className="w-20 h-12 object-cover bg-gray-800 rounded border border-white/5 group-hover:border-white/20" /><div className="flex flex-col overflow-hidden"><span className="text-sm font-medium line-clamp-1 text-gray-200 group-hover:text-white">{item.title}</span><span className="text-[10px] text-gray-500">{item.subtitle}</span></div></div>))}</div>
+        );
 
         // --- BARRA NAVEGACIÓN MÓVIL ---
         const MobileNav = ({ activeTab, onChange }) => (
             <div className="fixed bottom-0 left-0 right-0 bg-[#0f0f0f]/95 backdrop-blur-md border-t border-white/10 flex justify-around items-center h-16 z-50 md:hidden pb-safe">
                 {['home', 'series', 'movie', 'tv'].map(tab => (
-                    <button 
-                        key={tab}
-                        onClick={() => onChange(tab)} 
-                        className={`flex flex-col items-center gap-1 p-2 w-full transition-colors ${activeTab===tab ? 'text-brand-red' : 'text-gray-500 hover:text-gray-300'}`}
-                    >
-                        <Icon name={tab === 'movie' ? 'film' : tab} className={`w-6 h-6 ${activeTab===tab ? 'fill-current' : ''}`}/> 
-                        <span className="text-[10px] font-medium capitalize">{tab === 'home' ? 'Inicio' : tab === 'movie' ? 'Cine' : tab}</span>
+                    <button key={tab} onClick={() => onChange(tab)} className={`flex flex-col items-center gap-1 p-2 w-full transition-colors ${activeTab===tab ? 'text-brand-red' : 'text-gray-500 hover:text-gray-300'}`}>
+                        <Icon name={tab === 'movie' ? 'film' : tab} className={`w-6 h-6 ${activeTab===tab ? 'fill-current' : ''}`}/> <span className="text-[10px] font-medium capitalize">{tab === 'home' ? 'Inicio' : tab === 'movie' ? 'Cine' : tab}</span>
                     </button>
                 ))}
             </div>
@@ -450,27 +385,24 @@
         const App = () => {
             const [showIntro, setShowIntro] = useState(true);
             const [content, setContent] = useState([]);
-            const [filtered, setFiltered] = useState([]);
             const [activeTab, setActiveTab] = useState('home');
             const [search, setSearch] = useState('');
+            const [showMobileSearch, setShowMobileSearch] = useState(false);
             const [selectedItem, setSelectedItem] = useState(null);
             const [selectedEpisode, setSelectedEpisode] = useState(null);
             const [isLocked, setIsLocked] = useState(false);
             const [history, setHistory] = useState([]);
             const [loading, setLoading] = useState(true);
-            
-            // Mobile Player Section Ref
+            const [isListening, setIsListening] = useState(false);
+            const [stats, setStats] = useState({ movies: 0, series: 0, tv: 0 });
             const mobilePlayerRef = useRef(null);
 
-            useEffect(() => {
-                const saved = localStorage.getItem('streamtube_history');
-                if (saved) setHistory(JSON.parse(saved));
-            }, []);
+            useEffect(() => { const saved = localStorage.getItem('streamtube_history'); if (saved) setHistory(JSON.parse(saved)); }, []);
 
             const addToHistory = (item) => {
                 setHistory(prev => {
                     const filtered = prev.filter(i => i.id !== item.id);
-                    const newHistory = [item, ...filtered].slice(0, 15);
+                    const newHistory = [item, ...filtered].slice(0, 30);
                     localStorage.setItem('streamtube_history', JSON.stringify(newHistory));
                     return newHistory;
                 });
@@ -478,8 +410,6 @@
 
             const loadData = async () => {
                 setLoading(true);
-                let allData = [];
-                // Fetch logic
                 const fetchSafe = async (url, type) => {
                     try {
                         const res = await fetch(url, {cache: "no-store"});
@@ -513,251 +443,170 @@
                         }
                     } catch(e) { return []; }
                 };
-
-                const [movies, series, tvs] = await Promise.all([
-                    fetchSafe(MOVIES_URL, 'movie'),
-                    fetchSafe(SERIES_URL, 'series'),
-                    fetchSafe(M3U_URL, 'tv')
-                ]);
-
-                const finalContent = [...movies, ...series, ...tvs];
-                setContent(finalContent);
-                setFiltered(finalContent);
+                const [movies, series, tvs] = await Promise.all([fetchSafe(MOVIES_URL, 'movie'), fetchSafe(SERIES_URL, 'series'), fetchSafe(M3U_URL, 'tv')]);
+                setContent([...movies, ...series, ...tvs]);
+                setStats({ movies: movies.length, series: series.length, tv: tvs.length });
                 setLoading(false);
             };
 
             useEffect(() => { loadData(); }, []);
 
-            useEffect(() => {
-                let res = [];
-                if (activeTab === 'home') {
-                    res = history;
-                } else {
-                    res = content.filter(i => i.type === activeTab);
-                }
-
-                if(search) {
-                    res = res.filter(i => i.title.toLowerCase().includes(search.toLowerCase()));
-                }
-                setFiltered(res);
-            }, [activeTab, search, content, history]);
+            const getFilteredContent = () => {
+                if(search) return content.filter(i => i.title.toLowerCase().includes(search.toLowerCase()));
+                return content.filter(i => i.type === activeTab);
+            };
+            const filtered = getFilteredContent();
 
             const handlePlay = (item) => {
                 setSelectedItem(item);
                 addToHistory(item);
                 const code = item.data?.codigo || item.data?.password || item.data?.clave || item.data?.pin;
                 setIsLocked(!!code);
-
                 if(item.type === 'series') {
                     const sorted = item.data.temporadas ? [...item.data.temporadas].sort((a,b) => (a.numeroTemporada||0)-(b.numeroTemporada||0)) : [];
                     const ep = sorted[0]?.episodios?.[0] || sorted[0]?.capitulos?.[0];
-                    if(ep) {
-                        const url = ep.urlDrive || ep.url;
-                        const name = ep.tituloEpisodio || ep.titulo || "Episodio 1";
-                        if(url) setSelectedEpisode({ url, title: name });
-                    } else setSelectedEpisode(null);
+                    if(ep) { const url = ep.urlDrive || ep.url; const name = ep.tituloEpisodio || ep.titulo || "Episodio 1"; if(url) setSelectedEpisode({ url, title: name }); } else setSelectedEpisode(null);
                 } else setSelectedEpisode(null);
                 
-                if (window.innerWidth >= 768) {
-                     window.scrollTo(0,0);
-                } else {
-                     setTimeout(() => {
-                         if(mobilePlayerRef.current) {
-                             mobilePlayerRef.current.scrollIntoView({ behavior: 'smooth' });
-                         }
-                     }, 100);
-                }
+                if (window.innerWidth >= 768) { window.scrollTo(0,0); } 
+                else { setTimeout(() => { if(mobilePlayerRef.current) mobilePlayerRef.current.scrollIntoView({ behavior: 'smooth' }); }, 100); }
             };
 
-            // Video URL Logic
+            const startListening = () => {
+                if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) { alert("Tu navegador no soporta búsqueda por voz."); return; }
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                const recognition = new SpeechRecognition();
+                recognition.lang = 'es-ES'; recognition.interimResults = false; recognition.maxAlternatives = 1;
+                recognition.onstart = () => setIsListening(true); recognition.onend = () => setIsListening(false);
+                recognition.onresult = (event) => { const transcript = event.results[0][0].transcript; setSearch(transcript); };
+                recognition.start();
+            };
+            const surpriseMe = () => {
+                const candidates = content.filter(i => i.type !== 'tv');
+                if (candidates.length > 0) { const randomItem = candidates[Math.floor(Math.random() * candidates.length)]; handlePlay(randomItem); }
+            };
+
+            // Video Props
             const activeUrl = selectedItem?.type === 'tv' ? selectedItem.url : selectedItem?.type === 'movie' ? selectedItem.url : selectedEpisode?.url;
             const activeTitle = selectedItem?.type === 'series' ? selectedEpisode?.title : selectedItem?.type === 'movie' ? 'Película Completa' : 'En Vivo';
             const securityCode = selectedItem?.data?.codigo || selectedItem?.data?.password || selectedItem?.data?.clave || selectedItem?.data?.pin;
+            
+            // LISTAS SEPARADAS POR TIPO (CINE, SERIES, TV) PARA HOME
+            const homeMovies = content.filter(i => i.type === 'movie').slice(0, 20);
+            const homeSeries = content.filter(i => i.type === 'series').slice(0, 20);
+            const homeTV = content.filter(i => i.type === 'tv').slice(0, 20);
 
-            // Hero Item (Random from content)
-            const heroItem = React.useMemo(() => {
-                if (content.length === 0) return null;
-                const candidates = content.filter(i => i.type !== 'tv');
-                return candidates.length > 0 ? candidates[Math.floor(Math.random() * candidates.length)] : content[0];
-            }, [content]);
-
-            // Mobile Player Component Extraction
+            // COMPONENTE REPRODUCTOR MÓVIL
             const MobilePlayerSection = () => {
                 if (!selectedItem) return null;
                 return (
                     <div ref={mobilePlayerRef} className="bg-black border-t border-white/10 mt-4 pb-20 animate-slide-down">
                          <div className="w-full aspect-video relative">
-                             {isLocked ? (
-                                <LockScreen onUnlock={() => setIsLocked(false)} correctCode={securityCode} onCancel={() => setSelectedItem(null)} />
-                            ) : (
-                                <Player videoUrl={activeUrl} isLive={selectedItem.type === 'tv'} />
-                            )}
+                             {isLocked ? <LockScreen onUnlock={() => setIsLocked(false)} correctCode={securityCode} onCancel={() => setSelectedItem(null)} /> : <Player videoUrl={activeUrl} isLive={selectedItem.type === 'tv'} />}
                          </div>
                          <div className="p-4 bg-[#181818]">
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <h2 className="text-xl font-bold text-white line-clamp-1">{selectedItem.title}</h2>
-                                    <p className="text-brand-red text-sm font-medium">{activeTitle}</p>
-                                </div>
-                                <button onClick={() => setSelectedItem(null)} className="text-gray-400 hover:text-white p-1"><Icon name="refresh" className="w-5 h-5 rotate-45 transform"/></button>
-                            </div>
-                            
-                            {selectedItem.type === 'series' && (
-                                <div className="mt-4">
-                                    <SeasonList 
-                                        seriesData={selectedItem.data} 
-                                        currentUrl={selectedEpisode?.url}
-                                        onEpisodeSelect={(url, title) => setSelectedEpisode({url, title})}
-                                    />
-                                </div>
-                            )}
-                            
-                            {selectedItem.type !== 'series' && (
-                                <div className="mt-4">
-                                    <SideList 
-                                        relatedItems={content.filter(i => i.type === selectedItem.type && i.id !== selectedItem.id)} 
-                                        onItemSelect={handlePlay} 
-                                    />
-                                </div>
-                            )}
+                            <div className="flex justify-between items-start"><div><h2 className="text-xl font-bold text-white line-clamp-1">{selectedItem.title}</h2><p className="text-brand-red text-sm font-medium mt-1">{activeTitle}</p></div><button onClick={() => setSelectedItem(null)} className="text-gray-400 hover:text-white p-1"><Icon name="refresh" className="w-5 h-5 rotate-45 transform"/></button></div>
+                            {selectedItem.type === 'series' && <div className="mt-4"><SeasonList seriesData={selectedItem.data} currentUrl={selectedEpisode?.url} onEpisodeSelect={(url, title) => setSelectedEpisode({url, title})}/></div>}
+                            {selectedItem.type !== 'series' && <div className="mt-4"><SideList relatedItems={content.filter(i => i.type === selectedItem.type && i.id !== selectedItem.id)} onItemSelect={handlePlay} /></div>}
                          </div>
                     </div>
                 );
             };
 
-            if (showIntro) {
-                return <IntroScreen onEnter={() => setShowIntro(false)} />;
-            }
+            if (showIntro) return <IntroScreen onEnter={() => setShowIntro(false)} />;
 
             return (
                 <div className="min-h-screen bg-[#0f0f0f] mobile-nav-padding md:pb-0 font-sans text-gray-100">
                     {/* Header */}
                     <div className="fixed top-0 left-0 right-0 h-16 glass-panel flex items-center px-4 z-50 justify-between">
-                        <div className="flex items-center gap-3 cursor-pointer" onClick={() => {setSelectedItem(null); setActiveTab('home');}}>
-                            <div className="bg-brand-red p-1.5 rounded-lg shadow-lg shadow-brand-red/40">
-                                <Icon name="play" className="w-5 h-5 text-white fill-current" />
-                            </div>
+                        <div className="flex items-center gap-3 cursor-pointer" onClick={() => {setSelectedItem(null); setActiveTab('home'); setIsLocked(false);}}>
+                            <div className="bg-brand-red p-1.5 rounded-lg shadow-lg shadow-brand-red/40"><Icon name="play" className="w-5 h-5 text-white fill-current" /></div>
                             <span className="text-xl font-bold tracking-tight text-white hidden md:block">StreamTube</span>
                         </div>
-                        
                         <div className="flex-1 max-w-2xl mx-4 hidden md:block">
                             <div className="relative group">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <Icon name="search" className="h-5 w-5 text-gray-400 group-focus-within:text-white transition-colors" />
-                                </div>
-                                <input 
-                                    type="text" 
-                                    className="block w-full pl-10 pr-3 py-2 border border-transparent rounded-full leading-5 bg-[#222] text-gray-300 placeholder-gray-500 focus:outline-none focus:bg-[#333] focus:border-brand-red/50 focus:text-white sm:text-sm transition-all duration-300" 
-                                    placeholder="Buscar películas, series, canales..." 
-                                    value={search}
-                                    onChange={(e) => setSearch(e.target.value)}
-                                />
+                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><Icon name="search" className="h-5 w-5 text-gray-400 group-focus-within:text-white transition-colors" /></div>
+                                <input type="text" className="block w-full pl-10 pr-3 py-2 border border-transparent rounded-full leading-5 bg-[#222] text-gray-300 placeholder-gray-500 focus:outline-none focus:bg-[#333] focus:border-brand-red/50 focus:text-white sm:text-sm transition-all duration-300" placeholder="Buscar películas, series, canales..." value={search} onChange={(e) => setSearch(e.target.value)}/>
+                                <button onClick={startListening} className={`absolute right-3 top-2 text-gray-400 hover:text-white ${isListening ? 'text-brand-red animate-pulse-mic' : ''}`}><Icon name="mic" className="w-5 h-5"/></button>
                             </div>
                         </div>
-
                         <div className="flex items-center gap-4">
-                            <button className="md:hidden p-2 text-gray-300" onClick={() => {/* Toggle Mobile Search */}}>
-                                <Icon name="search" />
-                            </button>
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-red to-purple-700 flex items-center justify-center text-xs font-bold shadow-lg">
-                                J
-                            </div>
+                            <button className="md:hidden p-2 text-gray-300" onClick={() => setShowMobileSearch(!showMobileSearch)}><Icon name="search" /></button>
+                            <div className="hidden md:flex text-[10px] text-gray-500 gap-2"><span>{stats.movies} Cine</span><span>{stats.series} Series</span><span>{stats.tv} TV</span></div>
+                            <button onClick={loadData} className="text-gray-400 hover:text-white" title="Recargar"><Icon name="refresh" className="w-5 h-5"/></button>
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-red to-purple-700 flex items-center justify-center text-xs font-bold shadow-lg">J</div>
                         </div>
                     </div>
 
-                    {/* Sidebar */}
+                    {/* SIDEBAR */}
                     <div className="fixed top-16 left-0 bottom-0 w-24 glass-panel hidden md:flex flex-col items-center py-8 gap-8 z-40">
-                        {[
-                            {id: 'home', icon: 'home', label: 'Inicio'},
-                            {id: 'series', icon: 'film', label: 'Series'},
-                            {id: 'movie', icon: 'movie', label: 'Cine'},
-                            {id: 'tv', icon: 'tv', label: 'TV'}
-                        ].map(item => (
-                            <button 
-                                key={item.id} 
-                                onClick={() => {setActiveTab(item.id); setSelectedItem(null); window.scrollTo(0,0);}} 
-                                className={`flex flex-col items-center gap-1.5 group transition-all duration-300 ${activeTab === item.id ? 'scale-110' : 'opacity-50 hover:opacity-100'}`}
-                            >
-                                <div className={`p-3 rounded-xl transition-colors ${activeTab === item.id ? 'bg-brand-red text-white shadow-lg shadow-brand-red/30' : 'group-hover:bg-white/10'}`}>
-                                    <Icon name={item.icon} className="w-6 h-6" />
-                                </div>
+                        {[ {id: 'home', icon: 'home', label: 'Inicio'}, {id: 'series', icon: 'film', label: 'Series'}, {id: 'movie', icon: 'movie', label: 'Cine'}, {id: 'tv', icon: 'tv', label: 'TV'} ].map(item => (
+                            <button key={item.id} onClick={() => {setActiveTab(item.id); setSelectedItem(null); window.scrollTo(0,0);}} className={`flex flex-col items-center gap-1.5 group transition-all duration-300 ${activeTab === item.id ? 'scale-110' : 'opacity-50 hover:opacity-100'}`}>
+                                <div className={`p-3 rounded-xl transition-colors ${activeTab === item.id ? 'bg-brand-red text-white shadow-lg shadow-brand-red/30' : 'group-hover:bg-white/10'}`}><Icon name={item.icon} className="w-6 h-6" /></div>
                                 <span className={`text-[10px] font-medium ${activeTab === item.id ? 'text-white' : 'text-gray-400'}`}>{item.label}</span>
                             </button>
                         ))}
+                        <button onClick={surpriseMe} className="flex flex-col items-center gap-1 text-yellow-500 mt-auto mb-4 hover:text-yellow-400" title="Sorpréndeme"><Icon name="dice" className="w-6 h-6"/><span className="text-[8px]">Azar</span></button>
                     </div>
 
-                    {/* Mobile Nav */}
+                    {/* MOBILE NAV */}
                     <MobileNav activeTab={activeTab} onChange={(t) => {setActiveTab(t); setSelectedItem(null); window.scrollTo(0,0);}} />
+                    
+                    {/* MOBILE SEARCH */}
+                    {showMobileSearch && <div className="fixed top-16 left-0 right-0 bg-[#1f1f1f] p-2 z-40 md:hidden border-b border-[#333] animate-fade-in"><div className="flex bg-[#121212] border border-[#333] rounded-full px-4 py-2 w-full items-center"><input type="text" placeholder="Buscar..." className="bg-transparent w-full outline-none text-sm text-white" value={search} onChange={(e) => setSearch(e.target.value)} autoFocus/><button onClick={startListening} className={`mx-2 text-gray-400 ${isListening ? 'text-brand-red animate-pulse-mic' : ''}`}><Icon name="mic" className="w-5 h-5"/></button><button onClick={() => {setSearch(''); setShowMobileSearch(false)}} className="text-gray-500">✕</button></div></div>}
 
-                    {/* Main Content */}
+                    {/* MAIN CONTENT */}
                     <div className="pt-16 md:pl-24">
-                        
-                        {/* DESKTOP CINEMA MODE (When Item Selected) */}
+                        {/* DESKTOP LAYOUT */}
                         <div className="hidden md:block">
-                            {selectedItem ? (
+                             {selectedItem ? (
                                 <div className="flex flex-col lg:flex-row h-[calc(100vh-64px)] bg-black animate-fade-in">
                                     <div className="w-full lg:w-3/4 flex flex-col relative h-full">
                                         <div className="flex-1 relative bg-black flex items-center justify-center">
-                                            {isLocked ? (
-                                                <LockScreen onUnlock={() => setIsLocked(false)} correctCode={securityCode} onCancel={() => setSelectedItem(null)} />
-                                            ) : (
-                                                <Player videoUrl={activeUrl} isLive={selectedItem.type === 'tv'} />
-                                            )}
+                                            {isLocked ? <LockScreen onUnlock={() => setIsLocked(false)} correctCode={securityCode} onCancel={() => setSelectedItem(null)} /> : <Player videoUrl={activeUrl} isLive={selectedItem.type === 'tv'} />}
                                         </div>
                                         <div className="p-6 bg-gradient-to-t from-[#0f0f0f] to-[#1a1a1a]">
                                             <h2 className="text-3xl font-bold text-white mb-1">{selectedItem.title}</h2>
                                             <div className="flex items-center gap-3 mb-4">
-                                                <span className="bg-brand-red text-white text-xs px-2 py-0.5 rounded font-bold tracking-wide">
-                                                    {selectedItem.type === 'series' ? 'SERIE' : selectedItem.type === 'movie' ? 'PELÍCULA' : 'EN VIVO'}
-                                                </span>
+                                                <span className="bg-brand-red text-white text-xs px-2 py-0.5 rounded font-bold tracking-wide">{selectedItem.type === 'series' ? 'SERIE' : selectedItem.type === 'movie' ? 'PELÍCULA' : 'EN VIVO'}</span>
                                                 <span className="text-brand-red font-medium text-sm">{activeTitle}</span>
                                             </div>
-                                            <button onClick={() => setSelectedItem(null)} className="text-gray-400 hover:text-white text-sm flex items-center gap-2 group">
-                                                <div className="bg-white/10 p-1 rounded-full group-hover:bg-white/20 transition-colors"><Icon name="arrowLeft" className="w-4 h-4"/></div> Volver
-                                            </button>
+                                            <button onClick={() => setSelectedItem(null)} className="text-gray-400 hover:text-white text-sm flex items-center gap-2 group"><div className="bg-white/10 p-1 rounded-full group-hover:bg-white/20 transition-colors"><Icon name="arrowLeft" className="w-4 h-4"/></div> Volver</button>
                                         </div>
                                     </div>
-
                                     <div className="w-full lg:w-1/4 bg-[#121212] border-l border-white/5 h-full overflow-y-auto p-4">
-                                        {selectedItem.type === 'series' ? (
-                                            <SeasonList 
-                                                seriesData={selectedItem.data} 
-                                                currentUrl={selectedEpisode?.url}
-                                                onEpisodeSelect={(url, title) => setSelectedEpisode({url, title})}
-                                            />
-                                        ) : (
-                                            <SideList 
-                                                relatedItems={content.filter(i => i.type === selectedItem.type && i.id !== selectedItem.id)} 
-                                                onItemSelect={handlePlay} 
-                                            />
-                                        )}
+                                        {selectedItem.type === 'series' ? <SeasonList seriesData={selectedItem.data} currentUrl={selectedEpisode?.url} onEpisodeSelect={(url, title) => setSelectedEpisode({url, title})}/> : <SideList relatedItems={content.filter(i => i.type === selectedItem.type && i.id !== selectedItem.id)} onItemSelect={handlePlay} />}
                                     </div>
                                 </div>
                             ) : (
-                                /* Desktop Grid View */
                                 <>
-                                    {!search && activeTab !== 'tv' && heroItem && (
-                                        <HeroSection item={heroItem} onPlay={handlePlay} />
-                                    )}
                                     <div className="p-6 md:p-10">
-                                         {/* Content Grid (Same as before for Desktop) */}
-                                         {activeTab === 'home' && filtered.length === 0 ? (
-                                            <div className="text-center py-20 bg-[#151515] rounded-2xl border border-white/5">
-                                                <p className="text-gray-400 text-lg">Tu historial está vacío.</p>
-                                            </div>
+                                         {activeTab === 'home' ? (
+                                            <>
+                                                {history.length > 0 && (
+                                                    <div className="mb-10">
+                                                        <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3"><Icon name="history" className="w-6 h-6 text-brand-red" /> Continuar Viendo</h2>
+                                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                                                            {history.slice(0, 5).map(item => <Card key={`hist-${item.id}`} item={item} onClick={handlePlay} />)}
+                                                        </div>
+                                                    </div>
+                                                )}
+                                                
+                                                <div className="flex flex-col gap-8">
+                                                    {homeMovies.length > 0 && <SectionRow title="Películas Destacadas" items={homeMovies} onClick={handlePlay} />}
+                                                    {homeSeries.length > 0 && <SectionRow title="Series Populares" items={homeSeries} onClick={handlePlay} />}
+                                                    {homeTV.length > 0 && <SectionRow title="Canales en Vivo" items={homeTV} onClick={handlePlay} />}
+                                                </div>
+
+                                                {loading && <div className="flex justify-center py-20"><div className="w-10 h-10 border-4 border-brand-red border-t-transparent rounded-full animate-spin"></div></div>}
+                                            </>
                                         ) : (
                                             <>
-                                                {/* VIEW SWITCHING FOR TV */}
+                                                <h2 className="text-2xl font-bold text-white mb-6 capitalize flex items-center gap-3">{activeTab === 'movie' ? 'Cine' : activeTab === 'series' ? 'Series' : 'Televisión en Vivo'}<span className="text-sm font-normal text-gray-500 bg-white/10 px-2 py-0.5 rounded-full">{filtered.length}</span></h2>
                                                 {activeTab === 'tv' ? (
-                                                    <div className="flex flex-col gap-2">
-                                                        {filtered.map(item => (
-                                                            <TvListItem key={item.id} item={item} onClick={handlePlay} />
-                                                        ))}
-                                                    </div>
+                                                    <div className="flex flex-col gap-2">{filtered.map(item => <TvListItem key={item.id} item={item} onClick={handlePlay} />)}</div>
                                                 ) : (
-                                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">
-                                                        {filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}
-                                                    </div>
+                                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">{filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}</div>
                                                 )}
                                             </>
                                         )}
@@ -766,39 +615,54 @@
                             )}
                         </div>
 
-                        {/* MOBILE LAYOUT (Always Grid First, Player Below) */}
+                        {/* MOBILE LAYOUT */}
                         <div className="md:hidden">
-                             {/* 1. List / Grid (Always visible at top) */}
-                             {!search && activeTab !== 'tv' && heroItem && !selectedItem && (
-                                <HeroSection item={heroItem} onPlay={handlePlay} />
-                             )}
-                             
-                             <div className="p-4">
-                                 <h2 className="text-xl font-bold text-white mb-4 capitalize flex items-center gap-2">
-                                     {activeTab === 'home' ? 'Continuar viendo' : activeTab}
-                                 </h2>
-                                 {activeTab === 'home' && filtered.length === 0 ? (
-                                      <div className="text-center py-10 text-gray-500"><p>Historial vacío</p></div>
+                             <div className="px-4 pt-4 pb-2 flex gap-2">
+                                <div className="flex-1 flex bg-[#121212] border border-[#333] rounded-full px-4 py-2 items-center"><Icon name="search" className="w-5 h-5 text-gray-400 mr-2"/><input type="text" placeholder="Buscar..." className="bg-transparent w-full outline-none text-sm text-white" value={search} onChange={(e) => setSearch(e.target.value)}/></div>
+                                <button onClick={startListening} className={`bg-[#121212] border border-[#333] p-2 rounded-full text-gray-400 ${isListening ? 'text-brand-red animate-pulse-mic' : ''}`}><Icon name="mic" className="w-5 h-5"/></button>
+                                <button onClick={surpriseMe} className="bg-[#121212] border border-[#333] p-2 rounded-full text-yellow-500"><Icon name="dice" className="w-5 h-5"/></button>
+                             </div>
+                             <MobilePlayerSection />
+                             <div className="p-4 pt-0">
+                                 {!selectedItem && (
+                                     <div className="flex gap-2 overflow-x-auto pb-4 mb-2">
+                                        {['home', 'series', 'movie', 'tv'].map(tab => (
+                                            <button key={tab} onClick={() => setActiveTab(tab)} className={`px-4 py-1.5 rounded-full text-sm whitespace-nowrap capitalize ${activeTab === tab ? 'bg-white text-black' : 'bg-[#222] text-white'}`}>{tab === 'home' ? 'Inicio' : tab === 'movie' ? 'Cine' : tab}</button>
+                                        ))}
+                                    </div>
+                                 )}
+                                 {activeTab === 'home' ? (
+                                     <>
+                                        {history.length > 0 && (
+                                            <div className="mb-6">
+                                                <h3 className="text-lg font-bold text-white mb-3 flex gap-2 items-center"><Icon name="history" className="w-5 h-5 text-brand-red"/> Continuar Viendo</h3>
+                                                <div className="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
+                                                    {history.slice(0, 10).map(item => (
+                                                        <div key={`m-hist-${item.id}`} className="w-32 flex-shrink-0">
+                                                            <Card item={item} onClick={handlePlay} />
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        <div className="flex flex-col gap-6">
+                                            {homeSeries.length > 0 && <SectionRow title="Series" items={homeSeries} onClick={handlePlay} />}
+                                            {homeMovies.length > 0 && <SectionRow title="Películas" items={homeMovies} onClick={handlePlay} />}
+                                            {homeTV.length > 0 && <SectionRow title="TV" items={homeTV} onClick={handlePlay} />}
+                                        </div>
+                                        {loading && <div className="text-center py-10 text-gray-500">Cargando...</div>}
+                                     </>
                                  ) : (
                                      <>
-                                         {/* MOBILE VIEW SWITCHING FOR TV */}
                                         {activeTab === 'tv' ? (
-                                            <div className="flex flex-col gap-2">
-                                                {filtered.map(item => (
-                                                    <TvListItem key={item.id} item={item} onClick={handlePlay} />
-                                                ))}
-                                            </div>
+                                            <div className="flex flex-col gap-2">{filtered.map(item => <TvListItem key={item.id} item={item} onClick={handlePlay} />)}</div>
                                         ) : (
-                                             <div className="grid grid-cols-2 gap-4">
-                                                 {filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}
-                                             </div>
+                                             <div className="grid grid-cols-2 gap-4">{filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}</div>
                                         )}
                                      </>
                                  )}
                              </div>
-
-                             {/* 2. Player Section (Appears at bottom when selected) */}
-                             <MobilePlayerSection />
                         </div>
                     </div>
                 </div>
