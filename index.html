@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>StreamTube V20 - Jorge</title>
+    
+    <!-- Librerías -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <style>
+        body { background-color: #0f0f0f; color: white; font-family: sans-serif; -webkit-tap-highlight-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .episode-row:hover { background-color: #272727; }
+        .episode-row.active { background-color: #272727; border-left: 4px solid #ef4444; }
+        .episode-row.active .ep-title { color: #ef4444; font-weight: bold; }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .animate-shake { animation: shake 0.2s ease-in-out 0s 2; }
+
+        /* Ajuste para la barra inferior en móviles */
+        .mobile-nav-padding { padding-bottom: 70px; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // --- CONFIGURACIÓN ---
+        const M3U_URL = 'https://raw.githubusercontent.com/sejo48/retrom3u/main/listaoficial.m3u';
+        const SERIES_URL = "https://raw.githubusercontent.com/sejo48/jorgedrive/refs/heads/main/playlist.json";
+        const MOVIES_URL = "https://raw.githubusercontent.com/sejo48/peliculas/refs/heads/main/peliculas.json";
+
+        // --- ICONOS ---
+        const Icon = ({ name, className }) => {
+            const cls = className || "w-6 h-6";
+            if (name === 'menu') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>;
+            if (name === 'search') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35"/></svg>;
+            if (name === 'arrow-left') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>;
+            if (name === 'play') return <svg className={cls} fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>;
+            if (name === 'home') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>;
+            if (name === 'film') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><path strokeLinecap="round" strokeLinejoin="round" d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>;
+            if (name === 'movie') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>;
+            if (name === 'tv') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><path strokeLinecap="round" strokeLinejoin="round" d="M17 2l-5 5-5-5"/></svg>;
+            if (name === 'chevron-down') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>;
+            if (name === 'chevron-up') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" /></svg>;
+            if (name === 'refresh') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>;
+            if (name === 'external') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>;
+            if (name === 'lock') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4" /></svg>;
+            if (name === 'copy') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>;
+            if (name === 'history') return <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
+            return null;
+        };
+
+        // --- BLOQUEO ---
+        const LockScreen = ({ onUnlock, correctCode, onCancel }) => {
+            const [input, setInput] = useState('');
+            const [error, setError] = useState(false);
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                if (input.trim() === correctCode.toString().trim()) { onUnlock(); } 
+                else { setError(true); setInput(''); if(navigator.vibrate) navigator.vibrate(200); }
+            };
+            return (
+                <div className="w-full h-full bg-[#050505] flex flex-col items-center justify-center p-6 relative">
+                    <div className="z-10 flex flex-col items-center max-w-sm w-full">
+                        <div className={`bg-red-600/10 p-6 rounded-full mb-6 border border-red-600/30 ${error ? 'animate-shake' : ''}`}>
+                            <Icon name="lock" className="w-12 h-12 text-red-500" />
+                        </div>
+                        <h2 className="text-2xl font-bold text-white mb-2">Restringido</h2>
+                        <p className="text-gray-400 text-center mb-6 text-sm">Introduce el código para ver este contenido.</p>
+                        <form onSubmit={handleSubmit} className="w-full flex flex-col gap-3">
+                            <input type="password" value={input} onChange={(e) => {setInput(e.target.value); setError(false);}} placeholder="Código" className="w-full bg-[#1a1a1a] border border-[#333] text-white px-4 py-3 rounded-lg text-center text-lg tracking-widest focus:border-red-500 focus:outline-none" autoFocus />
+                            {error && <p className="text-red-500 text-xs text-center font-bold">Código incorrecto</p>}
+                            <div className="flex gap-3 mt-2">
+                                <button type="button" onClick={onCancel} className="flex-1 border border-gray-600 text-gray-300 py-2.5 rounded-lg hover:bg-gray-800">Cancelar</button>
+                                <button type="submit" className="flex-1 bg-red-600 text-white py-2.5 rounded-lg hover:bg-red-700 font-bold">Ver</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            );
+        };
+
+        // --- REPRODUCTOR ---
+        const Player = ({ videoUrl, isLive }) => {
+            const videoRef = useRef(null);
+            const hlsRef = useRef(null);
+            const cleanDriveUrl = (url) => {
+                if(!url) return '';
+                if(url.includes('drive.google.com')) {
+                    if(url.includes('/preview')) return url;
+                    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+                    return match ? `https://drive.google.com/file/d/${match[1]}/preview` : url;
+                }
+                return url;
+            };
+            const cleanUrl = cleanDriveUrl(videoUrl);
+            const isDrive = cleanUrl.includes('drive.google.com');
+
+            useEffect(() => {
+                if (isDrive || !videoUrl) return;
+                const video = videoRef.current;
+                if (!video) return;
+                const loadHls = () => {
+                    if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; }
+                    if (Hls.isSupported() && (isLive || videoUrl.includes('.m3u8'))) {
+                        const hls = new Hls();
+                        hlsRef.current = hls;
+                        hls.loadSource(videoUrl);
+                        hls.attachMedia(video);
+                        hls.on(Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => {}));
+                    } else {
+                        video.src = videoUrl;
+                        video.load();
+                        video.play().catch(() => {});
+                    }
+                };
+                loadHls();
+                return () => { if(hlsRef.current) hlsRef.current.destroy(); };
+            }, [videoUrl, isLive, isDrive]);
+
+            if (!videoUrl) return <div className="w-full h-full bg-black flex items-center justify-center text-gray-500">Selecciona un contenido</div>;
+
+            if (isDrive) {
+                return (
+                    <div className="w-full h-full bg-black relative group">
+                        <iframe src={cleanUrl} className="w-full h-full border-none" allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
+                        <a href={cleanUrl} target="_blank" rel="noopener noreferrer" className="absolute top-2 right-2 bg-black/50 hover:bg-red-600 text-white p-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity"><Icon name="external" className="w-4 h-4"/></a>
+                    </div>
+                );
+            }
+            return (
+                <div className="w-full h-full bg-black flex items-center justify-center">
+                    <video ref={videoRef} controls autoPlay className="w-full h-full max-h-[80vh]" style={{backgroundColor:'black'}} />
+                </div>
+            );
+        };
+
+        // --- TARJETA ---
+        const Card = ({ item, onClick }) => {
+            let badgeColor = 'bg-gray-600';
+            if (item.type === 'series') badgeColor = 'bg-green-600';
+            if (item.type === 'tv') badgeColor = 'bg-red-600';
+            if (item.type === 'movie') badgeColor = 'bg-blue-600';
+            const typeLabel = item.type === 'series' ? 'SERIE' : item.type === 'tv' ? 'LIVE' : 'CINE';
+            const hasLock = item.data && (item.data.codigo || item.data.password || item.data.clave || item.data.pin);
+
+            return (
+                <div onClick={() => onClick(item)} className="group cursor-pointer flex flex-col gap-2">
+                    <div className="relative aspect-video bg-[#202020] rounded-xl overflow-hidden border border-[#202020] group-hover:border-gray-600 transition-all">
+                        <img src={item.image} alt={item.title} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-transform duration-300" onError={(e) => e.target.src = `https://placehold.co/400x225/222/fff?text=${item.title.charAt(0)}`}/>
+                        <div className="absolute bottom-2 right-2 flex gap-1">
+                            {hasLock && <span className="bg-black/80 text-yellow-400 px-1.5 py-0.5 rounded"><Icon name="lock" className="w-3 h-3" /></span>}
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded text-white ${badgeColor}`}>{typeLabel}</span>
+                        </div>
+                    </div>
+                    <div className="flex gap-3 px-1">
+                        <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold ${badgeColor.replace('600', '800')}`}>
+                            {item.title.charAt(0)}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                            <h3 className="text-sm font-bold text-white line-clamp-2 leading-tight group-hover:text-blue-400">{item.title}</h3>
+                            <p className="text-xs text-gray-400 mt-1 truncate">{item.subtitle}</p>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // --- LISTA DE TEMPORADAS ---
+        const SeasonList = ({ seriesData, onEpisodeSelect, currentUrl }) => {
+            const [openSeasons, setOpenSeasons] = useState({ 0: true });
+            const toggleSeason = (idx) => setOpenSeasons(prev => ({...prev, [idx]: !prev[idx]}));
+            if (!seriesData.temporadas || seriesData.temporadas.length === 0) return <div className="p-4 text-gray-500 text-sm">Sin temporadas.</div>;
+            const sortedSeasons = [...seriesData.temporadas].sort((a,b) => (a.numeroTemporada||0) - (b.numeroTemporada||0));
+
+            return (
+                <div className="flex flex-col gap-2 pb-10 select-none">
+                    <h3 className="text-lg font-bold mb-2 px-2">Temporadas</h3>
+                    {sortedSeasons.map((temp, idx) => {
+                        const eps = temp.episodios || temp.capitulos || [];
+                        const isOpen = openSeasons[idx];
+                        return (
+                            <div key={idx} className="bg-[#1f1f1f] rounded overflow-hidden">
+                                <div onClick={() => toggleSeason(idx)} className="p-3 flex justify-between items-center cursor-pointer hover:bg-[#333]">
+                                    <span className="font-bold text-sm">Temporada {temp.numeroTemporada || idx+1}</span>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-[10px] bg-black/40 px-2 py-0.5 rounded-full text-gray-400">{eps.length} caps</span>
+                                        <Icon name={isOpen ? 'chevron-up' : 'chevron-down'} className="w-4 h-4"/>
+                                    </div>
+                                </div>
+                                {isOpen && (
+                                    <div className="border-t border-[#333]">
+                                        {eps.map((ep, eIdx) => {
+                                            const url = ep.urlDrive || ep.url;
+                                            const rawTitle = ep.tituloEpisodio || ep.titulo || ep.name;
+                                            const displayTitle = rawTitle ? rawTitle : `Episodio ${eIdx + 1}`;
+                                            const isSelected = currentUrl === url;
+                                            return (
+                                                <div key={eIdx} className={`episode-row p-3 border-l-4 border-transparent cursor-pointer transition-colors flex justify-between items-center ${isSelected ? 'active' : ''}`}
+                                                    onClick={() => { if(url) onEpisodeSelect(url, displayTitle); else alert("Enlace no disponible"); }}>
+                                                    <span className={`text-sm ep-title ${isSelected ? 'text-red-500' : 'text-gray-300'}`}>{eIdx + 1}. {displayTitle}</span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })}
+                </div>
+            );
+        };
+
+        // --- BARRA NAVEGACIÓN MÓVIL ---
+        const MobileNav = ({ activeTab, onChange }) => (
+            <div className="fixed bottom-0 left-0 right-0 bg-[#0f0f0f] border-t border-[#272727] flex justify-around items-center h-16 z-50 md:hidden pb-safe">
+                <button onClick={() => onChange('home')} className={`flex flex-col items-center gap-1 p-2 ${activeTab==='home'?'text-white':'text-gray-500'}`}>
+                    <Icon name="home" className="w-6 h-6"/> <span className="text-[10px]">Inicio</span>
+                </button>
+                <button onClick={() => onChange('series')} className={`flex flex-col items-center gap-1 p-2 ${activeTab==='series'?'text-white':'text-gray-500'}`}>
+                    <Icon name="film" className="w-6 h-6"/> <span className="text-[10px]">Series</span>
+                </button>
+                <button onClick={() => onChange('movie')} className={`flex flex-col items-center gap-1 p-2 ${activeTab==='movie'?'text-white':'text-gray-500'}`}>
+                    <Icon name="movie" className="w-6 h-6"/> <span className="text-[10px]">Cine</span>
+                </button>
+                <button onClick={() => onChange('tv')} className={`flex flex-col items-center gap-1 p-2 ${activeTab==='tv'?'text-white':'text-gray-500'}`}>
+                    <Icon name="tv" className="w-6 h-6"/> <span className="text-[10px]">TV</span>
+                </button>
+            </div>
+        );
+
+        // --- APP PRINCIPAL ---
+        const App = () => {
+            const [content, setContent] = useState([]);
+            const [filtered, setFiltered] = useState([]);
+            const [activeTab, setActiveTab] = useState('home');
+            const [search, setSearch] = useState('');
+            const [showMobileSearch, setShowMobileSearch] = useState(false); // Estado para buscador móvil
+            const [selectedItem, setSelectedItem] = useState(null);
+            const [selectedEpisode, setSelectedEpisode] = useState(null);
+            const [isLocked, setIsLocked] = useState(false);
+            const [stats, setStats] = useState({ movies: 0, series: 0, tv: 0 });
+            const [history, setHistory] = useState([]);
+
+            useEffect(() => {
+                const saved = localStorage.getItem('streamtube_history');
+                if (saved) {
+                    setHistory(JSON.parse(saved));
+                }
+            }, []);
+
+            const addToHistory = (item) => {
+                setHistory(prev => {
+                    const filtered = prev.filter(i => i.id !== item.id);
+                    const newHistory = [item, ...filtered].slice(0, 15); 
+                    localStorage.setItem('streamtube_history', JSON.stringify(newHistory));
+                    return newHistory;
+                });
+            };
+
+            const loadData = async () => {
+                let allData = [];
+                let counts = { movies: 0, series: 0, tv: 0 };
+                
+                try {
+                    const res = await fetch(MOVIES_URL, {cache: "no-store"});
+                    if(res.ok) {
+                        const json = await res.json();
+                        const list = Array.isArray(json) ? json : (json.peliculas || json.movies || []);
+                        const movies = list.map((m, i) => ({ id: `m-${i}`, title: m.titulo, image: m.imagen, type: 'movie', subtitle: m.descripcion || 'Película', url: m.urlDrive, data: m }));
+                        allData = [...allData, ...movies];
+                        counts.movies = movies.length;
+                    }
+                } catch(e) {}
+
+                try {
+                    const res = await fetch(SERIES_URL, {cache: "no-store"});
+                    if(res.ok) {
+                        const json = await res.json();
+                        const list = Array.isArray(json) ? json : (json.series || json.playlist || []);
+                        const series = list.filter(s => s.tituloSerie).map((s, i) => ({ id: `s-${i}`, title: s.tituloSerie, image: s.imagen, type: 'series', subtitle: s.descripcion || 'Serie', data: s }));
+                        allData = [...allData, ...series];
+                        counts.series = series.length;
+                    }
+                } catch(e) {}
+
+                try {
+                    const res = await fetch(M3U_URL);
+                    if(res.ok) {
+                        const text = await res.text();
+                        const lines = text.split('\n');
+                        let tvs = [];
+                        for(let i=0; i<lines.length; i++) {
+                            const line = lines[i].trim();
+                            if(line.startsWith('#EXTINF:')) {
+                                const title = line.split(',')[1] ? line.split(',')[1].trim() : 'Canal TV';
+                                const logo = line.match(/tvg-logo="([^"]*)"/)?.[1];
+                                let url = '';
+                                for(let j=i+1; j < Math.min(i+5, lines.length); j++) {
+                                    const nextLine = lines[j].trim();
+                                    if (nextLine && !nextLine.startsWith('#')) { url = nextLine; break; }
+                                }
+                                if(url) tvs.push({ id: `tv-${tvs.length}`, title: title, image: logo, type: 'tv', subtitle: 'En Vivo', url: url });
+                            }
+                        }
+                        allData = [...allData, ...tvs];
+                        counts.tv = tvs.length;
+                    }
+                } catch(e) {}
+
+                setContent(allData);
+                setFiltered(allData);
+                setStats(counts);
+            };
+
+            useEffect(() => { loadData(); }, []);
+
+            useEffect(() => {
+                let res = [];
+                if (activeTab === 'home') {
+                    res = history;
+                } else {
+                    res = content.filter(i => i.type === activeTab);
+                }
+
+                if(search) {
+                    res = res.filter(i => i.title.toLowerCase().includes(search.toLowerCase()));
+                }
+                setFiltered(res);
+            }, [activeTab, search, content, history]);
+
+            const handleItemClick = (item) => {
+                setSelectedItem(item);
+                addToHistory(item);
+                const code = item.data?.codigo || item.data?.password || item.data?.clave || item.data?.pin;
+                setIsLocked(!!code);
+
+                if(item.type === 'series') {
+                    const sorted = item.data.temporadas ? [...item.data.temporadas].sort((a,b) => (a.numeroTemporada||0)-(b.numeroTemporada||0)) : [];
+                    const firstSeason = sorted[0];
+                    const eps = firstSeason ? (firstSeason.episodios || firstSeason.capitulos || []) : [];
+                    if(eps.length > 0) {
+                        const ep = eps[0];
+                        const url = ep.urlDrive || ep.url;
+                        const name = ep.tituloEpisodio || ep.titulo || "Episodio 1";
+                        if(url) setSelectedEpisode({ url, title: name });
+                        else setSelectedEpisode(null);
+                    } else {
+                        setSelectedEpisode(null);
+                    }
+                } else {
+                    setSelectedEpisode(null);
+                }
+                window.scrollTo(0,0);
+            };
+
+            const getActiveVideoUrl = () => {
+                if (!selectedItem) return '';
+                if (selectedItem.type === 'tv') return selectedItem.url;
+                if (selectedItem.type === 'movie') return selectedItem.url;
+                if (selectedItem.type === 'series') return selectedEpisode ? selectedEpisode.url : '';
+                return '';
+            };
+
+            const getActiveTitle = () => {
+                if (!selectedItem) return '';
+                if (selectedItem.type === 'series' && selectedEpisode) return selectedEpisode.title;
+                if (selectedItem.type === 'movie') return 'Película Completa';
+                return 'En Vivo';
+            };
+
+            const getSecurityCode = () => {
+                if (!selectedItem || !selectedItem.data) return null;
+                return selectedItem.data.codigo || selectedItem.data.password || selectedItem.data.clave || selectedItem.data.pin;
+            };
+
+            return (
+                <div className="min-h-screen bg-[#0f0f0f] mobile-nav-padding md:pb-0">
+                    {/* Header */}
+                    <div className="fixed top-0 left-0 right-0 h-14 bg-[#0f0f0f] border-b border-[#2a2a2a] flex items-center px-4 z-50 gap-4 justify-between">
+                        <div className="flex items-center gap-2 text-white font-bold text-xl tracking-tighter cursor-pointer" onClick={() => {setSelectedItem(null); setActiveTab('home'); setIsLocked(false);}}>
+                            <span className="bg-red-600 px-1.5 rounded text-sm pb-0.5">▶</span> StreamTube
+                        </div>
+                        
+                        {/* Buscador Desktop */}
+                        <div className="hidden md:flex flex-1 justify-center">
+                            <div className="flex bg-[#121212] border border-[#333] rounded-full px-4 py-1.5 w-full max-w-md items-center">
+                                <input type="text" placeholder="Buscar..." className="bg-transparent w-full outline-none text-sm text-white" value={search} onChange={(e) => setSearch(e.target.value)}/>
+                                <Icon name="search" className="w-5 h-5 text-gray-400"/>
+                            </div>
+                        </div>
+
+                        {/* Botones Header */}
+                        <div className="flex items-center gap-3">
+                            {/* Botón Búsqueda Móvil */}
+                             <button onClick={() => setShowMobileSearch(!showMobileSearch)} className="md:hidden text-gray-400 hover:text-white">
+                                <Icon name="search" className="w-6 h-6"/>
+                            </button>
+
+                            <div className="hidden lg:flex text-[10px] text-gray-500 gap-2">
+                                <span>{stats.movies} Cine</span>
+                                <span>{stats.series} Series</span>
+                                <span>{stats.tv} TV</span>
+                            </div>
+                            <button onClick={loadData} className="text-gray-400 hover:text-white" title="Recargar"><Icon name="refresh" className="w-5 h-5"/></button>
+                        </div>
+                    </div>
+
+                    {/* Overlay Buscador Móvil */}
+                    {showMobileSearch && (
+                        <div className="fixed top-14 left-0 right-0 bg-[#1f1f1f] p-2 z-40 md:hidden border-b border-[#333] animate-fade-in">
+                             <div className="flex bg-[#121212] border border-[#333] rounded-full px-4 py-2 w-full items-center">
+                                <input 
+                                    type="text" 
+                                    placeholder="Buscar en StreamTube..." 
+                                    className="bg-transparent w-full outline-none text-sm text-white" 
+                                    value={search} 
+                                    onChange={(e) => setSearch(e.target.value)}
+                                    autoFocus
+                                />
+                                <button onClick={() => {setSearch(''); setShowMobileSearch(false)}} className="text-gray-500">✕</button>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Sidebar Desktop */}
+                    <div className="fixed top-14 left-0 bottom-0 w-20 bg-[#0f0f0f] hidden md:flex flex-col items-center py-4 gap-6 border-r border-[#2a2a2a] z-40">
+                        <button onClick={() => {setActiveTab('home'); setSelectedItem(null);}} className={`flex flex-col items-center gap-1 ${activeTab==='home'?'text-white':'text-gray-500'}`}><Icon name="home"/><span className="text-[10px]">Inicio</span></button>
+                        <button onClick={() => {setActiveTab('series'); setSelectedItem(null);}} className={`flex flex-col items-center gap-1 ${activeTab==='series'?'text-white':'text-gray-500'}`}><Icon name="film"/><span className="text-[10px]">Series</span></button>
+                        <button onClick={() => {setActiveTab('movie'); setSelectedItem(null);}} className={`flex flex-col items-center gap-1 ${activeTab==='movie'?'text-white':'text-gray-500'}`}><Icon name="movie"/><span className="text-[10px]">Cine</span></button>
+                        <button onClick={() => {setActiveTab('tv'); setSelectedItem(null);}} className={`flex flex-col items-center gap-1 ${activeTab==='tv'?'text-white':'text-gray-500'}`}><Icon name="tv"/><span className="text-[10px]">TV</span></button>
+                    </div>
+
+                    {/* Mobile Bottom Navigation */}
+                    <MobileNav activeTab={activeTab} onChange={(tab) => { setActiveTab(tab); setSelectedItem(null); window.scrollTo(0,0); }} />
+
+                    {/* Content */}
+                    <div className="pt-14 md:pl-20">
+                        {selectedItem ? (
+                            <div className="flex flex-col lg:flex-row h-[calc(100vh-56px)]">
+                                <div className="w-full lg:w-3/4 bg-black flex flex-col relative">
+                                    <div className="flex-1 relative">
+                                        {isLocked ? (
+                                            <LockScreen 
+                                                onUnlock={() => setIsLocked(false)} 
+                                                correctCode={getSecurityCode()} 
+                                                onCancel={() => setSelectedItem(null)}
+                                            />
+                                        ) : (
+                                            <Player 
+                                                videoUrl={getActiveVideoUrl()} 
+                                                isLive={selectedItem.type === 'tv'} 
+                                            />
+                                        )}
+                                    </div>
+                                    <div className="p-4 bg-[#181818]">
+                                        <div className="flex justify-between items-start">
+                                            <div>
+                                                <h2 className="text-xl font-bold">{selectedItem.title}</h2>
+                                                <p className="text-red-500 text-sm font-medium mt-1">
+                                                    {getActiveTitle()}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="mt-4 flex gap-4 text-sm text-gray-400">
+                                            <button onClick={() => setSelectedItem(null)} className="hover:text-white underline flex items-center gap-1"><Icon name="arrow-left" className="w-4 h-4"/> Volver</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="w-full lg:w-1/4 bg-[#0f0f0f] border-l border-[#2a2a2a] overflow-y-auto p-2 h-full">
+                                    {selectedItem.type === 'series' ? (
+                                        <SeasonList 
+                                            key={selectedItem.id}
+                                            seriesData={selectedItem.data} 
+                                            currentUrl={selectedEpisode?.url}
+                                            onEpisodeSelect={(url, title) => setSelectedEpisode({url, title})}
+                                        />
+                                    ) : (
+                                        <div className="flex flex-col gap-2">
+                                            <h3 className="font-bold text-lg mb-2 px-2">
+                                                {selectedItem.type === 'movie' ? 'Otras Películas' : 'Más Canales'}
+                                            </h3>
+                                            {content.filter(i => i.type === selectedItem.type && i.id !== selectedItem.id).slice(0,20).map(item => (
+                                                <div key={item.id} onClick={() => handleItemClick(item)} className="flex items-center gap-3 p-2 hover:bg-[#222] cursor-pointer rounded">
+                                                    <img src={item.image} className="w-16 h-10 object-cover bg-gray-800 rounded" />
+                                                    <span className="text-sm font-medium line-clamp-1">{item.title}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="p-4">
+                                {/* Filtros Superiores */}
+                                <div className="flex gap-2 overflow-x-auto pb-4 mb-2 md:hidden">
+                                    {['home', 'series', 'movie', 'tv'].map(tab => (
+                                        <button 
+                                            key={tab}
+                                            onClick={() => setActiveTab(tab)} 
+                                            className={`px-4 py-1.5 rounded-full text-sm whitespace-nowrap capitalize ${activeTab === tab ? 'bg-white text-black' : 'bg-[#222] text-white'}`}
+                                        >
+                                            {tab === 'home' ? 'Inicio' : tab === 'movie' ? 'Cine' : tab}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                {activeTab === 'home' && filtered.length === 0 ? (
+                                    <div className="col-span-full text-center py-20 text-gray-500 flex flex-col items-center">
+                                        <Icon name="history" className="w-16 h-16 opacity-20 mb-4" />
+                                        <p className="text-xl">Tu historial está vacío</p>
+                                        <p className="text-sm opacity-60 mt-2">Empieza a ver Series, Películas o TV para que aparezcan aquí.</p>
+                                    </div>
+                                ) : (
+                                    <>
+                                        {activeTab === 'home' && <h2 className="text-xl font-bold mb-4 px-2 flex items-center gap-2"><Icon name="history" className="w-5 h-5"/> Continuar viendo (Últimos 15)</h2>}
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+                                            {filtered.map(item => <Card key={item.id} item={item} onClick={handleItemClick}/>)}
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
