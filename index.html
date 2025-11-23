@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>StreamTube V32 - Jorge</title>
+    <title>StreamTube V33 - Jorge</title>
     
     <!-- Librerías -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -122,18 +122,16 @@
             );
         };
 
-        // --- PANTALLA DE INTRODUCCIÓN (NEGRO PROFUNDO + TEXTO RESALTADO) ---
+        // --- PANTALLA DE INTRODUCCIÓN ---
         const IntroScreen = ({ onEnter }) => {
             return (
                 <div className="fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden font-sans">
-                    {/* Fondo Negro con Imagen muy sutil */}
                     <div className="absolute inset-0 bg-black">
                         <img 
                             src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop" 
                             className="w-full h-full object-cover opacity-10 animate-pulse-slow" 
                             alt="Cine" 
                         />
-                        {/* Gradiente agresivo para asegurar el negro */}
                         <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black"></div>
                     </div>
 
@@ -148,7 +146,6 @@
                         
                         <div className="h-px w-32 bg-gradient-to-r from-transparent via-brand-red to-transparent mx-auto mb-8 opacity-50"></div>
 
-                        {/* TEXTO RESALTADO EXACTO SOLICITADO */}
                         <p className="text-sm md:text-xl text-white font-medium mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
                             Accede al instante a la mejor colección de series clásicas, cine de culto y televisión en vivo. 
                             Sin suscripciones, sin límites. Tu universo de entretenimiento personal.
@@ -219,7 +216,11 @@
         const LockScreen = ({ onUnlock, correctCode, onCancel }) => {
             const [input, setInput] = useState('');
             const [error, setError] = useState(false);
-            const handleSubmit = (e) => { e.preventDefault(); if (input.trim() === correctCode.toString().trim()) onUnlock(); else { setError(true); setInput(''); if(navigator.vibrate) navigator.vibrate(200); } };
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                if (input.trim() === correctCode.toString().trim()) onUnlock(); 
+                else { setError(true); setInput(''); if(navigator.vibrate) navigator.vibrate(200); }
+            };
             return (
                 <div className="w-full h-full bg-black flex flex-col items-center justify-center p-6 relative z-50">
                     <div className="z-10 flex flex-col items-center max-w-sm w-full animate-fade-in">
@@ -231,7 +232,10 @@
                         <form onSubmit={handleSubmit} className="w-full flex flex-col gap-3">
                             <input type="password" value={input} onChange={(e) => {setInput(e.target.value); setError(false);}} placeholder="PIN" className="w-full bg-[#111] border border-[#333] text-white px-4 py-3 rounded-lg text-center text-lg tracking-widest focus:border-brand-red focus:outline-none transition-all" autoFocus />
                             {error && <p className="text-brand-red text-xs text-center font-bold">Código incorrecto</p>}
-                            <div className="flex gap-3 mt-2"><button type="button" onClick={onCancel} className="flex-1 border border-gray-700 text-gray-400 py-2.5 rounded hover:bg-gray-800 transition-colors">Salir</button><button type="submit" className="flex-1 bg-brand-red text-white py-2.5 rounded hover:bg-red-700 font-bold transition-colors shadow-lg shadow-red-900/30">Desbloquear</button></div>
+                            <div className="flex gap-3 mt-2">
+                                <button type="button" onClick={onCancel} className="flex-1 border border-gray-700 text-gray-400 py-2.5 rounded hover:bg-gray-800 transition-colors">Salir</button>
+                                <button type="submit" className="flex-1 bg-brand-red text-white py-2.5 rounded hover:bg-red-700 font-bold transition-colors shadow-lg shadow-red-900/30">Desbloquear</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -297,30 +301,57 @@
 
         // --- ELEMENTO LISTA TV ---
         const TvListItem = ({ item, onClick }) => (
-            <div onClick={() => onClick(item)} className="group cursor-pointer flex items-center gap-4 p-3 hover:bg-[#222] rounded-lg transition-colors border-b border-[#222] last:border-0 animate-fade-in">
-                <div className="relative w-16 h-12 md:w-24 md:h-16 bg-[#151515] rounded overflow-hidden flex-shrink-0 border border-[#333] group-hover:border-gray-500 transition-all">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-contain p-1" onError={(e) => e.target.src = `https://placehold.co/200x200/222/fff?text=${item.title.charAt(0)}`}/>
+            <div onClick={() => onClick(item)} className="group cursor-pointer flex items-center gap-4 p-3 hover:bg-[#1a1a1a] rounded-lg transition-colors border-b border-[#1a1a1a] last:border-0 animate-fade-in">
+                <div className="relative w-16 h-12 md:w-24 md:h-16 bg-[#111] rounded overflow-hidden flex-shrink-0 border border-[#333] group-hover:border-gray-500 transition-all">
+                    <img 
+                        src={item.image} 
+                        alt={item.title} 
+                        className="w-full h-full object-contain p-1"
+                        onError={(e) => e.target.src = `https://placehold.co/200x200/222/fff?text=${item.title.charAt(0)}`}
+                    />
                 </div>
-                <div className="flex-1 min-w-0"><h3 className="text-base md:text-lg font-bold text-white truncate group-hover:text-brand-red transition-colors">{item.title}</h3><p className="text-xs text-gray-400 mt-0.5">En Vivo</p></div>
+                <div className="flex-1 min-w-0">
+                    <h3 className="text-base md:text-lg font-bold text-white truncate group-hover:text-brand-red transition-colors">{item.title}</h3>
+                    <p className="text-xs text-gray-400 mt-0.5">En Vivo</p>
+                </div>
+                <div className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Icon name="play" className="w-8 h-8 text-white fill-current"/>
+                </div>
             </div>
         );
 
-        // --- TARJETA ---
+        // --- TARJETA (CINE/SERIES/HOME) ---
         const Card = ({ item, onClick }) => {
             let typeLabel = item.type === 'series' ? 'SERIE' : item.type === 'tv' ? 'LIVE' : 'CINE';
             const hasLock = item.data && (item.data.codigo || item.data.password || item.data.clave || item.data.pin);
-            const imgClass = item.type === 'tv' ? "w-full h-full object-contain p-4 scale-90 group-hover:scale-100 transition-transform duration-500 bg-[#151515]" : "w-full h-full object-cover group-hover:scale-110 transition-transform duration-500";
+            
+            const imgClass = item.type === 'tv' 
+                ? "w-full h-full object-contain p-4 scale-90 group-hover:scale-100 transition-transform duration-500 bg-[#151515]" 
+                : "w-full h-full object-cover group-hover:scale-110 transition-transform duration-500";
+
             return (
-                <div onClick={() => onClick(item)} className="group cursor-pointer flex flex-col gap-3 animate-fade-in min-w-[140px]">
+                <div onClick={() => onClick(item)} className="group cursor-pointer flex flex-col gap-3 animate-fade-in">
                     <div className="relative aspect-[2/3] md:aspect-video bg-[#1a1a1a] rounded-lg overflow-hidden shadow-lg group-hover:shadow-2xl group-hover:shadow-brand-red/20 transition-all duration-300 border border-transparent group-hover:border-white/10">
-                        <img src={item.image} alt={item.title} className={imgClass} onError={(e) => e.target.src = `https://placehold.co/400x600/222/fff?text=${item.title.charAt(0)}`}/>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"><Icon name="play" className="w-10 h-10 text-white fill-white drop-shadow-lg" /></div>
+                        <img 
+                            src={item.image} 
+                            alt={item.title} 
+                            className={imgClass}
+                            onError={(e) => e.target.src = `https://placehold.co/400x600/222/fff?text=${item.title.charAt(0)}`}
+                        />
+                        {/* Gradiente inferior en hover */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <Icon name="play" className="w-10 h-10 text-white fill-white drop-shadow-lg" />
+                        </div>
+
                         <div className="absolute top-2 right-2 flex gap-1">
                              {hasLock && <span className="bg-black/80 text-yellow-400 p-1 rounded-md backdrop-blur-sm"><Icon name="lock" className="w-3 h-3" /></span>}
                              <span className="bg-black/60 backdrop-blur-md text-[10px] font-bold px-2 py-0.5 rounded text-white tracking-wide border border-white/10">{typeLabel}</span>
                         </div>
                     </div>
-                    <div className="px-1"><h3 className="text-sm font-bold text-white line-clamp-1 group-hover:text-brand-red transition-colors">{item.title}</h3></div>
+                    <div className="px-1">
+                        <h3 className="text-sm font-bold text-white line-clamp-1 group-hover:text-brand-red transition-colors">{item.title}</h3>
+                        <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">{item.subtitle}</p>
+                    </div>
                 </div>
             );
         };
@@ -343,12 +374,15 @@
             );
         };
 
-        // --- LISTA DE TEMPORADAS & SIDE LIST ---
+        // --- LISTA DE TEMPORADAS (SERIES) ---
         const SeasonList = ({ seriesData, onEpisodeSelect, currentUrl }) => {
             const [openSeasons, setOpenSeasons] = useState({ 0: true });
             const toggleSeason = (idx) => setOpenSeasons(prev => ({...prev, [idx]: !prev[idx]}));
+
             if (!seriesData || !seriesData.temporadas || seriesData.temporadas.length === 0) return <div className="p-4 text-gray-500 text-sm">Sin temporadas.</div>;
+
             const sortedSeasons = [...seriesData.temporadas].sort((a,b) => (a.numeroTemporada||0) - (b.numeroTemporada||0));
+
             return (
                 <div className="flex flex-col gap-2 pb-10 select-none">
                     <h3 className="text-lg font-bold mb-2 px-2 text-white flex items-center gap-2"><Icon name="film" className="w-4 h-4 text-brand-red"/> Temporadas</h3>
@@ -366,16 +400,35 @@
             );
         };
 
-        const SideList = ({ relatedItems, onItemSelect }) => (
-            <div className="flex flex-col gap-2"><h3 className="font-bold text-lg mb-2 px-2 text-white">Sugerencias</h3>{relatedItems.map(item => (<div key={item.id} onClick={() => onItemSelect(item)} className="flex items-center gap-3 p-2 hover:bg-[#222] cursor-pointer rounded-lg transition-colors group"><img src={item.image} className="w-20 h-12 object-cover bg-gray-800 rounded border border-white/5 group-hover:border-white/20" /><div className="flex flex-col overflow-hidden"><span className="text-sm font-medium line-clamp-1 text-gray-200 group-hover:text-white">{item.title}</span><span className="text-[10px] text-gray-500">{item.subtitle}</span></div></div>))}</div>
-        );
+        // --- LISTA LATERAL (RECOMENDACIONES) ---
+        const SideList = ({ relatedItems, onItemSelect }) => {
+            return (
+                <div className="flex flex-col gap-2">
+                    <h3 className="font-bold text-lg mb-2 px-2 text-white">Sugerencias</h3>
+                    {relatedItems.slice(0,20).map(item => (
+                        <div key={item.id} onClick={() => onItemSelect(item)} className="flex items-center gap-3 p-2 hover:bg-[#222] cursor-pointer rounded-lg transition-colors group">
+                            <img src={item.image} className="w-20 h-12 object-cover bg-gray-800 rounded border border-white/5 group-hover:border-white/20" />
+                            <div className="flex flex-col overflow-hidden">
+                                <span className="text-sm font-medium line-clamp-1 text-gray-200 group-hover:text-white">{item.title}</span>
+                                <span className="text-[10px] text-gray-500">{item.subtitle}</span>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            );
+        };
 
         // --- BARRA NAVEGACIÓN MÓVIL ---
         const MobileNav = ({ activeTab, onChange }) => (
             <div className="fixed bottom-0 left-0 right-0 bg-[#0f0f0f]/95 backdrop-blur-md border-t border-white/10 flex justify-around items-center h-16 z-50 md:hidden pb-safe">
                 {['home', 'series', 'movie', 'tv'].map(tab => (
-                    <button key={tab} onClick={() => onChange(tab)} className={`flex flex-col items-center gap-1 p-2 w-full transition-colors ${activeTab===tab ? 'text-brand-red' : 'text-gray-500 hover:text-gray-300'}`}>
-                        <Icon name={tab === 'movie' ? 'film' : tab} className={`w-6 h-6 ${activeTab===tab ? 'fill-current' : ''}`}/> <span className="text-[10px] font-medium capitalize">{tab === 'home' ? 'Inicio' : tab === 'movie' ? 'Cine' : tab}</span>
+                    <button 
+                        key={tab}
+                        onClick={() => onChange(tab)} 
+                        className={`flex flex-col items-center gap-1 p-2 w-full transition-colors ${activeTab===tab ? 'text-brand-red' : 'text-gray-500 hover:text-gray-300'}`}
+                    >
+                        <Icon name={tab === 'movie' ? 'film' : tab === 'series' ? 'film' : tab} className={`w-6 h-6 ${activeTab===tab ? 'fill-current' : ''}`}/> 
+                        <span className="text-[10px] font-medium capitalize">{tab === 'home' ? 'Inicio' : tab === 'movie' ? 'Cine' : tab}</span>
                     </button>
                 ))}
             </div>
@@ -410,6 +463,8 @@
 
             const loadData = async () => {
                 setLoading(true);
+                let allData = [];
+                // Fetch logic
                 const fetchSafe = async (url, type) => {
                     try {
                         const res = await fetch(url, {cache: "no-store"});
@@ -450,7 +505,7 @@
             };
 
             useEffect(() => { loadData(); }, []);
-
+            
             const getFilteredContent = () => {
                 if(search) return content.filter(i => i.title.toLowerCase().includes(search.toLowerCase()));
                 return content.filter(i => i.type === activeTab);
@@ -490,11 +545,12 @@
             const activeUrl = selectedItem?.type === 'tv' ? selectedItem.url : selectedItem?.type === 'movie' ? selectedItem.url : selectedEpisode?.url;
             const activeTitle = selectedItem?.type === 'series' ? selectedEpisode?.title : selectedItem?.type === 'movie' ? 'Película Completa' : 'En Vivo';
             const securityCode = selectedItem?.data?.codigo || selectedItem?.data?.password || selectedItem?.data?.clave || selectedItem?.data?.pin;
-            
-            // LISTAS SEPARADAS POR TIPO (CINE, SERIES, TV) PARA HOME
-            const homeMovies = content.filter(i => i.type === 'movie').slice(0, 20);
-            const homeSeries = content.filter(i => i.type === 'series').slice(0, 20);
-            const homeTV = content.filter(i => i.type === 'tv').slice(0, 20);
+            const heroItem = React.useMemo(() => content.filter(i => i.type !== 'tv').sort(() => 0.5 - Math.random())[0], [content]);
+
+            // HISTORIAL ORGANIZADO
+            const historySeries = history.filter(i => i.type === 'series');
+            const historyMovies = history.filter(i => i.type === 'movie');
+            const historyTV = history.filter(i => i.type === 'tv');
 
             // COMPONENTE REPRODUCTOR MÓVIL
             const MobilePlayerSection = () => {
@@ -527,7 +583,6 @@
                             <div className="relative group">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><Icon name="search" className="h-5 w-5 text-gray-400 group-focus-within:text-white transition-colors" /></div>
                                 <input type="text" className="block w-full pl-10 pr-3 py-2 border border-transparent rounded-full leading-5 bg-[#222] text-gray-300 placeholder-gray-500 focus:outline-none focus:bg-[#333] focus:border-brand-red/50 focus:text-white sm:text-sm transition-all duration-300" placeholder="Buscar películas, series, canales..." value={search} onChange={(e) => setSearch(e.target.value)}/>
-                                <button onClick={startListening} className={`absolute right-3 top-2 text-gray-400 hover:text-white ${isListening ? 'text-brand-red animate-pulse-mic' : ''}`}><Icon name="mic" className="w-5 h-5"/></button>
                             </div>
                         </div>
                         <div className="flex items-center gap-4">
@@ -580,25 +635,19 @@
                                 </div>
                             ) : (
                                 <>
+                                    {!search && activeTab !== 'tv' && heroItem && <HeroSection item={heroItem} onPlay={handlePlay} />}
                                     <div className="p-6 md:p-10">
                                          {activeTab === 'home' ? (
                                             <>
-                                                {history.length > 0 && (
-                                                    <div className="mb-10">
-                                                        <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3"><Icon name="history" className="w-6 h-6 text-brand-red" /> Continuar Viendo</h2>
-                                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                                                            {history.slice(0, 5).map(item => <Card key={`hist-${item.id}`} item={item} onClick={handlePlay} />)}
-                                                        </div>
+                                                {history.length === 0 ? (
+                                                    <div className="text-center py-20 bg-[#151515] rounded-2xl border border-white/5"><p className="text-gray-400 text-lg">Historial vacío.</p></div>
+                                                ) : (
+                                                    <div className="flex flex-col gap-8">
+                                                        {historySeries.length > 0 && <SectionRow title="Series Recientes" items={historySeries} onClick={handlePlay} />}
+                                                        {historyMovies.length > 0 && <SectionRow title="Películas Recientes" items={historyMovies} onClick={handlePlay} />}
+                                                        {historyTV.length > 0 && <SectionRow title="Canales Recientes" items={historyTV} onClick={handlePlay} />}
                                                     </div>
                                                 )}
-                                                
-                                                <div className="flex flex-col gap-8">
-                                                    {homeMovies.length > 0 && <SectionRow title="Películas Destacadas" items={homeMovies} onClick={handlePlay} />}
-                                                    {homeSeries.length > 0 && <SectionRow title="Series Populares" items={homeSeries} onClick={handlePlay} />}
-                                                    {homeTV.length > 0 && <SectionRow title="Canales en Vivo" items={homeTV} onClick={handlePlay} />}
-                                                </div>
-
-                                                {loading && <div className="flex justify-center py-20"><div className="w-10 h-10 border-4 border-brand-red border-t-transparent rounded-full animate-spin"></div></div>}
                                             </>
                                         ) : (
                                             <>
@@ -633,25 +682,15 @@
                                  )}
                                  {activeTab === 'home' ? (
                                      <>
-                                        {history.length > 0 && (
-                                            <div className="mb-6">
-                                                <h3 className="text-lg font-bold text-white mb-3 flex gap-2 items-center"><Icon name="history" className="w-5 h-5 text-brand-red"/> Continuar Viendo</h3>
-                                                <div className="flex gap-4 overflow-x-auto pb-2 no-scrollbar">
-                                                    {history.slice(0, 10).map(item => (
-                                                        <div key={`m-hist-${item.id}`} className="w-32 flex-shrink-0">
-                                                            <Card item={item} onClick={handlePlay} />
-                                                        </div>
-                                                    ))}
-                                                </div>
+                                        {history.length === 0 ? (
+                                            <div className="text-center py-10 text-gray-500"><p>Historial vacío</p></div>
+                                        ) : (
+                                            <div className="flex flex-col gap-6">
+                                                {historySeries.length > 0 && <SectionRow title="Series" items={historySeries} onClick={handlePlay} />}
+                                                {historyMovies.length > 0 && <SectionRow title="Películas" items={historyMovies} onClick={handlePlay} />}
+                                                {historyTV.length > 0 && <SectionRow title="TV" items={historyTV} onClick={handlePlay} />}
                                             </div>
                                         )}
-
-                                        <div className="flex flex-col gap-6">
-                                            {homeSeries.length > 0 && <SectionRow title="Series" items={homeSeries} onClick={handlePlay} />}
-                                            {homeMovies.length > 0 && <SectionRow title="Películas" items={homeMovies} onClick={handlePlay} />}
-                                            {homeTV.length > 0 && <SectionRow title="TV" items={homeTV} onClick={handlePlay} />}
-                                        </div>
-                                        {loading && <div className="text-center py-10 text-gray-500">Cargando...</div>}
                                      </>
                                  ) : (
                                      <>
