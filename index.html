@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>StreamTube V24 - Jorge</title>
+    <title>StreamTube V25 - Jorge</title>
     
     <!-- Librerías -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,7 +26,7 @@
                         }
                     },
                     animation: {
-                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.3s ease-out',
                         'slide-up': 'slideUp 0.6s ease-out',
                     },
                     keyframes: {
@@ -240,29 +240,47 @@
             );
         };
 
-        // --- TARJETA ---
+        // --- ELEMENTO LISTA TV ---
+        const TvListItem = ({ item, onClick }) => (
+            <div onClick={() => onClick(item)} className="group cursor-pointer flex items-center gap-4 p-3 hover:bg-[#222] rounded-lg transition-colors border-b border-[#222] last:border-0 animate-fade-in">
+                {/* Logo */}
+                <div className="relative w-16 h-12 md:w-24 md:h-16 bg-[#151515] rounded overflow-hidden flex-shrink-0 border border-[#333] group-hover:border-gray-500 transition-all">
+                    <img 
+                        src={item.image} 
+                        alt={item.title} 
+                        className="w-full h-full object-contain p-1"
+                        onError={(e) => e.target.src = `https://placehold.co/200x200/222/fff?text=${item.title.charAt(0)}`}
+                    />
+                </div>
+                {/* Info */}
+                <div className="flex-1 min-w-0">
+                    <h3 className="text-base md:text-lg font-bold text-white truncate group-hover:text-brand-red transition-colors">{item.title}</h3>
+                    <p className="text-xs text-gray-400 mt-0.5">En Vivo</p>
+                </div>
+                {/* Play Icon (Desktop) */}
+                <div className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Icon name="play" className="w-8 h-8 text-white fill-current"/>
+                </div>
+            </div>
+        );
+
+        // --- TARJETA (CINE/SERIES/HOME) ---
         const Card = ({ item, onClick }) => {
-            let typeLabel = item.type === 'series' ? 'SERIE' : item.type === 'tv' ? 'LIVE' : 'CINE';
+            let typeLabel = item.type === 'series' ? 'SERIE' : 'CINE';
             const hasLock = item.data && (item.data.codigo || item.data.password || item.data.clave || item.data.pin);
             
-            const imgClass = item.type === 'tv' 
-                ? "w-full h-full object-contain p-4 scale-90 group-hover:scale-100 transition-transform duration-500 bg-[#151515]" 
-                : "w-full h-full object-cover group-hover:scale-110 transition-transform duration-500";
-
             return (
                 <div onClick={() => onClick(item)} className="group cursor-pointer flex flex-col gap-3 animate-fade-in">
                     <div className="relative aspect-[2/3] md:aspect-video bg-[#1a1a1a] rounded-lg overflow-hidden shadow-lg group-hover:shadow-2xl group-hover:shadow-brand-red/20 transition-all duration-300 border border-transparent group-hover:border-white/10">
                         <img 
                             src={item.image} 
                             alt={item.title} 
-                            className={imgClass}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                             onError={(e) => e.target.src = `https://placehold.co/400x600/222/fff?text=${item.title.charAt(0)}`}
                         />
-                        {/* Gradiente inferior en hover */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                             <Icon name="play" className="w-10 h-10 text-white fill-white drop-shadow-lg" />
                         </div>
-
                         <div className="absolute top-2 right-2 flex gap-1">
                              {hasLock && <span className="bg-black/80 text-yellow-400 p-1 rounded-md backdrop-blur-sm"><Icon name="lock" className="w-3 h-3" /></span>}
                              <span className="bg-black/60 backdrop-blur-md text-[10px] font-bold px-2 py-0.5 rounded text-white tracking-wide border border-white/10">{typeLabel}</span>
@@ -296,7 +314,7 @@
                                 <div onClick={() => toggleSeason(idx)} className="p-3 flex justify-between items-center cursor-pointer hover:bg-[#2a2a2a] transition-colors">
                                     <span className="font-bold text-sm text-gray-200">Temporada {temp.numeroTemporada || idx+1}</span>
                                     <div className="flex items-center gap-2">
-                                        <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-gray-400">{eps.length}</span>
+                                        <span className="text-[10px] bg-white/10 px-2 py-0.5 rounded-full text-gray-400">{eps.length} caps</span>
                                         <Icon name={isOpen ? 'chevron-up' : 'chevron-down'} className="w-4 h-4 text-gray-500"/>
                                     </div>
                                 </div>
@@ -393,7 +411,7 @@
             const loadData = async () => {
                 setLoading(true);
                 let allData = [];
-                // Fetch logic (simplified for brevity, same as V21 but combined)
+                // Fetch logic
                 const fetchSafe = async (url, type) => {
                     try {
                         const res = await fetch(url, {cache: "no-store"});
@@ -444,7 +462,7 @@
 
             useEffect(() => {
                 let res = activeTab === 'home' ? history : content.filter(i => i.type === activeTab);
-                if(search) res = content.filter(i => i.title.toLowerCase().includes(search.toLowerCase())); 
+                if(search) res = content.filter(i => i.title.toLowerCase().includes(search.toLowerCase())); // Global search
                 setFiltered(res);
             }, [activeTab, search, content, history]);
 
@@ -455,6 +473,7 @@
                 setIsLocked(!!code);
 
                 if(item.type === 'series') {
+                    // Auto-play logic for series
                     const sorted = item.data.temporadas ? [...item.data.temporadas].sort((a,b) => (a.numeroTemporada||0)-(b.numeroTemporada||0)) : [];
                     const ep = sorted[0]?.episodios?.[0] || sorted[0]?.capitulos?.[0];
                     if(ep) {
@@ -485,6 +504,7 @@
             // Hero Item (Random from content)
             const heroItem = React.useMemo(() => {
                 if (content.length === 0) return null;
+                // Prefer movie or series for Hero
                 const candidates = content.filter(i => i.type !== 'tv');
                 return candidates.length > 0 ? candidates[Math.floor(Math.random() * candidates.length)] : content[0];
             }, [content]);
@@ -555,7 +575,7 @@
                         </div>
 
                         <div className="flex items-center gap-4">
-                            <button className="md:hidden p-2 text-gray-300" onClick={() => {/* Toggle Mobile Search */}}>
+                            <button className="md:hidden p-2 text-gray-300" onClick={() => {/* Toggle Mobile Search - Simplified for this version */}}>
                                 <Icon name="search" />
                             </button>
                             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-red to-purple-700 flex items-center justify-center text-xs font-bold shadow-lg">
@@ -645,9 +665,20 @@
                                                 <p className="text-gray-400 text-lg">Tu historial está vacío.</p>
                                             </div>
                                         ) : (
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">
-                                                {filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}
-                                            </div>
+                                            <>
+                                                {/* VIEW SWITCHING FOR TV */}
+                                                {activeTab === 'tv' ? (
+                                                    <div className="flex flex-col gap-2">
+                                                        {filtered.map(item => (
+                                                            <TvListItem key={item.id} item={item} onClick={handlePlay} />
+                                                        ))}
+                                                    </div>
+                                                ) : (
+                                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">
+                                                        {filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}
+                                                    </div>
+                                                )}
+                                            </>
                                         )}
                                     </div>
                                 </>
@@ -668,9 +699,20 @@
                                  {activeTab === 'home' && filtered.length === 0 ? (
                                       <div className="text-center py-10 text-gray-500"><p>Historial vacío</p></div>
                                  ) : (
-                                     <div className="grid grid-cols-2 gap-4">
-                                         {filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}
-                                     </div>
+                                     <>
+                                         {/* MOBILE VIEW SWITCHING FOR TV */}
+                                        {activeTab === 'tv' ? (
+                                            <div className="flex flex-col gap-2">
+                                                {filtered.map(item => (
+                                                    <TvListItem key={item.id} item={item} onClick={handlePlay} />
+                                                ))}
+                                            </div>
+                                        ) : (
+                                             <div className="grid grid-cols-2 gap-4">
+                                                 {filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}
+                                             </div>
+                                        )}
+                                     </>
                                  )}
                              </div>
 
