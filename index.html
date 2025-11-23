@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>StreamTube V26 - Jorge</title>
+    <title>StreamTube V27 - Jorge</title>
     
     <!-- Librerías -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -243,6 +243,7 @@
         // --- ELEMENTO LISTA TV ---
         const TvListItem = ({ item, onClick }) => (
             <div onClick={() => onClick(item)} className="group cursor-pointer flex items-center gap-4 p-3 hover:bg-[#222] rounded-lg transition-colors border-b border-[#222] last:border-0 animate-fade-in">
+                {/* Logo */}
                 <div className="relative w-16 h-12 md:w-24 md:h-16 bg-[#151515] rounded overflow-hidden flex-shrink-0 border border-[#333] group-hover:border-gray-500 transition-all">
                     <img 
                         src={item.image} 
@@ -251,10 +252,12 @@
                         onError={(e) => e.target.src = `https://placehold.co/200x200/222/fff?text=${item.title.charAt(0)}`}
                     />
                 </div>
+                {/* Info */}
                 <div className="flex-1 min-w-0">
                     <h3 className="text-base md:text-lg font-bold text-white truncate group-hover:text-brand-red transition-colors">{item.title}</h3>
                     <p className="text-xs text-gray-400 mt-0.5">En Vivo</p>
                 </div>
+                {/* Play Icon (Desktop) */}
                 <div className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity">
                     <Icon name="play" className="w-8 h-8 text-white fill-current"/>
                 </div>
@@ -266,6 +269,7 @@
             let typeLabel = item.type === 'series' ? 'SERIE' : item.type === 'tv' ? 'LIVE' : 'CINE';
             const hasLock = item.data && (item.data.codigo || item.data.password || item.data.clave || item.data.pin);
             
+            // Clases para la imagen
             const imgClass = item.type === 'tv' 
                 ? "w-full h-full object-contain p-4 scale-90 group-hover:scale-100 transition-transform duration-500 bg-[#151515]" 
                 : "w-full h-full object-cover group-hover:scale-110 transition-transform duration-500";
@@ -279,6 +283,7 @@
                             className={imgClass}
                             onError={(e) => e.target.src = `https://placehold.co/400x600/222/fff?text=${item.title.charAt(0)}`}
                         />
+                        {/* Gradiente inferior en hover */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                             <Icon name="play" className="w-10 h-10 text-white fill-white drop-shadow-lg" />
                         </div>
@@ -352,7 +357,7 @@
             return (
                 <div className="flex flex-col gap-2">
                     <h3 className="font-bold text-lg mb-2 px-2 text-white">Sugerencias</h3>
-                    {relatedItems.map(item => (
+                    {relatedItems.slice(0,20).map(item => (
                         <div key={item.id} onClick={() => onItemSelect(item)} className="flex items-center gap-3 p-2 hover:bg-[#222] cursor-pointer rounded-lg transition-colors group">
                             <img src={item.image} className="w-20 h-12 object-cover bg-gray-800 rounded border border-white/5 group-hover:border-white/20" />
                             <div className="flex flex-col overflow-hidden">
@@ -485,7 +490,17 @@
                     } else setSelectedEpisode(null);
                 } else setSelectedEpisode(null);
                 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // En desktop subimos arriba, en móvil el efecto es diferente (scroll al player)
+                if (window.innerWidth >= 768) {
+                     window.scrollTo(0,0);
+                } else {
+                    // Mobile scroll logic is handled via Ref in the render
+                     setTimeout(() => {
+                         if(mobilePlayerRef.current) {
+                             mobilePlayerRef.current.scrollIntoView({ behavior: 'smooth' });
+                         }
+                     }, 100);
+                }
             };
 
             // Video URL Logic
@@ -505,7 +520,7 @@
             const MobilePlayerSection = () => {
                 if (!selectedItem) return null;
                 return (
-                    <div className="bg-black border-b border-white/10 mb-4 animate-slide-down">
+                    <div ref={mobilePlayerRef} className="bg-black border-t border-white/10 mt-4 pb-20 animate-slide-up">
                          <div className="w-full aspect-video relative">
                              {isLocked ? (
                                 <LockScreen onUnlock={() => setIsLocked(false)} correctCode={securityCode} onCancel={() => setSelectedItem(null)} />
@@ -513,14 +528,9 @@
                                 <Player videoUrl={activeUrl} isLive={selectedItem.type === 'tv'} />
                             )}
                          </div>
-                         <div className="p-4 bg-[#181818]">
-                            <div className="flex justify-between items-start">
-                                <div>
-                                    <h2 className="text-xl font-bold text-white line-clamp-1">{selectedItem.title}</h2>
-                                    <p className="text-brand-red text-sm font-medium mt-1">{activeTitle}</p>
-                                </div>
-                                <button onClick={() => setSelectedItem(null)} className="text-gray-400 hover:text-white p-1"><Icon name="refresh" className="w-5 h-5 rotate-45 transform"/></button>
-                            </div>
+                         <div className="p-4">
+                            <h2 className="text-xl font-bold text-white">{selectedItem.title}</h2>
+                            <p className="text-brand-red text-sm font-medium">{activeTitle}</p>
                             
                             {selectedItem.type === 'series' && (
                                 <div className="mt-4">
@@ -656,7 +666,7 @@
                                         <HeroSection item={heroItem} onPlay={handlePlay} />
                                     )}
                                     <div className="p-6 md:p-10">
-                                         {/* Content Grid */}
+                                         {/* Content Grid (Same as before for Desktop) */}
                                          {activeTab === 'home' && filtered.length === 0 ? (
                                             <div className="text-center py-20 bg-[#151515] rounded-2xl border border-white/5">
                                                 <p className="text-gray-400 text-lg">Tu historial está vacío.</p>
@@ -682,13 +692,10 @@
                             )}
                         </div>
 
-                        {/* MOBILE LAYOUT (Player on Top) */}
+                        {/* MOBILE LAYOUT (Always Grid First, Player Below) */}
                         <div className="md:hidden">
-                             {/* 1. Player Section (Only when selected) */}
-                             <MobilePlayerSection />
-
-                             {/* 2. List / Grid (Always visible below player) */}
-                             {!selectedItem && !search && activeTab !== 'tv' && heroItem && (
+                             {/* 1. List / Grid (Always visible at top) */}
+                             {!search && activeTab !== 'tv' && heroItem && !selectedItem && (
                                 <HeroSection item={heroItem} onPlay={handlePlay} />
                              )}
                              
@@ -715,6 +722,9 @@
                                      </>
                                  )}
                              </div>
+
+                             {/* 2. Player Section (Appears at bottom when selected) */}
+                             <MobilePlayerSection />
                         </div>
                     </div>
                 </div>
