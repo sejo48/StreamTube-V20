@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>StreamTube Pro - Jorge</title>
+    <title>StreamTube V24 - Jorge</title>
     
     <!-- Librerías -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,7 +20,7 @@
                     fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
                         brand: {
-                            red: '#E50914', // Rojo estilo Netflix
+                            red: '#E50914',
                             dark: '#141414',
                             gray: '#2F2F2F'
                         }
@@ -258,9 +258,11 @@
                             className={imgClass}
                             onError={(e) => e.target.src = `https://placehold.co/400x600/222/fff?text=${item.title.charAt(0)}`}
                         />
+                        {/* Gradiente inferior en hover */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                             <Icon name="play" className="w-10 h-10 text-white fill-white drop-shadow-lg" />
                         </div>
+
                         <div className="absolute top-2 right-2 flex gap-1">
                              {hasLock && <span className="bg-black/80 text-yellow-400 p-1 rounded-md backdrop-blur-sm"><Icon name="lock" className="w-3 h-3" /></span>}
                              <span className="bg-black/60 backdrop-blur-md text-[10px] font-bold px-2 py-0.5 rounded text-white tracking-wide border border-white/10">{typeLabel}</span>
@@ -330,7 +332,7 @@
             return (
                 <div className="flex flex-col gap-2">
                     <h3 className="font-bold text-lg mb-2 px-2 text-white">Sugerencias</h3>
-                    {relatedItems.map(item => (
+                    {relatedItems.slice(0,20).map(item => (
                         <div key={item.id} onClick={() => onItemSelect(item)} className="flex items-center gap-3 p-2 hover:bg-[#222] cursor-pointer rounded-lg transition-colors group">
                             <img src={item.image} className="w-20 h-12 object-cover bg-gray-800 rounded border border-white/5 group-hover:border-white/20" />
                             <div className="flex flex-col overflow-hidden">
@@ -370,6 +372,9 @@
             const [isLocked, setIsLocked] = useState(false);
             const [history, setHistory] = useState([]);
             const [loading, setLoading] = useState(true);
+            
+            // Mobile Player Section Ref
+            const mobilePlayerRef = useRef(null);
 
             useEffect(() => {
                 const saved = localStorage.getItem('streamtube_history');
@@ -388,7 +393,7 @@
             const loadData = async () => {
                 setLoading(true);
                 let allData = [];
-                // Fetch logic
+                // Fetch logic (simplified for brevity, same as V21 but combined)
                 const fetchSafe = async (url, type) => {
                     try {
                         const res = await fetch(url, {cache: "no-store"});
@@ -439,7 +444,7 @@
 
             useEffect(() => {
                 let res = activeTab === 'home' ? history : content.filter(i => i.type === activeTab);
-                if(search) res = content.filter(i => i.title.toLowerCase().includes(search.toLowerCase())); // Global search
+                if(search) res = content.filter(i => i.title.toLowerCase().includes(search.toLowerCase())); 
                 setFiltered(res);
             }, [activeTab, search, content, history]);
 
@@ -450,7 +455,6 @@
                 setIsLocked(!!code);
 
                 if(item.type === 'series') {
-                    // Auto-play logic for series
                     const sorted = item.data.temporadas ? [...item.data.temporadas].sort((a,b) => (a.numeroTemporada||0)-(b.numeroTemporada||0)) : [];
                     const ep = sorted[0]?.episodios?.[0] || sorted[0]?.capitulos?.[0];
                     if(ep) {
@@ -460,7 +464,17 @@
                     } else setSelectedEpisode(null);
                 } else setSelectedEpisode(null);
                 
-                window.scrollTo(0,0);
+                // En desktop subimos arriba, en móvil el efecto es diferente (scroll al player)
+                if (window.innerWidth >= 768) {
+                     window.scrollTo(0,0);
+                } else {
+                    // Mobile scroll logic is handled via Ref in the render
+                     setTimeout(() => {
+                         if(mobilePlayerRef.current) {
+                             mobilePlayerRef.current.scrollIntoView({ behavior: 'smooth' });
+                         }
+                     }, 100);
+                }
             };
 
             // Video URL Logic
@@ -471,10 +485,48 @@
             // Hero Item (Random from content)
             const heroItem = React.useMemo(() => {
                 if (content.length === 0) return null;
-                // Prefer movie or series for Hero
                 const candidates = content.filter(i => i.type !== 'tv');
                 return candidates.length > 0 ? candidates[Math.floor(Math.random() * candidates.length)] : content[0];
             }, [content]);
+
+            // Mobile Player Component Extraction
+            const MobilePlayerSection = () => {
+                if (!selectedItem) return null;
+                return (
+                    <div ref={mobilePlayerRef} className="bg-black border-t border-white/10 mt-4 pb-20 animate-slide-up">
+                         <div className="w-full aspect-video relative">
+                             {isLocked ? (
+                                <LockScreen onUnlock={() => setIsLocked(false)} correctCode={securityCode} onCancel={() => setSelectedItem(null)} />
+                            ) : (
+                                <Player videoUrl={activeUrl} isLive={selectedItem.type === 'tv'} />
+                            )}
+                         </div>
+                         <div className="p-4">
+                            <h2 className="text-xl font-bold text-white">{selectedItem.title}</h2>
+                            <p className="text-brand-red text-sm font-medium">{activeTitle}</p>
+                            
+                            {selectedItem.type === 'series' && (
+                                <div className="mt-4">
+                                    <SeasonList 
+                                        seriesData={selectedItem.data} 
+                                        currentUrl={selectedEpisode?.url}
+                                        onEpisodeSelect={(url, title) => setSelectedEpisode({url, title})}
+                                    />
+                                </div>
+                            )}
+                            
+                            {selectedItem.type !== 'series' && (
+                                <div className="mt-4">
+                                    <SideList 
+                                        relatedItems={content.filter(i => i.type === selectedItem.type && i.id !== selectedItem.id)} 
+                                        onItemSelect={handlePlay} 
+                                    />
+                                </div>
+                            )}
+                         </div>
+                    </div>
+                );
+            };
 
             return (
                 <div className="min-h-screen bg-[#0f0f0f] mobile-nav-padding md:pb-0 font-sans text-gray-100">
@@ -512,7 +564,7 @@
                         </div>
                     </div>
 
-                    {/* Sidebar */}
+                    {/* Sidebar (Desktop) */}
                     <div className="fixed top-16 left-0 bottom-0 w-24 glass-panel hidden md:flex flex-col items-center py-8 gap-8 z-40">
                         {[
                             {id: 'home', icon: 'home', label: 'Inicio'},
@@ -539,102 +591,92 @@
                     {/* Main Content */}
                     <div className="pt-16 md:pl-24">
                         
-                        {selectedItem ? (
-                            // VISTA DE REPRODUCTOR
-                            <div className="flex flex-col lg:flex-row h-[calc(100vh-64px)] bg-black animate-fade-in">
-                                <div className="w-full lg:w-3/4 flex flex-col relative h-[40vh] lg:h-full">
-                                    <div className="flex-1 relative bg-black flex items-center justify-center">
-                                        {isLocked ? (
-                                            <LockScreen onUnlock={() => setIsLocked(false)} correctCode={securityCode} onCancel={() => setSelectedItem(null)} />
+                        {/* DESKTOP CINEMA MODE (When Item Selected) */}
+                        <div className="hidden md:block">
+                            {selectedItem ? (
+                                <div className="flex flex-col lg:flex-row h-[calc(100vh-64px)] bg-black animate-fade-in">
+                                    <div className="w-full lg:w-3/4 flex flex-col relative h-full">
+                                        <div className="flex-1 relative bg-black flex items-center justify-center">
+                                            {isLocked ? (
+                                                <LockScreen onUnlock={() => setIsLocked(false)} correctCode={securityCode} onCancel={() => setSelectedItem(null)} />
+                                            ) : (
+                                                <Player videoUrl={activeUrl} isLive={selectedItem.type === 'tv'} />
+                                            )}
+                                        </div>
+                                        <div className="p-6 bg-gradient-to-t from-[#0f0f0f] to-[#1a1a1a]">
+                                            <h2 className="text-3xl font-bold text-white mb-1">{selectedItem.title}</h2>
+                                            <div className="flex items-center gap-3 mb-4">
+                                                <span className="bg-brand-red text-white text-xs px-2 py-0.5 rounded font-bold tracking-wide">
+                                                    {selectedItem.type === 'series' ? 'SERIE' : selectedItem.type === 'movie' ? 'PELÍCULA' : 'EN VIVO'}
+                                                </span>
+                                                <span className="text-brand-red font-medium text-sm">{activeTitle}</span>
+                                            </div>
+                                            <button onClick={() => setSelectedItem(null)} className="text-gray-400 hover:text-white text-sm flex items-center gap-2 group">
+                                                <div className="bg-white/10 p-1 rounded-full group-hover:bg-white/20 transition-colors"><Icon name="arrow-left" className="w-4 h-4"/></div> Volver
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div className="w-full lg:w-1/4 bg-[#121212] border-l border-white/5 h-full overflow-y-auto p-4">
+                                        {selectedItem.type === 'series' ? (
+                                            <SeasonList 
+                                                seriesData={selectedItem.data} 
+                                                currentUrl={selectedEpisode?.url}
+                                                onEpisodeSelect={(url, title) => setSelectedEpisode({url, title})}
+                                            />
                                         ) : (
-                                            <Player videoUrl={activeUrl} isLive={selectedItem.type === 'tv'} />
+                                            <SideList 
+                                                relatedItems={content.filter(i => i.type === selectedItem.type && i.id !== selectedItem.id)} 
+                                                onItemSelect={handlePlay} 
+                                            />
                                         )}
                                     </div>
-                                    <div className="p-6 bg-gradient-to-t from-[#0f0f0f] to-[#1a1a1a]">
-                                        <h2 className="text-3xl font-bold text-white mb-1">{selectedItem.title}</h2>
-                                        <div className="flex items-center gap-3 mb-4">
-                                            <span className="bg-brand-red text-white text-xs px-2 py-0.5 rounded font-bold tracking-wide">
-                                                {selectedItem.type === 'series' ? 'SERIE' : selectedItem.type === 'movie' ? 'PELÍCULA' : 'EN VIVO'}
-                                            </span>
-                                            <span className="text-brand-red font-medium text-sm">
-                                                {activeTitle}
-                                            </span>
-                                        </div>
-                                        <button onClick={() => setSelectedItem(null)} className="text-gray-400 hover:text-white text-sm flex items-center gap-2 group">
-                                            <div className="bg-white/10 p-1 rounded-full group-hover:bg-white/20 transition-colors"><Icon name="arrow-left" className="w-4 h-4"/></div> Volver
-                                        </button>
+                                </div>
+                            ) : (
+                                /* Desktop Grid View */
+                                <>
+                                    {!search && activeTab !== 'tv' && heroItem && (
+                                        <HeroSection item={heroItem} onPlay={handlePlay} />
+                                    )}
+                                    <div className="p-6 md:p-10">
+                                         {/* Content Grid (Same as before for Desktop) */}
+                                         {activeTab === 'home' && filtered.length === 0 ? (
+                                            <div className="text-center py-20 bg-[#151515] rounded-2xl border border-white/5">
+                                                <p className="text-gray-400 text-lg">Tu historial está vacío.</p>
+                                            </div>
+                                        ) : (
+                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">
+                                                {filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}
+                                            </div>
+                                        )}
                                     </div>
-                                </div>
+                                </>
+                            )}
+                        </div>
 
-                                <div className="w-full lg:w-1/4 bg-[#121212] border-l border-white/5 h-full overflow-y-auto p-4">
-                                    {selectedItem.type === 'series' ? (
-                                        <SeasonList 
-                                            seriesData={selectedItem.data} 
-                                            currentUrl={selectedEpisode?.url}
-                                            onEpisodeSelect={(url, title) => setSelectedEpisode({url, title})}
-                                        />
-                                    ) : (
-                                        <SideList 
-                                            relatedItems={content.filter(i => i.type === selectedItem.type && i.id !== selectedItem.id)} 
-                                            onItemSelect={handlePlay} 
-                                        />
-                                    )}
-                                </div>
-                            </div>
-                        ) : (
-                            // VISTA DE GRID / INICIO
-                            <>
-                                {/* Hero Section (Solo en Home o si no hay búsqueda) */}
-                                {!search && activeTab !== 'tv' && heroItem && (
-                                    <HeroSection item={heroItem} onPlay={handlePlay} />
-                                )}
+                        {/* MOBILE LAYOUT (Always Grid First, Player Below) */}
+                        <div className="md:hidden">
+                             {/* 1. List / Grid (Always visible at top) */}
+                             {!search && activeTab !== 'tv' && heroItem && !selectedItem && (
+                                <HeroSection item={heroItem} onPlay={handlePlay} />
+                             )}
+                             
+                             <div className="p-4">
+                                 <h2 className="text-xl font-bold text-white mb-4 capitalize flex items-center gap-2">
+                                     {activeTab === 'home' ? 'Continuar viendo' : activeTab}
+                                 </h2>
+                                 {activeTab === 'home' && filtered.length === 0 ? (
+                                      <div className="text-center py-10 text-gray-500"><p>Historial vacío</p></div>
+                                 ) : (
+                                     <div className="grid grid-cols-2 gap-4">
+                                         {filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}
+                                     </div>
+                                 )}
+                             </div>
 
-                                <div className="p-6 md:p-10">
-                                    {activeTab === 'home' && (
-                                        <div className="mb-8">
-                                            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                                                <Icon name="history" className="w-6 h-6 text-brand-red" /> Continuar viendo
-                                            </h2>
-                                            {filtered.length === 0 ? (
-                                                <div className="text-center py-20 bg-[#151515] rounded-2xl border border-white/5">
-                                                    <p className="text-gray-400 text-lg">Tu historial está vacío.</p>
-                                                    <p className="text-gray-600 text-sm mt-2">Explora el catálogo para empezar.</p>
-                                                </div>
-                                            ) : (
-                                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                                                    {filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}
-                                                </div>
-                                            )}
-                                        </div>
-                                    )}
-
-                                    {activeTab !== 'home' && (
-                                        <>
-                                            <h2 className="text-2xl font-bold text-white mb-6 capitalize flex items-center gap-3">
-                                                {activeTab === 'movie' ? 'Cine' : activeTab === 'series' ? 'Series' : 'Televisión en Vivo'}
-                                                <span className="text-sm font-normal text-gray-500 bg-white/10 px-2 py-0.5 rounded-full">{filtered.length}</span>
-                                            </h2>
-                                            
-                                            {loading ? (
-                                                <div className="flex justify-center py-40">
-                                                    <div className="w-10 h-10 border-4 border-brand-red border-t-transparent rounded-full animate-spin"></div>
-                                                </div>
-                                            ) : (
-                                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">
-                                                    {filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}
-                                                </div>
-                                            )}
-                                        </>
-                                    )}
-                                </div>
-
-                                {/* Footer de Amor */}
-                                <footer className="text-center py-8 text-gray-600 text-xs border-t border-white/5 mt-10">
-                                    <p>Hecho con <Icon name="heart" className="w-3 h-3 inline text-brand-red mx-1 fill-current" /> para Jorge</p>
-                                    <p className="mt-1 opacity-50">StreamTube V22 Spectacular Edition</p>
-                                </footer>
-                            </>
-                        )}
+                             {/* 2. Player Section (Appears at bottom when selected) */}
+                             <MobilePlayerSection />
+                        </div>
                     </div>
                 </div>
             );
