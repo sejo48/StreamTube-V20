@@ -104,31 +104,22 @@
             );
         };
 
-        // --- HERO SECTION (MEJORADO) ---
+        // --- HERO SECTION ---
         const HeroSection = ({ item, onPlay }) => {
             if (!item) return null;
             return (
-                // Reduje la altura de 70vh a 55vh para que no sea tan monstruoso en escritorio
-                // En móvil (predeterminado) usa h-[50vh] que es más manejable
                 <div className="relative w-full h-[50vh] md:h-[55vh] overflow-hidden mb-8 group">
-                    
-                    {/* 1. FONDO DE AMBIENTE (Blur) */}
                     <div className="absolute inset-0">
                         <img 
                             src={item.image} 
                             alt="Background" 
                             className="w-full h-full object-cover opacity-40 blur-xl scale-110"
                         />
-                        {/* Gradientes para oscurecer y dar elegancia */}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/60 to-transparent"></div>
                         <div className="absolute inset-0 bg-gradient-to-r from-[#0f0f0f] via-[#0f0f0f]/40 to-transparent"></div>
                     </div>
-
-                    {/* 2. CONTENIDO PRINCIPAL (Póster nítido + Texto) */}
                     <div className="absolute inset-0 flex items-center p-6 md:p-12 max-w-7xl mx-auto animate-slide-up">
                         <div className="flex flex-col md:flex-row gap-8 items-center md:items-end w-full">
-                            
-                            {/* PÓSTER FLOTANTE (Nítido) */}
                             <div className="hidden md:block w-48 lg:w-64 flex-shrink-0 rounded-lg shadow-2xl shadow-black/50 overflow-hidden border border-white/10 transform rotate-1 hover:rotate-0 transition-transform duration-500">
                                 <img 
                                     src={item.image} 
@@ -137,8 +128,6 @@
                                     onError={(e) => e.target.src = 'https://placehold.co/300x450/222/fff?text=No+Image'}
                                 />
                             </div>
-
-                            {/* INFO */}
                             <div className="flex flex-col gap-4 items-start flex-1">
                                 <span className="bg-brand-red text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest shadow-lg shadow-brand-red/20">
                                     {item.type === 'series' ? 'Serie Recomendada' : item.type === 'movie' ? 'Película Destacada' : 'En Vivo Ahora'}
@@ -256,7 +245,6 @@
             let typeLabel = item.type === 'series' ? 'SERIE' : item.type === 'tv' ? 'LIVE' : 'CINE';
             const hasLock = item.data && (item.data.codigo || item.data.password || item.data.clave || item.data.pin);
             
-            // Lógica de imagen inteligente
             const imgClass = item.type === 'tv' 
                 ? "w-full h-full object-contain p-4 scale-90 group-hover:scale-100 transition-transform duration-500 bg-[#151515]" 
                 : "w-full h-full object-cover group-hover:scale-110 transition-transform duration-500";
@@ -270,11 +258,9 @@
                             className={imgClass}
                             onError={(e) => e.target.src = `https://placehold.co/400x600/222/fff?text=${item.title.charAt(0)}`}
                         />
-                        {/* Gradiente inferior en hover */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                             <Icon name="play" className="w-10 h-10 text-white fill-white drop-shadow-lg" />
                         </div>
-
                         <div className="absolute top-2 right-2 flex gap-1">
                              {hasLock && <span className="bg-black/80 text-yellow-400 p-1 rounded-md backdrop-blur-sm"><Icon name="lock" className="w-3 h-3" /></span>}
                              <span className="bg-black/60 backdrop-blur-md text-[10px] font-bold px-2 py-0.5 rounded text-white tracking-wide border border-white/10">{typeLabel}</span>
@@ -288,7 +274,7 @@
             );
         };
 
-        // --- LISTA LATERAL (SERIES) ---
+        // --- LISTA DE TEMPORADAS (SERIES) ---
         const SeasonList = ({ seriesData, onEpisodeSelect, currentUrl }) => {
             const [openSeasons, setOpenSeasons] = useState({ 0: true });
             const toggleSeason = (idx) => setOpenSeasons(prev => ({...prev, [idx]: !prev[idx]}));
@@ -344,7 +330,7 @@
             return (
                 <div className="flex flex-col gap-2">
                     <h3 className="font-bold text-lg mb-2 px-2 text-white">Sugerencias</h3>
-                    {relatedItems.slice(0,20).map(item => (
+                    {relatedItems.map(item => (
                         <div key={item.id} onClick={() => onItemSelect(item)} className="flex items-center gap-3 p-2 hover:bg-[#222] cursor-pointer rounded-lg transition-colors group">
                             <img src={item.image} className="w-20 h-12 object-cover bg-gray-800 rounded border border-white/5 group-hover:border-white/20" />
                             <div className="flex flex-col overflow-hidden">
