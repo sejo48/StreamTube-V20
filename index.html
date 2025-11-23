@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>StreamTube V34 - Jorge</title>
+    <title>StreamTube V35 - Jorge</title>
     
     <!-- Librerías -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -91,34 +91,32 @@
         const SERIES_URL = "https://raw.githubusercontent.com/sejo48/jorgedrive/refs/heads/main/playlist.json";
         const MOVIES_URL = "https://raw.githubusercontent.com/sejo48/peliculas/refs/heads/main/peliculas.json";
 
-        // --- ICONOS MODERNOS ---
+        // --- ICONOS ---
         const Icon = ({ name, className }) => {
             const cls = className || "w-6 h-6";
             const icons = {
-                menu: <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" strokeLinecap="round" strokeLinejoin="round" />,
-                search: <path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" strokeLinecap="round" strokeLinejoin="round" />,
+                menu: <path d="M4 6h16M4 12h16M4 18h16" />,
+                search: <path d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 111.414-1.414 7.5 7.5 0 01-1.414 1.414z" />,
                 play: <path d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />,
-                home: <path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" strokeLinecap="round" strokeLinejoin="round" />,
-                // NUEVO ICONO DE SERIES (COLECCIÓN)
-                series: <path d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" strokeLinecap="round" strokeLinejoin="round" />,
-                // NUEVO ICONO DE CINE (CARRETE)
-                movie: <path d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0112 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25v1.5c0 .621.504 1.125 1.125 1.125m17.25-2.625h-7.5c-.621 0-1.125.504-1.125 1.125" strokeLinecap="round" strokeLinejoin="round" />,
-                tv: <path d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" strokeLinecap="round" strokeLinejoin="round" />,
-                chevronDown: <path d="M19.5 8.25l-7.5 7.5-7.5-7.5" strokeLinecap="round" strokeLinejoin="round" />,
-                chevronUp: <path d="M4.5 15.75l7.5-7.5 7.5 7.5" strokeLinecap="round" strokeLinejoin="round" />,
-                refresh: <path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" strokeLinecap="round" strokeLinejoin="round" />,
-                external: <path d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" strokeLinecap="round" strokeLinejoin="round" />,
-                lock: <path d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" strokeLinecap="round" strokeLinejoin="round" />,
-                copy: <path d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" strokeLinecap="round" strokeLinejoin="round" />,
-                history: <path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" strokeLinecap="round" strokeLinejoin="round" />,
-                info: <path d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" strokeLinecap="round" strokeLinejoin="round" />,
-                heart: <path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" strokeLinecap="round" strokeLinejoin="round" />,
-                arrowLeft: <path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" strokeLinecap="round" strokeLinejoin="round" />,
-                mic: <path d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" strokeLinecap="round" strokeLinejoin="round" />,
-                dice: <path d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" strokeLinecap="round" strokeLinejoin="round" />
+                home: <path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />,
+                film: <path d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h1.5C5.496 19.5 6 19.814 6 20.25v.75m0-15.75h12m-12 0h-1.5A1.125 1.125 0 003.375 5.625M4.5 4.5v.75m15 15h-1.5a1.125 1.125 0 01-1.125-1.125v-.75m1.5 1.5v.75m0-15.75h1.5c.621 0 1.125.504 1.125 1.125v.75m-1.5-1.5v.75M6 20.25v.75m12-15.75v.75M6 4.5v.75m12 15.75v.75M6 4.5v.75" />,
+                movie: <path d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />,
+                tv: <path d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />,
+                chevronDown: <path d="M19.5 8.25l-7.5 7.5-7.5-7.5" />,
+                chevronUp: <path d="M4.5 15.75l7.5-7.5 7.5 7.5" />,
+                refresh: <path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />,
+                external: <path d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />,
+                lock: <path d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />,
+                copy: <path d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />,
+                history: <path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />,
+                info: <path d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />,
+                heart: <path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />,
+                arrowLeft: <path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />,
+                mic: <path d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />,
+                dice: <path d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
             };
             return (
-                <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg className={cls} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
                     {icons[name]}
                 </svg>
             );
@@ -390,7 +388,7 @@
 
             return (
                 <div className="flex flex-col gap-2 pb-10 select-none">
-                    <h3 className="text-lg font-bold mb-2 px-2 text-white flex items-center gap-2"><Icon name="series" className="w-4 h-4 text-brand-red"/> Temporadas</h3>
+                    <h3 className="text-lg font-bold mb-2 px-2 text-white flex items-center gap-2"><Icon name="film" className="w-4 h-4 text-brand-red"/> Temporadas</h3>
                     {sortedSeasons.map((temp, idx) => {
                         const eps = temp.episodios || temp.capitulos || [];
                         const isOpen = openSeasons[idx];
@@ -410,7 +408,7 @@
             return (
                 <div className="flex flex-col gap-2">
                     <h3 className="font-bold text-lg mb-2 px-2 text-white">Sugerencias</h3>
-                    {relatedItems.slice(0,20).map(item => (
+                    {relatedItems.map(item => (
                         <div key={item.id} onClick={() => onItemSelect(item)} className="flex items-center gap-3 p-2 hover:bg-[#222] cursor-pointer rounded-lg transition-colors group">
                             <img src={item.image} className="w-20 h-12 object-cover bg-gray-800 rounded border border-white/5 group-hover:border-white/20" />
                             <div className="flex flex-col overflow-hidden">
@@ -432,7 +430,7 @@
                         onClick={() => onChange(tab)} 
                         className={`flex flex-col items-center gap-1 p-2 w-full transition-colors ${activeTab===tab ? 'text-brand-red' : 'text-gray-500 hover:text-gray-300'}`}
                     >
-                        <Icon name={tab === 'movie' ? 'movie' : tab === 'series' ? 'series' : tab === 'tv' ? 'tv' : 'home'} className={`w-6 h-6 ${activeTab===tab ? 'fill-current' : ''}`}/> 
+                        <Icon name={tab === 'movie' ? 'film' : tab} className={`w-6 h-6 ${activeTab===tab ? 'fill-current' : ''}`}/> 
                         <span className="text-[10px] font-medium capitalize">{tab === 'home' ? 'Inicio' : tab === 'movie' ? 'Cine' : tab}</span>
                     </button>
                 ))}
@@ -441,80 +439,126 @@
 
         // --- APP PRINCIPAL ---
         const App = () => {
-            const [showIntro, setShowIntro] = useState(true);
+            const [showIntro, setShowIntro] = useState(true); // NEW STATE FOR INTRO
             const [content, setContent] = useState([]);
             const [filtered, setFiltered] = useState([]);
             const [activeTab, setActiveTab] = useState('home');
             const [search, setSearch] = useState('');
-            const [showMobileSearch, setShowMobileSearch] = useState(false);
+            const [showMobileSearch, setShowMobileSearch] = useState(false); 
             const [selectedItem, setSelectedItem] = useState(null);
             const [selectedEpisode, setSelectedEpisode] = useState(null);
             const [isLocked, setIsLocked] = useState(false);
-            const [stats, setStats] = useState({ movies: 0, series: 0, tv: 0 });
             const [history, setHistory] = useState([]);
             const [loading, setLoading] = useState(true);
             const [isListening, setIsListening] = useState(false);
+            const [stats, setStats] = useState({ movies: 0, series: 0, tv: 0 });
+            
+            // Mobile Player Section Ref
             const mobilePlayerRef = useRef(null);
 
-            useEffect(() => { const saved = localStorage.getItem('streamtube_history'); if (saved) setHistory(JSON.parse(saved)); }, []);
+            useEffect(() => {
+                const saved = localStorage.getItem('streamtube_history');
+                if (saved) {
+                    setHistory(JSON.parse(saved));
+                }
+            }, []);
 
             const addToHistory = (item) => {
                 setHistory(prev => {
                     const filtered = prev.filter(i => i.id !== item.id);
-                    const newHistory = [item, ...filtered].slice(0, 30);
+                    const newHistory = [item, ...filtered].slice(0, 15); 
                     localStorage.setItem('streamtube_history', JSON.stringify(newHistory));
                     return newHistory;
                 });
+            };
+            
+            // RECONOCIMIENTO DE VOZ
+            const startListening = () => {
+                if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                    alert("Tu navegador no soporta búsqueda por voz.");
+                    return;
+                }
+                
+                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+                const recognition = new SpeechRecognition();
+                
+                recognition.lang = 'es-ES';
+                recognition.interimResults = false;
+                recognition.maxAlternatives = 1;
+                
+                recognition.onstart = () => setIsListening(true);
+                recognition.onend = () => setIsListening(false);
+                
+                recognition.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    setSearch(transcript);
+                };
+                
+                recognition.start();
+            };
+
+            const surpriseMe = () => {
+                const candidates = content.filter(i => i.type !== 'tv');
+                if (candidates.length > 0) {
+                    const randomItem = candidates[Math.floor(Math.random() * candidates.length)];
+                    handleItemClick(randomItem);
+                }
             };
 
             const loadData = async () => {
                 setLoading(true);
                 let allData = [];
-                // Fetch logic
-                const fetchSafe = async (url, type) => {
-                    try {
-                        const res = await fetch(url, {cache: "no-store"});
-                        if(!res.ok) return [];
-                        if(type === 'tv') {
-                            const text = await res.text();
-                            const lines = text.split('\n');
-                            let tvs = [];
-                            for(let i=0; i<lines.length; i++) {
-                                if(lines[i].startsWith('#EXTINF:')) {
-                                    const title = lines[i].split(',')[1]?.trim() || 'Canal';
-                                    const logo = lines[i].match(/tvg-logo="([^"]*)"/)?.[1];
-                                    let url = '';
-                                    for(let j=i+1; j<Math.min(i+5, lines.length); j++) { if(lines[j].trim() && !lines[j].startsWith('#')) { url = lines[j].trim(); break; } }
-                                    if(url) tvs.push({ id: `tv-${tvs.length}`, title, image: logo, type: 'tv', subtitle: 'En Vivo', url });
+                let counts = { movies: 0, series: 0, tv: 0 };
+                
+                try {
+                    const res = await fetch(MOVIES_URL, {cache: "no-store"});
+                    if(res.ok) {
+                        const json = await res.json();
+                        const list = Array.isArray(json) ? json : (json.peliculas || json.movies || []);
+                        const movies = list.map((m, i) => ({ id: `m-${i}`, title: m.titulo, image: m.imagen, type: 'movie', subtitle: m.descripcion || 'Película', url: m.urlDrive, data: m }));
+                        allData = [...allData, ...movies];
+                        counts.movies = movies.length;
+                    }
+                } catch(e) {}
+
+                try {
+                    const res = await fetch(SERIES_URL, {cache: "no-store"});
+                    if(res.ok) {
+                        const json = await res.json();
+                        const list = Array.isArray(json) ? json : (json.series || json.playlist || []);
+                        const series = list.filter(s => s.tituloSerie).map((s, i) => ({ id: `s-${i}`, title: s.tituloSerie, image: s.imagen, type: 'series', subtitle: s.descripcion || 'Serie', data: s }));
+                        allData = [...allData, ...series];
+                        counts.series = series.length;
+                    }
+                } catch(e) {}
+
+                try {
+                    const res = await fetch(M3U_URL);
+                    if(res.ok) {
+                        const text = await res.text();
+                        const lines = text.split('\n');
+                        let tvs = [];
+                        for(let i=0; i<lines.length; i++) {
+                            const line = lines[i].trim();
+                            if(line.startsWith('#EXTINF:')) {
+                                const title = line.split(',')[1] ? line.split(',')[1].trim() : 'Canal TV';
+                                const logo = line.match(/tvg-logo="([^"]*)"/)?.[1];
+                                let url = '';
+                                for(let j=i+1; j < Math.min(i+5, lines.length); j++) {
+                                    const nextLine = lines[j].trim();
+                                    if (nextLine && !nextLine.startsWith('#')) { url = nextLine; break; }
                                 }
+                                if(url) tvs.push({ id: `tv-${tvs.length}`, title: title, image: logo, type: 'tv', subtitle: 'En Vivo', url: url });
                             }
-                            return tvs;
-                        } else {
-                            const json = await res.json();
-                            const list = Array.isArray(json) ? json : (json.peliculas || json.series || []);
-                            return list.map((item, i) => ({
-                                id: `${type}-${i}`,
-                                title: item.titulo || item.tituloSerie,
-                                image: item.imagen,
-                                type: type,
-                                subtitle: type === 'movie' ? 'Película' : 'Serie',
-                                url: item.urlDrive,
-                                data: item
-                            })).filter(i => i.title);
                         }
-                    } catch(e) { return []; }
-                };
+                        allData = [...allData, ...tvs];
+                        counts.tv = tvs.length;
+                    }
+                } catch(e) {}
 
-                const [movies, series, tvs] = await Promise.all([
-                    fetchSafe(MOVIES_URL, 'movie'),
-                    fetchSafe(SERIES_URL, 'series'),
-                    fetchSafe(M3U_URL, 'tv')
-                ]);
-
-                const finalContent = [...movies, ...series, ...tvs];
-                setContent(finalContent);
-                setFiltered(finalContent);
-                setStats({ movies: movies.length, series: series.length, tv: tvs.length });
+                setContent(allData);
+                setFiltered(allData);
+                setStats(counts);
                 setLoading(false);
             };
 
@@ -534,7 +578,7 @@
                 setFiltered(res);
             }, [activeTab, search, content, history]);
 
-            const handlePlay = (item) => {
+            const handleItemClick = (item) => {
                 setSelectedItem(item);
                 addToHistory(item);
                 const code = item.data?.codigo || item.data?.password || item.data?.clave || item.data?.pin;
@@ -542,130 +586,208 @@
 
                 if(item.type === 'series') {
                     const sorted = item.data.temporadas ? [...item.data.temporadas].sort((a,b) => (a.numeroTemporada||0)-(b.numeroTemporada||0)) : [];
-                    const ep = sorted[0]?.episodios?.[0] || sorted[0]?.capitulos?.[0];
-                    if(ep) { const url = ep.urlDrive || ep.url; const name = ep.tituloEpisodio || ep.titulo || "Episodio 1"; if(url) setSelectedEpisode({ url, title: name }); } else setSelectedEpisode(null);
-                } else setSelectedEpisode(null);
+                    const firstSeason = sorted[0];
+                    const eps = firstSeason ? (firstSeason.episodios || firstSeason.capitulos || []) : [];
+                    if(eps.length > 0) {
+                        const ep = eps[0];
+                        const url = ep.urlDrive || ep.url;
+                        const name = ep.tituloEpisodio || ep.titulo || "Episodio 1";
+                        if(url) setSelectedEpisode({ url, title: name });
+                        else setSelectedEpisode(null);
+                    } else {
+                        setSelectedEpisode(null);
+                    }
+                } else {
+                    setSelectedEpisode(null);
+                }
                 
-                if (window.innerWidth >= 768) { window.scrollTo(0,0); } 
-                else { setTimeout(() => { if(mobilePlayerRef.current) mobilePlayerRef.current.scrollIntoView({ behavior: 'smooth' }); }, 100); }
+                if (window.innerWidth >= 768) {
+                     window.scrollTo(0,0);
+                } else {
+                     setTimeout(() => {
+                         if(mobilePlayerRef.current) {
+                             mobilePlayerRef.current.scrollIntoView({ behavior: 'smooth' });
+                         }
+                     }, 100);
+                }
             };
 
-            const startListening = () => {
-                if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) { alert("Tu navegador no soporta búsqueda por voz."); return; }
-                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                const recognition = new SpeechRecognition();
-                recognition.lang = 'es-ES'; recognition.interimResults = false; recognition.maxAlternatives = 1;
-                recognition.onstart = () => setIsListening(true); recognition.onend = () => setIsListening(false);
-                recognition.onresult = (event) => { const transcript = event.results[0][0].transcript; setSearch(transcript); };
-                recognition.start();
-            };
-            const surpriseMe = () => {
-                const candidates = content.filter(i => i.type !== 'tv');
-                if (candidates.length > 0) { const randomItem = candidates[Math.floor(Math.random() * candidates.length)]; handlePlay(randomItem); }
+            const getActiveVideoUrl = () => {
+                if (!selectedItem) return '';
+                if (selectedItem.type === 'tv') return selectedItem.url;
+                if (selectedItem.type === 'movie') return selectedItem.url;
+                if (selectedItem.type === 'series') return selectedEpisode ? selectedEpisode.url : '';
+                return '';
             };
 
-            // Video Props
-            const activeUrl = selectedItem?.type === 'tv' ? selectedItem.url : selectedItem?.type === 'movie' ? selectedItem.url : selectedEpisode?.url;
-            const activeTitle = selectedItem?.type === 'series' ? selectedEpisode?.title : selectedItem?.type === 'movie' ? 'Película Completa' : 'En Vivo';
-            const securityCode = selectedItem?.data?.codigo || selectedItem?.data?.password || selectedItem?.data?.clave || selectedItem?.data?.pin;
+            const getActiveTitle = () => {
+                if (!selectedItem) return '';
+                if (selectedItem.type === 'series' && selectedEpisode) return selectedEpisode.title;
+                if (selectedItem.type === 'movie') return 'Película Completa';
+                return 'En Vivo';
+            };
 
-            // Hero Item (Random from content)
-            const heroItem = React.useMemo(() => {
-                if (content.length === 0) return null;
-                const candidates = content.filter(i => i.type !== 'tv');
-                return candidates.length > 0 ? candidates[Math.floor(Math.random() * candidates.length)] : content[0];
-            }, [content]);
+            const getSecurityCode = () => {
+                if (!selectedItem || !selectedItem.data) return null;
+                return selectedItem.data.codigo || selectedItem.data.password || selectedItem.data.clave || selectedItem.data.pin;
+            };
 
             // HISTORIAL ORGANIZADO
             const historySeries = history.filter(i => i.type === 'series');
             const historyMovies = history.filter(i => i.type === 'movie');
             const historyTV = history.filter(i => i.type === 'tv');
-
-            // COMPONENTE REPRODUCTOR MÓVIL
-            const MobilePlayerSection = () => {
+            
+            // MOBILE PLAYER COMPONENT
+             const MobilePlayerSection = () => {
                 if (!selectedItem) return null;
                 return (
                     <div ref={mobilePlayerRef} className="bg-black border-t border-white/10 mt-4 pb-20 animate-slide-down">
                          <div className="w-full aspect-video relative">
-                             {isLocked ? <LockScreen onUnlock={() => setIsLocked(false)} correctCode={securityCode} onCancel={() => setSelectedItem(null)} /> : <Player videoUrl={activeUrl} isLive={selectedItem.type === 'tv'} />}
+                             {isLocked ? (
+                                <LockScreen onUnlock={() => setIsLocked(false)} correctCode={securityCode} onCancel={() => setSelectedItem(null)} />
+                            ) : (
+                                <Player videoUrl={getActiveVideoUrl()} isLive={selectedItem.type === 'tv'} />
+                            )}
                          </div>
                          <div className="p-4 bg-[#181818]">
-                            <div className="flex justify-between items-start"><div><h2 className="text-xl font-bold text-white line-clamp-1">{selectedItem.title}</h2><p className="text-brand-red text-sm font-medium mt-1">{activeTitle}</p></div><button onClick={() => setSelectedItem(null)} className="text-gray-400 hover:text-white p-1"><Icon name="refresh" className="w-5 h-5 rotate-45 transform"/></button></div>
-                            {selectedItem.type === 'series' && <div className="mt-4"><SeasonList seriesData={selectedItem.data} currentUrl={selectedEpisode?.url} onEpisodeSelect={(url, title) => setSelectedEpisode({url, title})}/></div>}
-                            {selectedItem.type !== 'series' && <div className="mt-4"><SideList relatedItems={content.filter(i => i.type === selectedItem.type && i.id !== selectedItem.id)} onItemSelect={handlePlay} /></div>}
+                            <div className="flex justify-between items-start">
+                                <div>
+                                    <h2 className="text-xl font-bold text-white line-clamp-1">{selectedItem.title}</h2>
+                                    <p className="text-brand-red text-sm font-medium mt-1">{getActiveTitle()}</p>
+                                </div>
+                                <button onClick={() => setSelectedItem(null)} className="text-gray-400 hover:text-white p-1"><Icon name="refresh" className="w-5 h-5 rotate-45 transform"/></button>
+                            </div>
+                            
+                            {selectedItem.type === 'series' && (
+                                <div className="mt-4">
+                                    <SeasonList 
+                                        seriesData={selectedItem.data} 
+                                        currentUrl={selectedEpisode?.url}
+                                        onEpisodeSelect={(url, title) => setSelectedEpisode({url, title})}
+                                    />
+                                </div>
+                            )}
+                            
+                            {selectedItem.type !== 'series' && selectedItem.type !== 'tv' && (
+                                <div className="mt-4">
+                                    <SideList 
+                                        relatedItems={content.filter(i => i.type === selectedItem.type && i.id !== selectedItem.id)} 
+                                        onItemSelect={handleItemClick} 
+                                    />
+                                </div>
+                            )}
                          </div>
                     </div>
                 );
             };
 
-            if (showIntro) return <IntroScreen onEnter={() => setShowIntro(false)} />;
+            // RENDERIZADO CONDICIONAL DE INTRO
+            if (showIntro) {
+                return <IntroScreen onEnter={() => setShowIntro(false)} />;
+            }
 
             return (
                 <div className="min-h-screen bg-[#0f0f0f] mobile-nav-padding md:pb-0 font-sans text-gray-100">
                     {/* Header */}
-                    <div className="fixed top-0 left-0 right-0 h-16 glass-panel flex items-center px-4 z-50 justify-between">
-                        <div className="flex items-center gap-3 cursor-pointer" onClick={() => {setSelectedItem(null); setActiveTab('home'); setIsLocked(false);}}>
-                            <div className="bg-brand-red p-1.5 rounded-lg shadow-lg shadow-brand-red/40"><Icon name="play" className="w-5 h-5 text-white fill-current" /></div>
-                            <span className="text-xl font-bold tracking-tight text-white hidden md:block">StreamTube</span>
+                    <div className="fixed top-0 left-0 right-0 h-14 bg-[#0f0f0f] border-b border-[#2a2a2a] flex items-center px-4 z-50 gap-4 justify-between">
+                        <div className="flex items-center gap-2 text-white font-bold text-xl tracking-tighter cursor-pointer" onClick={() => {setSelectedItem(null); setActiveTab('home'); setIsLocked(false);}}>
+                            <span className="bg-red-600 px-1.5 rounded text-sm pb-0.5">▶</span> StreamTube
                         </div>
-                        <div className="flex-1 max-w-2xl mx-4 hidden md:block">
-                            <div className="relative group">
-                                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><Icon name="search" className="h-5 w-5 text-gray-400 group-focus-within:text-white transition-colors" /></div>
-                                <input type="text" className="block w-full pl-10 pr-3 py-2 border border-transparent rounded-full leading-5 bg-[#222] text-gray-300 placeholder-gray-500 focus:outline-none focus:bg-[#333] focus:border-brand-red/50 focus:text-white sm:text-sm transition-all duration-300" placeholder="Buscar películas, series, canales..." value={search} onChange={(e) => setSearch(e.target.value)}/>
-                                <button onClick={startListening} className={`absolute right-3 top-2 text-gray-400 hover:text-white ${isListening ? 'text-brand-red animate-pulse-mic' : ''}`}><Icon name="mic" className="w-5 h-5"/></button>
+                        
+                        {/* Buscador Desktop */}
+                        <div className="hidden md:flex flex-1 justify-center">
+                            <div className="flex bg-[#121212] border border-[#333] rounded-full px-4 py-1.5 w-full max-w-md items-center relative">
+                                <input type="text" placeholder="Buscar..." className="bg-transparent w-full outline-none text-sm text-white" value={search} onChange={(e) => setSearch(e.target.value)}/>
+                                <button onClick={startListening} className={`text-gray-400 hover:text-white ml-2 ${isListening ? 'text-brand-red animate-pulse-mic' : ''}`}>
+                                    <Icon name="mic" className="w-5 h-5"/>
+                                </button>
                             </div>
                         </div>
-                        <div className="flex items-center gap-4">
-                            <button className="md:hidden p-2 text-gray-300" onClick={() => setShowMobileSearch(!showMobileSearch)}><Icon name="search" /></button>
-                            <div className="hidden md:flex text-[10px] text-gray-500 gap-2"><span>{stats.movies} Cine</span><span>{stats.series} Series</span><span>{stats.tv} TV</span></div>
+
+                        <div className="flex items-center gap-3">
+                            <div className="hidden lg:flex text-[10px] text-gray-500 gap-2">
+                                <span>{stats.movies} Cine</span>
+                                <span>{stats.series} Series</span>
+                                <span>{stats.tv} TV</span>
+                            </div>
                             <button onClick={loadData} className="text-gray-400 hover:text-white" title="Recargar"><Icon name="refresh" className="w-5 h-5"/></button>
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-brand-red to-purple-700 flex items-center justify-center text-xs font-bold shadow-lg">J</div>
                         </div>
                     </div>
 
-                    {/* Sidebar */}
-                    <div className="fixed top-16 left-0 bottom-0 w-24 glass-panel hidden md:flex flex-col items-center py-8 gap-8 z-40">
-                        {[ {id: 'home', icon: 'home', label: 'Inicio'}, {id: 'series', icon: 'series', label: 'Series'}, {id: 'movie', icon: 'movie', label: 'Cine'}, {id: 'tv', icon: 'tv', label: 'TV'} ].map(item => (
-                            <button key={item.id} onClick={() => {setActiveTab(item.id); setSelectedItem(null); window.scrollTo(0,0);}} className={`flex flex-col items-center gap-1.5 group transition-all duration-300 ${activeTab === item.id ? 'scale-110' : 'opacity-50 hover:opacity-100'}`}>
-                                <div className={`p-3 rounded-xl transition-colors ${activeTab === item.id ? 'bg-brand-red text-white shadow-lg shadow-brand-red/30' : 'group-hover:bg-white/10'}`}><Icon name={item.icon} className="w-6 h-6" /></div>
-                                <span className={`text-[10px] font-medium ${activeTab === item.id ? 'text-white' : 'text-gray-400'}`}>{item.label}</span>
-                            </button>
-                        ))}
-                        <button onClick={surpriseMe} className="flex flex-col items-center gap-1 text-yellow-500 mt-auto mb-4 hover:text-yellow-400" title="Sorpréndeme"><Icon name="dice" className="w-6 h-6"/><span className="text-[8px]">Azar</span></button>
+                    {/* Sidebar Desktop */}
+                    <div className="fixed top-14 left-0 bottom-0 w-20 bg-[#0f0f0f] hidden md:flex flex-col items-center py-4 gap-6 border-r border-[#2a2a2a] z-40">
+                        <button onClick={() => {setActiveTab('home'); setSelectedItem(null);}} className={`flex flex-col items-center gap-1 ${activeTab==='home'?'text-white':'text-gray-500'}`}><Icon name="home"/><span className="text-[10px]">Inicio</span></button>
+                        <button onClick={() => {setActiveTab('series'); setSelectedItem(null);}} className={`flex flex-col items-center gap-1 ${activeTab==='series'?'text-white':'text-gray-500'}`}><Icon name="film"/><span className="text-[10px]">Series</span></button>
+                        <button onClick={() => {setActiveTab('movie'); setSelectedItem(null);}} className={`flex flex-col items-center gap-1 ${activeTab==='movie'?'text-white':'text-gray-500'}`}><Icon name="movie"/><span className="text-[10px]">Cine</span></button>
+                        <button onClick={() => {setActiveTab('tv'); setSelectedItem(null);}} className={`flex flex-col items-center gap-1 ${activeTab==='tv'?'text-white':'text-gray-500'}`}><Icon name="tv"/><span className="text-[10px]">TV</span></button>
+                        
+                        {/* Botón Aleatorio (Sorpréndeme) */}
+                        <button onClick={surpriseMe} className="flex flex-col items-center gap-1 text-yellow-500 mt-auto mb-4 hover:text-yellow-400" title="Sorpréndeme">
+                            <Icon name="dice" className="w-6 h-6"/>
+                            <span className="text-[8px]">Azar</span>
+                        </button>
                     </div>
 
-                    {/* MOBILE NAV */}
+                    {/* Mobile Nav */}
                     <MobileNav activeTab={activeTab} onChange={(t) => {setActiveTab(t); setSelectedItem(null); window.scrollTo(0,0);}} />
                     
                     {/* MOBILE SEARCH */}
-                    {showMobileSearch && <div className="fixed top-16 left-0 right-0 bg-[#1f1f1f] p-2 z-40 md:hidden border-b border-[#333] animate-fade-in"><div className="flex bg-[#121212] border border-[#333] rounded-full px-4 py-2 w-full items-center"><input type="text" placeholder="Buscar..." className="bg-transparent w-full outline-none text-sm text-white" value={search} onChange={(e) => setSearch(e.target.value)} autoFocus/><button onClick={startListening} className={`mx-2 text-gray-400 ${isListening ? 'text-brand-red animate-pulse-mic' : ''}`}><Icon name="mic" className="w-5 h-5"/></button><button onClick={() => {setSearch(''); setShowMobileSearch(false)}} className="text-gray-500">✕</button></div></div>}
+                    {showMobileSearch && <div className="fixed top-14 left-0 right-0 bg-[#1f1f1f] p-2 z-40 md:hidden border-b border-[#333] animate-fade-in"><div className="flex bg-[#121212] border border-[#333] rounded-full px-4 py-2 w-full items-center"><input type="text" placeholder="Buscar..." className="bg-transparent w-full outline-none text-sm text-white" value={search} onChange={(e) => setSearch(e.target.value)} autoFocus/><button onClick={startListening} className={`mx-2 text-gray-400 ${isListening ? 'text-brand-red animate-pulse-mic' : ''}`}><Icon name="mic" className="w-5 h-5"/></button><button onClick={() => {setSearch(''); setShowMobileSearch(false)}} className="text-gray-500">✕</button></div></div>}
 
                     {/* MAIN CONTENT */}
-                    <div className="pt-16 md:pl-24">
+                    <div className="pt-14 md:pl-20">
+                        
                         {/* DESKTOP LAYOUT */}
                         <div className="hidden md:block">
                              {selectedItem ? (
-                                <div className="flex flex-col lg:flex-row h-[calc(100vh-64px)] bg-black animate-fade-in">
+                                <div className="flex flex-col lg:flex-row h-[calc(100vh-56px)] bg-black animate-fade-in">
                                     <div className="w-full lg:w-3/4 flex flex-col relative h-full">
                                         <div className="flex-1 relative bg-black flex items-center justify-center">
-                                            {isLocked ? <LockScreen onUnlock={() => setIsLocked(false)} correctCode={securityCode} onCancel={() => setSelectedItem(null)} /> : <Player videoUrl={activeUrl} isLive={selectedItem.type === 'tv'} />}
+                                            {isLocked ? (
+                                                <LockScreen 
+                                                    onUnlock={() => setIsLocked(false)} 
+                                                    correctCode={getSecurityCode()} 
+                                                    onCancel={() => setSelectedItem(null)}
+                                                />
+                                            ) : (
+                                                <Player 
+                                                    videoUrl={getActiveVideoUrl()} 
+                                                    isLive={selectedItem.type === 'tv'} 
+                                                />
+                                            )}
                                         </div>
                                         <div className="p-6 bg-gradient-to-t from-[#0f0f0f] to-[#1a1a1a]">
                                             <h2 className="text-3xl font-bold text-white mb-1">{selectedItem.title}</h2>
                                             <div className="flex items-center gap-3 mb-4">
-                                                <span className="bg-brand-red text-white text-xs px-2 py-0.5 rounded font-bold tracking-wide">{selectedItem.type === 'series' ? 'SERIE' : selectedItem.type === 'movie' ? 'PELÍCULA' : 'EN VIVO'}</span>
+                                                <span className="bg-brand-red text-white text-xs px-2 py-0.5 rounded font-bold tracking-wide">
+                                                    {selectedItem.type === 'series' ? 'SERIE' : selectedItem.type === 'movie' ? 'PELÍCULA' : 'EN VIVO'}
+                                                </span>
                                                 <span className="text-brand-red font-medium text-sm">{activeTitle}</span>
                                             </div>
                                             <button onClick={() => setSelectedItem(null)} className="text-gray-400 hover:text-white text-sm flex items-center gap-2 group"><div className="bg-white/10 p-1 rounded-full group-hover:bg-white/20 transition-colors"><Icon name="arrowLeft" className="w-4 h-4"/></div> Volver</button>
                                         </div>
                                     </div>
                                     <div className="w-full lg:w-1/4 bg-[#121212] border-l border-white/5 h-full overflow-y-auto p-4">
-                                        {selectedItem.type === 'series' ? <SeasonList seriesData={selectedItem.data} currentUrl={selectedEpisode?.url} onEpisodeSelect={(url, title) => setSelectedEpisode({url, title})}/> : <SideList relatedItems={content.filter(i => i.type === selectedItem.type && i.id !== selectedItem.id)} onItemSelect={handlePlay} />}
+                                        {selectedItem.type === 'series' ? (
+                                            <SeasonList 
+                                                key={selectedItem.id}
+                                                seriesData={selectedItem.data} 
+                                                currentUrl={selectedEpisode?.url}
+                                                onEpisodeSelect={(url, title) => setSelectedEpisode({url, title})}
+                                            />
+                                        ) : (
+                                            <SideList 
+                                                relatedItems={content.filter(i => i.type === selectedItem.type && i.id !== selectedItem.id)} 
+                                                onItemSelect={handleItemClick} 
+                                            />
+                                        )}
                                     </div>
                                 </div>
                             ) : (
                                 <>
-                                    {!search && activeTab !== 'tv' && heroItem && <HeroSection item={heroItem} onPlay={handlePlay} />}
+                                    {!search && activeTab !== 'tv' && heroItem && (
+                                        <HeroSection item={heroItem} onPlay={handleItemClick} />
+                                    )}
                                     <div className="p-6 md:p-10">
                                          {activeTab === 'home' ? (
                                             <>
@@ -673,9 +795,9 @@
                                                     <div className="text-center py-20 bg-[#151515] rounded-2xl border border-white/5"><p className="text-gray-400 text-lg">Historial vacío.</p></div>
                                                 ) : (
                                                     <div className="flex flex-col gap-8">
-                                                        {historySeries.length > 0 && <SectionRow title="Series Recientes" items={historySeries} onClick={handlePlay} />}
-                                                        {historyMovies.length > 0 && <SectionRow title="Películas Recientes" items={historyMovies} onClick={handlePlay} />}
-                                                        {historyTV.length > 0 && <SectionRow title="Canales Recientes" items={historyTV} onClick={handlePlay} />}
+                                                        {historySeries.length > 0 && <SectionRow title="Series Recientes" items={historySeries} onClick={handleItemClick} />}
+                                                        {historyMovies.length > 0 && <SectionRow title="Películas Recientes" items={historyMovies} onClick={handleItemClick} />}
+                                                        {historyTV.length > 0 && <SectionRow title="Canales Recientes" items={historyTV} onClick={handleItemClick} />}
                                                     </div>
                                                 )}
                                             </>
@@ -683,9 +805,9 @@
                                             <>
                                                 <h2 className="text-2xl font-bold text-white mb-6 capitalize flex items-center gap-3">{activeTab === 'movie' ? 'Cine' : activeTab === 'series' ? 'Series' : 'Televisión en Vivo'}<span className="text-sm font-normal text-gray-500 bg-white/10 px-2 py-0.5 rounded-full">{filtered.length}</span></h2>
                                                 {activeTab === 'tv' ? (
-                                                    <div className="flex flex-col gap-2">{filtered.map(item => <TvListItem key={item.id} item={item} onClick={handlePlay} />)}</div>
+                                                    <div className="flex flex-col gap-2">{filtered.map(item => <TvListItem key={item.id} item={item} onClick={handleItemClick} />)}</div>
                                                 ) : (
-                                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">{filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}</div>
+                                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">{filtered.map(item => <Card key={item.id} item={item} onClick={handleItemClick}/>)}</div>
                                                 )}
                                             </>
                                         )}
@@ -696,38 +818,59 @@
 
                         {/* MOBILE LAYOUT */}
                         <div className="md:hidden">
+                             {/* Buscador Móvil */}
                              <div className="px-4 pt-4 pb-2 flex gap-2">
-                                <div className="flex-1 flex bg-[#121212] border border-[#333] rounded-full px-4 py-2 items-center"><Icon name="search" className="w-5 h-5 text-gray-400 mr-2"/><input type="text" placeholder="Buscar..." className="bg-transparent w-full outline-none text-sm text-white" value={search} onChange={(e) => setSearch(e.target.value)}/></div>
-                                <button onClick={startListening} className={`bg-[#121212] border border-[#333] p-2 rounded-full text-gray-400 ${isListening ? 'text-brand-red animate-pulse-mic' : ''}`}><Icon name="mic" className="w-5 h-5"/></button>
-                                <button onClick={surpriseMe} className="bg-[#121212] border border-[#333] p-2 rounded-full text-yellow-500"><Icon name="dice" className="w-5 h-5"/></button>
+                                <div className="flex-1 flex bg-[#121212] border border-[#333] rounded-full px-4 py-2 items-center">
+                                    <Icon name="search" className="w-5 h-5 text-gray-400 mr-2"/>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Buscar..." 
+                                        className="bg-transparent w-full outline-none text-sm text-white" 
+                                        value={search} 
+                                        onChange={(e) => setSearch(e.target.value)}
+                                    />
+                                </div>
+                                <button onClick={startListening} className={`bg-[#121212] border border-[#333] p-2 rounded-full text-gray-400 ${isListening ? 'text-brand-red animate-pulse-mic' : ''}`}>
+                                    <Icon name="mic" className="w-5 h-5"/>
+                                </button>
+                                <button onClick={surpriseMe} className="bg-[#121212] border border-[#333] p-2 rounded-full text-yellow-500">
+                                    <Icon name="dice" className="w-5 h-5"/>
+                                </button>
                              </div>
+
+                             {/* 1. Player Section (Arriba) */}
                              <MobilePlayerSection />
+
+                             {/* 2. List / Grid (Abajo) */}
                              <div className="p-4 pt-0">
                                  {!selectedItem && (
                                      <div className="flex gap-2 overflow-x-auto pb-4 mb-2">
                                         {['home', 'series', 'movie', 'tv'].map(tab => (
-                                            <button key={tab} onClick={() => setActiveTab(tab)} className={`px-4 py-1.5 rounded-full text-sm whitespace-nowrap capitalize ${activeTab === tab ? 'bg-white text-black' : 'bg-[#222] text-white'}`}>{tab === 'home' ? 'Inicio' : tab === 'movie' ? 'Cine' : tab}</button>
+                                            <button 
+                                                key={tab}
+                                                onClick={() => setActiveTab(tab)} 
+                                                className={`px-4 py-1.5 rounded-full text-sm whitespace-nowrap capitalize ${activeTab === tab ? 'bg-white text-black' : 'bg-[#222] text-white'}`}
+                                            >
+                                                {tab === 'home' ? 'Inicio' : tab === 'movie' ? 'Cine' : tab}
+                                            </button>
                                         ))}
                                     </div>
                                  )}
-                                 {activeTab === 'home' ? (
-                                     <>
-                                        {history.length === 0 ? (
-                                            <div className="text-center py-10 text-gray-500"><p>Historial vacío</p></div>
-                                        ) : (
-                                            <div className="flex flex-col gap-6">
-                                                {historySeries.length > 0 && <SectionRow title="Series" items={historySeries} onClick={handlePlay} />}
-                                                {historyMovies.length > 0 && <SectionRow title="Películas" items={historyMovies} onClick={handlePlay} />}
-                                                {historyTV.length > 0 && <SectionRow title="TV" items={historyTV} onClick={handlePlay} />}
-                                            </div>
-                                        )}
-                                     </>
+
+                                 {activeTab === 'home' && filtered.length === 0 ? (
+                                      <div className="text-center py-10 text-gray-500"><p>Historial vacío</p></div>
                                  ) : (
                                      <>
                                         {activeTab === 'tv' ? (
-                                            <div className="flex flex-col gap-2">{filtered.map(item => <TvListItem key={item.id} item={item} onClick={handlePlay} />)}</div>
+                                            <div className="flex flex-col gap-2">
+                                                {filtered.map(item => (
+                                                    <TvListItem key={item.id} item={item} onClick={handleItemClick} />
+                                                ))}
+                                            </div>
                                         ) : (
-                                             <div className="grid grid-cols-2 gap-4">{filtered.map(item => <Card key={item.id} item={item} onClick={handlePlay} />)}</div>
+                                             <div className="grid grid-cols-2 gap-4">
+                                                 {filtered.map(item => <Card key={item.id} item={item} onClick={handleItemClick} />)}
+                                             </div>
                                         )}
                                      </>
                                  )}
