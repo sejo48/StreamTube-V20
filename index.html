@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>StreamTube V38 - High Performance</title>
+    <title>StreamTube V36 - Jorge</title>
     
     <!-- Librerías -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,11 +30,10 @@
                         }
                     },
                     animation: {
-                        'fade-in': 'fadeIn 1.5s ease-out',
-                        'slide-up': 'slideUp 1s ease-out',
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
                         'slide-down': 'slideDown 0.5s ease-out',
                         'pulse-mic': 'pulseMic 1.5s infinite',
-                        'pulse-slow': 'pulse 3s infinite',
                     },
                     keyframes: {
                         fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
@@ -126,7 +125,6 @@
         const IntroScreen = ({ onEnter }) => {
             return (
                 <div className="fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden font-sans">
-                    {/* Fondo Negro con Imagen muy sutil */}
                     <div className="absolute inset-0 bg-black">
                         <img 
                             src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop" 
@@ -262,9 +260,8 @@
                     if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; }
                     if (Hls.isSupported() && (isLive || videoUrl.includes('.m3u8'))) {
                         const hls = new Hls({
-                            enableWorker: true,
-                            lowLatencyMode: true,
-                            backBufferLength: 90
+                            maxBufferLength: 30, 
+                            maxMaxBufferLength: 600,
                         });
                         hlsRef.current = hls;
                         hls.loadSource(videoUrl);
@@ -430,13 +427,6 @@
             const [isListening, setIsListening] = useState(false);
             const [stats, setStats] = useState({ movies: 0, series: 0, tv: 0 });
             const mobilePlayerRef = useRef(null);
-            
-            // Definición de heroItem dentro del componente App para que esté en scope
-            const heroItem = React.useMemo(() => {
-                if (content.length === 0) return null;
-                const candidates = content.filter(i => i.type !== 'tv');
-                return candidates.length > 0 ? candidates[Math.floor(Math.random() * candidates.length)] : content[0];
-            }, [content]);
 
             useEffect(() => { const saved = localStorage.getItem('streamtube_history'); if (saved) setHistory(JSON.parse(saved)); }, []);
 
@@ -447,6 +437,27 @@
                     localStorage.setItem('streamtube_history', JSON.stringify(newHistory));
                     return newHistory;
                 });
+            };
+
+            // FUNCIONES CEREBRO RESTAURADAS
+            const getActiveVideoUrl = () => {
+                if (!selectedItem) return '';
+                if (selectedItem.type === 'tv') return selectedItem.url;
+                if (selectedItem.type === 'movie') return selectedItem.url;
+                if (selectedItem.type === 'series') return selectedEpisode ? selectedEpisode.url : '';
+                return '';
+            };
+
+            const getActiveTitle = () => {
+                if (!selectedItem) return '';
+                if (selectedItem.type === 'series' && selectedEpisode) return selectedEpisode.title;
+                if (selectedItem.type === 'movie') return 'Película Completa';
+                return 'En Vivo';
+            };
+
+            const getSecurityCode = () => {
+                if (!selectedItem || !selectedItem.data) return null;
+                return selectedItem.data.codigo || selectedItem.data.password || selectedItem.data.clave || selectedItem.data.pin;
             };
 
             const loadData = async () => {
@@ -498,8 +509,7 @@
             };
             const filtered = getFilteredContent();
 
-            // Definición de handleItemClick para usar en lugar de handlePlay
-            const handleItemClick = (item) => {
+            const handlePlay = (item) => {
                 setSelectedItem(item);
                 addToHistory(item);
                 const code = item.data?.codigo || item.data?.password || item.data?.clave || item.data?.pin;
@@ -513,9 +523,6 @@
                 if (window.innerWidth >= 768) { window.scrollTo(0,0); } 
                 else { setTimeout(() => { if(mobilePlayerRef.current) mobilePlayerRef.current.scrollIntoView({ behavior: 'smooth' }); }, 100); }
             };
-            
-            // Alias para compatibilidad
-            const handlePlay = handleItemClick;
 
             const startListening = () => {
                 if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) { alert("Tu navegador no soporta búsqueda por voz."); return; }
@@ -528,34 +535,22 @@
             };
             const surpriseMe = () => {
                 const candidates = content.filter(i => i.type !== 'tv');
-                if (candidates.length > 0) { const randomItem = candidates[Math.floor(Math.random() * candidates.length)]; handleItemClick(randomItem); }
+                if (candidates.length > 0) { const randomItem = candidates[Math.floor(Math.random() * candidates.length)]; handlePlay(randomItem); }
             };
 
-            // Video Props (RESTAURADOS)
-            const getActiveVideoUrl = () => {
-                if (!selectedItem) return '';
-                if (selectedItem.type === 'tv') return selectedItem.url;
-                if (selectedItem.type === 'movie') return selectedItem.url;
-                if (selectedItem.type === 'series') return selectedEpisode ? selectedEpisode.url : '';
-                return '';
-            };
-
-            const getActiveTitle = () => {
-                if (!selectedItem) return '';
-                if (selectedItem.type === 'series' && selectedEpisode) return selectedEpisode.title;
-                if (selectedItem.type === 'movie') return 'Película Completa';
-                return 'En Vivo';
-            };
-
-            const getSecurityCode = () => {
-                if (!selectedItem || !selectedItem.data) return null;
-                return selectedItem.data.codigo || selectedItem.data.password || selectedItem.data.clave || selectedItem.data.pin;
-            };
+            // Alias para compatibilidad
+            const handleItemClick = handlePlay;
 
             // HISTORIAL ORGANIZADO
             const historySeries = history.filter(i => i.type === 'series');
             const historyMovies = history.filter(i => i.type === 'movie');
             const historyTV = history.filter(i => i.type === 'tv');
+
+            const heroItem = React.useMemo(() => {
+                if (content.length === 0) return null;
+                const candidates = content.filter(i => i.type !== 'tv');
+                return candidates.length > 0 ? candidates[Math.floor(Math.random() * candidates.length)] : content[0];
+            }, [content]);
 
             // COMPONENTE REPRODUCTOR MÓVIL
             const MobilePlayerSection = () => {
