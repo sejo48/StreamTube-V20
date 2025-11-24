@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>StreamTube V36 - Jorge</title>
+    <title>StreamTube V38 - High Performance</title>
     
     <!-- Librerías -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -126,6 +126,7 @@
         const IntroScreen = ({ onEnter }) => {
             return (
                 <div className="fixed inset-0 z-[100] bg-black flex items-center justify-center overflow-hidden font-sans">
+                    {/* Fondo Negro con Imagen muy sutil */}
                     <div className="absolute inset-0 bg-black">
                         <img 
                             src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop" 
@@ -260,7 +261,11 @@
                 const loadHls = () => {
                     if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; }
                     if (Hls.isSupported() && (isLive || videoUrl.includes('.m3u8'))) {
-                        const hls = new Hls();
+                        const hls = new Hls({
+                            enableWorker: true,
+                            lowLatencyMode: true,
+                            backBufferLength: 90
+                        });
                         hlsRef.current = hls;
                         hls.loadSource(videoUrl);
                         hls.attachMedia(video);
@@ -493,7 +498,8 @@
             };
             const filtered = getFilteredContent();
 
-            const handlePlay = (item) => {
+            // Definición de handleItemClick para usar en lugar de handlePlay
+            const handleItemClick = (item) => {
                 setSelectedItem(item);
                 addToHistory(item);
                 const code = item.data?.codigo || item.data?.password || item.data?.clave || item.data?.pin;
@@ -509,7 +515,7 @@
             };
             
             // Alias para compatibilidad
-            const handleItemClick = handlePlay;
+            const handlePlay = handleItemClick;
 
             const startListening = () => {
                 if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) { alert("Tu navegador no soporta búsqueda por voz."); return; }
@@ -522,7 +528,7 @@
             };
             const surpriseMe = () => {
                 const candidates = content.filter(i => i.type !== 'tv');
-                if (candidates.length > 0) { const randomItem = candidates[Math.floor(Math.random() * candidates.length)]; handlePlay(randomItem); }
+                if (candidates.length > 0) { const randomItem = candidates[Math.floor(Math.random() * candidates.length)]; handleItemClick(randomItem); }
             };
 
             // Video Props (RESTAURADOS)
@@ -557,7 +563,7 @@
                 return (
                     <div ref={mobilePlayerRef} className="bg-black border-t border-white/10 mt-4 pb-20 animate-slide-down">
                          <div className="w-full aspect-video relative">
-                             {isLocked ? <LockScreen onUnlock={() => setIsLocked(false)} correctCode={getSecurityCode()} onCancel={() => setSelectedItem(null)} /> : <Player videoUrl={getActiveVideoUrl()} isLive={selectedItem.type === 'tv'} />}
+                             {isLocked ? <LockScreen onUnlock={() => setIsLocked(false)} correctCode={securityCode} onCancel={() => setSelectedItem(null)} /> : <Player videoUrl={getActiveVideoUrl()} isLive={selectedItem.type === 'tv'} />}
                          </div>
                          <div className="p-4 bg-[#181818]">
                             <div className="flex justify-between items-start"><div><h2 className="text-xl font-bold text-white line-clamp-1">{selectedItem.title}</h2><p className="text-brand-red text-sm font-medium mt-1">{getActiveTitle()}</p></div><button onClick={() => setSelectedItem(null)} className="text-gray-400 hover:text-white p-1"><Icon name="refresh" className="w-5 h-5 rotate-45 transform"/></button></div>
