@@ -787,6 +787,25 @@
                                             <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{activeTab}</span>
                                         </div>
                                     </div>
+
+                                    {/* --- AVISO SMART VIEW --- */}
+                                    {activeTab === 'home' && !search && (
+                                        <div className="mx-4 md:mx-10 mt-6 p-4 rounded-xl bg-gradient-to-r from-blue-900/40 to-[#111827] border border-blue-500/30 flex items-center gap-4 animate-fade-in">
+                                            <div className="hidden md:flex p-3 bg-blue-600/20 rounded-full text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                                                <Icon name="tv" size={24} />
+                                            </div>
+                                            <div className="flex-1">
+                                                <h3 className="text-white font-bold text-lg flex items-center gap-2">
+                                                    <span className="md:hidden text-blue-400"><Icon name="tv" size={20}/></span>
+                                                    Disfrútalo en tu Smart TV
+                                                </h3>
+                                                <p className="text-gray-300 text-sm mt-1">
+                                                    Usa la función <strong className="text-blue-400">Smart View</strong> (o "Transmitir") de tu móvil para conectar y ver el contenido en tu televisor.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    )}
+
                                     {activeTab === 'home' && !search && heroItem && <HeroSection item={heroItem} onPlay={handlePlay} isFavorite={favorites.some(f=>(f.id||f.title)===(heroItem.id||heroItem.title))} onToggleFavorite={toggleFavorite}/>}
                                     <div className="p-4 md:p-10">
                                         {activeTab === 'home' && !search && (
