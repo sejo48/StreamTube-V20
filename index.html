@@ -27,12 +27,24 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+        /* Custom Scrollbar Fino para Listas */
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(229,9,20,0.5); }
+
         /* Animaciones */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes heartPop { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
         @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
         
+        /* Animación de Nieve */
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0.2; }
+        }
+
         .animate-fade-in { animation: fadeIn 0.6s ease-out; }
         .animate-slide-up { animation: slideUp 0.8s ease-out; }
         .animate-shake { animation: shake 0.2s ease-in-out 0s 2; }
@@ -103,6 +115,38 @@
             );
         };
 
+        // --- COMPONENTE DE NIEVE ---
+        const Snow = () => {
+            const flakes = useMemo(() => Array.from({ length: 40 }).map((_, i) => ({
+                id: i,
+                left: Math.random() * 100 + 'vw',
+                animationDuration: (Math.random() * 5 + 5) + 's',
+                animationDelay: (Math.random() * 5) + 's',
+                opacity: Math.random() * 0.5 + 0.3,
+                fontSize: (Math.random() * 10 + 10) + 'px'
+            })), []);
+
+            return (
+                <div className="fixed inset-0 pointer-events-none z-[60] overflow-hidden">
+                    {flakes.map(flake => (
+                        <div 
+                            key={flake.id} 
+                            className="absolute top-[-20px] text-white select-none" 
+                            style={{
+                                left: flake.left,
+                                animation: `fall ${flake.animationDuration} linear infinite`,
+                                animationDelay: flake.animationDelay,
+                                opacity: flake.opacity,
+                                fontSize: flake.fontSize,
+                            }}
+                        >
+                            ❄
+                        </div>
+                    ))}
+                </div>
+            );
+        };
+
         // --- PANTALLA DE BLOQUEO ---
         const LockScreen = ({ onUnlock, correctCode, onCancel }) => {
             const [input, setInput] = useState('');
@@ -158,6 +202,7 @@
         // --- PANTALLA INTRO ---
         const IntroScreen = ({ onEnter }) => (
             <div className="fixed inset-0 z-[100] bg-[#111827] flex items-center justify-center overflow-hidden font-sans">
+                <Snow />
                 <div className="absolute inset-0">
                     <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop" className="w-full h-full object-cover opacity-10 animate-pulse" alt="Background"/>
                     <div className="absolute inset-0 bg-gradient-to-b from-[#111827] via-[#111827]/90 to-[#111827]"></div>
@@ -529,7 +574,7 @@
             if (showIntro) return <IntroScreen onEnter={() => setShowIntro(false)} />;
 
             return (
-                <div className="min-h-screen bg-[#111827] text-white font-sans flex flex-col md:flex-row">
+                <div className="min-h-screen bg-[#111827] text-white font-sans flex flex-col md:flex-row relative">
                     
                     {/* SIDEBAR DESKTOP */}
                     <aside className="hidden md:flex w-20 flex-col items-center py-6 bg-[#0f1115] border-r border-[#1f2937] fixed h-full z-50">
@@ -554,7 +599,8 @@
                                 </button>
                             ))}
                         </div>
-                        <div className="mt-auto mb-4">
+                        <div className="mt-auto mb-4 relative">
+                            <div className="absolute -top-3 -right-2 text-lg transform rotate-12 z-20 pointer-events-none">🎅</div>
                             <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-yellow-600 flex items-center justify-center font-serif font-bold text-black border-2 border-white/20">J</div>
                         </div>
                     </aside>
@@ -589,7 +635,7 @@
                     </div>
 
                     {/* MAIN CONTENT AREA */}
-                    <main className="flex-1 md:ml-20 min-h-screen pt-16 md:pt-0 pb-20 md:pb-0">
+                    <main className="flex-1 md:ml-20 min-h-screen pt-16 md:pt-0 pb-20 md:pb-0 relative z-10">
                         
                         {/* LÓGICA PRINCIPAL DE VISTAS */}
                         {(() => {
@@ -727,9 +773,17 @@
                                                             <Icon name="heart" size={24} className={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "text-[#E50914] fill-[#E50914]" : "text-gray-400"} fill={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "#E50914" : "none"} />
                                                         </button>
                                                     </div>
-                                                    <p className="text-gray-300 leading-relaxed mb-6">{selectedItem.description || selectedItem.plot || "Sin descripción disponible."}</p>
+                                                    
+                                                    <div className="flex flex-col md:flex-row gap-6 mb-6">
+                                                        <img 
+                                                            src={selectedItem.image || selectedItem.poster} 
+                                                            className="hidden md:block w-48 rounded-lg shadow-lg object-cover aspect-[2/3] border border-white/10"
+                                                            alt={selectedItem.title}
+                                                        />
+                                                        <p className="text-gray-300 leading-relaxed">{selectedItem.description || selectedItem.plot || "Sin descripción disponible."}</p>
+                                                    </div>
                                                 </div>
-                                                <div className="bg-[#1f2937] rounded-xl p-4 h-fit border border-white/5">
+                                                <div className="bg-[#1f2937] rounded-xl p-4 h-fit border border-white/5 lg:sticky lg:top-24">
                                                     {selectedItem.type === 'series' ? (
                                                         <div className="flex flex-col gap-2">
                                                             <h3 className="font-bold text-lg mb-2 flex items-center gap-2"><Icon name="film" size={18} className="text-[#E50914]"/> Temporadas</h3>
@@ -740,7 +794,7 @@
                                                                         {expandedSeason === idx ? <Icon name="chevronUp" size={16}/> : <Icon name="chevronDown" size={16}/>}
                                                                     </button>
                                                                     {expandedSeason === idx && (
-                                                                        <div className="flex flex-col gap-1 mt-1 pl-2">
+                                                                        <div className="flex flex-col gap-1 mt-1 pl-2 max-h-[400px] overflow-y-auto pr-1 custom-scrollbar">
                                                                             {season.episodes.length === 0 && <p className="text-xs text-gray-500 p-2">No hay episodios disponibles.</p>}
                                                                             {season.episodes.map((ep, eIdx) => (
                                                                                 <div key={eIdx} onClick={() => { setSelectedEpisode(ep); window.scrollTo({top:0, behavior:'smooth'}); }} className={`text-sm p-2 rounded cursor-pointer truncate flex items-center gap-2 ${selectedEpisode?.url === ep.url ? 'bg-[#E50914] text-white' : 'text-gray-400 hover:bg-gray-700'}`}>
@@ -778,6 +832,7 @@
                             // 4. VISTA POR DEFECTO (HOME/GRID)
                             return (
                                 <>
+                                    {activeTab === 'home' && <Snow />}
                                     <div className="sticky top-0 z-40 bg-[#111827]/95 backdrop-blur py-4 px-6 md:px-10 flex items-center justify-between border-b border-[#1f2937]">
                                         <div className="flex bg-[#1f2937] border border-[#374151] rounded-full px-4 py-2 w-full max-w-lg items-center focus-within:border-[#E50914] transition-colors">
                                             <Icon name="search" className="text-gray-400 w-5 h-5 mr-3" />
