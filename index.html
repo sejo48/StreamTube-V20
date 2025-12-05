@@ -94,7 +94,8 @@
                 chevronUp: <path d="M18 15l-6-6-6 6" />,
                 clapperboard: <><path d="M20.2 6 3 11l-.9-2.4c-.5-1.1.2-2.3 1.3-2.8l3.2-1.4c1.1-.5 2.3.2 2.8 1.3l.9 2.4l7.9-3l2 4.5Z"/><path d="M4 11v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9"/></>,
                 external: <><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></>,
-                lock: <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a7 7 0 00-14 0v2" />
+                lock: <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a7 7 0 00-14 0v2" />,
+                share: <><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></>
             };
             
             return (
@@ -229,6 +230,28 @@
             </div>
         );
 
+        // --- MODAL QR ---
+        const QRModal = ({ onClose }) => {
+            // Generar QR basado en la URL actual
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(window.location.href)}`;
+
+            return (
+                <div className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
+                    <div className="bg-white p-6 rounded-2xl max-w-sm w-full text-center relative" onClick={e => e.stopPropagation()}>
+                        <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-black">
+                            <Icon name="x" size={24} stroke="currentColor" />
+                        </button>
+                        <h3 className="text-2xl font-bold text-black mb-2">¡Comparte la App!</h3>
+                        <p className="text-gray-500 text-sm mb-6">Escanea este código para abrir en otro dispositivo.</p>
+                        <div className="bg-white p-2 rounded-lg shadow-inner border border-gray-200 inline-block">
+                            <img src={qrUrl} alt="Código QR" className="w-48 h-48 object-contain" />
+                        </div>
+                        <p className="text-xs text-gray-400 mt-4">MAGIS Tube Ultimate</p>
+                    </div>
+                </div>
+            );
+        };
+
         // --- HERO SECTION ---
         const HeroSection = ({ item, onPlay, isFavorite, onToggleFavorite }) => {
             if (!item) return null;
@@ -350,6 +373,7 @@
         // --- APP PRINCIPAL ---
         const App = () => {
             const [showIntro, setShowIntro] = useState(true);
+            const [showQR, setShowQR] = useState(false);
             const [activeTab, setActiveTab] = useState('home');
             const [content, setContent] = useState({ tv: [], series: [], movies: [] });
             const [search, setSearch] = useState('');
@@ -599,9 +623,18 @@
                                 </button>
                             ))}
                         </div>
-                        <div className="mt-auto mb-4 relative">
-                            <div className="absolute -top-3 -right-2 text-lg transform rotate-12 z-20 pointer-events-none">🎅</div>
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-yellow-600 flex items-center justify-center font-serif font-bold text-black border-2 border-white/20">J</div>
+                        
+                        {/* Botón QR Desktop */}
+                        <div className="mt-auto flex flex-col items-center gap-4 mb-4 relative w-full">
+                            <button onClick={() => setShowQR(true)} className="flex flex-col items-center gap-1 text-blue-400 hover:text-white transition-colors mb-4" title="Compartir App">
+                                <Icon name="share" size={24} />
+                                <span className="text-[10px] font-medium">Compartir</span>
+                            </button>
+                            
+                            <div className="relative">
+                                <div className="absolute -top-3 -right-2 text-lg transform rotate-12 z-20 pointer-events-none">🎅</div>
+                                <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-yellow-600 flex items-center justify-center font-serif font-bold text-black border-2 border-white/20">J</div>
+                            </div>
                         </div>
                     </aside>
 
@@ -610,9 +643,15 @@
                         <div className="flex items-center gap-2 font-black text-xl tracking-tighter">
                             <span className="text-[#E50914]">STREAM</span>TUBE
                         </div>
-                        <button onClick={() => setActiveTab('favorites')} className="relative">
-                            <Icon name="heart" className={`${activeTab === 'favorites' ? 'text-[#E50914] fill-[#E50914]' : 'text-white'}`} fill={activeTab === 'favorites' ? '#E50914' : 'none'} />
-                        </button>
+                        <div className="flex gap-4">
+                            <button onClick={() => setShowQR(true)} className="text-blue-400 flex items-center gap-1 bg-blue-400/10 px-3 py-1 rounded-full border border-blue-400/20">
+                                <Icon name="share" size={16} />
+                                <span className="text-xs font-bold">Compartir</span>
+                            </button>
+                            <button onClick={() => setActiveTab('favorites')} className="relative">
+                                <Icon name="heart" className={`${activeTab === 'favorites' ? 'text-[#E50914] fill-[#E50914]' : 'text-white'}`} fill={activeTab === 'favorites' ? '#E50914' : 'none'} />
+                            </button>
+                        </div>
                     </div>
 
                     {/* MOBILE NAV BOTTOM */}
@@ -634,11 +673,15 @@
                         ))}
                     </div>
 
+                    {/* MODAL QR */}
+                    {showQR && <QRModal onClose={() => setShowQR(false)} />}
+
                     {/* MAIN CONTENT AREA */}
                     <main className="flex-1 md:ml-20 min-h-screen pt-16 md:pt-0 pb-20 md:pb-0 relative z-10">
                         
                         {/* LÓGICA PRINCIPAL DE VISTAS */}
                         {(() => {
+                            // ... existing views ...
                             // 1. VISTA DE FAVORITOS (Si estamos en tab favoritos y no hay video seleccionado)
                             if (activeTab === 'favorites' && !selectedItem) {
                                 const favTV = favorites.filter(i => i.type === 'tv');
