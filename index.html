@@ -1,965 +1,169 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MAGIS Tube Ultimate - Jorge</title>
-    
-    <!-- Librerías Externas (CDNs) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    
-    <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
-
-    <style>
-        /* Estilos Base */
-        body { background-color: #111827; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        
-        /* Scrollbars */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: #1f2937; }
-        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-        /* Custom Scrollbar Fino para Listas */
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(229,9,20,0.5); }
-
-        /* Animaciones */
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        @keyframes heartPop { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
-        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
-        
-        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
-        .animate-slide-up { animation: slideUp 0.8s ease-out; }
-        .animate-shake { animation: shake 0.2s ease-in-out 0s 2; }
-        .heart-pop { animation: heartPop 0.3s ease-in-out; }
-        
-        .text-gold-gradient {
-            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        /* Utilidad para móviles (Safe Area) */
-        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
-        
-        /* Estilo para iframe responsive (Google Drive) */
-        .iframe-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: black; }
-        .iframe-container iframe { width: 100%; height: 100%; border: 0; }
-    </style>
-</head>
-<body>
-    <div id="root"></div>
-
-    <script type="text/babel">
-        const { useState, useEffect, useRef, useMemo } = React;
-
-        // --- TUS NOTIFICACIONES AQUI ---
-        // Simplemente agrega o quita mensajes de esta lista
-        const NOTIFICATIONS = [
-            { id: 1, date: "10 Ene", title: "Canales Restaurados", message: "Hemos reparado la señal de los canal opa canal 38 en vivo. ¡Gracias por la espera!", type: "success" },
-            { id: 2, date: "05 Ene", title: "Nuevas Películas", message: "Agregamos los últimos estrenos de acción a la cartelera.", type: "info" },
-            { id: 3, date: "01 Ene", title: "¡Feliz Año Nuevo!", message: "Gracias por estar con nosotros un año más.", type: "system" }
-        ];
-
-        // --- CONFIGURACIÓN DE URLS ---
-        const URLS = {
-            TV: 'https://raw.githubusercontent.com/sejo48/retrom3u/refs/heads/main/listaoficial.m3u',
-            SERIES: 'https://raw.githubusercontent.com/sejo48/jorgedrive/refs/heads/main/playlist.json',
-            MOVIES: 'https://raw.githubusercontent.com/sejo48/peliculas/refs/heads/main/peliculas.json'
-        };
-
-        // --- COMPONENTE DE ICONOS ---
-        const Icon = ({ name, size = 24, className, fill = "none" }) => {
-            const icons = {
-                search: <path d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 111.414-1.414 7.5 7.5 0 01-1.414 1.414z" />,
-                menu: <path d="M4 6h16M4 12h16M4 18h16" />,
-                x: <path d="M6 18L18 6M6 6l12 12" />,
-                tv: <path d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />,
-                film: <path d="M19.82 2H4.18C2.97 2 2 2.97 2 4.18v15.64C2 21.03 2.97 22 4.18 22h15.64c1.21 0 2.18-.97 2.18-2.18V4.18C22 2.97 21.03 2 19.82 2zM7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5" />,
-                play: <path d="M5 3l14 9-14 9V3z" />,
-                heart: <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />,
-                arrowLeft: <path d="M19 12H5m7 7l-7-7 7-7" />,
-                alertCircle: <><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></>,
-                chevronDown: <path d="M6 9l6 6 6-6" />,
-                chevronUp: <path d="M18 15l-6-6-6 6" />,
-                clapperboard: <><path d="M20.2 6 3 11l-.9-2.4c-.5-1.1.2-2.3 1.3-2.8l3.2-1.4c1.1-.5 2.3.2 2.8 1.3l.9 2.4l7.9-3l2 4.5Z"/><path d="M4 11v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9"/></>,
-                external: <><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></>,
-                lock: <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a7 7 0 00-14 0v2" />,
-                share: <><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></>,
-                whatsapp: <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>,
-                bell: <path d="M12.02 2.909c-.381 0-.743.088-1.076.246a4.78 4.78 0 0 1 .589 2.228v2.793a4.33 4.33 0 0 1-1.285 3.05 4.33 4.33 0 0 1-3.05 1.285H4.209a2.33 2.33 0 0 0-2.33 2.33v.033c0 1.285 1.045 2.33 2.33 2.33h15.582a2.33 2.33 0 0 0 2.33-2.33V14.84c0-1.285-1.045-2.33-2.33-2.33h-2.989a4.33 4.33 0 0 1-3.05-1.285 4.33 4.33 0 0 1-1.285-3.05V5.383a4.81 4.81 0 0 1 .585-2.23 2.5 2.5 0 0 0-1.032-.244zm-2.02 16.59h4a2 2 0 0 1-4 0z" />
-            };
-            
-            return (
-                <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width={size} 
-                    height={size} 
-                    viewBox="0 0 24 24" 
-                    fill={fill} 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className={className}
-                >
-                    {icons[name] || icons.search}
-                </svg>
-            );
-        };
-
-        // --- PANTALLA DE BLOQUEO ---
-        const LockScreen = ({ onUnlock, correctCode, onCancel }) => {
-            const [input, setInput] = useState('');
-            const [error, setError] = useState(false);
-
-            const handleSubmit = (e) => {
-                e.preventDefault();
-                if (input === String(correctCode)) {
-                    onUnlock();
-                } else {
-                    setError(true);
-                    setInput('');
-                }
-            };
-
-            return (
-                <div className="absolute inset-0 z-50 bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-4 animate-fade-in">
-                    <div className="bg-[#1f2937] p-8 rounded-xl max-w-xs w-full text-center border border-white/10 shadow-2xl">
-                        <div className="mb-6 flex justify-center">
-                            <div className="p-4 bg-red-500/20 rounded-full text-red-500 border border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.4)]">
-                                <Icon name="lock" size={32} />
-                            </div>
-                        </div>
-                        <h2 className="text-xl font-bold text-white mb-2">Contenido Protegido</h2>
-                        <p className="text-gray-400 text-xs mb-6">Introduce el código de acceso de 4 dígitos para ver este contenido.</p>
-                        
-                        <form onSubmit={handleSubmit}>
-                            <input 
-                                type="password" 
-                                maxLength="4"
-                                className="w-full bg-black/50 border border-white/20 rounded-lg px-4 py-3 text-center text-2xl tracking-[0.5em] text-white focus:border-[#E50914] outline-none mb-4 transition-colors placeholder-gray-600"
-                                value={input}
-                                onChange={(e) => { setInput(e.target.value); setError(false); }}
-                                placeholder="••••"
-                                autoFocus
-                            />
-                            {error && <p className="text-red-500 text-xs mb-4 font-bold animate-shake">Código incorrecto</p>}
-                            
-                            <div className="flex gap-3">
-                                <button type="button" onClick={onCancel} className="flex-1 py-2 rounded-lg border border-white/10 text-gray-300 hover:bg-white/5 transition-colors text-sm">
-                                    Cancelar
-                                </button>
-                                <button type="submit" className="flex-1 py-2 rounded-lg bg-[#E50914] text-white font-bold hover:bg-red-700 transition-colors text-sm shadow-lg shadow-red-900/20">
-                                    Acceder
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            );
-        };
-
-        // --- PANTALLA INTRO ---
-        const IntroScreen = ({ onEnter }) => (
-            <div className="fixed inset-0 z-[100] bg-[#111827] flex items-center justify-center overflow-hidden font-sans">
-                <div className="absolute inset-0">
-                    <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop" className="w-full h-full object-cover opacity-10 animate-pulse" alt="Background"/>
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#111827] via-[#111827]/90 to-[#111827]"></div>
-                </div>
-                <div className="relative z-10 text-center p-6 max-w-3xl animate-slide-up">
-                    <div className="mb-4 inline-block bg-[#E50914] px-3 py-1 rounded text-xs font-bold tracking-widest uppercase text-white shadow-[0_0_15px_rgba(229,9,20,0.5)]">Premium Access</div>
-                    <h1 className="text-6xl md:text-8xl font-black text-white mb-2 tracking-tighter drop-shadow-2xl">
-                        MAGIS<span className="text-[#E50914]">Tube</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-gray-400 font-light mb-8 italic">"Donde la nostalgia se encuentra con la tecnología."</p>
-                    <div className="h-px w-32 bg-gradient-to-r from-transparent via-[#E50914] to-transparent mx-auto mb-8 opacity-50"></div>
-                    <p className="text-sm md:text-lg text-white font-medium mb-10 max-w-2xl mx-auto leading-relaxed drop-shadow-lg text-center">
-                        Accede al instante a la mejor colección de series clásicas, cine de culto y televisión en vivo. Sin suscripciones, sin límites. Tu universo de entretenimiento personal.
-                    </p>
-                    <button onClick={onEnter} className="group relative bg-white text-black px-10 py-4 rounded-full font-bold text-lg hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center gap-2 mx-auto">
-                        <span>Comenzar a Ver</span> <Icon name="play" size={20} fill="black" />
-                    </button>
-                    <div className="mt-16 opacity-80">
-                        <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">DISEÑADO Y PROGRAMADO POR</p>
-                        <h3 className="text-xl font-serif text-gold-gradient font-bold mb-2">JORGE ARTURO HERNÁNDEZ MÉNDEZ</h3>
-                        <p className="text-[10px] text-gray-600">Potenciado por la inteligencia de <span className="text-blue-400">Gemini AI</span></p>
-                    </div>
-                </div>
-            </div>
-        );
-
-        // --- MODAL QR ---
-        const QRModal = ({ onClose }) => {
-            const currentUrl = window.location.href;
-            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(currentUrl)}`;
-
-            return (
-                <div className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
-                    <div className="bg-white p-6 rounded-2xl max-w-sm w-full text-center relative" onClick={e => e.stopPropagation()}>
-                        <button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-black">
-                            <Icon name="x" size={24} stroke="currentColor" />
-                        </button>
-                        <h3 className="text-2xl font-bold text-black mb-2">¡Comparte la App!</h3>
-                        <p className="text-gray-500 text-sm mb-6">Escanea o copia el enlace.</p>
-                        <div className="bg-white p-2 rounded-lg shadow-inner border border-gray-200 inline-block mb-4">
-                            <img src={qrUrl} alt="Código QR" className="w-48 h-48 object-contain" />
-                        </div>
-                        <div className="flex items-center gap-2 bg-gray-100 p-2 rounded-lg border border-gray-300">
-                            <input type="text" readOnly value={currentUrl} className="bg-transparent flex-1 text-xs text-gray-600 outline-none truncate" onClick={(e) => e.target.select()}/>
-                        </div>
-                        <p className="text-xs text-gray-400 mt-4">MAGIS Tube Ultimate</p>
-                    </div>
-                </div>
-            );
-        };
-
-        // --- MODAL DE NOTIFICACIONES ---
-        const NotificationsModal = ({ onClose, items }) => (
-            <div className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-start justify-end p-0 animate-fade-in" onClick={onClose}>
-                <div className="h-full w-full sm:w-96 bg-[#1f2937] border-l border-white/10 shadow-2xl p-6 overflow-y-auto animate-slide-left" onClick={e => e.stopPropagation()}>
-                    <div className="flex justify-between items-center mb-8">
-                        <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                            <Icon name="bell" size={24} className="text-[#E50914]"/> Novedades
-                        </h2>
-                        <button onClick={onClose} className="p-2 bg-black/20 rounded-full text-gray-400 hover:text-white">
-                            <Icon name="x" size={20}/>
-                        </button>
-                    </div>
-                    
-                    <div className="space-y-4">
-                        {items.length === 0 ? (
-                            <p className="text-gray-500 text-center py-10">No hay avisos recientes.</p>
-                        ) : (
-                            items.map(note => (
-                                <div key={note.id} className="bg-black/40 border border-white/5 rounded-xl p-4 relative group hover:border-white/10 transition-colors">
-                                    <div className="flex justify-between items-start mb-2">
-                                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${
-                                            note.type === 'success' ? 'bg-green-500/20 text-green-400' : 
-                                            note.type === 'system' ? 'bg-blue-500/20 text-blue-400' : 'bg-[#E50914]/20 text-[#E50914]'
-                                        }`}>
-                                            {note.type === 'system' ? 'Sistema' : 'Aviso'}
-                                        </span>
-                                        <span className="text-xs text-gray-500">{note.date}</span>
-                                    </div>
-                                    <h3 className="font-bold text-white mb-1">{note.title}</h3>
-                                    <p className="text-sm text-gray-400 leading-relaxed">{note.message}</p>
-                                </div>
-                            ))
-                        )}
-                    </div>
-                </div>
-            </div>
-        );
-
-        // --- HERO SECTION ---
-        const HeroSection = ({ item, onPlay, isFavorite, onToggleFavorite }) => {
-            if (!item) return null;
-            return (
-                <div className="relative w-full h-[50vh] md:h-[65vh] overflow-hidden mb-8 group animate-fade-in">
-                    <div className="absolute inset-0">
-                        <img 
-                            src={item.image || item.poster} 
-                            alt="Hero" 
-                            className="w-full h-full object-cover opacity-60"
-                            onError={(e) => e.target.src = 'https://placehold.co/1920x1080/111827/ffffff?text=StreamTube'}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/40 to-transparent"></div>
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#111827] via-[#111827]/60 to-transparent"></div>
-                    </div>
-                    <div className="absolute inset-0 flex items-center p-6 md:p-12 max-w-7xl mx-auto">
-                        <div className="flex flex-col md:flex-row gap-8 items-center md:items-end w-full">
-                            <div className="hidden md:block w-48 lg:w-64 flex-shrink-0 rounded-lg shadow-2xl overflow-hidden border border-white/10 transform -rotate-2 hover:rotate-0 transition-all duration-500">
-                                <img src={item.image || item.poster} className="w-full h-full object-cover" />
-                            </div>
-                            <div className="flex flex-col gap-4 items-start flex-1">
-                                <span className="bg-[#E50914] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest">
-                                    {item.type === 'tv' ? 'En Vivo' : item.type === 'series' ? 'Serie Destacada' : 'Película'}
-                                </span>
-                                <h1 className="text-4xl md:text-6xl font-black text-white leading-tight drop-shadow-xl line-clamp-2">
-                                    {item.title || item.name}
-                                </h1>
-                                <p className="text-gray-300 text-sm md:text-base max-w-xl line-clamp-3">
-                                    {item.description || item.plot || "Disfruta del mejor contenido seleccionado especialmente para ti. Disponible ahora en alta definición."}
-                                </p>
-                                <div className="flex gap-4 mt-4">
-                                    <button onClick={() => onPlay(item)} className="bg-white text-black px-8 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-200 transition-transform hover:scale-105">
-                                        <Icon name="play" size={20} fill="black"/> Reproducir
-                                    </button>
-                                    <button onClick={() => onToggleFavorite(item)} className="bg-white/10 text-white px-4 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-white/20 backdrop-blur-sm border border-white/10">
-                                        <Icon name="heart" size={20} className={isFavorite ? "text-[#E50914] fill-[#E50914] heart-pop" : "text-white"} fill={isFavorite ? "#E50914" : "none"} />
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            );
-        };
-
-        // --- ELEMENTO DE LISTA TV CON FAVORITO ---
-        const TvListItem = ({ channel, isActive, onClick, isFavorite, onToggleFavorite }) => (
-            <div 
-                onClick={() => onClick(channel)}
-                className={`group flex items-center gap-3 p-3 border-b border-white/5 cursor-pointer transition-colors ${isActive ? 'bg-[#1f2937] border-l-4 border-l-[#E50914]' : 'hover:bg-white/5'}`}
-            >
-                <div className="w-12 h-8 rounded bg-black flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/10">
-                    {channel.image ? (
-                        <img src={channel.image} alt={channel.title} className="w-full h-full object-contain" onError={(e) => e.target.style.display='none'} />
-                    ) : (
-                        <Icon name="tv" size={16} className="opacity-50 text-gray-400"/>
-                    )}
-                </div>
-                <div className="flex-1 min-w-0">
-                    <p className={`text-sm font-medium truncate ${isActive ? 'text-[#E50914]' : 'text-white'}`}>{channel.title}</p>
-                    <p className="text-xs text-gray-500 truncate">{channel.group || 'General'}</p>
-                </div>
-
-                {/* Botón Favorito en Lista */}
-                <button 
-                    onClick={(e) => { e.stopPropagation(); onToggleFavorite(channel); }}
-                    className="p-2 rounded-full hover:bg-white/10 text-gray-500 hover:text-white z-10"
-                >
-                    <Icon 
-                        name="heart"
-                        size={18} 
-                        className={isFavorite ? "text-[#E50914] fill-[#E50914] heart-pop" : ""} 
-                        fill={isFavorite ? "#E50914" : "none"}
-                    />
-                </button>
-
-                {isActive && <div className="w-2 h-2 bg-[#E50914] rounded-full animate-pulse ml-1"></div>}
-            </div>
-        );
-
-        // --- TARJETAS (CARDS) ---
-        const Card = ({ item, onClick, isFavorite, onToggleFavorite }) => {
-            const isTv = item.type === 'tv';
-            // Detectar si tiene código
-            const hasLock = item.codigo || item.password || item.pin || item.clave;
-
-            return (
-                <div className="group relative flex flex-col gap-2 min-w-[140px] cursor-pointer" onClick={() => onClick(item)}>
-                    <div className={`relative overflow-hidden rounded-lg bg-[#1f2937] shadow-lg transition-all duration-300 group-hover:shadow-[#E50914]/20 border border-transparent group-hover:border-white/10 ${isTv ? 'aspect-video' : 'aspect-[2/3]'}`}>
-                        <img 
-                            src={item.image || item.poster || item.logo} 
-                            className={`w-full h-full ${isTv ? 'object-contain p-4' : 'object-cover'} transition-transform duration-500 group-hover:scale-110`}
-                            onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/300x450/1f2937/ffffff?text=${(item.title || item.name || 'X').charAt(0)}`; }}
-                            alt={item.title || item.name}
-                        />
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <div className="bg-[#E50914] p-3 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                                {hasLock ? <Icon name="lock" size={24} className="text-white"/> : <Icon name="play" size={24} fill="white" className="text-white ml-1" />}
-                            </div>
-                        </div>
-                        <button 
-                            onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }}
-                            className="absolute top-2 right-2 p-1.5 bg-black/50 rounded-full hover:bg-black/80 transition-colors opacity-0 group-hover:opacity-100"
-                        >
-                            <Icon name="heart" size={16} className={isFavorite ? "text-[#E50914] fill-[#E50914]" : "text-white"} fill={isFavorite ? "#E50914" : "none"} />
-                        </button>
-                        
-                        {/* Indicadores en tarjeta */}
-                        <div className="absolute bottom-2 left-2 flex gap-1">
-                            {isTv && <span className="bg-[#E50914] text-white text-[9px] font-bold px-1.5 py-0.5 rounded shadow-sm">LIVE</span>}
-                            {hasLock && <span className="bg-yellow-500 text-black text-[9px] font-bold px-1.5 py-0.5 rounded flex items-center gap-0.5 shadow-sm"><Icon name="lock" size={8}/> PIN</span>}
-                        </div>
-                    </div>
-                    <h3 className="text-sm font-bold text-gray-200 truncate group-hover:text-white transition-colors">{item.title || item.name}</h3>
-                </div>
-            );
-        };
-
-        // --- APP PRINCIPAL ---
-        const App = () => {
-            const [showIntro, setShowIntro] = useState(true);
-            const [showQR, setShowQR] = useState(false);
-            const [showNotif, setShowNotif] = useState(false);
-            const [activeTab, setActiveTab] = useState('home');
-            const [content, setContent] = useState({ tv: [], series: [], movies: [] });
-            const [search, setSearch] = useState('');
-            
-            // ESTADOS DE REPRODUCCIÓN Y BLOQUEO
-            const [selectedItem, setSelectedItem] = useState(null);
-            const [selectedEpisode, setSelectedEpisode] = useState(null);
-            const [isLocked, setIsLocked] = useState(false); 
-            
-            const [favorites, setFavorites] = useState([]);
-            const [loading, setLoading] = useState(true);
-            const [expandedSeason, setExpandedSeason] = useState(0);
-
-            const videoRef = useRef(null);
-            const hlsRef = useRef(null);
-
-            // --- UTILIDAD PARA LIMPIAR URLS DE DRIVE ---
-            const cleanDriveUrl = (url) => {
-                if (!url) return '';
-                if (url.includes('drive.google.com')) {
-                    if (url.includes('/preview')) return url;
-                    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
-                    return match ? `https://drive.google.com/file/d/${match[1]}/preview` : url;
-                }
-                return url;
-            };
-
-            // FUNCIONES DE COMPARTIR
-            const shareViaWhatsApp = () => {
-                const text = `¡Mira esta app increíble! Entra aquí: ${window.location.href}`;
-                window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-            };
-
-            // CARGAR DATOS
-            useEffect(() => {
-                const fetchData = async () => {
-                    try {
-                        setLoading(true);
-                        
-                        // TV
-                        const resTV = await fetch(URLS.TV);
-                        const textTV = await resTV.text();
-                        const tvChannels = parseM3U(textTV);
-
-                        // Series
-                        const resSeries = await fetch(URLS.SERIES);
-                        const jsonSeries = await resSeries.json();
-                        const rawSeries = Array.isArray(jsonSeries) ? jsonSeries : [];
-                        
-                        const seriesList = rawSeries.map(s => ({
-                            id: s.tituloSerie, 
-                            title: s.tituloSerie || s.name || s.title,
-                            description: s.descripcion || s.description,
-                            image: s.imagen || s.image || s.poster,
-                            type: 'series',
-                            // Preservar el código de bloqueo si existe
-                            codigo: s.codigo || s.password || s.pin || s.clave,
-                            seasons: (s.temporadas || []).map(t => ({
-                                season_number: t.numeroTemporada || 1,
-                                episodes: (t.episodios || []).map(e => ({
-                                    title: e.tituloEpisodio || e.title || e.name,
-                                    url: cleanDriveUrl(e.urlDrive || e.url || e.video || e.link || e.enlace),
-                                    image: s.imagen 
-                                }))
-                            }))
-                        }));
-
-                        // Películas
-                        const resMovies = await fetch(URLS.MOVIES);
-                        const jsonMovies = await resMovies.json();
-                        const rawMovies = Array.isArray(jsonMovies) ? jsonMovies : (jsonMovies.peliculas || []);
-                        
-                        const moviesList = rawMovies.map(m => ({
-                            ...m,
-                            type: 'movie',
-                            title: m.titulo || m.title,
-                            image: m.imagen || m.poster,
-                            // Preservar el código de bloqueo si existe
-                            codigo: m.codigo || m.password || m.pin || m.clave,
-                            url: cleanDriveUrl(m.urlDrive || m.url || m.video || m.enlace || m.link)
-                        }));
-
-                        setContent({ 
-                            tv: tvChannels, 
-                            series: seriesList, 
-                            movies: moviesList
-                        });
-
-                    } catch (err) {
-                        console.error("Error cargando datos", err);
-                    } finally {
-                        setLoading(false);
-                    }
-                };
-
-                const storedFavs = localStorage.getItem('magistube_favs');
-                if (storedFavs) setFavorites(JSON.parse(storedFavs));
-
-                fetchData();
-            }, []);
-
-            const parseM3U = (data) => {
-                const lines = data.split('\n');
-                const channels = [];
-                for (let i = 0; i < lines.length; i++) {
-                    if (lines[i].trim().startsWith('#EXTINF:')) {
-                        const url = lines[i + 1]?.trim();
-                        if (url && url.startsWith('http')) {
-                            const info = lines[i];
-                            const title = info.split(',')[1]?.trim() || 'Canal';
-                            const logo = info.match(/tvg-logo="([^"]*)"/)?.[1];
-                            const group = info.match(/group-title="([^"]*)"/)?.[1] || 'General';
-                            channels.push({ id: `tv-${i}`, title, image: logo, group, url, type: 'tv' });
-                        }
-                    }
-                }
-                return channels;
-            };
-
-            // --- LOGICA DE REPRODUCTOR ---
-            const getPlayUrl = () => {
-                if (selectedItem?.type === 'tv' || selectedItem?.type === 'movie') {
-                     return selectedItem.url;
-                } else if (selectedItem?.type === 'series' && selectedEpisode) {
-                     return selectedEpisode.url;
-                }
-                return '';
-            };
-
-            const playUrl = getPlayUrl();
-            const isDriveLink = playUrl && playUrl.includes('drive.google.com');
-
-            useEffect(() => {
-                // Si está bloqueado, no intentamos reproducir nada
-                if (isLocked) return;
-
-                if (isDriveLink) {
-                    if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; }
-                    return;
-                }
-
-                if (!playUrl || !videoRef.current) return;
-
-                const video = videoRef.current;
-                if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; }
-
-                if (Hls.isSupported() && (playUrl.includes('.m3u8') || selectedItem?.type === 'tv')) {
-                    const hls = new Hls();
-                    hlsRef.current = hls;
-                    hls.loadSource(playUrl);
-                    hls.attachMedia(video);
-                    hls.on(Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => {}));
-                } else {
-                    video.src = playUrl;
-                    video.load();
-                    video.play().catch(() => {});
-                }
-            }, [playUrl, isDriveLink, selectedItem, isLocked]);
-
-            // FUNCIONES
-            const toggleFavorite = (item) => {
-                let newFavs;
-                const itemId = item.id || item.title;
-                if (favorites.some(f => (f.id || f.title) === itemId)) {
-                    newFavs = favorites.filter(f => (f.id || f.title) !== itemId);
-                } else {
-                    newFavs = [item, ...favorites];
-                }
-                setFavorites(newFavs);
-                localStorage.setItem('magistube_favs', JSON.stringify(newFavs));
-            };
-
-            const handlePlay = (item) => {
-                // Comprobar bloqueo
-                const code = item.codigo || item.password || item.pin || item.clave;
-                
-                if (code) {
-                    setSelectedItem(item); 
-                    setIsLocked(true);
-                } else {
-                    setSelectedItem(item);
-                    setIsLocked(false);
-                }
-
-                setExpandedSeason(0); 
-                
-                if (item.type === 'series') {
-                    const seasons = item.seasons || [];
-                    const firstSeason = seasons[0];
-                    if (firstSeason) {
-                        const episodes = firstSeason.episodes || [];
-                        const firstEp = episodes[0];
-                        if (firstEp) {
-                            setSelectedEpisode({
-                                title: firstEp.title,
-                                url: firstEp.url,
-                                image: firstEp.image
-                            });
-                        } else {
-                            setSelectedEpisode(null);
-                        }
-                    }
-                }
-                
-                // Scroll logic: Only scroll to top automatically if it's NOT TV, or if it IS TV but we're on mobile
-                if (item.type !== 'tv' || window.innerWidth < 1024) {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            };
-
-            const getDisplayContent = () => {
-                let list = [];
-                if (activeTab === 'home') list = [...content.movies.slice(0,20), ...content.series.slice(0,20), ...content.tv.slice(0,20)]; 
-                else if (activeTab === 'favorites') list = favorites;
-                else list = content[activeTab] || [];
-
-                if (search) return list.filter(i => (i.title || i.name).toLowerCase().includes(search.toLowerCase()));
-                return list;
-            };
-
-            const displayedItems = getDisplayContent();
-            const heroItem = useMemo(() => {
-                if (content.movies.length > 0) return content.movies[Math.floor(Math.random() * content.movies.length)];
-                if (content.series.length > 0) return content.series[0];
-                return null;
-            }, [content]);
-
-            if (showIntro) return <IntroScreen onEnter={() => setShowIntro(false)} />;
-
-            return (
-                <div className="min-h-screen bg-[#111827] text-white font-sans flex flex-col md:flex-row relative">
-                    
-                    {/* SIDEBAR DESKTOP */}
-                    <aside className="hidden md:flex w-20 flex-col items-center py-6 bg-[#0f1115] border-r border-[#1f2937] fixed h-full z-50">
-                        <div className="mb-8 p-2 bg-[#E50914] rounded-lg shadow-lg shadow-red-900/40 cursor-pointer" onClick={() => {setActiveTab('home'); setSelectedItem(null); setIsLocked(false);}}>
-                            <Icon name="play" size={24} fill="white" className="text-white"/>
-                        </div>
-                        <div className="flex flex-col gap-6 w-full">
-                            {[
-                                { id: 'home', icon: 'search', label: 'Inicio' },
-                                { id: 'series', icon: 'film', label: 'Series' },
-                                { id: 'movies', icon: 'clapperboard', label: 'Cine' },
-                                { id: 'tv', icon: 'tv', label: 'TV' },
-                                { id: 'favorites', icon: 'heart', label: 'Favs' }
-                            ].map(tab => (
-                                <button 
-                                    key={tab.id}
-                                    onClick={() => { setActiveTab(tab.id); setSelectedItem(null); setSearch(''); setIsLocked(false); }}
-                                    className={`flex flex-col items-center gap-1 transition-colors ${activeTab === tab.id ? 'text-[#E50914]' : 'text-gray-500 hover:text-white'}`}
-                                >
-                                    <Icon name={tab.icon} size={24} fill={activeTab === tab.id && tab.id === 'favorites' ? 'currentColor' : 'none'} className={activeTab === tab.id && tab.id === 'favorites' ? 'fill-current' : ''} />
-                                    <span className="text-[10px] font-medium">{tab.label}</span>
-                                </button>
-                            ))}
-                        </div>
-                        
-                        {/* Botones Extra Desktop */}
-                        <div className="mt-auto flex flex-col items-center gap-4 mb-4 relative w-full">
-                            <button onClick={() => setShowNotif(true)} className="text-gray-500 hover:text-white transition-colors relative" title="Novedades">
-                                <Icon name="bell" size={20} />
-                                {NOTIFICATIONS.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}
-                            </button>
-                            
-                            <button onClick={() => setShowQR(true)} className="flex flex-col items-center gap-1 text-blue-400 hover:text-white transition-colors mb-4" title="Compartir App">
-                                <Icon name="share" size={20} />
-                            </button>
-                            
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-yellow-600 flex items-center justify-center font-serif font-bold text-black border-2 border-white/20">J</div>
-                        </div>
-                    </aside>
-
-                    {/* MOBILE HEADER */}
-                    <div className="md:hidden fixed top-0 w-full bg-[#111827]/95 backdrop-blur z-50 px-4 py-3 flex items-center justify-between border-b border-[#1f2937]">
-                        <div className="flex items-center gap-2 font-black text-xl tracking-tighter">
-                            <span className="text-[#E50914]">STREAM</span>TUBE
-                        </div>
-                        <div className="flex gap-3 items-center">
-                            <button onClick={() => setShowNotif(true)} className="text-gray-300 relative">
-                                <Icon name="bell" size={22} />
-                                {NOTIFICATIONS.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border border-[#111827]"></span>}
-                            </button>
-                            <button onClick={shareViaWhatsApp} className="text-green-400 bg-green-400/10 p-1.5 rounded-full border border-green-400/20">
-                                <Icon name="whatsapp" size={18} />
-                            </button>
-                            <button onClick={() => setShowQR(true)} className="text-blue-400 bg-blue-400/10 p-1.5 rounded-full border border-blue-400/20">
-                                <Icon name="share" size={18} />
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* MOBILE NAV BOTTOM */}
-                    <div className="md:hidden fixed bottom-0 w-full bg-[#0f1115] border-t border-[#1f2937] z-50 flex justify-around py-3 pb-safe">
-                        {[
-                            { id: 'home', icon: 'search', label: 'Inicio' },
-                            { id: 'series', icon: 'film', label: 'Series' },
-                            { id: 'movies', icon: 'clapperboard', label: 'Cine' },
-                            { id: 'tv', icon: 'tv', label: 'TV' }
-                        ].map(tab => (
-                            <button 
-                                key={tab.id}
-                                onClick={() => { setActiveTab(tab.id); setSelectedItem(null); setIsLocked(false); }}
-                                className={`flex flex-col items-center gap-1 ${activeTab === tab.id ? 'text-[#E50914]' : 'text-gray-500'}`}
-                            >
-                                <Icon name={tab.icon} size={22} />
-                                <span className="text-[10px]">{tab.label}</span>
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* MODALES */}
-                    {showQR && <QRModal onClose={() => setShowQR(false)} />}
-                    {showNotif && <NotificationsModal onClose={() => setShowNotif(false)} items={NOTIFICATIONS} />}
-
-                    {/* MAIN CONTENT AREA */}
-                    <main className="flex-1 md:ml-20 min-h-screen pt-16 md:pt-0 pb-20 md:pb-0 relative z-10">
-                        
-                        {/* LÓGICA PRINCIPAL DE VISTAS */}
-                        {(() => {
-                            // ... existing views ...
-                            // 1. VISTA DE FAVORITOS (Si estamos en tab favoritos y no hay video seleccionado)
-                            if (activeTab === 'favorites' && !selectedItem) {
-                                const favTV = favorites.filter(i => i.type === 'tv');
-                                const favOther = favorites.filter(i => i.type !== 'tv');
-                                return (
-                                    <div className="p-4 md:p-10 animate-fade-in">
-                                        <div className="mb-6 flex items-center gap-3 border-b border-white/10 pb-4">
-                                            <div className="p-2 bg-[#E50914]/20 rounded-lg text-[#E50914]">
-                                                <Icon name="heart" size={24} fill="currentColor" />
-                                            </div>
-                                            <h2 className="text-2xl font-bold text-white">Estos son sus favoritos</h2>
-                                        </div>
-                                        {favTV.length > 0 && (
-                                            <div className="mb-10">
-                                                <h3 className="text-lg font-semibold text-gray-300 mb-4 pl-2 border-l-4 border-[#E50914]">Canales de TV</h3>
-                                                <div className="bg-[#1f2937]/50 rounded-xl overflow-hidden border border-white/5">
-                                                    {favTV.map(item => (
-                                                        <TvListItem key={item.id} channel={item} isActive={false} isFavorite={true} onToggleFavorite={toggleFavorite} onClick={handlePlay} />
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        )}
-                                        {favOther.length > 0 && (
-                                            <div>
-                                                <h3 className="text-lg font-semibold text-gray-300 mb-4 pl-2 border-l-4 border-blue-500">Películas y Series</h3>
-                                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">
-                                                    {favOther.map((item, i) => (
-                                                        <Card key={i} item={item} onClick={handlePlay} isFavorite={true} onToggleFavorite={toggleFavorite} />
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        )}
-                                        {favorites.length === 0 && (
-                                            <div className="text-center py-20 text-gray-500 flex flex-col items-center">
-                                                <Icon name="heart" size={48} className="mb-4 opacity-20"/>
-                                                <p>Aún no tienes favoritos guardados.</p>
-                                            </div>
-                                        )}
-                                    </div>
-                                );
-                            }
-
-                            // 2. VISTA DE TV (Si estamos en tab TV o viendo un canal)
-                            if (activeTab === 'tv' || (selectedItem && selectedItem.type === 'tv')) {
-                                return (
-                                    <div className="flex flex-col lg:flex-row h-full lg:h-screen lg:overflow-hidden">
-                                        <div className={`flex-1 bg-black relative flex flex-col lg:h-full ${selectedItem && selectedItem.type === 'tv' ? '' : 'hidden lg:flex'}`}>
-                                            {selectedItem && selectedItem.type === 'tv' ? (
-                                                <>
-                                                    <div className="relative aspect-video w-full bg-black lg:flex-1">
-                                                        <button onClick={() => setSelectedItem(null)} className="absolute top-4 left-4 z-20 bg-black/50 p-2 rounded-full text-white lg:hidden">
-                                                            <Icon name="arrowLeft" size={20} />
-                                                        </button>
-                                                        {isDriveLink ? (
-                                                            <div className="iframe-container"><iframe src={playUrl} allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe></div>
-                                                        ) : (
-                                                            <video ref={videoRef} className="w-full h-full" controls autoPlay playsInline />
-                                                        )}
-                                                    </div>
-                                                    <div className="p-4 bg-[#1f2937] border-b border-white/10">
-                                                        <h2 className="text-lg font-bold text-white">{selectedItem.title}</h2>
-                                                        <p className="text-xs text-[#E50914] font-bold uppercase">En Vivo Ahora</p>
-                                                    </div>
-                                                </>
-                                            ) : (
-                                                <div className="flex items-center justify-center h-full text-gray-500">
-                                                    <p>Selecciona un canal para ver</p>
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="w-full lg:w-96 bg-[#111827] lg:border-l border-white/10 flex flex-col lg:h-full lg:overflow-hidden">
-                                            <div className="p-4 sticky top-16 lg:top-0 bg-[#111827] z-20 border-b border-white/5">
-                                                <div className="relative">
-                                                    <input type="text" placeholder="Buscar canal..." className="w-full bg-[#1f2937] border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:border-[#E50914] outline-none pl-10" value={search} onChange={(e) => setSearch(e.target.value)}/>
-                                                    <Icon name="search" size={18} className="absolute left-3 top-3 text-gray-400"/>
-                                                </div>
-                                            </div>
-                                            <div className="p-2 space-y-1 lg:overflow-y-auto lg:h-full">
-                                                {loading ? (
-                                                    <div className="flex justify-center py-10"><div className="animate-spin rounded-full h-8 w-8 border-2 border-[#E50914] border-t-transparent"></div></div>
-                                                ) : (
-                                                    (activeTab === 'tv' ? content.tv : favorites.filter(f => f.type === 'tv')).filter(c => !search || c.title.toLowerCase().includes(search.toLowerCase())).map((channel) => (
-                                                        <TvListItem key={channel.id} channel={channel} isActive={selectedItem?.id === channel.id} isFavorite={favorites.some(f => f.id === channel.id)} onToggleFavorite={toggleFavorite} onClick={handlePlay} />
-                                                    ))
-                                                )}
-                                            </div>
-                                        </div>
-                                    </div>
-                                );
-                            }
-
-                            // 3. VISTA DE REPRODUCTOR NORMAL (Series/Pelis)
-                            if (selectedItem) {
-                                return (
-                                    <div className="animate-fade-in">
-                                        <div className="w-full bg-black relative aspect-video md:h-[70vh] flex items-center justify-center">
-                                            <div className="absolute top-4 left-4 z-20">
-                                                <button onClick={() => {setSelectedItem(null); setIsLocked(false);}} className="bg-black/50 hover:bg-[#E50914] text-white px-4 py-2 rounded-full backdrop-blur-md flex items-center gap-2 transition-colors border border-white/10">
-                                                    <Icon name="arrowLeft" size={18} /> <span className="hidden md:inline">Volver</span>
-                                                </button>
-                                            </div>
-                                            {isLocked ? (
-                                                <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} />
-                                            ) : (
-                                                isDriveLink ? (
-                                                    <div className="iframe-container">
-                                                        <iframe src={playUrl} allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
-                                                        <a href={playUrl} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-xs flex items-center gap-1 hover:bg-[#E50914] z-50 border border-white/20"><Icon name="external" size={12} /> Abrir externo</a>
-                                                    </div>
-                                                ) : (
-                                                    <video ref={videoRef} className="w-full h-full" controls autoPlay playsInline />
-                                                )
-                                            )}
-                                            {selectedItem.type === 'series' && !selectedEpisode && !isLocked && (
-                                                <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10">
-                                                    <p className="text-gray-400 font-bold">Selecciona un episodio de la lista</p>
-                                                </div>
-                                            )}
-                                        </div>
-                                        {!isLocked && (
-                                            <div className="p-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-                                                <div className="lg:col-span-2">
-                                                    <div className="flex items-start justify-between mb-4">
-                                                        <div>
-                                                            <h1 className="text-3xl font-bold text-white mb-2">{selectedItem.title || selectedItem.name}</h1>
-                                                            <div className="flex items-center gap-3 text-sm text-gray-400">
-                                                                <span className="bg-[#1f2937] px-2 py-0.5 rounded text-white">{selectedItem.type.toUpperCase()}</span>
-                                                                {selectedItem.type === 'series' && selectedEpisode && <span className="text-[#E50914] font-medium">{selectedEpisode.title}</span>}
-                                                            </div>
-                                                        </div>
-                                                        <button onClick={() => toggleFavorite(selectedItem)} className="p-3 bg-[#1f2937] rounded-full hover:bg-[#2d3748]">
-                                                            <Icon name="heart" size={24} className={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "text-[#E50914] fill-[#E50914]" : "text-gray-400"} fill={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "#E50914" : "none"} />
-                                                        </button>
-                                                    </div>
-                                                    
-                                                    <div className="flex flex-col md:flex-row gap-6 mb-6">
-                                                        <img 
-                                                            src={selectedItem.image || selectedItem.poster} 
-                                                            className="hidden md:block w-48 rounded-lg shadow-lg object-cover aspect-[2/3] border border-white/10"
-                                                            alt={selectedItem.title}
-                                                        />
-                                                        <p className="text-gray-300 leading-relaxed">{selectedItem.description || selectedItem.plot || "Sin descripción disponible."}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="bg-[#1f2937] rounded-xl p-4 h-fit border border-white/5 lg:sticky lg:top-24">
-                                                    {selectedItem.type === 'series' ? (
-                                                        <div className="flex flex-col gap-2">
-                                                            <h3 className="font-bold text-lg mb-2 flex items-center gap-2"><Icon name="film" size={18} className="text-[#E50914]"/> Temporadas</h3>
-                                                            {selectedItem.seasons.map((season, idx) => (
-                                                                <div key={idx} className="border-b border-gray-700 last:border-0 pb-2">
-                                                                    <button type="button" onClick={() => setExpandedSeason(expandedSeason === idx ? null : idx)} className="w-full flex justify-between items-center py-2 text-sm font-bold hover:text-[#E50914]">
-                                                                        <span>Temporada {season.season_number}</span>
-                                                                        {expandedSeason === idx ? <Icon name="chevronUp" size={16}/> : <Icon name="chevronDown" size={16}/>}
-                                                                    </button>
-                                                                    {expandedSeason === idx && (
-                                                                        <div className="flex flex-col gap-1 mt-1 pl-2 max-h-[400px] overflow-y-auto pr-1 custom-scrollbar">
-                                                                            {season.episodes.length === 0 && <p className="text-xs text-gray-500 p-2">No hay episodios disponibles.</p>}
-                                                                            {season.episodes.map((ep, eIdx) => (
-                                                                                <div key={eIdx} onClick={() => { setSelectedEpisode(ep); window.scrollTo({top:0, behavior:'smooth'}); }} className={`text-sm p-2 rounded cursor-pointer truncate flex items-center gap-2 ${selectedEpisode?.url === ep.url ? 'bg-[#E50914] text-white' : 'text-gray-400 hover:bg-gray-700'}`}>
-                                                                                    <Icon name="play" size={12} fill="currentColor" className="flex-shrink-0" /> {eIdx + 1}. {ep.title}
-                                                                                </div>
-                                                                            ))}
-                                                                        </div>
-                                                                    )}
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    ) : (
-                                                        <div>
-                                                            <h3 className="font-bold mb-4 text-gray-200">Recomendados</h3>
-                                                            <div className="flex flex-col gap-3">
-                                                                {content[selectedItem.type === 'tv' ? 'tv' : 'movies'].slice(0, 5).map(rel => (
-                                                                    <div key={rel.id || rel.title} onClick={() => handlePlay(rel)} className="flex gap-3 cursor-pointer group">
-                                                                        <img src={rel.image || rel.poster} className="w-20 h-12 object-cover rounded bg-gray-800" />
-                                                                        <div className="flex flex-col justify-center">
-                                                                            <h4 className="text-sm font-bold line-clamp-1 group-hover:text-[#E50914]">{rel.title}</h4>
-                                                                            <span className="text-xs text-gray-500">Ver ahora</span>
-                                                                        </div>
-                                                                    </div>
-                                                                ))}
-                                                            </div>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                );
-                            }
-
-                            // 4. VISTA POR DEFECTO (HOME/GRID)
-                            return (
-                                <>
-                                    <div className="sticky top-0 z-40 bg-[#111827]/95 backdrop-blur py-4 px-6 md:px-10 flex items-center justify-between border-b border-[#1f2937]">
-                                        <div className="flex bg-[#1f2937] border border-[#374151] rounded-full px-4 py-2 w-full max-w-lg items-center focus-within:border-[#E50914] transition-colors">
-                                            <Icon name="search" className="text-gray-400 w-5 h-5 mr-3" />
-                                            <input type="text" placeholder={`Buscar en ${activeTab === 'home' ? 'todo' : activeTab}...`} className="bg-transparent w-full outline-none text-sm placeholder-gray-500 text-white" value={search} onChange={(e) => setSearch(e.target.value)}/>
-                                        </div>
-                                        <div className="hidden md:flex items-center gap-4 ml-4">
-                                            <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{activeTab}</span>
-                                        </div>
-                                    </div>
-
-                                    {/* --- AVISO SMART VIEW --- */}
-                                    {activeTab === 'home' && !search && (
-                                        <div className="mx-4 md:mx-10 mt-6 p-4 rounded-xl bg-gradient-to-r from-blue-900/40 to-[#111827] border border-blue-500/30 flex items-center gap-4 animate-fade-in">
-                                            <div className="hidden md:flex p-3 bg-blue-600/20 rounded-full text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
-                                                <Icon name="tv" size={24} />
-                                            </div>
-                                            <div className="flex-1">
-                                                <h3 className="text-white font-bold text-lg flex items-center gap-2">
-                                                    <span className="md:hidden text-blue-400"><Icon name="tv" size={20}/></span>
-                                                    Disfrútalo en tu Smart TV
-                                                </h3>
-                                                <p className="text-gray-300 text-sm mt-1">
-                                                    Usa la función <strong className="text-blue-400">Smart View</strong> (o "Transmitir") de tu móvil para conectar y ver el contenido en tu televisor.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {activeTab === 'home' && !search && heroItem && <HeroSection item={heroItem} onPlay={handlePlay} isFavorite={favorites.some(f=>(f.id||f.title)===(heroItem.id||heroItem.title))} onToggleFavorite={toggleFavorite}/>}
-                                    <div className="p-4 md:p-10">
-                                        {activeTab === 'home' && !search && (
-                                            <div className="mb-8 flex items-center gap-2">
-                                                <div className="w-1 h-6 bg-[#E50914] rounded-full"></div>
-                                                <h2 className="text-xl font-bold">Tendencias Recientes</h2>
-                                            </div>
-                                        )}
-                                        {loading ? (
-                                            <div className="flex justify-center py-20"><div className="animate-spin rounded-full h-12 w-12 border-4 border-[#E50914] border-t-transparent"></div></div>
-                                        ) : displayedItems.length === 0 ? (
-                                            <div className="text-center py-20 text-gray-500 flex flex-col items-center">
-                                                <Icon name="alertCircle" size={48} className="mb-4 opacity-50"/>
-                                                <p>No hay contenido disponible en esta sección.</p>
-                                            </div>
-                                        ) : (
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8 animate-slide-up">
-                                                {displayedItems.map((item, i) => (
-                                                    <Card key={i} item={item} onClick={handlePlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={toggleFavorite}/>
-                                                ))}
-                                            </div>
-                                        )}
-                                    </div>
-                                </>
-                            );
-                        })()}
-                    </main>
-                </div>
-            );
-        };
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
-</body>
-</html>
+#EXTM3U
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc0CfBLPTdVRLyxhsV8Hq3wfIeJAPwiC2TQOhBNoFV893ShXIpe0MWXG9nhjQnTPtsMTk&usqp=CAU" group-title="Canal de Noticias Local.",Telered
+https://k20.usastreams.com:8081/telered/index.m3u8
+#EXTINF:-1 tvg-logo="https://cigars.roku.com/v1/contain/800x454/https%3A%2F%2Fimage.roku.com%2Fdeveloper_channels%2Fprod%2Ffec8403b690ee3d6bb645b6e8d9e1e85070e865bc1b4ad14e8af28261e6ce1ad.png" group-title="Canal Retro TV.",Megacine TV
+https://cloudflare.streamgato.us:3125/live/megacinetvlive.m3u8
+#EXTINF:-1 tvg-logo="https://sicultura-live.s3.amazonaws.com/public/2022-11/313401143_527193602751613_1789836145711014030_n.png" group-title="Canal de Noticias Regional.",Canal 36
+https://stmv6.voxtvhd.com.br/xtremacartoons/xtremacartoons/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://play-lh.googleusercontent.com/zLkTnFfdGGq5-cuY0DBvsCoiRUToWFA8rcm_Z3ieUr7rwgmzyojRXIfqMXt9dm4ocjs" group-title="Canal Retro.",Retro TV
+https://live20.bozztv.com/akamaissh101/ssh101/retrotvcr2025/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBsKLLZbFpvVQrOzRAnA9BCRraLxP3-GLwvBv30iNI6TpPz1o51sa1de7pGKS40Quzajw&usqp=CAU" group-title="Canal de Series Retro.",TV Retro
+https://live20.bozztv.com/akamaissh101/ssh101/tvretropalm2020/chunks.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9YKvejKBdJWBUfm0Oc32tKTO1QKQXXu2s4A&s" group-title="Canal de Entretenimiento.",Tele Sistema
+https://k20.usastreams.com:8081/telesistema/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCPgX3BAyVJrhddZBS934xmT6Kev9EUhXHeQ&s" group-title="Canal de Noticias.",Canal 1 CR
+https://59ef525c24caa.streamlock.net/canal1cr/canal1cr/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://lh3.googleusercontent.com/sszFJ-XNovmccK2_CjwfMFFRQ0Xzdzu7lEoyh8RM0nHBWKx_tc9reo32w6p2gV5TZ-M=h512" group-title="Canal de Deportes Extremos.",Extrema TV
+https://627bb251f23c7.streamlock.net:444/ExtremaTV/ExtremaTV/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNtuYqz3KCkvM3aBb-Lg3YRtfoaVaDe9srK_6QZaajqCb7jS0RBcJ1lBUJaEIqJo21ahY&usqp=CAU" group-title="Canal Local de Nicoya.",Nicoya TV
+https://59ef525c24caa.streamlock.net/nicoyatv/nicoyatv/chunklist_w1674958038.m3u8
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1761972439863402496/HYFYy2Zg_400x400.jpg" group-title="Canal de Noticias y Deportes.",TV Azteca
+https://azt-mun.otteravision.com/azt/mun/mun_1080p.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNo8nRAN4wCgrjHF17KzyCdU34-SRV5oOcrQ&s" group-title="Canal de Noticias.",24 Horas
+https://rtvelivestream.rtve.es/rtvesec/24h/24h_main_dvr_720.m3u8
+#EXTINF:-1 tvg-logo="https://yt3.googleusercontent.com/JOR8-8xL3x91J-1s4Rhu8N7odmnnrEFe5DDXxv9xRia88bCkkiWwiJQkUg3VFCScfRUxILaDNg=s900-c-k-c0x00ffffff-no-rj" group-title="Canal de Entretenimiento y Noticias.",Las Estrellas
+https://channel01-onlymex.akamaized.net/hls/live/2022749/event01/index_1.m3u8
+#EXTINF:-1 tvg-logo="https://yt3.googleusercontent.com/WZacbtWNLdznCtQ5Au7EjtrVNmktZfQNiXOnIzTwllgNd1iRMhPITW-CQrGQjUVnS8IxN75UBA=s900-c-k-c0x00ffffff-no-rj" group-title="Canal de Noticias y Entretenimiento.",Tele Mundo
+https://nbcu-telemundoflorida-firetv.amagi.tv/playlist1080.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBxvhIPxIJvY8jcD7VFd6XnmqtnwC0YmUcG6Ttgtc3RSOnQrAcpq8bK8DljzNaqKchQbg&usqp=CAU" group-title="Canal de Música Retro.",Retro X
+https://acceso.radiosportstv.online:3259/hybrid/play.m3u8
+#EXTINF:-1 tvg-logo="https://cdn.rudo.video/assets/canal-13/live/logoApi_151f8e8d0c9e2a144f59f11ec492c3e91710874647.png" group-title="Películas Clásicas Latinas.",Latino Clásica
+https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/4d419a88-a62c-496f-b8a1-984e746f8259/manifest.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyeFcO1jqS7cHkeI6uFu8i1mXBb1hayIlshXespGXDMtv0YGhTBKzriaIGYUb4_TOMUd0&usqp=CAU" group-title="Noticias y Entretenimiento de Miami.",Sol TV
+https://video03.logicahost.com.br/soltv/soltv/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIo1iQW2AJvIdVjUFVAwAxLgPALnvBMwGYFw&s" group-title="Canal Local de Turrialba.",TDTV
+https://cloudvideo.servers10.com:8081/8230/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://milemisoras.com/img/channel/abd12be06e14bf48011ce97f584bfefb.png" group-title="Demostración.",Play
+https://tvservices.fullhd-streaming.com:3941/stream/play.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF4WjCv7VeLbrEAtDzziTPFnO02S87ck8eLA&s" group-title="Entretenimiento.",Dreiko TV
+https://rtv.fullhd-streaming.com:19360/dreikotv/dreikotv.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/a1e4076264abe6b6ccde87a587966abe.webp" group-title="Canal de Entretenimiento.",Retro Cartoons
+https://stmv3.voxtvhd.com.br/xtremaretrocartoons/xtremaretrocartoons/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3668-294x165-FFFFFF.jpg" group-title="Deportes y Noticias.",10 Costa Rica
+https://acceso.radiosportstv.online:3285/hybrid/play.m3u8
+#EXTINF:-1 tvg-logo="https://image.roku.com/developer_channels/prod/685354bd84f85fe39c7ecae45018ccb60011681ba7838fd841e3f2392f4f6249.png" group-title="Infantil.",Extrema Kids
+https://627bb251f23c7.streamlock.net:444/ExtremaKids/ExtremaKids/chunklist_w877184190.m3u8
+#EXTINF:-1 tvg-logo="https://pbs.twimg.com/profile_images/1510311834800246787/sfWgWmqk_400x400.jpg" group-title="Multimedios Costa Rica",Canal 8
+https://mdstrm.com/live-stream-playlist/5a7b1e63a8da282c34d65445/master.m3u8
+#EXTINF:-1 tvg-logo="https://radiocostarica.net/sites/default/files/styles/player_image/public/2024-05/Costa%20Rica%20Channel-Costa%20Rica.png.webp?itok=jdj8aeqR" group-title="Costa Rica Channel",Costa Rica Channel
+https://video0.rogohosting.com:19360/8006/8006.m3u8
+#EXTINF:-1 tvg-logo="https://radiocostarica.net/sites/default/files/styles/player_image/public/2024-06/GAM%20TV%20CR-Costa%20Rica_0.png.webp?itok=ExXxZFSr" group-title="Entretenimiento",Gam TV
+https://v2.azulstream.com:8081/gamtv/gamtv/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://yt3.googleusercontent.com/h88IKJCItR4KafxYzqfMphDkLzXdREH24qDrW-CzFMedCCjBl4D2baR3xWF48tOkNltM6MM9hA=s900-c-k-c0x00ffffff-no-rj" group-title="Deportes.",Claro Sports
+https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/bein-sports-xtra-en-espanol/d3358062-b357-4738-9cfb-6824db0ada53/0.m3u8
+#EXTINF:-1 tvg-logo="https://play-lh.googleusercontent.com/W7wJ9CcfTsIlMC9GWk7qgom0JO6R4DoFnHN1DGKuI2OtLQ_3w5zYuscMngY0OZfXtfxn" group-title="Red Bull TV: Deportes",Red Bull TV
+https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/9Nh2mo9.png" group-title="Sin Grupo",Antena Seis TV
+https://video1.azulstream.com:8081/antenaseistv/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/vJZqrFY/a4ed367c69c23110d458a332af95be0be64566f288ccb5f261689344e6ba5e0d.png" group-title="Sin Grupo",CBTV
+https://cloudvideo.servers10.com:8081/8030/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/CFXZ8j0.png" group-title="Sin Grupo",Cristo Visión
+https://3a310f6ec721e6b362fcd22772b57f36a2fe6bb2.tabeelcr.com:8080/cristovision31/iptv.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/YwUVTmS.png" group-title="Sin Grupo",Enlace HD
+https://livecdn.enlace.plus/enlace/smil:enlace-hd.smil/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/rdpcv7C/1689421727166.jpg" group-title="Sin Grupo",Limón TV
+https://59ef525c24caa.streamlock.net//limontv1//limontv1//chunklist_w1710248255.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/2MNzXN7/Channels4-profile-9.jpg" group-title="Sin Grupo",Norte Informativo
+https://videohd.live:19360/8076/8076.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/P4kpMgk/1689344714578.jpg" group-title="Sin Grupo",Soy Plancha TV
+https://59ef525c24caa.streamlock.net/vmtv/soyplancha/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.ibb.co/yn5M8dw/telefides-costa-rica.png" group-title="Sin Grupo",Telefides
+https://s2.cwebtv.net:4433/telefides/telefides/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/KVVU9PI.png" group-title="Sin Grupo",TV Urbano
+https://59ef525c24caa.streamlock.net/tvurbano/tvurbano/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.imgur.com/KUpgeOf.png" group-title="Sin Grupo",TeleSur
+https://s1.tvdatta.com:3582/live/telesurlive.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/1e7e289ab5c66e67ad623c5a1bec9f75.webp" group-title="Sin Grupo",TV Vintage
+https://59ef525c24caa.streamlock.net/vmtv/tvvintage/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://xtrematv.com/wp-content/uploads/2023/05/LOGO-2023-XT-chico.png" group-title="Sin Grupo",Extrema TV
+https://627bb251f23c7.streamlock.net:444/ExtremaTV/ExtremaTV/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://yt3.googleusercontent.com/jCFvfJuhezHyqYCiBhWQtKvEyyq7syTMkpWRks1E_toGgPdaIMo9sMpxpMYWGBrdf2mSymKL=s900-c-k-c0x00ffffff-no-rj" group-title="Sin Grupo",Cine Acción
+https://stmv6.voxtvhd.com.br/cineaccion/cineaccion/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRr3bmOPMWpG4PLRg_uRAvIEKPCZTprG-_Jw&s" group-title="Sin Grupo",Tele Vida
+https://tls-cl.cdnz.cl/televida/live/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQErFAV54FxgmM5JKD9Xxiq6GYifsgLagX08pesnsLHwiPKfPISfsnlmu4COyGfVa-WWmE&usqp=CAU" group-title="Sin Grupo",TVs Live
+https://imagenuniversaltv.net:3741/live/tvslive.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtJvHa01Kz7msCS49obbGVIqvHeDCQr8EN_A&s" group-title="Sin Grupo",Tele Sur
+https://k20.usastreams.com:8081/tvsur/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://lh6.ggpht.com/XBZm1nL7kgjjH5FEAN0NmeqWVaa-qlyqLJMuSbe3RCit7ZaZtpcXbf3nFFK2BbC2Lds" group-title="Cotubanama",Canal 36
+https://host.streamingnation.live/p/3588/hybrid/play.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFm-q_tTR9_DInWxrnzCJElp00p6sZPTdGg&s" group-title="Retro",Retro Plus TV
+https://scl.edge.grupoz.cl/retroplustvuno/live/chunklist_w2129364046.m3u8
+#EXTINF:-1 tvg-logo="https://serenotv.com/wp-content/uploads/2023/03/LOGO-GARABITO-TV-1024x800.jpg" group-title="Sin Grupo",Garabito TV
+https://59ef525c24caa.streamlock.net/garabitoTV/garabitotv/chunklist_w878297441.m3u8
+#EXTINF:-1 tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3519-294x165-FFFFFF.jpg" group-title="Sin Grupo",EnergyTV Latino
+https://59ec5453559f0.streamlock.net/energytvlatino/smil:VIVALIVETV/chunklist_w527843109_b1896000.m3u8
+#EXTINF:-1 tvg-logo="https://cartagomedios.com/wp-content/uploads/2025/04/cropped-Logo-Color.webp" group-title="Sin Grupo",Cartago Medios
+https://acceso.radiosportstv.online:3368/multi_live/play_720.m3u8
+#EXTINF:-1 tvg-logo="https://yt3.googleusercontent.com/ytc/AIdro_mRUs2di6I0DOPjNchStqW_tqT8RjJuiMGOPNuQd8ymMHI=s900-c-k-c0x00ffffff-no-rj" group-title="Sin Grupo",WHD
+https://cloudvideo.servers10.com:8081/8130/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://yt3.googleusercontent.com/ytc/AIdro_k8FMMJsWJsIpQTwyUXE84ISlV5E4mZnOMQz5cVwZg0sDE=s160-c-k-c0x00ffffff-no-rj" group-title="Sin Grupo",Películas del Oeste
+https://amogonetworx-grjngo-2-eu.plex.wurl.tv/2000.m3u8
+#EXTINF:-1 tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCRyIeb5IY-BbZf4GL-ljuAxXmg2Y8Mttf5ZlEauL6LL1ainsD_Ly8-atcCtLZQAghALzHpJmRfDdY6pGjGxyLkbCWqmPlxqvyxuGK9EBdAz8nvJ41GDIB7ijVrgBj99pbuIvhA48c7eqncuN21Boz6_qkdhgER098nZkyp41u-LggItFxnv5Cit6U9Lg/s800/max-anime.jpg" group-title="Sin Grupo",Max Anime
+https://live20.bozztv.com/giatv/giatv-dball/dball/chunks.m3u8
+#EXTINF:-1 tvg-logo="https://meganetfun.com/storage/channel-logos/q8OrvMkGTpkTmdQ2SBT5f7xq6ZSakeP2MplANv4Z.jpg" group-title="Sin Grupo",Tele +
+https://mist01.homestream.fun/hls/tlmas904/0_1/index.m3u8
+#EXTINF:-1 tvg-logo="https://meganetfun.com/storage/channel-logos/iJ7r10nI35hdcB5K4CWtXbdsgN4T83qwRMgzPFH2.jpg" group-title="Sin Grupo",Planeta TV
+https://live.obslivestream.com/planetatv/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://meganetfun.com/storage/channel-logos/4zE04qJPfTgzeV2Z7gYausmhLFKE5aYcRNGXvtQ6.jpg" group-title="Sin Grupo",Cops
+https://rightsboosterltd-cops-1-eu.plex.wurl.tv/2000.m3u8
+#EXTINF:-1 tvg-logo="https://serenotv.com/wp-content/uploads/2025/06/locomotion-800x800.jpg" group-title="Sin Grupo",Locomoción TV
+https://live20.bozztv.com/giatvplayout7/giatv-210075/tracks-v1a1/mono.ts.m3u8
+#EXTINF:-1 tvg-logo="https://meganetfun.com/storage/channel-logos/a8bfDgk27FrQUad7Ptl7nz44PHqFUa91F29ktOhz.jpg" group-title="Sin Grupo",TVE
+https://rtvelivestream-rtveplayplus.rtve.es/rtvesec/int/tvei_ame_main_576.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/c19e13a54f89cace2b5c01ee2252a2c7.webp" group-title="Sin Grupo",TV Familia en Vivo
+https://59d39900ebfb8.streamlock.net/tvfamilia_480p/tvfamilia_480p/chunklist_w1024274739.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/bb42115ec41fea4ac36dec93b294d2e2.webp" group-title="Sin Grupo",Runtime Español en Vivo
+https://run-rt-uh.otteravision.com/run/rt_uh/rt_uh_720.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/a3bd552eca6645942a60a053fe61fafb.webp" group-title="Sin Grupo",Sony Canal Novelas
+https://spt-novelas-1-us.canelatv.wurl.tv/3000.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/47f99fa1872d0b6c8d1c562b94bfeb31.webp" group-title="Sin Grupo",CNN en Español
+https://amg00803-cnnfast-amg00803c3-lg-es-5477.playouts.now.amagi.tv/playlist1080p.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/61bf055c59234dcf9591c1c8cb3657b4.webp" group-title="Sin Grupo",Cine Romántico
+https://amg00658-amg00658c66-canelatv-international-5554.playouts.now.amagi.tv/playlist/amg00658-canelamediafast-cineromanticoappta-canelatvinternational/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/4105f4374c811c5e233dddb029e79c0d.webp" group-title="Sin Grupo",Runtime Español
+https://run-rt-es.otteravision.com/run/rt_es/rt_es_720p_high.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/234cb338df1b00f91cc1827a9a9a1a75.webp" group-title="Sin Grupo",Family TV
+https://tv.webmedialive.com/familytv/live/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/0e3bb923a6e42d39bca3d8b1869e2eb3.webp" group-title="Sin Grupo",Free TV Acción
+https://amg01024-olympusat-topcinelatam-ono-ad-99.amagi.tv/1080p-cc/index.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/178c759ece43186a94e69f30b17dca2d.webp" group-title="Sin Grupo",TUTV en Vivo
+https://stream.giostreaming.app/canal11/canal11.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/7e030786c319ae1f2f95da18b6cf634e.webp" group-title="Sin Grupo",Free TV Sureño
+https://amg01024-olympusat-cinesureno-ono-ad-h2.amagi.tv/1080p-cc/index.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/e277fbff1d036a1c11aa18f8befee081.webp" group-title="Sin Grupo",15 TV en Vivo
+https://cdn.fastocloud.com/leonel.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/bb5582fe2b094e393986730a1be45283.webp" group-title="Sin Grupo",Somos Novelas
+https://amg00375-amg00375c10-fuse-us-3222.playouts.now.amagi.tv/playlist/amg00375-fusemediafast-somosnovelas-fuseus/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/5f58965018411c0ef81df7c6b596ad54.webp" group-title="Sin Grupo",Toonz Kids
+https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/toonzkids-spanish/master.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/89fde3072167c8eca735a5b9b6a0be59.webp" group-title="Sin Grupo",Rockola Televisión
+https://e46fa4a445464f8a9150fa7d510eb85c.mediatailor.us-west-2.amazonaws.com/v1/master/2d2d0d97b0e548f025b2598a69b55bf30337aa0e/npp/S9K831QV8TO3291HQ8JS/hls3/now,-1m/m.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/7c32e4c6d73b63dd532a48dd4e17f634.webp" group-title="Sin Grupo",Presencia TV
+https://live20.bozztv.com/akamaissh101/ssh101/mitvenvivo/chunks.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/abb2072bbd91067dea9ef6dd9be705de.webp" group-title="Sin Grupo",Free TV en Vivo
+https://amg01024-olympusat-chiquilines-ono-ad-et.amagi.tv/1080p-cc/index.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/5e30e4537eb2ea84cff9fd51e0181317.webp" group-title="Sin Grupo",Free TV Hits
+https://amg01024-olympusat-flash-ono-ad-3q.amagi.tv/1080p-cc/index.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/00c2cce97c6a9f5d9f73dae4f37ffbc4.webp" group-title="Sin Grupo",Master Video TV
+https://5fd5567570c0e.streamlock.net/222/stream/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/51e560600b65af19f305f491df5d04ac.webp" group-title="Sin Grupo",Free TV Clásico
+https://amg01024-olympusat-cineclasicoco-lgco-a8u19.amagi.tv/1080p-cc/index.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSkZgXSE75FCNg99QnzFkgAwVURmJLdnUYq8PxbC05He8JeIVL2" group-title="Sin Grupo",360 RFTV
+https://acceso.radiosportstv.online:3417/live/360rftvcrlive.m3u8
+#EXTINF:-1 tvg-logo="https://play-lh.googleusercontent.com/5BYr8FaRq_hb6-0CkYnFmyLIn7b223Zgpizoq99BK-10e7XVjAyF9dvVflzFZmRdBrs=w600-h300-pc0xffffff-pd" group-title="Sin Grupo",TV Nosara
+https://latamvdo.com:3870/hybrid/play.m3u8
+#EXTINF:-1 tvg-logo="https://play-lh.googleusercontent.com/xABFSEF3L4NzA_jJd4jv-ikF_sopZ2vh2ujYj4zDua9w00vsmXkL_Qnw4VyV-42EtO-L" group-title="Sin Grupo",TDTVCANAL
+https://cloudvideo.servers10.com:8081/8230/index.m3u8
+#EXTINF:-1 tvg-logo="https://www.tvsur.co.cr/wp-content/uploads/2022/09/cropped-LOGO-TV-SUR-PEREZ-ZELEDON-TRAZO-BLANCO.png" group-title="Sin Grupo",TV Sur, Canal 14
+https://k20.usastreams.com:8081/tvsur/index.m3u8
+#EXTINF:-1 tvg-logo="https://serenotv.com/wp-content/uploads/2025/06/Canal-Penol-hd-315x315.jpg" group-title="Sin Grupo",Tv Peñol
+https://stmv1.voxtvhd.com.br/tvpenol/tvpenol/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjn7JW_vqrJQS7Dc1YxbonhBEbg-JwZKm8SA&s" group-title="Sin Grupo",Pluz TV
+https://plustv.streamseguro.com:5443/LiveApp/streams/streaming.m3u8
+#EXTINF:-1 tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9QUatPxBhTck6kKk1nTNsRuKLVgXUJfgVjA&s" group-title="Miami TV en Vivo",Miami TV
+https://bdc8100df748400cabc7e133824c8ceb.mediatailor.us-east-2.amazonaws.com/v1/manifest/c3d3fd1c31fa281b88eab2cd253e2ca576b6628b/fast-jennylive/d3c2c6fe-bdde-4074-9054-563cfadef3eb/0.m3u8
+#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/68/Telemundo_logo_2018.svg" group-title="Sin Grupo",telemundo
+https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream1/master.m3u8
+#EXTINF:-1 tvg-logo="https://yt3.googleusercontent.com/FHXMY9wH7GFpJiWrArhiZwmbpPsLvRgP68iy0Nx89cC0cHOk20zY6bEdA6mId-BqgnBRSAxy=s900-c-k-c0x00ffffff-no-rj" group-title="Sin Grupo",¡OPA! CANAL 38
+https://5fe2654d6127d.streamlock.net/genteopabackup/videogenteopabackup/chunklist_w1703569323.m3u8
