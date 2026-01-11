@@ -47,7 +47,6 @@
         .iframe-container iframe { width: 100%; height: 100%; border: 0; }
 
         /* --- OPTIMIZACIÓN SMART TV --- */
-        /* Resalta el elemento seleccionado con el control remoto */
         button:focus, div[tabindex="0"]:focus, input:focus {
             outline: 3px solid #E50914;
             outline-offset: 2px;
@@ -60,10 +59,10 @@
 <body>
     <div id="root"></div>
 
-    <!-- Firebase -->
+    <!-- Firebase - Módulo Robusto -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
@@ -71,35 +70,63 @@
 
         let db;
         let auth;
+        let currentUser = null;
 
         if (Object.keys(firebaseConfig).length > 0) {
             try {
                 const app = initializeApp(firebaseConfig);
                 auth = getAuth(app);
                 db = getFirestore(app);
-                signInAnonymously(auth).catch(err => console.log("Auth error:", err));
+                
+                // Escuchar cambios de autenticación
+                onAuthStateChanged(auth, (user) => {
+                    currentUser = user;
+                });
+
+                // Iniciar sesión anónima
+                signInAnonymously(auth).catch(err => console.error("Auth error:", err));
             } catch (e) {
-                console.log("Firebase init error", e);
+                console.error("Firebase init error", e);
             }
         }
 
         window.DB_API = {
             saveVisitor: async (name) => {
-                if (!db || !auth?.currentUser) return;
+                if (!db) return;
+                
+                // Función auxiliar para esperar la autenticación
+                const waitForAuth = () => new Promise(resolve => {
+                    if (currentUser) return resolve(currentUser);
+                    const unsubscribe = onAuthStateChanged(auth, user => {
+                        if (user) {
+                            unsubscribe();
+                            currentUser = user;
+                            resolve(user);
+                        }
+                    });
+                });
+
                 try {
-                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'), {
+                    await waitForAuth();
+                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'visitors_log'), {
                         name: name,
                         timestamp: serverTimestamp(),
-                        uid: auth.currentUser.uid
+                        uid: currentUser.uid
                     });
                 } catch (e) { console.error("Error saving visitor", e); }
             },
             subscribeToVisitors: (callback) => {
                 if (!db) { callback([]); return () => {}; }
-                const q = query(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'));
+                
+                const q = query(collection(db, 'artifacts', appId, 'public', 'data', 'visitors_log'));
                 return onSnapshot(q, (snapshot) => {
                     const visitors = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                    visitors.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
+                    // Ordenar en cliente para evitar errores de índice en Firestore
+                    visitors.sort((a, b) => {
+                        const tA = a.timestamp?.seconds || 0;
+                        const tB = b.timestamp?.seconds || 0;
+                        return tB - tA; // Más reciente primero
+                    });
                     callback(visitors);
                 });
             }
