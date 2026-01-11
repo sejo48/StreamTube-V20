@@ -59,32 +59,47 @@
 <body>
     <div id="root"></div>
 
-    <!-- Firebase - Módulo Robusto -->
+    <!-- Firebase - Módulo Robusto y Seguro -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
         let db;
         let auth;
-        let currentUser = null;
+        let authPromise = Promise.resolve(null); // Default resolved if no config
 
         if (Object.keys(firebaseConfig).length > 0) {
             try {
                 const app = initializeApp(firebaseConfig);
                 auth = getAuth(app);
                 db = getFirestore(app);
-                
-                // Escuchar cambios de autenticación
-                onAuthStateChanged(auth, (user) => {
-                    currentUser = user;
+
+                // Crear una promesa que se resuelve cuando el usuario está autenticado
+                authPromise = new Promise((resolve) => {
+                    const unsubscribe = onAuthStateChanged(auth, (user) => {
+                        if (user) {
+                            resolve(user);
+                            // No desuscribimos inmediatamente para mantener el estado actualizado si cambia,
+                            // pero para la promesa inicial ya resolvimos.
+                        }
+                    });
+
+                    // Iniciar proceso de login
+                    if (initialAuthToken) {
+                        signInWithCustomToken(auth, initialAuthToken).catch(e => {
+                            console.error("Token auth failed, falling back to anon", e);
+                            signInAnonymously(auth);
+                        });
+                    } else {
+                        signInAnonymously(auth).catch(e => console.error("Anon auth failed", e));
+                    }
                 });
 
-                // Iniciar sesión anónima
-                signInAnonymously(auth).catch(err => console.error("Auth error:", err));
             } catch (e) {
                 console.error("Firebase init error", e);
             }
@@ -93,42 +108,46 @@
         window.DB_API = {
             saveVisitor: async (name) => {
                 if (!db) return;
-                
-                // Función auxiliar para esperar la autenticación
-                const waitForAuth = () => new Promise(resolve => {
-                    if (currentUser) return resolve(currentUser);
-                    const unsubscribe = onAuthStateChanged(auth, user => {
-                        if (user) {
-                            unsubscribe();
-                            currentUser = user;
-                            resolve(user);
-                        }
-                    });
-                });
-
                 try {
-                    await waitForAuth();
-                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'visitors_log'), {
+                    const user = await authPromise; // Esperar autenticación
+                    if (!user) return;
+                    
+                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'), {
                         name: name,
                         timestamp: serverTimestamp(),
-                        uid: currentUser.uid
+                        uid: user.uid
                     });
                 } catch (e) { console.error("Error saving visitor", e); }
             },
             subscribeToVisitors: (callback) => {
                 if (!db) { callback([]); return () => {}; }
                 
-                const q = query(collection(db, 'artifacts', appId, 'public', 'data', 'visitors_log'));
-                return onSnapshot(q, (snapshot) => {
-                    const visitors = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                    // Ordenar en cliente para evitar errores de índice en Firestore
-                    visitors.sort((a, b) => {
-                        const tA = a.timestamp?.seconds || 0;
-                        const tB = b.timestamp?.seconds || 0;
-                        return tB - tA; // Más reciente primero
+                let unsubscribeSnapshot = null;
+                let isCancelled = false;
+
+                // Esperar autenticación antes de suscribirse
+                authPromise.then((user) => {
+                    if (isCancelled || !user) return;
+
+                    const q = query(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'));
+                    unsubscribeSnapshot = onSnapshot(q, (snapshot) => {
+                        const visitors = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                        // Ordenamiento manual en cliente para evitar errores de índice
+                        visitors.sort((a, b) => {
+                            const timeA = a.timestamp?.seconds || 0;
+                            const timeB = b.timestamp?.seconds || 0;
+                            return timeB - timeA; // Más reciente primero
+                        });
+                        callback(visitors);
+                    }, (error) => {
+                        console.error("Snapshot error:", error);
                     });
-                    callback(visitors);
                 });
+
+                return () => {
+                    isCancelled = true;
+                    if (unsubscribeSnapshot) unsubscribeSnapshot();
+                };
             }
         };
     </script>
@@ -351,7 +370,13 @@
             useEffect(() => {
                 const init = async () => {
                     const savedName = safeStorage.getItem('magistube_username');
-                    if (savedName) { setUserName(savedName); if (window.DB_API) window.DB_API.saveVisitor(savedName); }
+                    if (savedName) { 
+                        setUserName(savedName); 
+                        // Esperar a que window.DB_API esté definido antes de usarlo
+                        if (window.DB_API && window.DB_API.saveVisitor) {
+                            window.DB_API.saveVisitor(savedName); 
+                        }
+                    }
                     try {
                         setLoading(true);
                         const [resTV, resSeries, resMovies] = await Promise.all([ fetch(URLS.TV), fetch(URLS.SERIES), fetch(URLS.MOVIES) ]);
@@ -369,8 +394,24 @@
                 init();
             }, []);
 
-            const handleIntroFinish = () => { setShowIntro(false); if (!safeStorage.getItem('magistube_username')) { setShowNameModal(true); } else { const name = safeStorage.getItem('magistube_username'); setUserName(name); if (window.DB_API) window.DB_API.saveVisitor(name); } };
-            const handleSaveName = (name) => { safeStorage.setItem('magistube_username', name); setUserName(name); setShowNameModal(false); if (window.DB_API) window.DB_API.saveVisitor(name); };
+            const handleIntroFinish = () => { 
+                setShowIntro(false); 
+                if (!safeStorage.getItem('magistube_username')) { 
+                    setShowNameModal(true); 
+                } else { 
+                    const name = safeStorage.getItem('magistube_username'); 
+                    setUserName(name); 
+                    if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(name); 
+                } 
+            };
+
+            const handleSaveName = (name) => { 
+                safeStorage.setItem('magistube_username', name); 
+                setUserName(name); 
+                setShowNameModal(false); 
+                if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(name); 
+            };
+
             const parseM3U = (data) => { const lines = data.split('\n'); const channels = []; for (let i = 0; i < lines.length; i++) { if (lines[i].trim().startsWith('#EXTINF:')) { const url = lines[i + 1]?.trim(); if (url && url.startsWith('http')) { const info = lines[i]; const title = info.split(',')[1]?.trim() || 'Canal'; const logo = info.match(/tvg-logo="([^"]*)"/)?.[1]; const group = info.match(/group-title="([^"]*)"/)?.[1] || 'General'; channels.push({ id: `tv-${i}`, title, image: logo, group, url, type: 'tv' }); } } } return channels; };
             const playUrl = (selectedItem?.type === 'tv' || selectedItem?.type === 'movie') ? selectedItem.url : (selectedItem?.type === 'series' && selectedEpisode) ? selectedEpisode.url : '';
             const isDriveLink = playUrl && playUrl.includes('drive.google.com');
