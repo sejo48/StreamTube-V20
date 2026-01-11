@@ -5,18 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MAGIS Tube Ultimate - Jorge</title>
     
-    <!-- --- CONFIGURACIÓN DE ESTADÍSTICAS (GOOGLE ANALYTICS) --- -->
-    <!-- 1. Crea tu cuenta en analytics.google.com -->
-    <!-- 2. Reemplaza 'G-XXXXXXXXXX' con tu ID de medición real abajo -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    <!-- -------------------------------------------------------- -->
-    
     <!-- Librerías Externas -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -111,6 +99,16 @@
     <script type="text/babel">
         const { useState, useEffect, useRef, useMemo } = React;
 
+        // --- UTILIDADES SEGURAS PARA STORAGE ---
+        const safeStorage = {
+            getItem: (key) => {
+                try { return localStorage.getItem(key); } catch (e) { return null; }
+            },
+            setItem: (key, value) => {
+                try { localStorage.setItem(key, value); } catch (e) { /* ignore */ }
+            }
+        };
+
         // --- NOTIFICACIONES ---
         const NOTIFICATIONS = [
             { id: 1, date: "15 Ene", title: "Nueva Función", message: "Ahora puedes continuar viendo tus películas y series donde las dejaste.", type: "success" },
@@ -124,7 +122,7 @@
             MOVIES: 'https://raw.githubusercontent.com/sejo48/peliculas/refs/heads/main/peliculas.json'
         };
 
-        // --- ICONOS CORREGIDOS ---
+        // --- ICONOS ---
         const Icon = ({ name, size = 24, className, fill = "none" }) => {
             const icons = {
                 search: <path d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 111.414-1.414 7.5 7.5 0 01-1.414 1.414z" />,
@@ -268,7 +266,7 @@
 
             useEffect(() => {
                 const init = async () => {
-                    const savedName = localStorage.getItem('magistube_username');
+                    const savedName = safeStorage.getItem('magistube_username');
                     if (savedName) { setUserName(savedName); if (window.DB_API) window.DB_API.saveVisitor(savedName); }
                     try {
                         setLoading(true);
@@ -282,19 +280,19 @@
                         setContent({ tv: tvChannels, series: seriesList, movies: moviesList });
                     } catch (err) { console.error("Error cargando datos", err); } finally { setLoading(false); }
                 };
-                const storedFavs = localStorage.getItem('magistube_favs'); if (storedFavs) setFavorites(JSON.parse(storedFavs));
-                const storedProgress = localStorage.getItem('magistube_progress'); if (storedProgress) setWatchProgress(JSON.parse(storedProgress));
+                const storedFavs = safeStorage.getItem('magistube_favs'); if (storedFavs) setFavorites(JSON.parse(storedFavs));
+                const storedProgress = safeStorage.getItem('magistube_progress'); if (storedProgress) setWatchProgress(JSON.parse(storedProgress));
                 init();
             }, []);
 
-            const handleIntroFinish = () => { setShowIntro(false); if (!localStorage.getItem('magistube_username')) { setShowNameModal(true); } else { const name = localStorage.getItem('magistube_username'); setUserName(name); if (window.DB_API) window.DB_API.saveVisitor(name); } };
-            const handleSaveName = (name) => { localStorage.setItem('magistube_username', name); setUserName(name); setShowNameModal(false); if (window.DB_API) window.DB_API.saveVisitor(name); };
+            const handleIntroFinish = () => { setShowIntro(false); if (!safeStorage.getItem('magistube_username')) { setShowNameModal(true); } else { const name = safeStorage.getItem('magistube_username'); setUserName(name); if (window.DB_API) window.DB_API.saveVisitor(name); } };
+            const handleSaveName = (name) => { safeStorage.setItem('magistube_username', name); setUserName(name); setShowNameModal(false); if (window.DB_API) window.DB_API.saveVisitor(name); };
             const parseM3U = (data) => { const lines = data.split('\n'); const channels = []; for (let i = 0; i < lines.length; i++) { if (lines[i].trim().startsWith('#EXTINF:')) { const url = lines[i + 1]?.trim(); if (url && url.startsWith('http')) { const info = lines[i]; const title = info.split(',')[1]?.trim() || 'Canal'; const logo = info.match(/tvg-logo="([^"]*)"/)?.[1]; const group = info.match(/group-title="([^"]*)"/)?.[1] || 'General'; channels.push({ id: `tv-${i}`, title, image: logo, group, url, type: 'tv' }); } } } return channels; };
             const playUrl = (selectedItem?.type === 'tv' || selectedItem?.type === 'movie') ? selectedItem.url : (selectedItem?.type === 'series' && selectedEpisode) ? selectedEpisode.url : '';
             const isDriveLink = playUrl && playUrl.includes('drive.google.com');
-            const handleVideoProgress = (e) => { const time = e.target.currentTime; const duration = e.target.duration; if (!duration || !selectedItem) return; const pct = (time / duration) * 100; const itemId = selectedItem.id || selectedItem.title; const newProgress = { ...watchProgress, [itemId]: { pct: pct, time: time, item: selectedItem, timestamp: Date.now() } }; setWatchProgress(newProgress); localStorage.setItem('magistube_progress', JSON.stringify(newProgress)); };
+            const handleVideoProgress = (e) => { const time = e.target.currentTime; const duration = e.target.duration; if (!duration || !selectedItem) return; const pct = (time / duration) * 100; const itemId = selectedItem.id || selectedItem.title; const newProgress = { ...watchProgress, [itemId]: { pct: pct, time: time, item: selectedItem, timestamp: Date.now() } }; setWatchProgress(newProgress); safeStorage.setItem('magistube_progress', JSON.stringify(newProgress)); };
             useEffect(() => { if (isLocked || !playUrl || isDriveLink || !videoRef.current) return; const video = videoRef.current; if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; } const itemId = selectedItem?.id || selectedItem?.title; const saved = watchProgress[itemId]; const onLoadedMetadata = () => { if (saved && saved.time > 0 && saved.pct < 95) video.currentTime = saved.time; }; video.addEventListener('loadedmetadata', onLoadedMetadata); if (Hls.isSupported() && (playUrl.includes('.m3u8') || selectedItem?.type === 'tv')) { const hls = new Hls(); hlsRef.current = hls; hls.loadSource(playUrl); hls.attachMedia(video); hls.on(Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => {})); } else { video.src = playUrl; video.load(); video.play().catch(() => {}); } return () => video.removeEventListener('loadedmetadata', onLoadedMetadata); }, [playUrl, isDriveLink, selectedItem, isLocked]);
-            const toggleFavorite = (item) => { const itemId = item.id || item.title; const newFavs = favorites.some(f => (f.id || f.title) === itemId) ? favorites.filter(f => (f.id || f.title) !== itemId) : [item, ...favorites]; setFavorites(newFavs); localStorage.setItem('magistube_favs', JSON.stringify(newFavs)); };
+            const toggleFavorite = (item) => { const itemId = item.id || item.title; const newFavs = favorites.some(f => (f.id || f.title) === itemId) ? favorites.filter(f => (f.id || f.title) !== itemId) : [item, ...favorites]; setFavorites(newFavs); safeStorage.setItem('magistube_favs', JSON.stringify(newFavs)); };
             const handlePlay = (item) => { const code = item.codigo || item.password || item.pin; if (code) { setSelectedItem(item); setIsLocked(true); } else { setSelectedItem(item); setIsLocked(false); } setExpandedSeason(0); if (item.type === 'series') { const firstEp = item.seasons?.[0]?.episodes?.[0]; setSelectedEpisode(firstEp || null); } if (item.type !== 'tv' || window.innerWidth < 1024) window.scrollTo({ top: 0, behavior: 'smooth' }); };
             const getDisplayContent = () => { let list = activeTab === 'home' ? [...content.movies.slice(0,20), ...content.series.slice(0,20), ...content.tv.slice(0,20)] : activeTab === 'favorites' ? favorites : content[activeTab] || []; if (search) return list.filter(i => (i.title || i.name).toLowerCase().includes(search.toLowerCase())); return list; };
             const continueWatchingItems = useMemo(() => { if (activeTab !== 'home' || search) return []; return Object.values(watchProgress).filter(p => p.pct > 1 && p.pct < 95 && p.item).sort((a, b) => b.timestamp - a.timestamp).slice(0, 10).map(p => p.item); }, [watchProgress, activeTab, search]);
