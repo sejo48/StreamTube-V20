@@ -59,95 +59,104 @@
 <body>
     <div id="root"></div>
 
-    <!-- Firebase - Módulo Robusto y Seguro -->
+    <!-- Firebase / Modo Híbrido -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        // Intentar obtener configuración del entorno (Solo funciona en Preview)
+        const envConfig = typeof __firebase_config !== 'undefined' ? __firebase_config : '{}';
+        const firebaseConfig = JSON.parse(envConfig);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'magis-tube-local';
 
-        let db;
-        let auth;
-        let authPromise = Promise.resolve(null); // Default resolved if no config
+        let db = null;
+        let auth = null;
+        let currentUser = null;
+        let useLocalStorage = true; // Por defecto usar LocalStorage (GitHub mode)
 
+        // Si hay configuración real, intentamos conectar a Firebase
         if (Object.keys(firebaseConfig).length > 0) {
             try {
                 const app = initializeApp(firebaseConfig);
                 auth = getAuth(app);
                 db = getFirestore(app);
-
-                // Crear una promesa que se resuelve cuando el usuario está autenticado
-                authPromise = new Promise((resolve) => {
-                    const unsubscribe = onAuthStateChanged(auth, (user) => {
-                        if (user) {
-                            resolve(user);
-                            // No desuscribimos inmediatamente para mantener el estado actualizado si cambia,
-                            // pero para la promesa inicial ya resolvimos.
-                        }
-                    });
-
-                    // Iniciar proceso de login
-                    if (initialAuthToken) {
-                        signInWithCustomToken(auth, initialAuthToken).catch(e => {
-                            console.error("Token auth failed, falling back to anon", e);
-                            signInAnonymously(auth);
-                        });
-                    } else {
-                        signInAnonymously(auth).catch(e => console.error("Anon auth failed", e));
-                    }
+                
+                onAuthStateChanged(auth, (user) => {
+                    currentUser = user;
                 });
-
+                
+                signInAnonymously(auth).catch(e => console.warn("Modo offline activado:", e));
+                useLocalStorage = false; // Intentamos usar Firebase
             } catch (e) {
-                console.error("Firebase init error", e);
+                console.warn("Error init Firebase, usando modo local:", e);
+                useLocalStorage = true;
             }
         }
 
+        // API Híbrida: Funciona con Firebase O con LocalStorage
         window.DB_API = {
             saveVisitor: async (name) => {
-                if (!db) return;
-                try {
-                    const user = await authPromise; // Esperar autenticación
-                    if (!user) return;
-                    
-                    await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'), {
-                        name: name,
-                        timestamp: serverTimestamp(),
-                        uid: user.uid
-                    });
-                } catch (e) { console.error("Error saving visitor", e); }
-            },
-            subscribeToVisitors: (callback) => {
-                if (!db) { callback([]); return () => {}; }
-                
-                let unsubscribeSnapshot = null;
-                let isCancelled = false;
+                if (!name) return;
 
-                // Esperar autenticación antes de suscribirse
-                authPromise.then((user) => {
-                    if (isCancelled || !user) return;
-
-                    const q = query(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'));
-                    unsubscribeSnapshot = onSnapshot(q, (snapshot) => {
-                        const visitors = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                        // Ordenamiento manual en cliente para evitar errores de índice
-                        visitors.sort((a, b) => {
-                            const timeA = a.timestamp?.seconds || 0;
-                            const timeB = b.timestamp?.seconds || 0;
-                            return timeB - timeA; // Más reciente primero
+                // 1. Intento Firebase (Si estamos en el editor)
+                if (db && auth && currentUser) {
+                    try {
+                        await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'), {
+                            name: name,
+                            timestamp: serverTimestamp(),
+                            uid: currentUser.uid
                         });
-                        callback(visitors);
-                    }, (error) => {
-                        console.error("Snapshot error:", error);
-                    });
-                });
+                        return; // Éxito, salimos
+                    } catch (e) {
+                        console.warn("Fallo guardado en nube, guardando localmente.");
+                    }
+                }
 
-                return () => {
-                    isCancelled = true;
-                    if (unsubscribeSnapshot) unsubscribeSnapshot();
-                };
+                // 2. Fallback LocalStorage (Si estamos en GitHub o Firebase falla)
+                try {
+                    const localData = JSON.parse(localStorage.getItem('magis_local_visitors') || '[]');
+                    const newVisitor = {
+                        name: name,
+                        timestamp: { seconds: Date.now() / 1000 }, // Simular timestamp de Firebase
+                        uid: 'local-user'
+                    };
+                    // Evitar duplicados exactos muy recientes
+                    const isDuplicate = localData.some(v => v.name === name && (Date.now()/1000 - v.timestamp.seconds) < 60);
+                    if (!isDuplicate) {
+                        localData.push(newVisitor);
+                        localStorage.setItem('magis_local_visitors', JSON.stringify(localData));
+                    }
+                } catch (e) { console.error("Error localStorage", e); }
+            },
+
+            subscribeToVisitors: (callback) => {
+                // 1. Intento Firebase
+                if (db) {
+                    try {
+                        const q = query(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'));
+                        return onSnapshot(q, (snapshot) => {
+                            const visitors = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                            visitors.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
+                            callback(visitors);
+                        }, (err) => {
+                            // Si falla la suscripción (permisos/red), devolver datos locales
+                            console.warn("Usando datos locales por error de red.");
+                            const localData = JSON.parse(localStorage.getItem('magis_local_visitors') || '[]');
+                            localData.sort((a, b) => b.timestamp.seconds - a.timestamp.seconds);
+                            callback(localData);
+                        });
+                    } catch (e) {
+                        // Fallo directo al crear query
+                    }
+                }
+
+                // 2. Fallback LocalStorage inmediato
+                // Simula una suscripción devolviendo los datos locales
+                const localData = JSON.parse(localStorage.getItem('magis_local_visitors') || '[]');
+                localData.sort((a, b) => b.timestamp.seconds - a.timestamp.seconds);
+                callback(localData);
+                return () => {}; // Función de limpieza vacía
             }
         };
     </script>
