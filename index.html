@@ -145,7 +145,7 @@
     <script type="text/babel">
         const { useState, useEffect, useRef, useMemo } = React;
 
-        // --- UTILIDADES SEGURAS PARA STORAGE ---
+        // --- UTILIDADES SEGURAS ---
         const safeStorage = {
             getItem: (key) => { try { return localStorage.getItem(key); } catch (e) { return null; } },
             setItem: (key, value) => { try { localStorage.setItem(key, value); } catch (e) { /* ignore */ } }
@@ -254,7 +254,7 @@
             );
         };
 
-        const AdminModal = ({ onClose }) => {
+        const AdminModal = ({ onClose, onSent }) => {
             const [title, setTitle] = useState('');
             const [message, setMessage] = useState('');
             const [type, setType] = useState('default');
@@ -268,7 +268,8 @@
                 if (type === 'alert') tags.push('warning');
                 
                 try {
-                    await fetch(`https://ntfy.sh/${NTFY_TOPIC}`, {
+                    // Añadimos un timestamp para evitar cache en la petición
+                    await fetch(`https://ntfy.sh/${NTFY_TOPIC}?t=${Date.now()}`, {
                         method: 'POST',
                         body: message,
                         headers: {
@@ -276,11 +277,13 @@
                             'Tags': tags.join(',')
                         }
                     });
-                    alert('Notificación enviada');
+                    
+                    if(onSent) onSent(); // Llamamos al refresco
+                    alert('Notificación enviada con éxito');
                     onClose();
                 } catch (e) {
                     console.error(e);
-                    alert('Error enviando');
+                    alert('Error enviando notificación');
                 } finally {
                     setSending(false);
                 }
@@ -340,40 +343,7 @@
         const QRModal = ({ onClose }) => { const currentUrl = window.location.href; const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(currentUrl)}`; return (<div className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}><div className="bg-white p-6 rounded-2xl max-w-sm w-full text-center relative" onClick={e => e.stopPropagation()}><button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-black"><Icon name="x" size={24} stroke="currentColor" /></button><h3 className="text-2xl font-bold text-black mb-2">¡Comparte la App!</h3><p className="text-gray-500 text-sm mb-6">Escanea o copia el enlace.</p><div className="bg-white p-2 rounded-lg shadow-inner border border-gray-200 inline-block mb-4"><img src={qrUrl} className="w-48 h-48 object-contain" /></div><div className="flex items-center gap-2 bg-gray-100 p-2 rounded-lg border border-gray-300"><input type="text" readOnly value={currentUrl} className="bg-transparent flex-1 text-xs text-gray-600 outline-none truncate" onClick={(e) => e.target.select()}/></div><p className="text-xs text-gray-400 mt-4">MAGIS Tube Ultimate</p></div></div>); };
         
         // --- NOTIFICACIONES (NTFY) ---
-        const NotificationsModal = ({ onClose }) => {
-            const [notifs, setNotifs] = useState([]);
-            const [loading, setLoading] = useState(true);
-
-            useEffect(() => {
-                const fetchNotifs = async () => {
-                    try {
-                        const res = await fetch(`https://ntfy.sh/${NTFY_TOPIC}/json?poll=1&since=1M`);
-                        const text = await res.text();
-                        const lines = text.trim().split('\n');
-                        const parsed = lines.map((line, idx) => {
-                            try {
-                                const d = JSON.parse(line);
-                                if(d.event !== 'message') return null;
-                                let type = 'info';
-                                if(d.tags) {
-                                    if(d.tags.includes('warning') || d.tags.includes('error')) type = 'alert';
-                                    else if(d.tags.includes('success') || d.tags.includes('check')) type = 'success';
-                                }
-                                return {
-                                    id: d.id || idx,
-                                    date: new Date(d.time * 1000).toLocaleDateString('es-ES', {day: 'numeric', month: 'short'}),
-                                    title: d.title || 'Aviso',
-                                    message: d.message,
-                                    type: type
-                                };
-                            } catch(e) { return null; }
-                        }).filter(Boolean).reverse();
-                        setNotifs(parsed);
-                    } catch (e) { console.error(e); } finally { setLoading(false); }
-                };
-                fetchNotifs();
-            }, []);
-
+        const NotificationsModal = ({ onClose, items, loading }) => {
             return (
                 <div className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-start justify-end p-0 animate-fade-in" onClick={onClose}>
                     <div className="h-full w-full sm:w-96 bg-[#1f2937] border-l border-white/10 shadow-2xl p-6 overflow-y-auto animate-slide-left" onClick={e => e.stopPropagation()}>
@@ -387,8 +357,8 @@
                         </div>
                         <div className="space-y-4">
                             {loading ? <p className="text-gray-500 text-center py-10">Cargando...</p> : 
-                            notifs.length === 0 ? <p className="text-gray-500 text-center py-10">No hay avisos recientes.</p> :
-                            notifs.map(note => (
+                            items.length === 0 ? <p className="text-gray-500 text-center py-10">No hay avisos recientes.</p> :
+                            items.map(note => (
                                 <div key={note.id} className="bg-black/40 border border-white/5 rounded-xl p-4 relative group hover:border-white/10 transition-colors">
                                     <div className="flex justify-between items-start mb-2">
                                         <span className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${note.type === 'success' ? 'bg-green-500/20 text-green-400' : note.type === 'alert' ? 'bg-red-500/20 text-red-400' : 'bg-blue-500/20 text-blue-400'}`}>
@@ -506,12 +476,13 @@
             const [showNotif, setShowNotif] = useState(false);
             const [showUserList, setShowUserList] = useState(false);
             const [showNameModal, setShowNameModal] = useState(false);
-            const [showAdmin, setShowAdmin] = useState(false); // Estado para el modal de admin
+            const [showAdmin, setShowAdmin] = useState(false); 
             const [userName, setUserName] = useState('');
             const [activeTab, setActiveTab] = useState('home');
             const [content, setContent] = useState({ tv: [], series: [], movies: [] });
             const [search, setSearch] = useState('');
             const [notifications, setNotifications] = useState([]);
+            const [notifLoading, setNotifLoading] = useState(true);
             const [selectedItem, setSelectedItem] = useState(null);
             const [selectedEpisode, setSelectedEpisode] = useState(null);
             const [isLocked, setIsLocked] = useState(false); 
@@ -522,34 +493,38 @@
             const videoRef = useRef(null);
             const hlsRef = useRef(null);
 
-            // Fetch NTFY notifications
+            // FUNCIÓN PARA OBTENER NOTIFICACIONES DE NTFY
+            const fetchNotifs = async () => {
+                setNotifLoading(true);
+                try {
+                    // Agregamos timestamp para evitar cache
+                    const res = await fetch(`https://ntfy.sh/${NTFY_TOPIC}/json?poll=1&since=1M&t=${Date.now()}`);
+                    const text = await res.text();
+                    const lines = text.trim().split('\n');
+                    const parsed = lines.map((line, idx) => {
+                        try {
+                            const d = JSON.parse(line);
+                            if(d.event !== 'message') return null;
+                            let type = 'info';
+                            if(d.tags) {
+                                if(d.tags.includes('warning') || d.tags.includes('error')) type = 'alert';
+                                else if(d.tags.includes('success') || d.tags.includes('check')) type = 'success';
+                            }
+                            return {
+                                id: d.id || idx,
+                                date: new Date(d.time * 1000).toLocaleDateString('es-ES', {day: 'numeric', month: 'short'}),
+                                title: d.title || 'Aviso',
+                                message: d.message,
+                                type: type
+                            };
+                        } catch(e) { return null; }
+                    }).filter(Boolean).reverse();
+                    setNotifications(parsed);
+                } catch (e) { console.error("Error fetching notifications", e); } finally { setNotifLoading(false); }
+            };
+
+            // Fetch notifications on load
             useEffect(() => {
-                const fetchNotifs = async () => {
-                    try {
-                        const res = await fetch(`https://ntfy.sh/${NTFY_TOPIC}/json?poll=1&since=1M`);
-                        const text = await res.text();
-                        const lines = text.trim().split('\n');
-                        const parsed = lines.map((line, idx) => {
-                            try {
-                                const d = JSON.parse(line);
-                                if(d.event !== 'message') return null;
-                                let type = 'info';
-                                if(d.tags) {
-                                    if(d.tags.includes('warning') || d.tags.includes('error')) type = 'alert';
-                                    else if(d.tags.includes('success') || d.tags.includes('check')) type = 'success';
-                                }
-                                return {
-                                    id: d.id || idx,
-                                    date: new Date(d.time * 1000).toLocaleDateString('es-ES', {day: 'numeric', month: 'short'}),
-                                    title: d.title || 'Aviso',
-                                    message: d.message,
-                                    type: type
-                                };
-                            } catch(e) { return null; }
-                        }).filter(Boolean).reverse();
-                        setNotifications(parsed);
-                    } catch (e) { console.error(e); }
-                };
                 fetchNotifs();
             }, []);
 
@@ -653,8 +628,8 @@
                     {showNameModal && <NameModal onSave={handleSaveName} />}
                     {showUserList && <UserListModal onClose={() => setShowUserList(false)} />}
                     {showQR && <QRModal onClose={() => setShowQR(false)} />}
-                    {showNotif && <NotificationsModal onClose={() => setShowNotif(false)} items={notifications} />}
-                    {showAdmin && <AdminModal onClose={() => setShowAdmin(false)} />}
+                    {showNotif && <NotificationsModal onClose={() => setShowNotif(false)} items={notifications} loading={notifLoading} />}
+                    {showAdmin && <AdminModal onClose={() => setShowAdmin(false)} onSent={fetchNotifs} />}
                     <main className="flex-1 md:ml-20 min-h-screen pt-16 md:pt-0 pb-20 md:pb-0 relative z-10">
                         {(() => {
                             if (activeTab === 'favorites' && !selectedItem) {
