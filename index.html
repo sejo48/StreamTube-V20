@@ -76,7 +76,7 @@
       .only-desktop { display: flex !important; }
     }
     /* TV desktop: ocupa toda la altura sin scroll externo */
-    .tv-dt { display:none; flex:1; min-height:0; overflow:hidden; flex-direction:row; }
+    .tv-dt { display:none; flex:1; min-height:0; height:100%; overflow:hidden; flex-direction:row; }
     @media (min-width: 768px) { .tv-dt { display:flex !important; } }
 
     /* Card hover overlay */
@@ -719,22 +719,22 @@ const App=()=>{
               <div className="tv-dt">
 
                 {/* ─ Columna izquierda: REPRODUCTOR ─ */}
-                <div style={{flex:1,minWidth:0,background:'#000',display:'flex',flexDirection:'column',overflow:'hidden',position:'relative'}}>
+                <div style={{flex:1,minWidth:0,background:'#000',display:'flex',flexDirection:'column',overflow:'hidden',position:'relative',height:'100%'}}>
 
                   {selItem&&selItem.type==='tv'&&!locked ? (
-                    /* Canal activo → video a pantalla completa */
-                    <div style={{position:'absolute',inset:0}}>
+                    /* Canal activo → video ocupa TODO el espacio flex disponible */
+                    <div style={{flex:1,position:'relative',minHeight:0,background:'#000'}}>
                       {isDrive
                         ? <iframe src={playUrl} allow="autoplay;encrypted-media;fullscreen" allowFullScreen
                             style={{position:'absolute',inset:0,width:'100%',height:'100%',border:'none'}}/>
                         : <video ref={videoRef}
-                            style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'contain'}}
+                            style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'contain',background:'#000'}}
                             controls autoPlay playsInline onTimeUpdate={onVidProg}/>
                       }
                       {/* Info overlay bottom */}
                       <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'14px 20px',
                           background:'linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 100%)',
-                          pointerEvents:'none'}}>
+                          pointerEvents:'none',zIndex:2}}>
                         <div style={{display:'flex',alignItems:'center',gap:10}}>
                           {selItem.image&&(
                             <div style={{background:'rgba(0,0,0,.5)',borderRadius:6,padding:3,border:'1px solid rgba(255,255,255,.12)'}}>
@@ -754,7 +754,7 @@ const App=()=>{
                     </div>
                   ) : (
                     /* Sin canal → pantalla de bienvenida */
-                    <div style={{position:'absolute',inset:0,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:20,padding:40,textAlign:'center',background:'#050709'}}>
+                    <div style={{flex:1,minHeight:0,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:20,padding:40,textAlign:'center',background:'#050709'}}>
                       <div style={{position:'relative',display:'inline-flex'}}>
                         <div style={{width:100,height:100,borderRadius:'50%',background:'radial-gradient(circle,rgba(229,9,20,.12),rgba(229,9,20,.02))',border:'1px solid rgba(229,9,20,.2)',display:'flex',alignItems:'center',justifyContent:'center'}}>
                           <IC n="tv" s={44} c="text-red-500"/>
@@ -933,11 +933,11 @@ const App=()=>{
                   /* ══════════════════════════════════
                      VISTA PLAYER MÓVIL — app nativa
                   ══════════════════════════════════ */
-                  <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:'#000'}}>
+                  <div ref={tvPlayerRef} style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:'#000'}}>
 
                     {/* Barra superior — canal activo */}
                     <div style={{display:'flex',alignItems:'center',gap:10,padding:'9px 12px',background:'#0a0e13',borderBottom:'1px solid rgba(255,255,255,.07)',flexShrink:0,minHeight:52}}>
-                      <button onClick={()=>{setTvView('list');}}
+                      <button onClick={()=>{exitFullscreen();setTvView('list');}}
                         style={{width:38,height:38,borderRadius:10,background:'rgba(255,255,255,.07)',border:'none',display:'flex',alignItems:'center',justifyContent:'center',cursor:'pointer',color:'#fff',flexShrink:0}}>
                         <IC n="back" s={19}/>
                       </button>
@@ -954,20 +954,52 @@ const App=()=>{
                           {selItem?.group&&<span style={{fontSize:10,color:'#6b7280'}}>· {selItem.group}</span>}
                         </div>
                       </div>
+                      {/* Botón favorito */}
                       <button onClick={()=>toggleFav(selItem)}
                         style={{width:36,height:36,borderRadius:9,background:'rgba(255,255,255,.06)',border:'none',display:'flex',alignItems:'center',justifyContent:'center',cursor:'pointer',flexShrink:0}}>
                         <IC n="heart" s={18} f={favs.some(f=>f.id===selItem?.id)?'#E50914':'none'} c={favs.some(f=>f.id===selItem?.id)?'text-red-500':'text-gray-500'}/>
                       </button>
+                      {/* Botón fullscreen manual — por si no hay sensor de orientación */}
+                      <button
+                        onClick={()=>enterFullscreen(videoRef.current||tvPlayerRef.current)}
+                        title="Pantalla completa"
+                        style={{width:36,height:36,borderRadius:9,background:'rgba(255,255,255,.06)',border:'none',display:'flex',alignItems:'center',justifyContent:'center',cursor:'pointer',color:'#9ca3af',flexShrink:0}}>
+                        {/* Icono expand */}
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+                          <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+                        </svg>
+                      </button>
                     </div>
+
+                    {/* ── AVISO ROTACIÓN — aparece solo una vez por sesión ── */}
+                    {selItem&&!locked&&!isDrive&&(()=>{
+                      const shown=sessionStorage.getItem('mgRotHint');
+                      if(shown)return null;
+                      sessionStorage.setItem('mgRotHint','1');
+                      return(
+                        <div style={{background:'rgba(229,9,20,.12)',borderBottom:'1px solid rgba(229,9,20,.2)',padding:'7px 14px',display:'flex',alignItems:'center',gap:8,flexShrink:0}}>
+                          <span style={{fontSize:17}}>📱</span>
+                          <span style={{fontSize:11,color:'#fca5a5',flex:1}}>Gira tu móvil para entrar en <strong style={{color:'#fff'}}>pantalla completa</strong> automáticamente</span>
+                        </div>
+                      );
+                    })()}
 
                     {/* Video 16:9 — grande y prominente */}
                     <div style={{width:'100%',position:'relative',flexShrink:0,background:'#000',aspectRatio:'16/9'}}>
                       {locked?(
-                        <LockScreen code={selItem.codigo||selItem.password||selItem.pin} onUnlock={()=>setLocked(false)} onCancel={()=>{setTvView('list');setSelItem(null);setLocked(false);}}/>
+                        <LockScreen code={selItem.codigo||selItem.password||selItem.pin} onUnlock={()=>setLocked(false)} onCancel={()=>{exitFullscreen();setTvView('list');setSelItem(null);setLocked(false);}}/>
                       ):isDrive?(
                         <div className="pw"><iframe src={playUrl} allow="autoplay;encrypted-media;fullscreen" allowFullScreen/></div>
                       ):(
-                        <video ref={videoRef} style={{width:'100%',height:'100%',objectFit:'contain'}} controls autoPlay playsInline onTimeUpdate={onVidProg}/>
+                        <video
+                          ref={videoRef}
+                          style={{width:'100%',height:'100%',objectFit:'contain'}}
+                          controls autoPlay playsInline
+                          /* webkit-playsinline necesario para iOS inline sin fullscreen forzado */
+                          x-webkit-airplay="allow"
+                          onTimeUpdate={onVidProg}
+                        />
                       )}
                     </div>
 
@@ -975,7 +1007,7 @@ const App=()=>{
                     <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:'#0d1117'}}>
 
                       {/* Sub-header sticky */}
-                      <div style={{display:'flex',alignItems:'center',gap:8,padding:'8px 12px',background:'#0a0e13',borderBottom:'1px solid rgba(255,255,255,.05)',flexShrink:0,position:'sticky',top:0,zIndex:5}}>
+                      <div style={{display:'flex',alignItems:'center',gap:8,padding:'8px 12px',background:'#0a0e13',borderBottom:'1px solid rgba(255,255,255,.05)',flexShrink:0}}>
                         <span style={{fontSize:10,fontWeight:800,textTransform:'uppercase',letterSpacing:1.2,color:'#9ca3af',display:'flex',alignItems:'center',gap:5,flex:1}}>
                           <span className="dot" style={{width:5,height:5}}/> Más canales
                         </span>
