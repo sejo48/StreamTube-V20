@@ -75,8 +75,9 @@
       .only-mobile  { display: none !important; }
       .only-desktop { display: flex !important; }
     }
-    .show-sm { display: block !important; }
-    @media (min-width: 640px) { .hide-sm { display: none !important; } }
+    /* TV desktop: ocupa toda la altura sin scroll externo */
+    .tv-dt { display:none; flex:1; min-height:0; overflow:hidden; flex-direction:row; }
+    @media (min-width: 768px) { .tv-dt { display:flex !important; } }
 
     /* Card hover overlay */
     .card-wrap:hover .card-overlay { opacity: 1; }
@@ -446,11 +447,78 @@ const App=()=>{
   // TV: en móvil, 'list' o 'player'
   const [tvView,setTvView]     = useState('list');
 
-  const videoRef = useRef(null);
-  const hlsRef   = useRef(null);
-  const scrollRef= useRef(null);
+  const videoRef   = useRef(null);
+  const hlsRef     = useRef(null);
+  const scrollRef  = useRef(null);
+  const tvPlayerRef= useRef(null); // contenedor del player TV móvil
 
   const pushToast=(msg,type)=>setToast({msg,type,id:Date.now()});
+
+  /* ─── FULLSCREEN AUTOMÁTICO AL ROTAR A LANDSCAPE EN MÓVIL ─── */
+  const isMobile=()=>window.innerWidth<=768||/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  // Entrar a fullscreen nativo
+  const enterFullscreen=async(el)=>{
+    if(!el)return;
+    try{
+      if(el.requestFullscreen)           await el.requestFullscreen();
+      else if(el.webkitRequestFullscreen)await el.webkitRequestFullscreen(); // iOS Safari
+      else if(el.mozRequestFullScreen)   await el.mozRequestFullScreen();
+      else if(el.msRequestFullscreen)    await el.msRequestFullscreen();
+    }catch(e){ console.warn('Fullscreen no disponible:',e); }
+  };
+
+  // Salir de fullscreen
+  const exitFullscreen=()=>{
+    try{
+      if(document.exitFullscreen&&document.fullscreenElement)           document.exitFullscreen();
+      else if(document.webkitExitFullscreen&&document.webkitFullscreenElement) document.webkitExitFullscreen();
+      else if(document.mozCancelFullScreen&&document.mozFullScreenElement)     document.mozCancelFullScreen();
+    }catch(e){}
+  };
+
+  // Detectar cambio de orientación → fullscreen automático en player TV móvil
+  useEffect(()=>{
+    const onOrientationChange=()=>{
+      if(!isMobile())return;
+      const isLandscape=window.innerWidth>window.innerHeight||window.screen?.orientation?.type?.includes('landscape');
+      const isWatchingTV=tvView==='player'&&selItem&&selItem.type==='tv'&&!locked;
+      if(isLandscape&&isWatchingTV){
+        // Preferir el video directamente (más compatible en Android)
+        const target=videoRef.current||tvPlayerRef.current;
+        enterFullscreen(target);
+      } else if(!isLandscape){
+        exitFullscreen();
+      }
+    };
+
+    // Escuchar ambos eventos para máxima compatibilidad
+    window.addEventListener('orientationchange',onOrientationChange);
+    window.addEventListener('resize',onOrientationChange);
+    screen.orientation?.addEventListener('change',onOrientationChange);
+
+    return()=>{
+      window.removeEventListener('orientationchange',onOrientationChange);
+      window.removeEventListener('resize',onOrientationChange);
+      screen.orientation?.removeEventListener('change',onOrientationChange);
+    };
+  },[tvView,selItem,locked]);
+
+  // Si sale del fullscreen manualmente (botón nativo), detectarlo
+  useEffect(()=>{
+    const onFsChange=()=>{
+      const fsEl=document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement;
+      if(!fsEl){
+        // Salió del fullscreen — si está en landscape, nada; si está en portrait, está bien
+      }
+    };
+    document.addEventListener('fullscreenchange',onFsChange);
+    document.addEventListener('webkitfullscreenchange',onFsChange);
+    return()=>{
+      document.removeEventListener('fullscreenchange',onFsChange);
+      document.removeEventListener('webkitfullscreenchange',onFsChange);
+    };
+  },[]);
 
   /* Debounce */
   useEffect(()=>{const t=setTimeout(()=>setDSearch(search),280);return()=>clearTimeout(t);},[search]);
@@ -620,7 +688,7 @@ const App=()=>{
         </aside>
 
         {/* ══ ÁREA PRINCIPAL ══ */}
-        <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',minWidth:0}}>
+        <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',minWidth:0,minHeight:0}}>
 
           {/* ── Header móvil (oculto cuando TV está reproduciendo en móvil) ── */}
           {!(isTV&&tvView==='player')&&(
@@ -647,70 +715,126 @@ const App=()=>{
           ══════════════════════════════════ */}
           {isTV?(
             <>
-              {/* ── DESKTOP: 2 columnas ── */}
-              <div className="only-desktop" style={{flex:1,overflow:'hidden'}}>
-                <div style={{display:'flex',height:'100%'}}>
-                  {/* Reproductor */}
-                  <div style={{flex:1,background:'#000',display:'flex',flexDirection:'column',overflow:'hidden',position:'relative',minWidth:0}}>
-                    {selItem&&selItem.type==='tv'&&!locked?(
-                      <div style={{flex:1,position:'relative'}}>
-                        {isDrive?<div className="pw" style={{position:'absolute',inset:0}}><iframe src={playUrl} allow="autoplay;encrypted-media;fullscreen" allowFullScreen/></div>
-                        :<video ref={videoRef} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'contain'}} controls autoPlay playsInline onTimeUpdate={onVidProg}/>}
-                        <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'12px 18px',background:'linear-gradient(to top,rgba(0,0,0,.85),transparent)',pointerEvents:'none'}}>
-                          <div style={{display:'flex',alignItems:'center',gap:10}}>
-                            {selItem.image&&<img src={selItem.image} style={{height:26,maxWidth:52,objectFit:'contain',background:'rgba(0,0,0,.4)',borderRadius:4,padding:2}} alt=""/>}
-                            <div>
-                              <div style={{fontWeight:800,fontSize:15}}>{selItem.title}</div>
-                              <div style={{display:'flex',alignItems:'center',gap:6,fontSize:11,color:'#E50914',fontWeight:700}}><span className="dot"/>EN VIVO · {selItem.group}</div>
+              {/* ══ DESKTOP TV — 2 columnas: reproductor + lista ══ */}
+              <div className="tv-dt">
+
+                {/* ─ Columna izquierda: REPRODUCTOR ─ */}
+                <div style={{flex:1,minWidth:0,background:'#000',display:'flex',flexDirection:'column',overflow:'hidden',position:'relative'}}>
+
+                  {selItem&&selItem.type==='tv'&&!locked ? (
+                    /* Canal activo → video a pantalla completa */
+                    <div style={{position:'absolute',inset:0}}>
+                      {isDrive
+                        ? <iframe src={playUrl} allow="autoplay;encrypted-media;fullscreen" allowFullScreen
+                            style={{position:'absolute',inset:0,width:'100%',height:'100%',border:'none'}}/>
+                        : <video ref={videoRef}
+                            style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'contain'}}
+                            controls autoPlay playsInline onTimeUpdate={onVidProg}/>
+                      }
+                      {/* Info overlay bottom */}
+                      <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'14px 20px',
+                          background:'linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 100%)',
+                          pointerEvents:'none'}}>
+                        <div style={{display:'flex',alignItems:'center',gap:10}}>
+                          {selItem.image&&(
+                            <div style={{background:'rgba(0,0,0,.5)',borderRadius:6,padding:3,border:'1px solid rgba(255,255,255,.12)'}}>
+                              <img src={selItem.image} style={{height:28,maxWidth:54,objectFit:'contain',display:'block'}} alt=""/>
+                            </div>
+                          )}
+                          <div>
+                            <div style={{fontWeight:900,fontSize:17,textShadow:'0 1px 6px rgba(0,0,0,.8)'}}>{selItem.title}</div>
+                            <div style={{display:'flex',alignItems:'center',gap:6,marginTop:2}}>
+                              <span className="dot" style={{width:7,height:7}}/>
+                              <span style={{fontSize:11,color:'#E50914',fontWeight:700,letterSpacing:.5}}>EN VIVO</span>
+                              {selItem.group&&<span style={{fontSize:11,color:'rgba(255,255,255,.5)'}}>· {selItem.group}</span>}
                             </div>
                           </div>
                         </div>
                       </div>
-                    ):(
-                      <div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:18,padding:40,textAlign:'center'}}>
-                        <div style={{width:90,height:90,borderRadius:'50%',background:'rgba(229,9,20,.07)',border:'1px solid rgba(229,9,20,.2)',display:'flex',alignItems:'center',justifyContent:'center',position:'relative'}}>
-                          <IC n="tv" s={40} c="text-red-500"/>
-                          <span className="dot" style={{position:'absolute',top:6,right:6}}/>
+                    </div>
+                  ) : (
+                    /* Sin canal → pantalla de bienvenida */
+                    <div style={{position:'absolute',inset:0,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:20,padding:40,textAlign:'center',background:'#050709'}}>
+                      <div style={{position:'relative',display:'inline-flex'}}>
+                        <div style={{width:100,height:100,borderRadius:'50%',background:'radial-gradient(circle,rgba(229,9,20,.12),rgba(229,9,20,.02))',border:'1px solid rgba(229,9,20,.2)',display:'flex',alignItems:'center',justifyContent:'center'}}>
+                          <IC n="tv" s={44} c="text-red-500"/>
                         </div>
-                        <div><h3 style={{fontSize:20,fontWeight:900,marginBottom:5}}>TV en Vivo</h3><p style={{fontSize:13,color:'#6b7280'}}>Selecciona un canal de la lista →</p></div>
-                        <div style={{display:'flex',gap:24}}>
-                          <div style={{textAlign:'center'}}><div style={{fontSize:26,fontWeight:900,color:'#E50914'}}>{data.tv.length}</div><div style={{fontSize:11,color:'#6b7280'}}>Canales</div></div>
-                          <div style={{textAlign:'center'}}><div style={{fontSize:26,fontWeight:900,color:'#eab308'}}>{favs.filter(f=>f.type==='tv').length}</div><div style={{fontSize:11,color:'#6b7280'}}>Favoritos</div></div>
-                        </div>
-                        {favs.filter(f=>f.type==='tv').length>0&&(
-                          <div style={{maxWidth:420}}>
-                            <div style={{fontSize:10,color:'#4b5563',textTransform:'uppercase',letterSpacing:2,marginBottom:10}}>Acceso rápido</div>
-                            <div style={{display:'flex',flexWrap:'wrap',gap:8,justifyContent:'center'}}>
-                              {favs.filter(f=>f.type==='tv').slice(0,8).map(ch=>(
-                                <button key={ch.id} onClick={()=>playItem(ch)} style={{background:'#1c2230',border:'1px solid rgba(255,255,255,.06)',borderRadius:10,padding:'8px 12px',cursor:'pointer',display:'flex',alignItems:'center',gap:6,color:'#d1d5db',fontSize:12,fontWeight:500}}>
-                                  {ch.image&&<img src={ch.image} style={{width:26,height:16,objectFit:'contain'}} alt=""/>}
-                                  <span>{ch.title}</span>
-                                </button>
-                              ))}
-                            </div>
-                          </div>
-                        )}
+                        <span className="dot" style={{position:'absolute',top:8,right:8,width:10,height:10}}/>
                       </div>
+                      <div>
+                        <h3 style={{fontSize:22,fontWeight:900,marginBottom:6}}>TV en Vivo</h3>
+                        <p style={{fontSize:14,color:'#4b5563',maxWidth:280,lineHeight:1.5}}>Selecciona un canal de la lista de la derecha para comenzar a ver.</p>
+                      </div>
+                      <div style={{display:'flex',gap:32,marginTop:4}}>
+                        <div style={{textAlign:'center'}}>
+                          <div style={{fontSize:30,fontWeight:900,color:'#E50914',lineHeight:1}}>{data.tv.length}</div>
+                          <div style={{fontSize:11,color:'#6b7280',marginTop:3}}>Canales</div>
+                        </div>
+                        <div style={{width:1,background:'rgba(255,255,255,.07)'}}/>
+                        <div style={{textAlign:'center'}}>
+                          <div style={{fontSize:30,fontWeight:900,color:'#eab308',lineHeight:1}}>{favs.filter(f=>f.type==='tv').length}</div>
+                          <div style={{fontSize:11,color:'#6b7280',marginTop:3}}>Favoritos</div>
+                        </div>
+                      </div>
+                      {/* Acceso rápido a favoritos */}
+                      {favs.filter(f=>f.type==='tv').length>0&&(
+                        <div style={{marginTop:6,width:'100%',maxWidth:440}}>
+                          <div style={{fontSize:10,color:'#374151',textTransform:'uppercase',letterSpacing:2,marginBottom:12}}>Acceso rápido</div>
+                          <div style={{display:'flex',flexWrap:'wrap',gap:8,justifyContent:'center'}}>
+                            {favs.filter(f=>f.type==='tv').slice(0,10).map(ch=>(
+                              <button key={ch.id} onClick={()=>playItem(ch)}
+                                style={{display:'flex',alignItems:'center',gap:7,padding:'7px 12px',background:'rgba(255,255,255,.04)',border:'1px solid rgba(255,255,255,.08)',borderRadius:10,cursor:'pointer',color:'#d1d5db',fontSize:12,fontWeight:600,transition:'all .15s'}}
+                                onMouseEnter={e=>{e.currentTarget.style.background='rgba(229,9,20,.12)';e.currentTarget.style.borderColor='rgba(229,9,20,.3)';}}
+                                onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,255,255,.04)';e.currentTarget.style.borderColor='rgba(255,255,255,.08)';}}>
+                                {ch.image&&<img src={ch.image} style={{width:28,height:18,objectFit:'contain'}} onError={e=>e.target.style.display='none'} alt=""/>}
+                                <span style={{overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',maxWidth:100}}>{ch.title}</span>
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {/* ─ Columna derecha: LISTA ─ */}
+                <div style={{width:300,flexShrink:0,background:'#0a0e13',borderLeft:'1px solid rgba(255,255,255,.06)',display:'flex',flexDirection:'column',overflow:'hidden'}}>
+
+                  {/* Header lista */}
+                  <div style={{padding:'13px 14px 10px',borderBottom:'1px solid rgba(255,255,255,.05)',flexShrink:0,background:'#080b10'}}>
+                    <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:10}}>
+                      <div style={{display:'flex',alignItems:'center',gap:7,fontSize:11,fontWeight:700,textTransform:'uppercase',letterSpacing:1,color:'#9ca3af'}}>
+                        <span className="dot" style={{width:6,height:6}}/>Canales en Vivo
+                      </div>
+                      <span style={{fontSize:10,background:'rgba(229,9,20,.1)',color:'#E50914',padding:'2px 8px',borderRadius:99,fontWeight:700}}>{filteredTV.length}</span>
+                    </div>
+                    <div style={{position:'relative'}}>
+                      <input type="text" value={search} onChange={e=>setSearch(e.target.value)} placeholder="Buscar canal..."
+                        style={{width:'100%',background:'#1c2230',border:'1px solid rgba(255,255,255,.08)',borderRadius:10,padding:'9px 12px 9px 33px',fontSize:13,color:'#fff',outline:'none',boxSizing:'border-box'}}/>
+                      <IC n="search" s={13} c="text-gray-500" style={{position:'absolute',left:10,top:10}}/>
+                      {search&&<button onClick={()=>setSearch('')} style={{position:'absolute',right:9,top:9,background:'transparent',border:'none',cursor:'pointer',color:'#6b7280',display:'flex'}}><IC n="x" s={13}/></button>}
+                    </div>
+                  </div>
+
+                  {/* Lista scrolleable */}
+                  <div style={{flex:1,overflowY:'auto',minHeight:0}}>
+                    {loading ? (
+                      Array.from({length:10}).map((_,i)=>(
+                        <div key={i} style={{display:'flex',alignItems:'center',gap:10,padding:'10px 13px',borderBottom:'1px solid rgba(255,255,255,.03)'}}>
+                          <div className="shimmer" style={{width:44,height:28,borderRadius:6,flexShrink:0}}/>
+                          <div style={{flex:1}}>
+                            <div className="shimmer" style={{height:10,borderRadius:3,marginBottom:5,width:'58%'}}/>
+                            <div className="shimmer" style={{height:9,borderRadius:3,width:'38%'}}/>
+                          </div>
+                        </div>
+                      ))
+                    ) : filteredTV.length===0 ? (
+                      <div style={{textAlign:'center',padding:'50px 20px',color:'#4b5563',fontSize:13}}>Sin resultados</div>
+                    ) : (
+                      filteredTV.map(ch=><TvRow key={ch.id} ch={ch} isActive={selItem?.id===ch.id} isFav={favs.some(f=>f.id===ch.id)} onPlay={playItem} onToggleFav={toggleFav}/>)
                     )}
                   </div>
-                  {/* Lista */}
-                  <div style={{width:295,flexShrink:0,background:'#0a0e13',borderLeft:'1px solid rgba(255,255,255,.05)',display:'flex',flexDirection:'column',overflow:'hidden'}}>
-                    <div style={{padding:'12px 13px',borderBottom:'1px solid rgba(255,255,255,.05)',flexShrink:0}}>
-                      <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:9}}>
-                        <div style={{display:'flex',alignItems:'center',gap:6,fontSize:11,fontWeight:700,textTransform:'uppercase',letterSpacing:1,color:'#9ca3af'}}><span className="dot"/>Canales</div>
-                        <span style={{fontSize:10,color:'#4b5563',background:'rgba(255,255,255,.05)',padding:'2px 7px',borderRadius:99}}>{filteredTV.length}</span>
-                      </div>
-                      <div style={{position:'relative'}}>
-                        <input type="text" value={search} onChange={e=>setSearch(e.target.value)} placeholder="Buscar..." style={{width:'100%',background:'#1c2230',border:'1px solid rgba(255,255,255,.08)',borderRadius:10,padding:'8px 12px 8px 32px',fontSize:13,color:'#fff',outline:'none'}}/>
-                        <IC n="search" s={13} c="text-gray-500" style={{position:'absolute',left:9,top:9}}/>
-                        {search&&<button onClick={()=>setSearch('')} style={{position:'absolute',right:8,top:8,background:'transparent',border:'none',cursor:'pointer',color:'#6b7280',display:'flex'}}><IC n="x" s={13}/></button>}
-                      </div>
-                    </div>
-                    <div style={{flex:1,overflowY:'auto'}}>
-                      {loading?<div style={{padding:28,textAlign:'center',color:'#6b7280',fontSize:12}}>Cargando...</div>
-                      :filteredTV.map(ch=><TvRow key={ch.id} ch={ch} isActive={selItem?.id===ch.id} isFav={favs.some(f=>f.id===ch.id)} onPlay={playItem} onToggleFav={toggleFav}/>)}
-                    </div>
-                  </div>
+
                 </div>
               </div>
 
