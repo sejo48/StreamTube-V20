@@ -518,10 +518,13 @@ const App=()=>{
   const [tvView,setTvView]     = useState('list');
   const [streamError,setStreamError] = useState(null);
 
-  const videoRef   = useRef(null);
+  const videoRefDt = useRef(null); // video desktop
+  const videoRefMb = useRef(null); // video móvil
   const hlsRef     = useRef(null);
   const scrollRef  = useRef(null);
-  const tvPlayerRef= useRef(null); // contenedor del player TV móvil
+  const tvPlayerRef= useRef(null);
+  // Ref activo según pantalla
+  const videoRef = { get current(){ return window.innerWidth>=768 ? videoRefDt.current : videoRefMb.current; } };
 
   const pushToast=(msg,type)=>setToast({msg,type,id:Date.now()});
 
@@ -565,7 +568,7 @@ const App=()=>{
         ?window.screen.orientation.type.includes('landscape')
         :window.innerWidth>window.innerHeight;
       const watching=tvView==='player'&&selItem?.type==='tv'&&!locked;
-      if(land&&watching) enterFullscreen(videoRef.current);
+      if(land&&watching) enterFullscreen(videoRefMb.current);
       else if(!land) exitFullscreen();
     };
     window.addEventListener('resize',handle,{passive:true});
@@ -840,7 +843,7 @@ const App=()=>{
                       {/* VIDEO o IFRAME — dimensiones 100% via CSS .tv-video-wrap */}
                       {isDrive
                         ? <iframe src={playUrl} allow="autoplay;encrypted-media;fullscreen" allowFullScreen/>
-                        : <video ref={videoRef} controls autoPlay playsInline onTimeUpdate={onVidProg}/>
+                        : <video ref={videoRefDt} controls autoPlay playsInline onTimeUpdate={onVidProg}/>
                       }
                       {/* Overlay error */}
                       {streamError&&(
@@ -849,7 +852,7 @@ const App=()=>{
                           <div style={{fontSize:16,fontWeight:900}}>Canal no disponible</div>
                           <div style={{fontSize:13,color:'#9ca3af',maxWidth:300,lineHeight:1.6}}>{streamError}</div>
                           <div style={{display:'flex',gap:10,flexWrap:'wrap',justifyContent:'center',marginTop:4}}>
-                            <button onClick={()=>{setStreamError(null);proxyIdx.current=0;buildHls(playUrl,videoRef.current,null);}}
+                            <button onClick={()=>{setStreamError(null);proxyIdx.current=0;buildHls(playUrl, window.innerWidth>=768 ? videoRefDt.current : videoRefMb.current, null);}}
                               style={{background:'#E50914',border:'none',borderRadius:9,padding:'9px 20px',color:'#fff',fontWeight:700,fontSize:13,cursor:'pointer'}}>🔄 Reintentar</button>
                             <button onClick={()=>window.open(playUrl,'_blank')}
                               style={{background:'rgba(255,255,255,.08)',border:'1px solid rgba(255,255,255,.15)',borderRadius:9,padding:'9px 20px',color:'#d1d5db',fontWeight:600,fontSize:13,cursor:'pointer'}}>Abrir externo ↗</button>
@@ -1076,7 +1079,7 @@ const App=()=>{
                         <div className="pw" style={{position:'absolute',inset:0}}><iframe src={playUrl} allow="autoplay;encrypted-media;fullscreen" allowFullScreen/></div>
                       ):(
                         <video
-                          ref={videoRef}
+                          ref={videoRefMb}
                           style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'contain',background:'#000'}}
                           controls autoPlay playsInline
                           onTimeUpdate={onVidProg}
@@ -1088,7 +1091,7 @@ const App=()=>{
                           <div style={{fontSize:14,fontWeight:900,color:'#fff'}}>Canal no disponible</div>
                           <div style={{fontSize:12,color:'#9ca3af',lineHeight:1.5,maxWidth:260}}>{streamError}</div>
                           <div style={{display:'flex',gap:8,marginTop:4,flexWrap:'wrap',justifyContent:'center'}}>
-                            <button onClick={()=>{setStreamError(null);proxyIdx.current=0;const v=videoRef.current;if(v&&Hls.isSupported())buildHls(playUrl,v,null);}}
+                            <button onClick={()=>{setStreamError(null);proxyIdx.current=0;const v=window.innerWidth>=768?videoRefDt.current:videoRefMb.current;if(v&&Hls.isSupported())buildHls(playUrl,v,null);}}
                               style={{background:'#E50914',border:'none',borderRadius:8,padding:'8px 16px',color:'#fff',fontWeight:700,fontSize:12,cursor:'pointer'}}>
                               🔄 Reintentar
                             </button>
@@ -1166,7 +1169,7 @@ const App=()=>{
                     </a>
                   </div>
                 ):(
-                  <video ref={videoRef} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'contain'}} controls autoPlay playsInline onTimeUpdate={onVidProg}/>
+                  <video ref={videoRefDt} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'contain'}} controls autoPlay playsInline onTimeUpdate={onVidProg}/>
                 )}
                 {selItem.type==='series'&&!selEp&&!locked&&(
                   <div style={{position:'absolute',inset:0,background:'rgba(0,0,0,.75)',display:'flex',alignItems:'center',justifyContent:'center',pointerEvents:'none',zIndex:5}}>
