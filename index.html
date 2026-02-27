@@ -76,11 +76,79 @@
       .only-desktop { display: flex !important; }
     }
     /* TV desktop: ocupa toda la altura sin scroll externo */
-    .tv-dt { display:none; flex-direction:row; overflow:hidden; }
-    @media (min-width:768px){.tv-dt{display:flex !important;position:absolute;inset:0;}}
-    .tv-player-col{flex:1;min-width:0;background:#000;display:flex;flex-direction:column;overflow:hidden;}
-    .tv-video-wrap{flex:1;min-height:0;background:#000;display:flex;position:relative;}
-    .tv-video-wrap video,.tv-video-wrap iframe{width:100%;height:100%;object-fit:contain;border:none;display:block;}
+    /* TV Desktop: posicionamiento absoluto garantiza altura real */
+    .tv-dt { display:none; }
+    @media (min-width:768px){
+      .tv-dt {
+        display:flex !important;
+        flex-direction:row;
+        position:absolute;
+        top:0; left:0; right:0; bottom:0;
+        overflow:hidden;
+      }
+    }
+    /* Columna reproductor - usa height explícito */
+    .tv-player-col {
+      flex:1; min-width:0;
+      background:#000;
+      display:flex; flex-direction:column;
+      overflow:hidden;
+      height:100%;
+    }
+    /* Wrap del video - height:100% para que video tenga dimensiones reales */
+    .tv-video-wrap {
+      flex:1;
+      position:relative;
+      background:#000;
+      height:100%;
+      min-height:0;
+    }
+    .tv-video-wrap video {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      object-fit:contain;
+      background:#000;
+    }
+    .tv-video-wrap iframe {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      border:none;
+    }
+
+    /* ── FULLSCREEN MÓVIL EN LANDSCAPE ──
+       Cuando el dispositivo está en landscape, el player de TV se expande
+       para ocupar toda la pantalla usando CSS (no requiere permiso del navegador) */
+    @media (max-width:900px) and (orientation:landscape) {
+      /* El wrapper ocupa toda la pantalla */
+      .tv-player-mobile-wrap {
+        position: fixed !important;
+        top: 0 !important; left: 0 !important;
+        width: 100vw !important; height: 100vh !important;
+        z-index: 9999 !important;
+        background: #000 !important;
+        flex-direction: column !important;
+      }
+      /* El div flex:1 que contiene el video también expande */
+      .tv-player-mobile-wrap > div:last-child {
+        flex: 1 !important;
+        min-height: 0 !important;
+        height: auto !important;
+      }
+      /* El video llena absolutamente */
+      .tv-player-mobile-wrap video {
+        position: absolute !important;
+        top: 0 !important; left: 0 !important;
+        width: 100% !important; height: 100% !important;
+        object-fit: contain !important;
+        background: #000 !important;
+      }
+      /* Ocultar header, hint y panel inferior */
+      .tv-mobile-header,
+      .tv-mobile-hint,
+      .tv-mobile-panel { display: none !important; }
+    }
 
     /* Card hover overlay */
     .card-wrap:hover .card-overlay { opacity: 1; }
@@ -458,41 +526,55 @@ const App=()=>{
   const pushToast=(msg,type)=>setToast({msg,type,id:Date.now()});
 
   /* ─── FULLSCREEN ─── */
-  const enterFullscreen=async(el)=>{
-    if(!el)return;
+  const doFullscreen=async(videoEl)=>{
+    if(!videoEl)return;
     try{
-      // En móvil, preferir webkitEnterFullscreen del video (iOS Safari)
-      if(el.tagName==='VIDEO'&&el.webkitEnterFullscreen){ el.webkitEnterFullscreen(); return; }
+      // iOS Safari: webkitEnterFullscreen solo funciona cuando hay datos de video
+      if(videoEl.webkitEnterFullscreen&&videoEl.readyState>=1){
+        videoEl.webkitEnterFullscreen(); return;
+      }
+      // Android Chrome y otros
+      const el=videoEl;
       if(el.requestFullscreen)           await el.requestFullscreen();
-      else if(el.webkitRequestFullscreen)await el.webkitRequestFullscreen();
+      else if(el.webkitRequestFullscreen)await el.webkitRequestFullscreen({navigationUI:'hide'});
       else if(el.mozRequestFullScreen)   await el.mozRequestFullScreen();
-    }catch(e){ console.warn('FS:',e); }
+    }catch(e){ console.warn('FS err:',e); }
+  };
+  const enterFullscreen=(videoEl)=>{
+    const v=videoEl||videoRef.current;
+    if(!v)return;
+    if(v.readyState>=1){ doFullscreen(v); return; }
+    // Si el video aún no cargó metadata, esperar
+    const onReady=()=>{ doFullscreen(v); v.removeEventListener('loadedmetadata',onReady); };
+    v.addEventListener('loadedmetadata',onReady);
   };
   const exitFullscreen=()=>{
     try{
-      if(document.exitFullscreen&&document.fullscreenElement)document.exitFullscreen();
-      else if(document.webkitExitFullscreen&&document.webkitFullscreenElement)document.webkitExitFullscreen();
-      else if(document.mozCancelFullScreen&&document.mozFullScreenElement)document.mozCancelFullScreen();
+      if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen();
+      else if(document.webkitFullscreenElement&&document.webkitExitFullscreen)document.webkitExitFullscreen();
+      else if(document.mozFullScreenElement&&document.mozCancelFullScreen)document.mozCancelFullScreen();
     }catch(e){}
   };
 
   // Rotación automática → fullscreen en móvil
   useEffect(()=>{
     const handle=()=>{
-      const mob=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||window.innerWidth<=768;
+      const mob=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||window.innerWidth<=900;
       if(!mob)return;
-      const land=window.innerWidth>window.innerHeight;
+      const land=window.screen?.orientation?.type
+        ?window.screen.orientation.type.includes('landscape')
+        :window.innerWidth>window.innerHeight;
       const watching=tvView==='player'&&selItem?.type==='tv'&&!locked;
       if(land&&watching) enterFullscreen(videoRef.current);
-      else if(!land)     exitFullscreen();
+      else if(!land) exitFullscreen();
     };
-    window.addEventListener('resize',handle);
-    window.addEventListener('orientationchange',handle);
-    screen.orientation?.addEventListener?.('change',handle);
+    window.addEventListener('resize',handle,{passive:true});
+    window.addEventListener('orientationchange',handle,{passive:true});
+    try{screen.orientation?.addEventListener('change',handle,{passive:true});}catch(e){}
     return()=>{
       window.removeEventListener('resize',handle);
       window.removeEventListener('orientationchange',handle);
-      screen.orientation?.removeEventListener?.('change',handle);
+      try{screen.orientation?.removeEventListener('change',handle);}catch(e){}
     };
   },[tvView,selItem,locked]);
 
@@ -607,23 +689,35 @@ const App=()=>{
     return hls;
   };
 
-  useEffect(()=>{
-    setStreamError(null);
-    proxyIdx.current=0;
-    if(locked||!playUrl||isDrive||!videoRef.current)return;
-    const v=videoRef.current;
+  // Función reutilizable para iniciar reproducción en el video element
+  const startPlayback=(v)=>{
+    if(!v||!playUrl||isDrive)return;
+    if(hlsRef.current){hlsRef.current.destroy();hlsRef.current=null;}
     const id=selItem?.id||selItem?.title;
     const saved=prog[id];
     const onMeta=()=>{if(saved&&saved.time>0&&saved.pct<95)v.currentTime=saved.time;};
-    v.addEventListener('loadedmetadata',onMeta);
-
+    v.addEventListener('loadedmetadata',onMeta,{once:true});
     if(Hls.isSupported()&&(playUrl.includes('.m3u8')||selItem?.type==='tv')){
-      // Primero intentar SIN proxy (por si el canal sí permite CORS)
       buildHls(playUrl,v,null);
     } else {
       v.src=playUrl; v.load(); v.play().catch(()=>{});
     }
-    return()=>{ v.removeEventListener('loadedmetadata',onMeta); };
+  };
+
+  useEffect(()=>{
+    setStreamError(null);
+    proxyIdx.current=0;
+    if(locked||!playUrl||isDrive)return;
+    // Usar setTimeout(0) para asegurar que el <video> ya está en el DOM tras el render
+    const timer=setTimeout(()=>{
+      const v=videoRef.current;
+      if(!v)return;
+      startPlayback(v);
+    },0);
+    return()=>{
+      clearTimeout(timer);
+      if(hlsRef.current){hlsRef.current.destroy();hlsRef.current=null;}
+    };
   },[playUrl,isDrive,selItem,locked]);
 
   const onVidProg=e=>{
@@ -941,11 +1035,11 @@ const App=()=>{
                   /* ══════════════════════════════════
                      VISTA PLAYER MÓVIL — app nativa
                   ══════════════════════════════════ */
-                  <div ref={tvPlayerRef} style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:'#000'}}>
+                  <div ref={tvPlayerRef} className="tv-player-mobile-wrap" style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:'#000'}}>
 
-                    {/* Barra superior — canal activo */}
-                    <div style={{display:'flex',alignItems:'center',gap:10,padding:'9px 12px',background:'#0a0e13',borderBottom:'1px solid rgba(255,255,255,.07)',flexShrink:0,minHeight:52}}>
-                      <button onClick={()=>{exitFullscreen();setTvView('list');}}
+                    {/* Barra superior — oculta en landscape via CSS */}
+                    <div className="tv-mobile-header" style={{display:'flex',alignItems:'center',gap:10,padding:'9px 12px',background:'#0a0e13',borderBottom:'1px solid rgba(255,255,255,.07)',flexShrink:0,minHeight:52}}>
+                      <button onClick={()=>{setTvView('list');}}
                         style={{width:38,height:38,borderRadius:10,background:'rgba(255,255,255,.07)',border:'none',display:'flex',alignItems:'center',justifyContent:'center',cursor:'pointer',color:'#fff',flexShrink:0}}>
                         <IC n="back" s={19}/>
                       </button>
@@ -962,53 +1056,32 @@ const App=()=>{
                           {selItem?.group&&<span style={{fontSize:10,color:'#6b7280'}}>· {selItem.group}</span>}
                         </div>
                       </div>
-                      {/* Botón favorito */}
                       <button onClick={()=>toggleFav(selItem)}
                         style={{width:36,height:36,borderRadius:9,background:'rgba(255,255,255,.06)',border:'none',display:'flex',alignItems:'center',justifyContent:'center',cursor:'pointer',flexShrink:0}}>
                         <IC n="heart" s={18} f={favs.some(f=>f.id===selItem?.id)?'#E50914':'none'} c={favs.some(f=>f.id===selItem?.id)?'text-red-500':'text-gray-500'}/>
                       </button>
-                      {/* Botón fullscreen manual — por si no hay sensor de orientación */}
-                      <button
-                        onClick={()=>enterFullscreen(videoRef.current||tvPlayerRef.current)}
-                        title="Pantalla completa"
-                        style={{width:36,height:36,borderRadius:9,background:'rgba(255,255,255,.06)',border:'none',display:'flex',alignItems:'center',justifyContent:'center',cursor:'pointer',color:'#9ca3af',flexShrink:0}}>
-                        {/* Icono expand */}
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                          <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
-                          <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
-                        </svg>
-                      </button>
                     </div>
 
-                    {/* ── AVISO ROTACIÓN — aparece solo una vez por sesión ── */}
-                    {selItem&&!locked&&!isDrive&&(()=>{
-                      const shown=sessionStorage.getItem('mgRotHint');
-                      if(shown)return null;
-                      sessionStorage.setItem('mgRotHint','1');
-                      return(
-                        <div style={{background:'rgba(229,9,20,.12)',borderBottom:'1px solid rgba(229,9,20,.2)',padding:'7px 14px',display:'flex',alignItems:'center',gap:8,flexShrink:0}}>
-                          <span style={{fontSize:17}}>📱</span>
-                          <span style={{fontSize:11,color:'#fca5a5',flex:1}}>Gira tu móvil para entrar en <strong style={{color:'#fff'}}>pantalla completa</strong> automáticamente</span>
-                        </div>
-                      );
-                    })()}
+                    {/* Hint rotación — oculta en landscape */}
+                    <div className="tv-mobile-hint" style={{background:'rgba(229,9,20,.1)',borderBottom:'1px solid rgba(229,9,20,.18)',padding:'6px 14px',display:'flex',alignItems:'center',gap:8,flexShrink:0}}>
+                      <span style={{fontSize:15}}>📱</span>
+                      <span style={{fontSize:11,color:'#fca5a5'}}>Gira a horizontal para <strong style={{color:'#fff'}}>pantalla completa</strong></span>
+                    </div>
 
-                    {/* Video 16:9 — grande y prominente */}
-                    <div style={{width:'100%',position:'relative',flexShrink:0,background:'#000',aspectRatio:'16/9'}}>
+                    {/* Video — sin aspectRatio fijo para que en landscape llene toda la pantalla */}
+                    <div style={{flex:1,position:'relative',background:'#000',minHeight:0}}>
                       {locked?(
-                        <LockScreen code={selItem.codigo||selItem.password||selItem.pin} onUnlock={()=>setLocked(false)} onCancel={()=>{exitFullscreen();setTvView('list');setSelItem(null);setLocked(false);}}/>
+                        <LockScreen code={selItem.codigo||selItem.password||selItem.pin} onUnlock={()=>setLocked(false)} onCancel={()=>{setTvView('list');setSelItem(null);setLocked(false);}}/>
                       ):isDrive?(
-                        <div className="pw"><iframe src={playUrl} allow="autoplay;encrypted-media;fullscreen" allowFullScreen/></div>
+                        <div className="pw" style={{position:'absolute',inset:0}}><iframe src={playUrl} allow="autoplay;encrypted-media;fullscreen" allowFullScreen/></div>
                       ):(
                         <video
                           ref={videoRef}
-                          style={{width:'100%',height:'100%',objectFit:'contain'}}
+                          style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'contain',background:'#000'}}
                           controls autoPlay playsInline
-                          x-webkit-airplay="allow"
                           onTimeUpdate={onVidProg}
                         />
                       )}
-                      {/* Overlay error CORS / stream caído */}
                       {streamError&&!locked&&!isDrive&&(
                         <div style={{position:'absolute',inset:0,background:'rgba(0,0,0,.9)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:10,zIndex:10,padding:20,textAlign:'center'}}>
                           <div style={{fontSize:32}}>📡</div>
@@ -1028,8 +1101,8 @@ const App=()=>{
                       )}
                     </div>
 
-                    {/* Panel inferior — lista de canales con búsqueda */}
-                    <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:'#0d1117'}}>
+                    {/* Panel inferior — oculto en landscape via CSS */}
+                    <div className="tv-mobile-panel" style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',background:'#0d1117'}}>
 
                       {/* Sub-header sticky */}
                       <div style={{display:'flex',alignItems:'center',gap:8,padding:'8px 12px',background:'#0a0e13',borderBottom:'1px solid rgba(255,255,255,.05)',flexShrink:0}}>
