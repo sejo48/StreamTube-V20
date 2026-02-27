@@ -76,8 +76,11 @@
       .only-desktop { display: flex !important; }
     }
     /* TV desktop: ocupa toda la altura sin scroll externo */
-    .tv-dt { display:none; flex:1; min-height:0; height:100%; overflow:hidden; flex-direction:row; }
-    @media (min-width: 768px) { .tv-dt { display:flex !important; } }
+    .tv-dt { display:none; flex-direction:row; overflow:hidden; }
+    @media (min-width:768px){.tv-dt{display:flex !important;position:absolute;inset:0;}}
+    .tv-player-col{flex:1;min-width:0;background:#000;display:flex;flex-direction:column;overflow:hidden;}
+    .tv-video-wrap{flex:1;min-height:0;background:#000;display:flex;position:relative;}
+    .tv-video-wrap video,.tv-video-wrap iframe{width:100%;height:100%;object-fit:contain;border:none;display:block;}
 
     /* Card hover overlay */
     .card-wrap:hover .card-overlay { opacity: 1; }
@@ -454,71 +457,44 @@ const App=()=>{
 
   const pushToast=(msg,type)=>setToast({msg,type,id:Date.now()});
 
-  /* ─── FULLSCREEN AUTOMÁTICO AL ROTAR A LANDSCAPE EN MÓVIL ─── */
-  const isMobile=()=>window.innerWidth<=768||/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-  // Entrar a fullscreen nativo
+  /* ─── FULLSCREEN ─── */
   const enterFullscreen=async(el)=>{
     if(!el)return;
     try{
+      // En móvil, preferir webkitEnterFullscreen del video (iOS Safari)
+      if(el.tagName==='VIDEO'&&el.webkitEnterFullscreen){ el.webkitEnterFullscreen(); return; }
       if(el.requestFullscreen)           await el.requestFullscreen();
-      else if(el.webkitRequestFullscreen)await el.webkitRequestFullscreen(); // iOS Safari
+      else if(el.webkitRequestFullscreen)await el.webkitRequestFullscreen();
       else if(el.mozRequestFullScreen)   await el.mozRequestFullScreen();
-      else if(el.msRequestFullscreen)    await el.msRequestFullscreen();
-    }catch(e){ console.warn('Fullscreen no disponible:',e); }
+    }catch(e){ console.warn('FS:',e); }
   };
-
-  // Salir de fullscreen
   const exitFullscreen=()=>{
     try{
-      if(document.exitFullscreen&&document.fullscreenElement)           document.exitFullscreen();
-      else if(document.webkitExitFullscreen&&document.webkitFullscreenElement) document.webkitExitFullscreen();
-      else if(document.mozCancelFullScreen&&document.mozFullScreenElement)     document.mozCancelFullScreen();
+      if(document.exitFullscreen&&document.fullscreenElement)document.exitFullscreen();
+      else if(document.webkitExitFullscreen&&document.webkitFullscreenElement)document.webkitExitFullscreen();
+      else if(document.mozCancelFullScreen&&document.mozFullScreenElement)document.mozCancelFullScreen();
     }catch(e){}
   };
 
-  // Detectar cambio de orientación → fullscreen automático en player TV móvil
+  // Rotación automática → fullscreen en móvil
   useEffect(()=>{
-    const onOrientationChange=()=>{
-      if(!isMobile())return;
-      const isLandscape=window.innerWidth>window.innerHeight||window.screen?.orientation?.type?.includes('landscape');
-      const isWatchingTV=tvView==='player'&&selItem&&selItem.type==='tv'&&!locked;
-      if(isLandscape&&isWatchingTV){
-        // Preferir el video directamente (más compatible en Android)
-        const target=videoRef.current||tvPlayerRef.current;
-        enterFullscreen(target);
-      } else if(!isLandscape){
-        exitFullscreen();
-      }
+    const handle=()=>{
+      const mob=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)||window.innerWidth<=768;
+      if(!mob)return;
+      const land=window.innerWidth>window.innerHeight;
+      const watching=tvView==='player'&&selItem?.type==='tv'&&!locked;
+      if(land&&watching) enterFullscreen(videoRef.current);
+      else if(!land)     exitFullscreen();
     };
-
-    // Escuchar ambos eventos para máxima compatibilidad
-    window.addEventListener('orientationchange',onOrientationChange);
-    window.addEventListener('resize',onOrientationChange);
-    screen.orientation?.addEventListener('change',onOrientationChange);
-
+    window.addEventListener('resize',handle);
+    window.addEventListener('orientationchange',handle);
+    screen.orientation?.addEventListener?.('change',handle);
     return()=>{
-      window.removeEventListener('orientationchange',onOrientationChange);
-      window.removeEventListener('resize',onOrientationChange);
-      screen.orientation?.removeEventListener('change',onOrientationChange);
+      window.removeEventListener('resize',handle);
+      window.removeEventListener('orientationchange',handle);
+      screen.orientation?.removeEventListener?.('change',handle);
     };
   },[tvView,selItem,locked]);
-
-  // Si sale del fullscreen manualmente (botón nativo), detectarlo
-  useEffect(()=>{
-    const onFsChange=()=>{
-      const fsEl=document.fullscreenElement||document.webkitFullscreenElement||document.mozFullScreenElement;
-      if(!fsEl){
-        // Salió del fullscreen — si está en landscape, nada; si está en portrait, está bien
-      }
-    };
-    document.addEventListener('fullscreenchange',onFsChange);
-    document.addEventListener('webkitfullscreenchange',onFsChange);
-    return()=>{
-      document.removeEventListener('fullscreenchange',onFsChange);
-      document.removeEventListener('webkitfullscreenchange',onFsChange);
-    };
-  },[]);
 
   /* Debounce */
   useEffect(()=>{const t=setTimeout(()=>setDSearch(search),280);return()=>clearTimeout(t);},[search]);
@@ -733,9 +709,9 @@ const App=()=>{
         </aside>
 
         {/* ══ ÁREA PRINCIPAL ══ */}
-        <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',minWidth:0,minHeight:0}}>
+        <div style={{flex:1,display:'flex',flexDirection:'column',overflow:'hidden',minWidth:0,minHeight:0,position:'relative'}}>
 
-          {/* ── Header móvil (oculto cuando TV está reproduciendo en móvil) ── */}
+          {/* ── Header móvil ── */}
           {!(isTV&&tvView==='player')&&(
             <header className="only-mobile" style={{alignItems:'center',justifyContent:'space-between',padding:'10px 12px',background:'rgba(13,17,23,.97)',backdropFilter:'blur(10px)',borderBottom:'1px solid rgba(255,255,255,.05)',flexShrink:0,zIndex:40}}>
               <div style={{display:'flex',alignItems:'center',gap:8}}>
@@ -756,68 +732,54 @@ const App=()=>{
           )}
 
           {/* ══════════════════════════════════
-              SECCIÓN TV  — mobile-first
+              SECCIÓN TV
           ══════════════════════════════════ */}
           {isTV?(
             <>
-              {/* ══ DESKTOP TV — 2 columnas: reproductor + lista ══ */}
+              {/* ══ DESKTOP TV — position:absolute inset:0 para altura real garantizada ══ */}
               <div className="tv-dt">
 
-                {/* ─ Columna izquierda: REPRODUCTOR ─ */}
-                <div style={{flex:1,minWidth:0,background:'#000',display:'flex',flexDirection:'column',overflow:'hidden',position:'relative',height:'100%'}}>
-
+                {/* ─ Columna reproductor ─ */}
+                <div className="tv-player-col">
                   {selItem&&selItem.type==='tv'&&!locked ? (
-                    /* Canal activo → video ocupa TODO el espacio flex disponible */
-                    <div style={{flex:1,position:'relative',minHeight:0,background:'#000'}}>
+                    <div className="tv-video-wrap">
+                      {/* VIDEO o IFRAME — dimensiones 100% via CSS .tv-video-wrap */}
                       {isDrive
-                        ? <iframe src={playUrl} allow="autoplay;encrypted-media;fullscreen" allowFullScreen
-                            style={{position:'absolute',inset:0,width:'100%',height:'100%',border:'none'}}/>
-                        : <video ref={videoRef}
-                            style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'contain',background:'#000'}}
-                            controls autoPlay playsInline onTimeUpdate={onVidProg}/>
+                        ? <iframe src={playUrl} allow="autoplay;encrypted-media;fullscreen" allowFullScreen/>
+                        : <video ref={videoRef} controls autoPlay playsInline onTimeUpdate={onVidProg}/>
                       }
-                      {/* Overlay error CORS / stream caído */}
+                      {/* Overlay error */}
                       {streamError&&(
                         <div style={{position:'absolute',inset:0,background:'rgba(0,0,0,.88)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:14,zIndex:10,padding:30,textAlign:'center'}}>
                           <div style={{fontSize:40}}>📡</div>
-                          <div style={{fontSize:16,fontWeight:900,color:'#fff'}}>Canal no disponible</div>
-                          <div style={{fontSize:13,color:'#9ca3af',maxWidth:320,lineHeight:1.6}}>{streamError}</div>
-                          <div style={{display:'flex',gap:10,marginTop:4}}>
-                            <button onClick={()=>{setStreamError(null);proxyIdx.current=0;const v=videoRef.current;if(v&&Hls.isSupported())buildHls(playUrl,v,null);}}
-                              style={{background:'#E50914',border:'none',borderRadius:9,padding:'9px 20px',color:'#fff',fontWeight:700,fontSize:13,cursor:'pointer'}}>
-                              🔄 Reintentar
-                            </button>
+                          <div style={{fontSize:16,fontWeight:900}}>Canal no disponible</div>
+                          <div style={{fontSize:13,color:'#9ca3af',maxWidth:300,lineHeight:1.6}}>{streamError}</div>
+                          <div style={{display:'flex',gap:10,flexWrap:'wrap',justifyContent:'center',marginTop:4}}>
+                            <button onClick={()=>{setStreamError(null);proxyIdx.current=0;buildHls(playUrl,videoRef.current,null);}}
+                              style={{background:'#E50914',border:'none',borderRadius:9,padding:'9px 20px',color:'#fff',fontWeight:700,fontSize:13,cursor:'pointer'}}>🔄 Reintentar</button>
                             <button onClick={()=>window.open(playUrl,'_blank')}
-                              style={{background:'rgba(255,255,255,.08)',border:'1px solid rgba(255,255,255,.15)',borderRadius:9,padding:'9px 20px',color:'#d1d5db',fontWeight:600,fontSize:13,cursor:'pointer'}}>
-                              Abrir externo ↗
-                            </button>
+                              style={{background:'rgba(255,255,255,.08)',border:'1px solid rgba(255,255,255,.15)',borderRadius:9,padding:'9px 20px',color:'#d1d5db',fontWeight:600,fontSize:13,cursor:'pointer'}}>Abrir externo ↗</button>
                           </div>
                         </div>
                       )}
                       {/* Info overlay bottom */}
-                      <div style={{position:'absolute',bottom:0,left:0,right:0,padding:'14px 20px',
-                          background:'linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 100%)',
-                          pointerEvents:'none',zIndex:2}}>
+                      {!streamError&&<div style={{position:'absolute',bottom:0,left:0,right:0,padding:'14px 20px',background:'linear-gradient(to top,rgba(0,0,0,.85),transparent)',pointerEvents:'none',zIndex:2}}>
                         <div style={{display:'flex',alignItems:'center',gap:10}}>
-                          {selItem.image&&(
-                            <div style={{background:'rgba(0,0,0,.5)',borderRadius:6,padding:3,border:'1px solid rgba(255,255,255,.12)'}}>
-                              <img src={selItem.image} style={{height:28,maxWidth:54,objectFit:'contain',display:'block'}} alt=""/>
-                            </div>
-                          )}
+                          {selItem.image&&<div style={{background:'rgba(0,0,0,.5)',borderRadius:6,padding:3}}><img src={selItem.image} style={{height:26,maxWidth:52,objectFit:'contain',display:'block'}} alt=""/></div>}
                           <div>
-                            <div style={{fontWeight:900,fontSize:17,textShadow:'0 1px 6px rgba(0,0,0,.8)'}}>{selItem.title}</div>
+                            <div style={{fontWeight:900,fontSize:16}}>{selItem.title}</div>
                             <div style={{display:'flex',alignItems:'center',gap:6,marginTop:2}}>
-                              <span className="dot" style={{width:7,height:7}}/>
-                              <span style={{fontSize:11,color:'#E50914',fontWeight:700,letterSpacing:.5}}>EN VIVO</span>
+                              <span className="dot" style={{width:6,height:6}}/>
+                              <span style={{fontSize:11,color:'#E50914',fontWeight:700}}>EN VIVO</span>
                               {selItem.group&&<span style={{fontSize:11,color:'rgba(255,255,255,.5)'}}>· {selItem.group}</span>}
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div>}
                     </div>
                   ) : (
-                    /* Sin canal → pantalla de bienvenida */
-                    <div style={{flex:1,minHeight:0,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:20,padding:40,textAlign:'center',background:'#050709'}}>
+                    /* Pantalla bienvenida */
+                    <div style={{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:20,padding:40,textAlign:'center',background:'#050709'}}>
                       <div style={{position:'relative',display:'inline-flex'}}>
                         <div style={{width:100,height:100,borderRadius:'50%',background:'radial-gradient(circle,rgba(229,9,20,.12),rgba(229,9,20,.02))',border:'1px solid rgba(229,9,20,.2)',display:'flex',alignItems:'center',justifyContent:'center'}}>
                           <IC n="tv" s={44} c="text-red-500"/>
@@ -826,27 +788,20 @@ const App=()=>{
                       </div>
                       <div>
                         <h3 style={{fontSize:22,fontWeight:900,marginBottom:6}}>TV en Vivo</h3>
-                        <p style={{fontSize:14,color:'#4b5563',maxWidth:280,lineHeight:1.5}}>Selecciona un canal de la lista de la derecha para comenzar a ver.</p>
+                        <p style={{fontSize:14,color:'#4b5563',maxWidth:280,lineHeight:1.5}}>Selecciona un canal de la lista →</p>
                       </div>
-                      <div style={{display:'flex',gap:32,marginTop:4}}>
-                        <div style={{textAlign:'center'}}>
-                          <div style={{fontSize:30,fontWeight:900,color:'#E50914',lineHeight:1}}>{data.tv.length}</div>
-                          <div style={{fontSize:11,color:'#6b7280',marginTop:3}}>Canales</div>
-                        </div>
+                      <div style={{display:'flex',gap:32}}>
+                        <div style={{textAlign:'center'}}><div style={{fontSize:30,fontWeight:900,color:'#E50914'}}>{data.tv.length}</div><div style={{fontSize:11,color:'#6b7280',marginTop:3}}>Canales</div></div>
                         <div style={{width:1,background:'rgba(255,255,255,.07)'}}/>
-                        <div style={{textAlign:'center'}}>
-                          <div style={{fontSize:30,fontWeight:900,color:'#eab308',lineHeight:1}}>{favs.filter(f=>f.type==='tv').length}</div>
-                          <div style={{fontSize:11,color:'#6b7280',marginTop:3}}>Favoritos</div>
-                        </div>
+                        <div style={{textAlign:'center'}}><div style={{fontSize:30,fontWeight:900,color:'#eab308'}}>{favs.filter(f=>f.type==='tv').length}</div><div style={{fontSize:11,color:'#6b7280',marginTop:3}}>Favoritos</div></div>
                       </div>
-                      {/* Acceso rápido a favoritos */}
                       {favs.filter(f=>f.type==='tv').length>0&&(
-                        <div style={{marginTop:6,width:'100%',maxWidth:440}}>
+                        <div style={{width:'100%',maxWidth:440}}>
                           <div style={{fontSize:10,color:'#374151',textTransform:'uppercase',letterSpacing:2,marginBottom:12}}>Acceso rápido</div>
                           <div style={{display:'flex',flexWrap:'wrap',gap:8,justifyContent:'center'}}>
                             {favs.filter(f=>f.type==='tv').slice(0,10).map(ch=>(
                               <button key={ch.id} onClick={()=>playItem(ch)}
-                                style={{display:'flex',alignItems:'center',gap:7,padding:'7px 12px',background:'rgba(255,255,255,.04)',border:'1px solid rgba(255,255,255,.08)',borderRadius:10,cursor:'pointer',color:'#d1d5db',fontSize:12,fontWeight:600,transition:'all .15s'}}
+                                style={{display:'flex',alignItems:'center',gap:7,padding:'7px 12px',background:'rgba(255,255,255,.04)',border:'1px solid rgba(255,255,255,.08)',borderRadius:10,cursor:'pointer',color:'#d1d5db',fontSize:12,fontWeight:600}}
                                 onMouseEnter={e=>{e.currentTarget.style.background='rgba(229,9,20,.12)';e.currentTarget.style.borderColor='rgba(229,9,20,.3)';}}
                                 onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,255,255,.04)';e.currentTarget.style.borderColor='rgba(255,255,255,.08)';}}>
                                 {ch.image&&<img src={ch.image} style={{width:28,height:18,objectFit:'contain'}} onError={e=>e.target.style.display='none'} alt=""/>}
@@ -860,10 +815,8 @@ const App=()=>{
                   )}
                 </div>
 
-                {/* ─ Columna derecha: LISTA ─ */}
+                {/* ─ Columna lista ─ */}
                 <div style={{width:300,flexShrink:0,background:'#0a0e13',borderLeft:'1px solid rgba(255,255,255,.06)',display:'flex',flexDirection:'column',overflow:'hidden'}}>
-
-                  {/* Header lista */}
                   <div style={{padding:'13px 14px 10px',borderBottom:'1px solid rgba(255,255,255,.05)',flexShrink:0,background:'#080b10'}}>
                     <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:10}}>
                       <div style={{display:'flex',alignItems:'center',gap:7,fontSize:11,fontWeight:700,textTransform:'uppercase',letterSpacing:1,color:'#9ca3af'}}>
@@ -878,26 +831,18 @@ const App=()=>{
                       {search&&<button onClick={()=>setSearch('')} style={{position:'absolute',right:9,top:9,background:'transparent',border:'none',cursor:'pointer',color:'#6b7280',display:'flex'}}><IC n="x" s={13}/></button>}
                     </div>
                   </div>
-
-                  {/* Lista scrolleable */}
                   <div style={{flex:1,overflowY:'auto',minHeight:0}}>
-                    {loading ? (
-                      Array.from({length:10}).map((_,i)=>(
-                        <div key={i} style={{display:'flex',alignItems:'center',gap:10,padding:'10px 13px',borderBottom:'1px solid rgba(255,255,255,.03)'}}>
-                          <div className="shimmer" style={{width:44,height:28,borderRadius:6,flexShrink:0}}/>
-                          <div style={{flex:1}}>
-                            <div className="shimmer" style={{height:10,borderRadius:3,marginBottom:5,width:'58%'}}/>
-                            <div className="shimmer" style={{height:9,borderRadius:3,width:'38%'}}/>
-                          </div>
-                        </div>
-                      ))
-                    ) : filteredTV.length===0 ? (
+                    {loading?(Array.from({length:10}).map((_,i)=>(
+                      <div key={i} style={{display:'flex',alignItems:'center',gap:10,padding:'10px 13px',borderBottom:'1px solid rgba(255,255,255,.03)'}}>
+                        <div className="shimmer" style={{width:44,height:28,borderRadius:6,flexShrink:0}}/>
+                        <div style={{flex:1}}><div className="shimmer" style={{height:10,borderRadius:3,marginBottom:5,width:'58%'}}/><div className="shimmer" style={{height:9,borderRadius:3,width:'38%'}}/></div>
+                      </div>
+                    ))):filteredTV.length===0?(
                       <div style={{textAlign:'center',padding:'50px 20px',color:'#4b5563',fontSize:13}}>Sin resultados</div>
-                    ) : (
+                    ):(
                       filteredTV.map(ch=><TvRow key={ch.id} ch={ch} isActive={selItem?.id===ch.id} isFav={favs.some(f=>f.id===ch.id)} onPlay={playItem} onToggleFav={toggleFav}/>)
                     )}
                   </div>
-
                 </div>
               </div>
 
