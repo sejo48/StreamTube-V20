@@ -62,10 +62,9 @@
     <!-- Firebase / Modo Híbrido -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Intentar obtener configuración del entorno
         const envConfig = typeof __firebase_config !== 'undefined' ? __firebase_config : '{}';
         const firebaseConfig = JSON.parse(envConfig);
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'magis-tube-local';
@@ -74,29 +73,37 @@
         let auth = null;
         let currentUser = null;
         
-        // Si hay configuración real, intentamos conectar a Firebase
         if (Object.keys(firebaseConfig).length > 0) {
             try {
                 const app = initializeApp(firebaseConfig);
                 auth = getAuth(app);
                 db = getFirestore(app);
                 
+                const initAuth = async () => {
+                    try {
+                        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                            await signInWithCustomToken(auth, __initial_auth_token);
+                        } else {
+                            await signInAnonymously(auth);
+                        }
+                    } catch (e) {
+                        console.warn("Error autenticando:", e);
+                    }
+                };
+                
+                initAuth();
+
                 onAuthStateChanged(auth, (user) => {
                     currentUser = user;
                 });
-                
-                signInAnonymously(auth).catch(e => console.warn("Modo offline activado:", e));
             } catch (e) {
                 console.warn("Error init Firebase, usando modo local:", e);
             }
         }
 
-        // API Híbrida: Funciona con Firebase O con LocalStorage
         window.DB_API = {
             saveVisitor: async (name) => {
                 if (!name) return;
-
-                // 1. Intento Firebase (Si estamos en el editor con conexión)
                 if (db && auth && currentUser) {
                     try {
                         await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'), {
@@ -104,16 +111,13 @@
                             timestamp: serverTimestamp(),
                             uid: currentUser.uid
                         });
-                        return; // Éxito
+                        return;
                     } catch (e) {
-                        console.warn("Fallo guardado en nube, guardando localmente.");
+                        console.warn("Fallo guardado en nube, guardando localmente.", e);
                     }
                 }
-
-                // 2. Fallback LocalStorage (Si estamos en GitHub o Firebase falla)
                 try {
                     const localData = JSON.parse(localStorage.getItem('magis_local_visitors') || '[]');
-                    // Evitar duplicados exactos muy recientes (1 minuto)
                     const isDuplicate = localData.some(v => v.name === name && (Date.now()/1000 - (v.timestamp?.seconds || 0)) < 60);
                     
                     if (!isDuplicate) {
@@ -129,7 +133,6 @@
             },
 
             subscribeToVisitors: (callback) => {
-                // 1. Intento Firebase
                 if (db) {
                     try {
                         const q = query(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'));
@@ -138,7 +141,6 @@
                             visitors.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
                             callback(visitors);
                         }, (err) => {
-                            // Si falla (permisos/red), devolver datos locales
                             console.warn("Usando datos locales por error de red.");
                             loadLocal(callback);
                         });
@@ -164,23 +166,19 @@
     <script type="text/babel">
         const { useState, useEffect, useRef, useMemo } = React;
 
-        // --- UTILIDADES SEGURAS PARA STORAGE ---
         const safeStorage = {
             getItem: (key) => { try { return localStorage.getItem(key); } catch (e) { return null; } },
             setItem: (key, value) => { try { localStorage.setItem(key, value); } catch (e) { /* ignore */ } }
         };
 
-        // --- CONFIGURACIÓN NTFY ---
         const NTFY_TOPIC = 'magistube_jorge_avisos'; 
 
-        // --- URLS ---
         const URLS = {
             TV: 'https://raw.githubusercontent.com/sejo48/retrom3u/refs/heads/main/listaoficial.m3u',
             SERIES: 'https://raw.githubusercontent.com/sejo48/jorgedrive/refs/heads/main/playlist.json',
             MOVIES: 'https://raw.githubusercontent.com/sejo48/peliculas/refs/heads/main/peliculas.json'
         };
 
-        // --- ICONOS ---
         const Icon = ({ name, size = 24, className, fill = "none" }) => {
             const icons = {
                 search: <path d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 111.414-1.414 7.5 7.5 0 01-1.414 1.414z" />,
@@ -279,6 +277,7 @@
             const [message, setMessage] = useState('');
             const [type, setType] = useState('default');
             const [sending, setSending] = useState(false);
+            const [successMsg, setSuccessMsg] = useState(false);
 
             const handleSend = async (e) => {
                 e.preventDefault();
@@ -298,11 +297,14 @@
                     });
                     
                     if(onSent) onSent(); 
-                    alert('Notificación enviada con éxito');
-                    onClose();
+                    setSuccessMsg(true);
+                    setTimeout(() => {
+                        setSuccessMsg(false);
+                        onClose();
+                    }, 2000);
                 } catch (e) {
                     console.error(e);
-                    alert('Error enviando notificación');
+                    // Mostrar error temporal en lugar de alert
                 } finally {
                     setSending(false);
                 }
@@ -313,27 +315,37 @@
                     <div className="bg-[#1f2937] p-6 rounded-2xl max-w-sm w-full border border-white/10 relative" onClick={e => e.stopPropagation()}>
                         <button onClick={onClose} className="absolute top-4 right-4 text-gray-400 hover:text-white"><Icon name="x" size={24} /></button>
                         <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2"><Icon name="crown" size={24} className="text-[#E50914]"/> Enviar Aviso</h3>
-                        <form onSubmit={handleSend} className="space-y-4">
-                            <div>
-                                <label className="block text-xs text-gray-400 mb-1">Título</label>
-                                <input type="text" className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-[#E50914] outline-none" value={title} onChange={e => setTitle(e.target.value)} required />
+                        
+                        {successMsg ? (
+                            <div className="py-8 text-center animate-fade-in">
+                                <div className="mx-auto w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mb-4">
+                                    <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                                </div>
+                                <h4 className="text-lg font-bold text-white">Notificación enviada</h4>
                             </div>
-                            <div>
-                                <label className="block text-xs text-gray-400 mb-1">Mensaje</label>
-                                <textarea className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-[#E50914] outline-none h-24 resize-none" value={message} onChange={e => setMessage(e.target.value)} required></textarea>
-                            </div>
-                            <div>
-                                <label className="block text-xs text-gray-400 mb-1">Tipo</label>
-                                <select className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white outline-none" value={type} onChange={e => setType(e.target.value)}>
-                                    <option value="default">Información (Azul)</option>
-                                    <option value="success">Éxito (Verde)</option>
-                                    <option value="alert">Alerta (Rojo)</option>
-                                </select>
-                            </div>
-                            <button type="submit" disabled={sending} className="w-full bg-[#E50914] hover:bg-red-700 text-white font-bold py-3 rounded-lg transition-colors disabled:opacity-50">
-                                {sending ? 'Enviando...' : 'Enviar a Todos'}
-                            </button>
-                        </form>
+                        ) : (
+                            <form onSubmit={handleSend} className="space-y-4">
+                                <div>
+                                    <label className="block text-xs text-gray-400 mb-1">Título</label>
+                                    <input type="text" className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-[#E50914] outline-none" value={title} onChange={e => setTitle(e.target.value)} required />
+                                </div>
+                                <div>
+                                    <label className="block text-xs text-gray-400 mb-1">Mensaje</label>
+                                    <textarea className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-[#E50914] outline-none h-24 resize-none" value={message} onChange={e => setMessage(e.target.value)} required></textarea>
+                                </div>
+                                <div>
+                                    <label className="block text-xs text-gray-400 mb-1">Tipo</label>
+                                    <select className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white outline-none" value={type} onChange={e => setType(e.target.value)}>
+                                        <option value="default">Información (Azul)</option>
+                                        <option value="success">Éxito (Verde)</option>
+                                        <option value="alert">Alerta (Rojo)</option>
+                                    </select>
+                                </div>
+                                <button type="submit" disabled={sending} className="w-full bg-[#E50914] hover:bg-red-700 text-white font-bold py-3 rounded-lg transition-colors disabled:opacity-50">
+                                    {sending ? 'Enviando...' : 'Enviar a Todos'}
+                                </button>
+                            </form>
+                        )}
                     </div>
                 </div>
             );
@@ -361,7 +373,6 @@
 
         const QRModal = ({ onClose }) => { const currentUrl = window.location.href; const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(currentUrl)}`; return (<div className="fixed inset-0 z-[60] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}><div className="bg-white p-6 rounded-2xl max-w-sm w-full text-center relative" onClick={e => e.stopPropagation()}><button onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-black"><Icon name="x" size={24} stroke="currentColor" /></button><h3 className="text-2xl font-bold text-black mb-2">¡Comparte la App!</h3><p className="text-gray-500 text-sm mb-6">Escanea o copia el enlace.</p><div className="bg-white p-2 rounded-lg shadow-inner border border-gray-200 inline-block mb-4"><img src={qrUrl} className="w-48 h-48 object-contain" /></div><div className="flex items-center gap-2 bg-gray-100 p-2 rounded-lg border border-gray-300"><input type="text" readOnly value={currentUrl} className="bg-transparent flex-1 text-xs text-gray-600 outline-none truncate" onClick={(e) => e.target.select()}/></div><p className="text-xs text-gray-400 mt-4">MAGIS Tube Ultimate</p></div></div>); };
         
-        // --- NOTIFICACIONES (NTFY) ---
         const NotificationsModal = ({ onClose, items, loading, onRefresh }) => {
             return (
                 <div className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-start justify-end p-0 animate-fade-in" onClick={onClose}>
@@ -452,7 +463,7 @@
                 className={`group flex items-center gap-3 p-3 border-b border-white/5 cursor-pointer transition-colors ${isActive ? 'bg-[#1f2937] border-l-4 border-l-[#E50914]' : 'hover:bg-white/5'}`} 
             > 
                 <div className="w-12 h-8 rounded bg-black flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/10"> 
-                    {channel.image ? ( <img src={channel.image} alt={channel.title} className="w-full h-full object-contain" onError={(e) => e.target.style.display='none'} /> ) : ( <Icon name="tv" size={16} className="opacity-50 text-gray-400"/> )} 
+                    {channel.image ? ( <img src={channel.image} alt={channel.title} loading="lazy" className="w-full h-full object-contain" onError={(e) => e.target.style.display='none'} /> ) : ( <Icon name="tv" size={16} className="opacity-50 text-gray-400"/> )} 
                 </div> 
                 <div className="flex-1 min-w-0"> 
                     <p className={`text-sm font-medium truncate ${isActive ? 'text-[#E50914]' : 'text-white'}`}>{channel.title}</p> 
@@ -476,7 +487,7 @@
                     onClick={() => onClick(item)}
                 > 
                     <div className={`relative overflow-hidden rounded-lg bg-[#1f2937] shadow-lg transition-all duration-300 group-hover:shadow-[#E50914]/20 border border-transparent group-hover:border-white/10 ${isTv ? 'aspect-video' : 'aspect-[2/3]'}`}> 
-                        <img src={item.image || item.poster || item.logo} className={`w-full h-full ${isTv ? 'object-contain p-4' : 'object-cover'} transition-transform duration-500 group-hover:scale-110`} onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/300x450/1f2937/ffffff?text=${(item.title || item.name || 'X').charAt(0)}`; }} alt={item.title || item.name} /> 
+                        <img src={item.image || item.poster || item.logo} loading="lazy" className={`w-full h-full ${isTv ? 'object-contain p-4' : 'object-cover'} transition-transform duration-500 group-hover:scale-110`} onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/300x450/1f2937/ffffff?text=${(item.title || item.name || 'X').charAt(0)}`; }} alt={item.title || item.name} /> 
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"> 
                             <div className="bg-[#E50914] p-3 rounded-full shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300"> 
                                 {hasLock ? <Icon name="lock" size={24} className="text-white"/> : <Icon name="play" size={24} fill="white" className="text-white ml-1" />} 
@@ -493,7 +504,6 @@
             ); 
         };
 
-        // --- APP PRINCIPAL ---
         const App = () => {
             const [showIntro, setShowIntro] = useState(true);
             const [showQR, setShowQR] = useState(false);
@@ -514,14 +524,15 @@
             const [watchProgress, setWatchProgress] = useState({});
             const [loading, setLoading] = useState(true);
             const [expandedSeason, setExpandedSeason] = useState(0);
+            const [isVideoLoading, setIsVideoLoading] = useState(false);
+            const [videoError, setVideoError] = useState(null);
+            const [retryTrigger, setRetryTrigger] = useState(0);
             const videoRef = useRef(null);
             const hlsRef = useRef(null);
 
-            // FUNCIÓN PARA OBTENER NOTIFICACIONES DE NTFY
             const fetchNotifs = async () => {
                 setNotifLoading(true);
                 try {
-                    // Agregamos timestamp para evitar cache y since=all para traer todo
                     const res = await fetch(`https://ntfy.sh/${NTFY_TOPIC}/json?poll=1&since=all&t=${Date.now()}`);
                     const text = await res.text();
                     const lines = text.trim().split('\n');
@@ -547,7 +558,6 @@
                 } catch (e) { console.error("Error fetching notifications", e); } finally { setNotifLoading(false); }
             };
 
-            // Fetch notifications on load
             useEffect(() => {
                 fetchNotifs();
             }, []);
@@ -603,7 +613,70 @@
             const playUrl = (selectedItem?.type === 'tv' || selectedItem?.type === 'movie') ? selectedItem.url : (selectedItem?.type === 'series' && selectedEpisode) ? selectedEpisode.url : '';
             const isDriveLink = playUrl && playUrl.includes('drive.google.com');
             const handleVideoProgress = (e) => { const time = e.target.currentTime; const duration = e.target.duration; if (!duration || !selectedItem) return; const pct = (time / duration) * 100; const itemId = selectedItem.id || selectedItem.title; const newProgress = { ...watchProgress, [itemId]: { pct: pct, time: time, item: selectedItem, timestamp: Date.now() } }; setWatchProgress(newProgress); safeStorage.setItem('magistube_progress', JSON.stringify(newProgress)); };
-            useEffect(() => { if (isLocked || !playUrl || isDriveLink || !videoRef.current) return; const video = videoRef.current; if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; } const itemId = selectedItem?.id || selectedItem?.title; const saved = watchProgress[itemId]; const onLoadedMetadata = () => { if (saved && saved.time > 0 && saved.pct < 95) video.currentTime = saved.time; }; video.addEventListener('loadedmetadata', onLoadedMetadata); if (Hls.isSupported() && (playUrl.includes('.m3u8') || selectedItem?.type === 'tv')) { const hls = new Hls(); hlsRef.current = hls; hls.loadSource(playUrl); hls.attachMedia(video); hls.on(Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => {})); } else { video.src = playUrl; video.load(); video.play().catch(() => {}); } return () => video.removeEventListener('loadedmetadata', onLoadedMetadata); }, [playUrl, isDriveLink, selectedItem, isLocked]);
+            
+            useEffect(() => { 
+                if (isLocked || !playUrl || isDriveLink || !videoRef.current) return; 
+                
+                const video = videoRef.current; 
+                setIsVideoLoading(true);
+                setVideoError(null);
+
+                if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; } 
+                const itemId = selectedItem?.id || selectedItem?.title; 
+                const saved = watchProgress[itemId]; 
+                
+                const onLoadedMetadata = () => { if (saved && saved.time > 0 && saved.pct < 95) video.currentTime = saved.time; }; 
+                const onPlaying = () => setIsVideoLoading(false);
+                const onError = () => { setIsVideoLoading(false); setVideoError('No se pudo establecer conexión con el origen.'); };
+
+                video.addEventListener('loadedmetadata', onLoadedMetadata); 
+                video.addEventListener('playing', onPlaying);
+                video.addEventListener('error', onError);
+
+                if (Hls.isSupported() && (playUrl.includes('.m3u8') || selectedItem?.type === 'tv')) { 
+                    const hls = new Hls({
+                        maxBufferLength: 15,       // Reducido para arrancar rápido
+                        maxMaxBufferLength: 30,    // Evita usar mucha RAM en TV en vivo
+                        lowLatencyMode: true,      // Optimizado para TV en vivo
+                        enableWorker: true,
+                        startLevel: -1             // Selección automática de calidad
+                    }); 
+                    hlsRef.current = hls; 
+                    hls.loadSource(playUrl); 
+                    hls.attachMedia(video); 
+                    hls.on(Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => { setIsVideoLoading(false); })); 
+                    hls.on(Hls.Events.ERROR, (event, data) => {
+                        if (data.fatal) {
+                            setIsVideoLoading(false);
+                            if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
+                                setVideoError('El canal no responde o está offline temporalmente.');
+                                hls.destroy();
+                            } else if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
+                                hls.recoverMediaError(); 
+                            } else {
+                                setVideoError('Error crítico de reproducción.');
+                                hls.destroy();
+                            }
+                        }
+                    });
+                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    // Fallback nativo para dispositivos iOS / Safari
+                    video.src = playUrl;
+                    video.load();
+                    video.play().catch(() => { setIsVideoLoading(false); });
+                } else { 
+                    video.src = playUrl; 
+                    video.load(); 
+                    video.play().catch(() => { setIsVideoLoading(false); }); 
+                } 
+                
+                return () => {
+                    video.removeEventListener('loadedmetadata', onLoadedMetadata); 
+                    video.removeEventListener('playing', onPlaying);
+                    video.removeEventListener('error', onError);
+                };
+            }, [playUrl, isDriveLink, selectedItem, isLocked, retryTrigger]);
+            
             const toggleFavorite = (item) => { const itemId = item.id || item.title; const newFavs = favorites.some(f => (f.id || f.title) === itemId) ? favorites.filter(f => (f.id || f.title) !== itemId) : [item, ...favorites]; setFavorites(newFavs); safeStorage.setItem('magistube_favs', JSON.stringify(newFavs)); };
             const handlePlay = (item) => { const code = item.codigo || item.password || item.pin; if (code) { setSelectedItem(item); setIsLocked(true); } else { setSelectedItem(item); setIsLocked(false); } setExpandedSeason(0); if (item.type === 'series') { const firstEp = item.seasons?.[0]?.episodes?.[0]; setSelectedEpisode(firstEp || null); } if (item.type !== 'tv' || window.innerWidth < 1024) window.scrollTo({ top: 0, behavior: 'smooth' }); };
             const getDisplayContent = () => { let list = activeTab === 'home' ? [...content.movies.slice(0,20), ...content.series.slice(0,20), ...content.tv.slice(0,20)] : activeTab === 'favorites' ? favorites : content[activeTab] || []; if (search) return list.filter(i => (i.title || i.name).toLowerCase().includes(search.toLowerCase())); return list; };
@@ -661,22 +734,22 @@
                                 return ( <div className="p-4 md:p-10 animate-fade-in"> <div className="mb-6 flex items-center gap-3 border-b border-white/10 pb-4"> <div className="p-2 bg-[#E50914]/20 rounded-lg text-[#E50914]"> <Icon name="heart" size={24} fill="currentColor" /> </div> <h2 className="text-2xl font-bold text-white">Estos son sus favoritos</h2> </div> {favTV.length > 0 && ( <div className="mb-10"> <h3 className="text-lg font-semibold text-gray-300 mb-4 pl-2 border-l-4 border-[#E50914]">Canales de TV</h3> <div className="bg-[#1f2937]/50 rounded-xl overflow-hidden border border-white/5"> {favTV.map(item => ( <TvListItem key={item.id} channel={item} isActive={false} isFavorite={true} onToggleFavorite={toggleFavorite} onClick={handlePlay} /> ))} </div> </div> )} {favOther.length > 0 && ( <div> <h3 className="text-lg font-semibold text-gray-300 mb-4 pl-2 border-l-4 border-blue-500">Películas y Series</h3> <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8"> {favOther.map((item, i) => ( <Card key={i} item={item} onClick={handlePlay} isFavorite={true} onToggleFavorite={toggleFavorite} /> ))} </div> </div> )} {favorites.length === 0 && ( <div className="text-center py-20 text-gray-500 flex flex-col items-center"> <Icon name="heart" size={48} className="mb-4 opacity-20"/> <p>Aún no tienes favoritos guardados.</p> </div> )} </div> );
                             }
                             if (activeTab === 'tv' || (selectedItem && selectedItem.type === 'tv')) {
-                                return ( <div className="flex flex-col lg:flex-row h-full lg:h-screen lg:overflow-hidden"> <div className={`flex-1 bg-black relative flex flex-col lg:h-full ${selectedItem && selectedItem.type === 'tv' ? '' : 'hidden lg:flex'}`}> {selectedItem && selectedItem.type === 'tv' ? ( <> <div className="relative aspect-video w-full bg-black lg:flex-1"> <button onClick={() => setSelectedItem(null)} className="absolute top-4 left-4 z-20 bg-black/50 p-2 rounded-full text-white lg:hidden"> <Icon name="arrowLeft" size={20} /> </button> {isDriveLink ? ( <div className="iframe-container"><iframe src={playUrl} allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe></div> ) : ( <video ref={videoRef} className="w-full h-full" controls autoPlay playsInline onTimeUpdate={handleVideoProgress} /> )} </div> <div className="p-4 bg-[#1f2937] border-b border-white/10"> <h2 className="text-lg font-bold text-white">{selectedItem.title}</h2> <p className="text-xs text-[#E50914] font-bold uppercase">En Vivo Ahora</p> </div> </> ) : ( <div className="flex items-center justify-center h-full text-gray-500"> <p>Selecciona un canal para ver</p> </div> )} </div> <div className="w-full lg:w-96 bg-[#111827] lg:border-l border-white/10 flex flex-col lg:h-full lg:overflow-hidden"> <div className="p-4 sticky top-16 lg:top-0 bg-[#111827] z-20 border-b border-white/5"> <div className="relative"> <input type="text" placeholder="Buscar canal..." className="w-full bg-[#1f2937] border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:border-[#E50914] outline-none pl-10" value={search} onChange={(e) => setSearch(e.target.value)}/> <Icon name="search" size={18} className="absolute left-3 top-3 text-gray-400"/> </div> </div> <div className="p-2 space-y-1 lg:overflow-y-auto lg:h-full"> {loading ? ( <div className="flex justify-center py-10"><div className="animate-spin rounded-full h-8 w-8 border-2 border-[#E50914] border-t-transparent"></div></div> ) : ( (activeTab === 'tv' ? content.tv : favorites.filter(f => f.type === 'tv')).filter(c => !search || c.title.toLowerCase().includes(search.toLowerCase())).map((channel) => ( <TvListItem key={channel.id} channel={channel} isActive={selectedItem?.id === channel.id} isFavorite={favorites.some(f => f.id === channel.id)} onToggleFavorite={toggleFavorite} onClick={handlePlay} /> )) )} </div> </div> </div> );
+                                return ( <div className="flex flex-col lg:flex-row h-full lg:h-screen lg:overflow-hidden"> <div className={`flex-1 bg-black relative flex flex-col lg:h-full ${selectedItem && selectedItem.type === 'tv' ? '' : 'hidden lg:flex'}`}> {selectedItem && selectedItem.type === 'tv' ? ( <> <div className="relative aspect-video w-full bg-black lg:flex-1"> <button onClick={() => setSelectedItem(null)} className="absolute top-4 left-4 z-20 bg-black/50 p-2 rounded-full text-white lg:hidden"> <Icon name="arrowLeft" size={20} /> </button> {isDriveLink ? ( <div className="iframe-container"><iframe src={playUrl} allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe></div> ) : ( 
+                                    <>
+                                        {isVideoLoading && <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-10"><div className="animate-spin rounded-full h-10 w-10 border-4 border-[#E50914] border-t-transparent mb-3"></div><span className="text-xs text-gray-300 font-bold uppercase tracking-widest">Conectando...</span></div>}
+                                        {videoError && <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/90 z-10 p-4 text-center"><Icon name="alertCircle" size={40} className="text-[#E50914] mb-3" /><p className="text-white font-bold mb-4">{videoError}</p><button onClick={() => setRetryTrigger(prev => prev + 1)} className="px-6 py-2 bg-[#E50914] rounded-lg text-sm text-white font-bold hover:bg-red-700 transition-colors">Reintentar</button></div>}
+                                        <video ref={videoRef} className="w-full h-full" controls autoPlay playsInline onTimeUpdate={handleVideoProgress} /> 
+                                    </>
+                                )} </div> <div className="p-4 bg-[#1f2937] border-b border-white/10"> <h2 className="text-lg font-bold text-white">{selectedItem.title}</h2> <p className="text-xs text-[#E50914] font-bold uppercase">En Vivo Ahora</p> </div> </> ) : ( <div className="flex items-center justify-center h-full text-gray-500"> <p>Selecciona un canal para ver</p> </div> )} </div> <div className="w-full lg:w-96 bg-[#111827] lg:border-l border-white/10 flex flex-col lg:h-full lg:overflow-hidden"> <div className="p-4 sticky top-16 lg:top-0 bg-[#111827] z-20 border-b border-white/5"> <div className="relative"> <input type="text" placeholder="Buscar canal..." className="w-full bg-[#1f2937] border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:border-[#E50914] outline-none pl-10" value={search} onChange={(e) => setSearch(e.target.value)}/> <Icon name="search" size={18} className="absolute left-3 top-3 text-gray-400"/> </div> </div> <div className="p-2 space-y-1 lg:overflow-y-auto lg:h-full"> {loading ? ( <div className="flex justify-center py-10"><div className="animate-spin rounded-full h-8 w-8 border-2 border-[#E50914] border-t-transparent"></div></div> ) : ( (activeTab === 'tv' ? content.tv : favorites.filter(f => f.type === 'tv')).filter(c => !search || c.title.toLowerCase().includes(search.toLowerCase())).map((channel) => ( <TvListItem key={channel.id} channel={channel} isActive={selectedItem?.id === channel.id} isFavorite={favorites.some(f => f.id === channel.id)} onToggleFavorite={toggleFavorite} onClick={handlePlay} /> )) )} </div> </div> </div> );
                             }
                             if (selectedItem) {
-                                return ( <div className="animate-fade-in"> <div className="w-full bg-black relative aspect-video md:h-[70vh] flex items-center justify-center"> <div className="absolute top-4 left-4 z-20"> <button onClick={() => {setSelectedItem(null); setIsLocked(false);}} className="bg-black/50 hover:bg-[#E50914] text-white px-4 py-2 rounded-full backdrop-blur-md flex items-center gap-2 transition-colors border border-white/10"> <Icon name="arrowLeft" size={18} /> <span className="hidden md:inline">Volver</span> </button> </div> {isLocked ? ( <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} /> ) : ( isDriveLink ? ( <div className="iframe-container"> <iframe src={playUrl} allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe> <a href={playUrl} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-xs flex items-center gap-1 hover:bg-[#E50914] z-50 border border-white/20"><Icon name="external" size={12} /> Abrir externo</a> </div> ) : ( <video ref={videoRef} className="w-full h-full" controls autoPlay playsInline onTimeUpdate={handleVideoProgress} /> ) )} {selectedItem.type === 'series' && !selectedEpisode && !isLocked && ( <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10"> <p className="text-gray-400 font-bold">Selecciona un episodio de la lista</p> </div> )} </div> {!isLocked && ( <div className="p-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8"> <div className="lg:col-span-2"> <div className="flex items-start justify-between mb-4"> <div> <h1 className="text-3xl font-bold text-white mb-2">{selectedItem.title || selectedItem.name}</h1> <div className="flex items-center gap-3 text-sm text-gray-400"> <span className="bg-[#1f2937] px-2 py-0.5 rounded text-white">{selectedItem.type.toUpperCase()}</span> {selectedItem.type === 'series' && selectedEpisode && <span className="text-[#E50914] font-medium">{selectedEpisode.title}</span>} </div> </div> <button onClick={() => toggleFavorite(selectedItem)} className="p-3 bg-[#1f2937] rounded-full hover:bg-[#2d3748]"> <Icon name="heart" size={24} className={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "text-[#E50914] fill-[#E50914]" : "text-gray-400"} fill={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "#E50914" : "none"} /> </button> </div> <div className="flex flex-col md:flex-row gap-6 mb-6"> <img src={selectedItem.image || selectedItem.poster} className="hidden md:block w-48 rounded-lg shadow-lg object-cover aspect-[2/3] border border-white/10" alt={selectedItem.title} /> <p className="text-gray-300 leading-relaxed">{selectedItem.description || selectedItem.plot || "Sin descripción disponible."}</p> </div> </div> <div className="bg-[#1f2937] rounded-xl p-4 h-fit border border-white/5 lg:sticky lg:top-24"> {selectedItem.type === 'series' ? ( <div className="flex flex-col gap-2"> <h3 className="font-bold text-lg mb-2 flex items-center gap-2"><Icon name="film" size={18} className="text-[#E50914]"/> Temporadas</h3> {selectedItem.seasons.map((season, idx) => ( <div key={idx} className="border-b border-gray-700 last:border-0 pb-2"> <button type="button" onClick={() => setExpandedSeason(expandedSeason === idx ? null : idx)} className="w-full flex justify-between items-center py-2 text-sm font-bold hover:text-[#E50914]"> <span>Temporada {season.season_number}</span> {expandedSeason === idx ? <Icon name="chevronUp" size={16}/> : <Icon name="chevronDown" size={16}/>} </button> {expandedSeason === idx && ( <div className="flex flex-col gap-1 mt-1 pl-2 max-h-[400px] overflow-y-auto pr-1 custom-scrollbar"> {season.episodes.length === 0 && <p className="text-xs text-gray-500 p-2">No hay episodios disponibles.</p>} {season.episodes.map((ep, eIdx) => ( <div key={eIdx} onClick={() => { setSelectedEpisode(ep); window.scrollTo({top:0, behavior:'smooth'}); }} className={`text-sm p-2 rounded cursor-pointer truncate flex items-center gap-2 ${selectedEpisode?.url === ep.url ? 'bg-[#E50914] text-white' : 'text-gray-400 hover:bg-gray-700'}`}> <Icon name="play" size={12} fill="currentColor" className="flex-shrink-0" /> {eIdx + 1}. {ep.title} </div> ))} </div> )} </div> ))} </div> ) : ( <div> <h3 className="font-bold mb-4 text-gray-200">Recomendados</h3> <div className="flex flex-col gap-3"> {content[selectedItem.type === 'tv' ? 'tv' : 'movies'].slice(0, 5).map(rel => ( <div key={rel.id || rel.title} onClick={() => handlePlay(rel)} className="flex gap-3 cursor-pointer group"> <img src={rel.image || rel.poster} className="w-20 h-12 object-cover rounded bg-gray-800" /> <div className="flex flex-col justify-center"> <h4 className="text-sm font-bold line-clamp-1 group-hover:text-[#E50914]">{rel.title}</h4> <span className="text-xs text-gray-500">Ver ahora</span> </div> </div> ))} </div> </div> )} </div> </div> )} </div> );
-                            }
-                            return (
-                                <>
-                                    <div className="sticky top-0 z-40 bg-[#111827]/95 backdrop-blur py-4 px-6 md:px-10 flex items-center justify-between border-b border-[#1f2937]">
-                                        <div className="flex bg-[#1f2937] border border-[#374151] rounded-full px-4 py-2 w-full max-w-lg items-center focus-within:border-[#E50914] transition-colors">
-                                            <Icon name="search" className="text-gray-400 w-5 h-5 mr-3" />
-                                            <input type="text" placeholder={`Buscar en ${activeTab === 'home' ? 'todo' : activeTab}...`} className="bg-transparent w-full outline-none text-sm placeholder-gray-500 text-white" value={search} onChange={(e) => setSearch(e.target.value)}/>
-                                        </div>
-                                        <div className="hidden md:flex items-center gap-4 ml-4">
-                                            <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{activeTab}</span>
-                                        </div>
+                                return ( <div className="animate-fade-in"> <div className="w-full bg-black relative aspect-video md:h-[70vh] flex items-center justify-center"> <div className="absolute top-4 left-4 z-20"> <button onClick={() => {setSelectedItem(null); setIsLocked(false);}} className="bg-black/50 hover:bg-[#E50914] text-white px-4 py-2 rounded-full backdrop-blur-md flex items-center gap-2 transition-colors border border-white/10"> <Icon name="arrowLeft" size={18} /> <span className="hidden md:inline">Volver</span> </button> </div> {isLocked ? ( <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} /> ) : ( isDriveLink ? ( <div className="iframe-container"> <iframe src={playUrl} allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe> <a href={playUrl} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-xs flex items-center gap-1 hover:bg-[#E50914] z-50 border border-white/20"><Icon name="external" size={12} /> Abrir externo</a> </div> ) : ( 
+                                    <div className="relative w-full h-full">
+                                        {isVideoLoading && <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-10"><div className="animate-spin rounded-full h-10 w-10 border-4 border-[#E50914] border-t-transparent mb-3"></div><span className="text-xs text-gray-300 font-bold uppercase tracking-widest">Conectando...</span></div>}
+                                        {videoError && <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/90 z-10 p-4 text-center"><Icon name="alertCircle" size={40} className="text-[#E50914] mb-3" /><p className="text-white font-bold mb-4">{videoError}</p><button onClick={() => setRetryTrigger(prev => prev + 1)} className="px-6 py-2 bg-[#E50914] rounded-lg text-sm text-white font-bold hover:bg-red-700 transition-colors">Reintentar</button></div>}
+                                        <video ref={videoRef} className="w-full h-full" controls autoPlay playsInline onTimeUpdate={handleVideoProgress} /> 
                                     </div>
+                                ) )} {selectedItem.type === 'series' && !selectedEpisode && !isLocked && ( <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-10"> <p className="text-gray-400 font-bold">Selecciona un episodio de la lista</p> </div> )} </div> {!isLocked && ( <div className="p-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8"> <div className="lg:col-span-2"> <div className="flex items-start justify-between mb-4">
                                     {activeTab === 'home' && !search && (
                                         <div className="mx-4 md:mx-10 mt-6 p-4 rounded-xl bg-gradient-to-r from-blue-900/40 to-[#111827] border border-blue-500/30 flex items-center gap-4 animate-fade-in">
                                             <div className="hidden md:flex p-3 bg-blue-600/20 rounded-full text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
