@@ -534,7 +534,6 @@
             const [loading, setLoading] = useState(true);
             const [expandedSeason, setExpandedSeason] = useState(0);
             
-            // Estados para control de errores y carga de Video (La Mejora de TV)
             const [isVideoLoading, setIsVideoLoading] = useState(false);
             const [videoError, setVideoError] = useState(null);
             const [retryTrigger, setRetryTrigger] = useState(0);
@@ -602,7 +601,6 @@
                     } catch (err) { console.error("Error cargando datos", err); } finally { setLoading(false); }
                 };
 
-                // PARCHE: Carga de memoria Ultra Segura (Evita Pantalla Blanca si localStorage se corrompe)
                 const storedFavs = safeStorage.getItem('magistube_favs'); 
                 if (storedFavs) {
                     try { 
@@ -664,14 +662,14 @@
                 video.addEventListener('playing', onPlaying);
                 video.addEventListener('error', onError);
 
-                // PARCHE DE VELOCIDAD: Configuración extrema de HLS para TV en Vivo
+                // CONFIGURACIÓN DE VELOCIDAD DE CARGA INSTANTÁNEA (Time-To-First-Frame)
                 if (typeof window.Hls !== 'undefined' && window.Hls.isSupported() && (playUrl.includes('.m3u8') || selectedItem?.type === 'tv')) { 
                     const hls = new window.Hls({
-                        maxBufferLength: 10,       // Reduce el colchón necesario para arrancar
-                        maxMaxBufferLength: 20,    // Ahorra RAM en dispositivos de gama baja
-                        lowLatencyMode: true,      // Modo optimizado para TV
                         enableWorker: true,
-                        startLevel: -1             // Selecciona la calidad automáticamente 
+                        lowLatencyMode: false,     // Desactivado: las listas IPTV gratuitas se traban con esto activo.
+                        startLevel: 0,             // Inicia forzosamente en la calidad más baja para arrancar casi en 1 segundo.
+                        liveSyncDurationCount: 3,  // Se aleja 3 segmentos del "en vivo" para evitar cortes.
+                        maxBufferLength: 30        // Búfer más holgado para estabilidad.
                     }); 
                     hlsRef.current = hls; 
                     hls.loadSource(playUrl); 
