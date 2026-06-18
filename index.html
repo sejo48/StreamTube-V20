@@ -12,6 +12,15 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     
+    <!-- Forzar a Babel a usar el modo clásico para evitar el error de react/jsx-runtime -->
+    <script>
+        Babel.registerPreset('react-classic', {
+            presets: [
+                [Babel.availablePresets['react'], { runtime: 'classic' }]
+            ]
+        });
+    </script>
+    
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
 
@@ -64,6 +73,7 @@
         import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
+        // Firebase Configuration & Initialization
         const envConfig = typeof __firebase_config !== 'undefined' ? __firebase_config : '{}';
         const firebaseConfig = JSON.parse(envConfig);
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'magis-tube-local';
@@ -100,6 +110,15 @@
             }
         }
 
+        function loadLocal(callback) {
+            try {
+                const localData = JSON.parse(localStorage.getItem('magis_local_visitors') || '[]');
+                localData.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
+                callback(localData);
+            } catch(e) { callback([]); }
+        }
+
+        // Database API setup
         window.DB_API = {
             saveVisitor: async (name) => {
                 if (!name) return;
@@ -152,17 +171,9 @@
                 return () => {}; 
             }
         };
-
-        function loadLocal(callback) {
-            try {
-                const localData = JSON.parse(localStorage.getItem('magis_local_visitors') || '[]');
-                localData.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
-                callback(localData);
-            } catch(e) { callback([]); }
-        }
     </script>
 
-    <script type="text/babel">
+    <script type="text/babel" data-presets="react-classic">
         const { useState, useEffect, useRef, useMemo } = React;
 
         const safeStorage = {
@@ -303,7 +314,6 @@
                     }, 2000);
                 } catch (e) {
                     console.error(e);
-                    // Mostrar error temporal en lugar de alert
                 } finally {
                     setSending(false);
                 }
@@ -605,7 +615,7 @@
                 if (storedProgress) {
                     try { 
                         const parsed = JSON.parse(storedProgress); 
-                        if (parsed && typeof parsed === 'object') setWatchProgress(parsed); 
+                        if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) setWatchProgress(parsed); 
                     } catch(e) { console.warn("Memoria progreso corrupta limpiada"); }
                 }
                 
