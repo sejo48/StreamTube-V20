@@ -5,15 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MAGIS Tube Ultimate - Jorge</title>
     
+    <!-- Librerías Externas -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     
+    <!-- Configuración para evitar el error de pantalla negra en React 18 -->
+    <script>
+        if (typeof Babel !== 'undefined') {
+            Babel.registerPreset('react-classic', {
+                presets: [
+                    [Babel.availablePresets['react'], { runtime: 'classic' }]
+                ]
+            });
+        }
+    </script>
+    
+    <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
 
     <style>
+        /* Estilos Base */
         body { background-color: #111827; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; margin: 0; padding: 0; }
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #1f2937; }
@@ -25,21 +39,38 @@
         .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(229,9,20,0.5); }
+        
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes heartPop { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
         @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
         @keyframes spinFast { 100% { transform: rotate(360deg); } }
+        
         .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
         .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
         .animate-shake { animation: shake 0.2s ease-in-out 0s 2; }
         .heart-pop { animation: heartPop 0.3s ease-in-out; }
-        .text-gold-gradient { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        
+        .text-gold-gradient {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
         .iframe-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: black; }
         .iframe-container iframe { width: 100%; height: 100%; border: 0; }
-        button:focus, div[tabindex="0"]:focus, input:focus { outline: 3px solid #E50914; outline-offset: 2px; z-index: 50; transform: scale(1.05); transition: all 0.2s; }
-        
+
+        /* OPTIMIZACIÓN SMART TV */
+        button:focus, div[tabindex="0"]:focus, input:focus {
+            outline: 3px solid #E50914;
+            outline-offset: 2px;
+            z-index: 50;
+            transform: scale(1.05);
+            transition: all 0.2s;
+        }
+
         /* Preloader nativo */
         .native-preloader { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; width: 100vw; background-color: #111827; position: absolute; top: 0; left: 0; z-index: 9999; }
         .spinner { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1); border-top-color: #E50914; border-radius: 50%; animation: spinFast 1s linear infinite; }
@@ -47,25 +78,14 @@
 </head>
 <body>
     <div id="root">
-        <!-- Failsafe visual si React tarda o falla en cargar -->
+        <!-- Pantalla de carga mientras React inicia -->
         <div class="native-preloader">
             <div class="spinner"></div>
             <p style="margin-top: 20px; color: #9ca3af; font-family: sans-serif; font-size: 14px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase;">Iniciando MAGIS Tube...</p>
         </div>
     </div>
 
-    <!-- Configuramos Babel explícitamente para el modo clásico -->
-    <script>
-        if (typeof Babel !== 'undefined') {
-            Babel.registerPreset('react-classic', {
-                presets: [
-                    [Babel.availablePresets['react'], { runtime: 'classic' }]
-                ]
-            });
-        }
-    </script>
-
-    <!-- Script Unificado: React + Firebase con data-type="module" y nuestro preset personalizado -->
+    <!-- Script de React unificado con Firebase (data-type="module") -->
     <script type="text/babel" data-type="module" data-presets="react-classic">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -73,6 +93,7 @@
 
         const { useState, useEffect, useRef, useMemo } = React;
 
+        // Firebase Setup (Opcional - usa variables globales si existen)
         const envConfig = typeof __firebase_config !== 'undefined' ? __firebase_config : '{}';
         const firebaseConfig = JSON.parse(envConfig);
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'magis-tube-local';
@@ -102,6 +123,7 @@
             } catch (e) { console.warn("Error init Firebase, usando modo local:", e); }
         }
 
+        // API Global para Estadísticas y Visitas
         window.DB_API = {
             saveVisitor: async (name) => {
                 if (!name) return;
@@ -111,6 +133,7 @@
                         return;
                     } catch (e) { console.warn("Fallo guardado en nube.", e); }
                 }
+                // Fallback Local
                 try {
                     const localData = JSON.parse(localStorage.getItem('magis_local_visitors') || '[]');
                     const isDuplicate = localData.some(v => v.name === name && (Date.now()/1000 - (v.timestamp?.seconds || 0)) < 60);
@@ -476,7 +499,7 @@
                         } catch(e) { return null; }
                     }).filter(Boolean).reverse();
                     setNotifications(parsed);
-                } catch (e) { console.error("Error fetching notifs", e); } finally { setNotifLoading(false); }
+                } catch (e) { console.error("Error fetching notifications", e); } finally { setNotifLoading(false); }
             };
 
             useEffect(() => { fetchNotifs(); }, []);
@@ -516,7 +539,7 @@
                         const rawMovies = Array.isArray(jsonMovies) ? jsonMovies : (jsonMovies.peliculas || []);
                         const moviesList = rawMovies.map(m => ({ ...m, type: 'movie', title: m.titulo || m.title, image: m.imagen || m.poster, codigo: m.codigo || m.password || m.pin, url: cleanDriveUrl(m.urlDrive || m.url) }));
                         
-                        // --- INYECCIÓN MANUAL DE LA NUEVA PELÍCULA ---
+                        // Nueva Película Inyectada Manualmente
                         moviesList.unshift({
                             id: 'career-opportunities-1991',
                             title: 'Career Opportunities',
@@ -525,7 +548,6 @@
                             type: 'movie',
                             url: cleanDriveUrl('https://drive.google.com/file/d/1FD1vbFG6cq0YNUCwtY-tg7DaLboD1h15/view?usp=sharing')
                         });
-                        // ---------------------------------------------
 
                         setContent({ tv: tvChannels, series: seriesList, movies: moviesList });
                     } catch (err) { console.error("Error cargando datos", err); } finally { setLoading(false); }
@@ -568,7 +590,7 @@
                 
                 const onLoadedMetadata = () => { if (saved && saved.time > 0 && saved.pct < 95) video.currentTime = saved.time; }; 
                 const onPlaying = () => setIsVideoLoading(false);
-                const onError = () => { setIsVideoLoading(false); setVideoError('No se pudo establecer conexión con el servidor.'); };
+                const onError = () => { setIsVideoLoading(false); setVideoError('No se pudo reproducir este formato.'); };
 
                 video.addEventListener('loadedmetadata', onLoadedMetadata); 
                 video.addEventListener('playing', onPlaying);
@@ -583,15 +605,21 @@
                     
                     hls.on(window.Hls.Events.ERROR, (event, data) => {
                         if (data.fatal) {
-                            setIsVideoLoading(false);
                             if (data.type === window.Hls.ErrorTypes.NETWORK_ERROR) {
-                                setVideoError('El canal no responde o está offline.');
                                 cleanupHls();
+                                console.warn("HLS.js falló por CORS o red. Intentando reproductor nativo como Fallback...");
+                                video.src = playUrl;
+                                video.load();
+                                video.play().catch(() => {
+                                    setIsVideoLoading(false);
+                                    setVideoError('El canal bloqueó la conexión (Error CORS/Red).');
+                                });
                             } else if (data.type === window.Hls.ErrorTypes.MEDIA_ERROR) {
                                 hls.recoverMediaError(); 
                             } else {
-                                setVideoError('Error crítico de decodificación.');
                                 cleanupHls();
+                                setIsVideoLoading(false);
+                                setVideoError('Error crítico de decodificación.');
                             }
                         }
                     });
