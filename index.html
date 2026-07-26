@@ -5,30 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MAGIS Tube Ultimate - Jorge</title>
     
-    <!-- Librerías Externas -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     
-    <!-- Forzar a Babel a usar el modo clásico para evitar el error de react/jsx-runtime -->
-    <script>
-        if (typeof Babel !== 'undefined') {
-            Babel.registerPreset('react-classic', {
-                presets: [
-                    [Babel.availablePresets['react'], { runtime: 'classic' }]
-                ]
-            });
-        }
-    </script>
-    
-    <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
 
     <style>
-        /* Estilos Base */
-        body { background-color: #111827; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        body { background-color: #111827; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; margin: 0; padding: 0; }
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #1f2937; }
         ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
@@ -43,38 +29,49 @@
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes heartPop { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
         @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
-        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
-        .animate-slide-up { animation: slideUp 0.8s ease-out; }
+        @keyframes spinFast { 100% { transform: rotate(360deg); } }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
         .animate-shake { animation: shake 0.2s ease-in-out 0s 2; }
         .heart-pop { animation: heartPop 0.3s ease-in-out; }
-        .text-gold-gradient {
-            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+        .text-gold-gradient { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
         .iframe-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: black; }
         .iframe-container iframe { width: 100%; height: 100%; border: 0; }
-
-        /* --- OPTIMIZACIÓN SMART TV --- */
-        button:focus, div[tabindex="0"]:focus, input:focus {
-            outline: 3px solid #E50914;
-            outline-offset: 2px;
-            z-index: 50;
-            transform: scale(1.05);
-            transition: all 0.2s;
-        }
+        button:focus, div[tabindex="0"]:focus, input:focus { outline: 3px solid #E50914; outline-offset: 2px; z-index: 50; transform: scale(1.05); transition: all 0.2s; }
+        
+        /* Preloader nativo */
+        .native-preloader { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; width: 100vw; background-color: #111827; position: absolute; top: 0; left: 0; z-index: 9999; }
+        .spinner { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1); border-top-color: #E50914; border-radius: 50%; animation: spinFast 1s linear infinite; }
     </style>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <!-- Failsafe visual si React tarda o falla en cargar -->
+        <div class="native-preloader">
+            <div class="spinner"></div>
+            <p style="margin-top: 20px; color: #9ca3af; font-family: sans-serif; font-size: 14px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase;">Iniciando MAGIS Tube...</p>
+        </div>
+    </div>
 
-    <!-- Script Independiente para Firebase (Módulos Nativos) -->
-    <script type="module">
+    <!-- Configuramos Babel explícitamente para el modo clásico -->
+    <script>
+        if (typeof Babel !== 'undefined') {
+            Babel.registerPreset('react-classic', {
+                presets: [
+                    [Babel.availablePresets['react'], { runtime: 'classic' }]
+                ]
+            });
+        }
+    </script>
+
+    <!-- Script Unificado: React + Firebase con data-type="module" y nuestro preset personalizado -->
+    <script type="text/babel" data-type="module" data-presets="react-classic">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const { useState, useEffect, useRef, useMemo } = React;
 
         const envConfig = typeof __firebase_config !== 'undefined' ? __firebase_config : '{}';
         const firebaseConfig = JSON.parse(envConfig);
@@ -97,49 +94,32 @@
                         } else {
                             await signInAnonymously(auth);
                         }
-                    } catch (e) {
-                        console.warn("Error autenticando:", e);
-                    }
+                    } catch (e) { console.warn("Error autenticando:", e); }
                 };
                 
                 initAuth();
-
-                onAuthStateChanged(auth, (user) => {
-                    currentUser = user;
-                });
-            } catch (e) {
-                console.warn("Error init Firebase, usando modo local:", e);
-            }
+                onAuthStateChanged(auth, (user) => { currentUser = user; });
+            } catch (e) { console.warn("Error init Firebase, usando modo local:", e); }
         }
 
-        // Exponer API global para React
         window.DB_API = {
             saveVisitor: async (name) => {
                 if (!name) return;
                 if (db && auth && currentUser) {
                     try {
-                        await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'), {
-                            name: name,
-                            timestamp: serverTimestamp(),
-                            uid: currentUser.uid
-                        });
+                        await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'), { name: name, timestamp: serverTimestamp(), uid: currentUser.uid });
                         return;
-                    } catch (e) {
-                        console.warn("Fallo guardado en nube.", e);
-                    }
+                    } catch (e) { console.warn("Fallo guardado en nube.", e); }
                 }
                 try {
                     const localData = JSON.parse(localStorage.getItem('magis_local_visitors') || '[]');
                     const isDuplicate = localData.some(v => v.name === name && (Date.now()/1000 - (v.timestamp?.seconds || 0)) < 60);
-                    
                     if (!isDuplicate) {
-                        const newVisitor = { name: name, timestamp: { seconds: Date.now() / 1000 }, uid: 'local-user' };
-                        localData.push(newVisitor);
+                        localData.push({ name: name, timestamp: { seconds: Date.now() / 1000 }, uid: 'local-user' });
                         localStorage.setItem('magis_local_visitors', JSON.stringify(localData));
                     }
                 } catch (e) { console.error("Error localStorage", e); }
             },
-
             subscribeToVisitors: (callback) => {
                 if (db) {
                     try {
@@ -148,12 +128,8 @@
                             const visitors = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                             visitors.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
                             callback(visitors);
-                        }, (err) => {
-                            loadLocal(callback);
-                        });
-                    } catch (e) {
-                        loadLocal(callback);
-                    }
+                        }, (err) => { loadLocal(callback); });
+                    } catch (e) { loadLocal(callback); }
                 } else {
                     loadLocal(callback);
                 }
@@ -168,14 +144,6 @@
                 callback(localData);
             } catch(e) { callback([]); }
         }
-    </script>
-
-    <!-- Script de React usando Babel y el modo Clásico -->
-    <script type="text/babel" data-presets="react-classic">
-        /** @jsx React.createElement */
-        /** @jsxFrag React.Fragment */
-        
-        const { useState, useEffect, useRef, useMemo } = React;
 
         const safeStorage = {
             getItem: (key) => { try { return localStorage.getItem(key); } catch (e) { return null; } },
@@ -215,18 +183,7 @@
             };
             
             return (
-                <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    width={size} 
-                    height={size} 
-                    viewBox="0 0 24 24" 
-                    fill={fill} 
-                    stroke="currentColor" 
-                    strokeWidth="2" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    className={className}
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
                     {icons[name] || icons.search}
                 </svg>
             );
@@ -255,7 +212,15 @@
         const UserListModal = ({ onClose }) => {
             const [users, setUsers] = useState([]);
             const [loading, setLoading] = useState(true);
-            useEffect(() => { const unsubscribe = window.DB_API?.subscribeToVisitors((data) => { setUsers(data); setLoading(false); }); return () => unsubscribe && unsubscribe(); }, []);
+            useEffect(() => { 
+                let unsubscribe;
+                if (window.DB_API?.subscribeToVisitors) {
+                    unsubscribe = window.DB_API.subscribeToVisitors((data) => { setUsers(data); setLoading(false); }); 
+                } else {
+                    setLoading(false);
+                }
+                return () => unsubscribe && unsubscribe(); 
+            }, []);
             return (
                 <div className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
                     <div className="bg-[#1f2937] w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl border border-white/10" onClick={e => e.stopPropagation()}>
@@ -298,26 +263,11 @@
                 if (type === 'alert') tags.push('warning');
                 
                 try {
-                    await fetch(`https://ntfy.sh/${NTFY_TOPIC}?t=${Date.now()}`, {
-                        method: 'POST',
-                        body: message,
-                        headers: {
-                            'Title': title,
-                            'Tags': tags.join(',')
-                        }
-                    });
-                    
+                    await fetch(`https://ntfy.sh/${NTFY_TOPIC}?t=${Date.now()}`, { method: 'POST', body: message, headers: { 'Title': title, 'Tags': tags.join(',') } });
                     if(onSent) onSent(); 
                     setSuccessMsg(true);
-                    setTimeout(() => {
-                        setSuccessMsg(false);
-                        onClose();
-                    }, 2000);
-                } catch (e) {
-                    console.error(e);
-                } finally {
-                    setSending(false);
-                }
+                    setTimeout(() => { setSuccessMsg(false); onClose(); }, 2000);
+                } catch (e) { console.error(e); } finally { setSending(false); }
             };
 
             return (
@@ -335,20 +285,12 @@
                             </div>
                         ) : (
                             <form onSubmit={handleSend} className="space-y-4">
-                                <div>
-                                    <label className="block text-xs text-gray-400 mb-1">Título</label>
-                                    <input type="text" className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-[#E50914] outline-none" value={title} onChange={e => setTitle(e.target.value)} required />
-                                </div>
-                                <div>
-                                    <label className="block text-xs text-gray-400 mb-1">Mensaje</label>
-                                    <textarea className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-[#E50914] outline-none h-24 resize-none" value={message} onChange={e => setMessage(e.target.value)} required></textarea>
-                                </div>
+                                <div><label className="block text-xs text-gray-400 mb-1">Título</label><input type="text" className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-[#E50914] outline-none" value={title} onChange={e => setTitle(e.target.value)} required /></div>
+                                <div><label className="block text-xs text-gray-400 mb-1">Mensaje</label><textarea className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-[#E50914] outline-none h-24 resize-none" value={message} onChange={e => setMessage(e.target.value)} required></textarea></div>
                                 <div>
                                     <label className="block text-xs text-gray-400 mb-1">Tipo</label>
                                     <select className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white outline-none" value={type} onChange={e => setType(e.target.value)}>
-                                        <option value="default">Información (Azul)</option>
-                                        <option value="success">Éxito (Verde)</option>
-                                        <option value="alert">Alerta (Rojo)</option>
+                                        <option value="default">Información (Azul)</option><option value="success">Éxito (Verde)</option><option value="alert">Alerta (Rojo)</option>
                                     </select>
                                 </div>
                                 <button type="submit" disabled={sending} className="w-full bg-[#E50914] hover:bg-red-700 text-white font-bold py-3 rounded-lg transition-colors disabled:opacity-50">
@@ -388,16 +330,10 @@
                 <div className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-start justify-end p-0 animate-fade-in" onClick={onClose}>
                     <div className="h-full w-full sm:w-96 bg-[#1f2937] border-l border-white/10 shadow-2xl p-6 overflow-y-auto animate-slide-left" onClick={e => e.stopPropagation()}>
                         <div className="flex justify-between items-center mb-8">
-                            <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                                <Icon name="bell" size={24} className="text-[#E50914]"/> Novedades
-                            </h2>
+                            <h2 className="text-2xl font-bold text-white flex items-center gap-2"><Icon name="bell" size={24} className="text-[#E50914]"/> Novedades</h2>
                             <div className="flex gap-2">
-                                <button onClick={onRefresh} className="p-2 bg-blue-500/20 rounded-full text-blue-400 hover:text-white" title="Actualizar">
-                                    <Icon name="refresh" size={20}/>
-                                </button>
-                                <button onClick={onClose} className="p-2 bg-black/20 rounded-full text-gray-400 hover:text-white">
-                                    <Icon name="x" size={20}/>
-                                </button>
+                                <button onClick={onRefresh} className="p-2 bg-blue-500/20 rounded-full text-blue-400 hover:text-white" title="Actualizar"><Icon name="refresh" size={20}/></button>
+                                <button onClick={onClose} className="p-2 bg-black/20 rounded-full text-gray-400 hover:text-white"><Icon name="x" size={20}/></button>
                             </div>
                         </div>
                         <div className="space-y-4">
@@ -426,12 +362,7 @@
             return (
                 <div className="relative w-full h-[50vh] md:h-[65vh] overflow-hidden mb-8 group animate-fade-in">
                     <div className="absolute inset-0">
-                        <img 
-                            src={item.image || item.poster} 
-                            alt="Hero" 
-                            className="w-full h-full object-cover opacity-60"
-                            onError={(e) => e.target.src = 'https://placehold.co/1920x1080/111827/ffffff?text=StreamTube'}
-                        />
+                        <img src={item.image || item.poster} alt="Hero" className="w-full h-full object-cover opacity-60" onError={(e) => e.target.src = 'https://placehold.co/1920x1080/111827/ffffff?text=StreamTube'} />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-[#111827]/40 to-transparent"></div>
                         <div className="absolute inset-0 bg-gradient-to-r from-[#111827] via-[#111827]/60 to-transparent"></div>
                     </div>
@@ -444,16 +375,10 @@
                                 <span className="bg-[#E50914] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest">
                                     {item.type === 'tv' ? 'En Vivo' : item.type === 'series' ? 'Serie Destacada' : 'Película'}
                                 </span>
-                                <h1 className="text-4xl md:text-6xl font-black text-white leading-tight drop-shadow-xl line-clamp-2">
-                                    {item.title || item.name}
-                                </h1>
-                                <p className="text-gray-300 text-sm md:text-base max-w-xl line-clamp-3">
-                                    {item.description || item.plot || "Disfruta del mejor contenido seleccionado especialmente para ti. Disponible ahora en alta definición."}
-                                </p>
+                                <h1 className="text-4xl md:text-6xl font-black text-white leading-tight drop-shadow-xl line-clamp-2">{item.title || item.name}</h1>
+                                <p className="text-gray-300 text-sm md:text-base max-w-xl line-clamp-3">{item.description || item.plot || "Disfruta del mejor contenido seleccionado especialmente para ti. Disponible ahora en alta definición."}</p>
                                 <div className="flex gap-4 mt-4">
-                                    <button onClick={() => onPlay(item)} className="bg-white text-black px-8 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-200 transition-transform hover:scale-105">
-                                        <Icon name="play" size={20} fill="black"/> Reproducir
-                                    </button>
+                                    <button onClick={() => onPlay(item)} className="bg-white text-black px-8 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-200 transition-transform hover:scale-105"><Icon name="play" size={20} fill="black"/> Reproducir</button>
                                     <button onClick={() => onToggleFavorite(item)} className="bg-white/10 text-white px-4 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-white/20 backdrop-blur-sm border border-white/10">
                                         <Icon name="heart" size={20} className={isFavorite ? "text-[#E50914] fill-[#E50914] heart-pop" : "text-white"} fill={isFavorite ? "#E50914" : "none"} />
                                     </button>
@@ -466,12 +391,7 @@
         };
 
         const TvListItem = ({ channel, isActive, onClick, isFavorite, onToggleFavorite }) => (
-            <div 
-                tabIndex="0" 
-                onKeyDown={(e) => { if (e.key === 'Enter') onClick(channel); }} 
-                onClick={() => onClick(channel)} 
-                className={`group flex items-center gap-3 p-3 border-b border-white/5 cursor-pointer transition-colors ${isActive ? 'bg-[#1f2937] border-l-4 border-l-[#E50914]' : 'hover:bg-white/5'}`} 
-            > 
+            <div tabIndex="0" onKeyDown={(e) => { if (e.key === 'Enter') onClick(channel); }} onClick={() => onClick(channel)} className={`group flex items-center gap-3 p-3 border-b border-white/5 cursor-pointer transition-colors ${isActive ? 'bg-[#1f2937] border-l-4 border-l-[#E50914]' : 'hover:bg-white/5'}`}> 
                 <div className="w-12 h-8 rounded bg-black flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/10"> 
                     {channel.image ? ( <img src={channel.image} alt={channel.title} loading="lazy" className="w-full h-full object-contain" onError={(e) => e.target.style.display='none'} /> ) : ( <Icon name="tv" size={16} className="opacity-50 text-gray-400"/> )} 
                 </div> 
@@ -490,12 +410,7 @@
             const isTv = item.type === 'tv'; 
             const hasLock = item.codigo || item.password || item.pin || item.clave; 
             return ( 
-                <div 
-                    tabIndex="0" 
-                    onKeyDown={(e) => { if (e.key === 'Enter') onClick(item); }} 
-                    className="group relative flex flex-col gap-2 min-w-[140px] cursor-pointer focus:scale-105 transition-transform" 
-                    onClick={() => onClick(item)}
-                > 
+                <div tabIndex="0" onKeyDown={(e) => { if (e.key === 'Enter') onClick(item); }} className="group relative flex flex-col gap-2 min-w-[140px] cursor-pointer focus:scale-105 transition-transform" onClick={() => onClick(item)}> 
                     <div className={`relative overflow-hidden rounded-lg bg-[#1f2937] shadow-lg transition-all duration-300 group-hover:shadow-[#E50914]/20 border border-transparent group-hover:border-white/10 ${isTv ? 'aspect-video' : 'aspect-[2/3]'}`}> 
                         <img src={item.image || item.poster || item.logo} loading="lazy" className={`w-full h-full ${isTv ? 'object-contain p-4' : 'object-cover'} transition-transform duration-500 group-hover:scale-110`} onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/300x450/1f2937/ffffff?text=${(item.title || item.name || 'X').charAt(0)}`; }} alt={item.title || item.name} /> 
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center"> 
@@ -557,22 +472,14 @@
                                 if(d.tags.includes('warning') || d.tags.includes('error')) type = 'alert';
                                 else if(d.tags.includes('success') || d.tags.includes('check')) type = 'success';
                             }
-                            return {
-                                id: d.id || idx,
-                                date: new Date(d.time * 1000).toLocaleDateString('es-ES', {day: 'numeric', month: 'short'}),
-                                title: d.title || 'Aviso',
-                                message: d.message,
-                                type: type
-                            };
+                            return { id: d.id || idx, date: new Date(d.time * 1000).toLocaleDateString('es-ES', {day: 'numeric', month: 'short'}), title: d.title || 'Aviso', message: d.message, type: type };
                         } catch(e) { return null; }
                     }).filter(Boolean).reverse();
                     setNotifications(parsed);
-                } catch (e) { console.error("Error fetching notifications", e); } finally { setNotifLoading(false); }
+                } catch (e) { console.error("Error fetching notifs", e); } finally { setNotifLoading(false); }
             };
 
-            useEffect(() => {
-                fetchNotifs();
-            }, []);
+            useEffect(() => { fetchNotifs(); }, []);
 
             const cleanDriveUrl = (url) => { if (!url) return ''; if (url.includes('drive.google.com')) { if (url.includes('/preview')) return url; const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/); return match ? `https://drive.google.com/file/d/${match[1]}/preview` : url; } return url; };
             const shareViaWhatsApp = () => { const text = `¡Mira esta app increíble! Entra aquí: ${window.location.href}`; window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank'); };
@@ -582,9 +489,7 @@
                     const savedName = safeStorage.getItem('magistube_username');
                     if (savedName) { 
                         setUserName(savedName); 
-                        if (window.DB_API && window.DB_API.saveVisitor) {
-                            window.DB_API.saveVisitor(savedName); 
-                        }
+                        if (window.DB_API && window.DB_API.saveVisitor) { window.DB_API.saveVisitor(savedName); }
                     }
                     try {
                         setLoading(true);
@@ -595,7 +500,6 @@
                         
                         let tvChannels = parseM3U(textTV);
                         
-                        // PARCHE INTELIGENTE PARA MIAMI TV
                         let miamiExists = false;
                         for (let i = 0; i < tvChannels.length; i++) {
                             if (tvChannels[i].title.toLowerCase().includes('miami tv')) {
@@ -603,62 +507,46 @@
                                 miamiExists = true;
                             }
                         }
-                        // Si no lo encuentra, lo añade forzosamente
                         if (!miamiExists) {
-                            tvChannels.unshift({
-                                id: 'custom-miami-tv',
-                                title: 'Miami TV',
-                                image: 'https://miamitvhd.com/wp-content/uploads/2021/04/Logo-Miami-TV.png', 
-                                group: 'Agregados Recientemente',
-                                url: 'https://59ec5453559f0.streamlock.net/mexicotv/smil:miamitvmexico/chunklist_w2092666200_b1896000.m3u8',
-                                type: 'tv'
-                            });
+                            tvChannels.unshift({ id: 'custom-miami-tv', title: 'Miami TV', image: 'https://miamitvhd.com/wp-content/uploads/2021/04/Logo-Miami-TV.png', group: 'Agregados Recientemente', url: 'https://59ec5453559f0.streamlock.net/mexicotv/smil:miamitvmexico/chunklist_w2092666200_b1896000.m3u8', type: 'tv' });
                         }
 
                         const rawSeries = Array.isArray(jsonSeries) ? jsonSeries : [];
                         const seriesList = rawSeries.map(s => ({ id: s.tituloSerie, title: s.tituloSerie || s.name, description: s.descripcion || s.description, image: s.imagen || s.image || s.poster, type: 'series', codigo: s.codigo || s.password || s.pin || s.clave, seasons: (s.temporadas || []).map(t => ({ season_number: t.numeroTemporada || 1, episodes: (t.episodios || []).map(e => ({ title: e.tituloEpisodio || e.title, url: cleanDriveUrl(e.urlDrive || e.url), image: s.imagen })) })) }));
                         const rawMovies = Array.isArray(jsonMovies) ? jsonMovies : (jsonMovies.peliculas || []);
                         const moviesList = rawMovies.map(m => ({ ...m, type: 'movie', title: m.titulo || m.title, image: m.imagen || m.poster, codigo: m.codigo || m.password || m.pin, url: cleanDriveUrl(m.urlDrive || m.url) }));
+                        
+                        // --- INYECCIÓN MANUAL DE LA NUEVA PELÍCULA ---
+                        moviesList.unshift({
+                            id: 'career-opportunities-1991',
+                            title: 'Career Opportunities',
+                            description: 'Un joven conserje nocturno y la chica más hermosa de la ciudad se quedan encerrados accidentalmente en una tienda por departamentos. Una comedia clásica de John Hughes.',
+                            image: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEge3AH_3iH_i6YcKJ6A2qTVKd0Ouud62qC6ghz_GqH-2mCAiEJVjyCAnIu-tbeoXMVgBX4jT6Wbi0vx9aU6HI0FYAIGY4EgSH6Z-VOlRmfuym-wTXrIJrcWK8IBrwI9iRS9j0EADvB9Q6rPXUXmwS_FUbEw6_2ZkhLjR5Zs50Y6cx3rVEkcBLUND54Y-mI/s1440/p13129_p_v8_ad.jpg',
+                            type: 'movie',
+                            url: cleanDriveUrl('https://drive.google.com/file/d/1FD1vbFG6cq0YNUCwtY-tg7DaLboD1h15/view?usp=sharing')
+                        });
+                        // ---------------------------------------------
+
                         setContent({ tv: tvChannels, series: seriesList, movies: moviesList });
                     } catch (err) { console.error("Error cargando datos", err); } finally { setLoading(false); }
                 };
 
                 const storedFavs = safeStorage.getItem('magistube_favs'); 
-                if (storedFavs) {
-                    try { 
-                        const parsed = JSON.parse(storedFavs); 
-                        if (Array.isArray(parsed)) setFavorites(parsed); 
-                    } catch(e) { console.warn("Memoria favs corrupta limpiada"); }
-                }
+                if (storedFavs) { try { const parsed = JSON.parse(storedFavs); if (Array.isArray(parsed)) setFavorites(parsed); } catch(e) {} }
                 
                 const storedProgress = safeStorage.getItem('magistube_progress'); 
-                if (storedProgress) {
-                    try { 
-                        const parsed = JSON.parse(storedProgress); 
-                        if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) setWatchProgress(parsed); 
-                    } catch(e) { console.warn("Memoria progreso corrupta limpiada"); }
-                }
+                if (storedProgress) { try { const parsed = JSON.parse(storedProgress); if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) setWatchProgress(parsed); } catch(e) {} }
                 
                 init();
             }, []);
 
             const handleIntroFinish = () => { 
                 setShowIntro(false); 
-                if (!safeStorage.getItem('magistube_username')) { 
-                    setShowNameModal(true); 
-                } else { 
-                    const name = safeStorage.getItem('magistube_username'); 
-                    setUserName(name); 
-                    if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(name); 
-                } 
+                if (!safeStorage.getItem('magistube_username')) { setShowNameModal(true); } 
+                else { const name = safeStorage.getItem('magistube_username'); setUserName(name); if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(name); } 
             };
 
-            const handleSaveName = (name) => { 
-                safeStorage.setItem('magistube_username', name); 
-                setUserName(name); 
-                setShowNameModal(false); 
-                if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(name); 
-            };
+            const handleSaveName = (name) => { safeStorage.setItem('magistube_username', name); setUserName(name); setShowNameModal(false); if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(name); };
 
             const parseM3U = (data) => { const lines = data.split('\n'); const channels = []; for (let i = 0; i < lines.length; i++) { if (lines[i].trim().startsWith('#EXTINF:')) { const url = lines[i + 1]?.trim(); if (url && url.startsWith('http')) { const info = lines[i]; const title = info.split(',')[1]?.trim() || 'Canal'; const logo = info.match(/tvg-logo="([^"]*)"/)?.[1]; const group = info.match(/group-title="([^"]*)"/)?.[1] || 'General'; channels.push({ id: `tv-${i}`, title, image: logo, group, url, type: 'tv' }); } } } return channels; };
             const playUrl = (selectedItem?.type === 'tv' || selectedItem?.type === 'movie') ? selectedItem.url : (selectedItem?.type === 'series' && selectedEpisode) ? selectedEpisode.url : '';
@@ -672,7 +560,9 @@
                 setIsVideoLoading(true);
                 setVideoError(null);
 
-                if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; } 
+                const cleanupHls = () => { if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; } };
+                cleanupHls(); 
+                
                 const itemId = selectedItem?.id || selectedItem?.title; 
                 const saved = watchProgress[itemId]; 
                 
@@ -684,48 +574,42 @@
                 video.addEventListener('playing', onPlaying);
                 video.addEventListener('error', onError);
 
-                // PARCHE DE VELOCIDAD EXTREMA PARA TV
                 if (typeof window.Hls !== 'undefined' && window.Hls.isSupported() && (playUrl.includes('.m3u8') || selectedItem?.type === 'tv')) { 
-                    const hls = new window.Hls({
-                        startLevel: 0,             // Obliga a empezar en la resolución más baja de inmediato
-                        maxBufferLength: 10,       // Menos colchón necesario para arrancar
-                        maxMaxBufferLength: 20,    
-                        lowLatencyMode: false,     // MUST be false para listas IPTV estándar gratuitas
-                        enableWorker: true
-                    }); 
+                    const hls = new window.Hls({ startLevel: 0, maxBufferLength: 10, maxMaxBufferLength: 20, lowLatencyMode: false, enableWorker: true }); 
                     hlsRef.current = hls; 
                     hls.loadSource(playUrl); 
                     hls.attachMedia(video); 
-                    hls.on(window.Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => { setIsVideoLoading(false); })); 
+                    hls.on(window.Hls.Events.MANIFEST_PARSED, () => { if(videoRef.current) video.play().catch(() => setIsVideoLoading(false)); }); 
                     
                     hls.on(window.Hls.Events.ERROR, (event, data) => {
                         if (data.fatal) {
                             setIsVideoLoading(false);
                             if (data.type === window.Hls.ErrorTypes.NETWORK_ERROR) {
                                 setVideoError('El canal no responde o está offline.');
-                                hls.destroy();
+                                cleanupHls();
                             } else if (data.type === window.Hls.ErrorTypes.MEDIA_ERROR) {
                                 hls.recoverMediaError(); 
                             } else {
                                 setVideoError('Error crítico de decodificación.');
-                                hls.destroy();
+                                cleanupHls();
                             }
                         }
                     });
                 } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
                     video.src = playUrl;
                     video.load();
-                    video.play().catch(() => { setIsVideoLoading(false); });
+                    video.play().catch(() => setIsVideoLoading(false));
                 } else { 
                     video.src = playUrl; 
                     video.load(); 
-                    video.play().catch(() => { setIsVideoLoading(false); }); 
+                    video.play().catch(() => setIsVideoLoading(false)); 
                 } 
                 
                 return () => {
                     video.removeEventListener('loadedmetadata', onLoadedMetadata); 
                     video.removeEventListener('playing', onPlaying);
                     video.removeEventListener('error', onError);
+                    cleanupHls(); 
                 };
             }, [playUrl, isDriveLink, selectedItem, isLocked, retryTrigger]);
             
@@ -754,7 +638,7 @@
                             <button onClick={() => setShowAdmin(true)} className="text-[#E50914] hover:text-white transition-colors relative" title="Admin / Enviar Aviso"><Icon name="crown" size={20} /></button>
                             <button onClick={() => setShowNotif(true)} className="text-gray-500 hover:text-white transition-colors relative" title="Novedades"><Icon name="bell" size={20} />{notifications.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}</button>
                             <button onClick={() => setShowQR(true)} className="flex flex-col items-center gap-1 text-blue-400 hover:text-white transition-colors mb-4" title="Compartir App"><Icon name="share" size={20} /><span className="text-[10px] font-medium">Compartir</span></button>
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-yellow-600 flex items-center justify-center font-serif font-bold text-black border-2 border-white/20">J</div>
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-yellow-600 flex items-center justify-center font-serif font-bold text-black border-2 border-white/20">{userName ? userName.charAt(0).toUpperCase() : 'J'}</div>
                         </div>
                     </aside>
                     <div className="md:hidden fixed top-0 w-full bg-[#111827]/95 backdrop-blur z-50 px-4 py-3 flex items-center justify-between border-b border-[#1f2937]">
