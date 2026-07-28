@@ -12,7 +12,12 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     
-    <!-- Configuración para evitar el error de pantalla negra en React 18 -->
+    <!-- Firebase Clásico (Compat) - Soluciona el error de pantalla de carga -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    
+    <!-- Forzar a Babel a usar el modo clásico -->
     <script>
         if (typeof Babel !== 'undefined') {
             Babel.registerPreset('react-classic', {
@@ -27,8 +32,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
 
     <style>
-        /* Estilos Base */
-        body { background-color: #111827; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; margin: 0; padding: 0; }
+        body { background-color: #111827; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #1f2937; }
         ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
@@ -39,101 +43,70 @@
         .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(229,9,20,0.5); }
-        
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes heartPop { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
         @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
-        @keyframes spinFast { 100% { transform: rotate(360deg); } }
-        
-        .animate-fade-in { animation: fadeIn 0.6s ease-out forwards; }
-        .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
+        .animate-fade-in { animation: fadeIn 0.6s ease-out; }
+        .animate-slide-up { animation: slideUp 0.8s ease-out; }
         .animate-shake { animation: shake 0.2s ease-in-out 0s 2; }
         .heart-pop { animation: heartPop 0.3s ease-in-out; }
-        
-        .text-gold-gradient {
-            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
+        .text-gold-gradient { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
         .iframe-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: black; }
         .iframe-container iframe { width: 100%; height: 100%; border: 0; }
-
-        /* OPTIMIZACIÓN SMART TV */
-        button:focus, div[tabindex="0"]:focus, input:focus {
-            outline: 3px solid #E50914;
-            outline-offset: 2px;
-            z-index: 50;
-            transform: scale(1.05);
-            transition: all 0.2s;
-        }
-
-        /* Preloader nativo */
-        .native-preloader { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; width: 100vw; background-color: #111827; position: absolute; top: 0; left: 0; z-index: 9999; }
-        .spinner { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1); border-top-color: #E50914; border-radius: 50%; animation: spinFast 1s linear infinite; }
+        button:focus, div[tabindex="0"]:focus, input:focus { outline: 3px solid #E50914; outline-offset: 2px; z-index: 50; transform: scale(1.05); transition: all 0.2s; }
     </style>
 </head>
 <body>
     <div id="root">
-        <!-- Pantalla de carga mientras React inicia -->
-        <div class="native-preloader">
-            <div class="spinner"></div>
-            <p style="margin-top: 20px; color: #9ca3af; font-family: sans-serif; font-size: 14px; font-weight: bold; letter-spacing: 2px; text-transform: uppercase;">Iniciando MAGIS Tube...</p>
+        <div style="display:flex;height:100vh;width:100vw;align-items:center;justify-content:center;background:#111827;color:white;flex-direction:column;font-family:sans-serif;">
+            <div style="width:40px;height:40px;border:4px solid #E50914;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:20px;"></div>
+            <h2>Cargando MAGIS Tube...</h2>
+            <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
         </div>
     </div>
 
-    <!-- Script de React unificado con Firebase (data-type="module") -->
-    <script type="text/babel" data-type="module" data-presets="react-classic">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        const { useState, useEffect, useRef, useMemo } = React;
-
-        // Firebase Setup (Opcional - usa variables globales si existen)
+    <!-- Script de React ya sin type="module", totalmente seguro -->
+    <script type="text/babel" data-presets="react-classic">
+        
         const envConfig = typeof __firebase_config !== 'undefined' ? __firebase_config : '{}';
         const firebaseConfig = JSON.parse(envConfig);
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'magis-tube-local';
 
-        let db = null;
-        let auth = null;
-        let currentUser = null;
+        let db = null; let auth = null; let currentUser = null;
         
-        if (Object.keys(firebaseConfig).length > 0) {
+        if (Object.keys(firebaseConfig).length > 0 && window.firebase) {
             try {
-                const app = initializeApp(firebaseConfig);
-                auth = getAuth(app);
-                db = getFirestore(app);
+                const app = window.firebase.initializeApp(firebaseConfig);
+                auth = window.firebase.auth();
+                db = window.firebase.firestore();
                 
                 const initAuth = async () => {
                     try {
                         if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                            await signInWithCustomToken(auth, __initial_auth_token);
-                        } else {
-                            await signInAnonymously(auth);
-                        }
-                    } catch (e) { console.warn("Error autenticando:", e); }
+                            await auth.signInWithCustomToken(__initial_auth_token);
+                        } else { await auth.signInAnonymously(); }
+                    } catch (e) { console.warn(e); }
                 };
-                
                 initAuth();
-                onAuthStateChanged(auth, (user) => { currentUser = user; });
-            } catch (e) { console.warn("Error init Firebase, usando modo local:", e); }
+                auth.onAuthStateChanged((user) => { currentUser = user; });
+            } catch (e) { console.warn(e); }
         }
 
-        // API Global para Estadísticas y Visitas
         window.DB_API = {
             saveVisitor: async (name) => {
                 if (!name) return;
                 if (db && auth && currentUser) {
                     try {
-                        await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'), { name: name, timestamp: serverTimestamp(), uid: currentUser.uid });
+                        await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('app_visitors').add({
+                            name: name,
+                            timestamp: window.firebase.firestore.FieldValue.serverTimestamp(),
+                            uid: currentUser.uid
+                        });
                         return;
-                    } catch (e) { console.warn("Fallo guardado en nube.", e); }
+                    } catch (e) {}
                 }
-                // Fallback Local
                 try {
                     const localData = JSON.parse(localStorage.getItem('magis_local_visitors') || '[]');
                     const isDuplicate = localData.some(v => v.name === name && (Date.now()/1000 - (v.timestamp?.seconds || 0)) < 60);
@@ -141,21 +114,19 @@
                         localData.push({ name: name, timestamp: { seconds: Date.now() / 1000 }, uid: 'local-user' });
                         localStorage.setItem('magis_local_visitors', JSON.stringify(localData));
                     }
-                } catch (e) { console.error("Error localStorage", e); }
+                } catch (e) {}
             },
             subscribeToVisitors: (callback) => {
                 if (db) {
                     try {
-                        const q = query(collection(db, 'artifacts', appId, 'public', 'data', 'app_visitors'));
-                        return onSnapshot(q, (snapshot) => {
-                            const visitors = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                            visitors.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
-                            callback(visitors);
-                        }, (err) => { loadLocal(callback); });
+                        return db.collection('artifacts').doc(appId).collection('public').doc('data').collection('app_visitors')
+                            .onSnapshot((snapshot) => {
+                                const visitors = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                                visitors.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
+                                callback(visitors);
+                            }, () => { loadLocal(callback); });
                     } catch (e) { loadLocal(callback); }
-                } else {
-                    loadLocal(callback);
-                }
+                } else { loadLocal(callback); }
                 return () => {}; 
             }
         };
@@ -168,9 +139,11 @@
             } catch(e) { callback([]); }
         }
 
+        const { useState, useEffect, useRef, useMemo } = React;
+
         const safeStorage = {
             getItem: (key) => { try { return localStorage.getItem(key); } catch (e) { return null; } },
-            setItem: (key, value) => { try { localStorage.setItem(key, value); } catch (e) { /* ignore */ } }
+            setItem: (key, value) => { try { localStorage.setItem(key, value); } catch (e) { } }
         };
 
         const NTFY_TOPIC = 'magistube_jorge_avisos'; 
@@ -235,15 +208,7 @@
         const UserListModal = ({ onClose }) => {
             const [users, setUsers] = useState([]);
             const [loading, setLoading] = useState(true);
-            useEffect(() => { 
-                let unsubscribe;
-                if (window.DB_API?.subscribeToVisitors) {
-                    unsubscribe = window.DB_API.subscribeToVisitors((data) => { setUsers(data); setLoading(false); }); 
-                } else {
-                    setLoading(false);
-                }
-                return () => unsubscribe && unsubscribe(); 
-            }, []);
+            useEffect(() => { const unsubscribe = window.DB_API?.subscribeToVisitors((data) => { setUsers(data); setLoading(false); }); return () => unsubscribe && unsubscribe(); }, []);
             return (
                 <div className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in" onClick={onClose}>
                     <div className="bg-[#1f2937] w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl border border-white/10" onClick={e => e.stopPropagation()}>
@@ -286,11 +251,17 @@
                 if (type === 'alert') tags.push('warning');
                 
                 try {
-                    await fetch(`https://ntfy.sh/${NTFY_TOPIC}?t=${Date.now()}`, { method: 'POST', body: message, headers: { 'Title': title, 'Tags': tags.join(',') } });
+                    await fetch(`https://ntfy.sh/${NTFY_TOPIC}?t=${Date.now()}`, {
+                        method: 'POST',
+                        body: message,
+                        headers: { 'Title': title, 'Tags': tags.join(',') }
+                    });
+                    
                     if(onSent) onSent(); 
                     setSuccessMsg(true);
                     setTimeout(() => { setSuccessMsg(false); onClose(); }, 2000);
-                } catch (e) { console.error(e); } finally { setSending(false); }
+                } catch (e) {
+                } finally { setSending(false); }
             };
 
             return (
@@ -308,12 +279,20 @@
                             </div>
                         ) : (
                             <form onSubmit={handleSend} className="space-y-4">
-                                <div><label className="block text-xs text-gray-400 mb-1">Título</label><input type="text" className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-[#E50914] outline-none" value={title} onChange={e => setTitle(e.target.value)} required /></div>
-                                <div><label className="block text-xs text-gray-400 mb-1">Mensaje</label><textarea className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-[#E50914] outline-none h-24 resize-none" value={message} onChange={e => setMessage(e.target.value)} required></textarea></div>
+                                <div>
+                                    <label className="block text-xs text-gray-400 mb-1">Título</label>
+                                    <input type="text" className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-[#E50914] outline-none" value={title} onChange={e => setTitle(e.target.value)} required />
+                                </div>
+                                <div>
+                                    <label className="block text-xs text-gray-400 mb-1">Mensaje</label>
+                                    <textarea className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white focus:border-[#E50914] outline-none h-24 resize-none" value={message} onChange={e => setMessage(e.target.value)} required></textarea>
+                                </div>
                                 <div>
                                     <label className="block text-xs text-gray-400 mb-1">Tipo</label>
                                     <select className="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-white outline-none" value={type} onChange={e => setType(e.target.value)}>
-                                        <option value="default">Información (Azul)</option><option value="success">Éxito (Verde)</option><option value="alert">Alerta (Rojo)</option>
+                                        <option value="default">Información (Azul)</option>
+                                        <option value="success">Éxito (Verde)</option>
+                                        <option value="alert">Alerta (Rojo)</option>
                                     </select>
                                 </div>
                                 <button type="submit" disabled={sending} className="w-full bg-[#E50914] hover:bg-red-700 text-white font-bold py-3 rounded-lg transition-colors disabled:opacity-50">
@@ -353,7 +332,9 @@
                 <div className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-start justify-end p-0 animate-fade-in" onClick={onClose}>
                     <div className="h-full w-full sm:w-96 bg-[#1f2937] border-l border-white/10 shadow-2xl p-6 overflow-y-auto animate-slide-left" onClick={e => e.stopPropagation()}>
                         <div className="flex justify-between items-center mb-8">
-                            <h2 className="text-2xl font-bold text-white flex items-center gap-2"><Icon name="bell" size={24} className="text-[#E50914]"/> Novedades</h2>
+                            <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                                <Icon name="bell" size={24} className="text-[#E50914]"/> Novedades
+                            </h2>
                             <div className="flex gap-2">
                                 <button onClick={onRefresh} className="p-2 bg-blue-500/20 rounded-full text-blue-400 hover:text-white" title="Actualizar"><Icon name="refresh" size={20}/></button>
                                 <button onClick={onClose} className="p-2 bg-black/20 rounded-full text-gray-400 hover:text-white"><Icon name="x" size={20}/></button>
@@ -398,10 +379,16 @@
                                 <span className="bg-[#E50914] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest">
                                     {item.type === 'tv' ? 'En Vivo' : item.type === 'series' ? 'Serie Destacada' : 'Película'}
                                 </span>
-                                <h1 className="text-4xl md:text-6xl font-black text-white leading-tight drop-shadow-xl line-clamp-2">{item.title || item.name}</h1>
-                                <p className="text-gray-300 text-sm md:text-base max-w-xl line-clamp-3">{item.description || item.plot || "Disfruta del mejor contenido seleccionado especialmente para ti. Disponible ahora en alta definición."}</p>
+                                <h1 className="text-4xl md:text-6xl font-black text-white leading-tight drop-shadow-xl line-clamp-2">
+                                    {item.title || item.name}
+                                </h1>
+                                <p className="text-gray-300 text-sm md:text-base max-w-xl line-clamp-3">
+                                    {item.description || item.plot || "Disfruta del mejor contenido seleccionado especialmente para ti. Disponible ahora en alta definición."}
+                                </p>
                                 <div className="flex gap-4 mt-4">
-                                    <button onClick={() => onPlay(item)} className="bg-white text-black px-8 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-200 transition-transform hover:scale-105"><Icon name="play" size={20} fill="black"/> Reproducir</button>
+                                    <button onClick={() => onPlay(item)} className="bg-white text-black px-8 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-200 transition-transform hover:scale-105">
+                                        <Icon name="play" size={20} fill="black"/> Reproducir
+                                    </button>
                                     <button onClick={() => onToggleFavorite(item)} className="bg-white/10 text-white px-4 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-white/20 backdrop-blur-sm border border-white/10">
                                         <Icon name="heart" size={20} className={isFavorite ? "text-[#E50914] fill-[#E50914] heart-pop" : "text-white"} fill={isFavorite ? "#E50914" : "none"} />
                                     </button>
@@ -414,7 +401,7 @@
         };
 
         const TvListItem = ({ channel, isActive, onClick, isFavorite, onToggleFavorite }) => (
-            <div tabIndex="0" onKeyDown={(e) => { if (e.key === 'Enter') onClick(channel); }} onClick={() => onClick(channel)} className={`group flex items-center gap-3 p-3 border-b border-white/5 cursor-pointer transition-colors ${isActive ? 'bg-[#1f2937] border-l-4 border-l-[#E50914]' : 'hover:bg-white/5'}`}> 
+            <div tabIndex="0" onKeyDown={(e) => { if (e.key === 'Enter') onClick(channel); }} onClick={() => onClick(channel)} className={`group flex items-center gap-3 p-3 border-b border-white/5 cursor-pointer transition-colors ${isActive ? 'bg-[#1f2937] border-l-4 border-l-[#E50914]' : 'hover:bg-white/5'}`} > 
                 <div className="w-12 h-8 rounded bg-black flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/10"> 
                     {channel.image ? ( <img src={channel.image} alt={channel.title} loading="lazy" className="w-full h-full object-contain" onError={(e) => e.target.style.display='none'} /> ) : ( <Icon name="tv" size={16} className="opacity-50 text-gray-400"/> )} 
                 </div> 
@@ -499,7 +486,7 @@
                         } catch(e) { return null; }
                     }).filter(Boolean).reverse();
                     setNotifications(parsed);
-                } catch (e) { console.error("Error fetching notifications", e); } finally { setNotifLoading(false); }
+                } catch (e) {} finally { setNotifLoading(false); }
             };
 
             useEffect(() => { fetchNotifs(); }, []);
@@ -507,19 +494,32 @@
             const cleanDriveUrl = (url) => { if (!url) return ''; if (url.includes('drive.google.com')) { if (url.includes('/preview')) return url; const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/); return match ? `https://drive.google.com/file/d/${match[1]}/preview` : url; } return url; };
             const shareViaWhatsApp = () => { const text = `¡Mira esta app increíble! Entra aquí: ${window.location.href}`; window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank'); };
 
+            // Función ultra-segura para leer el JSON aunque tenga comas al final
+            const safeParseJSON = (text, fallback) => {
+                if (!text || text.trim() === '') return fallback;
+                try { return JSON.parse(text); } 
+                catch (e) {
+                    try {
+                        const fixedText = text.replace(/,\s*([\]}])/g, '$1');
+                        return JSON.parse(fixedText);
+                    } catch (e2) { return fallback; }
+                }
+            };
+
             useEffect(() => {
                 const init = async () => {
                     const savedName = safeStorage.getItem('magistube_username');
-                    if (savedName) { 
-                        setUserName(savedName); 
-                        if (window.DB_API && window.DB_API.saveVisitor) { window.DB_API.saveVisitor(savedName); }
-                    }
+                    if (savedName) { setUserName(savedName); if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(savedName); }
                     try {
                         setLoading(true);
                         const [resTV, resSeries, resMovies] = await Promise.all([ fetch(URLS.TV), fetch(URLS.SERIES), fetch(URLS.MOVIES) ]);
                         const textTV = await resTV.text(); 
-                        const jsonSeries = await resSeries.json(); 
-                        const jsonMovies = await resMovies.json();
+                        const textSeries = await resSeries.text();
+                        const textMovies = await resMovies.text();
+                        
+                        // Parseo seguro
+                        const jsonSeries = safeParseJSON(textSeries, []); 
+                        const jsonMovies = safeParseJSON(textMovies, []);
                         
                         let tvChannels = parseM3U(textTV);
                         
@@ -534,13 +534,11 @@
                             seasons: (s.temporadas || []).map(t => ({ season_number: t.numeroTemporada || 1, episodes: (t.episodios || []).map(e => ({ title: e.tituloEpisodio || e.title, url: cleanDriveUrl(e.urlDrive || e.url), image: s.imagen })) })) 
                         }));
                         
-                        // SÚPER MAPEO DE DESCRIPCIONES PARA PELÍCULAS
                         const rawMovies = Array.isArray(jsonMovies) ? jsonMovies : (jsonMovies.peliculas || []);
                         const moviesList = rawMovies.map(m => ({ 
                             ...m, 
                             type: 'movie', 
                             title: m.titulo || m.title, 
-                            // Esta línea buscará cualquier variante de descripción que tengas en tu archivo JSON
                             description: m.descripcion || m.description || m.sinopsis || m.Sinopsis || m.plot,
                             image: m.imagen || m.poster, 
                             codigo: m.codigo || m.password || m.pin, 
@@ -548,104 +546,78 @@
                         }));
 
                         moviesList.unshift({
-                            id: 'career-opportunities-1991',
-                            title: 'Career Opportunities',
-                            description: 'Un joven conserje nocturno y la chica más hermosa de la ciudad se quedan encerrados accidentalmente en una tienda por departamentos. Una comedia clásica de John Hughes.',
+                            id: 'career-opportunities',
+                            title: 'Career Opportunities (Destinos Opuestos)',
+                            description: 'Una comedia clásica de los 90. Jim se queda encerrado en la tienda donde trabaja como conserje, pero no está solo.',
                             image: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEge3AH_3iH_i6YcKJ6A2qTVKd0Ouud62qC6ghz_GqH-2mCAiEJVjyCAnIu-tbeoXMVgBX4jT6Wbi0vx9aU6HI0FYAIGY4EgSH6Z-VOlRmfuym-wTXrIJrcWK8IBrwI9iRS9j0EADvB9Q6rPXUXmwS_FUbEw6_2ZkhLjR5Zs50Y6cx3rVEkcBLUND54Y-mI/s1440/p13129_p_v8_ad.jpg',
                             type: 'movie',
                             url: cleanDriveUrl('https://drive.google.com/file/d/1FD1vbFG6cq0YNUCwtY-tg7DaLboD1h15/view?usp=sharing')
                         });
 
                         setContent({ tv: tvChannels, series: seriesList, movies: moviesList });
-                    } catch (err) { console.error("Error cargando datos", err); } finally { setLoading(false); }
+                    } catch (err) { } finally { setLoading(false); }
                 };
 
                 const storedFavs = safeStorage.getItem('magistube_favs'); 
                 if (storedFavs) { try { const parsed = JSON.parse(storedFavs); if (Array.isArray(parsed)) setFavorites(parsed); } catch(e) {} }
-                
                 const storedProgress = safeStorage.getItem('magistube_progress'); 
                 if (storedProgress) { try { const parsed = JSON.parse(storedProgress); if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) setWatchProgress(parsed); } catch(e) {} }
-                
                 init();
             }, []);
 
-            const handleIntroFinish = () => { 
-                setShowIntro(false); 
-                if (!safeStorage.getItem('magistube_username')) { setShowNameModal(true); } 
-                else { const name = safeStorage.getItem('magistube_username'); setUserName(name); if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(name); } 
-            };
-
+            const handleIntroFinish = () => { setShowIntro(false); if (!safeStorage.getItem('magistube_username')) { setShowNameModal(true); } else { const name = safeStorage.getItem('magistube_username'); setUserName(name); if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(name); } };
             const handleSaveName = (name) => { safeStorage.setItem('magistube_username', name); setUserName(name); setShowNameModal(false); if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(name); };
 
-            const parseM3U = (data) => { const lines = data.split('\n'); const channels = []; for (let i = 0; i < lines.length; i++) { if (lines[i].trim().startsWith('#EXTINF:')) { const url = lines[i + 1]?.trim(); if (url && url.startsWith('http')) { const info = lines[i]; const title = info.split(',')[1]?.trim() || 'Canal'; const logo = info.match(/tvg-logo="([^"]*)"/)?.[1]; const group = info.match(/group-title="([^"]*)"/)?.[1] || 'General'; channels.push({ id: `tv-${i}`, title, image: logo, group, url, type: 'tv' }); } } } return channels; };
+            const parseM3U = (data) => {
+                const lines = data.split('\n'); const channels = [];
+                for (let i = 0; i < lines.length; i++) {
+                    const line = lines[i].trim();
+                    if (line.startsWith('#EXTINF:')) {
+                        let title = 'Canal Sin Nombre';
+                        const url = lines[i + 1] ? lines[i + 1].trim() : '';
+                        if (url && url.startsWith('http')) {
+                            const logoMatch = line.match(/tvg-logo="([^"]*)"/); const logo = logoMatch ? logoMatch[1] : '';
+                            const groupMatch = line.match(/group-title="([^"]*)"/); const group = groupMatch ? groupMatch[1] : 'General';
+                            const commaIndex = line.lastIndexOf(',');
+                            if (commaIndex !== -1) { title = line.substring(commaIndex + 1).trim(); } else { const tvgNameMatch = line.match(/tvg-name="([^"]*)"/); if (tvgNameMatch) { title = tvgNameMatch[1]; } }
+                            channels.push({ id: `tv-${i}`, title, image: logo, group, url, type: 'tv' });
+                        }
+                    }
+                }
+                return channels;
+            };
+
             const playUrl = (selectedItem?.type === 'tv' || selectedItem?.type === 'movie') ? selectedItem.url : (selectedItem?.type === 'series' && selectedEpisode) ? selectedEpisode.url : '';
             const isDriveLink = playUrl && playUrl.includes('drive.google.com');
             const handleVideoProgress = (e) => { const time = e.target.currentTime; const duration = e.target.duration; if (!duration || !selectedItem) return; const pct = (time / duration) * 100; const itemId = selectedItem.id || selectedItem.title; const newProgress = { ...watchProgress, [itemId]: { pct: pct, time: time, item: selectedItem, timestamp: Date.now() } }; setWatchProgress(newProgress); safeStorage.setItem('magistube_progress', JSON.stringify(newProgress)); };
             
             useEffect(() => { 
                 if (isLocked || !playUrl || isDriveLink || !videoRef.current) return; 
-                
-                const video = videoRef.current; 
-                setIsVideoLoading(true);
-                setVideoError(null);
-
-                const cleanupHls = () => { if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; } };
-                cleanupHls(); 
-                
-                const itemId = selectedItem?.id || selectedItem?.title; 
-                const saved = watchProgress[itemId]; 
+                const video = videoRef.current; setIsVideoLoading(true); setVideoError(null);
+                if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; } 
+                const itemId = selectedItem?.id || selectedItem?.title; const saved = watchProgress[itemId]; 
                 
                 const onLoadedMetadata = () => { if (saved && saved.time > 0 && saved.pct < 95) video.currentTime = saved.time; }; 
                 const onPlaying = () => setIsVideoLoading(false);
-                const onError = () => { setIsVideoLoading(false); setVideoError('No se pudo reproducir este formato.'); };
+                const onError = () => { setIsVideoLoading(false); setVideoError('No se pudo cargar el video nativo.'); };
 
-                video.addEventListener('loadedmetadata', onLoadedMetadata); 
-                video.addEventListener('playing', onPlaying);
-                video.addEventListener('error', onError);
+                video.addEventListener('loadedmetadata', onLoadedMetadata); video.addEventListener('playing', onPlaying); video.addEventListener('error', onError);
 
                 if (typeof window.Hls !== 'undefined' && window.Hls.isSupported() && (playUrl.includes('.m3u8') || selectedItem?.type === 'tv')) { 
-                    const hls = new window.Hls({ startLevel: 0, maxBufferLength: 10, maxMaxBufferLength: 20, lowLatencyMode: false, enableWorker: true }); 
-                    hlsRef.current = hls; 
-                    hls.loadSource(playUrl); 
-                    hls.attachMedia(video); 
-                    hls.on(window.Hls.Events.MANIFEST_PARSED, () => { if(videoRef.current) video.play().catch(() => setIsVideoLoading(false)); }); 
-                    
+                    const hls = new window.Hls({ startLevel: -1, maxBufferLength: 10, maxMaxBufferLength: 20, lowLatencyMode: false, enableWorker: true }); 
+                    hlsRef.current = hls; hls.loadSource(playUrl); hls.attachMedia(video); 
+                    hls.on(window.Hls.Events.MANIFEST_PARSED, () => video.play().catch(() => { setIsVideoLoading(false); })); 
                     hls.on(window.Hls.Events.ERROR, (event, data) => {
                         if (data.fatal) {
+                            setIsVideoLoading(false);
                             if (data.type === window.Hls.ErrorTypes.NETWORK_ERROR) {
-                                cleanupHls();
-                                console.warn("HLS.js falló por CORS o red. Intentando reproductor nativo como Fallback...");
-                                video.src = playUrl;
-                                video.load();
-                                video.play().catch(() => {
-                                    setIsVideoLoading(false);
-                                    setVideoError('El canal bloqueó la conexión (Error CORS/Red).');
-                                });
-                            } else if (data.type === window.Hls.ErrorTypes.MEDIA_ERROR) {
-                                hls.recoverMediaError(); 
-                            } else {
-                                cleanupHls();
-                                setIsVideoLoading(false);
-                                setVideoError('Error crítico de decodificación.');
-                            }
+                                hls.destroy(); video.src = playUrl; video.load(); video.play().catch(() => setVideoError('El canal bloquea la conexión (Error de red).'));
+                            } else if (data.type === window.Hls.ErrorTypes.MEDIA_ERROR) { hls.recoverMediaError(); } else { setVideoError('Error crítico de decodificación.'); hls.destroy(); }
                         }
                     });
-                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                    video.src = playUrl;
-                    video.load();
-                    video.play().catch(() => setIsVideoLoading(false));
-                } else { 
-                    video.src = playUrl; 
-                    video.load(); 
-                    video.play().catch(() => setIsVideoLoading(false)); 
-                } 
+                } else { video.src = playUrl; video.load(); video.play().catch(() => { setIsVideoLoading(false); }); } 
                 
-                return () => {
-                    video.removeEventListener('loadedmetadata', onLoadedMetadata); 
-                    video.removeEventListener('playing', onPlaying);
-                    video.removeEventListener('error', onError);
-                    cleanupHls(); 
-                };
+                return () => { video.removeEventListener('loadedmetadata', onLoadedMetadata); video.removeEventListener('playing', onPlaying); video.removeEventListener('error', onError); if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; } };
             }, [playUrl, isDriveLink, selectedItem, isLocked, retryTrigger]);
             
             const toggleFavorite = (item) => { const itemId = item.id || item.title; const newFavs = favorites.some(f => (f.id || f.title) === itemId) ? favorites.filter(f => (f.id || f.title) !== itemId) : [item, ...favorites]; setFavorites(newFavs); safeStorage.setItem('magistube_favs', JSON.stringify(newFavs)); };
@@ -673,7 +645,7 @@
                             <button onClick={() => setShowAdmin(true)} className="text-[#E50914] hover:text-white transition-colors relative" title="Admin / Enviar Aviso"><Icon name="crown" size={20} /></button>
                             <button onClick={() => setShowNotif(true)} className="text-gray-500 hover:text-white transition-colors relative" title="Novedades"><Icon name="bell" size={20} />{notifications.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}</button>
                             <button onClick={() => setShowQR(true)} className="flex flex-col items-center gap-1 text-blue-400 hover:text-white transition-colors mb-4" title="Compartir App"><Icon name="share" size={20} /><span className="text-[10px] font-medium">Compartir</span></button>
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-yellow-600 flex items-center justify-center font-serif font-bold text-black border-2 border-white/20">{userName ? userName.charAt(0).toUpperCase() : 'J'}</div>
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-yellow-600 flex items-center justify-center font-serif font-bold text-black border-2 border-white/20">J</div>
                         </div>
                     </aside>
                     <div className="md:hidden fixed top-0 w-full bg-[#111827]/95 backdrop-blur z-50 px-4 py-3 flex items-center justify-between border-b border-[#1f2937]">
