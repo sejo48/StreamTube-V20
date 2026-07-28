@@ -523,23 +523,30 @@
                         
                         let tvChannels = parseM3U(textTV);
                         
-                        let miamiExists = false;
-                        for (let i = 0; i < tvChannels.length; i++) {
-                            if (tvChannels[i].title.toLowerCase().includes('miami tv')) {
-                                tvChannels[i].url = 'https://59ec5453559f0.streamlock.net/mexicotv/smil:miamitvmexico/chunklist_w2092666200_b1896000.m3u8';
-                                miamiExists = true;
-                            }
-                        }
-                        if (!miamiExists) {
-                            tvChannels.unshift({ id: 'custom-miami-tv', title: 'Miami TV', image: 'https://miamitvhd.com/wp-content/uploads/2021/04/Logo-Miami-TV.png', group: 'Agregados Recientemente', url: 'https://59ec5453559f0.streamlock.net/mexicotv/smil:miamitvmexico/chunklist_w2092666200_b1896000.m3u8', type: 'tv' });
-                        }
-
                         const rawSeries = Array.isArray(jsonSeries) ? jsonSeries : [];
-                        const seriesList = rawSeries.map(s => ({ id: s.tituloSerie, title: s.tituloSerie || s.name, description: s.descripcion || s.description, image: s.imagen || s.image || s.poster, type: 'series', codigo: s.codigo || s.password || s.pin || s.clave, seasons: (s.temporadas || []).map(t => ({ season_number: t.numeroTemporada || 1, episodes: (t.episodios || []).map(e => ({ title: e.tituloEpisodio || e.title, url: cleanDriveUrl(e.urlDrive || e.url), image: s.imagen })) })) }));
-                        const rawMovies = Array.isArray(jsonMovies) ? jsonMovies : (jsonMovies.peliculas || []);
-                        const moviesList = rawMovies.map(m => ({ ...m, type: 'movie', title: m.titulo || m.title, image: m.imagen || m.poster, codigo: m.codigo || m.password || m.pin, url: cleanDriveUrl(m.urlDrive || m.url) }));
+                        const seriesList = rawSeries.map(s => ({ 
+                            id: s.tituloSerie, 
+                            title: s.tituloSerie || s.name, 
+                            description: s.descripcion || s.description || s.sinopsis || s.Sinopsis || s.plot, 
+                            image: s.imagen || s.image || s.poster, 
+                            type: 'series', 
+                            codigo: s.codigo || s.password || s.pin || s.clave, 
+                            seasons: (s.temporadas || []).map(t => ({ season_number: t.numeroTemporada || 1, episodes: (t.episodios || []).map(e => ({ title: e.tituloEpisodio || e.title, url: cleanDriveUrl(e.urlDrive || e.url), image: s.imagen })) })) 
+                        }));
                         
-                        // Nueva Película Inyectada Manualmente
+                        // SÚPER MAPEO DE DESCRIPCIONES PARA PELÍCULAS
+                        const rawMovies = Array.isArray(jsonMovies) ? jsonMovies : (jsonMovies.peliculas || []);
+                        const moviesList = rawMovies.map(m => ({ 
+                            ...m, 
+                            type: 'movie', 
+                            title: m.titulo || m.title, 
+                            // Esta línea buscará cualquier variante de descripción que tengas en tu archivo JSON
+                            description: m.descripcion || m.description || m.sinopsis || m.Sinopsis || m.plot,
+                            image: m.imagen || m.poster, 
+                            codigo: m.codigo || m.password || m.pin, 
+                            url: cleanDriveUrl(m.urlDrive || m.url) 
+                        }));
+
                         moviesList.unshift({
                             id: 'career-opportunities-1991',
                             title: 'Career Opportunities',
