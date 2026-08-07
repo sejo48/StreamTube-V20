@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     
-    <!-- Firebase Clásico (Compat) - Soluciona el error de pantalla de carga -->
+    <!-- Firebase Clásico (Compat) -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
@@ -67,9 +67,8 @@
         </div>
     </div>
 
-    <!-- Script de React ya sin type="module", totalmente seguro -->
+    <!-- Script de React -->
     <script type="text/babel" data-presets="react-classic">
-        
         const envConfig = typeof __firebase_config !== 'undefined' ? __firebase_config : '{}';
         const firebaseConfig = JSON.parse(envConfig);
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'magis-tube-local';
@@ -444,9 +443,8 @@
             const [showQR, setShowQR] = useState(false);
             const [showNotif, setShowNotif] = useState(false);
             const [showUserList, setShowUserList] = useState(false);
-            const [showNameModal, setShowNameModal] = useState(false);
             const [showAdmin, setShowAdmin] = useState(false); 
-            const [userName, setUserName] = useState('');
+            const [userName, setUserName] = useState('Visitante');
             const [activeTab, setActiveTab] = useState('home');
             const [content, setContent] = useState({ tv: [], series: [], movies: [] });
             const [search, setSearch] = useState('');
@@ -494,7 +492,6 @@
             const cleanDriveUrl = (url) => { if (!url) return ''; if (url.includes('drive.google.com')) { if (url.includes('/preview')) return url; const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/); return match ? `https://drive.google.com/file/d/${match[1]}/preview` : url; } return url; };
             const shareViaWhatsApp = () => { const text = `¡Mira esta app increíble! Entra aquí: ${window.location.href}`; window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank'); };
 
-            // Función ultra-segura para leer el JSON aunque tenga comas al final
             const safeParseJSON = (text, fallback) => {
                 if (!text || text.trim() === '') return fallback;
                 try { return JSON.parse(text); } 
@@ -508,8 +505,7 @@
 
             useEffect(() => {
                 const init = async () => {
-                    const savedName = safeStorage.getItem('magistube_username');
-                    if (savedName) { setUserName(savedName); if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(savedName); }
+                    if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor('Visitante');
                     try {
                         setLoading(true);
                         const [resTV, resSeries, resMovies] = await Promise.all([ fetch(URLS.TV), fetch(URLS.SERIES), fetch(URLS.MOVIES) ]);
@@ -517,7 +513,6 @@
                         const textSeries = await resSeries.text();
                         const textMovies = await resMovies.text();
                         
-                        // Parseo seguro
                         const jsonSeries = safeParseJSON(textSeries, []); 
                         const jsonMovies = safeParseJSON(textMovies, []);
                         
@@ -565,8 +560,10 @@
                 init();
             }, []);
 
-            const handleIntroFinish = () => { setShowIntro(false); if (!safeStorage.getItem('magistube_username')) { setShowNameModal(true); } else { const name = safeStorage.getItem('magistube_username'); setUserName(name); if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(name); } };
-            const handleSaveName = (name) => { safeStorage.setItem('magistube_username', name); setUserName(name); setShowNameModal(false); if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor(name); };
+            const handleIntroFinish = () => { 
+                setShowIntro(false); 
+                if (window.DB_API && window.DB_API.saveVisitor) window.DB_API.saveVisitor('Visitante'); 
+            };
 
             const parseM3U = (data) => {
                 const lines = data.split('\n'); const channels = [];
@@ -665,7 +662,6 @@
                             </button>
                         ))}
                     </div>
-                    {showNameModal && <NameModal onSave={handleSaveName} />}
                     {showUserList && <UserListModal onClose={() => setShowUserList(false)} />}
                     {showQR && <QRModal onClose={() => setShowQR(false)} />}
                     {showNotif && <NotificationsModal onClose={() => setShowNotif(false)} items={notifications} loading={notifLoading} onRefresh={fetchNotifs} />}
@@ -691,11 +687,11 @@
                                                     {isDriveLink ? ( 
                                                         <div className="iframe-container"><iframe src={playUrl} allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe></div> 
                                                     ) : ( 
-                                                        <>
-                                                            {isVideoLoading && <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-10"><div className="animate-spin rounded-full h-10 w-10 border-4 border-[#E50914] border-t-transparent mb-3"></div><span className="text-xs text-gray-300 font-bold uppercase tracking-widest">Conectando...</span></div>}
+                                                        <div className="relative w-full h-full">
+                                                            {isVideoLoading && <div className="absolute inset-0 flex flex-col items-center justify-center bg-transparent z-10 pointer-events-none"><div className="animate-spin rounded-full h-10 w-10 border-4 border-[#E50914] border-t-transparent drop-shadow-xl"></div></div>}
                                                             {videoError && <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/90 z-10 p-4 text-center"><Icon name="alertCircle" size={40} className="text-[#E50914] mb-3" /><p className="text-white font-bold mb-4">{videoError}</p><button onClick={() => setRetryTrigger(prev => prev + 1)} className="px-6 py-2 bg-[#E50914] rounded-lg text-sm text-white font-bold hover:bg-red-700 transition-colors">Reintentar</button></div>}
                                                             <video ref={videoRef} className="w-full h-full" controls autoPlay playsInline onTimeUpdate={handleVideoProgress} /> 
-                                                        </>
+                                                        </div>
                                                     )} 
                                                 </div> 
                                                 <div className="p-4 bg-[#1f2937] border-b border-white/10"> 
@@ -747,7 +743,7 @@
                                                 </div> 
                                             ) : ( 
                                                 <div className="relative w-full h-full">
-                                                    {isVideoLoading && <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 z-10"><div className="animate-spin rounded-full h-10 w-10 border-4 border-[#E50914] border-t-transparent mb-3"></div><span className="text-xs text-gray-300 font-bold uppercase tracking-widest">Conectando...</span></div>}
+                                                    {isVideoLoading && <div className="absolute inset-0 flex flex-col items-center justify-center bg-transparent z-10 pointer-events-none"><div className="animate-spin rounded-full h-10 w-10 border-4 border-[#E50914] border-t-transparent drop-shadow-xl"></div></div>}
                                                     {videoError && <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/90 z-10 p-4 text-center"><Icon name="alertCircle" size={40} className="text-[#E50914] mb-3" /><p className="text-white font-bold mb-4">{videoError}</p><button onClick={() => setRetryTrigger(prev => prev + 1)} className="px-6 py-2 bg-[#E50914] rounded-lg text-sm text-white font-bold hover:bg-red-700 transition-colors">Reintentar</button></div>}
                                                     <video ref={videoRef} className="w-full h-full" controls autoPlay playsInline onTimeUpdate={handleVideoProgress} /> 
                                                 </div>
