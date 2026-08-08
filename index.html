@@ -56,7 +56,10 @@
         .iframe-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: #111827; }
         .iframe-container iframe { width: 100%; height: 100%; border: 0; }
         button:focus, div[tabindex="0"]:focus, input:focus { outline: 3px solid #E50914; outline-offset: 2px; z-index: 50; transform: scale(1.05); transition: all 0.2s; }
-        video::-webkit-media-controls-enclosure { background-color: transparent !important; }
+        
+        /* Forzar transparencia nativa del reproductor de video para evitar cuadros negros en móviles */
+        video { background-color: transparent !important; background: transparent !important; }
+        video::-webkit-media-controls-panel { background-color: transparent; }
     </style>
 </head>
 <body>
@@ -151,6 +154,12 @@
             TV: 'https://raw.githubusercontent.com/sejo48/retrom3u/refs/heads/main/listaoficial.m3u',
             SERIES: 'https://raw.githubusercontent.com/sejo48/jorgedrive/refs/heads/main/playlist.json',
             MOVIES: 'https://raw.githubusercontent.com/sejo48/peliculas/refs/heads/main/peliculas.json'
+        };
+
+        const getDriveFileId = (url) => {
+            if (!url || !url.includes('drive.google.com')) return null;
+            const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+            return match ? match[1] : null;
         };
 
         const Icon = ({ name, size = 24, className, fill = "none" }) => {
@@ -436,8 +445,10 @@
             const [watchProgress, setWatchProgress] = useState({});
             const [loading, setLoading] = useState(true);
             const [expandedSeason, setExpandedSeason] = useState(0);
+            const [drivePlayerMode, setDriveMode] = useState('iframe');
             
             const [isVideoLoading, setIsVideoLoading] = useState(false);
+            const [isVideoReady, setIsVideoReady] = useState(false);
             const [videoError, setVideoError] = useState(null);
             const [retryTrigger, setRetryTrigger] = useState(0);
             
@@ -564,20 +575,45 @@
             };
 
             const playUrl = (selectedItem?.type === 'tv' || selectedItem?.type === 'movie') ? selectedItem.url : (selectedItem?.type === 'series' && selectedEpisode) ? selectedEpisode.url : '';
-            const isDriveLink = playUrl && playUrl.includes('drive.google.com');
-            const handleVideoProgress = (e) => { const time = e.target.currentTime; const duration = e.target.duration; if (!duration || !selectedItem) return; const pct = (time / duration) * 100; const itemId = selectedItem.id || selectedItem.title; const newProgress = { ...watchProgress, [itemId]: { pct: pct, time: time, item: selectedItem, timestamp: Date.now() } }; setWatchProgress(newProgress); safeStorage.setItem('magistube_progress', JSON.stringify(newProgress)); };
+            const driveFileId = getDriveFileId(playUrl);
+            const isDriveLink = Boolean(driveFileId);
+
+            const handleVideoProgress = (e) => { 
+                const time = e.target.currentTime; 
+                const duration = e.target.duration; 
+                
+                // En móviles, cuando el contador de reproducción pasa de 0.1s GARANTIZAMOS que ya hay imagen
+                if (time > 0.1 && !isVideoReady) {
+                    setIsVideoReady(true);
+                    setIsVideoLoading(false);
+                }
+
+                if (!duration || !selectedItem) return; 
+                const pct = (time / duration) * 100; 
+                const itemId = selectedItem.id || selectedItem.title; 
+                const newProgress = { ...watchProgress, [itemId]: { pct: pct, time: time, item: selectedItem, timestamp: Date.now() } }; 
+                setWatchProgress(newProgress); 
+                safeStorage.setItem('magistube_progress', JSON.stringify(newProgress)); 
+            };
             
             useEffect(() => { 
                 if (isLocked || !playUrl || isDriveLink || !videoRef.current) return; 
-                const video = videoRef.current; setIsVideoLoading(true); setVideoError(null);
+                const video = videoRef.current; 
+                setIsVideoLoading(true); 
+                setIsVideoReady(false);
+                setVideoError(null);
+
                 if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; } 
                 const itemId = selectedItem?.id || selectedItem?.title; const saved = watchProgress[itemId]; 
                 
                 const onLoadedMetadata = () => { if (saved && saved.time > 0 && saved.pct < 95) video.currentTime = saved.time; }; 
-                const onPlaying = () => setIsVideoLoading(false);
-                const onError = () => { setIsVideoLoading(false); setVideoError('No se pudo cargar el video nativo.'); };
+                const onPlaying = () => { setIsVideoLoading(false); };
+                const onError = () => { setIsVideoLoading(false); setIsVideoReady(false); setVideoError('No se pudo cargar el video nativo.'); };
 
-                video.addEventListener('loadedmetadata', onLoadedMetadata); video.addEventListener('playing', onPlaying); video.addEventListener('error', onError);
+                video.addEventListener('loadedmetadata', onLoadedMetadata); 
+                video.addEventListener('playing', onPlaying); 
+                video.addEventListener('canplay', onPlaying);
+                video.addEventListener('error', onError);
 
                 if (typeof window.Hls !== 'undefined' && window.Hls.isSupported() && (playUrl.includes('.m3u8') || selectedItem?.type === 'tv')) { 
                     const hls = new window.Hls({ startLevel: -1, maxBufferLength: 10, maxMaxBufferLength: 20, lowLatencyMode: false, enableWorker: true }); 
@@ -593,11 +629,21 @@
                     });
                 } else { video.src = playUrl; video.load(); video.play().catch(() => { setIsVideoLoading(false); }); } 
                 
-                return () => { video.removeEventListener('loadedmetadata', onLoadedMetadata); video.removeEventListener('playing', onPlaying); video.removeEventListener('error', onError); if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; } };
+                return () => { video.removeEventListener('loadedmetadata', onLoadedMetadata); video.removeEventListener('playing', onPlaying); video.removeEventListener('canplay', onPlaying); video.removeEventListener('error', onError); if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; } };
             }, [playUrl, isDriveLink, selectedItem, isLocked, retryTrigger]);
             
             const toggleFavorite = (item) => { const itemId = item.id || item.title; const newFavs = favorites.some(f => (f.id || f.title) === itemId) ? favorites.filter(f => (f.id || f.title) !== itemId) : [item, ...favorites]; setFavorites(newFavs); safeStorage.setItem('magistube_favs', JSON.stringify(newFavs)); };
-            const handlePlay = (item) => { const code = item.codigo || item.password || item.pin; if (code) { setSelectedItem(item); setIsLocked(true); } else { setSelectedItem(item); setIsLocked(false); } setExpandedSeason(0); if (item.type === 'series') { const firstEp = item.seasons?.[0]?.episodes?.[0]; setSelectedEpisode(firstEp || null); } if (item.type !== 'tv' || window.innerWidth < 1024) window.scrollTo({ top: 0, behavior: 'smooth' }); };
+            const handlePlay = (item) => { 
+                setDriveMode('iframe'); 
+                setIsVideoReady(false);
+                const code = item.codigo || item.password || item.pin; 
+                if (code) { setSelectedItem(item); setIsLocked(true); } 
+                else { setSelectedItem(item); setIsLocked(false); } 
+                setExpandedSeason(0); 
+                if (item.type === 'series') { const firstEp = item.seasons?.[0]?.episodes?.[0]; setSelectedEpisode(firstEp || null); } 
+                if (item.type !== 'tv' || window.innerWidth < 1024) window.scrollTo({ top: 0, behavior: 'smooth' }); 
+            };
+
             const getDisplayContent = () => { let list = activeTab === 'home' ? [...content.movies.slice(0,20), ...content.series.slice(0,20), ...content.tv.slice(0,20)] : activeTab === 'favorites' ? favorites : content[activeTab] || []; if (search) return list.filter(i => (i.title || i.name).toLowerCase().includes(search.toLowerCase())); return list; };
             const continueWatchingItems = useMemo(() => { if (activeTab !== 'home' || search) return []; return Object.values(watchProgress).filter(p => p.pct > 1 && p.pct < 95 && p.item).sort((a, b) => b.timestamp - a.timestamp).slice(0, 10).map(p => p.item); }, [watchProgress, activeTab, search]);
             const displayedItems = getDisplayContent();
@@ -659,17 +705,62 @@
                                     <div className={`flex-1 bg-[#111827] relative flex flex-col lg:h-full ${selectedItem && selectedItem.type === 'tv' ? '' : 'hidden lg:flex'}`}> 
                                         {selectedItem && selectedItem.type === 'tv' ? ( 
                                             <> 
-                                                <div className="relative aspect-video w-full bg-[#111827] lg:flex-1"> 
-                                                    <button onClick={() => setSelectedItem(null)} className="absolute top-4 left-4 z-20 bg-black/50 p-2 rounded-full text-white lg:hidden"> 
+                                                <div className="relative aspect-video w-full bg-[#111827] lg:flex-1 overflow-hidden flex items-center justify-center"> 
+                                                    <button onClick={() => setSelectedItem(null)} className="absolute top-4 left-4 z-30 bg-black/50 p-2 rounded-full text-white lg:hidden"> 
                                                         <Icon name="arrowLeft" size={20} /> 
                                                     </button> 
                                                     {isDriveLink ? ( 
-                                                        <div className="iframe-container"><iframe src={playUrl} allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe></div> 
+                                                        <div className="iframe-container relative">
+                                                            {drivePlayerMode === 'iframe' ? (
+                                                                <iframe src={`https://drive.google.com/file/d/${driveFileId}/preview`} allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
+                                                            ) : (
+                                                                <video src={`https://drive.google.com/uc?export=download&id=${driveFileId}`} controls autoPlay playsInline webkit-playsinline="true" className="w-full h-full object-contain bg-[#111827]" />
+                                                            )}
+                                                            <div className="absolute bottom-2 left-2 right-2 bg-black/85 backdrop-blur p-2 rounded-xl border border-white/20 flex flex-wrap items-center justify-between gap-2 z-50 text-xs">
+                                                                <span className="text-amber-300 font-medium flex items-center gap-1"><Icon name="alertCircle" size={14}/> ¿Google bloquea el video?</span>
+                                                                <div className="flex items-center gap-2">
+                                                                    <button onClick={() => setDriveMode(drivePlayerMode === 'iframe' ? 'direct' : 'iframe')} className="bg-white/10 hover:bg-white/20 text-white px-2.5 py-1 rounded font-semibold transition-colors">
+                                                                        {drivePlayerMode === 'iframe' ? '📹 Modo Directo' : '📺 Modo Vista Previa'}
+                                                                    </button>
+                                                                    <a href={`https://drive.google.com/file/d/${driveFileId}/view`} target="_blank" rel="noopener noreferrer" className="bg-[#E50914] hover:bg-red-700 text-white px-2.5 py-1 rounded font-bold transition-colors flex items-center gap-1">
+                                                                        <Icon name="external" size={12} /> Abrir en App de Drive
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div> 
                                                     ) : ( 
-                                                        <div className="relative w-full h-full">
-                                                            {isVideoLoading && <div className="absolute inset-0 flex flex-col items-center justify-center bg-transparent z-10 pointer-events-none"><div className="animate-spin rounded-full h-10 w-10 border-4 border-[#E50914] border-t-transparent drop-shadow-xl"></div></div>}
-                                                            {videoError && <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/90 z-10 p-4 text-center"><Icon name="alertCircle" size={40} className="text-[#E50914] mb-3" /><p className="text-white font-bold mb-4">{videoError}</p><button onClick={() => setRetryTrigger(prev => prev + 1)} className="px-6 py-2 bg-[#E50914] rounded-lg text-sm text-white font-bold hover:bg-red-700 transition-colors">Reintentar</button></div>}
-                                                            <video ref={videoRef} className="w-full h-full object-contain bg-[#111827]" controls autoPlay playsInline poster={selectedItem?.image || selectedItem?.logo || ''} onTimeUpdate={handleVideoProgress} /> 
+                                                        <div className="relative w-full h-full flex items-center justify-center bg-[#111827] overflow-hidden">
+                                                            {/* PORTADA SUPERPUESTA EN CAPA Z-20 PARA TAPAR CUALQUIER CUADRO NEGRO DEL MÓVIL */}
+                                                            {!isVideoReady && (selectedItem?.image || selectedItem?.logo) && (
+                                                                <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden flex items-center justify-center bg-[#111827]">
+                                                                    <img src={selectedItem.image || selectedItem.logo} alt="Portada" className="w-full h-full object-cover filter blur-sm scale-105 opacity-80" />
+                                                                    <div className="absolute inset-0 bg-black/40"></div>
+                                                                </div>
+                                                            )}
+
+                                                            {isVideoLoading && (
+                                                                <div className="absolute inset-0 flex flex-col items-center justify-center bg-transparent z-30 pointer-events-none">
+                                                                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#E50914] border-t-transparent drop-shadow-[0_0_15px_rgba(229,9,20,0.8)]"></div>
+                                                                </div>
+                                                            )}
+
+                                                            {videoError && (
+                                                                <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#111827] z-30 p-4 text-center">
+                                                                    <Icon name="alertCircle" size={40} className="text-[#E50914] mb-3" />
+                                                                    <p className="text-white font-bold mb-4">{videoError}</p>
+                                                                    <button onClick={() => setRetryTrigger(prev => prev + 1)} className="px-6 py-2 bg-[#E50914] rounded-lg text-sm text-white font-bold hover:bg-red-700 transition-colors">Reintentar</button>
+                                                                </div>
+                                                            )}
+
+                                                            <video 
+                                                                ref={videoRef} 
+                                                                className={`w-full h-full object-contain relative z-10 transition-opacity duration-300 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`} 
+                                                                controls 
+                                                                autoPlay 
+                                                                playsInline 
+                                                                webkit-playsinline="true"
+                                                                onTimeUpdate={handleVideoProgress} 
+                                                            /> 
                                                         </div>
                                                     )} 
                                                 </div> 
@@ -706,8 +797,8 @@
                             if (selectedItem) {
                                 return ( 
                                 <div className="animate-fade-in"> 
-                                    <div className="w-full bg-[#111827] relative aspect-video md:h-[70vh] flex items-center justify-center"> 
-                                        <div className="absolute top-4 left-4 z-20"> 
+                                    <div className="w-full bg-[#111827] relative aspect-video md:h-[70vh] flex items-center justify-center overflow-hidden"> 
+                                        <div className="absolute top-4 left-4 z-30"> 
                                             <button onClick={() => {setSelectedItem(null); setIsLocked(false);}} className="bg-black/50 hover:bg-[#E50914] text-white px-4 py-2 rounded-full backdrop-blur-md flex items-center gap-2 transition-colors border border-white/10"> 
                                                 <Icon name="arrowLeft" size={18} /> <span className="hidden md:inline">Volver</span> 
                                             </button> 
@@ -716,15 +807,60 @@
                                             <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} /> 
                                         ) : ( 
                                             isDriveLink ? ( 
-                                                <div className="iframe-container"> 
-                                                    <iframe src={playUrl} allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe> 
-                                                    <a href={playUrl} target="_blank" rel="noopener noreferrer" className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-xs flex items-center gap-1 hover:bg-[#E50914] z-50 border border-white/20"><Icon name="external" size={12} /> Abrir externo</a> 
+                                                <div className="iframe-container relative"> 
+                                                    {drivePlayerMode === 'iframe' ? (
+                                                        <iframe src={`https://drive.google.com/file/d/${driveFileId}/preview`} allow="autoplay; encrypted-media; fullscreen" allowFullScreen className="w-full h-full"></iframe> 
+                                                    ) : (
+                                                        <video src={`https://drive.google.com/uc?export=download&id=${driveFileId}`} controls autoPlay playsInline webkit-playsinline="true" className="w-full h-full object-contain bg-[#111827]" />
+                                                    )}
+                                                    
+                                                    <div className="absolute bottom-3 left-3 right-3 bg-black/90 backdrop-blur-md p-2.5 rounded-xl border border-white/20 flex flex-wrap items-center justify-between gap-2 z-50 text-xs shadow-2xl">
+                                                        <span className="text-amber-300 font-medium flex items-center gap-1.5">
+                                                            <Icon name="alertCircle" size={16}/> Si Google muestra "Inicia sesión" o límite:
+                                                        </span>
+                                                        <div className="flex items-center gap-2">
+                                                            <button onClick={() => setDriveMode(drivePlayerMode === 'iframe' ? 'direct' : 'iframe')} className="bg-white/10 hover:bg-white/20 text-white px-3 py-1.5 rounded-lg border border-white/20 transition-colors font-semibold">
+                                                                {drivePlayerMode === 'iframe' ? '📹 Cambiar a Reproductor Directo' : '📺 Cambiar a Vista previa'}
+                                                            </button>
+                                                            <a href={`https://drive.google.com/file/d/${driveFileId}/view`} target="_blank" rel="noopener noreferrer" className="bg-[#E50914] hover:bg-red-700 text-white px-3.5 py-1.5 rounded-lg font-bold transition-colors flex items-center gap-1.5 shadow-md">
+                                                                <Icon name="external" size={14} /> Abrir en App de Drive
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div> 
                                             ) : ( 
-                                                <div className="relative w-full h-full">
-                                                    {isVideoLoading && <div className="absolute inset-0 flex flex-col items-center justify-center bg-transparent z-10 pointer-events-none"><div className="animate-spin rounded-full h-10 w-10 border-4 border-[#E50914] border-t-transparent drop-shadow-xl"></div></div>}
-                                                    {videoError && <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/90 z-10 p-4 text-center"><Icon name="alertCircle" size={40} className="text-[#E50914] mb-3" /><p className="text-white font-bold mb-4">{videoError}</p><button onClick={() => setRetryTrigger(prev => prev + 1)} className="px-6 py-2 bg-[#E50914] rounded-lg text-sm text-white font-bold hover:bg-red-700 transition-colors">Reintentar</button></div>}
-                                                    <video ref={videoRef} className="w-full h-full object-contain bg-[#111827]" controls autoPlay playsInline poster={selectedItem?.image || selectedItem?.poster || ''} onTimeUpdate={handleVideoProgress} /> 
+                                                <div className="relative w-full h-full flex items-center justify-center bg-[#111827] overflow-hidden">
+                                                    {/* PORTADA SUPERPUESTA EN CAPA Z-20 PARA TAPAR CUALQUIER CUADRO NEGRO EN MÓVILES */}
+                                                    {!isVideoReady && (selectedItem?.image || selectedItem?.poster) && (
+                                                        <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden flex items-center justify-center bg-[#111827]">
+                                                            <img src={selectedItem.image || selectedItem.poster} alt="Portada" className="w-full h-full object-cover filter blur-sm scale-105 opacity-80" />
+                                                            <div className="absolute inset-0 bg-black/40"></div>
+                                                        </div>
+                                                    )}
+
+                                                    {isVideoLoading && (
+                                                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-transparent z-30 pointer-events-none">
+                                                            <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#E50914] border-t-transparent drop-shadow-[0_0_15px_rgba(229,9,20,0.8)]"></div>
+                                                        </div>
+                                                    )}
+
+                                                    {videoError && (
+                                                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#111827] z-30 p-4 text-center">
+                                                            <Icon name="alertCircle" size={40} className="text-[#E50914] mb-3" />
+                                                            <p className="text-white font-bold mb-4">{videoError}</p>
+                                                            <button onClick={() => setRetryTrigger(prev => prev + 1)} className="px-6 py-2 bg-[#E50914] rounded-lg text-sm text-white font-bold hover:bg-red-700 transition-colors">Reintentar</button>
+                                                        </div>
+                                                    )}
+
+                                                    <video 
+                                                        ref={videoRef} 
+                                                        className={`w-full h-full object-contain relative z-10 transition-opacity duration-300 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`} 
+                                                        controls 
+                                                        autoPlay 
+                                                        playsInline 
+                                                        webkit-playsinline="true"
+                                                        onTimeUpdate={handleVideoProgress} 
+                                                    /> 
                                                 </div>
                                             ) 
                                         )} 
