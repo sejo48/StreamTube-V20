@@ -56,10 +56,7 @@
         .iframe-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: #111827; }
         .iframe-container iframe { width: 100%; height: 100%; border: 0; }
         button:focus, div[tabindex="0"]:focus, input:focus { outline: 3px solid #E50914; outline-offset: 2px; z-index: 50; transform: scale(1.05); transition: all 0.2s; }
-        
-        /* Forzar transparencia nativa del reproductor de video */
         video { background-color: transparent !important; background: transparent !important; }
-        video::-webkit-media-controls-panel { background-color: transparent; }
     </style>
 </head>
 <body>
@@ -171,15 +168,13 @@
                 tv: <path d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />,
                 film: <path d="M19.82 2H4.18C2.97 2 2 2.97 2 4.18v15.64C2 21.03 2.97 22 4.18 22h15.64c1.21 0 2.18-.97 2.18-2.18V4.18C22 2.97 21.03 2 19.82 2zM7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5" />,
                 play: <path d="M5 3l14 9-14 9V3z" />,
-                pause: <><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></>,
-                rewind: <path d="M11 19l-9-7 9-7v14zM22 19l-9-7 9-7v14z"/>,
-                forward: <path d="M13 19l9-7-9-7v14zM2 19l9-7-9-7v14z"/>,
                 heart: <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />,
                 arrowLeft: <path d="M19 12H5m7 7l-7-7 7-7" />,
                 alertCircle: <g><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></g>,
                 chevronDown: <path d="M6 9l6 6 6-6" />,
                 chevronUp: <path d="M18 15l-6-6-6 6" />,
                 clapperboard: <g><path d="M20.2 6 3 11l-.9-2.4c-.5-1.1.2-2.3 1.3-2.8l3.2-1.4c1.1-.5 2.3.2 2.8 1.3l.9 2.4l7.9-3l2 4.5Z"/><path d="M4 11v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9"/></g>,
+                external: <g><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></g>,
                 lock: <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a7 7 0 00-14 0v2" />,
                 share: <g><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></g>,
                 whatsapp: <path d="M17.498 14.382c-.301-.15-1.767-.867-2.04-.966-.273-.101-.473-.15-.673.15-.197.295-.771.964-.944 1.162-.175.195-.349.21-.646.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>,
@@ -187,160 +182,13 @@
                 users: <g><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></g>,
                 crown: <g><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/></g>,
                 refresh: <g><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 21h5v-5"></path></g>,
-                smile: <g><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></g>,
-                maximize: <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                smile: <g><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></g>
             };
             
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
                     {icons[name] || icons.search}
                 </svg>
-            );
-        };
-
-        const CustomMediaPlayer = ({ src, poster, onTimeUpdate, isLive }) => {
-            const videoRef = useRef(null);
-            const [isPlaying, setIsPlaying] = useState(true);
-            const [progress, setProgress] = useState(0);
-            const [currentTime, setCurrentTime] = useState(0);
-            const [duration, setDuration] = useState(0);
-            const [showControls, setShowControls] = useState(true);
-            const [isLoading, setIsLoading] = useState(true);
-            const controlsTimeoutRef = useRef(null);
-
-            useEffect(() => {
-                const video = videoRef.current;
-                if (!video) return;
-
-                const handleTimeUpdate = () => {
-                    if (video.duration) {
-                        setProgress((video.currentTime / video.duration) * 100);
-                        setCurrentTime(video.currentTime);
-                        setDuration(video.duration);
-                    }
-                    if (onTimeUpdate) onTimeUpdate(video);
-                    if (isLoading && video.currentTime > 0.1) setIsLoading(false);
-                };
-
-                const handleWaiting = () => setIsLoading(true);
-                const handlePlaying = () => setIsLoading(false);
-
-                video.addEventListener('timeupdate', handleTimeUpdate);
-                video.addEventListener('waiting', handleWaiting);
-                video.addEventListener('playing', handlePlaying);
-
-                return () => {
-                    video.removeEventListener('timeupdate', handleTimeUpdate);
-                    video.removeEventListener('waiting', handleWaiting);
-                    video.removeEventListener('playing', handlePlaying);
-                };
-            }, [isLoading, onTimeUpdate]);
-
-            const togglePlay = () => {
-                const video = videoRef.current;
-                if (!video) return;
-                if (video.paused) {
-                    video.play();
-                    setIsPlaying(true);
-                } else {
-                    video.pause();
-                    setIsPlaying(false);
-                }
-                resetControlsTimer();
-            };
-
-            const skipTime = (seconds) => {
-                const video = videoRef.current;
-                if (!video || isLive) return;
-                video.currentTime = Math.max(0, Math.min(video.duration, video.currentTime + seconds));
-                resetControlsTimer();
-            };
-
-            const handleSeek = (e) => {
-                const video = videoRef.current;
-                if (!video || isLive) return;
-                const rect = e.currentTarget.getBoundingClientRect();
-                const pos = (e.clientX - rect.left) / rect.width;
-                video.currentTime = pos * video.duration;
-                resetControlsTimer();
-            };
-
-            const toggleFullScreen = () => {
-                const video = videoRef.current;
-                if (!video) return;
-                if (video.requestFullscreen) video.requestFullscreen();
-                else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
-            };
-
-            const resetControlsTimer = () => {
-                setShowControls(true);
-                if (controlsTimeoutRef.current) clearTimeout(controlsTimeoutRef.current);
-                controlsTimeoutRef.current = setTimeout(() => {
-                    if (!videoRef.current?.paused) setShowControls(false);
-                }, 3500);
-            };
-
-            const formatTime = (secs) => {
-                if (isNaN(secs)) return "00:00";
-                const m = Math.floor(secs / 60);
-                const s = Math.floor(secs % 60);
-                return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
-            };
-
-            return (
-                <div className="relative w-full h-full bg-[#111827] flex items-center justify-center overflow-hidden select-none group" onMouseMove={resetControlsTimer} onClick={resetControlsTimer}>
-                    {poster && isLoading && (
-                        <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#111827]">
-                            <img src={poster} className="w-full h-full object-cover filter blur-md opacity-40 scale-105" />
-                        </div>
-                    )}
-
-                    {isLoading && (
-                        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
-                            <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#E50914] border-t-transparent shadow-[0_0_20px_rgba(229,9,20,0.6)]"></div>
-                        </div>
-                    )}
-
-                    <video ref={videoRef} src={src} className="w-full h-full object-contain relative z-0 bg-transparent" autoPlay playsInline webkit-playsinline="true" />
-
-                    <div className={`absolute inset-0 z-30 flex flex-col justify-between transition-opacity duration-300 pointer-events-auto ${showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-                        <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
-
-                        <div className="relative z-10 p-4 flex justify-between items-center bg-gradient-to-b from-black/40 to-transparent">
-                            <div className="flex items-center gap-2">
-                                {isLive && <span className="bg-[#E50914] text-white text-[10px] font-bold px-2 py-0.5 rounded animate-pulse">EN VIVO</span>}
-                            </div>
-                        </div>
-
-                        <div className="relative z-10 flex items-center justify-center gap-6 my-auto">
-                            {!isLive && (
-                                <button onClick={(e) => { e.stopPropagation(); skipTime(-10); }} className="p-3 bg-black/40 hover:bg-black/70 rounded-full text-white backdrop-blur-md transition-transform hover:scale-110">
-                                    <Icon name="rewind" size={24}/>
-                                </button>
-                            )}
-                            <button onClick={(e) => { e.stopPropagation(); togglePlay(); }} className="p-5 bg-[#E50914] hover:bg-red-700 rounded-full text-white shadow-[0_0_20px_rgba(229,9,20,0.8)] transition-transform hover:scale-110">
-                                <Icon name={isPlaying ? "pause" : "play"} size={32} fill="white"/>
-                            </button>
-                            {!isLive && (
-                                <button onClick={(e) => { e.stopPropagation(); skipTime(10); }} className="p-3 bg-black/40 hover:bg-black/70 rounded-full text-white backdrop-blur-md transition-transform hover:scale-110">
-                                    <Icon name="forward" size={24}/>
-                                </button>
-                            )}
-                        </div>
-
-                        <div className="relative z-10 p-4 flex flex-col gap-2 bg-gradient-to-t from-black/60 to-transparent">
-                            {!isLive && (
-                                <div className="w-full h-2 bg-white/20 rounded-full cursor-pointer relative overflow-hidden" onClick={handleSeek}>
-                                    <div className="h-full bg-[#E50914] rounded-full transition-all duration-150" style={{ width: `${progress}%` }}></div>
-                                </div>
-                            )}
-                            <div className="flex justify-between items-center text-xs text-gray-300 font-medium">
-                                {!isLive ? <span>{formatTime(currentTime)} / {formatTime(duration)}</span> : <span>Transmisión en directo</span>}
-                                <button onClick={toggleFullScreen} className="hover:text-white p-1"><Icon name="maximize" size={18}/></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             );
         };
 
@@ -469,7 +317,7 @@
                                 <p className="text-gray-300 text-sm md:text-base max-w-xl line-clamp-3">{item.description || item.plot || "Disfruta del mejor contenido seleccionado especialmente para ti."}</p>
                                 <div className="flex gap-4 mt-4">
                                     <button onClick={() => onPlay(item)} className="bg-white text-black px-8 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-200 transition-transform hover:scale-105"><Icon name="play" size={20} fill="black"/> Reproducir</button>
-                                    <button onClick={() => onToggleFavorite(item)} className="bg-white/10 text-white px-4 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-white/20 backdrop-blur-sm border border-white/10"><Icon name="heart" size={20} className={isFavorite ? "text-[#E50914] fill-[#E50914] heart-pop" : "text-white"} fill={isFavorite ? "#E50914" : "none"} /></button>
+                                    <button onClick={() => onToggleFavorite(item)} className="bg-white/10 text-white px-4 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-white/20 backdrop-blur-sm border border-white/10"><Icon name="heart" size={20} className={isFavorite ? "text-[#E50914] fill-[#E50914]" : "text-white"} fill={isFavorite ? "#E50914" : "none"} /></button>
                                 </div>
                             </div>
                         </div>
@@ -559,7 +407,17 @@
 
             useEffect(() => { fetchNotifs(); }, []);
 
-            const cleanDriveUrl = (url) => { if (!url) return ''; if (url.includes('drive.google.com')) { if (url.includes('/preview')) return url; const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/); return match ? `https://drive.google.com/file/d/${match[1]}/preview` : url; } return url; };
+            const cleanDriveUrl = (url) => { 
+                if (!url) return ''; 
+                if (url.includes('drive.google.com')) { 
+                    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+                    if (match) {
+                        return `https://drive.google.com/file/d/${match[1]}/preview`;
+                    }
+                } 
+                return url; 
+            };
+            
             const shareViaWhatsApp = () => { const text = `¡Mira esta app increíble! Entra aquí: ${window.location.href}`; window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank'); };
 
             const safeParseJSON = (text, fallback) => {
@@ -635,16 +493,6 @@
                     }
                 }
                 return channels;
-            };
-
-            const handleVideoProgress = (video) => { 
-                const time = video.currentTime; const duration = video.duration;
-                if (!duration || !selectedItem) return; 
-                const pct = (time / duration) * 100; 
-                const itemId = selectedItem.id || selectedItem.title; 
-                const newProgress = { ...watchProgress, [itemId]: { pct: pct, time: time, item: selectedItem, timestamp: Date.now() } }; 
-                setWatchProgress(newProgress); 
-                safeStorage.setItem('magistube_progress', JSON.stringify(newProgress)); 
             };
 
             const toggleFavorite = (item) => { const itemId = item.id || item.title; const newFavs = favorites.some(f => (f.id || f.title) === itemId) ? favorites.filter(f => (f.id || f.title) !== itemId) : [item, ...favorites]; setFavorites(newFavs); safeStorage.setItem('magistube_favs', JSON.stringify(newFavs)); };
@@ -725,7 +573,7 @@
                                             {selectedItem && selectedItem.type === 'tv' ? ( 
                                                 <div className="w-full h-full flex flex-col">
                                                     <div className="relative aspect-video w-full bg-black lg:flex-1">
-                                                        <CustomMediaPlayer src={playUrl} poster={selectedItem.image} isLive={true} />
+                                                        <video src={playUrl} controls autoPlay playsInline webkit-playsinline="true" className="w-full h-full object-contain bg-black" />
                                                     </div>
                                                     <div className="p-4 bg-[#1f2937]"><h2 className="text-lg font-bold">{selectedItem.title}</h2></div>
                                                 </div>
@@ -745,7 +593,7 @@
                                 const playUrl = (selectedItem.type === 'movie') ? selectedItem.url : selectedEpisode?.url || '';
                                 return ( 
                                     <div className="animate-fade-in flex flex-col min-h-screen"> 
-                                        <div className="w-full sticky top-0 z-40 bg-black aspect-video md:h-[60vh] flex items-center justify-center"> 
+                                        <div className="w-full sticky top-0 z-40 bg-black aspect-video md:h-[60vh] flex items-center justify-center relative"> 
                                             <div className="absolute top-4 left-4 z-30"> 
                                                 <button onClick={() => {setSelectedItem(null); setIsLocked(false);}} className="bg-black/60 hover:bg-[#E50914] text-white px-4 py-2 rounded-full flex items-center gap-2 transition-colors border border-white/10"> 
                                                     <Icon name="arrowLeft" size={18} /> <span>Volver</span> 
@@ -754,7 +602,9 @@
                                             {isLocked ? ( 
                                                 <LockScreen correctCode={selectedItem.codigo || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} /> 
                                             ) : ( 
-                                                <CustomMediaPlayer src={playUrl} poster={selectedItem.image || selectedItem.poster} onTimeUpdate={handleVideoProgress} isLive={false} /> 
+                                                <div className="iframe-container w-full h-full">
+                                                    <iframe src={playUrl} allow="autoplay; encrypted-media; fullscreen" allowFullScreen className="w-full h-full border-0"></iframe>
+                                                </div>
                                             )} 
                                         </div> 
                                         {!isLocked && ( 
