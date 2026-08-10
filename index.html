@@ -46,15 +46,19 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes heartPop { 0% { transform: scale(1); } 50% { transform: scale(1.3); } 100% { transform: scale(1); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
         .animate-fade-in { animation: fadeIn 0.6s ease-out; }
         .animate-slide-up { animation: slideUp 0.8s ease-out; }
+        .animate-shake { animation: shake 0.2s ease-in-out 0s 2; }
         .heart-pop { animation: heartPop 0.3s ease-in-out; }
         .text-gold-gradient { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
         .iframe-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: #111827; }
         .iframe-container iframe { width: 100%; height: 100%; border: 0; }
         button:focus, div[tabindex="0"]:focus, input:focus { outline: 3px solid #E50914; outline-offset: 2px; z-index: 50; transform: scale(1.05); transition: all 0.2s; }
+        
         video { background-color: transparent !important; background: transparent !important; }
+        video::-webkit-media-controls-panel { background-color: transparent; }
     </style>
 </head>
 <body>
@@ -182,7 +186,6 @@
                 refresh: <g><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path><path d="M16 21h5v-5"></path></g>,
                 smile: <g><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></g>
             };
-            
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
                     {icons[name] || icons.search}
@@ -504,47 +507,62 @@
             };
 
             const getDisplayContent = () => { 
-                let list = activeTab === 'home' ? [...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] : activeTab === 'favorites' ? favorites : activeTab === 'animados' ? content.animados : content[activeTab] || []; 
+                let list = activeTab === 'home' ? [...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] : activeTab === 'favorites' ? favorites : content[activeTab] || []; 
                 if (search) return list.filter(i => (i.title || i.name).toLowerCase().includes(search.toLowerCase())); 
                 return list; 
             };
 
-            const continueWatchingItems = useMemo(() => { if (activeTab !== 'home' || search) return []; return Object.values(watchProgress).filter(p => p.pct > 1 && p.pct < 95 && p.item).sort((a, b) => b.timestamp - a.timestamp).slice(0, 10).map(p => p.item); }, [watchProgress, activeTab, search]);
             const displayedItems = getDisplayContent();
             const heroItem = useMemo(() => (content.movies.length ? content.movies[Math.floor(Math.random() * content.movies.length)] : content.series[0]), [content]);
 
-            if (showIntro) return <IntroScreen onEnter={() => setShowIntro(false)} />;
+            if (showIntro) return <IntroScreen onEnter={() => { setShowIntro(false); if(window.DB_API) window.DB_API.saveVisitor('Visitante'); }} />;
 
             return (
                 <div className="min-h-screen bg-[#111827] text-white font-sans flex flex-col md:flex-row relative">
                     <aside className="hidden md:flex w-20 flex-col items-center py-6 bg-[#0f1115] border-r border-[#1f2937] fixed h-full z-50">
-                        <div className="mb-8 p-2 bg-[#E50914] rounded-lg cursor-pointer" onClick={() => {setActiveTab('home'); setSelectedItem(null); setIsLocked(false);}}><Icon name="play" size={24} fill="white"/></div>
+                        <div className="mb-8 p-2 bg-[#E50914] rounded-lg shadow-lg cursor-pointer" onClick={() => {setActiveTab('home'); setSelectedItem(null); setIsLocked(false);}}><Icon name="play" size={24} fill="white" className="text-white"/></div>
                         <div className="flex flex-col gap-6 w-full">
-                            {[{ id: 'home', icon: 'search', label: 'Inicio' }, { id: 'series', icon: 'film', label: 'Series' }, { id: 'animados', icon: 'smile', label: 'Anim' }, { id: 'movies', icon: 'clapperboard', label: 'Cine' }, { id: 'tv', icon: 'tv', label: 'TV' }, { id: 'favorites', icon: 'heart', label: 'Favs' }].map(tab => (
+                            {[
+                                { id: 'home', icon: 'search', label: 'Inicio' }, 
+                                { id: 'series', icon: 'film', label: 'Series' }, 
+                                { id: 'animados', icon: 'smile', label: 'Animados' },
+                                { id: 'movies', icon: 'clapperboard', label: 'Cine' }, 
+                                { id: 'tv', icon: 'tv', label: 'TV' }, 
+                                { id: 'favorites', icon: 'heart', label: 'Favs' }
+                            ].map(tab => (
                                 <button key={tab.id} onClick={() => { setActiveTab(tab.id); setSelectedItem(null); setSearch(''); setIsLocked(false); }} className={`flex flex-col items-center gap-1 transition-colors ${activeTab === tab.id ? 'text-[#E50914]' : 'text-gray-500 hover:text-white'}`}>
-                                    <Icon name={tab.icon} size={24} fill={activeTab === tab.id && tab.id === 'favorites' ? 'currentColor' : 'none'} /><span className="text-[10px] font-medium">{tab.label}</span>
+                                    <Icon name={tab.icon} size={24} fill={activeTab === tab.id && tab.id === 'favorites' ? 'currentColor' : 'none'} className={activeTab === tab.id && tab.id === 'favorites' ? 'fill-current' : ''} /><span className="text-[10px] font-medium">{tab.label}</span>
                                 </button>
                             ))}
-                            <button onClick={() => setShowUserList(true)} className="flex flex-col items-center gap-1 text-gray-500 hover:text-white"><Icon name="users" size={24} /><span className="text-[10px]">Visitas</span></button>
+                            <button onClick={() => setShowUserList(true)} className="flex flex-col items-center gap-1 text-gray-500 hover:text-white transition-colors"><Icon name="users" size={24} /><span className="text-[10px] font-medium">Usuarios</span></button>
                         </div>
                         <div className="mt-auto flex flex-col items-center gap-4 mb-4 relative w-full">
-                            <button onClick={() => setShowAdmin(true)} className="text-[#E50914]" title="Admin"><Icon name="crown" size={20} /></button>
-                            <button onClick={() => setShowNotif(true)} className="text-gray-500 hover:text-white relative"><Icon name="bell" size={20} />{notifications.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}</button>
-                            <button onClick={() => setShowQR(true)} className="text-blue-400" title="Compartir"><Icon name="share" size={20} /></button>
+                            <button onClick={() => setShowAdmin(true)} className="text-[#E50914] hover:text-white transition-colors relative" title="Admin"><Icon name="crown" size={20} /></button>
+                            <button onClick={() => setShowNotif(true)} className="text-gray-500 hover:text-white transition-colors relative" title="Novedades"><Icon name="bell" size={20} />{notifications.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}</button>
+                            <button onClick={() => setShowQR(true)} className="flex flex-col items-center gap-1 text-blue-400 hover:text-white transition-colors mb-4" title="Compartir App"><Icon name="share" size={20} /><span className="text-[10px] font-medium">Compartir</span></button>
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-yellow-600 flex items-center justify-center font-serif font-bold text-black border-2 border-white/20">J</div>
                         </div>
                     </aside>
 
                     <div className="md:hidden fixed top-0 w-full bg-[#111827]/95 backdrop-blur z-50 px-4 py-3 flex items-center justify-between border-b border-[#1f2937]">
-                        <div className="flex items-center gap-2 font-black text-xl tracking-tighter"><span className="text-[#E50914]">MAGIS</span>TUBE</div>
+                        <div className="flex items-center gap-2 font-black text-xl tracking-tighter"><span className="text-[#E50914]">MAGIS</span> TUBE</div>
                         <div className="flex gap-3 items-center">
                             <button onClick={() => setShowAdmin(true)} className="text-[#E50914]"><Icon name="crown" size={22} /></button>
-                            <button onClick={() => setShowNotif(true)} className="text-gray-300 relative"><Icon name="bell" size={22} />{notifications.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>}</button>
-                            <button onClick={shareViaWhatsApp} className="text-green-400"><Icon name="whatsapp" size={18} /></button>
+                            <button onClick={() => setShowUserList(true)} className="text-gray-300"><Icon name="users" size={22} /></button>
+                            <button onClick={() => setShowNotif(true)} className="text-gray-300 relative"><Icon name="bell" size={22} />{notifications.length > 0 && <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border border-[#111827]"></span>}</button>
+                            <button onClick={shareViaWhatsApp} className="text-green-400 bg-green-400/10 p-1.5 rounded-full border border-green-400/20"><Icon name="whatsapp" size={18} /></button>
+                            <button onClick={() => setShowQR(true)} className="text-blue-400 bg-blue-400/10 p-1.5 rounded-full border border-blue-400/20"><Icon name="share" size={18} /></button>
                         </div>
                     </div>
 
                     <div className="md:hidden fixed bottom-0 w-full bg-[#0f1115] border-t border-[#1f2937] z-50 flex justify-around py-3 pb-safe">
-                        {[{ id: 'home', icon: 'search', label: 'Inicio' }, { id: 'series', icon: 'film', label: 'Series' }, { id: 'animados', icon: 'smile', label: 'Anim' }, { id: 'movies', icon: 'clapperboard', label: 'Cine' }, { id: 'tv', icon: 'tv', label: 'TV' }].map(tab => (
+                        {[
+                            { id: 'home', icon: 'search', label: 'Inicio' }, 
+                            { id: 'series', icon: 'film', label: 'Series' }, 
+                            { id: 'animados', icon: 'smile', label: 'Anim' },
+                            { id: 'movies', icon: 'clapperboard', label: 'Cine' }, 
+                            { id: 'tv', icon: 'tv', label: 'TV' }
+                        ].map(tab => (
                             <button key={tab.id} onClick={() => { setActiveTab(tab.id); setSelectedItem(null); setIsLocked(false); }} className={`flex flex-col items-center gap-1 ${activeTab === tab.id ? 'text-[#E50914]' : 'text-gray-500'}`}>
                                 <Icon name={tab.icon} size={22} /><span className="text-[10px]">{tab.label}</span>
                             </button>
@@ -555,115 +573,135 @@
                     {showQR && <QRModal onClose={() => setShowQR(false)} />}
                     {showNotif && <NotificationsModal onClose={() => setShowNotif(false)} items={notifications} loading={notifLoading} onRefresh={fetchNotifs} />}
                     {showAdmin && <AdminModal onClose={() => setShowAdmin(false)} onSent={fetchNotifs} />}
-                    
+
                     <main className="flex-1 md:ml-20 min-h-screen pt-16 md:pt-0 pb-20 md:pb-0 relative z-10">
-                        {(() => {
-                            if (activeTab === 'favorites' && !selectedItem) {
-                                const favTV = favorites.filter(i => i.type === 'tv'); const favOther = favorites.filter(i => i.type !== 'tv');
-                                return ( <div className="p-4 md:p-10 animate-fade-in"><h2 className="text-2xl font-bold mb-6">Tus Favoritos</h2>{favTV.length > 0 && <div className="mb-10">{favTV.map(item => <TvListItem key={item.id} channel={item} isActive={false} isFavorite={true} onToggleFavorite={toggleFavorite} onClick={handlePlay} />)}</div>}<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">{favOther.map((item, i) => <Card key={i} item={item} onClick={handlePlay} isFavorite={true} onToggleFavorite={toggleFavorite} />)}</div></div> );
-                            }
-                            
-                            if (activeTab === 'tv' || (selectedItem && selectedItem.type === 'tv')) {
-                                const playUrl = selectedItem?.url || '';
-                                return ( 
-                                    <div className="flex flex-col lg:flex-row h-full lg:h-screen lg:overflow-hidden"> 
-                                        <div className={`flex-1 bg-[#111827] relative flex flex-col lg:h-full ${selectedItem && selectedItem.type === 'tv' ? '' : 'hidden lg:flex'}`}> 
-                                            {selectedItem && selectedItem.type === 'tv' ? ( 
-                                                <div className="w-full h-full flex flex-col">
-                                                    <div className="relative aspect-video w-full bg-black lg:flex-1">
-                                                        <video src={playUrl} controls autoPlay playsInline webkit-playsinline="true" className="w-full h-full object-contain bg-black" />
-                                                    </div>
-                                                    <div className="p-4 bg-[#1f2937]"><h2 className="text-lg font-bold">{selectedItem.title}</h2></div>
-                                                </div>
-                                            ) : ( <div className="flex items-center justify-center h-full text-gray-500"><p>Selecciona un canal para ver</p></div> )} 
-                                        </div> 
-                                        <div className="w-full lg:w-96 bg-[#111827] lg:border-l border-white/10 flex flex-col lg:h-full"> 
-                                            <div className="p-4 sticky top-16 lg:top-0 bg-[#111827] z-20"><input type="text" placeholder="Buscar canal..." className="w-full bg-[#1f2937] border border-white/10 rounded-lg px-4 py-3 text-sm text-white outline-none" value={search} onChange={(e) => setSearch(e.target.value)}/></div> 
-                                            <div className="p-2 space-y-1 lg:overflow-y-auto lg:h-full"> 
-                                                {content.tv.filter(c => !search || c.title.toLowerCase().includes(search.toLowerCase())).map((channel) => ( <TvListItem key={channel.id} channel={channel} isActive={selectedItem?.id === channel.id} isFavorite={favorites.some(f => f.id === channel.id)} onToggleFavorite={toggleFavorite} onClick={handlePlay} /> ))} 
-                                            </div> 
-                                        </div> 
-                                    </div> 
-                                );
-                            }
-                            
-                            if (selectedItem) {
-                                const playUrl = (selectedItem.type === 'movie') ? selectedItem.url : selectedEpisode?.url || '';
-                                return ( 
-                                    <div className="animate-fade-in flex flex-col min-h-screen"> 
-                                        <div className="w-full sticky top-0 z-40 bg-black aspect-video md:h-[60vh] flex items-center justify-center relative"> 
-                                            <div className="absolute top-4 left-4 z-30"> 
-                                                <button onClick={() => {setSelectedItem(null); setIsLocked(false);}} className="bg-black/60 hover:bg-[#E50914] text-white px-4 py-2 rounded-full flex items-center gap-2 transition-colors border border-white/10"> 
-                                                    <Icon name="arrowLeft" size={18} /> <span>Volver</span> 
-                                                </button> 
-                                            </div> 
-                                            {isLocked ? ( 
-                                                <LockScreen correctCode={selectedItem.codigo || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} /> 
-                                            ) : ( 
-                                                <div className="iframe-container w-full h-full">
-                                                    <iframe src={playUrl} allow="autoplay; encrypted-media; fullscreen" allowFullScreen className="w-full h-full border-0"></iframe>
-                                                </div>
-                                            )} 
-                                        </div> 
-                                        {!isLocked && ( 
-                                            <div className="p-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 w-full"> 
-                                                <div className="lg:col-span-2"> 
-                                                    <h1 className="text-3xl font-bold text-white mb-2">{selectedItem.title}</h1> 
-                                                    <p className="text-gray-300 leading-relaxed">{selectedItem.description}</p> 
-                                                </div> 
-                                                <div className="bg-[#1f2937] rounded-xl p-4 h-fit border border-white/5"> 
-                                                    {selectedItem.type === 'series' && selectedItem.seasons ? ( 
-                                                        <div className="flex flex-col gap-2"> 
-                                                            <h3 className="font-bold text-lg mb-2">Temporadas</h3> 
-                                                            {selectedItem.seasons.map((season, idx) => ( 
-                                                                <div key={idx} className="border-b border-gray-700 pb-2"> 
-                                                                    <button onClick={() => setExpandedSeason(expandedSeason === idx ? null : idx)} className="w-full flex justify-between items-center py-2 text-sm font-bold"><span>Temporada {season.season_number}</span></button> 
-                                                                    {expandedSeason === idx && ( 
-                                                                        <div className="flex flex-col gap-1 mt-1 pl-2"> 
-                                                                            {season.episodes.map((ep, eIdx) => ( 
-                                                                                <div key={eIdx} onClick={() => setSelectedEpisode(ep)} className={`text-sm p-2 rounded cursor-pointer truncate ${selectedEpisode?.url === ep.url ? 'bg-[#E50914] text-white' : 'text-gray-400 hover:bg-gray-700'}`}> 
-                                                                                    {eIdx + 1}. {ep.title} 
-                                                                                </div> 
-                                                                            ))} 
-                                                                        </div> 
-                                                                    )} 
-                                                                </div> 
-                                                            ))} 
-                                                        </div> 
-                                                    ) : <p className="text-sm text-gray-400">Contenido disponible en reproducción directa.</p>} 
-                                                </div> 
-                                            </div> 
-                                        )} 
-                                    </div> 
-                                );
-                            }
-                            
-                            return (
-                                <>
-                                    <div className="sticky top-0 z-40 bg-[#111827]/95 backdrop-blur py-4 px-6 md:px-10 flex items-center justify-between border-b border-[#1f2937]">
-                                        <div className="flex bg-[#1f2937] border border-[#374151] rounded-full px-4 py-2 w-full max-w-lg items-center focus-within:border-[#E50914]">
-                                            <Icon name="search" className="text-gray-400 w-5 h-5 mr-3" />
-                                            <input type="text" placeholder={`Buscar...`} className="bg-transparent w-full outline-none text-sm text-white" value={search} onChange={(e) => setSearch(e.target.value)}/>
+                        {activeTab === 'favorites' && !selectedItem ? (
+                            <div className="p-4 md:p-10 animate-fade-in">
+                                <div className="mb-6 flex items-center gap-3 border-b border-white/10 pb-4">
+                                    <div className="p-2 bg-[#E50914]/20 rounded-lg text-[#E50914]"><Icon name="heart" size={24} fill="currentColor" /></div>
+                                    <h2 className="text-2xl font-bold text-white">Tus Favoritos</h2>
+                                </div>
+                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">
+                                    {favorites.map((item, i) => (<Card key={i} item={item} onClick={handlePlay} isFavorite={true} onToggleFavorite={toggleFavorite} />))}
+                                </div>
+                                {favorites.length === 0 && <div className="text-center py-20 text-gray-500"><p>No tienes favoritos guardados aún.</p></div>}
+                            </div>
+                        ) : activeTab === 'tv' || (selectedItem && selectedItem.type === 'tv') ? (
+                            <div className="flex flex-col lg:flex-row h-full lg:h-screen lg:overflow-hidden">
+                                <div className="flex-1 bg-[#111827] relative flex flex-col lg:h-full">
+                                    {selectedItem && selectedItem.type === 'tv' ? (
+                                        <div className="relative aspect-video w-full bg-[#111827] lg:flex-1 overflow-hidden flex items-center justify-center">
+                                            <button onClick={() => setSelectedItem(null)} className="absolute top-4 left-4 z-30 bg-black/50 p-2 rounded-full text-white lg:hidden"><Icon name="arrowLeft" size={20} /></button>
+                                            <iframe src={selectedItem.url} className="w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
                                         </div>
+                                    ) : (
+                                        <div className="flex items-center justify-center h-full text-gray-500"><p>Selecciona un canal de TV para comenzar</p></div>
+                                    )}
+                                </div>
+                                <div className="w-full lg:w-96 bg-[#111827] lg:border-l border-white/10 flex flex-col lg:h-full lg:overflow-hidden">
+                                    <div className="p-4 sticky top-16 lg:top-0 bg-[#111827] z-20 border-b border-white/5">
+                                        <div className="relative"><input type="text" placeholder="Buscar canal..." className="w-full bg-[#1f2937] border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:border-[#E50914] outline-none pl-10" value={search} onChange={(e) => setSearch(e.target.value)}/><Icon name="search" size={18} className="absolute left-3 top-3 text-gray-400"/></div>
                                     </div>
-                                    {activeTab === 'home' && !search && heroItem && <HeroSection item={heroItem} onPlay={handlePlay} isFavorite={favorites.some(f=>(f.id||f.title)===(heroItem.id||heroItem.title))} onToggleFavorite={toggleFavorite}/>}
-                                    <div className="p-4 md:p-10">
-                                        {activeTab === 'home' && continueWatchingItems.length > 0 && !search && (
-                                            <div className="mb-10">
-                                                <h2 className="text-xl font-bold mb-4">Continuar Viendo</h2>
-                                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                                                    {continueWatchingItems.map((item, i) => (<Card key={`cw-${i}`} item={item} onClick={handlePlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={toggleFavorite} progress={watchProgress[item.id || item.title]?.pct}/>))}
+                                    <div className="p-2 space-y-1 lg:overflow-y-auto lg:h-full">
+                                        {content.tv.filter(c => !search || c.title.toLowerCase().includes(search.toLowerCase())).map(channel => (
+                                            <TvListItem key={channel.id} channel={channel} isActive={selectedItem?.id === channel.id} isFavorite={favorites.some(f => f.id === channel.id)} onToggleFavorite={toggleFavorite} onClick={handlePlay} />
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        ) : selectedItem ? (
+                            <div className="animate-fade-in">
+                                <div className="w-full bg-[#111827] relative aspect-video md:h-[70vh] flex flex-col items-center justify-center overflow-hidden">
+                                    <div className="absolute top-4 left-4 z-30">
+                                        <button onClick={() => {setSelectedItem(null); setIsLocked(false);}} className="bg-black/50 hover:bg-[#E50914] text-white px-4 py-2 rounded-full backdrop-blur-md flex items-center gap-2 transition-colors border border-white/10">
+                                            <Icon name="arrowLeft" size={18} /> <span>Volver</span>
+                                        </button>
+                                    </div>
+                                    {isLocked ? (
+                                    <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} />
+                                ) : (
+                                    <>
+                                        <div className="absolute top-4 right-4 z-35">
+                                            <a href={selectedItem.type === 'series' && selectedEpisode ? selectedEpisode.url : selectedItem.url} target="_blank" rel="noopener noreferrer" className="bg-[#E50914] hover:bg-red-700 text-white px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-lg backdrop-blur-md">
+                                                <Icon name="external" size={14} /> Ver en Pantalla Completa
+                                            </a>
+                                        </div>
+                                        <div className="iframe-container">
+                                            <iframe src={selectedItem.type === 'series' && selectedEpisode ? selectedEpisode.url : selectedItem.url} allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                            {!isLocked && (
+                                    <div className="p-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                        <div className="lg:col-span-2">
+                                            <div className="flex items-start justify-between mb-4">
+                                                <div>
+                                                    <h1 className="text-3xl font-bold text-white mb-2">{selectedItem.title || selectedItem.name}</h1>
+                                                    <div className="flex items-center gap-3 text-sm text-gray-400">
+                                                        <span className="bg-[#1f2937] px-2 py-0.5 rounded text-white">{selectedItem.type.toUpperCase()}</span>
+                                                        {selectedItem.type === 'series' && selectedEpisode && <span className="text-[#E50914] font-medium">{selectedEpisode.title}</span>}
+                                                    </div>
                                                 </div>
+                                                <button onClick={() => toggleFavorite(selectedItem)} className="p-3 bg-[#1f2937] rounded-full hover:bg-[#2d3748]">
+                                                    <Icon name="heart" size={24} className={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "text-[#E50914] fill-[#E50914]" : "text-gray-400"} fill={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "#E50914" : "none"} />
+                                                </button>
+                                            </div>
+                                            <p className="text-gray-300 leading-relaxed">{selectedItem.description || selectedItem.plot || "Sin descripción disponible."}</p>
+                                        </div>
+                                        {selectedItem.type === 'series' && selectedItem.seasons && selectedItem.seasons.length > 0 && (
+                                            <div className="bg-[#1f2937] rounded-xl p-4 h-fit border border-white/5">
+                                                <h3 className="font-bold text-lg mb-2 flex items-center gap-2"><Icon name="film" size={18} className="text-[#E50914]"/> Temporadas</h3>
+                                                {selectedItem.seasons.map((season, idx) => (
+                                                    <div key={idx} className="border-b border-gray-700 last:border-0 pb-2">
+                                                        <button type="button" onClick={() => setExpandedSeason(expandedSeason === idx ? null : idx)} className="w-full flex justify-between items-center py-2 text-sm font-bold hover:text-[#E50914]">
+                                                            <span>Temporada {season.season_number}</span>
+                                                            {expandedSeason === idx ? <Icon name="chevronUp" size={16}/> : <Icon name="chevronDown" size={16}/>}
+                                                        </button>
+                                                        {expandedSeason === idx && (
+                                                            <div className="flex flex-col gap-1 mt-1 pl-2 max-h-[400px] overflow-y-auto">
+                                                                {season.episodes.map((ep, eIdx) => (
+                                                                    <div key={eIdx} onClick={() => { setSelectedEpisode(ep); window.scrollTo({top:0, behavior:'smooth'}); }} className={`text-sm p-2 rounded cursor-pointer truncate flex items-center gap-2 ${selectedEpisode?.url === ep.url ? 'bg-[#E50914] text-white' : 'text-gray-400 hover:bg-gray-700'}`}>
+                                                                        <Icon name="play" size={12} fill="currentColor" /> {eIdx + 1}. {ep.title}
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                ))}
                                             </div>
                                         )}
-                                        <h2 className="text-xl font-bold mb-6 uppercase tracking-wider text-gray-400">{activeTab === 'home' ? 'Catálogo Destacado' : activeTab}</h2>
-                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8">
-                                            {displayedItems.map((item, i) => (<Card key={i} item={item} onClick={handlePlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={toggleFavorite} progress={watchProgress[item.id || item.title]?.pct}/>))}
-                                        </div>
                                     </div>
-                                </>
-                            );
-                        })()}
+                                )}
+                            </div>
+                        ) : (
+                            <>
+                                <div className="sticky top-0 z-40 bg-[#111827]/95 backdrop-blur py-4 px-6 md:px-10 flex items-center justify-between border-b border-[#1f2937]">
+                                    <div className="flex bg-[#1f2937] border border-[#374151] rounded-full px-4 py-2 w-full max-w-lg items-center focus-within:border-[#E50914] transition-colors">
+                                        <Icon name="search" className="text-gray-400 w-5 h-5 mr-3" />
+                                        <input type="text" placeholder={`Buscar en ${activeTab === 'home' ? 'todo' : activeTab}...`} className="bg-transparent w-full outline-none text-sm placeholder-gray-500 text-white" value={search} onChange={(e) => setSearch(e.target.value)}/>
+                                    </div>
+                                </div>
+                                {activeTab === 'home' && !search && heroItem && <HeroSection item={heroItem} onPlay={handlePlay} isFavorite={favorites.some(f=>(f.id||f.title)===(heroItem.id||heroItem.title))} onToggleFavorite={toggleFavorite}/>}
+                                <div className="p-4 md:p-10">
+                                    <div className="mb-8 flex items-center gap-2">
+                                        <div className="w-1 h-6 bg-[#E50914] rounded-full"></div>
+                                        <h2 className="text-xl font-bold uppercase">{activeTab === 'home' ? 'Tendencias' : activeTab}</h2>
+                                    </div>
+                                    {loading ? (
+                                        <div className="flex justify-center py-20"><div className="animate-spin rounded-full h-12 w-12 border-4 border-[#E50914] border-t-transparent"></div></div>
+                                    ) : displayedItems.length === 0 ? (
+                                        <div className="text-center py-20 text-gray-500"><p>No hay contenido disponible en esta sección.</p></div>
+                                    ) : (
+                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-4 gap-y-8 animate-slide-up">
+                                            {displayedItems.map((item, i) => (
+                                                <Card key={i} item={item} onClick={handlePlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={toggleFavorite} />
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </>
+                        )}
                     </main>
                 </div>
             );
