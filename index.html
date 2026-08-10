@@ -513,30 +513,31 @@
         const HeroSection = ({ item, onPlay, isFavorite, onToggleFavorite }) => {
             if (!item) return null;
             return (
-                <div className="relative w-full h-[320px] sm:h-[380px] bg-[#0b0f19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-white/5">
-                    {/* Imagen de fondo difuminada estilo Netflix */}
+                <div className="relative w-full h-[320px] sm:h-[380px] bg-[#0b0f19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-white/5 flex items-center">
+                    {/* Fondo difuminado con un 50% más de visibilidad y brillo */}
                     <div className="absolute inset-0">
-                        <img src={item.image || item.poster} alt="Hero BG" className="w-full h-full object-cover filter blur-xl opacity-30 scale-110" onError={(e) => e.target.style.display='none'} />
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f19] via-[#0b0f19]/80 to-transparent"></div>
+                        <img src={item.image || item.poster} alt="Hero BG" className="w-full h-full object-cover filter blur-xl opacity-60 scale-110" onError={(e) => e.target.style.display='none'} />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f19]/80 via-[#0b0f19]/50 to-transparent"></div>
                     </div>
-                    {/* Contenido principal: Póster a la izquierda y texto a la derecha */}
-                    <div className="relative z-10 h-full flex flex-col sm:flex-row items-center justify-between p-6 sm:p-10 max-w-7xl mx-auto gap-6">
+                    {/* Estructura con póster a la izquierda y texto a la derecha */}
+                    <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-start px-6 sm:px-12 max-w-7xl mx-auto gap-8">
+                        {/* Póster vertical a la izquierda */}
+                        <div className="w-32 sm:w-44 aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/20 flex-shrink-0 bg-black/50 transform group-hover:scale-105 transition-transform duration-300">
+                            <img src={item.image || item.poster} alt={item.title} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/1f2937/ffffff?text=Poster'} />
+                        </div>
+                        {/* Información y botones a la derecha */}
                         <div className="flex-1 flex flex-col gap-2 items-start max-w-xl">
-                            <span className="bg-[#E50914] text-white text-[9px] font-extrabold px-2.5 py-1 rounded uppercase tracking-wider shadow">Película Destacada</span>
+                            <span className="bg-[#E50914] text-white text-[9px] font-extrabold px-2.5 py-1 rounded uppercase tracking-wider shadow">Película</span>
                             <h1 className="text-2xl sm:text-4xl font-black text-white leading-tight drop-shadow-md line-clamp-1">{item.title || item.name}</h1>
-                            <p className="text-gray-300 text-xs sm:text-sm line-clamp-3 leading-relaxed">{item.description || item.plot || "Disfruta del mejor contenido seleccionado para ti."}</p>
+                            <p className="text-gray-200 text-xs sm:text-sm line-clamp-3 leading-relaxed drop-shadow">{item.description || item.plot || "Disfruta del mejor contenido seleccionado para ti."}</p>
                             <div className="flex gap-3 mt-3">
                                 <button onClick={() => onPlay(item)} className="bg-white text-black px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-95 transition-transform shadow-lg hover:bg-gray-200">
                                     <Icon name="play" size={16} fill="black"/> Reproducir
                                 </button>
-                                <button onClick={() => onToggleFavorite(item)} className="bg-white/10 text-white p-2.5 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/10 hover:bg-white/20">
+                                <button onClick={() => onToggleFavorite(item)} className="bg-white/15 text-white p-2.5 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/20 hover:bg-white/30">
                                     <Icon name="heart" size={18} className={isFavorite ? "text-[#E50914] fill-[#E50914]" : "text-white"} fill={isFavorite ? "#E50914" : "none"} />
                                 </button>
                             </div>
-                        </div>
-                        {/* Póster vertical idéntico a la referencia */}
-                        <div className="w-36 sm:w-48 aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/15 flex-shrink-0 bg-black/40">
-                            <img src={item.image || item.poster} alt={item.title} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/1f2937/ffffff?text=Poster'} />
                         </div>
                     </div>
                 </div>
