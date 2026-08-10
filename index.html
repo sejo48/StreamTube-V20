@@ -53,7 +53,10 @@
         .heart-pop { animation: heartPop 0.3s ease-in-out; }
         .text-gold-gradient { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+        .iframe-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: #111827; }
+        .iframe-container iframe { width: 100%; height: 100%; border: 0; }
         button:focus, div[tabindex="0"]:focus, input:focus { outline: 3px solid #E50914; outline-offset: 2px; z-index: 50; transform: scale(1.05); transition: all 0.2s; }
+        
         video { background-color: transparent !important; background: transparent !important; }
         video::-webkit-media-controls-panel { background-color: transparent; }
     </style>
@@ -153,16 +156,10 @@
             ANIMADOS: 'https://raw.githubusercontent.com/sejo48/animados./refs/heads/main/animados.json'
         };
 
-        // Restaurado a la lógica de URL original (Minimal)
-        const cleanDriveUrl = (url) => { 
-            if (!url) return ''; 
-            if (url.includes('drive.google.com')) { 
-                const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
-                if (match) {
-                    return `https://drive.google.com/file/d/${match[1]}/preview?usp=sharing&rm=minimal&autoplay=1`;
-                }
-            } 
-            return url; 
+        const getDriveFileId = (url) => {
+            if (!url || !url.includes('drive.google.com')) return null;
+            const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+            return match ? match[1] : null;
         };
 
         const Icon = ({ name, size = 24, className, fill = "none" }) => {
@@ -411,6 +408,17 @@
 
             useEffect(() => { fetchNotifs(); }, []);
 
+            const cleanDriveUrl = (url) => { 
+                if (!url) return ''; 
+                if (url.includes('drive.google.com')) { 
+                    const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+                    if (match) {
+                        return `https://drive.google.com/file/d/${match[1]}/preview?usp=sharing&rm=minimal&autoplay=1`;
+                    }
+                } 
+                return url; 
+            };
+            
             const shareViaWhatsApp = () => { const text = `¡Mira esta app increíble! Entra aquí: ${window.location.href}`; window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank'); };
 
             const safeParseJSON = (text, fallback) => {
@@ -610,21 +618,21 @@
                                         </button>
                                     </div>
                                     {isLocked ? (
-                                        <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} />
-                                    ) : (
-                                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#111827] z-20 p-6 text-center">
-                                            <div className="w-20 h-20 rounded-full bg-[#E50914] flex items-center justify-center shadow-[0_0_25px_rgba(229,9,20,0.6)] mb-4 animate-bounce">
-                                                <Icon name="play" size={36} fill="white" className="text-white ml-1" />
-                                            </div>
-                                            <h2 className="text-xl font-black text-white mb-2">{selectedItem.title || selectedItem.name}</h2>
-                                            <p className="text-gray-400 text-xs mb-6 max-w-xs">Reproduce el video en pantalla limpia y completa sin sombras ni demoras.</p>
-                                            <a href={selectedItem.type === 'series' && selectedEpisode ? selectedEpisode.url : selectedItem.url} target="_blank" rel="noopener noreferrer" className="bg-[#E50914] hover:bg-red-700 text-white px-8 py-3.5 rounded-full text-base font-extrabold flex items-center gap-2 shadow-xl transition-transform hover:scale-105">
-                                                <Icon name="external" size={20} /> Reproducir Película (Pantalla Limpia)
+                                    <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} />
+                                ) : (
+                                    <>
+                                        <div className="absolute top-4 right-4 z-35">
+                                            <a href={selectedItem.type === 'series' && selectedEpisode ? selectedEpisode.url : selectedItem.url} target="_blank" rel="noopener noreferrer" className="bg-[#E50914] hover:bg-red-700 text-white px-3 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-lg backdrop-blur-md">
+                                                <Icon name="external" size={14} /> Ver en Pantalla Completa
                                             </a>
                                         </div>
-                                    )}
-                                </div>
-                                {!isLocked && (
+                                        <div className="iframe-container">
+                                            <iframe src={selectedItem.type === 'series' && selectedEpisode ? selectedEpisode.url : selectedItem.url} allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+                            {!isLocked && (
                                     <div className="p-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
                                         <div className="lg:col-span-2">
                                             <div className="flex items-start justify-between mb-4">
