@@ -16,7 +16,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
     
-    <!-- Forzar modo clásico de Babel -->
     <script>
         if (typeof Babel !== 'undefined') {
             Babel.registerPreset('react-classic', {
@@ -43,8 +42,6 @@
         .animate-slide-up { animation: slideUp 0.5s ease-out; }
         .text-gold-gradient { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
-        .video-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; background: #000; display: flex; align-items: center; justify-content: center; }
-        .video-container video, .video-container iframe { width: 100%; height: 100%; object-fit: contain; }
         button:focus, div[tabindex="0"]:focus, input:focus { outline: none; }
     </style>
 </head>
@@ -82,51 +79,6 @@
             } catch (e) { console.warn(e); }
         }
 
-        window.DB_API = {
-            saveVisitor: async (name) => {
-                if (!name) return;
-                if (db && auth && currentUser) {
-                    try {
-                        await db.collection('artifacts').doc(appId).collection('public').doc('data').collection('app_visitors').add({
-                            name: name,
-                            timestamp: window.firebase.firestore.FieldValue.serverTimestamp(),
-                            uid: currentUser.uid
-                        });
-                        return;
-                    } catch (e) {}
-                }
-                try {
-                    const localData = JSON.parse(localStorage.getItem('magis_local_visitors') || '[]');
-                    const isDuplicate = localData.some(v => v.name === name && (Date.now()/1000 - (v.timestamp?.seconds || 0)) < 60);
-                    if (!isDuplicate) {
-                        localData.push({ name: name, timestamp: { seconds: Date.now() / 1000 }, uid: 'local-user' });
-                        localStorage.setItem('magis_local_visitors', JSON.stringify(localData));
-                    }
-                } catch (e) {}
-            },
-            subscribeToVisitors: (callback) => {
-                if (db) {
-                    try {
-                        return db.collection('artifacts').doc(appId).collection('public').doc('data').collection('app_visitors')
-                            .onSnapshot((snapshot) => {
-                                const visitors = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                                visitors.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
-                                callback(visitors);
-                            }, () => { loadLocal(callback); });
-                    } catch (e) { loadLocal(callback); }
-                } else { loadLocal(callback); }
-                return () => {}; 
-            }
-        };
-
-        function loadLocal(callback) {
-            try {
-                const localData = JSON.parse(localStorage.getItem('magis_local_visitors') || '[]');
-                localData.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
-                callback(localData);
-            } catch(e) { callback([]); }
-        }
-
         const { useState, useEffect, useRef, useMemo } = React;
 
         const safeStorage = {
@@ -140,15 +92,27 @@
             ANIMADOS: 'https://raw.githubusercontent.com/sejo48/animados./refs/heads/main/animados.json'
         };
 
-        const convertDriveUrl = (url) => { 
-            if (!url) return ''; 
-            if (url.includes('drive.google.com')) { 
-                const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
-                if (match) {
-                    return `https://drive.google.com/file/d/${match[1]}/preview`;
+        // Conversión segura de URL de Google Drive sin expresiones regulares problemáticas
+        const convertDriveUrl = (url) => {
+            if (!url) return '';
+            if (url.includes('drive.google.com')) {
+                let fileId = '';
+                if (url.includes('/file/d/')) {
+                    const parts = url.split('/file/d/');
+                    if (parts[1]) {
+                        fileId = parts[1].split('/')[0];
+                    }
+                } else if (url.includes('id=')) {
+                    const parts = url.split('id=');
+                    if (parts[1]) {
+                        fileId = parts[1].split('&')[0];
+                    }
                 }
-            } 
-            return url; 
+                if (fileId) {
+                    return `https://drive.google.com/file/d/${fileId}/preview`;
+                }
+            }
+            return url;
         };
 
         const STATIC_MOVIES = [
@@ -366,7 +330,7 @@
                         ))}
                     </div>
 
-                    <main className="flex-1 md:ml-20 min-h-screen pt-14 md:pt-0 pb-20 md:pb-0 relative z-10">
+                    <main className="flex-1 md:ml-20 min-h-screen pt-14 md:pt-0 pb-24 md:pb-0 relative z-10">
                         {activeTab === 'favorites' && !selectedItem ? (
                             <div className="p-4 sm:p-8 animate-fade-in">
                                 <div className="mb-6 flex items-center gap-3 border-b border-white/10 pb-3">
@@ -402,33 +366,26 @@
                                 </div>
                             </div>
                         ) : selectedItem ? (
-                            <div className="animate-fade-in">
-                                <div className="w-full bg-[#111827] relative aspect-video md:h-[65vh] flex items-center justify-center overflow-hidden">
+                            <div className="animate-fade-in flex flex-col min-h-screen">
+                                <div className="w-full bg-black relative aspect-video md:h-[65vh] flex items-center justify-center overflow-hidden">
                                     <div className="absolute top-3 left-3 z-30 flex gap-2">
-                                        <button onClick={() => {setSelectedItem(null); setIsLocked(false);}} className="bg-black/60 hover:bg-[#E50914] text-white px-3.5 py-1.5 rounded-full backdrop-blur-md flex items-center gap-1.5 text-xs transition-colors border border-white/10">
+                                        <button onClick={() => {setSelectedItem(null); setIsLocked(false);}} className="bg-black/70 hover:bg-[#E50914] text-white px-3.5 py-1.5 rounded-full backdrop-blur-md flex items-center gap-1.5 text-xs transition-colors border border-white/15 shadow-lg">
                                             <Icon name="arrowLeft" size={16} /> <span>Volver</span>
                                         </button>
                                     </div>
                                     {isLocked ? (
                                         <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} />
                                     ) : (
-                                        <div className="video-container">
-                                            {(() => {
-                                                const activeUrl = selectedItem.type === 'series' && selectedEpisode ? selectedEpisode.url : selectedItem.url;
-                                                return (
-                                                    <iframe 
-                                                        src={activeUrl} 
-                                                        className="w-full h-full border-0" 
-                                                        allow="autoplay; encrypted-media; fullscreen" 
-                                                        allowFullScreen
-                                                    ></iframe>
-                                                );
-                                            })()}
-                                        </div>
+                                        <iframe 
+                                            src={selectedItem.type === 'series' && selectedEpisode ? selectedEpisode.url : selectedItem.url} 
+                                            className="w-full h-full border-0" 
+                                            allow="autoplay; encrypted-media; fullscreen" 
+                                            allowFullScreen
+                                        ></iframe>
                                     )}
                                 </div>
                                 {!isLocked && (
-                                    <div className="p-4 sm:p-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+                                    <div className="p-4 sm:p-8 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6 pb-24">
                                         <div className="lg:col-span-2">
                                             <div className="flex items-start justify-between mb-3">
                                                 <div>
@@ -442,8 +399,25 @@
                                                     <Icon name="heart" size={20} className={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "text-[#E50914] fill-[#E50914]" : "text-gray-400"} fill={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "#E50914" : "none"} />
                                                 </button>
                                             </div>
-                                            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">{selectedItem.description || selectedItem.plot || "Sin descripción disponible."}</p>
+                                            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">{selectedItem.description || selectedItem.plot || "Sin descripción disponible."}</p>
+                                            
+                                            <div className="mt-8">
+                                                <h3 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-3 flex items-center gap-2">
+                                                    <div className="w-1 h-4 bg-[#E50914] rounded-full"></div> Más para ver
+                                                </h3>
+                                                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                                                    {content.movies.slice(0, 4).map((rec, idx) => (
+                                                        <div key={idx} onClick={() => handlePlay(rec)} className="cursor-pointer group">
+                                                            <div className="aspect-[2/3] rounded-lg overflow-hidden bg-[#1f2937] border border-white/5 mb-1 group-hover:scale-105 transition-transform">
+                                                                <img src={rec.image} alt={rec.title} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/200x300/1f2937/ffffff?text=X'} />
+                                                            </div>
+                                                            <p className="text-[11px] font-medium truncate text-gray-300">{rec.title}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
                                         </div>
+
                                         {selectedItem.type === 'series' && selectedItem.seasons && selectedItem.seasons.length > 0 && (
                                             <div className="bg-[#1f2937] rounded-xl p-3.5 h-fit border border-white/5">
                                                 <h3 className="font-bold text-sm mb-2 flex items-center gap-2"><Icon name="film" size={16} className="text-[#E50914]"/> Temporadas</h3>
@@ -519,24 +493,20 @@
             if (!item) return null;
             return (
                 <div className="relative w-full h-[320px] sm:h-[380px] bg-[#0b0f19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-white/5 flex items-center">
-                    {}
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
                         <img 
                             src={item.image || item.poster} 
                             alt="Hero BG" 
-                            className="w-full h-full object-cover filter blur-[12px] opacity-75 scale-125 brightness-110 contrast-125 saturate-150 transform translate-x-12" 
+                            className="w-full h-full object-cover filter blur-md opacity-75 scale-125 brightness-125 contrast-125" 
                             onError={(e) => e.target.style.display='none'} 
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f19] via-[#0b0f19]/40 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f19]/80 via-[#0b0f19]/40 to-transparent"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent"></div>
                     </div>
-                    {/* Estructura con póster a la izquierda y texto a la derecha */}
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-start px-6 sm:px-12 max-w-7xl mx-auto gap-8">
-                        {/* Póster vertical a la izquierda */}
                         <div className="w-32 sm:w-44 aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/20 flex-shrink-0 bg-black/50 transform group-hover:scale-105 transition-transform duration-300">
                             <img src={item.image || item.poster} alt={item.title} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/1f2937/ffffff?text=Poster'} />
                         </div>
-                        {/* Información y botones a la derecha */}
                         <div className="flex-1 flex flex-col gap-2 items-start max-w-xl">
                             <span className="bg-[#E50914] text-white text-[9px] font-extrabold px-2.5 py-1 rounded uppercase tracking-wider shadow">Película</span>
                             <h1 className="text-2xl sm:text-4xl font-black text-white leading-tight drop-shadow-md line-clamp-1">{item.title || item.name}</h1>
