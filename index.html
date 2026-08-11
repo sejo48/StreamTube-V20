@@ -489,9 +489,15 @@
             const [isListening, setIsListening] = useState(false);
             const [history, setHistory] = useState([]);
 
+            const STORAGE_KEY = 'jorgeflix_history_v2';
+
             useEffect(() => {
-                const h = JSON.parse(safeStorage.getItem("jorgeflixHistory") || "[]");
-                setHistory(h);
+                try {
+                    const h = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+                    setHistory(Array.isArray(h) ? h : []);
+                } catch (e) {
+                    setHistory([]);
+                }
             }, []);
 
             const buildQuery = () => {
@@ -538,10 +544,13 @@
             };
 
             const saveHistory = (title, y, t, l) => {
-                let h = JSON.parse(safeStorage.getItem("jorgeflixHistory") || "[]");
-                h = [{ title, y, t, l }, ...h.filter(x => !(x.title === title && x.y === y && x.t === t && x.l === l))].slice(0, 12);
-                safeStorage.setItem("jorgeflixHistory", JSON.stringify(h));
-                setHistory(h);
+                try {
+                    let h = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+                    if (!Array.isArray(h)) h = [];
+                    h = [{ title, y, t, l }, ...h.filter(x => !(x.title === title && x.y === y && x.t === t && x.l === l))].slice(0, 10);
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(h));
+                    setHistory(h);
+                } catch (e) { }
             };
 
             const handleSearch = () => {
@@ -567,8 +576,10 @@
             };
 
             const clearHistory = () => {
-                safeStorage.removeItem("jorgeflixHistory");
-                setHistory([]);
+                try {
+                    localStorage.removeItem(STORAGE_KEY);
+                    setHistory([]);
+                } catch (e) { }
             };
 
             return (
