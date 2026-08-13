@@ -62,11 +62,12 @@
             setItem: (key, value) => { try { localStorage.setItem(key, value); } catch (e) { } }
         };
 
-        // Corrección: añadimos un timestamp para evitar el caché del navegador
         const timestamp = Date.now();
         const URLS = {
             TV: `https://raw.githubusercontent.com/sejo48/retrom3u/refs/heads/main/listaoficial.m3u?t=${timestamp}`,
-            MOVIES: `https://raw.githubusercontent.com/sejo48/peliculas/refs/heads/main/peliculas.json?t=${timestamp}`
+            MOVIES: `https://raw.githubusercontent.com/sejo48/peliculas/refs/heads/main/peliculas.json?t=${timestamp}`,
+            SERIES: `https://raw.githubusercontent.com/sejo48/jorgedrive/refs/heads/main/playlist.json?t=${timestamp}`,
+            ANIMADOS: `https://raw.githubusercontent.com/sejo48/animados./refs/heads/main/animados.json?t=${timestamp}`
         };
 
         const convertDriveUrl = (url) => {
@@ -75,18 +76,12 @@
                 let fileId = '';
                 if (url.includes('/file/d/')) {
                     const parts = url.split('/file/d/');
-                    if (parts[1]) {
-                        fileId = parts[1].split('/')[0];
-                    }
+                    if (parts[1]) fileId = parts[1].split('/')[0];
                 } else if (url.includes('id=')) {
                     const parts = url.split('id=');
-                    if (parts[1]) {
-                        fileId = parts[1].split('&')[0];
-                    }
+                    if (parts[1]) fileId = parts[1].split('&')[0];
                 }
-                if (fileId) {
-                    return `https://drive.google.com/file/d/${fileId}/preview`;
-                }
+                if (fileId) return `https://drive.google.com/file/d/${fileId}/preview`;
             }
             return url;
         };
@@ -107,9 +102,11 @@
                 const init = async () => {
                     try {
                         setLoading(true);
-                        const [resTV, resMovies] = await Promise.all([ 
+                        const [resTV, resMovies, resSeries, resAnimados] = await Promise.all([ 
                             fetch(URLS.TV).catch(() => null),
-                            fetch(URLS.MOVIES).catch(() => null)
+                            fetch(URLS.MOVIES).catch(() => null),
+                            fetch(URLS.SERIES).catch(() => null),
+                            fetch(URLS.ANIMADOS).catch(() => null)
                         ]);
 
                         let tvChannels = [];
@@ -121,19 +118,87 @@
                         let moviesList = [];
                         if (resMovies && resMovies.ok) {
                             const jsonMovies = await resMovies.json();
-                            const rawMovies = Array.isArray(jsonMovies) ? jsonMovies : (jsonMovies.peliculas || []);
-                            moviesList = rawMovies.map((m, idx) => ({ 
-                                ...m, 
-                                id: `mov-${idx}`, 
-                                type: 'movie', 
-                                title: m.titulo || m.title, 
-                                description: m.descripcion || m.sinopsis, 
-                                image: m.imagen || m.poster, 
-                                url: convertDriveUrl(m.urlDrive || m.url) 
+                            const rawMovies = Array.isArray(jsonMovies) ? jsonMovies : (jsonMovies.peliculas || jsonMovies.content || []);
+                            moviesList = rawMovies.map((m, idx) => ({
+                                ...m,
+                                id: `mov-${idx}`,
+                                type: 'movies',
+                                title: m.titulo || m.title || m.name,
+                                description: m.descripcion || m.sinopsis || m.plot,
+                                image: m.imagen || m.poster || m.image,
+                                url: convertDriveUrl(m.urlDrive || m.url)
                             }));
                         }
 
-                        setContent(prev => ({ ...prev, tv: tvChannels, movies: moviesList }));
+                        let seriesList = [];
+                        if (resSeries && resSeries.ok) {
+                            const jsonSeries = await resSeries.json();
+                            const processSeries = (arr) => {
+                                if (!Array.isArray(arr)) return;
+                                arr.forEach((s) => {
+                                    if (s.series || s.items || s.list || s.categorias || s.categoriasList) {
+                                        processSeries(s.series || s.items || s.list || s.categorias || s.categoriasList);
+                                        return;
+                                    }
+                                    const rawSeasons = s.seasons || s.temporadas || s.seasonsList || s.capitulosList || [];
+                                    const seasons = rawSeasons.map((seas, sIdx) => ({
+                                        title: seas.title || seas.nombre || `Temporada ${sIdx + 1}`,
+                                        episodes: (seas.episodes || seas.capitulos || seas.episodios || []).map((ep, eIdx) => ({
+                                            title: ep.title || ep.nombre || `Episodio ${eIdx + 1}`,
+                                            url: convertDriveUrl(ep.urlDrive || ep.url || ep.link || ep.video)
+                                        }))
+                                    }));
+                                    seriesList.push({
+                                        ...s,
+                                        id: `ser-${Math.random().toString(36).substr(2, 9)}`,
+                                        type: 'series',
+                                        title: s.titulo || s.title || s.name,
+                                        description: s.descripcion || s.sinopsis || s.plot || s.resumen,
+                                        image: s.imagen || s.poster || s.image || s.cover,
+                                        seasons,
+                                        url: convertDriveUrl(s.urlDrive || s.url || (seasons[0]?.episodes[0]?.url))
+                                    });
+                                });
+                            };
+                            const rawSeries = Array.isArray(jsonSeries) ? jsonSeries : (jsonSeries.series || jsonSeries.playlist || jsonSeries.content || jsonSeries.categorias || []);
+                            processSeries(rawSeries);
+                        }
+
+                        let animadosList = [];
+                        if (resAnimados && resAnimados.ok) {
+                            const jsonAnimados = await resAnimados.json();
+                            const processAnimados = (arr) => {
+                                if (!Array.isArray(arr)) return;
+                                arr.forEach((a) => {
+                                    if (a.animados || a.items || a.list || a.series || a.categorias) {
+                                        processAnimados(a.animados || a.items || a.list || a.series || a.categorias);
+                                        return;
+                                    }
+                                    const rawSeasons = a.seasons || a.temporadas || a.seasonsList || [];
+                                    const seasons = rawSeasons.map((seas, sIdx) => ({
+                                        title: seas.title || seas.nombre || `Temporada ${sIdx + 1}`,
+                                        episodes: (seas.episodes || seas.capitulos || seas.episodios || []).map((ep, eIdx) => ({
+                                            title: ep.title || ep.nombre || `Episodio ${eIdx + 1}`,
+                                            url: convertDriveUrl(ep.urlDrive || ep.url || ep.link || ep.video)
+                                        }))
+                                    }));
+                                    animadosList.push({
+                                        ...a,
+                                        id: `ani-${Math.random().toString(36).substr(2, 9)}`,
+                                        type: seasons.length > 0 ? 'animados_serie' : 'animados',
+                                        title: a.titulo || a.title || a.name,
+                                        description: a.descripcion || a.sinopsis || a.plot,
+                                        image: a.imagen || a.poster || a.image,
+                                        seasons,
+                                        url: convertDriveUrl(a.urlDrive || a.url)
+                                    });
+                                });
+                            };
+                            const rawAnimados = Array.isArray(jsonAnimados) ? jsonAnimados : (jsonAnimados.animados || jsonAnimados.playlist || jsonAnimados.content || jsonAnimados.categorias || []);
+                            processAnimados(rawAnimados);
+                        }
+
+                        setContent({ tv: tvChannels, movies: moviesList, series: seriesList, animados: animadosList });
                     } catch (err) {
                         console.error("Error cargando contenido remoto", err);
                     } finally {
@@ -165,18 +230,32 @@
                 return channels;
             };
 
-            const toggleFavorite = (item) => { const itemId = item.id || item.title; const newFavs = favorites.some(f => (f.id || f.title) === itemId) ? favorites.filter(f => (f.id || f.title) !== itemId) : [item, ...favorites]; setFavorites(newFavs); safeStorage.setItem('magistube_favs', JSON.stringify(newFavs)); };
+            const toggleFavorite = (item) => { 
+                const itemId = item.id || item.title; 
+                const newFavs = favorites.some(f => (f.id || f.title) === itemId) ? favorites.filter(f => (f.id || f.title) !== itemId) : [item, ...favorites]; 
+                setFavorites(newFavs); 
+                safeStorage.setItem('magistube_favs', JSON.stringify(newFavs)); 
+            };
+
             const handlePlay = (item) => { 
                 const code = item.codigo || item.password || item.pin; 
                 if (code) { setSelectedItem(item); setIsLocked(true); } 
                 else { setSelectedItem(item); setIsLocked(false); } 
                 setExpandedSeason(0); 
-                if (item.type === 'series') setSelectedEpisode(item.seasons?.[0]?.episodes?.[0] || null); 
+                if (item.type === 'series' || item.type === 'animados_serie') {
+                    setSelectedEpisode(item.seasons?.[0]?.episodes?.[0] || null);
+                } else {
+                    setSelectedEpisode(null);
+                }
                 window.scrollTo({ top: 0, behavior: 'smooth' }); 
             };
 
             const getDisplayContent = () => { 
-                let list = activeTab === 'home' ? [...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] : activeTab === 'favorites' ? favorites : content[activeTab] || []; 
+                let list = activeTab === 'home' 
+                    ? [...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] 
+                    : activeTab === 'favorites' 
+                    ? favorites 
+                    : content[activeTab] || []; 
                 if (search && activeTab !== 'jorgeflix') return list.filter(i => (i.title || i.name || i.titulo).toLowerCase().includes(search.toLowerCase())); 
                 return list; 
             };
@@ -190,16 +269,18 @@
                 <div className="min-h-screen bg-[#111827] text-white font-sans flex flex-col md:flex-row relative">
                     <aside className="hidden md:flex w-20 flex-col items-center py-6 bg-[#0f1115] border-r border-[#1f2937] fixed h-full z-50">
                         <div className="mb-8 p-2 bg-[#E50914] rounded-lg shadow-lg cursor-pointer" onClick={() => {setActiveTab('home'); setSelectedItem(null); setIsLocked(false);}}><Icon name="play" size={22} fill="white" className="text-white"/></div>
-                        <div className="flex flex-col gap-6 w-full">
+                        <div className="flex flex-col gap-5 w-full items-center">
                             {[
                                 { id: 'home', icon: 'search', label: 'Inicio' }, 
                                 { id: 'movies', icon: 'clapperboard', label: 'Cine' }, 
+                                { id: 'series', icon: 'film', label: 'Series' },
+                                { id: 'animados', icon: 'smile', label: 'Animados' },
                                 { id: 'tv', icon: 'tv', label: 'TV' }, 
                                 { id: 'jorgeflix', icon: 'compass', label: 'Buscador' },
                                 { id: 'favorites', icon: 'heart', label: 'Favs' }
                             ].map(tab => (
-                                <button key={tab.id} onClick={() => { setActiveTab(tab.id); setSelectedItem(null); setSearch(''); setIsLocked(false); }} className={`flex flex-col items-center gap-1 transition-colors ${activeTab === tab.id ? 'text-[#E50914]' : 'text-gray-500 hover:text-white'}`}>
-                                    <Icon name={tab.icon} size={22} fill={activeTab === tab.id && tab.id === 'favorites' ? 'currentColor' : 'none'} className={activeTab === tab.id && tab.id === 'favorites' ? 'fill-current' : ''} /><span className="text-[10px] font-medium">{tab.label}</span>
+                                <button key={tab.id} onClick={() => { setActiveTab(tab.id); setSelectedItem(null); setSearch(''); setIsLocked(false); }} className={`flex flex-col items-center gap-1 transition-colors w-full py-1 ${activeTab === tab.id ? 'text-[#E50914]' : 'text-gray-500 hover:text-white'}`}>
+                                    <Icon name={tab.icon} size={20} fill={activeTab === tab.id && tab.id === 'favorites' ? 'currentColor' : 'none'} className={activeTab === tab.id && tab.id === 'favorites' ? 'fill-current' : ''} /><span className="text-[9px] font-medium">{tab.label}</span>
                                 </button>
                             ))}
                         </div>
@@ -216,12 +297,14 @@
                         {[
                             { id: 'home', icon: 'search', label: 'Inicio' }, 
                             { id: 'movies', icon: 'clapperboard', label: 'Cine' }, 
+                            { id: 'series', icon: 'film', label: 'Series' },
+                            { id: 'animados', icon: 'smile', label: 'Animados' },
                             { id: 'tv', icon: 'tv', label: 'TV' },
-                            { id: 'jorgeflix', icon: 'compass', label: 'Buscador' },
+                            { id: 'jorgeflix', icon: 'compass', label: 'Buscar' },
                             { id: 'favorites', icon: 'heart', label: 'Favs' }
                         ].map(tab => (
                             <button key={tab.id} onClick={() => { setActiveTab(tab.id); setSelectedItem(null); setIsLocked(false); }} className={`flex flex-col items-center gap-0.5 ${activeTab === tab.id ? 'text-[#E50914]' : 'text-gray-500'}`}>
-                                <Icon name={tab.icon} size={19} /><span className="text-[8px] font-medium">{tab.label}</span>
+                                <Icon name={tab.icon} size={17} /><span className="text-[7.5px] font-medium">{tab.label}</span>
                             </button>
                         ))}
                     </div>
@@ -267,7 +350,7 @@
                             <div className="animate-fade-in flex flex-col min-h-screen">
                                 <div className="w-full bg-black relative aspect-video md:h-[65vh] flex items-center justify-center overflow-hidden">
                                     <div className="absolute top-3 left-3 z-30 flex gap-2">
-                                        <button onClick={() => {setSelectedItem(null); setIsLocked(false);}} className="bg-black/70 hover:bg-[#E50914] text-white px-3.5 py-1.5 rounded-full backdrop-blur-md flex items-center gap-1.5 text-xs transition-colors border border-white/15 shadow-lg">
+                                        <button onClick={() => {setSelectedItem(null); setIsLocked(false); setSelectedEpisode(null);}} className="bg-black/70 hover:bg-[#E50914] text-white px-3.5 py-1.5 rounded-full backdrop-blur-md flex items-center gap-1.5 text-xs transition-colors border border-white/15 shadow-lg">
                                             <Icon name="arrowLeft" size={16} /> <span>Volver</span>
                                         </button>
                                     </div>
@@ -275,7 +358,7 @@
                                         <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} />
                                     ) : (
                                         <iframe 
-                                            src={convertDriveUrl(selectedItem.type === 'series' && selectedEpisode ? selectedEpisode.url : selectedItem.url)} 
+                                            src={convertDriveUrl(((selectedItem.type === 'series' || selectedItem.type === 'animados_serie') && selectedEpisode) ? selectedEpisode.url : selectedItem.url)} 
                                             className="w-full h-full border-0" 
                                             allow="autoplay; encrypted-media; fullscreen" 
                                             allowFullScreen
@@ -289,7 +372,7 @@
                                                 <div>
                                                     <h1 className="text-xl sm:text-2xl font-bold text-white mb-1">{selectedItem.titulo || selectedItem.title || selectedItem.name}</h1>
                                                     <div className="flex items-center gap-2.5 text-xs text-gray-400">
-                                                        <span className="bg-[#1f2937] px-2 py-0.5 rounded text-white">PELÍCULA</span>
+                                                        <span className="bg-[#1f2937] px-2 py-0.5 rounded text-white uppercase">{selectedItem.type}</span>
                                                     </div>
                                                 </div>
                                                 <button onClick={() => toggleFavorite(selectedItem)} className="p-2.5 bg-[#1f2937] rounded-full hover:bg-[#2d3748]">
@@ -298,6 +381,40 @@
                                             </div>
                                             <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">{selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible."}</p>
                                         </div>
+
+                                        {/* Selector de Temporadas y Capítulos para Series y Animados tipo Serie */}
+                                        {(((selectedItem.type === 'series' || selectedItem.type === 'animados_serie') && selectedItem.seasons && selectedItem.seasons.length > 0)) && (
+                                            <div className="bg-[#161d2b] border border-[#263145] rounded-2xl p-4 h-fit shadow-xl">
+                                                <h3 className="text-sm font-bold text-white mb-3 uppercase tracking-wider">Temporadas y Episodios</h3>
+                                                <div className="space-y-2 max-h-[400px] overflow-y-auto pr-1">
+                                                    {selectedItem.seasons.map((season, sIdx) => (
+                                                        <div key={sIdx} className="bg-[#111722] rounded-xl border border-[#222c3d] overflow-hidden">
+                                                            <button 
+                                                                onClick={() => setExpandedSeason(expandedSeason === sIdx ? -1 : sIdx)}
+                                                                className="w-full px-4 py-3 flex items-center justify-between text-left text-xs font-bold text-gray-200 hover:bg-white/5 transition-colors"
+                                                            >
+                                                                <span>{season.title}</span>
+                                                                <Icon name={expandedSeason === sIdx ? "chevronUp" : "chevronDown"} size={16} />
+                                                            </button>
+                                                            {expandedSeason === sIdx && (
+                                                                <div className="px-2 pb-2 space-y-1">
+                                                                    {season.episodes && season.episodes.map((ep, eIdx) => (
+                                                                        <button 
+                                                                            key={eIdx}
+                                                                            onClick={() => setSelectedEpisode(ep)}
+                                                                            className={`w-full text-left px-3 py-2 rounded-lg text-xs transition-colors flex items-center gap-2 ${selectedEpisode?.url === ep.url ? 'bg-[#E50914] text-white font-bold' : 'text-gray-400 hover:bg-white/5 hover:text-white'}`}
+                                                                        >
+                                                                            <Icon name="play" size={12} fill="currentColor" />
+                                                                            <span className="truncate">{ep.title}</span>
+                                                                        </button>
+                                                                    ))}
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
                             </div>
@@ -339,11 +456,12 @@
             const [query, setQuery] = useState("");
             const [typeVal, setTypeVal] = useState("");
             const [yearVal, setYearVal] = useState("");
+            const [engine, setEngine] = useState("google");
             const [voiceStatus, setVoiceStatus] = useState("🎤 Pulse el micrófono y diga el nombre de la película o serie.");
             const [isListening, setIsListening] = useState(false);
             const [history, setHistory] = useState([]);
 
-            const STORAGE_KEY = 'jorgeflix_history_v2';
+            const STORAGE_KEY = 'jorgeflix_history_v3';
 
             useEffect(() => {
                 try {
@@ -354,13 +472,27 @@
                 }
             }, []);
 
+            // Mejoras de efectividad en la construcción de la consulta:
+            // 1. Forzar búsqueda estricta en ok.ru con o sin subdirectorios de video
+            // 2. Uso de operadores adicionales opcionales para evitar ruido
             const buildQuery = () => {
-                let s = 'site:ok.ru/video';
-                if (query.trim()) s += ' "' + query.trim() + '"';
-                if (yearVal.trim()) s += ' ' + yearVal.trim();
-                if (typeVal) s += ' ' + typeVal;
-                s += ' español';
-                if (lang) s += ' ' + lang;
+                let cleanQuery = query.trim();
+                let s = 'site:ok.ru';
+                if (cleanQuery) {
+                    s += ` "${cleanQuery}"`;
+                }
+                if (yearVal.trim()) {
+                    s += ` ${yearVal.trim()}`;
+                }
+                if (typeVal) {
+                    s += ` ${typeVal}`;
+                }
+                // Añadir términos de calidad o idioma clave para mejorar la relevancia
+                s += ' (video OR pelicula OR serie OR español)';
+                if (lang === 'latino') s += ' (latino OR latinoamerica)';
+                if (lang === 'castellano') s += ' (castellano OR españa)';
+                if (lang === 'doblada') s += ' doblada';
+                if (lang === 'subtitulada') s += ' subtitulada';
                 return s;
             };
 
@@ -397,11 +529,11 @@
                 try { r.start(); } catch (e) { r.onend(); }
             };
 
-            const saveHistory = (title, y, t, l) => {
+            const saveHistory = (title, y, t, l, eng) => {
                 try {
                     let h = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
                     if (!Array.isArray(h)) h = [];
-                    h = [{ title, y, t, l }, ...h.filter(x => !(x.title === title && x.y === y && x.t === t && x.l === l))].slice(0, 10);
+                    h = [{ title, y, t, l, eng }, ...h.filter(x => !(x.title === title && x.y === y && x.t === t && x.l === l))].slice(0, 10);
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(h));
                     setHistory(h);
                 } catch (e) { }
@@ -409,9 +541,18 @@
 
             const handleSearch = () => {
                 if (!query.trim()) return;
-                saveHistory(query.trim(), yearVal.trim(), typeVal, lang);
-                let url = 'https://www.google.com/search?q=' + encodeURIComponent(currentCmd);
-                window.open(url, '_blank');
+                saveHistory(query.trim(), yearVal.trim(), typeVal, lang, engine);
+                
+                let searchUrl = '';
+                const encoded = encodeURIComponent(currentCmd);
+                if (engine === 'yandex') {
+                    searchUrl = `https://yandex.com/search/?text=${encoded}`;
+                } else if (engine === 'duckduckgo') {
+                    searchUrl = `https://duckduckgo.com/?q=${encoded}`;
+                } else {
+                    searchUrl = `https://www.google.com/search?q=${encoded}`;
+                }
+                window.open(searchUrl, '_blank');
             };
 
             const repeatHistory = (x) => {
@@ -419,14 +560,28 @@
                 setYearVal(x.y || "");
                 setTypeVal(x.t || "");
                 setLang(x.l || "");
-                let s = 'site:ok.ru/video';
-                if (x.title) s += ' "' + x.title + '"';
-                if (x.y) s += ' ' + x.y;
-                if (x.t) s += ' ' + x.t;
-                s += ' español';
-                if (x.l) s += ' ' + x.l;
-                saveHistory(x.title, x.y, x.t, x.l);
-                window.open('https://www.google.com/search?q=' + encodeURIComponent(s), '_blank');
+                if (x.eng) setEngine(x.eng);
+                
+                let cleanQuery = x.title.trim();
+                let s = 'site:ok.ru';
+                if (cleanQuery) s += ` "${cleanQuery}"`;
+                if (x.y) s += ` ${x.y}`;
+                if (x.t) s += ` ${x.t}`;
+                s += ' (video OR pelicula OR serie OR español)';
+                if (x.l === 'latino') s += ' (latino OR latinoamerica)';
+                if (x.l === 'castellano') s += ' (castellano OR españa)';
+                if (x.l === 'doblada') s += ' doblada';
+                if (x.l === 'subtitulada') s += ' subtitulada';
+
+                saveHistory(x.title, x.y, x.t, x.l, x.eng || 'google');
+                
+                let searchUrl = '';
+                const encoded = encodeURIComponent(s);
+                if (x.eng === 'yandex') searchUrl = `https://yandex.com/search/?text=${encoded}`;
+                else if (x.eng === 'duckduckgo') searchUrl = `https://duckduckgo.com/?q=${encoded}`;
+                else searchUrl = `https://www.google.com/search?q=${encoded}`;
+                
+                window.open(searchUrl, '_blank');
             };
 
             const clearHistory = () => {
@@ -439,8 +594,8 @@
             return (
                 <div className="max-w-4xl mx-auto p-4 sm:p-8 animate-fade-in text-white">
                     <div className="text-center py-6">
-                        <h1 className="text-3xl sm:text-4xl font-black mb-2">Buscador OK.ru <span className="text-[#E50914]">JorgeFlix</span></h1>
-                        <p className="text-gray-400 text-xs sm:text-sm">Encuentra contenido en español alojado en OK.ru con filtros avanzados y voz.</p>
+                        <h1 className="text-3xl sm:text-4xl font-black mb-2">Buscador Avanzado <span className="text-[#E50914]">JorgeFlix</span></h1>
+                        <p className="text-gray-400 text-xs sm:text-sm">Encuentra videos en OK.ru con precisión quirúrgica usando operadores avanzados y selección de motor.</p>
                     </div>
 
                     <div className="bg-[#11151d] border border-[#29303b] rounded-2xl p-4 sm:p-6 shadow-2xl mb-8">
@@ -448,7 +603,7 @@
                             <div className="relative">
                                 <input 
                                     id="q" 
-                                    placeholder="Nombre de película o serie..." 
+                                    placeholder="Nombre exacto de película o serie..." 
                                     value={query} 
                                     onChange={(e) => setQuery(e.target.value)} 
                                     onKeyDown={(e) => e.key === "Enter" && handleSearch()}
@@ -469,9 +624,9 @@
                                 onChange={(e) => setTypeVal(e.target.value)}
                                 className="bg-[#090c11] border border-[#29303b] rounded-xl px-3 py-3 text-sm text-white outline-none"
                             >
-                                <option value="">Películas y series</option>
-                                <option value="película">Películas</option>
-                                <option value="serie">Series</option>
+                                <option value="">Todo tipo</option>
+                                <option value="película">Película</option>
+                                <option value="serie">Serie</option>
                             </select>
                             <input 
                                 inputMode="numeric" 
@@ -482,6 +637,26 @@
                                 onKeyDown={(e) => e.key === "Enter" && handleSearch()}
                                 className="bg-[#090c11] border border-[#29303b] rounded-xl px-3 py-3 text-sm text-white outline-none text-center" 
                             />
+                        </div>
+
+                        {/* Selector de Motor de Búsqueda para mayor efectividad */}
+                        <div className="flex items-center gap-3 mb-4 bg-[#090c11] p-3 rounded-xl border border-[#29303b]">
+                            <span className="text-xs text-gray-400 font-bold uppercase tracking-wider">Motor:</span>
+                            <div className="flex gap-2 flex-wrap">
+                                {[
+                                    { id: 'google', label: '🔍 Google' },
+                                    { id: 'yandex', label: '🌐 Yandex' },
+                                    { id: 'duckduckgo', label: '🦆 DuckDuckGo' }
+                                ].map(eng => (
+                                    <button 
+                                        key={eng.id}
+                                        onClick={() => setEngine(eng.id)}
+                                        className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${engine === eng.id ? 'bg-[#E50914] text-white' : 'bg-[#181e28] text-gray-300 hover:bg-[#252b35]'}`}
+                                    >
+                                        {eng.label}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
                         <div className="flex flex-wrap gap-2 mb-4">
@@ -503,16 +678,16 @@
                         </div>
 
                         <div className="text-xs text-gray-400 mb-3">{voiceStatus}</div>
-                        <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Comando de búsqueda generado</div>
+                        <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Comando avanzado optimizado</div>
                         <div className="bg-[#080a0e] p-3 rounded-lg font-mono text-xs text-red-400 overflow-x-auto mb-4 border border-[#29303b]">{currentCmd}</div>
 
                         <button onClick={handleSearch} className="w-full bg-[#E50914] text-white py-3 rounded-xl font-bold text-sm hover:bg-red-700 transition-colors shadow-lg">
-                            🔎 Buscar ahora en OK.ru
+                            🔎 Buscar con máxima efectividad
                         </button>
                     </div>
 
                     <div className="bg-[#11151d] border border-[#29303b] rounded-2xl p-4 sm:p-6 shadow-xl">
-                        <h2 className="text-base font-bold mb-3 flex items-center gap-2">🕘 Historial de Búsqueda</h2>
+                        <h2 className="text-base font-bold mb-3 flex items-center gap-2">🕘 Historial Avanzado</h2>
                         {history.length === 0 ? (
                             <p className="text-xs text-gray-500">Todavía no hay búsquedas recientes.</p>
                         ) : (
@@ -521,9 +696,9 @@
                                     <button 
                                         key={idx} 
                                         onClick={() => repeatHistory(x)} 
-                                        className="bg-[#181e28] border border-[#29303b] hover:border-gray-500 text-[#d8dde5] text-xs px-3.5 py-2 rounded-full transition-colors"
+                                        className="bg-[#181e28] border border-[#29303b] hover:border-gray-500 text-[#d8dde5] text-xs px-3.5 py-2 rounded-full transition-colors flex items-center gap-1.5"
                                     >
-                                        {x.title} {x.y ? `· ${x.y}` : ''}
+                                        <span>{x.title}</span> {x.y ? `· ${x.y}` : ''} <span className="text-[9px] bg-black/40 px-1 rounded text-red-400 uppercase">{x.eng || 'google'}</span>
                                     </button>
                                 ))}
                                 <button onClick={clearHistory} className="text-xs text-red-400 underline ml-2 hover:text-red-300">Borrar historial</button>
@@ -569,7 +744,7 @@
                             <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/1f2937/ffffff?text=Poster'} />
                         </div>
                         <div className="flex-1 flex flex-col gap-2 items-start max-w-xl">
-                            <span className="bg-[#E50914] text-white text-[9px] font-extrabold px-2.5 py-1 rounded uppercase tracking-wider shadow">Película</span>
+                            <span className="bg-[#E50914] text-white text-[9px] font-extrabold px-2.5 py-1 rounded uppercase tracking-wider shadow">Destacado</span>
                             <h1 className="text-2xl sm:text-4xl font-black text-white leading-tight drop-shadow-md line-clamp-1">{titleSource}</h1>
                             <p className="text-gray-100 text-xs sm:text-sm line-clamp-3 leading-relaxed drop-shadow">{descSource || "Disfruta del mejor contenido seleccionado para ti."}</p>
                             <div className="flex gap-3 mt-3">
@@ -604,7 +779,7 @@
         const Card = ({ item, onClick, isFavorite, onToggleFavorite }) => { 
             const isTv = item.type === 'tv'; 
             const hasLock = item.codigo || item.password || item.pin; 
-            const isKids = item.isKids;
+            const isKids = item.isKids || item.type === 'animados' || item.type === 'animados_serie';
             const imgSource = item.imagen || item.image || item.poster || item.logo;
             const titleSource = item.titulo || item.title || item.name;
             return ( 
@@ -617,6 +792,7 @@
                         <div className="absolute bottom-1.5 left-1.5 flex gap-1"> 
                             {isTv && <span className="bg-[#E50914] text-white text-[8px] font-bold px-1.5 py-0.5 rounded">LIVE</span>} 
                             {isKids && <span className="bg-blue-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded">KIDS</span>}
+                            {item.type === 'series' && <span className="bg-purple-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded">SERIE</span>}
                             {hasLock && <span className="bg-yellow-500 text-black text-[8px] font-bold px-1.5 py-0.5 rounded flex items-center gap-0.5"><Icon name="lock" size={7}/> PIN</span>} 
                         </div> 
                     </div> 
