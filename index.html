@@ -67,9 +67,6 @@
 
         const convertUrl = (url) => {
             if (!url) return '';
-            if (url.includes('ok.ru') || url.includes('youtube.com') || url.includes('youtu.be')) {
-                return url;
-            }
             if (url.includes('drive.google.com')) {
                 let fileId = '';
                 if (url.includes('/file/d/')) {
@@ -128,24 +125,6 @@
                                 image: m.imagen || m.poster || m.image, 
                                 url: convertUrl(m.urlDrive || m.url) 
                             }));
-                        }
-
-                        if (moviesList.length === 0) {
-                            const cachedAdminMovies = safeStorage.getItem('magis_admin_movies');
-                            if (cachedAdminMovies) {
-                                try {
-                                    const parsed = JSON.parse(cachedAdminMovies);
-                                    moviesList = parsed.map((m, idx) => ({ 
-                                        ...m, 
-                                        id: `mov-admin-${idx}`, 
-                                        type: 'movies', 
-                                        title: m.titulo || m.title, 
-                                        description: m.descripcion || m.sinopsis, 
-                                        image: m.imagen || m.poster, 
-                                        url: convertUrl(m.urlDrive || m.url) 
-                                    }));
-                                } catch(e) {}
-                            }
                         }
 
                         let seriesList = [];
@@ -234,24 +213,18 @@
 
             const handlePlay = (item) => { 
                 const code = item.codigo || item.password || item.pin; 
-                const targetUrl = item.url;
                 
-                if (targetUrl && (targetUrl.includes('ok.ru') || targetUrl.includes('youtube.com') || targetUrl.includes('youtu.be'))) {
-                    if (code) {
-                        setSelectedItem(item);
-                        setIsLocked(true);
-                    } else {
-                        window.open(targetUrl, '_blank');
-                    }
-                    return;
-                }
-
-                if (code) { setSelectedItem(item); setIsLocked(true); } 
-                else { setSelectedItem(item); setIsLocked(false); } 
+                setSelectedItem(item);
+                setIsLocked(!!code);
                 setExpandedSeason(0); 
+
                 if (item.type === 'series' || item.type === 'animados') {
-                    setSelectedEpisode(item.seasons?.[0]?.episodes?.[0] || null); 
+                    const firstEp = item.seasons?.[0]?.episodes?.[0] || null;
+                    setSelectedEpisode(firstEp); 
+                } else {
+                    setSelectedEpisode(null);
                 }
+                
                 window.scrollTo({ top: 0, behavior: 'smooth' }); 
             };
 
@@ -362,13 +335,12 @@
                                     {isLocked ? (
                                         <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} />
                                     ) : (
-                                        <div className="w-full h-full flex flex-col items-center justify-center bg-gray-900 p-6 text-center">
-                                            <h2 className="text-xl font-bold mb-3">{selectedItem.titulo || selectedItem.title}</h2>
-                                            <p className="text-gray-400 text-sm mb-6">Este contenido se aloja en un reproductor externo compatible.</p>
-                                            <a href={selectedItem.url} target="_blank" rel="noopener noreferrer" className="bg-[#E50914] hover:bg-red-700 text-white font-bold px-6 py-3 rounded-xl shadow-lg transition-colors flex items-center gap-2">
-                                                <Icon name="play" size={18} fill="white" /> Ver en nueva pestaña
-                                            </a>
-                                        </div>
+                                        <iframe 
+                                            src={convertUrl((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedEpisode ? selectedEpisode.url : selectedItem.url)} 
+                                            className="w-full h-full border-0" 
+                                            allow="autoplay; encrypted-media; fullscreen" 
+                                            allowFullScreen
+                                        ></iframe>
                                     )}
                                 </div>
                                 {!isLocked && (
@@ -387,6 +359,29 @@
                                             </div>
                                             <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">{selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible."}</p>
                                         </div>
+                                        {((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
+                                            <div className="bg-[#171c26] border border-white/10 rounded-2xl p-4 flex flex-col h-[500px]">
+                                                <h3 className="font-bold text-sm text-white mb-3">Episodios</h3>
+                                                <div className="flex gap-2 mb-3 overflow-x-auto pb-2 no-scrollbar">
+                                                    {selectedItem.seasons.map((season, sIdx) => (
+                                                        <button key={sIdx} onClick={() => setExpandedSeason(sIdx)} className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-colors ${expandedSeason === sIdx ? 'bg-[#E50914] text-white' : 'bg-black/40 text-gray-400 hover:text-white'}`}>
+                                                            Temporada {season.seasonNumber}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                                <div className="flex-1 overflow-y-auto custom-scrollbar space-y-1 pr-1">
+                                                    {selectedItem.seasons[expandedSeason]?.episodes?.map((ep, eIdx) => (
+                                                        <div key={eIdx} onClick={() => setSelectedEpisode(ep)} className={`p-2.5 rounded-xl cursor-pointer flex items-center justify-between text-xs transition-colors ${selectedEpisode?.url === ep.url ? 'bg-[#E50914]/20 text-white border border-[#E50914]/50' : 'hover:bg-white/5 text-gray-300'}`}>
+                                                            <div className="flex items-center gap-2 truncate">
+                                                                <span className="text-gray-500 font-bold">{eIdx + 1}.</span>
+                                                                <span className="truncate">{ep.title}</span>
+                                                            </div>
+                                                            <Icon name="play" size={14} fill={selectedEpisode?.url === ep.url ? "#E50914" : "none"} />
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
                             </div>
@@ -654,7 +649,7 @@
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent"></div>
                     </div>
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-start px-6 sm:px-12 max-w-7xl mx-auto gap-8">
-                        <div className="w-32 sm:w-44 aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/20 flex-shrink-0 bg-black/50 transform group-hover:scale-105 transition-transform duration-300">
+                        <div className="w-32 sm:w-44 aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/20 flex-shrink-0 bg-black/50 transform group-hover:scale-105 transition-transform duration-300 relative">
                             <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/1f2937/ffffff?text=Poster'} />
                         </div>
                         <div className="flex-1 flex flex-col gap-2 items-start max-w-xl">
@@ -703,10 +698,10 @@
                         <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }} className="absolute top-1.5 right-1.5 p-1.5 bg-black/60 rounded-full text-white"> 
                             <Icon name="heart" size={14} className={isFavorite ? "text-[#E50914] fill-[#E50914]" : ""} fill={isFavorite ? "#E50914" : "none"} /> 
                         </button> 
-                        <div className="absolute bottom-1.5 left-1.5 flex gap-1"> 
-                            {isTv && <span className="bg-[#E50914] text-white text-[8px] font-bold px-1.5 py-0.5 rounded">LIVE</span>} 
-                            {isKids && <span className="bg-blue-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded">KIDS</span>}
-                            {hasLock && <span className="bg-yellow-500 text-black text-[8px] font-bold px-1.5 py-0.5 rounded flex items-center gap-0.5"><Icon name="lock" size={7}/> PIN</span>} 
+                        <div className="absolute bottom-1.5 left-1.5 flex gap-1 flex-wrap"> 
+                            {isTv && <span className="bg-[#E50914] text-white text-[8px] font-bold px-1.5 py-0.5 rounded shadow">LIVE</span>} 
+                            {isKids && <span className="bg-blue-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded shadow">KIDS</span>}
+                            {hasLock && <span className="bg-yellow-500 text-black text-[8px] font-bold px-1.5 py-0.5 rounded shadow flex items-center gap-0.5"><Icon name="lock" size={7}/> PIN</span>} 
                         </div> 
                     </div> 
                     <h3 className="text-xs font-bold text-gray-200 truncate">{titleSource}</h3> 
