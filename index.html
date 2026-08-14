@@ -67,6 +67,10 @@
 
         const convertUrl = (url) => {
             if (!url) return '';
+            // Si es un enlace de OK.ru, convertimos /video/ a /videoembed/ para intentar incrustar correctamente
+            if (url.includes('ok.ru/video/')) {
+                return url.replace('ok.ru/video/', 'ok.ru/videoembed/');
+            }
             if (url.includes('drive.google.com')) {
                 let fileId = '';
                 if (url.includes('/file/d/')) {
@@ -123,8 +127,28 @@
                                 title: m.titulo || m.title || m.name, 
                                 description: m.descripcion || m.sinopsis || m.plot, 
                                 image: m.imagen || m.poster || m.image, 
-                                url: convertUrl(m.urlDrive || m.url) 
+                                url: convertUrl(m.urlDrive || m.url),
+                                rawUrl: m.urlDrive || m.url
                             }));
+                        }
+
+                        if (moviesList.length === 0) {
+                            const cachedAdminMovies = safeStorage.getItem('magis_admin_movies');
+                            if (cachedAdminMovies) {
+                                try {
+                                    const parsed = JSON.parse(cachedAdminMovies);
+                                    moviesList = parsed.map((m, idx) => ({ 
+                                        ...m, 
+                                        id: `mov-admin-${idx}`, 
+                                        type: 'movies', 
+                                        title: m.titulo || m.title, 
+                                        description: m.descripcion || m.sinopsis, 
+                                        image: m.imagen || m.poster, 
+                                        url: convertUrl(m.urlDrive || m.url),
+                                        rawUrl: m.urlDrive || m.url
+                                    }));
+                                } catch(e) {}
+                            }
                         }
 
                         let seriesList = [];
@@ -214,17 +238,16 @@
             const handlePlay = (item) => { 
                 const code = item.codigo || item.password || item.pin; 
                 
-                setSelectedItem(item);
-                setIsLocked(!!code);
+                // Abrimos la pantalla de detalle/reproducción siempre
+                if (code) { setSelectedItem(item); setIsLocked(true); } 
+                else { setSelectedItem(item); setIsLocked(false); } 
+                
                 setExpandedSeason(0); 
-
                 if (item.type === 'series' || item.type === 'animados') {
-                    const firstEp = item.seasons?.[0]?.episodes?.[0] || null;
-                    setSelectedEpisode(firstEp); 
+                    setSelectedEpisode(item.seasons?.[0]?.episodes?.[0] || null); 
                 } else {
                     setSelectedEpisode(null);
                 }
-                
                 window.scrollTo({ top: 0, behavior: 'smooth' }); 
             };
 
@@ -334,6 +357,28 @@
                                     </div>
                                     {isLocked ? (
                                         <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} />
+                                    ) : (selectedItem.type === 'movies' || selectedItem.type === 'movie') && selectedItem.url && selectedItem.url.includes('ok.ru') ? (
+                                        /* REPRODUCTOR ESPECIAL PARA OK.RU */
+                                        <div className="relative w-full h-full flex flex-col items-center justify-center bg-[#090d16] p-6 text-center overflow-hidden">
+                                            <img src={selectedItem.imagen || selectedItem.image} className="absolute inset-0 w-full h-full object-cover opacity-15 filter blur-xl" />
+                                            <div className="relative z-10 max-w-lg bg-[#111827]/90 border border-white/10 p-6 sm:p-8 rounded-2xl backdrop-blur-md shadow-2xl flex flex-col items-center">
+                                                <div className="w-14 h-14 bg-orange-600/20 text-orange-500 rounded-full flex items-center justify-center mb-4 border border-orange-500/30">
+                                                    <Icon name="play" size={28} fill="currentColor"/>
+                                                </div>
+                                                <h2 className="text-xl sm:text-2xl font-black mb-2 text-white">{selectedItem.titulo || selectedItem.title}</h2>
+                                                <p className="text-gray-400 text-xs sm:text-sm mb-6 leading-relaxed">
+                                                    Esta película está alojada en OK.ru. Presiona el botón para iniciar la reproducción directamente en el servidor seguro.
+                                                </p>
+                                                <a 
+                                                    href={selectedItem.rawUrl || selectedItem.url} 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer" 
+                                                    className="w-full bg-[#E50914] hover:bg-red-700 text-white font-extrabold px-6 py-3.5 rounded-xl shadow-xl transition-transform active:scale-95 flex items-center justify-center gap-2 text-sm"
+                                                >
+                                                    <span>▶ REPRODUCIR EN OK.RU</span>
+                                                </a>
+                                            </div>
+                                        </div>
                                     ) : (
                                         <iframe 
                                             src={convertUrl((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedEpisode ? selectedEpisode.url : selectedItem.url)} 
@@ -636,6 +681,9 @@
             const imgSource = item.imagen || item.image || item.poster;
             const titleSource = item.titulo || item.title || item.name;
             const descSource = item.descripcion || item.sinopsis || item.plot;
+            const isMovie = item.type === 'movies' || item.type === 'movie';
+            const isExternalMovie = isMovie && item.url && (item.url.includes('ok.ru') || item.url.includes('youtube.com') || item.url.includes('youtu.be'));
+            
             return (
                 <div className="relative w-full h-[320px] sm:h-[380px] bg-[#0b0f19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-white/5 flex items-center">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -651,6 +699,11 @@
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-start px-6 sm:px-12 max-w-7xl mx-auto gap-8">
                         <div className="w-32 sm:w-44 aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/20 flex-shrink-0 bg-black/50 transform group-hover:scale-105 transition-transform duration-300 relative">
                             <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/1f2937/ffffff?text=Poster'} />
+                            {isExternalMovie && (
+                                <span className="absolute bottom-2 right-2 bg-black/80 text-orange-400 text-[9px] font-bold px-1.5 py-0.5 rounded flex items-center gap-1 shadow border border-orange-500/30" title="Se abre en pestaña externa">
+                                    🌐 Externo
+                                </span>
+                            )}
                         </div>
                         <div className="flex-1 flex flex-col gap-2 items-start max-w-xl">
                             <span className="bg-[#E50914] text-white text-[9px] font-extrabold px-2.5 py-1 rounded uppercase tracking-wider shadow">Destacado</span>
@@ -658,7 +711,7 @@
                             <p className="text-gray-100 text-xs sm:text-sm line-clamp-3 leading-relaxed drop-shadow">{descSource || "Disfruta del mejor contenido seleccionado para ti."}</p>
                             <div className="flex gap-3 mt-3">
                                 <button onClick={() => onPlay(item)} className="bg-white text-black px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-95 transition-transform shadow-lg hover:bg-gray-200">
-                                    <Icon name="play" size={16} fill="black"/> Reproducir
+                                    <Icon name="play" size={16} fill="black"/> {isExternalMovie ? "Ver en OK.ru" : "Reproducir"}
                                 </button>
                                 <button onClick={() => onToggleFavorite(item)} className="bg-white/20 text-white p-2.5 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/30 hover:bg-white/40">
                                     <Icon name="heart" size={18} className={isFavorite ? "text-[#E50914] fill-[#E50914]" : "text-white"} fill={isFavorite ? "#E50914" : "none"} />
@@ -689,6 +742,8 @@
             const isTv = item.type === 'tv'; 
             const hasLock = item.codigo || item.password || item.pin; 
             const isKids = item.isKids || item.type === 'animados';
+            const isMovie = item.type === 'movies' || item.type === 'movie';
+            const isExternalMovie = isMovie && item.url && (item.url.includes('ok.ru') || item.url.includes('youtube.com') || item.url.includes('youtu.be'));
             const imgSource = item.imagen || item.image || item.poster || item.logo;
             const titleSource = item.titulo || item.title || item.name;
             return ( 
@@ -701,6 +756,7 @@
                         <div className="absolute bottom-1.5 left-1.5 flex gap-1 flex-wrap"> 
                             {isTv && <span className="bg-[#E50914] text-white text-[8px] font-bold px-1.5 py-0.5 rounded shadow">LIVE</span>} 
                             {isKids && <span className="bg-blue-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded shadow">KIDS</span>}
+                            {isExternalMovie && <span className="bg-orange-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded shadow flex items-center gap-0.5">🌐 Externo</span>}
                             {hasLock && <span className="bg-yellow-500 text-black text-[8px] font-bold px-1.5 py-0.5 rounded shadow flex items-center gap-0.5"><Icon name="lock" size={7}/> PIN</span>} 
                         </div> 
                     </div> 
