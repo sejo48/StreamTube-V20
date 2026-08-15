@@ -105,6 +105,18 @@
             const [loading, setLoading] = useState(true);
             const [expandedSeason, setExpandedSeason] = useState(0);
 
+            const navTabs = [
+                { id: 'home', icon: 'search', label: 'Inicio' }, 
+                { id: 'movies', icon: 'clapperboard', label: 'Cine' }, 
+                { id: 'series', icon: 'film', label: 'Series' },
+                { id: 'animados', icon: 'smile', label: 'Animados' },
+                { id: 'tv', icon: 'tv', label: 'TV' }, 
+                { id: 'jorgeflix', icon: 'compass', label: 'Buscar' },
+                // NUEVA PESTAÑA: Abrirá la URL externa en una nueva ventana
+                { id: 'spotify', icon: 'music', label: 'Música', isExternal: true, url: 'https://sejo48.github.io/Spotify-local/' },
+                { id: 'favorites', icon: 'heart', label: 'Favs' }
+            ];
+
             useEffect(() => {
                 const init = async () => {
                     try {
@@ -244,7 +256,6 @@
             const handlePlay = (item) => { 
                 const code = item.codigo || item.password || item.pin; 
                 
-                // Abrimos la pantalla de detalle/reproducción siempre
                 if (code) { setSelectedItem(item); setIsLocked(true); } 
                 else { setSelectedItem(item); setIsLocked(false); } 
                 
@@ -270,23 +281,26 @@
             const displayedItems = getDisplayContent();
             const heroItem = useMemo(() => (content.movies.length ? content.movies[Math.floor(Math.random() * content.movies.length)] : null), [content]);
 
+            const handleTabClick = (tab) => {
+                if (tab.isExternal) {
+                    window.open(tab.url, '_blank');
+                } else {
+                    setActiveTab(tab.id); 
+                    setSelectedItem(null); 
+                    setSearch(''); 
+                    setIsLocked(false);
+                }
+            };
+
             if (showIntro) return <IntroScreen onEnter={() => setShowIntro(false)} />;
 
             return (
                 <div className="min-h-screen bg-[#111827] text-white font-sans flex flex-col md:flex-row relative">
                     <aside className="hidden md:flex w-24 flex-col items-center py-6 bg-[#0f1115] border-r border-[#1f2937] fixed h-full z-50">
-                        <div className="mb-6 p-2 bg-[#E50914] rounded-xl shadow-lg cursor-pointer" onClick={() => {setActiveTab('home'); setSelectedItem(null); setIsLocked(false);}}><Icon name="play" size={24} fill="white" className="text-white"/></div>
+                        <div className="mb-6 p-2 bg-[#E50914] rounded-xl shadow-lg cursor-pointer" onClick={() => handleTabClick(navTabs[0])}><Icon name="play" size={24} fill="white" className="text-white"/></div>
                         <div className="flex flex-col gap-2 w-full items-center">
-                            {[
-                                { id: 'home', icon: 'search', label: 'Inicio' }, 
-                                { id: 'movies', icon: 'clapperboard', label: 'Cine' }, 
-                                { id: 'series', icon: 'film', label: 'Series' },
-                                { id: 'animados', icon: 'smile', label: 'Animados' },
-                                { id: 'tv', icon: 'tv', label: 'TV' }, 
-                                { id: 'jorgeflix', icon: 'compass', label: 'Buscador' },
-                                { id: 'favorites', icon: 'heart', label: 'Favs' }
-                            ].map(tab => (
-                                <button key={tab.id} onClick={() => { setActiveTab(tab.id); setSelectedItem(null); setSearch(''); setIsLocked(false); }} className={`flex flex-col items-center gap-1.5 transition-all w-full py-2.5 ${activeTab === tab.id ? 'text-[#E50914] bg-white/5 font-bold border-l-4 border-[#E50914]' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>
+                            {navTabs.map(tab => (
+                                <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center gap-1.5 transition-all w-full py-2.5 ${activeTab === tab.id && !tab.isExternal ? 'text-[#E50914] bg-white/5 font-bold border-l-4 border-[#E50914]' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>
                                     <Icon name={tab.icon} size={22} fill={activeTab === tab.id && tab.id === 'favorites' ? 'currentColor' : 'none'} className={activeTab === tab.id && tab.id === 'favorites' ? 'fill-current' : ''} /><span className="text-[10px] tracking-tight">{tab.label}</span>
                                 </button>
                             ))}
@@ -297,21 +311,26 @@
                     </aside>
 
                     <div className="md:hidden fixed top-0 w-full bg-[#111827]/95 backdrop-blur z-50 px-4 py-3 flex items-center justify-between border-b border-[#1f2937]">
-                        <div className="flex items-center gap-2 font-black text-lg tracking-tighter"><span className="text-[#E50914]">MAGIS</span> TUBE</div>
+                        <div className="flex items-center gap-2 font-black text-lg tracking-tighter cursor-pointer" onClick={() => handleTabClick(navTabs[0])}>
+                            <span className="text-[#E50914]">MAGIS</span> TUBE
+                        </div>
+                        <div className="flex items-center gap-5 text-gray-400">
+                            <button onClick={() => handleTabClick(navTabs.find(t=>t.id==='jorgeflix'))} className={`transition-colors active:scale-90 ${activeTab === 'jorgeflix' ? 'text-[#E50914]' : 'hover:text-white'}`}>
+                                <Icon name="compass" size={22} />
+                            </button>
+                            <button onClick={() => handleTabClick(navTabs.find(t=>t.id==='favorites'))} className={`transition-colors active:scale-90 ${activeTab === 'favorites' ? 'text-[#E50914]' : 'hover:text-white'}`}>
+                                <Icon name="heart" size={22} fill={activeTab === 'favorites' ? 'currentColor' : 'none'} />
+                            </button>
+                        </div>
                     </div>
 
-                    <div className="md:hidden fixed bottom-0 w-full bg-[#0f1115] border-t border-[#1f2937] z-50 flex justify-around py-2.5 pb-safe">
-                        {[
-                            { id: 'home', icon: 'search', label: 'Inicio' }, 
-                            { id: 'movies', icon: 'clapperboard', label: 'Cine' }, 
-                            { id: 'series', icon: 'film', label: 'Series' },
-                            { id: 'animados', icon: 'smile', label: 'Animados' },
-                            { id: 'tv', icon: 'tv', label: 'TV' },
-                            { id: 'jorgeflix', icon: 'compass', label: 'Buscar' },
-                            { id: 'favorites', icon: 'heart', label: 'Favs' }
-                        ].map(tab => (
-                            <button key={tab.id} onClick={() => { setActiveTab(tab.id); setSelectedItem(null); setIsLocked(false); }} className={`flex flex-col items-center gap-0.5 ${activeTab === tab.id ? 'text-[#E50914]' : 'text-gray-400'}`}>
-                                <Icon name={tab.icon} size={18} /><span className="text-[8px] font-medium">{tab.label}</span>
+                    <div className="md:hidden fixed bottom-0 w-full bg-[#0f1115] border-t border-[#1f2937] z-50 flex py-2 pb-safe px-2 overflow-x-auto no-scrollbar snap-x items-center gap-2 relative shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+                        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#0f1115] to-transparent pointer-events-none z-10"></div>
+                        
+                        {navTabs.filter(t => !['jorgeflix', 'favorites'].includes(t.id)).map(tab => (
+                            <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-shrink-0 min-w-[64px] py-1.5 gap-1 snap-start transition-all active:scale-95 rounded-lg ${activeTab === tab.id && !tab.isExternal ? 'text-[#E50914] bg-white/5' : 'text-gray-400 hover:text-white'}`}>
+                                <Icon name={tab.icon} size={20} />
+                                <span className="text-[9px] font-medium tracking-wide">{tab.label}</span>
                             </button>
                         ))}
                     </div>
@@ -361,6 +380,7 @@
                                             <Icon name="arrowLeft" size={16} /> <span>Volver</span>
                                         </button>
                                     </div>
+                                    {}
                                     {isLocked ? (
                                         <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} />
                                     ) : (selectedItem.type === 'movies' || selectedItem.type === 'movie') && selectedItem.url && selectedItem.url.includes('ok.ru') ? (
@@ -438,6 +458,7 @@
                             </div>
                         ) : (
                             <>
+                                {}
                                 <div className="sticky top-14 md:top-0 z-40 bg-[#111827]/95 backdrop-blur py-3 px-4 sm:px-8 flex items-center justify-between border-b border-[#1f2937]">
                                     <div className="flex bg-[#1f2937] border border-[#374151] rounded-full px-3 py-1.5 w-full max-w-md items-center focus-within:border-[#E50914] transition-colors">
                                         <Icon name="search" className="text-gray-400 w-4 h-4 mr-2.5" />
@@ -819,7 +840,9 @@
                 clapperboard: <g><path d="M20.2 6 3 11l-.9-2.4c-.5-1.1.2-2.3 1.3-2.8l3.2-1.4c1.1-.5 2.3.2 2.8 1.3l.9 2.4l7.9-3l2 4.5Z"/><path d="M4 11v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9"/></g>,
                 lock: <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a7 7 0 00-14 0v2" />,
                 smile: <g><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></g>,
-                compass: <g><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></g>
+                compass: <g><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></g>,
+                // Nuevo icono musical
+                music: <g><path d="M9 18V5l12-2v13"></path><path d="M9 9l12-2"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></g>
             };
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
