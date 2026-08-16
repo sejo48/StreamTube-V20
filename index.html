@@ -10,6 +10,7 @@
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     
     <script>
         if (typeof Babel !== 'undefined') {
@@ -38,70 +39,28 @@
         .text-gold-gradient { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
 
-        /* Indicador visible del explorador Jorge Flix SOLO en móvil */
-        .jorgeflix-mobile-guide {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            padding: 5px 9px 5px 7px;
-            border: 1px solid rgba(229,9,20,.75);
-            border-radius: 13px;
-            background: linear-gradient(135deg, rgba(229,9,20,.18), rgba(17,24,39,.96));
-            box-shadow: 0 0 12px rgba(229,9,20,.18), inset 0 0 10px rgba(255,255,255,.025);
-            min-width: 118px;
-            transition: transform .2s ease, box-shadow .2s ease;
+        /* Animación del ecualizador visual para radio */
+        .bar {
+            width: 4px;
+            background-color: #E50914;
+            border-radius: 2px;
+            animation: equalize 1s infinite alternate;
+            transform-origin: bottom;
         }
-        .jorgeflix-mobile-guide:active { transform: scale(.96); }
-        .jorgeflix-mobile-guide-icon {
-            width: 29px;
-            height: 29px;
-            border-radius: 9px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            background: rgba(229,9,20,.16);
-            border: 1px solid rgba(229,9,20,.45);
-            flex-shrink: 0;
+        .bar:nth-child(1) { animation-delay: -0.2s; }
+        .bar:nth-child(2) { animation-delay: -0.4s; }
+        .bar:nth-child(3) { animation-delay: -0.6s; }
+        .bar:nth-child(4) { animation-delay: -0.8s; }
+        .bar:nth-child(5) { animation-delay: -1.0s; }
+
+        @keyframes equalize {
+            0% { transform: scaleY(0.2); opacity: 0.5; }
+            100% { transform: scaleY(1); opacity: 1; }
         }
-        .jorgeflix-mobile-guide-arrow {
-            position: absolute;
-            top: -12px;
-            left: 16px;
-            color: #E50914;
-            font-size: 16px;
-            line-height: 1;
-            font-weight: 900;
-            animation: guideBounce 1.2s ease-in-out infinite;
-            transform: rotate(28deg);
-            text-shadow: 0 0 8px rgba(229,9,20,.55);
-        }
-        @keyframes guideBounce {
-            0%,100% { transform: translateY(0) rotate(28deg); opacity: .75; }
-            50% { transform: translateY(3px) rotate(28deg); opacity: 1; }
-        }
-        .jorgeflix-mobile-guide-title {
-            font-size: 11px;
-            line-height: 12px;
-            font-weight: 800;
-            color: white;
-            white-space: nowrap;
-        }
-        .jorgeflix-mobile-guide-subtitle {
-            font-size: 8px;
-            line-height: 10px;
-            color: #f87171;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: .06em;
-            white-space: nowrap;
-        }
-        @media (max-width: 360px) {
-            .jorgeflix-mobile-guide { min-width: 104px; padding-right: 7px; gap: 5px; }
-            .jorgeflix-mobile-guide-title { font-size: 10px; }
-            .jorgeflix-mobile-guide-subtitle { font-size: 7px; }
-            .jorgeflix-mobile-guide-icon { width: 27px; height: 27px; }
+        .paused-bar {
+            transform: scaleY(0.2) !important;
+            animation: none !important;
+            opacity: 0.5;
         }
 
         button:focus, div[tabindex="0"]:focus, input:focus, select:focus { outline: none; }
@@ -111,7 +70,7 @@
     <div id="root">
         <div style="display:flex;height:100vh;width:100vw;align-items:center;justify-content:center;background:#111827;color:white;flex-direction:column;font-family:sans-serif;">
             <div style="width:40px;height:40px;border:4px solid #E50914;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:20px;"></div>
-            <h2>Cargando MAGIS Tube Ultimate...</h2>
+            <h2>Cargando MAGIS Tube Ultimate con Radio...</h2>
             <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
         </div>
     </div>
@@ -132,18 +91,28 @@
             ANIMADOS: `https://raw.githubusercontent.com/sejo48/animados./refs/heads/main/animados.json?t=${timestamp}`
         };
 
+        const RADIO_STATIONS = [
+            { id: 'cr-hit', title: 'Hit 104.7 FM', group: 'Juvenil / Pop', image: 'https://static.mytuner.mobi/media/tvos_radios/164/radio-hit-1047-fm.1180f4a3.jpg', url: 'https://live.turadio.stream:7004/stream?nocache=596&type=http' },
+            { id: 'cr-crc', title: 'CRC 94.7 FM', group: 'Alternativo / Rock', image: 'https://static.mytuner.mobi/media/tvos_radios/nAwNLxJbnm.png', url: 'https://23263.live.streamtheworld.com/CRC_947AAC_SC' },
+            { id: 'cr-custom-5', title: 'Radio Personalizada 5', group: 'Variedad', image: 'https://static.mytuner.mobi/media/tvos_radios/gvujczqzwusy.png', url: 'https://centova.hostingtico.com:7012/;?download=false' },
+            { id: 'cr-custom-4', title: 'Radio Personalizada 4', group: 'Variedad', image: 'https://static.mytuner.mobi/media/tvos_radios/6bEwq5um28.jpg', url: 'https://s5.radio.co/sd515b7b34/listen' },
+            { id: 'cr-zeta', title: 'Zeta FM 95.1', group: 'Tropical / Latina', image: 'https://static.mytuner.mobi/media/tvos_radios/879/zeta-fm.feb3fb70.png', url: 'https://d5g44yionyslb.cloudfront.net/medialist_14854753276708185244_hls.m3u8' },
+            { id: 'cr-custom-3', title: 'Senda de Vida', group: 'Cristiana / Religiosa', image: 'https://static.mytuner.mobi/media/tvos_radios/CwACYSkeK6.png', url: 'https://centova.hostingtico.com:7008/stream/1/' },
+            { id: 'cr-monumental', title: 'Radio Monumental 93.5 FM', group: 'Noticias / Deportes', image: 'https://static.mytuner.mobi/media/tvos_radios/574/radio-monumental.7303764d.png', url: 'https://d26gdpbozqq700.cloudfront.net/medialist_14854753276708185244_hls.m3u8' },
+            { id: 'cr-mejor', title: 'La Mejor 99.1 FM', group: 'Regional / Latina', image: 'https://static.mytuner.mobi/media/tvos_radios/575/la-mejor-991.95c72890.png', url: 'https://d3svz5xnvdysyz.cloudfront.net/medialist_14854753276708185244_hls.m3u8' },
+            { id: 'cr-custom-1', title: 'Radio Personalizada 1', group: 'Variedad', image: 'https://static.mytuner.mobi/media/tvos_radios/EYDaxpE6Q4.png', url: 'https://s2.radio.co/s83b86382e/listen' },
+            { id: 'cr-r2', title: 'Radio Dos 99.5 FM', group: 'Clásicos / Rock', image: 'https://placehold.co/300x300/0033a0/ffffff?text=R2', url: 'https://icecasthd.teletica.com/radiodos' },
+            { id: 'cr-los40', title: 'Los 40 Costa Rica 104.3 FM', group: 'Éxitos / Urbano', image: 'https://placehold.co/300x300/ffcc00/000000?text=Los40', url: 'https://icecasthd.teletica.com/los40' },
+            { id: 'cr-disney', title: 'Radio Disney 101.1 FM', group: 'Pop / Éxitos', image: 'https://static.mytuner.mobi/media/tvos_radios/652/radio-disney-costa-rica.d297c76c.jpg', url: 'https://26673.live.streamtheworld.com/DISNEY_CRI_SJ_ADP/HLS/031b1ae7-b742-4bf3-8001-31b8478440ef/0/playlist.m3u8' },
+            { id: 'cr-wao', title: 'WAO 92.3 FM', group: 'Urbano / Reggaeton', image: 'https://placehold.co/300x300/fd7e14/ffffff?text=WAO', url: 'https://icecasthd.teletica.com/wao' },
+            { id: 'cr-custom-2', title: 'Radio Personalizada 2', group: 'Variedad', image: 'https://static.mytuner.mobi/media/tvos_radios/kufrp5fqpe7v.png', url: 'https://g2qd375ol7an-hls-live.5centscdn.com/Radio/eae835e83c0494a376229f254f7d3392.sdp/chunks.m3u8' },
+            { id: 'cr-musical', title: 'Radio Musical 97.5 FM', group: 'Romántica / Latina', image: 'https://static.mytuner.mobi/media/tvos_radios/085/radio-musical.fea3e089.jpg', url: 'https://live.turadio.stream:7005/stream/1/' }
+        ];
+
         const convertUrl = (url) => {
             if (!url) return '';
-            
-            // Excepción: No alterar los enlaces de búsqueda de OK.ru para evitar el error 404
-            if (url.includes('ok.ru/video/search') || url.includes('ok.ru/search')) {
-                return url;
-            }
-
-            // Si es un enlace de OK.ru (video individual), convertimos /video/ a /videoembed/ para incrustar correctamente
-            if (url.includes('ok.ru/video/')) {
-                return url.replace('ok.ru/video/', 'ok.ru/videoembed/');
-            }
+            if (url.includes('ok.ru/video/search') || url.includes('ok.ru/search')) return url;
+            if (url.includes('ok.ru/video/')) return url.replace('ok.ru/video/', 'ok.ru/videoembed/');
             if (url.includes('drive.google.com')) {
                 let fileId = '';
                 if (url.includes('/file/d/')) {
@@ -153,9 +122,7 @@
                     const parts = url.split('id=');
                     if (parts[1]) fileId = parts[1].split('&')[0];
                 }
-                if (fileId) {
-                    return `https://drive.google.com/file/d/${fileId}/preview`;
-                }
+                if (fileId) return `https://drive.google.com/file/d/${fileId}/preview`;
             }
             return url;
         };
@@ -172,14 +139,25 @@
             const [loading, setLoading] = useState(true);
             const [expandedSeason, setExpandedSeason] = useState(0);
 
+            // Estados específicos de Radio
+            const [currentRadioStation, setCurrentRadioStation] = useState(null);
+            const [isRadioPlaying, setIsRadioPlaying] = useState(false);
+            const [radioFavorites, setRadioFavorites] = useState([]);
+            const [radioVolume, setRadioVolume] = useState(0.8);
+            const [streamError, setStreamError] = useState(false);
+            const [isLoadingRadio, setIsLoadingRadio] = useState(false);
+            const [radioSearch, setRadioSearch] = useState('');
+            const audioRef = useRef(null);
+            const hlsRef = useRef(null);
+
             const navTabs = [
                 { id: 'home', icon: 'search', label: 'Inicio' }, 
                 { id: 'movies', icon: 'clapperboard', label: 'Cine' }, 
                 { id: 'series', icon: 'film', label: 'Series' },
                 { id: 'animados', icon: 'smile', label: 'Animados' },
                 { id: 'tv', icon: 'tv', label: 'TV' }, 
-                { id: 'jorgeflix', icon: 'compass', label: 'Buscar' },
-                // NUEVA PESTAÑA: Abrirá la URL externa en una nueva ventana
+                { id: 'radio', icon: 'radio', label: 'Radio' }, 
+                { id: 'jorgeflix', icon: 'compass', label: 'JorgeFlix' },
                 { id: 'spotify', icon: 'music', label: 'Música', isExternal: true, url: 'https://sejo48.github.io/Spotify-local/' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
@@ -215,25 +193,6 @@
                                 url: convertUrl(m.urlDrive || m.url),
                                 rawUrl: m.urlDrive || m.url
                             }));
-                        }
-
-                        if (moviesList.length === 0) {
-                            const cachedAdminMovies = safeStorage.getItem('magis_admin_movies');
-                            if (cachedAdminMovies) {
-                                try {
-                                    const parsed = JSON.parse(cachedAdminMovies);
-                                    moviesList = parsed.map((m, idx) => ({ 
-                                        ...m, 
-                                        id: `mov-admin-${idx}`, 
-                                        type: 'movies', 
-                                        title: m.titulo || m.title, 
-                                        description: m.descripcion || m.sinopsis, 
-                                        image: m.imagen || m.poster, 
-                                        url: convertUrl(m.urlDrive || m.url),
-                                        rawUrl: m.urlDrive || m.url
-                                    }));
-                                } catch(e) {}
-                            }
                         }
 
                         let seriesList = [];
@@ -291,8 +250,92 @@
 
                 const storedFavs = safeStorage.getItem('magistube_favs'); 
                 if (storedFavs) { try { setFavorites(JSON.parse(storedFavs)); } catch(e) {} }
+
+                const storedRadioFavs = safeStorage.getItem('magis_radio_favs');
+                if (storedRadioFavs) { try { setRadioFavorites(JSON.parse(storedRadioFavs)); } catch(e) {} }
+
                 init();
             }, []);
+
+            useEffect(() => {
+                if (!audioRef.current) {
+                    audioRef.current = new Audio();
+                    audioRef.current.crossOrigin = "anonymous";
+                    
+                    audioRef.current.addEventListener('error', (e) => {
+                        console.error("Error stream radio:", e);
+                        setIsRadioPlaying(false);
+                        setStreamError(true);
+                        setIsLoadingRadio(false);
+                    });
+                    
+                    audioRef.current.addEventListener('waiting', () => setIsLoadingRadio(true));
+                    audioRef.current.addEventListener('playing', () => {
+                        setIsLoadingRadio(false);
+                        setStreamError(false);
+                    });
+                    audioRef.current.addEventListener('canplay', () => {
+                        setIsLoadingRadio(false);
+                        setStreamError(false);
+                    });
+                }
+
+                const audio = audioRef.current;
+                audio.volume = radioVolume;
+
+                if (currentRadioStation) {
+                    const playAudio = () => {
+                        const playPromise = audio.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(e => {
+                                console.error("Error autoplay radio:", e);
+                                setIsRadioPlaying(false);
+                                setStreamError(true);
+                                setIsLoadingRadio(false);
+                            });
+                        }
+                    };
+
+                    if (audio.dataset.currentUrl !== currentRadioStation.url) {
+                        setIsLoadingRadio(true);
+                        setStreamError(false);
+                        audio.dataset.currentUrl = currentRadioStation.url;
+                        
+                        if (hlsRef.current) {
+                            hlsRef.current.destroy();
+                            hlsRef.current = null;
+                        }
+
+                        if (currentRadioStation.url.includes('.m3u8') && typeof Hls !== 'undefined' && Hls.isSupported()) {
+                            const hls = new Hls();
+                            hlsRef.current = hls;
+                            hls.loadSource(currentRadioStation.url);
+                            hls.attachMedia(audio);
+                            hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                                if (isRadioPlaying) playAudio();
+                            });
+                            hls.on(Hls.Events.ERROR, function (event, data) {
+                                if (data.fatal) {
+                                    setIsRadioPlaying(false);
+                                    setStreamError(true);
+                                    setIsLoadingRadio(false);
+                                }
+                            });
+                        } else {
+                            audio.src = currentRadioStation.url; 
+                            audio.load();
+                            if (isRadioPlaying) playAudio();
+                        }
+                    } else {
+                        if (isRadioPlaying) playAudio();
+                        else audio.pause();
+                    }
+                }
+            }, [currentRadioStation, isRadioPlaying]);
+
+            useEffect(() => {
+                if (audioRef.current) audioRef.current.volume = radioVolume;
+            }, [radioVolume]);
 
             const parseM3U = (data) => {
                 const lines = data.split('\n'); const channels = [];
@@ -320,12 +363,18 @@
                 safeStorage.setItem('magistube_favs', JSON.stringify(newFavs)); 
             };
 
+            const toggleRadioFavorite = (station, e) => {
+                if (e) e.stopPropagation();
+                const isFav = radioFavorites.some(f => f.id === station.id);
+                let newFavs = isFav ? radioFavorites.filter(f => f.id !== station.id) : [station, ...radioFavorites];
+                setRadioFavorites(newFavs);
+                safeStorage.setItem('magis_radio_favs', JSON.stringify(newFavs));
+            };
+
             const handlePlay = (item) => { 
                 const code = item.codigo || item.password || item.pin; 
-                
                 if (code) { setSelectedItem(item); setIsLocked(true); } 
                 else { setSelectedItem(item); setIsLocked(false); } 
-                
                 setExpandedSeason(0); 
                 if (item.type === 'series' || item.type === 'animados') {
                     setSelectedEpisode(item.seasons?.[0]?.episodes?.[0] || null); 
@@ -333,6 +382,15 @@
                     setSelectedEpisode(null);
                 }
                 window.scrollTo({ top: 0, behavior: 'smooth' }); 
+            };
+
+            const handlePlayRadioStation = (station) => {
+                if (currentRadioStation?.id === station.id) {
+                    setIsRadioPlaying(!isRadioPlaying);
+                } else {
+                    setCurrentRadioStation(station);
+                    setIsRadioPlaying(true);
+                }
             };
 
             const getDisplayContent = () => { 
@@ -363,12 +421,13 @@
 
             return (
                 <div className="min-h-screen bg-[#111827] text-white font-sans flex flex-col md:flex-row relative">
+                    {/* Sidebar para Escritorio */}
                     <aside className="hidden md:flex w-24 flex-col items-center py-6 bg-[#0f1115] border-r border-[#1f2937] fixed h-full z-50">
                         <div className="mb-6 p-2 bg-[#E50914] rounded-xl shadow-lg cursor-pointer" onClick={() => handleTabClick(navTabs[0])}><Icon name="play" size={24} fill="white" className="text-white"/></div>
-                        <div className="flex flex-col gap-2 w-full items-center">
+                        <div className="flex flex-col gap-1 w-full items-center">
                             {navTabs.map(tab => (
-                                <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center gap-1.5 transition-all w-full py-2.5 ${activeTab === tab.id && !tab.isExternal ? 'text-[#E50914] bg-white/5 font-bold border-l-4 border-[#E50914]' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>
-                                    <Icon name={tab.icon} size={22} fill={activeTab === tab.id && tab.id === 'favorites' ? 'currentColor' : 'none'} className={activeTab === tab.id && tab.id === 'favorites' ? 'fill-current' : ''} /><span className="text-[10px] tracking-tight">{tab.label}</span>
+                                <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center gap-1 transition-all w-full py-2.5 ${activeTab === tab.id && !tab.isExternal ? 'text-[#E50914] bg-white/5 font-bold border-l-4 border-[#E50914]' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>
+                                    <Icon name={tab.icon} size={20} fill={activeTab === tab.id && tab.id === 'favorites' ? 'currentColor' : 'none'} className={activeTab === tab.id && tab.id === 'favorites' ? 'fill-current' : ''} /><span className="text-[10px] tracking-tight">{tab.label}</span>
                                 </button>
                             ))}
                         </div>
@@ -377,46 +436,63 @@
                         </div>
                     </aside>
 
-                    <div className="md:hidden fixed top-0 w-full bg-[#111827]/95 backdrop-blur z-50 px-2.5 sm:px-4 py-3 flex items-center justify-between border-b border-[#1f2937] gap-2">
-                        <div className="flex items-center gap-1.5 font-black text-lg tracking-tighter cursor-pointer flex-shrink-0" onClick={() => handleTabClick(navTabs[0])}>
+                    {/* Barra de Navegación Móvil Superior con Radio y JorgeFlix */}
+                    <div className="md:hidden fixed top-0 w-full bg-[#111827]/95 backdrop-blur z-50 px-3 py-2.5 flex items-center justify-between border-b border-[#1f2937] gap-2">
+                        <div className="flex items-center gap-1.5 font-black text-base tracking-tighter cursor-pointer flex-shrink-0" onClick={() => handleTabClick(navTabs[0])}>
                             <span className="text-[#E50914]">MAGIS</span> TUBE
                         </div>
 
-                        {/* NUEVO: indicador visible del explorador en móvil */}
-                        <button
-                            onClick={() => handleTabClick(navTabs.find(t=>t.id==='jorgeflix'))}
-                            aria-label="Abrir Jorge Flix, explorador de películas y series"
-                            title="Jorge Flix - Explorador de películas y series"
-                            className={`jorgeflix-mobile-guide text-left ${activeTab === 'jorgeflix' ? 'ring-2 ring-[#E50914]/50' : ''}`}
-                        >
-                            <span className="jorgeflix-mobile-guide-arrow">↙</span>
-                            <span className="jorgeflix-mobile-guide-icon">
-                                <Icon name="compass" size={20} />
-                            </span>
-                            <span className="flex flex-col min-w-0">
-                                <span className="jorgeflix-mobile-guide-title">Jorge Flix</span>
-                                <span className="jorgeflix-mobile-guide-subtitle">Explorador</span>
-                            </span>
-                        </button>
+                        {/* Accesos directos superiores móviles ordenados */}
+                        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+                            <button
+                                onClick={() => handleTabClick(navTabs.find(t=>t.id==='radio'))}
+                                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl border text-xs font-bold transition-all flex-shrink-0 ${activeTab === 'radio' ? 'bg-[#E50914] text-white border-[#E50914]' : 'bg-[#1f2937] text-gray-300 border-white/10'}`}
+                            >
+                                <Icon name="radio" size={15} />
+                                <span>Radio</span>
+                            </button>
+                            <button
+                                onClick={() => handleTabClick(navTabs.find(t=>t.id==='jorgeflix'))}
+                                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl border text-xs font-bold transition-all flex-shrink-0 ${activeTab === 'jorgeflix' ? 'bg-[#E50914] text-white border-[#E50914]' : 'bg-[#1f2937] text-gray-300 border-white/10'}`}
+                            >
+                                <Icon name="compass" size={15} />
+                                <span>JorgeFlix</span>
+                            </button>
+                        </div>
 
-                        <button onClick={() => handleTabClick(navTabs.find(t=>t.id==='favorites'))} className={`flex-shrink-0 transition-colors active:scale-90 ${activeTab === 'favorites' ? 'text-[#E50914]' : 'text-gray-400 hover:text-white'}`} aria-label="Favoritos">
-                            <Icon name="heart" size={24} fill={activeTab === 'favorites' ? 'currentColor' : 'none'} />
+                        <button onClick={() => handleTabClick(navTabs.find(t=>t.id==='favorites'))} className={`flex-shrink-0 transition-colors active:scale-90 p-1 ${activeTab === 'favorites' ? 'text-[#E50914]' : 'text-gray-400 hover:text-white'}`} aria-label="Favoritos">
+                            <Icon name="heart" size={22} fill={activeTab === 'favorites' ? 'currentColor' : 'none'} />
                         </button>
                     </div>
 
-                    <div className="md:hidden fixed bottom-0 w-full bg-[#0f1115] border-t border-[#1f2937] z-50 flex py-2 pb-safe px-2 overflow-x-auto no-scrollbar snap-x items-center gap-2 relative shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
-                        <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#0f1115] to-transparent pointer-events-none z-10"></div>
-                        
-                        {navTabs.filter(t => !['jorgeflix', 'favorites'].includes(t.id)).map(tab => (
-                            <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-shrink-0 min-w-[64px] py-1.5 gap-1 snap-start transition-all active:scale-95 rounded-lg ${activeTab === tab.id && !tab.isExternal ? 'text-[#E50914] bg-white/5' : 'text-gray-400 hover:text-white'}`}>
-                                <Icon name={tab.icon} size={20} />
+                    {/* Barra Inferior Móvil */}
+                    <div className="md:hidden fixed bottom-0 w-full bg-[#0f1115] border-t border-[#1f2937] z-50 flex py-2 pb-safe px-2 overflow-x-auto no-scrollbar snap-x items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+                        {navTabs.filter(t => !['jorgeflix', 'favorites', 'radio'].includes(t.id)).map(tab => (
+                            <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-shrink-0 min-w-[56px] py-1 gap-1 snap-start transition-all active:scale-95 rounded-lg ${activeTab === tab.id && !tab.isExternal ? 'text-[#E50914] bg-white/5' : 'text-gray-400 hover:text-white'}`}>
+                                <Icon name={tab.icon} size={18} />
                                 <span className="text-[9px] font-medium tracking-wide">{tab.label}</span>
                             </button>
                         ))}
                     </div>
 
-                    <main className="flex-1 md:ml-24 min-h-screen pt-14 md:pt-0 pb-24 md:pb-0 relative z-10">
-                        {activeTab === 'jorgeflix' ? (
+                    {/* Contenido Principal */}
+                    <main className="flex-1 md:ml-24 min-h-screen pt-14 md:pt-0 pb-36 md:pb-0 relative z-10">
+                        {activeTab === 'radio' ? (
+                            <RadioSection 
+                                stations={RADIO_STATIONS} 
+                                currentStation={currentRadioStation}
+                                isPlaying={isRadioPlaying}
+                                onPlayStation={handlePlayRadioStation}
+                                favorites={radioFavorites}
+                                onToggleFavorite={toggleRadioFavorite}
+                                volume={radioVolume}
+                                setVolume={setRadioVolume}
+                                streamError={streamError}
+                                isLoading={isLoadingRadio}
+                                search={radioSearch}
+                                setSearch={setRadioSearch}
+                            />
+                        ) : activeTab === 'jorgeflix' ? (
                             <JorgeFlixSearch />
                         ) : activeTab === 'favorites' && !selectedItem ? (
                             <div className="p-4 sm:p-8 animate-fade-in">
@@ -460,11 +536,9 @@
                                             <Icon name="arrowLeft" size={16} /> <span>Volver</span>
                                         </button>
                                     </div>
-                                    {}
                                     {isLocked ? (
                                         <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} />
                                     ) : (selectedItem.type === 'movies' || selectedItem.type === 'movie') && selectedItem.url && selectedItem.url.includes('ok.ru') ? (
-                                        /* REPRODUCTOR ESPECIAL PARA OK.RU */
                                         <div className="relative w-full h-full flex flex-col items-center justify-center bg-[#090d16] p-6 text-center overflow-hidden">
                                             <img src={selectedItem.imagen || selectedItem.image} className="absolute inset-0 w-full h-full object-cover opacity-15 filter blur-xl" />
                                             <div className="relative z-10 max-w-lg bg-[#111827]/90 border border-white/10 p-6 sm:p-8 rounded-2xl backdrop-blur-md shadow-2xl flex flex-col items-center">
@@ -475,23 +549,13 @@
                                                 <p className="text-gray-400 text-xs sm:text-sm mb-6 leading-relaxed">
                                                     Esta película está alojada en OK.ru. Presiona el botón para iniciar la reproducción directamente en el servidor seguro.
                                                 </p>
-                                                <a 
-                                                    href={selectedItem.rawUrl || selectedItem.url} 
-                                                    target="_blank" 
-                                                    rel="noopener noreferrer" 
-                                                    className="w-full bg-[#E50914] hover:bg-red-700 text-white font-extrabold px-6 py-3.5 rounded-xl shadow-xl transition-transform active:scale-95 flex items-center justify-center gap-2 text-sm"
-                                                >
+                                                <a href={selectedItem.rawUrl || selectedItem.url} target="_blank" rel="noopener noreferrer" className="w-full bg-[#E50914] hover:bg-red-700 text-white font-extrabold px-6 py-3.5 rounded-xl shadow-xl transition-transform active:scale-95 flex items-center justify-center gap-2 text-sm">
                                                     <span>▶ REPRODUCIR EN OK.RU</span>
                                                 </a>
                                             </div>
                                         </div>
                                     ) : (
-                                        <iframe 
-                                            src={convertUrl((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedEpisode ? selectedEpisode.url : selectedItem.url)} 
-                                            className="w-full h-full border-0" 
-                                            allow="autoplay; encrypted-media; fullscreen" 
-                                            allowFullScreen
-                                        ></iframe>
+                                        <iframe src={convertUrl((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedEpisode ? selectedEpisode.url : selectedItem.url)} className="w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
                                     )}
                                 </div>
                                 {!isLocked && (
@@ -538,7 +602,6 @@
                             </div>
                         ) : (
                             <>
-                                {}
                                 <div className="sticky top-14 md:top-0 z-40 bg-[#111827]/95 backdrop-blur py-3 px-4 sm:px-8 flex items-center justify-between border-b border-[#1f2937]">
                                     <div className="flex bg-[#1f2937] border border-[#374151] rounded-full px-3 py-1.5 w-full max-w-md items-center focus-within:border-[#E50914] transition-colors">
                                         <Icon name="search" className="text-gray-400 w-4 h-4 mr-2.5" />
@@ -566,6 +629,115 @@
                             </>
                         )}
                     </main>
+
+                    {/* Barra reproductor flotante para la sección de Radio */}
+                    {currentRadioStation && (
+                        <div className="fixed bottom-[55px] md:bottom-0 left-0 md:left-24 right-0 bg-[#171c26]/95 backdrop-blur-xl border-t border-[#1f2937] p-3 sm:p-4 z-50 flex items-center justify-between shadow-[0_-10px_30px_rgba(0,0,0,0.5)] animate-slide-up">
+                            <div className="flex items-center gap-3 w-1/3 min-w-[120px]">
+                                <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 border border-white/10 hidden sm:block">
+                                    <img src={currentRadioStation.image} alt={currentRadioStation.title} className="w-full h-full object-cover" />
+                                </div>
+                                <div className="flex flex-col truncate">
+                                    <span className="font-bold text-sm text-white truncate">{currentRadioStation.title}</span>
+                                    {streamError ? (
+                                        <span className="text-xs text-red-500 truncate flex items-center gap-1.5 mt-0.5"><span className="w-1.5 h-1.5 rounded-full bg-red-500"></span> ERROR DE CONEXIÓN</span>
+                                    ) : isLoadingRadio ? (
+                                        <span className="text-xs text-yellow-500 truncate flex items-center gap-1.5 mt-0.5"><span className="w-2.5 h-2.5 border-2 border-yellow-500 border-t-transparent rounded-full animate-spin"></span> CONECTANDO...</span>
+                                    ) : (
+                                        <span className="text-xs text-[#E50914] truncate flex items-center gap-1.5 mt-0.5"><span className="w-1.5 h-1.5 rounded-full bg-[#E50914] animate-pulse"></span> EN DIRECTO</span>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col items-center justify-center flex-1">
+                                <div className="flex items-center gap-4">
+                                    <button onClick={() => {
+                                        if (streamError) {
+                                            if (audioRef.current) audioRef.current.dataset.currentUrl = "";
+                                            setStreamError(false);
+                                            setIsRadioPlaying(true);
+                                        } else {
+                                            setIsRadioPlaying(!isRadioPlaying);
+                                        }
+                                    }} className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-transform active:scale-95 ${streamError ? 'bg-red-900/50 hover:bg-red-800 text-white border border-red-500' : 'bg-white hover:bg-gray-200 text-black'}`}>
+                                        <Icon name={isRadioPlaying && !streamError ? "pause" : "play"} size={24} fill="currentColor" className={isRadioPlaying && !streamError ? "" : "ml-1"}/>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center justify-end gap-4 w-1/3">
+                                <div className="hidden sm:flex items-end h-6 gap-1 mr-4">
+                                    {[1,2,3,4,5].map(i => (<div key={i} className={`bar ${!isRadioPlaying ? 'paused-bar' : ''}`}></div>))}
+                                </div>
+                                <Icon name="volume" size={18} className="text-gray-400 hidden lg:block" />
+                                <input type="range" min="0" max="1" step="0.01" value={radioVolume} onChange={(e) => setRadioVolume(parseFloat(e.target.value))} className="w-24 accent-[#E50914] hidden lg:block"/>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const RadioSection = ({ stations, currentStation, isPlaying, onPlayStation, favorites, onToggleFavorite, volume, setVolume, streamError, isLoading, search, setSearch }) => {
+            const [radioTab, setRadioTab] = useState('all');
+            let displayed = radioTab === 'favorites' ? favorites : stations;
+            if (search.trim()) {
+                displayed = displayed.filter(s => s.title.toLowerCase().includes(search.toLowerCase()) || s.group.toLowerCase().includes(search.toLowerCase()));
+            }
+
+            return (
+                <div className="max-w-7xl mx-auto p-4 sm:p-8 animate-fade-in text-white pb-32">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 border-b border-white/10 pb-4">
+                        <div>
+                            <h1 className="text-2xl sm:text-3xl font-black flex items-center gap-2.5">
+                                <span className="p-2 bg-[#E50914]/20 rounded-xl text-[#E50914]"><Icon name="radio" size={24}/></span>
+                                MAGIS <span className="text-[#E50914]">RADIO</span>
+                            </h1>
+                            <p className="text-xs sm:text-sm text-gray-400 mt-1">Disfruta de las mejores emisoras de Costa Rica en vivo.</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <button onClick={() => setRadioTab('all')} className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${radioTab === 'all' ? 'bg-[#E50914] text-white shadow' : 'bg-[#1f2937] text-gray-400 hover:text-white'}`}>Todas ({stations.length})</button>
+                            <button onClick={() => setRadioTab('favorites')} className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${radioTab === 'favorites' ? 'bg-[#E50914] text-white shadow' : 'bg-[#1f2937] text-gray-400 hover:text-white'}`}>Favoritas ({favorites.length})</button>
+                        </div>
+                    </div>
+
+                    <div className="mb-6">
+                        <div className="flex bg-[#1f2937] border border-[#374151] rounded-full px-4 py-2.5 w-full max-w-md items-center focus-within:border-[#E50914] transition-colors">
+                            <Icon name="search" className="text-gray-400 w-4 h-4 mr-3" />
+                            <input type="text" placeholder="Buscar emisora o género..." className="bg-transparent w-full outline-none text-xs sm:text-sm placeholder-gray-500 text-white" value={search} onChange={(e) => setSearch(e.target.value)}/>
+                        </div>
+                    </div>
+
+                    {displayed.length === 0 ? (
+                        <div className="text-center py-20 text-gray-500 text-sm">
+                            <Icon name="radio" size={48} className="mx-auto mb-3 opacity-40"/>
+                            <p>No se encontraron emisoras.</p>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                            {displayed.map(station => {
+                                const isCurrentPlaying = currentStation?.id === station.id && isPlaying;
+                                const isFav = favorites.some(f => f.id === station.id);
+                                return (
+                                    <div key={station.id} onClick={() => onPlayStation(station)} className={`group bg-[#1f2937]/80 hover:bg-[#273244] border rounded-2xl p-4 cursor-pointer transition-all ${currentStation?.id === station.id ? 'border-[#E50914] shadow-[0_0_15px_rgba(229,9,20,0.25)]' : 'border-white/5'}`}>
+                                        <div className="relative aspect-square rounded-xl overflow-hidden mb-3 bg-black">
+                                            <img src={station.image} alt={station.title} className="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity" onError={(e) => e.target.src='https://placehold.co/300x300/111827/ffffff?text=Radio'}/>
+                                            <button onClick={(e) => onToggleFavorite(station, e)} className="absolute top-2 right-2 p-1.5 bg-black/60 rounded-full text-white backdrop-blur-sm z-20">
+                                                <Icon name="heart" size={16} className={isFav ? "text-[#E50914] fill-[#E50914]" : ""} fill={isFav ? "#E50914" : "none"} />
+                                            </button>
+                                            <div className={`absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity z-10 ${isCurrentPlaying ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white ${isCurrentPlaying ? 'bg-[#E50914] shadow-[0_0_15px_#E50914]' : 'bg-white/20 backdrop-blur-md border border-white/40'}`}>
+                                                    <Icon name={isCurrentPlaying ? "pause" : "play"} size={22} fill="currentColor"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h3 className="font-bold text-sm text-white truncate">{station.title}</h3>
+                                        <p className="text-xs text-gray-400 truncate mt-0.5">{station.group}</p>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    )}
                 </div>
             );
         };
@@ -579,16 +751,13 @@
             const [isListening, setIsListening] = useState(false);
             const [history, setHistory] = useState([]);
             const [engine, setEngine] = useState("yandex");
-
             const STORAGE_KEY = 'jorgeflix_history_v2';
 
             useEffect(() => {
                 try {
                     const h = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
                     setHistory(Array.isArray(h) ? h : []);
-                } catch (e) {
-                    setHistory([]);
-                }
+                } catch (e) { setHistory([]); }
             }, []);
 
             const buildQuery = () => {
@@ -622,13 +791,13 @@
                 };
                 r.onerror = (e) => {
                     let msg = "No se pudo usar el micrófono.";
-                    if (e.error === "not-allowed") msg = "❌ Permiso de micrófono bloqueado. Permítalo en el navegador.";
+                    if (e.error === "not-allowed") msg = "❌ Permiso de micrófono bloqueado.";
                     if (e.error === "no-speech") msg = "🎤 No detecté voz. Inténtelo nuevamente.";
                     setVoiceStatus(msg);
                 };
                 r.onend = () => {
                     setIsListening(false);
-                    if (query.trim()) setVoiceStatus("✅ Texto reconocido. Puede buscar.");
+                    if (query.trim()) setVoiceStatus("✅ Texto reconocido.");
                     else setVoiceStatus("🎤 Pulse el micrófono y diga el nombre de la película o serie.");
                 };
                 try { r.start(); } catch (e) { r.onend(); }
@@ -693,7 +862,7 @@
             };
 
             return (
-                <div className="max-w-4xl mx-auto p-4 sm:p-8 animate-fade-in text-white">
+                <div className="max-w-4xl mx-auto p-4 sm:p-8 animate-fade-in text-white pb-24">
                     <div className="text-center py-6">
                         <h1 className="text-3xl sm:text-4xl font-black mb-2">Buscador OK.ru <span className="text-[#E50914]">JorgeFlix</span></h1>
                         <p className="text-gray-400 text-xs sm:text-sm">Encuentra contenido en español alojado en OK.ru con los mejores motores de búsqueda.</p>
@@ -702,42 +871,17 @@
                     <div className="bg-[#11151d] border border-[#29303b] rounded-2xl p-4 sm:p-6 shadow-2xl mb-8">
                         <div className="grid grid-cols-1 md:grid-cols-[1fr_160px_110px] gap-3 mb-4">
                             <div className="relative">
-                                <input 
-                                    id="q" 
-                                    placeholder="Nombre de película o serie..." 
-                                    value={query} 
-                                    onChange={(e) => setQuery(e.target.value)} 
-                                    onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                                    className="w-full bg-[#090c11] border border-[#29303b] rounded-xl px-4 py-3 text-sm text-white outline-none pr-12 focus:border-gray-500" 
-                                    autoFocus 
-                                />
-                                <button 
-                                    type="button" 
-                                    onClick={startVoice} 
-                                    title="Buscar por voz" 
-                                    className={`absolute right-2 top-2 w-9 h-9 rounded-lg flex items-center justify-center text-lg ${isListening ? 'bg-[#E50914] animate-pulse' : 'bg-[#252b35]'}`}
-                                >
+                                <input placeholder="Nombre de película o serie..." value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={(e) => e.key === "Enter" && handleSearch()} className="w-full bg-[#090c11] border border-[#29303b] rounded-xl px-4 py-3 text-sm text-white outline-none pr-12 focus:border-gray-500" autoFocus />
+                                <button type="button" onClick={startVoice} title="Buscar por voz" className={`absolute right-2 top-2 w-9 h-9 rounded-lg flex items-center justify-center text-lg ${isListening ? 'bg-[#E50914] animate-pulse' : 'bg-[#252b35]'}`}>
                                     {isListening ? '🔴' : '🎤'}
                                 </button>
                             </div>
-                            <select 
-                                value={typeVal} 
-                                onChange={(e) => setTypeVal(e.target.value)}
-                                className="bg-[#090c11] border border-[#29303b] rounded-xl px-3 py-3 text-sm text-white outline-none"
-                            >
+                            <select value={typeVal} onChange={(e) => setTypeVal(e.target.value)} className="bg-[#090c11] border border-[#29303b] rounded-xl px-3 py-3 text-sm text-white outline-none">
                                 <option value="">Películas y series</option>
                                 <option value="película">Películas</option>
                                 <option value="serie">Series</option>
                             </select>
-                            <input 
-                                inputMode="numeric" 
-                                maxLength="4" 
-                                placeholder="Año" 
-                                value={yearVal} 
-                                onChange={(e) => setYearVal(e.target.value)}
-                                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                                className="bg-[#090c11] border border-[#29303b] rounded-xl px-3 py-3 text-sm text-white outline-none text-center" 
-                            />
+                            <input inputMode="numeric" maxLength="4" placeholder="Año" value={yearVal} onChange={(e) => setYearVal(e.target.value)} onKeyDown={(e) => e.key === "Enter" && handleSearch()} className="bg-[#090c11] border border-[#29303b] rounded-xl px-3 py-3 text-sm text-white outline-none text-center" />
                         </div>
 
                         <div className="flex flex-wrap gap-2 mb-4">
@@ -748,18 +892,13 @@
                                 { lang: "doblada", label: "🎙️ Doblada" },
                                 { lang: "subtitulada", label: "💬 Subtitulada" }
                             ].map((f, i) => (
-                                <button 
-                                    key={i} 
-                                    onClick={() => setLang(f.lang)} 
-                                    className={`px-3.5 py-1.5 rounded-full text-xs font-medium border transition-colors ${lang === f.lang ? 'bg-white text-black border-white' : 'bg-[#171c25] border-[#29303b] text-[#cbd2dc] hover:border-gray-500'}`}
-                                >
+                                <button key={i} onClick={() => setLang(f.lang)} className={`px-3.5 py-1.5 rounded-full text-xs font-medium border transition-colors ${lang === f.lang ? 'bg-white text-black border-white' : 'bg-[#171c25] border-[#29303b] text-[#cbd2dc] hover:border-gray-500'}`}>
                                     {f.label}
                                 </button>
                             ))}
                         </div>
 
                         <div className="text-xs text-gray-400 mb-4">{voiceStatus}</div>
-                        
                         <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Comando de búsqueda generado</div>
                         <div className="bg-[#080a0e] p-3 rounded-lg font-mono text-xs text-red-400 overflow-x-auto mb-5 border border-[#29303b]">
                             {engine === 'okru' ? "Búsqueda directa en motor interno de OK.ru" : currentCmd}
@@ -768,10 +907,10 @@
                         <div className="mb-6">
                             <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Motor de búsqueda</div>
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                                <button onClick={() => setEngine('yandex')} className={`py-2 rounded-lg text-xs font-bold transition-all ${engine === 'yandex' ? 'bg-[#ffcc00] text-black shadow-[0_0_10px_rgba(255,204,0,0.3)]' : 'bg-[#171c25] border border-[#29303b] text-gray-400 hover:text-white hover:border-[#ffcc00]/50'}`}>Yandex (Recomendado)</button>
-                                <button onClick={() => setEngine('okru')} className={`py-2 rounded-lg text-xs font-bold transition-all ${engine === 'okru' ? 'bg-[#f58220] text-white shadow-[0_0_10px_rgba(245,130,32,0.3)]' : 'bg-[#171c25] border border-[#29303b] text-gray-400 hover:text-white hover:border-[#f58220]/50'}`}>Nativo OK.ru</button>
-                                <button onClick={() => setEngine('google')} className={`py-2 rounded-lg text-xs font-bold transition-all ${engine === 'google' ? 'bg-white text-black shadow-[0_0_10px_rgba(255,255,255,0.3)]' : 'bg-[#171c25] border border-[#29303b] text-gray-400 hover:text-white hover:border-white/50'}`}>Google</button>
-                                <button onClick={() => setEngine('bing')} className={`py-2 rounded-lg text-xs font-bold transition-all ${engine === 'bing' ? 'bg-[#00aad9] text-white shadow-[0_0_10px_rgba(0,170,217,0.3)]' : 'bg-[#171c25] border border-[#29303b] text-gray-400 hover:text-white hover:border-[#00aad9]/50'}`}>Bing</button>
+                                <button onClick={() => setEngine('yandex')} className={`py-2 rounded-lg text-xs font-bold transition-all ${engine === 'yandex' ? 'bg-[#ffcc00] text-black shadow-[0_0_10px_rgba(255,204,0,0.3)]' : 'bg-[#171c25] border border-[#29303b] text-gray-400 hover:text-white'}`}>Yandex (Recomendado)</button>
+                                <button onClick={() => setEngine('okru')} className={`py-2 rounded-lg text-xs font-bold transition-all ${engine === 'okru' ? 'bg-[#f58220] text-white shadow-[0_0_10px_rgba(245,130,32,0.3)]' : 'bg-[#171c25] border border-[#29303b] text-gray-400 hover:text-white'}`}>Nativo OK.ru</button>
+                                <button onClick={() => setEngine('google')} className={`py-2 rounded-lg text-xs font-bold transition-all ${engine === 'google' ? 'bg-white text-black shadow-[0_0_10px_rgba(255,255,255,0.3)]' : 'bg-[#171c25] border border-[#29303b] text-gray-400 hover:text-white'}`}>Google</button>
+                                <button onClick={() => setEngine('bing')} className={`py-2 rounded-lg text-xs font-bold transition-all ${engine === 'bing' ? 'bg-[#00aad9] text-white shadow-[0_0_10px_rgba(0,170,217,0.3)]' : 'bg-[#171c25] border border-[#29303b] text-gray-400 hover:text-white'}`}>Bing</button>
                             </div>
                         </div>
 
@@ -788,11 +927,7 @@
                         ) : (
                             <div className="flex flex-wrap gap-2 items-center">
                                 {history.map((x, idx) => (
-                                    <button 
-                                        key={idx} 
-                                        onClick={() => repeatHistory(x)} 
-                                        className="bg-[#181e28] border border-[#29303b] hover:border-gray-500 text-[#d8dde5] text-xs px-3.5 py-2 rounded-full transition-colors"
-                                    >
+                                    <button key={idx} onClick={() => repeatHistory(x)} className="bg-[#181e28] border border-[#29303b] hover:border-gray-500 text-[#d8dde5] text-xs px-3.5 py-2 rounded-full transition-colors">
                                         {x.title} {x.y ? `· ${x.y}` : ''}
                                     </button>
                                 ))}
@@ -828,23 +963,14 @@
             return (
                 <div className="relative w-full h-[320px] sm:h-[380px] bg-[#0b0f19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-white/5 flex items-center">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        <img 
-                            src={imgSource} 
-                            alt="Hero BG" 
-                            className="w-full h-full object-cover filter blur-md opacity-75 scale-125 brightness-125 contrast-125" 
-                            onError={(e) => e.target.style.display='none'} 
-                        />
+                        <img src={imgSource} alt="Hero BG" className="w-full h-full object-cover filter blur-md opacity-75 scale-125 brightness-125 contrast-125" onError={(e) => e.target.style.display='none'} />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f19]/80 via-[#0b0f19]/40 to-transparent"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent"></div>
                     </div>
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-start px-6 sm:px-12 max-w-7xl mx-auto gap-8">
                         <div className="w-32 sm:w-44 aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/20 flex-shrink-0 bg-black/50 transform group-hover:scale-105 transition-transform duration-300 relative">
                             <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/1f2937/ffffff?text=Poster'} />
-                            {isExternalMovie && (
-                                <span className="absolute bottom-2 right-2 bg-black/80 text-orange-400 text-[9px] font-bold px-1.5 py-0.5 rounded flex items-center gap-1 shadow border border-orange-500/30" title="Se abre en pestaña externa">
-                                    🌐 Externo
-                                </span>
-                            )}
+                            {isExternalMovie && (<span className="absolute bottom-2 right-2 bg-black/80 text-orange-400 text-[9px] font-bold px-1.5 py-0.5 rounded flex items-center gap-1 shadow border border-orange-500/30">🌐 Externo</span>)}
                         </div>
                         <div className="flex-1 flex flex-col gap-2 items-start max-w-xl">
                             <span className="bg-[#E50914] text-white text-[9px] font-extrabold px-2.5 py-1 rounded uppercase tracking-wider shadow">Destacado</span>
@@ -913,6 +1039,7 @@
                 tv: <path d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />,
                 film: <path d="M19.82 2H4.18C2.97 2 2 2.97 2 4.18v15.64C2 21.03 2.97 22 4.18 22h15.64c1.21 0 2.18-.97 2.18-2.18V4.18C22 2.97 21.03 2 19.82 2zM7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5" />,
                 play: <path d="M5 3l14 9-14 9V3z" />,
+                pause: <path d="M6 4h4v16H6zM14 4h4v16h-4z" />,
                 heart: <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />,
                 arrowLeft: <path d="M19 12H5m7 7l-7-7 7-7" />,
                 chevronDown: <path d="M6 9l6 6 6-6" />,
@@ -921,8 +1048,9 @@
                 lock: <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a7 7 0 00-14 0v2" />,
                 smile: <g><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></g>,
                 compass: <g><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></g>,
-                // Nuevo icono musical
-                music: <g><path d="M9 18V5l12-2v13"></path><path d="M9 9l12-2"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></g>
+                music: <g><path d="M9 18V5l12-2v13"></path><path d="M9 9l12-2"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></g>,
+                radio: <path d="M2 12a10 10 0 0110-10 10 10 0 0110 10M6 12a6 6 0 016-6 6 6 0 016 6M10 12a2 2 0 012-2 2 2 0 012 2v8a2 2 0 01-2 2 2 2 0 01-2-2v-8z" />,
+                volume: <path d="M11 5L6 9H2v6h4l5 4V5z M15.54 8.46a5 5 0 010 7.07 M19.07 4.93a10 10 0 010 14.14" />
             };
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
