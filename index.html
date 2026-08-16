@@ -37,6 +37,73 @@
         .animate-slide-up { animation: slideUp 0.5s ease-out; }
         .text-gold-gradient { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+
+        /* Indicador visible del explorador Jorge Flix SOLO en móvil */
+        .jorgeflix-mobile-guide {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 5px 9px 5px 7px;
+            border: 1px solid rgba(229,9,20,.75);
+            border-radius: 13px;
+            background: linear-gradient(135deg, rgba(229,9,20,.18), rgba(17,24,39,.96));
+            box-shadow: 0 0 12px rgba(229,9,20,.18), inset 0 0 10px rgba(255,255,255,.025);
+            min-width: 118px;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+        .jorgeflix-mobile-guide:active { transform: scale(.96); }
+        .jorgeflix-mobile-guide-icon {
+            width: 29px;
+            height: 29px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: rgba(229,9,20,.16);
+            border: 1px solid rgba(229,9,20,.45);
+            flex-shrink: 0;
+        }
+        .jorgeflix-mobile-guide-arrow {
+            position: absolute;
+            top: -12px;
+            left: 16px;
+            color: #E50914;
+            font-size: 16px;
+            line-height: 1;
+            font-weight: 900;
+            animation: guideBounce 1.2s ease-in-out infinite;
+            transform: rotate(28deg);
+            text-shadow: 0 0 8px rgba(229,9,20,.55);
+        }
+        @keyframes guideBounce {
+            0%,100% { transform: translateY(0) rotate(28deg); opacity: .75; }
+            50% { transform: translateY(3px) rotate(28deg); opacity: 1; }
+        }
+        .jorgeflix-mobile-guide-title {
+            font-size: 11px;
+            line-height: 12px;
+            font-weight: 800;
+            color: white;
+            white-space: nowrap;
+        }
+        .jorgeflix-mobile-guide-subtitle {
+            font-size: 8px;
+            line-height: 10px;
+            color: #f87171;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            white-space: nowrap;
+        }
+        @media (max-width: 360px) {
+            .jorgeflix-mobile-guide { min-width: 104px; padding-right: 7px; gap: 5px; }
+            .jorgeflix-mobile-guide-title { font-size: 10px; }
+            .jorgeflix-mobile-guide-subtitle { font-size: 7px; }
+            .jorgeflix-mobile-guide-icon { width: 27px; height: 27px; }
+        }
+
         button:focus, div[tabindex="0"]:focus, input:focus, select:focus { outline: none; }
     </style>
 </head>
@@ -310,18 +377,31 @@
                         </div>
                     </aside>
 
-                    <div className="md:hidden fixed top-0 w-full bg-[#111827]/95 backdrop-blur z-50 px-4 py-3 flex items-center justify-between border-b border-[#1f2937]">
-                        <div className="flex items-center gap-2 font-black text-lg tracking-tighter cursor-pointer" onClick={() => handleTabClick(navTabs[0])}>
+                    <div className="md:hidden fixed top-0 w-full bg-[#111827]/95 backdrop-blur z-50 px-2.5 sm:px-4 py-3 flex items-center justify-between border-b border-[#1f2937] gap-2">
+                        <div className="flex items-center gap-1.5 font-black text-lg tracking-tighter cursor-pointer flex-shrink-0" onClick={() => handleTabClick(navTabs[0])}>
                             <span className="text-[#E50914]">MAGIS</span> TUBE
                         </div>
-                        <div className="flex items-center gap-5 text-gray-400">
-                            <button onClick={() => handleTabClick(navTabs.find(t=>t.id==='jorgeflix'))} className={`transition-colors active:scale-90 ${activeTab === 'jorgeflix' ? 'text-[#E50914]' : 'hover:text-white'}`}>
-                                <Icon name="compass" size={22} />
-                            </button>
-                            <button onClick={() => handleTabClick(navTabs.find(t=>t.id==='favorites'))} className={`transition-colors active:scale-90 ${activeTab === 'favorites' ? 'text-[#E50914]' : 'hover:text-white'}`}>
-                                <Icon name="heart" size={22} fill={activeTab === 'favorites' ? 'currentColor' : 'none'} />
-                            </button>
-                        </div>
+
+                        {/* NUEVO: indicador visible del explorador en móvil */}
+                        <button
+                            onClick={() => handleTabClick(navTabs.find(t=>t.id==='jorgeflix'))}
+                            aria-label="Abrir Jorge Flix, explorador de películas y series"
+                            title="Jorge Flix - Explorador de películas y series"
+                            className={`jorgeflix-mobile-guide text-left ${activeTab === 'jorgeflix' ? 'ring-2 ring-[#E50914]/50' : ''}`}
+                        >
+                            <span className="jorgeflix-mobile-guide-arrow">↙</span>
+                            <span className="jorgeflix-mobile-guide-icon">
+                                <Icon name="compass" size={20} />
+                            </span>
+                            <span className="flex flex-col min-w-0">
+                                <span className="jorgeflix-mobile-guide-title">Jorge Flix</span>
+                                <span className="jorgeflix-mobile-guide-subtitle">Explorador</span>
+                            </span>
+                        </button>
+
+                        <button onClick={() => handleTabClick(navTabs.find(t=>t.id==='favorites'))} className={`flex-shrink-0 transition-colors active:scale-90 ${activeTab === 'favorites' ? 'text-[#E50914]' : 'text-gray-400 hover:text-white'}`} aria-label="Favoritos">
+                            <Icon name="heart" size={24} fill={activeTab === 'favorites' ? 'currentColor' : 'none'} />
+                        </button>
                     </div>
 
                     <div className="md:hidden fixed bottom-0 w-full bg-[#0f1115] border-t border-[#1f2937] z-50 flex py-2 pb-safe px-2 overflow-x-auto no-scrollbar snap-x items-center gap-2 relative shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
