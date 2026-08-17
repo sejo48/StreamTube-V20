@@ -83,12 +83,11 @@
             setItem: (key, value) => { try { localStorage.setItem(key, value); } catch (e) { } }
         };
 
-        const timestamp = Date.now();
         const URLS = {
-            TV: `https://raw.githubusercontent.com/sejo48/retrom3u/refs/heads/main/listaoficial.m3u?t=${timestamp}`,
-            SERIES: `https://raw.githubusercontent.com/sejo48/jorgedrive/refs/heads/main/playlist.json?t=${timestamp}`,
-            MOVIES: `https://raw.githubusercontent.com/sejo48/peliculas/refs/heads/main/peliculas.json?t=${timestamp}`,
-            ANIMADOS: `https://raw.githubusercontent.com/sejo48/animados./refs/heads/main/animados.json?t=${timestamp}`
+            TV: './listaoficial.m3u',
+            SERIES: './playlist.json',
+            MOVIES: './peliculas.json',
+            ANIMADOS: './animados.json'
         };
 
         const RADIO_STATIONS = [
@@ -242,7 +241,7 @@
 
                         setContent({ tv: tvChannels, movies: moviesList, series: seriesList, animados: animadosList });
                     } catch (err) {
-                        console.error("Error cargando contenido remoto", err);
+                        console.error("Error cargando contenido local", err);
                     } finally {
                         setLoading(false);
                     }
