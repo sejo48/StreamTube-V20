@@ -1,0 +1,79 @@
+[
+  {
+    "id": "cr-sinfonola",
+    "title": "Radio Sinfonola 90.3 FM",
+    "group": "Romántica / Clásicos",
+    "image": "https://static.mytuner.mobi/media/tvos_radios/415/radio-sinfonola.79d5c3e6.png",
+    "url": "https://live.turadio.stream:7006/;"
+  },
+  {
+    "id": "cr-hit",
+    "title": "Hit 104.7 FM",
+    "group": "Juvenil / Pop",
+    "image": "https://static.mytuner.mobi/media/tvos_radios/164/radio-hit-1047-fm.1180f4a3.jpg",
+    "url": "https://live.turadio.stream:7004/stream?nocache=596&type=http"
+  },
+  {
+    "id": "cr-crc",
+    "title": "CRC 94.7 FM",
+    "group": "Alternativo / Rock",
+    "image": "https://static.mytuner.mobi/media/tvos_radios/nAwNLxJbnm.png",
+    "url": "https://23263.live.streamtheworld.com/CRC_947AAC_SC"
+  },
+  {
+    "id": "cr-zeta",
+    "title": "Zeta FM 95.1",
+    "group": "Tropical / Latina",
+    "image": "https://static.mytuner.mobi/media/tvos_radios/879/zeta-fm.feb3fb70.png",
+    "url": "https://d5g44yionyslb.cloudfront.net/medialist_14854753276708185244_hls.m3u8"
+  },
+  {
+    "id": "cr-monumental",
+    "title": "Radio Monumental 93.5 FM",
+    "group": "Noticias / Deportes",
+    "image": "https://static.mytuner.mobi/media/tvos_radios/574/radio-monumental.7303764d.png",
+    "url": "https://d26gdpbozqq700.cloudfront.net/medialist_14854753276708185244_hls.m3u8"
+  },
+  {
+    "id": "cr-mejor",
+    "title": "La Mejor 99.1 FM",
+    "group": "Regional / Latina",
+    "image": "https://static.mytuner.mobi/media/tvos_radios/575/la-mejor-991.95c72890.png",
+    "url": "https://d3svz5xnvdysyz.cloudfront.net/medialist_14854753276708185244_hls.m3u8"
+  },
+  {
+    "id": "cr-r2",
+    "title": "Radio Dos 99.5 FM",
+    "group": "Clásicos / Rock",
+    "image": "https://placehold.co/300x300/0033a0/ffffff?text=R2",
+    "url": "https://icecasthd.teletica.com/radiodos"
+  },
+  {
+    "id": "cr-los40",
+    "title": "Los 40 Costa Rica 104.3 FM",
+    "group": "Éxitos / Urbano",
+    "image": "https://placehold.co/300x300/ffcc00/000000?text=Los40",
+    "url": "https://icecasthd.teletica.com/los40"
+  },
+  {
+    "id": "cr-disney",
+    "title": "Radio Disney 101.1 FM",
+    "group": "Pop / Éxitos",
+    "image": "https://static.mytuner.mobi/media/tvos_radios/652/radio-disney-costa-rica.d297c76c.jpg",
+    "url": "https://26673.live.streamtheworld.com/DISNEY_CRI_SJ_ADP/HLS/031b1ae7-b742-4bf3-8001-31b8478440ef/0/playlist.m3u8"
+  },
+  {
+    "id": "cr-wao",
+    "title": "WAO 92.3 FM",
+    "group": "Urbano / Reggaeton",
+    "image": "https://placehold.co/300x300/fd7e14/ffffff?text=WAO",
+    "url": "https://icecasthd.teletica.com/wao"
+  },
+  {
+    "id": "cr-musical",
+    "title": "Radio Musical 97.5 FM",
+    "group": "Romántica / Latina",
+    "image": "https://static.mytuner.mobi/media/tvos_radios/085/radio-musical.fea3e089.jpg",
+    "url": "https://live.turadio.stream:7005/stream/1/"
+  }
+]
