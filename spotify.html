@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-black text-white selection:bg-emerald-500 selection:text-black">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotity Local - Reproductor para Disco Duro</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        sp: {
+                            green: '#1DB954',
+                            greenHover: '#1ed760',
+                            black: '#000000',
+                            dark: '#121212',
+                            card: '#181818',
+                            cardHover: '#282828',
+                            subtext: '#b3b3b3',
+                            border: '#282828'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #121212; }
+        ::-webkit-scrollbar-thumb { background: #3e3e3e; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1DB954; }
+        
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            transition: all 0.2s ease;
+        }
+        .range-slider:hover::-webkit-slider-thumb {
+            background: #1DB954;
+            transform: scale(1.25);
+        }
+        .album-card-play {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        .album-card:hover .album-card-play {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .spin-vinyl {
+            animation: spinSlow 10s linear infinite;
+        }
+        .vinyl-paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.08); }
+        }
+        .ambient-glow {
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        /* Equalizer Bars Animation */
+        .eq-bar-container {
+            display: inline-flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 14px;
+        }
+        .eq-bar {
+            width: 3px;
+            background-color: #1DB954;
+            border-radius: 1px;
+            animation: eqBounce 0.8s ease-in-out infinite alternate;
+        }
+        .eq-bar:nth-child(1) { height: 30%; animation-delay: 0.1s; }
+        .eq-bar:nth-child(2) { height: 100%; animation-delay: 0.3s; }
+        .eq-bar:nth-child(3) { height: 60%; animation-delay: 0.2s; }
+        .eq-bar:nth-child(4) { height: 80%; animation-delay: 0.4s; }
+
+        @keyframes eqBounce {
+            0% { height: 20%; }
+            100% { height: 100%; }
+        }
+        .eq-paused .eq-bar {
+            animation-play-state: paused !important;
+            height: 25% !important;
+            opacity: 0.4;
+        }
+
+        .track-row:hover .track-title,
+        .track-row:hover .track-num {
+            color: #1DB954 !important;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col font-sans overflow-hidden select-none bg-black text-slate-100">
+
+    <div class="flex flex-1 h-[calc(100vh-90px)] overflow-hidden p-2 gap-2">
+        
+        <!-- SIDEBAR NAVIGATION (DESKTOP) -->
+        <aside class="w-64 bg-sp-dark rounded-xl flex flex-col gap-2 p-3 hidden md:flex shrink-0 border border-sp-border shadow-2xl">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3 px-3 py-3 mb-1">
+                <div class="w-9 h-9 rounded-full bg-sp-green flex items-center justify-center text-black font-black text-xl shadow-lg shadow-sp-green/20">
+                    <i class="fa-solid fa-compact-disc text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight text-white block leading-tight">Spotity <span class="text-sp-green">Local</span></span>
+                    <span class="text-[10px] text-sp-subtext font-semibold uppercase tracking-wider block">Disco Duro Personal</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="space-y-1">
+                <button onclick="window.switchTab('home')" id="nav-home" class="w-full flex items-center gap-4 px-3.5 py-3 rounded-lg text-white bg-sp-card font-bold transition">
+                    <i class="fa-solid fa-house text-lg w-5 text-sp-green"></i> Inicio
+                </button>
+                <button onclick="window.switchTab('albums')" id="nav-albums" class="w-full flex items-center gap-4 px-3.5 py-3 rounded-lg text-sp-subtext hover:text-white hover:bg-sp-card font-bold transition">
+                    <i class="fa-solid fa-folder-closed text-lg w-5 text-amber-400"></i> Carpetas / Álbumes
+                </button>
+                <button onclick="window.switchTab('equalizer')" id="nav-equalizer" class="w-full flex items-center gap-4 px-3.5 py-3 rounded-lg text-sp-subtext hover:text-white hover:bg-sp-card font-bold transition">
+                    <i class="fa-solid fa-sliders text-lg w-5 text-cyan-400"></i> Ecualizador
+                </button>
+            </nav>
+
+            <hr class="border-sp-border my-2">
+
+            <!-- Load Directory Action Box -->
+            <div class="p-3 bg-sp-card rounded-xl border border-sp-border/80 space-y-2">
+                <div class="flex items-center justify-between text-xs font-bold text-white">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-hard-drive text-sp-green"></i> Disco duro</span>
+                    <span id="storage-status-badge" class="text-[9px] bg-sp-green/20 text-sp-green px-2 py-0.5 rounded-full font-mono">Guardado</span>
+                </div>
+                <p class="text-[11px] text-sp-subtext leading-relaxed">Selecciona la carpeta principal de tu disco duro. Todas sus subcarpetas se organizarán en álbumes.</p>
+                <label class="w-full mt-1 py-2.5 px-3 bg-sp-green hover:bg-sp-greenHover text-black font-extrabold text-xs rounded-full flex items-center justify-center gap-2 cursor-pointer transition shadow-md">
+                    <i class="fa-solid fa-folder-open"></i> Importar Carpeta Principal
+                    <input type="file" id="sidebar-folder-input" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
+                </label>
+            </div>
+
+            <div class="flex items-center justify-between px-2 pt-2 text-sp-subtext">
+                <span class="font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
+                    <i class="fa-solid fa-layer-group text-sp-green"></i> Colección Local
+                </span>
+                <span class="text-[10px] bg-sp-card px-2 py-0.5 rounded-full font-mono text-white" id="sidebar-album-count">0 álbumes</span>
+            </div>
+
+            <div id="sidebar-albums-list" class="flex-1 overflow-y-auto space-y-1 pr-1">
+                <div class="p-4 text-center text-xs text-sp-subtext">
+                    Cargando memoria local...
+                </div>
+            </div>
+
+            <!-- Memory Clear Control -->
+            <div class="pt-2 border-t border-sp-border/60 flex items-center justify-between px-2">
+                <span id="storage-size-label" class="text-[10px] text-sp-subtext font-mono">0 MB en memoria</span>
+                <button onclick="window.promptClearLibrary()" title="Borrar datos guardados en memoria local" class="text-[10px] text-red-400 hover:text-red-300 hover:underline flex items-center gap-1">
+                    <i class="fa-solid fa-trash-can"></i> Limpiar
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN VIEW AREA -->
+        <main class="flex-1 bg-sp-dark rounded-xl overflow-hidden flex flex-col border border-sp-border relative shadow-2xl">
+            
+            <header class="h-16 px-4 md:px-6 flex items-center justify-between bg-sp-dark/95 backdrop-blur-md sticky top-0 z-20 border-b border-sp-border gap-2">
+                <div class="flex items-center gap-3 w-full max-w-lg">
+                    <div class="flex gap-2">
+                        <button onclick="window.switchTab('home')" class="w-8 h-8 rounded-full bg-black/60 flex items-center justify-center text-sp-subtext hover:text-white transition">
+                            <i class="fa-solid fa-chevron-left text-xs"></i>
+                        </button>
+                        <button onclick="window.switchTab('albums')" class="w-8 h-8 rounded-full bg-black/60 flex items-center justify-center text-sp-subtext hover:text-white transition">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="relative flex-1">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-sp-subtext text-xs"></i>
+                        <input type="text" id="global-search" oninput="window.handleGlobalSearch(this.value)" placeholder="Buscar canción, álbum o artista..."
+                               class="w-full bg-sp-card text-xs text-white placeholder-sp-subtext rounded-full pl-9 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-sp-green border border-sp-border transition">
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <label class="md:hidden p-2.5 bg-sp-green text-black font-bold text-xs rounded-full flex items-center gap-1 cursor-pointer">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <input type="file" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
+                    </label>
+
+                    <label class="hidden sm:flex px-4 py-2 bg-sp-card hover:bg-sp-cardHover text-white text-xs font-bold rounded-full border border-sp-border items-center gap-2 cursor-pointer transition">
+                        <i class="fa-solid fa-file-audio text-sp-green"></i> Añadir Archivos
+                        <input type="file" accept="audio/*" multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
+                    </label>
+
+                    <button onclick="window.toggleVisualizer()" title="Espectro de Frecuencias" class="p-2.5 rounded-full bg-sp-card hover:bg-sp-cardHover text-sp-green transition border border-sp-border">
+                        <i class="fa-solid fa-chart-simple text-sm"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="md:hidden bg-black/80 px-4 py-2 border-b border-sp-border flex items-center justify-around text-xs font-bold text-sp-subtext">
+                <button onclick="window.switchTab('home')" id="mob-nav-home" class="flex items-center gap-1 text-sp-green">
+                    <i class="fa-solid fa-house"></i> Inicio
+                </button>
+                <button onclick="window.switchTab('albums')" id="mob-nav-albums" class="flex items-center gap-1">
+                    <i class="fa-solid fa-folder"></i> Álbumes
+                </button>
+                <button onclick="window.switchTab('equalizer')" id="mob-nav-equalizer" class="flex items-center gap-1">
+                    <i class="fa-solid fa-sliders"></i> EQ
+                </button>
+            </div>
+
+            <!-- VISUALIZER BANNER (SIEMPRE VISIBLE / AUTOMÁTICO EN LA PARTE SUPERIOR) -->
+            <div id="visualizer-container" class="shrink-0 bg-black/95 backdrop-blur-xl border-b border-sp-border p-4 md:p-6 relative overflow-hidden transition-all duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-10">
+                <div class="absolute inset-0 bg-gradient-to-b from-sp-green/10 to-transparent opacity-50 ambient-glow pointer-events-none"></div>
+                
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
+                    <div class="flex items-center gap-4 max-w-xl w-full">
+                        <div class="relative group shrink-0">
+                            <img id="vis-cover" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=120&h=120&fit=crop" class="w-14 h-14 md:w-16 md:h-16 rounded-md object-cover shadow-[0_0_15px_rgba(29,185,84,0.3)] border border-sp-border/80">
+                            <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-sp-green rounded-full flex items-center justify-center animate-bounce shadow-lg">
+                                <i class="fa-solid fa-music text-[10px] text-black"></i>
+                            </div>
+                        </div>
+                        <div class="truncate">
+                            <div class="flex items-center gap-2">
+                                <span class="text-[10px] text-sp-green font-extrabold uppercase tracking-widest block"><i class="fa-solid fa-wave-square animate-pulse mr-1"></i> Animación Automática</span>
+                                <div id="vis-eq-indicator" class="eq-bar-container eq-paused">
+                                    <div class="eq-bar"></div>
+                                    <div class="eq-bar"></div>
+                                    <div class="eq-bar"></div>
+                                    <div class="eq-bar"></div>
+                                </div>
+                            </div>
+                            <h3 id="vis-title" class="text-white font-black text-base md:text-xl tracking-tight truncate">Carga tu música</h3>
+                            <p id="vis-artist" class="text-sp-subtext text-xs md:text-sm truncate">Spotity Local Player</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Controls for Visualizer Mode -->
+                    <div class="flex items-center gap-2 bg-sp-card p-1 rounded-lg border border-sp-border self-start md:self-center shrink-0">
+                        <button onclick="window.setVisMode('bars')" id="vis-mode-bars" class="px-2.5 py-1.5 rounded-md text-[11px] font-bold text-black bg-sp-green transition">Espectro</button>
+                        <button onclick="window.setVisMode('wave')" id="vis-mode-wave" class="px-2.5 py-1.5 rounded-md text-[11px] font-bold text-sp-subtext hover:text-white transition">Osciloscopio</button>
+                        <button onclick="window.setVisMode('aura')" id="vis-mode-aura" class="px-2.5 py-1.5 rounded-md text-[11px] font-bold text-sp-subtext hover:text-white transition">Aura Pulsante</button>
+                    </div>
+                </div>
+                
+                <canvas id="visualizer-canvas" class="relative z-10 w-full h-20 md:h-28 bg-sp-dark/60 rounded-xl border border-sp-border/80 shadow-inner"></canvas>
+            </div>
+
+            <!-- Scroll View Container -->
+            <div id="main-scroll-view" class="flex-1 overflow-y-auto p-4 md:p-6 space-y-8">
+                
+                <section id="tab-home" class="space-y-8">
+                    <!-- Hero Spotify Local Banner -->
+                    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-950 via-sp-dark to-black p-6 md:p-8 border border-sp-green/30 shadow-2xl">
+                        <div class="relative z-10 max-w-xl space-y-3">
+                            <span class="px-3 py-1 bg-sp-green/20 text-sp-green text-xs font-extrabold uppercase rounded-full tracking-wider border border-sp-green/30">
+                                Memoria Local Persistente
+                            </span>
+                            <h1 class="text-2xl md:text-5xl font-black text-white tracking-tight">
+                                Reproductor de Disco Duro
+                            </h1>
+                            <p class="text-sp-subtext text-xs md:text-sm leading-relaxed">
+                                Selecciona la carpeta principal de tu disco duro. Todas tus canciones, clasificaciones por carpetas y portadas personalizadas quedarán guardadas permanentemente en tu navegador.
+                            </p>
+                            <div class="flex flex-wrap items-center gap-3 pt-2">
+                                <label class="px-5 py-2.5 bg-sp-green hover:bg-sp-greenHover text-black font-extrabold text-xs md:text-sm rounded-full shadow-lg shadow-sp-green/30 flex items-center gap-2 cursor-pointer transition transform active:scale-95">
+                                    <i class="fa-solid fa-folder-open"></i> Cargar Carpeta Principal
+                                    <input type="file" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
+                                </label>
+                                <button onclick="window.switchTab('albums')" class="px-5 py-2.5 bg-sp-card hover:bg-sp-cardHover border border-sp-border text-white text-xs md:text-sm font-bold rounded-full transition flex items-center gap-2">
+                                    <i class="fa-solid fa-grip text-sp-green"></i> Ver Álbumes
+                                </button>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-database text-8xl md:text-9xl absolute -right-6 -bottom-6 text-sp-green/10 transform rotate-12 pointer-events-none"></i>
+                    </div>
+
+                    <!-- Albums Overview -->
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-xl md:text-2xl font-black text-white tracking-tight flex items-center gap-2.5">
+                                <i class="fa-solid fa-record-vinyl text-sp-green"></i> Álbumes en Memoria
+                            </h2>
+                            <button onclick="window.switchTab('albums')" class="text-xs font-bold text-sp-subtext hover:text-sp-green transition">
+                                Ver todo (<span id="home-album-count">0</span>)
+                            </button>
+                        </div>
+                        <div id="home-albums-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+                    </div>
+
+                    <!-- All Local Tracks Table -->
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-xl md:text-2xl font-black text-white tracking-tight">Todas las Canciones Guardadas</h2>
+                            <span class="text-xs text-sp-subtext font-medium" id="total-tracks-count">0 canciones en memoria local</span>
+                        </div>
+                        <div class="bg-sp-card/60 rounded-xl overflow-hidden border border-sp-border">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-sm text-sp-subtext">
+                                    <thead class="border-b border-sp-border text-xs uppercase bg-black/40 text-sp-subtext">
+                                        <tr>
+                                            <th class="py-3.5 px-4 w-12 text-center">#</th>
+                                            <th class="py-3.5 px-4">Título</th>
+                                            <th class="py-3.5 px-4 hidden sm:table-cell">Álbum / Carpeta</th>
+                                            <th class="py-3.5 px-4 text-center w-24 hidden md:table-cell">Estado</th>
+                                            <th class="py-3.5 px-4 text-center w-16">Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="all-tracks-table-body" class="divide-y divide-sp-border/50"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tab-albums" class="space-y-6 hidden">
+                    <div class="flex items-center justify-between border-b border-sp-border pb-4">
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-black text-white tracking-tight">Colección de Álbumes</h2>
+                            <p class="text-xs text-sp-subtext mt-1">Organización automática por las carpetas de tu disco duro personal.</p>
+                        </div>
+                        <label class="px-4 py-2 bg-sp-green hover:bg-sp-greenHover text-black text-xs font-extrabold rounded-full flex items-center gap-2 cursor-pointer transition">
+                            <i class="fa-solid fa-folder-plus"></i> Importar Más
+                            <input type="file" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
+                        </label>
+                    </div>
+
+                    <div id="albums-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+                </section>
+
+                <section id="tab-album-detail" class="space-y-6 hidden">
+                    <!-- Album Header Banner -->
+                    <div class="flex flex-col md:flex-row items-center md:items-end gap-6 bg-gradient-to-b from-sp-card to-sp-dark p-6 rounded-2xl border border-sp-border relative">
+                        <div class="relative group shrink-0">
+                            <img id="detail-album-cover" src="" class="w-40 h-40 md:w-44 md:h-44 rounded-xl object-cover shadow-2xl border border-sp-border/80">
+                            <label title="Cambiar portada de esta carpeta" class="absolute inset-0 bg-black/60 rounded-xl flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition cursor-pointer backdrop-blur-xs">
+                                <i class="fa-solid fa-camera text-2xl mb-1 text-sp-green"></i>
+                                <span class="text-[11px] font-bold">Cambiar Portada</span>
+                                <input type="file" accept="image/*" class="hidden" onchange="window.updateAlbumCoverFromInput(this)">
+                            </label>
+                        </div>
+
+                        <div class="space-y-2 text-center md:text-left flex-1">
+                            <span class="px-2.5 py-1 bg-sp-green/20 text-sp-green text-[10px] font-extrabold uppercase rounded-full tracking-wider border border-sp-green/30">
+                                Carpeta Guardada en Memoria
+                            </span>
+                            <h1 id="detail-album-name" class="text-2xl md:text-5xl font-black text-white tracking-tight">Nombre del Álbum</h1>
+                            <p id="detail-album-meta" class="text-xs text-sp-subtext font-medium">0 Canciones • Almacenado Localmente</p>
+                            
+                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-3">
+                                <button onclick="window.playCurrentAlbum()" class="px-6 py-2.5 bg-sp-green hover:bg-sp-greenHover text-black font-extrabold text-xs md:text-sm rounded-full shadow-lg shadow-sp-green/30 flex items-center gap-2 transition transform active:scale-95">
+                                    <i class="fa-solid fa-play"></i> Reproducir Todo
+                                </button>
+
+                                <label class="px-4 py-2.5 bg-sp-card hover:bg-sp-cardHover border border-sp-border text-white text-xs font-bold rounded-full flex items-center gap-2 cursor-pointer transition">
+                                    <i class="fa-solid fa-image text-sp-green"></i> Cambiar Portada
+                                    <input type="file" accept="image/*" class="hidden" onchange="window.updateAlbumCoverFromInput(this)">
+                                </label>
+
+                                <button onclick="window.switchTab('albums')" class="px-4 py-2.5 bg-black/40 hover:bg-black/60 text-sp-subtext hover:text-white text-xs font-bold rounded-full transition">
+                                    <i class="fa-solid fa-arrow-left mr-1"></i> Volver
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Album Tracklist Table -->
+                    <div class="bg-sp-card/60 rounded-xl overflow-hidden border border-sp-border">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm text-sp-subtext">
+                                <thead class="border-b border-sp-border text-xs uppercase bg-black/40 text-sp-subtext">
+                                    <tr>
+                                        <th class="py-3.5 px-4 w-12 text-center">#</th>
+                                        <th class="py-3.5 px-4">Título</th>
+                                        <th class="py-3.5 px-4 hidden sm:table-cell">Artista</th>
+                                        <th class="py-3.5 px-4 text-center w-24 hidden md:table-cell">Estado</th>
+                                        <th class="py-3.5 px-4 text-center w-16">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="album-detail-tracks-body" class="divide-y divide-sp-border/50"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tab-equalizer" class="space-y-6 hidden">
+                    <div class="bg-sp-card p-6 md:p-8 rounded-2xl border border-sp-border space-y-6 max-w-2xl mx-auto shadow-2xl">
+                        <div class="flex items-center justify-between border-b border-sp-border pb-5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-sp-green/20 text-sp-green flex items-center justify-center text-xl font-bold border border-sp-green/30">
+                                    <i class="fa-solid fa-sliders"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-xl md:text-2xl font-black text-white">Ecualizador de Audio</h2>
+                                    <p class="text-xs text-sp-subtext">Ajusta la respuesta de frecuencia en tiempo real</p>
+                                </div>
+                            </div>
+                            <button onclick="window.resetEqualizer()" class="px-3 py-1.5 bg-black hover:bg-sp-cardHover text-xs text-sp-subtext hover:text-white font-bold rounded-full border border-sp-border transition">
+                                <i class="fa-solid fa-rotate-left mr-1"></i> Reiniciar
+                            </button>
+                        </div>
+
+                        <!-- Equalizer Sliders -->
+                        <div class="grid grid-cols-3 gap-4 text-center py-4">
+                            <div class="space-y-3 bg-black/40 p-3 md:p-4 rounded-xl border border-sp-border">
+                                <span class="text-xs font-extrabold uppercase text-sp-green tracking-wider block">Graves</span>
+                                <div class="h-40 flex items-center justify-center py-2">
+                                    <input type="range" id="eq-bass" min="-12" max="12" value="0" step="1" oninput="window.updateEq('bass', this.value)"
+                                           class="range-slider h-32 w-2 appearance-none bg-sp-border rounded-lg cursor-pointer transform -rotate-90">
+                                </div>
+                                <span class="text-xs font-mono font-bold text-white block" id="eq-bass-val">0 dB</span>
+                            </div>
+
+                            <div class="space-y-3 bg-black/40 p-3 md:p-4 rounded-xl border border-sp-border">
+                                <span class="text-xs font-extrabold uppercase text-amber-400 tracking-wider block">Medios</span>
+                                <div class="h-40 flex items-center justify-center py-2">
+                                    <input type="range" id="eq-mid" min="-12" max="12" value="0" step="1" oninput="window.updateEq('mid', this.value)"
+                                           class="range-slider h-32 w-2 appearance-none bg-sp-border rounded-lg cursor-pointer transform -rotate-90">
+                                </div>
+                                <span class="text-xs font-mono font-bold text-white block" id="eq-mid-val">0 dB</span>
+                            </div>
+
+                            <div class="space-y-3 bg-black/40 p-3 md:p-4 rounded-xl border border-sp-border">
+                                <span class="text-xs font-extrabold uppercase text-cyan-400 tracking-wider block">Agudos</span>
+                                <div class="h-40 flex items-center justify-center py-2">
+                                    <input type="range" id="eq-treble" min="-12" max="12" value="0" step="1" oninput="window.updateEq('treble', this.value)"
+                                           class="range-slider h-32 w-2 appearance-none bg-sp-border rounded-lg cursor-pointer transform -rotate-90">
+                                </div>
+                                <span class="text-xs font-mono font-bold text-white block" id="eq-treble-val">0 dB</span>
+                            </div>
+                        </div>
+
+                        <!-- Equalizer Presets -->
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-sp-subtext uppercase tracking-wider block">Preajustes:</span>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                <button onclick="window.applyEqPreset('pop')" class="py-2 bg-black hover:bg-sp-green/20 hover:border-sp-green/50 text-white text-xs font-bold rounded-xl border border-sp-border transition">Pop</button>
+                                <button onclick="window.applyEqPreset('rock')" class="py-2 bg-black hover:bg-sp-green/20 hover:border-sp-green/50 text-white text-xs font-bold rounded-xl border border-sp-border transition">Rock</button>
+                                <button onclick="window.applyEqPreset('bassboost')" class="py-2 bg-black hover:bg-sp-green/20 hover:border-sp-green/50 text-white text-xs font-bold rounded-xl border border-sp-border transition">Bass Boost</button>
+                                <button onclick="window.applyEqPreset('vocal')" class="py-2 bg-black hover:bg-sp-green/20 hover:border-sp-green/50 text-white text-xs font-bold rounded-xl border border-sp-border transition">Vocal</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- NOTIFICATION TOAST -->
+                <div id="notification-toast" class="hidden fixed bottom-24 right-4 md:right-6 max-w-sm bg-sp-card border border-sp-green/50 text-white p-4 rounded-xl shadow-2xl z-50 transition-all transform">
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-circle-check text-sp-green text-xl mt-0.5"></i>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-sm text-sp-green" id="toast-title">Aviso</h4>
+                            <p class="text-xs text-sp-subtext leading-relaxed" id="toast-message"></p>
+                        </div>
+                        <button onclick="window.closeNotification()" class="text-sp-subtext hover:text-white ml-auto">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CONFIRM CLEAR MODAL -->
+                <div id="clear-confirm-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                    <div class="bg-sp-card border border-sp-border p-6 rounded-2xl max-w-sm w-full space-y-4 shadow-2xl text-center">
+                        <div class="w-12 h-12 bg-red-500/20 text-red-500 rounded-full flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <h3 class="text-lg font-black text-white">¿Vaciar Memoria Local?</h3>
+                        <p class="text-xs text-sp-subtext leading-relaxed">
+                            Esta acción eliminará todas las canciones, álbumes y portadas personalizadas guardadas en la memoria local de tu navegador. Tu disco duro personal no sufrirá cambios.
+                        </p>
+                        <div class="flex gap-3 pt-2">
+                            <button onclick="window.closeClearModal()" class="flex-1 py-2.5 bg-sp-dark hover:bg-sp-cardHover text-xs font-bold rounded-full border border-sp-border transition">Cancelar</button>
+                            <button onclick="window.confirmClearLibrary()" class="flex-1 py-2.5 bg-red-600 hover:bg-red-500 text-white text-xs font-bold rounded-full shadow-lg transition">Sí, Vaciar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <footer class="h-[90px] bg-black border-t border-sp-border px-4 md:px-6 flex items-center justify-between gap-2 md:gap-4 sticky bottom-0 z-30 shadow-2xl">
+        <!-- Track Info -->
+        <div class="flex items-center gap-3 w-1/3 min-w-[140px] max-w-[280px]">
+            <div class="relative group cursor-pointer shrink-0" onclick="window.switchTab('album-detail')">
+                <div id="player-vinyl-disc" class="absolute inset-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-r from-neutral-900 via-neutral-800 to-black border-2 border-neutral-700 shadow-md transition-transform duration-500 ease-out translate-x-0 group-hover:translate-x-3 spin-vinyl vinyl-paused flex items-center justify-center">
+                    <div class="w-3.5 h-3.5 md:w-4 md:h-4 rounded-full bg-sp-green border border-black flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 rounded-full bg-black"></div>
+                    </div>
+                </div>
+                <img id="player-cover" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=120&h=120&fit=crop" alt="Cover" class="relative z-10 w-12 h-12 md:w-14 md:h-14 rounded-lg object-cover shadow-lg border border-sp-border transition duration-300">
+            </div>
+
+            <div class="truncate">
+                <div class="flex items-center gap-2">
+                    <h4 id="player-title" class="text-xs md:text-sm font-bold text-white truncate">Carga tu carpeta de música</h4>
+                </div>
+                <p id="player-artist" class="text-[11px] md:text-xs text-sp-subtext truncate">Spotity Local Player</p>
+            </div>
+            <button id="player-like-btn" onclick="window.toggleLikeCurrent()" class="text-sp-subtext hover:text-sp-green ml-1 hidden sm:block transition">
+                <i class="fa-regular fa-heart text-sm md:text-base"></i>
+            </button>
+        </div>
+
+        <!-- Center Player Controls -->
+        <div class="flex flex-col items-center gap-1.5 w-1/3 max-w-md">
+            <div class="flex items-center gap-3 md:gap-5">
+                <button onclick="window.toggleShuffle()" id="btn-shuffle" class="text-sp-subtext hover:text-white transition text-xs md:text-sm" title="Aleatorio">
+                    <i class="fa-solid fa-shuffle"></i>
+                </button>
+                <button onclick="window.prevTrack()" class="text-sp-subtext hover:text-white transition text-base md:text-lg" title="Anterior">
+                    <i class="fa-solid fa-backward-step"></i>
+                </button>
+                <button onclick="window.togglePlay()" id="btn-play-pause" class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-sp-green hover:bg-sp-greenHover text-black flex items-center justify-center hover:scale-105 transition shadow-lg shadow-sp-green/30">
+                    <i class="fa-solid fa-play text-sm md:text-base pl-0.5"></i>
+                </button>
+                <button onclick="window.nextTrack()" class="text-sp-subtext hover:text-white transition text-base md:text-lg" title="Siguiente">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
+                <button onclick="window.toggleRepeat()" id="btn-repeat" class="text-sp-subtext hover:text-white transition text-xs md:text-sm" title="Repetir">
+                    <i class="fa-solid fa-repeat"></i>
+                </button>
+            </div>
+
+            <div class="w-full flex items-center gap-2 text-[10px] md:text-xs text-sp-subtext font-mono">
+                <span id="current-time">0:00</span>
+                <input type="range" id="seek-bar" min="0" max="100" value="0" oninput="window.seekTo(this.value)"
+                       class="range-slider w-full h-1 bg-sp-border rounded-lg appearance-none cursor-pointer">
+                <span id="duration-time">0:00</span>
+            </div>
+        </div>
+
+        <!-- Right Controls -->
+        <div class="flex items-center justify-end gap-2 md:gap-3 w-1/3 min-w-[100px]">
+            <button onclick="window.toggleVisualizer()" class="text-sp-green hover:text-white transition" title="Espectro">
+                <i class="fa-solid fa-chart-simple text-sm"></i>
+            </button>
+            <div class="flex items-center gap-2 hidden sm:flex">
+                <i class="fa-solid fa-volume-high text-sp-subtext text-xs" id="volume-icon"></i>
+                <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.8" oninput="window.setVolume(this.value)"
+                       class="range-slider w-16 md:w-20 h-1 bg-sp-border rounded-lg appearance-none cursor-pointer">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hidden Audio Element -->
+    <audio id="audio-element" class="hidden" crossorigin="anonymous"></audio>
+
+    <script>
+        window.albumsMap = {};
+        window.allTracks = [];
+        window.currentQueue = [];
+        window.currentTrackIndex = -1;
+        window.currentActiveAlbum = null;
+        window.likedTrackIds = new Set();
+
+        window.isPlaying = false;
+        window.isShuffle = false;
+        window.isRepeat = false;
+        window.visualizerMode = 'bars';
+
+        const DEFAULT_COVERS = [
+            'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=400&h=400&fit=crop',
+            'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop',
+            'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=400&fit=crop',
+            'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop'
+        ];
+
+        // IndexedDB Manager
+        const DB_NAME = 'SpotityLocalDB';
+        const DB_VERSION = 1;
+        let dbInstance = null;
+
+        function openLocalDB() {
+            return new Promise((resolve, reject) => {
+                if (dbInstance) return resolve(dbInstance);
+                const req = indexedDB.open(DB_NAME, DB_VERSION);
+                req.onupgradeneeded = (evt) => {
+                    const db = evt.target.result;
+                    if (!db.objectStoreNames.contains('tracks')) {
+                        db.createObjectStore('tracks', { keyPath: 'id' });
+                    }
+                    if (!db.objectStoreNames.contains('albums')) {
+                        db.createObjectStore('albums', { keyPath: 'name' });
+                    }
+                    if (!db.objectStoreNames.contains('settings')) {
+                        db.createObjectStore('settings', { keyPath: 'key' });
+                    }
+                };
+                req.onsuccess = (evt) => {
+                    dbInstance = evt.target.result;
+                    resolve(dbInstance);
+                };
+                req.onerror = (err) => reject(err);
+            });
+        }
+
+        async function saveTracksAndAlbumsToDB(newTracks, updatedAlbumsMap) {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction(['tracks', 'albums'], 'readwrite');
+                const tracksStore = tx.objectStore('tracks');
+                const albumsStore = tx.objectStore('albums');
+
+                newTracks.forEach(t => {
+                    tracksStore.put({
+                        id: t.id,
+                        title: t.title,
+                        artist: t.artist,
+                        album: t.album,
+                        fileBlob: t.fileBlob,
+                        cover: t.cover,
+                        duration: t.duration
+                    });
+                });
+
+                Object.values(updatedAlbumsMap).forEach(alb => {
+                    albumsStore.put({
+                        name: alb.name,
+                        cover: alb.cover
+                    });
+                });
+
+                window.updateStorageSizeLabel();
+            } catch (err) {
+                console.error("Error al guardar en memoria local:", err);
+            }
+        }
+
+        async function saveSingleAlbumMeta(albumName, coverUrl) {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction(['albums', 'tracks'], 'readwrite');
+                const albumsStore = tx.objectStore('albums');
+                const tracksStore = tx.objectStore('tracks');
+
+                albumsStore.put({ name: albumName, cover: coverUrl });
+
+                if (window.albumsMap[albumName]) {
+                    window.albumsMap[albumName].tracks.forEach(t => {
+                        t.cover = coverUrl;
+                        tracksStore.put({
+                            id: t.id,
+                            title: t.title,
+                            artist: t.artist,
+                            album: t.album,
+                            fileBlob: t.fileBlob,
+                            cover: coverUrl,
+                            duration: t.duration
+                        });
+                    });
+                }
+            } catch (err) {
+                console.error("Error al actualizar álbum en DB:", err);
+            }
+        }
+
+        async function loadLibraryFromDB() {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction(['tracks', 'albums', 'settings'], 'readonly');
+                const tracksStore = tx.objectStore('tracks');
+                const albumsStore = tx.objectStore('albums');
+                const settingsStore = tx.objectStore('settings');
+
+                const rawAlbums = await new Promise(res => {
+                    const req = albumsStore.getAll();
+                    req.onsuccess = () => res(req.result || []);
+                });
+
+                const rawTracks = await new Promise(res => {
+                    const req = tracksStore.getAll();
+                    req.onsuccess = () => res(req.result || []);
+                });
+
+                const likedSetting = await new Promise(res => {
+                    const req = settingsStore.get('likedTrackIds');
+                    req.onsuccess = () => res(req.result ? req.result.value : []);
+                });
+
+                window.likedTrackIds = new Set(likedSetting);
+
+                window.albumsMap = {};
+                rawAlbums.forEach(alb => {
+                    window.albumsMap[alb.name] = {
+                        name: alb.name,
+                        cover: alb.cover,
+                        tracks: []
+                    };
+                });
+
+                window.allTracks = [];
+                rawTracks.forEach(t => {
+                    let objectUrl = '';
+                    if (t.fileBlob) {
+                        try {
+                            objectUrl = URL.createObjectURL(t.fileBlob);
+                        } catch (e) {
+                            console.warn("Error re-creating blob URL", e);
+                        }
+                    }
+
+                    if (!window.albumsMap[t.album]) {
+                        window.albumsMap[t.album] = {
+                            name: t.album,
+                            cover: t.cover || DEFAULT_COVERS[0],
+                            tracks: []
+                        };
+                    }
+
+                    const trackObj = {
+                        id: t.id,
+                        title: t.title,
+                        artist: t.artist,
+                        album: t.album,
+                        duration: t.duration || 'Local',
+                        url: objectUrl,
+                        fileBlob: t.fileBlob,
+                        cover: t.cover || window.albumsMap[t.album].cover
+                    };
+
+                    window.albumsMap[t.album].tracks.push(trackObj);
+                    window.allTracks.push(trackObj);
+                });
+
+                window.renderSidebarAlbums();
+                window.renderHomeAlbums();
+                window.renderAllAlbumsGrid();
+                window.renderAllTracksTable();
+                window.updateStorageSizeLabel();
+
+            } catch (err) {
+                console.error("Error al cargar biblioteca local:", err);
+            }
+        }
+
+        async function saveSetting(key, value) {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction('settings', 'readwrite');
+                tx.objectStore('settings').put({ key, value });
+            } catch (e) {
+                console.warn("Save setting error:", e);
+            }
+        }
+
+        window.updateStorageSizeLabel = async function() {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction('tracks', 'readonly');
+                const req = tx.objectStore('tracks').getAll();
+                req.onsuccess = () => {
+                    let bytes = 0;
+                    (req.result || []).forEach(t => {
+                        if (t.fileBlob) bytes += t.fileBlob.size;
+                    });
+                    const mb = (bytes / (1024 * 1024)).toFixed(1);
+                    const lbl = document.getElementById('storage-size-label');
+                    if (lbl) lbl.innerText = `${mb} MB en memoria local`;
+                };
+            } catch (err) {
+                console.warn(err);
+            }
+        };
+
+        window.promptClearLibrary = function() {
+            const modal = document.getElementById('clear-confirm-modal');
+            if (modal) modal.classList.remove('hidden');
+        };
+
+        window.closeClearModal = function() {
+            const modal = document.getElementById('clear-confirm-modal');
+            if (modal) modal.classList.add('hidden');
+        };
+
+        window.confirmClearLibrary = async function() {
+            window.closeClearModal();
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction(['tracks', 'albums', 'settings'], 'readwrite');
+                tx.objectStore('tracks').clear();
+                tx.objectStore('albums').clear();
+                tx.objectStore('settings').clear();
+
+                window.albumsMap = {};
+                window.allTracks = [];
+                window.currentQueue = [];
+                window.currentTrackIndex = -1;
+                window.likedTrackIds.clear();
+
+                if (audioElement) {
+                    audioElement.pause();
+                    audioElement.src = '';
+                }
+                window.isPlaying = false;
+
+                window.renderSidebarAlbums();
+                window.renderHomeAlbums();
+                window.renderAllAlbumsGrid();
+                window.renderAllTracksTable();
+                window.updateStorageSizeLabel();
+
+                window.showNotification("Memoria Limpiada", "Se han eliminado todas las canciones guardadas.");
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        let audioCtx = null;
+        let audioElement = null;
+        let sourceNode = null;
+        let bassFilter = null;
+        let midFilter = null;
+        let trebleFilter = null;
+        let gainNode = null;
+        let analyserNode = null;
+        let visualizerAnimationId = null;
+
+        function initAudioPipeline() {
+            if (audioCtx) return;
+            try {
+                audioElement = document.getElementById('audio-element');
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                bassFilter = audioCtx.createBiquadFilter();
+                bassFilter.type = 'lowshelf';
+                bassFilter.frequency.value = 250;
+                bassFilter.gain.value = 0;
+
+                midFilter = audioCtx.createBiquadFilter();
+                midFilter.type = 'peaking';
+                midFilter.frequency.value = 1500;
+                midFilter.gain.value = 0;
+
+                trebleFilter = audioCtx.createBiquadFilter();
+                trebleFilter.type = 'highshelf';
+                trebleFilter.frequency.value = 4000;
+                trebleFilter.gain.value = 0;
+
+                gainNode = audioCtx.createGain();
+                analyserNode = audioCtx.createAnalyser();
+                analyserNode.fftSize = 64;
+
+                sourceNode = audioCtx.createMediaElementSource(audioElement);
+
+                // Chain nodes
+                sourceNode.connect(bassFilter);
+                bassFilter.connect(midFilter);
+                midFilter.connect(trebleFilter);
+                trebleFilter.connect(gainNode);
+                gainNode.connect(analyserNode);
+                analyserNode.connect(audioCtx.destination);
+
+                // Start visualizer animation loop immediately
+                drawVisualizer();
+            } catch (err) {
+                console.warn("Audio pipeline init:", err);
+            }
+        }
+
+        window.handleFolderUpload = function(fileList) {
+            if (!fileList || fileList.length === 0) return;
+
+            let loadedCount = 0;
+            const validExtensions = ['.mp3', '.m4a', '.wav', '.ogg', '.flac', '.aac', '.wma'];
+            const newTracks = [];
+
+            Array.from(fileList).forEach(file => {
+                const isAudioType = file.type && file.type.startsWith('audio/');
+                const hasAudioExt = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+                if (!isAudioType && !hasAudioExt) return;
+
+                const objectUrl = URL.createObjectURL(file);
+                const relPath = file.webkitRelativePath || file.name;
+                const pathParts = relPath.split('/');
+
+                let albumName = 'Mis Archivos MP3';
+                if (pathParts.length > 2) {
+                    albumName = pathParts[pathParts.length - 2];
+                } else if (pathParts.length === 2) {
+                    albumName = pathParts[0];
+                }
+
+                const fileNameClean = file.name.replace(/\.[^/.]+$/, "");
+                const nameParts = fileNameClean.split(' - ');
+                const title = nameParts.length > 1 ? nameParts[1].trim() : fileNameClean;
+                const artist = nameParts.length > 1 ? nameParts[0].trim() : (pathParts.length > 2 ? pathParts[pathParts.length - 3] : 'Artista Local');
+
+                if (!window.albumsMap[albumName]) {
+                    const randomDefaultCover = DEFAULT_COVERS[Object.keys(window.albumsMap).length % DEFAULT_COVERS.length];
+                    window.albumsMap[albumName] = {
+                        name: albumName,
+                        cover: randomDefaultCover,
+                        tracks: []
+                    };
+                }
+
+                const trackObj = {
+                    id: Date.now() + Math.random(),
+                    title: title,
+                    artist: artist,
+                    album: albumName,
+                    duration: 'Local',
+                    url: objectUrl,
+                    fileBlob: file,
+                    cover: window.albumsMap[albumName].cover
+                };
+
+                window.albumsMap[albumName].tracks.push(trackObj);
+                window.allTracks.push(trackObj);
+                newTracks.push(trackObj);
+                loadedCount++;
+            });
+
+            if (loadedCount === 0) {
+                window.showNotification("Sin archivos válidos", "No se encontraron archivos de audio (.mp3, .m4a, .wav) en la carpeta.");
+                return;
+            }
+
+            saveTracksAndAlbumsToDB(newTracks, window.albumsMap);
+
+            window.renderSidebarAlbums();
+            window.renderHomeAlbums();
+            window.renderAllAlbumsGrid();
+            window.renderAllTracksTable();
+
+            window.showNotification("¡Carpeta Guardada en Memoria!", `Se cargaron ${loadedCount} canciones localmente.`);
+        };
+
+        window.updateAlbumCoverFromInput = function(fileInput) {
+            if (!fileInput.files || !fileInput.files[0] || !window.currentActiveAlbum) return;
+
+            const imageFile = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const imageUrl = e.target.result;
+                const albumName = window.currentActiveAlbum;
+
+                if (window.albumsMap[albumName]) {
+                    window.albumsMap[albumName].cover = imageUrl;
+
+                    window.albumsMap[albumName].tracks.forEach(track => {
+                        track.cover = imageUrl;
+                    });
+
+                    document.getElementById('detail-album-cover').src = imageUrl;
+                    window.renderSidebarAlbums();
+                    window.renderHomeAlbums();
+                    window.renderAllAlbumsGrid();
+                    window.renderAllTracksTable();
+
+                    if (window.currentTrackIndex !== -1 && window.allTracks[window.currentTrackIndex].album === albumName) {
+                        window.updatePlayerUI();
+                    }
+
+                    saveSingleAlbumMeta(albumName, imageUrl);
+                    window.showNotification("Portada Guardada", `Se guardó la nueva portada para "${albumName}".`);
+                }
+            };
+
+            reader.readAsDataURL(imageFile);
+        };
+
+        window.openAlbumDetail = function(albumName) {
+            window.currentActiveAlbum = albumName;
+            const album = window.albumsMap[albumName];
+            if (!album) return;
+
+            document.getElementById('detail-album-cover').src = album.cover;
+            document.getElementById('detail-album-name').innerText = album.name;
+            document.getElementById('detail-album-meta').innerText = `${album.tracks.length} canciones • Guardado Localmente`;
+
+            const tbody = document.getElementById('album-detail-tracks-body');
+            tbody.innerHTML = album.tracks.map((track, idx) => `
+                <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer" onclick="window.playTrackFromAlbum('${escapeHtml(albumName)}', ${idx})">
+                    <td class="py-3.5 px-4 text-center font-mono text-xs track-num text-sp-subtext">${idx + 1}</td>
+                    <td class="py-3.5 px-4 font-bold text-xs track-title text-white transition">${escapeHtml(track.title)}</td>
+                    <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.artist)}</td>
+                    <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell"><i class="fa-solid fa-hard-drive mr-1"></i>En Memoria</td>
+                    <td class="py-3.5 px-4 text-center">
+                        <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(albumName)}', ${idx})" class="play-action-btn w-8 h-8 rounded-full bg-sp-green/20 hover:bg-sp-green text-sp-green hover:text-black flex items-center justify-center transition shadow">
+                            <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+
+            window.switchTab('album-detail');
+        };
+
+        window.playCurrentAlbum = function() {
+            if (window.currentActiveAlbum) {
+                window.playTrackFromAlbum(window.currentActiveAlbum, 0);
+            }
+        };
+
+        window.playTrackFromAlbum = function(albumName, trackIdx) {
+            const album = window.albumsMap[albumName];
+            if (!album || !album.tracks[trackIdx]) return;
+
+            window.currentQueue = album.tracks;
+            const globalIdx = window.allTracks.findIndex(t => t.id === album.tracks[trackIdx].id);
+            window.playTrack(globalIdx !== -1 ? globalIdx : 0);
+        };
+
+        window.switchTab = function(tabName) {
+            ['home', 'albums', 'album-detail', 'equalizer'].forEach(t => {
+                const sec = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`nav-${t}`);
+                const mobBtn = document.getElementById(`mob-nav-${t}`);
+                if (sec) sec.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('bg-sp-card', 'text-white');
+                    btn.classList.add('text-sp-subtext');
+                }
+                if (mobBtn) {
+                    mobBtn.classList.remove('text-sp-green');
+                    mobBtn.classList.add('text-sp-subtext');
+                }
+            });
+
+            const activeSec = document.getElementById(`tab-${tabName}`);
+            const activeBtn = document.getElementById(`nav-${tabName}`);
+            const activeMobBtn = document.getElementById(`mob-nav-${tabName}`);
+
+            if (activeSec) activeSec.classList.remove('hidden');
+            if (activeBtn) {
+                activeBtn.classList.add('bg-sp-card', 'text-white');
+                activeBtn.classList.remove('text-sp-subtext');
+            }
+            if (activeMobBtn) {
+                activeMobBtn.classList.add('text-sp-green');
+                activeMobBtn.classList.remove('text-sp-subtext');
+            }
+
+            const mainScroll = document.getElementById('main-scroll-view');
+            if (mainScroll) mainScroll.scrollTop = 0;
+        };
+
+        window.playTrack = function(index) {
+            if (index < 0 || index >= window.allTracks.length) return;
+            initAudioPipeline();
+
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            window.currentTrackIndex = index;
+            const track = window.allTracks[window.currentTrackIndex];
+
+            audioElement.src = track.url;
+            audioElement.play().then(() => {
+                window.isPlaying = true;
+                window.updatePlayerUI();
+                window.renderAllTracksTable();
+            }).catch(err => {
+                console.warn("Playback error:", err);
+                window.isPlaying = false;
+                window.updatePlayerUI();
+            });
+        };
+
+        window.togglePlay = function() {
+            if (window.currentTrackIndex === -1 && window.allTracks.length > 0) {
+                window.playTrack(0);
+                return;
+            }
+            if (window.currentTrackIndex === -1) return;
+
+            initAudioPipeline();
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            if (window.isPlaying) {
+                audioElement.pause();
+                window.isPlaying = false;
+            } else {
+                audioElement.play().then(() => {
+                    window.isPlaying = true;
+                }).catch(() => {
+                    window.isPlaying = false;
+                });
+            }
+            window.updatePlayerUI();
+        };
+
+        window.prevTrack = function() {
+            if (window.allTracks.length === 0) return;
+            let newIndex = window.currentTrackIndex - 1;
+            if (newIndex < 0) newIndex = window.allTracks.length - 1;
+            window.playTrack(newIndex);
+        };
+
+        window.nextTrack = function() {
+            if (window.allTracks.length === 0) return;
+            let newIndex;
+            if (window.isShuffle) {
+                newIndex = Math.floor(Math.random() * window.allTracks.length);
+            } else {
+                newIndex = (window.currentTrackIndex + 1) % window.allTracks.length;
+            }
+            window.playTrack(newIndex);
+        };
+
+        window.toggleShuffle = function() {
+            window.isShuffle = !window.isShuffle;
+            const btn = document.getElementById('btn-shuffle');
+            if (btn) btn.classList.toggle('text-sp-green', window.isShuffle);
+        };
+
+        window.toggleRepeat = function() {
+            window.isRepeat = !window.isRepeat;
+            const btn = document.getElementById('btn-repeat');
+            if (btn) btn.classList.toggle('text-sp-green', window.isRepeat);
+        };
+
+        window.seekTo = function(percent) {
+            if (audioElement && audioElement.duration) {
+                audioElement.currentTime = (percent / 100) * audioElement.duration;
+            }
+        };
+
+        window.setVolume = function(val) {
+            if (audioElement) {
+                audioElement.volume = parseFloat(val);
+            }
+        };
+
+        window.updatePlayerUI = function() {
+            const track = window.allTracks[window.currentTrackIndex];
+            if (!track) return;
+
+            // Footer Update
+            document.getElementById('player-cover').src = track.cover;
+            document.getElementById('player-title').innerText = track.title;
+            document.getElementById('player-artist').innerText = `${track.artist} • ${track.album}`;
+
+            // Visualizer Banner Header Update
+            const visCover = document.getElementById('vis-cover');
+            const visTitle = document.getElementById('vis-title');
+            const visArtist = document.getElementById('vis-artist');
+            if (visCover) visCover.src = track.cover;
+            if (visTitle) visTitle.innerText = track.title;
+            if (visArtist) visArtist.innerText = `${track.artist} • ${track.album}`;
+
+            const btnPlayPause = document.getElementById('btn-play-pause');
+            if (btnPlayPause) {
+                btnPlayPause.innerHTML = window.isPlaying ? `<i class="fa-solid fa-pause text-base"></i>` : `<i class="fa-solid fa-play text-base pl-0.5"></i>`;
+            }
+
+            const vinylDisc = document.getElementById('player-vinyl-disc');
+            const visEqInd = document.getElementById('vis-eq-indicator');
+
+            if (vinylDisc) {
+                if (window.isPlaying) {
+                    vinylDisc.classList.remove('vinyl-paused');
+                    vinylDisc.classList.add('translate-x-3');
+                } else {
+                    vinylDisc.classList.add('vinyl-paused');
+                    vinylDisc.classList.remove('translate-x-3');
+                }
+            }
+
+            if (visEqInd) {
+                if (window.isPlaying) {
+                    visEqInd.classList.remove('eq-paused');
+                } else {
+                    visEqInd.classList.add('eq-paused');
+                }
+            }
+
+            const likeBtn = document.getElementById('player-like-btn');
+            if (likeBtn) {
+                likeBtn.innerHTML = window.likedTrackIds.has(track.id) ? 
+                    `<i class="fa-solid fa-heart text-sp-green text-base"></i>` : 
+                    `<i class="fa-regular fa-heart text-base"></i>`;
+            }
+        };
+
+        window.toggleLikeCurrent = function() {
+            if (window.currentTrackIndex === -1) return;
+            const track = window.allTracks[window.currentTrackIndex];
+            if (window.likedTrackIds.has(track.id)) {
+                window.likedTrackIds.delete(track.id);
+            } else {
+                window.likedTrackIds.add(track.id);
+            }
+            saveSetting('likedTrackIds', Array.from(window.likedTrackIds));
+            window.updatePlayerUI();
+        };
+
+        window.renderSidebarAlbums = function() {
+            const container = document.getElementById('sidebar-albums-list');
+            const albums = Object.values(window.albumsMap);
+
+            document.getElementById('sidebar-album-count').innerText = `${albums.length} álbumes`;
+
+            if (albums.length === 0) {
+                container.innerHTML = `<div class="p-4 text-center text-xs text-sp-subtext">No hay álbumes guardados</div>`;
+                return;
+            }
+
+            container.innerHTML = albums.map(alb => `
+                <button onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-sp-card text-left group transition">
+                    <img src="${alb.cover}" class="w-10 h-10 rounded-md object-cover border border-sp-border shrink-0">
+                    <div class="truncate">
+                        <p class="text-xs font-bold text-white group-hover:text-sp-green transition truncate">${escapeHtml(alb.name)}</p>
+                        <p class="text-[10px] text-sp-subtext truncate">${alb.tracks.length} canciones</p>
+                    </div>
+                </button>
+            `).join('');
+        };
+
+        window.renderHomeAlbums = function() {
+            const container = document.getElementById('home-albums-grid');
+            const albums = Object.values(window.albumsMap).slice(0, 5);
+
+            document.getElementById('home-album-count').innerText = Object.keys(window.albumsMap).length;
+
+            if (albums.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-8 text-center text-xs text-sp-subtext">No hay álbumes en memoria. Haz clic en 'Cargar Carpeta Principal' para comenzar.</div>`;
+                return;
+            }
+
+            container.innerHTML = albums.map(alb => `
+                <div onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="album-card bg-sp-card p-3 rounded-xl hover:bg-sp-cardHover border border-sp-border transition cursor-pointer group relative shadow-lg">
+                    <div class="relative mb-2.5 overflow-hidden rounded-lg">
+                        <img src="${alb.cover}" class="w-full aspect-square object-cover rounded-lg group-hover:scale-105 transition duration-300">
+                        <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(alb.name)}', 0)" class="album-card-play absolute bottom-2 right-2 w-10 h-10 rounded-full bg-sp-green hover:bg-sp-greenHover text-black flex items-center justify-center shadow-xl">
+                            <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                        </button>
+                    </div>
+                    <h4 class="font-bold text-xs text-white truncate group-hover:text-sp-green transition">${escapeHtml(alb.name)}</h4>
+                    <p class="text-[11px] text-sp-subtext truncate mt-0.5">${alb.tracks.length} canciones</p>
+                </div>
+            `).join('');
+        };
+
+        window.renderAllAlbumsGrid = function() {
+            const container = document.getElementById('albums-grid');
+            const albums = Object.values(window.albumsMap);
+
+            if (albums.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-12 text-center text-xs text-sp-subtext">No hay carpetas o álbumes guardados en memoria local.</div>`;
+                return;
+            }
+
+            container.innerHTML = albums.map(alb => `
+                <div onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="album-card bg-sp-card p-3 rounded-xl hover:bg-sp-cardHover border border-sp-border transition cursor-pointer group relative shadow-lg">
+                    <div class="relative mb-2.5 overflow-hidden rounded-lg">
+                        <img src="${alb.cover}" class="w-full aspect-square object-cover rounded-lg group-hover:scale-105 transition duration-300">
+                        <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(alb.name)}', 0)" class="album-card-play absolute bottom-2 right-2 w-10 h-10 rounded-full bg-sp-green hover:bg-sp-greenHover text-black flex items-center justify-center shadow-xl">
+                            <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                        </button>
+                    </div>
+                    <h4 class="font-bold text-xs text-white truncate group-hover:text-sp-green transition">${escapeHtml(alb.name)}</h4>
+                    <p class="text-[11px] text-sp-subtext truncate mt-0.5">${alb.tracks.length} canciones</p>
+                </div>
+            `).join('');
+        };
+
+        window.renderAllTracksTable = function() {
+            const tbody = document.getElementById('all-tracks-table-body');
+            document.getElementById('total-tracks-count').innerText = `${window.allTracks.length} canciones en memoria local`;
+
+            if (window.allTracks.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-xs text-sp-subtext">No hay canciones guardadas. Carga tu carpeta de música para comenzar.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = window.allTracks.map((track, idx) => {
+                const isCurrent = idx === window.currentTrackIndex;
+                return `
+                    <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10 font-bold' : ''}" onclick="window.playTrack(${idx})">
+                        <td class="py-3.5 px-4 text-center font-mono text-xs track-num ${isCurrent ? 'text-sp-green' : 'text-sp-subtext'}">
+                            ${isCurrent && window.isPlaying ? '<i class="fa-solid fa-volume-high text-sp-green animate-pulse"></i>' : idx + 1}
+                        </td>
+                        <td class="py-3.5 px-4">
+                            <div class="flex items-center gap-3">
+                                <img src="${track.cover}" class="w-9 h-9 rounded-md object-cover border border-sp-border shrink-0">
+                                <div class="truncate">
+                                    <p class="text-xs font-bold track-title ${isCurrent ? 'text-sp-green' : 'text-white'} transition">${escapeHtml(track.title)}</p>
+                                    <p class="text-[11px] text-sp-subtext">${escapeHtml(track.artist)}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.album)}</td>
+                        <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell"><i class="fa-solid fa-hard-drive mr-1"></i>En Memoria</td>
+                        <td class="py-3.5 px-4 text-center">
+                            <button onclick="event.stopPropagation(); window.playTrack(${idx})" class="play-action-btn w-8 h-8 rounded-full bg-sp-green/20 hover:bg-sp-green text-sp-green hover:text-black flex items-center justify-center transition shadow">
+                                <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        };
+
+        window.handleGlobalSearch = function(query) {
+            const term = (query || '').toLowerCase().trim();
+            if (!term) {
+                window.renderAllTracksTable();
+                return;
+            }
+            const tbody = document.getElementById('all-tracks-table-body');
+            const filtered = window.allTracks.filter(t => 
+                t.title.toLowerCase().includes(term) ||
+                t.artist.toLowerCase().includes(term) ||
+                t.album.toLowerCase().includes(term)
+            );
+            document.getElementById('total-tracks-count').innerText = `${filtered.length} resultados encontrados`;
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-xs text-sp-subtext">No se encontraron canciones para "${escapeHtml(query)}"</td></tr>`;
+                return;
+            }
+            tbody.innerHTML = filtered.map((track, idx) => {
+                const globalIdx = window.allTracks.findIndex(t => t.id === track.id);
+                const isCurrent = globalIdx === window.currentTrackIndex;
+                return `
+                    <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10 font-bold' : ''}" onclick="window.playTrack(${globalIdx})">
+                        <td class="py-3.5 px-4 text-center font-mono text-xs track-num ${isCurrent ? 'text-sp-green' : 'text-sp-subtext'}">
+                            ${isCurrent && window.isPlaying ? '<i class="fa-solid fa-volume-high text-sp-green animate-pulse"></i>' : idx + 1}
+                        </td>
+                        <td class="py-3.5 px-4">
+                            <div class="flex items-center gap-3">
+                                <img src="${track.cover}" class="w-9 h-9 rounded-md object-cover border border-sp-border shrink-0">
+                                <div class="truncate">
+                                    <p class="text-xs font-bold track-title ${isCurrent ? 'text-sp-green' : 'text-white'} transition">${escapeHtml(track.title)}</p>
+                                    <p class="text-[11px] text-sp-subtext">${escapeHtml(track.artist)}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.album)}</td>
+                        <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell"><i class="fa-solid fa-hard-drive mr-1"></i>En Memoria</td>
+                        <td class="py-3.5 px-4 text-center">
+                            <button onclick="event.stopPropagation(); window.playTrack(${globalIdx})" class="play-action-btn w-8 h-8 rounded-full bg-sp-green/20 hover:bg-sp-green text-sp-green hover:text-black flex items-center justify-center transition shadow">
+                                <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        };
+
+        window.updateEq = function(band, val) {
+            initAudioPipeline();
+            const gainVal = parseFloat(val);
+            if (band === 'bass' && bassFilter) bassFilter.gain.value = gainVal;
+            if (band === 'mid' && midFilter) midFilter.gain.value = gainVal;
+            if (band === 'treble' && trebleFilter) trebleFilter.gain.value = gainVal;
+
+            const lbl = document.getElementById(`eq-${band}-val`);
+            if (lbl) lbl.innerText = `${gainVal > 0 ? '+' : ''}${gainVal} dB`;
+        };
+
+        window.resetEqualizer = function() {
+            ['bass', 'mid', 'treble'].forEach(band => {
+                const input = document.getElementById(`eq-${band}`);
+                if (input) input.value = 0;
+                window.updateEq(band, 0);
+            });
+        };
+
+        window.applyEqPreset = function(preset) {
+            const presets = {
+                pop: { bass: 2, mid: 4, treble: 2 },
+                rock: { bass: 5, mid: -1, treble: 4 },
+                bassboost: { bass: 9, mid: 1, treble: -2 },
+                vocal: { bass: -3, mid: 6, treble: 3 }
+            };
+            const p = presets[preset];
+            if (!p) return;
+            Object.keys(p).forEach(band => {
+                const val = p[band];
+                const input = document.getElementById(`eq-${band}`);
+                if (input) input.value = val;
+                window.updateEq(band, val);
+            });
+        };
+
+        window.toggleVisualizer = function() {
+            const container = document.getElementById('visualizer-container');
+            if (!container) return;
+            container.classList.toggle('hidden');
+        };
+
+        window.setVisMode = function(mode) {
+            window.visualizerMode = mode;
+            ['bars', 'wave', 'aura'].forEach(m => {
+                const btn = document.getElementById(`vis-mode-${m}`);
+                if (btn) {
+                    if (m === mode) {
+                        btn.className = "px-2.5 py-1.5 rounded-md text-[11px] font-bold text-black bg-sp-green transition";
+                    } else {
+                        btn.className = "px-2.5 py-1.5 rounded-md text-[11px] font-bold text-sp-subtext hover:text-white transition";
+                    }
+                }
+            });
+        };
+
+        function drawVisualizer() {
+            const canvas = document.getElementById('visualizer-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = canvas.clientWidth || 600;
+            canvas.height = canvas.clientHeight || 100;
+
+            const bufferLength = analyserNode ? analyserNode.frequencyBinCount : 32;
+            const freqData = new Uint8Array(bufferLength);
+            const timeData = new Uint8Array(bufferLength);
+
+            function renderFrame() {
+                visualizerAnimationId = requestAnimationFrame(renderFrame);
+
+                if (analyserNode && window.isPlaying) {
+                    analyserNode.getByteFrequencyData(freqData);
+                    analyserNode.getByteTimeDomainData(timeData);
+                } else {
+                    freqData.fill(4);
+                    timeData.fill(128);
+                }
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                if (window.visualizerMode === 'bars') {
+                    const barWidth = (canvas.width / bufferLength) * 1.8;
+                    let x = 0;
+
+                    for (let i = 0; i < bufferLength; i++) {
+                        const barHeight = (freqData[i] / 255) * (canvas.height * 0.9);
+
+                        const gradient = ctx.createLinearGradient(0, canvas.height, 0, 0);
+                        gradient.addColorStop(0, '#1DB954');
+                        gradient.addColorStop(0.7, '#1ed760');
+                        gradient.addColorStop(1, '#6ee7b7');
+
+                        ctx.fillStyle = gradient;
+                        ctx.beginPath();
+                        if (ctx.roundRect) {
+                            ctx.roundRect(x, canvas.height - barHeight, Math.max(1, barWidth - 3), barHeight, [4, 4, 0, 0]);
+                        } else {
+                            ctx.rect(x, canvas.height - barHeight, Math.max(1, barWidth - 3), barHeight);
+                        }
+                        ctx.fill();
+
+                        x += barWidth;
+                    }
+                } else if (window.visualizerMode === 'wave') {
+                    ctx.lineWidth = 3;
+                    ctx.strokeStyle = '#1DB954';
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = '#1DB954';
+                    ctx.beginPath();
+
+                    const sliceWidth = canvas.width / bufferLength;
+                    let x = 0;
+
+                    for (let i = 0; i < bufferLength; i++) {
+                        const v = timeData[i] / 128.0;
+                        const y = (v * canvas.height) / 2;
+
+                        if (i === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+
+                        x += sliceWidth;
+                    }
+                    ctx.lineTo(canvas.width, canvas.height / 2);
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
+                } else if (window.visualizerMode === 'aura') {
+                    const centerX = canvas.width / 2;
+                    const centerY = canvas.height / 2;
+
+                    let avgFreq = 0;
+                    for (let i = 0; i < bufferLength; i++) avgFreq += freqData[i];
+                    avgFreq /= bufferLength;
+
+                    const radius = 15 + (avgFreq / 255) * 30;
+
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, radius * 1.4, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(29, 185, 84, ${0.1 + (avgFreq / 255) * 0.25})`;
+                    ctx.fill();
+
+                    const numRays = 32;
+                    for (let i = 0; i < numRays; i++) {
+                        const angle = (i / numRays) * Math.PI * 2;
+                        const rayVal = freqData[i % bufferLength] || 10;
+                        const rayLen = radius + (rayVal / 255) * 40;
+
+                        const x1 = centerX + Math.cos(angle) * radius;
+                        const y1 = centerY + Math.sin(angle) * radius;
+                        const x2 = centerX + Math.cos(angle) * rayLen;
+                        const y2 = centerY + Math.sin(angle) * rayLen;
+
+                        ctx.beginPath();
+                        ctx.moveTo(x1, y1);
+                        ctx.lineTo(x2, y2);
+                        ctx.strokeStyle = '#1ed760';
+                        ctx.lineWidth = 3;
+                        ctx.stroke();
+                    }
+
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+                    ctx.fillStyle = '#1DB954';
+                    ctx.shadowBlur = 20;
+                    ctx.shadowColor = '#1DB954';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            renderFrame();
+        }
+
+        window.showNotification = function(title, msg) {
+            const toast = document.getElementById('notification-toast');
+            if (!toast) return;
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                window.closeNotification();
+            }, 4000);
+        };
+
+        window.closeNotification = function() {
+            const toast = document.getElementById('notification-toast');
+            if (toast) toast.classList.add('hidden');
+        };
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        function escapeHtml(str) {
+            return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
+        window.autoScanLibrary = async function() {
+            if (window.allTracks.length === 0) return;
+            
+            const badge = document.getElementById('storage-status-badge');
+            if (badge) {
+                badge.innerHTML = '<i class="fa-solid fa-arrows-rotate animate-spin mr-1"></i>Escaneando...';
+                badge.classList.remove('text-sp-green', 'bg-sp-green/20');
+                badge.classList.add('text-amber-400', 'bg-amber-400/20');
+            }
+
+            let removedCount = 0;
+            const invalidIds = [];
+            
+            const batchSize = 50;
+            for (let i = 0; i < window.allTracks.length; i += batchSize) {
+                const batch = window.allTracks.slice(i, i + batchSize);
+                await Promise.all(batch.map(async (t) => {
+                    if (t.fileBlob) {
+                        try {
+                            await t.fileBlob.slice(0, 1).arrayBuffer();
+                        } catch (e) {
+                            invalidIds.push(t.id);
+                            removedCount++;
+                        }
+                    }
+                }));
+            }
+
+            if (removedCount > 0) {
+                const db = await openLocalDB();
+                const tx = db.transaction(['tracks'], 'readwrite');
+                const trackStore = tx.objectStore('tracks');
+                
+                invalidIds.forEach(id => trackStore.delete(id));
+                
+                tx.oncomplete = async () => {
+                    await loadLibraryFromDB();
+                    
+                    const db2 = await openLocalDB();
+                    const tx2 = db2.transaction(['albums'], 'readwrite');
+                    const albumStore = tx2.objectStore('albums');
+                    const req = albumStore.getAll();
+                    req.onsuccess = () => {
+                        const allDbAlbums = req.result;
+                        allDbAlbums.forEach(dbA => {
+                            if (!window.albumsMap[dbA.name]) {
+                                albumStore.delete(dbA.name);
+                            }
+                        });
+                    };
+                    
+                    window.showNotification("Sincronización Automática", `Se detectaron y eliminaron ${removedCount} canciones que fueron borradas o movidas de tu disco duro.`);
+                    if (badge) {
+                        badge.innerHTML = '<i class="fa-solid fa-check mr-1"></i>Sincronizado';
+                        badge.classList.remove('text-amber-400', 'bg-amber-400/20');
+                        badge.classList.add('text-sp-green', 'bg-sp-green/20');
+                    }
+                };
+            } else {
+                if (badge) {
+                    badge.innerHTML = '<i class="fa-solid fa-check mr-1"></i>Sincronizado';
+                    badge.classList.remove('text-amber-400', 'bg-amber-400/20');
+                    badge.classList.add('text-sp-green', 'bg-sp-green/20');
+                }
+            }
+        };
+
+        window.onload = async function() {
+            window.switchTab('home');
+            await loadLibraryFromDB();
+            
+            // Iniciar escaneo automático
+            window.autoScanLibrary();
+
+            const audioEl = document.getElementById('audio-element');
+            if (audioEl) {
+                audioEl.addEventListener('timeupdate', () => {
+                    if (audioEl.duration) {
+                        document.getElementById('current-time').innerText = formatTime(audioEl.currentTime);
+                        document.getElementById('duration-time').innerText = formatTime(audioEl.duration);
+                        const percent = (audioEl.currentTime / audioEl.duration) * 100;
+                        document.getElementById('seek-bar').value = percent;
+                    }
+                });
+
+                audioEl.addEventListener('ended', () => {
+                    if (window.isRepeat) window.playTrack(window.currentTrackIndex);
+                    else window.nextTrack();
+                });
+
+                audioEl.addEventListener('error', (e) => {
+                    console.warn("Audio playback error event:", e);
+                    window.showNotification("Error de Audio", "No se pudo reproducir este archivo de audio.");
+                    window.isPlaying = false;
+                    window.updatePlayerUI();
+                });
+            }
+        };
+    </script>
+</body>
+</html>
