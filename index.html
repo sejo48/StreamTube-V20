@@ -1,1069 +1,1668 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="h-full bg-black text-white selection:bg-emerald-500 selection:text-black">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MAGIS Tube Ultimate - Jorge</title>
-    
-    <!-- Librerías Externas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotity Local - Reproductor para Disco Duro</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
-        if (typeof Babel !== 'undefined') {
-            Babel.registerPreset('react-classic', {
-                presets: [[Babel.availablePresets['react'], { runtime: 'classic' }]]
-            });
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        sp: {
+                            green: '#1DB954',
+                            greenHover: '#1ed760',
+                            black: '#000000',
+                            dark: '#121212',
+                            card: '#181818',
+                            cardHover: '#282828',
+                            subtext: '#b3b3b3',
+                            border: '#282828'
+                        }
+                    }
+                }
+            }
         }
     </script>
-    
-    <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
-
     <style>
-        body { background-color: #111827; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #1f2937; }
-        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 3px; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .custom-scrollbar::-webkit-scrollbar { width: 3px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
-        @keyframes fadeIn { from { opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        .animate-fade-in { animation: fadeIn 0.4s ease-out; }
-        .animate-slide-up { animation: slideUp 0.5s ease-out; }
-        .text-gold-gradient { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
-
-        .bar {
-            width: 4px;
-            background-color: #E50914;
-            border-radius: 2px;
-            animation: equalize 1s infinite alternate;
-            transform-origin: bottom;
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #121212; }
+        ::-webkit-scrollbar-thumb { background: #3e3e3e; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1DB954; }
+        
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            transition: all 0.2s ease;
         }
-        .bar:nth-child(1) { animation-delay: -0.2s; }
-        .bar:nth-child(2) { animation-delay: -0.4s; }
-        .bar:nth-child(3) { animation-delay: -0.6s; }
-        .bar:nth-child(4) { animation-delay: -0.8s; }
-        .bar:nth-child(5) { animation-delay: -1.0s; }
-
-        @keyframes equalize {
-            0% { transform: scaleY(0.2); opacity: 0.5; }
-            100% { transform: scaleY(1); opacity: 1; }
+        .range-slider:hover::-webkit-slider-thumb {
+            background: #1DB954;
+            transform: scale(1.25);
         }
-        .paused-bar {
-            transform: scaleY(0.2) !important;
-            animation: none !important;
-            opacity: 0.5;
+        .album-card-play {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        .album-card:hover .album-card-play {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        button:focus, div[tabindex="0"]:focus, input:focus, select:focus { outline: none; }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .spin-vinyl {
+            animation: spinSlow 10s linear infinite;
+        }
+        .vinyl-paused {
+            animation-play-state: paused;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.08); }
+        }
+        .ambient-glow {
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        /* Equalizer Bars Animation */
+        .eq-bar-container {
+            display: inline-flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 14px;
+        }
+        .eq-bar {
+            width: 3px;
+            background-color: #1DB954;
+            border-radius: 1px;
+            animation: eqBounce 0.8s ease-in-out infinite alternate;
+        }
+        .eq-bar:nth-child(1) { height: 30%; animation-delay: 0.1s; }
+        .eq-bar:nth-child(2) { height: 100%; animation-delay: 0.3s; }
+        .eq-bar:nth-child(3) { height: 60%; animation-delay: 0.2s; }
+        .eq-bar:nth-child(4) { height: 80%; animation-delay: 0.4s; }
+
+        @keyframes eqBounce {
+            0% { height: 20%; }
+            100% { height: 100%; }
+        }
+        .eq-paused .eq-bar {
+            animation-play-state: paused !important;
+            height: 25% !important;
+            opacity: 0.4;
+        }
+
+        .track-row:hover .track-title,
+        .track-row:hover .track-num {
+            color: #1DB954 !important;
+        }
     </style>
 </head>
-<body>
-    <div id="root">
-        <div style="display:flex;height:100vh;width:100vw;align-items:center;justify-content:center;background:#111827;color:white;flex-direction:column;font-family:sans-serif;">
-            <div style="width:40px;height:40px;border:4px solid #E50914;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:20px;"></div>
-            <h2>Cargando MAGIS Tube Ultimate...</h2>
-            <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
-        </div>
-    </div>
+<body class="h-full flex flex-col font-sans overflow-hidden select-none bg-black text-slate-100">
 
-    <script type="text/babel" data-presets="react-classic">
-        const { useState, useEffect, useRef, useMemo } = React;
-
-        const safeStorage = {
-            getItem: (key) => { try { return localStorage.getItem(key); } catch (e) { return null; } },
-            setItem: (key, value) => { try { localStorage.setItem(key, value); } catch (e) { } }
-        };
-
-        const URLS = {
-            TV: './listaoficial.m3u',
-            SERIES: './playlist.json',
-            MOVIES: './peliculas.json',
-            ANIMADOS: './animados.json',
-            RADIOS: './radios.json'
-        };
-
-        const RAW_URLS = {
-            TV: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/listaoficial.m3u',
-            SERIES: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/playlist.json',
-            MOVIES: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas.json',
-            ANIMADOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/animados.json',
-            RADIOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/radios.json'
-        };
-
-        const DEFAULT_RADIO_STATIONS = [
-            { id: 'cr-sinfonola', title: 'Radio Sinfonola 90.3 FM', group: 'Romántica / Clásicos', image: 'https://static.mytuner.mobi/media/tvos_radios/415/radio-sinfonola.79d5c3e6.png', url: 'https://live.turadio.stream:7006/;' },
-            { id: 'cr-hit', title: 'Hit 104.7 FM', group: 'Juvenil / Pop', image: 'https://static.mytuner.mobi/media/tvos_radios/164/radio-hit-1047-fm.1180f4a3.jpg', url: 'https://live.turadio.stream:7004/stream?nocache=596&type=http' },
-            { id: 'cr-crc', title: 'CRC 94.7 FM', group: 'Alternativo / Rock', image: 'https://static.mytuner.mobi/media/tvos_radios/nAwNLxJbnm.png', url: 'https://23263.live.streamtheworld.com/CRC_947AAC_SC' },
-            { id: 'cr-zeta', title: 'Zeta FM 95.1', group: 'Tropical / Latina', image: 'https://static.mytuner.mobi/media/tvos_radios/879/zeta-fm.feb3fb70.png', url: 'https://d5g44yionyslb.cloudfront.net/medialist_14854753276708185244_hls.m3u8' },
-            { id: 'cr-monumental', title: 'Radio Monumental 93.5 FM', group: 'Noticias / Deportes', image: 'https://static.mytuner.mobi/media/tvos_radios/574/radio-monumental.7303764d.png', url: 'https://d26gdpbozqq700.cloudfront.net/medialist_14854753276708185244_hls.m3u8' },
-            { id: 'cr-mejor', title: 'La Mejor 99.1 FM', group: 'Regional / Latina', image: 'https://static.mytuner.mobi/media/tvos_radios/575/la-mejor-991.95c72890.png', url: 'https://d3svz5xnvdysyz.cloudfront.net/medialist_14854753276708185244_hls.m3u8' },
-            { id: 'cr-r2', title: 'Radio Dos 99.5 FM', group: 'Clásicos / Rock', image: 'https://placehold.co/300x300/0033a0/ffffff?text=R2', url: 'https://icecasthd.teletica.com/radiodos' },
-            { id: 'cr-los40', title: 'Los 40 Costa Rica 104.3 FM', group: 'Éxitos / Urbano', image: 'https://placehold.co/300x300/ffcc00/000000?text=Los40', url: 'https://icecasthd.teletica.com/los40' },
-            { id: 'cr-disney', title: 'Radio Disney 101.1 FM', group: 'Pop / Éxitos', image: 'https://static.mytuner.mobi/media/tvos_radios/652/radio-disney-costa-rica.d297c76c.jpg', url: 'https://26673.live.streamtheworld.com/DISNEY_CRI_SJ_ADP/HLS/031b1ae7-b742-4bf3-8001-31b8478440ef/0/playlist.m3u8' },
-            { id: 'cr-wao', title: 'WAO 92.3 FM', group: 'Urbano / Reggaeton', image: 'https://placehold.co/300x300/fd7e14/ffffff?text=WAO', url: 'https://icecasthd.teletica.com/wao' },
-            { id: 'cr-musical', title: 'Radio Musical 97.5 FM', group: 'Romántica / Latina', image: 'https://static.mytuner.mobi/media/tvos_radios/085/radio-musical.fea3e089.jpg', url: 'https://live.turadio.stream:7005/stream/1/' }
-        ];
-
-        const convertUrl = (url) => {
-            if (!url) return '';
-            if (url.includes('ok.ru/video/search') || url.includes('ok.ru/search')) return url;
-            if (url.includes('ok.ru/video/')) return url.replace('ok.ru/video/', 'ok.ru/videoembed/');
-            if (url.includes('drive.google.com')) {
-                let fileId = '';
-                if (url.includes('/file/d/')) {
-                    const parts = url.split('/file/d/');
-                    if (parts[1]) fileId = parts[1].split('/')[0];
-                } else if (url.includes('id=')) {
-                    const parts = url.split('id=');
-                    if (parts[1]) fileId = parts[1].split('&')[0];
-                }
-                if (fileId) return `https://drive.google.com/file/d/${fileId}/preview`;
-            }
-            return url;
-        };
-
-        const fetchSmart = async (localUrl, rawUrl, isJson = true) => {
-            const cacheBust = `?t=${Date.now()}`;
-            try {
-                const res = await fetch(localUrl + cacheBust);
-                if (res.ok) {
-                    const text = await res.text();
-                    if (!text.trim().startsWith('<!DOCTYPE html') && !text.trim().startsWith('<html')) {
-                        return isJson ? JSON.parse(text) : text;
-                    }
-                }
-            } catch (e) {}
-
-            try {
-                const resRaw = await fetch(rawUrl + cacheBust);
-                if (resRaw.ok) {
-                    return isJson ? await resRaw.json() : await resRaw.text();
-                }
-            } catch (e) {}
-
-            return null;
-        };
-
-        const App = () => {
-            const [showIntro, setShowIntro] = useState(true);
-            const [activeTab, setActiveTab] = useState('home');
-            const [content, setContent] = useState({ tv: [], series: [], movies: [], animados: [] });
-            const [radioStations, setRadioStations] = useState(DEFAULT_RADIO_STATIONS);
-            const [search, setSearch] = useState('');
-            const [selectedItem, setSelectedItem] = useState(null);
-            const [selectedEpisode, setSelectedEpisode] = useState(null);
-            const [isLocked, setIsLocked] = useState(false); 
-            const [favorites, setFavorites] = useState([]);
-            const [loading, setLoading] = useState(true);
-            const [expandedSeason, setExpandedSeason] = useState(0);
-
-            const [currentRadioStation, setCurrentRadioStation] = useState(null);
-            const [isRadioPlaying, setIsRadioPlaying] = useState(false);
-            const [radioFavorites, setRadioFavorites] = useState([]);
-            const [radioVolume, setRadioVolume] = useState(0.8);
-            const [streamError, setStreamError] = useState(false);
-            const [isLoadingRadio, setIsLoadingRadio] = useState(false);
-            const [radioSearch, setRadioSearch] = useState('');
-            const audioRef = useRef(null);
-            const hlsRef = useRef(null);
-
-            const navTabs = [
-                { id: 'home', icon: 'search', label: 'Inicio' }, 
-                { id: 'movies', icon: 'clapperboard', label: 'Cine' }, 
-                { id: 'series', icon: 'film', label: 'Series' },
-                { id: 'animados', icon: 'smile', label: 'Animados' },
-                { id: 'tv', icon: 'tv', label: 'TV' }, 
-                { id: 'radio', icon: 'radio', label: 'Radio' }, 
-                { id: 'jorgeflix', icon: 'compass', label: 'JorgeFlix' },
-                { id: 'spotify', icon: 'music', label: 'Música', isExternal: true, url: 'https://sejo48.github.io/Spotify-local/' },
-                { id: 'favorites', icon: 'heart', label: 'Favs' }
-            ];
-
-            useEffect(() => {
-                const init = async () => {
-                    try {
-                        setLoading(true);
-                        const [dataTV, dataMovies, dataSeries, dataAnimados, dataRadios] = await Promise.all([ 
-                            fetchSmart(URLS.TV, RAW_URLS.TV, false),
-                            fetchSmart(URLS.MOVIES, RAW_URLS.MOVIES, true),
-                            fetchSmart(URLS.SERIES, RAW_URLS.SERIES, true),
-                            fetchSmart(URLS.ANIMADOS, RAW_URLS.ANIMADOS, true),
-                            fetchSmart(URLS.RADIOS, RAW_URLS.RADIOS, true)
-                        ]);
-
-                        let tvChannels = [];
-                        if (dataTV) {
-                            tvChannels = parseM3U(dataTV);
-                        }
-
-                        let moviesList = [];
-                        if (dataMovies) {
-                            const rawMovies = Array.isArray(dataMovies) ? dataMovies : (dataMovies.peliculas || dataMovies.content || []);
-                            moviesList = rawMovies.map((m, idx) => ({ 
-                                ...m, 
-                                id: `mov-${idx}`, 
-                                type: 'movies', 
-                                title: m.titulo || m.title || m.name, 
-                                description: m.descripcion || m.sinopsis || m.plot, 
-                                image: m.imagen || m.poster || m.image, 
-                                url: convertUrl(m.urlDrive || m.url),
-                                rawUrl: m.urlDrive || m.url
-                            }));
-                        }
-
-                        let seriesList = [];
-                        if (dataSeries) {
-                            const rawSeries = Array.isArray(dataSeries) ? dataSeries : (dataSeries.series || []);
-                            seriesList = rawSeries.map((s, idx) => ({
-                                ...s,
-                                id: `serie-${idx}`,
-                                type: 'series',
-                                title: s.tituloSerie || s.titulo || s.title || s.name,
-                                description: s.descripcion || s.sinopsis,
-                                image: s.imagen || s.poster || s.image,
-                                seasons: (s.temporadas || []).map((t, tIdx) => ({
-                                    seasonNumber: t.numeroTemporada || (tIdx + 1),
-                                    episodes: (t.episodios || []).map((ep, eIdx) => ({
-                                        id: `ep-${idx}-${tIdx}-${eIdx}`,
-                                        title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`,
-                                        url: convertUrl(ep.urlDrive || ep.url)
-                                    }))
-                                }))
-                            }));
-                        }
-
-                        let animadosList = [];
-                        if (dataAnimados) {
-                            const rawAnimados = Array.isArray(dataAnimados) ? dataAnimados : (dataAnimados.animados || []);
-                            animadosList = rawAnimados.map((a, idx) => ({
-                                ...a,
-                                id: `anim-${idx}`,
-                                type: 'animados',
-                                title: a.titulo || a.tituloSerie || a.title || a.name,
-                                description: a.descripcion || a.sinopsis,
-                                image: a.imagen || a.poster || a.image,
-                                url: convertUrl(a.urlDrive || a.url),
-                                seasons: (a.temporadas || []).map((t, tIdx) => ({
-                                    seasonNumber: t.numeroTemporada || (tIdx + 1),
-                                    episodes: (t.episodios || []).map((ep, eIdx) => ({
-                                        id: `ep-anim-${idx}-${tIdx}-${eIdx}`,
-                                        title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`,
-                                        url: convertUrl(ep.urlDrive || ep.url)
-                                    }))
-                                }))
-                            }));
-                        }
-
-                        if (dataRadios) {
-                            const list = Array.isArray(dataRadios) ? dataRadios : (dataRadios.radios || dataRadios.emisoras || []);
-                            if (list.length > 0) {
-                                setRadioStations(list);
-                            }
-                        }
-
-                        setContent({ tv: tvChannels, movies: moviesList, series: seriesList, animados: animadosList });
-                    } catch (err) {
-                        console.error("Error cargando contenido", err);
-                    } finally {
-                        setLoading(false);
-                    }
-                };
-
-                const storedFavs = safeStorage.getItem('magistube_favs'); 
-                if (storedFavs) { try { setFavorites(JSON.parse(storedFavs)); } catch(e) {} }
-
-                const storedRadioFavs = safeStorage.getItem('magis_radio_favs');
-                if (storedRadioFavs) { try { setRadioFavorites(JSON.parse(storedRadioFavs)); } catch(e) {} }
-
-                init();
-            }, []);
-
-            useEffect(() => {
-                if (!audioRef.current) {
-                    audioRef.current = new Audio();
-                    audioRef.current.crossOrigin = "anonymous";
-                    
-                    audioRef.current.addEventListener('error', () => {
-                        setIsRadioPlaying(false);
-                        setStreamError(true);
-                        setIsLoadingRadio(false);
-                    });
-                    
-                    audioRef.current.addEventListener('waiting', () => setIsLoadingRadio(true));
-                    audioRef.current.addEventListener('playing', () => {
-                        setIsLoadingRadio(false);
-                        setStreamError(false);
-                    });
-                    audioRef.current.addEventListener('canplay', () => {
-                        setIsLoadingRadio(false);
-                        setStreamError(false);
-                    });
-                }
-
-                const audio = audioRef.current;
-                audio.volume = radioVolume;
-
-                if (currentRadioStation) {
-                    const playAudio = () => {
-                        const playPromise = audio.play();
-                        if (playPromise !== undefined) {
-                            playPromise.catch(() => {
-                                setIsRadioPlaying(false);
-                                setStreamError(true);
-                                setIsLoadingRadio(false);
-                            });
-                        }
-                    };
-
-                    if (audio.dataset.currentUrl !== currentRadioStation.url) {
-                        setIsLoadingRadio(true);
-                        setStreamError(false);
-                        audio.dataset.currentUrl = currentRadioStation.url;
-                        
-                        if (hlsRef.current) {
-                            hlsRef.current.destroy();
-                            hlsRef.current = null;
-                        }
-
-                        if (currentRadioStation.url.includes('.m3u8') && typeof Hls !== 'undefined' && Hls.isSupported()) {
-                            const hls = new Hls();
-                            hlsRef.current = hls;
-                            hls.loadSource(currentRadioStation.url);
-                            hls.attachMedia(audio);
-                            hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                                if (isRadioPlaying) playAudio();
-                            });
-                            hls.on(Hls.Events.ERROR, function (event, data) {
-                                if (data.fatal) {
-                                    setIsRadioPlaying(false);
-                                    setStreamError(true);
-                                    setIsLoadingRadio(false);
-                                }
-                            });
-                        } else {
-                            audio.src = currentRadioStation.url; 
-                            audio.load();
-                            if (isRadioPlaying) playAudio();
-                        }
-                    } else {
-                        if (isRadioPlaying) playAudio();
-                        else audio.pause();
-                    }
-                }
-            }, [currentRadioStation, isRadioPlaying]);
-
-            useEffect(() => {
-                if (audioRef.current) audioRef.current.volume = radioVolume;
-            }, [radioVolume]);
-
-            const parseM3U = (data) => {
-                const lines = data.split('\n'); const channels = [];
-                for (let i = 0; i < lines.length; i++) {
-                    const line = lines[i].trim();
-                    if (line.startsWith('#EXTINF:')) {
-                        let title = 'Canal';
-                        const url = lines[i + 1] ? lines[i + 1].trim() : '';
-                        if (url && url.startsWith('http')) {
-                            const logoMatch = line.match(/tvg-logo="([^"]*)"/); const logo = logoMatch ? logoMatch[1] : '';
-                            const groupMatch = line.match(/group-title="([^"]*)"/); const group = groupMatch ? groupMatch[1] : 'General';
-                            const commaIndex = line.lastIndexOf(',');
-                            if (commaIndex !== -1) title = line.substring(commaIndex + 1).trim();
-                            channels.push({ id: `tv-${i}`, title, image: logo, group, url, type: 'tv' });
-                        }
-                    }
-                }
-                return channels;
-            };
-
-            const toggleFavorite = (item) => { 
-                const itemId = item.id || item.title; 
-                const newFavs = favorites.some(f => (f.id || f.title) === itemId) ? favorites.filter(f => (f.id || f.title) !== itemId) : [item, ...favorites]; 
-                setFavorites(newFavs); 
-                safeStorage.setItem('magistube_favs', JSON.stringify(newFavs)); 
-            };
-
-            const toggleRadioFavorite = (station, e) => {
-                if (e) e.stopPropagation();
-                const isFav = radioFavorites.some(f => f.id === station.id);
-                let newFavs = isFav ? radioFavorites.filter(f => f.id !== station.id) : [station, ...radioFavorites];
-                setRadioFavorites(newFavs);
-                safeStorage.setItem('magis_radio_favs', JSON.stringify(newFavs));
-            };
-
-            const handlePlay = (item) => { 
-                const code = item.codigo || item.password || item.pin; 
-                if (code) { setSelectedItem(item); setIsLocked(true); } 
-                else { setSelectedItem(item); setIsLocked(false); } 
-                setExpandedSeason(0); 
-                if (item.type === 'series' || item.type === 'animados') {
-                    setSelectedEpisode(item.seasons?.[0]?.episodes?.[0] || null); 
-                } else {
-                    setSelectedEpisode(null);
-                }
-                window.scrollTo({ top: 0, behavior: 'smooth' }); 
-            };
-
-            const handlePlayRadioStation = (station) => {
-                if (currentRadioStation?.id === station.id) {
-                    setIsRadioPlaying(!isRadioPlaying);
-                } else {
-                    setCurrentRadioStation(station);
-                    setIsRadioPlaying(true);
-                }
-            };
-
-            const getDisplayContent = () => { 
-                let list = activeTab === 'home' 
-                    ? [...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] 
-                    : activeTab === 'favorites' 
-                    ? favorites 
-                    : content[activeTab] || []; 
-                if (search && activeTab !== 'jorgeflix') return list.filter(i => (i.title || i.name || i.titulo || '').toLowerCase().includes(search.toLowerCase())); 
-                return list; 
-            };
-
-            const displayedItems = getDisplayContent();
-            const heroItem = useMemo(() => (content.movies.length ? content.movies[Math.floor(Math.random() * content.movies.length)] : null), [content]);
-
-            const handleTabClick = (tab) => {
-                if (tab.isExternal) {
-                    window.open(tab.url, '_blank');
-                } else {
-                    setActiveTab(tab.id); 
-                    setSelectedItem(null); 
-                    setSearch(''); 
-                    setIsLocked(false);
-                }
-            };
-
-            if (showIntro) return <IntroScreen onEnter={() => setShowIntro(false)} />;
-
-            return (
-                <div className="min-h-screen bg-[#111827] text-white font-sans flex flex-col md:flex-row relative">
-                    <aside className="hidden md:flex w-24 flex-col items-center py-6 bg-[#0f1115] border-r border-[#1f2937] fixed h-full z-50">
-                        <div className="mb-6 p-2 bg-[#E50914] rounded-xl shadow-lg cursor-pointer" onClick={() => handleTabClick(navTabs[0])}><Icon name="play" size={24} fill="white" className="text-white"/></div>
-                        <div className="flex flex-col gap-1 w-full items-center">
-                            {navTabs.map(tab => (
-                                <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center gap-1 transition-all w-full py-2.5 ${activeTab === tab.id && !tab.isExternal ? 'text-[#E50914] bg-white/5 font-bold border-l-4 border-[#E50914]' : 'text-gray-400 hover:text-white hover:bg-white/5'}`}>
-                                    <Icon name={tab.icon} size={20} fill={activeTab === tab.id && tab.id === 'favorites' ? 'currentColor' : 'none'} className={activeTab === tab.id && tab.id === 'favorites' ? 'fill-current' : ''} /><span className="text-[10px] tracking-tight">{tab.label}</span>
-                                </button>
-                            ))}
-                        </div>
-                        <div className="mt-auto flex flex-col items-center gap-4 mb-4">
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-yellow-600 flex items-center justify-center font-serif font-bold text-black text-xs border border-white/20">J</div>
-                        </div>
-                    </aside>
-
-                    <div className="md:hidden fixed top-0 w-full bg-[#111827]/95 backdrop-blur z-50 px-3 py-2.5 flex items-center justify-between border-b border-[#1f2937] gap-2">
-                        <div className="flex items-center gap-1.5 font-black text-base tracking-tighter cursor-pointer flex-shrink-0" onClick={() => handleTabClick(navTabs[0])}>
-                            <span className="text-[#E50914]">MAGIS</span> TUBE
-                        </div>
-
-                        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
-                            <button
-                                onClick={() => handleTabClick(navTabs.find(t=>t.id==='radio'))}
-                                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl border text-xs font-bold transition-all flex-shrink-0 ${activeTab === 'radio' ? 'bg-[#E50914] text-white border-[#E50914]' : 'bg-[#1f2937] text-gray-300 border-white/10'}`}
-                            >
-                                <Icon name="radio" size={15} />
-                                <span>Radio</span>
-                            </button>
-                            <button
-                                onClick={() => handleTabClick(navTabs.find(t=>t.id==='jorgeflix'))}
-                                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-xl border text-xs font-bold transition-all flex-shrink-0 ${activeTab === 'jorgeflix' ? 'bg-[#E50914] text-white border-[#E50914]' : 'bg-[#1f2937] text-gray-300 border-white/10'}`}
-                            >
-                                <Icon name="compass" size={15} />
-                                <span>JorgeFlix</span>
-                            </button>
-                        </div>
-
-                        <button onClick={() => handleTabClick(navTabs.find(t=>t.id==='favorites'))} className={`flex-shrink-0 transition-colors active:scale-90 p-1 ${activeTab === 'favorites' ? 'text-[#E50914]' : 'text-gray-400 hover:text-white'}`} aria-label="Favoritos">
-                            <Icon name="heart" size={22} fill={activeTab === 'favorites' ? 'currentColor' : 'none'} />
-                        </button>
-                    </div>
-
-                    <div className="md:hidden fixed bottom-0 w-full bg-[#0f1115] border-t border-[#1f2937] z-50 flex py-2 pb-safe px-2 overflow-x-auto no-scrollbar snap-x items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
-                        {navTabs.filter(t => !['jorgeflix', 'favorites', 'radio'].includes(t.id)).map(tab => (
-                            <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-shrink-0 min-w-[56px] py-1 gap-1 snap-start transition-all active:scale-95 rounded-lg ${activeTab === tab.id && !tab.isExternal ? 'text-[#E50914] bg-white/5' : 'text-gray-400 hover:text-white'}`}>
-                                <Icon name={tab.icon} size={18} />
-                                <span className="text-[9px] font-medium tracking-wide">{tab.label}</span>
-                            </button>
-                        ))}
-                    </div>
-
-                    <main className="flex-1 md:ml-24 min-h-screen pt-14 md:pt-0 pb-36 md:pb-0 relative z-10">
-                        {activeTab === 'radio' ? (
-                            <RadioSection 
-                                stations={radioStations} 
-                                currentStation={currentRadioStation}
-                                isPlaying={isRadioPlaying}
-                                onPlayStation={handlePlayRadioStation}
-                                favorites={radioFavorites}
-                                onToggleFavorite={toggleRadioFavorite}
-                                volume={radioVolume}
-                                setVolume={setRadioVolume}
-                                streamError={streamError}
-                                isLoading={isLoadingRadio}
-                                search={radioSearch}
-                                setSearch={setRadioSearch}
-                            />
-                        ) : activeTab === 'jorgeflix' ? (
-                            <JorgeFlixSearch />
-                        ) : activeTab === 'favorites' && !selectedItem ? (
-                            <div className="p-4 sm:p-8 animate-fade-in">
-                                <div className="mb-6 flex items-center gap-3 border-b border-white/10 pb-3">
-                                    <div className="p-2 bg-[#E50914]/20 rounded-lg text-[#E50914]"><Icon name="heart" size={20} fill="currentColor" /></div>
-                                    <h2 className="text-xl font-bold text-white">Tus Favoritos</h2>
-                                </div>
-                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4">
-                                    {favorites.map((item, i) => (<Card key={i} item={item} onClick={handlePlay} isFavorite={true} onToggleFavorite={toggleFavorite} />))}
-                                </div>
-                                {favorites.length === 0 && <div className="text-center py-20 text-gray-500 text-sm"><p>No tienes favoritos guardados aún.</p></div>}
-                            </div>
-                        ) : activeTab === 'tv' || (selectedItem && selectedItem.type === 'tv') ? (
-                            <div className="flex flex-col lg:flex-row h-full lg:h-screen lg:overflow-hidden">
-                                <div className="flex-1 bg-[#111827] relative flex flex-col lg:h-full">
-                                    {selectedItem && selectedItem.type === 'tv' ? (
-                                        <div className="relative aspect-video w-full bg-[#111827] lg:flex-1 overflow-hidden flex items-center justify-center">
-                                            <button onClick={() => setSelectedItem(null)} className="absolute top-3 left-3 z-30 bg-black/60 p-2 rounded-full text-white lg:hidden"><Icon name="arrowLeft" size={18} /></button>
-                                            <iframe src={selectedItem.url} className="w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
-                                        </div>
-                                    ) : (
-                                        <div className="flex items-center justify-center h-full text-gray-500 text-sm"><p>Selecciona un canal de TV</p></div>
-                                    )}
-                                </div>
-                                <div className="w-full lg:w-80 bg-[#111827] lg:border-l border-white/10 flex flex-col lg:h-full lg:overflow-hidden">
-                                    <div className="p-3 sticky top-14 lg:top-0 bg-[#111827] z-20 border-b border-white/5">
-                                        <div className="relative"><input type="text" placeholder="Buscar canal..." className="w-full bg-[#1f2937] border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:border-[#E50914] outline-none pl-9" value={search} onChange={(e) => setSearch(e.target.value)}/><Icon name="search" size={16} className="absolute left-3 top-2.5 text-gray-400"/></div>
-                                    </div>
-                                    <div className="p-2 space-y-1 lg:overflow-y-auto lg:h-full">
-                                        {content.tv.filter(c => !search || c.title.toLowerCase().includes(search.toLowerCase())).map(channel => (
-                                            <TvListItem key={channel.id} channel={channel} isActive={selectedItem?.id === channel.id} isFavorite={favorites.some(f => f.id === channel.id)} onToggleFavorite={toggleFavorite} onClick={handlePlay} />
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        ) : selectedItem ? (
-                            <div className="animate-fade-in flex flex-col min-h-screen">
-                                <div className="w-full bg-black relative aspect-video md:h-[65vh] flex items-center justify-center overflow-hidden">
-                                    <div className="absolute top-3 left-3 z-30 flex gap-2">
-                                        <button onClick={() => {setSelectedItem(null); setIsLocked(false);}} className="bg-black/70 hover:bg-[#E50914] text-white px-3.5 py-1.5 rounded-full backdrop-blur-md flex items-center gap-1.5 text-xs transition-colors border border-white/15 shadow-lg">
-                                            <Icon name="arrowLeft" size={16} /> <span>Volver</span>
-                                        </button>
-                                    </div>
-                                    {isLocked ? (
-                                        <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} />
-                                    ) : (
-                                        <iframe src={convertUrl((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedEpisode ? selectedEpisode.url : selectedItem.url)} className="w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
-                                    )}
-                                </div>
-                                {!isLocked && (
-                                    <div className="p-4 sm:p-8 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6 pb-24">
-                                        <div className="lg:col-span-2">
-                                            <div className="flex items-start justify-between mb-3">
-                                                <div>
-                                                    <h1 className="text-xl sm:text-2xl font-bold text-white mb-1">{selectedItem.titulo || selectedItem.title || selectedItem.name}</h1>
-                                                    <div className="flex items-center gap-2.5 text-xs text-gray-400">
-                                                        <span className="bg-[#1f2937] px-2 py-0.5 rounded text-white uppercase">{selectedItem.type}</span>
-                                                    </div>
-                                                </div>
-                                                <button onClick={() => toggleFavorite(selectedItem)} className="p-2.5 bg-[#1f2937] rounded-full hover:bg-[#2d3748]">
-                                                    <Icon name="heart" size={20} className={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "text-[#E50914] fill-[#E50914]" : "text-gray-400"} fill={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "#E50914" : "none"} />
-                                                </button>
-                                            </div>
-                                            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">{selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible."}</p>
-                                        </div>
-                                        {((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
-                                            <div className="bg-[#171c26] border border-white/10 rounded-2xl p-4 flex flex-col h-[500px]">
-                                                <h3 className="font-bold text-sm text-white mb-3">Episodios</h3>
-                                                <div className="flex gap-2 mb-3 overflow-x-auto pb-2 no-scrollbar">
-                                                    {selectedItem.seasons.map((season, sIdx) => (
-                                                        <button key={sIdx} onClick={() => setExpandedSeason(sIdx)} className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-colors ${expandedSeason === sIdx ? 'bg-[#E50914] text-white' : 'bg-black/40 text-gray-400 hover:text-white'}`}>
-                                                            Temporada {season.seasonNumber}
-                                                        </button>
-                                                    ))}
-                                                </div>
-                                                <div className="flex-1 overflow-y-auto custom-scrollbar space-y-1 pr-1">
-                                                    {selectedItem.seasons[expandedSeason]?.episodes?.map((ep, eIdx) => (
-                                                        <div key={eIdx} onClick={() => setSelectedEpisode(ep)} className={`p-2.5 rounded-xl cursor-pointer flex items-center justify-between text-xs transition-colors ${selectedEpisode?.url === ep.url ? 'bg-[#E50914]/20 text-white border border-[#E50914]/50' : 'hover:bg-white/5 text-gray-300'}`}>
-                                                            <div className="flex items-center gap-2 truncate">
-                                                                <span className="text-gray-500 font-bold">{eIdx + 1}.</span>
-                                                                <span className="truncate">{ep.title}</span>
-                                                            </div>
-                                                            <Icon name="play" size={14} fill={selectedEpisode?.url === ep.url ? "#E50914" : "none"} />
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
-                            </div>
-                        ) : (
-                            <>
-                                <div className="sticky top-14 md:top-0 z-40 bg-[#111827]/95 backdrop-blur py-3 px-4 sm:px-8 flex items-center justify-between border-b border-[#1f2937]">
-                                    <div className="flex bg-[#1f2937] border border-[#374151] rounded-full px-3 py-1.5 w-full max-w-md items-center focus-within:border-[#E50914] transition-colors">
-                                        <Icon name="search" className="text-gray-400 w-4 h-4 mr-2.5" />
-                                        <input type="text" placeholder={`Buscar en ${activeTab === 'home' ? 'todo' : activeTab}...`} className="bg-transparent w-full outline-none text-xs sm:text-sm placeholder-gray-500 text-white" value={search} onChange={(e) => setSearch(e.target.value)}/>
-                                    </div>
-                                </div>
-                                {activeTab === 'home' && !search && heroItem && <HeroSection item={heroItem} onPlay={handlePlay} isFavorite={favorites.some(f=>(f.id||f.title)===(heroItem.id||heroItem.title))} onToggleFavorite={toggleFavorite}/>}
-                                <div className="p-4 sm:p-8">
-                                    <div className="mb-4 flex items-center gap-2">
-                                        <div className="w-1 h-5 bg-[#E50914] rounded-full"></div>
-                                        <h2 className="text-base sm:text-lg font-bold uppercase tracking-wide">{activeTab === 'home' ? 'Tendencias' : activeTab}</h2>
-                                    </div>
-                                    {loading ? (
-                                        <div className="flex justify-center py-16"><div className="animate-spin rounded-full h-10 w-10 border-3 border-[#E50914] border-t-transparent"></div></div>
-                                    ) : displayedItems.length === 0 ? (
-                                        <div className="text-center py-16 text-gray-500 text-xs"><p>No hay contenido disponible.</p></div>
-                                    ) : (
-                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 animate-slide-up">
-                                            {displayedItems.map((item, i) => (
-                                                <Card key={i} item={item} onClick={handlePlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={toggleFavorite} />
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            </>
-                        )}
-                    </main>
-
-                    {currentRadioStation && (
-                        <div className="fixed bottom-[55px] md:bottom-0 left-0 md:left-24 right-0 bg-[#171c26]/95 backdrop-blur-xl border-t border-[#1f2937] p-3 sm:p-4 z-50 flex items-center justify-between shadow-[0_-10px_30px_rgba(0,0,0,0.5)] animate-slide-up">
-                            <div className="flex items-center gap-3 w-1/3 min-w-[120px]">
-                                <div className="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0 border border-white/10 hidden sm:block">
-                                    <img src={currentRadioStation.image} alt={currentRadioStation.title} className="w-full h-full object-cover" />
-                                </div>
-                                <div className="flex flex-col truncate">
-                                    <span className="font-bold text-sm text-white truncate">{currentRadioStation.title}</span>
-                                    {streamError ? (
-                                        <span className="text-xs text-red-500 truncate flex items-center gap-1.5 mt-0.5"><span className="w-1.5 h-1.5 rounded-full bg-red-500"></span> ERROR DE CONEXIÓN</span>
-                                    ) : isLoadingRadio ? (
-                                        <span className="text-xs text-yellow-500 truncate flex items-center gap-1.5 mt-0.5"><span className="w-2.5 h-2.5 border-2 border-yellow-500 border-t-transparent rounded-full animate-spin"></span> CONECTANDO...</span>
-                                    ) : (
-                                        <span className="text-xs text-[#E50914] truncate flex items-center gap-1.5 mt-0.5"><span className="w-1.5 h-1.5 rounded-full bg-[#E50914] animate-pulse"></span> EN DIRECTO</span>
-                                    )}
-                                </div>
-                            </div>
-
-                            <div className="flex flex-col items-center justify-center flex-1">
-                                <div className="flex items-center gap-4">
-                                    <button onClick={() => {
-                                        if (streamError) {
-                                            if (audioRef.current) audioRef.current.dataset.currentUrl = "";
-                                            setStreamError(false);
-                                            setIsRadioPlaying(true);
-                                        } else {
-                                            setIsRadioPlaying(!isRadioPlaying);
-                                        }
-                                    }} className={`w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-transform active:scale-95 ${streamError ? 'bg-red-900/50 hover:bg-red-800 text-white border border-red-500' : 'bg-white hover:bg-gray-200 text-black'}`}>
-                                        <Icon name={isRadioPlaying && !streamError ? "pause" : "play"} size={24} fill="currentColor" className={isRadioPlaying && !streamError ? "" : "ml-1"}/>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div className="flex items-center justify-end gap-4 w-1/3">
-                                <div className="hidden sm:flex items-end h-6 gap-1 mr-4">
-                                    {[1,2,3,4,5].map(i => (<div key={i} className={`bar ${!isRadioPlaying ? 'paused-bar' : ''}`}></div>))}
-                                </div>
-                                <Icon name="volume" size={18} className="text-gray-400 hidden lg:block" />
-                                <input type="range" min="0" max="1" step="0.01" value={radioVolume} onChange={(e) => setRadioVolume(parseFloat(e.target.value))} className="w-24 accent-[#E50914] hidden lg:block"/>
-                            </div>
-                        </div>
-                    )}
+    <div class="flex flex-1 h-[calc(100vh-90px)] overflow-hidden p-2 gap-2">
+        
+        <!-- SIDEBAR NAVIGATION (DESKTOP) -->
+        <aside class="w-64 bg-sp-dark rounded-xl flex flex-col gap-2 p-3 hidden md:flex shrink-0 border border-sp-border shadow-2xl">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3 px-3 py-3 mb-1">
+                <div class="w-9 h-9 rounded-full bg-sp-green flex items-center justify-center text-black font-black text-xl shadow-lg shadow-sp-green/20">
+                    <i class="fa-solid fa-compact-disc text-xl"></i>
                 </div>
-            );
-        };
-
-        const RadioSection = ({ stations, currentStation, isPlaying, onPlayStation, favorites, onToggleFavorite, volume, setVolume, streamError, isLoading, search, setSearch }) => {
-            const [radioTab, setRadioTab] = useState('all');
-            let displayed = radioTab === 'favorites' ? favorites : stations;
-            if (search.trim()) {
-                displayed = displayed.filter(s => s.title.toLowerCase().includes(search.toLowerCase()) || s.group.toLowerCase().includes(search.toLowerCase()));
-            }
-
-            return (
-                <div className="max-w-7xl mx-auto p-4 sm:p-8 animate-fade-in text-white pb-32">
-                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 border-b border-white/10 pb-4">
-                        <div>
-                            <h1 className="text-2xl sm:text-3xl font-black flex items-center gap-2.5">
-                                <span className="p-2 bg-[#E50914]/20 rounded-xl text-[#E50914]"><Icon name="radio" size={24}/></span>
-                                MAGIS <span className="text-[#E50914]">RADIO</span>
-                            </h1>
-                            <p className="text-xs sm:text-sm text-gray-400 mt-1">Disfruta de las mejores emisoras de Costa Rica en vivo.</p>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <button onClick={() => setRadioTab('all')} className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${radioTab === 'all' ? 'bg-[#E50914] text-white shadow' : 'bg-[#1f2937] text-gray-400 hover:text-white'}`}>Todas ({stations.length})</button>
-                            <button onClick={() => setRadioTab('favorites')} className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${radioTab === 'favorites' ? 'bg-[#E50914] text-white shadow' : 'bg-[#1f2937] text-gray-400 hover:text-white'}`}>Favoritas ({favorites.length})</button>
-                        </div>
-                    </div>
-
-                    <div className="mb-6">
-                        <div className="flex bg-[#1f2937] border border-[#374151] rounded-full px-4 py-2.5 w-full max-w-md items-center focus-within:border-[#E50914] transition-colors">
-                            <Icon name="search" className="text-gray-400 w-4 h-4 mr-3" />
-                            <input type="text" placeholder="Buscar emisora o género..." className="bg-transparent w-full outline-none text-xs sm:text-sm placeholder-gray-500 text-white" value={search} onChange={(e) => setSearch(e.target.value)}/>
-                        </div>
-                    </div>
-
-                    {displayed.length === 0 ? (
-                        <div className="text-center py-20 text-gray-500 text-sm">
-                            <Icon name="radio" size={48} className="mx-auto mb-3 opacity-40"/>
-                            <p>No se encontraron emisoras.</p>
-                        </div>
-                    ) : (
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                            {displayed.map(station => {
-                                const isCurrentPlaying = currentStation?.id === station.id && isPlaying;
-                                const isFav = favorites.some(f => f.id === station.id);
-                                return (
-                                    <div key={station.id} onClick={() => onPlayStation(station)} className={`group bg-[#1f2937]/80 hover:bg-[#273244] border rounded-2xl p-4 cursor-pointer transition-all ${currentStation?.id === station.id ? 'border-[#E50914] shadow-[0_0_15px_rgba(229,9,20,0.25)]' : 'border-white/5'}`}>
-                                        <div className="relative aspect-square rounded-xl overflow-hidden mb-3 bg-black">
-                                            <img src={station.image} alt={station.title} className="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity" onError={(e) => e.target.src='https://placehold.co/300x300/111827/ffffff?text=Radio'}/>
-                                            <button onClick={(e) => onToggleFavorite(station, e)} className="absolute top-2 right-2 p-1.5 bg-black/60 rounded-full text-white backdrop-blur-sm z-20">
-                                                <Icon name="heart" size={16} className={isFav ? "text-[#E50914] fill-[#E50914]" : ""} fill={isFav ? "#E50914" : "none"} />
-                                            </button>
-                                            <div className={`absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity z-10 ${isCurrentPlaying ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
-                                                <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white ${isCurrentPlaying ? 'bg-[#E50914] shadow-[0_0_15px_#E50914]' : 'bg-white/20 backdrop-blur-md border border-white/40'}`}>
-                                                    <Icon name={isCurrentPlaying ? "pause" : "play"} size={22} fill="currentColor"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <h3 className="font-bold text-sm text-white truncate">{station.title}</h3>
-                                        <p className="text-xs text-gray-400 truncate mt-0.5">{station.group}</p>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    )}
-                </div>
-            );
-        };
-
-        const JorgeFlixSearch = () => {
-            const [lang, setLang] = useState("");
-            const [query, setQuery] = useState("");
-            const [typeVal, setTypeVal] = useState("");
-            const [yearVal, setYearVal] = useState("");
-            const [voiceStatus, setVoiceStatus] = useState("🎤 Pulse el micrófono y diga el nombre de la película o serie.");
-            const [isListening, setIsListening] = useState(false);
-            const [history, setHistory] = useState([]);
-            const [engine, setEngine] = useState("yandex");
-            const STORAGE_KEY = 'jorgeflix_history_v2';
-
-            useEffect(() => {
-                try {
-                    const h = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-                    setHistory(Array.isArray(h) ? h : []);
-                } catch (e) { setHistory([]); }
-            }, []);
-
-            const buildQuery = () => {
-                let s = 'site:ok.ru/video';
-                if (query.trim()) s += ' "' + query.trim() + '"';
-                if (yearVal.trim()) s += ' ' + yearVal.trim();
-                if (typeVal) s += ' ' + typeVal;
-                s += ' español';
-                if (lang) s += ' ' + lang;
-                return s;
-            };
-
-            const currentCmd = buildQuery();
-
-            const startVoice = () => {
-                const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-                if (!SpeechRecognition) {
-                    setVoiceStatus("❌ Reconocimiento de voz no soportado en este navegador.");
-                    return;
-                }
-                const r = new SpeechRecognition();
-                r.lang = "es-CR";
-                r.continuous = false;
-                r.interimResults = true;
-                setIsListening(true);
-                setVoiceStatus("🎙️ Escuchando... hable ahora.");
-                r.onresult = (e) => {
-                    let text = "";
-                    for (let i = e.resultIndex; i < e.results.length; i++) text += e.results[i][0].transcript;
-                    setQuery(text.trim());
-                };
-                r.onerror = (e) => {
-                    let msg = "No se pudo usar el micrófono.";
-                    if (e.error === "not-allowed") msg = "❌ Permiso de micrófono bloqueado.";
-                    if (e.error === "no-speech") msg = "🎤 No se detectó voz.";
-                    setVoiceStatus(msg);
-                };
-                r.onend = () => {
-                    setIsListening(false);
-                    if (query.trim()) setVoiceStatus("✅ Texto reconocido.");
-                    else setVoiceStatus("🎤 Pulse el micrófono y diga el nombre de la película o serie.");
-                };
-                try { r.start(); } catch (e) { r.onend(); }
-            };
-
-            const saveHistory = (title, y, t, l) => {
-                try {
-                    let h = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-                    if (!Array.isArray(h)) h = [];
-                    h = [{ title, y, t, l }, ...h.filter(x => !(x.title === title && x.y === y && x.t === t && x.l === l))].slice(0, 10);
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(h));
-                    setHistory(h);
-                } catch (e) { }
-            };
-
-            const executeSearch = (titleToSearch, year, type, language) => {
-                let s = 'site:ok.ru/video';
-                if (titleToSearch) s += ' "' + titleToSearch + '"';
-                if (year) s += ' ' + year;
-                if (type) s += ' ' + type;
-                s += ' español';
-                if (language) s += ' ' + language;
-
-                let searchUrl = '';
-                if (engine === 'okru') {
-                    let okQuery = titleToSearch;
-                    if (year) okQuery += ' ' + year;
-                    if (type) okQuery += ' ' + type;
-                    okQuery += ' español';
-                    if (language) okQuery += ' ' + language;
-                    searchUrl = 'https://ok.ru/video/search?st.search=' + encodeURIComponent(okQuery);
-                } else if (engine === 'yandex') {
-                    searchUrl = 'https://yandex.com/search/?text=' + encodeURIComponent(s);
-                } else if (engine === 'bing') {
-                    searchUrl = 'https://www.bing.com/search?q=' + encodeURIComponent(s);
-                } else {
-                    searchUrl = 'https://www.google.com/search?q=' + encodeURIComponent(s);
-                }
-                window.open(searchUrl, '_blank');
-            };
-
-            const handleSearch = () => {
-                if (!query.trim()) return;
-                saveHistory(query.trim(), yearVal.trim(), typeVal, lang);
-                executeSearch(query.trim(), yearVal.trim(), typeVal, lang);
-            };
-
-            const repeatHistory = (x) => {
-                setQuery(x.title);
-                setYearVal(x.y || "");
-                setTypeVal(x.t || "");
-                setLang(x.l || "");
-                saveHistory(x.title, x.y, x.t, x.l);
-                executeSearch(x.title, x.y, x.t, x.l);
-            };
-
-            const clearHistory = () => {
-                try {
-                    localStorage.removeItem(STORAGE_KEY);
-                    setHistory([]);
-                } catch (e) { }
-            };
-
-            return (
-                <div className="max-w-4xl mx-auto p-4 sm:p-8 animate-fade-in text-white pb-24">
-                    <div className="text-center py-6">
-                        <h1 className="text-3xl sm:text-4xl font-black mb-2">Buscador OK.ru <span className="text-[#E50914]">JorgeFlix</span></h1>
-                        <p className="text-gray-400 text-xs sm:text-sm">Encuentra contenido en español alojado en OK.ru con los mejores motores de búsqueda.</p>
-                    </div>
-
-                    <div className="bg-[#11151d] border border-[#29303b] rounded-2xl p-4 sm:p-6 shadow-2xl mb-8">
-                        <div className="grid grid-cols-1 md:grid-cols-[1fr_160px_110px] gap-3 mb-4">
-                            <div className="relative">
-                                <input placeholder="Nombre de película o serie..." value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={(e) => e.key === "Enter" && handleSearch()} className="w-full bg-[#090c11] border border-[#29303b] rounded-xl px-4 py-3 text-sm text-white outline-none pr-12 focus:border-gray-500" autoFocus />
-                                <button type="button" onClick={startVoice} title="Buscar por voz" className={`absolute right-2 top-2 w-9 h-9 rounded-lg flex items-center justify-center text-lg ${isListening ? 'bg-[#E50914] animate-pulse' : 'bg-[#252b35]'}`}>
-                                    {isListening ? '🔴' : '🎤'}
-                                </button>
-                            </div>
-                            <select value={typeVal} onChange={(e) => setTypeVal(e.target.value)} className="bg-[#090c11] border border-[#29303b] rounded-xl px-3 py-3 text-sm text-white outline-none">
-                                <option value="">Películas y series</option>
-                                <option value="película">Películas</option>
-                                <option value="serie">Series</option>
-                            </select>
-                            <input inputMode="numeric" maxLength="4" placeholder="Año" value={yearVal} onChange={(e) => setYearVal(e.target.value)} onKeyDown={(e) => e.key === "Enter" && handleSearch()} className="bg-[#090c11] border border-[#29303b] rounded-xl px-3 py-3 text-sm text-white outline-none text-center" />
-                        </div>
-
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {[
-                                { lang: "", label: "🇪🇸 Cualquier español" },
-                                { lang: "latino", label: "🇲🇽 Español latino" },
-                                { lang: "castellano", label: "🇪🇸 Castellano" },
-                                { lang: "doblada", label: "🎙️ Doblada" },
-                                { lang: "subtitulada", label: "💬 Subtitulada" }
-                            ].map((f, i) => (
-                                <button key={i} onClick={() => setLang(f.lang)} className={`px-3.5 py-1.5 rounded-full text-xs font-medium border transition-colors ${lang === f.lang ? 'bg-white text-black border-white' : 'bg-[#171c25] border-[#29303b] text-[#cbd2dc] hover:border-gray-500'}`}>
-                                    {f.label}
-                                </button>
-                            ))}
-                        </div>
-
-                        <div className="text-xs text-gray-400 mb-4">{voiceStatus}</div>
-                        <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Comando de búsqueda generado</div>
-                        <div className="bg-[#080a0e] p-3 rounded-lg font-mono text-xs text-red-400 overflow-x-auto mb-5 border border-[#29303b]">
-                            {engine === 'okru' ? "Búsqueda directa en motor interno de OK.ru" : currentCmd}
-                        </div>
-
-                        <div className="mb-6">
-                            <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Motor de búsqueda</div>
-                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                                <button onClick={() => setEngine('yandex')} className={`py-2 rounded-lg text-xs font-bold transition-all ${engine === 'yandex' ? 'bg-[#ffcc00] text-black shadow-[0_0_10px_rgba(255,204,0,0.3)]' : 'bg-[#171c25] border border-[#29303b] text-gray-400 hover:text-white'}`}>Yandex (Recomendado)</button>
-                                <button onClick={() => setEngine('okru')} className={`py-2 rounded-lg text-xs font-bold transition-all ${engine === 'okru' ? 'bg-[#f58220] text-white shadow-[0_0_10px_rgba(245,130,32,0.3)]' : 'bg-[#171c25] border border-[#29303b] text-gray-400 hover:text-white'}`}>Nativo OK.ru</button>
-                                <button onClick={() => setEngine('google')} className={`py-2 rounded-lg text-xs font-bold transition-all ${engine === 'google' ? 'bg-white text-black shadow-[0_0_10px_rgba(255,255,255,0.3)]' : 'bg-[#171c25] border border-[#29303b] text-gray-400 hover:text-white'}`}>Google</button>
-                                <button onClick={() => setEngine('bing')} className={`py-2 rounded-lg text-xs font-bold transition-all ${engine === 'bing' ? 'bg-[#00aad9] text-white shadow-[0_0_10px_rgba(0,170,217,0.3)]' : 'bg-[#171c25] border border-[#29303b] text-gray-400 hover:text-white'}`}>Bing</button>
-                            </div>
-                        </div>
-
-                        <button onClick={handleSearch} className="w-full bg-[#E50914] text-white py-3.5 rounded-xl font-bold text-sm hover:bg-red-700 transition-colors shadow-lg flex items-center justify-center gap-2">
-                            <Icon name="search" size={18} fill="none" className="text-white" />
-                            <span>Buscar con {engine === 'yandex' ? 'Yandex' : engine === 'okru' ? 'OK.ru' : engine === 'bing' ? 'Bing' : 'Google'}</span>
-                        </button>
-                    </div>
-
-                    <div className="bg-[#11151d] border border-[#29303b] rounded-2xl p-4 sm:p-6 shadow-xl">
-                        <h2 className="text-base font-bold mb-3 flex items-center gap-2">🕘 Historial de Búsqueda</h2>
-                        {history.length === 0 ? (
-                            <p className="text-xs text-gray-500">Todavía no hay búsquedas recientes.</p>
-                        ) : (
-                            <div className="flex flex-wrap gap-2 items-center">
-                                {history.map((x, idx) => (
-                                    <button key={idx} onClick={() => repeatHistory(x)} className="bg-[#181e28] border border-[#29303b] hover:border-gray-500 text-[#d8dde5] text-xs px-3.5 py-2 rounded-full transition-colors">
-                                        {x.title} {x.y ? `· ${x.y}` : ''}
-                                    </button>
-                                ))}
-                                <button onClick={clearHistory} className="text-xs text-red-400 underline ml-2 hover:text-red-300">Borrar historial</button>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            );
-        };
-
-        const IntroScreen = ({ onEnter }) => (
-            <div className="fixed inset-0 z-[100] bg-[#111827] flex items-center justify-center overflow-hidden font-sans p-4">
-                <div className="absolute inset-0"><img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover opacity-10" /><div className="absolute inset-0 bg-gradient-to-b from-[#111827] via-[#111827]/90 to-[#111827]"></div></div>
-                <div className="relative z-10 text-center max-w-sm w-full animate-slide-up">
-                    <div className="mb-3 inline-block bg-[#E50914] px-2.5 py-0.5 rounded text-[10px] font-bold tracking-widest uppercase text-white">Premium Access</div>
-                    <h1 className="text-5xl font-black text-white mb-2 tracking-tighter">MAGIS<span className="text-[#E50914]">Tube</span></h1>
-                    <p className="text-sm text-gray-400 font-light mb-6 italic">"Donde la nostalgia se encuentra con la tecnología."</p>
-                    <button onClick={onEnter} className="w-full bg-white text-black py-3.5 rounded-full font-bold text-base shadow-lg flex items-center justify-center gap-2 mb-8 active:scale-95 transition-transform"><span>Comenzar a Ver</span> <Icon name="play" size={18} fill="black" /></button>
-                    <div className="opacity-80"><p className="text-[9px] text-gray-500 uppercase tracking-widest mb-0.5">DISEÑADO Y PROGRAMADO POR</p><h3 className="text-base font-serif text-gold-gradient font-bold mb-1">JORGE ARTURO HERNÁNDEZ MÉNDEZ</h3><p className="text-[9px] text-gray-600">Potenciado por <span className="text-blue-400">Gemini AI</span></p></div>
+                <div>
+                    <span class="font-extrabold text-lg tracking-tight text-white block leading-tight">Spotity <span class="text-sp-green">Local</span></span>
+                    <span class="text-[10px] text-sp-subtext font-semibold uppercase tracking-wider block">Disco Duro Personal</span>
                 </div>
             </div>
-        );
 
-        const HeroSection = ({ item, onPlay, isFavorite, onToggleFavorite }) => {
-            if (!item) return null;
-            const imgSource = item.imagen || item.image || item.poster;
-            const titleSource = item.titulo || item.title || item.name;
-            const descSource = item.descripcion || item.sinopsis || item.plot;
+            <!-- Navigation Links -->
+            <nav class="space-y-1">
+                <button onclick="window.switchTab('home')" id="nav-home" class="w-full flex items-center gap-4 px-3.5 py-3 rounded-lg text-white bg-sp-card font-bold transition">
+                    <i class="fa-solid fa-house text-lg w-5 text-sp-green"></i> Inicio
+                </button>
+                <button onclick="window.switchTab('albums')" id="nav-albums" class="w-full flex items-center gap-4 px-3.5 py-3 rounded-lg text-sp-subtext hover:text-white hover:bg-sp-card font-bold transition">
+                    <i class="fa-solid fa-folder-closed text-lg w-5 text-amber-400"></i> Carpetas / Álbumes
+                </button>
+                <button onclick="window.switchTab('equalizer')" id="nav-equalizer" class="w-full flex items-center gap-4 px-3.5 py-3 rounded-lg text-sp-subtext hover:text-white hover:bg-sp-card font-bold transition">
+                    <i class="fa-solid fa-sliders text-lg w-5 text-cyan-400"></i> Ecualizador
+                </button>
+            </nav>
+
+            <hr class="border-sp-border my-2">
+
+            <!-- Load Directory Action Box -->
+            <div class="p-3 bg-sp-card rounded-xl border border-sp-border/80 space-y-2">
+                <div class="flex items-center justify-between text-xs font-bold text-white">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-hard-drive text-sp-green"></i> Disco duro</span>
+                    <span id="storage-status-badge" class="text-[9px] bg-sp-green/20 text-sp-green px-2 py-0.5 rounded-full font-mono">Guardado</span>
+                </div>
+                <p class="text-[11px] text-sp-subtext leading-relaxed">Selecciona la carpeta principal de tu disco duro. Todas sus subcarpetas se organizarán en álbumes.</p>
+                <label class="w-full mt-1 py-2.5 px-3 bg-sp-green hover:bg-sp-greenHover text-black font-extrabold text-xs rounded-full flex items-center justify-center gap-2 cursor-pointer transition shadow-md">
+                    <i class="fa-solid fa-folder-open"></i> Importar Carpeta Principal
+                    <input type="file" id="sidebar-folder-input" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
+                </label>
+            </div>
+
+            <div class="flex items-center justify-between px-2 pt-2 text-sp-subtext">
+                <span class="font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
+                    <i class="fa-solid fa-layer-group text-sp-green"></i> Colección Local
+                </span>
+                <span class="text-[10px] bg-sp-card px-2 py-0.5 rounded-full font-mono text-white" id="sidebar-album-count">0 álbumes</span>
+            </div>
+
+            <div id="sidebar-albums-list" class="flex-1 overflow-y-auto space-y-1 pr-1">
+                <div class="p-4 text-center text-xs text-sp-subtext">
+                    Cargando memoria local...
+                </div>
+            </div>
+
+            <!-- Memory Clear Control -->
+            <div class="pt-2 border-t border-sp-border/60 flex items-center justify-between px-2">
+                <span id="storage-size-label" class="text-[10px] text-sp-subtext font-mono">0 MB en memoria</span>
+                <button onclick="window.promptClearLibrary()" title="Borrar datos guardados en memoria local" class="text-[10px] text-red-400 hover:text-red-300 hover:underline flex items-center gap-1">
+                    <i class="fa-solid fa-trash-can"></i> Limpiar
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN VIEW AREA -->
+        <main class="flex-1 bg-sp-dark rounded-xl overflow-hidden flex flex-col border border-sp-border relative shadow-2xl">
             
-            return (
-                <div className="relative w-full h-[320px] sm:h-[380px] bg-[#0b0f19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-white/5 flex items-center">
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        <img src={imgSource} alt="Hero BG" className="w-full h-full object-cover filter blur-md opacity-75 scale-125 brightness-125 contrast-125" onError={(e) => e.target.style.display='none'} />
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f19]/80 via-[#0b0f19]/40 to-transparent"></div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent"></div>
+            <header class="h-16 px-4 md:px-6 flex items-center justify-between bg-sp-dark/95 backdrop-blur-md sticky top-0 z-20 border-b border-sp-border gap-2">
+                <div class="flex items-center gap-3 w-full max-w-lg">
+                    <div class="flex gap-2">
+                        <button onclick="window.switchTab('home')" class="w-8 h-8 rounded-full bg-black/60 flex items-center justify-center text-sp-subtext hover:text-white transition">
+                            <i class="fa-solid fa-chevron-left text-xs"></i>
+                        </button>
+                        <button onclick="window.switchTab('albums')" class="w-8 h-8 rounded-full bg-black/60 flex items-center justify-center text-sp-subtext hover:text-white transition">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
                     </div>
-                    <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-start px-6 sm:px-12 max-w-7xl mx-auto gap-8">
-                        <div className="w-32 sm:w-44 aspect-[2/3] rounded-xl overflow-hidden shadow-2xl border border-white/20 flex-shrink-0 bg-black/50 transform group-hover:scale-105 transition-transform duration-300 relative">
-                            <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/1f2937/ffffff?text=Poster'} />
+                    
+                    <div class="relative flex-1">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-sp-subtext text-xs"></i>
+                        <input type="text" id="global-search" oninput="window.handleGlobalSearch(this.value)" placeholder="Buscar canción, álbum o artista..."
+                               class="w-full bg-sp-card text-xs text-white placeholder-sp-subtext rounded-full pl-9 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-sp-green border border-sp-border transition">
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <label class="md:hidden p-2.5 bg-sp-green text-black font-bold text-xs rounded-full flex items-center gap-1 cursor-pointer">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <input type="file" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
+                    </label>
+
+                    <label class="hidden sm:flex px-4 py-2 bg-sp-card hover:bg-sp-cardHover text-white text-xs font-bold rounded-full border border-sp-border items-center gap-2 cursor-pointer transition">
+                        <i class="fa-solid fa-file-audio text-sp-green"></i> Añadir Archivos
+                        <input type="file" accept="audio/*" multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
+                    </label>
+
+                    <button onclick="window.toggleVisualizer()" title="Espectro de Frecuencias" class="p-2.5 rounded-full bg-sp-card hover:bg-sp-cardHover text-sp-green transition border border-sp-border">
+                        <i class="fa-solid fa-chart-simple text-sm"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="md:hidden bg-black/80 px-4 py-2 border-b border-sp-border flex items-center justify-around text-xs font-bold text-sp-subtext">
+                <button onclick="window.switchTab('home')" id="mob-nav-home" class="flex items-center gap-1 text-sp-green">
+                    <i class="fa-solid fa-house"></i> Inicio
+                </button>
+                <button onclick="window.switchTab('albums')" id="mob-nav-albums" class="flex items-center gap-1">
+                    <i class="fa-solid fa-folder"></i> Álbumes
+                </button>
+                <button onclick="window.switchTab('equalizer')" id="mob-nav-equalizer" class="flex items-center gap-1">
+                    <i class="fa-solid fa-sliders"></i> EQ
+                </button>
+            </div>
+
+            <!-- VISUALIZER BANNER (SIEMPRE VISIBLE / AUTOMÁTICO EN LA PARTE SUPERIOR) -->
+            <div id="visualizer-container" class="shrink-0 bg-black/95 backdrop-blur-xl border-b border-sp-border p-4 md:p-6 relative overflow-hidden transition-all duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-10">
+                <div class="absolute inset-0 bg-gradient-to-b from-sp-green/10 to-transparent opacity-50 ambient-glow pointer-events-none"></div>
+                
+                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
+                    <div class="flex items-center gap-4 max-w-xl w-full">
+                        <div class="relative group shrink-0">
+                            <img id="vis-cover" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=120&h=120&fit=crop" class="w-14 h-14 md:w-16 md:h-16 rounded-md object-cover shadow-[0_0_15px_rgba(29,185,84,0.3)] border border-sp-border/80">
+                            <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-sp-green rounded-full flex items-center justify-center animate-bounce shadow-lg">
+                                <i class="fa-solid fa-music text-[10px] text-black"></i>
+                            </div>
                         </div>
-                        <div className="flex-1 flex flex-col gap-2 items-start max-w-xl">
-                            <span className="bg-[#E50914] text-white text-[9px] font-extrabold px-2.5 py-1 rounded uppercase tracking-wider shadow">Destacado</span>
-                            <h1 className="text-2xl sm:text-4xl font-black text-white leading-tight drop-shadow-md line-clamp-1">{titleSource}</h1>
-                            <p className="text-gray-100 text-xs sm:text-sm line-clamp-3 leading-relaxed drop-shadow">{descSource || "Disfruta del mejor contenido seleccionado para ti."}</p>
-                            <div className="flex gap-3 mt-3">
-                                <button onClick={() => onPlay(item)} className="bg-white text-black px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-95 transition-transform shadow-lg hover:bg-gray-200">
-                                    <Icon name="play" size={16} fill="black"/> Reproducir
+                        <div class="truncate">
+                            <div class="flex items-center gap-2">
+                                <span class="text-[10px] text-sp-green font-extrabold uppercase tracking-widest block"><i class="fa-solid fa-wave-square animate-pulse mr-1"></i> Animación Automática</span>
+                                <div id="vis-eq-indicator" class="eq-bar-container eq-paused">
+                                    <div class="eq-bar"></div>
+                                    <div class="eq-bar"></div>
+                                    <div class="eq-bar"></div>
+                                    <div class="eq-bar"></div>
+                                </div>
+                            </div>
+                            <h3 id="vis-title" class="text-white font-black text-base md:text-xl tracking-tight truncate">Carga tu música</h3>
+                            <p id="vis-artist" class="text-sp-subtext text-xs md:text-sm truncate">Spotity Local Player</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Controls for Visualizer Mode -->
+                    <div class="flex items-center gap-2 bg-sp-card p-1 rounded-lg border border-sp-border self-start md:self-center shrink-0">
+                        <button onclick="window.setVisMode('bars')" id="vis-mode-bars" class="px-2.5 py-1.5 rounded-md text-[11px] font-bold text-black bg-sp-green transition">Espectro</button>
+                        <button onclick="window.setVisMode('wave')" id="vis-mode-wave" class="px-2.5 py-1.5 rounded-md text-[11px] font-bold text-sp-subtext hover:text-white transition">Osciloscopio</button>
+                        <button onclick="window.setVisMode('aura')" id="vis-mode-aura" class="px-2.5 py-1.5 rounded-md text-[11px] font-bold text-sp-subtext hover:text-white transition">Aura Pulsante</button>
+                    </div>
+                </div>
+                
+                <canvas id="visualizer-canvas" class="relative z-10 w-full h-20 md:h-28 bg-sp-dark/60 rounded-xl border border-sp-border/80 shadow-inner"></canvas>
+            </div>
+
+            <!-- Scroll View Container -->
+            <div id="main-scroll-view" class="flex-1 overflow-y-auto p-4 md:p-6 space-y-8">
+                
+                <section id="tab-home" class="space-y-8">
+                    <!-- Hero Spotify Local Banner -->
+                    <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-950 via-sp-dark to-black p-6 md:p-8 border border-sp-green/30 shadow-2xl">
+                        <div class="relative z-10 max-w-xl space-y-3">
+                            <span class="px-3 py-1 bg-sp-green/20 text-sp-green text-xs font-extrabold uppercase rounded-full tracking-wider border border-sp-green/30">
+                                Memoria Local Persistente
+                            </span>
+                            <h1 class="text-2xl md:text-5xl font-black text-white tracking-tight">
+                                Reproductor de Disco Duro
+                            </h1>
+                            <p class="text-sp-subtext text-xs md:text-sm leading-relaxed">
+                                Selecciona la carpeta principal de tu disco duro. Todas tus canciones, clasificaciones por carpetas y portadas personalizadas quedarán guardadas permanentemente en tu navegador.
+                            </p>
+                            <div class="flex flex-wrap items-center gap-3 pt-2">
+                                <label class="px-5 py-2.5 bg-sp-green hover:bg-sp-greenHover text-black font-extrabold text-xs md:text-sm rounded-full shadow-lg shadow-sp-green/30 flex items-center gap-2 cursor-pointer transition transform active:scale-95">
+                                    <i class="fa-solid fa-folder-open"></i> Cargar Carpeta Principal
+                                    <input type="file" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
+                                </label>
+                                <button onclick="window.switchTab('albums')" class="px-5 py-2.5 bg-sp-card hover:bg-sp-cardHover border border-sp-border text-white text-xs md:text-sm font-bold rounded-full transition flex items-center gap-2">
+                                    <i class="fa-solid fa-grip text-sp-green"></i> Ver Álbumes
                                 </button>
-                                <button onClick={() => onToggleFavorite(item)} className="bg-white/20 text-white p-2.5 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/30 hover:bg-white/40">
-                                    <Icon name="heart" size={18} className={isFavorite ? "text-[#E50914] fill-[#E50914]" : "text-white"} fill={isFavorite ? "#E50914" : "none"} />
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-database text-8xl md:text-9xl absolute -right-6 -bottom-6 text-sp-green/10 transform rotate-12 pointer-events-none"></i>
+                    </div>
+
+                    <!-- Albums Overview -->
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-xl md:text-2xl font-black text-white tracking-tight flex items-center gap-2.5">
+                                <i class="fa-solid fa-record-vinyl text-sp-green"></i> Álbumes en Memoria
+                            </h2>
+                            <button onclick="window.switchTab('albums')" class="text-xs font-bold text-sp-subtext hover:text-sp-green transition">
+                                Ver todo (<span id="home-album-count">0</span>)
+                            </button>
+                        </div>
+                        <div id="home-albums-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+                    </div>
+
+                    <!-- All Local Tracks Table -->
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-xl md:text-2xl font-black text-white tracking-tight">Todas las Canciones Guardadas</h2>
+                            <span class="text-xs text-sp-subtext font-medium" id="total-tracks-count">0 canciones en memoria local</span>
+                        </div>
+                        <div class="bg-sp-card/60 rounded-xl overflow-hidden border border-sp-border">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left text-sm text-sp-subtext">
+                                    <thead class="border-b border-sp-border text-xs uppercase bg-black/40 text-sp-subtext">
+                                        <tr>
+                                            <th class="py-3.5 px-4 w-12 text-center">#</th>
+                                            <th class="py-3.5 px-4">Título</th>
+                                            <th class="py-3.5 px-4 hidden sm:table-cell">Álbum / Carpeta</th>
+                                            <th class="py-3.5 px-4 text-center w-24 hidden md:table-cell">Estado</th>
+                                            <th class="py-3.5 px-4 text-center w-16">Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="all-tracks-table-body" class="divide-y divide-sp-border/50"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tab-albums" class="space-y-6 hidden">
+                    <div class="flex items-center justify-between border-b border-sp-border pb-4">
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-black text-white tracking-tight">Colección de Álbumes</h2>
+                            <p class="text-xs text-sp-subtext mt-1">Organización automática por las carpetas de tu disco duro personal.</p>
+                        </div>
+                        <label class="px-4 py-2 bg-sp-green hover:bg-sp-greenHover text-black text-xs font-extrabold rounded-full flex items-center gap-2 cursor-pointer transition">
+                            <i class="fa-solid fa-folder-plus"></i> Importar Más
+                            <input type="file" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
+                        </label>
+                    </div>
+
+                    <div id="albums-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+                </section>
+
+                <section id="tab-album-detail" class="space-y-6 hidden">
+                    <!-- Album Header Banner -->
+                    <div class="flex flex-col md:flex-row items-center md:items-end gap-6 bg-gradient-to-b from-sp-card to-sp-dark p-6 rounded-2xl border border-sp-border relative">
+                        <div class="relative group shrink-0">
+                            <img id="detail-album-cover" src="" class="w-40 h-40 md:w-44 md:h-44 rounded-xl object-cover shadow-2xl border border-sp-border/80">
+                            <label title="Cambiar portada de esta carpeta" class="absolute inset-0 bg-black/60 rounded-xl flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition cursor-pointer backdrop-blur-xs">
+                                <i class="fa-solid fa-camera text-2xl mb-1 text-sp-green"></i>
+                                <span class="text-[11px] font-bold">Cambiar Portada</span>
+                                <input type="file" accept="image/*" class="hidden" onchange="window.updateAlbumCoverFromInput(this)">
+                            </label>
+                        </div>
+
+                        <div class="space-y-2 text-center md:text-left flex-1">
+                            <span class="px-2.5 py-1 bg-sp-green/20 text-sp-green text-[10px] font-extrabold uppercase rounded-full tracking-wider border border-sp-green/30">
+                                Carpeta Guardada en Memoria
+                            </span>
+                            <h1 id="detail-album-name" class="text-2xl md:text-5xl font-black text-white tracking-tight">Nombre del Álbum</h1>
+                            <p id="detail-album-meta" class="text-xs text-sp-subtext font-medium">0 Canciones • Almacenado Localmente</p>
+                            
+                            <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-3">
+                                <button onclick="window.playCurrentAlbum()" class="px-6 py-2.5 bg-sp-green hover:bg-sp-greenHover text-black font-extrabold text-xs md:text-sm rounded-full shadow-lg shadow-sp-green/30 flex items-center gap-2 transition transform active:scale-95">
+                                    <i class="fa-solid fa-play"></i> Reproducir Todo
+                                </button>
+
+                                <label class="px-4 py-2.5 bg-sp-card hover:bg-sp-cardHover border border-sp-border text-white text-xs font-bold rounded-full flex items-center gap-2 cursor-pointer transition">
+                                    <i class="fa-solid fa-image text-sp-green"></i> Cambiar Portada
+                                    <input type="file" accept="image/*" class="hidden" onchange="window.updateAlbumCoverFromInput(this)">
+                                </label>
+
+                                <button onclick="window.switchTab('albums')" class="px-4 py-2.5 bg-black/40 hover:bg-black/60 text-sp-subtext hover:text-white text-xs font-bold rounded-full transition">
+                                    <i class="fa-solid fa-arrow-left mr-1"></i> Volver
                                 </button>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Album Tracklist Table -->
+                    <div class="bg-sp-card/60 rounded-xl overflow-hidden border border-sp-border">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm text-sp-subtext">
+                                <thead class="border-b border-sp-border text-xs uppercase bg-black/40 text-sp-subtext">
+                                    <tr>
+                                        <th class="py-3.5 px-4 w-12 text-center">#</th>
+                                        <th class="py-3.5 px-4">Título</th>
+                                        <th class="py-3.5 px-4 hidden sm:table-cell">Artista</th>
+                                        <th class="py-3.5 px-4 text-center w-24 hidden md:table-cell">Estado</th>
+                                        <th class="py-3.5 px-4 text-center w-16">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="album-detail-tracks-body" class="divide-y divide-sp-border/50"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tab-equalizer" class="space-y-6 hidden">
+                    <div class="bg-sp-card p-6 md:p-8 rounded-2xl border border-sp-border space-y-6 max-w-2xl mx-auto shadow-2xl">
+                        <div class="flex items-center justify-between border-b border-sp-border pb-5">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-sp-green/20 text-sp-green flex items-center justify-center text-xl font-bold border border-sp-green/30">
+                                    <i class="fa-solid fa-sliders"></i>
+                                </div>
+                                <div>
+                                    <h2 class="text-xl md:text-2xl font-black text-white">Ecualizador de Audio</h2>
+                                    <p class="text-xs text-sp-subtext">Ajusta la respuesta de frecuencia en tiempo real</p>
+                                </div>
+                            </div>
+                            <button onclick="window.resetEqualizer()" class="px-3 py-1.5 bg-black hover:bg-sp-cardHover text-xs text-sp-subtext hover:text-white font-bold rounded-full border border-sp-border transition">
+                                <i class="fa-solid fa-rotate-left mr-1"></i> Reiniciar
+                            </button>
+                        </div>
+
+                        <!-- Equalizer Sliders -->
+                        <div class="grid grid-cols-3 gap-4 text-center py-4">
+                            <div class="space-y-3 bg-black/40 p-3 md:p-4 rounded-xl border border-sp-border">
+                                <span class="text-xs font-extrabold uppercase text-sp-green tracking-wider block">Graves</span>
+                                <div class="h-40 flex items-center justify-center py-2">
+                                    <input type="range" id="eq-bass" min="-12" max="12" value="0" step="1" oninput="window.updateEq('bass', this.value)"
+                                           class="range-slider h-32 w-2 appearance-none bg-sp-border rounded-lg cursor-pointer transform -rotate-90">
+                                </div>
+                                <span class="text-xs font-mono font-bold text-white block" id="eq-bass-val">0 dB</span>
+                            </div>
+
+                            <div class="space-y-3 bg-black/40 p-3 md:p-4 rounded-xl border border-sp-border">
+                                <span class="text-xs font-extrabold uppercase text-amber-400 tracking-wider block">Medios</span>
+                                <div class="h-40 flex items-center justify-center py-2">
+                                    <input type="range" id="eq-mid" min="-12" max="12" value="0" step="1" oninput="window.updateEq('mid', this.value)"
+                                           class="range-slider h-32 w-2 appearance-none bg-sp-border rounded-lg cursor-pointer transform -rotate-90">
+                                </div>
+                                <span class="text-xs font-mono font-bold text-white block" id="eq-mid-val">0 dB</span>
+                            </div>
+
+                            <div class="space-y-3 bg-black/40 p-3 md:p-4 rounded-xl border border-sp-border">
+                                <span class="text-xs font-extrabold uppercase text-cyan-400 tracking-wider block">Agudos</span>
+                                <div class="h-40 flex items-center justify-center py-2">
+                                    <input type="range" id="eq-treble" min="-12" max="12" value="0" step="1" oninput="window.updateEq('treble', this.value)"
+                                           class="range-slider h-32 w-2 appearance-none bg-sp-border rounded-lg cursor-pointer transform -rotate-90">
+                                </div>
+                                <span class="text-xs font-mono font-bold text-white block" id="eq-treble-val">0 dB</span>
+                            </div>
+                        </div>
+
+                        <!-- Equalizer Presets -->
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-sp-subtext uppercase tracking-wider block">Preajustes:</span>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                <button onclick="window.applyEqPreset('pop')" class="py-2 bg-black hover:bg-sp-green/20 hover:border-sp-green/50 text-white text-xs font-bold rounded-xl border border-sp-border transition">Pop</button>
+                                <button onclick="window.applyEqPreset('rock')" class="py-2 bg-black hover:bg-sp-green/20 hover:border-sp-green/50 text-white text-xs font-bold rounded-xl border border-sp-border transition">Rock</button>
+                                <button onclick="window.applyEqPreset('bassboost')" class="py-2 bg-black hover:bg-sp-green/20 hover:border-sp-green/50 text-white text-xs font-bold rounded-xl border border-sp-border transition">Bass Boost</button>
+                                <button onclick="window.applyEqPreset('vocal')" class="py-2 bg-black hover:bg-sp-green/20 hover:border-sp-green/50 text-white text-xs font-bold rounded-xl border border-sp-border transition">Vocal</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- NOTIFICATION TOAST -->
+                <div id="notification-toast" class="hidden fixed bottom-24 right-4 md:right-6 max-w-sm bg-sp-card border border-sp-green/50 text-white p-4 rounded-xl shadow-2xl z-50 transition-all transform">
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-circle-check text-sp-green text-xl mt-0.5"></i>
+                        <div class="space-y-1">
+                            <h4 class="font-bold text-sm text-sp-green" id="toast-title">Aviso</h4>
+                            <p class="text-xs text-sp-subtext leading-relaxed" id="toast-message"></p>
+                        </div>
+                        <button onclick="window.closeNotification()" class="text-sp-subtext hover:text-white ml-auto">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
                 </div>
-            );
+
+                <!-- CONFIRM CLEAR MODAL -->
+                <div id="clear-confirm-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+                    <div class="bg-sp-card border border-sp-border p-6 rounded-2xl max-w-sm w-full space-y-4 shadow-2xl text-center">
+                        <div class="w-12 h-12 bg-red-500/20 text-red-500 rounded-full flex items-center justify-center mx-auto text-xl">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <h3 class="text-lg font-black text-white">¿Vaciar Memoria Local?</h3>
+                        <p class="text-xs text-sp-subtext leading-relaxed">
+                            Esta acción eliminará todas las canciones, álbumes y portadas personalizadas guardadas en la memoria local de tu navegador. Tu disco duro personal no sufrirá cambios.
+                        </p>
+                        <div class="flex gap-3 pt-2">
+                            <button onclick="window.closeClearModal()" class="flex-1 py-2.5 bg-sp-dark hover:bg-sp-cardHover text-xs font-bold rounded-full border border-sp-border transition">Cancelar</button>
+                            <button onclick="window.confirmClearLibrary()" class="flex-1 py-2.5 bg-red-600 hover:bg-red-500 text-white text-xs font-bold rounded-full shadow-lg transition">Sí, Vaciar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <footer class="h-[90px] bg-black border-t border-sp-border px-4 md:px-6 flex items-center justify-between gap-2 md:gap-4 sticky bottom-0 z-30 shadow-2xl">
+        <!-- Track Info -->
+        <div class="flex items-center gap-3 w-1/3 min-w-[140px] max-w-[280px]">
+            <div class="relative group cursor-pointer shrink-0" onclick="window.switchTab('album-detail')">
+                <div id="player-vinyl-disc" class="absolute inset-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-r from-neutral-900 via-neutral-800 to-black border-2 border-neutral-700 shadow-md transition-transform duration-500 ease-out translate-x-0 group-hover:translate-x-3 spin-vinyl vinyl-paused flex items-center justify-center">
+                    <div class="w-3.5 h-3.5 md:w-4 md:h-4 rounded-full bg-sp-green border border-black flex items-center justify-center">
+                        <div class="w-1.5 h-1.5 rounded-full bg-black"></div>
+                    </div>
+                </div>
+                <img id="player-cover" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=120&h=120&fit=crop" alt="Cover" class="relative z-10 w-12 h-12 md:w-14 md:h-14 rounded-lg object-cover shadow-lg border border-sp-border transition duration-300">
+            </div>
+
+            <div class="truncate">
+                <div class="flex items-center gap-2">
+                    <h4 id="player-title" class="text-xs md:text-sm font-bold text-white truncate">Carga tu carpeta de música</h4>
+                </div>
+                <p id="player-artist" class="text-[11px] md:text-xs text-sp-subtext truncate">Spotity Local Player</p>
+            </div>
+            <button id="player-like-btn" onclick="window.toggleLikeCurrent()" class="text-sp-subtext hover:text-sp-green ml-1 hidden sm:block transition">
+                <i class="fa-regular fa-heart text-sm md:text-base"></i>
+            </button>
+        </div>
+
+        <!-- Center Player Controls -->
+        <div class="flex flex-col items-center gap-1.5 w-1/3 max-w-md">
+            <div class="flex items-center gap-3 md:gap-5">
+                <button onclick="window.toggleShuffle()" id="btn-shuffle" class="text-sp-subtext hover:text-white transition text-xs md:text-sm" title="Aleatorio">
+                    <i class="fa-solid fa-shuffle"></i>
+                </button>
+                <button onclick="window.prevTrack()" class="text-sp-subtext hover:text-white transition text-base md:text-lg" title="Anterior">
+                    <i class="fa-solid fa-backward-step"></i>
+                </button>
+                <button onclick="window.togglePlay()" id="btn-play-pause" class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-sp-green hover:bg-sp-greenHover text-black flex items-center justify-center hover:scale-105 transition shadow-lg shadow-sp-green/30">
+                    <i class="fa-solid fa-play text-sm md:text-base pl-0.5"></i>
+                </button>
+                <button onclick="window.nextTrack()" class="text-sp-subtext hover:text-white transition text-base md:text-lg" title="Siguiente">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
+                <button onclick="window.toggleRepeat()" id="btn-repeat" class="text-sp-subtext hover:text-white transition text-xs md:text-sm" title="Repetir">
+                    <i class="fa-solid fa-repeat"></i>
+                </button>
+            </div>
+
+            <div class="w-full flex items-center gap-2 text-[10px] md:text-xs text-sp-subtext font-mono">
+                <span id="current-time">0:00</span>
+                <input type="range" id="seek-bar" min="0" max="100" value="0" oninput="window.seekTo(this.value)"
+                       class="range-slider w-full h-1 bg-sp-border rounded-lg appearance-none cursor-pointer">
+                <span id="duration-time">0:00</span>
+            </div>
+        </div>
+
+        <!-- Right Controls -->
+        <div class="flex items-center justify-end gap-2 md:gap-3 w-1/3 min-w-[100px]">
+            <button onclick="window.toggleVisualizer()" class="text-sp-green hover:text-white transition" title="Espectro">
+                <i class="fa-solid fa-chart-simple text-sm"></i>
+            </button>
+            <div class="flex items-center gap-2 hidden sm:flex">
+                <i class="fa-solid fa-volume-high text-sp-subtext text-xs" id="volume-icon"></i>
+                <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.8" oninput="window.setVolume(this.value)"
+                       class="range-slider w-16 md:w-20 h-1 bg-sp-border rounded-lg appearance-none cursor-pointer">
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hidden Audio Element -->
+    <audio id="audio-element" class="hidden" crossorigin="anonymous"></audio>
+
+    <script>
+        window.albumsMap = {};
+        window.allTracks = [];
+        window.currentQueue = [];
+        window.currentTrackIndex = -1;
+        window.currentActiveAlbum = null;
+        window.likedTrackIds = new Set();
+
+        window.isPlaying = false;
+        window.isShuffle = false;
+        window.isRepeat = false;
+        window.visualizerMode = 'bars';
+
+        const DEFAULT_COVERS = [
+            'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=400&h=400&fit=crop',
+            'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop',
+            'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=400&fit=crop',
+            'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop'
+        ];
+
+        // IndexedDB Manager
+        const DB_NAME = 'SpotityLocalDB';
+        const DB_VERSION = 1;
+        let dbInstance = null;
+
+        function openLocalDB() {
+            return new Promise((resolve, reject) => {
+                if (dbInstance) return resolve(dbInstance);
+                const req = indexedDB.open(DB_NAME, DB_VERSION);
+                req.onupgradeneeded = (evt) => {
+                    const db = evt.target.result;
+                    if (!db.objectStoreNames.contains('tracks')) {
+                        db.createObjectStore('tracks', { keyPath: 'id' });
+                    }
+                    if (!db.objectStoreNames.contains('albums')) {
+                        db.createObjectStore('albums', { keyPath: 'name' });
+                    }
+                    if (!db.objectStoreNames.contains('settings')) {
+                        db.createObjectStore('settings', { keyPath: 'key' });
+                    }
+                };
+                req.onsuccess = (evt) => {
+                    dbInstance = evt.target.result;
+                    resolve(dbInstance);
+                };
+                req.onerror = (err) => reject(err);
+            });
+        }
+
+        async function saveTracksAndAlbumsToDB(newTracks, updatedAlbumsMap) {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction(['tracks', 'albums'], 'readwrite');
+                const tracksStore = tx.objectStore('tracks');
+                const albumsStore = tx.objectStore('albums');
+
+                newTracks.forEach(t => {
+                    tracksStore.put({
+                        id: t.id,
+                        title: t.title,
+                        artist: t.artist,
+                        album: t.album,
+                        fileBlob: t.fileBlob,
+                        cover: t.cover,
+                        duration: t.duration
+                    });
+                });
+
+                Object.values(updatedAlbumsMap).forEach(alb => {
+                    albumsStore.put({
+                        name: alb.name,
+                        cover: alb.cover
+                    });
+                });
+
+                window.updateStorageSizeLabel();
+            } catch (err) {
+                console.error("Error al guardar en memoria local:", err);
+            }
+        }
+
+        async function saveSingleAlbumMeta(albumName, coverUrl) {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction(['albums', 'tracks'], 'readwrite');
+                const albumsStore = tx.objectStore('albums');
+                const tracksStore = tx.objectStore('tracks');
+
+                albumsStore.put({ name: albumName, cover: coverUrl });
+
+                if (window.albumsMap[albumName]) {
+                    window.albumsMap[albumName].tracks.forEach(t => {
+                        t.cover = coverUrl;
+                        tracksStore.put({
+                            id: t.id,
+                            title: t.title,
+                            artist: t.artist,
+                            album: t.album,
+                            fileBlob: t.fileBlob,
+                            cover: coverUrl,
+                            duration: t.duration
+                        });
+                    });
+                }
+            } catch (err) {
+                console.error("Error al actualizar álbum en DB:", err);
+            }
+        }
+
+        async function loadLibraryFromDB() {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction(['tracks', 'albums', 'settings'], 'readonly');
+                const tracksStore = tx.objectStore('tracks');
+                const albumsStore = tx.objectStore('albums');
+                const settingsStore = tx.objectStore('settings');
+
+                const rawAlbums = await new Promise(res => {
+                    const req = albumsStore.getAll();
+                    req.onsuccess = () => res(req.result || []);
+                });
+
+                const rawTracks = await new Promise(res => {
+                    const req = tracksStore.getAll();
+                    req.onsuccess = () => res(req.result || []);
+                });
+
+                const likedSetting = await new Promise(res => {
+                    const req = settingsStore.get('likedTrackIds');
+                    req.onsuccess = () => res(req.result ? req.result.value : []);
+                });
+
+                window.likedTrackIds = new Set(likedSetting);
+
+                window.albumsMap = {};
+                rawAlbums.forEach(alb => {
+                    window.albumsMap[alb.name] = {
+                        name: alb.name,
+                        cover: alb.cover,
+                        tracks: []
+                    };
+                });
+
+                window.allTracks = [];
+                rawTracks.forEach(t => {
+                    let objectUrl = '';
+                    if (t.fileBlob) {
+                        try {
+                            objectUrl = URL.createObjectURL(t.fileBlob);
+                        } catch (e) {
+                            console.warn("Error re-creating blob URL", e);
+                        }
+                    }
+
+                    if (!window.albumsMap[t.album]) {
+                        window.albumsMap[t.album] = {
+                            name: t.album,
+                            cover: t.cover || DEFAULT_COVERS[0],
+                            tracks: []
+                        };
+                    }
+
+                    const trackObj = {
+                        id: t.id,
+                        title: t.title,
+                        artist: t.artist,
+                        album: t.album,
+                        duration: t.duration || 'Local',
+                        url: objectUrl,
+                        fileBlob: t.fileBlob,
+                        cover: t.cover || window.albumsMap[t.album].cover
+                    };
+
+                    window.albumsMap[t.album].tracks.push(trackObj);
+                    window.allTracks.push(trackObj);
+                });
+
+                window.renderSidebarAlbums();
+                window.renderHomeAlbums();
+                window.renderAllAlbumsGrid();
+                window.renderAllTracksTable();
+                window.updateStorageSizeLabel();
+
+            } catch (err) {
+                console.error("Error al cargar biblioteca local:", err);
+            }
+        }
+
+        async function saveSetting(key, value) {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction('settings', 'readwrite');
+                tx.objectStore('settings').put({ key, value });
+            } catch (e) {
+                console.warn("Save setting error:", e);
+            }
+        }
+
+        window.updateStorageSizeLabel = async function() {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction('tracks', 'readonly');
+                const req = tx.objectStore('tracks').getAll();
+                req.onsuccess = () => {
+                    let bytes = 0;
+                    (req.result || []).forEach(t => {
+                        if (t.fileBlob) bytes += t.fileBlob.size;
+                    });
+                    const mb = (bytes / (1024 * 1024)).toFixed(1);
+                    const lbl = document.getElementById('storage-size-label');
+                    if (lbl) lbl.innerText = `${mb} MB en memoria local`;
+                };
+            } catch (err) {
+                console.warn(err);
+            }
         };
 
-        const TvListItem = ({ channel, isActive, onClick, isFavorite, onToggleFavorite }) => (
-            <div tabIndex="0" onClick={() => onClick(channel)} className={`group flex items-center gap-3 p-3 border-b border-white/5 cursor-pointer transition-colors ${isActive ? 'bg-[#1f2937] border-l-4 border-l-[#E50914]' : 'hover:bg-white/5'}`} > 
-                <div className="w-10 h-7 rounded bg-black flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/10"> 
-                    {channel.image ? ( <img src={channel.image} alt={channel.title} loading="lazy" className="w-full h-full object-contain" onError={(e) => e.target.style.display='none'} /> ) : ( <Icon name="tv" size={14} className="text-gray-400"/> )} 
-                </div> 
-                <div className="flex-1 min-w-0"> 
-                    <p className={`text-xs sm:text-sm font-medium truncate ${isActive ? 'text-[#E50914]' : 'text-white'}`}>{channel.title}</p> 
-                    <p className="text-[10px] text-gray-500 truncate">{channel.group || 'General'}</p> 
-                </div> 
-                <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(channel); }} className="p-2 rounded-full text-gray-400 hover:text-white"> 
-                    <Icon name="heart" size={16} className={isFavorite ? "text-[#E50914] fill-[#E50914]" : ""} fill={isFavorite ? "#E50914" : "none"} /> 
-                </button> 
-            </div> 
-        );
-
-        const Card = ({ item, onClick, isFavorite, onToggleFavorite }) => { 
-            const isTv = item.type === 'tv'; 
-            const hasLock = item.codigo || item.password || item.pin; 
-            const isKids = item.isKids || item.type === 'animados';
-            const imgSource = item.imagen || item.image || item.poster || item.logo;
-            const titleSource = item.titulo || item.title || item.name;
-            return ( 
-                <div tabIndex="0" className="group relative flex flex-col gap-1.5 cursor-pointer active:scale-95 transition-transform" onClick={() => onClick(item)}> 
-                    <div className={`relative overflow-hidden rounded-lg bg-[#1f2937] shadow-md ${isTv ? 'aspect-video' : 'aspect-[2/3]'}`}> 
-                        <img src={imgSource} loading="lazy" className={`w-full h-full ${isTv ? 'object-contain p-3' : 'object-cover'}`} onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/300x450/1f2937/ffffff?text=X`; }} alt={titleSource} /> 
-                        <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }} className="absolute top-1.5 right-1.5 p-1.5 bg-black/60 rounded-full text-white"> 
-                            <Icon name="heart" size={14} className={isFavorite ? "text-[#E50914] fill-[#E50914]" : ""} fill={isFavorite ? "#E50914" : "none"} /> 
-                        </button> 
-                        <div className="absolute bottom-1.5 left-1.5 flex gap-1 flex-wrap"> 
-                            {isTv && <span className="bg-[#E50914] text-white text-[8px] font-bold px-1.5 py-0.5 rounded shadow">LIVE</span>} 
-                            {isKids && <span className="bg-blue-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded shadow">KIDS</span>} 
-                            {hasLock && <span className="bg-yellow-500 text-black text-[8px] font-bold px-1.5 py-0.5 rounded shadow flex items-center gap-0.5"><Icon name="lock" size={7}/> PIN</span>} 
-                        </div> 
-                    </div> 
-                    <h3 className="text-xs font-bold text-gray-200 truncate">{titleSource}</h3> 
-                </div> 
-            ); 
+        window.promptClearLibrary = function() {
+            const modal = document.getElementById('clear-confirm-modal');
+            if (modal) modal.classList.remove('hidden');
         };
 
-        const Icon = ({ name, size = 22, className, fill = "none" }) => {
-            const icons = {
-                search: <path d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 111.414-1.414 7.5 7.5 0 01-1.414 1.414z" />,
-                x: <path d="M6 18L18 6M6 6l12 12" />,
-                tv: <path d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />,
-                film: <path d="M19.82 2H4.18C2.97 2 2 2.97 2 4.18v15.64C2 21.03 2.97 22 4.18 22h15.64c1.21 0 2.18-.97 2.18-2.18V4.18C22 2.97 21.03 2 19.82 2zM7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5" />,
-                play: <path d="M5 3l14 9-14 9V3z" />,
-                pause: <path d="M6 4h4v16H6zM14 4h4v16h-4z" />,
-                heart: <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />,
-                arrowLeft: <path d="M19 12H5m7 7l-7-7 7-7" />,
-                clapperboard: <g><path d="M20.2 6 3 11l-.9-2.4c-.5-1.1.2-2.3 1.3-2.8l3.2-1.4c1.1-.5 2.3.2 2.8 1.3l.9 2.4l7.9-3l2 4.5Z"/><path d="M4 11v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9"/></g>,
-                lock: <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a7 7 0 00-14 0v2" />,
-                smile: <g><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></g>,
-                compass: <g><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></g>,
-                music: <g><path d="M9 18V5l12-2v13"></path><path d="M9 9l12-2"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></g>,
-                radio: <path d="M2 12a10 10 0 0110-10 10 10 0 0110 10M6 12a6 6 0 016-6 6 6 0 016 6M10 12a2 2 0 012-2 2 2 0 012 2v8a2 2 0 01-2 2 2 2 0 01-2-2v-8z" />,
-                volume: <path d="M11 5L6 9H2v6h4l5 4V5z M15.54 8.46a5 5 0 010 7.07 M19.07 4.93a10 10 0 010 14.14" />
+        window.closeClearModal = function() {
+            const modal = document.getElementById('clear-confirm-modal');
+            if (modal) modal.classList.add('hidden');
+        };
+
+        window.confirmClearLibrary = async function() {
+            window.closeClearModal();
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction(['tracks', 'albums', 'settings'], 'readwrite');
+                tx.objectStore('tracks').clear();
+                tx.objectStore('albums').clear();
+                tx.objectStore('settings').clear();
+
+                window.albumsMap = {};
+                window.allTracks = [];
+                window.currentQueue = [];
+                window.currentTrackIndex = -1;
+                window.likedTrackIds.clear();
+
+                if (audioElement) {
+                    audioElement.pause();
+                    audioElement.src = '';
+                }
+                window.isPlaying = false;
+
+                window.renderSidebarAlbums();
+                window.renderHomeAlbums();
+                window.renderAllAlbumsGrid();
+                window.renderAllTracksTable();
+                window.updateStorageSizeLabel();
+
+                window.showNotification("Memoria Limpiada", "Se han eliminado todas las canciones guardadas.");
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        let audioCtx = null;
+        let audioElement = null;
+        let sourceNode = null;
+        let bassFilter = null;
+        let midFilter = null;
+        let trebleFilter = null;
+        let gainNode = null;
+        let analyserNode = null;
+        let visualizerAnimationId = null;
+
+        function initAudioPipeline() {
+            if (audioCtx) return;
+            try {
+                audioElement = document.getElementById('audio-element');
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                bassFilter = audioCtx.createBiquadFilter();
+                bassFilter.type = 'lowshelf';
+                bassFilter.frequency.value = 250;
+                bassFilter.gain.value = 0;
+
+                midFilter = audioCtx.createBiquadFilter();
+                midFilter.type = 'peaking';
+                midFilter.frequency.value = 1500;
+                midFilter.gain.value = 0;
+
+                trebleFilter = audioCtx.createBiquadFilter();
+                trebleFilter.type = 'highshelf';
+                trebleFilter.frequency.value = 4000;
+                trebleFilter.gain.value = 0;
+
+                gainNode = audioCtx.createGain();
+                analyserNode = audioCtx.createAnalyser();
+                analyserNode.fftSize = 64;
+
+                sourceNode = audioCtx.createMediaElementSource(audioElement);
+
+                // Chain nodes
+                sourceNode.connect(bassFilter);
+                bassFilter.connect(midFilter);
+                midFilter.connect(trebleFilter);
+                trebleFilter.connect(gainNode);
+                gainNode.connect(analyserNode);
+                analyserNode.connect(audioCtx.destination);
+
+                // Start visualizer animation loop immediately
+                drawVisualizer();
+            } catch (err) {
+                console.warn("Audio pipeline init:", err);
+            }
+        }
+
+        window.handleFolderUpload = function(fileList) {
+            if (!fileList || fileList.length === 0) return;
+
+            let loadedCount = 0;
+            const validExtensions = ['.mp3', '.m4a', '.wav', '.ogg', '.flac', '.aac', '.wma'];
+            const newTracks = [];
+
+            Array.from(fileList).forEach(file => {
+                const isAudioType = file.type && file.type.startsWith('audio/');
+                const hasAudioExt = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+                if (!isAudioType && !hasAudioExt) return;
+
+                const objectUrl = URL.createObjectURL(file);
+                const relPath = file.webkitRelativePath || file.name;
+                const pathParts = relPath.split('/');
+
+                let albumName = 'Mis Archivos MP3';
+                if (pathParts.length > 2) {
+                    albumName = pathParts[pathParts.length - 2];
+                } else if (pathParts.length === 2) {
+                    albumName = pathParts[0];
+                }
+
+                const fileNameClean = file.name.replace(/\.[^/.]+$/, "");
+                const nameParts = fileNameClean.split(' - ');
+                const title = nameParts.length > 1 ? nameParts[1].trim() : fileNameClean;
+                const artist = nameParts.length > 1 ? nameParts[0].trim() : (pathParts.length > 2 ? pathParts[pathParts.length - 3] : 'Artista Local');
+
+                if (!window.albumsMap[albumName]) {
+                    const randomDefaultCover = DEFAULT_COVERS[Object.keys(window.albumsMap).length % DEFAULT_COVERS.length];
+                    window.albumsMap[albumName] = {
+                        name: albumName,
+                        cover: randomDefaultCover,
+                        tracks: []
+                    };
+                }
+
+                const trackObj = {
+                    id: Date.now() + Math.random(),
+                    title: title,
+                    artist: artist,
+                    album: albumName,
+                    duration: 'Local',
+                    url: objectUrl,
+                    fileBlob: file,
+                    cover: window.albumsMap[albumName].cover
+                };
+
+                window.albumsMap[albumName].tracks.push(trackObj);
+                window.allTracks.push(trackObj);
+                newTracks.push(trackObj);
+                loadedCount++;
+            });
+
+            if (loadedCount === 0) {
+                window.showNotification("Sin archivos válidos", "No se encontraron archivos de audio (.mp3, .m4a, .wav) en la carpeta.");
+                return;
+            }
+
+            saveTracksAndAlbumsToDB(newTracks, window.albumsMap);
+
+            window.renderSidebarAlbums();
+            window.renderHomeAlbums();
+            window.renderAllAlbumsGrid();
+            window.renderAllTracksTable();
+
+            window.showNotification("¡Carpeta Guardada en Memoria!", `Se cargaron ${loadedCount} canciones localmente.`);
+        };
+
+        window.updateAlbumCoverFromInput = function(fileInput) {
+            if (!fileInput.files || !fileInput.files[0] || !window.currentActiveAlbum) return;
+
+            const imageFile = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const imageUrl = e.target.result;
+                const albumName = window.currentActiveAlbum;
+
+                if (window.albumsMap[albumName]) {
+                    window.albumsMap[albumName].cover = imageUrl;
+
+                    window.albumsMap[albumName].tracks.forEach(track => {
+                        track.cover = imageUrl;
+                    });
+
+                    document.getElementById('detail-album-cover').src = imageUrl;
+                    window.renderSidebarAlbums();
+                    window.renderHomeAlbums();
+                    window.renderAllAlbumsGrid();
+                    window.renderAllTracksTable();
+
+                    if (window.currentTrackIndex !== -1 && window.allTracks[window.currentTrackIndex].album === albumName) {
+                        window.updatePlayerUI();
+                    }
+
+                    saveSingleAlbumMeta(albumName, imageUrl);
+                    window.showNotification("Portada Guardada", `Se guardó la nueva portada para "${albumName}".`);
+                }
             };
-            return (
-                <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-                    {icons[name] || icons.search}
-                </svg>
+
+            reader.readAsDataURL(imageFile);
+        };
+
+        window.openAlbumDetail = function(albumName) {
+            window.currentActiveAlbum = albumName;
+            const album = window.albumsMap[albumName];
+            if (!album) return;
+
+            document.getElementById('detail-album-cover').src = album.cover;
+            document.getElementById('detail-album-name').innerText = album.name;
+            document.getElementById('detail-album-meta').innerText = `${album.tracks.length} canciones • Guardado Localmente`;
+
+            const tbody = document.getElementById('album-detail-tracks-body');
+            tbody.innerHTML = album.tracks.map((track, idx) => `
+                <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer" onclick="window.playTrackFromAlbum('${escapeHtml(albumName)}', ${idx})">
+                    <td class="py-3.5 px-4 text-center font-mono text-xs track-num text-sp-subtext">${idx + 1}</td>
+                    <td class="py-3.5 px-4 font-bold text-xs track-title text-white transition">${escapeHtml(track.title)}</td>
+                    <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.artist)}</td>
+                    <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell"><i class="fa-solid fa-hard-drive mr-1"></i>En Memoria</td>
+                    <td class="py-3.5 px-4 text-center">
+                        <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(albumName)}', ${idx})" class="play-action-btn w-8 h-8 rounded-full bg-sp-green/20 hover:bg-sp-green text-sp-green hover:text-black flex items-center justify-center transition shadow">
+                            <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+
+            window.switchTab('album-detail');
+        };
+
+        window.playCurrentAlbum = function() {
+            if (window.currentActiveAlbum) {
+                window.playTrackFromAlbum(window.currentActiveAlbum, 0);
+            }
+        };
+
+        window.playTrackFromAlbum = function(albumName, trackIdx) {
+            const album = window.albumsMap[albumName];
+            if (!album || !album.tracks[trackIdx]) return;
+
+            window.currentQueue = album.tracks;
+            const globalIdx = window.allTracks.findIndex(t => t.id === album.tracks[trackIdx].id);
+            window.playTrack(globalIdx !== -1 ? globalIdx : 0);
+        };
+
+        window.switchTab = function(tabName) {
+            ['home', 'albums', 'album-detail', 'equalizer'].forEach(t => {
+                const sec = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`nav-${t}`);
+                const mobBtn = document.getElementById(`mob-nav-${t}`);
+                if (sec) sec.classList.add('hidden');
+                if (btn) {
+                    btn.classList.remove('bg-sp-card', 'text-white');
+                    btn.classList.add('text-sp-subtext');
+                }
+                if (mobBtn) {
+                    mobBtn.classList.remove('text-sp-green');
+                    mobBtn.classList.add('text-sp-subtext');
+                }
+            });
+
+            const activeSec = document.getElementById(`tab-${tabName}`);
+            const activeBtn = document.getElementById(`nav-${tabName}`);
+            const activeMobBtn = document.getElementById(`mob-nav-${tabName}`);
+
+            if (activeSec) activeSec.classList.remove('hidden');
+            if (activeBtn) {
+                activeBtn.classList.add('bg-sp-card', 'text-white');
+                activeBtn.classList.remove('text-sp-subtext');
+            }
+            if (activeMobBtn) {
+                activeMobBtn.classList.add('text-sp-green');
+                activeMobBtn.classList.remove('text-sp-subtext');
+            }
+
+            const mainScroll = document.getElementById('main-scroll-view');
+            if (mainScroll) mainScroll.scrollTop = 0;
+        };
+
+        window.playTrack = function(index) {
+            if (index < 0 || index >= window.allTracks.length) return;
+            initAudioPipeline();
+
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            window.currentTrackIndex = index;
+            const track = window.allTracks[window.currentTrackIndex];
+
+            audioElement.src = track.url;
+            audioElement.play().then(() => {
+                window.isPlaying = true;
+                window.updatePlayerUI();
+                window.renderAllTracksTable();
+            }).catch(err => {
+                console.warn("Playback error:", err);
+                window.isPlaying = false;
+                window.updatePlayerUI();
+            });
+        };
+
+        window.togglePlay = function() {
+            if (window.currentTrackIndex === -1 && window.allTracks.length > 0) {
+                window.playTrack(0);
+                return;
+            }
+            if (window.currentTrackIndex === -1) return;
+
+            initAudioPipeline();
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            if (window.isPlaying) {
+                audioElement.pause();
+                window.isPlaying = false;
+            } else {
+                audioElement.play().then(() => {
+                    window.isPlaying = true;
+                }).catch(() => {
+                    window.isPlaying = false;
+                });
+            }
+            window.updatePlayerUI();
+        };
+
+        window.prevTrack = function() {
+            if (window.allTracks.length === 0) return;
+            let newIndex = window.currentTrackIndex - 1;
+            if (newIndex < 0) newIndex = window.allTracks.length - 1;
+            window.playTrack(newIndex);
+        };
+
+        window.nextTrack = function() {
+            if (window.allTracks.length === 0) return;
+            let newIndex;
+            if (window.isShuffle) {
+                newIndex = Math.floor(Math.random() * window.allTracks.length);
+            } else {
+                newIndex = (window.currentTrackIndex + 1) % window.allTracks.length;
+            }
+            window.playTrack(newIndex);
+        };
+
+        window.toggleShuffle = function() {
+            window.isShuffle = !window.isShuffle;
+            const btn = document.getElementById('btn-shuffle');
+            if (btn) btn.classList.toggle('text-sp-green', window.isShuffle);
+        };
+
+        window.toggleRepeat = function() {
+            window.isRepeat = !window.isRepeat;
+            const btn = document.getElementById('btn-repeat');
+            if (btn) btn.classList.toggle('text-sp-green', window.isRepeat);
+        };
+
+        window.seekTo = function(percent) {
+            if (audioElement && audioElement.duration) {
+                audioElement.currentTime = (percent / 100) * audioElement.duration;
+            }
+        };
+
+        window.setVolume = function(val) {
+            if (audioElement) {
+                audioElement.volume = parseFloat(val);
+            }
+        };
+
+        window.updatePlayerUI = function() {
+            const track = window.allTracks[window.currentTrackIndex];
+            if (!track) return;
+
+            // Footer Update
+            document.getElementById('player-cover').src = track.cover;
+            document.getElementById('player-title').innerText = track.title;
+            document.getElementById('player-artist').innerText = `${track.artist} • ${track.album}`;
+
+            // Visualizer Banner Header Update
+            const visCover = document.getElementById('vis-cover');
+            const visTitle = document.getElementById('vis-title');
+            const visArtist = document.getElementById('vis-artist');
+            if (visCover) visCover.src = track.cover;
+            if (visTitle) visTitle.innerText = track.title;
+            if (visArtist) visArtist.innerText = `${track.artist} • ${track.album}`;
+
+            const btnPlayPause = document.getElementById('btn-play-pause');
+            if (btnPlayPause) {
+                btnPlayPause.innerHTML = window.isPlaying ? `<i class="fa-solid fa-pause text-base"></i>` : `<i class="fa-solid fa-play text-base pl-0.5"></i>`;
+            }
+
+            const vinylDisc = document.getElementById('player-vinyl-disc');
+            const visEqInd = document.getElementById('vis-eq-indicator');
+
+            if (vinylDisc) {
+                if (window.isPlaying) {
+                    vinylDisc.classList.remove('vinyl-paused');
+                    vinylDisc.classList.add('translate-x-3');
+                } else {
+                    vinylDisc.classList.add('vinyl-paused');
+                    vinylDisc.classList.remove('translate-x-3');
+                }
+            }
+
+            if (visEqInd) {
+                if (window.isPlaying) {
+                    visEqInd.classList.remove('eq-paused');
+                } else {
+                    visEqInd.classList.add('eq-paused');
+                }
+            }
+
+            const likeBtn = document.getElementById('player-like-btn');
+            if (likeBtn) {
+                likeBtn.innerHTML = window.likedTrackIds.has(track.id) ? 
+                    `<i class="fa-solid fa-heart text-sp-green text-base"></i>` : 
+                    `<i class="fa-regular fa-heart text-base"></i>`;
+            }
+        };
+
+        window.toggleLikeCurrent = function() {
+            if (window.currentTrackIndex === -1) return;
+            const track = window.allTracks[window.currentTrackIndex];
+            if (window.likedTrackIds.has(track.id)) {
+                window.likedTrackIds.delete(track.id);
+            } else {
+                window.likedTrackIds.add(track.id);
+            }
+            saveSetting('likedTrackIds', Array.from(window.likedTrackIds));
+            window.updatePlayerUI();
+        };
+
+        window.renderSidebarAlbums = function() {
+            const container = document.getElementById('sidebar-albums-list');
+            const albums = Object.values(window.albumsMap);
+
+            document.getElementById('sidebar-album-count').innerText = `${albums.length} álbumes`;
+
+            if (albums.length === 0) {
+                container.innerHTML = `<div class="p-4 text-center text-xs text-sp-subtext">No hay álbumes guardados</div>`;
+                return;
+            }
+
+            container.innerHTML = albums.map(alb => `
+                <button onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-sp-card text-left group transition">
+                    <img src="${alb.cover}" class="w-10 h-10 rounded-md object-cover border border-sp-border shrink-0">
+                    <div class="truncate">
+                        <p class="text-xs font-bold text-white group-hover:text-sp-green transition truncate">${escapeHtml(alb.name)}</p>
+                        <p class="text-[10px] text-sp-subtext truncate">${alb.tracks.length} canciones</p>
+                    </div>
+                </button>
+            `).join('');
+        };
+
+        window.renderHomeAlbums = function() {
+            const container = document.getElementById('home-albums-grid');
+            const albums = Object.values(window.albumsMap).slice(0, 5);
+
+            document.getElementById('home-album-count').innerText = Object.keys(window.albumsMap).length;
+
+            if (albums.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-8 text-center text-xs text-sp-subtext">No hay álbumes en memoria. Haz clic en 'Cargar Carpeta Principal' para comenzar.</div>`;
+                return;
+            }
+
+            container.innerHTML = albums.map(alb => `
+                <div onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="album-card bg-sp-card p-3 rounded-xl hover:bg-sp-cardHover border border-sp-border transition cursor-pointer group relative shadow-lg">
+                    <div class="relative mb-2.5 overflow-hidden rounded-lg">
+                        <img src="${alb.cover}" class="w-full aspect-square object-cover rounded-lg group-hover:scale-105 transition duration-300">
+                        <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(alb.name)}', 0)" class="album-card-play absolute bottom-2 right-2 w-10 h-10 rounded-full bg-sp-green hover:bg-sp-greenHover text-black flex items-center justify-center shadow-xl">
+                            <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                        </button>
+                    </div>
+                    <h4 class="font-bold text-xs text-white truncate group-hover:text-sp-green transition">${escapeHtml(alb.name)}</h4>
+                    <p class="text-[11px] text-sp-subtext truncate mt-0.5">${alb.tracks.length} canciones</p>
+                </div>
+            `).join('');
+        };
+
+        window.renderAllAlbumsGrid = function() {
+            const container = document.getElementById('albums-grid');
+            const albums = Object.values(window.albumsMap);
+
+            if (albums.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-12 text-center text-xs text-sp-subtext">No hay carpetas o álbumes guardados en memoria local.</div>`;
+                return;
+            }
+
+            container.innerHTML = albums.map(alb => `
+                <div onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="album-card bg-sp-card p-3 rounded-xl hover:bg-sp-cardHover border border-sp-border transition cursor-pointer group relative shadow-lg">
+                    <div class="relative mb-2.5 overflow-hidden rounded-lg">
+                        <img src="${alb.cover}" class="w-full aspect-square object-cover rounded-lg group-hover:scale-105 transition duration-300">
+                        <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(alb.name)}', 0)" class="album-card-play absolute bottom-2 right-2 w-10 h-10 rounded-full bg-sp-green hover:bg-sp-greenHover text-black flex items-center justify-center shadow-xl">
+                            <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                        </button>
+                    </div>
+                    <h4 class="font-bold text-xs text-white truncate group-hover:text-sp-green transition">${escapeHtml(alb.name)}</h4>
+                    <p class="text-[11px] text-sp-subtext truncate mt-0.5">${alb.tracks.length} canciones</p>
+                </div>
+            `).join('');
+        };
+
+        window.renderAllTracksTable = function() {
+            const tbody = document.getElementById('all-tracks-table-body');
+            document.getElementById('total-tracks-count').innerText = `${window.allTracks.length} canciones en memoria local`;
+
+            if (window.allTracks.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-xs text-sp-subtext">No hay canciones guardadas. Carga tu carpeta de música para comenzar.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = window.allTracks.map((track, idx) => {
+                const isCurrent = idx === window.currentTrackIndex;
+                return `
+                    <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10 font-bold' : ''}" onclick="window.playTrack(${idx})">
+                        <td class="py-3.5 px-4 text-center font-mono text-xs track-num ${isCurrent ? 'text-sp-green' : 'text-sp-subtext'}">
+                            ${isCurrent && window.isPlaying ? '<i class="fa-solid fa-volume-high text-sp-green animate-pulse"></i>' : idx + 1}
+                        </td>
+                        <td class="py-3.5 px-4">
+                            <div class="flex items-center gap-3">
+                                <img src="${track.cover}" class="w-9 h-9 rounded-md object-cover border border-sp-border shrink-0">
+                                <div class="truncate">
+                                    <p class="text-xs font-bold track-title ${isCurrent ? 'text-sp-green' : 'text-white'} transition">${escapeHtml(track.title)}</p>
+                                    <p class="text-[11px] text-sp-subtext">${escapeHtml(track.artist)}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.album)}</td>
+                        <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell"><i class="fa-solid fa-hard-drive mr-1"></i>En Memoria</td>
+                        <td class="py-3.5 px-4 text-center">
+                            <button onclick="event.stopPropagation(); window.playTrack(${idx})" class="play-action-btn w-8 h-8 rounded-full bg-sp-green/20 hover:bg-sp-green text-sp-green hover:text-black flex items-center justify-center transition shadow">
+                                <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        };
+
+        window.handleGlobalSearch = function(query) {
+            const term = (query || '').toLowerCase().trim();
+            if (!term) {
+                window.renderAllTracksTable();
+                return;
+            }
+            const tbody = document.getElementById('all-tracks-table-body');
+            const filtered = window.allTracks.filter(t => 
+                t.title.toLowerCase().includes(term) ||
+                t.artist.toLowerCase().includes(term) ||
+                t.album.toLowerCase().includes(term)
             );
+            document.getElementById('total-tracks-count').innerText = `${filtered.length} resultados encontrados`;
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-xs text-sp-subtext">No se encontraron canciones para "${escapeHtml(query)}"</td></tr>`;
+                return;
+            }
+            tbody.innerHTML = filtered.map((track, idx) => {
+                const globalIdx = window.allTracks.findIndex(t => t.id === track.id);
+                const isCurrent = globalIdx === window.currentTrackIndex;
+                return `
+                    <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10 font-bold' : ''}" onclick="window.playTrack(${globalIdx})">
+                        <td class="py-3.5 px-4 text-center font-mono text-xs track-num ${isCurrent ? 'text-sp-green' : 'text-sp-subtext'}">
+                            ${isCurrent && window.isPlaying ? '<i class="fa-solid fa-volume-high text-sp-green animate-pulse"></i>' : idx + 1}
+                        </td>
+                        <td class="py-3.5 px-4">
+                            <div class="flex items-center gap-3">
+                                <img src="${track.cover}" class="w-9 h-9 rounded-md object-cover border border-sp-border shrink-0">
+                                <div class="truncate">
+                                    <p class="text-xs font-bold track-title ${isCurrent ? 'text-sp-green' : 'text-white'} transition">${escapeHtml(track.title)}</p>
+                                    <p class="text-[11px] text-sp-subtext">${escapeHtml(track.artist)}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.album)}</td>
+                        <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell"><i class="fa-solid fa-hard-drive mr-1"></i>En Memoria</td>
+                        <td class="py-3.5 px-4 text-center">
+                            <button onclick="event.stopPropagation(); window.playTrack(${globalIdx})" class="play-action-btn w-8 h-8 rounded-full bg-sp-green/20 hover:bg-sp-green text-sp-green hover:text-black flex items-center justify-center transition shadow">
+                                <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
         };
 
-        const LockScreen = ({ onUnlock, correctCode, onCancel }) => {
-            const [input, setInput] = useState(''); const [error, setError] = useState(false);
-            const handleSubmit = (e) => { e.preventDefault(); if (input === String(correctCode)) onUnlock(); else { setError(true); setInput(''); } };
-            return (<div className="absolute inset-0 z-50 bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-4 animate-fade-in"><div className="bg-[#1f2937] p-6 rounded-xl max-w-xs w-full text-center border border-white/10 shadow-2xl"><div className="mb-4 flex justify-center"><div className="p-3 bg-red-500/20 rounded-full text-red-500 border border-red-500/30"><Icon name="lock" size={28} /></div></div><h2 className="text-base font-bold text-white mb-2">Contenido Protegido</h2><form onSubmit={handleSubmit}><input type="password" maxLength="4" className="w-full bg-black/50 border border-white/20 rounded-lg px-4 py-2.5 text-center text-xl tracking-[0.4em] text-white focus:border-[#E50914] outline-none mb-3" value={input} onChange={(e) => { setInput(e.target.value); setError(false); }} placeholder="••••" autoFocus />{error && <p className="text-red-500 text-xs mb-3 font-bold">Código incorrecto</p>}<div className="flex gap-2"><button type="button" onClick={onCancel} className="flex-1 py-2 rounded-lg border border-white/10 text-gray-300 hover:bg-white/5 text-xs">Cancelar</button><button type="submit" className="flex-1 py-2 rounded-lg bg-[#E50914] text-white font-bold hover:bg-red-700 text-xs">Acceder</button></div></form></div></div>);
+        window.updateEq = function(band, val) {
+            initAudioPipeline();
+            const gainVal = parseFloat(val);
+            if (band === 'bass' && bassFilter) bassFilter.gain.value = gainVal;
+            if (band === 'mid' && midFilter) midFilter.gain.value = gainVal;
+            if (band === 'treble' && trebleFilter) trebleFilter.gain.value = gainVal;
+
+            const lbl = document.getElementById(`eq-${band}-val`);
+            if (lbl) lbl.innerText = `${gainVal > 0 ? '+' : ''}${gainVal} dB`;
         };
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+        window.resetEqualizer = function() {
+            ['bass', 'mid', 'treble'].forEach(band => {
+                const input = document.getElementById(`eq-${band}`);
+                if (input) input.value = 0;
+                window.updateEq(band, 0);
+            });
+        };
+
+        window.applyEqPreset = function(preset) {
+            const presets = {
+                pop: { bass: 2, mid: 4, treble: 2 },
+                rock: { bass: 5, mid: -1, treble: 4 },
+                bassboost: { bass: 9, mid: 1, treble: -2 },
+                vocal: { bass: -3, mid: 6, treble: 3 }
+            };
+            const p = presets[preset];
+            if (!p) return;
+            Object.keys(p).forEach(band => {
+                const val = p[band];
+                const input = document.getElementById(`eq-${band}`);
+                if (input) input.value = val;
+                window.updateEq(band, val);
+            });
+        };
+
+        window.toggleVisualizer = function() {
+            const container = document.getElementById('visualizer-container');
+            if (!container) return;
+            container.classList.toggle('hidden');
+        };
+
+        window.setVisMode = function(mode) {
+            window.visualizerMode = mode;
+            ['bars', 'wave', 'aura'].forEach(m => {
+                const btn = document.getElementById(`vis-mode-${m}`);
+                if (btn) {
+                    if (m === mode) {
+                        btn.className = "px-2.5 py-1.5 rounded-md text-[11px] font-bold text-black bg-sp-green transition";
+                    } else {
+                        btn.className = "px-2.5 py-1.5 rounded-md text-[11px] font-bold text-sp-subtext hover:text-white transition";
+                    }
+                }
+            });
+        };
+
+        function drawVisualizer() {
+            const canvas = document.getElementById('visualizer-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = canvas.clientWidth || 600;
+            canvas.height = canvas.clientHeight || 100;
+
+            const bufferLength = analyserNode ? analyserNode.frequencyBinCount : 32;
+            const freqData = new Uint8Array(bufferLength);
+            const timeData = new Uint8Array(bufferLength);
+
+            function renderFrame() {
+                visualizerAnimationId = requestAnimationFrame(renderFrame);
+
+                if (analyserNode && window.isPlaying) {
+                    analyserNode.getByteFrequencyData(freqData);
+                    analyserNode.getByteTimeDomainData(timeData);
+                } else {
+                    freqData.fill(4);
+                    timeData.fill(128);
+                }
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                if (window.visualizerMode === 'bars') {
+                    const barWidth = (canvas.width / bufferLength) * 1.8;
+                    let x = 0;
+
+                    for (let i = 0; i < bufferLength; i++) {
+                        const barHeight = (freqData[i] / 255) * (canvas.height * 0.9);
+
+                        const gradient = ctx.createLinearGradient(0, canvas.height, 0, 0);
+                        gradient.addColorStop(0, '#1DB954');
+                        gradient.addColorStop(0.7, '#1ed760');
+                        gradient.addColorStop(1, '#6ee7b7');
+
+                        ctx.fillStyle = gradient;
+                        ctx.beginPath();
+                        if (ctx.roundRect) {
+                            ctx.roundRect(x, canvas.height - barHeight, Math.max(1, barWidth - 3), barHeight, [4, 4, 0, 0]);
+                        } else {
+                            ctx.rect(x, canvas.height - barHeight, Math.max(1, barWidth - 3), barHeight);
+                        }
+                        ctx.fill();
+
+                        x += barWidth;
+                    }
+                } else if (window.visualizerMode === 'wave') {
+                    ctx.lineWidth = 3;
+                    ctx.strokeStyle = '#1DB954';
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = '#1DB954';
+                    ctx.beginPath();
+
+                    const sliceWidth = canvas.width / bufferLength;
+                    let x = 0;
+
+                    for (let i = 0; i < bufferLength; i++) {
+                        const v = timeData[i] / 128.0;
+                        const y = (v * canvas.height) / 2;
+
+                        if (i === 0) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+
+                        x += sliceWidth;
+                    }
+                    ctx.lineTo(canvas.width, canvas.height / 2);
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
+                } else if (window.visualizerMode === 'aura') {
+                    const centerX = canvas.width / 2;
+                    const centerY = canvas.height / 2;
+
+                    let avgFreq = 0;
+                    for (let i = 0; i < bufferLength; i++) avgFreq += freqData[i];
+                    avgFreq /= bufferLength;
+
+                    const radius = 15 + (avgFreq / 255) * 30;
+
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, radius * 1.4, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(29, 185, 84, ${0.1 + (avgFreq / 255) * 0.25})`;
+                    ctx.fill();
+
+                    const numRays = 32;
+                    for (let i = 0; i < numRays; i++) {
+                        const angle = (i / numRays) * Math.PI * 2;
+                        const rayVal = freqData[i % bufferLength] || 10;
+                        const rayLen = radius + (rayVal / 255) * 40;
+
+                        const x1 = centerX + Math.cos(angle) * radius;
+                        const y1 = centerY + Math.sin(angle) * radius;
+                        const x2 = centerX + Math.cos(angle) * rayLen;
+                        const y2 = centerY + Math.sin(angle) * rayLen;
+
+                        ctx.beginPath();
+                        ctx.moveTo(x1, y1);
+                        ctx.lineTo(x2, y2);
+                        ctx.strokeStyle = '#1ed760';
+                        ctx.lineWidth = 3;
+                        ctx.stroke();
+                    }
+
+                    ctx.beginPath();
+                    ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+                    ctx.fillStyle = '#1DB954';
+                    ctx.shadowBlur = 20;
+                    ctx.shadowColor = '#1DB954';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+
+            renderFrame();
+        }
+
+        window.showNotification = function(title, msg) {
+            const toast = document.getElementById('notification-toast');
+            if (!toast) return;
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                window.closeNotification();
+            }, 4000);
+        };
+
+        window.closeNotification = function() {
+            const toast = document.getElementById('notification-toast');
+            if (toast) toast.classList.add('hidden');
+        };
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        function escapeHtml(str) {
+            return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
+        window.autoScanLibrary = async function() {
+            if (window.allTracks.length === 0) return;
+            
+            const badge = document.getElementById('storage-status-badge');
+            if (badge) {
+                badge.innerHTML = '<i class="fa-solid fa-arrows-rotate animate-spin mr-1"></i>Escaneando...';
+                badge.classList.remove('text-sp-green', 'bg-sp-green/20');
+                badge.classList.add('text-amber-400', 'bg-amber-400/20');
+            }
+
+            let removedCount = 0;
+            const invalidIds = [];
+            
+            const batchSize = 50;
+            for (let i = 0; i < window.allTracks.length; i += batchSize) {
+                const batch = window.allTracks.slice(i, i + batchSize);
+                await Promise.all(batch.map(async (t) => {
+                    if (t.fileBlob) {
+                        try {
+                            await t.fileBlob.slice(0, 1).arrayBuffer();
+                        } catch (e) {
+                            invalidIds.push(t.id);
+                            removedCount++;
+                        }
+                    }
+                }));
+            }
+
+            if (removedCount > 0) {
+                const db = await openLocalDB();
+                const tx = db.transaction(['tracks'], 'readwrite');
+                const trackStore = tx.objectStore('tracks');
+                
+                invalidIds.forEach(id => trackStore.delete(id));
+                
+                tx.oncomplete = async () => {
+                    await loadLibraryFromDB();
+                    
+                    const db2 = await openLocalDB();
+                    const tx2 = db2.transaction(['albums'], 'readwrite');
+                    const albumStore = tx2.objectStore('albums');
+                    const req = albumStore.getAll();
+                    req.onsuccess = () => {
+                        const allDbAlbums = req.result;
+                        allDbAlbums.forEach(dbA => {
+                            if (!window.albumsMap[dbA.name]) {
+                                albumStore.delete(dbA.name);
+                            }
+                        });
+                    };
+                    
+                    window.showNotification("Sincronización Automática", `Se detectaron y eliminaron ${removedCount} canciones que fueron borradas o movidas de tu disco duro.`);
+                    if (badge) {
+                        badge.innerHTML = '<i class="fa-solid fa-check mr-1"></i>Sincronizado';
+                        badge.classList.remove('text-amber-400', 'bg-amber-400/20');
+                        badge.classList.add('text-sp-green', 'bg-sp-green/20');
+                    }
+                };
+            } else {
+                if (badge) {
+                    badge.innerHTML = '<i class="fa-solid fa-check mr-1"></i>Sincronizado';
+                    badge.classList.remove('text-amber-400', 'bg-amber-400/20');
+                    badge.classList.add('text-sp-green', 'bg-sp-green/20');
+                }
+            }
+        };
+
+        window.onload = async function() {
+            window.switchTab('home');
+            await loadLibraryFromDB();
+            
+            // Iniciar escaneo automático
+            window.autoScanLibrary();
+
+            const audioEl = document.getElementById('audio-element');
+            if (audioEl) {
+                audioEl.addEventListener('timeupdate', () => {
+                    if (audioEl.duration) {
+                        document.getElementById('current-time').innerText = formatTime(audioEl.currentTime);
+                        document.getElementById('duration-time').innerText = formatTime(audioEl.duration);
+                        const percent = (audioEl.currentTime / audioEl.duration) * 100;
+                        document.getElementById('seek-bar').value = percent;
+                    }
+                });
+
+                audioEl.addEventListener('ended', () => {
+                    if (window.isRepeat) window.playTrack(window.currentTrackIndex);
+                    else window.nextTrack();
+                });
+
+                audioEl.addEventListener('error', (e) => {
+                    console.warn("Audio playback error event:", e);
+                    window.showNotification("Error de Audio", "No se pudo reproducir este archivo de audio.");
+                    window.isPlaying = false;
+                    window.updatePlayerUI();
+                });
+            }
+        };
     </script>
 </body>
 </html>
