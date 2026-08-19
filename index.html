@@ -86,17 +86,20 @@
             TV: './listaoficial.m3u',
             SERIES: './playlist.json',
             MOVIES: './peliculas.json',
-            ANIMADOS: './animados.json'
+            ANIMADOS: './animados.json',
+            RADIOS: './radios.json'
         };
 
         const RAW_URLS = {
             TV: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/listaoficial.m3u',
             SERIES: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/playlist.json',
             MOVIES: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas.json',
-            ANIMADOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/animados.json'
+            ANIMADOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/animados.json',
+            RADIOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/radios.json'
         };
 
-        const RADIO_STATIONS = [
+        const DEFAULT_RADIO_STATIONS = [
+            { id: 'cr-sinfonola', title: 'Radio Sinfonola 90.3 FM', group: 'Romántica / Clásicos', image: 'https://static.mytuner.mobi/media/tvos_radios/415/radio-sinfonola.79d5c3e6.png', url: 'https://live.turadio.stream:7006/;' },
             { id: 'cr-hit', title: 'Hit 104.7 FM', group: 'Juvenil / Pop', image: 'https://static.mytuner.mobi/media/tvos_radios/164/radio-hit-1047-fm.1180f4a3.jpg', url: 'https://live.turadio.stream:7004/stream?nocache=596&type=http' },
             { id: 'cr-crc', title: 'CRC 94.7 FM', group: 'Alternativo / Rock', image: 'https://static.mytuner.mobi/media/tvos_radios/nAwNLxJbnm.png', url: 'https://23263.live.streamtheworld.com/CRC_947AAC_SC' },
             { id: 'cr-zeta', title: 'Zeta FM 95.1', group: 'Tropical / Latina', image: 'https://static.mytuner.mobi/media/tvos_radios/879/zeta-fm.feb3fb70.png', url: 'https://d5g44yionyslb.cloudfront.net/medialist_14854753276708185244_hls.m3u8' },
@@ -112,26 +115,19 @@
         const convertUrl = (url) => {
             if (!url) return '';
             if (url.includes('ok.ru/video/search') || url.includes('ok.ru/search')) return url;
-            
-            let clean = url.trim().replace('http://', 'https://').replace('m.ok.ru', 'ok.ru');
-            
-            // Garantiza que CUALQUIER enlace de OK.ru se convierta al reproductor de la app
-            if (clean.includes('ok.ru/video/') && !clean.includes('ok.ru/videoembed/')) {
-                clean = clean.replace('ok.ru/video/', 'ok.ru/videoembed/');
-            }
-            
-            if (clean.includes('drive.google.com')) {
+            if (url.includes('ok.ru/video/')) return url.replace('ok.ru/video/', 'ok.ru/videoembed/');
+            if (url.includes('drive.google.com')) {
                 let fileId = '';
-                if (clean.includes('/file/d/')) {
-                    const parts = clean.split('/file/d/');
+                if (url.includes('/file/d/')) {
+                    const parts = url.split('/file/d/');
                     if (parts[1]) fileId = parts[1].split('/')[0];
-                } else if (clean.includes('id=')) {
-                    const parts = clean.split('id=');
+                } else if (url.includes('id=')) {
+                    const parts = url.split('id=');
                     if (parts[1]) fileId = parts[1].split('&')[0];
                 }
                 if (fileId) return `https://drive.google.com/file/d/${fileId}/preview`;
             }
-            return clean;
+            return url;
         };
 
         const fetchSmart = async (localUrl, rawUrl, isJson = true) => {
@@ -160,6 +156,7 @@
             const [showIntro, setShowIntro] = useState(true);
             const [activeTab, setActiveTab] = useState('home');
             const [content, setContent] = useState({ tv: [], series: [], movies: [], animados: [] });
+            const [radioStations, setRadioStations] = useState(DEFAULT_RADIO_STATIONS);
             const [search, setSearch] = useState('');
             const [selectedItem, setSelectedItem] = useState(null);
             const [selectedEpisode, setSelectedEpisode] = useState(null);
@@ -194,11 +191,12 @@
                 const init = async () => {
                     try {
                         setLoading(true);
-                        const [dataTV, dataMovies, dataSeries, dataAnimados] = await Promise.all([ 
+                        const [dataTV, dataMovies, dataSeries, dataAnimados, dataRadios] = await Promise.all([ 
                             fetchSmart(URLS.TV, RAW_URLS.TV, false),
                             fetchSmart(URLS.MOVIES, RAW_URLS.MOVIES, true),
                             fetchSmart(URLS.SERIES, RAW_URLS.SERIES, true),
-                            fetchSmart(URLS.ANIMADOS, RAW_URLS.ANIMADOS, true)
+                            fetchSmart(URLS.ANIMADOS, RAW_URLS.ANIMADOS, true),
+                            fetchSmart(URLS.RADIOS, RAW_URLS.RADIOS, true)
                         ]);
 
                         let tvChannels = [];
@@ -262,6 +260,13 @@
                                     }))
                                 }))
                             }));
+                        }
+
+                        if (dataRadios) {
+                            const list = Array.isArray(dataRadios) ? dataRadios : (dataRadios.radios || dataRadios.emisoras || []);
+                            if (list.length > 0) {
+                                setRadioStations(list);
+                            }
                         }
 
                         setContent({ tv: tvChannels, movies: moviesList, series: seriesList, animados: animadosList });
@@ -443,7 +448,6 @@
 
             return (
                 <div className="min-h-screen bg-[#111827] text-white font-sans flex flex-col md:flex-row relative">
-                    {/* Sidebar Escritorio */}
                     <aside className="hidden md:flex w-24 flex-col items-center py-6 bg-[#0f1115] border-r border-[#1f2937] fixed h-full z-50">
                         <div className="mb-6 p-2 bg-[#E50914] rounded-xl shadow-lg cursor-pointer" onClick={() => handleTabClick(navTabs[0])}><Icon name="play" size={24} fill="white" className="text-white"/></div>
                         <div className="flex flex-col gap-1 w-full items-center">
@@ -458,7 +462,6 @@
                         </div>
                     </aside>
 
-                    {/* Barra Superior Móvil */}
                     <div className="md:hidden fixed top-0 w-full bg-[#111827]/95 backdrop-blur z-50 px-3 py-2.5 flex items-center justify-between border-b border-[#1f2937] gap-2">
                         <div className="flex items-center gap-1.5 font-black text-base tracking-tighter cursor-pointer flex-shrink-0" onClick={() => handleTabClick(navTabs[0])}>
                             <span className="text-[#E50914]">MAGIS</span> TUBE
@@ -486,7 +489,6 @@
                         </button>
                     </div>
 
-                    {/* Barra Inferior Móvil */}
                     <div className="md:hidden fixed bottom-0 w-full bg-[#0f1115] border-t border-[#1f2937] z-50 flex py-2 pb-safe px-2 overflow-x-auto no-scrollbar snap-x items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
                         {navTabs.filter(t => !['jorgeflix', 'favorites', 'radio'].includes(t.id)).map(tab => (
                             <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-shrink-0 min-w-[56px] py-1 gap-1 snap-start transition-all active:scale-95 rounded-lg ${activeTab === tab.id && !tab.isExternal ? 'text-[#E50914] bg-white/5' : 'text-gray-400 hover:text-white'}`}>
@@ -496,11 +498,10 @@
                         ))}
                     </div>
 
-                    {}
                     <main className="flex-1 md:ml-24 min-h-screen pt-14 md:pt-0 pb-36 md:pb-0 relative z-10">
                         {activeTab === 'radio' ? (
                             <RadioSection 
-                                stations={RADIO_STATIONS} 
+                                stations={radioStations} 
                                 currentStation={currentRadioStation}
                                 isPlaying={isRadioPlaying}
                                 onPlayStation={handlePlayRadioStation}
@@ -551,7 +552,6 @@
                             </div>
                         ) : selectedItem ? (
                             <div className="animate-fade-in flex flex-col min-h-screen">
-                                {/* Reproductor de video de la app (In-App) */}
                                 <div className="w-full bg-black relative aspect-video md:h-[65vh] flex items-center justify-center overflow-hidden">
                                     <div className="absolute top-3 left-3 z-30 flex gap-2">
                                         <button onClick={() => {setSelectedItem(null); setIsLocked(false);}} className="bg-black/70 hover:bg-[#E50914] text-white px-3.5 py-1.5 rounded-full backdrop-blur-md flex items-center gap-1.5 text-xs transition-colors border border-white/15 shadow-lg">
@@ -636,7 +636,6 @@
                         )}
                     </main>
 
-                    {/* Barra reproductor flotante Radio */}
                     {currentRadioStation && (
                         <div className="fixed bottom-[55px] md:bottom-0 left-0 md:left-24 right-0 bg-[#171c26]/95 backdrop-blur-xl border-t border-[#1f2937] p-3 sm:p-4 z-50 flex items-center justify-between shadow-[0_-10px_30px_rgba(0,0,0,0.5)] animate-slide-up">
                             <div className="flex items-center gap-3 w-1/3 min-w-[120px]">
@@ -855,13 +854,16 @@
             const handlePlayOkLink = (e) => {
                 e.preventDefault();
                 if (!directOkUrl.trim()) return;
-                let parsed = convertUrl(directOkUrl.trim());
+                let parsed = directOkUrl.trim();
+                if (parsed.includes('ok.ru/video/')) {
+                    parsed = parsed.replace('ok.ru/video/', 'ok.ru/videoembed/');
+                }
                 onPlayDirect({
                     id: `jorgeflix-${Date.now()}`,
-                    title: query.trim() || 'Película / Serie OK.ru',
+                    title: query.trim() || 'Video OK.ru',
                     url: parsed,
                     type: 'movies',
-                    descripcion: `Reproducción directa desde JorgeFlix`
+                    descripcion: `Reproducción directa desde JorgeFlix (${parsed})`
                 });
             };
 
@@ -893,7 +895,7 @@
                             <span className="p-1.5 bg-[#E50914]/20 rounded text-[#E50914]"><Icon name="play" size={16} fill="currentColor"/></span>
                             <h2 className="font-bold text-sm text-white">Reproducir Enlace Directo en MAGIS Tube</h2>
                         </div>
-                        <p className="text-xs text-gray-400 mb-3">Pega un enlace de OK.ru (ej. <code className="text-red-400">https://ok.ru/video/123456789</code>) para reproducirlo inmediatamente dentro de la app:</p>
+                        <p className="text-xs text-gray-400 mb-3">Si ya tienes el link de OK.ru (ej. <code className="text-red-400">https://ok.ru/video/123456789</code>), pégalo aquí para reproducirlo sin salir de la app:</p>
                         <form onSubmit={handlePlayOkLink} className="flex gap-2">
                             <input 
                                 type="text" 
