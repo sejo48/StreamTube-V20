@@ -60,6 +60,17 @@
             transform: translateY(0);
         }
 
+        /* Hover verde sobre las filas de canciones */
+        .track-row:hover .track-title,
+        .track-row:hover .track-num {
+            color: #1DB954 !important;
+        }
+        .track-row:hover .play-action-btn {
+            background-color: #1DB954 !important;
+            color: #000000 !important;
+            transform: scale(1.1);
+        }
+
         @keyframes spinSlow {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
@@ -69,14 +80,6 @@
         }
         .vinyl-paused {
             animation-play-state: paused;
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.08); }
-        }
-        .ambient-glow {
-            animation: pulseGlow 4s ease-in-out infinite;
         }
 
         /* Equalizer Bars Animation */
@@ -90,7 +93,7 @@
             width: 3px;
             background-color: #1DB954;
             border-radius: 1px;
-            animation: eqBounce 0.8s ease-in-out infinite alternate;
+            animation: eqBounce 1s ease-in-out infinite alternate;
         }
         .eq-bar:nth-child(1) { height: 30%; animation-delay: 0.1s; }
         .eq-bar:nth-child(2) { height: 100%; animation-delay: 0.3s; }
@@ -104,12 +107,7 @@
         .eq-paused .eq-bar {
             animation-play-state: paused !important;
             height: 25% !important;
-            opacity: 0.4;
-        }
-
-        .track-row:hover .track-title,
-        .track-row:hover .track-num {
-            color: #1DB954 !important;
+            opacity: 0.5;
         }
     </style>
 </head>
@@ -120,7 +118,7 @@
         <!-- SIDEBAR NAVIGATION (DESKTOP) -->
         <aside class="w-64 bg-sp-dark rounded-xl flex flex-col gap-2 p-3 hidden md:flex shrink-0 border border-sp-border shadow-2xl">
             <!-- Brand Logo -->
-            <div class="flex items-center gap-3 px-3 py-3 mb-1">
+            <div class="flex items-center gap-3 px-3 py-3 mb-1 cursor-pointer" onclick="window.switchTab('home')">
                 <div class="w-9 h-9 rounded-full bg-sp-green flex items-center justify-center text-black font-black text-xl shadow-lg shadow-sp-green/20">
                     <i class="fa-solid fa-compact-disc text-xl"></i>
                 </div>
@@ -166,21 +164,19 @@
             </div>
 
             <div id="sidebar-albums-list" class="flex-1 overflow-y-auto space-y-1 pr-1">
-                <div class="p-4 text-center text-xs text-sp-subtext">
-                    Cargando memoria local...
-                </div>
+                <div class="p-4 text-center text-xs text-sp-subtext">Cargando memoria local...</div>
             </div>
 
             <!-- Memory Clear Control -->
             <div class="pt-2 border-t border-sp-border/60 flex items-center justify-between px-2">
                 <span id="storage-size-label" class="text-[10px] text-sp-subtext font-mono">0 MB en memoria</span>
-                <button onclick="window.promptClearLibrary()" title="Borrar datos guardados en memoria local" class="text-[10px] text-red-400 hover:text-red-300 hover:underline flex items-center gap-1">
+                <button onclick="window.promptClearLibrary()" title="Borrar datos guardados en memoria local" class="text-[10px] text-red-400 hover:text-red-300 hover:underline flex items-center gap-1 font-bold">
                     <i class="fa-solid fa-trash-can"></i> Limpiar
                 </button>
             </div>
         </aside>
 
-        <!-- MAIN VIEW AREA -->
+        <!-- MAIN VIEW CONTAINER -->
         <main class="flex-1 bg-sp-dark rounded-xl overflow-hidden flex flex-col border border-sp-border relative shadow-2xl">
             
             <header class="h-16 px-4 md:px-6 flex items-center justify-between bg-sp-dark/95 backdrop-blur-md sticky top-0 z-20 border-b border-sp-border gap-2">
@@ -202,77 +198,44 @@
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <label class="md:hidden p-2.5 bg-sp-green text-black font-bold text-xs rounded-full flex items-center gap-1 cursor-pointer">
-                        <i class="fa-solid fa-folder-open"></i>
-                        <input type="file" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
-                    </label>
-
                     <label class="hidden sm:flex px-4 py-2 bg-sp-card hover:bg-sp-cardHover text-white text-xs font-bold rounded-full border border-sp-border items-center gap-2 cursor-pointer transition">
                         <i class="fa-solid fa-file-audio text-sp-green"></i> Añadir Archivos
                         <input type="file" accept="audio/*" multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
                     </label>
-
-                    <button onclick="window.toggleVisualizer()" title="Espectro de Frecuencias" class="p-2.5 rounded-full bg-sp-card hover:bg-sp-cardHover text-sp-green transition border border-sp-border">
-                        <i class="fa-solid fa-chart-simple text-sm"></i>
-                    </button>
                 </div>
             </header>
 
-            <div class="md:hidden bg-black/80 px-4 py-2 border-b border-sp-border flex items-center justify-around text-xs font-bold text-sp-subtext">
-                <button onclick="window.switchTab('home')" id="mob-nav-home" class="flex items-center gap-1 text-sp-green">
-                    <i class="fa-solid fa-house"></i> Inicio
-                </button>
-                <button onclick="window.switchTab('albums')" id="mob-nav-albums" class="flex items-center gap-1">
-                    <i class="fa-solid fa-folder"></i> Álbumes
-                </button>
-                <button onclick="window.switchTab('equalizer')" id="mob-nav-equalizer" class="flex items-center gap-1">
-                    <i class="fa-solid fa-sliders"></i> EQ
-                </button>
-            </div>
-
-            <!-- VISUALIZER BANNER (SIEMPRE VISIBLE / AUTOMÁTICO EN LA PARTE SUPERIOR) -->
-            <div id="visualizer-container" class="shrink-0 bg-black/95 backdrop-blur-xl border-b border-sp-border p-4 md:p-6 relative overflow-hidden transition-all duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.5)] z-10">
-                <div class="absolute inset-0 bg-gradient-to-b from-sp-green/10 to-transparent opacity-50 ambient-glow pointer-events-none"></div>
-                
-                <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
-                    <div class="flex items-center gap-4 max-w-xl w-full">
-                        <div class="relative group shrink-0">
-                            <img id="vis-cover" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=120&h=120&fit=crop" class="w-14 h-14 md:w-16 md:h-16 rounded-md object-cover shadow-[0_0_15px_rgba(29,185,84,0.3)] border border-sp-border/80">
-                            <div class="absolute -bottom-1 -right-1 w-5 h-5 bg-sp-green rounded-full flex items-center justify-center animate-bounce shadow-lg">
-                                <i class="fa-solid fa-music text-[10px] text-black"></i>
-                            </div>
-                        </div>
+            <!-- BARRA DE ANIMACIÓN SUPERIOR SIEMPRE VISIBLE -->
+            <div id="visualizer-container" class="shrink-0 bg-black/90 backdrop-blur-xl border-b border-sp-border p-3 md:p-4 relative overflow-hidden transition-all duration-300 shadow-lg z-10 flex flex-col gap-2">
+                <div class="flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3 min-w-0">
+                        <img id="vis-cover" src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=120&h=120&fit=crop" class="w-10 h-10 md:w-12 md:h-12 rounded-md object-cover border border-sp-border/80 shrink-0">
                         <div class="truncate">
-                            <div class="flex items-center gap-2">
-                                <span class="text-[10px] text-sp-green font-extrabold uppercase tracking-widest block"><i class="fa-solid fa-wave-square animate-pulse mr-1"></i> Animación Automática</span>
-                                <div id="vis-eq-indicator" class="eq-bar-container eq-paused">
-                                    <div class="eq-bar"></div>
-                                    <div class="eq-bar"></div>
-                                    <div class="eq-bar"></div>
-                                    <div class="eq-bar"></div>
-                                </div>
-                            </div>
-                            <h3 id="vis-title" class="text-white font-black text-base md:text-xl tracking-tight truncate">Carga tu música</h3>
-                            <p id="vis-artist" class="text-sp-subtext text-xs md:text-sm truncate">Spotity Local Player</p>
+                            <span class="text-[9px] text-sp-green font-extrabold uppercase tracking-widest flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-sp-green animate-pulse"></span>
+                                ESPECTRO EN TIEMPO REAL
+                            </span>
+                            <h3 id="vis-title" class="text-white font-bold text-xs md:text-sm tracking-tight truncate">Carga tu música</h3>
+                            <p id="vis-artist" class="text-sp-subtext text-[10px] md:text-xs truncate">Spotity Local Player</p>
                         </div>
                     </div>
                     
-                    <!-- Controls for Visualizer Mode -->
-                    <div class="flex items-center gap-2 bg-sp-card p-1 rounded-lg border border-sp-border self-start md:self-center shrink-0">
-                        <button onclick="window.setVisMode('bars')" id="vis-mode-bars" class="px-2.5 py-1.5 rounded-md text-[11px] font-bold text-black bg-sp-green transition">Espectro</button>
-                        <button onclick="window.setVisMode('wave')" id="vis-mode-wave" class="px-2.5 py-1.5 rounded-md text-[11px] font-bold text-sp-subtext hover:text-white transition">Osciloscopio</button>
-                        <button onclick="window.setVisMode('aura')" id="vis-mode-aura" class="px-2.5 py-1.5 rounded-md text-[11px] font-bold text-sp-subtext hover:text-white transition">Aura Pulsante</button>
+                    <div class="flex items-center gap-1 bg-sp-card p-1 rounded-lg border border-sp-border shrink-0">
+                        <button onclick="window.setVisMode('bars')" id="vis-mode-bars" class="px-2 py-1 rounded text-[10px] font-bold text-black bg-sp-green transition">Espectro</button>
+                        <button onclick="window.setVisMode('wave')" id="vis-mode-wave" class="px-2 py-1 rounded text-[10px] font-bold text-sp-subtext hover:text-white transition">Osciloscopio</button>
+                        <button onclick="window.setVisMode('aura')" id="vis-mode-aura" class="px-2 py-1 rounded text-[10px] font-bold text-sp-subtext hover:text-white transition">Aura</button>
                     </div>
                 </div>
                 
-                <canvas id="visualizer-canvas" class="relative z-10 w-full h-20 md:h-28 bg-sp-dark/60 rounded-xl border border-sp-border/80 shadow-inner"></canvas>
+                <canvas id="visualizer-canvas" class="w-full h-16 md:h-20 bg-sp-dark/50 rounded-lg border border-sp-border/60 shadow-inner"></canvas>
             </div>
 
             <!-- Scroll View Container -->
             <div id="main-scroll-view" class="flex-1 overflow-y-auto p-4 md:p-6 space-y-8">
                 
+                <!-- TAB HOME -->
                 <section id="tab-home" class="space-y-8">
-                    <!-- Hero Spotify Local Banner -->
+                    <!-- Hero Banner -->
                     <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-950 via-sp-dark to-black p-6 md:p-8 border border-sp-green/30 shadow-2xl">
                         <div class="relative z-10 max-w-xl space-y-3">
                             <span class="px-3 py-1 bg-sp-green/20 text-sp-green text-xs font-extrabold uppercase rounded-full tracking-wider border border-sp-green/30">
@@ -297,7 +260,7 @@
                         <i class="fa-solid fa-database text-8xl md:text-9xl absolute -right-6 -bottom-6 text-sp-green/10 transform rotate-12 pointer-events-none"></i>
                     </div>
 
-                    <!-- Albums Overview -->
+                    <!-- Álbumes Overview -->
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <h2 class="text-xl md:text-2xl font-black text-white tracking-tight flex items-center gap-2.5">
@@ -310,7 +273,7 @@
                         <div id="home-albums-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
                     </div>
 
-                    <!-- All Local Tracks Table -->
+                    <!-- All Tracks Table -->
                     <div>
                         <div class="flex items-center justify-between mb-4">
                             <h2 class="text-xl md:text-2xl font-black text-white tracking-tight">Todas las Canciones Guardadas</h2>
@@ -324,7 +287,7 @@
                                             <th class="py-3.5 px-4 w-12 text-center">#</th>
                                             <th class="py-3.5 px-4">Título</th>
                                             <th class="py-3.5 px-4 hidden sm:table-cell">Álbum / Carpeta</th>
-                                            <th class="py-3.5 px-4 text-center w-24 hidden md:table-cell">Estado</th>
+                                            <th class="py-3.5 px-4 text-center w-28 hidden md:table-cell">Estado</th>
                                             <th class="py-3.5 px-4 text-center w-16">Acción</th>
                                         </tr>
                                     </thead>
@@ -335,6 +298,7 @@
                     </div>
                 </section>
 
+                <!-- TAB ALBUMS -->
                 <section id="tab-albums" class="space-y-6 hidden">
                     <div class="flex items-center justify-between border-b border-sp-border pb-4">
                         <div>
@@ -350,8 +314,8 @@
                     <div id="albums-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
                 </section>
 
+                <!-- TAB ALBUM DETAIL -->
                 <section id="tab-album-detail" class="space-y-6 hidden">
-                    <!-- Album Header Banner -->
                     <div class="flex flex-col md:flex-row items-center md:items-end gap-6 bg-gradient-to-b from-sp-card to-sp-dark p-6 rounded-2xl border border-sp-border relative">
                         <div class="relative group shrink-0">
                             <img id="detail-album-cover" src="" class="w-40 h-40 md:w-44 md:h-44 rounded-xl object-cover shadow-2xl border border-sp-border/80">
@@ -386,7 +350,6 @@
                         </div>
                     </div>
 
-                    <!-- Album Tracklist Table -->
                     <div class="bg-sp-card/60 rounded-xl overflow-hidden border border-sp-border">
                         <div class="overflow-x-auto">
                             <table class="w-full text-left text-sm text-sp-subtext">
@@ -395,7 +358,7 @@
                                         <th class="py-3.5 px-4 w-12 text-center">#</th>
                                         <th class="py-3.5 px-4">Título</th>
                                         <th class="py-3.5 px-4 hidden sm:table-cell">Artista</th>
-                                        <th class="py-3.5 px-4 text-center w-24 hidden md:table-cell">Estado</th>
+                                        <th class="py-3.5 px-4 text-center w-28 hidden md:table-cell">Estado</th>
                                         <th class="py-3.5 px-4 text-center w-16">Acción</th>
                                     </tr>
                                 </thead>
@@ -405,6 +368,7 @@
                     </div>
                 </section>
 
+                <!-- TAB EQUALIZER -->
                 <section id="tab-equalizer" class="space-y-6 hidden">
                     <div class="bg-sp-card p-6 md:p-8 rounded-2xl border border-sp-border space-y-6 max-w-2xl mx-auto shadow-2xl">
                         <div class="flex items-center justify-between border-b border-sp-border pb-5">
@@ -422,7 +386,6 @@
                             </button>
                         </div>
 
-                        <!-- Equalizer Sliders -->
                         <div class="grid grid-cols-3 gap-4 text-center py-4">
                             <div class="space-y-3 bg-black/40 p-3 md:p-4 rounded-xl border border-sp-border">
                                 <span class="text-xs font-extrabold uppercase text-sp-green tracking-wider block">Graves</span>
@@ -452,7 +415,6 @@
                             </div>
                         </div>
 
-                        <!-- Equalizer Presets -->
                         <div class="space-y-2">
                             <span class="text-xs font-bold text-sp-subtext uppercase tracking-wider block">Preajustes:</span>
                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -465,7 +427,6 @@
                     </div>
                 </section>
 
-                <!-- NOTIFICATION TOAST -->
                 <div id="notification-toast" class="hidden fixed bottom-24 right-4 md:right-6 max-w-sm bg-sp-card border border-sp-green/50 text-white p-4 rounded-xl shadow-2xl z-50 transition-all transform">
                     <div class="flex items-start gap-3">
                         <i class="fa-solid fa-circle-check text-sp-green text-xl mt-0.5"></i>
@@ -479,7 +440,6 @@
                     </div>
                 </div>
 
-                <!-- CONFIRM CLEAR MODAL -->
                 <div id="clear-confirm-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
                     <div class="bg-sp-card border border-sp-border p-6 rounded-2xl max-w-sm w-full space-y-4 shadow-2xl text-center">
                         <div class="w-12 h-12 bg-red-500/20 text-red-500 rounded-full flex items-center justify-center mx-auto text-xl">
@@ -487,7 +447,7 @@
                         </div>
                         <h3 class="text-lg font-black text-white">¿Vaciar Memoria Local?</h3>
                         <p class="text-xs text-sp-subtext leading-relaxed">
-                            Esta acción eliminará todas las canciones, álbumes y portadas personalizadas guardadas en la memoria local de tu navegador. Tu disco duro personal no sufrirá cambios.
+                            Esta acción eliminará todas las canciones, álbumes y portadas personalizadas guardadas en la memoria local de tu navegador.
                         </p>
                         <div class="flex gap-3 pt-2">
                             <button onclick="window.closeClearModal()" class="flex-1 py-2.5 bg-sp-dark hover:bg-sp-cardHover text-xs font-bold rounded-full border border-sp-border transition">Cancelar</button>
@@ -500,8 +460,8 @@
         </main>
     </div>
 
+    <!-- FOOTER PLAYER -->
     <footer class="h-[90px] bg-black border-t border-sp-border px-4 md:px-6 flex items-center justify-between gap-2 md:gap-4 sticky bottom-0 z-30 shadow-2xl">
-        <!-- Track Info -->
         <div class="flex items-center gap-3 w-1/3 min-w-[140px] max-w-[280px]">
             <div class="relative group cursor-pointer shrink-0" onclick="window.switchTab('album-detail')">
                 <div id="player-vinyl-disc" class="absolute inset-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-r from-neutral-900 via-neutral-800 to-black border-2 border-neutral-700 shadow-md transition-transform duration-500 ease-out translate-x-0 group-hover:translate-x-3 spin-vinyl vinyl-paused flex items-center justify-center">
@@ -515,6 +475,12 @@
             <div class="truncate">
                 <div class="flex items-center gap-2">
                     <h4 id="player-title" class="text-xs md:text-sm font-bold text-white truncate">Carga tu carpeta de música</h4>
+                    <div id="player-eq-anim" class="eq-bar-container eq-paused hidden">
+                        <div class="eq-bar"></div>
+                        <div class="eq-bar"></div>
+                        <div class="eq-bar"></div>
+                        <div class="eq-bar"></div>
+                    </div>
                 </div>
                 <p id="player-artist" class="text-[11px] md:text-xs text-sp-subtext truncate">Spotity Local Player</p>
             </div>
@@ -523,7 +489,6 @@
             </button>
         </div>
 
-        <!-- Center Player Controls -->
         <div class="flex flex-col items-center gap-1.5 w-1/3 max-w-md">
             <div class="flex items-center gap-3 md:gap-5">
                 <button onclick="window.toggleShuffle()" id="btn-shuffle" class="text-sp-subtext hover:text-white transition text-xs md:text-sm" title="Aleatorio">
@@ -551,11 +516,7 @@
             </div>
         </div>
 
-        <!-- Right Controls -->
         <div class="flex items-center justify-end gap-2 md:gap-3 w-1/3 min-w-[100px]">
-            <button onclick="window.toggleVisualizer()" class="text-sp-green hover:text-white transition" title="Espectro">
-                <i class="fa-solid fa-chart-simple text-sm"></i>
-            </button>
             <div class="flex items-center gap-2 hidden sm:flex">
                 <i class="fa-solid fa-volume-high text-sp-subtext text-xs" id="volume-icon"></i>
                 <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="0.8" oninput="window.setVolume(this.value)"
@@ -564,7 +525,6 @@
         </div>
     </footer>
 
-    <!-- Hidden Audio Element -->
     <audio id="audio-element" class="hidden" crossorigin="anonymous"></audio>
 
     <script>
@@ -587,9 +547,8 @@
             'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop'
         ];
 
-        // IndexedDB Manager
         const DB_NAME = 'SpotityLocalDB';
-        const DB_VERSION = 1;
+        const DB_VERSION = 2;
         let dbInstance = null;
 
         function openLocalDB() {
@@ -610,6 +569,10 @@
                 };
                 req.onsuccess = (evt) => {
                     dbInstance = evt.target.result;
+                    dbInstance.onversionchange = () => {
+                        dbInstance.close();
+                        dbInstance = null;
+                    };
                     resolve(dbInstance);
                 };
                 req.onerror = (err) => reject(err);
@@ -642,37 +605,51 @@
                     });
                 });
 
-                window.updateStorageSizeLabel();
+                tx.oncomplete = () => {
+                    window.updateStorageSizeLabel();
+                };
+                tx.onerror = (e) => {
+                    console.error("IndexedDB tx error:", e);
+                };
             } catch (err) {
-                console.error("Error al guardar en memoria local:", err);
+                console.error("Error guardando en IndexedDB:", err);
             }
         }
 
         async function saveSingleAlbumMeta(albumName, coverUrl) {
             try {
+                // 1. Save in localStorage for un-rollbacked instant fallback
+                try {
+                    const localCovers = JSON.parse(localStorage.getItem('spotity_album_covers') || '{}');
+                    localCovers[albumName] = coverUrl;
+                    localStorage.setItem('spotity_album_covers', JSON.stringify(localCovers));
+                } catch (e) {
+                    console.warn("LocalStorage quota:", e);
+                }
+
+                // 2. Save in IndexedDB albums store
                 const db = await openLocalDB();
                 const tx = db.transaction(['albums', 'tracks'], 'readwrite');
-                const albumsStore = tx.objectStore('albums');
+                tx.objectStore('albums').put({ name: albumName, cover: coverUrl });
+
+                // Also update all stored track objects for this album
                 const tracksStore = tx.objectStore('tracks');
-
-                albumsStore.put({ name: albumName, cover: coverUrl });
-
                 if (window.albumsMap[albumName]) {
-                    window.albumsMap[albumName].tracks.forEach(t => {
-                        t.cover = coverUrl;
+                    window.albumsMap[albumName].tracks.forEach(track => {
+                        track.cover = coverUrl;
                         tracksStore.put({
-                            id: t.id,
-                            title: t.title,
-                            artist: t.artist,
-                            album: t.album,
-                            fileBlob: t.fileBlob,
+                            id: track.id,
+                            title: track.title,
+                            artist: track.artist,
+                            album: track.album,
+                            fileBlob: track.fileBlob,
                             cover: coverUrl,
-                            duration: t.duration
+                            duration: track.duration
                         });
                     });
                 }
             } catch (err) {
-                console.error("Error al actualizar álbum en DB:", err);
+                console.error("Error guardando portada:", err);
             }
         }
 
@@ -684,28 +661,37 @@
                 const albumsStore = tx.objectStore('albums');
                 const settingsStore = tx.objectStore('settings');
 
+                let localCovers = {};
+                try {
+                    localCovers = JSON.parse(localStorage.getItem('spotity_album_covers') || '{}');
+                } catch (e) {}
+
                 const rawAlbums = await new Promise(res => {
                     const req = albumsStore.getAll();
                     req.onsuccess = () => res(req.result || []);
+                    req.onerror = () => res([]);
                 });
 
                 const rawTracks = await new Promise(res => {
                     const req = tracksStore.getAll();
                     req.onsuccess = () => res(req.result || []);
+                    req.onerror = () => res([]);
                 });
 
                 const likedSetting = await new Promise(res => {
                     const req = settingsStore.get('likedTrackIds');
                     req.onsuccess = () => res(req.result ? req.result.value : []);
+                    req.onerror = () => res([]);
                 });
 
                 window.likedTrackIds = new Set(likedSetting);
-
                 window.albumsMap = {};
+                
                 rawAlbums.forEach(alb => {
+                    const coverUrl = localCovers[alb.name] || alb.cover || DEFAULT_COVERS[0];
                     window.albumsMap[alb.name] = {
                         name: alb.name,
-                        cover: alb.cover,
+                        cover: coverUrl,
                         tracks: []
                     };
                 });
@@ -717,14 +703,16 @@
                         try {
                             objectUrl = URL.createObjectURL(t.fileBlob);
                         } catch (e) {
-                            console.warn("Error re-creating blob URL", e);
+                            console.warn("Error creando URL", e);
                         }
                     }
+
+                    const albumCover = localCovers[t.album] || (window.albumsMap[t.album] ? window.albumsMap[t.album].cover : (t.cover || DEFAULT_COVERS[0]));
 
                     if (!window.albumsMap[t.album]) {
                         window.albumsMap[t.album] = {
                             name: t.album,
-                            cover: t.cover || DEFAULT_COVERS[0],
+                            cover: albumCover,
                             tracks: []
                         };
                     }
@@ -737,7 +725,7 @@
                         duration: t.duration || 'Local',
                         url: objectUrl,
                         fileBlob: t.fileBlob,
-                        cover: t.cover || window.albumsMap[t.album].cover
+                        cover: albumCover
                     };
 
                     window.albumsMap[t.album].tracks.push(trackObj);
@@ -751,7 +739,7 @@
                 window.updateStorageSizeLabel();
 
             } catch (err) {
-                console.error("Error al cargar biblioteca local:", err);
+                console.error("Error restaurando base de datos:", err);
             }
         }
 
@@ -761,7 +749,7 @@
                 const tx = db.transaction('settings', 'readwrite');
                 tx.objectStore('settings').put({ key, value });
             } catch (e) {
-                console.warn("Save setting error:", e);
+                console.warn(e);
             }
         }
 
@@ -803,6 +791,10 @@
                 tx.objectStore('albums').clear();
                 tx.objectStore('settings').clear();
 
+                try {
+                    localStorage.removeItem('spotity_album_covers');
+                } catch(e){}
+
                 window.albumsMap = {};
                 window.allTracks = [];
                 window.currentQueue = [];
@@ -821,7 +813,7 @@
                 window.renderAllTracksTable();
                 window.updateStorageSizeLabel();
 
-                window.showNotification("Memoria Limpiada", "Se han eliminado todas las canciones guardadas.");
+                window.showNotification("Memoria Limpiada", "Se han eliminado todas las canciones y portadas guardadas.");
             } catch (err) {
                 console.error(err);
             }
@@ -864,7 +856,6 @@
 
                 sourceNode = audioCtx.createMediaElementSource(audioElement);
 
-                // Chain nodes
                 sourceNode.connect(bassFilter);
                 bassFilter.connect(midFilter);
                 midFilter.connect(trebleFilter);
@@ -872,10 +863,9 @@
                 gainNode.connect(analyserNode);
                 analyserNode.connect(audioCtx.destination);
 
-                // Start visualizer animation loop immediately
                 drawVisualizer();
             } catch (err) {
-                console.warn("Audio pipeline init:", err);
+                console.warn("Audio pipeline:", err);
             }
         }
 
@@ -885,6 +875,11 @@
             let loadedCount = 0;
             const validExtensions = ['.mp3', '.m4a', '.wav', '.ogg', '.flac', '.aac', '.wma'];
             const newTracks = [];
+
+            let localCovers = {};
+            try {
+                localCovers = JSON.parse(localStorage.getItem('spotity_album_covers') || '{}');
+            } catch(e){}
 
             Array.from(fileList).forEach(file => {
                 const isAudioType = file.type && file.type.startsWith('audio/');
@@ -907,11 +902,12 @@
                 const title = nameParts.length > 1 ? nameParts[1].trim() : fileNameClean;
                 const artist = nameParts.length > 1 ? nameParts[0].trim() : (pathParts.length > 2 ? pathParts[pathParts.length - 3] : 'Artista Local');
 
+                const albumCover = localCovers[albumName] || (window.albumsMap[albumName] ? window.albumsMap[albumName].cover : DEFAULT_COVERS[Object.keys(window.albumsMap).length % DEFAULT_COVERS.length]);
+
                 if (!window.albumsMap[albumName]) {
-                    const randomDefaultCover = DEFAULT_COVERS[Object.keys(window.albumsMap).length % DEFAULT_COVERS.length];
                     window.albumsMap[albumName] = {
                         name: albumName,
-                        cover: randomDefaultCover,
+                        cover: albumCover,
                         tracks: []
                     };
                 }
@@ -924,7 +920,7 @@
                     duration: 'Local',
                     url: objectUrl,
                     fileBlob: file,
-                    cover: window.albumsMap[albumName].cover
+                    cover: albumCover
                 };
 
                 window.albumsMap[albumName].tracks.push(trackObj);
@@ -934,7 +930,7 @@
             });
 
             if (loadedCount === 0) {
-                window.showNotification("Sin archivos válidos", "No se encontraron archivos de audio (.mp3, .m4a, .wav) en la carpeta.");
+                window.showNotification("Sin archivos válidos", "No se encontraron archivos de audio.");
                 return;
             }
 
@@ -945,7 +941,7 @@
             window.renderAllAlbumsGrid();
             window.renderAllTracksTable();
 
-            window.showNotification("¡Carpeta Guardada en Memoria!", `Se cargaron ${loadedCount} canciones localmente.`);
+            window.showNotification("¡Carpeta Guardada en Memoria!", `Se cargaron y guardaron ${loadedCount} canciones localmente.`);
         };
 
         window.updateAlbumCoverFromInput = function(fileInput) {
@@ -954,7 +950,7 @@
             const imageFile = fileInput.files[0];
             const reader = new FileReader();
 
-            reader.onload = function(e) {
+            reader.onload = async function(e) {
                 const imageUrl = e.target.result;
                 const albumName = window.currentActiveAlbum;
 
@@ -975,7 +971,7 @@
                         window.updatePlayerUI();
                     }
 
-                    saveSingleAlbumMeta(albumName, imageUrl);
+                    await saveSingleAlbumMeta(albumName, imageUrl);
                     window.showNotification("Portada Guardada", `Se guardó la nueva portada para "${albumName}".`);
                 }
             };
@@ -993,19 +989,24 @@
             document.getElementById('detail-album-meta').innerText = `${album.tracks.length} canciones • Guardado Localmente`;
 
             const tbody = document.getElementById('album-detail-tracks-body');
-            tbody.innerHTML = album.tracks.map((track, idx) => `
-                <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer" onclick="window.playTrackFromAlbum('${escapeHtml(albumName)}', ${idx})">
-                    <td class="py-3.5 px-4 text-center font-mono text-xs track-num text-sp-subtext">${idx + 1}</td>
-                    <td class="py-3.5 px-4 font-bold text-xs track-title text-white transition">${escapeHtml(track.title)}</td>
-                    <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.artist)}</td>
-                    <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell"><i class="fa-solid fa-hard-drive mr-1"></i>En Memoria</td>
-                    <td class="py-3.5 px-4 text-center">
-                        <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(albumName)}', ${idx})" class="play-action-btn w-8 h-8 rounded-full bg-sp-green/20 hover:bg-sp-green text-sp-green hover:text-black flex items-center justify-center transition shadow">
-                            <i class="fa-solid fa-play text-xs pl-0.5"></i>
-                        </button>
-                    </td>
-                </tr>
-            `).join('');
+            tbody.innerHTML = album.tracks.map((track, idx) => {
+                const isCurrent = window.allTracks[window.currentTrackIndex] && window.allTracks[window.currentTrackIndex].id === track.id;
+                return `
+                    <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10' : ''}" onclick="window.playTrackFromAlbum('${escapeHtml(albumName)}', ${idx})">
+                        <td class="track-num py-3.5 px-4 text-center font-mono text-xs ${isCurrent ? 'text-sp-green font-bold' : 'text-sp-subtext'}">${idx + 1}</td>
+                        <td class="track-title py-3.5 px-4 font-bold text-xs ${isCurrent ? 'text-sp-green' : 'text-white'} transition">${escapeHtml(track.title)}</td>
+                        <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.artist)}</td>
+                        <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell">
+                            <span class="bg-emerald-950 text-emerald-400 border border-emerald-800/40 px-2 py-0.5 rounded-full">🗄️ En Memoria</span>
+                        </td>
+                        <td class="py-3.5 px-4 text-center">
+                            <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(albumName)}', ${idx})" class="play-action-btn w-8 h-8 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/40 hover:bg-sp-green hover:text-black flex items-center justify-center transition">
+                                <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
 
             window.switchTab('album-detail');
         };
@@ -1029,30 +1030,20 @@
             ['home', 'albums', 'album-detail', 'equalizer'].forEach(t => {
                 const sec = document.getElementById(`tab-${t}`);
                 const btn = document.getElementById(`nav-${t}`);
-                const mobBtn = document.getElementById(`mob-nav-${t}`);
                 if (sec) sec.classList.add('hidden');
                 if (btn) {
                     btn.classList.remove('bg-sp-card', 'text-white');
                     btn.classList.add('text-sp-subtext');
                 }
-                if (mobBtn) {
-                    mobBtn.classList.remove('text-sp-green');
-                    mobBtn.classList.add('text-sp-subtext');
-                }
             });
 
             const activeSec = document.getElementById(`tab-${tabName}`);
             const activeBtn = document.getElementById(`nav-${tabName}`);
-            const activeMobBtn = document.getElementById(`mob-nav-${tabName}`);
 
             if (activeSec) activeSec.classList.remove('hidden');
             if (activeBtn) {
                 activeBtn.classList.add('bg-sp-card', 'text-white');
                 activeBtn.classList.remove('text-sp-subtext');
-            }
-            if (activeMobBtn) {
-                activeMobBtn.classList.add('text-sp-green');
-                activeMobBtn.classList.remove('text-sp-subtext');
             }
 
             const mainScroll = document.getElementById('main-scroll-view');
@@ -1076,7 +1067,7 @@
                 window.updatePlayerUI();
                 window.renderAllTracksTable();
             }).catch(err => {
-                console.warn("Playback error:", err);
+                console.warn("Playback:", err);
                 window.isPlaying = false;
                 window.updatePlayerUI();
             });
@@ -1153,12 +1144,10 @@
             const track = window.allTracks[window.currentTrackIndex];
             if (!track) return;
 
-            // Footer Update
             document.getElementById('player-cover').src = track.cover;
             document.getElementById('player-title').innerText = track.title;
             document.getElementById('player-artist').innerText = `${track.artist} • ${track.album}`;
 
-            // Visualizer Banner Header Update
             const visCover = document.getElementById('vis-cover');
             const visTitle = document.getElementById('vis-title');
             const visArtist = document.getElementById('vis-artist');
@@ -1172,7 +1161,7 @@
             }
 
             const vinylDisc = document.getElementById('player-vinyl-disc');
-            const visEqInd = document.getElementById('vis-eq-indicator');
+            const eqAnim = document.getElementById('player-eq-anim');
 
             if (vinylDisc) {
                 if (window.isPlaying) {
@@ -1184,11 +1173,11 @@
                 }
             }
 
-            if (visEqInd) {
+            if (eqAnim) {
                 if (window.isPlaying) {
-                    visEqInd.classList.remove('eq-paused');
+                    eqAnim.classList.remove('hidden', 'eq-paused');
                 } else {
-                    visEqInd.classList.add('eq-paused');
+                    eqAnim.classList.add('eq-paused');
                 }
             }
 
@@ -1225,7 +1214,7 @@
 
             container.innerHTML = albums.map(alb => `
                 <button onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-sp-card text-left group transition">
-                    <img src="${alb.cover}" class="w-10 h-10 rounded-md object-cover border border-sp-border shrink-0">
+                    <img src="${alb.cover}" class="w-10 h-10 rounded-md object-cover border border-sp-border">
                     <div class="truncate">
                         <p class="text-xs font-bold text-white group-hover:text-sp-green transition truncate">${escapeHtml(alb.name)}</p>
                         <p class="text-[10px] text-sp-subtext truncate">${alb.tracks.length} canciones</p>
@@ -1294,23 +1283,25 @@
             tbody.innerHTML = window.allTracks.map((track, idx) => {
                 const isCurrent = idx === window.currentTrackIndex;
                 return `
-                    <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10 font-bold' : ''}" onclick="window.playTrack(${idx})">
-                        <td class="py-3.5 px-4 text-center font-mono text-xs track-num ${isCurrent ? 'text-sp-green' : 'text-sp-subtext'}">
+                    <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10 text-white font-bold' : ''}" onclick="window.playTrack(${idx})">
+                        <td class="track-num py-3.5 px-4 text-center font-mono text-xs">
                             ${isCurrent && window.isPlaying ? '<i class="fa-solid fa-volume-high text-sp-green animate-pulse"></i>' : idx + 1}
                         </td>
                         <td class="py-3.5 px-4">
                             <div class="flex items-center gap-3">
                                 <img src="${track.cover}" class="w-9 h-9 rounded-md object-cover border border-sp-border shrink-0">
                                 <div class="truncate">
-                                    <p class="text-xs font-bold track-title ${isCurrent ? 'text-sp-green' : 'text-white'} transition">${escapeHtml(track.title)}</p>
+                                    <p class="track-title text-xs font-bold ${isCurrent ? 'text-sp-green' : 'text-white'} group-hover:text-sp-green transition">${escapeHtml(track.title)}</p>
                                     <p class="text-[11px] text-sp-subtext">${escapeHtml(track.artist)}</p>
                                 </div>
                             </div>
                         </td>
                         <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.album)}</td>
-                        <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell"><i class="fa-solid fa-hard-drive mr-1"></i>En Memoria</td>
+                        <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell">
+                            <span class="bg-emerald-950 text-emerald-400 border border-emerald-800/40 px-2 py-0.5 rounded-full">🗄️ En Memoria</span>
+                        </td>
                         <td class="py-3.5 px-4 text-center">
-                            <button onclick="event.stopPropagation(); window.playTrack(${idx})" class="play-action-btn w-8 h-8 rounded-full bg-sp-green/20 hover:bg-sp-green text-sp-green hover:text-black flex items-center justify-center transition shadow">
+                            <button onclick="event.stopPropagation(); window.playTrack(${idx})" class="play-action-btn w-8 h-8 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/40 hover:bg-sp-green hover:text-black flex items-center justify-center transition">
                                 <i class="fa-solid fa-play text-xs pl-0.5"></i>
                             </button>
                         </td>
@@ -1340,23 +1331,25 @@
                 const globalIdx = window.allTracks.findIndex(t => t.id === track.id);
                 const isCurrent = globalIdx === window.currentTrackIndex;
                 return `
-                    <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10 font-bold' : ''}" onclick="window.playTrack(${globalIdx})">
-                        <td class="py-3.5 px-4 text-center font-mono text-xs track-num ${isCurrent ? 'text-sp-green' : 'text-sp-subtext'}">
+                    <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10 text-white font-bold' : ''}" onclick="window.playTrack(${globalIdx})">
+                        <td class="track-num py-3.5 px-4 text-center font-mono text-xs">
                             ${isCurrent && window.isPlaying ? '<i class="fa-solid fa-volume-high text-sp-green animate-pulse"></i>' : idx + 1}
                         </td>
                         <td class="py-3.5 px-4">
                             <div class="flex items-center gap-3">
                                 <img src="${track.cover}" class="w-9 h-9 rounded-md object-cover border border-sp-border shrink-0">
                                 <div class="truncate">
-                                    <p class="text-xs font-bold track-title ${isCurrent ? 'text-sp-green' : 'text-white'} transition">${escapeHtml(track.title)}</p>
+                                    <p class="track-title text-xs font-bold ${isCurrent ? 'text-sp-green' : 'text-white'} group-hover:text-sp-green transition">${escapeHtml(track.title)}</p>
                                     <p class="text-[11px] text-sp-subtext">${escapeHtml(track.artist)}</p>
                                 </div>
                             </div>
                         </td>
                         <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.album)}</td>
-                        <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell"><i class="fa-solid fa-hard-drive mr-1"></i>En Memoria</td>
+                        <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell">
+                            <span class="bg-emerald-950 text-emerald-400 border border-emerald-800/40 px-2 py-0.5 rounded-full">🗄️ En Memoria</span>
+                        </td>
                         <td class="py-3.5 px-4 text-center">
-                            <button onclick="event.stopPropagation(); window.playTrack(${globalIdx})" class="play-action-btn w-8 h-8 rounded-full bg-sp-green/20 hover:bg-sp-green text-sp-green hover:text-black flex items-center justify-center transition shadow">
+                            <button onclick="event.stopPropagation(); window.playTrack(${globalIdx})" class="play-action-btn w-8 h-8 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/40 hover:bg-sp-green hover:text-black flex items-center justify-center transition">
                                 <i class="fa-solid fa-play text-xs pl-0.5"></i>
                             </button>
                         </td>
@@ -1401,21 +1394,15 @@
             });
         };
 
-        window.toggleVisualizer = function() {
-            const container = document.getElementById('visualizer-container');
-            if (!container) return;
-            container.classList.toggle('hidden');
-        };
-
         window.setVisMode = function(mode) {
             window.visualizerMode = mode;
             ['bars', 'wave', 'aura'].forEach(m => {
                 const btn = document.getElementById(`vis-mode-${m}`);
                 if (btn) {
                     if (m === mode) {
-                        btn.className = "px-2.5 py-1.5 rounded-md text-[11px] font-bold text-black bg-sp-green transition";
+                        btn.className = "px-2 py-1 rounded text-[10px] font-bold text-black bg-sp-green transition";
                     } else {
-                        btn.className = "px-2.5 py-1.5 rounded-md text-[11px] font-bold text-sp-subtext hover:text-white transition";
+                        btn.className = "px-2 py-1 rounded text-[10px] font-bold text-sp-subtext hover:text-white transition";
                     }
                 }
             });
@@ -1427,7 +1414,7 @@
             const ctx = canvas.getContext('2d');
             
             canvas.width = canvas.clientWidth || 600;
-            canvas.height = canvas.clientHeight || 100;
+            canvas.height = canvas.clientHeight || 80;
 
             const bufferLength = analyserNode ? analyserNode.frequencyBinCount : 32;
             const freqData = new Uint8Array(bufferLength);
@@ -1461,19 +1448,16 @@
                         ctx.fillStyle = gradient;
                         ctx.beginPath();
                         if (ctx.roundRect) {
-                            ctx.roundRect(x, canvas.height - barHeight, Math.max(1, barWidth - 3), barHeight, [4, 4, 0, 0]);
+                            ctx.roundRect(x, canvas.height - barHeight, Math.max(1, barWidth - 3), barHeight, [3, 3, 0, 0]);
                         } else {
                             ctx.rect(x, canvas.height - barHeight, Math.max(1, barWidth - 3), barHeight);
                         }
                         ctx.fill();
-
                         x += barWidth;
                     }
                 } else if (window.visualizerMode === 'wave') {
-                    ctx.lineWidth = 3;
+                    ctx.lineWidth = 2.5;
                     ctx.strokeStyle = '#1DB954';
-                    ctx.shadowBlur = 15;
-                    ctx.shadowColor = '#1DB954';
                     ctx.beginPath();
 
                     const sliceWidth = canvas.width / bufferLength;
@@ -1490,7 +1474,6 @@
                     }
                     ctx.lineTo(canvas.width, canvas.height / 2);
                     ctx.stroke();
-                    ctx.shadowBlur = 0;
                 } else if (window.visualizerMode === 'aura') {
                     const centerX = canvas.width / 2;
                     const centerY = canvas.height / 2;
@@ -1499,18 +1482,18 @@
                     for (let i = 0; i < bufferLength; i++) avgFreq += freqData[i];
                     avgFreq /= bufferLength;
 
-                    const radius = 15 + (avgFreq / 255) * 30;
+                    const radius = 10 + (avgFreq / 255) * 20;
 
                     ctx.beginPath();
-                    ctx.arc(centerX, centerY, radius * 1.4, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(29, 185, 84, ${0.1 + (avgFreq / 255) * 0.25})`;
+                    ctx.arc(centerX, centerY, radius * 1.3, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(29, 185, 84, ${0.15 + (avgFreq / 255) * 0.3})`;
                     ctx.fill();
 
-                    const numRays = 32;
+                    const numRays = 24;
                     for (let i = 0; i < numRays; i++) {
                         const angle = (i / numRays) * Math.PI * 2;
                         const rayVal = freqData[i % bufferLength] || 10;
-                        const rayLen = radius + (rayVal / 255) * 40;
+                        const rayLen = radius + (rayVal / 255) * 25;
 
                         const x1 = centerX + Math.cos(angle) * radius;
                         const y1 = centerY + Math.sin(angle) * radius;
@@ -1521,20 +1504,12 @@
                         ctx.moveTo(x1, y1);
                         ctx.lineTo(x2, y2);
                         ctx.strokeStyle = '#1ed760';
-                        ctx.lineWidth = 3;
+                        ctx.lineWidth = 2;
                         ctx.stroke();
                     }
-
-                    ctx.beginPath();
-                    ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-                    ctx.fillStyle = '#1DB954';
-                    ctx.shadowBlur = 20;
-                    ctx.shadowColor = '#1DB954';
-                    ctx.fill();
-                    ctx.shadowBlur = 0;
                 }
             }
-
+            if (visualizerAnimationId) cancelAnimationFrame(visualizerAnimationId);
             renderFrame();
         }
 
@@ -1565,79 +1540,9 @@
             return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
         }
 
-        window.autoScanLibrary = async function() {
-            if (window.allTracks.length === 0) return;
-            
-            const badge = document.getElementById('storage-status-badge');
-            if (badge) {
-                badge.innerHTML = '<i class="fa-solid fa-arrows-rotate animate-spin mr-1"></i>Escaneando...';
-                badge.classList.remove('text-sp-green', 'bg-sp-green/20');
-                badge.classList.add('text-amber-400', 'bg-amber-400/20');
-            }
-
-            let removedCount = 0;
-            const invalidIds = [];
-            
-            const batchSize = 50;
-            for (let i = 0; i < window.allTracks.length; i += batchSize) {
-                const batch = window.allTracks.slice(i, i + batchSize);
-                await Promise.all(batch.map(async (t) => {
-                    if (t.fileBlob) {
-                        try {
-                            await t.fileBlob.slice(0, 1).arrayBuffer();
-                        } catch (e) {
-                            invalidIds.push(t.id);
-                            removedCount++;
-                        }
-                    }
-                }));
-            }
-
-            if (removedCount > 0) {
-                const db = await openLocalDB();
-                const tx = db.transaction(['tracks'], 'readwrite');
-                const trackStore = tx.objectStore('tracks');
-                
-                invalidIds.forEach(id => trackStore.delete(id));
-                
-                tx.oncomplete = async () => {
-                    await loadLibraryFromDB();
-                    
-                    const db2 = await openLocalDB();
-                    const tx2 = db2.transaction(['albums'], 'readwrite');
-                    const albumStore = tx2.objectStore('albums');
-                    const req = albumStore.getAll();
-                    req.onsuccess = () => {
-                        const allDbAlbums = req.result;
-                        allDbAlbums.forEach(dbA => {
-                            if (!window.albumsMap[dbA.name]) {
-                                albumStore.delete(dbA.name);
-                            }
-                        });
-                    };
-                    
-                    window.showNotification("Sincronización Automática", `Se detectaron y eliminaron ${removedCount} canciones que fueron borradas o movidas de tu disco duro.`);
-                    if (badge) {
-                        badge.innerHTML = '<i class="fa-solid fa-check mr-1"></i>Sincronizado';
-                        badge.classList.remove('text-amber-400', 'bg-amber-400/20');
-                        badge.classList.add('text-sp-green', 'bg-sp-green/20');
-                    }
-                };
-            } else {
-                if (badge) {
-                    badge.innerHTML = '<i class="fa-solid fa-check mr-1"></i>Sincronizado';
-                    badge.classList.remove('text-amber-400', 'bg-amber-400/20');
-                    badge.classList.add('text-sp-green', 'bg-sp-green/20');
-                }
-            }
-        };
-
         window.onload = async function() {
             window.switchTab('home');
             await loadLibraryFromDB();
-            
-            // Iniciar escaneo automático
-            window.autoScanLibrary();
 
             const audioEl = document.getElementById('audio-element');
             if (audioEl) {
@@ -1656,8 +1561,8 @@
                 });
 
                 audioEl.addEventListener('error', (e) => {
-                    console.warn("Audio playback error event:", e);
-                    window.showNotification("Error de Audio", "No se pudo reproducir este archivo de audio.");
+                    console.warn("Error audio:", e);
+                    window.showNotification("Error de Audio", "No se pudo reproducir este archivo.");
                     window.isPlaying = false;
                     window.updatePlayerUI();
                 });
