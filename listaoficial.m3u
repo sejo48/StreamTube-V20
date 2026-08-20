@@ -1,10 +1,4 @@
 #EXTM3U
-#EXTINF:-1 tvg-name="Canal Norte Informativo" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoHcGs3ivXQAja0wIS-YP2h9LXuO_-GcKac2zeyfvebJrs4fmEZE7Fon2Y&s=10" group-title="General",Canal Norte Informativo
-https://livecdnusa.enlace.plus/ejtv/0/index.m3u8
-#EXTINF:-1 tvg-name="Canal Demo TV" tvg-logo="https://serenotv.com/wp-content/uploads/2022/12/Demo-Blue.jpg" group-title="General",Canal Demo TV
-https://livecdnusa.enlace.plus/ejtv/0/index.m3u8
-#EXTINF:-1 tvg-name="Canal Garabito TV" tvg-logo="https://serenotv.com/wp-content/uploads/2023/03/LOGO-GARABITO-TV.jpg" group-title="General",Canal Garabito TV
-https://livecdnusa.enlace.plus/ejtv/0/index.m3u8
 #EXTINF:-1 tvg-name="Telered" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc0CfBLPTdVRLyxhsV8Hq3wfIeJAPwiC2TQOhBNoFV893ShXIpe0MWXG9nhjQnTPtsMTk&usqp=CAU" group-title="Canal de Noticias Local.",Telered
 https://k20.usastreams.com:8081/telered/index.m3u8
 #EXTINF:-1 tvg-name="Megacine TV" tvg-logo="https://cigars.roku.com/v1/contain/800x454/https%3A%2F%2Fimage.roku.com%2Fdeveloper_channels%2Fprod%2Ffec8403b690ee3d6bb645b6e8d9e1e85070e865bc1b4ad14e8af28261e6ce1ad.png" group-title="Canal Retro TV.",Megacine TV
