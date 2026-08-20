@@ -1,12 +1,18 @@
 #EXTM3U
+#EXTINF:-1 tvg-name="Canal Norte Informativo" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoHcGs3ivXQAja0wIS-YP2h9LXuO_-GcKac2zeyfvebJrs4fmEZE7Fon2Y&s=10" group-title="General",Canal Norte Informativo
+https://livecdnusa.enlace.plus/ejtv/0/index.m3u8
+#EXTINF:-1 tvg-name="Canal Demo TV" tvg-logo="https://serenotv.com/wp-content/uploads/2022/12/Demo-Blue.jpg" group-title="General",Canal Demo TV
+https://livecdnusa.enlace.plus/ejtv/0/index.m3u8
+#EXTINF:-1 tvg-name="Canal Garabito TV" tvg-logo="https://serenotv.com/wp-content/uploads/2023/03/LOGO-GARABITO-TV.jpg" group-title="General",Canal Garabito TV
+https://livecdnusa.enlace.plus/ejtv/0/index.m3u8
 #EXTINF:-1 tvg-name="Telered" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc0CfBLPTdVRLyxhsV8Hq3wfIeJAPwiC2TQOhBNoFV893ShXIpe0MWXG9nhjQnTPtsMTk&usqp=CAU" group-title="Canal de Noticias Local.",Telered
 https://k20.usastreams.com:8081/telered/index.m3u8
 #EXTINF:-1 tvg-name="Megacine TV" tvg-logo="https://cigars.roku.com/v1/contain/800x454/https%3A%2F%2Fimage.roku.com%2Fdeveloper_channels%2Fprod%2Ffec8403b690ee3d6bb645b6e8d9e1e85070e865bc1b4ad14e8af28261e6ce1ad.png" group-title="Canal Retro TV.",Megacine TV
-https://cloudflare.streamgato.us:3125/live/megacinetvlive.m3u8
+https://edge.essastream.com/megacinetv/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-name="Canal 36" tvg-logo="https://sicultura-live.s3.amazonaws.com/public/2022-11/313401143_527193602751613_1789836145711014030_n.png" group-title="Canal de Noticias Regional.",Canal 36
 https://stmv6.voxtvhd.com.br/xtremacartoons/xtremacartoons/playlist.m3u8
 #EXTINF:-1 tvg-name="Retro TV" tvg-logo="https://play-lh.googleusercontent.com/zLkTnFfdGGq5-cuY0DBvsCoiRUToWFA8rcm_Z3ieUr7rwgmzyojRXIfqMXt9dm4ocjs" group-title="Canal Retro.",Retro TV
-https://live20.bozztv.com/akamaissh101/ssh101/retrotvcr2025/playlist.m3u8
+https://stream.enlineatv.net/hls/retrotv/1_2/index.m3u8?tkn=3610870340
 #EXTINF:-1 tvg-name="TV Retro" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBsKLLZbFpvVQrOzRAnA9BCRraLxP3-GLwvBv30iNI6TpPz1o51sa1de7pGKS40Quzajw&usqp=CAU" group-title="Canal de Series Retro.",TV Retro
 https://live20.bozztv.com/akamaissh101/ssh101/tvretropalm2020/chunks.m3u8
 #EXTINF:-1 tvg-name="Tele Sistema" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9YKvejKBdJWBUfm0Oc32tKTO1QKQXXu2s4A&s" group-title="Canal de Entretenimiento.",Tele Sistema
@@ -149,7 +155,7 @@ https://acceso.mediosdecostarica.com:3638/live/360rftvcrlive.m3u8
 https://latamvdo.com:3870/hybrid/play.m3u8
 #EXTINF:-1 tvg-name="TDTVCANAL" tvg-logo="https://play-lh.googleusercontent.com/xABFSEF3L4NzA_jJd4jv-ikF_sopZ2vh2ujYj4zDua9w00vsmXkL_Qnw4VyV-42EtO-L" group-title="Sin Grupo",TDTVCANAL
 https://cloudvideo.servers10.com:8081/8230/index.m3u8
-#EXTINF:-1 tvg-name="TV Sur, Canal 14" tvg-logo="https://www.tvsur.co.cr/wp-content/uploads/2022/09/cropped-LOGO-TV-SUR-PEREZ-ZELEDON-TRAZO-BLANCO.png" group-title="Sin Grupo",TV Sur, Canal 14
+#EXTINF:-1 tvg-name="Canal 14" tvg-logo="https://www.tvsur.co.cr/wp-content/uploads/2022/09/cropped-LOGO-TV-SUR-PEREZ-ZELEDON-TRAZO-BLANCO.png" group-title="Sin Grupo",Canal 14
 https://k20.usastreams.com:8081/tvsur/index.m3u8
 #EXTINF:-1 tvg-name="Tv Peñol" tvg-logo="https://serenotv.com/wp-content/uploads/2025/06/Canal-Penol-hd-315x315.jpg" group-title="Sin Grupo",Tv Peñol
 https://stmv1.voxtvhd.com.br/tvpenol/tvpenol/playlist.m3u8
