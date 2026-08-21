@@ -109,6 +109,36 @@
             height: 25% !important;
             opacity: 0.5;
         }
+
+        .track-eq-anim {
+            display: inline-flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 14px;
+            width: 14px;
+            justify-content: center;
+        }
+        .track-eq-anim .bar {
+            width: 3px;
+            background-color: #1DB954;
+            border-radius: 1px;
+            animation: trackEqBounce 0.7s ease-in-out infinite alternate;
+        }
+        .track-eq-anim .bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+        .track-eq-anim .bar:nth-child(2) { height: 100%; animation-delay: 0.3s; }
+        .track-eq-anim .bar:nth-child(3) { height: 60%; animation-delay: 0.2s; }
+        .track-eq-anim .bar:nth-child(4) { height: 80%; animation-delay: 0.4s; }
+
+        .track-eq-anim.paused .bar {
+            animation-play-state: paused !important;
+            height: 30% !important;
+            opacity: 0.6;
+        }
+
+        @keyframes trackEqBounce {
+            0% { height: 20%; }
+            100% { height: 100%; }
+        }
     </style>
 </head>
 <body class="h-full flex flex-col font-sans overflow-hidden select-none bg-black text-slate-100">
@@ -539,6 +569,18 @@
         window.isShuffle = false;
         window.isRepeat = false;
         window.visualizerMode = 'bars';
+
+        function getTrackNumHtml(isCurrent, isPlaying, trackNum) {
+            if (isCurrent) {
+                return `<span class="track-eq-anim ${isPlaying ? '' : 'paused'}" title="${isPlaying ? 'Reproduciendo' : 'En Pausa'}">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </span>`;
+            }
+            return trackNum;
+        }
 
         const DEFAULT_COVERS = [
             'https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=400&h=400&fit=crop',
@@ -991,9 +1033,12 @@
             const tbody = document.getElementById('album-detail-tracks-body');
             tbody.innerHTML = album.tracks.map((track, idx) => {
                 const isCurrent = window.allTracks[window.currentTrackIndex] && window.allTracks[window.currentTrackIndex].id === track.id;
+                const isPlaying = isCurrent && window.isPlaying;
                 return `
                     <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10' : ''}" onclick="window.playTrackFromAlbum('${escapeHtml(albumName)}', ${idx})">
-                        <td class="track-num py-3.5 px-4 text-center font-mono text-xs ${isCurrent ? 'text-sp-green font-bold' : 'text-sp-subtext'}">${idx + 1}</td>
+                        <td class="track-num py-3.5 px-4 text-center font-mono text-xs ${isCurrent ? 'text-sp-green font-bold' : 'text-sp-subtext'}">
+                            ${getTrackNumHtml(isCurrent, isPlaying, idx + 1)}
+                        </td>
                         <td class="track-title py-3.5 px-4 font-bold text-xs ${isCurrent ? 'text-sp-green' : 'text-white'} transition">${escapeHtml(track.title)}</td>
                         <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.artist)}</td>
                         <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell">
@@ -1001,7 +1046,7 @@
                         </td>
                         <td class="py-3.5 px-4 text-center">
                             <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(albumName)}', ${idx})" class="play-action-btn w-8 h-8 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/40 hover:bg-sp-green hover:text-black flex items-center justify-center transition">
-                                <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                                <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'} text-xs pl-0.5"></i>
                             </button>
                         </td>
                     </tr>
@@ -1184,8 +1229,37 @@
             const likeBtn = document.getElementById('player-like-btn');
             if (likeBtn) {
                 likeBtn.innerHTML = window.likedTrackIds.has(track.id) ? 
-                    `<i class="fa-solid fa-heart text-sp-green text-base"></i>` : 
+                    `<i class="fa-solid fa-heart text-[#1DB954] text-base"></i>` : 
                     `<i class="fa-regular fa-heart text-base"></i>`;
+            }
+
+            window.renderAllTracksTable();
+            if (window.currentActiveAlbum && window.albumsMap[window.currentActiveAlbum]) {
+                const album = window.albumsMap[window.currentActiveAlbum];
+                const tbody = document.getElementById('album-detail-tracks-body');
+                if (tbody) {
+                    tbody.innerHTML = album.tracks.map((t, idx) => {
+                        const isCurrent = window.allTracks[window.currentTrackIndex] && window.allTracks[window.currentTrackIndex].id === t.id;
+                        const isPlaying = isCurrent && window.isPlaying;
+                        return `
+                            <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10' : ''}" onclick="window.playTrackFromAlbum('${escapeHtml(window.currentActiveAlbum)}', ${idx})">
+                                <td class="track-num py-3.5 px-4 text-center font-mono text-xs ${isCurrent ? 'text-sp-green font-bold' : 'text-sp-subtext'}">
+                                    ${getTrackNumHtml(isCurrent, isPlaying, idx + 1)}
+                                </td>
+                                <td class="track-title py-3.5 px-4 font-bold text-xs ${isCurrent ? 'text-sp-green' : 'text-white'} transition">${escapeHtml(t.title)}</td>
+                                <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(t.artist)}</td>
+                                <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell">
+                                    <span class="bg-emerald-950 text-emerald-400 border border-emerald-800/40 px-2 py-0.5 rounded-full">🗄️ En Memoria</span>
+                                </td>
+                                <td class="py-3.5 px-4 text-center">
+                                    <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(window.currentActiveAlbum)}', ${idx})" class="play-action-btn w-8 h-8 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/40 hover:bg-sp-green hover:text-black flex items-center justify-center transition">
+                                        <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'} text-xs pl-0.5"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+                    }).join('');
+                }
             }
         };
 
@@ -1282,10 +1356,11 @@
 
             tbody.innerHTML = window.allTracks.map((track, idx) => {
                 const isCurrent = idx === window.currentTrackIndex;
+                const isPlaying = isCurrent && window.isPlaying;
                 return `
                     <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10 text-white font-bold' : ''}" onclick="window.playTrack(${idx})">
                         <td class="track-num py-3.5 px-4 text-center font-mono text-xs">
-                            ${isCurrent && window.isPlaying ? '<i class="fa-solid fa-volume-high text-sp-green animate-pulse"></i>' : idx + 1}
+                            ${getTrackNumHtml(isCurrent, isPlaying, idx + 1)}
                         </td>
                         <td class="py-3.5 px-4">
                             <div class="flex items-center gap-3">
@@ -1302,7 +1377,7 @@
                         </td>
                         <td class="py-3.5 px-4 text-center">
                             <button onclick="event.stopPropagation(); window.playTrack(${idx})" class="play-action-btn w-8 h-8 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/40 hover:bg-sp-green hover:text-black flex items-center justify-center transition">
-                                <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                                <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'} text-xs pl-0.5"></i>
                             </button>
                         </td>
                     </tr>
