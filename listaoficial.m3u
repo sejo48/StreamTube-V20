@@ -32,11 +32,9 @@ https://cloudvideo.servers10.com:8081/8230/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-name="Play" tvg-logo="https://milemisoras.com/img/channel/abd12be06e14bf48011ce97f584bfefb.png" group-title="Demostración.",Play
 https://tvservices.fullhd-streaming.com:3941/stream/play.m3u8
 #EXTINF:-1 tvg-name="Dreiko TV" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF4WjCv7VeLbrEAtDzziTPFnO02S87ck8eLA&s" group-title="Entretenimiento.",Dreiko TV
-https://rtv.fullhd-streaming.com:19360/dreikotv/dreikotv.m3u8
+https://cloudvideo.servers10.com:8081/8020/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-name="Retro Cartoons" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/a1e4076264abe6b6ccde87a587966abe.webp" group-title="Canal de Entretenimiento.",Retro Cartoons
 https://stmv3.voxtvhd.com.br/xtremaretrocartoons/xtremaretrocartoons/playlist.m3u8
-#EXTINF:-1 tvg-name="10 Costa Rica" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3668-294x165-FFFFFF.jpg" group-title="Deportes y Noticias.",10 Costa Rica
-https://acceso.radiosportstv.online:3285/hybrid/play.m3u8
 #EXTINF:-1 tvg-name="Extrema Kids" tvg-logo="https://image.roku.com/developer_channels/prod/685354bd84f85fe39c7ecae45018ccb60011681ba7838fd841e3f2392f4f6249.png" group-title="Infantil.",Extrema Kids
 https://627bb251f23c7.streamlock.net:444/ExtremaKids/ExtremaKids/chunklist_w877184190.m3u8
 #EXTINF:-1 tvg-name="Canal 8" tvg-logo="https://pbs.twimg.com/profile_images/1510311834800246787/sfWgWmqk_400x400.jpg" group-title="Multimedios Costa Rica",Canal 8
@@ -45,8 +43,6 @@ https://mdstrm.com/live-stream-playlist/5a7b1e63a8da282c34d65445/master.m3u8
 https://video0.rogohosting.com:19360/8006/8006.m3u8
 #EXTINF:-1 tvg-name="Gam TV" tvg-logo="https://radiocostarica.net/sites/default/files/styles/player_image/public/2024-06/GAM%20TV%20CR-Costa%20Rica_0.png.webp?itok=ExXxZFSr" group-title="Entretenimiento",Gam TV
 https://v2.azulstream.com:8081/gamtv/gamtv/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-name="Claro Sports" tvg-logo="https://yt3.googleusercontent.com/h88IKJCItR4KafxYzqfMphDkLzXdREH24qDrW-CzFMedCCjBl4D2baR3xWF48tOkNltM6MM9hA=s900-c-k-c0x00ffffff-no-rj" group-title="Deportes.",Claro Sports
-https://d35j504z0x2vu2.cloudfront.net/v1/manifest/0bc8e8376bd8417a1b6761138aa41c26c7309312/bein-sports-xtra-en-espanol/d3358062-b357-4738-9cfb-6824db0ada53/0.m3u8
 #EXTINF:-1 tvg-name="Red Bull TV" tvg-logo="https://play-lh.googleusercontent.com/W7wJ9CcfTsIlMC9GWk7qgom0JO6R4DoFnHN1DGKuI2OtLQ_3w5zYuscMngY0OZfXtfxn" group-title="Red Bull TV: Deportes",Red Bull TV
 https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8
 #EXTINF:-1 tvg-name="Antena Seis TV" tvg-logo="https://i.imgur.com/9Nh2mo9.png" group-title="Sin Grupo",Antena Seis TV
@@ -55,16 +51,12 @@ https://video1.azulstream.com:8081/antenaseistv/index.m3u8
 https://cloudvideo.servers10.com:8081/8030/index.m3u8
 #EXTINF:-1 tvg-name="Cristo Visión" tvg-logo="https://i.imgur.com/CFXZ8j0.png" group-title="Sin Grupo",Cristo Visión
 https://5fc584f3f19c9.streamlock.net/cristovision/videocristovision/chunklist_w1198882065_DVR.m3u8
-#EXTINF:-1 tvg-name="Enlace HD" tvg-logo="https://i.imgur.com/YwUVTmS.png" group-title="Sin Grupo",Enlace HD
-https://livecdn.enlace.plus/enlace/smil:enlace-hd.smil/playlist.m3u8
 #EXTINF:-1 tvg-name="Limón TV" tvg-logo="https://i.ibb.co/rdpcv7C/1689421727166.jpg" group-title="Sin Grupo",Limón TV
 https://59ef525c24caa.streamlock.net//limontv1//limontv1//chunklist_w1710248255.m3u8
 #EXTINF:-1 tvg-name="Norte Informativo" tvg-logo="https://i.ibb.co/2MNzXN7/Channels4-profile-9.jpg" group-title="Sin Grupo",Norte Informativo
 https://videohd.live:19360/8076/8076.m3u8
 #EXTINF:-1 tvg-name="Soy Plancha TV" tvg-logo="https://i.ibb.co/P4kpMgk/1689344714578.jpg" group-title="Sin Grupo",Soy Plancha TV
 https://59ef525c24caa.streamlock.net/vmtv/soyplancha/playlist.m3u8
-#EXTINF:-1 tvg-name="Telefides" tvg-logo="https://i.ibb.co/yn5M8dw/telefides-costa-rica.png" group-title="Sin Grupo",Telefides
-https://s2.cwebtv.net:4433/telefides/telefides/playlist.m3u8
 #EXTINF:-1 tvg-name="TV Urbano" tvg-logo="https://i.imgur.com/KVVU9PI.png" group-title="Sin Grupo",TV Urbano
 https://59ef525c24caa.streamlock.net/tvurbano/tvurbano/playlist.m3u8
 #EXTINF:-1 tvg-name="TeleSur" tvg-logo="https://i.imgur.com/KUpgeOf.png" group-title="Sin Grupo",TeleSur
@@ -77,8 +69,6 @@ https://627bb251f23c7.streamlock.net:444/ExtremaTV/ExtremaTV/playlist.m3u8
 https://stmv6.voxtvhd.com.br/cineaccion/cineaccion/playlist.m3u8
 #EXTINF:-1 tvg-name="Tele Vida" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRr3bmOPMWpG4PLRg_uRAvIEKPCZTprG-_Jw&s" group-title="Sin Grupo",Tele Vida
 https://tls-cl.cdnz.cl/televida/live/playlist.m3u8
-#EXTINF:-1 tvg-name="TVs Live" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQErFAV54FxgmM5JKD9Xxiq6GYifsgLagX08pesnsLHwiPKfPISfsnlmu4COyGfVa-WWmE&usqp=CAU" group-title="Sin Grupo",TVs Live
-https://imagenuniversaltv.net:3741/live/tvslive.m3u8
 #EXTINF:-1 tvg-name="Tele Sur" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtJvHa01Kz7msCS49obbGVIqvHeDCQr8EN_A&s" group-title="Sin Grupo",Tele Sur
 https://k20.usastreams.com:8081/tvsur/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-name="Canal 36" tvg-logo="https://lh6.ggpht.com/XBZm1nL7kgjjH5FEAN0NmeqWVaa-qlyqLJMuSbe3RCit7ZaZtpcXbf3nFFK2BbC2Lds" group-title="Cotubanama",Canal 36
@@ -89,16 +79,10 @@ https://scl.edge.grupoz.cl/retroplustvuno/live/chunklist_w2129364046.m3u8
 https://59ef525c24caa.streamlock.net/garabitoTV/garabitotv/chunklist_w878297441.m3u8
 #EXTINF:-1 tvg-name="EnergyTV Latino" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3519-294x165-FFFFFF.jpg" group-title="Sin Grupo",EnergyTV Latino
 https://59ec5453559f0.streamlock.net/energytvlatino/smil:VIVALIVETV/chunklist_w527843109_b1896000.m3u8
-#EXTINF:-1 tvg-name="Cartago Medios" tvg-logo="https://cartagomedios.com/wp-content/uploads/2025/04/cropped-Logo-Color.webp" group-title="Sin Grupo",Cartago Medios
-https://acceso.mediosdecostarica.com:3511/live/cartagomediostvlive.m3u8
-#EXTINF:-1 tvg-name="WHD" tvg-logo="https://yt3.googleusercontent.com/ytc/AIdro_mRUs2di6I0DOPjNchStqW_tqT8RjJuiMGOPNuQd8ymMHI=s900-c-k-c0x00ffffff-no-rj" group-title="Sin Grupo",WHD
-https://cloudvideo.servers10.com:8081/8130/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-name="Películas del Oeste" tvg-logo="https://yt3.googleusercontent.com/ytc/AIdro_k8FMMJsWJsIpQTwyUXE84ISlV5E4mZnOMQz5cVwZg0sDE=s160-c-k-c0x00ffffff-no-rj" group-title="Sin Grupo",Películas del Oeste
 https://amogonetworx-grjngo-2-eu.plex.wurl.tv/2000.m3u8
 #EXTINF:-1 tvg-name="Max Anime" tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCRyIeb5IY-BbZf4GL-ljuAxXmg2Y8Mttf5ZlEauL6LL1ainsD_Ly8-atcCtLZQAghALzHpJmRfDdY6pGjGxyLkbCWqmPlxqvyxuGK9EBdAz8nvJ41GDIB7ijVrgBj99pbuIvhA48c7eqncuN21Boz6_qkdhgER098nZkyp41u-LggItFxnv5Cit6U9Lg/s800/max-anime.jpg" group-title="Sin Grupo",Max Anime
 https://live20.bozztv.com/giatv/giatv-dball/dball/chunks.m3u8
-#EXTINF:-1 tvg-name="Tele +" tvg-logo="https://meganetfun.com/storage/channel-logos/q8OrvMkGTpkTmdQ2SBT5f7xq6ZSakeP2MplANv4Z.jpg" group-title="Sin Grupo",Tele +
-https://mist01.homestream.fun/hls/tlmas904/0_1/index.m3u8
 #EXTINF:-1 tvg-name="Cops" tvg-logo="https://meganetfun.com/storage/channel-logos/4zE04qJPfTgzeV2Z7gYausmhLFKE5aYcRNGXvtQ6.jpg" group-title="Sin Grupo",Cops
 https://rightsboosterltd-cops-1-eu.plex.wurl.tv/2000.m3u8
 #EXTINF:-1 tvg-name="Locomoción TV" tvg-logo="https://serenotv.com/wp-content/uploads/2025/06/locomotion-800x800.jpg" group-title="Sin Grupo",Locomoción TV
@@ -109,8 +93,6 @@ https://rtvelivestream-rtveplayplus.rtve.es/rtvesec/int/tvei_ame_main_576.m3u8
 https://59d39900ebfb8.streamlock.net/tvfamilia_480p/tvfamilia_480p/chunklist_w1024274739.m3u8
 #EXTINF:-1 tvg-name="Runtime Español en Vivo" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/bb42115ec41fea4ac36dec93b294d2e2.webp" group-title="Sin Grupo",Runtime Español en Vivo
 https://run-rt-uh.otteravision.com/run/rt_uh/rt_uh_720.m3u8
-#EXTINF:-1 tvg-name="Sony Canal Novelas" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/a3bd552eca6645942a60a053fe61fafb.webp" group-title="Sin Grupo",Sony Canal Novelas
-https://spt-novelas-1-us.canelatv.wurl.tv/3000.m3u8
 #EXTINF:-1 tvg-name="CNN en Español" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/47f99fa1872d0b6c8d1c562b94bfeb31.webp" group-title="Sin Grupo",CNN en Español
 https://amg00803-cnnfast-amg00803c3-lg-es-5477.playouts.now.amagi.tv/playlist1080p.m3u8
 #EXTINF:-1 tvg-name="Cine Romántico" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/61bf055c59234dcf9591c1c8cb3657b4.webp" group-title="Sin Grupo",Cine Romántico
@@ -119,30 +101,16 @@ https://amg00658-amg00658c66-canelatv-international-5554.playouts.now.amagi.tv/p
 https://run-rt-es.otteravision.com/run/rt_es/rt_es_720p_high.m3u8
 #EXTINF:-1 tvg-name="Family TV" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/234cb338df1b00f91cc1827a9a9a1a75.webp" group-title="Sin Grupo",Family TV
 https://tv.webmedialive.com/familytv/live/playlist.m3u8
-#EXTINF:-1 tvg-name="Free TV Acción" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/0e3bb923a6e42d39bca3d8b1869e2eb3.webp" group-title="Sin Grupo",Free TV Acción
-https://amg01024-olympusat-topcinelatam-ono-ad-99.amagi.tv/1080p-cc/index.m3u8
 #EXTINF:-1 tvg-name="TUTV en Vivo" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/178c759ece43186a94e69f30b17dca2d.webp" group-title="Sin Grupo",TUTV en Vivo
 https://stream.giostreaming.app/canal11/canal11.m3u8
 #EXTINF:-1 tvg-name="Free TV Sureño" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/7e030786c319ae1f2f95da18b6cf634e.webp" group-title="Sin Grupo",Free TV Sureño
 https://amg01024-olympusat-cinesureno-ono-ad-h2.amagi.tv/1080p-cc/index.m3u8
 #EXTINF:-1 tvg-name="15 TV en Vivo" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/e277fbff1d036a1c11aa18f8befee081.webp" group-title="Sin Grupo",15 TV en Vivo
 https://wowza.ucr.ac.cr/quinceucr/_definst_/quinceucr.stream/chunklist_w37959280_vo.m3u8
-#EXTINF:-1 tvg-name="Somos Novelas" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/bb5582fe2b094e393986730a1be45283.webp" group-title="Sin Grupo",Somos Novelas
-https://amg00375-amg00375c10-fuse-us-3222.playouts.now.amagi.tv/playlist/amg00375-fusemediafast-somosnovelas-fuseus/playlist.m3u8
-#EXTINF:-1 tvg-name="Toonz Kids" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/5f58965018411c0ef81df7c6b596ad54.webp" group-title="Sin Grupo",Toonz Kids
-https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/toonzkids-spanish/master.m3u8
 #EXTINF:-1 tvg-name="Rockola Televisión" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/89fde3072167c8eca735a5b9b6a0be59.webp" group-title="Sin Grupo",Rockola Televisión
 https://e46fa4a445464f8a9150fa7d510eb85c.mediatailor.us-west-2.amazonaws.com/v1/master/2d2d0d97b0e548f025b2598a69b55bf30337aa0e/npp/S9K831QV8TO3291HQ8JS/hls3/now,-1m/m.m3u8
 #EXTINF:-1 tvg-name="Presencia TV" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/7c32e4c6d73b63dd532a48dd4e17f634.webp" group-title="Sin Grupo",Presencia TV
 https://live20.bozztv.com/akamaissh101/ssh101/mitvenvivo/chunks.m3u8
-#EXTINF:-1 tvg-name="Free TV en Vivo" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/abb2072bbd91067dea9ef6dd9be705de.webp" group-title="Sin Grupo",Free TV en Vivo
-https://amg01024-olympusat-chiquilines-ono-ad-et.amagi.tv/1080p-cc/index.m3u8
-#EXTINF:-1 tvg-name="Free TV Hits" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/5e30e4537eb2ea84cff9fd51e0181317.webp" group-title="Sin Grupo",Free TV Hits
-https://amg01024-olympusat-flash-ono-ad-3q.amagi.tv/1080p-cc/index.m3u8
-#EXTINF:-1 tvg-name="Master Video TV" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/00c2cce97c6a9f5d9f73dae4f37ffbc4.webp" group-title="Sin Grupo",Master Video TV
-https://5fd5567570c0e.streamlock.net/222/stream/playlist.m3u8
-#EXTINF:-1 tvg-name="Free TV Clásico" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/51e560600b65af19f305f491df5d04ac.webp" group-title="Sin Grupo",Free TV Clásico
-https://amg01024-olympusat-cineclasicoco-lgco-a8u19.amagi.tv/1080p-cc/index.m3u8
 #EXTINF:-1 tvg-name="360 RFTV" tvg-logo="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSkZgXSE75FCNg99QnzFkgAwVURmJLdnUYq8PxbC05He8JeIVL2" group-title="Sin Grupo",360 RFTV
 https://acceso.mediosdecostarica.com:3638/live/360rftvcrlive.m3u8
 #EXTINF:-1 tvg-name="TV Nosara" tvg-logo="https://play-lh.googleusercontent.com/5BYr8FaRq_hb6-0CkYnFmyLIn7b223Zgpizoq99BK-10e7XVjAyF9dvVflzFZmRdBrs=w600-h300-pc0xffffff-pd" group-title="Sin Grupo",TV Nosara
@@ -151,12 +119,8 @@ https://latamvdo.com:3870/hybrid/play.m3u8
 https://cloudvideo.servers10.com:8081/8230/index.m3u8
 #EXTINF:-1 tvg-name="Canal 14" tvg-logo="https://www.tvsur.co.cr/wp-content/uploads/2022/09/cropped-LOGO-TV-SUR-PEREZ-ZELEDON-TRAZO-BLANCO.png" group-title="Sin Grupo",Canal 14
 https://k20.usastreams.com:8081/tvsur/index.m3u8
-#EXTINF:-1 tvg-name="Tv Peñol" tvg-logo="https://serenotv.com/wp-content/uploads/2025/06/Canal-Penol-hd-315x315.jpg" group-title="Sin Grupo",Tv Peñol
-https://stmv1.voxtvhd.com.br/tvpenol/tvpenol/playlist.m3u8
-#EXTINF:-1 tvg-name="Pluz TV" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjn7JW_vqrJQS7Dc1YxbonhBEbg-JwZKm8SA&s" group-title="Sin Grupo",Pluz TV
-https://plustv.streamseguro.com:5443/LiveApp/streams/streaming.m3u8
 #EXTINF:-1 tvg-name="Miami TV" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9QUatPxBhTck6kKk1nTNsRuKLVgXUJfgVjA&s" group-title="Miami TV en Vivo",Miami TV
-https://f537294740ba4429b8de5354b0e4452d.mediatailor.us-east-2.amazonaws.com/v1/manifest/c3d3fd1c31fa281b88eab2cd253e2ca576b6628b/LIVE/26c8ce35-4e3d-4b24-b714-6cd86487465c/0.m3u8
+https://bdc8100df748400cabc7e133824c8ceb.mediatailor.us-east-2.amazonaws.com/v1/manifest/c3d3fd1c31fa281b88eab2cd253e2ca576b6628b/fast-jennylive/a5f2d186-1c95-458e-9be4-d84c2398e7ad/0.m3u8
 #EXTINF:-1 tvg-name="telemundo" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/6/68/Telemundo_logo_2018.svg" group-title="Sin Grupo",telemundo
 https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream1/master.m3u8
 #EXTINF:-1 tvg-name="¡OPA! CANAL 38" tvg-logo="https://yt3.googleusercontent.com/FHXMY9wH7GFpJiWrArhiZwmbpPsLvRgP68iy0Nx89cC0cHOk20zY6bEdA6mId-BqgnBRSAxy=s900-c-k-c0x00ffffff-no-rj" group-title="Sin Grupo",¡OPA! CANAL 38
