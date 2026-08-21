@@ -309,6 +309,23 @@
             }, []);
 
             useEffect(() => {
+                if (activeTab === 'tv' && content.tv.length > 0) {
+                    if (!selectedItem || selectedItem.type !== 'tv') {
+                        const telerredChannel = content.tv.find(c => 
+                            c.title.toLowerCase().includes('telerred') || 
+                            c.title.toLowerCase().includes('tele red') ||
+                            c.title.toLowerCase().includes('tele-red')
+                        ) || content.tv[0];
+                        
+                        if (telerredChannel) {
+                            setSelectedItem(telerredChannel);
+                            setIsLocked(false);
+                        }
+                    }
+                }
+            }, [activeTab, content.tv]);
+
+            useEffect(() => {
                 if (!audioRef.current) {
                     audioRef.current = new Audio();
                     audioRef.current.crossOrigin = "anonymous";
@@ -475,9 +492,22 @@
                     window.open(tab.url, '_blank');
                 } else {
                     setActiveTab(tab.id); 
-                    setSelectedItem(null); 
                     setSearch(''); 
                     setIsLocked(false);
+                    if (tab.id === 'tv') {
+                        if (!selectedItem || selectedItem.type !== 'tv') {
+                            const telerredChannel = content.tv.find(c => 
+                                c.title.toLowerCase().includes('telerred') || 
+                                c.title.toLowerCase().includes('tele red') ||
+                                c.title.toLowerCase().includes('tele-red')
+                            ) || content.tv[0];
+                            if (telerredChannel) {
+                                setSelectedItem(telerredChannel);
+                            }
+                        }
+                    } else {
+                        setSelectedItem(null); 
+                    }
                 }
             };
 
@@ -584,7 +614,7 @@
                             /* TV VIEW: Mobile-Optimized Responsive Layout */
                             <div className="flex flex-col lg:flex-row min-h-[calc(100vh-3.5rem)] lg:h-screen lg:overflow-hidden bg-[#090b10]">
                                 
-                                {/* TV Channel Sidebar / List - Positioned below video on mobile */}
+                                {/* TV Channel Sidebar / List */}
                                 <div className="w-full lg:w-96 bg-[#0f1117] border-r border-white/10 flex flex-col order-2 lg:order-1 h-auto lg:h-full z-20 shadow-2xl">
                                     {/* Sidebar Header */}
                                     <div className="p-4 border-b border-white/10 bg-[#161a24] flex flex-col gap-3">
@@ -693,7 +723,7 @@
                                         <span className="text-xs font-black tracking-tight text-white">MAGIS<span className="text-[#E50914]">TV</span></span>
                                     </div>
 
-                                    {/* Video Container - Aspect-video on mobile ensures 100% visibility */}
+                                    {/* Video Container */}
                                     <div className="w-full aspect-video lg:aspect-auto lg:flex-1 relative flex items-center justify-center bg-black overflow-hidden" ref={tvIframeRef}>
                                         {selectedItem && selectedItem.type === 'tv' ? (
                                             <iframe 
