@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MAGIS Tube Ultimate - Jorge</title>
     
-    <!-- Librerías Externas -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -20,7 +19,6 @@
         }
     </script>
     
-    <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
 
     <style>
@@ -30,8 +28,10 @@
         ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 3px; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .custom-scrollbar::-webkit-scrollbar { width: 3px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(229, 9, 20, 0.4); border-radius: 3px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #E50914; }
+        
         @keyframes fadeIn { from { opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .animate-fade-in { animation: fadeIn 0.4s ease-out; }
@@ -181,6 +181,9 @@
             const [expandedSeason, setExpandedSeason] = useState(0);
             const [showQrModal, setShowQrModal] = useState(false);
 
+            // TV Filter State
+            const [tvGroupFilter, setTvGroupFilter] = useState('ALL');
+
             const [currentRadioStation, setCurrentRadioStation] = useState(null);
             const [isRadioPlaying, setIsRadioPlaying] = useState(false);
             const [radioFavorites, setRadioFavorites] = useState([]);
@@ -190,6 +193,7 @@
             const [radioSearch, setRadioSearch] = useState('');
             const audioRef = useRef(null);
             const hlsRef = useRef(null);
+            const tvIframeRef = useRef(null);
 
             const navTabs = [
                 { id: 'home', icon: 'search', label: 'Inicio' }, 
@@ -399,6 +403,11 @@
                 return channels;
             };
 
+            const tvGroups = useMemo(() => {
+                const groups = new Set(content.tv.map(c => c.group || 'General'));
+                return ['ALL', ...Array.from(groups)];
+            }, [content.tv]);
+
             const toggleFavorite = (item) => { 
                 const itemId = item.id || item.title; 
                 const newFavs = favorites.some(f => (f.id || f.title) === itemId) ? favorites.filter(f => (f.id || f.title) !== itemId) : [item, ...favorites]; 
@@ -436,13 +445,23 @@
                 }
             };
 
+            const toggleFullscreenPlayer = () => {
+                if (tvIframeRef.current) {
+                    if (tvIframeRef.current.requestFullscreen) {
+                        tvIframeRef.current.requestFullscreen();
+                    } else if (tvIframeRef.current.webkitRequestFullscreen) {
+                        tvIframeRef.current.webkitRequestFullscreen();
+                    }
+                }
+            };
+
             const getDisplayContent = () => { 
                 let list = activeTab === 'home' 
                     ? [...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] 
                     : activeTab === 'favorites' 
                     ? favorites 
                     : content[activeTab] || []; 
-                if (search && activeTab !== 'jorgeflix') return list.filter(i => (i.title || i.name || i.titulo || '').toLowerCase().includes(search.toLowerCase())); 
+                if (search && activeTab !== 'jorgeflix' && activeTab !== 'tv') return list.filter(i => (i.title || i.name || i.titulo || '').toLowerCase().includes(search.toLowerCase())); 
                 return list; 
             };
 
@@ -464,7 +483,7 @@
 
             return (
                 <div className="min-h-screen bg-[#111827] text-white font-sans flex flex-col md:flex-row relative">
-                    {/* DESKTOP SIDEBAR WITH QR CODE AT BOTTOM LEFT */}
+                    {}
                     <aside className="hidden md:flex w-24 flex-col items-center py-6 bg-[#0f1115] border-r border-[#1f2937] fixed h-full z-50">
                         <div className="mb-6 p-2 bg-[#E50914] rounded-xl shadow-lg cursor-pointer" onClick={() => handleTabClick(navTabs[0])}><Icon name="play" size={24} fill="white" className="text-white"/></div>
                         <div className="flex flex-col gap-1 w-full items-center">
@@ -485,7 +504,7 @@
                         </div>
                     </aside>
 
-                    {/* MOBILE TOP BAR */}
+                    {}
                     <div className="md:hidden fixed top-0 w-full bg-[#111827]/95 backdrop-blur z-50 px-3 py-2.5 flex items-center justify-between border-b border-[#1f2937] gap-2">
                         <div className="flex items-center gap-1.5 font-black text-base tracking-tighter cursor-pointer flex-shrink-0" onClick={() => handleTabClick(navTabs[0])}>
                             <span className="text-[#E50914]">MAGIS</span> TUBE
@@ -530,6 +549,7 @@
                         ))}
                     </div>
 
+                    {}
                     <main className="flex-1 md:ml-24 min-h-screen pt-14 md:pt-0 pb-36 md:pb-0 relative z-10">
                         {activeTab === 'radio' ? (
                             <RadioSection 
@@ -560,25 +580,186 @@
                                 {favorites.length === 0 && <div className="text-center py-20 text-gray-500 text-sm"><p>No tienes favoritos guardados aún.</p></div>}
                             </div>
                         ) : activeTab === 'tv' || (selectedItem && selectedItem.type === 'tv') ? (
-                            <div className="flex flex-col lg:flex-row h-full lg:h-screen lg:overflow-hidden">
-                                <div className="flex-1 bg-[#111827] relative flex flex-col lg:h-full">
-                                    {selectedItem && selectedItem.type === 'tv' ? (
-                                        <div className="relative aspect-video w-full bg-[#111827] lg:flex-1 overflow-hidden flex items-center justify-center">
-                                            <button onClick={() => setSelectedItem(null)} className="absolute top-3 left-3 z-30 bg-black/60 p-2 rounded-full text-white lg:hidden"><Icon name="arrowLeft" size={18} /></button>
-                                            <iframe src={selectedItem.url} className="w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
+                            <div className="flex flex-col lg:flex-row h-full lg:h-screen lg:overflow-hidden bg-[#090b10]">
+                                {/* TV Channel Sidebar / List */}
+                                <div className="w-full lg:w-96 bg-[#0f1117] border-r border-white/10 flex flex-col h-auto lg:h-full z-20 shadow-2xl">
+                                    {/* Sidebar Header */}
+                                    <div className="p-4 border-b border-white/10 bg-[#161a24] flex flex-col gap-3">
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <div className="p-1.5 bg-[#E50914]/20 text-[#E50914] rounded-lg border border-[#E50914]/30">
+                                                    <Icon name="tv" size={18} />
+                                                </div>
+                                                <h2 className="font-extrabold text-sm text-white tracking-wide">Canales TV</h2>
+                                            </div>
+                                            <span className="text-[10px] font-mono text-gray-400 bg-white/5 border border-white/10 px-2 py-0.5 rounded-full">
+                                                {content.tv.length} en vivo
+                                            </span>
                                         </div>
-                                    ) : (
-                                        <div className="flex items-center justify-center h-full text-gray-500 text-sm"><p>Selecciona un canal de TV</p></div>
-                                    )}
-                                </div>
-                                <div className="w-full lg:w-80 bg-[#111827] lg:border-l border-white/10 flex flex-col lg:h-full lg:overflow-hidden">
-                                    <div className="p-3 sticky top-14 lg:top-0 bg-[#111827] z-20 border-b border-white/5">
-                                        <div className="relative"><input type="text" placeholder="Buscar canal..." className="w-full bg-[#1f2937] border border-white/10 rounded-lg px-3 py-2 text-xs text-white focus:border-[#E50914] outline-none pl-9" value={search} onChange={(e) => setSearch(e.target.value)}/><Icon name="search" size={16} className="absolute left-3 top-2.5 text-gray-400"/></div>
+
+                                        {/* Search Input */}
+                                        <div className="relative">
+                                            <input 
+                                                type="text" 
+                                                placeholder="Buscar canal en vivo..." 
+                                                className="w-full bg-[#0a0d13] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white focus:border-[#E50914] outline-none pl-9 transition-colors placeholder-gray-500" 
+                                                value={search} 
+                                                onChange={(e) => setSearch(e.target.value)}
+                                            />
+                                            <Icon name="search" size={15} className="absolute left-3 top-2.5 text-gray-400"/>
+                                            {search && (
+                                                <button onClick={() => setSearch('')} className="absolute right-3 top-2.5 text-gray-400 hover:text-white">
+                                                    <Icon name="x" size={14} />
+                                                </button>
+                                            )}
+                                        </div>
+
+                                        {/* Category Filter Dropdown */}
+                                        <div className="flex items-center gap-2">
+                                            <select 
+                                                value={tvGroupFilter} 
+                                                onChange={(e) => setTvGroupFilter(e.target.value)}
+                                                className="w-full bg-[#0a0d13] border border-white/10 rounded-xl px-3 py-1.5 text-xs text-gray-200 outline-none focus:border-[#E50914] cursor-pointer"
+                                            >
+                                                <option value="ALL">🌐 Todos los géneros / categorías</option>
+                                                {tvGroups.filter(g => g !== 'ALL').map((group, idx) => (
+                                                    <option key={idx} value={group}>{group}</option>
+                                                ))}
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div className="p-2 space-y-1 lg:overflow-y-auto lg:h-full">
-                                        {content.tv.filter(c => !search || c.title.toLowerCase().includes(search.toLowerCase())).map(channel => (
-                                            <TvListItem key={channel.id} channel={channel} isActive={selectedItem?.id === channel.id} isFavorite={favorites.some(f => f.id === channel.id)} onToggleFavorite={toggleFavorite} onClick={handlePlay} />
-                                        ))}
+
+                                    {/* Channel List */}
+                                    <div className="flex-1 overflow-y-auto custom-scrollbar p-2 space-y-1.5 max-h-[60vh] lg:max-h-none">
+                                        {content.tv
+                                            .filter(c => {
+                                                const matchesSearch = !search || c.title.toLowerCase().includes(search.toLowerCase());
+                                                const matchesGroup = tvGroupFilter === 'ALL' || c.group === tvGroupFilter;
+                                                return matchesSearch && matchesGroup;
+                                            })
+                                            .map((channel, idx) => {
+                                                const isActive = selectedItem?.id === channel.id;
+                                                const isFav = favorites.some(f => f.id === channel.id);
+                                                return (
+                                                    <div 
+                                                        key={channel.id || idx} 
+                                                        onClick={() => handlePlay(channel)}
+                                                        className={`group relative flex items-center gap-3 p-2.5 rounded-xl border cursor-pointer transition-all duration-200 ${isActive ? 'bg-[#E50914]/15 border-[#E50914] shadow-[0_0_15px_rgba(229,9,20,0.3)] border-l-4' : 'bg-[#141822]/80 hover:bg-[#1c2230] border-white/5 hover:border-white/15'}`}
+                                                    >
+                                                        <div className="w-12 h-9 rounded-lg bg-black/80 flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/10 group-hover:border-white/30 transition-colors relative">
+                                                            {channel.image ? (
+                                                                <img src={channel.image} alt={channel.title} loading="lazy" className="w-full h-full object-contain p-0.5" onError={(e) => e.target.style.display='none'} />
+                                                            ) : (
+                                                                <Icon name="tv" size={16} className="text-gray-500"/>
+                                                            )}
+                                                            {isActive && (
+                                                                <div className="absolute inset-0 bg-[#E50914]/20 flex items-center justify-center">
+                                                                    <div className="w-2 h-2 rounded-full bg-[#E50914] animate-ping"></div>
+                                                                </div>
+                                                            )}
+                                                        </div>
+
+                                                        <div className="flex-1 min-w-0">
+                                                            <div className="flex items-center justify-between gap-1">
+                                                                <h4 className={`text-xs font-bold truncate transition-colors ${isActive ? 'text-[#E50914]' : 'text-white group-hover:text-gray-100'}`}>
+                                                                    {channel.title}
+                                                                </h4>
+                                                            </div>
+                                                            <span className="text-[10px] text-gray-400 truncate block mt-0.5 font-medium">
+                                                                {channel.group || 'General'}
+                                                            </span>
+                                                        </div>
+
+                                                        <button 
+                                                            onClick={(e) => { e.stopPropagation(); toggleFavorite(channel); }} 
+                                                            className="p-1.5 rounded-lg text-gray-500 hover:text-white hover:bg-white/10 transition-colors"
+                                                        >
+                                                            <Icon name="heart" size={15} className={isFav ? "text-[#E50914] fill-[#E50914]" : ""} fill={isFav ? "#E50914" : "none"} />
+                                                        </button>
+                                                    </div>
+                                                );
+                                            })
+                                        }
+                                    </div>
+                                </div>
+
+                                {/* TV Player Main Viewport */}
+                                <div className="flex-1 bg-[#05070a] relative flex flex-col justify-between overflow-hidden">
+                                    {/* Watermark Header */}
+                                    <div className="absolute top-4 left-4 z-20 pointer-events-none flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-lg">
+                                        <div className="w-2 h-2 rounded-full bg-[#E50914] animate-pulse"></div>
+                                        <span className="text-xs font-black tracking-tight text-white">MAGIS<span className="text-[#E50914]">TV</span></span>
+                                    </div>
+
+                                    {/* Video Container */}
+                                    <div className="flex-1 relative flex items-center justify-center bg-black overflow-hidden" ref={tvIframeRef}>
+                                        {selectedItem && selectedItem.type === 'tv' ? (
+                                            <iframe 
+                                                src={selectedItem.url} 
+                                                className="w-full h-full border-0 absolute inset-0" 
+                                                allow="autoplay; encrypted-media; fullscreen" 
+                                                allowFullScreen
+                                            ></iframe>
+                                        ) : (
+                                            <div className="flex flex-col items-center justify-center p-8 text-center max-w-sm space-y-4 animate-fade-in">
+                                                <div className="w-20 h-20 rounded-3xl bg-[#161a24] border border-white/10 flex items-center justify-center text-[#E50914] shadow-2xl">
+                                                    <Icon name="tv" size={40} />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-lg font-bold text-white mb-1">Selecciona un canal para comenzar</h3>
+                                                    <p className="text-xs text-gray-400">Elige cualquier emisora de la lista para ver la transmisión en vivo.</p>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {}
+                                    <div className="bg-[#0e111a] border-t border-white/10 px-4 py-3 flex items-center justify-between z-20">
+                                        <div className="flex items-center gap-3 truncate max-w-md">
+                                            {selectedItem && selectedItem.type === 'tv' ? (
+                                                <>
+                                                    <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center overflow-hidden border border-white/10 flex-shrink-0">
+                                                        {selectedItem.image ? (
+                                                            <img src={selectedItem.image} alt={selectedItem.title} className="w-full h-full object-contain" />
+                                                        ) : (
+                                                            <Icon name="tv" size={14} className="text-gray-400" />
+                                                        )}
+                                                    </div>
+                                                    <div className="truncate">
+                                                        <h3 className="text-xs font-bold text-white truncate">{selectedItem.title}</h3>
+                                                        <span className="text-[10px] text-gray-400 truncate block">{selectedItem.group || 'En Directo'}</span>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <span className="text-xs text-gray-400 font-medium italic">Ningún canal seleccionado</span>
+                                            )}
+                                        </div>
+
+                                        {selectedItem && selectedItem.type === 'tv' && (
+                                            <div className="flex items-center gap-2">
+                                                <button 
+                                                    onClick={() => toggleFavorite(selectedItem)}
+                                                    className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white transition-colors"
+                                                    title="Favorito"
+                                                >
+                                                    <Icon name="heart" size={16} className={favorites.some(f => f.id === selectedItem.id) ? "text-[#E50914] fill-[#E50914]" : "text-gray-300"} />
+                                                </button>
+                                                <button 
+                                                    onClick={toggleFullscreenPlayer}
+                                                    className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white transition-colors"
+                                                    title="Pantalla Completa"
+                                                >
+                                                    <Icon name="clapperboard" size={16} />
+                                                </button>
+                                                <button 
+                                                    onClick={() => setSelectedItem(null)}
+                                                    className="p-2 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-400 transition-colors"
+                                                    title="Detener Reproducción"
+                                                >
+                                                    <Icon name="x" size={16} />
+                                                </button>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -668,7 +849,7 @@
                         )}
                     </main>
 
-                    {/* RADIO BOTTOM PLAYER */}
+                    {}
                     {currentRadioStation && (
                         <div className="fixed bottom-[55px] md:bottom-0 left-0 md:left-24 right-0 bg-[#171c26]/95 backdrop-blur-xl border-t border-[#1f2937] p-3 sm:p-4 z-50 flex items-center justify-between shadow-[0_-10px_30px_rgba(0,0,0,0.5)] animate-slide-up">
                             <div className="flex items-center gap-3 w-1/3 min-w-[120px]">
@@ -1052,21 +1233,6 @@
                 </div>
             );
         };
-
-        const TvListItem = ({ channel, isActive, onClick, isFavorite, onToggleFavorite }) => (
-            <div tabIndex="0" onClick={() => onClick(channel)} className={`group flex items-center gap-3 p-3 border-b border-white/5 cursor-pointer transition-colors ${isActive ? 'bg-[#1f2937] border-l-4 border-l-[#E50914]' : 'hover:bg-white/5'}`} > 
-                <div className="w-10 h-7 rounded bg-black flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/10"> 
-                    {channel.image ? ( <img src={channel.image} alt={channel.title} loading="lazy" className="w-full h-full object-contain" onError={(e) => e.target.style.display='none'} /> ) : ( <Icon name="tv" size={14} className="text-gray-400"/> )} 
-                </div> 
-                <div className="flex-1 min-w-0"> 
-                    <p className={`text-xs sm:text-sm font-medium truncate ${isActive ? 'text-[#E50914]' : 'text-white'}`}>{channel.title}</p> 
-                    <p className="text-[10px] text-gray-500 truncate">{channel.group || 'General'}</p> 
-                </div> 
-                <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(channel); }} className="p-2 rounded-full text-gray-400 hover:text-white"> 
-                    <Icon name="heart" size={16} className={isFavorite ? "text-[#E50914] fill-[#E50914]" : ""} fill={isFavorite ? "#E50914" : "none"} /> 
-                </button> 
-            </div> 
-        );
 
         const Card = ({ item, onClick, isFavorite, onToggleFavorite }) => { 
             const isTv = item.type === 'tv'; 
