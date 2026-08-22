@@ -89,7 +89,8 @@
             SERIES: './playlist.json',
             MOVIES: './peliculas.json',
             ANIMADOS: './animados.json',
-            RADIOS: './radios.json'
+            RADIOS: './radios.json',
+            VIDEOTECA: './videoteca.json'
         };
 
         const RAW_URLS = {
@@ -97,7 +98,8 @@
             SERIES: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/playlist.json',
             MOVIES: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas.json',
             ANIMADOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/animados.json',
-            RADIOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/radios.json'
+            RADIOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/radios.json',
+            VIDEOTECA: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/videoteca.json'
         };
 
         const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
@@ -172,7 +174,7 @@
         const App = () => {
             const [showIntro, setShowIntro] = useState(true);
             const [activeTab, setActiveTab] = useState('home');
-            const [content, setContent] = useState({ tv: [], series: [], movies: [], animados: [] });
+            const [content, setContent] = useState({ tv: [], series: [], movies: [], animados: [], videoteca: [] });
             const [radioStations, setRadioStations] = useState(DEFAULT_RADIO_STATIONS);
             const [search, setSearch] = useState('');
             const [selectedItem, setSelectedItem] = useState(null);
@@ -202,6 +204,7 @@
                 { id: 'movies', icon: 'clapperboard', label: 'Cine' }, 
                 { id: 'series', icon: 'film', label: 'Series' },
                 { id: 'animados', icon: 'smile', label: 'Animados' },
+                { id: 'videoteca', icon: 'disc', label: 'Videoteca' },
                 { id: 'tv', icon: 'tv', label: 'TV' }, 
                 { id: 'radio', icon: 'radio', label: 'Radio' }, 
                 { id: 'jorgeflix', icon: 'compass', label: 'JorgeFlix' },
@@ -213,12 +216,13 @@
                 const init = async () => {
                     try {
                         setLoading(true);
-                        const [dataTV, dataMovies, dataSeries, dataAnimados, dataRadios] = await Promise.all([ 
+                        const [dataTV, dataMovies, dataSeries, dataAnimados, dataRadios, dataVideoteca] = await Promise.all([ 
                             fetchSmart(URLS.TV, RAW_URLS.TV, false),
                             fetchSmart(URLS.MOVIES, RAW_URLS.MOVIES, true),
                             fetchSmart(URLS.SERIES, RAW_URLS.SERIES, true),
                             fetchSmart(URLS.ANIMADOS, RAW_URLS.ANIMADOS, true),
-                            fetchSmart(URLS.RADIOS, RAW_URLS.RADIOS, true)
+                            fetchSmart(URLS.RADIOS, RAW_URLS.RADIOS, true),
+                            fetchSmart(URLS.VIDEOTECA, RAW_URLS.VIDEOTECA, true)
                         ]);
 
                         let tvChannels = [];
@@ -284,6 +288,46 @@
                             }));
                         }
 
+                        let videotecaList = [];
+                        if (dataVideoteca) {
+                            const rawVideoteca = Array.isArray(dataVideoteca) ? dataVideoteca : (dataVideoteca.videoteca || dataVideoteca.albumes || []);
+                            videotecaList = rawVideoteca.map((v, idx) => ({
+                                ...v,
+                                id: `vid-${idx}`,
+                                type: 'videoteca',
+                                title: v.titulo || v.title || v.name,
+                                description: v.descripcion || v.sinopsis || v.artista || 'Álbum Retro',
+                                image: v.imagen || v.poster || v.cover || v.image,
+                                seasons: [{
+                                    seasonNumber: 1,
+                                    episodes: (v.videos || v.canciones || v.pistas || []).map((vid, eIdx) => ({
+                                        id: `vid-ep-${idx}-${eIdx}`,
+                                        title: vid.titulo || vid.title || `Pista ${eIdx + 1}`,
+                                        url: convertUrl(vid.urlDrive || vid.url)
+                                    }))
+                                }]
+                            }));
+                        } else {
+                            // MOCK DATA: Si no existe el archivo JSON, muestra estos ejemplos de Retro Music
+                            videotecaList = [
+                                {
+                                    id: 'vid-mock-1', type: 'videoteca', title: 'Retro 80s Rock', description: 'Clásicos del Rock de los 80s en video.',
+                                    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop',
+                                    seasons: [{ seasonNumber: 1, episodes: [{title: 'Sweet Child O Mine', url: ''}, {title: 'Livin On A Prayer', url: ''}] }]
+                                },
+                                {
+                                    id: 'vid-mock-2', type: 'videoteca', title: 'Disco 70s Mix', description: 'La mejor música disco para bailar.',
+                                    image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=400&fit=crop',
+                                    seasons: [{ seasonNumber: 1, episodes: [{title: 'Stayin Alive', url: ''}] }]
+                                },
+                                {
+                                    id: 'vid-mock-3', type: 'videoteca', title: 'Baladas Románticas', description: 'Videos originales de baladas inolvidables.',
+                                    image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop',
+                                    seasons: [{ seasonNumber: 1, episodes: [{title: 'Careless Whisper', url: ''}] }]
+                                }
+                            ];
+                        }
+
                         if (dataRadios) {
                             const list = Array.isArray(dataRadios) ? dataRadios : (dataRadios.radios || dataRadios.emisoras || []);
                             if (list.length > 0) {
@@ -291,7 +335,7 @@
                             }
                         }
 
-                        setContent({ tv: tvChannels, movies: moviesList, series: seriesList, animados: animadosList });
+                        setContent({ tv: tvChannels, movies: moviesList, series: seriesList, animados: animadosList, videoteca: videotecaList });
                     } catch (err) {
                         console.error("Error cargando contenido", err);
                     } finally {
@@ -324,6 +368,27 @@
                     }
                 }
             }, [activeTab, content.tv]);
+
+            useEffect(() => {
+                let sessionInterval;
+
+                if (selectedItem && selectedItem.type === 'tv') {
+                    // Refresco silencioso cada 8 minutos (480000 ms) para evitar caducidad de token (Error 403/401)
+                    sessionInterval = setInterval(() => {
+                        if (tvIframeRef.current) {
+                            const currentSrc = tvIframeRef.current.src;
+                            tvIframeRef.current.src = 'about:blank';
+                            setTimeout(() => {
+                                tvIframeRef.current.src = currentSrc;
+                            }, 500);
+                        }
+                    }, 480000); 
+                }
+
+                return () => {
+                    if (sessionInterval) clearInterval(sessionInterval);
+                };
+            }, [selectedItem]);
 
             useEffect(() => {
                 if (!audioRef.current) {
@@ -447,7 +512,7 @@
                 if (code) { setSelectedItem(item); setIsLocked(true); } 
                 else { setSelectedItem(item); setIsLocked(false); } 
                 setExpandedSeason(0); 
-                if (item.type === 'series' || item.type === 'animados') {
+                if (item.type === 'series' || item.type === 'animados' || item.type === 'videoteca') {
                     setSelectedEpisode(item.seasons?.[0]?.episodes?.[0] || null); 
                 } else {
                     setSelectedEpisode(null);
@@ -474,13 +539,23 @@
                 }
             };
 
+            const refreshTvSignal = () => {
+                if (tvIframeRef.current && selectedItem) {
+                    const currentSrc = tvIframeRef.current.src;
+                    tvIframeRef.current.src = 'about:blank';
+                    setTimeout(() => {
+                        tvIframeRef.current.src = currentSrc;
+                    }, 500);
+                }
+            };
+
             const getDisplayContent = () => { 
                 let list = activeTab === 'home' 
                     ? [...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] 
                     : activeTab === 'favorites' 
                     ? favorites 
                     : content[activeTab] || []; 
-                if (search && activeTab !== 'jorgeflix' && activeTab !== 'tv') return list.filter(i => (i.title || i.name || i.titulo || '').toLowerCase().includes(search.toLowerCase())); 
+                if (search && activeTab !== 'jorgeflix' && activeTab !== 'tv' && activeTab !== 'videoteca') return list.filter(i => (i.title || i.name || i.titulo || '').toLowerCase().includes(search.toLowerCase())); 
                 return list; 
             };
 
@@ -573,7 +648,7 @@
 
                     {/* Mobile Bottom Navigation */}
                     <div className="md:hidden fixed bottom-0 w-full bg-[#0f1115] border-t border-[#1f2937] z-50 flex py-2 pb-safe px-2 overflow-x-auto no-scrollbar snap-x items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
-                        {navTabs.filter(t => !['jorgeflix', 'favorites', 'radio'].includes(t.id)).map(tab => (
+                        {navTabs.filter(t => !['jorgeflix', 'favorites', 'radio', 'videoteca'].includes(t.id)).map(tab => (
                             <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-shrink-0 min-w-[56px] py-1 gap-1 snap-start transition-all active:scale-95 rounded-lg ${activeTab === tab.id && !tab.isExternal ? 'text-[#E50914] bg-white/5' : 'text-gray-400 hover:text-white'}`}>
                                 <Icon name={tab.icon} size={18} />
                                 <span className="text-[9px] font-medium tracking-wide">{tab.label}</span>
@@ -596,6 +671,15 @@
                                 isLoading={isLoadingRadio}
                                 search={radioSearch}
                                 setSearch={setRadioSearch}
+                            />
+                        ) : activeTab === 'videoteca' ? (
+                            <VideotecaSection 
+                                items={displayedItems} 
+                                onPlay={handlePlay} 
+                                favorites={favorites} 
+                                onToggleFavorite={toggleFavorite} 
+                                search={search} 
+                                setSearch={setSearch} 
                             />
                         ) : activeTab === 'jorgeflix' ? (
                             <JorgeFlixSearch />
@@ -717,16 +801,23 @@
                                 </div>
 
                                 <div className="flex-1 bg-[#05070a] relative flex flex-col justify-between overflow-hidden order-1 lg:order-2">
-                                    {/* Watermark Header */}
-                                    <div className="absolute top-3 left-3 z-20 pointer-events-none flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-lg">
-                                        <div className="w-2 h-2 rounded-full bg-[#E50914] animate-pulse"></div>
-                                        <span className="text-xs font-black tracking-tight text-white">MAGIS<span className="text-[#E50914]">TV</span></span>
+                                    {/* Watermark Header & Reconnect Indicator */}
+                                    <div className="absolute top-3 left-3 right-3 z-20 pointer-events-none flex items-center justify-between">
+                                        <div className="flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-lg">
+                                            <div className="w-2 h-2 rounded-full bg-[#E50914] animate-pulse"></div>
+                                            <span className="text-xs font-black tracking-tight text-white">MAGIS<span className="text-[#E50914]">TV</span></span>
+                                        </div>
+                                        <div className="flex items-center gap-1.5 bg-green-500/10 backdrop-blur-md px-2.5 py-1 rounded-full border border-green-500/20 shadow-lg">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                                            <span className="text-[9px] font-bold text-green-400 uppercase tracking-wider">Auto-Reconexión Activa</span>
+                                        </div>
                                     </div>
 
                                     {/* Video Container */}
-                                    <div className="w-full aspect-video lg:aspect-auto lg:flex-1 relative flex items-center justify-center bg-black overflow-hidden" ref={tvIframeRef}>
+                                    <div className="w-full aspect-video lg:aspect-auto lg:flex-1 relative flex items-center justify-center bg-black overflow-hidden">
                                         {selectedItem && selectedItem.type === 'tv' ? (
                                             <iframe 
+                                                ref={tvIframeRef}
                                                 src={selectedItem.url} 
                                                 className="w-full h-full border-0 absolute inset-0" 
                                                 allow="autoplay; encrypted-media; fullscreen" 
@@ -770,6 +861,14 @@
                                         {selectedItem && selectedItem.type === 'tv' && (
                                             <div className="flex items-center gap-2">
                                                 <button 
+                                                    onClick={refreshTvSignal}
+                                                    className="px-3 py-1.5 rounded-xl bg-[#E50914]/10 hover:bg-[#E50914]/20 border border-[#E50914]/30 text-[#E50914] flex items-center gap-1.5 transition-colors text-[10px] font-bold"
+                                                    title="Forzar refresco si la imagen se congela"
+                                                >
+                                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                                                    <span className="hidden sm:inline">Refrescar Señal</span>
+                                                </button>
+                                                <button 
                                                     onClick={() => toggleFavorite(selectedItem)}
                                                     className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white transition-colors"
                                                     title="Favorito"
@@ -806,7 +905,7 @@
                                     {isLocked ? (
                                         <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false);}} />
                                     ) : (
-                                        <iframe src={convertUrl((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedEpisode ? selectedEpisode.url : selectedItem.url)} className="w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
+                                        <iframe src={convertUrl((selectedItem.type === 'series' || selectedItem.type === 'animados' || selectedItem.type === 'videoteca') && selectedEpisode ? selectedEpisode.url : selectedItem.url)} className="w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
                                     )}
                                 </div>
                                 {!isLocked && (
@@ -825,16 +924,20 @@
                                             </div>
                                             <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">{selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible."}</p>
                                         </div>
-                                        {((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
+                                        {((selectedItem.type === 'series' || selectedItem.type === 'animados' || selectedItem.type === 'videoteca') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
                                             <div className="bg-[#171c26] border border-white/10 rounded-2xl p-4 flex flex-col h-[500px]">
-                                                <h3 className="font-bold text-sm text-white mb-3">Episodios</h3>
-                                                <div className="flex gap-2 mb-3 overflow-x-auto pb-2 no-scrollbar">
-                                                    {selectedItem.seasons.map((season, sIdx) => (
-                                                        <button key={sIdx} onClick={() => setExpandedSeason(sIdx)} className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-colors ${expandedSeason === sIdx ? 'bg-[#E50914] text-white' : 'bg-black/40 text-gray-400 hover:text-white'}`}>
-                                                            Temporada {season.seasonNumber}
-                                                        </button>
-                                                    ))}
-                                                </div>
+                                                <h3 className="font-bold text-sm text-white mb-3">
+                                                    {selectedItem.type === 'videoteca' ? 'Lista de Reproducción' : 'Episodios'}
+                                                </h3>
+                                                {selectedItem.type !== 'videoteca' && (
+                                                    <div className="flex gap-2 mb-3 overflow-x-auto pb-2 no-scrollbar">
+                                                        {selectedItem.seasons.map((season, sIdx) => (
+                                                            <button key={sIdx} onClick={() => setExpandedSeason(sIdx)} className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-colors ${expandedSeason === sIdx ? 'bg-[#E50914] text-white' : 'bg-black/40 text-gray-400 hover:text-white'}`}>
+                                                                Temporada {season.seasonNumber}
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                )}
                                                 <div className="flex-1 overflow-y-auto custom-scrollbar space-y-1 pr-1">
                                                     {selectedItem.seasons[expandedSeason]?.episodes?.map((ep, eIdx) => (
                                                         <div key={eIdx} onClick={() => setSelectedEpisode(ep)} className={`p-2.5 rounded-xl cursor-pointer flex items-center justify-between text-xs transition-colors ${selectedEpisode?.url === ep.url ? 'bg-[#E50914]/20 text-white border border-[#E50914]/50' : 'hover:bg-white/5 text-gray-300'}`}>
@@ -861,10 +964,12 @@
                                 </div>
                                 {activeTab === 'home' && !search && heroItem && <HeroSection item={heroItem} onPlay={handlePlay} isFavorite={favorites.some(f=>(f.id||f.title)===(heroItem.id||heroItem.title))} onToggleFavorite={toggleFavorite}/>}
                                 <div className="p-4 sm:p-8">
-                                    <div className="mb-4 flex items-center gap-2">
-                                        <div className="w-1 h-5 bg-[#E50914] rounded-full"></div>
-                                        <h2 className="text-base sm:text-lg font-bold uppercase tracking-wide">{activeTab === 'home' ? 'Tendencias' : activeTab}</h2>
-                                    </div>
+                                    {activeTab !== 'home' && (
+                                        <div className="mb-4 flex items-center gap-2">
+                                            <div className="w-1 h-5 bg-[#E50914] rounded-full"></div>
+                                            <h2 className="text-base sm:text-lg font-bold uppercase tracking-wide">{activeTab}</h2>
+                                        </div>
+                                    )}
                                     {loading ? (
                                         <div className="flex justify-center py-16"><div className="animate-spin rounded-full h-10 w-10 border-3 border-[#E50914] border-t-transparent"></div></div>
                                     ) : displayedItems.length === 0 ? (
@@ -881,7 +986,6 @@
                         )}
                     </main>
 
-                    {/* Radio Player Dock */}
                     {currentRadioStation && (
                         <div className="fixed bottom-[55px] md:bottom-0 left-0 md:left-24 right-0 bg-[#171c26]/95 backdrop-blur-xl border-t border-[#1f2937] p-3 sm:p-4 z-50 flex items-center justify-between shadow-[0_-10px_30px_rgba(0,0,0,0.5)] animate-slide-up">
                             <div className="flex items-center gap-3 w-1/3 min-w-[120px]">
@@ -950,6 +1054,73 @@
                                     Cerrar
                                 </button>
                             </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const VideotecaSection = ({ items, onPlay, favorites, onToggleFavorite, search, setSearch }) => {
+            let displayed = items;
+            if (search.trim()) {
+                displayed = displayed.filter(s => (s.title || s.titulo || '').toLowerCase().includes(search.toLowerCase()));
+            }
+
+            return (
+                <div className="max-w-7xl mx-auto p-4 sm:p-8 animate-fade-in text-white pb-32">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 border-b border-white/10 pb-4">
+                        <div>
+                            <h1 className="text-2xl sm:text-3xl font-black flex items-center gap-2.5">
+                                <span className="p-2 bg-[#E50914]/20 rounded-xl text-[#E50914]"><Icon name="disc" size={24}/></span>
+                                VIDEO<span className="text-[#E50914]">TECA</span>
+                            </h1>
+                            <p className="text-xs sm:text-sm text-gray-400 mt-1">Colección de álbumes originales de música retro en video.</p>
+                        </div>
+                    </div>
+
+                    <div className="mb-6">
+                        <div className="flex bg-[#1f2937] border border-[#374151] rounded-full px-4 py-2.5 w-full max-w-md items-center focus-within:border-[#E50914] transition-colors">
+                            <Icon name="search" className="text-gray-400 w-4 h-4 mr-3" />
+                            <input type="text" placeholder="Buscar álbum o artista..." className="bg-transparent w-full outline-none text-xs sm:text-sm placeholder-gray-500 text-white" value={search} onChange={(e) => setSearch(e.target.value)}/>
+                        </div>
+                    </div>
+
+                    {displayed.length === 0 ? (
+                        <div className="text-center py-20 text-gray-500 text-sm">
+                            <Icon name="disc" size={48} className="mx-auto mb-3 opacity-40"/>
+                            <p>No se encontraron álbumes.</p>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                            {displayed.map((item, idx) => {
+                                const isFav = favorites.some(f => f.id === item.id);
+                                return (
+                                    <div key={item.id || idx} onClick={() => onPlay(item)} className="group cursor-pointer">
+                                        <div className="relative aspect-square mb-3">
+                                            {/* Vinyl Disk Background Animation */}
+                                            <div className="absolute inset-0 bg-black rounded-full border-[4px] border-gray-800 flex items-center justify-center transform group-hover:translate-x-6 group-hover:rotate-12 transition-all duration-500 ease-out shadow-2xl">
+                                                <div className="w-1/3 h-1/3 bg-[#E50914] rounded-full flex items-center justify-center border-2 border-black">
+                                                    <div className="w-2 h-2 bg-black rounded-full"></div>
+                                                </div>
+                                            </div>
+                                            {/* Album Cover */}
+                                            <div className="absolute inset-0 bg-[#1f2937] rounded-lg overflow-hidden border border-white/10 group-hover:border-[#E50914] transition-colors shadow-lg z-10">
+                                                <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                                    <div className="w-12 h-12 rounded-full bg-[#E50914] text-white flex items-center justify-center shadow-[0_0_15px_#E50914] transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                                                        <Icon name="play" size={20} fill="currentColor" className="ml-1"/>
+                                                    </div>
+                                                </div>
+                                                <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }} className="absolute top-2 right-2 p-1.5 bg-black/60 rounded-full text-white backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    <Icon name="heart" size={14} className={isFav ? "text-[#E50914] fill-[#E50914]" : ""} fill={isFav ? "#E50914" : "none"} />
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <h3 className="font-bold text-sm text-white truncate group-hover:text-[#E50914] transition-colors">{item.title}</h3>
+                                        <p className="text-[11px] text-gray-400 truncate mt-0.5">{item.description}</p>
+                                    </div>
+                                );
+                            })}
                         </div>
                     )}
                 </div>
@@ -1265,6 +1436,21 @@
             );
         };
 
+        const TvListItem = ({ channel, isActive, onClick, isFavorite, onToggleFavorite }) => (
+            <div tabIndex="0" onClick={() => onClick(channel)} className={`group flex items-center gap-3 p-3 border-b border-white/5 cursor-pointer transition-colors ${isActive ? 'bg-[#1f2937] border-l-4 border-l-[#E50914]' : 'hover:bg-white/5'}`} > 
+                <div className="w-10 h-7 rounded bg-black flex items-center justify-center overflow-hidden flex-shrink-0 border border-white/10"> 
+                    {channel.image ? ( <img src={channel.image} alt={channel.title} loading="lazy" className="w-full h-full object-contain" onError={(e) => e.target.style.display='none'} /> ) : ( <Icon name="tv" size={14} className="text-gray-400"/> )} 
+                </div> 
+                <div className="flex-1 min-w-0"> 
+                    <p className={`text-xs sm:text-sm font-medium truncate ${isActive ? 'text-[#E50914]' : 'text-white'}`}>{channel.title}</p> 
+                    <p className="text-[10px] text-gray-500 truncate">{channel.group || 'General'}</p> 
+                </div> 
+                <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(channel); }} className="p-2 rounded-full text-gray-400 hover:text-white"> 
+                    <Icon name="heart" size={16} className={isFavorite ? "text-[#E50914] fill-[#E50914]" : ""} fill={isFavorite ? "#E50914" : "none"} /> 
+                </button> 
+            </div> 
+        );
+
         const Card = ({ item, onClick, isFavorite, onToggleFavorite }) => { 
             const isTv = item.type === 'tv'; 
             const hasLock = item.codigo || item.password || item.pin; 
@@ -1306,7 +1492,8 @@
                 music: <g><path d="M9 18V5l12-2v13"></path><path d="M9 9l12-2"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></g>,
                 radio: <path d="M2 12a10 10 0 0110-10 10 10 0 0110 10M6 12a6 6 0 016-6 6 6 0 016 6M10 12a2 2 0 012-2 2 2 0 012 2v8a2 2 0 01-2 2 2 2 0 01-2-2v-8z" />,
                 volume: <path d="M11 5L6 9H2v6h4l5 4V5z M15.54 8.46a5 5 0 010 7.07 M19.07 4.93a10 10 0 010 14.14" />,
-                qr: <g><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="3" height="3"></rect><rect x="18" y="18" width="3" height="3"></rect><rect x="14" y="18" width="3" height="3"></rect><rect x="18" y="14" width="3" height="3"></rect></g>
+                qr: <g><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="3" height="3"></rect><rect x="18" y="18" width="3" height="3"></rect><rect x="14" y="18" width="3" height="3"></rect><rect x="18" y="14" width="3" height="3"></rect></g>,
+                disc: <g><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></g>
             };
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
