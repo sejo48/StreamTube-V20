@@ -60,7 +60,6 @@
             transform: translateY(0);
         }
 
-        /* Hover verde sobre las filas de canciones */
         .track-row:hover .track-title,
         .track-row:hover .track-num {
             color: #1DB954 !important;
@@ -82,7 +81,6 @@
             animation-play-state: paused;
         }
 
-        /* Equalizer Bars Animation */
         .eq-bar-container {
             display: inline-flex;
             align-items: flex-end;
@@ -139,13 +137,30 @@
             0% { height: 20%; }
             100% { height: 100%; }
         }
+
+        .sync-spin {
+            animation: syncRotate 1s linear infinite;
+        }
+        @keyframes syncRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .sync-progress-bar {
+            transition: width 0.3s ease;
+        }
+
+        /* Estilo para la precarga */
+        .preload-indicator {
+            transition: opacity 0.3s ease;
+        }
     </style>
 </head>
 <body class="h-full flex flex-col font-sans overflow-hidden select-none bg-black text-slate-100">
 
     <div class="flex flex-1 h-[calc(100vh-90px)] overflow-hidden p-2 gap-2">
         
-        <!-- SIDEBAR NAVIGATION (DESKTOP) -->
+        <!-- SIDEBAR NAVIGATION -->
         <aside class="w-64 bg-sp-dark rounded-xl flex flex-col gap-2 p-3 hidden md:flex shrink-0 border border-sp-border shadow-2xl">
             <!-- Brand Logo -->
             <div class="flex items-center gap-3 px-3 py-3 mb-1 cursor-pointer" onclick="window.switchTab('home')">
@@ -180,10 +195,25 @@
                     <span id="storage-status-badge" class="text-[9px] bg-sp-green/20 text-sp-green px-2 py-0.5 rounded-full font-mono">Guardado</span>
                 </div>
                 <p class="text-[11px] text-sp-subtext leading-relaxed">Selecciona la carpeta principal de tu disco duro. Todas sus subcarpetas se organizarán en álbumes.</p>
-                <label class="w-full mt-1 py-2.5 px-3 bg-sp-green hover:bg-sp-greenHover text-black font-extrabold text-xs rounded-full flex items-center justify-center gap-2 cursor-pointer transition shadow-md">
-                    <i class="fa-solid fa-folder-open"></i> Importar Carpeta Principal
-                    <input type="file" id="sidebar-folder-input" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
-                </label>
+                
+                <div class="flex flex-col gap-2">
+                    <label class="w-full py-2.5 px-3 bg-sp-green hover:bg-sp-greenHover text-black font-extrabold text-xs rounded-full flex items-center justify-center gap-2 cursor-pointer transition shadow-md">
+                        <i class="fa-solid fa-folder-open"></i> Importar Carpeta Principal
+                        <input type="file" id="sidebar-folder-input" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
+                    </label>
+                    
+                    <button onclick="window.syncLibrary()" id="sync-button" class="w-full py-2.5 px-3 bg-sp-card hover:bg-sp-cardHover border border-sp-green/50 text-sp-green font-extrabold text-xs rounded-full flex items-center justify-center gap-2 transition shadow-md">
+                        <i class="fa-solid fa-arrows-rotate" id="sync-icon"></i> 
+                        <span id="sync-text">Sincronizar Cambios</span>
+                    </button>
+                </div>
+                
+                <div id="sync-progress-container" class="hidden w-full">
+                    <div class="w-full h-1 bg-sp-border rounded-full overflow-hidden">
+                        <div id="sync-progress-bar" class="sync-progress-bar h-full bg-sp-green" style="width: 0%"></div>
+                    </div>
+                    <span id="sync-progress-text" class="text-[9px] text-sp-subtext font-mono">0%</span>
+                </div>
             </div>
 
             <div class="flex items-center justify-between px-2 pt-2 text-sp-subtext">
@@ -197,7 +227,6 @@
                 <div class="p-4 text-center text-xs text-sp-subtext">Cargando memoria local...</div>
             </div>
 
-            <!-- Memory Clear Control -->
             <div class="pt-2 border-t border-sp-border/60 flex items-center justify-between px-2">
                 <span id="storage-size-label" class="text-[10px] text-sp-subtext font-mono">0 MB en memoria</span>
                 <button onclick="window.promptClearLibrary()" title="Borrar datos guardados en memoria local" class="text-[10px] text-red-400 hover:text-red-300 hover:underline flex items-center gap-1 font-bold">
@@ -235,7 +264,7 @@
                 </div>
             </header>
 
-            <!-- BARRA DE ANIMACIÓN SUPERIOR SIEMPRE VISIBLE -->
+            <!-- BARRA DE ANIMACIÓN SUPERIOR -->
             <div id="visualizer-container" class="shrink-0 bg-black/90 backdrop-blur-xl border-b border-sp-border p-3 md:p-4 relative overflow-hidden transition-all duration-300 shadow-lg z-10 flex flex-col gap-2">
                 <div class="flex items-center justify-between gap-3">
                     <div class="flex items-center gap-3 min-w-0">
@@ -284,6 +313,9 @@
                                 </label>
                                 <button onclick="window.switchTab('albums')" class="px-5 py-2.5 bg-sp-card hover:bg-sp-cardHover border border-sp-border text-white text-xs md:text-sm font-bold rounded-full transition flex items-center gap-2">
                                     <i class="fa-solid fa-grip text-sp-green"></i> Ver Álbumes
+                                </button>
+                                <button onclick="window.syncLibrary()" class="px-5 py-2.5 bg-sp-card hover:bg-sp-cardHover border border-sp-green/50 text-sp-green text-xs md:text-sm font-bold rounded-full transition flex items-center gap-2">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Sincronizar
                                 </button>
                             </div>
                         </div>
@@ -335,10 +367,15 @@
                             <h2 class="text-2xl md:text-3xl font-black text-white tracking-tight">Colección de Álbumes</h2>
                             <p class="text-xs text-sp-subtext mt-1">Organización automática por las carpetas de tu disco duro personal.</p>
                         </div>
-                        <label class="px-4 py-2 bg-sp-green hover:bg-sp-greenHover text-black text-xs font-extrabold rounded-full flex items-center gap-2 cursor-pointer transition">
-                            <i class="fa-solid fa-folder-plus"></i> Importar Más
-                            <input type="file" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
-                        </label>
+                        <div class="flex gap-2">
+                            <label class="px-4 py-2 bg-sp-green hover:bg-sp-greenHover text-black text-xs font-extrabold rounded-full flex items-center gap-2 cursor-pointer transition">
+                                <i class="fa-solid fa-folder-plus"></i> Importar Más
+                                <input type="file" webkitdirectory directory multiple class="hidden" onchange="window.handleFolderUpload(this.files)">
+                            </label>
+                            <button onclick="window.syncLibrary()" class="px-4 py-2 bg-sp-card hover:bg-sp-cardHover border border-sp-green/50 text-sp-green text-xs font-extrabold rounded-full flex items-center gap-2 transition">
+                                <i class="fa-solid fa-arrows-rotate"></i> Sincronizar
+                            </button>
+                        </div>
                     </div>
 
                     <div id="albums-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
@@ -530,7 +567,7 @@
                 <button onclick="window.togglePlay()" id="btn-play-pause" class="w-10 h-10 md:w-11 md:h-11 rounded-full bg-sp-green hover:bg-sp-greenHover text-black flex items-center justify-center hover:scale-105 transition shadow-lg shadow-sp-green/30">
                     <i class="fa-solid fa-play text-sm md:text-base pl-0.5"></i>
                 </button>
-                <button onclick="window.nextTrack()" class="text-sp-subtext hover:text-white transition text-base md:text-lg" title="Siguiente">
+                <button onclick="window.nextTrack()" id="btn-next" class="text-sp-subtext hover:text-white transition text-base md:text-lg" title="Siguiente">
                     <i class="fa-solid fa-forward-step"></i>
                 </button>
                 <button onclick="window.toggleRepeat()" id="btn-repeat" class="text-sp-subtext hover:text-white transition text-xs md:text-sm" title="Repetir">
@@ -555,9 +592,11 @@
         </div>
     </footer>
 
-    <audio id="audio-element" class="hidden" crossorigin="anonymous"></audio>
+    <audio id="audio-element" class="hidden" preload="auto" crossorigin="anonymous"></audio>
+    <audio id="audio-element-preload" class="hidden" preload="auto" crossorigin="anonymous"></audio>
 
     <script>
+        // ===== CONFIGURACIÓN =====
         window.albumsMap = {};
         window.allTracks = [];
         window.currentQueue = [];
@@ -569,6 +608,17 @@
         window.isShuffle = false;
         window.isRepeat = false;
         window.visualizerMode = 'bars';
+        window.fileMetadata = {};
+
+        // ===== OPTIMIZACIÓN: CACHÉ DE URLS Y PRECARGA =====
+        window.urlCache = new Map(); // Map<trackId, url>
+        // Motor de reproducción de doble búfer:
+        // mientras una canción suena, la siguiente se carga en otro elemento <audio>.
+        window.preloadQueue = [];
+        window.isPreloading = false;
+        window.maxPreload = 1;
+        window.preloadedTrackIndex = -1;
+        window.preloadAudio = null;
 
         function getTrackNumHtml(isCurrent, isPlaying, trackNum) {
             if (isCurrent) {
@@ -590,7 +640,7 @@
         ];
 
         const DB_NAME = 'SpotityLocalDB';
-        const DB_VERSION = 2;
+        const DB_VERSION = 3;
         let dbInstance = null;
 
         function openLocalDB() {
@@ -608,6 +658,9 @@
                     if (!db.objectStoreNames.contains('settings')) {
                         db.createObjectStore('settings', { keyPath: 'key' });
                     }
+                    if (!db.objectStoreNames.contains('fileMetadata')) {
+                        db.createObjectStore('fileMetadata', { keyPath: 'path' });
+                    }
                 };
                 req.onsuccess = (evt) => {
                     dbInstance = evt.target.result;
@@ -619,6 +672,107 @@
                 };
                 req.onerror = (err) => reject(err);
             });
+        }
+
+        // ===== OBTENER URL DE UN TRACK CON CACHÉ =====
+        function getTrackUrl(track) {
+            if (!track) return null;
+            
+            // Si ya está en caché, devolverla
+            if (window.urlCache.has(track.id)) {
+                return window.urlCache.get(track.id);
+            }
+
+            // Si el track tiene fileBlob, crear URL y cachear
+            if (track.fileBlob) {
+                try {
+                    const url = URL.createObjectURL(track.fileBlob);
+                    window.urlCache.set(track.id, url);
+                    return url;
+                } catch (e) {
+                    console.warn("Error creando URL para track:", track.title, e);
+                    return null;
+                }
+            }
+
+            // Si tiene url directamente, cachear y devolver
+            if (track.url) {
+                window.urlCache.set(track.id, track.url);
+                return track.url;
+            }
+
+            return null;
+        }
+
+        // ===== PRECARGA REAL DE LA SIGUIENTE CANCIÓN =====
+        // Crear la URL no precarga el audio. Aquí usamos un segundo elemento
+        // <audio> para que el navegador empiece a leer la próxima canción.
+        window.preloadNextTracks = function(currentIndex) {
+            if (!window.preloadAudio || window.allTracks.length < 2) return;
+
+            let nextIndex = (currentIndex + 1) % window.allTracks.length;
+
+            // En modo aleatorio elegimos una siguiente canción válida.
+            if (window.isShuffle && window.allTracks.length > 1) {
+                let attempts = 0;
+                while (nextIndex === currentIndex && attempts++ < 10) {
+                    nextIndex = Math.floor(Math.random() * window.allTracks.length);
+                }
+            }
+
+            if (window.preloadedTrackIndex === nextIndex &&
+                window.preloadAudio.src) return;
+
+            const track = window.allTracks[nextIndex];
+            const url = getTrackUrl(track);
+            if (!track || !url) return;
+
+            try {
+                window.preloadAudio.pause();
+                window.preloadAudio.src = url;
+                window.preloadAudio.preload = 'auto';
+                window.preloadAudio.load();
+                window.preloadedTrackIndex = nextIndex;
+            } catch (e) {
+                window.preloadedTrackIndex = -1;
+                console.warn("Error precargando siguiente canción:", e);
+            }
+        };
+
+        // ===== FUNCIONES DE BASE DE DATOS =====
+        async function saveFileMetadata(metadataMap) {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction('fileMetadata', 'readwrite');
+                const store = tx.objectStore('fileMetadata');
+                Object.values(metadataMap).forEach(meta => {
+                    store.put(meta);
+                });
+            } catch (err) {
+                console.error("Error guardando metadatos:", err);
+            }
+        }
+
+        async function loadFileMetadata() {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction('fileMetadata', 'readonly');
+                const store = tx.objectStore('fileMetadata');
+                return new Promise((res) => {
+                    const req = store.getAll();
+                    req.onsuccess = () => {
+                        const meta = {};
+                        (req.result || []).forEach(m => {
+                            meta[m.path] = m;
+                        });
+                        res(meta);
+                    };
+                    req.onerror = () => res({});
+                });
+            } catch (err) {
+                console.error("Error cargando metadatos:", err);
+                return {};
+            }
         }
 
         async function saveTracksAndAlbumsToDB(newTracks, updatedAlbumsMap) {
@@ -636,7 +790,10 @@
                         album: t.album,
                         fileBlob: t.fileBlob,
                         cover: t.cover,
-                        duration: t.duration
+                        duration: t.duration,
+                        filePath: t.filePath,
+                        fileSize: t.fileSize,
+                        fileModified: t.fileModified
                     });
                 });
 
@@ -658,27 +815,37 @@
             }
         }
 
+        async function deleteTracksFromDB(trackIds) {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction('tracks', 'readwrite');
+                const store = tx.objectStore('tracks');
+                trackIds.forEach(id => {
+                    store.delete(id);
+                    // Limpiar caché también
+                    window.urlCache.delete(id);
+                });
+            } catch (err) {
+                console.error("Error eliminando tracks:", err);
+            }
+        }
+
         async function saveSingleAlbumMeta(albumName, coverUrl) {
             try {
-                // 1. Save in localStorage for un-rollbacked instant fallback
                 try {
                     const localCovers = JSON.parse(localStorage.getItem('spotity_album_covers') || '{}');
                     localCovers[albumName] = coverUrl;
                     localStorage.setItem('spotity_album_covers', JSON.stringify(localCovers));
-                } catch (e) {
-                    console.warn("LocalStorage quota:", e);
-                }
+                } catch (e) {}
 
-                // 2. Save in IndexedDB albums store
                 const db = await openLocalDB();
                 const tx = db.transaction(['albums', 'tracks'], 'readwrite');
                 tx.objectStore('albums').put({ name: albumName, cover: coverUrl });
 
-                // Also update all stored track objects for this album
-                const tracksStore = tx.objectStore('tracks');
                 if (window.albumsMap[albumName]) {
                     window.albumsMap[albumName].tracks.forEach(track => {
                         track.cover = coverUrl;
+                        const tracksStore = tx.objectStore('tracks');
                         tracksStore.put({
                             id: track.id,
                             title: track.title,
@@ -686,7 +853,10 @@
                             album: track.album,
                             fileBlob: track.fileBlob,
                             cover: coverUrl,
-                            duration: track.duration
+                            duration: track.duration,
+                            filePath: track.filePath,
+                            fileSize: track.fileSize,
+                            fileModified: track.fileModified
                         });
                     });
                 }
@@ -695,13 +865,25 @@
             }
         }
 
+        async function saveSetting(key, value) {
+            try {
+                const db = await openLocalDB();
+                const tx = db.transaction('settings', 'readwrite');
+                tx.objectStore('settings').put({ key, value });
+            } catch (e) {
+                console.warn(e);
+            }
+        }
+
+        // ===== CARGAR BIBLIOTECA DESDE DB =====
         async function loadLibraryFromDB() {
             try {
                 const db = await openLocalDB();
-                const tx = db.transaction(['tracks', 'albums', 'settings'], 'readonly');
+                const tx = db.transaction(['tracks', 'albums', 'settings', 'fileMetadata'], 'readonly');
                 const tracksStore = tx.objectStore('tracks');
                 const albumsStore = tx.objectStore('albums');
                 const settingsStore = tx.objectStore('settings');
+                const metadataStore = tx.objectStore('fileMetadata');
 
                 let localCovers = {};
                 try {
@@ -726,6 +908,17 @@
                     req.onerror = () => res([]);
                 });
 
+                const rawMetadata = await new Promise(res => {
+                    const req = metadataStore.getAll();
+                    req.onsuccess = () => res(req.result || []);
+                    req.onerror = () => res([]);
+                });
+
+                window.fileMetadata = {};
+                rawMetadata.forEach(m => {
+                    window.fileMetadata[m.path] = m;
+                });
+
                 window.likedTrackIds = new Set(likedSetting);
                 window.albumsMap = {};
                 
@@ -739,16 +932,9 @@
                 });
 
                 window.allTracks = [];
-                rawTracks.forEach(t => {
-                    let objectUrl = '';
-                    if (t.fileBlob) {
-                        try {
-                            objectUrl = URL.createObjectURL(t.fileBlob);
-                        } catch (e) {
-                            console.warn("Error creando URL", e);
-                        }
-                    }
+                window.urlCache.clear();
 
+                rawTracks.forEach(t => {
                     const albumCover = localCovers[t.album] || (window.albumsMap[t.album] ? window.albumsMap[t.album].cover : (t.cover || DEFAULT_COVERS[0]));
 
                     if (!window.albumsMap[t.album]) {
@@ -765,10 +951,24 @@
                         artist: t.artist,
                         album: t.album,
                         duration: t.duration || 'Local',
-                        url: objectUrl,
+                        url: null,
                         fileBlob: t.fileBlob,
-                        cover: albumCover
+                        cover: albumCover,
+                        filePath: t.filePath || t.id,
+                        fileSize: t.fileSize || 0,
+                        fileModified: t.fileModified || 0
                     };
+
+                    // Si tiene fileBlob, crear URL y cachear inmediatamente
+                    if (t.fileBlob) {
+                        try {
+                            const url = URL.createObjectURL(t.fileBlob);
+                            trackObj.url = url;
+                            window.urlCache.set(t.id, url);
+                        } catch (e) {
+                            console.warn("Error creando URL para:", t.title);
+                        }
+                    }
 
                     window.albumsMap[t.album].tracks.push(trackObj);
                     window.allTracks.push(trackObj);
@@ -785,16 +985,306 @@
             }
         }
 
-        async function saveSetting(key, value) {
-            try {
-                const db = await openLocalDB();
-                const tx = db.transaction('settings', 'readwrite');
-                tx.objectStore('settings').put({ key, value });
-            } catch (e) {
-                console.warn(e);
-            }
-        }
+        // ===== FUNCIÓN DE SINCRONIZACIÓN =====
+        window.syncLibrary = async function() {
+            const syncBtn = document.getElementById('sync-button');
+            const syncIcon = document.getElementById('sync-icon');
+            const syncText = document.getElementById('sync-text');
+            const progressContainer = document.getElementById('sync-progress-container');
+            const progressBar = document.getElementById('sync-progress-bar');
+            const progressText = document.getElementById('sync-progress-text');
 
+            syncBtn.disabled = true;
+            syncIcon.className = 'fa-solid fa-arrows-rotate sync-spin';
+            syncText.textContent = 'Sincronizando...';
+            progressContainer.classList.remove('hidden');
+            progressBar.style.width = '0%';
+            progressText.textContent = '0%';
+
+            try {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.webkitdirectory = true;
+                input.multiple = true;
+                input.accept = 'audio/*';
+
+                const files = await new Promise((resolve, reject) => {
+                    input.onchange = (e) => resolve(e.target.files);
+                    input.oncancel = () => reject(new Error('Cancelado'));
+                    input.click();
+                });
+
+                if (!files || files.length === 0) {
+                    window.showNotification("Sin cambios", "No se seleccionó ninguna carpeta.");
+                    return;
+                }
+
+                const validExtensions = ['.mp3', '.m4a', '.wav', '.ogg', '.flac', '.aac', '.wma'];
+                const currentFiles = {};
+                const pathToFile = {};
+
+                let totalFiles = 0;
+                Array.from(files).forEach(file => {
+                    const isAudioType = file.type && file.type.startsWith('audio/');
+                    const hasAudioExt = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+                    if (!isAudioType && !hasAudioExt) return;
+
+                    const relPath = file.webkitRelativePath || file.name;
+                    const pathParts = relPath.split('/');
+                    const fileName = pathParts[pathParts.length - 1];
+
+                    let albumName = 'Música';
+                    if (pathParts.length > 2) {
+                        albumName = pathParts[pathParts.length - 2];
+                    } else if (pathParts.length === 2) {
+                        albumName = pathParts[0];
+                    }
+
+                    if (albumName === 'Música') {
+                        const parts = fileName.split(' - ');
+                        albumName = parts.length > 1 ? parts[0].trim() : 'Música';
+                    }
+
+                    const fileKey = `${albumName}/${fileName}`;
+                    currentFiles[fileKey] = {
+                        file: file,
+                        path: relPath,
+                        album: albumName,
+                        fileName: fileName,
+                        size: file.size,
+                        lastModified: file.lastModified
+                    };
+                    pathToFile[relPath] = currentFiles[fileKey];
+                    totalFiles++;
+                });
+
+                if (totalFiles === 0) {
+                    window.showNotification("Sin archivos", "No se encontraron archivos de audio en la carpeta seleccionada.");
+                    return;
+                }
+
+                const existingMetadata = await loadFileMetadata();
+                const existingPaths = new Set(Object.keys(existingMetadata));
+                const currentPaths = new Set(Object.keys(pathToFile));
+
+                const filesToAdd = [];
+                const filesToUpdate = [];
+                const pathsToProcess = [];
+
+                let processed = 0;
+                for (const [path, info] of Object.entries(pathToFile)) {
+                    const existing = existingMetadata[path];
+                    if (!existing) {
+                        pathsToProcess.push(path);
+                        filesToAdd.push(info);
+                    } else if (existing.size !== info.size || existing.lastModified !== info.lastModified) {
+                        pathsToProcess.push(path);
+                        filesToUpdate.push(info);
+                    }
+                    processed++;
+                    const progress = Math.round((processed / totalFiles) * 30);
+                    progressBar.style.width = `${progress}%`;
+                    progressText.textContent = `${progress}%`;
+                }
+
+                const filesToDelete = [];
+                for (const path of existingPaths) {
+                    if (!currentPaths.has(path)) {
+                        filesToDelete.push(path);
+                    }
+                }
+
+                progressBar.style.width = '35%';
+                progressText.textContent = '35%';
+
+                const allFilesToProcess = [...filesToAdd, ...filesToUpdate];
+                let processedFiles = 0;
+                const newTracks = [];
+                const updatedAlbumCovers = {};
+
+                // Limpiar caché de URLs para archivos que serán actualizados
+                for (const info of allFilesToProcess) {
+                    const existingTrack = window.allTracks.find(t => t.filePath === info.path);
+                    if (existingTrack) {
+                        window.urlCache.delete(existingTrack.id);
+                    }
+                }
+
+                for (const info of allFilesToProcess) {
+                    const file = info.file;
+                    const albumName = info.album;
+                    const fileName = file.name;
+                    const relPath = file.webkitRelativePath || file.name;
+
+                    const fileNameClean = fileName.replace(/\.[^/.]+$/, "");
+                    const nameParts = fileNameClean.split(' - ');
+                    const title = nameParts.length > 1 ? nameParts.slice(1).join(' - ').trim() : fileNameClean;
+                    const artist = nameParts.length > 1 ? nameParts[0].trim() : 'Artista Local';
+
+                    let albumCover = window.albumsMap[albumName]?.cover || DEFAULT_COVERS[Object.keys(window.albumsMap).length % DEFAULT_COVERS.length];
+
+                    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp'];
+                    for (const f of files) {
+                        if (f.webkitRelativePath) {
+                            const fParts = f.webkitRelativePath.split('/');
+                            const fAlbum = fParts.length > 2 ? fParts[fParts.length - 2] : (fParts.length === 2 ? fParts[0] : '');
+                            if (fAlbum === albumName && imageExtensions.some(ext => f.name.toLowerCase().endsWith(ext))) {
+                                const reader = new FileReader();
+                                const imageUrl = await new Promise((res) => {
+                                    reader.onload = (e) => res(e.target.result);
+                                    reader.readAsDataURL(f);
+                                });
+                                albumCover = imageUrl;
+                                updatedAlbumCovers[albumName] = imageUrl;
+                                break;
+                            }
+                        }
+                    }
+
+                    // Crear URL inmediatamente y cachear
+                    const url = URL.createObjectURL(file);
+
+                    const trackObj = {
+                        id: Date.now() + Math.random() + Math.random(),
+                        title: title,
+                        artist: artist,
+                        album: albumName,
+                        duration: 'Local',
+                        url: url,
+                        fileBlob: file,
+                        cover: albumCover,
+                        filePath: relPath,
+                        fileSize: file.size,
+                        fileModified: file.lastModified
+                    };
+
+                    // Cachear URL inmediatamente
+                    window.urlCache.set(trackObj.id, url);
+
+                    window.fileMetadata[relPath] = {
+                        path: relPath,
+                        size: file.size,
+                        lastModified: file.lastModified
+                    };
+
+                    if (!window.albumsMap[albumName]) {
+                        window.albumsMap[albumName] = {
+                            name: albumName,
+                            cover: albumCover,
+                            tracks: []
+                        };
+                    } else if (updatedAlbumCovers[albumName]) {
+                        window.albumsMap[albumName].cover = updatedAlbumCovers[albumName];
+                    }
+
+                    const existingTrack = window.allTracks.find(t => t.filePath === relPath);
+                    if (existingTrack) {
+                        const idx = window.allTracks.indexOf(existingTrack);
+                        const albumIdx = window.albumsMap[albumName].tracks.indexOf(existingTrack);
+                        window.allTracks[idx] = trackObj;
+                        if (albumIdx !== -1) {
+                            window.albumsMap[albumName].tracks[albumIdx] = trackObj;
+                        }
+                    } else {
+                        window.allTracks.push(trackObj);
+                        window.albumsMap[albumName].tracks.push(trackObj);
+                    }
+
+                    newTracks.push(trackObj);
+                    processedFiles++;
+                    const progress = 35 + Math.round((processedFiles / allFilesToProcess.length) * 55);
+                    progressBar.style.width = `${progress}%`;
+                    progressText.textContent = `${progress}%`;
+                }
+
+                for (const path of filesToDelete) {
+                    const trackIdx = window.allTracks.findIndex(t => t.filePath === path);
+                    if (trackIdx !== -1) {
+                        const track = window.allTracks[trackIdx];
+                        window.urlCache.delete(track.id);
+                        const album = window.albumsMap[track.album];
+                        if (album) {
+                            const albumTrackIdx = album.tracks.findIndex(t => t.filePath === path);
+                            if (albumTrackIdx !== -1) {
+                                album.tracks.splice(albumTrackIdx, 1);
+                            }
+                            if (album.tracks.length === 0) {
+                                delete window.albumsMap[track.album];
+                            }
+                        }
+                        window.allTracks.splice(trackIdx, 1);
+                    }
+                    delete window.fileMetadata[path];
+                }
+
+                progressBar.style.width = '92%';
+                progressText.textContent = '92%';
+
+                await saveFileMetadata(window.fileMetadata);
+
+                if (newTracks.length > 0 || filesToDelete.length > 0) {
+                    const tracksToSave = [];
+                    for (const track of newTracks) {
+                        if (track.fileBlob) {
+                            tracksToSave.push({
+                                id: track.id,
+                                title: track.title,
+                                artist: track.artist,
+                                album: track.album,
+                                fileBlob: track.fileBlob,
+                                cover: track.cover,
+                                duration: track.duration,
+                                filePath: track.filePath,
+                                fileSize: track.fileSize,
+                                fileModified: track.fileModified
+                            });
+                        }
+                    }
+                    await saveTracksAndAlbumsToDB(tracksToSave, window.albumsMap);
+                }
+
+                progressBar.style.width = '100%';
+                progressText.textContent = '100%';
+
+                window.renderSidebarAlbums();
+                window.renderHomeAlbums();
+                window.renderAllAlbumsGrid();
+                window.renderAllTracksTable();
+                window.updateStorageSizeLabel();
+
+                const addedCount = filesToAdd.length;
+                const updatedCount = filesToUpdate.length;
+                const deletedCount = filesToDelete.length;
+                
+                let msg = `Sincronización completada.`;
+                if (addedCount > 0) msg += ` ${addedCount} archivos nuevos.`;
+                if (updatedCount > 0) msg += ` ${updatedCount} archivos actualizados.`;
+                if (deletedCount > 0) msg += ` ${deletedCount} archivos eliminados.`;
+                if (addedCount === 0 && updatedCount === 0 && deletedCount === 0) {
+                    msg = `No se detectaron cambios en tu carpeta de música.`;
+                }
+
+                window.showNotification("Sincronización Exitosa", msg);
+
+            } catch (err) {
+                if (err.message === 'Cancelado') {
+                    window.showNotification("Cancelado", "La sincronización fue cancelada.");
+                } else {
+                    console.error("Error en sincronización:", err);
+                    window.showNotification("Error", "Ocurrió un error durante la sincronización.");
+                }
+            } finally {
+                syncBtn.disabled = false;
+                syncIcon.className = 'fa-solid fa-arrows-rotate';
+                syncText.textContent = 'Sincronizar Cambios';
+                setTimeout(() => {
+                    progressContainer.classList.add('hidden');
+                    progressBar.style.width = '0%';
+                }, 2000);
+            }
+        };
+
+        // ===== FUNCIONES DE UI =====
         window.updateStorageSizeLabel = async function() {
             try {
                 const db = await openLocalDB();
@@ -828,10 +1318,11 @@
             window.closeClearModal();
             try {
                 const db = await openLocalDB();
-                const tx = db.transaction(['tracks', 'albums', 'settings'], 'readwrite');
+                const tx = db.transaction(['tracks', 'albums', 'settings', 'fileMetadata'], 'readwrite');
                 tx.objectStore('tracks').clear();
                 tx.objectStore('albums').clear();
                 tx.objectStore('settings').clear();
+                tx.objectStore('fileMetadata').clear();
 
                 try {
                     localStorage.removeItem('spotity_album_covers');
@@ -842,6 +1333,8 @@
                 window.currentQueue = [];
                 window.currentTrackIndex = -1;
                 window.likedTrackIds.clear();
+                window.fileMetadata = {};
+                window.urlCache.clear();
 
                 if (audioElement) {
                     audioElement.pause();
@@ -861,22 +1354,84 @@
             }
         };
 
+        // ===== REPRODUCTOR DE AUDIO =====
         let audioCtx = null;
         let audioElement = null;
+        let preloadAudioElement = null;
         let sourceNode = null;
+        let preloadSourceNode = null;
         let bassFilter = null;
         let midFilter = null;
         let trebleFilter = null;
         let gainNode = null;
         let analyserNode = null;
         let visualizerAnimationId = null;
+        let isAudioPipelineReady = false;
+
+        function connectAudioNode(el) {
+            if (!audioCtx || !el) return null;
+            try {
+                const node = audioCtx.createMediaElementSource(el);
+                node.connect(bassFilter);
+                return node;
+            } catch (e) {
+                console.warn("No se pudo conectar el audio:", e);
+                return null;
+            }
+        }
+
+        function setupAudioEvents(el) {
+            if (!el || el.dataset.eventsReady === '1') return;
+            el.dataset.eventsReady = '1';
+
+            el.addEventListener('timeupdate', () => {
+                if (el !== audioElement) return;
+                if (el.duration) {
+                    document.getElementById('current-time').innerText = formatTime(el.currentTime);
+                    document.getElementById('duration-time').innerText = formatTime(el.duration);
+                    document.getElementById('seek-bar').value = (el.currentTime / el.duration) * 100;
+                }
+            });
+
+            el.addEventListener('ended', () => {
+                if (el !== audioElement) return;
+                if (window.isRepeat && window.currentTrackIndex !== -1) {
+                    window.playTrack(window.currentTrackIndex);
+                } else {
+                    window.nextTrack();
+                }
+            });
+
+            el.addEventListener('error', () => {
+                if (el !== audioElement) return;
+                const track = window.allTracks[window.currentTrackIndex];
+                if (!track) return;
+                console.warn("Error audio:", el.error);
+                // Reintento directo, sin el retraso artificial anterior.
+                const url = getTrackUrl(track);
+                if (url && el.src !== url) {
+                    el.src = url;
+                    el.load();
+                    el.play().catch(() => {});
+                }
+            });
+        }
 
         function initAudioPipeline() {
-            if (audioCtx) return;
+            if (audioCtx && isAudioPipelineReady) return;
+
             try {
                 audioElement = document.getElementById('audio-element');
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                
+                preloadAudioElement = document.getElementById('audio-element-preload');
+                if (!audioElement || !preloadAudioElement) return;
+
+                setupAudioEvents(audioElement);
+                setupAudioEvents(preloadAudioElement);
+
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+
                 bassFilter = audioCtx.createBiquadFilter();
                 bassFilter.type = 'lowshelf';
                 bassFilter.frequency.value = 250;
@@ -896,21 +1451,370 @@
                 analyserNode = audioCtx.createAnalyser();
                 analyserNode.fftSize = 64;
 
-                sourceNode = audioCtx.createMediaElementSource(audioElement);
+                sourceNode = connectAudioNode(audioElement);
+                preloadSourceNode = connectAudioNode(preloadAudioElement);
 
-                sourceNode.connect(bassFilter);
                 bassFilter.connect(midFilter);
                 midFilter.connect(trebleFilter);
                 trebleFilter.connect(gainNode);
                 gainNode.connect(analyserNode);
                 analyserNode.connect(audioCtx.destination);
 
-                drawVisualizer();
+                isAudioPipelineReady = !!sourceNode;
+                if (isAudioPipelineReady) drawVisualizer();
             } catch (err) {
                 console.warn("Audio pipeline:", err);
             }
         }
 
+        function activatePreloadedTrack(index) {
+            if (!preloadAudioElement || window.preloadedTrackIndex !== index) return false;
+
+            const oldAudio = audioElement;
+            audioElement = preloadAudioElement;
+            preloadAudioElement = oldAudio;
+
+            // El antiguo reproductor deja de sonar y queda disponible para precarga.
+            try { preloadAudioElement.pause(); } catch(e) {}
+            return true;
+        }
+
+        // ===== REPRODUCIR CANCIÓN: DOBLE BÚFER =====
+        window.playTrack = function(index) {
+            if (index < 0 || index >= window.allTracks.length) return;
+
+            const track = window.allTracks[index];
+            if (!track) return;
+
+            initAudioPipeline();
+            if (!audioElement) return;
+
+            // Si la siguiente canción ya está cargada, la activamos sin volver
+            // a hacer src + load(). Esto elimina el principal retraso entre pistas.
+            const usedPreload = activatePreloadedTrack(index);
+
+            if (!usedPreload) {
+                const url = getTrackUrl(track);
+                if (!url) {
+                    window.showNotification("Error", `No se pudo cargar "${track.title}"`);
+                    return;
+                }
+
+                try {
+                    audioElement.pause();
+                    audioElement.currentTime = 0;
+                    audioElement.src = url;
+                    audioElement.preload = 'auto';
+                    audioElement.load();
+                } catch (e) {
+                    console.error("Error preparando audio:", e);
+                    return;
+                }
+            }
+
+            // Reanudar AudioContext solo cuando sea necesario.
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume().catch(() => {});
+            }
+
+            window.currentTrackIndex = index;
+            window.isPlaying = true;
+            window.preloadedTrackIndex = -1;
+            window.updatePlayerUI();
+
+            const playPromise = audioElement.play();
+            if (playPromise) {
+                playPromise.catch(err => {
+                    window.isPlaying = false;
+                    window.updatePlayerUI();
+                    console.warn("Playback falló:", err);
+                });
+            }
+
+            // Preparar la siguiente mientras ésta comienza a sonar.
+            window.preloadNextTracks(index);
+        };
+
+        // ===== TOGGLE PLAY/PAUSE =====
+        window.togglePlay = function() {
+            if (window.currentTrackIndex === -1 && window.allTracks.length > 0) {
+                window.playTrack(0);
+                return;
+            }
+            if (window.currentTrackIndex === -1) return;
+
+            initAudioPipeline();
+            if (!audioElement) return;
+
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume().catch(() => {});
+            }
+
+            if (window.isPlaying) {
+                audioElement.pause();
+                window.isPlaying = false;
+            } else {
+                audioElement.play().then(() => {
+                    window.isPlaying = true;
+                    window.preloadNextTracks(window.currentTrackIndex);
+                    window.updatePlayerUI();
+                }).catch(() => {
+                    window.isPlaying = false;
+                    window.updatePlayerUI();
+                });
+            }
+            window.updatePlayerUI();
+        };
+
+        // ===== CAMBIO DE CANCIÓN INSTANTÁNEO =====
+        window.prevTrack = function() {
+            if (window.allTracks.length === 0) return;
+            let newIndex = window.currentTrackIndex - 1;
+            if (newIndex < 0) newIndex = window.allTracks.length - 1;
+            window.playTrack(newIndex);
+        };
+
+        window.nextTrack = function() {
+            if (window.allTracks.length === 0) return;
+            let newIndex;
+            if (window.isShuffle) {
+                // Evitar repetir la misma canción en shuffle
+                do {
+                    newIndex = Math.floor(Math.random() * window.allTracks.length);
+                } while (newIndex === window.currentTrackIndex && window.allTracks.length > 1);
+            } else {
+                newIndex = (window.currentTrackIndex + 1) % window.allTracks.length;
+            }
+            window.playTrack(newIndex);
+        };
+
+        // ===== OTRAS FUNCIONES DEL REPRODUCTOR =====
+        window.toggleShuffle = function() {
+            window.isShuffle = !window.isShuffle;
+            const btn = document.getElementById('btn-shuffle');
+            if (btn) btn.classList.toggle('text-sp-green', window.isShuffle);
+        };
+
+        window.toggleRepeat = function() {
+            window.isRepeat = !window.isRepeat;
+            const btn = document.getElementById('btn-repeat');
+            if (btn) btn.classList.toggle('text-sp-green', window.isRepeat);
+        };
+
+        window.seekTo = function(percent) {
+            if (audioElement && audioElement.duration) {
+                audioElement.currentTime = (percent / 100) * audioElement.duration;
+            }
+        };
+
+        window.setVolume = function(val) {
+            if (audioElement) {
+                audioElement.volume = parseFloat(val);
+            }
+        };
+
+        // ===== ACTUALIZAR UI DEL REPRODUCTOR =====
+        window.updatePlayerUI = function() {
+            const track = window.allTracks[window.currentTrackIndex];
+            if (!track) return;
+
+            document.getElementById('player-cover').src = track.cover;
+            document.getElementById('player-title').innerText = track.title;
+            document.getElementById('player-artist').innerText = `${track.artist} • ${track.album}`;
+
+            const visCover = document.getElementById('vis-cover');
+            const visTitle = document.getElementById('vis-title');
+            const visArtist = document.getElementById('vis-artist');
+            if (visCover) visCover.src = track.cover;
+            if (visTitle) visTitle.innerText = track.title;
+            if (visArtist) visArtist.innerText = `${track.artist} • ${track.album}`;
+
+            const btnPlayPause = document.getElementById('btn-play-pause');
+            if (btnPlayPause) {
+                btnPlayPause.innerHTML = window.isPlaying ? `<i class="fa-solid fa-pause text-base"></i>` : `<i class="fa-solid fa-play text-base pl-0.5"></i>`;
+            }
+
+            const vinylDisc = document.getElementById('player-vinyl-disc');
+            const eqAnim = document.getElementById('player-eq-anim');
+
+            if (vinylDisc) {
+                if (window.isPlaying) {
+                    vinylDisc.classList.remove('vinyl-paused');
+                    vinylDisc.classList.add('translate-x-3');
+                } else {
+                    vinylDisc.classList.add('vinyl-paused');
+                    vinylDisc.classList.remove('translate-x-3');
+                }
+            }
+
+            if (eqAnim) {
+                if (window.isPlaying) {
+                    eqAnim.classList.remove('hidden', 'eq-paused');
+                } else {
+                    eqAnim.classList.add('eq-paused');
+                }
+            }
+
+            const likeBtn = document.getElementById('player-like-btn');
+            if (likeBtn) {
+                likeBtn.innerHTML = window.likedTrackIds.has(track.id) ? 
+                    `<i class="fa-solid fa-heart text-[#1DB954] text-base"></i>` : 
+                    `<i class="fa-regular fa-heart text-base"></i>`;
+            }
+
+            if (window.currentActiveAlbum && window.albumsMap[window.currentActiveAlbum]) {
+                const album = window.albumsMap[window.currentActiveAlbum];
+                const tbody = document.getElementById('album-detail-tracks-body');
+                if (tbody) {
+                    tbody.innerHTML = album.tracks.map((t, idx) => {
+                        const isCurrent = window.allTracks[window.currentTrackIndex] && window.allTracks[window.currentTrackIndex].id === t.id;
+                        const isPlaying = isCurrent && window.isPlaying;
+                        return `
+                            <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10' : ''}" onclick="window.playTrackFromAlbum('${escapeHtml(window.currentActiveAlbum)}', ${idx})">
+                                <td class="track-num py-3.5 px-4 text-center font-mono text-xs ${isCurrent ? 'text-sp-green font-bold' : 'text-sp-subtext'}">
+                                    ${getTrackNumHtml(isCurrent, isPlaying, idx + 1)}
+                                </td>
+                                <td class="track-title py-3.5 px-4 font-bold text-xs ${isCurrent ? 'text-sp-green' : 'text-white'} transition">${escapeHtml(t.title)}</td>
+                                <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(t.artist)}</td>
+                                <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell">
+                                    <span class="bg-emerald-950 text-emerald-400 border border-emerald-800/40 px-2 py-0.5 rounded-full">🗄️ En Memoria</span>
+                                </td>
+                                <td class="py-3.5 px-4 text-center">
+                                    <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(window.currentActiveAlbum)}', ${idx})" class="play-action-btn w-8 h-8 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/40 hover:bg-sp-green hover:text-black flex items-center justify-center transition">
+                                        <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'} text-xs pl-0.5"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `;
+                    }).join('');
+                }
+            }
+        };
+
+        window.toggleLikeCurrent = function() {
+            if (window.currentTrackIndex === -1) return;
+            const track = window.allTracks[window.currentTrackIndex];
+            if (window.likedTrackIds.has(track.id)) {
+                window.likedTrackIds.delete(track.id);
+            } else {
+                window.likedTrackIds.add(track.id);
+            }
+            saveSetting('likedTrackIds', Array.from(window.likedTrackIds));
+            window.updatePlayerUI();
+        };
+
+        // ===== FUNCIONES DE RENDERIZADO =====
+        window.renderSidebarAlbums = function() {
+            const container = document.getElementById('sidebar-albums-list');
+            const albums = Object.values(window.albumsMap);
+
+            document.getElementById('sidebar-album-count').innerText = `${albums.length} álbumes`;
+
+            if (albums.length === 0) {
+                container.innerHTML = `<div class="p-4 text-center text-xs text-sp-subtext">No hay álbumes guardados</div>`;
+                return;
+            }
+
+            container.innerHTML = albums.map(alb => `
+                <button onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-sp-card text-left group transition">
+                    <img src="${alb.cover}" class="w-10 h-10 rounded-md object-cover border border-sp-border">
+                    <div class="truncate">
+                        <p class="text-xs font-bold text-white group-hover:text-sp-green transition truncate">${escapeHtml(alb.name)}</p>
+                        <p class="text-[10px] text-sp-subtext truncate">${alb.tracks.length} canciones</p>
+                    </div>
+                </button>
+            `).join('');
+        };
+
+        window.renderHomeAlbums = function() {
+            const container = document.getElementById('home-albums-grid');
+            const albums = Object.values(window.albumsMap).slice(0, 5);
+
+            document.getElementById('home-album-count').innerText = Object.keys(window.albumsMap).length;
+
+            if (albums.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-8 text-center text-xs text-sp-subtext">No hay álbumes en memoria. Haz clic en 'Cargar Carpeta Principal' para comenzar.</div>`;
+                return;
+            }
+
+            container.innerHTML = albums.map(alb => `
+                <div onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="album-card bg-sp-card p-3 rounded-xl hover:bg-sp-cardHover border border-sp-border transition cursor-pointer group relative shadow-lg">
+                    <div class="relative mb-2.5 overflow-hidden rounded-lg">
+                        <img src="${alb.cover}" class="w-full aspect-square object-cover rounded-lg group-hover:scale-105 transition duration-300">
+                        <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(alb.name)}', 0)" class="album-card-play absolute bottom-2 right-2 w-10 h-10 rounded-full bg-sp-green hover:bg-sp-greenHover text-black flex items-center justify-center shadow-xl">
+                            <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                        </button>
+                    </div>
+                    <h4 class="font-bold text-xs text-white truncate group-hover:text-sp-green transition">${escapeHtml(alb.name)}</h4>
+                    <p class="text-[11px] text-sp-subtext truncate mt-0.5">${alb.tracks.length} canciones</p>
+                </div>
+            `).join('');
+        };
+
+        window.renderAllAlbumsGrid = function() {
+            const container = document.getElementById('albums-grid');
+            const albums = Object.values(window.albumsMap);
+
+            if (albums.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-12 text-center text-xs text-sp-subtext">No hay carpetas o álbumes guardados en memoria local.</div>`;
+                return;
+            }
+
+            container.innerHTML = albums.map(alb => `
+                <div onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="album-card bg-sp-card p-3 rounded-xl hover:bg-sp-cardHover border border-sp-border transition cursor-pointer group relative shadow-lg">
+                    <div class="relative mb-2.5 overflow-hidden rounded-lg">
+                        <img src="${alb.cover}" class="w-full aspect-square object-cover rounded-lg group-hover:scale-105 transition duration-300">
+                        <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(alb.name)}', 0)" class="album-card-play absolute bottom-2 right-2 w-10 h-10 rounded-full bg-sp-green hover:bg-sp-greenHover text-black flex items-center justify-center shadow-xl">
+                            <i class="fa-solid fa-play text-xs pl-0.5"></i>
+                        </button>
+                    </div>
+                    <h4 class="font-bold text-xs text-white truncate group-hover:text-sp-green transition">${escapeHtml(alb.name)}</h4>
+                    <p class="text-[11px] text-sp-subtext truncate mt-0.5">${alb.tracks.length} canciones</p>
+                </div>
+            `).join('');
+        };
+
+        window.renderAllTracksTable = function() {
+            const tbody = document.getElementById('all-tracks-table-body');
+            document.getElementById('total-tracks-count').innerText = `${window.allTracks.length} canciones en memoria local`;
+
+            if (window.allTracks.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-xs text-sp-subtext">No hay canciones guardadas. Carga tu carpeta de música para comenzar.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = window.allTracks.map((track, idx) => {
+                const isCurrent = idx === window.currentTrackIndex;
+                const isPlaying = isCurrent && window.isPlaying;
+                return `
+                    <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10 text-white font-bold' : ''}" onclick="window.playTrack(${idx})">
+                        <td class="track-num py-3.5 px-4 text-center font-mono text-xs">
+                            ${getTrackNumHtml(isCurrent, isPlaying, idx + 1)}
+                        </td>
+                        <td class="py-3.5 px-4">
+                            <div class="flex items-center gap-3">
+                                <img src="${track.cover}" class="w-9 h-9 rounded-md object-cover border border-sp-border shrink-0">
+                                <div class="truncate">
+                                    <p class="track-title text-xs font-bold ${isCurrent ? 'text-sp-green' : 'text-white'} group-hover:text-sp-green transition">${escapeHtml(track.title)}</p>
+                                    <p class="text-[11px] text-sp-subtext">${escapeHtml(track.artist)}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.album)}</td>
+                        <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell">
+                            <span class="bg-emerald-950 text-emerald-400 border border-emerald-800/40 px-2 py-0.5 rounded-full">🗄️ En Memoria</span>
+                        </td>
+                        <td class="py-3.5 px-4 text-center">
+                            <button onclick="event.stopPropagation(); window.playTrack(${idx})" class="play-action-btn w-8 h-8 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/40 hover:bg-sp-green hover:text-black flex items-center justify-center transition">
+                                <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'} text-xs pl-0.5"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        };
+
+        // ===== OTRAS FUNCIONES =====
         window.handleFolderUpload = function(fileList) {
             if (!fileList || fileList.length === 0) return;
 
@@ -928,11 +1832,10 @@
                 const hasAudioExt = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
                 if (!isAudioType && !hasAudioExt) return;
 
-                const objectUrl = URL.createObjectURL(file);
                 const relPath = file.webkitRelativePath || file.name;
                 const pathParts = relPath.split('/');
 
-                let albumName = 'Mis Archivos MP3';
+                let albumName = 'Música';
                 if (pathParts.length > 2) {
                     albumName = pathParts[pathParts.length - 2];
                 } else if (pathParts.length === 2) {
@@ -941,7 +1844,7 @@
 
                 const fileNameClean = file.name.replace(/\.[^/.]+$/, "");
                 const nameParts = fileNameClean.split(' - ');
-                const title = nameParts.length > 1 ? nameParts[1].trim() : fileNameClean;
+                const title = nameParts.length > 1 ? nameParts.slice(1).join(' - ').trim() : fileNameClean;
                 const artist = nameParts.length > 1 ? nameParts[0].trim() : (pathParts.length > 2 ? pathParts[pathParts.length - 3] : 'Artista Local');
 
                 const albumCover = localCovers[albumName] || (window.albumsMap[albumName] ? window.albumsMap[albumName].cover : DEFAULT_COVERS[Object.keys(window.albumsMap).length % DEFAULT_COVERS.length]);
@@ -954,20 +1857,36 @@
                     };
                 }
 
+                // Crear URL inmediatamente y cachear
+                const url = URL.createObjectURL(file);
+
                 const trackObj = {
-                    id: Date.now() + Math.random(),
+                    id: Date.now() + Math.random() + Math.random(),
                     title: title,
                     artist: artist,
                     album: albumName,
                     duration: 'Local',
-                    url: objectUrl,
+                    url: url,
                     fileBlob: file,
-                    cover: albumCover
+                    cover: albumCover,
+                    filePath: relPath,
+                    fileSize: file.size,
+                    fileModified: file.lastModified
                 };
+
+                // Cachear URL
+                window.urlCache.set(trackObj.id, url);
 
                 window.albumsMap[albumName].tracks.push(trackObj);
                 window.allTracks.push(trackObj);
                 newTracks.push(trackObj);
+                
+                window.fileMetadata[relPath] = {
+                    path: relPath,
+                    size: file.size,
+                    lastModified: file.lastModified
+                };
+                
                 loadedCount++;
             });
 
@@ -976,6 +1895,7 @@
                 return;
             }
 
+            saveFileMetadata(window.fileMetadata);
             saveTracksAndAlbumsToDB(newTracks, window.albumsMap);
 
             window.renderSidebarAlbums();
@@ -1095,296 +2015,6 @@
             if (mainScroll) mainScroll.scrollTop = 0;
         };
 
-        window.playTrack = function(index) {
-            if (index < 0 || index >= window.allTracks.length) return;
-            initAudioPipeline();
-
-            if (audioCtx && audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-
-            window.currentTrackIndex = index;
-            const track = window.allTracks[window.currentTrackIndex];
-
-            audioElement.src = track.url;
-            audioElement.play().then(() => {
-                window.isPlaying = true;
-                window.updatePlayerUI();
-                window.renderAllTracksTable();
-            }).catch(err => {
-                console.warn("Playback:", err);
-                window.isPlaying = false;
-                window.updatePlayerUI();
-            });
-        };
-
-        window.togglePlay = function() {
-            if (window.currentTrackIndex === -1 && window.allTracks.length > 0) {
-                window.playTrack(0);
-                return;
-            }
-            if (window.currentTrackIndex === -1) return;
-
-            initAudioPipeline();
-            if (audioCtx && audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-
-            if (window.isPlaying) {
-                audioElement.pause();
-                window.isPlaying = false;
-            } else {
-                audioElement.play().then(() => {
-                    window.isPlaying = true;
-                }).catch(() => {
-                    window.isPlaying = false;
-                });
-            }
-            window.updatePlayerUI();
-        };
-
-        window.prevTrack = function() {
-            if (window.allTracks.length === 0) return;
-            let newIndex = window.currentTrackIndex - 1;
-            if (newIndex < 0) newIndex = window.allTracks.length - 1;
-            window.playTrack(newIndex);
-        };
-
-        window.nextTrack = function() {
-            if (window.allTracks.length === 0) return;
-            let newIndex;
-            if (window.isShuffle) {
-                newIndex = Math.floor(Math.random() * window.allTracks.length);
-            } else {
-                newIndex = (window.currentTrackIndex + 1) % window.allTracks.length;
-            }
-            window.playTrack(newIndex);
-        };
-
-        window.toggleShuffle = function() {
-            window.isShuffle = !window.isShuffle;
-            const btn = document.getElementById('btn-shuffle');
-            if (btn) btn.classList.toggle('text-sp-green', window.isShuffle);
-        };
-
-        window.toggleRepeat = function() {
-            window.isRepeat = !window.isRepeat;
-            const btn = document.getElementById('btn-repeat');
-            if (btn) btn.classList.toggle('text-sp-green', window.isRepeat);
-        };
-
-        window.seekTo = function(percent) {
-            if (audioElement && audioElement.duration) {
-                audioElement.currentTime = (percent / 100) * audioElement.duration;
-            }
-        };
-
-        window.setVolume = function(val) {
-            if (audioElement) {
-                audioElement.volume = parseFloat(val);
-            }
-        };
-
-        window.updatePlayerUI = function() {
-            const track = window.allTracks[window.currentTrackIndex];
-            if (!track) return;
-
-            document.getElementById('player-cover').src = track.cover;
-            document.getElementById('player-title').innerText = track.title;
-            document.getElementById('player-artist').innerText = `${track.artist} • ${track.album}`;
-
-            const visCover = document.getElementById('vis-cover');
-            const visTitle = document.getElementById('vis-title');
-            const visArtist = document.getElementById('vis-artist');
-            if (visCover) visCover.src = track.cover;
-            if (visTitle) visTitle.innerText = track.title;
-            if (visArtist) visArtist.innerText = `${track.artist} • ${track.album}`;
-
-            const btnPlayPause = document.getElementById('btn-play-pause');
-            if (btnPlayPause) {
-                btnPlayPause.innerHTML = window.isPlaying ? `<i class="fa-solid fa-pause text-base"></i>` : `<i class="fa-solid fa-play text-base pl-0.5"></i>`;
-            }
-
-            const vinylDisc = document.getElementById('player-vinyl-disc');
-            const eqAnim = document.getElementById('player-eq-anim');
-
-            if (vinylDisc) {
-                if (window.isPlaying) {
-                    vinylDisc.classList.remove('vinyl-paused');
-                    vinylDisc.classList.add('translate-x-3');
-                } else {
-                    vinylDisc.classList.add('vinyl-paused');
-                    vinylDisc.classList.remove('translate-x-3');
-                }
-            }
-
-            if (eqAnim) {
-                if (window.isPlaying) {
-                    eqAnim.classList.remove('hidden', 'eq-paused');
-                } else {
-                    eqAnim.classList.add('eq-paused');
-                }
-            }
-
-            const likeBtn = document.getElementById('player-like-btn');
-            if (likeBtn) {
-                likeBtn.innerHTML = window.likedTrackIds.has(track.id) ? 
-                    `<i class="fa-solid fa-heart text-[#1DB954] text-base"></i>` : 
-                    `<i class="fa-regular fa-heart text-base"></i>`;
-            }
-
-            window.renderAllTracksTable();
-            if (window.currentActiveAlbum && window.albumsMap[window.currentActiveAlbum]) {
-                const album = window.albumsMap[window.currentActiveAlbum];
-                const tbody = document.getElementById('album-detail-tracks-body');
-                if (tbody) {
-                    tbody.innerHTML = album.tracks.map((t, idx) => {
-                        const isCurrent = window.allTracks[window.currentTrackIndex] && window.allTracks[window.currentTrackIndex].id === t.id;
-                        const isPlaying = isCurrent && window.isPlaying;
-                        return `
-                            <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10' : ''}" onclick="window.playTrackFromAlbum('${escapeHtml(window.currentActiveAlbum)}', ${idx})">
-                                <td class="track-num py-3.5 px-4 text-center font-mono text-xs ${isCurrent ? 'text-sp-green font-bold' : 'text-sp-subtext'}">
-                                    ${getTrackNumHtml(isCurrent, isPlaying, idx + 1)}
-                                </td>
-                                <td class="track-title py-3.5 px-4 font-bold text-xs ${isCurrent ? 'text-sp-green' : 'text-white'} transition">${escapeHtml(t.title)}</td>
-                                <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(t.artist)}</td>
-                                <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell">
-                                    <span class="bg-emerald-950 text-emerald-400 border border-emerald-800/40 px-2 py-0.5 rounded-full">🗄️ En Memoria</span>
-                                </td>
-                                <td class="py-3.5 px-4 text-center">
-                                    <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(window.currentActiveAlbum)}', ${idx})" class="play-action-btn w-8 h-8 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/40 hover:bg-sp-green hover:text-black flex items-center justify-center transition">
-                                        <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'} text-xs pl-0.5"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        `;
-                    }).join('');
-                }
-            }
-        };
-
-        window.toggleLikeCurrent = function() {
-            if (window.currentTrackIndex === -1) return;
-            const track = window.allTracks[window.currentTrackIndex];
-            if (window.likedTrackIds.has(track.id)) {
-                window.likedTrackIds.delete(track.id);
-            } else {
-                window.likedTrackIds.add(track.id);
-            }
-            saveSetting('likedTrackIds', Array.from(window.likedTrackIds));
-            window.updatePlayerUI();
-        };
-
-        window.renderSidebarAlbums = function() {
-            const container = document.getElementById('sidebar-albums-list');
-            const albums = Object.values(window.albumsMap);
-
-            document.getElementById('sidebar-album-count').innerText = `${albums.length} álbumes`;
-
-            if (albums.length === 0) {
-                container.innerHTML = `<div class="p-4 text-center text-xs text-sp-subtext">No hay álbumes guardados</div>`;
-                return;
-            }
-
-            container.innerHTML = albums.map(alb => `
-                <button onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-sp-card text-left group transition">
-                    <img src="${alb.cover}" class="w-10 h-10 rounded-md object-cover border border-sp-border">
-                    <div class="truncate">
-                        <p class="text-xs font-bold text-white group-hover:text-sp-green transition truncate">${escapeHtml(alb.name)}</p>
-                        <p class="text-[10px] text-sp-subtext truncate">${alb.tracks.length} canciones</p>
-                    </div>
-                </button>
-            `).join('');
-        };
-
-        window.renderHomeAlbums = function() {
-            const container = document.getElementById('home-albums-grid');
-            const albums = Object.values(window.albumsMap).slice(0, 5);
-
-            document.getElementById('home-album-count').innerText = Object.keys(window.albumsMap).length;
-
-            if (albums.length === 0) {
-                container.innerHTML = `<div class="col-span-full py-8 text-center text-xs text-sp-subtext">No hay álbumes en memoria. Haz clic en 'Cargar Carpeta Principal' para comenzar.</div>`;
-                return;
-            }
-
-            container.innerHTML = albums.map(alb => `
-                <div onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="album-card bg-sp-card p-3 rounded-xl hover:bg-sp-cardHover border border-sp-border transition cursor-pointer group relative shadow-lg">
-                    <div class="relative mb-2.5 overflow-hidden rounded-lg">
-                        <img src="${alb.cover}" class="w-full aspect-square object-cover rounded-lg group-hover:scale-105 transition duration-300">
-                        <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(alb.name)}', 0)" class="album-card-play absolute bottom-2 right-2 w-10 h-10 rounded-full bg-sp-green hover:bg-sp-greenHover text-black flex items-center justify-center shadow-xl">
-                            <i class="fa-solid fa-play text-xs pl-0.5"></i>
-                        </button>
-                    </div>
-                    <h4 class="font-bold text-xs text-white truncate group-hover:text-sp-green transition">${escapeHtml(alb.name)}</h4>
-                    <p class="text-[11px] text-sp-subtext truncate mt-0.5">${alb.tracks.length} canciones</p>
-                </div>
-            `).join('');
-        };
-
-        window.renderAllAlbumsGrid = function() {
-            const container = document.getElementById('albums-grid');
-            const albums = Object.values(window.albumsMap);
-
-            if (albums.length === 0) {
-                container.innerHTML = `<div class="col-span-full py-12 text-center text-xs text-sp-subtext">No hay carpetas o álbumes guardados en memoria local.</div>`;
-                return;
-            }
-
-            container.innerHTML = albums.map(alb => `
-                <div onclick="window.openAlbumDetail('${escapeHtml(alb.name)}')" class="album-card bg-sp-card p-3 rounded-xl hover:bg-sp-cardHover border border-sp-border transition cursor-pointer group relative shadow-lg">
-                    <div class="relative mb-2.5 overflow-hidden rounded-lg">
-                        <img src="${alb.cover}" class="w-full aspect-square object-cover rounded-lg group-hover:scale-105 transition duration-300">
-                        <button onclick="event.stopPropagation(); window.playTrackFromAlbum('${escapeHtml(alb.name)}', 0)" class="album-card-play absolute bottom-2 right-2 w-10 h-10 rounded-full bg-sp-green hover:bg-sp-greenHover text-black flex items-center justify-center shadow-xl">
-                            <i class="fa-solid fa-play text-xs pl-0.5"></i>
-                        </button>
-                    </div>
-                    <h4 class="font-bold text-xs text-white truncate group-hover:text-sp-green transition">${escapeHtml(alb.name)}</h4>
-                    <p class="text-[11px] text-sp-subtext truncate mt-0.5">${alb.tracks.length} canciones</p>
-                </div>
-            `).join('');
-        };
-
-        window.renderAllTracksTable = function() {
-            const tbody = document.getElementById('all-tracks-table-body');
-            document.getElementById('total-tracks-count').innerText = `${window.allTracks.length} canciones en memoria local`;
-
-            if (window.allTracks.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-xs text-sp-subtext">No hay canciones guardadas. Carga tu carpeta de música para comenzar.</td></tr>`;
-                return;
-            }
-
-            tbody.innerHTML = window.allTracks.map((track, idx) => {
-                const isCurrent = idx === window.currentTrackIndex;
-                const isPlaying = isCurrent && window.isPlaying;
-                return `
-                    <tr class="track-row hover:bg-sp-cardHover/60 transition group cursor-pointer ${isCurrent ? 'bg-sp-green/10 text-white font-bold' : ''}" onclick="window.playTrack(${idx})">
-                        <td class="track-num py-3.5 px-4 text-center font-mono text-xs">
-                            ${getTrackNumHtml(isCurrent, isPlaying, idx + 1)}
-                        </td>
-                        <td class="py-3.5 px-4">
-                            <div class="flex items-center gap-3">
-                                <img src="${track.cover}" class="w-9 h-9 rounded-md object-cover border border-sp-border shrink-0">
-                                <div class="truncate">
-                                    <p class="track-title text-xs font-bold ${isCurrent ? 'text-sp-green' : 'text-white'} group-hover:text-sp-green transition">${escapeHtml(track.title)}</p>
-                                    <p class="text-[11px] text-sp-subtext">${escapeHtml(track.artist)}</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="py-3.5 px-4 text-xs text-sp-subtext hidden sm:table-cell">${escapeHtml(track.album)}</td>
-                        <td class="py-3.5 px-4 text-center font-mono text-[10px] text-sp-green font-semibold hidden md:table-cell">
-                            <span class="bg-emerald-950 text-emerald-400 border border-emerald-800/40 px-2 py-0.5 rounded-full">🗄️ En Memoria</span>
-                        </td>
-                        <td class="py-3.5 px-4 text-center">
-                            <button onclick="event.stopPropagation(); window.playTrack(${idx})" class="play-action-btn w-8 h-8 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/40 hover:bg-sp-green hover:text-black flex items-center justify-center transition">
-                                <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'} text-xs pl-0.5"></i>
-                            </button>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
-        };
-
         window.handleGlobalSearch = function(query) {
             const term = (query || '').toLowerCase().trim();
             if (!term) {
@@ -1494,6 +2124,10 @@
             const bufferLength = analyserNode ? analyserNode.frequencyBinCount : 32;
             const freqData = new Uint8Array(bufferLength);
             const timeData = new Uint8Array(bufferLength);
+            const gradient = ctx.createLinearGradient(0, canvas.height, 0, 0);
+            gradient.addColorStop(0, '#1DB954');
+            gradient.addColorStop(0.7, '#1ed760');
+            gradient.addColorStop(1, '#6ee7b7');
 
             function renderFrame() {
                 visualizerAnimationId = requestAnimationFrame(renderFrame);
@@ -1514,11 +2148,6 @@
 
                     for (let i = 0; i < bufferLength; i++) {
                         const barHeight = (freqData[i] / 255) * (canvas.height * 0.9);
-
-                        const gradient = ctx.createLinearGradient(0, canvas.height, 0, 0);
-                        gradient.addColorStop(0, '#1DB954');
-                        gradient.addColorStop(0.7, '#1ed760');
-                        gradient.addColorStop(1, '#6ee7b7');
 
                         ctx.fillStyle = gradient;
                         ctx.beginPath();
@@ -1615,33 +2244,12 @@
             return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
         }
 
+        // ===== INICIALIZACIÓN =====
         window.onload = async function() {
             window.switchTab('home');
             await loadLibraryFromDB();
 
-            const audioEl = document.getElementById('audio-element');
-            if (audioEl) {
-                audioEl.addEventListener('timeupdate', () => {
-                    if (audioEl.duration) {
-                        document.getElementById('current-time').innerText = formatTime(audioEl.currentTime);
-                        document.getElementById('duration-time').innerText = formatTime(audioEl.duration);
-                        const percent = (audioEl.currentTime / audioEl.duration) * 100;
-                        document.getElementById('seek-bar').value = percent;
-                    }
-                });
-
-                audioEl.addEventListener('ended', () => {
-                    if (window.isRepeat) window.playTrack(window.currentTrackIndex);
-                    else window.nextTrack();
-                });
-
-                audioEl.addEventListener('error', (e) => {
-                    console.warn("Error audio:", e);
-                    window.showNotification("Error de Audio", "No se pudo reproducir este archivo.");
-                    window.isPlaying = false;
-                    window.updatePlayerUI();
-                });
-            }
+            initAudioPipeline();
         };
     </script>
 </body>
