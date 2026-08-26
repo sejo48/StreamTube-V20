@@ -182,8 +182,6 @@
             const [loading, setLoading] = useState(true);
             const [expandedSeason, setExpandedSeason] = useState(0);
             const [showQrModal, setShowQrModal] = useState(false);
-            const [selectedMovieFile, setSelectedMovieFile] = useState('peliculas2.json');
-            const [showExportModal, setShowExportModal] = useState(false);
 
             const [tvRefreshTrigger, setTvRefreshTrigger] = useState(0);
             const [tvGroupFilter, setTvGroupFilter] = useState('ALL');
@@ -272,9 +270,8 @@
                                     title: m.titulo || m.title || m.name, 
                                     description: m.descripcion || m.sinopsis || m.plot, 
                                     image: m.imagen || m.poster || m.image, 
-                                    url: convertUrl(m.urlDrive || m.url),
-                                    rawUrl: m.urlDrive || m.url,
-                                    sourceFile: fileIdx === 0 ? 'peliculas.json' : 'peliculas2.json'
+                                    url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
+                                    rawUrl: m.urlDrive || m.url || m.urlOkRu
                                 }));
                                 moviesList = [...moviesList, ...mapped];
                             }
@@ -495,26 +492,6 @@
                         tvIframeRef.current.webkitRequestFullscreen();
                     }
                 }
-            };
-
-            const exportMoviesJson = () => {
-                const targetMovies = content.movies.filter(m => (m.sourceFile || 'peliculas.json') === selectedMovieFile);
-                const cleanMovies = targetMovies.map(({ id, type, title, description, image, rawUrl, sourceFile, ...rest }) => ({
-                    titulo: rest.titulo || title,
-                    descripcion: rest.descripcion || description,
-                    imagen: rest.imagen || image,
-                    urlDrive: rest.urlDrive || rawUrl || rest.url,
-                    urlOkRu: rest.urlOkRu || "",
-                    codigo: rest.codigo || null
-                }));
-                const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(cleanMovies, null, 2));
-                const downloadAnchor = document.createElement('a');
-                downloadAnchor.setAttribute("href", dataStr);
-                downloadAnchor.setAttribute("download", selectedMovieFile);
-                document.body.appendChild(downloadAnchor);
-                downloadAnchor.click();
-                downloadAnchor.remove();
-                setShowExportModal(false);
             };
 
             const getDisplayContent = () => { 
@@ -817,11 +794,6 @@
                                         <Icon className="text-gray-400 w-4 h-4 mr-2.5" name="search"/>
                                         <input type="text" placeholder={`Buscar en ${activeTab === 'home' ? 'todo' : activeTab}...`} className="bg-transparent w-full outline-none text-xs sm:text-sm placeholder-gray-500 text-white" value={search} onChange={(e) => setSearch(e.target.value)}/>
                                     </div>
-                                    {activeTab === 'movies' && (
-                                        <button onClick={() => setShowExportModal(true)} className="ml-3 bg-[#E50914] hover:bg-red-700 text-white px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all shadow flex items-center gap-1.5 flex-shrink-0">
-                                            <span>Exportar JSON</span>
-                                        </button>
-                                    )}
                                 </div>
                                 {activeTab === 'home' && !search && (
                                     <>
@@ -891,32 +863,6 @@
                                 </div>
                                 <Icon className="text-gray-400 hidden lg:block" name="volume" size={18}/>
                                 <input type="range" min="0" max="1" step="0.01" value={radioVolume} onChange={(e) => setRadioVolume(parseFloat(e.target.value))} className="w-24 accent-[#E50914] hidden lg:block"/>
-                            </div>
-                        </div>
-                    )}
-
-                    {showExportModal && (
-                        <div className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
-                            <div className="bg-[#171c26] border border-white/10 rounded-2xl p-6 max-w-sm w-full text-center relative shadow-2xl space-y-4">
-                                <button onClick={() => setShowExportModal(false)} className="absolute top-3 right-3 text-gray-400 hover:text-white p-1 rounded-full bg-black/40">
-                                    <Icon name="x" size={18}/>
-                                </button>
-                                
-                                <div className="p-3 bg-[#E50914]/10 rounded-2xl border border-[#E50914]/30 inline-block">
-                                    <span className="text-xs font-black uppercase text-[#E50914] tracking-widest">Exportar Películas</span>
-                                </div>
-
-                                <div className="text-left space-y-2">
-                                    <label className="text-xs text-gray-300 font-bold block">Selecciona el archivo de destino:</label>
-                                    <select value={selectedMovieFile} onChange={(e) => setSelectedMovieFile(e.target.value)} className="w-full bg-[#0a0d13] border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white outline-none focus:border-[#E50914]">
-                                        <option value="peliculas.json">peliculas.json (Archivo principal)</option>
-                                        <option value="peliculas2.json">peliculas2.json (Nuevo archivo / Segundo bloque)</option>
-                                    </select>
-                                </div>
-
-                                <button onClick={exportMoviesJson} className="w-full bg-[#E50914] text-white py-2.5 rounded-xl font-bold text-xs hover:bg-red-700 transition-colors shadow-lg">
-                                    Descargar JSON
-                                </button>
                             </div>
                         </div>
                     )}
