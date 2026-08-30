@@ -195,7 +195,8 @@
             const [radioSearch, setRadioSearch] = useState('');
             const audioRef = useRef(null);
             const hlsRef = useRef(null);
-            const tvIframeRef = useRef(null);
+            const tvContainerRef = useRef(null);
+            const movieContainerRef = useRef(null);
 
             const navTabs = [
                 { id: 'home', icon: 'search', label: 'Inicio' }, 
@@ -208,6 +209,32 @@
                 { id: 'spotify', icon: 'music', label: 'Música', isExternal: true, url: './spotify.html' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
+
+            // AUTO ROTATION / ORIENTATION FULLSCREEN DETECTOR
+            useEffect(() => {
+                const handleOrientationChange = () => {
+                    const isLandscape = window.innerWidth > window.innerHeight;
+                    const isMediaActive = (activeTab === 'tv' && selectedItem?.type === 'tv') || (selectedItem && selectedItem.type !== 'tv');
+                    
+                    if (isLandscape && isMediaActive) {
+                        const targetElem = activeTab === 'tv' ? tvContainerRef.current : movieContainerRef.current;
+                        if (targetElem && !document.fullscreenElement) {
+                            if (targetElem.requestFullscreen) {
+                                targetElem.requestFullscreen().catch(() => {});
+                            } else if (targetElem.webkitRequestFullscreen) {
+                                targetElem.webkitRequestFullscreen();
+                            }
+                        }
+                    }
+                };
+
+                window.addEventListener('resize', handleOrientationChange);
+                window.addEventListener('orientationchange', handleOrientationChange);
+                return () => {
+                    window.removeEventListener('resize', handleOrientationChange);
+                    window.removeEventListener('orientationchange', handleOrientationChange);
+                };
+            }, [activeTab, selectedItem]);
 
             useEffect(() => {
                 window.history.replaceState({ appState: 'main', activeTab }, '');
@@ -343,8 +370,8 @@
 
             useEffect(() => {
                 let interval;
-                if (activeTab === 'tv' && selectedItem?.type === 'tv' && tvIframeRef.current) {
-                    interval = setInterval(() => { setTvRefreshTrigger(prev => prev + 1); }, 480000);
+                if (activeTab === 'tv' && selectedItem?.type === 'tv' && tvContainerRef.current) {
+                    interval = setInterval(() => { setTvRefreshTrigger(prev => prev + 1); }, 1800000); // 30 min refresh cycle to prevent stream timeouts
                 }
                 return () => clearInterval(interval);
             }, [activeTab, selectedItem]);
@@ -483,12 +510,38 @@
                 safeStorage.setItem('magis_radio_favs', JSON.stringify(newFavs));
             };
 
-            const toggleFullscreenPlayer = () => {
-                if (tvIframeRef.current) {
-                    if (tvIframeRef.current.requestFullscreen) {
-                        tvIframeRef.current.requestFullscreen();
-                    } else if (tvIframeRef.current.webkitRequestFullscreen) {
-                        tvIframeRef.current.webkitRequestFullscreen();
+            const toggleTvFullscreen = () => {
+                if (tvContainerRef.current) {
+                    if (!document.fullscreenElement) {
+                        if (tvContainerRef.current.requestFullscreen) {
+                            tvContainerRef.current.requestFullscreen().catch(() => {});
+                        } else if (tvContainerRef.current.webkitRequestFullscreen) {
+                            tvContainerRef.current.webkitRequestFullscreen();
+                        }
+                    } else {
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen().catch(() => {});
+                        } else if (document.webkitExitFullscreen) {
+                            document.webkitExitFullscreen();
+                        }
+                    }
+                }
+            };
+
+            const toggleMovieFullscreen = () => {
+                if (movieContainerRef.current) {
+                    if (!document.fullscreenElement) {
+                        if (movieContainerRef.current.requestFullscreen) {
+                            movieContainerRef.current.requestFullscreen().catch(() => {});
+                        } else if (movieContainerRef.current.webkitRequestFullscreen) {
+                            movieContainerRef.current.webkitRequestFullscreen();
+                        }
+                    } else {
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen().catch(() => {});
+                        } else if (document.webkitExitFullscreen) {
+                            document.webkitExitFullscreen();
+                        }
                     }
                 }
             };
@@ -674,14 +727,23 @@
                                         })}
                                     </div>
                                 </div>
-                                <div className="flex-1 bg-[#05070a] relative flex flex-col justify-between overflow-hidden order-1 lg:order-2">
+                                <div className="flex-1 bg-[#05070a] relative flex flex-col justify-between overflow-hidden order-1 lg:order-2" ref={tvContainerRef}>
                                     <div className="absolute top-3 left-3 z-20 pointer-events-none flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 shadow-lg">
                                         <div className="w-2 h-2 rounded-full bg-[#E50914] animate-pulse"></div>
                                         <span className="text-xs font-black tracking-tight text-white">MAGIS<span className="text-[#E50914]">TV</span></span>
                                     </div>
-                                    <div className="w-full aspect-video lg:aspect-auto lg:flex-1 relative flex items-center justify-center bg-black overflow-hidden" ref={tvIframeRef}>
+                                    <div className="w-full aspect-video lg:aspect-auto lg:flex-1 relative flex items-center justify-center bg-black overflow-hidden">
                                         {selectedItem && selectedItem.type === 'tv' ? (
-                                            <iframe key={tvRefreshTrigger} src={selectedItem.url} className="w-full h-full border-0 absolute inset-0" allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
+                                            <div className="w-full h-full relative flex items-center justify-center overflow-hidden bg-black">
+                                                <iframe 
+                                                    key={tvRefreshTrigger} 
+                                                    src={selectedItem.url} 
+                                                    className="w-full h-full border-0 absolute inset-0 object-fill" 
+                                                    style={{ width: '100%', height: '100%', pointerEvents: 'auto' }}
+                                                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture" 
+                                                    allowFullScreen
+                                                ></iframe>
+                                            </div>
                                         ) : (
                                             <div className="flex flex-col items-center justify-center p-6 text-center max-w-sm space-y-3 animate-fade-in">
                                                 <div className="w-14 h-14 rounded-2xl bg-[#161a24] border border-white/10 flex items-center justify-center text-[#E50914] shadow-2xl"><Icon name="tv" size={32}/></div>
@@ -710,7 +772,7 @@
                                             <div className="flex items-center gap-2">
                                                 <button onClick={() => setTvRefreshTrigger(prev => prev + 1)} className="p-2 rounded-xl bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 transition-colors" title="Refrescar Señal"><Icon name="refresh" size={16}/></button>
                                                 <button onClick={() => toggleFavorite(selectedItem)} className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white transition-colors" title="Favorito"><Icon name="heart" size={16} className={favorites.some(f => f.id === selectedItem.id) ? "text-[#E50914] fill-[#E50914]" : "text-gray-300"}/></button>
-                                                <button onClick={toggleFullscreenPlayer} className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white transition-colors" title="Pantalla Completa"><Icon name="clapperboard" size={16}/></button>
+                                                <button onClick={toggleTvFullscreen} className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-white transition-colors" title="Pantalla Completa"><Icon name="clapperboard" size={16}/></button>
                                                 <button onClick={() => { setSelectedItem(null); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="p-2 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-400 transition-colors" title="Detener Reproducción"><Icon name="x" size={16}/></button>
                                             </div>
                                         )}
@@ -719,16 +781,21 @@
                             </div>
                         ) : selectedItem ? (
                             <div className="animate-fade-in flex flex-col min-h-screen">
-                                <div className="w-full bg-black relative aspect-video md:h-[65vh] flex items-center justify-center overflow-hidden">
+                                <div className="w-full bg-black relative aspect-video md:h-[65vh] flex items-center justify-center overflow-hidden" ref={movieContainerRef}>
                                     <div className="absolute top-3 left-3 z-30 flex gap-2">
                                         <button onClick={() => {setSelectedItem(null); setIsLocked(false); window.history.pushState({ appState: 'main', activeTab }, '');}} className="bg-black/70 hover:bg-[#E50914] text-white px-3.5 py-1.5 rounded-full backdrop-blur-md flex items-center gap-1.5 text-xs transition-colors border border-white/15 shadow-lg">
                                             <Icon name="arrowLeft" size={16}/> <span>Volver</span>
                                         </button>
                                     </div>
+                                    <div className="absolute top-3 right-3 z-30 flex gap-2">
+                                        <button onClick={toggleMovieFullscreen} className="bg-black/70 hover:bg-[#E50914] text-white p-2 rounded-full backdrop-blur-md flex items-center justify-center text-xs transition-colors border border-white/15 shadow-lg" title="Pantalla Completa">
+                                            <Icon name="clapperboard" size={18}/>
+                                        </button>
+                                    </div>
                                     {isLocked ? (
                                         <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false); window.history.pushState({ appState: 'main', activeTab }, '');}} />
                                     ) : (
-                                        <iframe src={convertUrl((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedEpisode ? selectedEpisode.url : selectedItem.url)} className="w-full h-full border-0 absolute inset-0" allow="autoplay; encrypted-media; fullscreen" allowFullScreen></iframe>
+                                        <iframe src={convertUrl((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedEpisode ? selectedEpisode.url : selectedItem.url)} className="w-full h-full border-0 absolute inset-0 object-fill" style={{width: '100%', height: '100%'}} allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen></iframe>
                                     )}
                                 </div>
                                 {!isLocked && (
