@@ -251,6 +251,11 @@
             const [streamError, setStreamError] = useState(false);
             const [isLoadingRadio, setIsLoadingRadio] = useState(false);
             const [radioSearch, setRadioSearch] = useState('');
+
+            // PWA Install Prompt State
+            const [deferredPrompt, setDeferredPrompt] = useState(null);
+            const [showInstallBtn, setShowInstallBtn] = useState(false);
+
             const audioRef = useRef(null);
             const hlsRef = useRef(null);
             const tvContainerRef = useRef(null);
@@ -268,6 +273,29 @@
                 { id: 'spotify', icon: 'music', label: 'Música', isExternal: true, url: './spotify.html' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
+
+            useEffect(() => {
+                const handleBeforeInstallPrompt = (e) => {
+                    e.preventDefault();
+                    setDeferredPrompt(e);
+                    setShowInstallBtn(true);
+                };
+                window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+                return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+            }, []);
+
+            const handleInstallApp = async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        setDeferredPrompt(null);
+                        setShowInstallBtn(false);
+                    }
+                } else {
+                    alert("Para instalar en tu dispositivo:\n• En Android/PC: Toca el menú de tu navegador (⋮) y selecciona 'Instalar aplicación' o 'Agregar a la pantalla principal'.\n• En iPhone/iPad (Safari): Toca el botón Compartir (⎋) y selecciona 'Aceptar en inicio'.");
+                }
+            };
 
             useEffect(() => {
                 const handleOrientationChange = () => {
@@ -695,6 +723,11 @@
                         </div>
 
                         <div className="flex items-center gap-3">
+                            <button onClick={handleInstallApp} className="px-3 py-2 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/35 text-indigo-300 border border-indigo-500/40 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
+                                <Icon name="download" size={14}/>
+                                <span className="hidden sm:inline">Instalar App</span>
+                            </button>
+
                             <div className="relative hidden sm:block w-44 lg:w-60">
                                 <input 
                                     type="text" 
@@ -712,7 +745,6 @@
                                 <span className="text-xs font-bold hidden md:inline">Compartir</span>
                             </button>
 
-                            {/* Profile Logo Avatar - Round Vortex Play Logo */}
                             <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-600 to-indigo-800 p-0.5 shadow-[0_0_15px_rgba(99,102,241,0.5)] flex items-center justify-center border border-indigo-400/30 cursor-pointer hover:scale-105 transition-transform" title="Perfil de Usuario: Jorge Arturo">
                                 <div className="w-full h-full rounded-full bg-[#070b19] flex items-center justify-center overflow-hidden">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-6 h-6">
@@ -1404,7 +1436,8 @@
                 qr: <g><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="3" height="3"></rect><rect x="18" y="18" width="3" height="3"></rect><rect x="14" y="18" width="3" height="3"></rect><rect x="18" y="14" width="3" height="3"></rect></g>,
                 chat: <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>,
                 refresh: <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"></path>,
-                star: <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                star: <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>,
+                download: <g><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></g>
             };
             return (
                 <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
