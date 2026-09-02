@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BoxPlay - Ultimate Streaming & Anime Hub</title>
     
-    <!-- Favicon / Desktop Shortcut Icon (Embedded Round Vector Logo) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236366f1'/%3E%3Cstop offset='100%25' stop-color='%234338ca'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='50' fill='url(%23grad)'/%3E%3Cpolygon points='40,30 70,50 40,70' fill='%23ffffff'/%3E%3C/svg%3E">
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%236366f1'/%3E%3Cpolygon points='40,30 70,50 40,70' fill='%23ffffff'/%3E%3C/svg%3E">
 
@@ -158,9 +157,11 @@
         const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
 
         const DEFAULT_RADIO_STATIONS = [
-            { id: 'cr-teletica', title: 'Teletica Radio: 91.5 FM', group: 'Variedad', image: 'https://static.mytuner.mobi/media/tvos_radios/164/radio-hit-1047-fm.1180f4a3.jpg', url: 'https://icecasthd.teletica.com/teleticaradio' },
+            { id: 'cr-teletica', title: 'Teletica Radio: 91.5 FM', group: 'Variedad', image: 'https://placehold.co/300x300/0c1021/ffffff?text=Teletica+91.5', url: 'https://icecasthd.teletica.com/teleticaradio' },
             { id: 'cr-besame', title: 'Bésame Costa Rica', group: 'Variedad', image: 'https://placehold.co/300x300/e50914/ffffff?text=Besame', url: 'https://icecasthd.teletica.com/besame' },
             { id: 'cr-columbia', title: 'Columbia Estéreo', group: 'Variedad', image: 'https://static.mytuner.mobi/media/tvos_radios/415/radio-sinfonola.79d5c3e6.png', url: 'https://icecasthd.teletica.com/columbia' },
+            { id: 'cr-los40', title: 'Los 40 104.3 FM', group: 'Variedad', image: 'https://placehold.co/300x300/ffcc00/000000?text=Los40', url: 'https://icecasthd.teletica.com/los40' },
+            { id: 'cr-bestfm', title: 'Best FM', group: 'Variedad', image: 'https://placehold.co/300x300/10b981/ffffff?text=Best+FM', url: 'https://live.turadio.stream:7004/stream?nocache=596&type=http' },
             { id: 'cr-sinfonola', title: 'Radio Sinfonola 90.3 FM', group: 'Romántica / Clásicos', image: 'https://static.mytuner.mobi/media/tvos_radios/415/radio-sinfonola.79d5c3e6.png', url: 'https://live.turadio.stream:7006/;' },
             { id: 'cr-hit', title: 'Hit 104.7 FM', group: 'Juvenil / Pop', image: 'https://static.mytuner.mobi/media/tvos_radios/164/radio-hit-1047-fm.1180f4a3.jpg', url: 'https://live.turadio.stream:7004/stream?nocache=596&type=http' },
             { id: 'cr-crc', title: 'CRC 94.7 FM', group: 'Alternativo / Rock', image: 'https://static.mytuner.mobi/media/tvos_radios/nAwNLxJbnm.png', url: 'https://23263.live.streamtheworld.com/CRC_947AAC_SC' },
@@ -168,7 +169,6 @@
             { id: 'cr-monumental', title: 'Radio Monumental 93.5 FM', group: 'Noticias / Deportes', image: 'https://static.mytuner.mobi/media/tvos_radios/574/radio-monumental.7303764d.png', url: 'https://d26gdpbozqq700.cloudfront.net/medialist_14854753276708185244_hls.m3u8' },
             { id: 'cr-mejor', title: 'La Mejor 99.1 FM', group: 'Regional / Latina', image: 'https://static.mytuner.mobi/media/tvos_radios/575/la-mejor-991.95c72890.png', url: 'https://d3svz5xnvdysyz.cloudfront.net/medialist_14854753276708185244_hls.m3u8' },
             { id: 'cr-r2', title: 'Radio Dos 99.5 FM', group: 'Clásicos / Rock', image: 'https://placehold.co/300x300/0033a0/ffffff?text=R2', url: 'https://icecasthd.teletica.com/radiodos' },
-            { id: 'cr-los40', title: 'Los 40 Costa Rica 104.3 FM', group: 'Éxitos / Urbano', image: 'https://placehold.co/300x300/ffcc00/000000?text=Los40', url: 'https://icecasthd.teletica.com/los40' },
             { id: 'cr-disney', title: 'Radio Disney 101.1 FM', group: 'Pop / Éxitos', image: 'https://static.mytuner.mobi/media/tvos_radios/652/radio-disney-costa-rica.d297c76c.jpg', url: 'https://26673.live.streamtheworld.com/DISNEY_CRI_SJ_ADP/HLS/031b1ae7-b742-4bf3-8001-31b8478440ef/0/playlist.m3u8' },
             { id: 'cr-wao', title: 'WAO 92.3 FM', group: 'Urbano / Reggaeton', image: 'https://placehold.co/300x300/fd7e14/ffffff?text=WAO', url: 'https://icecasthd.teletica.com/wao' },
             { id: 'cr-musical', title: 'Radio Musical 97.5 FM', group: 'Romántica / Latina', image: 'https://static.mytuner.mobi/media/tvos_radios/085/radio-musical.fea3e089.jpg', url: 'https://live.turadio.stream:7005/stream/1/' }
@@ -252,7 +252,6 @@
             const [isLoadingRadio, setIsLoadingRadio] = useState(false);
             const [radioSearch, setRadioSearch] = useState('');
 
-            // PWA Install Prompt State
             const [deferredPrompt, setDeferredPrompt] = useState(null);
             const [showInstallBtn, setShowInstallBtn] = useState(false);
 
@@ -293,7 +292,8 @@
                         setShowInstallBtn(false);
                     }
                 } else {
-                    alert("Para instalar en tu dispositivo:\n• En Android/PC: Toca el menú de tu navegador (⋮) y selecciona 'Instalar aplicación' o 'Agregar a la pantalla principal'.\n• En iPhone/iPad (Safari): Toca el botón Compartir (⎋) y selecciona 'Aceptar en inicio'.");
+                    const msgBox = document.getElementById('install-guide-modal');
+                    if (msgBox) msgBox.classList.remove('hidden');
                 }
             };
 
@@ -434,7 +434,17 @@
 
                         if (dataRadios) {
                             const list = Array.isArray(dataRadios) ? dataRadios : (dataRadios.radios || dataRadios.emisoras || []);
-                            if (list.length > 0) setRadioStations(list);
+                            if (list.length > 0) {
+                                const mappedStations = list.map((r, idx) => ({
+                                    ...r,
+                                    id: r.id || `radio-fetched-${idx}-${(r.titulo || r.title || '').toLowerCase().replace(/[^a-z0-9]/g, '')}`,
+                                    title: r.titulo || r.title || r.name || `Emisora ${idx + 1}`,
+                                    group: r.group || r.genero || r.categoria || 'Variedad',
+                                    image: r.imagen || r.image || r.logo || 'https://placehold.co/300x300/0c1021/ffffff?text=Radio',
+                                    url: r.urlDrive || r.url || r.stream || r.urlStream || ''
+                                }));
+                                setRadioStations(mappedStations);
+                            }
                         }
 
                         setContent({ tv: tvChannels, movies: moviesList, series: seriesList, animados: animadosList });
@@ -481,55 +491,65 @@
 
             useEffect(() => {
                 if (!audioRef.current) {
-                    audioRef.current = new Audio();
-                    audioRef.current.crossOrigin = "anonymous";
+                    const audio = new Audio();
+                    audio.preload = "none";
                     
-                    audioRef.current.addEventListener('error', () => {
+                    audio.onerror = () => {
                         setIsRadioPlaying(false);
                         setStreamError(true);
                         setIsLoadingRadio(false);
-                    });
+                    };
                     
-                    audioRef.current.addEventListener('waiting', () => setIsLoadingRadio(true));
-                    audioRef.current.addEventListener('playing', () => {
+                    audio.onwaiting = () => setIsLoadingRadio(true);
+                    audio.onplaying = () => {
                         setIsLoadingRadio(false);
                         setStreamError(false);
-                    });
-                    audioRef.current.addEventListener('canplay', () => {
+                    };
+                    audio.oncanplay = () => {
                         setIsLoadingRadio(false);
                         setStreamError(false);
-                    });
+                    };
+                    audioRef.current = audio;
                 }
 
                 const audio = audioRef.current;
-                audio.volume = radioVolume;
+                if (audio) {
+                    audio.volume = radioVolume;
+                }
 
                 if (currentRadioStation && activeTab === 'radio') {
                     const playAudio = () => {
-                        const playPromise = audio.play();
-                        if (playPromise !== undefined) {
-                            playPromise.catch(() => {
-                                setIsRadioPlaying(false);
-                                setStreamError(true);
-                                setIsLoadingRadio(false);
-                            });
+                        try {
+                            const playPromise = audio.play();
+                            if (playPromise !== undefined) {
+                                playPromise.catch((e) => {
+                                    console.warn("Audio play blocked or interrupted:", e);
+                                    setIsRadioPlaying(false);
+                                    setStreamError(true);
+                                    setIsLoadingRadio(false);
+                                });
+                            }
+                        } catch (e) {
+                            console.warn("Audio play exception:", e);
                         }
                     };
 
-                    if (audio.dataset.currentUrl !== currentRadioStation.url) {
+                    const targetUrl = currentRadioStation.url || currentRadioStation.stream || '';
+
+                    if (audio.dataset.currentUrl !== targetUrl) {
                         setIsLoadingRadio(true);
                         setStreamError(false);
-                        audio.dataset.currentUrl = currentRadioStation.url;
+                        audio.dataset.currentUrl = targetUrl;
                         
                         if (hlsRef.current) {
                             hlsRef.current.destroy();
                             hlsRef.current = null;
                         }
 
-                        if (currentRadioStation.url.includes('.m3u8') && typeof Hls !== 'undefined' && Hls.isSupported()) {
-                            const hls = new Hls();
+                        if (targetUrl.includes('.m3u8') && typeof Hls !== 'undefined' && Hls.isSupported()) {
+                            const hls = new Hls({ enableWorker: true, lowLatencyMode: true });
                             hlsRef.current = hls;
-                            hls.loadSource(currentRadioStation.url);
+                            hls.loadSource(targetUrl);
                             hls.attachMedia(audio);
                             hls.on(Hls.Events.MANIFEST_PARSED, () => {
                                 if (isRadioPlaying) playAudio();
@@ -542,7 +562,7 @@
                                 }
                             });
                         } else {
-                            audio.src = currentRadioStation.url; 
+                            audio.src = targetUrl; 
                             audio.load();
                             if (isRadioPlaying) playAudio();
                         }
@@ -592,8 +612,9 @@
 
             const toggleRadioFavorite = (station, e) => {
                 if (e) e.stopPropagation();
-                const isFav = radioFavorites.some(f => f.id === station.id);
-                let newFavs = isFav ? radioFavorites.filter(f => f.id !== station.id) : [station, ...radioFavorites];
+                const stationId = station.id || station.url || station.title;
+                const isFav = radioFavorites.some(f => (f.id || f.url || f.title) === stationId);
+                let newFavs = isFav ? radioFavorites.filter(f => (f.id || f.url || f.title) !== stationId) : [station, ...radioFavorites];
                 setRadioFavorites(newFavs);
                 safeStorage.setItem('boxplay_radio_favs', JSON.stringify(newFavs));
             };
@@ -664,11 +685,20 @@
             };
 
             const handlePlayRadioStation = (station) => {
-                if (currentRadioStation?.id === station.id) {
-                    setIsRadioPlaying(!isRadioPlaying);
+                const targetStationId = station.id || station.url || station.title;
+                const currentStationId = currentRadioStation ? (currentRadioStation.id || currentRadioStation.url || currentRadioStation.title) : null;
+
+                if (currentStationId === targetStationId) {
+                    if (isRadioPlaying) {
+                        if (audioRef.current) audioRef.current.pause();
+                        setIsRadioPlaying(false);
+                    } else {
+                        setIsRadioPlaying(true);
+                    }
                 } else {
                     setCurrentRadioStation(station);
                     setIsRadioPlaying(true);
+                    setStreamError(false);
                 }
             };
 
@@ -756,6 +786,7 @@
                         </div>
                     </header>
 
+                    {/* Mobile Bottom Navigation Bar */}
                     <div className="xl:hidden fixed bottom-0 w-full bg-[#070b19] border-t border-indigo-950/80 z-50 flex py-2.5 pb-safe px-2 overflow-x-auto no-scrollbar snap-x items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.9)]">
                         {navTabs.slice(0, 9).map(tab => (
                             <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-shrink-0 min-w-[56px] py-1 gap-1 snap-start transition-all active:scale-95 rounded-xl ${activeTab === tab.id && !tab.isExternal ? 'text-indigo-400 bg-indigo-950/40 border border-indigo-500/30' : 'text-gray-400 hover:text-white'}`}>
@@ -765,9 +796,23 @@
                         ))}
                     </div>
 
+                    {}
                     <main className="flex-1 min-h-screen pb-36 md:pb-16 relative z-10">
                         {activeTab === 'radio' ? (
-                            <RadioSection currentStation={currentRadioStation} favorites={radioFavorites} isLoading={isLoadingRadio} isPlaying={isRadioPlaying} onPlayStation={handlePlayRadioStation} onToggleFavorite={toggleRadioFavorite} search={radioSearch} setSearch={setRadioSearch} setVolume={setRadioVolume} stations={radioStations} streamError={streamError} volume={radioVolume}/>
+                            <RadioSection 
+                                currentStation={currentRadioStation} 
+                                favorites={radioFavorites} 
+                                isLoading={isLoadingRadio} 
+                                isPlaying={isRadioPlaying} 
+                                onPlayStation={handlePlayRadioStation} 
+                                onToggleFavorite={toggleRadioFavorite} 
+                                search={radioSearch} 
+                                setSearch={setRadioSearch} 
+                                setVolume={setRadioVolume} 
+                                stations={radioStations} 
+                                streamError={streamError} 
+                                volume={radioVolume}
+                            />
                         ) : activeTab === 'favorites' && !selectedItem ? (
                             <div className="p-4 sm:p-10 animate-fade-in max-w-7xl mx-auto w-full">
                                 <div className="mb-6 flex items-center gap-3 border-b border-indigo-950/60 pb-4">
@@ -1008,11 +1053,12 @@
                         )}
                     </main>
 
+                    {}
                     {currentRadioStation && activeTab === 'radio' && (
                         <div className="fixed bottom-[55px] md:bottom-0 left-0 right-0 bg-[#070b19]/95 backdrop-blur-2xl border-t border-indigo-950/80 p-3.5 sm:p-4 z-50 flex items-center justify-between shadow-[0_-20px_50px_rgba(0,0,0,0.9)] animate-slide-up">
                             <div className="flex items-center gap-3.5 w-1/3 min-w-[120px]">
-                                <div className="w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0 border border-indigo-500/40 hidden sm:block shadow-lg">
-                                    <img src={currentRadioStation.image} alt={currentRadioStation.title} className="w-full h-full object-cover" />
+                                <div className="w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0 border border-indigo-500/40 hidden sm:block shadow-lg p-1 bg-black">
+                                    <img src={currentRadioStation.image} alt={currentRadioStation.title} className="w-full h-full object-contain" onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/300x300/0c1021/ffffff?text=Radio'; }}/>
                                 </div>
                                 <div className="flex flex-col truncate">
                                     <span className="font-extrabold text-xs sm:text-sm text-white truncate">{currentRadioStation.title}</span>
@@ -1057,6 +1103,7 @@
                         </div>
                     )}
 
+                    {/* QR Sharing Modal */}
                     {showQrModal && (
                         <div className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
                             <div className="bg-[#0c1021] border border-indigo-900/65 rounded-3xl p-6 max-w-xs w-full text-center relative shadow-2xl space-y-4">
@@ -1083,6 +1130,23 @@
                             </div>
                         </div>
                     )}
+
+                    {/* Installation Guide Modal (No Alerts) */}
+                    <div id="install-guide-modal" className="hidden fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+                        <div className="bg-[#0c1021] border border-indigo-900/65 rounded-3xl p-6 max-w-sm w-full text-center relative shadow-2xl space-y-4">
+                            <div className="p-3 bg-indigo-600/20 rounded-2xl text-indigo-400 border border-indigo-500/30 inline-block">
+                                <Icon name="download" size={24}/>
+                            </div>
+                            <h3 className="text-base font-extrabold text-white">Cómo Instalar BoxPlay</h3>
+                            <div className="text-xs text-gray-300 space-y-2 text-left bg-black/40 p-4 rounded-2xl border border-indigo-950/80">
+                                <p><strong>En Android / PC (Chrome, Edge):</strong><br/>Toca el menú (⋮) y selecciona <em>'Instalar aplicación'</em> o <em>'Agregar a pantalla principal'</em>.</p>
+                                <p><strong>En iPhone / iPad (Safari):</strong><br/>Toca el botón Compartir (⎋) y selecciona <em>'Agregar al inicio'</em>.</p>
+                            </div>
+                            <button onClick={() => document.getElementById('install-guide-modal').classList.add('hidden')} className="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-indigo-500 transition-colors shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+                                Entendido
+                            </button>
+                        </div>
+                    </div>
                 </div>
             );
         };
@@ -1245,7 +1309,7 @@
             const [radioTab, setRadioTab] = useState('all');
             let displayed = radioTab === 'favorites' ? favorites : stations;
             if (search.trim()) {
-                displayed = displayed.filter(s => s.title.toLowerCase().includes(search.toLowerCase()) || s.group.toLowerCase().includes(search.toLowerCase()));
+                displayed = displayed.filter(s => (s.title || '').toLowerCase().includes(search.toLowerCase()) || (s.group || '').toLowerCase().includes(search.toLowerCase()));
             }
 
             return (
@@ -1277,31 +1341,53 @@
                             <p>No se encontraron emisoras de radio.</p>
                         </div>
                     ) : (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {displayed.map(station => {
-                                const isCurrentPlaying = currentStation?.id === station.id && isPlaying;
-                                const isFav = favorites.some(f => f.id === station.id);
+                                const targetStationId = station.id || station.url || station.title;
+                                const currentStationId = currentStation ? (currentStation.id || currentStation.url || currentStation.title) : null;
+                                const isCurrentPlaying = Boolean(currentStationId && currentStationId === targetStationId && isPlaying);
+                                const isFav = favorites.some(f => (f.id || f.url || f.title) === targetStationId);
+
                                 return (
-                                    <div key={station.id} onClick={() => onPlayStation(station)} className={`group bg-[#0c1021]/90 hover:bg-[#131932] border rounded-3xl p-4 cursor-pointer transition-all duration-300 card-glow flex items-center justify-between gap-4 ${currentStation?.id === station.id ? 'border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.3)]' : 'border-indigo-950/60'}`}>
-                                        <div className="flex items-center gap-4 min-w-0">
-                                            <div className="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0 bg-black border border-indigo-950/80 relative">
-                                                <img src={station.image} alt={station.title} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x300/030712/ffffff?text=Radio'}/>
-                                                <div className={`absolute inset-0 flex items-center justify-center bg-black/60 transition-opacity ${isCurrentPlaying ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
-                                                    <Icon name={isCurrentPlaying ? "pause" : "play"} size={20} fill="currentColor" className="text-white"/>
-                                                </div>
+                                    <div 
+                                        key={targetStationId} 
+                                        onClick={() => onPlayStation(station)} 
+                                        className={`group bg-[#0c1021]/90 hover:bg-[#131932] border rounded-2xl p-3 sm:p-4 cursor-pointer transition-all duration-200 flex items-center justify-between gap-3 sm:gap-4 ${isCurrentPlaying ? 'border-indigo-500 shadow-[0_0_25px_rgba(99,102,241,0.35)] bg-indigo-950/30' : 'border-indigo-950/60 hover:border-indigo-800/60'}`}
+                                    >
+                                        <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 flex-1">
+                                            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden flex-shrink-0 bg-black/70 border border-indigo-950/80 p-1 flex items-center justify-center">
+                                                <img 
+                                                    src={station.image} 
+                                                    alt={station.title} 
+                                                    className="w-full h-full object-contain" 
+                                                    onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/300x300/0c1021/ffffff?text=Radio'; }}
+                                                />
                                             </div>
-                                            <div className="truncate">
-                                                <h3 className="font-extrabold text-sm text-white truncate">{station.title}</h3>
-                                                <p className="text-xs text-gray-400 truncate mt-1">{station.group}</p>
+                                            <div className="truncate flex-1">
+                                                <h3 className={`font-extrabold text-xs sm:text-sm truncate transition-colors ${isCurrentPlaying ? 'text-indigo-400' : 'text-white group-hover:text-gray-100'}`}>
+                                                    {station.title}
+                                                </h3>
+                                                <p className="text-[10px] sm:text-xs text-gray-400 truncate mt-0.5 font-medium">
+                                                    {station.group}
+                                                </p>
                                             </div>
                                         </div>
-                                        <div className="flex items-center gap-2 flex-shrink-0">
-                                            <button onClick={(e) => onToggleFavorite(station, e)} className="p-2.5 rounded-full hover:bg-white/10 transition-colors">
-                                                <Icon name="heart" size={16} fill={isFav ? '#6366f1' : 'none'} className={isFav ? 'text-indigo-500' : 'text-gray-500'}/>
+                                        
+                                        <div className="flex items-center gap-2 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
+                                            <button 
+                                                onClick={(e) => onToggleFavorite(station, e)} 
+                                                className="p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+                                                title={isFav ? "Quitar de favoritos" : "Guardar en favoritos"}
+                                            >
+                                                <Icon name="heart" size={16} fill={isFav ? '#6366f1' : 'none'} className={isFav ? 'text-indigo-500' : 'text-gray-400'}/>
                                             </button>
-                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${isCurrentPlaying ? 'bg-indigo-600 text-white shadow-[0_0_15px_#6366f1]' : 'bg-[#182038] text-gray-300 group-hover:bg-indigo-600 group-hover:text-white'}`}>
+                                            <button 
+                                                onClick={() => onPlayStation(station)}
+                                                className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all ${isCurrentPlaying ? 'bg-indigo-600 text-white shadow-[0_0_15px_rgba(99,102,241,0.7)] scale-105' : 'bg-indigo-950/70 hover:bg-indigo-600 text-indigo-200 hover:text-white border border-indigo-500/30'}`}
+                                                title={isCurrentPlaying ? "Pausar" : "Reproducir"}
+                                            >
                                                 <Icon name={isCurrentPlaying ? "pause" : "play"} size={16} fill="currentColor" className={!isCurrentPlaying ? "ml-0.5" : ""}/>
-                                            </div>
+                                            </button>
                                         </div>
                                     </div>
                                 );
@@ -1327,7 +1413,7 @@
                         clearInterval(interval);
                         onEnter();
                     }
-                }, 30); // 30ms * 100 = 3000ms (exactly 3 seconds)
+                }, 30);
             };
 
             return (
