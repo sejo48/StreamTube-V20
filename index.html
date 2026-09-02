@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Vortex Play - Ultimate Streaming & Anime Hub</title>
+    <title>BoxPlay - Ultimate Streaming & Anime Hub</title>
     
     <!-- Favicon / Desktop Shortcut Icon (Embedded Round Vector Logo) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236366f1'/%3E%3Cstop offset='100%25' stop-color='%234338ca'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='50' fill='url(%23grad)'/%3E%3Cpolygon points='40,30 70,50 40,70' fill='%23ffffff'/%3E%3C/svg%3E">
@@ -126,7 +126,7 @@
     <div id="root">
         <div style="display:flex;height:100vh;width:100vw;align-items:center;justify-content:center;background:#030712;color:white;flex-direction:column;font-family:sans-serif;">
             <div style="width:48px;height:48px;border:4px solid #6366f1;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:20px;"></div>
-            <h2 style="font-weight: 700; letter-spacing: -0.025em; font-size: 1.125rem;">Cargando Vortex Play...</h2>
+            <h2 style="font-weight: 700; letter-spacing: -0.025em; font-size: 1.125rem;">Cargando BoxPlay...</h2>
             <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
         </div>
     </div>
@@ -445,10 +445,10 @@
                     }
                 };
 
-                const storedFavs = safeStorage.getItem('magistube_favs'); 
+                const storedFavs = safeStorage.getItem('boxplay_favs'); 
                 if (storedFavs) { try { setFavorites(JSON.parse(storedFavs)); } catch(e) {} }
 
-                const storedRadioFavs = safeStorage.getItem('magis_radio_favs');
+                const storedRadioFavs = safeStorage.getItem('boxplay_radio_favs');
                 if (storedRadioFavs) { try { setRadioFavorites(JSON.parse(storedRadioFavs)); } catch(e) {} }
 
                 init();
@@ -587,7 +587,7 @@
                 const itemId = item.id || item.title; 
                 const newFavs = favorites.some(f => (f.id || f.title) === itemId) ? favorites.filter(f => (f.id || f.title) !== itemId) : [item, ...favorites]; 
                 setFavorites(newFavs); 
-                safeStorage.setItem('magistube_favs', JSON.stringify(newFavs)); 
+                safeStorage.setItem('boxplay_favs', JSON.stringify(newFavs)); 
             };
 
             const toggleRadioFavorite = (station, e) => {
@@ -595,7 +595,7 @@
                 const isFav = radioFavorites.some(f => f.id === station.id);
                 let newFavs = isFav ? radioFavorites.filter(f => f.id !== station.id) : [station, ...radioFavorites];
                 setRadioFavorites(newFavs);
-                safeStorage.setItem('magis_radio_favs', JSON.stringify(newFavs));
+                safeStorage.setItem('boxplay_radio_favs', JSON.stringify(newFavs));
             };
 
             const toggleTvFullscreen = () => {
@@ -705,7 +705,7 @@
                                 <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-800 flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.5)] group-hover:scale-105 transition-transform">
                                     <Icon className="text-white" fill="white" name="play" size={18}/>
                                 </div>
-                                <span className="font-black text-lg tracking-tight">VORTEX <span className="text-indigo-400">PLAY</span></span>
+                                <span className="font-black text-lg tracking-tight">BOX <span className="text-indigo-400">PLAY</span></span>
                             </div>
 
                             <nav className="hidden xl:flex items-center gap-1">
@@ -831,7 +831,7 @@
                                 <div className="flex-1 bg-[#010309] relative flex flex-col justify-between overflow-hidden order-1 lg:order-2" ref={tvContainerRef}>
                                     <div className="absolute top-4 left-4 z-20 pointer-events-none flex items-center gap-2.5 bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-indigo-500/30 shadow-2xl">
                                         <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></div>
-                                        <span className="text-xs font-black tracking-tight text-white">VORTEX<span className="text-indigo-400">TV LIVE</span></span>
+                                        <span className="text-xs font-black tracking-tight text-white">BOX<span className="text-indigo-400">TV LIVE</span></span>
                                     </div>
                                     <div className="w-full aspect-video lg:aspect-auto lg:flex-1 relative flex items-center justify-center bg-black overflow-hidden video-container-fix">
                                         {selectedItem && selectedItem.type === 'tv' ? (
@@ -1069,11 +1069,11 @@
                                 </div>
 
                                 <div className="bg-white p-3 rounded-2xl shadow-inner flex justify-center items-center">
-                                    <img src="./mi-qr-pro.png" alt="Vortex Play QR Code" className="w-48 h-48 object-contain" onError={handleQrError} />
+                                    <img src="./mi-qr-pro.png" alt="BoxPlay QR Code" className="w-48 h-48 object-contain" onError={handleQrError} />
                                 </div>
 
                                 <div>
-                                    <h3 className="font-extrabold text-base text-white">VORTEX <span className="text-indigo-400">PLAY</span></h3>
+                                    <h3 className="font-extrabold text-base text-white">BOX <span className="text-indigo-400">PLAY</span></h3>
                                     <p className="text-xs text-gray-400 mt-1 leading-relaxed">Apunta con la cámara de tu teléfono para abrir la plataforma al instante.</p>
                                 </div>
 
@@ -1133,7 +1133,7 @@
                     <div className="mb-6 border-b border-indigo-950/60 pb-4">
                         <h1 className="text-2xl sm:text-3xl font-black flex items-center gap-3">
                             <span className="p-2.5 bg-indigo-600/20 rounded-2xl text-indigo-400 border border-indigo-500/30"><Icon name="chat" size={26}/></span>
-                            Comunidad <span className="text-indigo-400">VORTEX PLAY</span>
+                            Comunidad <span className="text-indigo-400">BOX PLAY</span>
                         </h1>
                         <p className="text-xs sm:text-sm text-gray-400 mt-1">Comparte tus opiniones, solicita películas o platica con otros cinéfilos en tiempo real.</p>
                     </div>
@@ -1335,7 +1335,7 @@
                     <div className="absolute inset-0"><img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1200&auto=format&fit=crop" className="w-full h-full object-cover opacity-15" /><div className="absolute inset-0 bg-gradient-to-b from-[#030712] via-[#030712]/90 to-[#030712]"></div></div>
                     <div className="relative z-10 text-center max-w-md w-full animate-slide-up bg-[#070b19]/80 backdrop-blur-xl border border-indigo-900/50 p-8 rounded-3xl shadow-[0_0_60px_rgba(99,102,241,0.25)]">
                         <div className="mb-4 inline-block bg-indigo-600 px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase text-white shadow-[0_0_15px_rgba(99,102,241,0.5)]">HBO Max Experience</div>
-                        <h1 className="text-4xl sm:text-5xl font-black text-white mb-2 tracking-tighter">VORTEX <span className="text-indigo-400">PLAY</span></h1>
+                        <h1 className="text-4xl sm:text-5xl font-black text-white mb-2 tracking-tighter">BOX <span className="text-indigo-400">PLAY</span></h1>
                         <p className="text-sm text-gray-300 font-light mb-8 italic">"Streaming de alta calidad cinematográfica."</p>
                         
                         {isLoading ? (
@@ -1352,7 +1352,7 @@
                             <button onClick={handleStart} className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-4 rounded-full font-extrabold text-base shadow-[0_0_25px_rgba(99,102,241,0.6)] flex items-center justify-center gap-2.5 mb-8 active:scale-95 transition-all"><span>Comenzar Experiencia</span> <Icon fill="white" name="play" size={18}/></button>
                         )}
 
-                        <div className="opacity-80 pt-4 border-t border-indigo-950/80"><p className="text-[9px] text-gray-400 uppercase tracking-widest mb-0.5">DISEÑADO Y PROGRAMADO POR</p><h3 className="text-base font-serif text-gold-gradient font-bold mb-1">JORGE ARTURO HERNÁNDEZ MÉNDEZ</h3><p className="text-[9px] text-gray-500">Vortex Play • Powered by Gemini AI</p></div>
+                        <div className="opacity-80 pt-4 border-t border-indigo-950/80"><p className="text-[9px] text-gray-400 uppercase tracking-widest mb-0.5">DISEÑADO Y PROGRAMADO POR</p><h3 className="text-base font-serif text-gold-gradient font-bold mb-1">JORGE ARTURO HERNÁNDEZ MÉNDEZ</h3><p className="text-[9px] text-gray-500">BoxPlay • Powered by Gemini AI</p></div>
                     </div>
                 </div>
             );
@@ -1402,7 +1402,7 @@
             return ( 
                 <div tabIndex="0" className="group relative flex flex-col gap-2.5 cursor-pointer active:scale-95 transition-transform card-glow rounded-2xl" onClick={() => onClick(item)}> 
                     <div className={`relative overflow-hidden rounded-2xl bg-[#0c1021] border border-indigo-950/80 shadow-xl ${isTv ? 'aspect-video' : 'aspect-[2/3]'}`}> 
-                        <img src={imgSource} loading="lazy" className={`w-full h-full transition-transform duration-300 group-hover:scale-105 ${isTv ? 'object-contain p-3' : 'object-cover'}`} onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/300x450/0c1021/ffffff?text=Vortex`; }} alt={titleSource} /> 
+                        <img src={imgSource} loading="lazy" className={`w-full h-full transition-transform duration-300 group-hover:scale-105 ${isTv ? 'object-contain p-3' : 'object-cover'}`} onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/300x450/0c1021/ffffff?text=BoxPlay`; }} alt={titleSource} /> 
                         <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }} className="absolute top-2.5 right-2.5 p-2 bg-black/70 rounded-full text-white backdrop-blur-md hover:bg-black transition-colors z-20"> 
                             <Icon name="heart" size={15} fill={isFavorite ? "#6366f1" : "none"} className={isFavorite ? "text-indigo-500" : "text-white"}/> 
                         </button> 
