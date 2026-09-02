@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BoxPlay - Ultimate Streaming & Anime Hub</title>
     
+    <meta property="og:title" content="BoxPlay - Ultimate Streaming & Anime Hub">
+    <meta property="og:description" content="Disfruta de televisión en vivo, estrenos de cine, series, anime y emisoras de radio de Costa Rica en alta definición.">
+    <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BoxPlay - Ultimate Streaming & Anime Hub">
+    <meta name="twitter:description" content="Disfruta de televisión en vivo, estrenos de cine, series, anime y emisoras de radio de Costa Rica en alta definición.">
+    <meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png">
+
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236366f1'/%3E%3Cstop offset='100%25' stop-color='%234338ca'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='50' fill='url(%23grad)'/%3E%3Cpolygon points='40,30 70,50 40,70' fill='%23ffffff'/%3E%3C/svg%3E">
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%236366f1'/%3E%3Cpolygon points='40,30 70,50 40,70' fill='%23ffffff'/%3E%3C/svg%3E">
 
@@ -775,7 +784,7 @@
                                 <span className="text-xs font-bold hidden md:inline">Compartir</span>
                             </button>
 
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-600 to-indigo-800 p-0.5 shadow-[0_0_15px_rgba(99,102,241,0.5)] flex items-center justify-center border border-indigo-400/30 cursor-pointer hover:scale-105 transition-transform" title="Perfil de Usuario: Jorge Arturo">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-600 to-indigo-800 p-0.5 shadow-[0_0_15px_rgba(99,102,241,0.5)] flex items-center justify-center border border-indigo-400/30 cursor-pointer hover:scale-105 transition-transform" title="Perfil de Usuario: BoxPlay">
                                 <div className="w-full h-full rounded-full bg-[#070b19] flex items-center justify-center overflow-hidden">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-6 h-6">
                                         <circle cx="50" cy="50" r="50" fill="#6366f1"/>
@@ -820,7 +829,7 @@
                                     <h2 className="text-xl sm:text-2xl font-black text-white">Tus Contenidos Favoritos</h2>
                                 </div>
                                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
-                                    {favorites.map((item, i) => (<Card isFavorite={true} item={item} key={i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
+                                    {favorites.map((item, i) => (<Card isFavorite={true} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
                                 </div>
                                 {favorites.length === 0 && <div className="text-center py-24 text-gray-500 text-sm"><p>No tienes elementos guardados en favoritos todavía.</p></div>}
                             </div>
@@ -974,7 +983,7 @@
                                                 </div>
                                                 <div className="flex-1 overflow-y-auto custom-scrollbar space-y-2 pr-1">
                                                     {selectedItem.seasons[expandedSeason]?.episodes?.map((ep, eIdx) => (
-                                                        <div key={eIdx} onClick={() => setSelectedEpisode(ep)} className={`p-3.5 rounded-2xl cursor-pointer flex items-center justify-between text-xs transition-all ${selectedEpisode?.url === ep.url ? 'bg-indigo-950/85 text-white border border-indigo-500/60 shadow-lg' : 'hover:bg-indigo-950/30 text-gray-300 border border-transparent'}`}>
+                                                        <div key={ep.id || eIdx} onClick={() => setSelectedEpisode(ep)} className={`p-3.5 rounded-2xl cursor-pointer flex items-center justify-between text-xs transition-all ${selectedEpisode?.url === ep.url ? 'bg-indigo-950/85 text-white border border-indigo-500/60 shadow-lg' : 'hover:bg-indigo-950/30 text-gray-300 border border-transparent'}`}>
                                                             <div className="flex items-center gap-3.5 truncate">
                                                                 <div className="w-6 flex justify-center shrink-0">
                                                                     {selectedEpisode?.url === ep.url ? (
@@ -1026,7 +1035,7 @@
                                         </div>
                                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
                                             {displayedItems.map((item, i) => (
-                                                <Card item={item} key={i} onClick={handlePlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={toggleFavorite} />
+                                                <Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={toggleFavorite} />
                                             ))}
                                         </div>
                                     </div>
@@ -1043,7 +1052,7 @@
                                         ) : (
                                             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5 animate-slide-up">
                                                 {displayedItems.map((item, i) => (
-                                                    <Card item={item} key={i} onClick={handlePlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={toggleFavorite} />
+                                                    <Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={toggleFavorite} />
                                                 ))}
                                             </div>
                                         )}
@@ -1131,7 +1140,7 @@
                         </div>
                     )}
 
-                    {/* Installation Guide Modal (No Alerts) */}
+                    {/* Installation Guide Modal */}
                     <div id="install-guide-modal" className="hidden fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
                         <div className="bg-[#0c1021] border border-indigo-900/65 rounded-3xl p-6 max-w-sm w-full text-center relative shadow-2xl space-y-4">
                             <div className="p-3 bg-indigo-600/20 rounded-2xl text-indigo-400 border border-indigo-500/30 inline-block">
@@ -1182,8 +1191,8 @@
                     </div>
                     <div ref={rowRef} className="flex gap-4 overflow-x-auto no-scrollbar pb-4 pt-1 snap-x scroll-smooth custom-scrollbar">
                         {items.map((item, i) => (
-                            <div key={i} className="flex-shrink-0 w-36 sm:w-48 snap-start">
-                                <Card item={item} key={i} onClick={onPlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={onToggleFavorite} />
+                            <div key={item.id || item.title || i} className="flex-shrink-0 w-36 sm:w-48 snap-start">
+                                <Card item={item} onClick={onPlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={onToggleFavorite} />
                             </div>
                         ))}
                     </div>
@@ -1342,8 +1351,8 @@
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {displayed.map(station => {
-                                const targetStationId = station.id || station.url || station.title;
+                            {displayed.map((station, index) => {
+                                const targetStationId = station.id || station.url || station.title || `station-${index}`;
                                 const currentStationId = currentStation ? (currentStation.id || currentStation.url || currentStation.title) : null;
                                 const isCurrentPlaying = Boolean(currentStationId && currentStationId === targetStationId && isPlaying);
                                 const isFav = favorites.some(f => (f.id || f.url || f.title) === targetStationId);
