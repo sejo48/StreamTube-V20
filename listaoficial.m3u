@@ -1,4 +1,6 @@
 #EXTM3U
+#EXTINF:-1 tvg-name="BEST CLASICOS TV" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3896-800x450-FFFFFF.jpg" group-title="General",BEST CLASICOS TV
+https://acceso.mediosdecostarica.com:3873/hybrid/play.m3u8
 #EXTINF:-1 tvg-name="Telered" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc0CfBLPTdVRLyxhsV8Hq3wfIeJAPwiC2TQOhBNoFV893ShXIpe0MWXG9nhjQnTPtsMTk&usqp=CAU" group-title="Canal de Noticias Local.",Telered
 https://k20.usastreams.com:8081/telered/index.m3u8
 #EXTINF:-1 tvg-name="canal clásico de animados" tvg-logo="https://image.roku.com/developer_channels/prod/ef15682060b756ab1bcf928ae9e98e7c4b459e005ad54489ab358f60ffc47001.png" group-title="General",canal clásico de animados
