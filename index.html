@@ -66,11 +66,15 @@
         .text-gold-gradient { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
 
-        .video-container-fix iframe {
+        /* Robust video container fill fix */
+        .video-container-fix iframe, .video-container-fix video {
             width: 100% !important;
             height: 100% !important;
             object-fit: fill !important;
             border: none !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
         }
 
         @keyframes radarPulse {
@@ -473,7 +477,7 @@
                 if (activeTab === 'tv' && selectedItem?.type === 'tv' && tvContainerRef.current) {
                     interval = setInterval(() => { 
                         setTvRefreshTrigger(prev => prev + 1); 
-                    }, 600000); // 10 minutes interval to prevent buffer freeze
+                    }, 480000); // 8 minutes auto-refresh interval to prevent stream freeze
                 }
                 return () => clearInterval(interval);
             }, [activeTab, selectedItem]);
