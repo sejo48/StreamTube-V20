@@ -45,28 +45,24 @@
             font-family: 'Plus Jakarta Sans', sans-serif; 
             overflow-x: hidden; 
             -webkit-tap-highlight-color: transparent; 
+            width: 100%;
+            max-width: 100vw;
         }
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
         ::-webkit-scrollbar-track { background: #030712; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar { width: 3px; height: 3px; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.4); border-radius: 3px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #6366f1; }
         
         @keyframes fadeIn { from { opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .animate-fade-in { animation: fadeIn 0.4s ease-out; }
         .animate-slide-up { animation: slideUp 0.5s ease-out; }
         
-        .hbo-glow {
-            box-shadow: 0 0 60px -15px rgba(99, 102, 241, 0.3);
-        }
-        .card-glow:hover {
-            box-shadow: 0 12px 35px -10px rgba(99, 102, 241, 0.5);
-            transform: translateY(-4px) scale(1.01);
-        }
+        .hbo-glow { box-shadow: 0 0 50px -15px rgba(99, 102, 241, 0.3); }
+        .card-glow:hover { box-shadow: 0 10px 25px -8px rgba(99, 102, 241, 0.5); transform: translateY(-2px); }
         .text-gold-gradient { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
 
@@ -79,64 +75,47 @@
 
         @keyframes radarPulse {
             0% { transform: scale(0.95); opacity: 0.9; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-            70% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+            70% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
             100% { transform: scale(0.95); opacity: 0.9; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
-        .tv-radar-anim {
-            animation: radarPulse 2s infinite ease-in-out !important;
-        }
+        .tv-radar-anim { animation: radarPulse 2s infinite ease-in-out !important; }
 
         @keyframes projectorShimmer {
             0% { transform: translateX(-100%); opacity: 0; }
             50% { opacity: 0.6; }
             100% { transform: translateX(200%); opacity: 0; }
         }
-        .cinema-shimmer-container {
-            position: relative;
-            overflow: hidden;
-        }
+        .cinema-shimmer-container { position: relative; overflow: hidden; }
         .cinema-shimmer-container::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 50%; height: 100%;
+            content: ''; position: absolute; top: 0; left: 0; width: 50%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.35), transparent);
-            animation: projectorShimmer 2.5s infinite linear;
-            pointer-events: none;
+            animation: projectorShimmer 2.5s infinite linear; pointer-events: none;
         }
 
         .bar {
-            width: 4px;
-            background-color: #6366f1;
-            border-radius: 2px;
-            animation: equalize 1s infinite alternate;
-            transform-origin: bottom;
+            width: 3px; background-color: #6366f1; border-radius: 2px;
+            animation: equalize 1s infinite alternate; transform-origin: bottom;
         }
-        .bar:nth-child(1) { animation-delay: -0.2s; height: 16px; }
-        .bar:nth-child(2) { animation-delay: -0.4s; height: 24px; }
-        .bar:nth-child(3) { animation-delay: -0.6s; height: 20px; }
-        .bar:nth-child(4) { animation-delay: -0.8s; height: 28px; }
-        .bar:nth-child(5) { animation-delay: -1.0s; height: 18px; }
-        .bar:nth-child(6) { animation-delay: -0.3s; height: 25px; }
+        .bar:nth-child(1) { animation-delay: -0.2s; height: 14px; }
+        .bar:nth-child(2) { animation-delay: -0.4s; height: 20px; }
+        .bar:nth-child(3) { animation-delay: -0.6s; height: 16px; }
+        .bar:nth-child(4) { animation-delay: -0.8s; height: 24px; }
+        .bar:nth-child(5) { animation-delay: -1.0s; height: 15px; }
 
         @keyframes equalize {
             0% { transform: scaleY(0.2); opacity: 0.4; }
             50% { transform: scaleY(0.8); opacity: 0.8; }
             100% { transform: scaleY(1.2); opacity: 1; }
         }
-        .paused-bar {
-            transform: scaleY(0.15) !important;
-            animation: none !important;
-            opacity: 0.3;
-        }
-
+        .paused-bar { transform: scaleY(0.15) !important; animation: none !important; opacity: 0.3; }
         button:focus, div[tabindex="0"]:focus, input:focus, select:focus { outline: none; }
     </style>
 </head>
 <body>
     <div id="root">
         <div style="display:flex;height:100vh;width:100vw;align-items:center;justify-content:center;background:#030712;color:white;flex-direction:column;font-family:sans-serif;">
-            <div style="width:48px;height:48px;border:4px solid #6366f1;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:20px;"></div>
-            <h2 style="font-weight: 700; letter-spacing: -0.025em; font-size: 1.125rem;">Cargando BoxPlay...</h2>
+            <div style="width:40px;height:40px;border:4px solid #6366f1;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:16px;"></div>
+            <h2 style="font-weight: 700; font-size: 1rem;">Cargando BoxPlay...</h2>
             <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
         </div>
     </div>
@@ -799,16 +778,16 @@
             if (showIntro) return <IntroScreen onEnter={() => { setShowIntro(false); window.history.pushState({ appState: 'main', activeTab: 'home' }, ''); }}/>;
 
             return (
-                <div className="min-h-screen bg-[#030712] text-white font-sans flex flex-col relative selection:bg-indigo-500 selection:text-white">
-                    <header className="sticky top-0 z-50 bg-[#030712]/90 backdrop-blur-xl border-b border-indigo-950/60 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl">
-                        <div className="flex items-center gap-6">
-                            <div className="flex items-center gap-2.5 cursor-pointer group" onClick={() => handleTabClick(navTabs[0])}>
-                                <div className="w-9 h-9 rounded-xl bg-[#6366f1] flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.5)] group-hover:scale-105 transition-transform">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 fill-white">
+                <div className="min-h-screen bg-[#030712] text-white font-sans flex flex-col relative selection:bg-indigo-500 selection:text-white w-full max-w-[100vw] overflow-x-hidden">
+                    <header className="sticky top-0 z-50 bg-[#030712]/90 backdrop-blur-xl border-b border-indigo-950/60 px-3 sm:px-8 py-3 flex items-center justify-between shadow-2xl w-full">
+                        <div className="flex items-center gap-4 sm:gap-6">
+                            <div className="flex items-center gap-2 cursor-pointer group" onClick={() => handleTabClick(navTabs[0])}>
+                                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#6366f1] flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.5)] group-hover:scale-105 transition-transform flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-4 h-4 sm:w-5 sm:h-5 fill-white">
                                         <polygon points="40,30 70,50 40,70"/>
                                     </svg>
                                 </div>
-                                <span className="font-black text-lg tracking-tight">BOX <span className="text-indigo-400">PLAY</span></span>
+                                <span className="font-black text-base sm:text-lg tracking-tight">BOX <span className="text-indigo-400">PLAY</span></span>
                             </div>
 
                             <nav className="hidden xl:flex items-center gap-1">
@@ -825,24 +804,24 @@
                             </nav>
                         </div>
 
-                        <div className="flex items-center gap-3">
-                            <button onClick={() => handleTabClick(navTabs.find(t => t.id === 'favorites'))} className="px-3 py-2 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/35 text-indigo-300 border border-indigo-500/40 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
-                                <Icon name="heart" size={15} fill={activeTab === 'favorites' ? '#6366f1' : 'none'} className="text-indigo-400"/>
-                                <span className="hidden sm:inline">Favoritos</span>
+                        <div className="flex items-center gap-2 sm:gap-3">
+                            <button onClick={() => handleTabClick(navTabs.find(t => t.id === 'favorites'))} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/35 text-indigo-300 border border-indigo-500/40 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
+                                <Icon name="heart" size={16} fill={activeTab === 'favorites' ? '#6366f1' : 'none'} className="text-indigo-400"/>
+                                <span className="hidden md:inline">Favoritos</span>
                             </button>
 
-                            <button onClick={handleInstallApp} className="px-3 py-2 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/35 text-indigo-300 border border-indigo-500/40 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
+                            <button onClick={handleInstallApp} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/35 text-indigo-300 border border-indigo-500/40 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
                                 <Icon name="download" size={14}/>
-                                <span className="hidden sm:inline">Instalar App</span>
+                                <span className="hidden md:inline">Instalar App</span>
                             </button>
 
-                            <div className="relative hidden sm:block w-44 lg:w-60">
+                            <div className="relative hidden sm:block w-36 lg:w-60">
                                 <input 
                                     type="text" 
                                     placeholder="Buscar anime, películas..." 
                                     className="w-full bg-[#0c1021] border border-indigo-950/80 rounded-full px-4 py-2 text-xs text-white focus:border-indigo-500 outline-none pl-9 transition-colors placeholder-gray-500 shadow-inner" 
                                     value={search} 
-                                    onChange={(e) => { setSearch(e.target.value); }}
+                                    onChange={(e) => setSearch(e.target.value)}
                                     onFocus={() => setIsSearchFocused(true)}
                                     onBlur={() => setTimeout(() => setIsSearchFocused(false), 250)}
                                     onKeyDown={(e) => { if (e.key === 'Enter' && search.trim()) { addRecentSearch(search); setIsSearchFocused(false); } }}
@@ -874,14 +853,14 @@
                                 )}
                             </div>
 
-                            <button onClick={() => { setShowQrModal(true); window.history.pushState({ appState: 'modal' }, ''); }} className="p-2.5 rounded-xl bg-[#0c1021] hover:bg-indigo-950/40 text-indigo-300 border border-indigo-950/80 transition-all hover:scale-105 shadow-md flex items-center gap-1.5" title="Escanear QR">
-                                <Icon name="qr" size={18}/>
-                                <span className="text-xs font-bold hidden md:inline">Compartir</span>
+                            <button onClick={() => { setShowQrModal(true); window.history.pushState({ appState: 'modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-[#0c1021] hover:bg-indigo-950/40 text-indigo-300 border border-indigo-950/80 transition-all hover:scale-105 shadow-md flex items-center gap-1.5" title="Escanear QR">
+                                <Icon name="qr" size={16}/>
+                                <span className="text-xs font-bold hidden lg:inline">Compartir</span>
                             </button>
 
-                            <div className="w-10 h-10 rounded-full bg-[#6366f1] p-0.5 shadow-[0_0_15px_rgba(99,102,241,0.5)] flex items-center justify-center border border-indigo-400/30 cursor-pointer hover:scale-105 transition-transform" title="Perfil de Usuario: BoxPlay">
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#6366f1] p-0.5 shadow-[0_0_15px_rgba(99,102,241,0.5)] flex items-center justify-center border border-indigo-400/30 cursor-pointer flex-shrink-0">
                                 <div className="w-full h-full rounded-full bg-[#6366f1] flex items-center justify-center overflow-hidden shadow-inner">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 fill-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-4 h-4 sm:w-5 sm:h-5 fill-white">
                                         <polygon points="40,30 70,50 40,70"/>
                                     </svg>
                                 </div>
@@ -889,17 +868,17 @@
                         </div>
                     </header>
 
-                    {/* Mobile Bottom Navigation Bar */}
-                    <div className="xl:hidden fixed bottom-0 w-full bg-[#070b19] border-t border-indigo-950/80 z-50 flex py-2.5 pb-safe px-2 overflow-x-auto no-scrollbar snap-x items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.9)]">
+                    {/* Mobile Bottom Navigation Bar - Fully Responsive */}
+                    <div className="xl:hidden fixed bottom-0 w-full max-w-[100vw] bg-[#070b19] border-t border-indigo-950/80 z-50 flex py-2 pb-safe px-1 overflow-x-auto no-scrollbar snap-x items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.9)]">
                         {navTabs.slice(0, 10).map(tab => (
-                            <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-shrink-0 min-w-[56px] py-1 gap-1 snap-start transition-all active:scale-95 rounded-xl ${activeTab === tab.id && !tab.isExternal ? 'text-indigo-400 bg-indigo-950/40 border border-indigo-500/30' : 'text-gray-400 hover:text-white'}`}>
-                                <Icon name={tab.icon} size={18}/>
-                                <span className="text-[9px] font-medium tracking-wide">{tab.label}</span>
+                            <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-shrink-0 min-w-[50px] py-1 gap-1 snap-start transition-all active:scale-95 rounded-xl ${activeTab === tab.id && !tab.isExternal ? 'text-indigo-400 bg-indigo-950/40 border border-indigo-500/30' : 'text-gray-400 hover:text-white'}`}>
+                                <Icon name={tab.icon} size={16}/>
+                                <span className="text-[8px] sm:text-[9px] font-medium tracking-wide">{tab.label}</span>
                             </button>
                         ))}
                     </div>
 
-                    <main className="flex-1 min-h-screen pb-36 md:pb-16 relative z-10">
+                    <main className="flex-1 min-h-screen pb-32 md:pb-16 relative z-10 w-full max-w-[100vw] overflow-x-hidden">
                         {activeTab === 'radio' ? (
                             <RadioSection 
                                 currentStation={currentRadioStation} 
@@ -916,40 +895,40 @@
                                 volume={radioVolume}
                             />
                         ) : activeTab === 'favorites' && !selectedItem ? (
-                            <div className="p-4 sm:p-10 animate-fade-in max-w-7xl mx-auto w-full">
+                            <div className="p-3 sm:p-10 animate-fade-in max-w-7xl mx-auto w-full">
                                 <div className="mb-6 flex items-center gap-3 border-b border-indigo-950/60 pb-4">
                                     <div className="p-2.5 bg-indigo-600/20 rounded-xl text-indigo-400 border border-indigo-500/30"><Icon fill="currentColor" name="heart" size={22}/></div>
-                                    <h2 className="text-xl sm:text-2xl font-black text-white">Tus Contenidos Favoritos</h2>
+                                    <h2 className="text-lg sm:text-2xl font-black text-white">Tus Contenidos Favoritos</h2>
                                 </div>
-                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
+                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
                                     {favorites.map((item, i) => (<Card isFavorite={true} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
                                 </div>
                                 {favorites.length === 0 && <div className="text-center py-24 text-gray-500 text-sm"><p>No tienes elementos guardados en favoritos todavía.</p></div>}
                             </div>
                         ) : activeTab === 'tv' || (selectedItem && selectedItem.type === 'tv') ? (
-                            <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4.5rem)] lg:h-[calc(100vh-4.5rem)] lg:overflow-hidden bg-[#030712]">
+                            <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4.5rem)] lg:overflow-hidden bg-[#030712] w-full">
                                 <div className="w-full lg:w-96 bg-[#070b19] border-r border-indigo-950/60 flex flex-col order-2 lg:order-1 h-auto lg:h-full z-20 shadow-2xl">
-                                    <div className="p-4 border-b border-indigo-950/60 bg-[#0c1021] flex flex-col gap-3">
+                                    <div className="p-3 sm:p-4 border-b border-indigo-950/60 bg-[#0c1021] flex flex-col gap-3">
                                         <div className="flex items-center justify-between">
                                             <div className="flex items-center gap-2">
-                                                <div className="p-2 bg-indigo-600/20 text-indigo-400 rounded-xl border border-indigo-500/30"><Icon name="tv" size={18}/></div>
-                                                <h2 className="font-extrabold text-sm text-white tracking-wide">TV en Directo</h2>
+                                                <div className="p-2 bg-indigo-600/20 text-indigo-400 rounded-xl border border-indigo-500/30"><Icon name="tv" size={16}/></div>
+                                                <h2 className="font-extrabold text-xs sm:text-sm text-white tracking-wide">TV en Directo</h2>
                                             </div>
-                                            <span className="text-[10px] font-mono text-indigo-300 bg-indigo-950/80 border border-indigo-900/60 px-2.5 py-1 rounded-full">{content.tv.length} canales</span>
+                                            <span className="text-[10px] font-mono text-indigo-300 bg-indigo-950/80 border border-indigo-900/60 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full">{content.tv.length} canales</span>
                                         </div>
                                         <div className="relative">
                                             <input type="text" placeholder="Buscar canal en vivo..." className="w-full bg-[#030712] border border-indigo-950/80 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-indigo-500 outline-none pl-9 transition-colors placeholder-gray-500 shadow-inner" value={search} onChange={(e) => setSearch(e.target.value)}/>
-                                            <Icon className="absolute left-3 top-3 text-gray-400" name="search" size={15}/>
+                                            <Icon className="absolute left-3 top-3 text-gray-400" name="search" size={14}/>
                                             {search && (<button onClick={() => setSearch('')} className="absolute right-3 top-3 text-gray-400 hover:text-white"><Icon name="x" size={14}/></button>)}
                                         </div>
                                         <div>
-                                            <select value={tvGroupFilter} onChange={(e) => setTvGroupFilter(e.target.value)} className="w-full bg-[#030712] border border-indigo-950/80 rounded-xl px-3.5 py-2.5 text-xs text-gray-200 outline-none focus:border-indigo-500 cursor-pointer shadow-inner">
+                                            <select value={tvGroupFilter} onChange={(e) => setTvGroupFilter(e.target.value)} className="w-full bg-[#030712] border border-indigo-950/80 rounded-xl px-3 py-2 text-xs text-gray-200 outline-none focus:border-indigo-500 cursor-pointer shadow-inner">
                                                 <option value="ALL">🌐 Todas las categorías</option>
                                                 {tvGroups.filter(g => g !== 'ALL').map((group, idx) => (<option key={idx} value={group}>{group}</option>))}
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="flex-1 overflow-y-auto custom-scrollbar p-3 space-y-2 max-h-[50vh] lg:max-h-none">
+                                    <div className="flex-1 overflow-y-auto custom-scrollbar p-2 sm:p-3 space-y-2 max-h-[45vh] lg:max-h-none">
                                         {content.tv.filter(c => {
                                             const matchesSearch = !search || c.title.toLowerCase().includes(search.toLowerCase());
                                             const matchesGroup = tvGroupFilter === 'ALL' || c.group === tvGroupFilter;
@@ -958,27 +937,27 @@
                                             const isActive = selectedItem?.id === channel.id;
                                             const isFav = favorites.some(f => f.id === channel.id);
                                             return (
-                                                <div key={channel.id || idx} onClick={() => handlePlay(channel)} className={`group relative flex items-center gap-3 p-3 rounded-2xl border cursor-pointer transition-all duration-200 ${isActive ? 'bg-indigo-950/60 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.3)] border-l-4' : 'bg-[#0a0f20]/90 hover:bg-[#111932] border-indigo-950/40 hover:border-indigo-900/70'}`}>
-                                                    <div className="w-14 h-10 rounded-xl bg-black/90 flex items-center justify-center overflow-hidden flex-shrink-0 border border-indigo-950/80 group-hover:border-indigo-500/50 transition-colors relative">
-                                                        {channel.image ? (<img src={channel.image} alt={channel.title} loading="lazy" className="w-full h-full object-contain p-1" onError={(e) => e.target.style.display='none'} />) : (<Icon className="text-gray-500" name="tv" size={16}/>)}
-                                                        {isActive && (<div className="absolute inset-0 bg-indigo-600/30 flex items-center justify-center"><div className="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-ping"></div></div>)}
+                                                <div key={channel.id || idx} onClick={() => handlePlay(channel)} className={`group relative flex items-center gap-3 p-2.5 sm:p-3 rounded-2xl border cursor-pointer transition-all duration-200 ${isActive ? 'bg-indigo-950/60 border-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.3)] border-l-4' : 'bg-[#0a0f20]/90 hover:bg-[#111932] border-indigo-950/40 hover:border-indigo-900/70'}`}>
+                                                    <div className="w-12 h-9 sm:w-14 sm:h-10 rounded-xl bg-black/90 flex items-center justify-center overflow-hidden flex-shrink-0 border border-indigo-950/80 relative">
+                                                        {channel.image ? (<img src={channel.image} alt={channel.title} loading="lazy" className="w-full h-full object-contain p-1" onError={(e) => e.target.style.display='none'} />) : (<Icon className="text-gray-500" name="tv" size={14}/>)}
+                                                        {isActive && (<div className="absolute inset-0 bg-indigo-600/30 flex items-center justify-center"><div className="w-2 h-2 rounded-full bg-indigo-400 animate-ping"></div></div>)}
                                                     </div>
                                                     <div className="flex-1 min-w-0">
                                                         <h4 className={`text-xs font-bold truncate transition-colors ${isActive ? 'text-indigo-400' : 'text-white group-hover:text-gray-100'}`}>{channel.title}</h4>
                                                         <span className="text-[10px] text-gray-400 truncate block mt-0.5 font-medium">{channel.group || 'General'}</span>
                                                     </div>
-                                                    <button onClick={(e) => { e.stopPropagation(); toggleFavorite(channel); }} className="p-2 rounded-xl text-gray-500 hover:text-white hover:bg-white/10 transition-colors">
-                                                        <Icon name="heart" size={15} fill={isFav ? '#6366f1' : 'none'} className={isFav ? 'text-indigo-500' : 'text-gray-500'}/>
+                                                    <button onClick={(e) => { e.stopPropagation(); toggleFavorite(channel); }} className="p-2 rounded-xl text-gray-500 hover:text-white transition-colors">
+                                                        <Icon name="heart" size={14} fill={isFav ? '#6366f1' : 'none'} className={isFav ? 'text-indigo-500' : 'text-gray-500'}/>
                                                     </button>
                                                 </div>
                                             );
                                         })}
                                     </div>
                                 </div>
-                                <div className="flex-1 bg-[#010309] relative flex flex-col justify-between overflow-hidden order-1 lg:order-2" ref={tvContainerRef}>
-                                    <div className="absolute top-4 left-4 z-20 pointer-events-none flex items-center gap-2.5 bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-indigo-500/30 shadow-2xl">
+                                <div className="flex-1 bg-[#010309] relative flex flex-col justify-between overflow-hidden order-1 lg:order-2 w-full" ref={tvContainerRef}>
+                                    <div className="absolute top-3 left-3 z-20 pointer-events-none flex items-center gap-2 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-indigo-500/30 shadow-2xl">
                                         <div className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></div>
-                                        <span className="text-xs font-black tracking-tight text-white">BOX<span className="text-indigo-400">TV LIVE</span></span>
+                                        <span className="text-[11px] font-black tracking-tight text-white">BOX<span className="text-indigo-400">TV LIVE</span></span>
                                     </div>
                                     <div className="w-full aspect-video lg:aspect-auto lg:flex-1 relative flex items-center justify-center bg-black overflow-hidden video-container-fix">
                                         {selectedItem && selectedItem.type === 'tv' ? (
@@ -994,50 +973,50 @@
                                             </div>
                                         ) : (
                                             <div className="flex flex-col items-center justify-center p-6 text-center max-w-sm space-y-3 animate-fade-in">
-                                                <div className="w-16 h-16 rounded-3xl bg-indigo-950/40 border border-indigo-500/40 flex items-center justify-center text-indigo-400 shadow-2xl"><Icon name="tv" size={36}/></div>
+                                                <div className="w-14 h-14 rounded-3xl bg-indigo-950/40 border border-indigo-500/40 flex items-center justify-center text-indigo-400 shadow-2xl"><Icon name="tv" size={28}/></div>
                                                 <div>
-                                                    <h3 className="text-sm font-bold text-white mb-1">Selecciona un canal para comenzar</h3>
-                                                    <p className="text-[11px] text-gray-400">Elige cualquier señal de la lista lateral para ver la transmisión instantánea.</p>
+                                                    <h3 className="text-xs sm:text-sm font-bold text-white mb-1">Selecciona un canal para comenzar</h3>
+                                                    <p className="text-[10px] sm:text-[11px] text-gray-400">Elige cualquier señal de la lista lateral para ver la transmisión instantánea.</p>
                                                 </div>
                                             </div>
                                         )}
                                     </div>
-                                    <div className="bg-[#070b19] border-t border-indigo-950/60 px-5 py-3.5 flex items-center justify-between z-20">
-                                        <div className="flex items-center gap-3.5 truncate max-w-md">
+                                    <div className="bg-[#070b19] border-t border-indigo-950/60 px-3 sm:px-5 py-3 flex items-center justify-between z-20">
+                                        <div className="flex items-center gap-3 truncate max-w-[50%] sm:max-w-md">
                                             {selectedItem && selectedItem.type === 'tv' ? (
                                                 <>
-                                                    <div className="w-11 h-9 rounded-xl bg-black flex items-center justify-center overflow-hidden border border-indigo-500/40 flex-shrink-0 shadow-md">
-                                                        {selectedItem.image ? (<img src={selectedItem.image} alt={selectedItem.title} className="w-full h-full object-contain" />) : (<Icon className="text-gray-400" name="tv" size={16}/>)}
+                                                    <div className="w-10 h-8 rounded-lg bg-black flex items-center justify-center overflow-hidden border border-indigo-500/40 flex-shrink-0 shadow-md">
+                                                        {selectedItem.image ? (<img src={selectedItem.image} alt={selectedItem.title} className="w-full h-full object-contain" />) : (<Icon className="text-gray-400" name="tv" size={14}/>)}
                                                     </div>
                                                     <div className="truncate">
                                                         <h3 className="text-xs font-bold text-white truncate">{selectedItem.title}</h3>
-                                                        <span className="text-[10px] text-indigo-300 truncate block">{selectedItem.group || 'En Directo'}</span>
+                                                        <span className="text-[9px] text-indigo-300 truncate block">{selectedItem.group || 'En Directo'}</span>
                                                     </div>
                                                 </>
                                             ) : (<span className="text-xs text-gray-400 font-medium italic">Ningún canal seleccionado</span>)}
                                         </div>
                                         {selectedItem && selectedItem.type === 'tv' && (
-                                            <div className="flex items-center gap-2.5">
-                                                <button onClick={() => setTvRefreshTrigger(prev => prev + 1)} className="p-2.5 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 transition-colors border border-indigo-500/30" title="Refrescar Señal"><Icon name="refresh" size={16}/></button>
-                                                <button onClick={() => toggleFavorite(selectedItem)} className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white transition-colors border border-white/10" title="Favorito"><Icon name="heart" size={16} className={favorites.some(f => f.id === selectedItem.id) ? "text-indigo-500 fill-indigo-500" : "text-gray-300"}/></button>
-                                                <button onClick={toggleTvFullscreen} className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white transition-colors border border-white/10" title="Pantalla Completa"><Icon name="clapperboard" size={16}/></button>
-                                                <button onClick={() => { setSelectedItem(null); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="p-2.5 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-400 transition-colors border border-red-500/30" title="Cerrar"><Icon name="x" size={16}/></button>
+                                            <div className="flex items-center gap-1.5 sm:gap-2">
+                                                <button onClick={() => setTvRefreshTrigger(prev => prev + 1)} className="p-2 rounded-xl bg-indigo-600/20 text-indigo-300 border border-indigo-500/30" title="Refrescar"><Icon name="refresh" size={14}/></button>
+                                                <button onClick={() => toggleFavorite(selectedItem)} className="p-2 rounded-xl bg-white/5 text-white border border-white/10" title="Favorito"><Icon name="heart" size={14} className={favorites.some(f => f.id === selectedItem.id) ? "text-indigo-500 fill-indigo-500" : "text-gray-300"}/></button>
+                                                <button onClick={toggleTvFullscreen} className="p-2 rounded-xl bg-white/5 text-white border border-white/10" title="Pantalla Completa"><Icon name="clapperboard" size={14}/></button>
+                                                <button onClick={() => { setSelectedItem(null); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="p-2 rounded-xl bg-red-500/20 text-red-400 border border-red-500/30" title="Cerrar"><Icon name="x" size={14}/></button>
                                             </div>
                                         )}
                                     </div>
                                 </div>
                             </div>
                         ) : selectedItem ? (
-                            <div className="animate-fade-in flex flex-col min-h-screen bg-[#030712]">
-                                <div className="w-full bg-black relative aspect-video md:h-[70vh] flex items-center justify-center overflow-hidden video-container-fix" ref={movieContainerRef}>
-                                    <div className="absolute top-5 left-5 z-30 flex gap-2">
-                                        <button onClick={() => {setSelectedItem(null); setIsLocked(false); window.history.pushState({ appState: 'main', activeTab }, '');}} className="bg-black/80 hover:bg-indigo-600 text-white px-5 py-2.5 rounded-full backdrop-blur-md flex items-center gap-2 text-xs transition-all border border-indigo-500/40 shadow-2xl font-bold">
-                                            <Icon name="arrowLeft" size={16}/> <span>Volver al Catálogo</span>
+                            <div className="animate-fade-in flex flex-col min-h-screen bg-[#030712] w-full">
+                                <div className="w-full bg-black relative aspect-video md:h-[65vh] flex items-center justify-center overflow-hidden video-container-fix" ref={movieContainerRef}>
+                                    <div className="absolute top-4 left-4 z-30 flex gap-2">
+                                        <button onClick={() => {setSelectedItem(null); setIsLocked(false); window.history.pushState({ appState: 'main', activeTab }, '');}} className="bg-black/80 hover:bg-indigo-600 text-white px-3 sm:px-5 py-2 rounded-full backdrop-blur-md flex items-center gap-2 text-xs transition-all border border-indigo-500/40 shadow-2xl font-bold">
+                                            <Icon name="arrowLeft" size={14}/> <span className="hidden sm:inline">Volver al Catálogo</span><span className="sm:hidden">Volver</span>
                                         </button>
                                     </div>
-                                    <div className="absolute top-5 right-5 z-30 flex gap-2">
-                                        <button onClick={toggleMovieFullscreen} className="bg-black/80 hover:bg-indigo-600 text-white p-3 rounded-full backdrop-blur-md flex items-center justify-center text-xs transition-all border border-indigo-500/40 shadow-2xl" title="Pantalla Completa">
-                                            <Icon name="clapperboard" size={18}/>
+                                    <div className="absolute top-4 right-4 z-30 flex gap-2">
+                                        <button onClick={toggleMovieFullscreen} className="bg-black/80 hover:bg-indigo-600 text-white p-2.5 rounded-full backdrop-blur-md flex items-center justify-center text-xs transition-all border border-indigo-500/40 shadow-2xl" title="Pantalla Completa">
+                                            <Icon name="clapperboard" size={16}/>
                                         </button>
                                     </div>
                                     {isLocked ? (
@@ -1047,26 +1026,26 @@
                                     )}
                                 </div>
                                 {!isLocked && (
-                                    <div className="p-6 sm:p-12 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-10 pb-32">
+                                    <div className="p-4 sm:p-12 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10 pb-32">
                                         <div className="lg:col-span-2 space-y-4">
-                                            <div className="flex items-start justify-between">
+                                            <div className="flex items-start justify-between gap-4">
                                                 <div>
-                                                    <h1 className="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tight">{selectedItem.titulo || selectedItem.title || selectedItem.name}</h1>
+                                                    <h1 className="text-2xl sm:text-4xl font-black text-white mb-2 tracking-tight">{selectedItem.titulo || selectedItem.title || selectedItem.name}</h1>
                                                     <div className="flex items-center gap-3 text-xs text-gray-300">
                                                         <span className="bg-indigo-950/80 border border-indigo-500/40 px-3 py-1 rounded-lg text-indigo-300 font-bold uppercase tracking-wider">{selectedItem.type}</span>
                                                     </div>
                                                 </div>
-                                                <button onClick={() => toggleFavorite(selectedItem)} className="p-3.5 bg-indigo-950/60 border border-indigo-500/40 rounded-2xl hover:bg-indigo-900/60 transition-colors shadow-2xl">
-                                                    <Icon name="heart" size={24} fill={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "#6366f1" : "none"} className={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "text-indigo-500" : "text-gray-300"} />
+                                                <button onClick={() => toggleFavorite(selectedItem)} className="p-3 bg-indigo-950/60 border border-indigo-500/40 rounded-2xl hover:bg-indigo-900/60 transition-colors shadow-2xl flex-shrink-0">
+                                                    <Icon name="heart" size={20} fill={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "#6366f1" : "none"} className={favorites.some(f => (f.id||f.title) === (selectedItem.id||selectedItem.title)) ? "text-indigo-500" : "text-gray-300"} />
                                                 </button>
                                             </div>
-                                            <p className="text-gray-300 text-sm sm:text-base leading-relaxed">{selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}</p>
+                                            <p className="text-gray-300 text-xs sm:text-base leading-relaxed">{selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}</p>
                                         </div>
                                         {((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
-                                            <div className="bg-[#0c1021] border border-indigo-950/80 rounded-3xl p-6 flex flex-col h-[540px] shadow-2xl">
-                                                <div className="flex items-center justify-between mb-4">
-                                                    <h3 className="font-extrabold text-sm text-white flex items-center gap-2.5">
-                                                        <span className="w-2.5 h-2.5 rounded-full bg-indigo-500"></span> Lista de Episodios
+                                            <div className="bg-[#0c1021] border border-indigo-950/80 rounded-3xl p-4 sm:p-6 flex flex-col h-[480px] sm:h-[540px] shadow-2xl">
+                                                <div className="flex items-center justify-between mb-3">
+                                                    <h3 className="font-extrabold text-xs sm:text-sm text-white flex items-center gap-2">
+                                                        <span className="w-2 h-2 rounded-full bg-indigo-500"></span> Episodios
                                                     </h3>
                                                     {(() => {
                                                         const itemId = selectedItem.id || selectedItem.title;
@@ -1076,10 +1055,10 @@
                                                         return <span className="text-[10px] font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded-full border border-indigo-900/60">{watchedList.length} / {totalEps} vistos</span>;
                                                     })()}
                                                 </div>
-                                                <div className="flex gap-2.5 mb-4 overflow-x-auto pb-2 no-scrollbar">
+                                                <div className="flex gap-2 mb-3 overflow-x-auto pb-2 no-scrollbar">
                                                     {selectedItem.seasons.map((season, sIdx) => (
-                                                        <button key={sIdx} onClick={() => setExpandedSeason(sIdx)} className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${expandedSeason === sIdx ? 'bg-indigo-600 text-white shadow-[0_0_20px_rgba(99,102,241,0.5)] border border-indigo-400' : 'bg-black/55 text-gray-400 hover:text-white border border-indigo-950/80'}`}>
-                                                            Temporada {season.seasonNumber}
+                                                        <button key={sIdx} onClick={() => setExpandedSeason(sIdx)} className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${expandedSeason === sIdx ? 'bg-indigo-600 text-white shadow-[0_0_20px_rgba(99,102,241,0.5)] border border-indigo-400' : 'bg-black/55 text-gray-400 hover:text-white border border-indigo-950/80'}`}>
+                                                            Temp {season.seasonNumber}
                                                         </button>
                                                     ))}
                                                 </div>
@@ -1097,13 +1076,13 @@
                                                                     setSelectedEpisode(ep);
                                                                     recordContinueWatching(selectedItem, ep);
                                                                 }} 
-                                                                className={`p-3.5 rounded-2xl cursor-pointer flex items-center justify-between text-xs transition-all ${isCurrent ? 'bg-indigo-950/85 text-white border border-indigo-500/60 shadow-lg' : isWatched ? 'bg-black/30 text-gray-400 border border-indigo-950/40 opacity-75' : 'hover:bg-indigo-950/30 text-gray-300 border border-transparent'}`}
+                                                                className={`p-3 rounded-2xl cursor-pointer flex items-center justify-between text-xs transition-all ${isCurrent ? 'bg-indigo-950/85 text-white border border-indigo-500/60 shadow-lg' : isWatched ? 'bg-black/30 text-gray-400 border border-indigo-950/40 opacity-75' : 'hover:bg-indigo-950/30 text-gray-300 border border-transparent'}`}
                                                             >
-                                                                <div className="flex items-center gap-3.5 truncate flex-1 pr-2">
-                                                                    <div className="w-6 flex justify-center shrink-0">
+                                                                <div className="flex items-center gap-2.5 truncate flex-1 pr-2">
+                                                                    <div className="w-5 flex justify-center shrink-0">
                                                                         {isCurrent ? (
-                                                                            <div className="flex items-end h-4 gap-[2px]">
-                                                                                <div className="bar w-[2px]"></div><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div>
+                                                                            <div className="flex items-end h-3.5 gap-[2px]">
+                                                                                <div className="bar w-[2px]"></div><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div>
                                                                             </div>
                                                                         ) : (
                                                                             <span className={`font-bold ${isWatched ? 'text-indigo-400' : 'text-gray-500'}`}>{isWatched ? '✓' : `${eIdx + 1}.`}</span>
@@ -1112,17 +1091,17 @@
                                                                     <span className={`truncate font-medium ${isWatched ? 'line-through decoration-indigo-500/60 text-gray-400' : ''}`}>{ep.title}</span>
                                                                 </div>
 
-                                                                <div className="flex items-center gap-2 flex-shrink-0">
+                                                                <div className="flex items-center gap-1.5 flex-shrink-0">
                                                                     <button 
                                                                         onClick={(e) => {
                                                                             e.stopPropagation();
                                                                             markEpisodeAsWatched(selectedItem, ep, !isWatched);
                                                                         }}
-                                                                        className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all border ${isWatched ? 'bg-indigo-600/30 text-indigo-300 border-indigo-500/50' : 'bg-black/50 text-gray-400 border-indigo-950/80 hover:text-white'}`}
+                                                                        className={`px-2 py-1 rounded-lg text-[9px] font-bold transition-all border ${isWatched ? 'bg-indigo-600/30 text-indigo-300 border-indigo-500/50' : 'bg-black/50 text-gray-400 border-indigo-950/80 hover:text-white'}`}
                                                                     >
-                                                                        {isWatched ? 'Visto ✓' : 'Marcar visto'}
+                                                                        {isWatched ? 'Visto ✓' : 'Visto'}
                                                                     </button>
-                                                                    <Icon name="play" size={15} fill={isCurrent ? "#6366f1" : "none"} className={isCurrent ? "text-indigo-400" : "text-gray-500"}/>
+                                                                    <Icon name="play" size={14} fill={isCurrent ? "#6366f1" : "none"} className={isCurrent ? "text-indigo-400" : "text-gray-500"}/>
                                                                 </div>
                                                             </div>
                                                         );
@@ -1145,7 +1124,7 @@
                                 )}
                                 
                                 {activeTab === 'home' && !search ? (
-                                    <div className="space-y-10 pb-16">
+                                    <div className="space-y-8 sm:space-y-10 pb-16 w-full">
                                         {continueWatching.length > 0 && (
                                             <ContentRow title="▶️ Continuar Viendo" items={continueWatching} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         )}
@@ -1156,17 +1135,17 @@
                                         <ContentRow title="📺 Televisión en Vivo" items={content.tv.slice(0, 15)} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         
                                         {/* Radio HD preview row on Home */}
-                                        <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-8">
+                                        <div className="max-w-7xl mx-auto px-3 sm:px-8 mb-8 w-full">
                                             <div className="flex items-center justify-between mb-4">
                                                 <div className="flex items-center gap-3">
-                                                    <div className="w-1.5 h-6 bg-purple-500 rounded-full shadow-[0_0_10px_#9333ea]"></div>
-                                                    <h2 className="text-lg sm:text-xl font-extrabold uppercase tracking-wide text-white">📻 Radio HD - Emisoras Nacionales</h2>
+                                                    <div className="w-1.5 h-5 sm:h-6 bg-purple-500 rounded-full shadow-[0_0_10px_#9333ea]"></div>
+                                                    <h2 className="text-base sm:text-xl font-extrabold uppercase tracking-wide text-white">📻 Radio HD - Emisoras Nacionales</h2>
                                                 </div>
                                                 <button onClick={() => { setActiveTab('radio'); window.history.pushState({ appState: 'main', activeTab: 'radio' }, ''); }} className="text-xs font-bold text-indigo-400 hover:text-white transition-colors">
-                                                    Ver todas ({radioStations.length}) →
+                                                    Ver todas →
                                                 </button>
                                             </div>
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
                                                 {radioStations.slice(0, 5).map((station, idx) => (
                                                     <div 
                                                         key={station.id || idx} 
@@ -1176,7 +1155,7 @@
                                                         }}
                                                         className="group bg-[#0c1021] hover:bg-[#131932] border border-indigo-950/80 hover:border-indigo-500/50 rounded-2xl p-3 cursor-pointer transition-all flex flex-col items-center text-center shadow-lg"
                                                     >
-                                                        <div className="w-16 h-16 rounded-xl bg-black overflow-hidden p-1 mb-2 border border-indigo-950 shadow-inner">
+                                                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-black overflow-hidden p-1 mb-2 border border-indigo-950 shadow-inner">
                                                             <img src={station.image} alt={station.title} className="w-full h-full object-contain" onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/300x300/0c1021/ffffff?text=Radio'; }}/>
                                                         </div>
                                                         <h4 className="text-xs font-bold text-white truncate w-full group-hover:text-indigo-400 transition-colors">{station.title}</h4>
@@ -1191,32 +1170,32 @@
                                         )}
                                     </div>
                                 ) : activeTab === 'topshows' ? (
-                                    <div className="p-4 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
+                                    <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
                                         <div className="mb-6 flex items-center gap-3 border-b border-indigo-950/60 pb-4">
-                                            <div className="p-2.5 bg-yellow-500/20 rounded-xl text-yellow-400 border border-yellow-500/30"><Icon fill="currentColor" name="star" size={22}/></div>
+                                            <div className="p-2.5 bg-yellow-500/20 rounded-xl text-yellow-400 border border-yellow-500/30"><Icon fill="currentColor" name="star" size={20}/></div>
                                             <div>
-                                                <h2 className="text-xl sm:text-2xl font-black text-white">Vista Superior / Top Shows</h2>
+                                                <h2 className="text-lg sm:text-2xl font-black text-white">Vista Superior / Top Shows</h2>
                                                 <p className="text-xs text-gray-400 mt-0.5">Los programas mejor valorados y más reproducidos por la comunidad.</p>
                                             </div>
                                         </div>
-                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
+                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
                                             {displayedItems.map((item, i) => (
                                                 <Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={toggleFavorite} />
                                             ))}
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className="p-4 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
+                                    <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
                                         <div className="mb-6 flex items-center gap-3">
-                                            <div className="w-1.5 h-7 bg-indigo-500 rounded-full shadow-[0_0_15px_#6366f1]"></div>
-                                            <h2 className="text-xl sm:text-2xl font-black uppercase tracking-wide text-white">{activeTab === 'home' ? 'Resultados de Búsqueda' : activeTab}</h2>
+                                            <div className="w-1.5 h-6 sm:h-7 bg-indigo-500 rounded-full shadow-[0_0_15px_#6366f1]"></div>
+                                            <h2 className="text-lg sm:text-2xl font-black uppercase tracking-wide text-white">{activeTab === 'home' ? 'Resultados de Búsqueda' : activeTab}</h2>
                                         </div>
                                         {loading ? (
-                                            <div className="flex justify-center py-24"><div className="animate-spin rounded-full h-14 w-14 border-4 border-indigo-500 border-t-transparent shadow-[0_0_25px_#6366f1]"></div></div>
+                                            <div className="flex justify-center py-24"><div className="animate-spin rounded-full h-12 w-12 border-4 border-indigo-500 border-t-transparent shadow-[0_0_25px_#6366f1]"></div></div>
                                         ) : displayedItems.length === 0 ? (
                                             <div className="text-center py-24 text-gray-500 text-sm"><p>No se encontraron resultados para tu búsqueda.</p></div>
                                         ) : (
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5 animate-slide-up">
+                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5 animate-slide-up">
                                                 {displayedItems.map((item, i) => (
                                                     <Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={toggleFavorite} />
                                                 ))}
@@ -1230,25 +1209,25 @@
 
                     {/* Radio Player Dock (Only active when in radio section) */}
                     {currentRadioStation && activeTab === 'radio' && (
-                        <div className="fixed bottom-[55px] md:bottom-0 left-0 right-0 bg-[#070b19]/95 backdrop-blur-2xl border-t border-indigo-950/80 p-3.5 sm:p-4 z-50 flex items-center justify-between shadow-[0_-20px_50px_rgba(0,0,0,0.9)] animate-slide-up">
-                            <div className="flex items-center gap-3.5 w-1/3 min-w-[120px]">
-                                <div className="w-12 h-12 rounded-2xl overflow-hidden flex-shrink-0 border border-indigo-500/40 hidden sm:block shadow-lg p-1 bg-black">
+                        <div className="fixed bottom-[50px] md:bottom-0 left-0 right-0 w-full max-w-[100vw] bg-[#070b19]/95 backdrop-blur-2xl border-t border-indigo-950/80 p-3 sm:p-4 z-50 flex items-center justify-between shadow-[0_-20px_50px_rgba(0,0,0,0.9)] animate-slide-up">
+                            <div className="flex items-center gap-3 w-1/3 min-w-[100px] sm:min-w-[120px]">
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl overflow-hidden flex-shrink-0 border border-indigo-500/40 hidden sm:block shadow-lg p-1 bg-black">
                                     <img src={currentRadioStation.image} alt={currentRadioStation.title} className="w-full h-full object-contain" onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/300x300/0c1021/ffffff?text=Radio'; }}/>
                                 </div>
                                 <div className="flex flex-col truncate">
                                     <span className="font-extrabold text-xs sm:text-sm text-white truncate">{currentRadioStation.title}</span>
                                     {streamError ? (
-                                        <span className="text-[10px] text-red-400 truncate flex items-center gap-1.5 mt-0.5"><span className="w-1.5 h-1.5 rounded-full bg-red-500"></span> ERROR DE CONEXIÓN</span>
+                                        <span className="text-[9px] sm:text-[10px] text-red-400 truncate flex items-center gap-1 mt-0.5"><span className="w-1.5 h-1.5 rounded-full bg-red-500"></span> ERROR</span>
                                     ) : isLoadingRadio ? (
-                                        <span className="text-[10px] text-yellow-400 truncate flex items-center gap-1.5 mt-0.5"><span className="w-2.5 h-2.5 border-2 border-yellow-400 border-t-transparent rounded-full animate-spin"></span> CONECTANDO...</span>
+                                        <span className="text-[9px] sm:text-[10px] text-yellow-400 truncate flex items-center gap-1 mt-0.5"><span className="w-2 h-2 border-2 border-yellow-400 border-t-transparent rounded-full animate-spin"></span> CONECTANDO</span>
                                     ) : (
-                                        <span className="text-[10px] text-indigo-400 truncate flex items-center gap-1.5 mt-0.5"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span> EN DIRECTO</span>
+                                        <span className="text-[9px] sm:text-[10px] text-indigo-400 truncate flex items-center gap-1 mt-0.5"><span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span> EN DIRECTO</span>
                                     )}
                                 </div>
                             </div>
 
                             <div className="flex flex-col items-center justify-center flex-1">
-                                <div className="flex items-center gap-4">
+                                <div className="flex items-center gap-3">
                                     <button onClick={() => {
                                         if (streamError) {
                                             if (audioRef.current) audioRef.current.dataset.currentUrl = "";
@@ -1257,12 +1236,11 @@
                                         } else {
                                             setIsRadioPlaying(!isRadioPlaying);
                                         }
-                                    }} className={`w-12 h-12 rounded-full flex items-center justify-center shadow-[0_0_25px_rgba(99,102,241,0.5)] transition-transform active:scale-95 ${streamError ? 'bg-red-900/50 hover:bg-red-800 text-white border border-red-500' : 'bg-indigo-600 hover:bg-indigo-500 text-white'}`}>
-                                        <Icon name={!isRadioPlaying ? "play" : "pause"} size={22} fill="currentColor" className={!isRadioPlaying ? "ml-1" : ""}/>
+                                    }} className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center shadow-[0_0_25px_rgba(99,102,241,0.5)] transition-transform active:scale-95 ${streamError ? 'bg-red-900/50 hover:bg-red-800 text-white border border-red-500' : 'bg-indigo-600 hover:bg-indigo-500 text-white'}`}>
+                                        <Icon name={!isRadioPlaying ? "play" : "pause"} size={18} fill="currentColor" className={!isRadioPlaying ? "ml-0.5" : ""}/>
                                     </button>
                                 </div>
-                                <div className="flex items-end h-6 gap-1 mt-2">
-                                    <div className={`bar ${!isRadioPlaying ? 'paused-bar' : ''}`}></div>
+                                <div className="flex items-end h-5 gap-1 mt-1.5">
                                     <div className={`bar ${!isRadioPlaying ? 'paused-bar' : ''}`}></div>
                                     <div className={`bar ${!isRadioPlaying ? 'paused-bar' : ''}`}></div>
                                     <div className={`bar ${!isRadioPlaying ? 'paused-bar' : ''}`}></div>
@@ -1271,9 +1249,9 @@
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-end gap-4 w-1/3">
+                            <div className="flex items-center justify-end gap-3 w-1/3">
                                 <Icon className="text-gray-400 hidden lg:block" name="volume" size={18}/>
-                                <input type="range" min="0" max="1" step="0.01" value={radioVolume} onChange={(e) => setRadioVolume(parseFloat(e.target.value))} className="w-24 accent-indigo-500 hidden lg:block"/>
+                                <input type="range" min="0" max="1" step="0.01" value={radioVolume} onChange={(e) => setRadioVolume(parseFloat(e.target.value))} className="w-20 sm:w-24 accent-indigo-500 hidden lg:block"/>
                             </div>
                         </div>
                     )}
@@ -1291,7 +1269,7 @@
                                 </div>
 
                                 <div className="bg-white p-3 rounded-2xl shadow-inner flex justify-center items-center">
-                                    <img src="./mi-qr-pro.png" alt="BoxPlay QR Code" className="w-48 h-48 object-contain" onError={handleQrError} />
+                                    <img src="./mi-qr-pro.png" alt="BoxPlay QR Code" className="w-44 h-44 object-contain" onError={handleQrError} />
                                 </div>
 
                                 <div>
@@ -1314,8 +1292,8 @@
                             </div>
                             <h3 className="text-base font-extrabold text-white">Cómo Instalar BoxPlay</h3>
                             <div className="text-xs text-gray-300 space-y-2 text-left bg-black/40 p-4 rounded-2xl border border-indigo-950/80">
-                                <p><strong>💻 En Windows / PC (Chrome, Edge, Brave):</strong><br/>Haz clic en el ícono de instalación (ordenador con flecha 📥) ubicado en la barra de direcciones del navegador o en el menú (⋮) y selecciona <em>'Instalar BoxPlay'</em>.</p>
-                                <p><strong>📱 En Android:</strong><br/>Toca el menú (⋮) de tu navegador y selecciona <em>'Instalar aplicación'</em> o <em>'Agregar a pantalla principal'</em>.</p>
+                                <p><strong>💻 En Windows / PC (Chrome, Edge, Brave):</strong><br/>Haz clic en el ícono de instalación o en el menú (⋮) y selecciona <em>'Instalar BoxPlay'</em>.</p>
+                                <p><strong>📱 En Android:</strong><br/>Toca el menú (⋮) y selecciona <em>'Instalar aplicación'</em> o <em>'Agregar a pantalla principal'</em>.</p>
                                 <p><strong>🍏 En iPhone / iPad (Safari):</strong><br/>Toca el botón Compartir (⎋) y selecciona <em>'Agregar al inicio'</em>.</p>
                             </div>
                             <button onClick={() => document.getElementById('install-guide-modal').classList.add('hidden')} className="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-indigo-500 transition-colors shadow-[0_0_15px_rgba(99,102,241,0.5)]">
@@ -1341,11 +1319,11 @@
             if (!items || items.length === 0) return null;
 
             return (
-                <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-8">
-                    <div className="flex items-center justify-between mb-4">
+                <div className="max-w-7xl mx-auto px-3 sm:px-8 mb-8 w-full">
+                    <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center gap-3">
-                            <div className="w-1.5 h-6 bg-indigo-500 rounded-full shadow-[0_0_10px_#6366f1]"></div>
-                            <h2 className="text-lg sm:text-xl font-extrabold uppercase tracking-wide text-white">{title}</h2>
+                            <div className="w-1.5 h-5 sm:h-6 bg-indigo-500 rounded-full shadow-[0_0_10px_#6366f1]"></div>
+                            <h2 className="text-base sm:text-xl font-extrabold uppercase tracking-wide text-white">{title}</h2>
                         </div>
                         <div className="hidden sm:flex items-center gap-2">
                             <button onClick={() => scroll('left')} className="p-2 rounded-xl bg-[#0c1021] border border-indigo-950/80 hover:bg-indigo-950/40 text-white transition-colors shadow-md">
@@ -1356,9 +1334,9 @@
                             </button>
                         </div>
                     </div>
-                    <div ref={rowRef} className="flex gap-4 overflow-x-auto no-scrollbar pb-4 pt-1 snap-x scroll-smooth custom-scrollbar">
+                    <div ref={rowRef} className="flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar pb-3 pt-1 snap-x scroll-smooth custom-scrollbar">
                         {items.map((item, i) => (
-                            <div key={item.id || item.title || i} className="flex-shrink-0 w-36 sm:w-48 snap-start">
+                            <div key={item.id || item.title || i} className="flex-shrink-0 w-32 sm:w-48 snap-start">
                                 <Card item={item} onClick={onPlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={onToggleFavorite} />
                             </div>
                         ))}
@@ -1369,17 +1347,17 @@
 
         const CommunitySection = () => {
             return (
-                <div className="max-w-5xl mx-auto p-4 sm:p-10 animate-fade-in text-white pb-28">
+                <div className="max-w-5xl mx-auto p-3 sm:p-10 animate-fade-in text-white pb-28 w-full">
                     <div className="mb-6 border-b border-indigo-950/60 pb-4">
-                        <h1 className="text-2xl sm:text-3xl font-black flex items-center gap-3">
-                            <span className="p-2.5 bg-indigo-600/20 rounded-2xl text-indigo-400 border border-indigo-500/30"><Icon name="chat" size={26}/></span>
+                        <h1 className="text-xl sm:text-3xl font-black flex items-center gap-3">
+                            <span className="p-2.5 bg-indigo-600/20 rounded-2xl text-indigo-400 border border-indigo-500/30"><Icon name="chat" size={22}/></span>
                             Comunidad <span className="text-indigo-400">BOX PLAY</span>
                         </h1>
                         <p className="text-xs sm:text-sm text-gray-400 mt-1">Comparte tus opiniones, solicita películas o platica con otros cinéfilos en tiempo real.</p>
                     </div>
 
-                    <div className="bg-[#0c1021] border border-indigo-950/80 rounded-3xl p-5 shadow-2xl flex flex-col items-center">
-                        <div className="w-full h-[550px] rounded-2xl overflow-hidden bg-black/40 border border-indigo-950/80">
+                    <div className="bg-[#0c1021] border border-indigo-950/80 rounded-3xl p-3 sm:p-5 shadow-2xl flex flex-col items-center">
+                        <div className="w-full h-[500px] sm:h-[550px] rounded-2xl overflow-hidden bg-black/40 border border-indigo-950/80">
                             <iframe 
                                 src="https://sejoflix.chatango.com/" 
                                 width="100%" 
@@ -1429,33 +1407,32 @@
             ];
 
             return (
-                <div className="mb-10 px-4 sm:px-8 max-w-7xl mx-auto animate-fade-in">
-                    <div className="mb-4 flex items-center justify-between">
+                <div className="mb-8 px-3 sm:px-8 max-w-7xl mx-auto animate-fade-in w-full">
+                    <div className="mb-3 flex items-center justify-between">
                         <div className="flex items-center gap-2.5">
-                            <div className="w-1.5 h-6 bg-indigo-500 rounded-full shadow-[0_0_10px_#6366f1]"></div>
-                            <h2 className="text-sm sm:text-base font-extrabold uppercase tracking-wider text-white">Accesos Destacados HBO Max Style</h2>
+                            <div className="w-1.5 h-5 sm:h-6 bg-indigo-500 rounded-full shadow-[0_0_10px_#6366f1]"></div>
+                            <h2 className="text-xs sm:text-base font-extrabold uppercase tracking-wider text-white">Accesos Destacados HBO Max Style</h2>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                         {cards.map(c => (
                             <div 
                                 key={c.id} 
                                 onClick={() => onNavigate(c.id)}
-                                className={`group relative bg-gradient-to-br ${c.color} border rounded-3xl p-5 sm:p-6 cursor-pointer transition-all duration-300 hover:scale-[1.02] shadow-xl flex flex-col justify-between ${c.isCinemaAnim ? 'cinema-shimmer-container' : ''}`}
+                                className={`group relative bg-gradient-to-br ${c.color} border rounded-3xl p-4 sm:p-6 cursor-pointer transition-all duration-300 hover:scale-[1.02] shadow-xl flex flex-col justify-between ${c.isCinemaAnim ? 'cinema-shimmer-container' : ''}`}
                             >
-                                <div className="flex items-start justify-between mb-4">
-                                    <div className={`w-12 h-12 rounded-2xl ${c.iconBg} flex items-center justify-center group-hover:scale-110 transition-transform ${c.isTvLiveAnim ? 'tv-radar-anim' : ''}`}>
-                                        <Icon name={c.icon} size={24}/>
+                                <div className="flex items-start justify-between mb-3">
+                                    <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-2xl ${c.iconBg} flex items-center justify-center group-hover:scale-110 transition-transform ${c.isTvLiveAnim ? 'tv-radar-anim' : ''}`}>
+                                        <Icon name={c.icon} size={20}/>
                                     </div>
-                                    <span className="text-[9px] font-black px-2.5 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white tracking-widest">{c.badge}</span>
+                                    <span className="text-[9px] font-black px-2 py-0.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-white tracking-widest">{c.badge}</span>
                                 </div>
                                 <div>
-                                    <h3 className="font-extrabold text-base sm:text-lg text-white mb-1.5 group-hover:text-indigo-400 transition-colors">{c.title}</h3>
-                                    <p className="text-xs text-gray-300 font-medium">{c.desc}</p>
+                                    <h3 className="font-extrabold text-sm sm:text-lg text-white mb-1 group-hover:text-indigo-400 transition-colors">{c.title}</h3>
+                                    <p className="text-[11px] sm:text-xs text-gray-300 font-medium">{c.desc}</p>
                                 </div>
                                 {c.isEqualizer && (
-                                    <div className="flex items-end h-4 gap-1 mt-4">
-                                        <div className="bar w-1"></div>
+                                    <div className="flex items-end h-3.5 gap-1 mt-3">
                                         <div className="bar w-1"></div>
                                         <div className="bar w-1"></div>
                                         <div className="bar w-1"></div>
@@ -1463,13 +1440,13 @@
                                     </div>
                                 )}
                                 {c.isTvLiveAnim && (
-                                    <div className="flex items-center gap-1.5 mt-4">
+                                    <div className="flex items-center gap-1.5 mt-3">
                                         <div className="w-2 h-2 rounded-full bg-red-500 animate-ping"></div>
                                         <span className="text-[10px] font-mono text-red-400 tracking-wider font-bold">SEÑAL EN VIVO</span>
                                     </div>
                                 )}
                                 {c.isCinemaAnim && (
-                                    <div className="flex items-center gap-1.5 mt-4">
+                                    <div className="flex items-center gap-1.5 mt-3">
                                         <div className="w-3 h-1.5 bg-blue-500 rounded-sm animate-pulse"></div>
                                         <span className="text-[10px] font-mono text-blue-400 tracking-wider font-bold">PROYECTOR CINE HD</span>
                                     </div>
@@ -1489,23 +1466,23 @@
             }
 
             return (
-                <div className="max-w-7xl mx-auto p-4 sm:p-10 animate-fade-in text-white pb-32">
-                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8 gap-4 border-b border-indigo-950/60 pb-5">
+                <div className="max-w-7xl mx-auto p-3 sm:p-10 animate-fade-in text-white pb-32 w-full">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4 border-b border-indigo-950/60 pb-4">
                         <div>
-                            <h1 className="text-2xl sm:text-3xl font-black flex items-center gap-3">
-                                <span className="p-2.5 bg-indigo-600/20 rounded-2xl text-indigo-400 border border-indigo-500/30"><Icon name="radio" size={26}/></span>
+                            <h1 className="text-xl sm:text-3xl font-black flex items-center gap-3">
+                                <span className="p-2.5 bg-indigo-600/20 rounded-2xl text-indigo-400 border border-indigo-500/30"><Icon name="radio" size={22}/></span>
                                 Radio HD <span className="text-indigo-400">Costa Rica</span>
                             </h1>
                             <p className="text-xs sm:text-sm text-gray-400 mt-1">Emisoras nacionales en directo con calidad cristalina.</p>
                         </div>
                         <div className="flex items-center gap-2">
-                            <button onClick={() => setRadioTab('all')} className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${radioTab === 'all' ? 'bg-[#6366f1] text-white shadow-[0_0_15px_rgba(99,102,241,0.4)]' : 'bg-[#0c1021] text-gray-400 hover:text-white border border-indigo-950/80'}`}>Todas ({stations.length})</button>
-                            <button onClick={() => setRadioTab('favorites')} className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${radioTab === 'favorites' ? 'bg-[#6366f1] text-white shadow-[0_0_15px_rgba(99,102,241,0.4)]' : 'bg-[#0c1021] text-gray-400 hover:text-white border border-indigo-950/80'}`}>Favoritas ({favorites.length})</button>
+                            <button onClick={() => setRadioTab('all')} className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold transition-all ${radioTab === 'all' ? 'bg-[#6366f1] text-white shadow-[0_0_15px_rgba(99,102,241,0.4)]' : 'bg-[#0c1021] text-gray-400 hover:text-white border border-indigo-950/80'}`}>Todas ({stations.length})</button>
+                            <button onClick={() => setRadioTab('favorites')} className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold transition-all ${radioTab === 'favorites' ? 'bg-[#6366f1] text-white shadow-[0_0_15px_rgba(99,102,241,0.4)]' : 'bg-[#0c1021] text-gray-400 hover:text-white border border-indigo-950/80'}`}>Favoritas ({favorites.length})</button>
                         </div>
                     </div>
 
-                    <div className="mb-8">
-                        <div className="flex bg-[#0c1021] border border-indigo-950/80 rounded-full px-4 py-2.5 w-full max-w-md items-center focus-within:border-indigo-500 transition-colors shadow-inner">
+                    <div className="mb-6">
+                        <div className="flex bg-[#0c1021] border border-indigo-950/80 rounded-full px-4 py-2 w-full max-w-md items-center focus-within:border-indigo-500 transition-colors shadow-inner">
                             <Icon className="text-indigo-400 w-4 h-4 mr-3" name="search"/>
                             <input type="text" placeholder="Buscar emisora o género..." className="bg-transparent w-full outline-none text-xs sm:text-sm placeholder-gray-500 text-white" value={search} onChange={(e) => setSearch(e.target.value)}/>
                         </div>
@@ -1513,11 +1490,11 @@
 
                     {displayed.length === 0 ? (
                         <div className="text-center py-24 text-gray-500 text-sm">
-                            <Icon className="mx-auto mb-3 opacity-40 text-indigo-400" name="radio" size={48}/>
+                            <Icon className="mx-auto mb-3 opacity-40 text-indigo-400" name="radio" size={42}/>
                             <p>No se encontraron emisoras de radio.</p>
                         </div>
                     ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                             {displayed.map((station, index) => {
                                 const targetStationId = station.id || station.url || station.title || `station-${index}`;
                                 const currentStationId = currentStation ? (currentStation.id || currentStation.url || currentStation.title) : null;
@@ -1528,10 +1505,10 @@
                                     <div 
                                         key={targetStationId} 
                                         onClick={() => onPlayStation(station)} 
-                                        className={`group bg-[#0c1021]/90 hover:bg-[#131932] border rounded-2xl p-3 sm:p-4 cursor-pointer transition-all duration-200 flex items-center justify-between gap-3 sm:gap-4 ${isCurrentPlaying ? 'border-indigo-500 shadow-[0_0_25px_rgba(99,102,241,0.35)] bg-indigo-950/30' : 'border-indigo-950/60 hover:border-indigo-800/60'}`}
+                                        className={`group bg-[#0c1021]/90 hover:bg-[#131932] border rounded-2xl p-3 cursor-pointer transition-all duration-200 flex items-center justify-between gap-3 ${isCurrentPlaying ? 'border-indigo-500 shadow-[0_0_25px_rgba(99,102,241,0.35)] bg-indigo-950/30' : 'border-indigo-950/60 hover:border-indigo-800/60'}`}
                                     >
-                                        <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 flex-1">
-                                            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl overflow-hidden flex-shrink-0 bg-black/70 border border-indigo-950/80 p-1 flex items-center justify-center">
+                                        <div className="flex items-center gap-3 min-w-0 flex-1">
+                                            <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-black/70 border border-indigo-950/80 p-1 flex items-center justify-center">
                                                 <img 
                                                     src={station.image} 
                                                     alt={station.title} 
@@ -1543,26 +1520,26 @@
                                                 <h3 className={`font-extrabold text-xs sm:text-sm truncate transition-colors ${isCurrentPlaying ? 'text-indigo-400' : 'text-white group-hover:text-gray-100'}`}>
                                                     {station.title}
                                                 </h3>
-                                                <p className="text-[10px] sm:text-xs text-gray-400 truncate mt-0.5 font-medium">
+                                                <p className="text-[10px] text-gray-400 truncate mt-0.5 font-medium">
                                                     {station.group}
                                                 </p>
                                             </div>
                                         </div>
                                         
-                                        <div className="flex items-center gap-2 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
+                                        <div className="flex items-center gap-1.5 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
                                             <button 
                                                 onClick={(e) => onToggleFavorite(station, e)} 
-                                                className="p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+                                                className="p-2 rounded-xl text-gray-400 hover:text-white transition-colors"
                                                 title={isFav ? "Quitar de favoritos" : "Guardar en favoritos"}
                                             >
-                                                <Icon name="heart" size={16} fill={isFav ? '#6366f1' : 'none'} className={isFav ? 'text-indigo-500' : 'text-gray-400'}/>
+                                                <Icon name="heart" size={15} fill={isFav ? '#6366f1' : 'none'} className={isFav ? 'text-indigo-500' : 'text-gray-400'}/>
                                             </button>
                                             <button 
                                                 onClick={() => onPlayStation(station)}
-                                                className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all ${isCurrentPlaying ? 'bg-indigo-600 text-white shadow-[0_0_15px_rgba(99,102,241,0.7)] scale-105' : 'bg-indigo-950/70 hover:bg-indigo-600 text-indigo-200 hover:text-white border border-indigo-500/30'}`}
+                                                className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${isCurrentPlaying ? 'bg-indigo-600 text-white shadow-[0_0_15px_rgba(99,102,241,0.7)] scale-105' : 'bg-indigo-950/70 hover:bg-indigo-600 text-indigo-200 hover:text-white border border-indigo-500/30'}`}
                                                 title={isCurrentPlaying ? "Pausar" : "Reproducir"}
                                             >
-                                                <Icon name={isCurrentPlaying ? "pause" : "play"} size={16} fill="currentColor" className={!isCurrentPlaying ? "ml-0.5" : ""}/>
+                                                <Icon name={isCurrentPlaying ? "pause" : "play"} size={15} fill="currentColor" className={!isCurrentPlaying ? "ml-0.5" : ""}/>
                                             </button>
                                         </div>
                                     </div>
@@ -1582,7 +1559,7 @@
                 setIsLoading(true);
                 let current = 0;
                 const interval = setInterval(() => {
-                    current += 1;
+                    current += 2;
                     if (current <= 100) {
                         setProgress(current);
                     } else {
@@ -1595,33 +1572,33 @@
             return (
                 <div className="fixed inset-0 z-[100] bg-[#030712] flex items-center justify-center overflow-hidden font-sans p-4">
                     <div className="absolute inset-0"><img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1200&auto=format&fit=crop" className="w-full h-full object-cover opacity-15" /><div className="absolute inset-0 bg-gradient-to-b from-[#030712] via-[#030712]/90 to-[#030712]"></div></div>
-                    <div className="relative z-10 text-center max-w-md w-full animate-slide-up bg-[#070b19]/80 backdrop-blur-xl border border-indigo-900/50 p-8 rounded-3xl shadow-[0_0_60px_rgba(99,102,241,0.25)]">
-                        <div className="mb-4 inline-block bg-indigo-600 px-3 py-1 rounded-full text-[10px] font-black tracking-widest uppercase text-white shadow-[0_0_15px_rgba(99,102,241,0.5)]">HBO Max Experience</div>
-                        <div className="flex items-center justify-center gap-3 mb-2">
-                            <div className="w-12 h-12 rounded-2xl bg-[#6366f1] flex items-center justify-center shadow-[0_0_20px_rgba(99,102,241,0.6)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-6 h-6 fill-white">
+                    <div className="relative z-10 text-center max-w-sm sm:max-w-md w-full animate-slide-up bg-[#070b19]/90 backdrop-blur-xl border border-indigo-900/50 p-6 sm:p-8 rounded-3xl shadow-[0_0_60px_rgba(99,102,241,0.25)]">
+                        <div className="mb-3 inline-block bg-indigo-600 px-3 py-1 rounded-full text-[9px] font-black tracking-widest uppercase text-white shadow-[0_0_15px_rgba(99,102,241,0.5)]">HBO Max Experience</div>
+                        <div className="flex items-center justify-center gap-2.5 mb-2">
+                            <div className="w-10 h-10 rounded-2xl bg-[#6366f1] flex items-center justify-center shadow-[0_0_20px_rgba(99,102,241,0.6)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 fill-white">
                                     <polygon points="40,30 70,50 40,70"/>
                                 </svg>
                             </div>
-                            <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tighter">BOX <span className="text-indigo-400">PLAY</span></h1>
+                            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tighter">BOX <span className="text-indigo-400">PLAY</span></h1>
                         </div>
-                        <p className="text-sm text-gray-300 font-light mb-8 italic">"Streaming de alta calidad cinematográfica."</p>
+                        <p className="text-xs sm:text-sm text-gray-300 font-light mb-6 italic">"Streaming de alta calidad cinematográfica."</p>
                         
                         {isLoading ? (
-                            <div className="space-y-3 mb-8">
+                            <div className="space-y-3 mb-6">
                                 <div className="flex justify-between text-xs text-indigo-300 font-bold px-1">
-                                    <span>Cargando plataforma (3s)...</span>
+                                    <span>Cargando plataforma...</span>
                                     <span>{progress}%</span>
                                 </div>
-                                <div className="w-full h-3 bg-black/60 rounded-full overflow-hidden border border-indigo-950 p-0.5">
+                                <div className="w-full h-2.5 bg-black/60 rounded-full overflow-hidden border border-indigo-950 p-0.5">
                                     <div className="h-full bg-gradient-to-r from-indigo-600 to-indigo-400 rounded-full transition-all duration-75 shadow-[0_0_15px_#6366f1]" style={{ width: `${progress}%` }}></div>
                                 </div>
                             </div>
                         ) : (
-                            <button onClick={handleStart} className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-4 rounded-full font-extrabold text-base shadow-[0_0_25px_rgba(99,102,241,0.6)] flex items-center justify-center gap-2.5 mb-8 active:scale-95 transition-all"><span>Comenzar Experiencia</span> <Icon fill="white" name="play" size={18}/></button>
+                            <button onClick={handleStart} className="w-full bg-indigo-600 hover:bg-indigo-500 text-white py-3.5 rounded-full font-extrabold text-sm sm:text-base shadow-[0_0_25px_rgba(99,102,241,0.6)] flex items-center justify-center gap-2 mb-6 active:scale-95 transition-all"><span>Comenzar Experiencia</span> <Icon fill="white" name="play" size={16}/></button>
                         )}
 
-                        <div className="opacity-80 pt-4 border-t border-indigo-950/80"><p className="text-[9px] text-gray-400 uppercase tracking-widest mb-0.5">DISEÑADO Y PROGRAMADO POR</p><h3 className="text-base font-serif text-gold-gradient font-bold mb-1">JORGE ARTURO HERNÁNDEZ MÉNDEZ</h3><p className="text-[9px] text-gray-500">BoxPlay • Powered by Gemini AI</p></div>
+                        <div className="opacity-80 pt-3 border-t border-indigo-950/80"><p className="text-[8px] text-gray-400 uppercase tracking-widest mb-0.5">DISEÑADO Y PROGRAMADO POR</p><h3 className="text-sm font-serif text-gold-gradient font-bold mb-1">JORGE ARTURO HERNÁNDEZ MÉNDEZ</h3><p className="text-[8px] text-gray-500">BoxPlay • Powered by Gemini AI</p></div>
                     </div>
                 </div>
             );
@@ -1634,26 +1611,26 @@
             const descSource = item.descripcion || item.sinopsis || item.plot;
             
             return (
-                <div className="relative w-full h-[380px] sm:h-[460px] bg-[#070b19] overflow-hidden rounded-3xl mb-10 group animate-fade-in shadow-2xl border border-indigo-950/80 flex items-center max-w-7xl mx-auto px-6 sm:px-12 hbo-glow">
+                <div className="relative w-full h-[320px] sm:h-[420px] bg-[#070b19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-indigo-950/80 flex items-center max-w-7xl mx-auto px-4 sm:px-12 hbo-glow w-full">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        <img src={imgSource} alt="Hero BG" className="w-full h-full object-cover filter blur-2xl opacity-50 scale-125 brightness-110 contrast-125" onError={(e) => e.target.style.display='none'} />
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#030712] via-[#030712]/85 to-transparent"></div>
+                        <img src={imgSource} alt="Hero BG" className="w-full h-full object-cover filter blur-2xl opacity-40 scale-125 brightness-110" onError={(e) => e.target.style.display='none'} />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#030712] via-[#030712]/90 to-transparent"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent"></div>
                     </div>
-                    <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-start gap-8 py-6">
-                        <div className="w-36 sm:w-52 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-indigo-500/40 flex-shrink-0 bg-black/70 transform group-hover:scale-105 transition-transform duration-300 relative">
+                    <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-start gap-5 sm:gap-8 py-4 sm:py-6">
+                        <div className="w-28 sm:w-48 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-indigo-500/40 flex-shrink-0 bg-black/70 hidden sm:block">
                             <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/0c1021/ffffff?text=Poster'} />
                         </div>
-                        <div className="flex-1 flex flex-col gap-3.5 items-start max-w-xl">
-                            <span className="bg-indigo-600 text-white text-[10px] font-black px-3.5 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(99,102,241,0.5)]">Destacado HBO Max</span>
-                            <h1 className="text-2xl sm:text-4xl font-black text-white leading-tight drop-shadow-md line-clamp-1">{titleSource}</h1>
+                        <div className="flex-1 flex flex-col gap-2.5 sm:gap-3.5 items-start max-w-xl">
+                            <span className="bg-indigo-600 text-white text-[9px] sm:text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(99,102,241,0.5)]">Destacado HBO Max</span>
+                            <h1 className="text-xl sm:text-4xl font-black text-white leading-tight drop-shadow-md line-clamp-1">{titleSource}</h1>
                             <p className="text-gray-300 text-xs sm:text-sm line-clamp-3 leading-relaxed drop-shadow">{descSource || "Disfruta de las mejores películas y series en alta definición."}</p>
-                            <div className="flex gap-3.5 mt-2">
-                                <button onClick={() => onPlay(item)} className="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3.5 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2.5 active:scale-95 transition-transform shadow-[0_0_20px_rgba(99,102,241,0.6)]">
-                                    <Icon fill="white" name="play" size={16}/> Reproducir Ahora
+                            <div className="flex gap-3 mt-1">
+                                <button onClick={() => onPlay(item)} className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 sm:px-8 py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-95 transition-transform shadow-[0_0_20px_rgba(99,102,241,0.6)]">
+                                    <Icon fill="white" name="play" size={15}/> Reproducir Ahora
                                 </button>
-                                <button onClick={() => onToggleFavorite(item)} className="bg-indigo-950/80 text-white p-3.5 rounded-xl flex items-center justify-center backdrop-blur-md border border-indigo-500/40 hover:bg-indigo-900/60 transition-colors shadow-lg">
-                                    <Icon name="heart" size={18} fill={isFavorite ? "#6366f1" : "none"} className={isFavorite ? "text-indigo-500" : "text-white"}/>
+                                <button onClick={() => onToggleFavorite(item)} className="bg-indigo-950/80 text-white p-3 rounded-xl flex items-center justify-center backdrop-blur-md border border-indigo-500/40 hover:bg-indigo-900/60 transition-colors shadow-lg">
+                                    <Icon name="heart" size={16} fill={isFavorite ? "#6366f1" : "none"} className={isFavorite ? "text-indigo-500" : "text-white"}/>
                                 </button>
                             </div>
                         </div>
@@ -1669,24 +1646,24 @@
             const imgSource = item.imagen || item.image || item.poster || item.logo;
             const titleSource = item.titulo || item.title || item.name;
             return ( 
-                <div tabIndex="0" className="group relative flex flex-col gap-2.5 cursor-pointer active:scale-95 transition-transform card-glow rounded-2xl" onClick={() => onClick(item)}> 
+                <div tabIndex="0" className="group relative flex flex-col gap-2 cursor-pointer active:scale-95 transition-transform card-glow rounded-2xl w-full" onClick={() => onClick(item)}> 
                     <div className={`relative overflow-hidden rounded-2xl bg-[#0c1021] border border-indigo-950/80 shadow-xl ${isTv ? 'aspect-video' : 'aspect-[2/3]'}`}> 
-                        <img src={imgSource} loading="lazy" className={`w-full h-full transition-transform duration-300 group-hover:scale-105 ${isTv ? 'object-contain p-3' : 'object-cover'}`} onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/300x450/0c1021/ffffff?text=BoxPlay`; }} alt={titleSource} /> 
-                        <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }} className="absolute top-2.5 right-2.5 p-2 bg-black/70 rounded-full text-white backdrop-blur-md hover:bg-black transition-colors z-20"> 
-                            <Icon name="heart" size={15} fill={isFavorite ? "#6366f1" : "none"} className={isFavorite ? "text-indigo-500" : "text-white"}/> 
+                        <img src={imgSource} loading="lazy" className={`w-full h-full transition-transform duration-300 group-hover:scale-105 ${isTv ? 'object-contain p-2' : 'object-cover'}`} onError={(e) => { e.target.onerror = null; e.target.src = `https://placehold.co/300x450/0c1021/ffffff?text=BoxPlay`; }} alt={titleSource} /> 
+                        <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }} className="absolute top-2 right-2 p-2 bg-black/70 rounded-full text-white backdrop-blur-md hover:bg-black transition-colors z-20"> 
+                            <Icon name="heart" size={14} fill={isFavorite ? "#6366f1" : "none"} className={isFavorite ? "text-indigo-500" : "text-white"}/> 
                         </button> 
-                        <div className="absolute bottom-2.5 left-2.5 flex gap-1.5 flex-wrap z-10"> 
-                            {isTv && <span className="bg-indigo-600 text-white text-[9px] font-black px-2 py-0.5 rounded shadow">LIVE</span>} 
-                            {isKids && <span className="bg-purple-600 text-white text-[9px] font-black px-2 py-0.5 rounded shadow">KIDS</span>} 
-                            {hasLock && <span className="bg-amber-500 text-black text-[9px] font-black px-2 py-0.5 rounded shadow flex items-center gap-0.5"><Icon name="lock" size={8}/> PIN</span>} 
+                        <div className="absolute bottom-2 left-2 flex gap-1 flex-wrap z-10"> 
+                            {isTv && <span className="bg-indigo-600 text-white text-[8px] font-black px-1.5 py-0.5 rounded shadow">LIVE</span>} 
+                            {isKids && <span className="bg-purple-600 text-white text-[8px] font-black px-1.5 py-0.5 rounded shadow">KIDS</span>} 
+                            {hasLock && <span className="bg-amber-500 text-black text-[8px] font-black px-1.5 py-0.5 rounded shadow flex items-center gap-0.5"><Icon name="lock" size={7}/> PIN</span>} 
                         </div> 
                     </div> 
-                    <h3 className="text-xs font-bold text-gray-200 truncate px-1 group-hover:text-indigo-400 transition-colors">{titleSource}</h3> 
+                    <h3 className="text-[11px] sm:text-xs font-bold text-gray-200 truncate px-0.5 group-hover:text-indigo-400 transition-colors">{titleSource}</h3> 
                 </div> 
             ); 
         };
 
-        const Icon = ({ name, size = 22, className, fill = "none" }) => {
+        const Icon = ({ name, size = 20, className, fill = "none" }) => {
             const icons = {
                 search: <path d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 111.414-1.414 7.5 7.5 0 01-1.414 1.414z" />,
                 x: <path d="M6 18L18 6M6 6l12 12" />,
@@ -1718,7 +1695,7 @@
         const LockScreen = ({ onUnlock, correctCode, onCancel }) => {
             const [input, setInput] = useState(''); const [error, setError] = useState(false);
             const handleSubmit = (e) => { e.preventDefault(); if (input === String(correctCode)) onUnlock(); else { setError(true); setInput(''); } };
-            return (<div className="absolute inset-0 z-50 bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-4 animate-fade-in"><div className="bg-[#0c1021] border border-indigo-900/60 p-6 rounded-3xl max-w-xs w-full text-center shadow-2xl"><div className="mb-4 flex justify-center"><div className="p-3.5 bg-indigo-600/20 rounded-2xl text-indigo-400 border border-indigo-500/30"><Icon name="lock" size={28}/></div></div><h2 className="text-base font-extrabold text-white mb-2">Contenido Protegido</h2><form onSubmit={handleSubmit}><input type="password" maxLength="4" className="w-full bg-black/60 border border-indigo-950 rounded-xl px-4 py-3 text-center text-xl tracking-[0.4em] text-white focus:border-indigo-500 outline-none mb-3 shadow-inner" value={input} onChange={(e) => { setInput(e.target.value); setError(false); }} placeholder="••••" autoFocus />{error && <p className="text-red-400 text-xs mb-3 font-bold">Código incorrecto</p>}<div className="flex gap-2.5"><button type="button" onClick={onCancel} className="flex-1 py-2.5 rounded-xl border border-indigo-950 text-gray-300 hover:bg-white/5 text-xs font-semibold">Cancelar</button><button type="submit" className="flex-1 py-2.5 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-500 text-xs shadow-[0_0_15px_rgba(99,102,241,0.5)]">Acceder</button></div></form></div></div>);
+            return (<div className="absolute inset-0 z-50 bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-4 animate-fade-in"><div className="bg-[#0c1021] border border-indigo-900/60 p-6 rounded-3xl max-w-xs w-full text-center shadow-2xl"><div className="mb-4 flex justify-center"><div className="p-3.5 bg-indigo-600/20 rounded-2xl text-indigo-400 border border-indigo-500/30"><Icon name="lock" size={24}/></div></div><h2 className="text-sm font-extrabold text-white mb-2">Contenido Protegido</h2><form onSubmit={handleSubmit}><input type="password" maxLength="4" className="w-full bg-black/60 border border-indigo-950 rounded-xl px-4 py-3 text-center text-xl tracking-[0.4em] text-white focus:border-indigo-500 outline-none mb-3 shadow-inner" value={input} onChange={(e) => { setInput(e.target.value); setError(false); }} placeholder="••••" autoFocus />{error && <p className="text-red-400 text-xs mb-3 font-bold">Código incorrecto</p>}<div className="flex gap-2.5"><button type="button" onClick={onCancel} className="flex-1 py-2.5 rounded-xl border border-indigo-950 text-gray-300 hover:bg-white/5 text-xs font-semibold">Cancelar</button><button type="submit" className="flex-1 py-2.5 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-500 text-xs shadow-[0_0_15px_rgba(99,102,241,0.5)]">Acceder</button></div></form></div></div>);
         };
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
