@@ -1611,21 +1611,21 @@
             const descSource = item.descripcion || item.sinopsis || item.plot;
             
             return (
-                <div className="relative w-full h-[320px] sm:h-[420px] bg-[#070b19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-indigo-950/80 flex items-center max-w-7xl mx-auto px-4 sm:px-12 hbo-glow w-full">
+                <div className="relative w-full min-h-[380px] sm:min-h-[420px] bg-[#070b19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-indigo-950/80 flex items-center max-w-7xl mx-auto px-4 sm:px-12 hbo-glow w-full">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
                         <img src={imgSource} alt="Hero BG" className="w-full h-full object-cover filter blur-2xl opacity-40 scale-125 brightness-110" onError={(e) => e.target.style.display='none'} />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#030712] via-[#030712]/90 to-transparent"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-transparent to-transparent"></div>
                     </div>
-                    <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-start gap-5 sm:gap-8 py-4 sm:py-6">
-                        <div className="w-28 sm:w-48 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-indigo-500/40 flex-shrink-0 bg-black/70 hidden sm:block">
+                    <div className="relative z-10 w-full h-full flex flex-col md:flex-row items-center justify-center md:justify-start gap-6 sm:gap-8 py-6 sm:py-8 text-center md:text-left">
+                        <div className="w-36 sm:w-48 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-indigo-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto">
                             <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/0c1021/ffffff?text=Poster'} />
                         </div>
-                        <div className="flex-1 flex flex-col gap-2.5 sm:gap-3.5 items-start max-w-xl">
+                        <div className="flex-1 flex flex-col gap-3 items-center md:items-start max-w-xl">
                             <span className="bg-indigo-600 text-white text-[9px] sm:text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(99,102,241,0.5)]">Destacado HBO Max</span>
-                            <h1 className="text-xl sm:text-4xl font-black text-white leading-tight drop-shadow-md line-clamp-1">{titleSource}</h1>
+                            <h1 className="text-xl sm:text-4xl font-black text-white leading-tight drop-shadow-md line-clamp-2">{titleSource}</h1>
                             <p className="text-gray-300 text-xs sm:text-sm line-clamp-3 leading-relaxed drop-shadow">{descSource || "Disfruta de las mejores películas y series en alta definición."}</p>
-                            <div className="flex gap-3 mt-1">
+                            <div className="flex flex-wrap justify-center md:justify-start gap-3 mt-1">
                                 <button onClick={() => onPlay(item)} className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 sm:px-8 py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-95 transition-transform shadow-[0_0_20px_rgba(99,102,241,0.6)]">
                                     <Icon fill="white" name="play" size={15}/> Reproducir Ahora
                                 </button>
