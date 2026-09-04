@@ -77,7 +77,6 @@
             border: none !important;
         }
 
-        /* 1. TV Live Broadcast Radar Waves Animation */
         @keyframes radarPulse {
             0% { transform: scale(0.95); opacity: 0.9; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
             70% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
@@ -87,7 +86,6 @@
             animation: radarPulse 2s infinite ease-in-out !important;
         }
 
-        /* 2. Movie Cinema Projector / Film Strip Shimmer Animation */
         @keyframes projectorShimmer {
             0% { transform: translateX(-100%); opacity: 0; }
             50% { opacity: 0.6; }
@@ -106,7 +104,6 @@
             pointer-events: none;
         }
 
-        /* 3. Radio / Audio Equalizer Bars Animation */
         .bar {
             width: 4px;
             background-color: #6366f1;
@@ -247,10 +244,14 @@
             const [content, setContent] = useState({ tv: [], series: [], movies: [], animados: [] });
             const [radioStations, setRadioStations] = useState(DEFAULT_RADIO_STATIONS);
             const [search, setSearch] = useState('');
+            const [isSearchFocused, setIsSearchFocused] = useState(false);
+            const [recentSearches, setRecentSearches] = useState([]);
             const [selectedItem, setSelectedItem] = useState(null);
             const [selectedEpisode, setSelectedEpisode] = useState(null);
             const [isLocked, setIsLocked] = useState(false); 
             const [favorites, setFavorites] = useState([]);
+            const [continueWatching, setContinueWatching] = useState([]);
+            const [watchedEpisodes, setWatchedEpisodes] = useState({});
             const [loading, setLoading] = useState(true);
             const [expandedSeason, setExpandedSeason] = useState(0);
             const [showQrModal, setShowQrModal] = useState(false);
@@ -475,6 +476,15 @@
                 const storedRadioFavs = safeStorage.getItem('boxplay_radio_favs');
                 if (storedRadioFavs) { try { setRadioFavorites(JSON.parse(storedRadioFavs)); } catch(e) {} }
 
+                const storedCW = safeStorage.getItem('boxplay_continue_watching');
+                if (storedCW) { try { setContinueWatching(JSON.parse(storedCW)); } catch(e) {} }
+
+                const storedWatched = safeStorage.getItem('boxplay_watched_eps');
+                if (storedWatched) { try { setWatchedEpisodes(JSON.parse(storedWatched)); } catch(e) {} }
+
+                const storedSearches = safeStorage.getItem('boxplay_recent_searches');
+                if (storedSearches) { try { setRecentSearches(JSON.parse(storedSearches)); } catch(e) {} }
+
                 init();
             }, []);
 
@@ -593,6 +603,49 @@
                 if (audioRef.current) audioRef.current.volume = radioVolume;
             }, [radioVolume]);
 
+            const recordContinueWatching = (item, episode = null) => {
+                const record = {
+                    ...item,
+                    lastEpisode: episode ? episode.title : null,
+                    lastEpisodeUrl: episode ? episode.url : null,
+                    timestamp: Date.now()
+                };
+                const itemId = item.id || item.title;
+                const updated = [record, ...continueWatching.filter(c => (c.id || c.title) !== itemId)].slice(0, 10);
+                setContinueWatching(updated);
+                safeStorage.setItem('boxplay_continue_watching', JSON.stringify(updated));
+
+                if (episode) {
+                    markEpisodeAsWatched(item, episode, true);
+                }
+            };
+
+            const markEpisodeAsWatched = (item, episode, isWatched) => {
+                const itemId = item.id || item.title;
+                const epId = episode.id || episode.url;
+                const currentWatched = { ...watchedEpisodes };
+                if (!currentWatched[itemId]) {
+                    currentWatched[itemId] = [];
+                }
+                if (isWatched) {
+                    if (!currentWatched[itemId].includes(epId)) {
+                        currentWatched[itemId].push(epId);
+                    }
+                } else {
+                    currentWatched[itemId] = currentWatched[itemId].filter(id => id !== epId);
+                }
+                setWatchedEpisodes(currentWatched);
+                safeStorage.setItem('boxplay_watched_eps', JSON.stringify(currentWatched));
+            };
+
+            const addRecentSearch = (term) => {
+                if (!term || !term.trim()) return;
+                const cleaned = term.trim();
+                const updated = [cleaned, ...recentSearches.filter(s => s.toLowerCase() !== cleaned.toLowerCase())].slice(0, 8);
+                setRecentSearches(updated);
+                safeStorage.setItem('boxplay_recent_searches', JSON.stringify(updated));
+            };
+
             const parseM3U = (data) => {
                 const lines = data.split('\n'); const channels = [];
                 for (let i = 0; i < lines.length; i++) {
@@ -690,10 +743,14 @@
                 else { setSelectedItem(item); setIsLocked(false); } 
                 setExpandedSeason(0); 
                 if (item.type === 'series' || item.type === 'animados') {
-                    setSelectedEpisode(item.seasons?.[0]?.episodes?.[0] || null); 
+                    const firstEp = item.seasons?.[0]?.episodes?.[0] || null;
+                    setSelectedEpisode(firstEp); 
+                    recordContinueWatching(item, firstEp);
                 } else {
                     setSelectedEpisode(null);
+                    recordContinueWatching(item, null);
                 }
+                if (search.trim()) addRecentSearch(search);
                 window.history.pushState({ appState: 'player', item: item.title }, '');
                 window.scrollTo({ top: 0, behavior: 'smooth' }); 
             };
@@ -769,6 +826,11 @@
                         </div>
 
                         <div className="flex items-center gap-3">
+                            <button onClick={() => handleTabClick(navTabs.find(t => t.id === 'favorites'))} className="px-3 py-2 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/35 text-indigo-300 border border-indigo-500/40 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
+                                <Icon name="heart" size={15} fill={activeTab === 'favorites' ? '#6366f1' : 'none'} className="text-indigo-400"/>
+                                <span className="hidden sm:inline">Favoritos</span>
+                            </button>
+
                             <button onClick={handleInstallApp} className="px-3 py-2 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/35 text-indigo-300 border border-indigo-500/40 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
                                 <Icon name="download" size={14}/>
                                 <span className="hidden sm:inline">Instalar App</span>
@@ -780,10 +842,36 @@
                                     placeholder="Buscar anime, películas..." 
                                     className="w-full bg-[#0c1021] border border-indigo-950/80 rounded-full px-4 py-2 text-xs text-white focus:border-indigo-500 outline-none pl-9 transition-colors placeholder-gray-500 shadow-inner" 
                                     value={search} 
-                                    onChange={(e) => setSearch(e.target.value)}
+                                    onChange={(e) => { setSearch(e.target.value); }}
+                                    onFocus={() => setIsSearchFocused(true)}
+                                    onBlur={() => setTimeout(() => setIsSearchFocused(false), 250)}
+                                    onKeyDown={(e) => { if (e.key === 'Enter' && search.trim()) { addRecentSearch(search); setIsSearchFocused(false); } }}
                                 />
                                 <Icon className="absolute left-3 top-2.5 text-gray-400" name="search" size={14}/>
                                 {search && <button onClick={() => setSearch('')} className="absolute right-3 top-2.5 text-gray-400 hover:text-white"><Icon name="x" size={14}/></button>}
+
+                                {isSearchFocused && recentSearches.length > 0 && !search && (
+                                    <div className="absolute top-full left-0 right-0 mt-2 bg-[#0c1021] border border-indigo-900/80 rounded-2xl p-2 shadow-2xl z-50 animate-fade-in">
+                                        <div className="flex items-center justify-between px-2.5 py-1 text-[10px] text-indigo-400 font-bold uppercase tracking-wider border-b border-indigo-950/80 mb-1">
+                                            <span>Búsquedas Recientes</span>
+                                            <button onClick={(e) => { e.stopPropagation(); setRecentSearches([]); safeStorage.setItem('boxplay_recent_searches', JSON.stringify([])); }} className="hover:text-white">Borrar</button>
+                                        </div>
+                                        <div className="flex flex-col gap-1 max-h-48 overflow-y-auto custom-scrollbar">
+                                            {recentSearches.map((term, sIdx) => (
+                                                <div 
+                                                    key={sIdx} 
+                                                    onMouseDown={() => { setSearch(term); addRecentSearch(term); setIsSearchFocused(false); }}
+                                                    className="px-3 py-2 rounded-xl text-xs text-gray-300 hover:bg-indigo-600/20 hover:text-white cursor-pointer transition-colors flex items-center justify-between"
+                                                >
+                                                    <div className="flex items-center gap-2 truncate">
+                                                        <Icon name="search" size={12} className="text-gray-500"/>
+                                                        <span className="truncate">{term}</span>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
                             <button onClick={() => { setShowQrModal(true); window.history.pushState({ appState: 'modal' }, ''); }} className="p-2.5 rounded-xl bg-[#0c1021] hover:bg-indigo-950/40 text-indigo-300 border border-indigo-950/80 transition-all hover:scale-105 shadow-md flex items-center gap-1.5" title="Escanear QR">
@@ -803,7 +891,7 @@
 
                     {/* Mobile Bottom Navigation Bar */}
                     <div className="xl:hidden fixed bottom-0 w-full bg-[#070b19] border-t border-indigo-950/80 z-50 flex py-2.5 pb-safe px-2 overflow-x-auto no-scrollbar snap-x items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.9)]">
-                        {navTabs.slice(0, 9).map(tab => (
+                        {navTabs.slice(0, 10).map(tab => (
                             <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-shrink-0 min-w-[56px] py-1 gap-1 snap-start transition-all active:scale-95 rounded-xl ${activeTab === tab.id && !tab.isExternal ? 'text-indigo-400 bg-indigo-950/40 border border-indigo-500/30' : 'text-gray-400 hover:text-white'}`}>
                                 <Icon name={tab.icon} size={18}/>
                                 <span className="text-[9px] font-medium tracking-wide">{tab.label}</span>
@@ -976,9 +1064,18 @@
                                         </div>
                                         {((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
                                             <div className="bg-[#0c1021] border border-indigo-950/80 rounded-3xl p-6 flex flex-col h-[540px] shadow-2xl">
-                                                <h3 className="font-extrabold text-sm text-white mb-4 flex items-center gap-2.5">
-                                                    <span className="w-2.5 h-2.5 rounded-full bg-indigo-500"></span> Lista de Episodios
-                                                </h3>
+                                                <div className="flex items-center justify-between mb-4">
+                                                    <h3 className="font-extrabold text-sm text-white flex items-center gap-2.5">
+                                                        <span className="w-2.5 h-2.5 rounded-full bg-indigo-500"></span> Lista de Episodios
+                                                    </h3>
+                                                    {(() => {
+                                                        const itemId = selectedItem.id || selectedItem.title;
+                                                        const watchedList = watchedEpisodes[itemId] || [];
+                                                        let totalEps = 0;
+                                                        selectedItem.seasons.forEach(s => totalEps += (s.episodes?.length || 0));
+                                                        return <span className="text-[10px] font-mono text-indigo-400 bg-indigo-950/80 px-2.5 py-1 rounded-full border border-indigo-900/60">{watchedList.length} / {totalEps} vistos</span>;
+                                                    })()}
+                                                </div>
                                                 <div className="flex gap-2.5 mb-4 overflow-x-auto pb-2 no-scrollbar">
                                                     {selectedItem.seasons.map((season, sIdx) => (
                                                         <button key={sIdx} onClick={() => setExpandedSeason(sIdx)} className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${expandedSeason === sIdx ? 'bg-indigo-600 text-white shadow-[0_0_20px_rgba(99,102,241,0.5)] border border-indigo-400' : 'bg-black/55 text-gray-400 hover:text-white border border-indigo-950/80'}`}>
@@ -987,23 +1084,49 @@
                                                     ))}
                                                 </div>
                                                 <div className="flex-1 overflow-y-auto custom-scrollbar space-y-2 pr-1">
-                                                    {selectedItem.seasons[expandedSeason]?.episodes?.map((ep, eIdx) => (
-                                                        <div key={ep.id || eIdx} onClick={() => setSelectedEpisode(ep)} className={`p-3.5 rounded-2xl cursor-pointer flex items-center justify-between text-xs transition-all ${selectedEpisode?.url === ep.url ? 'bg-indigo-950/85 text-white border border-indigo-500/60 shadow-lg' : 'hover:bg-indigo-950/30 text-gray-300 border border-transparent'}`}>
-                                                            <div className="flex items-center gap-3.5 truncate">
-                                                                <div className="w-6 flex justify-center shrink-0">
-                                                                    {selectedEpisode?.url === ep.url ? (
-                                                                        <div className="flex items-end h-4 gap-[2px]">
-                                                                            <div className="bar w-[2px]"></div><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div>
-                                                                        </div>
-                                                                    ) : (
-                                                                        <span className="text-gray-500 font-bold">{eIdx + 1}.</span>
-                                                                    )}
+                                                    {selectedItem.seasons[expandedSeason]?.episodes?.map((ep, eIdx) => {
+                                                        const itemId = selectedItem.id || selectedItem.title;
+                                                        const epId = ep.id || ep.url;
+                                                        const isWatched = (watchedEpisodes[itemId] || []).includes(epId);
+                                                        const isCurrent = selectedEpisode?.url === ep.url;
+
+                                                        return (
+                                                            <div 
+                                                                key={ep.id || eIdx} 
+                                                                onClick={() => {
+                                                                    setSelectedEpisode(ep);
+                                                                    recordContinueWatching(selectedItem, ep);
+                                                                }} 
+                                                                className={`p-3.5 rounded-2xl cursor-pointer flex items-center justify-between text-xs transition-all ${isCurrent ? 'bg-indigo-950/85 text-white border border-indigo-500/60 shadow-lg' : isWatched ? 'bg-black/30 text-gray-400 border border-indigo-950/40 opacity-75' : 'hover:bg-indigo-950/30 text-gray-300 border border-transparent'}`}
+                                                            >
+                                                                <div className="flex items-center gap-3.5 truncate flex-1 pr-2">
+                                                                    <div className="w-6 flex justify-center shrink-0">
+                                                                        {isCurrent ? (
+                                                                            <div className="flex items-end h-4 gap-[2px]">
+                                                                                <div className="bar w-[2px]"></div><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div>
+                                                                            </div>
+                                                                        ) : (
+                                                                            <span className={`font-bold ${isWatched ? 'text-indigo-400' : 'text-gray-500'}`}>{isWatched ? '✓' : `${eIdx + 1}.`}</span>
+                                                                        )}
+                                                                    </div>
+                                                                    <span className={`truncate font-medium ${isWatched ? 'line-through decoration-indigo-500/60 text-gray-400' : ''}`}>{ep.title}</span>
                                                                 </div>
-                                                                <span className="truncate font-medium">{ep.title}</span>
+
+                                                                <div className="flex items-center gap-2 flex-shrink-0">
+                                                                    <button 
+                                                                        onClick={(e) => {
+                                                                            e.stopPropagation();
+                                                                            markEpisodeAsWatched(selectedItem, ep, !isWatched);
+                                                                        }}
+                                                                        className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all border ${isWatched ? 'bg-indigo-600/30 text-indigo-300 border-indigo-500/50' : 'bg-black/50 text-gray-400 border-indigo-950/80 hover:text-white'}`}
+                                                                    >
+                                                                        {isWatched ? 'Visto ✓' : 'Marcar visto'}
+                                                                    </button>
+                                                                    <Icon name="play" size={15} fill={isCurrent ? "#6366f1" : "none"} className={isCurrent ? "text-indigo-400" : "text-gray-500"}/>
+                                                                </div>
                                                             </div>
-                                                            <Icon name="play" size={15} fill={selectedEpisode?.url === ep.url ? "#6366f1" : "none"} className={selectedEpisode?.url === ep.url ? "text-indigo-400" : "text-gray-500"}/>
-                                                        </div>
-                                                    ))}
+                                                        );
+                                                    })}
                                                 </div>
                                             </div>
                                         )}
@@ -1023,11 +1146,49 @@
                                 
                                 {activeTab === 'home' && !search ? (
                                     <div className="space-y-10 pb-16">
+                                        {continueWatching.length > 0 && (
+                                            <ContentRow title="▶️ Continuar Viendo" items={continueWatching} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
+                                        )}
                                         <ContentRow title="🔥 Tendencias Actuales (Anime & Más)" items={content.animados} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="⭐ Programas Populares" items={content.series} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🎬 Estrenos de Cine" items={content.movies} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🏆 Vista Superior (Top Shows)" items={content.animados.slice().reverse()} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="📺 Televisión en Vivo" items={content.tv.slice(0, 15)} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
+                                        
+                                        {/* Radio HD preview row on Home */}
+                                        <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-8">
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-1.5 h-6 bg-purple-500 rounded-full shadow-[0_0_10px_#9333ea]"></div>
+                                                    <h2 className="text-lg sm:text-xl font-extrabold uppercase tracking-wide text-white">📻 Radio HD - Emisoras Nacionales</h2>
+                                                </div>
+                                                <button onClick={() => { setActiveTab('radio'); window.history.pushState({ appState: 'main', activeTab: 'radio' }, ''); }} className="text-xs font-bold text-indigo-400 hover:text-white transition-colors">
+                                                    Ver todas ({radioStations.length}) →
+                                                </button>
+                                            </div>
+                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                                                {radioStations.slice(0, 5).map((station, idx) => (
+                                                    <div 
+                                                        key={station.id || idx} 
+                                                        onClick={() => {
+                                                            setActiveTab('radio');
+                                                            handlePlayRadioStation(station);
+                                                        }}
+                                                        className="group bg-[#0c1021] hover:bg-[#131932] border border-indigo-950/80 hover:border-indigo-500/50 rounded-2xl p-3 cursor-pointer transition-all flex flex-col items-center text-center shadow-lg"
+                                                    >
+                                                        <div className="w-16 h-16 rounded-xl bg-black overflow-hidden p-1 mb-2 border border-indigo-950 shadow-inner">
+                                                            <img src={station.image} alt={station.title} className="w-full h-full object-contain" onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/300x300/0c1021/ffffff?text=Radio'; }}/>
+                                                        </div>
+                                                        <h4 className="text-xs font-bold text-white truncate w-full group-hover:text-indigo-400 transition-colors">{station.title}</h4>
+                                                        <span className="text-[10px] text-gray-400 truncate w-full mt-0.5">{station.group}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+
+                                        {favorites.length > 0 && (
+                                            <ContentRow title="❤️ Mis Favoritos" items={favorites} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
+                                        )}
                                     </div>
                                 ) : activeTab === 'topshows' ? (
                                     <div className="p-4 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
@@ -1145,7 +1306,7 @@
                         </div>
                     )}
 
-                    {/* Installation Guide Modal */}
+                    {/* Installation Guide Modal (Android, iPhone & Windows PC) */}
                     <div id="install-guide-modal" className="hidden fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
                         <div className="bg-[#0c1021] border border-indigo-900/65 rounded-3xl p-6 max-w-sm w-full text-center relative shadow-2xl space-y-4">
                             <div className="p-3 bg-indigo-600/20 rounded-2xl text-indigo-400 border border-indigo-500/30 inline-block">
@@ -1153,8 +1314,9 @@
                             </div>
                             <h3 className="text-base font-extrabold text-white">Cómo Instalar BoxPlay</h3>
                             <div className="text-xs text-gray-300 space-y-2 text-left bg-black/40 p-4 rounded-2xl border border-indigo-950/80">
-                                <p><strong>En Android / PC (Chrome, Edge):</strong><br/>Toca el menú (⋮) y selecciona <em>'Instalar aplicación'</em> o <em>'Agregar a pantalla principal'</em>.</p>
-                                <p><strong>En iPhone / iPad (Safari):</strong><br/>Toca el botón Compartir (⎋) y selecciona <em>'Agregar al inicio'</em>.</p>
+                                <p><strong>💻 En Windows / PC (Chrome, Edge, Brave):</strong><br/>Haz clic en el ícono de instalación (ordenador con flecha 📥) ubicado en la barra de direcciones del navegador o en el menú (⋮) y selecciona <em>'Instalar BoxPlay'</em>.</p>
+                                <p><strong>📱 En Android:</strong><br/>Toca el menú (⋮) de tu navegador y selecciona <em>'Instalar aplicación'</em> o <em>'Agregar a pantalla principal'</em>.</p>
+                                <p><strong>🍏 En iPhone / iPad (Safari):</strong><br/>Toca el botón Compartir (⎋) y selecciona <em>'Agregar al inicio'</em>.</p>
                             </div>
                             <button onClick={() => document.getElementById('install-guide-modal').classList.add('hidden')} className="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-indigo-500 transition-colors shadow-[0_0_15px_rgba(99,102,241,0.5)]">
                                 Entendido
@@ -1419,7 +1581,6 @@
             const handleStart = () => {
                 setIsLoading(true);
                 let current = 0;
-                // Exactly 3 seconds loading animation (30ms * 33 steps = ~1000ms? Wait, 30ms * 100 steps = 3000ms = 3 seconds)
                 const interval = setInterval(() => {
                     current += 1;
                     if (current <= 100) {
