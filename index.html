@@ -477,7 +477,7 @@
                 if (activeTab === 'tv' && selectedItem?.type === 'tv' && tvContainerRef.current) {
                     interval = setInterval(() => { 
                         setTvRefreshTrigger(prev => prev + 1); 
-                    }, 480000); // 8 minutes auto-refresh interval to prevent stream freeze
+                    }, 480000); 
                 }
                 return () => clearInterval(interval);
             }, [activeTab, selectedItem]);
@@ -744,6 +744,21 @@
                 if (search.trim()) addRecentSearch(search);
                 window.history.pushState({ appState: 'player', item: item.title }, '');
                 window.scrollTo({ top: 0, behavior: 'smooth' }); 
+
+                // Automatically trigger full-screen mode on mobile portrait/vertical view when starting a movie, series, or TV channel
+                setTimeout(() => {
+                    const isMobilePortrait = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
+                    if (isMobilePortrait) {
+                        const targetElem = item.type === 'tv' ? tvContainerRef.current : movieContainerRef.current;
+                        if (targetElem && !document.fullscreenElement) {
+                            if (targetElem.requestFullscreen) {
+                                targetElem.requestFullscreen().catch(() => {});
+                            } else if (targetElem.webkitRequestFullscreen) {
+                                targetElem.webkitRequestFullscreen();
+                            }
+                        }
+                    }
+                }, 350);
             };
 
             const handlePlayRadioStation = (station) => {
