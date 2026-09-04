@@ -7,14 +7,14 @@
     
     <!-- OpenGraph & WhatsApp Sharing Meta Tags -->
     <meta property="og:title" content="BOXPLAYTV">
-    <meta property="og:description" content="Streaming de alta calidad cinematográfica">
+    <meta property="og:description" content="Streaming de alta calidad cinematográfica y canales en directo">
     <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjx4dt02lbSvoCJhKRtkyUa2NEhqRyvI8_G82p4jz_8iK5rfeJMVjKAcGXH9ukveI5c6kC_dlasscvR4CoUxCxbeDcEctr3zFJLJys7E76ZvAk6w4hOD1iwJTPj5g4Kfe-FLHhSO9HGLKtmapJZWXvRMMs23WdLnPqoj20RIrLjhFAHCqOsBk7NrmjoJlg/s320/07b01546-33f7-442e-b459-f3698b5a6120.png">
     <meta property="og:url" content="https://sejo48.github.io/StreamTube-V20/">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="BOXPLAYTV">
-    <meta name="twitter:description" content="Streaming de alta calidad cinematográfica">
+    <meta name="twitter:description" content="Streaming de alta calidad cinematográfica y canales en directo">
     <meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjx4dt02lbSvoCJhKRtkyUa2NEhqRyvI8_G82p4jz_8iK5rfeJMVjKAcGXH9ukveI5c6kC_dlasscvR4CoUxCxbeDcEctr3zFJLJys7E76ZvAk6w4hOD1iwJTPj5g4Kfe-FLHhSO9HGLKtmapJZWXvRMMs23WdLnPqoj20RIrLjhFAHCqOsBk7NrmjoJlg/s320/07b01546-33f7-442e-b459-f3698b5a6120.png">
 
     <!-- Favicon using rounded-square play logo -->
@@ -470,10 +470,9 @@
             useEffect(() => {
                 let interval;
                 if (activeTab === 'tv' && selectedItem?.type === 'tv' && tvContainerRef.current) {
-                    // Auto-refresh TV stream every 15 minutes or on stall to prevent infinite buffering / freezes
                     interval = setInterval(() => { 
                         setTvRefreshTrigger(prev => prev + 1); 
-                    }, 900000); 
+                    }, 600000); // 10 minutes interval to maintain fresh stream socket
                 }
                 return () => clearInterval(interval);
             }, [activeTab, selectedItem]);
@@ -586,6 +585,9 @@
             }, [radioVolume]);
 
             const recordContinueWatching = (item, episode = null) => {
+                // EXCLUSIVELY FOR MOVIES AND SERIES/ANIMADOS. TV & Radio are strictly excluded.
+                if (item.type === 'tv' || item.type === 'radio') return;
+
                 const record = {
                     ...item,
                     lastEpisode: episode ? episode.title : null,
@@ -728,9 +730,11 @@
                     const firstEp = item.seasons?.[0]?.episodes?.[0] || null;
                     setSelectedEpisode(firstEp); 
                     recordContinueWatching(item, firstEp);
-                } else {
+                } else if (item.type === 'movies') {
                     setSelectedEpisode(null);
                     recordContinueWatching(item, null);
+                } else {
+                    setSelectedEpisode(null);
                 }
                 if (search.trim()) addRecentSearch(search);
                 window.history.pushState({ appState: 'player', item: item.title }, '');
@@ -783,14 +787,14 @@
             return (
                 <div className="min-h-screen bg-[#030712] text-white font-sans flex flex-col relative selection:bg-indigo-500 selection:text-white w-full max-w-[100vw] overflow-x-hidden">
                     <header className="sticky top-0 z-50 bg-[#030712]/90 backdrop-blur-xl border-b border-indigo-950/60 px-3 sm:px-8 py-3 flex items-center justify-between shadow-2xl w-full">
-                        <div className="flex items-center gap-4 sm:gap-6">
+                        <div className="flex items-center gap-3 sm:gap-6">
                             <div className="flex items-center gap-2 cursor-pointer group" onClick={() => handleTabClick(navTabs[0])}>
                                 <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#6366f1] flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.5)] group-hover:scale-105 transition-transform flex-shrink-0">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-4 h-4 sm:w-5 sm:h-5 fill-white">
                                         <polygon points="40,30 70,50 40,70"/>
                                     </svg>
                                 </div>
-                                <span className="font-black text-base sm:text-lg tracking-tight">BOXPLAY<span className="text-indigo-400">TV</span></span>
+                                <span className="font-black text-sm sm:text-lg tracking-tight">BOXPLAY<span className="text-indigo-400">TV</span></span>
                             </div>
 
                             <nav className="hidden xl:flex items-center gap-1">
@@ -871,7 +875,7 @@
                         </div>
                     </header>
 
-                    {/* Mobile Bottom Navigation Bar - Fully Responsive */}
+                    {/* Mobile Bottom Navigation Bar */}
                     <div className="xl:hidden fixed bottom-0 w-full max-w-[100vw] bg-[#070b19] border-t border-indigo-950/80 z-50 flex py-2 pb-safe px-1 overflow-x-auto no-scrollbar snap-x items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.9)]">
                         {navTabs.slice(0, 10).map(tab => (
                             <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-shrink-0 min-w-[50px] py-1 gap-1 snap-start transition-all active:scale-95 rounded-xl ${activeTab === tab.id && !tab.isExternal ? 'text-indigo-400 bg-indigo-950/40 border border-indigo-500/30' : 'text-gray-400 hover:text-white'}`}>
@@ -1614,7 +1618,7 @@
             const descSource = item.descripcion || item.sinopsis || item.plot;
             
             return (
-                <div className="relative w-full min-h-[380px] sm:min-h-[420px] bg-[#070b19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-indigo-950/80 flex items-center max-w-7xl mx-auto px-4 sm:px-12 hbo-glow w-full">
+                <div className="relative w-full min-h-[420px] sm:min-h-[420px] bg-[#070b19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-indigo-950/80 flex items-center max-w-7xl mx-auto px-4 sm:px-12 hbo-glow w-full">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
                         <img src={imgSource} alt="Hero BG" className="w-full h-full object-cover filter blur-2xl opacity-40 scale-125 brightness-110" onError={(e) => e.target.style.display='none'} />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#030712] via-[#030712]/90 to-transparent"></div>
