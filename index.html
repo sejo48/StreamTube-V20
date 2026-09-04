@@ -470,7 +470,10 @@
             useEffect(() => {
                 let interval;
                 if (activeTab === 'tv' && selectedItem?.type === 'tv' && tvContainerRef.current) {
-                    interval = setInterval(() => { setTvRefreshTrigger(prev => prev + 1); }, 1800000); 
+                    // Auto-refresh TV stream every 15 minutes or on stall to prevent infinite buffering / freezes
+                    interval = setInterval(() => { 
+                        setTvRefreshTrigger(prev => prev + 1); 
+                    }, 900000); 
                 }
                 return () => clearInterval(interval);
             }, [activeTab, selectedItem]);
