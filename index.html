@@ -865,7 +865,7 @@
                 }
             };
 
-            // Gemini API AI Chat Handler in Spanish
+            // Gemini AI Chatbot Handler in Spanish
             const handleAiSend = async (e) => {
                 e.preventDefault();
                 if (!aiInput.trim() || aiLoading) return;
@@ -914,23 +914,25 @@
 
             return (
                 <div className="min-h-screen bg-[#020617] text-[#f8fafc] font-sans flex flex-col relative selection:bg-cyan-500 selection:text-white w-full max-w-[100vw] overflow-x-hidden">
-                    <header className="sticky top-0 z-50 glass-header px-3 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl w-full">
-                        <div className="flex items-center gap-3 sm:gap-6">
+                    {/* Clutter-Free Redesigned Header */}
+                    <header className="sticky top-0 z-50 glass-header px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl w-full">
+                        <div className="flex items-center gap-4 lg:gap-8">
                             <div className="flex items-center gap-2.5 cursor-pointer group" onClick={() => handleTabClick(navTabs[0])}>
-                                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.4)] group-hover:scale-105 transition-transform flex-shrink-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-4 h-4 sm:w-5 sm:h-5 fill-white">
+                                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.4)] group-hover:scale-105 transition-transform flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 fill-white">
                                         <polygon points="40,30 70,50 40,70"/>
                                     </svg>
                                 </div>
-                                <span className="font-black text-sm sm:text-lg tracking-tight">BOXPLAY<span className="text-cyan-400">TV</span></span>
+                                <span className="font-black text-base sm:text-lg tracking-tight">BOXPLAY<span className="text-cyan-400">TV</span></span>
                             </div>
 
-                            <nav className="hidden xl:flex items-center gap-1.5">
-                                {navTabs.slice(0, 9).map(tab => (
+                            {/* Clean desktop nav */}
+                            <nav className="hidden lg:flex items-center gap-1.5">
+                                {navTabs.slice(0, 7).map(tab => (
                                     <button 
                                         key={tab.id} 
                                         onClick={() => handleTabClick(tab)} 
-                                        className={`px-3 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${activeTab === tab.id && !tab.isExternal ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]' : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'}`}
+                                        className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${activeTab === tab.id && !tab.isExternal ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]' : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'}`}
                                     >
                                         <Icon name={tab.icon} size={14}/>
                                         <span>{tab.label}</span>
@@ -962,10 +964,10 @@
                                 <span className="hidden md:inline">Instalar App</span>
                             </button>
 
-                            <div className="relative hidden sm:block w-36 lg:w-60">
+                            <div className="relative hidden sm:block w-36 lg:w-48">
                                 <input 
                                     type="text" 
-                                    placeholder="Buscar anime, películas..." 
+                                    placeholder="Buscar anime..." 
                                     className="w-full bg-[#090d1f] border border-slate-800 rounded-full px-4 py-2 text-xs text-white focus:border-cyan-500 outline-none pl-9 transition-colors placeholder-slate-500 shadow-inner" 
                                     value={search} 
                                     onChange={(e) => setSearch(e.target.value)}
@@ -1004,19 +1006,11 @@
                                 <Icon name="qr" size={16}/>
                                 <span className="text-xs font-bold hidden lg:inline">Compartir</span>
                             </button>
-
-                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-cyan-600 to-teal-500 p-0.5 shadow-[0_0_15px_rgba(6,182,212,0.4)] flex items-center justify-center border border-cyan-400/30 cursor-pointer flex-shrink-0">
-                                <div className="w-full h-full rounded-full bg-[#020617] flex items-center justify-center overflow-hidden shadow-inner">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-4 h-4 sm:w-5 sm:h-5 fill-cyan-400">
-                                        <polygon points="40,30 70,50 40,70"/>
-                                    </svg>
-                                </div>
-                            </div>
                         </div>
                     </header>
 
                     {/* Mobile Bottom Navigation Bar (Optimized with 6 core tabs + More drawer) */}
-                    <div className="xl:hidden fixed bottom-0 w-full max-w-[100vw] glass-panel border-t border-slate-800 z-50 flex py-2 pb-safe px-1 items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.9)]">
+                    <div className="lg:hidden fixed bottom-0 w-full max-w-[100vw] glass-panel border-t border-slate-800 z-50 flex py-2 pb-safe px-1 items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.9)]">
                         {[
                             { id: 'home', icon: 'search', label: 'Inicio' },
                             { id: 'movies', icon: 'clapperboard', label: 'Películas' },
@@ -1038,14 +1032,14 @@
 
                     {/* Mobile More Drawer Menu */}
                     {showMobileMoreMenu && (
-                        <div className="xl:hidden fixed inset-0 z-[90] bg-black/80 backdrop-blur-md flex flex-col justify-end p-4 animate-fade-in pb-24" onClick={() => setShowMobileMoreMenu(false)}>
+                        <div className="lg:hidden fixed inset-0 z-[90] bg-black/80 backdrop-blur-md flex flex-col justify-end p-4 animate-fade-in pb-24" onClick={() => setShowMobileMoreMenu(false)}>
                             <div className="glass-panel rounded-3xl p-4 shadow-2xl space-y-2 animate-scale-in" onClick={(e) => e.stopPropagation()}>
                                 <div className="flex items-center justify-between pb-3 border-b border-slate-800 px-2">
-                                    <span className="text-xs font-black uppercase text-cyan-400 tracking-wider">Más Secciones</span>
+                                    <span className="text-xs font-black uppercase text-cyan-400 tracking-wider">Más Secciones & Herramientas</span>
                                     <button onClick={() => setShowMobileMoreMenu(false)} className="text-slate-400 hover:text-white"><Icon name="x" size={16}/></button>
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
-                                    {navTabs.slice(2, 9).map(tab => (
+                                    {navTabs.slice(3, 9).map(tab => (
                                         <button 
                                             key={tab.id}
                                             onClick={() => handleTabClick(tab)}
@@ -1061,6 +1055,13 @@
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
                                         <span>Transmitir a Smart TV / Smart View</span>
+                                    </button>
+                                    <button 
+                                        onClick={() => { setShowAiModal(true); setShowMobileMoreMenu(false); window.history.pushState({ appState: 'ai-modal' }, ''); }}
+                                        className="p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border bg-teal-500/20 text-teal-400 border-teal-500/40 col-span-2 justify-center"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+                                        <span>Boxplay AI Assistant</span>
                                     </button>
                                 </div>
                             </div>
