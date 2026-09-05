@@ -319,6 +319,12 @@
                                 targetElem.webkitRequestFullscreen();
                             }
                         }
+                    } else if (!isLandscape && document.fullscreenElement) {
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen().catch(() => {});
+                        } else if (document.webkitExitFullscreen) {
+                            document.webkitExitFullscreen();
+                        }
                     }
                 };
 
@@ -1767,7 +1773,7 @@
             const descSource = item.descripcion || item.sinopsis || item.plot;
             
             return (
-                <div className="relative w-full min-h-[420px] sm:min-h-[420px] bg-[#070b19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-indigo-950/80 flex items-center max-w-7xl mx-auto px-4 sm:px-12 hbo-glow w-full">
+                <div className="relative w-full min-h-[420px] bg-[#070b19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-indigo-950/80 flex items-center max-w-7xl mx-auto px-4 sm:px-12 hbo-glow w-full">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
                         <img src={imgSource} alt="Hero BG" className="w-full h-full object-cover filter blur-2xl opacity-40 scale-125 brightness-110" onError={(e) => e.target.style.display='none'} />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#030712] via-[#030712]/90 to-transparent"></div>
