@@ -1251,39 +1251,7 @@
                                         <ContentRow title="⭐ Programas Populares" items={content.series} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🎬 Estrenos de Cine" items={content.movies} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🏆 Vista Superior (Top Shows)" items={content.animados.slice().reverse()} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
-                                        <ContentRow title="📺 Televisión en Vivo" items={content.tv.slice(0, 15)} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         
-                                        {/* Radio HD preview row on Home */}
-                                        <div className="max-w-7xl mx-auto px-3 sm:px-8 mb-8 w-full">
-                                            <div className="flex items-center justify-between mb-4">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-1.5 h-5 sm:h-6 bg-teal-500 rounded-full shadow-[0_0_10px_#14b8a6]"></div>
-                                                    <h2 className="text-base sm:text-xl font-extrabold uppercase tracking-wide text-white">📻 Radio HD - Emisoras Nacionales</h2>
-                                                </div>
-                                                <button onClick={() => { setActiveTab('radio'); window.history.pushState({ appState: 'main', activeTab: 'radio' }, ''); }} className="text-xs font-bold text-cyan-400 hover:text-white transition-colors">
-                                                    Ver todas →
-                                                </button>
-                                            </div>
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
-                                                {radioStations.slice(0, 5).map((station, idx) => (
-                                                    <div 
-                                                        key={station.id || idx} 
-                                                        onClick={() => {
-                                                            setActiveTab('radio');
-                                                            handlePlayRadioStation(station);
-                                                        }}
-                                                        className="group glass-panel hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-3 cursor-pointer transition-all flex flex-col items-center text-center shadow-lg"
-                                                    >
-                                                        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-black overflow-hidden p-1 mb-2 border border-slate-800 shadow-inner">
-                                                            <img src={station.image} alt={station.title} className="w-full h-full object-contain" onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/300x300/0f172a/ffffff?text=Radio'; }}/>
-                                                        </div>
-                                                        <h4 className="text-xs font-bold text-white truncate w-full group-hover:text-cyan-400 transition-colors">{station.title}</h4>
-                                                        <span className="text-[10px] text-slate-400 truncate w-full mt-0.5">{station.group}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-
                                         {favorites.length > 0 && (
                                             <ContentRow title="❤️ Mis Favoritos" items={favorites} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         )}
@@ -1761,7 +1729,7 @@
                     </div>
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-6 sm:gap-8 text-center sm:text-left">
                         {/* WIDER & LARGER POSTER ON MOBILE PORTRAIT */}
-                        <div className="w-56 sm:w-52 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
+                        <div className="w-48 sm:w-52 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
                             <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/0f172a/ffffff?text=Poster'} />
                         </div>
                         <div className="flex-1 flex flex-col gap-3 items-center sm:items-start max-w-xl">
