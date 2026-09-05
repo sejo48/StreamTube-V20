@@ -291,14 +291,6 @@
             const [showSmartViewModal, setShowSmartViewModal] = useState(false);
             const [showMobileMoreMenu, setShowMobileMoreMenu] = useState(false);
 
-            // Gemini AI Chatbot state
-            const [showAiModal, setShowAiModal] = useState(false);
-            const [aiMessages, setAiMessages] = useState([
-                { role: 'assistant', text: '¡Hola! Soy tu asistente de Boxplaytv impulsado por IA. ¿Qué te gustaría ver hoy o qué dudas tienes sobre nuestras películas, animes y canales en directo?' }
-            ]);
-            const [aiInput, setAiInput] = useState('');
-            const [aiLoading, setAiLoading] = useState(false);
-
             const [tvRefreshTrigger, setTvRefreshTrigger] = useState(0);
             const [tvGroupFilter, setTvGroupFilter] = useState('ALL');
 
@@ -401,11 +393,6 @@
                         window.history.pushState({ appState: 'main', activeTab }, '');
                         return;
                     }
-                    if (showAiModal) {
-                        setShowAiModal(false);
-                        window.history.pushState({ appState: 'main', activeTab }, '');
-                        return;
-                    }
 
                     if (selectedItem) {
                         setSelectedItem(null);
@@ -424,7 +411,7 @@
 
                 window.addEventListener('popstate', handlePopState);
                 return () => window.removeEventListener('popstate', handlePopState);
-            }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showAiModal, showIntro]);
+            }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showIntro]);
 
             useEffect(() => {
                 const init = async () => {
@@ -865,51 +852,6 @@
                 }
             };
 
-            // Gemini AI Chatbot Handler in Spanish
-            const handleAiSend = async (e) => {
-                e.preventDefault();
-                if (!aiInput.trim() || aiLoading) return;
-                const userText = aiInput.trim();
-                setAiInput('');
-                const newMessages = [...aiMessages, { role: 'user', text: userText }];
-                setAiMessages(newMessages);
-                setAiLoading(true);
-
-                try {
-                    const systemPrompt = "Actúa como Boxplaytv AI Assistant, un experto amigable de cine, series y anime para la plataforma Boxplaytv. Responde siempre en español, ayudando a los usuarios a descubrir películas, animes y canales en directo del catálogo.";
-                    const apiKey = "";
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-                    const contents = newMessages.map(m => ({
-                        role: m.role === 'assistant' ? 'model' : 'user',
-                        parts: [{ text: m.text }]
-                    }));
-
-                    const payload = {
-                        contents: contents,
-                        systemInstruction: { parts: [{ text: systemPrompt }] }
-                    };
-
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    const result = await response.json();
-                    const candidate = result.candidates?.[0];
-                    if (candidate && candidate.content?.parts?.[0]?.text) {
-                        const replyText = candidate.content.parts[0].text;
-                        setAiMessages(prev => [...prev, { role: 'assistant', text: replyText }]);
-                    } else {
-                        setAiMessages(prev => [...prev, { role: 'assistant', text: 'Lo siento, tuve un problema al procesar tu consulta. ¡Inténtalo de nuevo!' }]);
-                    }
-                } catch (err) {
-                    setAiMessages(prev => [...prev, { role: 'assistant', text: 'Error de conexión con el Asistente IA.' }]);
-                } finally {
-                    setAiLoading(false);
-                }
-            };
-
             if (showIntro) return <IntroScreen onEnter={() => { setShowIntro(false); window.history.pushState({ appState: 'main', activeTab: 'home' }, ''); }}/>;
 
             return (
@@ -946,12 +888,6 @@
                             <button onClick={() => { setShowSmartViewModal(true); window.history.pushState({ appState: 'smartview-modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Ver en Smart TV">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
                                 <span className="hidden lg:inline">Smart TV</span>
-                            </button>
-
-                            {/* Gemini AI Assistant Button */}
-                            <button onClick={() => { setShowAiModal(true); window.history.pushState({ appState: 'ai-modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-teal-500/15 hover:bg-teal-500/25 text-teal-300 border border-teal-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-teal-400"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
-                                <span className="hidden md:inline">Boxplay AI</span>
                             </button>
 
                             <button onClick={() => handleTabClick(navTabs.find(t => t.id === 'favorites'))} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
@@ -1055,13 +991,6 @@
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
                                         <span>Transmitir a Smart TV / Smart View</span>
-                                    </button>
-                                    <button 
-                                        onClick={() => { setShowAiModal(true); setShowMobileMoreMenu(false); window.history.pushState({ appState: 'ai-modal' }, ''); }}
-                                        className="p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border bg-teal-500/20 text-teal-400 border-teal-500/40 col-span-2 justify-center"
-                                    >
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
-                                        <span>Boxplay AI Assistant</span>
                                     </button>
                                 </div>
                             </div>
@@ -1446,48 +1375,6 @@
                         </div>
                     )}
 
-                    {/* Gemini AI Chatbot Modal */}
-                    {showAiModal && (
-                        <div className="fixed inset-0 z-[105] bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 animate-fade-in">
-                            <div className="glass-panel rounded-3xl p-4 sm:p-6 max-w-lg w-full relative shadow-2xl flex flex-col h-[550px] animate-scale-in">
-                                <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
-                                    <div className="flex items-center gap-2.5">
-                                        <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-teal-600 to-cyan-500 flex items-center justify-center text-white shadow-[0_0_15px_rgba(20,184,166,0.5)]">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
-                                        </div>
-                                        <div>
-                                            <h3 className="font-black text-sm text-white">Boxplay AI Assistant</h3>
-                                            <span className="text-[10px] text-teal-400">Powered by Gemini AI</span>
-                                        </div>
-                                    </div>
-                                    <button onClick={() => { setShowAiModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="text-slate-400 hover:text-white p-1.5 rounded-full bg-black/40"><Icon name="x" size={16}/></button>
-                                </div>
-                                <div className="flex-1 overflow-y-auto custom-scrollbar space-y-3 p-2 pr-1">
-                                    {aiMessages.map((m, idx) => (
-                                        <div key={idx} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                            <div className={`max-w-[85%] p-3 rounded-2xl text-xs leading-relaxed ${m.role === 'user' ? 'bg-gradient-to-r from-cyan-600 to-teal-500 text-white rounded-br-none shadow-md' : 'bg-[#0f172a] text-slate-200 border border-slate-800 rounded-bl-none'}`}>
-                                                {m.text}
-                                            </div>
-                                        </div>
-                                    ))}
-                                    {aiLoading && (
-                                        <div className="flex justify-start">
-                                            <div className="bg-[#0f172a] text-slate-400 p-3 rounded-2xl text-xs flex items-center gap-2 border border-slate-800">
-                                                <div className="w-2 h-2 rounded-full bg-teal-400 animate-bounce"></div>
-                                                <div className="w-2 h-2 rounded-full bg-teal-400 animate-bounce [animation-delay:-.2s]"></div>
-                                                <div className="w-2 h-2 rounded-full bg-teal-400 animate-bounce [animation-delay:-.4s]"></div>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                                <form onSubmit={handleAiSend} className="mt-3 flex gap-2 pt-2 border-t border-slate-800">
-                                    <input type="text" placeholder="Pregúntale algo a la IA sobre películas o series..." className="flex-1 bg-black/60 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:border-teal-500 outline-none placeholder-slate-500 shadow-inner" value={aiInput} onChange={(e) => setAiInput(e.target.value)} />
-                                    <button type="submit" disabled={aiLoading} className="bg-gradient-to-r from-teal-600 to-cyan-500 hover:brightness-110 text-white px-4 py-2.5 rounded-xl font-bold text-xs shadow-[0_0_15px_rgba(20,184,166,0.5)] transition-all">Enviar</button>
-                                </form>
-                            </div>
-                        </div>
-                    )}
-
                     {/* Smart View / TV Cast Instructions Modal */}
                     {showSmartViewModal && (
                         <div className="fixed inset-0 z-[105] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
@@ -1853,7 +1740,7 @@
                             <button onClick={handleStart} className="w-full bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white py-3.5 rounded-full font-extrabold text-sm sm:text-base shadow-[0_0_25px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2 mb-6 active:scale-95 transition-all"><span>Comenzar Experiencia</span> <Icon fill="white" name="play" size={16}/></button>
                         )}
 
-                        <div className="opacity-80 pt-3 border-t border-slate-800"><p className="text-[8px] text-slate-400 uppercase tracking-widest mb-0.5">DISEÑADO Y PROGRAMADO POR</p><h3 className="text-sm font-serif text-gold-gradient font-bold mb-1">JORGE ARTURO HERNÁNDEZ MÉNDEZ</h3><p className="text-[8px] text-slate-500">Boxplaytv • Powered by Gemini AI</p></div>
+                        <div className="opacity-80 pt-3 border-t border-slate-800"><p className="text-[8px] text-slate-400 uppercase tracking-widest mb-0.5">DISEÑADO Y PROGRAMADO POR</p><h3 className="text-sm font-serif text-gold-gradient font-bold mb-1">JORGE ARTURO HERNÁNDEZ MÉNDEZ</h3><p className="text-[8px] text-slate-500">Boxplaytv • Todos los derechos reservados</p></div>
                     </div>
                 </div>
             );
@@ -1866,20 +1753,20 @@
             const descSource = item.descripcion || item.sinopsis || item.plot;
             
             return (
-                <div className="relative w-full sm:h-[460px] bg-[#070b19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-slate-800 flex items-center max-w-7xl mx-auto px-4 sm:px-12 cinema-glow w-full py-6 sm:py-0">
+                <div className="relative w-full sm:h-[460px] bg-[#070b19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-slate-800 flex items-center max-w-7xl mx-auto px-4 sm:px-12 cinema-glow w-full py-8 sm:py-0">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
                         <img src={imgSource} alt="Hero BG" className="w-full h-full object-cover filter blur-2xl opacity-40 scale-125 brightness-110" onError={(e) => e.target.style.display='none'} />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/90 to-transparent"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
                     </div>
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-6 sm:gap-8 text-center sm:text-left">
-                        {/* Enlarged poster on mobile portrait */}
-                        <div className="w-48 sm:w-52 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
+                        {/* WIDER & LARGER POSTER ON MOBILE PORTRAIT */}
+                        <div className="w-56 sm:w-52 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
                             <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/0f172a/ffffff?text=Poster'} />
                         </div>
                         <div className="flex-1 flex flex-col gap-3 items-center sm:items-start max-w-xl">
                             <span className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white text-[9px] sm:text-[10px] font-black px-3.5 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(6,182,212,0.4)]">Destacado Boxplaytv</span>
-                            <h1 className="text-xl sm:text-4xl font-black text-white leading-tight drop-shadow-md line-clamp-2">{titleSource}</h1>
+                            <h1 className="text-2xl sm:text-4xl font-black text-white leading-tight drop-shadow-md line-clamp-2">{titleSource}</h1>
                             <p className="text-slate-300 text-xs sm:text-sm line-clamp-3 leading-relaxed drop-shadow">{descSource || "Disfruta de las mejores películas y series en alta definición."}</p>
                             <div className="flex flex-wrap justify-center sm:justify-start gap-3 mt-1">
                                 <button onClick={() => onPlay(item)} className="bg-gradient-to-tr from-cyan-600 to-teal-500 hover:brightness-110 text-white px-6 sm:px-8 py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-95 transition-transform shadow-[0_0_20px_rgba(6,182,212,0.5)]">
