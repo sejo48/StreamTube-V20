@@ -1014,15 +1014,28 @@
                                 volume={radioVolume}
                             />
                         ) : activeTab === 'favorites' && !selectedItem ? (
-                            <div className="p-3 sm:p-10 animate-fade-in max-w-7xl mx-auto w-full">
-                                <div className="mb-6 flex items-center gap-3 border-b border-slate-800 pb-4">
-                                    <div className="p-2.5 bg-cyan-500/15 rounded-xl text-cyan-400 border border-cyan-500/30"><Icon fill="currentColor" name="heart" size={22}/></div>
-                                    <h2 className="text-lg sm:text-2xl font-black text-white">Tus Contenidos Favoritos</h2>
+                            <div className="p-3 sm:p-10 animate-fade-in max-w-7xl mx-auto w-full space-y-8">
+                                <div>
+                                    <div className="mb-6 flex items-center gap-3 border-b border-slate-800 pb-4">
+                                        <div className="p-2.5 bg-cyan-500/15 rounded-xl text-cyan-400 border border-cyan-500/30"><Icon fill="currentColor" name="heart" size={22}/></div>
+                                        <h2 className="text-lg sm:text-2xl font-black text-white">Tus Películas y Series Favoritas</h2>
+                                    </div>
+                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
+                                        {favorites.filter(f => f.type !== 'tv').map((item, i) => (<Card isFavorite={true} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
+                                    </div>
+                                    {favorites.filter(f => f.type !== 'tv').length === 0 && <div className="text-center py-12 text-slate-500 text-sm"><p>No tienes películas o series guardadas en favoritos todavía.</p></div>}
                                 </div>
-                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
-                                    {favorites.map((item, i) => (<Card isFavorite={true} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
+
+                                <div>
+                                    <div className="mb-6 flex items-center gap-3 border-b border-slate-800 pb-4">
+                                        <div className="p-2.5 bg-cyan-500/15 rounded-xl text-cyan-400 border border-cyan-500/30"><Icon fill="currentColor" name="tv" size={22}/></div>
+                                        <h2 className="text-lg sm:text-2xl font-black text-white">Tus Canales de TV Favoritos</h2>
+                                    </div>
+                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
+                                        {favorites.filter(f => f.type === 'tv').map((item, i) => (<Card isFavorite={true} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
+                                    </div>
+                                    {favorites.filter(f => f.type === 'tv').length === 0 && <div className="text-center py-12 text-slate-500 text-sm"><p>No tienes canales de televisión guardados en favoritos todavía.</p></div>}
                                 </div>
-                                {favorites.length === 0 && <div className="text-center py-24 text-slate-500 text-sm"><p>No tienes elementos guardados en favoritos todavía.</p></div>}
                             </div>
                         ) : activeTab === 'tv' || (selectedItem && selectedItem.type === 'tv') ? (
                             <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4.5rem)] lg:overflow-hidden bg-[#020617] w-full">
@@ -1252,8 +1265,12 @@
                                         <ContentRow title="🎬 Estrenos de Cine" items={content.movies} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🏆 Vista Superior (Top Shows)" items={content.animados.slice().reverse()} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         
-                                        {favorites.length > 0 && (
-                                            <ContentRow title="❤️ Mis Favoritos" items={favorites} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
+                                        {favorites.filter(f => f.type !== 'tv').length > 0 && (
+                                            <ContentRow title="❤️ Mis Favoritos (Películas y Series)" items={favorites.filter(f => f.type !== 'tv')} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
+                                        )}
+
+                                        {favorites.filter(f => f.type === 'tv').length > 0 && (
+                                            <ContentRow title="📺 Favoritos de TV" items={favorites.filter(f => f.type === 'tv')} onPlay={handlePlay} favorites={favorites} onToggleFavorite={toggleFavorite} />
                                         )}
                                     </div>
                                 ) : activeTab === 'topshows' ? (
@@ -1446,7 +1463,7 @@
                     </div>
                     <div ref={rowRef} className="flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar pb-3 pt-1 snap-x scroll-smooth custom-scrollbar">
                         {items.map((item, i) => (
-                            <div key={item.id || item.title || i} className="flex-shrink-0 w-32 sm:w-48 snap-start">
+                            <div key={item.id || item.title || i} className={`flex-shrink-0 snap-start ${item.type === 'tv' ? 'w-40 sm:w-56' : 'w-32 sm:w-48'}`}>
                                 <Card item={item} onClick={onPlay} isFavorite={favorites.some(f => (f.id||f.title) === (item.id||item.title))} onToggleFavorite={onToggleFavorite} />
                             </div>
                         ))}
@@ -1721,7 +1738,7 @@
             const descSource = item.descripcion || item.sinopsis || item.plot;
             
             return (
-                <div className="relative w-full sm:h-[460px] bg-[#070b19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-slate-800 flex items-center max-w-7xl mx-auto px-4 sm:px-12 cinema-glow w-full py-8 sm:py-0">
+                <div className="relative w-full bg-[#070b19] overflow-hidden rounded-3xl mb-8 group animate-fade-in shadow-2xl border border-slate-800 flex items-center max-w-7xl mx-auto px-4 sm:px-12 cinema-glow w-full py-8 sm:py-10">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
                         <img src={imgSource} alt="Hero BG" className="w-full h-full object-cover filter blur-2xl opacity-40 scale-125 brightness-110" onError={(e) => e.target.style.display='none'} />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/90 to-transparent"></div>
@@ -1729,7 +1746,7 @@
                     </div>
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-6 sm:gap-8 text-center sm:text-left">
                         {/* WIDER & LARGER POSTER ON MOBILE PORTRAIT */}
-                        <div className="w-48 sm:w-52 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
+                        <div className="w-56 sm:w-52 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
                             <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/0f172a/ffffff?text=Poster'} />
                         </div>
                         <div className="flex-1 flex flex-col gap-3 items-center sm:items-start max-w-xl">
