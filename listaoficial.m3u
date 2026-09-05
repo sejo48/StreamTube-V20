@@ -7,6 +7,12 @@ https://k20.usastreams.com:8081/telesistema/tracks-v1a1/mono.m3u8
 https://cloudvideo.servers10.com:8081/8230/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-name="Retro TV" tvg-logo="https://play-lh.googleusercontent.com/zLkTnFfdGGq5-cuY0DBvsCoiRUToWFA8rcm_Z3ieUr7rwgmzyojRXIfqMXt9dm4ocjs" group-title="Canal Retro.",Retro TV
 https://stream.enlineatv.net/hls/retrotv/1_2/index.m3u8?tkn=3610870340
+#EXTINF:-1 tvg-name="Dreiko TV" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF4WjCv7VeLbrEAtDzziTPFnO02S87ck8eLA&s" group-title="Entretenimiento.",Dreiko TV
+https://cloudvideo.servers10.com:8081/8020/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-name="Costa Rica Channel" tvg-logo="https://radiocostarica.net/sites/default/files/styles/player_image/public/2024-05/Costa%20Rica%20Channel-Costa%20Rica.png.webp?itok=jdj8aeqR" group-title="Costa Rica Channel",Costa Rica Channel
+https://video0.rogohosting.com:19360/8006/8006.m3u8
+#EXTINF:-1 tvg-name="Gam TV" tvg-logo="https://radiocostarica.net/sites/default/files/styles/player_image/public/2024-06/GAM%20TV%20CR-Costa%20Rica_0.png.webp?itok=ExXxZFSr" group-title="Entretenimiento",Gam TV
+https://v2.azulstream.com:8081/gamtv/gamtv/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-name="BEST CLASICOS TV" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3896-800x450-FFFFFF.jpg" group-title="General",BEST CLASICOS TV
 https://acceso.mediosdecostarica.com:3873/hybrid/play.m3u8
 #EXTINF:-1 tvg-name="Megacine TV" tvg-logo="https://cigars.roku.com/v1/contain/800x454/https%3A%2F%2Fimage.roku.com%2Fdeveloper_channels%2Fprod%2Ffec8403b690ee3d6bb645b6e8d9e1e85070e865bc1b4ad14e8af28261e6ce1ad.png" group-title="Canal Retro TV.",Megacine TV
@@ -25,18 +31,12 @@ https://azt-mun.otteravision.com/azt/mun/mun_1080p.m3u8
 https://59ef525c24caa.streamlock.net/nicoyatv/nicoyatv/chunklist_w1674958038.m3u8
 #EXTINF:-1 tvg-name="Latino Clásica" tvg-logo="https://cdn.rudo.video/assets/canal-13/live/logoApi_151f8e8d0c9e2a144f59f11ec492c3e91710874647.png" group-title="Películas Clásicas Latinas.",Latino Clásica
 https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/4d419a88-a62c-496f-b8a1-984e746f8259/manifest.m3u8
-#EXTINF:-1 tvg-name="Dreiko TV" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF4WjCv7VeLbrEAtDzziTPFnO02S87ck8eLA&s" group-title="Entretenimiento.",Dreiko TV
-https://cloudvideo.servers10.com:8081/8020/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-name="Retro Cartoons" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/a1e4076264abe6b6ccde87a587966abe.webp" group-title="Canal de Entretenimiento.",Retro Cartoons
 https://stmv3.voxtvhd.com.br/xtremaretrocartoons/xtremaretrocartoons/playlist.m3u8
 #EXTINF:-1 tvg-name="Extrema Kids" tvg-logo="https://image.roku.com/developer_channels/prod/685354bd84f85fe39c7ecae45018ccb60011681ba7838fd841e3f2392f4f6249.png" group-title="Infantil.",Extrema Kids
 https://627bb251f23c7.streamlock.net:444/ExtremaKids/ExtremaKids/chunklist_w877184190.m3u8
 #EXTINF:-1 tvg-name="Canal 8" tvg-logo="https://pbs.twimg.com/profile_images/1510311834800246787/sfWgWmqk_400x400.jpg" group-title="Multimedios Costa Rica",Canal 8
 https://mdstrm.com/live-stream-playlist/5a7b1e63a8da282c34d65445/master.m3u8
-#EXTINF:-1 tvg-name="Costa Rica Channel" tvg-logo="https://radiocostarica.net/sites/default/files/styles/player_image/public/2024-05/Costa%20Rica%20Channel-Costa%20Rica.png.webp?itok=jdj8aeqR" group-title="Costa Rica Channel",Costa Rica Channel
-https://video0.rogohosting.com:19360/8006/8006.m3u8
-#EXTINF:-1 tvg-name="Gam TV" tvg-logo="https://radiocostarica.net/sites/default/files/styles/player_image/public/2024-06/GAM%20TV%20CR-Costa%20Rica_0.png.webp?itok=ExXxZFSr" group-title="Entretenimiento",Gam TV
-https://v2.azulstream.com:8081/gamtv/gamtv/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-name="Red Bull TV" tvg-logo="https://play-lh.googleusercontent.com/W7wJ9CcfTsIlMC9GWk7qgom0JO6R4DoFnHN1DGKuI2OtLQ_3w5zYuscMngY0OZfXtfxn" group-title="Red Bull TV: Deportes",Red Bull TV
 https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8
 #EXTINF:-1 tvg-name="Antena Seis TV" tvg-logo="https://i.imgur.com/9Nh2mo9.png" group-title="Sin Grupo",Antena Seis TV
@@ -55,16 +55,16 @@ https://59ef525c24caa.streamlock.net/vmtv/soyplancha/playlist.m3u8
 https://59ef525c24caa.streamlock.net/tvurbano/tvurbano/playlist.m3u8
 #EXTINF:-1 tvg-name="TeleSur" tvg-logo="https://i.imgur.com/KUpgeOf.png" group-title="Sin Grupo",TeleSur
 https://s1.tvdatta.com:3582/live/telesurlive.m3u8
+#EXTINF:-1 tvg-name="Tele Vida" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRr3bmOPMWpG4PLRg_uRAvIEKPCZTprG-_Jw&s" group-title="Sin Grupo",Tele Vida
+https://tls-cl.cdnz.cl/televida/live/playlist.m3u8
 #EXTINF:-1 tvg-name="TV Vintage" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/1e7e289ab5c66e67ad623c5a1bec9f75.webp" group-title="Sin Grupo",TV Vintage
 https://59ef525c24caa.streamlock.net/vmtv/tvvintage/playlist.m3u8
 #EXTINF:-1 tvg-name="Extrema TV" tvg-logo="https://xtrematv.com/wp-content/uploads/2023/05/LOGO-2023-XT-chico.png" group-title="Sin Grupo",Extrema TV
 https://627bb251f23c7.streamlock.net:444/ExtremaTV/ExtremaTV/playlist.m3u8
-#EXTINF:-1 tvg-name="Cine Acción" tvg-logo="https://yt3.googleusercontent.com/jCFvfJuhezHyqYCiBhWQtKvEyyq7syTMkpWRks1E_toGgPdaIMo9sMpxpMYWGBrdf2mSymKL=s900-c-k-c0x00ffffff-no-rj" group-title="Sin Grupo",Cine Acción
-https://stmv6.voxtvhd.com.br/cineaccion/cineaccion/playlist.m3u8
-#EXTINF:-1 tvg-name="Tele Vida" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRr3bmOPMWpG4PLRg_uRAvIEKPCZTprG-_Jw&s" group-title="Sin Grupo",Tele Vida
-https://tls-cl.cdnz.cl/televida/live/playlist.m3u8
 #EXTINF:-1 tvg-name="Tele Sur" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtJvHa01Kz7msCS49obbGVIqvHeDCQr8EN_A&s" group-title="Sin Grupo",Tele Sur
 https://k20.usastreams.com:8081/tvsur/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-name="Cine Acción" tvg-logo="https://yt3.googleusercontent.com/jCFvfJuhezHyqYCiBhWQtKvEyyq7syTMkpWRks1E_toGgPdaIMo9sMpxpMYWGBrdf2mSymKL=s900-c-k-c0x00ffffff-no-rj" group-title="Sin Grupo",Cine Acción
+https://stmv6.voxtvhd.com.br/cineaccion/cineaccion/playlist.m3u8
 #EXTINF:-1 tvg-name="Canal 36" tvg-logo="https://lh6.ggpht.com/XBZm1nL7kgjjH5FEAN0NmeqWVaa-qlyqLJMuSbe3RCit7ZaZtpcXbf3nFFK2BbC2Lds" group-title="Cotubanama",Canal 36
 https://host.streamingnation.live/p/3588/hybrid/play.m3u8
 #EXTINF:-1 tvg-name="Retro Plus TV" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFm-q_tTR9_DInWxrnzCJElp00p6sZPTdGg&s" group-title="Retro",Retro Plus TV
