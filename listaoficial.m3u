@@ -37,8 +37,6 @@ https://stmv3.voxtvhd.com.br/xtremaretrocartoons/xtremaretrocartoons/playlist.m3
 https://627bb251f23c7.streamlock.net:444/ExtremaKids/ExtremaKids/chunklist_w877184190.m3u8
 #EXTINF:-1 tvg-name="Canal 8" tvg-logo="https://pbs.twimg.com/profile_images/1510311834800246787/sfWgWmqk_400x400.jpg" group-title="Multimedios Costa Rica",Canal 8
 https://mdstrm.com/live-stream-playlist/5a7b1e63a8da282c34d65445/master.m3u8
-#EXTINF:-1 tvg-name="Red Bull TV" tvg-logo="https://play-lh.googleusercontent.com/W7wJ9CcfTsIlMC9GWk7qgom0JO6R4DoFnHN1DGKuI2OtLQ_3w5zYuscMngY0OZfXtfxn" group-title="Red Bull TV: Deportes",Red Bull TV
-https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8
 #EXTINF:-1 tvg-name="Antena Seis TV" tvg-logo="https://i.imgur.com/9Nh2mo9.png" group-title="Sin Grupo",Antena Seis TV
 https://video1.azulstream.com:8081/antenaseistv/index.m3u8
 #EXTINF:-1 tvg-name="CBTV" tvg-logo="https://i.ibb.co/vJZqrFY/a4ed367c69c23110d458a332af95be0be64566f288ccb5f261689344e6ba5e0d.png" group-title="Sin Grupo",CBTV
@@ -49,12 +47,12 @@ https://5fc584f3f19c9.streamlock.net/cristovision/videocristovision/chunklist_w1
 https://59ef525c24caa.streamlock.net//limontv1//limontv1//chunklist_w1710248255.m3u8
 #EXTINF:-1 tvg-name="Norte Informativo" tvg-logo="https://i.ibb.co/2MNzXN7/Channels4-profile-9.jpg" group-title="Sin Grupo",Norte Informativo
 https://videohd.live:19360/8076/8076.m3u8
-#EXTINF:-1 tvg-name="Soy Plancha TV" tvg-logo="https://i.ibb.co/P4kpMgk/1689344714578.jpg" group-title="Sin Grupo",Soy Plancha TV
+#EXTINF:-1 tvg-name="Soy Plancha TV" tvg-logo="https://soyplancha.tv/wp-content/uploads/2023/03/cropped-SOY-PLANCHA-LOGO-TV-2019.png" group-title="Sin Grupo",Soy Plancha TV
 https://59ef525c24caa.streamlock.net/vmtv/soyplancha/playlist.m3u8
-#EXTINF:-1 tvg-name="TV Urbano" tvg-logo="https://i.imgur.com/KVVU9PI.png" group-title="Sin Grupo",TV Urbano
-https://59ef525c24caa.streamlock.net/tvurbano/tvurbano/playlist.m3u8
 #EXTINF:-1 tvg-name="TeleSur" tvg-logo="https://i.imgur.com/KUpgeOf.png" group-title="Sin Grupo",TeleSur
 https://s1.tvdatta.com:3582/live/telesurlive.m3u8
+#EXTINF:-1 tvg-name="Cine Acción" tvg-logo="https://yt3.googleusercontent.com/jCFvfJuhezHyqYCiBhWQtKvEyyq7syTMkpWRks1E_toGgPdaIMo9sMpxpMYWGBrdf2mSymKL=s900-c-k-c0x00ffffff-no-rj" group-title="Sin Grupo",Cine Acción
+https://stmv6.voxtvhd.com.br/cineaccion/cineaccion/playlist.m3u8
 #EXTINF:-1 tvg-name="Tele Vida" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRr3bmOPMWpG4PLRg_uRAvIEKPCZTprG-_Jw&s" group-title="Sin Grupo",Tele Vida
 https://tls-cl.cdnz.cl/televida/live/playlist.m3u8
 #EXTINF:-1 tvg-name="TV Vintage" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/1e7e289ab5c66e67ad623c5a1bec9f75.webp" group-title="Sin Grupo",TV Vintage
@@ -63,8 +61,6 @@ https://59ef525c24caa.streamlock.net/vmtv/tvvintage/playlist.m3u8
 https://627bb251f23c7.streamlock.net:444/ExtremaTV/ExtremaTV/playlist.m3u8
 #EXTINF:-1 tvg-name="Tele Sur" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtJvHa01Kz7msCS49obbGVIqvHeDCQr8EN_A&s" group-title="Sin Grupo",Tele Sur
 https://k20.usastreams.com:8081/tvsur/tracks-v1a1/mono.m3u8
-#EXTINF:-1 tvg-name="Cine Acción" tvg-logo="https://yt3.googleusercontent.com/jCFvfJuhezHyqYCiBhWQtKvEyyq7syTMkpWRks1E_toGgPdaIMo9sMpxpMYWGBrdf2mSymKL=s900-c-k-c0x00ffffff-no-rj" group-title="Sin Grupo",Cine Acción
-https://stmv6.voxtvhd.com.br/cineaccion/cineaccion/playlist.m3u8
 #EXTINF:-1 tvg-name="Canal 36" tvg-logo="https://lh6.ggpht.com/XBZm1nL7kgjjH5FEAN0NmeqWVaa-qlyqLJMuSbe3RCit7ZaZtpcXbf3nFFK2BbC2Lds" group-title="Cotubanama",Canal 36
 https://host.streamingnation.live/p/3588/hybrid/play.m3u8
 #EXTINF:-1 tvg-name="Retro Plus TV" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeFm-q_tTR9_DInWxrnzCJElp00p6sZPTdGg&s" group-title="Retro",Retro Plus TV
