@@ -174,15 +174,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 52px;
-            padding: 4px 12px;
+            height: 48px;
+            padding: 4px 10px;
             background: linear-gradient(135deg, rgba(2, 6, 23, 0.98), rgba(9, 13, 31, 0.99));
-            border-radius: 16px;
+            border-radius: 14px;
             border: 1px solid rgba(6, 182, 212, 0.4);
             box-shadow: 0 0 25px rgba(6, 182, 212, 0.25), inset 0 0 10px rgba(20, 184, 166, 0.15);
             overflow: hidden;
             width: 100%;
-            max-width: 540px;
+            max-width: 380px;
             position: relative;
         }
 
@@ -340,7 +340,6 @@
             const analyserRef = useRef(null);
             const sourceNodeRef = useRef(null);
             const canvasRef = useRef(null);
-            const animFrameRef = useRef(null);
 
             const tvContainerRef = useRef(null);
             const movieContainerRef = useRef(null);
@@ -711,7 +710,7 @@
                 if (audioRef.current) audioRef.current.volume = radioVolume;
             }, [radioVolume]);
 
-            // Real audio sound reactive color frequency spectrum rendering loop (Spotify style)
+            // Real audio sound reactive color spectrum visualizer rendering loop (Spotify style)
             useEffect(() => {
                 const canvas = canvasRef.current;
                 if (!canvas) return;
@@ -721,8 +720,8 @@
                 const renderSpectrum = () => {
                     animationId = requestAnimationFrame(renderSpectrum);
 
-                    canvas.width = canvas.parentElement ? canvas.parentElement.clientWidth : 400;
-                    canvas.height = 52;
+                    canvas.width = canvas.parentElement ? canvas.parentElement.clientWidth : 380;
+                    canvas.height = 48;
 
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -736,27 +735,27 @@
 
                     const width = canvas.width;
                     const height = canvas.height;
-                    const numBars = 18;
-                    const barWidth = Math.floor(width / numBars) - 4;
-                    const spacing = 4;
+                    const numBars = 16;
+                    const barWidth = Math.floor(width / numBars) - 3;
+                    const spacing = 3;
 
                     for (let i = 0; i < numBars; i++) {
                         let freqIdx = Math.floor((i / numBars) * (dataArray.length / 2));
-                        let magnitude = hasAudio ? (dataArray[freqIdx] / 255) : (0.15 + Math.sin(Date.now() * 0.005 + i) * 0.1);
+                        let magnitude = hasAudio ? (dataArray[freqIdx] / 255) : (0.15 + Math.sin(Date.now() * 0.006 + i) * 0.12);
                         
-                        let barHeight = Math.max(6, magnitude * (height - 8));
-                        let x = i * (barWidth + spacing) + 6;
+                        let barHeight = Math.max(5, magnitude * (height - 6));
+                        let x = i * (barWidth + spacing) + 4;
                         let y = height - barHeight - 2;
 
                         // Vibrant neon color gradient per bar (Green -> Yellow -> Cyan -> Purple)
                         let gradient = ctx.createLinearGradient(x, y + barHeight, x, y);
-                        if (i < 5) {
+                        if (i < 4) {
                             gradient.addColorStop(0, '#10b981'); // Emerald Green
                             gradient.addColorStop(1, '#34d399');
-                        } else if (i < 10) {
+                        } else if (i < 8) {
                             gradient.addColorStop(0, '#06b6d4'); // Cyan
                             gradient.addColorStop(1, '#22d3ee');
-                        } else if (i < 14) {
+                        } else if (i < 12) {
                             gradient.addColorStop(0, '#3b82f6'); // Blue
                             gradient.addColorStop(1, '#60a5fa');
                         } else {
@@ -765,12 +764,12 @@
                         }
 
                         ctx.fillStyle = gradient;
-                        ctx.shadowBlur = 10;
-                        ctx.shadowColor = i < 5 ? '#10b981' : i < 10 ? '#06b6d4' : '#a855f7';
+                        ctx.shadowBlur = 8;
+                        ctx.shadowColor = i < 4 ? '#10b981' : i < 8 ? '#06b6d4' : '#a855f7';
                         
                         // Rounded rectangle for each spectrum bar
                         ctx.beginPath();
-                        ctx.roundRect(x, y, barWidth, barHeight, [4, 4, 0, 0]);
+                        ctx.roundRect(x, y, barWidth, barHeight, [3, 3, 0, 0]);
                         ctx.fill();
                     }
                 };
@@ -1470,10 +1469,6 @@
                                         {favorites.length > 0 && (
                                             <ContentRow title="❤️ Mis Favoritos (Películas y Series)" items={favorites} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         )}
-
-                                        {tvFavorites.length > 0 && (
-                                            <ContentRow title="📺 Favoritos de TV" items={tvFavorites} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        )}
                                     </div>
                                 ) : activeTab === 'topshows' ? (
                                     <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
@@ -1548,7 +1543,7 @@
                                 </div>
                                 {/* Professional Studio Radio Real Sound-Reactive Color Spectrum Visualizer */}
                                 <div className="radio-spectrum-container">
-                                    <div className="absolute top-1 right-2 z-10 px-1.5 py-0.5 bg-black/70 border border-cyan-500/40 rounded text-[7px] font-black tracking-widest text-cyan-300 uppercase shadow">ESTÉREO HD</div>
+                                    <div className="absolute top-1 right-2 z-10 px-1.5 py-0.5 bg-black/70 border border-cyan-500/40 rounded text-[7px] font-black tracking-widest text-cyan-300 uppercase shadow">ESTÉREO</div>
                                     <canvas ref={canvasRef} className="spectrum-canvas"></canvas>
                                 </div>
                             </div>
