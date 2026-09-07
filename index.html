@@ -169,11 +169,11 @@
             100% { transform: scaleY(1.2); }
         }
 
-        /* Professional Studio Radio Color Spectrum Audio Visualizer Container */
+        /* Spotify-style Multi-color Frequency Spectrum Visualizer Container */
         .radio-spectrum-container {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-end;
+            justify-content: space-between;
             height: 48px;
             padding: 4px 10px;
             background: linear-gradient(135deg, rgba(2, 6, 23, 0.98), rgba(9, 13, 31, 0.99));
@@ -675,7 +675,7 @@
                             if (isRadioPlaying) playAudio();
                         }
 
-                        // Setup Web Audio API Analyser for real sound reactivity
+                        // Setup Web Audio API Analyser for real sound reactivity (Color Spectrum)
                         try {
                             if (!audioCtxRef.current) {
                                 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
@@ -686,7 +686,7 @@
                             }
                             if (!analyserRef.current) {
                                 analyserRef.current = audioCtxRef.current.createAnalyser();
-                                analyserRef.current.fftSize = 128;
+                                analyserRef.current.fftSize = 64;
                             }
                             if (!sourceNodeRef.current && audio) {
                                 sourceNodeRef.current = audioCtxRef.current.createMediaElementSource(audio);
@@ -725,7 +725,7 @@
 
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                    let dataArray = new Uint8Array(32);
+                    let dataArray = new Uint8Array(24);
                     let hasAudio = false;
 
                     if (analyserRef.current && isRadioPlaying && !streamError) {
@@ -736,18 +736,18 @@
                     const width = canvas.width;
                     const height = canvas.height;
                     const numBars = 16;
-                    const barWidth = Math.floor(width / numBars) - 3;
-                    const spacing = 3;
+                    const totalSpacing = 4 * (numBars - 1);
+                    const barWidth = Math.floor((width - totalSpacing) / numBars);
 
                     for (let i = 0; i < numBars; i++) {
                         let freqIdx = Math.floor((i / numBars) * (dataArray.length / 2));
-                        let magnitude = hasAudio ? (dataArray[freqIdx] / 255) : (0.15 + Math.sin(Date.now() * 0.006 + i) * 0.12);
+                        let magnitude = hasAudio ? (dataArray[freqIdx] / 255) : (0.2 + Math.sin(Date.now() * 0.008 + i * 0.5) * 0.15);
                         
-                        let barHeight = Math.max(5, magnitude * (height - 6));
-                        let x = i * (barWidth + spacing) + 4;
-                        let y = height - barHeight - 2;
+                        let barHeight = Math.max(6, magnitude * (height - 4));
+                        let x = i * (barWidth + 4);
+                        let y = height - barHeight;
 
-                        // Vibrant neon color gradient per bar (Green -> Yellow -> Cyan -> Purple)
+                        // Vibrant neon color spectrum gradient per bar
                         let gradient = ctx.createLinearGradient(x, y + barHeight, x, y);
                         if (i < 4) {
                             gradient.addColorStop(0, '#10b981'); // Emerald Green
@@ -764,10 +764,9 @@
                         }
 
                         ctx.fillStyle = gradient;
-                        ctx.shadowBlur = 8;
+                        ctx.shadowBlur = 10;
                         ctx.shadowColor = i < 4 ? '#10b981' : i < 8 ? '#06b6d4' : '#a855f7';
                         
-                        // Rounded rectangle for each spectrum bar
                         ctx.beginPath();
                         ctx.roundRect(x, y, barWidth, barHeight, [3, 3, 0, 0]);
                         ctx.fill();
@@ -1461,9 +1460,9 @@
                                         {continueWatching.length > 0 && (
                                             <ContentRow title="▶️ Continuar Viendo" items={continueWatching} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         )}
+                                        <ContentRow title="🎬 Últimos Estrenos" items={content.movies} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🔥 Tendencias Actuales (Anime & Más)" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="⭐ Programas Populares" items={content.series} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        <ContentRow title="🎬 Estrenos de Cine" items={content.movies} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🏆 Vista Superior (Top Shows)" items={content.animados.slice().reverse()} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         
                                         {favorites.length > 0 && (
@@ -1860,12 +1859,11 @@
             return (
                 <div className="relative w-full bg-[#070b19] overflow-hidden rounded-none sm:rounded-3xl mb-8 group animate-fade-in shadow-2xl border-b sm:border border-slate-800 flex items-center max-w-7xl mx-auto px-4 sm:px-12 cinema-glow w-full py-8 sm:py-16 md:py-20">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        <img src={imgSource} alt="Hero BG" className="w-full h-full object-cover filter blur-2xl opacity-40 scale-125 brightness-110" onError={(e) => e.target.style.display='none'} />
+                        <img src="https://img.magnific.com/foto-gratis/cine-caja-palomitas-maiz_23-2148133612.jpg?semt=ais_hybrid&w=740&q=80" alt="Hero BG" className="w-full h-full object-cover opacity-25 scale-105 brightness-90" />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/90 to-transparent"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
                     </div>
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-6 sm:gap-10 text-center sm:text-left">
-                        {/* Immersive Poster on Mobile Portrait - widened as requested */}
                         <div className="w-48 sm:w-60 md:w-68 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
                             <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/0f172a/ffffff?text=Poster'} />
                         </div>
