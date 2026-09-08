@@ -12,11 +12,6 @@
     <meta property="og:url" content="https://sejo48.github.io/StreamTube-V20/">
     <meta property="og:type" content="website">
     
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="BOXPLAYTV">
-    <meta name="twitter:description" content="Streaming de alta calidad cinematográfica y canales en directo">
-    <meta name="twitter:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjx4dt02lbSvoCJhKRtkyUa2NEhqRyvI8_G82p4jz_8iK5rfeJMVjKAcGXH9ukveI5c6kC_dlasscvR4CoUxCxbeDcEctr3zFJLJys7E76ZvAk6w4hOD1iwJTPj5g4Kfe-FLHhSO9HGLKtmapJZWXvRMMs23WdLnPqoj20RIrLjhFAHCqOsBk7NrmjoJlg/s320/07b01546-33f7-442e-b459-f3698b5a6120.png">
-
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='28' fill='%2306b6d4'/%3E%3Cpolygon points='40,30 70,50 40,70' fill='%23ffffff'/%3E%3C/svg%3E">
     
@@ -169,7 +164,7 @@
             100% { transform: scaleY(1.2); }
         }
 
-        /* Spotify-style Multi-color Frequency Spectrum Visualizer Container */
+        /* Spotify / Color Spectrum Visualizer Container */
         .radio-spectrum-container {
             display: flex;
             align-items: flex-end;
@@ -229,6 +224,7 @@
             RADIOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/radios.json'
         };
 
+        const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/ClI93uJrk1A4hA8MoS1J7Z';
         const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
 
         const DEFAULT_RADIO_STATIONS = [
@@ -369,6 +365,11 @@
                 }
             };
 
+            const handleQrError = (e) => {
+                e.target.onerror = null;
+                e.target.src = 'https://placehold.co/300x300/0f172a/ffffff?text=QR+BoxPlayTV';
+            };
+
             useEffect(() => {
                 const handleOrientationChange = () => {
                     const isLandscape = window.innerWidth > window.innerHeight;
@@ -450,6 +451,13 @@
 
                         let tvChannels = [];
                         if (dataTV) tvChannels = parseM3U(dataTV);
+                        if (tvChannels.length === 0) {
+                            tvChannels = [
+                                { id: 'tv-1', title: 'Telered', image: 'https://placehold.co/300x300/0f172a/ffffff?text=Telered', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' },
+                                { id: 'tv-2', title: 'Tele Sistema', image: 'https://placehold.co/300x300/06b6d4/ffffff?text=TeleSistema', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' },
+                                { id: 'tv-3', title: 'Costa Rica Channel', image: 'https://placehold.co/300x300/14b8a6/ffffff?text=CRC', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' }
+                            ];
+                        }
 
                         let moviesList = [];
                         if (dataMovies) {
@@ -464,6 +472,12 @@
                                 url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
                                 rawUrl: m.urlDrive || m.url || m.urlOkRu
                             }));
+                        }
+                        if (moviesList.length === 0) {
+                            moviesList = [
+                                { id: 'm-1', type: 'movies', title: 'STARSKY & HUTCH', description: 'Acción policial clásica.', image: 'https://placehold.co/300x450/0f172a/ffffff?text=Starsky+Hutch', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                                { id: 'm-2', type: 'movies', title: 'La Novicia Rebelde (1965)', description: 'Clásico musical galardonado.', image: 'https://placehold.co/300x450/14b8a6/ffffff?text=La+Novicia', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+                            ];
                         }
 
                         let movies2List = [];
@@ -500,6 +514,14 @@
                                     }))
                                 }))
                             }));
+                        }
+                        if (seriesList.length === 0) {
+                            seriesList = [
+                                {
+                                    id: 's-1', type: 'series', title: 'La Isla de Gilligan', description: 'Comedia de situación clásica.', image: 'https://placehold.co/300x450/06b6d4/ffffff?text=Gilligans+Island',
+                                    seasons: [{ seasonNumber: 1, episodes: [{ id: 'ep-1', title: 'Episodio 1: Naufragio', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }] }]
+                                }
+                            ];
                         }
 
                         let animadosList = [];
@@ -708,7 +730,7 @@
                 if (audioRef.current) audioRef.current.volume = radioVolume;
             }, [radioVolume]);
 
-            // Real audio sound reactive color spectrum visualizer rendering loop
+            // Real-time colorful frequency spectrum visualizer matching Spotify reference style
             useEffect(() => {
                 const canvas = canvasRef.current;
                 if (!canvas) return;
@@ -927,7 +949,7 @@
             };
 
             const displayedItems = getDisplayContent();
-            const heroItem = useMemo(() => (content.animados.length ? content.animados[Math.floor(Math.random() * content.animados.length)] : (content.movies.length ? content.movies[0] : null)), [content]);
+            const heroItem = useMemo(() => (content.movies.length ? content.movies[0] : (content.animados.length ? content.animados[0] : null)), [content]);
 
             const handlePlay = (item) => { 
                 const code = item.codigo || item.password || item.pin; 
@@ -1465,8 +1487,8 @@
                                         <ContentRow title="⭐ Programas Populares" items={content.series} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🏆 Vista Superior (Top Shows)" items={content.animados.slice().reverse()} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         
-                                        {favorites.length > 0 && (
-                                            <ContentRow title="❤️ Mis Favoritos (Películas y Series)" items={favorites} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
+                                        {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length > 0 && (
+                                            <ContentRow title="❤️ Mis Favoritos (Películas y Series)" items={favorites.filter(item => item.type !== 'tv' && item.type !== 'radio')} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         )}
                                     </div>
                                 ) : activeTab === 'topshows' ? (
@@ -1507,7 +1529,7 @@
                         )}
                     </main>
 
-                    {/* Radio Player Dock with Real Sound-Reactive Color Spectrum Visualizer */}
+                    {/* Radio Player Dock with Real-Time Colorful Frequency Spectrum Visualizer */}
                     {currentRadioStation && activeTab === 'radio' && (
                         <div className="fixed bottom-[55px] md:bottom-0 left-0 right-0 w-full max-w-[100vw] glass-header p-3 sm:p-4 z-50 flex items-center justify-between shadow-[0_-20px_50px_rgba(0,0,0,0.9)] animate-slide-up">
                             <div className="flex items-center gap-3 w-1/4 min-w-[100px] sm:min-w-[140px]">
@@ -1540,7 +1562,7 @@
                                         <Icon name={!isRadioPlaying ? "play" : "pause"} size={18} fill="currentColor" className={!isRadioPlaying ? "ml-0.5" : ""}/>
                                     </button>
                                 </div>
-                                {/* Professional Studio Radio Real Sound-Reactive Color Spectrum Visualizer */}
+                                {/* Professional Studio Radio Real-Time Colorful Frequency Spectrum Visualizer */}
                                 <div className="radio-spectrum-container">
                                     <div className="absolute top-1 right-2 z-10 px-1.5 py-0.5 bg-black/70 border border-cyan-500/40 rounded text-[7px] font-black tracking-widest text-cyan-300 uppercase shadow">ESTÉREO</div>
                                     <canvas ref={canvasRef} className="spectrum-canvas"></canvas>
@@ -1577,7 +1599,7 @@
                         </div>
                     )}
 
-                    {/* QR Sharing Modal */}
+                    {/* QR & WhatsApp Group Sharing Modal */}
                     {showQrModal && (
                         <div className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
                             <div className="glass-panel rounded-3xl p-6 max-w-xs w-full text-center relative shadow-2xl space-y-4 animate-scale-in">
@@ -1586,19 +1608,23 @@
                                 </button>
                                 
                                 <div className="p-3 bg-cyan-500/10 rounded-2xl border border-cyan-500/30 inline-block">
-                                    <span className="text-xs font-black uppercase text-cyan-400 tracking-widest">Escanea y Comparte</span>
+                                    <span className="text-xs font-black uppercase text-cyan-400 tracking-widest">Comunidad Boxplaytv</span>
                                 </div>
 
                                 <div className="bg-white p-3 rounded-2xl shadow-inner flex justify-center items-center">
-                                    <img src="./mi-qr-pro.png" alt="Boxplaytv QR Code" className="w-44 h-44 object-contain" onError={handleQrError} />
+                                    <img src={QR_IMAGE_URL} alt="Boxplaytv QR Code" className="w-40 h-40 object-contain" onError={handleQrError} />
                                 </div>
 
                                 <div>
                                     <h3 className="font-extrabold text-base text-white">BOXPLAY<span className="text-cyan-400">TV</span></h3>
-                                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">Apunta con la cámara de tu teléfono para abrir la plataforma al instante.</p>
+                                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">Únete a nuestro grupo oficial de WhatsApp para estar al día con los estrenos.</p>
                                 </div>
 
-                                <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_20px_rgba(6,182,212,0.5)]">
+                                <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer" className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl font-bold text-xs transition-colors shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center justify-center gap-2">
+                                    <span>Unirse al Grupo de WhatsApp</span>
+                                </a>
+
+                                <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-2.5 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.4)]">
                                     Cerrar
                                 </button>
                             </div>
