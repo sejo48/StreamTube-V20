@@ -214,7 +214,8 @@
         const URLS = {
             TV: './listaoficial.m3u',
             SERIES: './playlist.json',
-            MOVIES: ['./peliculas.json', './peliculas2.json'],
+            MOVIES: './peliculas.json',
+            MOVIES2: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/refs/heads/main/peliculas2.json',
             ANIMADOS: './animados.json',
             RADIOS: './radios.json'
         };
@@ -222,7 +223,8 @@
         const RAW_URLS = {
             TV: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/listaoficial.m3u',
             SERIES: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/playlist.json',
-            MOVIES: ['https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas.json', 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas2.json'],
+            MOVIES: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas.json',
+            MOVIES2: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas2.json',
             ANIMADOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/animados.json',
             RADIOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/radios.json'
         };
@@ -287,23 +289,10 @@
             return null;
         };
 
-        const handleQrError = (e) => {
-            if (!e.target.dataset.triedBlogger) {
-                e.target.dataset.triedBlogger = "true";
-                e.target.src = QR_IMAGE_URL;
-            } else if (!e.target.dataset.triedRaw) {
-                e.target.dataset.triedRaw = "true";
-                e.target.src = 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/mi-qr-pro.png';
-            } else if (!e.target.dataset.triedApi) {
-                e.target.dataset.triedApi = "true";
-                e.target.src = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent(window.location.href || 'https://sejo48.github.io/StreamTube-V20/');
-            }
-        };
-
         const App = () => {
             const [showIntro, setShowIntro] = useState(true);
             const [activeTab, setActiveTab] = useState('home');
-            const [content, setContent] = useState({ tv: [], series: [], movies: [], animados: [] });
+            const [content, setContent] = useState({ tv: [], series: [], movies: [], movies2: [], animados: [] });
             const [radioStations, setRadioStations] = useState(DEFAULT_RADIO_STATIONS);
             const [search, setSearch] = useState('');
             const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -347,6 +336,7 @@
             const navTabs = [
                 { id: 'home', icon: 'search', label: 'Inicio' }, 
                 { id: 'movies', icon: 'clapperboard', label: 'Películas' }, 
+                { id: 'movies2', icon: 'star', label: 'Estrenos 2026' },
                 { id: 'series', icon: 'film', label: 'Series' },
                 { id: 'animados', icon: 'smile', label: 'Animados' },
                 { id: 'topshows', icon: 'star', label: 'Top Shows' },
@@ -449,38 +439,47 @@
                     try {
                         setLoading(true);
 
-                        const moviePromises = URLS.MOVIES.map((localPath, idx) => 
-                            fetchSmart(localPath, RAW_URLS.MOVIES[idx], true)
-                        );
-
-                        const [dataTV, dataSeries, dataAnimados, dataRadios, ...moviesResults] = await Promise.all([ 
+                        const [dataTV, dataSeries, dataAnimados, dataRadios, dataMovies, dataMovies2] = await Promise.all([ 
                             fetchSmart(URLS.TV, RAW_URLS.TV, false),
                             fetchSmart(URLS.SERIES, RAW_URLS.SERIES, true),
                             fetchSmart(URLS.ANIMADOS, RAW_URLS.ANIMADOS, true),
                             fetchSmart(URLS.RADIOS, RAW_URLS.RADIOS, true),
-                            ...moviePromises
+                            fetchSmart(URLS.MOVIES, RAW_URLS.MOVIES, true),
+                            fetchSmart(URLS.MOVIES2, RAW_URLS.MOVIES2, true)
                         ]);
 
                         let tvChannels = [];
                         if (dataTV) tvChannels = parseM3U(dataTV);
 
                         let moviesList = [];
-                        moviesResults.forEach((dataMovies, fileIdx) => {
-                            if (dataMovies) {
-                                const rawMovies = Array.isArray(dataMovies) ? dataMovies : (dataMovies.peliculas || dataMovies.content || []);
-                                const mapped = rawMovies.map((m, idx) => ({ 
-                                    ...m, 
-                                    id: `mov-${fileIdx}-${idx}`, 
-                                    type: 'movies', 
-                                    title: m.titulo || m.title || m.name, 
-                                    description: m.descripcion || m.sinopsis || m.plot, 
-                                    image: m.imagen || m.poster || m.image, 
-                                    url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
-                                    rawUrl: m.urlDrive || m.url || m.urlOkRu
-                                }));
-                                moviesList = [...moviesList, ...mapped];
-                            }
-                        });
+                        if (dataMovies) {
+                            const rawMovies = Array.isArray(dataMovies) ? dataMovies : (dataMovies.peliculas || dataMovies.content || []);
+                            moviesList = rawMovies.map((m, idx) => ({ 
+                                ...m, 
+                                id: `mov-1-${idx}`, 
+                                type: 'movies', 
+                                title: m.titulo || m.title || m.name, 
+                                description: m.descripcion || m.sinopsis || m.plot, 
+                                image: m.imagen || m.poster || m.image, 
+                                url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
+                                rawUrl: m.urlDrive || m.url || m.urlOkRu
+                            }));
+                        }
+
+                        let movies2List = [];
+                        if (dataMovies2) {
+                            const rawMovies2 = Array.isArray(dataMovies2) ? dataMovies2 : (dataMovies2.peliculas || dataMovies2.content || []);
+                            movies2List = rawMovies2.map((m, idx) => ({ 
+                                ...m, 
+                                id: `mov-2-${idx}`, 
+                                type: 'movies2', 
+                                title: m.titulo || m.title || m.name, 
+                                description: m.descripcion || m.sinopsis || m.plot, 
+                                image: m.imagen || m.poster || m.image, 
+                                url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
+                                rawUrl: m.urlDrive || m.url || m.urlOkRu
+                            }));
+                        }
 
                         let seriesList = [];
                         if (dataSeries) {
@@ -540,7 +539,7 @@
                             }
                         }
 
-                        setContent({ tv: tvChannels, movies: moviesList, series: seriesList, animados: animadosList });
+                        setContent({ tv: tvChannels, movies: moviesList, movies2: movies2List, series: seriesList, animados: animadosList });
                     } catch (err) {
                         console.error("Error cargando contenido", err);
                     } finally {
@@ -675,7 +674,6 @@
                             if (isRadioPlaying) playAudio();
                         }
 
-                        // Setup Web Audio API Analyser for real sound reactivity (Color Spectrum)
                         try {
                             if (!audioCtxRef.current) {
                                 const AudioContextClass = window.AudioContext || window.webkitAudioContext;
@@ -710,7 +708,7 @@
                 if (audioRef.current) audioRef.current.volume = radioVolume;
             }, [radioVolume]);
 
-            // Real audio sound reactive color spectrum visualizer rendering loop (Spotify style)
+            // Real audio sound reactive color spectrum visualizer rendering loop
             useEffect(() => {
                 const canvas = canvasRef.current;
                 if (!canvas) return;
@@ -747,7 +745,6 @@
                         let x = i * (barWidth + 4);
                         let y = height - barHeight;
 
-                        // Vibrant neon color spectrum gradient per bar
                         let gradient = ctx.createLinearGradient(x, y + barHeight, x, y);
                         if (i < 4) {
                             gradient.addColorStop(0, '#10b981'); // Emerald Green
@@ -919,7 +916,7 @@
 
             const getDisplayContent = () => { 
                 let list = activeTab === 'home' 
-                    ? [...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] 
+                    ? [...content.movies2, ...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] 
                     : activeTab === 'favorites' 
                     ? [...favorites, ...tvFavorites] 
                     : activeTab === 'topshows'
@@ -941,7 +938,7 @@
                     const firstEp = item.seasons?.[0]?.episodes?.[0] || null;
                     setSelectedEpisode(firstEp); 
                     recordContinueWatching(item, firstEp);
-                } else if (item.type === 'movies') {
+                } else if (item.type === 'movies' || item.type === 'movies2') {
                     setSelectedEpisode(null);
                     recordContinueWatching(item, null);
                 } else {
@@ -1011,7 +1008,7 @@
                             </div>
 
                             <nav className="hidden lg:flex items-center gap-1.5">
-                                {navTabs.slice(0, 7).map(tab => (
+                                {navTabs.slice(0, 8).map(tab => (
                                     <button 
                                         key={tab.id} 
                                         onClick={() => handleTabClick(tab)} 
@@ -1043,7 +1040,7 @@
                             <div className="relative hidden sm:block w-36 lg:w-48">
                                 <input 
                                     type="text" 
-                                    placeholder="Buscar anime..." 
+                                    placeholder="Buscar contenido..." 
                                     className="w-full bg-[#090d1f] border border-slate-800 rounded-full px-4 py-2 text-xs text-white focus:border-cyan-500 outline-none pl-9 transition-colors placeholder-slate-500 shadow-inner" 
                                     value={search} 
                                     onChange={(e) => setSearch(e.target.value)}
@@ -1090,7 +1087,7 @@
                         {[
                             { id: 'home', icon: 'search', label: 'Inicio' },
                             { id: 'movies', icon: 'clapperboard', label: 'Películas' },
-                            { id: 'series', icon: 'film', label: 'Series' },
+                            { id: 'movies2', icon: 'star', label: 'Estrenos' },
                             { id: 'tv', icon: 'tv', label: 'TV' },
                             { id: 'radio', icon: 'radio', label: 'Radio' },
                             { id: 'favorites', icon: 'heart', label: 'Favs' }
@@ -1115,7 +1112,7 @@
                                     <button onClick={() => setShowMobileMoreMenu(false)} className="text-slate-400 hover:text-white"><Icon name="x" size={16}/></button>
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
-                                    {navTabs.slice(3, 9).map(tab => (
+                                    {navTabs.slice(3, 10).map(tab => (
                                         <button 
                                             key={tab.id}
                                             onClick={() => handleTabClick(tab)}
@@ -1460,6 +1457,9 @@
                                         {continueWatching.length > 0 && (
                                             <ContentRow title="▶️ Continuar Viendo" items={continueWatching} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         )}
+                                        {content.movies2.length > 0 && (
+                                            <ContentRow title="✨ Estrenos 2026" items={content.movies2} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
+                                        )}
                                         <ContentRow title="🎬 Últimos Estrenos" items={content.movies} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🔥 Tendencias Actuales (Anime & Más)" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="⭐ Programas Populares" items={content.series} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
@@ -1488,7 +1488,7 @@
                                     <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
                                         <div className="mb-6 flex items-center gap-3">
                                             <div className="w-1.5 h-6 sm:h-7 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
-                                            <h2 className="text-lg sm:text-2xl font-black uppercase tracking-wide text-white">{activeTab === 'home' ? 'Resultados de Búsqueda' : activeTab}</h2>
+                                            <h2 className="text-lg sm:text-2xl font-black uppercase tracking-wide text-white">{activeTab === 'home' ? 'Resultados de Búsqueda' : activeTab === 'movies2' ? 'Estrenos 2026' : activeTab}</h2>
                                         </div>
                                         {loading ? (
                                             <div className="flex justify-center py-24"><div className="animate-spin rounded-full h-12 w-12 border-4 border-cyan-500 border-t-transparent shadow-[0_0_25px_#06b6d4]"></div></div>
@@ -1705,7 +1705,6 @@
 
             return (
                 <div className="max-w-7xl mx-auto p-3 sm:p-10 animate-fade-in text-white pb-32 w-full">
-                    {/* Professional Studio Header */}
                     <div className="glass-panel rounded-3xl p-6 mb-8 border border-cyan-500/20 bg-gradient-to-r from-cyan-950/40 via-slate-900/60 to-blue-950/40 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
                         <div className="flex items-center gap-4 text-center md:text-left">
                             <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-600 to-teal-500 flex items-center justify-center text-white shadow-[0_0_30px_rgba(6,182,212,0.5)] flex-shrink-0 border border-cyan-400/40">
@@ -1817,7 +1816,7 @@
 
             return (
                 <div className="fixed inset-0 z-[100] bg-[#020617] flex items-center justify-center overflow-hidden font-sans p-4">
-                    <div className="absolute inset-0"><img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1200&auto=format&fit=crop" className="w-full h-full object-cover opacity-15" /><div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-[#020617]/90 to-[#020617]"></div></div>
+                    <div className="absolute inset-0"><img src="https://img.magnific.com/foto-gratis/cine-caja-palomitas-maiz_23-2148133612.jpg?semt=ais_hybrid&w=740&q=80" className="w-full h-full object-cover opacity-15" /><div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-[#020617]/90 to-[#020617]"></div></div>
                     <div className="relative z-10 text-center max-w-sm sm:max-w-md w-full animate-scale-in glass-panel p-6 sm:p-8 rounded-3xl shadow-[0_0_80px_rgba(6,182,212,0.2)] border border-cyan-500/20">
                         <div className="mb-3 inline-block bg-gradient-to-r from-cyan-600 to-teal-500 px-3 py-1 rounded-full text-[9px] font-black tracking-widest uppercase text-white shadow-[0_0_15px_rgba(6,182,212,0.4)]">Cinematic Experience</div>
                         <div className="flex items-center justify-center gap-2.5 mb-2">
