@@ -730,7 +730,7 @@
                 if (audioRef.current) audioRef.current.volume = radioVolume;
             }, [radioVolume]);
 
-            // Real-time colorful frequency spectrum visualizer matching Spotify reference style
+            // Real-time colorful frequency color spectrum visualizer (Spotify reference style)
             useEffect(() => {
                 const canvas = canvasRef.current;
                 if (!canvas) return;
@@ -957,8 +957,6 @@
                 const randomIndex = Math.floor(Math.random() * pool.length);
                 return pool[randomIndex];
             }, [content]);
-
-            const [heroIndex, setHeroIndex] = useState(0);
 
             const currentHeroItem = randomHeroItem || (content.movies.length ? content.movies[0] : null);
 
@@ -1331,7 +1329,7 @@
                                     <div className="p-4 sm:p-12 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10 pb-32">
                                         <div className="lg:col-span-2 space-y-4">
                                             <div className="flex items-start gap-4 sm:gap-6">
-                                                <div className="w-24 sm:w-32 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black">
+                                                <div className="w-28 sm:w-36 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black">
                                                     <img src={selectedItem.imagen || selectedItem.image || selectedItem.poster} alt={selectedItem.titulo || selectedItem.title} className="w-full h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/300x450/0f172a/ffffff?text=Poster'; }} />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
@@ -1350,10 +1348,10 @@
                                             </div>
 
                                             <div className="pt-2">
-                                                <h3 className="text-xs font-black uppercase text-cyan-400 tracking-wider mb-2 flex items-center gap-2">
+                                                <h3 className="text-xs font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
                                                     <span className="w-2 h-2 rounded-full bg-cyan-400"></span> Sinopsis
                                                 </h3>
-                                                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed bg-black/30 p-4 rounded-2xl border border-slate-800/80">
+                                                <p className="text-slate-200 text-sm sm:text-base leading-relaxed bg-black/40 p-5 rounded-2xl border border-slate-800/80 shadow-inner">
                                                     {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
                                                 </p>
                                             </div>
@@ -1445,7 +1443,7 @@
                                             />
                                         )}
                                         
-                                        {/* ACCESO RÁPIDO / HUB PRINCIPAL CARDS */}
+                                        {/* ACCESO RÁPIDO / HUB PRINCIPAL CARDS CON ANIMACIONES */}
                                         <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full">
                                             <div className="flex items-center gap-3 mb-4">
                                                 <div className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
@@ -1629,7 +1627,7 @@
                         </div>
                     )}
 
-                    {/* QR Modal */}
+                    {/* QR Modal with WhatsApp Link Fix */}
                     {showQrModal && (
                         <div className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
                             <div className="glass-panel rounded-3xl p-6 max-w-xs w-full text-center relative shadow-2xl space-y-4 animate-scale-in">
