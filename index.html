@@ -164,7 +164,7 @@
             100% { transform: scaleY(1.2); }
         }
 
-        /* Spotify / Color Spectrum Visualizer Container */
+        /* Radio Spectrum Visualizer Container */
         .radio-spectrum-container {
             display: flex;
             align-items: flex-end;
@@ -978,9 +978,9 @@
 
             const displayedItems = getDisplayContent();
             
-            // Random Hero item chosen fresh ONCE on app load spanning movies, series, animados
+            // Random Hero item chosen fresh ONCE on app load / refresh spanning movies, series, animados
             const randomHeroItem = useMemo(() => {
-                const pool = [...content.movies, ...content.series, ...content.animados, ...content.movies2];
+                const pool = [...content.movies, ...content.movies2, ...content.series, ...content.animados];
                 if (pool.length === 0) return null;
                 const randomIndex = Math.floor(Math.random() * pool.length);
                 return pool[randomIndex];
@@ -1369,7 +1369,7 @@
                                                             </div>
                                                         </div>
                                                         <div className="flex items-center gap-2">
-                                                            {((selectedItem.type === 'movies' || selectedItem.type === 'movies2') && (selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url || '').includes('drive.google.com')) && (
+                                                            {((selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url || '').includes('drive.google.com')) && (
                                                                 <button 
                                                                     onClick={() => {
                                                                         const targetUrl = selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url;
@@ -1399,7 +1399,7 @@
                                                 <h3 className="text-xs font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
                                                     <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
                                                 </h3>
-                                                <p className="text-slate-100 text-sm sm:text-lg leading-relaxed bg-black/50 p-6 rounded-2xl border border-slate-800 shadow-inner font-medium">
+                                                <p className="text-slate-100 text-sm sm:text-base md:text-lg leading-relaxed bg-black/50 p-6 rounded-2xl border border-slate-800 shadow-inner font-medium">
                                                     {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
                                                 </p>
                                             </div>
@@ -1662,7 +1662,7 @@
                                     </div>
                                 </div>
                                 <h2 className="text-sm font-extrabold text-white mb-1">Descarga Segura</h2>
-                                <p className="text-[11px] text-slate-400 mb-2">Introduce la clave de descarga (8384)</p>
+                                <p className="text-[11px] text-slate-400 mb-2">Introduce la clave de descarga</p>
                                 <form onSubmit={(e) => {
                                     e.preventDefault();
                                     if (downloadPinInput === '8384') {
@@ -1682,7 +1682,7 @@
                                         placeholder="••••" 
                                         autoFocus 
                                     />
-                                    {downloadPinError && <p className="text-rose-400 text-xs mb-3 font-bold">Clave incorrecta (8384)</p>}
+                                    {downloadPinError && <p className="text-rose-400 text-xs mb-3 font-bold">Clave incorrecta</p>}
                                     <div className="flex gap-2.5">
                                         <button type="button" onClick={() => { setShowDownloadPinModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="flex-1 py-2.5 rounded-xl border border-slate-800 text-slate-300 hover:bg-white/5 text-xs font-semibold">Cancelar</button>
                                         <button type="submit" className="flex-1 py-2.5 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 text-white font-bold hover:brightness-110 text-xs shadow-[0_0_15px_rgba(6,182,212,0.5)]">Descargar</button>
