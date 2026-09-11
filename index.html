@@ -263,6 +263,22 @@
             return url;
         };
 
+        const getDriveDownloadUrl = (url) => {
+            if (!url) return '';
+            if (url.includes('drive.google.com')) {
+                let fileId = '';
+                if (url.includes('/file/d/')) {
+                    const parts = url.split('/file/d/');
+                    if (parts[1]) fileId = parts[1].split('/')[0];
+                } else if (url.includes('id=')) {
+                    const parts = url.split('id=');
+                    if (parts[1]) fileId = parts[1].split('&')[0];
+                }
+                if (fileId) return `https://drive.google.com/uc?export=download&id=${fileId}`;
+            }
+            return url;
+        };
+
         const fetchSmart = async (localUrl, rawUrl, isJson = true) => {
             const cacheBust = `?t=${Date.now()}`;
             try {
@@ -310,6 +326,10 @@
             const [showQrModal, setShowQrModal] = useState(false);
             const [showSmartViewModal, setShowSmartViewModal] = useState(false);
             const [showMobileMoreMenu, setShowMobileMoreMenu] = useState(false);
+            const [showDownloadPinModal, setShowDownloadPinModal] = useState(false);
+            const [downloadPinInput, setDownloadPinInput] = useState('');
+            const [downloadPinError, setDownloadPinError] = useState(false);
+            const [pendingDownloadUrl, setPendingDownloadUrl] = useState('');
 
             const [tvRefreshTrigger, setTvRefreshTrigger] = useState(0);
             const [tvGroupFilter, setTvGroupFilter] = useState('ALL');
@@ -415,6 +435,11 @@
                         window.history.pushState({ appState: 'main', activeTab }, '');
                         return;
                     }
+                    if (showDownloadPinModal) {
+                        setShowDownloadPinModal(false);
+                        window.history.pushState({ appState: 'main', activeTab }, '');
+                        return;
+                    }
 
                     if (selectedItem) {
                         setSelectedItem(null);
@@ -433,7 +458,7 @@
 
                 window.addEventListener('popstate', handlePopState);
                 return () => window.removeEventListener('popstate', handlePopState);
-            }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showIntro]);
+            }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showDownloadPinModal, showIntro]);
 
             useEffect(() => {
                 const init = async () => {
@@ -475,8 +500,8 @@
                         }
                         if (moviesList.length === 0) {
                             moviesList = [
-                                { id: 'm-1', type: 'movies', title: 'STARSKY & HUTCH', description: 'Acción policial clásica.', image: 'https://placehold.co/300x450/0f172a/ffffff?text=Starsky+Hutch', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-                                { id: 'm-2', type: 'movies', title: 'La Novicia Rebelde (1965)', description: 'Clásico musical galardonado.', image: 'https://placehold.co/300x450/14b8a6/ffffff?text=La+Novicia', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+                                { id: 'm-1', type: 'movies', title: 'STARSKY & HUTCH', description: 'Acción policial clásica.', image: 'https://placehold.co/300x450/0f172a/ffffff?text=Starsky+Hutch', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                                { id: 'm-2', type: 'movies', title: 'La Novicia Rebelde (1965)', description: 'Clásico musical galardonado.', image: 'https://placehold.co/300x450/14b8a6/ffffff?text=La+Novicia', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
                             ];
                         }
 
@@ -510,7 +535,8 @@
                                     episodes: (t.episodios || []).map((ep, eIdx) => ({
                                         id: `ep-${idx}-${tIdx}-${eIdx}`,
                                         title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`,
-                                        url: convertUrl(ep.urlDrive || ep.url)
+                                        url: convertUrl(ep.urlDrive || ep.url),
+                                        rawUrl: ep.urlDrive || ep.url
                                     }))
                                 }))
                             }));
@@ -519,7 +545,7 @@
                             seriesList = [
                                 {
                                     id: 's-1', type: 'series', title: 'La Isla de Gilligan', description: 'Comedia de situación clásica.', image: 'https://placehold.co/300x450/06b6d4/ffffff?text=Gilligans+Island',
-                                    seasons: [{ seasonNumber: 1, episodes: [{ id: 'ep-1', title: 'Episodio 1: Naufragio', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }] }]
+                                    seasons: [{ seasonNumber: 1, episodes: [{ id: 'ep-1', title: 'Episodio 1: Naufragio', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }] }]
                                 }
                             ];
                         }
@@ -535,12 +561,14 @@
                                 description: a.descripcion || a.sinopsis,
                                 image: a.imagen || a.poster || a.image,
                                 url: convertUrl(a.urlDrive || a.url),
+                                rawUrl: a.urlDrive || a.url,
                                 seasons: (a.temporadas || []).map((t, tIdx) => ({
                                     seasonNumber: t.numeroTemporada || (tIdx + 1),
                                     episodes: (t.episodios || []).map((ep, eIdx) => ({
                                         id: `ep-anim-${idx}-${tIdx}-${eIdx}`,
                                         title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`,
-                                        url: convertUrl(ep.urlDrive || ep.url)
+                                        url: convertUrl(ep.urlDrive || ep.url),
+                                        rawUrl: ep.urlDrive || ep.url
                                     }))
                                 }))
                             }));
@@ -950,7 +978,7 @@
 
             const displayedItems = getDisplayContent();
             
-            // Random Hero item chosen fresh on every app load / refresh spanning movies, series, animados
+            // Random Hero item chosen fresh ONCE on app load spanning movies, series, animados
             const randomHeroItem = useMemo(() => {
                 const pool = [...content.movies, ...content.series, ...content.animados, ...content.movies2];
                 if (pool.length === 0) return null;
@@ -1327,7 +1355,7 @@
                                 </div>
                                 {!isLocked && (
                                     <div className="p-4 sm:p-12 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10 pb-32">
-                                        <div className="lg:col-span-2 space-y-4">
+                                        <div className="lg:col-span-2 space-y-6">
                                             <div className="flex items-start gap-4 sm:gap-6">
                                                 <div className="w-28 sm:w-36 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black">
                                                     <img src={selectedItem.imagen || selectedItem.image || selectedItem.poster} alt={selectedItem.titulo || selectedItem.title} className="w-full h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/300x450/0f172a/ffffff?text=Poster'; }} />
@@ -1340,18 +1368,38 @@
                                                                 <span className="bg-cyan-950/80 border border-cyan-500/40 px-3 py-1 rounded-lg text-cyan-300 font-bold uppercase tracking-wider">{selectedItem.type}</span>
                                                             </div>
                                                         </div>
-                                                        <button onClick={() => toggleFavorite(selectedItem)} className="p-3 glass-panel rounded-2xl hover:bg-slate-800 transition-colors shadow-2xl flex-shrink-0">
-                                                            <Icon name="heart" size={20} fill={isItemFavorite(selectedItem) ? "#06b6d4" : "none"} className={isItemFavorite(selectedItem) ? "text-cyan-500" : "text-slate-300"} />
-                                                        </button>
+                                                        <div className="flex items-center gap-2">
+                                                            {((selectedItem.type === 'movies' || selectedItem.type === 'movies2') && (selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url || '').includes('drive.google.com')) && (
+                                                                <button 
+                                                                    onClick={() => {
+                                                                        const targetUrl = selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url;
+                                                                        const downloadLink = getDriveDownloadUrl(targetUrl);
+                                                                        setPendingDownloadUrl(downloadLink);
+                                                                        setDownloadPinInput('');
+                                                                        setDownloadPinError(false);
+                                                                        setShowDownloadPinModal(true);
+                                                                        window.history.pushState({ appState: 'download-modal' }, '');
+                                                                    }}
+                                                                    className="p-3 glass-panel rounded-2xl hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 transition-colors shadow-2xl flex items-center gap-2 text-xs font-bold"
+                                                                    title="Descargar Película"
+                                                                >
+                                                                    <Icon name="download" size={18}/>
+                                                                    <span className="hidden sm:inline">Descargar</span>
+                                                                </button>
+                                                            )}
+                                                            <button onClick={() => toggleFavorite(selectedItem)} className="p-3 glass-panel rounded-2xl hover:bg-slate-800 transition-colors shadow-2xl flex-shrink-0">
+                                                                <Icon name="heart" size={20} fill={isItemFavorite(selectedItem) ? "#06b6d4" : "none"} className={isItemFavorite(selectedItem) ? "text-cyan-500" : "text-slate-300"} />
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div className="pt-2">
                                                 <h3 className="text-xs font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
-                                                    <span className="w-2 h-2 rounded-full bg-cyan-400"></span> Sinopsis
+                                                    <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
                                                 </h3>
-                                                <p className="text-slate-200 text-sm sm:text-base leading-relaxed bg-black/40 p-5 rounded-2xl border border-slate-800/80 shadow-inner">
+                                                <p className="text-slate-100 text-sm sm:text-lg leading-relaxed bg-black/50 p-6 rounded-2xl border border-slate-800 shadow-inner font-medium">
                                                     {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
                                                 </p>
                                             </div>
@@ -1600,6 +1648,46 @@
                             <div className="flex items-center justify-end gap-3 w-1/4">
                                 <Icon className="text-slate-400 hidden lg:block" name="volume" size={18}/>
                                 <input type="range" min="0" max="1" step="0.01" value={radioVolume} onChange={(e) => setRadioVolume(parseFloat(e.target.value))} className="w-20 sm:w-24 accent-cyan-500 hidden lg:block"/>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Download PIN Modal */}
+                    {showDownloadPinModal && (
+                        <div className="fixed inset-0 z-[110] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
+                            <div className="glass-panel p-6 rounded-3xl max-w-xs w-full text-center shadow-2xl border border-cyan-500/30 animate-scale-in space-y-4">
+                                <div className="flex justify-center">
+                                    <div className="p-3.5 bg-cyan-500/15 rounded-2xl text-cyan-400 border border-cyan-500/30">
+                                        <Icon name="download" size={24}/>
+                                    </div>
+                                </div>
+                                <h2 className="text-sm font-extrabold text-white mb-1">Descarga Segura</h2>
+                                <p className="text-[11px] text-slate-400 mb-2">Introduce la clave de descarga (8384)</p>
+                                <form onSubmit={(e) => {
+                                    e.preventDefault();
+                                    if (downloadPinInput === '8384') {
+                                        setShowDownloadPinModal(false);
+                                        window.open(pendingDownloadUrl, '_blank');
+                                    } else {
+                                        setDownloadPinError(true);
+                                        setDownloadPinInput('');
+                                    }
+                                }}>
+                                    <input 
+                                        type="password" 
+                                        maxLength="4" 
+                                        className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-3 text-center text-xl tracking-[0.4em] text-white focus:border-cyan-500 outline-none mb-3 shadow-inner" 
+                                        value={downloadPinInput} 
+                                        onChange={(e) => { setDownloadPinInput(e.target.value); setDownloadPinError(false); }} 
+                                        placeholder="••••" 
+                                        autoFocus 
+                                    />
+                                    {downloadPinError && <p className="text-rose-400 text-xs mb-3 font-bold">Clave incorrecta (8384)</p>}
+                                    <div className="flex gap-2.5">
+                                        <button type="button" onClick={() => { setShowDownloadPinModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="flex-1 py-2.5 rounded-xl border border-slate-800 text-slate-300 hover:bg-white/5 text-xs font-semibold">Cancelar</button>
+                                        <button type="submit" className="flex-1 py-2.5 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 text-white font-bold hover:brightness-110 text-xs shadow-[0_0_15px_rgba(6,182,212,0.5)]">Descargar</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     )}
