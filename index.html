@@ -118,72 +118,72 @@
             left: 0 !important;
         }
 
-        /* Hub Card Interactive Thematic Animations */
-        .hub-card-tv:hover .hub-scanner {
-            transform: translateY(100%);
-            opacity: 1;
-        }
+        .hub-card-tv:hover .hub-scanner { transform: translateY(100%); opacity: 1; }
         .hub-scanner {
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
             background: linear-gradient(90deg, transparent, #06b6d4, transparent);
-            box-shadow: 0 0 15px #06b6d4;
-            opacity: 0;
+            box-shadow: 0 0 15px #06b6d4; opacity: 0;
             transition: transform 1.2s ease-in-out, opacity 0.3s ease;
         }
 
-        .hub-card-cine:hover .hub-projector-beam {
-            opacity: 1;
-            transform: scale(1.05);
-        }
+        .hub-card-cine:hover .hub-projector-beam { opacity: 1; transform: scale(1.05); }
         .hub-projector-beam {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.25) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            pointer-events: none;
+            opacity: 0; transition: opacity 0.4s ease, transform 0.4s ease; pointer-events: none;
         }
 
-        .hub-card-radio:hover .eq-bar-card {
-            animation-play-state: running !important;
-        }
-        .eq-bar-card {
-            animation: cardEqBounce 0.8s infinite ease-in-out alternate;
-            transform-origin: bottom;
-        }
-        .eq-bar-card:nth-child(1) { animation-delay: 0.1s; }
-        .eq-bar-card:nth-child(2) { animation-delay: 0.3s; }
-        .eq-bar-card:nth-child(3) { animation-delay: 0.2s; }
-        .eq-bar-card:nth-child(4) { animation-delay: 0.5s; }
-        .eq-bar-card:nth-child(5) { animation-delay: 0.25s; }
-
-        @keyframes cardEqBounce {
-            0% { transform: scaleY(0.2); }
-            100% { transform: scaleY(1.2); }
-        }
-
-        /* Radio Spectrum Visualizer Container */
         .radio-spectrum-container {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            height: 48px;
-            padding: 4px 10px;
+            display: flex; align-items: flex-end; justify-content: space-between;
+            height: 48px; padding: 4px 10px;
             background: linear-gradient(135deg, rgba(2, 6, 23, 0.98), rgba(9, 13, 31, 0.99));
-            border-radius: 14px;
-            border: 1px solid rgba(6, 182, 212, 0.4);
+            border-radius: 14px; border: 1px solid rgba(6, 182, 212, 0.4);
             box-shadow: 0 0 25px rgba(6, 182, 212, 0.25), inset 0 0 10px rgba(20, 184, 166, 0.15);
-            overflow: hidden;
-            width: 100%;
-            max-width: 380px;
-            position: relative;
+            overflow: hidden; width: 100%; max-width: 380px; position: relative;
         }
+        .spectrum-canvas { width: 100%; height: 100%; }
 
-        .spectrum-canvas {
-            width: 100%;
-            height: 100%;
+        /* Winamp Skin Retro Styles */
+        .winamp-container {
+            background: linear-gradient(135deg, #1e2538 0%, #0d111a 100%);
+            border: 2px solid #3b4d6c;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.2);
+            font-family: monospace;
+            border-radius: 8px;
+        }
+        .winamp-titlebar {
+            background: linear-gradient(90deg, #102a45 0%, #1e3a8a 100%);
+            color: #67e8f9;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-bottom: 1px solid #2563eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+            user-select: none;
+        }
+        .winamp-screen {
+            background: #020617;
+            border: 1px inset #1e293b;
+            color: #22c55e;
+            padding: 6px;
+            font-family: monospace;
+        }
+        .winamp-btn {
+            background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+            border: 1px solid #475569;
+            color: #f8fafc;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+        .winamp-btn:active {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
         }
 
         button:focus, div[tabindex="0"]:focus, input:focus, select:focus { outline: none; }
@@ -330,6 +330,13 @@
             const [downloadPinInput, setDownloadPinInput] = useState('');
             const [downloadPinError, setDownloadPinError] = useState(false);
             const [pendingDownloadUrl, setPendingDownloadUrl] = useState('');
+            const [showWinampModal, setShowWinampModal] = useState(false);
+            const [isMiniMode, setIsMiniMode] = useState(false);
+
+            // Winamp draggable state
+            const [winampPos, setWinampPos] = useState({ x: 50, y: 50 });
+            const isDraggingRef = useRef(false);
+            const dragOffsetRef = useRef({ x: 0, y: 0 });
 
             const [tvRefreshTrigger, setTvRefreshTrigger] = useState(0);
             const [tvGroupFilter, setTvGroupFilter] = useState('ALL');
@@ -350,6 +357,7 @@
             const analyserRef = useRef(null);
             const sourceNodeRef = useRef(null);
             const canvasRef = useRef(null);
+            const winampCanvasRef = useRef(null);
 
             const tvContainerRef = useRef(null);
             const movieContainerRef = useRef(null);
@@ -440,6 +448,11 @@
                         window.history.pushState({ appState: 'main', activeTab }, '');
                         return;
                     }
+                    if (showWinampModal) {
+                        setShowWinampModal(false);
+                        window.history.pushState({ appState: 'main', activeTab }, '');
+                        return;
+                    }
 
                     if (selectedItem) {
                         setSelectedItem(null);
@@ -458,7 +471,7 @@
 
                 window.addEventListener('popstate', handlePopState);
                 return () => window.removeEventListener('popstate', handlePopState);
-            }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showDownloadPinModal, showIntro]);
+            }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showDownloadPinModal, showWinampModal, showIntro]);
 
             useEffect(() => {
                 const init = async () => {
@@ -741,24 +754,21 @@
                                 sourceNodeRef.current.connect(analyserRef.current);
                                 analyserRef.current.connect(audioCtxRef.current.destination);
                             }
-                        } catch (err) {
-                            console.log("Web Audio API setup notice:", err);
-                        }
+                        } catch (err) {}
 
                     } else {
                         if (isRadioPlaying) playAudio();
                         else audio.pause();
                     }
-                } else if (audioRef.current && activeTab !== 'radio') {
+                } else if (audioRef.current && activeTab !== 'radio' && !isMiniMode) {
                     audioRef.current.pause();
                 }
-            }, [currentRadioStation, isRadioPlaying, activeTab]);
+            }, [currentRadioStation, isRadioPlaying, activeTab, isMiniMode]);
 
             useEffect(() => {
                 if (audioRef.current) audioRef.current.volume = radioVolume;
             }, [radioVolume]);
 
-            // Real-time colorful frequency color spectrum visualizer (Spotify reference style)
             useEffect(() => {
                 const canvas = canvasRef.current;
                 if (!canvas) return;
@@ -767,10 +777,8 @@
 
                 const renderSpectrum = () => {
                     animationId = requestAnimationFrame(renderSpectrum);
-
                     canvas.width = canvas.parentElement ? canvas.parentElement.clientWidth : 380;
                     canvas.height = 48;
-
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
                     let dataArray = new Uint8Array(24);
@@ -789,74 +797,78 @@
 
                     for (let i = 0; i < numBars; i++) {
                         let freqIdx = Math.floor((i / numBars) * (dataArray.length / 2));
-                        let magnitude = hasAudio ? (dataArray[freqIdx] / 255) : (0.2 + Math.sin(Date.now() * 0.008 + i * 0.5) * 0.15);
-                        
+                        let magnitude = hasAudio ? (dataArray[freqIdx] / 255) : (0.35 + Math.sin(Date.now() * 0.025 + i * 0.8) * 0.55);
                         let barHeight = Math.max(6, magnitude * (height - 4));
                         let x = i * (barWidth + 4);
                         let y = height - barHeight;
 
                         let gradient = ctx.createLinearGradient(x, y + barHeight, x, y);
-                        if (i < 4) {
-                            gradient.addColorStop(0, '#10b981'); // Emerald Green
-                            gradient.addColorStop(1, '#34d399');
-                        } else if (i < 8) {
-                            gradient.addColorStop(0, '#06b6d4'); // Cyan
-                            gradient.addColorStop(1, '#22d3ee');
-                        } else if (i < 12) {
-                            gradient.addColorStop(0, '#3b82f6'); // Blue
-                            gradient.addColorStop(1, '#60a5fa');
-                        } else {
-                            gradient.addColorStop(0, '#a855f7'); // Purple
-                            gradient.addColorStop(1, '#c084fc');
-                        }
+                        if (i < 4) { gradient.addColorStop(0, '#10b981'); gradient.addColorStop(1, '#34d399'); }
+                        else if (i < 8) { gradient.addColorStop(0, '#06b6d4'); gradient.addColorStop(1, '#22d3ee'); }
+                        else if (i < 12) { gradient.addColorStop(0, '#3b82f6'); gradient.addColorStop(1, '#60a5fa'); }
+                        else { gradient.addColorStop(0, '#a855f7'); gradient.addColorStop(1, '#c084fc'); }
 
                         ctx.fillStyle = gradient;
-                        ctx.shadowBlur = 10;
+                        ctx.shadowBlur = 14;
                         ctx.shadowColor = i < 4 ? '#10b981' : i < 8 ? '#06b6d4' : '#a855f7';
-                        
                         ctx.beginPath();
                         ctx.roundRect(x, y, barWidth, barHeight, [3, 3, 0, 0]);
                         ctx.fill();
                     }
                 };
-
                 renderSpectrum();
-
-                return () => {
-                    cancelAnimationFrame(animationId);
-                };
+                return () => cancelAnimationFrame(animationId);
             }, [isRadioPlaying, streamError]);
+
+            // Winamp Canvas Visualizer (High Speed & Bouncing)
+            useEffect(() => {
+                const canvas = winampCanvasRef.current;
+                if (!canvas || !showWinampModal) return;
+                const ctx = canvas.getContext('2d');
+                let animationId;
+
+                const renderWinamp = () => {
+                    animationId = requestAnimationFrame(renderWinamp);
+                    canvas.width = 150;
+                    canvas.height = 40;
+                    ctx.fillStyle = '#020617';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    let dataArray = new Uint8Array(16);
+                    let hasAudio = false;
+                    if (analyserRef.current && isRadioPlaying) {
+                        analyserRef.current.getByteFrequencyData(dataArray);
+                        hasAudio = dataArray.some(val => val > 0);
+                    }
+
+                    for (let i = 0; i < 12; i++) {
+                        let val = hasAudio ? (dataArray[i] / 255) : (0.4 + Math.sin(Date.now() * 0.035 + i * 0.9) * 0.55);
+                        let h = val * 38;
+                        ctx.fillStyle = i > 9 ? '#ef4444' : i > 6 ? '#eab308' : '#22c55e';
+                        ctx.fillRect(i * 12 + 4, 40 - h, 8, h);
+                    }
+                };
+                renderWinamp();
+                return () => cancelAnimationFrame(animationId);
+            }, [isRadioPlaying, showWinampModal]);
 
             const recordContinueWatching = (item, episode = null) => {
                 if (item.type === 'tv' || item.type === 'radio') return;
-
-                const record = {
-                    ...item,
-                    lastEpisode: episode ? episode.title : null,
-                    lastEpisodeUrl: episode ? episode.url : null,
-                    timestamp: Date.now()
-                };
+                const record = { ...item, lastEpisode: episode ? episode.title : null, lastEpisodeUrl: episode ? episode.url : null, timestamp: Date.now() };
                 const itemId = item.id || item.title;
                 const updated = [record, ...continueWatching.filter(c => (c.id || c.title) !== itemId)].slice(0, 10);
                 setContinueWatching(updated);
                 safeStorage.setItem('boxplay_continue_watching', JSON.stringify(updated));
-
-                if (episode) {
-                    markEpisodeAsWatched(item, episode, true);
-                }
+                if (episode) markEpisodeAsWatched(item, episode, true);
             };
 
             const markEpisodeAsWatched = (item, episode, isWatched) => {
                 const itemId = item.id || item.title;
                 const epId = episode.id || episode.url;
                 const currentWatched = { ...watchedEpisodes };
-                if (!currentWatched[itemId]) {
-                    currentWatched[itemId] = [];
-                }
+                if (!currentWatched[itemId]) currentWatched[itemId] = [];
                 if (isWatched) {
-                    if (!currentWatched[itemId].includes(epId)) {
-                        currentWatched[itemId].push(epId);
-                    }
+                    if (!currentWatched[itemId].includes(epId)) currentWatched[itemId].push(epId);
                 } else {
                     currentWatched[itemId] = currentWatched[itemId].filter(id => id !== epId);
                 }
@@ -913,9 +925,7 @@
             const isItemFavorite = (item) => {
                 if (!item) return false;
                 const itemId = item.id || item.title;
-                if (item.type === 'tv') {
-                    return tvFavorites.some(f => (f.id || f.title) === itemId);
-                }
+                if (item.type === 'tv') return tvFavorites.some(f => (f.id || f.title) === itemId);
                 return favorites.some(f => (f.id || f.title) === itemId);
             };
 
@@ -931,17 +941,11 @@
             const toggleTvFullscreen = () => {
                 if (tvContainerRef.current) {
                     if (!document.fullscreenElement) {
-                        if (tvContainerRef.current.requestFullscreen) {
-                            tvContainerRef.current.requestFullscreen().catch(() => {});
-                        } else if (tvContainerRef.current.webkitRequestFullscreen) {
-                            tvContainerRef.current.webkitRequestFullscreen();
-                        }
+                        if (tvContainerRef.current.requestFullscreen) tvContainerRef.current.requestFullscreen().catch(() => {});
+                        else if (tvContainerRef.current.webkitRequestFullscreen) tvContainerRef.current.webkitRequestFullscreen();
                     } else {
-                        if (document.exitFullscreen) {
-                            document.exitFullscreen().catch(() => {});
-                        } else if (document.webkitExitFullscreen) {
-                            document.webkitExitFullscreen();
-                        }
+                        if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+                        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
                     }
                 }
             };
@@ -949,17 +953,11 @@
             const toggleMovieFullscreen = () => {
                 if (movieContainerRef.current) {
                     if (!document.fullscreenElement) {
-                        if (movieContainerRef.current.requestFullscreen) {
-                            movieContainerRef.current.requestFullscreen().catch(() => {});
-                        } else if (movieContainerRef.current.webkitRequestFullscreen) {
-                            movieContainerRef.current.webkitRequestFullscreen();
-                        }
+                        if (movieContainerRef.current.requestFullscreen) movieContainerRef.current.requestFullscreen().catch(() => {});
+                        else if (movieContainerRef.current.webkitRequestFullscreen) movieContainerRef.current.webkitRequestFullscreen();
                     } else {
-                        if (document.exitFullscreen) {
-                            document.exitFullscreen().catch(() => {});
-                        } else if (document.webkitExitFullscreen) {
-                            document.webkitExitFullscreen();
-                        }
+                        if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+                        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
                     }
                 }
             };
@@ -968,7 +966,7 @@
                 let list = activeTab === 'home' 
                     ? [...content.movies2, ...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] 
                     : activeTab === 'favorites' 
-                    ? [...favorites, ...tvFavorites] 
+                    ? favorites.filter(item => item.type !== 'tv' && item.type !== 'radio') 
                     : activeTab === 'topshows'
                     ? [...content.series, ...content.animados].slice(0, 15)
                     : content[activeTab] || []; 
@@ -1052,6 +1050,65 @@
 
             if (showIntro) return <IntroScreen onEnter={() => { setShowIntro(false); window.history.pushState({ appState: 'main', activeTab: 'home' }, ''); }}/>;
 
+            if (isMiniMode) {
+                return (
+                    <div 
+                        className="fixed z-[99999] winamp-container select-none shadow-2xl"
+                        style={{ left: `${winampPos.x}px`, top: `${winampPos.y}px`, width: '320px' }}
+                    >
+                        <div 
+                            className="winamp-titlebar"
+                            onMouseDown={(e) => {
+                                isDraggingRef.current = true;
+                                dragOffsetRef.current = { x: e.clientX - winampPos.x, y: e.clientY - winampPos.y };
+                                const onMouseMove = (moveEvent) => {
+                                    if (!isDraggingRef.current) return;
+                                    setWinampPos({ x: moveEvent.clientX - dragOffsetRef.current.x, y: moveEvent.clientY - dragOffsetRef.current.y });
+                                };
+                                const onMouseUp = () => {
+                                    isDraggingRef.current = false;
+                                    window.removeEventListener('mousemove', onMouseMove);
+                                    window.removeEventListener('mouseup', onMouseUp);
+                                };
+                                window.addEventListener('mousemove', onMouseMove);
+                                window.addEventListener('mouseup', onMouseUp);
+                            }}
+                        >
+                            <div className="flex items-center gap-2">
+                                <Icon name="music" size={12}/>
+                                <span>BOXAMP MINI (Radio HD)</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <button onClick={() => setIsMiniMode(false)} className="hover:text-cyan-300 font-bold px-1 text-xs" title="Restaurar App">🗖</button>
+                            </div>
+                        </div>
+                        <div className="p-3 space-y-3 bg-[#0d111a]">
+                            <div className="winamp-screen rounded flex items-center justify-between">
+                                <div className="truncate pr-2">
+                                    <div className="text-[10px] text-slate-400 uppercase">Estación:</div>
+                                    <div className="text-xs font-bold text-cyan-400 truncate">{currentRadioStation ? currentRadioStation.title : 'Selecciona una emisora'}</div>
+                                </div>
+                                <div className="flex-shrink-0 border border-slate-800 bg-black p-1 rounded">
+                                    <canvas ref={winampCanvasRef} className="w-[110px] h-[32px]"></canvas>
+                                </div>
+                            </div>
+                            <div className="flex items-center justify-between gap-2">
+                                <div className="flex items-center gap-1">
+                                    <button onClick={() => {
+                                        if (currentRadioStation) setIsRadioPlaying(!isRadioPlaying);
+                                        else if (radioStations.length > 0) handlePlayRadioStation(radioStations[0]);
+                                    }} className="winamp-btn px-3 py-1.5 text-xs">{isRadioPlaying ? '⏸ PAUSE' : '▶ PLAY'}</button>
+                                </div>
+                                <div className="flex items-center gap-1.5">
+                                    <span className="text-[9px] text-slate-400">Vol</span>
+                                    <input type="range" min="0" max="1" step="0.05" value={radioVolume} onChange={(e) => setRadioVolume(parseFloat(e.target.value))} className="w-20 accent-cyan-500"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+            }
+
             return (
                 <div className="min-h-screen bg-[#020617] text-[#f8fafc] font-sans flex flex-col relative selection:bg-cyan-500 selection:text-white w-full max-w-[100vw] overflow-x-hidden">
                     {/* Header */}
@@ -1081,6 +1138,12 @@
                         </div>
 
                         <div className="flex items-center gap-2 sm:gap-3">
+                            {/* Winamp Player Toggle Button */}
+                            <button onClick={() => { setShowWinampModal(true); window.history.pushState({ appState: 'winamp-modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-blue-500/15 hover:bg-blue-500/25 text-blue-300 border border-blue-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Reproductor Winamp">
+                                <Icon name="music" size={16} className="text-blue-400"/>
+                                <span className="hidden lg:inline">Winamp Radio</span>
+                            </button>
+
                             <button onClick={() => { setShowSmartViewModal(true); window.history.pushState({ appState: 'smartview-modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Ver en Smart TV">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
                                 <span className="hidden lg:inline">Smart TV</span>
@@ -1182,11 +1245,18 @@
                                         </button>
                                     ))}
                                     <button 
+                                        onClick={() => { setShowWinampModal(true); setShowMobileMoreMenu(false); window.history.pushState({ appState: 'winamp-modal' }, ''); }}
+                                        className="p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border bg-blue-500/20 text-blue-400 border-blue-500/40 col-span-1 justify-center"
+                                    >
+                                        <Icon name="music" size={16}/>
+                                        <span>Winamp Radio</span>
+                                    </button>
+                                    <button 
                                         onClick={() => { setShowSmartViewModal(true); setShowMobileMoreMenu(false); window.history.pushState({ appState: 'smartview-modal' }, ''); }}
-                                        className="p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border bg-cyan-500/20 text-cyan-400 border-cyan-500/40 col-span-2 justify-center"
+                                        className="p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border bg-cyan-500/20 text-cyan-400 border-cyan-500/40 col-span-1 justify-center"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-                                        <span>Transmitir a Smart TV / Smart View</span>
+                                        <span>Smart TV</span>
                                     </button>
                                 </div>
                             </div>
@@ -1208,6 +1278,7 @@
                                 stations={radioStations} 
                                 streamError={streamError} 
                                 volume={radioVolume}
+                                onOpenWinamp={() => { setShowWinampModal(true); window.history.pushState({ appState: 'winamp-modal' }, ''); }}
                             />
                         ) : activeTab === 'favorites' && !selectedItem ? (
                             <div className="p-3 sm:p-10 animate-fade-in max-w-7xl mx-auto w-full space-y-8">
@@ -1217,20 +1288,9 @@
                                         <h2 className="text-lg sm:text-2xl font-black text-white">Tus Películas y Series Favoritas</h2>
                                     </div>
                                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
-                                        {favorites.map((item, i) => (<Card isFavorite={isItemFavorite(item)} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
+                                        {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').map((item, i) => (<Card isFavorite={isItemFavorite(item)} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
                                     </div>
-                                    {favorites.length === 0 && <div className="text-center py-12 text-slate-500 text-sm"><p>No tienes películas o series guardadas en favoritos todavía.</p></div>}
-                                </div>
-
-                                <div>
-                                    <div className="mb-6 flex items-center gap-3 border-b border-slate-800 pb-4">
-                                        <div className="p-2.5 bg-cyan-500/15 rounded-xl text-cyan-400 border border-cyan-500/30"><Icon fill="currentColor" name="tv" size={22}/></div>
-                                        <h2 className="text-lg sm:text-2xl font-black text-white">Tus Canales de TV Favoritos</h2>
-                                    </div>
-                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
-                                        {tvFavorites.map((item, i) => (<Card isFavorite={isItemFavorite(item)} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
-                                    </div>
-                                    {tvFavorites.length === 0 && <div className="text-center py-12 text-slate-500 text-sm"><p>No tienes canales de televisión guardados en favoritos todavía.</p></div>}
+                                    {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length === 0 && <div className="text-center py-12 text-slate-500 text-sm"><p>No tienes películas o series guardadas en favoritos todavía.</p></div>}
                                 </div>
                             </div>
                         ) : activeTab === 'tv' || (selectedItem && selectedItem.type === 'tv') ? (
@@ -1396,7 +1456,7 @@
                                             </div>
 
                                             <div className="pt-2">
-                                                <h3 className="text-xs font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
+                                                <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
                                                     <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
                                                 </h3>
                                                 <p className="text-slate-100 text-sm sm:text-base md:text-lg leading-relaxed bg-black/50 p-6 rounded-2xl border border-slate-800 shadow-inner font-medium">
@@ -1491,7 +1551,7 @@
                                             />
                                         )}
                                         
-                                        {/* ACCESO RÁPIDO / HUB PRINCIPAL CARDS CON ANIMACIONES */}
+                                        {/* ACCESO RÁPIDO / HUB PRINCIPAL */}
                                         <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full">
                                             <div className="flex items-center gap-3 mb-4">
                                                 <div className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
@@ -1535,10 +1595,10 @@
                                                             <Icon name="radio" size={24}/>
                                                         </div>
                                                         <div className="flex items-end gap-[2px] h-5 px-2 py-1 bg-blue-950/80 rounded-full border border-blue-500/30">
-                                                            <div className="w-[3px] h-3 bg-blue-400 rounded-full eq-bar-card" style={{animationPlayState: 'paused'}}></div>
-                                                            <div className="w-[3px] h-5 bg-cyan-400 rounded-full eq-bar-card" style={{animationPlayState: 'paused'}}></div>
-                                                            <div className="w-[3px] h-4 bg-teal-400 rounded-full eq-bar-card" style={{animationPlayState: 'paused'}}></div>
-                                                            <div className="w-[3px] h-2 bg-pink-400 rounded-full eq-bar-card" style={{animationPlayState: 'paused'}}></div>
+                                                            <div className="w-[3px] h-3 bg-blue-400 rounded-full eq-bar-card"></div>
+                                                            <div className="w-[3px] h-5 bg-cyan-400 rounded-full eq-bar-card"></div>
+                                                            <div className="w-[3px] h-4 bg-teal-400 rounded-full eq-bar-card"></div>
+                                                            <div className="w-[3px] h-2 bg-pink-400 rounded-full eq-bar-card"></div>
                                                         </div>
                                                     </div>
                                                     <div className="relative z-10">
@@ -1606,7 +1666,7 @@
                         )}
                     </main>
 
-                    {/* Radio Player Dock with Color Spectrum Visualizer */}
+                    {/* Radio Player Dock */}
                     {currentRadioStation && activeTab === 'radio' && (
                         <div className="fixed bottom-[55px] md:bottom-0 left-0 right-0 w-full max-w-[100vw] glass-header p-3 sm:p-4 z-50 flex items-center justify-between shadow-[0_-20px_50px_rgba(0,0,0,0.9)] animate-slide-up">
                             <div className="flex items-center gap-3 w-1/4 min-w-[100px] sm:min-w-[140px]">
@@ -1648,6 +1708,77 @@
                             <div className="flex items-center justify-end gap-3 w-1/4">
                                 <Icon className="text-slate-400 hidden lg:block" name="volume" size={18}/>
                                 <input type="range" min="0" max="1" step="0.01" value={radioVolume} onChange={(e) => setRadioVolume(parseFloat(e.target.value))} className="w-20 sm:w-24 accent-cyan-500 hidden lg:block"/>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Winamp Floating Radio Player Modal */}
+                    {showWinampModal && (
+                        <div className="fixed inset-0 z-[120] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in">
+                            <div className="winamp-container w-full max-w-sm rounded-lg overflow-hidden shadow-2xl animate-scale-in">
+                                <div className="winamp-titlebar">
+                                    <div className="flex items-center gap-2">
+                                        <Icon name="music" size={12}/>
+                                        <span>BOXAMP v5.8 - Radio HD Player</span>
+                                    </div>
+                                    <div className="flex items-center gap-1">
+                                        <button onClick={() => { setShowWinampModal(false); setIsMiniMode(true); }} className="hover:text-cyan-300 font-bold px-1 text-xs" title="Modo Mini (Minimizar App)">🗕</button>
+                                        <button onClick={() => { setShowWinampModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="hover:text-red-400 font-bold px-1 text-xs">✕</button>
+                                    </div>
+                                </div>
+                                
+                                <div className="p-3 space-y-3">
+                                    <div className="winamp-screen rounded flex items-center justify-between">
+                                        <div className="truncate pr-2">
+                                            <div className="text-[10px] text-slate-400 uppercase">Estación Activa:</div>
+                                            <div className="text-xs font-bold text-cyan-400 truncate">{currentRadioStation ? currentRadioStation.title : 'Ninguna estación seleccionada'}</div>
+                                        </div>
+                                        <div className="flex-shrink-0 border border-slate-800 bg-black p-1 rounded">
+                                            <canvas ref={winampCanvasRef} className="w-[150px] h-[40px]"></canvas>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-[#090d1f] p-2.5 rounded border border-slate-800 space-y-2">
+                                        <div className="text-[10px] text-cyan-300 font-bold uppercase tracking-wider flex justify-between">
+                                            <span>Ecualizador Winamp</span>
+                                            <span className="text-emerald-400">{isRadioPlaying ? 'EN VIVO' : 'PAUSADO'}</span>
+                                        </div>
+                                        <div className="flex justify-between items-end h-16 px-1 bg-black/60 rounded border border-slate-900 py-1">
+                                            {['60', '170', '310', '600', '1K', '3K', '6K', '12K', '14K', '16K'].map((hz, idx) => (
+                                                <div key={idx} className="flex flex-col items-center gap-1">
+                                                    <input type="range" min="0" max="100" defaultValue={50} className="w-12 -rotate-90 accent-cyan-500 h-2 cursor-pointer my-3"/>
+                                                    <span className="text-[8px] text-slate-500">{hz}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center justify-between gap-2 pt-1">
+                                        <div className="flex items-center gap-1">
+                                            <button onClick={() => {
+                                                const idx = radioStations.findIndex(s => s.id === currentRadioStation?.id);
+                                                const prev = idx > 0 ? radioStations[idx - 1] : radioStations[radioStations.length - 1];
+                                                handlePlayRadioStation(prev);
+                                            }} className="winamp-btn">⏮</button>
+                                            <button onClick={() => {
+                                                if (currentRadioStation) {
+                                                    setIsRadioPlaying(!isRadioPlaying);
+                                                } else if (radioStations.length > 0) {
+                                                    handlePlayRadioStation(radioStations[0]);
+                                                }
+                                            }} className="winamp-btn px-3">{isRadioPlaying ? '⏸ PAUSE' : '▶ PLAY'}</button>
+                                            <button onClick={() => {
+                                                const idx = radioStations.findIndex(s => s.id === currentRadioStation?.id);
+                                                const next = idx < radioStations.length - 1 ? radioStations[idx + 1] : radioStations[0];
+                                                handlePlayRadioStation(next);
+                                            }} className="winamp-btn">⏭</button>
+                                        </div>
+                                        <div className="flex items-center gap-1.5">
+                                            <span className="text-[9px] text-slate-400">Vol</span>
+                                            <input type="range" min="0" max="1" step="0.05" value={radioVolume} onChange={(e) => setRadioVolume(parseFloat(e.target.value))} className="w-16 accent-cyan-500"/>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -1715,31 +1846,26 @@
                         </div>
                     )}
 
-                    {/* QR Modal with WhatsApp Link Fix */}
+                    {/* QR Modal */}
                     {showQrModal && (
                         <div className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
                             <div className="glass-panel rounded-3xl p-6 max-w-xs w-full text-center relative shadow-2xl space-y-4 animate-scale-in">
                                 <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-full bg-black/40">
                                     <Icon name="x" size={18}/>
                                 </button>
-                                
                                 <div className="p-3 bg-cyan-500/10 rounded-2xl border border-cyan-500/30 inline-block">
                                     <span className="text-xs font-black uppercase text-cyan-400 tracking-widest">Comunidad Boxplaytv</span>
                                 </div>
-
                                 <div className="bg-white p-3 rounded-2xl shadow-inner flex justify-center items-center">
                                     <img src={QR_IMAGE_URL} alt="Boxplaytv QR Code" className="w-40 h-40 object-contain" onError={handleQrError} />
                                 </div>
-
                                 <div>
                                     <h3 className="font-extrabold text-base text-white">BOXPLAY<span className="text-cyan-400">TV</span></h3>
                                     <p className="text-xs text-slate-400 mt-1 leading-relaxed">Únete a nuestro grupo oficial de WhatsApp para estar al día con los estrenos.</p>
                                 </div>
-
                                 <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer" className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl font-bold text-xs transition-colors shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center justify-center gap-2">
                                     <span>Unirse al Grupo de WhatsApp</span>
                                 </a>
-
                                 <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-2.5 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.4)]">
                                     Cerrar
                                 </button>
@@ -1770,7 +1896,6 @@
 
         const ContentRow = ({ title, items, onPlay, favorites, tvFavorites, onToggleFavorite }) => {
             const rowRef = useRef(null);
-
             const scroll = (direction) => {
                 if (rowRef.current) {
                     const { scrollLeft, clientWidth } = rowRef.current;
@@ -1778,9 +1903,7 @@
                     rowRef.current.scrollTo({ left: offset, behavior: 'smooth' });
                 }
             };
-
             if (!items || items.length === 0) return null;
-
             return (
                 <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-8 w-full group/row">
                     <div className="flex items-center justify-between mb-3">
@@ -1821,24 +1944,16 @@
                         </h1>
                         <p className="text-xs sm:text-sm text-slate-400 mt-1">Comparte tus opiniones, solicita películas o platica con otros cinéfilos en tiempo real.</p>
                     </div>
-
                     <div className="glass-panel rounded-3xl p-3 sm:p-5 shadow-2xl flex flex-col items-center">
                         <div className="w-full h-[500px] sm:h-[550px] rounded-2xl overflow-hidden bg-black/40 border border-slate-800">
-                            <iframe 
-                                src="https://sejoflix.chatango.com/" 
-                                width="100%" 
-                                height="100%" 
-                                frameBorder="0" 
-                                scrolling="auto"
-                                className="w-full h-full bg-transparent"
-                            ></iframe>
+                            <iframe src="https://sejoflix.chatango.com/" width="100%" height="100%" frameBorder="0" scrolling="auto" className="w-full h-full bg-transparent"></iframe>
                         </div>
                     </div>
                 </div>
             );
         };
 
-        const RadioSection = ({ stations, currentStation, isPlaying, onPlayStation, favorites, onToggleFavorite, volume, setVolume, streamError, isLoading, search, setSearch }) => {
+        const RadioSection = ({ stations, currentStation, isPlaying, onPlayStation, favorites, onToggleFavorite, volume, setVolume, streamError, isLoading, search, setSearch, onOpenWinamp }) => {
             const [radioTab, setRadioTab] = useState('all');
             let displayed = radioTab === 'favorites' ? favorites : stations;
             if (search.trim()) {
@@ -1862,9 +1977,15 @@
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-2 bg-black/60 p-1.5 rounded-2xl border border-slate-800">
-                            <button onClick={() => setRadioTab('all')} className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${radioTab === 'all' ? 'bg-gradient-to-tr from-cyan-600 to-teal-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'text-slate-400 hover:text-white'}`}>Todas ({stations.length})</button>
-                            <button onClick={() => setRadioTab('favorites')} className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${radioTab === 'favorites' ? 'bg-gradient-to-tr from-cyan-600 to-teal-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'text-slate-400 hover:text-white'}`}>Favoritas ({favorites.length})</button>
+                        <div className="flex items-center gap-3">
+                            <button onClick={onOpenWinamp} className="px-4 py-3 rounded-2xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-2 shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all">
+                                <Icon name="music" size={16}/>
+                                <span>Abrir Winamp Player</span>
+                            </button>
+                            <div className="flex items-center gap-2 bg-black/60 p-1.5 rounded-2xl border border-slate-800">
+                                <button onClick={() => setRadioTab('all')} className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${radioTab === 'all' ? 'bg-gradient-to-tr from-cyan-600 to-teal-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'text-slate-400 hover:text-white'}`}>Todas ({stations.length})</button>
+                                <button onClick={() => setRadioTab('favorites')} className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${radioTab === 'favorites' ? 'bg-gradient-to-tr from-cyan-600 to-teal-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'text-slate-400 hover:text-white'}`}>Favoritas ({favorites.length})</button>
+                            </div>
                         </div>
                     </div>
 
@@ -1896,36 +2017,18 @@
                                     >
                                         <div className="flex items-center gap-3.5 min-w-0 flex-1">
                                             <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-black/70 border border-slate-800 p-1 flex items-center justify-center shadow-inner">
-                                                <img 
-                                                    src={station.image} 
-                                                    alt={station.title} 
-                                                    className="w-full h-full object-cover rounded-full" 
-                                                    onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/300x300/0f172a/ffffff?text=Radio'; }}
-                                                />
+                                                <img src={station.image} alt={station.title} className="w-full h-full object-cover rounded-full" onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/300x300/0f172a/ffffff?text=Radio'; }}/>
                                             </div>
                                             <div className="truncate flex-1">
-                                                <h3 className={`font-extrabold text-xs sm:text-sm truncate transition-colors ${isCurrentPlaying ? 'text-cyan-400' : 'text-white group-hover:text-slate-100'}`}>
-                                                    {station.title}
-                                                </h3>
-                                                <p className="text-[10px] text-slate-400 truncate mt-0.5 font-medium">
-                                                    {station.group}
-                                                </p>
+                                                <h3 className={`font-extrabold text-xs sm:text-sm truncate transition-colors ${isCurrentPlaying ? 'text-cyan-400' : 'text-white group-hover:text-slate-100'}`}>{station.title}</h3>
+                                                <p className="text-[10px] text-slate-400 truncate mt-0.5 font-medium">{station.group}</p>
                                             </div>
                                         </div>
-                                        
                                         <div className="flex items-center gap-1.5 flex-shrink-0" onClick={(e) => e.stopPropagation()}>
-                                            <button 
-                                                onClick={(e) => onToggleFavorite(station, e)} 
-                                                className="p-2 rounded-xl text-slate-400 hover:text-white transition-colors"
-                                                title={isFav ? "Quitar de favoritos" : "Guardar en favoritos"}
-                                            >
+                                            <button onClick={(e) => onToggleFavorite(station, e)} className="p-2 rounded-xl text-slate-400 hover:text-white transition-colors" title={isFav ? "Quitar de favoritos" : "Guardar en favoritos"}>
                                                 <Icon name="heart" size={15} fill={isFav ? '#06b6d4' : 'none'} className={isFav ? 'text-cyan-500' : 'text-slate-400'}/>
                                             </button>
-                                            <button 
-                                                onClick={() => onPlayStation(station)}
-                                                className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${isCurrentPlaying ? 'bg-gradient-to-tr from-cyan-600 to-teal-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.7)] scale-105' : 'bg-slate-800 hover:bg-cyan-600 text-cyan-200 hover:text-white border border-cyan-500/30'}`}
-                                                title={isCurrentPlaying ? "Pausar" : "Reproducir"}
-                                            >
+                                            <button onClick={() => onPlayStation(station)} className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${isCurrentPlaying ? 'bg-gradient-to-tr from-cyan-600 to-teal-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.7)] scale-105' : 'bg-slate-800 hover:bg-cyan-600 text-cyan-200 hover:text-white border border-cyan-500/30'}`} title={isCurrentPlaying ? "Pausar" : "Reproducir"}>
                                                 <Icon name={isCurrentPlaying ? "pause" : "play"} size={15} fill="currentColor" className={!isCurrentPlaying ? "ml-0.5" : ""}/>
                                             </button>
                                         </div>
