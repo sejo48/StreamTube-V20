@@ -229,6 +229,7 @@
         const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
 
         const DEFAULT_RADIO_STATIONS = [
+            { id: 'cr-discofunk', title: 'B4B Disco Funk', group: 'Variedad', image: 'https://placehold.co/300x300/0f172a/ffffff?text=Disco+Funk', url: 'https://icecasthd.teletica.com/teleticaradio' },
             { id: 'cr-teletica', title: 'Teletica Radio: 91.5 FM', group: 'Variedad', image: 'https://placehold.co/300x300/0f172a/ffffff?text=Teletica+91.5', url: 'https://icecasthd.teletica.com/teleticaradio' },
             { id: 'cr-besame', title: 'Bésame Costa Rica', group: 'Variedad', image: 'https://placehold.co/300x300/06b6d4/ffffff?text=Besame', url: 'https://icecasthd.teletica.com/besame' },
             { id: 'cr-columbia', title: 'Columbia Estéreo', group: 'Variedad', image: 'https://static.mytuner.mobi/media/tvos_radios/415/radio-sinfonola.79d5c3e6.png', url: 'https://icecasthd.teletica.com/columbia' },
@@ -300,11 +301,6 @@
             } catch (e) {}
 
             return null;
-        };
-
-        const handleQrError = (e) => {
-            e.target.onerror = null;
-            e.target.src = 'https://placehold.co/300x300/0f172a/ffffff?text=QR+BoxPlayTV';
         };
 
         const App = () => {
@@ -538,10 +534,11 @@
                             }));
                         }
 
+                        let loadedStations = DEFAULT_RADIO_STATIONS;
                         if (dataRadios) {
                             const list = Array.isArray(dataRadios) ? dataRadios : (dataRadios.radios || dataRadios.emisoras || []);
                             if (list.length > 0) {
-                                const mappedStations = list.map((r, idx) => ({
+                                loadedStations = list.map((r, idx) => ({
                                     ...r,
                                     id: r.id || `radio-fetched-${idx}-${(r.titulo || r.title || '').toLowerCase().replace(/[^a-z0-9]/g, '')}`,
                                     title: r.titulo || r.title || r.name || `Emisora ${idx + 1}`,
@@ -549,8 +546,15 @@
                                     image: r.imagen || r.image || r.logo || 'https://placehold.co/300x300/0f172a/ffffff?text=Radio',
                                     url: r.urlDrive || r.url || r.stream || r.urlStream || ''
                                 }));
-                                setRadioStations(mappedStations);
                             }
+                        }
+                        setRadioStations(loadedStations);
+
+                        // Auto-select B4B Disco Funk as default station immediately
+                        const defaultStation = loadedStations.find(s => s.title.toLowerCase().includes('disco funk')) || loadedStations[0];
+                        if (defaultStation) {
+                            setCurrentRadioStation(defaultStation);
+                            setIsRadioPlaying(true);
                         }
 
                         setContent({ tv: tvChannels, movies: moviesList, movies2: movies2List, series: seriesList, animados: animadosList });
@@ -566,9 +570,6 @@
 
                 const storedTvFavs = safeStorage.getItem('boxplay_tv_favs');
                 if (storedTvFavs) { try { setTvFavorites(JSON.parse(storedTvFavs)); } catch(e) {} }
-
-                const storedRadioFavs = safeStorage.getItem('boxplay_radio_favs');
-                if (storedRadioFavs) { try { setRadioFavorites(JSON.parse(storedRadioFavs)); } catch(e) {} }
 
                 const storedCW = safeStorage.getItem('boxplay_continue_watching');
                 if (storedCW) { try { setContinueWatching(JSON.parse(storedCW)); } catch(e) {} }
@@ -1206,7 +1207,7 @@
                                                 <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
                                                     <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
                                                 </h3>
-                                                <p className="text-slate-100 text-sm sm:text-base md:text-lg leading-relaxed bg-black/50 p-6 rounded-2xl border border-slate-800 shadow-inner font-medium">
+                                                <p className="text-slate-100 text-sm sm:text-base md:text-lg leading-relaxed bg-black/50 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-inner font-medium">
                                                     {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
                                                 </p>
                                             </div>
@@ -1486,7 +1487,7 @@
                                     <span className="text-xs font-black uppercase text-cyan-400 tracking-widest">Comunidad Boxplaytv</span>
                                 </div>
                                 <div className="bg-white p-3 rounded-2xl shadow-inner flex justify-center items-center">
-                                    <img src={QR_IMAGE_URL} alt="Boxplaytv QR Code" className="w-40 h-40 object-contain" onError={handleQrError} />
+                                    <img src={QR_IMAGE_URL} alt="Boxplaytv QR Code" className="w-40 h-40 object-contain" onError={(e)=>{e.target.style.display='none';}} />
                                 </div>
                                 <div>
                                     <h3 className="font-extrabold text-base text-white">BOXPLAY<span className="text-cyan-400">TV</span></h3>
@@ -1527,7 +1528,7 @@
             const [clockTime, setClockTime] = useState('12:34');
             const [isPowerOn, setIsPowerOn] = useState(true);
             const [stationFilter, setStationFilter] = useState('');
-            const [spectrumHeights, setSpectrumHeights] = useState([60, 80, 40, 90]);
+            const [spectrumHeights, setSpectrumHeights] = useState([70, 85, 50, 90]);
 
             useEffect(() => {
                 const interval = setInterval(() => {
@@ -1544,14 +1545,14 @@
                 if (isPlaying && isPowerOn) {
                     specInterval = setInterval(() => {
                         setSpectrumHeights([
-                            Math.floor(Math.random() * 90) + 10,
-                            Math.floor(Math.random() * 95) + 5,
                             Math.floor(Math.random() * 85) + 15,
-                            Math.floor(Math.random() * 95) + 10
+                            Math.floor(Math.random() * 95) + 10,
+                            Math.floor(Math.random() * 80) + 20,
+                            Math.floor(Math.random() * 90) + 10
                         ]);
-                    }, 60);
+                    }, 80);
                 } else {
-                    setSpectrumHeights([20, 20, 20, 20]);
+                    setSpectrumHeights([25, 25, 25, 25]);
                 }
                 return () => clearInterval(specInterval);
             }, [isPlaying, isPowerOn]);
@@ -1595,7 +1596,7 @@
             }
 
             return (
-                <div className="min-h-screen flex flex-col justify-between p-2 sm:p-4 md:p-8 animate-fade-in w-full max-w-5xl mx-auto text-[#22c55e]">
+                <div className="min-h-screen flex flex-col justify-between p-3 sm:p-6 md:p-8 animate-fade-in w-full max-w-5xl mx-auto text-[#22c55e]">
                     <header className="w-full flex flex-col sm:flex-row justify-between items-center mb-4 sm:mb-6 gap-3">
                         <div className="flex items-center space-x-3 text-center sm:text-left">
                             <div className="w-3 h-3 bg-green-500 rounded-full animate-ping flex-shrink-0"></div>
@@ -1625,7 +1626,7 @@
                             </div>
 
                             {/* Central LCD Display with Station Logo Badge */}
-                            <div className="lcd-screen p-3 sm:p-4 rounded-lg flex flex-col sm:flex-row items-center justify-between relative overflow-hidden min-h-[130px] gap-3">
+                            <div className="lcd-screen p-4 sm:p-5 rounded-lg flex flex-col sm:flex-row items-center justify-between relative overflow-hidden min-h-[140px] gap-3">
                                 <div className="absolute top-1 left-3 text-[9px] sm:text-[10px] text-cyan-600 font-mono flex items-center space-x-2">
                                     <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                                     <span>HLS / MP3 STREAM DECODER</span>
@@ -1659,7 +1660,7 @@
 
                             {/* Controls Row with Play/Pause, Prev, Next */}
                             <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-center pt-1">
-                                <div className="md:col-span-4 flex items-center space-x-3 bg-black/60 p-3 rounded-lg border border-cyan-900/80 shadow-inner">
+                                <div className="md:col-span-5 flex items-center space-x-3 bg-black/60 p-3 rounded-lg border border-cyan-900/80 shadow-inner">
                                     <div className="flex items-center space-x-3 w-full">
                                         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-gray-950 to-amber-950 border-2 border-amber-500 flex items-center justify-center relative shadow-inner shrink-0">
                                             <div className="w-1.5 h-3.5 sm:h-4 bg-amber-400 absolute top-1 rounded-full origin-bottom transform transition-transform duration-75 shadow-[0_0_8px_rgba(251,191,36,0.9)]" style={{ transform: `rotate(${-45 + (volume * 315)}deg)` }}></div>
@@ -1680,24 +1681,12 @@
                                 </div>
 
                                 {/* Streamlined Play/Pause, Prev, Next Buttons */}
-                                <div className="md:col-span-5 grid grid-cols-3 gap-2">
-                                    <button onClick={handlePrev} title="Estación Anterior" className="cyber-btn py-2.5 sm:py-3 rounded flex items-center justify-center text-xs sm:text-sm text-cyan-300"><i className="fa-solid fa-backward-step mr-1"></i> Anterior</button>
-                                    <button onClick={handleTogglePlayPause} title="Reproducir / Pausa" className="cyber-btn py-2.5 sm:py-3 rounded flex items-center justify-center text-xs sm:text-sm text-green-400 font-bold tracking-wider">
+                                <div className="md:col-span-7 grid grid-cols-3 gap-2">
+                                    <button onClick={handlePrev} title="Estación Anterior" className="cyber-btn py-3 sm:py-3.5 rounded flex items-center justify-center text-xs sm:text-sm text-cyan-300 font-bold"><i className="fa-solid fa-backward-step mr-1.5"></i> Anterior</button>
+                                    <button onClick={handleTogglePlayPause} title="Reproducir / Pausa" className="cyber-btn py-3 sm:py-3.5 rounded flex items-center justify-center text-xs sm:text-sm text-green-400 font-bold tracking-wider">
                                         <i className={`fa-solid ${isPlaying && isPowerOn ? 'fa-pause' : 'fa-play'} mr-1.5`}></i> {isPlaying && isPowerOn ? 'PAUSA' : 'PLAY'}
                                     </button>
-                                    <button onClick={handleNext} title="Siguiente Estación" className="cyber-btn py-2.5 sm:py-3 rounded flex items-center justify-center text-xs sm:text-sm text-cyan-300">Siguiente <i className="fa-solid fa-forward-step ml-1"></i></button>
-                                </div>
-
-                                <div className="md:col-span-3 hidden md:flex items-center justify-end space-x-3 bg-black/60 p-3 rounded-lg border border-cyan-900/80">
-                                    <div className="flex flex-col text-right">
-                                        <span className="text-[11px] text-amber-400 font-bold uppercase tracking-wider">FRECUENCIA</span>
-                                        <span className="text-xs text-green-400 font-bold">107.5 FM</span>
-                                        <span className="text-[9px] text-cyan-600">TUNER SYNC</span>
-                                    </div>
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-gray-950 to-amber-950 border-2 border-amber-500 flex items-center justify-center relative shadow-inner">
-                                        <div className="w-1.5 h-3.5 bg-amber-400 absolute top-1 rounded-full origin-bottom transform rotate-12 shadow-[0_0_8px_rgba(251,191,36,0.9)]"></div>
-                                        <div className="w-5 h-5 rounded-full bg-black/90 border border-amber-800/80 flex items-center justify-center text-[7px] text-amber-400 font-mono font-bold">FM</div>
-                                    </div>
+                                    <button onClick={handleNext} title="Siguiente Estación" className="cyber-btn py-3 sm:py-3.5 rounded flex items-center justify-center text-xs sm:text-sm text-cyan-300 font-bold">Siguiente <i className="fa-solid fa-forward-step ml-1.5"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -1730,7 +1719,7 @@
                                     <input type="range" min="0" max="100" defaultValue="90" className="w-16 sm:w-20 -rotate-90 my-5 sm:my-6 accent-cyan-500"/>
                                     <span className="text-[9px] sm:text-[10px] text-cyan-300 font-mono font-bold">12kHz</span>
                                 </div>
-                                <div className="flex flex-col items-center justify-end h-28 space-y-1 w-full bg-black/70 p-1 rounded border border-cyan-950">
+                                <div className="flex flex-col items-center justify-end h-32 space-y-1 w-full bg-black/70 p-1.5 rounded border border-cyan-950">
                                     <div className="w-full flex justify-between items-end h-full px-1 space-x-1">
                                         <div className="w-1.5 bg-green-500 rounded-t transition-all duration-75 shadow-[0_0_6px_rgba(34,197,94,0.8)]" style={{ height: `${spectrumHeights[0]}%` }}></div>
                                         <div className="w-1.5 bg-green-400 rounded-t transition-all duration-75 shadow-[0_0_6px_rgba(34,197,94,0.8)]" style={{ height: `${spectrumHeights[1]}%` }}></div>
@@ -1743,10 +1732,10 @@
                         </div>
 
                         {/* Expanded Playlist Unit with Extended Height */}
-                        <div className="lg:col-span-6 cyber-deck p-4 sm:p-5 flex flex-col h-[520px] sm:h-[580px]">
+                        <div className="lg:col-span-6 cyber-deck p-4 sm:p-5 flex flex-col h-[520px] sm:h-[600px]">
                             <div className="flex justify-between items-center mb-3 pb-2 border-b border-cyan-900/40 gap-2">
                                 <span className="orbitron text-[10px] sm:text-xs font-bold text-cyan-400 whitespace-nowrap">BOX PLAY TV PLAYLIST ({stations.length})</span>
-                                <div className="relative w-36 sm:w-48">
+                                <div className="relative w-36 sm:w-52">
                                     <input 
                                         type="text" 
                                         placeholder="Buscar emisora..." 
@@ -1984,8 +1973,10 @@
             return (<div className="absolute inset-0 z-50 bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-4 animate-fade-in"><div className="glass-panel p-6 rounded-3xl max-w-xs w-full text-center shadow-2xl border border-cyan-500/30 animate-scale-in"><div className="mb-4 flex justify-center"><div className="p-3.5 bg-cyan-500/15 rounded-2xl text-cyan-400 border border-cyan-500/30"><Icon name="lock" size={24}/></div></div><h2 className="text-sm font-extrabold text-white mb-1">Contenido Protegido</h2><p className="text-[11px] text-slate-400 mb-4">Introduce el código PIN de acceso</p><form onSubmit={handleSubmit}><input type="password" maxLength="4" className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-3 text-center text-xl tracking-[0.4em] text-white focus:border-cyan-500 outline-none mb-3 shadow-inner" value={input} onChange={(e) => { setInput(e.target.value); setError(false); }} placeholder="••••" autoFocus />{error && <p className="text-rose-400 text-xs mb-3 font-bold">Código incorrecto</p>}<div className="flex gap-2.5"><button type="button" onClick={onCancel} className="flex-1 py-2.5 rounded-xl border border-slate-800 text-slate-300 hover:bg-white/5 text-xs font-semibold">Cancelar</button><button type="submit" className="flex-1 py-2.5 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 text-white font-bold hover:brightness-110 text-xs shadow-[0_0_15px_rgba(6,182,212,0.5)]">Acceder</button></div></form></div></div>);
         };
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App/>);
+        const rootNode = document.getElementById('root');
+        if (rootNode) {
+            ReactDOM.createRoot(rootNode).render(<App/>);
+        }
     </script>
 </body>
 </html>
