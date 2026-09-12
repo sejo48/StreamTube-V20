@@ -213,7 +213,8 @@
             MOVIES: './peliculas.json',
             MOVIES2: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/refs/heads/main/peliculas2.json',
             ANIMADOS: './animados.json',
-            RADIOS: './radios.json'
+            RADIOS: './radios.json',
+            TUDUM: './tudum.json'
         };
 
         const RAW_URLS = {
@@ -222,7 +223,8 @@
             MOVIES: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas.json',
             MOVIES2: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas2.json',
             ANIMADOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/animados.json',
-            RADIOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/radios.json'
+            RADIOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/radios.json',
+            TUDUM: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/tudum.json'
         };
 
         const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/ClI93uJrk1A4hA8MoS1J7Z';
@@ -245,6 +247,49 @@
             { id: 'cr-disney', title: 'Radio Disney 101.1 FM', group: 'Pop / Éxitos', image: 'https://static.mytuner.mobi/media/tvos_radios/652/radio-disney-costa-rica.d297c76c.jpg', url: 'https://26673.live.streamtheworld.com/DISNEY_CRI_SJ_ADP/HLS/031b1ae7-b742-4bf3-8001-31b8478440ef/0/playlist.m3u8' },
             { id: 'cr-wao', title: 'WAO 92.3 FM', group: 'Urbano / Reggaeton', image: 'https://placehold.co/300x300/06b6d4/ffffff?text=WAO', url: 'https://icecasthd.teletica.com/wao' },
             { id: 'cr-musical', title: 'Radio Musical 97.5 FM', group: 'Romántica / Latina', image: 'https://static.mytuner.mobi/media/tvos_radios/085/radio-musical.fea3e089.jpg', url: 'https://live.turadio.stream:7005/stream/1/' }
+        ];
+
+        const FALLBACK_NETFLIX_TUDUM = [
+            {
+                title: "Stranger Things 5: El Desenlace",
+                releaseDate: "Verano 2026",
+                genre: "Ciencia Ficción / Terror",
+                synopsis: "La batalla final por Hawkins ha comenzado. El grupo se une para enfrentar la amenaza definitiva del Upside Down.",
+                image: "https://placehold.co/300x450/e50914/ffffff?text=Stranger+Things+5",
+                trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                availability: "Costa Rica (Disponible globalmente)",
+                score: "9.8 / 10"
+            },
+            {
+                title: "The Electric State",
+                releaseDate: "Próximamente 2026",
+                genre: "Sci-Fi / Aventura",
+                synopsis: "En un futuro retrofuturista, una adolescente huérfana viaja por el oeste americano con un robot dulce pero misterioso.",
+                image: "https://placehold.co/300x450/111827/ffffff?text=The+Electric+State",
+                trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                availability: "Costa Rica (Estreno en Netflix)",
+                score: "9.2 / 10"
+            },
+            {
+                title: "El Agente Nocturno: Temporada 2",
+                releaseDate: "Otoño 2026",
+                genre: "Acción / Suspenso",
+                synopsis: "Peter Sutherland regresa con una nueva conspiración de alto nivel que pondrá en riesgo la seguridad nacional de EE.UU.",
+                image: "https://placehold.co/300x450/0f172a/ffffff?text=The+Night+Agent+S2",
+                trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                availability: "Costa Rica (Estreno simultáneo)",
+                score: "9.4 / 10"
+            },
+            {
+                title: "One Piece: Temporada 2",
+                releaseDate: "Invierno 2026",
+                genre: "Fantasía / Acción",
+                synopsis: "Monkey D. Luffy y su tripulación de los Sombrero de Paja se adentran en la Grand Line en busca del tesoro legendario.",
+                image: "https://placehold.co/300x450/b91c1c/ffffff?text=One+Piece+S2",
+                trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                availability: "Costa Rica (Estreno en alta definición)",
+                score: "9.6 / 10"
+            }
         ];
 
         const convertUrl = (url) => {
@@ -306,7 +351,7 @@
         const App = () => {
             const [showIntro, setShowIntro] = useState(true);
             const [activeTab, setActiveTab] = useState('home');
-            const [content, setContent] = useState({ tv: [], series: [], movies: [], movies2: [], animados: [] });
+            const [content, setContent] = useState({ tv: [], series: [], movies: [], movies2: [], animados: [], tudum: [] });
             const [radioStations, setRadioStations] = useState(DEFAULT_RADIO_STATIONS);
             const [search, setSearch] = useState('');
             const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -336,6 +381,11 @@
             const [radioVolume, setRadioVolume] = useState(0.8);
             const [streamError, setStreamError] = useState(false);
             const [isLoadingRadio, setIsLoadingRadio] = useState(false);
+            const [radioFilter, setRadioFilter] = useState('');
+            const [clockTime, setClockTime] = useState('12:34');
+            const [isMuted, setIsMuted] = useState(false);
+            const [isPowerOn, setIsPowerOn] = useState(true);
+            const [spectrumHeights, setSpectrumHeights] = useState([70, 85, 50, 90]);
 
             const [deferredPrompt, setDeferredPrompt] = useState(null);
 
@@ -358,6 +408,33 @@
                 { id: 'spotify', icon: 'music', label: 'Música', isExternal: true, url: './spotify.html' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
+
+            useEffect(() => {
+                const interval = setInterval(() => {
+                    const now = new Date();
+                    const hours = String(now.getHours()).padStart(2, '0');
+                    const minutes = String(now.getMinutes()).padStart(2, '0');
+                    setClockTime(`${hours}:${minutes}`);
+                }, 1000);
+                return () => clearInterval(interval);
+            }, []);
+
+            useEffect(() => {
+                let specInterval;
+                if (isRadioPlaying && isPowerOn) {
+                    specInterval = setInterval(() => {
+                        setSpectrumHeights([
+                            Math.floor(Math.random() * 85) + 15,
+                            Math.floor(Math.random() * 95) + 10,
+                            Math.floor(Math.random() * 80) + 20,
+                            Math.floor(Math.random() * 90) + 10
+                        ]);
+                    }, 80);
+                } else {
+                    setSpectrumHeights([25, 25, 25, 25]);
+                }
+                return () => clearInterval(specInterval);
+            }, [isRadioPlaying, isPowerOn]);
 
             useEffect(() => {
                 const handleBeforeInstallPrompt = (e) => {
@@ -425,13 +502,14 @@
                     try {
                         setLoading(true);
 
-                        const [dataTV, dataSeries, dataAnimados, dataRadios, dataMovies, dataMovies2] = await Promise.all([ 
+                        const [dataTV, dataSeries, dataAnimados, dataRadios, dataMovies, dataMovies2, dataTudum] = await Promise.all([ 
                             fetchSmart(URLS.TV, RAW_URLS.TV, false),
                             fetchSmart(URLS.SERIES, RAW_URLS.SERIES, true),
                             fetchSmart(URLS.ANIMADOS, RAW_URLS.ANIMADOS, true),
                             fetchSmart(URLS.RADIOS, RAW_URLS.RADIOS, true),
                             fetchSmart(URLS.MOVIES, RAW_URLS.MOVIES, true),
-                            fetchSmart(URLS.MOVIES2, RAW_URLS.MOVIES2, true)
+                            fetchSmart(URLS.MOVIES2, RAW_URLS.MOVIES2, true),
+                            fetchSmart(URLS.TUDUM, RAW_URLS.TUDUM, true)
                         ]);
 
                         let tvChannels = [];
@@ -550,14 +628,31 @@
                         }
                         setRadioStations(loadedStations);
 
-                        // Auto-select B4B Disco Funk as default station immediately
+                        let tudumList = FALLBACK_NETFLIX_TUDUM;
+                        if (dataTudum) {
+                            const tList = Array.isArray(dataTudum) ? dataTudum : (dataTudum.tudum || dataTudum.estrenos || []);
+                            if (tList.length > 0) {
+                                tudumList = tList.map(t => ({
+                                    title: t.titulo || t.title,
+                                    releaseDate: t.fechaEstreno || t.releaseDate || 'Próximamente',
+                                    genre: t.genero || t.genre || 'Estreno',
+                                    synopsis: t.sinopsis || t.descripcion || t.synopsis || '',
+                                    image: t.imagen || t.poster || t.image || 'https://placehold.co/300x450/0f172a/ffffff?text=Estreno',
+                                    trailerUrl: convertUrl(t.urlTrailer || t.trailerUrl || t.url) || 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                                    availability: t.disponibilidad || t.availability || 'Costa Rica',
+                                    score: t.puntuacion || t.score || '9.0 / 10'
+                                }));
+                            }
+                        }
+
+                        // Auto-select B4B Disco Funk as default station immediately and play
                         const defaultStation = loadedStations.find(s => s.title.toLowerCase().includes('disco funk')) || loadedStations[0];
                         if (defaultStation) {
                             setCurrentRadioStation(defaultStation);
                             setIsRadioPlaying(true);
                         }
 
-                        setContent({ tv: tvChannels, movies: moviesList, movies2: movies2List, series: seriesList, animados: animadosList });
+                        setContent({ tv: tvChannels, movies: moviesList, movies2: movies2List, series: seriesList, animados: animadosList, tudum: tudumList });
                     } catch (err) {
                         console.error("Error cargando contenido", err);
                     } finally {
@@ -866,13 +961,27 @@
                             ) || content.tv[0];
                             if (telerredChannel) setSelectedItem(telerredChannel);
                         }
+                    } else if (tab.id === 'radio') {
+                        if (!currentRadioStation && radioStations.length > 0) {
+                            const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
+                            setCurrentRadioStation(def);
+                            setIsRadioPlaying(true);
+                        }
                     } else {
                         setSelectedItem(null); 
                     }
                 }
             };
 
-            if (showIntro) return <IntroScreen onEnter={() => { setShowIntro(false); window.history.pushState({ appState: 'main', activeTab: 'home' }, ''); }}/>;
+            if (showIntro) return <IntroScreen onEnter={() => { 
+                setShowIntro(false); 
+                window.history.pushState({ appState: 'main', activeTab: 'home' }, ''); 
+                const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
+                if (def && !currentRadioStation) {
+                    setCurrentRadioStation(def);
+                    setIsRadioPlaying(true);
+                }
+            }}/>;
 
             return (
                 <div className="min-h-screen bg-[#020617] text-[#f8fafc] font-sans flex flex-col relative selection:bg-cyan-500 selection:text-white w-full max-w-[100vw] overflow-x-hidden">
@@ -1027,6 +1136,15 @@
                                 streamError={streamError}
                                 isLoading={isLoadingRadio}
                                 audioRef={audioRef}
+                                clockTime={clockTime}
+                                isMuted={isMuted}
+                                setIsMuted={setIsMuted}
+                                isPowerOn={isPowerOn}
+                                setIsPowerOn={setIsPowerOn}
+                                spectrumHeights={spectrumHeights}
+                                radioFilter={radioFilter}
+                                setRadioFilter={setRadioFilter}
+                                hlsRef={hlsRef}
                             />
                         ) : activeTab === 'favorites' && !selectedItem ? (
                             <div className="p-3 sm:p-10 animate-fade-in max-w-7xl mx-auto w-full space-y-8">
@@ -1355,6 +1473,59 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        {/* Netflix Tudum / Próximamente Section */}
+                                        <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full space-y-4">
+                                            <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-1.5 h-6 bg-[#e50914] rounded-full shadow-[0_0_15px_#e50914]"></div>
+                                                    <h2 className="text-base sm:text-lg font-black uppercase tracking-wider text-white flex items-center gap-2">
+                                                        <span>PRÓXIMAMENTE / NETFLIX TUDUM</span>
+                                                        <span className="text-[10px] bg-[#e50914]/20 text-[#e50914] border border-[#e50914]/40 px-2 py-0.5 rounded-full font-mono">Tudum</span>
+                                                    </h2>
+                                                </div>
+                                                <span className="text-xs text-slate-400 hidden sm:inline">Administrado vía tudum.json</span>
+                                            </div>
+
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                                                {(content.tudum.length > 0 ? content.tudum : FALLBACK_NETFLIX_TUDUM).map((item, nIdx) => (
+                                                    <div key={nIdx} className="glass-panel rounded-2xl p-4 border border-slate-800 flex flex-col justify-between group hover:border-[#e50914]/50 transition-all card-glow">
+                                                        <div>
+                                                            <div className="aspect-[2/3] rounded-xl overflow-hidden mb-3 relative bg-black">
+                                                                <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                                                <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 text-[10px] font-mono text-yellow-400 font-bold flex items-center gap-1">
+                                                                    <span>★</span> {item.score}
+                                                                </div>
+                                                                <div className="absolute bottom-2 left-2 bg-[#e50914] text-white text-[9px] font-black px-2 py-0.5 rounded uppercase tracking-wider">
+                                                                    {item.releaseDate}
+                                                                </div>
+                                                            </div>
+                                                            <h3 className="text-sm font-bold text-white mb-1 group-hover:text-[#e50914] transition-colors">{item.title}</h3>
+                                                            <p className="text-[11px] text-cyan-400 font-medium mb-2">{item.genre}</p>
+                                                            <p className="text-xs text-slate-300 line-clamp-3 mb-3">{item.synopsis}</p>
+                                                        </div>
+                                                        <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[10px]">
+                                                            <span className="text-slate-400 truncate pr-2">🇨🇷 {item.availability}</span>
+                                                            <button 
+                                                                onClick={() => {
+                                                                    setSelectedItem({
+                                                                        title: item.title,
+                                                                        description: `${item.synopsis} (Estreno en Netflix: ${item.releaseDate} - ${item.availability})`,
+                                                                        image: item.image,
+                                                                        url: item.trailerUrl,
+                                                                        type: 'movies'
+                                                                    });
+                                                                    window.history.pushState({ appState: 'player', item: item.title }, '');
+                                                                }} 
+                                                                className="px-3 py-1.5 rounded-lg bg-[#e50914] hover:bg-[#b91c1c] text-white font-bold transition-all shadow-[0_0_10px_rgba(229,9,20,0.4)] flex items-center gap-1.5 flex-shrink-0"
+                                                            >
+                                                                <Icon name="play" size={10} fill="white"/> Tráiler
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
                                     </>
                                 )}
                                 
@@ -1491,7 +1662,7 @@
                                 </div>
                                 <div>
                                     <h3 className="font-extrabold text-base text-white">BOXPLAY<span className="text-cyan-400">TV</span></h3>
-                                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">Únete a nuestro grupo oficial de WhatsApp para estar al día con los estrenos.</p>
+                                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">Únete al grupo oficial de WhatsApp para estar al día con los estrenos.</p>
                                 </div>
                                 <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer" className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl font-bold text-xs transition-colors shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center justify-center gap-2">
                                     <span>Unirse al Grupo de WhatsApp</span>
@@ -1524,39 +1695,7 @@
             );
         };
 
-        const CyberRadioSection = ({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef }) => {
-            const [clockTime, setClockTime] = useState('12:34');
-            const [isPowerOn, setIsPowerOn] = useState(true);
-            const [stationFilter, setStationFilter] = useState('');
-            const [spectrumHeights, setSpectrumHeights] = useState([70, 85, 50, 90]);
-
-            useEffect(() => {
-                const interval = setInterval(() => {
-                    const now = new Date();
-                    const hours = String(now.getHours()).padStart(2, '0');
-                    const minutes = String(now.getMinutes()).padStart(2, '0');
-                    setClockTime(`${hours}:${minutes}`);
-                }, 1000);
-                return () => clearInterval(interval);
-            }, []);
-
-            useEffect(() => {
-                let specInterval;
-                if (isPlaying && isPowerOn) {
-                    specInterval = setInterval(() => {
-                        setSpectrumHeights([
-                            Math.floor(Math.random() * 85) + 15,
-                            Math.floor(Math.random() * 95) + 10,
-                            Math.floor(Math.random() * 80) + 20,
-                            Math.floor(Math.random() * 90) + 10
-                        ]);
-                    }, 80);
-                } else {
-                    setSpectrumHeights([25, 25, 25, 25]);
-                }
-                return () => clearInterval(specInterval);
-            }, [isPlaying, isPowerOn]);
-
+        const CyberRadioSection = ({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef, clockTime, isMuted, setIsMuted, isPowerOn, setIsPowerOn, spectrumHeights, radioFilter, setRadioFilter, hlsRef }) => {
             const currentIndex = useMemo(() => {
                 if (!currentStation) return 0;
                 return stations.findIndex(s => s.id === currentStation.id || s.url === currentStation.url);
@@ -1590,8 +1729,8 @@
             };
 
             let displayed = stations;
-            if (stationFilter.trim()) {
-                const q = stationFilter.toLowerCase();
+            if (radioFilter.trim()) {
+                const q = radioFilter.toLowerCase();
                 displayed = displayed.filter(s => (s.title || '').toLowerCase().includes(q) || (s.group || '').toLowerCase().includes(q));
             }
 
@@ -1658,7 +1797,7 @@
                                 </div>
                             </div>
 
-                            {/* Controls Row with Play/Pause, Prev, Next */}
+                            {/* Controls Row with Streamlined Play/Pause, Prev, Next */}
                             <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4 items-center pt-1">
                                 <div className="md:col-span-5 flex items-center space-x-3 bg-black/60 p-3 rounded-lg border border-cyan-900/80 shadow-inner">
                                     <div className="flex items-center space-x-3 w-full">
@@ -1739,8 +1878,8 @@
                                     <input 
                                         type="text" 
                                         placeholder="Buscar emisora..." 
-                                        value={stationFilter}
-                                        onChange={(e) => setStationFilter(e.target.value)}
+                                        value={radioFilter}
+                                        onChange={(e) => setRadioFilter(e.target.value)}
                                         className="bg-black/70 border border-cyan-800 text-xs rounded px-3 py-1.5 text-cyan-100 focus:outline-none focus:border-green-400 w-full"
                                     />
                                 </div>
