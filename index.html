@@ -296,6 +296,19 @@
             if (!url) return '';
             if (url.includes('ok.ru/video/search') || url.includes('ok.ru/search')) return url;
             if (url.includes('ok.ru/video/')) return url.replace('ok.ru/video/', 'ok.ru/videoembed/');
+            if (url.includes('youtube.com') && !url.includes('/embed/')) {
+                let videoId = '';
+                if (url.includes('watch?v=')) {
+                    videoId = url.split('watch?v=')[1]?.split('&')[0];
+                } else if (url.includes('youtu.be/')) {
+                    videoId = url.split('youtu.be/')[1]?.split('?')[0];
+                }
+                if (videoId) return `https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`;
+            }
+            if (url.includes('/embed/') && !url.includes('enablejsapi=1')) {
+                const sep = url.includes('?') ? '&' : '?';
+                return `${url}${sep}enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`;
+            }
             if (url.includes('drive.google.com')) {
                 let fileId = '';
                 if (url.includes('/file/d/')) {
@@ -645,7 +658,6 @@
                             }
                         }
 
-                        // Auto-select B4B Disco Funk as default station immediately and play
                         const defaultStation = loadedStations.find(s => s.title.toLowerCase().includes('disco funk')) || loadedStations[0];
                         if (defaultStation) {
                             setCurrentRadioStation(defaultStation);
@@ -797,7 +809,7 @@
                 if (item.type === 'tv' || item.type === 'radio') return;
                 const record = { ...item, lastEpisode: episode ? episode.title : null, lastEpisodeUrl: episode ? episode.url : null, timestamp: Date.now() };
                 const itemId = item.id || item.title;
-                const updated = [record, ...continueWatching.filter(c => (c.id || c.title) !== itemId)].slice(0, 10);
+                const updated = [record, ...continueWatching.filter(c => (c.id || c.title) !== itemId)].slice(0, 6);
                 setContinueWatching(updated);
                 safeStorage.setItem('boxplay_continue_watching', JSON.stringify(updated));
                 if (episode) markEpisodeAsWatched(item, episode, true);
@@ -1326,7 +1338,7 @@
                                                     <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
                                                 </h3>
                                                 <p className="text-slate-100 text-sm sm:text-base md:text-lg leading-relaxed bg-black/50 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-inner font-medium">
-                                                    {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
+                                                    {selectedItem.descripcion || selectedItem.sinopsis || selectedItem.synopsis || "Sin descripción disponible para este contenido."}
                                                 </p>
                                             </div>
                                         </div>
@@ -1510,8 +1522,12 @@
                                                                 onClick={() => {
                                                                     setSelectedItem({
                                                                         title: item.title,
+                                                                        titulo: item.title,
                                                                         description: `${item.synopsis} (Estreno en Netflix: ${item.releaseDate} - ${item.availability})`,
+                                                                        sinopsis: `${item.synopsis} (Estreno en Netflix: ${item.releaseDate} - ${item.availability})`,
+                                                                        synopsis: `${item.synopsis} (Estreno en Netflix: ${item.releaseDate} - ${item.availability})`,
                                                                         image: item.image,
+                                                                        imagen: item.image,
                                                                         url: item.trailerUrl,
                                                                         type: 'movies'
                                                                     });
@@ -1532,7 +1548,7 @@
                                 {activeTab === 'home' && !search ? (
                                     <div className="space-y-8 sm:space-y-10 pb-16 w-full">
                                         {continueWatching.length > 0 && (
-                                            <ContentRow title="▶️ Continuar Viendo" items={continueWatching} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
+                                            <ContentRow title="▶️ Continuar Viendo" items={continueWatching.slice(0, 6)} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         )}
                                         {content.movies2.length > 0 && (
                                             <ContentRow title="✨ Estrenos 2026" items={content.movies2} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
@@ -2117,3 +2133,5 @@
             ReactDOM.createRoot(rootNode).render(<App/>);
         }
     </script>
+</body>
+</html>
