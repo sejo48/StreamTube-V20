@@ -437,7 +437,6 @@
                 { id: 'radio', icon: 'radio', label: 'Radio HD' }, 
                 { id: 'smartview', icon: 'tv', label: 'Smart TV' },
                 { id: 'aiassistant', icon: 'chat', label: 'Asistente IA' },
-                { id: 'community', icon: 'chat', label: 'Comunidad' },
                 { id: 'spotify', icon: 'music', label: 'Música', isExternal: true, url: './spotify.html' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
@@ -1002,7 +1001,7 @@
                             </div>
 
                             <nav className="hidden lg:flex items-center gap-1.5">
-                                {navTabs.slice(0, 9).map(tab => (
+                                {navTabs.map(tab => (
                                     <button 
                                         key={tab.id} 
                                         onClick={() => handleTabClick(tab)} 
@@ -1072,47 +1071,13 @@
                     </header>
 
                     <div className="lg:hidden fixed bottom-0 w-full max-w-[100vw] glass-panel border-t border-slate-800 z-50 flex py-2 pb-safe px-1 items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.9)]">
-                        {[
-                            { id: 'home', icon: 'search', label: 'Inicio' },
-                            { id: 'movies2', icon: 'star', label: 'Estrenos' },
-                            { id: 'aiassistant', icon: 'chat', label: 'IA Chat' },
-                            { id: 'tv', icon: 'tv', label: 'TV' },
-                            { id: 'radio', icon: 'radio', label: 'Radio' },
-                            { id: 'favorites', icon: 'heart', label: 'Favs' }
-                        ].map(tab => (
-                            <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-1 py-1 gap-1 transition-all active:scale-95 rounded-xl ${activeTab === tab.id ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-400 hover:text-white'}`}>
+                        {navTabs.map(tab => (
+                            <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-1 py-1 gap-1 transition-all active:scale-95 rounded-xl ${activeTab === tab.id && !tab.isExternal ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-400 hover:text-white'}`}>
                                 <Icon name={tab.icon} size={16}/>
-                                <span className="text-[9px] font-medium tracking-wide">{tab.label}</span>
+                                <span className="text-[8px] font-medium tracking-wide truncate max-w-[55px]">{tab.label}</span>
                             </button>
                         ))}
-                        <button onClick={() => setShowMobileMoreMenu(!showMobileMoreMenu)} className={`flex flex-col items-center justify-center flex-1 py-1 gap-1 transition-all active:scale-95 rounded-xl ${showMobileMoreMenu ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-400 hover:text-white'}`}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-                            <span className="text-[9px] font-medium tracking-wide">Más</span>
-                        </button>
                     </div>
-
-                    {showMobileMoreMenu && (
-                        <div className="lg:hidden fixed inset-0 z-[90] bg-black/80 backdrop-blur-md flex flex-col justify-end p-4 animate-fade-in pb-24" onClick={() => setShowMobileMoreMenu(false)}>
-                            <div className="glass-panel rounded-3xl p-4 shadow-2xl space-y-2 animate-scale-in" onClick={(e) => e.stopPropagation()}>
-                                <div className="flex items-center justify-between pb-3 border-b border-slate-800 px-2">
-                                    <span className="text-xs font-black uppercase text-cyan-400 tracking-wider">Más Secciones & Herramientas</span>
-                                    <button onClick={() => setShowMobileMoreMenu(false)} className="text-slate-400 hover:text-white"><Icon name="x" size={16}/></button>
-                                </div>
-                                <div className="grid grid-cols-2 gap-2">
-                                    {navTabs.slice(2, 12).map(tab => (
-                                        <button 
-                                            key={tab.id}
-                                            onClick={() => handleTabClick(tab)}
-                                            className={`p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id && !tab.isExternal ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}
-                                        >
-                                            <Icon name={tab.icon} size={16}/>
-                                            <span className="truncate">{tab.label}</span>
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    )}
 
                     <main className="flex-1 min-h-screen pb-32 md:pb-16 relative z-10 w-full max-w-[100vw] overflow-x-hidden">
                         {activeTab === 'radio' ? (
@@ -1468,8 +1433,6 @@
                                     </div>
                                 )}
                             </div>
-                        ) : activeTab === 'community' ? (
-                            <CommunitySection />
                         ) : (
                             <>
                                 {activeTab === 'home' && !search && (
@@ -1700,18 +1663,15 @@
                                     <Icon name="x" size={18}/>
                                 </button>
                                 <div className="p-3 bg-cyan-500/10 rounded-2xl border border-cyan-500/30 inline-block">
-                                    <span className="text-xs font-black uppercase text-cyan-400 tracking-widest">Comunidad Boxplaytv</span>
+                                    <span className="text-xs font-black uppercase text-cyan-400 tracking-widest">Compartir Boxplaytv</span>
                                 </div>
                                 <div className="bg-white p-3 rounded-2xl shadow-inner flex justify-center items-center">
                                     <img src={QR_IMAGE_URL} alt="Boxplaytv QR Code" className="w-40 h-40 object-contain" onError={(e)=>{e.target.style.display='none';}} />
                                 </div>
                                 <div>
                                     <h3 className="font-extrabold text-base text-white">BOXPLAY<span className="text-cyan-400">TV</span></h3>
-                                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">Únete al grupo oficial de WhatsApp para estar al día con los estrenos.</p>
+                                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">Escanea el código QR para abrir la plataforma en tu dispositivo móvil.</p>
                                 </div>
-                                <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer" className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl font-bold text-xs transition-colors shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center justify-center gap-2">
-                                    <span>Unirse al Grupo de WhatsApp</span>
-                                </a>
                                 <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-2.5 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.4)]">
                                     Cerrar
                                 </button>
@@ -1725,7 +1685,7 @@
         const AiAssistantSection = ({ content, onSelectMovie }) => {
             const [query, setQuery] = useState('');
             const [messages, setMessages] = useState([
-                { role: 'assistant', text: '¡Hola! Soy tu asistente de IA de Boxplaytv. Dime qué género te apetece, cómo te sientes o qué tipo de historia buscas (ej. "Quiero ver una película de acción emocionante", "Recomiéndame algo de terror", "Quiero una serie para reír") y te buscaré las mejores recomendaciones dentro de nuestro catálogo.' }
+                { role: 'assistant', text: '¡Hola! Soy tu asistente IA de Boxplaytv. Dime qué género, actor, estado de ánimo o tipo de película buscas y te recomendaré las mejores opciones de nuestro catálogo.' }
             ]);
             const [isThinking, setIsThinking] = useState(false);
 
@@ -1734,23 +1694,29 @@
                 if (!query.trim() || isThinking) return;
 
                 const userText = query.trim();
-                const newMsgs = [...messages, { role: 'user', text: userText }];
-                setMessages(newMsgs);
                 setQuery('');
+                setMessages(prev => [...prev, { role: 'user', text: userText }]);
                 setIsThinking(true);
 
                 try {
-                    const catalogPool = [...(content.movies2 || []), ...(content.movies || []), ...(content.series || []), ...(content.animados || [])];
-                    const catalogSummary = catalogPool.map(item => `- Título: "${item.titulo || item.title}", Sinopsis: "${item.descripcion || item.sinopsis || 'Sin sinopsis'}"`).join('\n');
-
-                    const systemPrompt = "Eres un asistente de recomendación de películas y series experto para Boxplaytv. Tu tarea es analizar la consulta del usuario y seleccionar 2 o 3 títulos más relevantes del catálogo proporcionado a continuación. Responde siempre en español de manera amigable, menciona los títulos recomendados exactamente como aparecen en el catálogo y explica brevemente por qué coinciden con lo que busca el usuario.\n\nCatálogo:\n" + catalogSummary;
-
                     const apiKey = "";
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-                    
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+
+                    const allCatalog = [...content.movies, ...content.movies2, ...content.series, ...content.animados].map(m => ({
+                        title: m.title || m.titulo,
+                        genre: m.genre || m.genero || 'Película / Serie',
+                        synopsis: m.description || m.sinopsis || ''
+                    }));
+
                     const payload = {
-                        contents: newMsgs.map(m => ({ role: m.role === 'assistant' ? 'model' : 'user', parts: [{ text: m.text }] })),
-                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                        contents: [
+                            {
+                                role: "user",
+                                parts: [
+                                    { text: `Eres el asistente experto de cine y series de Boxplaytv. El usuario busca: "${userText}". Aquí tienes una muestra del catálogo disponible: ${JSON.stringify(allCatalog.slice(0, 40))}. Recomiéndale 2 o 3 opciones ideales de este catálogo en un tono amigable, en español.` }
+                                ]
+                            }
+                        ]
                     };
 
                     const response = await fetch(apiUrl, {
