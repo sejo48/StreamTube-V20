@@ -1230,17 +1230,15 @@
                                 </div>
                             </div>
                         ) : activeTab === 'favorites' && !selectedItem ? (
-                            <div className="p-2 sm:p-10 animate-fade-in max-w-7xl mx-auto w-full space-y-6">
-                                <div>
-                                    <div className="mb-4 flex items-center gap-3 border-b border-slate-800 pb-3">
-                                        <div className="p-2.5 bg-cyan-500/15 rounded-xl text-cyan-400 border border-cyan-500/30"><Icon fill="currentColor" name="heart" size={20}/></div>
-                                        <h2 className="text-base sm:text-2xl font-black text-white">Tus Películas y Series Favoritas</h2>
-                                    </div>
-                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-5">
-                                        {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').map((item, i) => (<Card isFavorite={isItemFavorite(item)} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
-                                    </div>
-                                    {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length === 0 && <div className="text-center py-12 text-slate-500 text-sm"><p>No tienes películas o series guardadas en favoritos todavía.</p></div>}
+                            <div className="p-2 sm:p-10 animate-fade-in max-w-7xl mx-auto w-full space-y-4">
+                                <div className="mb-3 flex items-center gap-3 border-b border-slate-800 pb-3">
+                                    <div className="p-2.5 bg-cyan-500/15 rounded-xl text-cyan-400 border border-cyan-500/30"><Icon fill="currentColor" name="heart" size={20}/></div>
+                                    <h2 className="text-base sm:text-2xl font-black text-white">Tus Películas y Series Favoritas</h2>
                                 </div>
+                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-5">
+                                    {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').map((item, i) => (<Card isFavorite={isItemFavorite(item)} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
+                                </div>
+                                {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length === 0 && <div className="text-center py-12 text-slate-500 text-sm"><p>No tienes películas o series guardadas en favoritos todavía.</p></div>}
                             </div>
                         ) : activeTab === 'tv' || (selectedItem && selectedItem.type === 'tv') ? (
                             <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4.5rem)] lg:overflow-hidden bg-[#020617] w-full">
@@ -1634,7 +1632,7 @@
                                     </div>
                                 ) : activeTab === 'topshows' ? (
                                     <div className="p-2 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in space-y-4">
-                                        <div className="mb-3 sm:mb-4 flex items-center gap-3 border-b border-slate-800 pb-3">
+                                        <div className="mb-3 flex items-center gap-3 border-b border-slate-800 pb-3">
                                             <div className="p-2.5 bg-yellow-500/20 rounded-xl text-yellow-400 border border-yellow-500/30"><Icon fill="currentColor" name="star" size={18}/></div>
                                             <div>
                                                 <h2 className="text-base sm:text-2xl font-black text-white">Vista Superior / Top Shows</h2>
@@ -1649,7 +1647,7 @@
                                     </div>
                                 ) : (
                                     <div className="p-2 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in space-y-4">
-                                        <div className="mb-3 sm:mb-4 flex items-center gap-3">
+                                        <div className="mb-3 flex items-center gap-3">
                                             <div className="w-1.5 h-5 sm:h-7 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
                                             <h2 className="text-base sm:text-2xl font-black uppercase tracking-wide text-white">{activeTab === 'home' ? 'Resultados de Búsqueda' : activeTab === 'movies2' ? 'Estrenos 2026' : activeTab}</h2>
                                         </div>
@@ -1658,7 +1656,7 @@
                                         ) : displayedItems.length === 0 ? (
                                             <div className="text-center py-24 text-slate-500 text-sm"><p>No se encontraron resultados para tu búsqueda.</p></div>
                                         ) : (
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-5 animate-slide-up">
+                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-4 animate-slide-up">
                                                 {displayedItems.map((item, i) => (
                                                     <Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />
                                                 ))}
