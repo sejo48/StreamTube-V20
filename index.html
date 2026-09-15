@@ -497,7 +497,6 @@
                 return () => clearInterval(interval);
             }, []);
 
-            // Web Audio API Real-time Oscilloscope Wave setup with mobile touch safety
             useEffect(() => {
                 if (isRadioPlaying && isPowerOn && audioRef.current) {
                     if (!audioCtxRef.current) {
@@ -1041,7 +1040,12 @@
             if (showIntro) return <IntroScreen onEnter={() => { 
                 setShowIntro(false); 
                 window.history.pushState({ appState: 'main', activeTab: 'home' }, ''); 
-                const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
+                let storedLastRadio = null;
+                try {
+                    const rawStored = safeStorage.getItem('boxplay_last_radio');
+                    if (rawStored) storedLastRadio = JSON.parse(rawStored);
+                } catch(e) {}
+                const def = storedLastRadio || radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
                 if (def && !currentRadioStation) {
                     setCurrentRadioStation(def);
                 }
