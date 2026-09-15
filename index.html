@@ -458,6 +458,7 @@
             const analyserRef = useRef(null);
             const sourceNodeRef = useRef(null);
             const animFrameRef = useRef(null);
+            const radioPlayerTopRef = useRef(null);
 
             const tvContainerRef = useRef(null);
             const movieContainerRef = useRef(null);
@@ -1010,6 +1011,11 @@
                 try {
                     safeStorage.setItem('boxplay_last_radio', JSON.stringify(station));
                 } catch(e) {}
+                
+                // Scroll automatically to the top player on mobile/desktop when station changes
+                if (radioPlayerTopRef.current) {
+                    radioPlayerTopRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             };
 
             const handleTabClick = (tabId) => {
@@ -1029,7 +1035,12 @@
                     }
                 } else if (tabId === 'radio') {
                     if (!currentRadioStation && radioStations.length > 0) {
-                        const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
+                        let storedLastRadio = null;
+                        try {
+                            const rawStored = safeStorage.getItem('boxplay_last_radio');
+                            if (rawStored) storedLastRadio = JSON.parse(rawStored);
+                        } catch(e) {}
+                        const def = storedLastRadio || radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
                         setCurrentRadioStation(def);
                     }
                 } else {
@@ -1173,6 +1184,7 @@
                     <main className="flex-1 min-h-screen pb-32 md:pb-16 relative z-10 w-full max-w-[100vw] overflow-x-hidden">
                         {activeTab === 'radio' ? (
                             <CyberRadioSection 
+                                ref={radioPlayerTopRef}
                                 stations={radioStations}
                                 currentStation={currentRadioStation}
                                 isPlaying={isRadioPlaying}
@@ -1859,7 +1871,7 @@
             );
         };
 
-        const CyberRadioSection = ({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef, clockTime, isMuted, setIsMuted, isPowerOn, setIsPowerOn, oscilloscopePoints, radioFilter, setRadioFilter, hlsRef, setIsRadioPlaying }) => {
+        const CyberRadioSection = React.forwardRef(({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef, clockTime, isMuted, setIsMuted, isPowerOn, setIsPowerOn, oscilloscopePoints, radioFilter, setRadioFilter, hlsRef, setIsRadioPlaying }, ref) => {
             const currentIndex = useMemo(() => {
                 if (!currentStation) return 0;
                 return stations.findIndex(s => s.id === currentStation.id || s.url === currentStation.url);
@@ -1961,6 +1973,7 @@
 
             return (
                 <div 
+                    ref={ref}
                     className="min-h-screen flex flex-col justify-between p-3 sm:p-6 md:p-8 animate-fade-in w-full max-w-5xl mx-auto text-[#22c55e]"
                     style={{
                         backgroundImage: `linear-gradient(rgba(2, 6, 23, 0.90), rgba(2, 6, 23, 0.95)), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhzGl4XNn3xIt050NDnFHsLxCu3IAck1NHPEFt4CfGKyUIC_kHc5nYg9lKOCsWf2QgaLlD3ayD70uDdaMS9QtAHpgSSk6LX_PkL32dpCR1CLTcjmLahW6JS9FP597uXAA19WmLa6djHQti6HcDxjK5vWKeZDgVTYBxKru-5w0ArDuoJYpiqB8sbfjQF58/s320/Gemini_Generated_Image_mw4gatmw4gatmw4g.jpeg')`,
@@ -2174,7 +2187,7 @@
                     </footer>
                 </div>
             );
-        };
+        });
 
         const IntroScreen = ({ onEnter }) => {
             const [isLoading, setIsLoading] = useState(false);
