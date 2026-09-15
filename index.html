@@ -261,7 +261,7 @@
             SERIES: './playlist.json',
             MOVIES: './peliculas.json',
             MOVIES2: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/refs/heads/main/peliculas2.json',
-            ANIMADOS: './animados.json',
+            ANIMADOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/refs/heads/main/animados.json',
             RADIOS: './radios.json',
             TUDUM: './tudum.json'
         };
@@ -276,7 +276,6 @@
             TUDUM: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/tudum.json'
         };
 
-        const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/ClI93uJrk1A4hA8MoS1J7Z';
         const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
 
         const DEFAULT_RADIO_STATIONS = [
@@ -460,7 +459,6 @@
                 { id: 'movies', icon: 'clapperboard', label: 'Películas' }, 
                 { id: 'series', icon: 'film', label: 'Series' },
                 { id: 'animados', icon: 'smile', label: 'Animados' },
-                { id: 'topshows', icon: 'star', label: 'Top Shows' },
                 { id: 'tv', icon: 'tv', label: 'TV' }, 
                 { id: 'radio', icon: 'radio', label: 'Radio HD' }, 
                 { id: 'smartview', icon: 'tv', label: 'Smart TV' },
@@ -478,7 +476,6 @@
             const moreNavTabs = [
                 { id: 'series', icon: 'film', label: 'Series' },
                 { id: 'animados', icon: 'smile', label: 'Animados' },
-                { id: 'topshows', icon: 'star', label: 'Top Shows' },
                 { id: 'smartview', icon: 'tv', label: 'Smart TV' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
@@ -637,16 +634,20 @@
 
                         let animadosList = [];
                         if (dataAnimados) {
-                            const rawAnimados = Array.isArray(dataAnimados) ? dataAnimados : (dataAnimados.animados || []);
-                            animadosList = rawAnimados.map((a, idx) => ({
+                            const rawAnimados = Array.isArray(dataAnimados) 
+                                ? dataAnimados 
+                                : (dataAnimados.animados || dataAnimados.series || dataAnimados.peliculas || dataAnimados.content || Object.values(dataAnimados).find(v => Array.isArray(v)) || []);
+                            
+                            const animArray = Array.isArray(rawAnimados) ? rawAnimados : [];
+                            animadosList = animArray.map((a, idx) => ({
                                 ...a,
                                 id: `anim-${idx}`,
                                 type: 'animados',
-                                title: a.titulo || a.tituloSerie || a.title || a.name,
-                                description: a.descripcion || a.sinopsis,
-                                image: a.imagen || a.poster || a.image,
-                                url: convertUrl(a.urlDrive || a.url),
-                                rawUrl: a.urlDrive || a.url,
+                                title: a.tituloSerie || a.titulo || a.title || a.name || `Animado ${idx + 1}`,
+                                description: a.descripcion || a.sinopsis || '',
+                                image: a.imagen || a.poster || a.image || 'https://placehold.co/300x450/0f172a/ffffff?text=Animado',
+                                url: convertUrl(a.urlDrive || a.url || ''),
+                                rawUrl: a.urlDrive || a.url || '',
                                 seasons: (a.temporadas || []).map((t, tIdx) => ({
                                     seasonNumber: t.numeroTemporada || (tIdx + 1),
                                     episodes: (t.episodios || []).map((ep, eIdx) => ({
@@ -657,6 +658,14 @@
                                     }))
                                 }))
                             }));
+                        }
+                        if (animadosList.length === 0) {
+                            animadosList = [
+                                {
+                                    id: 'a-1', type: 'animados', title: 'Don Gato y su Pandilla', description: 'Serie clásica de animación.', image: 'https://placehold.co/300x450/0f172a/ffffff?text=Don+Gato',
+                                    seasons: [{ seasonNumber: 1, episodes: [{ id: 'ep-a1', title: 'Episodio 1', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }] }]
+                                }
+                            ];
                         }
 
                         let loadedStations = DEFAULT_RADIO_STATIONS;
@@ -941,7 +950,7 @@
                         else if (movieContainerRef.current.webkitRequestFullscreen) movieContainerRef.current.webkitRequestFullscreen();
                     } else {
                         if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
-                        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+                        else if (movieContainerRef.current.webkitExitFullscreen) document.webkitExitFullscreen();
                     }
                 }
             };
@@ -951,8 +960,6 @@
                     ? [...content.movies2, ...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] 
                     : activeTab === 'favorites' 
                     ? favorites.filter(item => item.type !== 'tv' && item.type !== 'radio') 
-                    : activeTab === 'topshows'
-                    ? [...content.series, ...content.animados].slice(0, 15)
                     : content[activeTab] || []; 
                 if (search && activeTab !== 'tv') return list.filter(i => (i.title || i.name || i.titulo || '').toLowerCase().includes(search.toLowerCase())); 
                 return list; 
@@ -1644,28 +1651,12 @@
                                             <ContentRow title="✨ Estrenos 2026" items={content.movies2} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         )}
                                         <ContentRow title="🎬 Últimos Estrenos" items={content.movies} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        <ContentRow title="🔥 Tendencias Actuales (Anime & Más)" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
+                                        <ContentRow title="🔥 Animados y Caricaturas" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="⭐ Programas Populares" items={content.series} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        <ContentRow title="🏆 Vista Superior (Top Shows)" items={content.animados.slice().reverse()} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         
                                         {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length > 0 && (
                                             <ContentRow title="❤️ Mis Favoritos (Películas y Series)" items={favorites.filter(item => item.type !== 'tv' && item.type !== 'radio')} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         )}
-                                    </div>
-                                ) : activeTab === 'topshows' ? (
-                                    <div className="p-2 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in space-y-4">
-                                        <div className="mb-3 flex items-center gap-3 border-b border-slate-800 pb-3">
-                                            <div className="p-2.5 bg-yellow-500/20 rounded-xl text-yellow-400 border border-yellow-500/30"><Icon fill="currentColor" name="star" size={18}/></div>
-                                            <div>
-                                                <h2 className="text-base sm:text-2xl font-black text-white">Vista Superior / Top Shows</h2>
-                                                <p className="text-[11px] sm:text-xs text-slate-400 mt-0.5">Los programas mejor valorados y más reproducidos por la comunidad.</p>
-                                            </div>
-                                        </div>
-                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-5">
-                                            {displayedItems.map((item, i) => (
-                                                <Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />
-                                            ))}
-                                        </div>
                                     </div>
                                 ) : (
                                     <div className="p-2 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in space-y-4">
@@ -2248,7 +2239,7 @@
                     </div>
 
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4 sm:gap-10 text-center sm:text-left">
-                        <div className="w-36 sm:w-60 md:w-68 aspect-[2/3] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
+                        <div className="w-48 sm:w-60 md:w-68 aspect-[2/3] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
                             <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/0f172a/ffffff?text=Poster'} />
                         </div>
                         <div className="flex-1 flex flex-col gap-2.5 sm:gap-3 items-center sm:items-start max-w-xl">
