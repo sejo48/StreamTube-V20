@@ -127,6 +127,28 @@
 
         .cinema-glow { box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.22); }
         .card-glow { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+
+        /* Catálogos: portadas grandes y juntas */
+        .catalog-grid {
+            width: 100%;
+            align-items: start;
+        }
+        .catalog-grid > .card-item {
+            width: 100% !important;
+            min-width: 0 !important;
+        }
+        @media (max-width: 639px) {
+            .catalog-grid {
+                column-gap: 8px !important;
+                row-gap: 10px !important;
+            }
+        }
+        @media (min-width: 640px) {
+            .catalog-grid {
+                column-gap: 12px !important;
+                row-gap: 16px !important;
+            }
+        }
         .card-glow:hover {
             box-shadow: 0 15px 30px -10px rgba(6, 182, 212, 0.32);
             transform: translateY(-4px) scale(1.02);
@@ -1235,7 +1257,7 @@
                                     <div className="p-2.5 bg-cyan-500/15 rounded-xl text-cyan-400 border border-cyan-500/30"><Icon fill="currentColor" name="heart" size={20}/></div>
                                     <h2 className="text-base sm:text-2xl font-black text-white">Tus Películas y Series Favoritas</h2>
                                 </div>
-                                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-5">
+                                <div className="catalog-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-0">
                                     {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').map((item, i) => (<Card isFavorite={isItemFavorite(item)} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
                                 </div>
                                 {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length === 0 && <div className="text-center py-12 text-slate-500 text-sm"><p>No tienes películas o series guardadas en favoritos todavía.</p></div>}
@@ -1656,7 +1678,7 @@
                                         ) : displayedItems.length === 0 ? (
                                             <div className="text-center py-24 text-slate-500 text-sm"><p>No se encontraron resultados para tu búsqueda.</p></div>
                                         ) : (
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-4 animate-slide-up">
+                                            <div className="catalog-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-0 animate-slide-up">
                                                 {displayedItems.map((item, i) => (
                                                     <Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />
                                                 ))}
@@ -2287,7 +2309,7 @@
             const titleText = item.titulo || item.title || item.name;
 
             return (
-                <div onClick={() => onClick(item)} className="flex-shrink-0 w-[47%] sm:w-44 md:w-52 glass-panel rounded-xl sm:rounded-2xl p-1.5 sm:p-3 cursor-pointer group card-glow border border-slate-800/80 flex flex-col justify-between relative">
+                <div onClick={() => onClick(item)} className="card-item flex-shrink-0 w-[47%] sm:w-44 md:w-52 glass-panel rounded-xl sm:rounded-2xl p-1.5 sm:p-3 cursor-pointer group card-glow border border-slate-800/80 flex flex-col justify-between relative">
                     <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20">
                         <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }} className="p-1.5 sm:p-2 rounded-full bg-black/70 backdrop-blur-md text-white hover:scale-110 transition-transform shadow-lg border border-white/10">
                             <Icon name="heart" size={12} fill={isFavorite ? "#06b6d4" : "none"} className={isFavorite ? "text-cyan-500" : "text-white"}/>
