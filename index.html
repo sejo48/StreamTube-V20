@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Boxplaytv - Ultimate Streaming & Anime Hub</title>
+    <title>Boxplaytv - Ultimate Streaming & Hub</title>
     
     <!-- OpenGraph & WhatsApp Sharing Meta Tags -->
     <meta property="og:title" content="BOXPLAYTV">
@@ -90,7 +90,7 @@
         }
         @keyframes logoGlowAnim {
             0%, 100% { filter: drop-shadow(0 0 12px rgba(6, 182, 212, 0.6)); transform: scale(1); }
-            50% { filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.95)); transform: scale(1.02); }
+            50% { filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.95)); transform: scale(1.03); }
         }
         @keyframes floatParticle {
             0% { transform: translateY(0px) scale(1); opacity: 0.3; }
@@ -143,12 +143,14 @@
         }
         @media (max-width: 639px) {
             .catalog-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
                 column-gap: 8px !important;
-                row-gap: 10px !important;
+                row-gap: 12px !important;
             }
         }
         @media (min-width: 640px) {
             .catalog-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
                 column-gap: 12px !important;
                 row-gap: 16px !important;
             }
@@ -495,7 +497,7 @@
                 return () => clearInterval(interval);
             }, []);
 
-            // Web Audio API Analyzer setup for real-time Oscilloscope wave reaction
+            // Web Audio API Real-time Oscilloscope Wave setup with mobile touch safety
             useEffect(() => {
                 if (isRadioPlaying && isPowerOn && audioRef.current) {
                     if (!audioCtxRef.current) {
@@ -524,7 +526,7 @@
                         if (analyserRef.current && isRadioPlaying && isPowerOn) {
                             analyserRef.current.getByteTimeDomainData(dataArray);
                             let pts = [];
-                            const totalPoints = 50;
+                            const totalPoints = 60;
                             const step = Math.floor(bufferLength / totalPoints);
                             for (let i = 0; i < totalPoints; i++) {
                                 const v = dataArray[i * step] / 128.0; // 0 to 2, center at 1.0
@@ -698,7 +700,7 @@
                         const stationToPlay = storedLastRadio || loadedStations.find(s => s.title.toLowerCase().includes('disco funk')) || loadedStations[0];
                         if (stationToPlay) {
                             setCurrentRadioStation(stationToPlay);
-                            setIsRadioPlaying(true);
+                            setIsRadioPlaying(false);
                         }
 
                         let tudumList = FALLBACK_NETFLIX_TUDUM;
@@ -800,9 +802,12 @@
                     audio.volume = radioVolume;
                 }
 
-                if (currentRadioStation && activeTab === 'radio') {
+                if (currentRadioStation) {
                     const playAudio = () => {
                         try {
+                            if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
+                                audioCtxRef.current.resume();
+                            }
                             const playPromise = audio.play();
                             if (playPromise !== undefined) {
                                 playPromise.catch((e) => {
@@ -850,10 +855,8 @@
                         if (isRadioPlaying) playAudio();
                         else audio.pause();
                     }
-                } else if (audioRef.current && activeTab !== 'radio') {
-                    audioRef.current.pause();
                 }
-            }, [currentRadioStation, isRadioPlaying, activeTab]);
+            }, [currentRadioStation, isRadioPlaying]);
 
             useEffect(() => {
                 if (audioRef.current) audioRef.current.volume = radioVolume;
@@ -1029,7 +1032,6 @@
                     if (!currentRadioStation && radioStations.length > 0) {
                         const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
                         setCurrentRadioStation(def);
-                        setIsRadioPlaying(true);
                     }
                 } else {
                     setSelectedItem(null); 
@@ -1042,7 +1044,6 @@
                 const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
                 if (def && !currentRadioStation) {
                     setCurrentRadioStation(def);
-                    setIsRadioPlaying(true);
                 }
             }}/>;
 
@@ -1186,6 +1187,7 @@
                                 radioFilter={radioFilter}
                                 setRadioFilter={setRadioFilter}
                                 hlsRef={hlsRef}
+                                setIsRadioPlaying={setIsRadioPlaying}
                             />
                         ) : activeTab === 'aiassistant' ? (
                             <AiAssistantSection content={content} onSelectMovie={handlePlay} />
@@ -1269,7 +1271,7 @@
                                     <div className="p-2.5 bg-cyan-500/15 rounded-xl text-cyan-400 border border-cyan-500/30"><Icon fill="currentColor" name="heart" size={20}/></div>
                                     <h2 className="text-base sm:text-2xl font-black text-white">Tus Películas y Series Favoritas</h2>
                                 </div>
-                                <div className="catalog-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-0">
+                                <div className="catalog-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-4">
                                     {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').map((item, i) => (<Card isFavorite={isItemFavorite(item)} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
                                 </div>
                                 {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length === 0 && <div className="text-center py-12 text-slate-500 text-sm"><p>No tienes películas o series guardadas en favoritos todavía.</p></div>}
@@ -1673,7 +1675,7 @@
                                         ) : displayedItems.length === 0 ? (
                                             <div className="text-center py-24 text-slate-500 text-sm"><p>No se encontraron resultados para tu búsqueda.</p></div>
                                         ) : (
-                                            <div className="catalog-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-0 animate-slide-up">
+                                            <div className="catalog-grid grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 sm:gap-4 animate-slide-up">
                                                 {displayedItems.map((item, i) => (
                                                     <Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />
                                                 ))}
@@ -1853,7 +1855,7 @@
             );
         };
 
-        const CyberRadioSection = ({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef, clockTime, isMuted, setIsMuted, isPowerOn, setIsPowerOn, oscilloscopePoints, radioFilter, setRadioFilter, hlsRef }) => {
+        const CyberRadioSection = ({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef, clockTime, isMuted, setIsMuted, isPowerOn, setIsPowerOn, oscilloscopePoints, radioFilter, setRadioFilter, hlsRef, setIsRadioPlaying }) => {
             const currentIndex = useMemo(() => {
                 if (!currentStation) return 0;
                 return stations.findIndex(s => s.id === currentStation.id || s.url === currentStation.url);
@@ -1872,7 +1874,6 @@
             };
 
             const handleTogglePlayPause = () => {
-                if (!isPowerOn) return;
                 if (!currentStation && stations.length > 0) {
                     onPlayStation(stations[0]);
                     return;
@@ -1880,8 +1881,13 @@
                 if (audioRef.current) {
                     if (isPlaying) {
                         audioRef.current.pause();
+                        setIsRadioPlaying(false);
                     } else {
-                        audioRef.current.play().catch(() => {});
+                        audioRef.current.play().then(() => {
+                            setIsRadioPlaying(true);
+                        }).catch(() => {
+                            setIsRadioPlaying(false);
+                        });
                     }
                 }
             };
@@ -1973,7 +1979,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                                 <span>Mini Reproductor Flotante</span>
                             </button>
-                            {isPlaying && isPowerOn && (
+                            {isPlaying && (
                                 <div className="hidden md:block text-[9px] sm:text-xs text-red-500 font-mono tracking-widest border border-red-900/60 px-2.5 py-1 rounded bg-red-950/30 animate-pulse whitespace-nowrap">
                                     ● TRANSMITIENDO EN VIVO
                                 </div>
@@ -1991,13 +1997,13 @@
                                 <span className="orbitron text-[10px] sm:text-xs font-bold text-amber-400 tracking-widest">CONSOLE UNIT-01</span>
                             </div>
 
-                            <div className="lcd-screen p-4 sm:p-5 rounded-lg flex flex-col sm:flex-row items-center justify-between relative overflow-hidden min-h-[140px] gap-3">
+                            <div className="lcd-screen p-4 sm:p-5 rounded-lg flex flex-col lg:flex-row items-center justify-between relative overflow-hidden min-h-[140px] gap-3">
                                 <div className="absolute top-1 left-3 text-[9px] sm:text-[10px] text-cyan-600 font-mono flex items-center space-x-2">
                                     <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                                     <span>HLS / MP3 STREAM DECODER</span>
                                 </div>
                                 
-                                <div className="flex items-center space-x-3 sm:space-x-4 pt-4 sm:pt-0 w-full sm:w-auto">
+                                <div className="flex items-center space-x-3 sm:space-x-4 pt-4 lg:pt-0 w-full lg:w-auto">
                                     {currentStation && currentStation.image ? (
                                         <div className="w-14 h-14 sm:w-18 sm:h-18 rounded-full border-2 border-cyan-500 overflow-hidden bg-black flex-shrink-0 shadow-[0_0_15px_rgba(6,182,212,0.6)] p-1">
                                             <img src={currentStation.image} alt={currentStation.title} className="w-full h-full object-cover rounded-full" onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/100x100/0f172a/ffffff?text=Logo'; }} />
@@ -2014,12 +2020,12 @@
                                             </div>
                                         </div>
                                         <div className="text-[10px] sm:text-xs text-green-600 tracking-tight mt-1 truncate">
-                                            {streamError ? 'ESTADO: ERROR DE STREAMING' : isLoading ? 'ESTADO: CONECTANDO...' : isPlaying && isPowerOn ? 'ESTADO: REPRODUCIENDO' : 'LISTA PARA REPRODUCIR'}
+                                            {streamError ? 'ESTADO: ERROR DE STREAMING' : isLoading ? 'ESTADO: CONECTANDO...' : isPlaying ? 'ESTADO: REPRODUCIENDO' : 'LISTA PARA REPRODUCIR'}
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Oscilloscope Real-Time Audio Wave Visualizer inside LCD Screen */}
+                                {/* Real-Time Oscilloscope Wave Visualizer filling the LCD screen space */}
                                 <div className="flex items-center justify-center flex-1 px-2 sm:px-4 py-2 w-full">
                                     <div className="w-full h-12 bg-black/90 rounded-xl border border-green-500/50 shadow-[inset_0_0_20px_rgba(34,197,94,0.25)] flex items-center justify-center overflow-hidden px-2 relative">
                                         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-950/30 via-transparent to-transparent pointer-events-none"></div>
@@ -2044,7 +2050,7 @@
                                     </div>
                                 </div>
 
-                                <div className="pr-2 hidden sm:flex flex-col items-end flex-shrink-0">
+                                <div className="pr-2 hidden lg:flex flex-col items-end flex-shrink-0">
                                     <div className="orbitron text-lg sm:text-xl font-bold tracking-widest text-cyan-300">{clockTime}</div>
                                     <div className="text-[9px] text-cyan-600 font-mono mt-1">ESTÉREO DIGITAL</div>
                                 </div>
@@ -2074,7 +2080,7 @@
                                 <div className="md:col-span-7 grid grid-cols-3 gap-2">
                                     <button onClick={handlePrev} title="Estación Anterior" className="cyber-btn py-3 sm:py-3.5 rounded flex items-center justify-center text-xs sm:text-sm text-cyan-300 font-bold"><i className="fa-solid fa-backward-step mr-1.5"></i> Anterior</button>
                                     <button onClick={handleTogglePlayPause} title="Reproducir / Pausa" className="cyber-btn py-3 sm:py-3.5 rounded flex items-center justify-center text-xs sm:text-sm text-green-400 font-bold tracking-wider">
-                                        <i className={`fa-solid ${isPlaying && isPowerOn ? 'fa-pause' : 'fa-play'} mr-1.5`}></i> {isPlaying && isPowerOn ? 'PAUSA' : 'PLAY'}
+                                        <i className={`fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'} mr-1.5`}></i> {isPlaying ? 'PAUSA' : 'PLAY'}
                                     </button>
                                     <button onClick={handleNext} title="Siguiente Estación" className="cyber-btn py-3 sm:py-3.5 rounded flex items-center justify-center text-xs sm:text-sm text-cyan-300 font-bold">Siguiente <i className="fa-solid fa-forward-step ml-1.5"></i></button>
                                 </div>
@@ -2082,7 +2088,7 @@
                         </div>
 
                         {/* Columna izquierda inferior con el Logotipo Oficial Animado Neón */}
-                        <div className="lg:col-span-6 cyber-deck p-4 sm:p-5 flex flex-col justify-center items-center h-[340px] sm:h-[380px]" style={{ backgroundImage: `linear-gradient(135deg, rgba(13, 30, 38, 0.92) 0%, rgba(6, 14, 19, 0.96) 100%), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhzGl4XNn3xIt050NDnFHsLxCu3IAck1NHPEFt4CfGKyUIC_kHc5nYg9lKOCsWf2QgaLlD3ayD70uDdaMS9QtAHpgSSk6LX_PkL32dpCR1CLTcjmLahW6JS9FP597uXAA19WmLa6djHQti6HcDxjK5vWKeZDgVTYBxKru-5w0ArDuoJYpiqB8sbfjQF58/s320/Gemini_Generated_Image_mw4gatmw4gatmw4g.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                        <div className="lg:col-span-5 cyber-deck p-4 sm:p-5 flex flex-col justify-center items-center min-h-[340px] sm:min-h-[420px]" style={{ backgroundImage: `linear-gradient(135deg, rgba(13, 30, 38, 0.92) 0%, rgba(6, 14, 19, 0.96) 100%), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhzGl4XNn3xIt050NDnFHsLxCu3IAck1NHPEFt4CfGKyUIC_kHc5nYg9lKOCsWf2QgaLlD3ayD70uDdaMS9QtAHpgSSk6LX_PkL32dpCR1CLTcjmLahW6JS9FP597uXAA19WmLa6djHQti6HcDxjK5vWKeZDgVTYBxKru-5w0ArDuoJYpiqB8sbfjQF58/s320/Gemini_Generated_Image_mw4gatmw4gatmw4g.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                             <div className="w-full flex justify-between items-center border-b border-cyan-900/40 pb-2 mb-4">
                                 <span className="orbitron text-[10px] sm:text-xs font-bold text-cyan-400 tracking-wider">BOX PLAY TV OFFICIAL BRAND</span>
                                 <span className="text-[10px] text-green-400 font-mono">LIVE IDENTITY</span>
@@ -2098,7 +2104,8 @@
                             </div>
                         </div>
 
-                        <div className="lg:col-span-6 cyber-deck p-4 sm:p-5 flex flex-col h-[340px] sm:h-[380px]" style={{ backgroundImage: `linear-gradient(135deg, rgba(13, 30, 38, 0.92) 0%, rgba(6, 14, 19, 0.96) 100%), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhzGl4XNn3xIt050NDnFHsLxCu3IAck1NHPEFt4CfGKyUIC_kHc5nYg9lKOCsWf2QgaLlD3ayD70uDdaMS9QtAHpgSSk6LX_PkL32dpCR1CLTcjmLahW6JS9FP597uXAA19WmLa6djHQti6HcDxjK5vWKeZDgVTYBxKru-5w0ArDuoJYpiqB8sbfjQF58/s320/Gemini_Generated_Image_mw4gatmw4gatmw4g.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                        {/* Columna derecha inferior ampliada para máxima comodidad táctil y visual (Amplia y abierta) */}
+                        <div className="lg:col-span-7 cyber-deck p-4 sm:p-5 flex flex-col min-h-[500px] sm:min-h-[550px]" style={{ backgroundImage: `linear-gradient(135deg, rgba(13, 30, 38, 0.92) 0%, rgba(6, 14, 19, 0.96) 100%), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhzGl4XNn3xIt050NDnFHsLxCu3IAck1NHPEFt4CfGKyUIC_kHc5nYg9lKOCsWf2QgaLlD3ayD70uDdaMS9QtAHpgSSk6LX_PkL32dpCR1CLTcjmLahW6JS9FP597uXAA19WmLa6djHQti6HcDxjK5vWKeZDgVTYBxKru-5w0ArDuoJYpiqB8sbfjQF58/s320/Gemini_Generated_Image_mw4gatmw4gatmw4g.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                             <div className="flex justify-between items-center mb-3 pb-2 border-b border-cyan-900/40 gap-2">
                                 <span className="orbitron text-[10px] sm:text-xs font-bold text-cyan-400 whitespace-nowrap">BOX PLAY TV PLAYLIST ({stations.length})</span>
                                 <div className="relative w-36 sm:w-52">
@@ -2112,7 +2119,7 @@
                                 </div>
                             </div>
 
-                            <div className="flex-grow overflow-y-auto pr-1 custom-scrollbar">
+                            <div className="flex-grow overflow-y-auto pr-1 custom-scrollbar max-h-[420px] sm:max-h-[460px]">
                                 <table className="w-full text-left border-collapse">
                                     <thead>
                                         <tr className="text-[10px] sm:text-[11px] text-cyan-300 font-bold border-b border-cyan-800 uppercase tracking-wider sticky top-0 bg-[#08171f] z-10">
@@ -2133,21 +2140,21 @@
                                                 return (
                                                     <tr 
                                                         key={station.id || index}
-                                                        onClick={() => isPowerOn && onPlayStation(station)}
-                                                        className={`hover:bg-cyan-950/70 transition-colors cursor-pointer group border-b border-cyan-950 ${isCurrent && isPowerOn ? 'bg-cyan-950/90 text-green-300 border-l-2 border-green-400' : ''}`}
+                                                        onClick={() => onPlayStation(station)}
+                                                        className={`hover:bg-cyan-950/70 transition-colors cursor-pointer group border-b border-cyan-950 ${isCurrent && isPlaying ? 'bg-cyan-950/90 text-green-300 border-l-2 border-green-400' : ''}`}
                                                     >
-                                                        <td className="py-3 px-2 text-cyan-300 font-bold text-[11px] sm:text-xs">#{String(index + 1).padStart(2, '0')}</td>
-                                                        <td className="py-3 px-2 text-cyan-100 group-hover:text-green-300 font-bold truncate max-w-[150px] sm:max-w-xs text-xs sm:text-sm flex items-center gap-2">
+                                                        <td className="py-3.5 px-2 text-cyan-300 font-bold text-[11px] sm:text-xs">#{String(index + 1).padStart(2, '0')}</td>
+                                                        <td className="py-3.5 px-2 text-cyan-100 group-hover:text-green-300 font-bold truncate max-w-[150px] sm:max-w-xs text-xs sm:text-sm flex items-center gap-2">
                                                             {station.image && (
                                                                 <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-cyan-500 overflow-hidden bg-black flex-shrink-0 p-0.5">
                                                                     <img src={station.image} alt="" className="w-full h-full object-cover rounded-full" onError={(e)=>e.target.style.display='none'} />
                                                                 </div>
                                                             )}
-                                                            {isCurrent && isPlaying && isPowerOn && <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0"></span>}
+                                                            {isCurrent && isPlaying && <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0"></span>}
                                                             <span className="truncate">{station.title}</span>
                                                         </td>
-                                                        <td className="py-3 px-2 text-right text-cyan-200 font-mono text-[11px] sm:text-xs">LIVE</td>
-                                                        <td className="py-3 px-2 text-amber-300 font-bold truncate max-w-[100px] sm:max-w-[120px] text-[11px] sm:text-xs">{station.group || 'RADIO'}</td>
+                                                        <td className="py-3.5 px-2 text-right text-cyan-200 font-mono text-[11px] sm:text-xs">LIVE</td>
+                                                        <td className="py-3.5 px-2 text-amber-300 font-bold truncate max-w-[100px] sm:max-w-[120px] text-[11px] sm:text-xs">{station.group || 'RADIO'}</td>
                                                     </tr>
                                                 );
                                             })
@@ -2309,7 +2316,7 @@
             const titleText = item.titulo || item.title || item.name;
 
             return (
-                <div onClick={() => onClick(item)} className="card-item flex-shrink-0 w-[47%] sm:w-44 md:w-52 glass-panel rounded-xl sm:rounded-2xl p-1.5 sm:p-3 cursor-pointer group card-glow border border-slate-800/80 flex flex-col justify-between relative">
+                <div onClick={() => onClick(item)} className="card-item flex-shrink-0 w-[31%] sm:w-44 md:w-52 glass-panel rounded-xl sm:rounded-2xl p-1.5 sm:p-3 cursor-pointer group card-glow border border-slate-800/80 flex flex-col justify-between relative">
                     <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20">
                         <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }} className="p-1.5 sm:p-2 rounded-full bg-black/70 backdrop-blur-md text-white hover:scale-110 transition-transform shadow-lg border border-white/10">
                             <Icon name="heart" size={12} fill={isFavorite ? "#06b6d4" : "none"} className={isFavorite ? "text-cyan-500" : "text-white"}/>
