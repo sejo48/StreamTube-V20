@@ -88,6 +88,10 @@
             0%, 100% { text-shadow: 0 0 10px rgba(6, 182, 212, 0.4), 0 0 20px rgba(6, 182, 212, 0.2); transform: scale(1); }
             50% { text-shadow: 0 0 25px rgba(6, 182, 212, 0.8), 0 0 45px rgba(20, 184, 166, 0.6); transform: scale(1.02); }
         }
+        @keyframes logoGlowAnim {
+            0%, 100% { filter: drop-shadow(0 0 12px rgba(6, 182, 212, 0.6)); transform: scale(1); }
+            50% { filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.95)); transform: scale(1.02); }
+        }
         @keyframes floatParticle {
             0% { transform: translateY(0px) scale(1); opacity: 0.3; }
             50% { transform: translateY(-40px) scale(1.2); opacity: 0.8; }
@@ -101,6 +105,7 @@
         .animate-fade-in { animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .animate-scale-in { animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .neon-logo-anim { animation: neonPulse 3s ease-in-out infinite; }
+        .logo-glow-anim { animation: logoGlowAnim 3.5s ease-in-out infinite; }
         .btn-pulse-anim { animation: btnPulse 2.5s ease-in-out infinite; }
         
         .particle {
@@ -128,7 +133,6 @@
         .cinema-glow { box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.22); }
         .card-glow { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
 
-        /* Catálogos: portadas grandes y juntas */
         .catalog-grid {
             width: 100%;
             align-items: start;
@@ -274,6 +278,7 @@
             TUDUM: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/tudum.json'
         };
 
+        const LOGO_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjx4dt02lbSvoCJhKRtkyUa2NEhqRyvI8_G82p4jz_8iK5rfeJMVjKAcGXH9ukveI5c6kC_dlasscvR4CoUxCxbeDcEctr3zFJLJys7E76ZvAk6w4hOD1iwJTPj5g4Kfe-FLHhSO9HGLKtmapJZWXvRMMs23WdLnPqoj20RIrLjhFAHCqOsBk7NrmjoJlg/s320/07b01546-33f7-442e-b459-f3698b5a6120.png';
         const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
 
         const DEFAULT_RADIO_STATIONS = [
@@ -443,10 +448,14 @@
             const [clockTime, setClockTime] = useState('12:34');
             const [isMuted, setIsMuted] = useState(false);
             const [isPowerOn, setIsPowerOn] = useState(true);
-            const [spectrumHeights, setSpectrumHeights] = useState([70, 85, 50, 90]);
+            const [oscilloscopePoints, setOscilloscopePoints] = useState('0,25 35,22 70,28 105,15 140,25 175,18 210,32 245,20 280,25 315,12 350,25');
 
             const audioRef = useRef(null);
             const hlsRef = useRef(null);
+            const audioCtxRef = useRef(null);
+            const analyserRef = useRef(null);
+            const sourceNodeRef = useRef(null);
+            const animFrameRef = useRef(null);
 
             const tvContainerRef = useRef(null);
             const movieContainerRef = useRef(null);
@@ -486,21 +495,58 @@
                 return () => clearInterval(interval);
             }, []);
 
+            // Web Audio API Analyzer setup for real-time Oscilloscope wave reaction
             useEffect(() => {
-                let specInterval;
-                if (isRadioPlaying && isPowerOn) {
-                    specInterval = setInterval(() => {
-                        setSpectrumHeights([
-                            Math.floor(Math.random() * 85) + 15,
-                            Math.floor(Math.random() * 95) + 10,
-                            Math.floor(Math.random() * 80) + 20,
-                            Math.floor(Math.random() * 90) + 10
-                        ]);
-                    }, 80);
+                if (isRadioPlaying && isPowerOn && audioRef.current) {
+                    if (!audioCtxRef.current) {
+                        try {
+                            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                            audioCtxRef.current = new AudioContextClass();
+                            analyserRef.current = audioCtxRef.current.createAnalyser();
+                            analyserRef.current.fftSize = 256;
+                            
+                            sourceNodeRef.current = audioCtxRef.current.createMediaElementSource(audioRef.current);
+                            sourceNodeRef.current.connect(analyserRef.current);
+                            analyserRef.current.connect(audioCtxRef.current.destination);
+                        } catch (e) {
+                            console.error("Web Audio API Error", e);
+                        }
+                    }
+
+                    if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
+                        audioCtxRef.current.resume();
+                    }
+
+                    const bufferLength = analyserRef.current ? analyserRef.current.frequencyBinCount : 128;
+                    const dataArray = new Uint8Array(bufferLength);
+
+                    const updateOscilloscope = () => {
+                        if (analyserRef.current && isRadioPlaying && isPowerOn) {
+                            analyserRef.current.getByteTimeDomainData(dataArray);
+                            let pts = [];
+                            const totalPoints = 50;
+                            const step = Math.floor(bufferLength / totalPoints);
+                            for (let i = 0; i < totalPoints; i++) {
+                                const v = dataArray[i * step] / 128.0; // 0 to 2, center at 1.0
+                                const x = Math.round((i / (totalPoints - 1)) * 350);
+                                const y = Math.max(5, Math.min(45, Math.round(25 + (v - 1) * 20)));
+                                pts.push(`${x},${y}`);
+                            }
+                            setOscilloscopePoints(pts.join(' '));
+                        } else {
+                            setOscilloscopePoints('0,25 35,22 70,28 105,15 140,25 175,18 210,32 245,20 280,25 315,12 350,25');
+                        }
+                        animFrameRef.current = requestAnimationFrame(updateOscilloscope);
+                    };
+
+                    updateOscilloscope();
+
+                    return () => {
+                        if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
+                    };
                 } else {
-                    setSpectrumHeights([25, 25, 25, 25]);
+                    setOscilloscopePoints('0,25 35,22 70,28 105,15 140,25 175,18 210,32 245,20 280,25 315,12 350,25');
                 }
-                return () => clearInterval(specInterval);
             }, [isRadioPlaying, isPowerOn]);
 
             useEffect(() => {
@@ -1136,7 +1182,7 @@
                                 setIsMuted={setIsMuted}
                                 isPowerOn={isPowerOn}
                                 setIsPowerOn={setIsPowerOn}
-                                spectrumHeights={spectrumHeights}
+                                oscilloscopePoints={oscilloscopePoints}
                                 radioFilter={radioFilter}
                                 setRadioFilter={setRadioFilter}
                                 hlsRef={hlsRef}
@@ -1807,7 +1853,7 @@
             );
         };
 
-        const CyberRadioSection = ({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef, clockTime, isMuted, setIsMuted, isPowerOn, setIsPowerOn, spectrumHeights, radioFilter, setRadioFilter, hlsRef }) => {
+        const CyberRadioSection = ({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef, clockTime, isMuted, setIsMuted, isPowerOn, setIsPowerOn, oscilloscopePoints, radioFilter, setRadioFilter, hlsRef }) => {
             const currentIndex = useMemo(() => {
                 if (!currentStation) return 0;
                 return stations.findIndex(s => s.id === currentStation.id || s.url === currentStation.url);
@@ -1879,12 +1925,12 @@
                                 </div>
                             </div>
                             <div class="h-8 bg-black/70 rounded-lg px-3 flex items-center justify-between border border-cyan-950">
-                                <span class="text-[8px] text-cyan-500 font-mono">AUDIO RHYTHM</span>
+                                <span class="text-[8px] text-cyan-500 font-mono">OSCILLOSCOPE WAVE</span>
                                 <div class="flex items-end h-5 gap-1">
-                                    <div class="w-1 bg-green-500 rounded-t animate-pulse h-4"></div>
-                                    <div class="w-1 bg-emerald-400 rounded-t animate-pulse h-6"></div>
-                                    <div class="w-1 bg-cyan-400 rounded-t animate-pulse h-3"></div>
-                                    <div class="w-1 bg-blue-400 rounded-t animate-pulse h-5"></div>
+                                    <div class="w-1 bg-white rounded-t animate-pulse h-4"></div>
+                                    <div class="w-1 bg-white rounded-t animate-pulse h-6"></div>
+                                    <div class="w-1 bg-white rounded-t animate-pulse h-3"></div>
+                                    <div class="w-1 bg-white rounded-t animate-pulse h-5"></div>
                                 </div>
                             </div>
                             <div class="text-center pt-1"><span class="text-[9px] text-slate-500">Ventana flotante independiente de Windows</span></div>
@@ -1962,12 +2008,39 @@
                                         </div>
                                     )}
                                     <div className="flex flex-col justify-center min-w-0 flex-1">
-                                        <div className="orbitron text-xs sm:text-sm md:text-base font-bold text-green-400 tracking-wider truncate">
-                                            {currentStation ? currentStation.title.toUpperCase() : 'SELECCIONE UNA ESTACIÓN'}
+                                        <div className="flex items-center gap-3">
+                                            <div className="orbitron text-xs sm:text-sm md:text-base font-bold text-green-400 tracking-wider truncate">
+                                                {currentStation ? currentStation.title.toUpperCase() : 'SELECCIONE UNA ESTACIÓN'}
+                                            </div>
                                         </div>
                                         <div className="text-[10px] sm:text-xs text-green-600 tracking-tight mt-1 truncate">
                                             {streamError ? 'ESTADO: ERROR DE STREAMING' : isLoading ? 'ESTADO: CONECTANDO...' : isPlaying && isPowerOn ? 'ESTADO: REPRODUCIENDO' : 'LISTA PARA REPRODUCIR'}
                                         </div>
+                                    </div>
+                                </div>
+
+                                {/* Oscilloscope Real-Time Audio Wave Visualizer inside LCD Screen */}
+                                <div className="flex items-center justify-center flex-1 px-2 sm:px-4 py-2 w-full">
+                                    <div className="w-full h-12 bg-black/90 rounded-xl border border-green-500/50 shadow-[inset_0_0_20px_rgba(34,197,94,0.25)] flex items-center justify-center overflow-hidden px-2 relative">
+                                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-950/30 via-transparent to-transparent pointer-events-none"></div>
+                                        <div className="absolute inset-0 flex items-center justify-center"><div className="w-full h-[1px] bg-green-500/20"></div></div>
+                                        <svg viewBox="0 0 350 50" className="w-full h-full overflow-visible">
+                                            <defs>
+                                                <filter id="oscilloscopeGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                                    <feGaussianBlur stdDeviation="2.5" result="blur" />
+                                                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                                </filter>
+                                            </defs>
+                                            <polyline 
+                                                fill="none" 
+                                                stroke="#22c55e" 
+                                                strokeWidth="2.2" 
+                                                strokeLinecap="round" 
+                                                strokeLinejoin="round" 
+                                                points={oscilloscopePoints} 
+                                                filter="url(#oscilloscopeGlow)"
+                                            />
+                                        </svg>
                                     </div>
                                 </div>
 
@@ -2008,46 +2081,24 @@
                             </div>
                         </div>
 
-                        <div className="lg:col-span-6 cyber-deck p-4 sm:p-5 flex flex-col space-y-4" style={{ backgroundImage: `linear-gradient(135deg, rgba(13, 30, 38, 0.92) 0%, rgba(6, 14, 19, 0.96) 100%), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhzGl4XNn3xIt050NDnFHsLxCu3IAck1NHPEFt4CfGKyUIC_kHc5nYg9lKOCsWf2QgaLlD3ayD70uDdaMS9QtAHpgSSk6LX_PkL32dpCR1CLTcjmLahW6JS9FP597uXAA19WmLa6djHQti6HcDxjK5vWKeZDgVTYBxKru-5w0ArDuoJYpiqB8sbfjQF58/s320/Gemini_Generated_Image_mw4gatmw4gatmw4g.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-                            <div className="flex justify-between items-center border-b border-cyan-900/40 pb-2">
-                                <span className="orbitron text-[10px] sm:text-xs font-bold text-cyan-400 tracking-wider">BOX PLAY TV EQUALIZER</span>
-                                <span className="text-[10px] text-green-400 font-mono">LIVE SPECTRUM</span>
+                        {/* Columna izquierda inferior con el Logotipo Oficial Animado Neón */}
+                        <div className="lg:col-span-6 cyber-deck p-4 sm:p-5 flex flex-col justify-center items-center h-[340px] sm:h-[380px]" style={{ backgroundImage: `linear-gradient(135deg, rgba(13, 30, 38, 0.92) 0%, rgba(6, 14, 19, 0.96) 100%), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhzGl4XNn3xIt050NDnFHsLxCu3IAck1NHPEFt4CfGKyUIC_kHc5nYg9lKOCsWf2QgaLlD3ayD70uDdaMS9QtAHpgSSk6LX_PkL32dpCR1CLTcjmLahW6JS9FP597uXAA19WmLa6djHQti6HcDxjK5vWKeZDgVTYBxKru-5w0ArDuoJYpiqB8sbfjQF58/s320/Gemini_Generated_Image_mw4gatmw4gatmw4g.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                            <div className="w-full flex justify-between items-center border-b border-cyan-900/40 pb-2 mb-4">
+                                <span className="orbitron text-[10px] sm:text-xs font-bold text-cyan-400 tracking-wider">BOX PLAY TV OFFICIAL BRAND</span>
+                                <span className="text-[10px] text-green-400 font-mono">LIVE IDENTITY</span>
                             </div>
-
-                            <div className="grid grid-cols-6 gap-1 sm:gap-2 py-3 px-2 bg-black/50 rounded border border-cyan-950 items-center justify-items-center">
-                                <div className="flex flex-col items-center space-y-2">
-                                    <input type="range" min="0" max="100" defaultValue="70" className="w-16 sm:w-20 -rotate-90 my-5 sm:my-6 accent-cyan-500"/>
-                                    <span className="text-[9px] sm:text-[10px] text-cyan-300 font-mono font-bold">60Hz</span>
+                            <div className="flex flex-col items-center justify-center text-center space-y-3 py-2">
+                                <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-3xl overflow-hidden bg-black/60 border-2 border-cyan-500/60 shadow-[0_0_30px_rgba(6,182,212,0.4)] flex items-center justify-center p-2 logo-glow-anim">
+                                    <img src={LOGO_IMAGE_URL} alt="Boxplaytv Logo" className="w-full h-full object-contain rounded-2xl" onError={(e)=>{e.target.style.display='none';}} />
                                 </div>
-                                <div className="flex flex-col items-center space-y-2">
-                                    <input type="range" min="0" max="100" defaultValue="85" className="w-16 sm:w-20 -rotate-90 my-5 sm:my-6 accent-cyan-500"/>
-                                    <span className="text-[9px] sm:text-[10px] text-cyan-300 font-mono font-bold">230Hz</span>
-                                </div>
-                                <div className="flex flex-col items-center space-y-2">
-                                    <input type="range" min="0" max="100" defaultValue="50" className="w-16 sm:w-20 -rotate-90 my-5 sm:my-6 accent-cyan-500"/>
-                                    <span className="text-[9px] sm:text-[10px] text-cyan-300 font-mono font-bold">1kHz</span>
-                                </div>
-                                <div className="flex flex-col items-center space-y-2">
-                                    <input type="range" min="0" max="100" defaultValue="75" className="w-16 sm:w-20 -rotate-90 my-5 sm:my-6 accent-cyan-500"/>
-                                    <span className="text-[9px] sm:text-[10px] text-cyan-300 font-mono font-bold">4kHz</span>
-                                </div>
-                                <div className="flex flex-col items-center space-y-2">
-                                    <input type="range" min="0" max="100" defaultValue="90" className="w-16 sm:w-20 -rotate-90 my-5 sm:my-6 accent-cyan-500"/>
-                                    <span className="text-[9px] sm:text-[10px] text-cyan-300 font-mono font-bold">12kHz</span>
-                                </div>
-                                <div className="flex flex-col items-center justify-end h-32 space-y-1 w-full bg-black/70 p-1.5 rounded border border-cyan-950">
-                                    <div className="w-full flex justify-between items-end h-full px-1 space-x-1">
-                                        <div className="w-1.5 bg-green-500 rounded-t transition-all duration-75 shadow-[0_0_6px_rgba(34,197,94,0.8)]" style={{ height: `${spectrumHeights[0]}%` }}></div>
-                                        <div className="w-1.5 bg-green-400 rounded-t transition-all duration-75 shadow-[0_0_6px_rgba(34,197,94,0.8)]" style={{ height: `${spectrumHeights[1]}%` }}></div>
-                                        <div className="w-1.5 bg-cyan-400 rounded-t transition-all duration-75 shadow-[0_0_6px_rgba(56,189,248,0.8)]" style={{ height: `${spectrumHeights[2]}%` }}></div>
-                                        <div className="w-1.5 bg-amber-400 rounded-t transition-all duration-75 shadow-[0_0_6px_rgba(251,191,36,0.8)]" style={{ height: `${spectrumHeights[3]}%` }}></div>
-                                    </div>
-                                    <span className="text-[9px] text-cyan-400 font-bold">RHYTHM</span>
+                                <div>
+                                    <h3 className="orbitron text-sm sm:text-base font-black text-white tracking-wider">BOXPLAY<span className="text-cyan-400">TV</span></h3>
+                                    <p className="text-[10px] sm:text-xs text-slate-400 font-mono mt-0.5">Streaming & Radio HD Experience</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="lg:col-span-6 cyber-deck p-4 sm:p-5 flex flex-col h-[520px] sm:h-[600px]" style={{ backgroundImage: `linear-gradient(135deg, rgba(13, 30, 38, 0.92) 0%, rgba(6, 14, 19, 0.96) 100%), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhzGl4XNn3xIt050NDnFHsLxCu3IAck1NHPEFt4CfGKyUIC_kHc5nYg9lKOCsWf2QgaLlD3ayD70uDdaMS9QtAHpgSSk6LX_PkL32dpCR1CLTcjmLahW6JS9FP597uXAA19WmLa6djHQti6HcDxjK5vWKeZDgVTYBxKru-5w0ArDuoJYpiqB8sbfjQF58/s320/Gemini_Generated_Image_mw4gatmw4gatmw4g.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                        <div className="lg:col-span-6 cyber-deck p-4 sm:p-5 flex flex-col h-[340px] sm:h-[380px]" style={{ backgroundImage: `linear-gradient(135deg, rgba(13, 30, 38, 0.92) 0%, rgba(6, 14, 19, 0.96) 100%), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhzGl4XNn3xIt050NDnFHsLxCu3IAck1NHPEFt4CfGKyUIC_kHc5nYg9lKOCsWf2QgaLlD3ayD70uDdaMS9QtAHpgSSk6LX_PkL32dpCR1CLTcjmLahW6JS9FP597uXAA19WmLa6djHQti6HcDxjK5vWKeZDgVTYBxKru-5w0ArDuoJYpiqB8sbfjQF58/s320/Gemini_Generated_Image_mw4gatmw4gatmw4g.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                             <div className="flex justify-between items-center mb-3 pb-2 border-b border-cyan-900/40 gap-2">
                                 <span className="orbitron text-[10px] sm:text-xs font-bold text-cyan-400 whitespace-nowrap">BOX PLAY TV PLAYLIST ({stations.length})</span>
                                 <div className="relative w-36 sm:w-52">
