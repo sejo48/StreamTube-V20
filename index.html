@@ -526,12 +526,12 @@
                         if (analyserRef.current && isRadioPlaying && isPowerOn) {
                             analyserRef.current.getByteTimeDomainData(dataArray);
                             let pts = [];
-                            const totalPoints = 60;
+                            const totalPoints = 65;
                             const step = Math.floor(bufferLength / totalPoints);
                             for (let i = 0; i < totalPoints; i++) {
                                 const v = dataArray[i * step] / 128.0; // 0 to 2, center at 1.0
                                 const x = Math.round((i / (totalPoints - 1)) * 350);
-                                const y = Math.max(5, Math.min(45, Math.round(25 + (v - 1) * 20)));
+                                const y = Math.max(3, Math.min(47, Math.round(25 + (v - 1) * 22)));
                                 pts.push(`${x},${y}`);
                             }
                             setOscilloscopePoints(pts.join(' '));
