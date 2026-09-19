@@ -467,7 +467,7 @@
             const [streamError, setStreamError] = useState('');
             const [isLoadingRadio, setIsLoadingRadio] = useState(false);
             const [radioSearchQuery, setRadioSearchQuery] = useState('');
-            const [radioCategory, setRadioCategory] = useState('all');
+            const [radioCategory, setRadioCategory] = useState('nacionales');
             const [clockTime, setClockTime] = useState('00:00:00');
             const [oscilloscopePoints, setOscilloscopePoints] = useState('0,25 35,22 70,28 105,15 140,25 175,18 210,32 245,20 280,25 315,12 350,25');
 
@@ -1941,7 +1941,6 @@
 
                                 {/* Category Filters */}
                                 <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-3 custom-scrollbar text-xs">
-                                    <button onClick={() => setSelectedCategory('all')} className={`px-4 py-1.5 rounded-xl font-medium transition-all whitespace-nowrap ${selectedCategory === 'all' ? 'bg-cyan-500 text-black font-bold shadow-lg shadow-cyan-500/30' : 'bg-black/40 text-gray-400 hover:text-white border border-white/5'}`}>Todas</button>
                                     <button onClick={() => setSelectedCategory('favorites')} className={`px-4 py-1.5 rounded-xl font-medium transition-all whitespace-nowrap ${selectedCategory === 'favorites' ? 'bg-cyan-500 text-black font-bold shadow-lg shadow-cyan-500/30' : 'bg-black/40 text-gray-400 hover:text-white border border-white/5'}`}>⭐ Favoritas</button>
                                     <button onClick={() => setSelectedCategory('nacionales')} className={`px-4 py-1.5 rounded-xl font-medium transition-all whitespace-nowrap ${selectedCategory === 'nacionales' ? 'bg-cyan-500 text-black font-bold shadow-lg shadow-cyan-500/30' : 'bg-black/40 text-gray-400 hover:text-white border border-white/5'}`}>Costa Rica</button>
                                     <button onClick={() => setSelectedCategory('global')} className={`px-4 py-1.5 rounded-xl font-medium transition-all whitespace-nowrap ${selectedCategory === 'global' ? 'bg-cyan-500 text-black font-bold shadow-lg shadow-cyan-500/30' : 'bg-black/40 text-gray-400 hover:text-white border border-white/5'}`}>Global</button>
