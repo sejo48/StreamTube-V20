@@ -2380,7 +2380,7 @@
                 </div>
             );
         });
-        // Sección Colección Musical: Reproductor Incorporado Directamente en la Portada (Estilo Spotify Pro + Mobile Auto-Scroll)
+        // Sección Colección Musical: Diseño Profesional Amplio Estilo Spotify (PC Expansivo + Mobile Perfecto)
         const ClassicMusicSection = ({ albumsData = FALLBACK_ALBUMS }) => {
             const [selectedGenre, setSelectedGenre] = useState('TODOS');
             const [activeAlbum, setActiveAlbum] = useState(albumsData[0]);
@@ -2402,7 +2402,7 @@
 
             const genres = ['TODOS', 'Rock', 'Pop', 'Baladas', 'Reggae', 'Disco', 'Jazz', 'Clásica'];
 
-            // Función para subir automáticamente al inicio de la página donde se encuentra el álbum y el reproductor
+            // Función para subir suavemente arriba donde se encuentra el álbum y su reproductor
             const scrollToTop = () => {
                 try {
                     if (topSectionRef.current) {
@@ -2413,7 +2413,6 @@
                 } catch (e) {
                     window.scrollTo(0, 0);
                 }
-                // Refuerzo en móviles para asegurar que la vista suba arriba de inmediato
                 setTimeout(() => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }, 60);
@@ -2516,7 +2515,7 @@
                 }).catch(e => console.warn("Error al reproducir audio:", e));
             };
 
-            // Al elegir un álbum en móviles o PC: cambia de álbum y SUBE AUTOMÁTICAMENTE A LA PORTADA
+            // Al elegir un álbum en PC o móvil: cambia de álbum y SUBE AUTOMÁTICAMENTE A LA PORTADA
             const handleSelectAlbum = (alb) => {
                 if (!alb) return;
 
@@ -2528,7 +2527,6 @@
                     handleTogglePlayCurrentAlbum();
                 }
 
-                // En pantallas móviles y escritorio: la página sube inmediatamente arriba en automático
                 scrollToTop();
             };
 
@@ -2581,7 +2579,7 @@
                 return matchGenre;
             });
 
-            // Pista activa y datos de Archive.org
+            // Pista activa y datos de Archive.org o Audio
             const currentTrackIdx = (currentPlayback.albumId === activeAlbum?.id && currentPlayback.trackIndex >= 0) 
                 ? currentPlayback.trackIndex 
                 : 0;
@@ -2591,112 +2589,110 @@
             const isPlayingThisAlbum = currentPlayback.albumId === activeAlbum?.id && isPlaying;
 
             return (
-                <div ref={topSectionRef} id="coleccion-top" className="min-h-[85vh] bg-[#0c0f17] text-white flex flex-col pb-28 animate-fade-in select-none">
-                    {/* Contenedor Principal Adaptable a Pantallas Móviles */}
-                    <div className="flex-1 flex flex-col lg:flex-row p-3 sm:p-6 lg:p-8 gap-5 sm:gap-8 max-w-7xl mx-auto w-full">
+                <div ref={topSectionRef} id="coleccion-top" className="min-h-[85vh] bg-[#090d16] text-white flex flex-col pb-32 animate-fade-in select-none">
+                    {/* Contenedor Principal Amplio (En PC aprovecha toda la pantalla hasta 1650px) */}
+                    <div className="flex-1 flex flex-col p-3 sm:p-6 lg:p-10 gap-8 max-w-[1650px] mx-auto w-full">
                         
-                        {/* Columna Izquierda: PORTADA CON REPRODUCTOR INCORPORADO + Metadatos + Lista de Canciones */}
-                        <div className="w-full lg:w-7/12 flex flex-col space-y-5 sm:space-y-6">
+                        {/* 1. SECCIÓN SUPERIOR: ÁLBUM ACTIVO (Banner Amplio estilo Spotify) */}
+                        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 bg-gradient-to-b from-cyan-950/30 via-[#101726]/80 to-[#0a0e1a] p-4 sm:p-6 lg:p-8 rounded-3xl border border-white/5 shadow-2xl">
                             
-                            {/* CABECERA: Portada Integrada con su propio Reproductor (Optimizado para Móviles) */}
-                            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 bg-gradient-to-b from-cyan-950/30 via-[#111827]/80 to-[#0b0f19] p-4 sm:p-6 rounded-2xl border border-white/5 shadow-2xl">
-                                
-                                {/* BLOQUE DE PORTADA CON EL REPRODUCTOR INCORPORADO DIRECTAMENTE */}
-                                <div className="w-full sm:w-56 md:w-60 flex-shrink-0 flex flex-col items-center">
-                                    <div className="w-full max-w-[210px] sm:max-w-none rounded-2xl overflow-hidden shadow-[0_12px_35px_rgba(0,0,0,0.85)] border border-cyan-500/40 bg-[#080c14] flex flex-col">
-                                        {/* Imagen de la Carátula */}
-                                        <div className="w-full aspect-square relative bg-black overflow-hidden group">
-                                            <img 
-                                                src={activeAlbum.cover} 
-                                                alt={activeAlbum.album} 
-                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                                            />
-                                            {isPlayingThisAlbum && (
-                                                <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-cyan-400 text-black font-mono text-[9px] font-black uppercase tracking-wider shadow-lg flex items-center gap-1 animate-pulse">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-black"></span>
-                                                    Sonando
-                                                </div>
-                                            )}
+                            {/* PORTADA CON REPRODUCTOR FÍSICO INCORPORADO */}
+                            <div className="w-full sm:w-56 md:w-64 lg:w-72 flex-shrink-0 flex flex-col items-center mx-auto lg:mx-0">
+                                <div className="w-full max-w-[210px] sm:max-w-[250px] lg:max-w-none rounded-2xl overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.85)] border border-cyan-500/40 bg-[#080c14] flex flex-col">
+                                    {/* Imagen de la Portada */}
+                                    <div className="w-full aspect-square relative bg-black overflow-hidden group">
+                                        <img 
+                                            src={activeAlbum.cover} 
+                                            alt={activeAlbum.album} 
+                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                                        />
+                                        {isPlayingThisAlbum && (
+                                            <div className="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full bg-cyan-400 text-black font-mono text-[9px] font-black uppercase tracking-wider shadow-lg flex items-center gap-1 animate-pulse">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-black"></span>
+                                                Sonando
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* REPRODUCTOR INCORPORADO EN LA MISMA PORTADA */}
+                                    <div className="p-2.5 sm:p-3 bg-[#05070d] border-t border-cyan-500/30 flex flex-col gap-1.5">
+                                        <div className="flex items-center justify-between text-[10px] font-mono text-cyan-300 font-bold px-0.5">
+                                            <span className="flex items-center gap-1 truncate max-w-[140px] sm:max-w-[160px]">
+                                                <Icon name="music" size={11} className="text-cyan-400 flex-shrink-0" />
+                                                <span className="truncate">{activeTrack?.title || activeAlbum.album}</span>
+                                            </span>
+                                            <span className="text-[8px] text-amber-300 bg-amber-500/20 px-1 py-0.2 rounded border border-amber-500/30 font-bold uppercase">
+                                                {isCurrentArchive ? 'Archive' : 'Audio HD'}
+                                            </span>
                                         </div>
 
-                                        {/* REPRODUCTOR INCORPORADO DIRECTAMENTE EN LA MISMA PORTADA */}
-                                        <div className="p-2 sm:p-2.5 bg-[#05070d] border-t border-cyan-500/30 flex flex-col gap-1.5">
-                                            <div className="flex items-center justify-between text-[10px] font-mono text-cyan-300 font-bold px-0.5">
-                                                <span className="flex items-center gap-1 truncate max-w-[130px]">
-                                                    <Icon name="music" size={11} className="text-cyan-400 flex-shrink-0" />
-                                                    <span className="truncate">{activeTrack?.title || activeAlbum.album}</span>
-                                                </span>
-                                                <span className="text-[8px] text-amber-300 bg-amber-500/20 px-1 py-0.2 rounded border border-amber-500/30 font-bold uppercase">
-                                                    {isCurrentArchive ? 'Archive' : 'HD'}
-                                                </span>
+                                        {/* Reproductor de Archive.org o Audio Directo */}
+                                        {isCurrentArchive ? (
+                                            <div className="w-full h-[46px] overflow-hidden rounded-lg bg-black border border-cyan-500/50 shadow-inner flex items-center">
+                                                <ArchivePlayer 
+                                                    key={`${activeAlbum.id}-${currentTrackIdx}`}
+                                                    archiveId={activeTrackArchiveId} 
+                                                    title={activeTrack?.title}
+                                                    height="46"
+                                                    autoPlay={isPlayingThisAlbum}
+                                                />
                                             </div>
-
-                                            {/* Si es Archive.org: La barra de audio con el botón PLAY está AQUÍ MISMO en la portada */}
-                                            {isCurrentArchive ? (
-                                                <div className="w-full h-[46px] overflow-hidden rounded-lg bg-black border border-cyan-500/50 shadow-inner flex items-center">
-                                                    <ArchivePlayer 
-                                                        key={`${activeAlbum.id}-${currentTrackIdx}`}
-                                                        archiveId={activeTrackArchiveId} 
-                                                        title={activeTrack?.title}
-                                                        height="46"
-                                                        autoPlay={isPlayingThisAlbum}
-                                                    />
+                                        ) : (
+                                            <div className="w-full flex flex-col gap-1 bg-black/80 p-1.5 rounded-lg border border-white/10">
+                                                <div className="flex items-center justify-between text-[9px] font-mono text-slate-400 px-1">
+                                                    <span>{formatTime(currentTime)}</span>
+                                                    <span>{formatTime(duration)}</span>
                                                 </div>
-                                            ) : (
-                                                /* Controles nativos en la portada */
-                                                <div className="w-full flex flex-col gap-1 bg-black/80 p-1.5 rounded-lg border border-white/10">
-                                                    <div className="flex items-center justify-between text-[9px] font-mono text-slate-400 px-1">
-                                                        <span>{formatTime(currentTime)}</span>
-                                                        <span>{formatTime(duration)}</span>
-                                                    </div>
-                                                    <input 
-                                                        type="range" 
-                                                        min="0" max="100" 
-                                                        value={progress} 
-                                                        onChange={(e) => {
-                                                            const val = parseFloat(e.target.value);
-                                                            setProgress(val);
-                                                            if (audioRef.current && audioRef.current.duration) {
-                                                                audioRef.current.currentTime = (val / 100) * audioRef.current.duration;
-                                                            }
-                                                        }}
-                                                        className="w-full h-1 bg-white/20 rounded-full accent-cyan-400 cursor-pointer"
-                                                    />
-                                                    <div className="flex items-center justify-center gap-3 pt-0.5">
-                                                        <button onClick={prevTrack} className="text-slate-400 hover:text-white transition-colors p-1">
-                                                            <i className="fas fa-backward-step text-xs"></i>
-                                                        </button>
-                                                        <button 
-                                                            onClick={togglePlayPause} 
-                                                            className="w-7 h-7 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-md hover:scale-105 transition-transform"
-                                                        >
-                                                            <Icon name={isPlaying ? "pause" : "play"} size={12} fill="currentColor" />
-                                                        </button>
-                                                        <button onClick={nextTrack} className="text-slate-400 hover:text-white transition-colors p-1">
-                                                            <i className="fas fa-forward-step text-xs"></i>
-                                                        </button>
-                                                    </div>
+                                                <input 
+                                                    type="range" 
+                                                    min="0" max="100" 
+                                                    value={progress} 
+                                                    onChange={(e) => {
+                                                        const val = parseFloat(e.target.value);
+                                                        setProgress(val);
+                                                        if (audioRef.current && audioRef.current.duration) {
+                                                            audioRef.current.currentTime = (val / 100) * audioRef.current.duration;
+                                                        }
+                                                    }}
+                                                    className="w-full h-1 bg-white/20 rounded-full accent-cyan-400 cursor-pointer"
+                                                />
+                                                <div className="flex items-center justify-center gap-3 pt-0.5">
+                                                    <button onClick={prevTrack} className="text-slate-400 hover:text-white transition-colors p-1" title="Anterior">
+                                                        <i className="fas fa-backward-step text-xs"></i>
+                                                    </button>
+                                                    <button 
+                                                        onClick={togglePlayPause} 
+                                                        className="w-7 h-7 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-md hover:scale-105 transition-transform"
+                                                        title={isPlaying ? "Pausar" : "Reproducir"}
+                                                    >
+                                                        <Icon name={isPlaying ? "pause" : "play"} size={12} fill="currentColor" />
+                                                    </button>
+                                                    <button onClick={nextTrack} className="text-slate-400 hover:text-white transition-colors p-1" title="Siguiente">
+                                                        <i className="fas fa-forward-step text-xs"></i>
+                                                    </button>
                                                 </div>
-                                            )}
-
-                                            <div className="text-[9px] text-center text-slate-400 pt-0.5">
-                                                <span>Presiona el <b className="text-cyan-400">Play</b> de arriba para escuchar</span>
                                             </div>
+                                        )}
+
+                                        <div className="text-[9px] text-center text-slate-400 pt-0.5">
+                                            <span>Presiona el <b className="text-cyan-400">Play</b> de arriba para escuchar</span>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                {/* Metadatos del Álbum al lado de la portada */}
-                                <div className="flex flex-col text-center sm:text-left space-y-1.5 sm:space-y-2 flex-1 min-w-0">
+                            {/* Metadatos del Álbum + Lista de Canciones */}
+                            <div className="flex-1 flex flex-col justify-between space-y-4 min-w-0">
+                                <div className="flex flex-col text-center sm:text-left space-y-2">
                                     <span className="text-[10px] sm:text-[11px] font-bold tracking-widest uppercase text-cyan-400">
                                         Álbum • Colección BoxPlay
                                     </span>
                                     
-                                    <h1 className="text-xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
+                                    <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
                                         {activeAlbum.album}
                                     </h1>
 
-                                    <div className="flex items-center justify-center sm:justify-start flex-wrap gap-1.5 sm:gap-2 text-xs sm:text-sm text-slate-300 font-medium pt-0.5">
+                                    <div className="flex items-center justify-center sm:justify-start flex-wrap gap-2 text-xs sm:text-sm text-slate-300 font-medium pt-0.5">
                                         <span className="font-bold text-white hover:underline cursor-pointer">
                                             {activeAlbum.artist}
                                         </span>
@@ -2705,24 +2701,23 @@
                                         <span>•</span>
                                         <span className="text-slate-400">{activeAlbum.tracks?.length || 0} pistas</span>
                                         <span>•</span>
-                                        <span className="px-2 py-0.5 rounded-full bg-white/10 text-[9px] font-mono text-cyan-300">
+                                        <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-mono text-cyan-300">
                                             {activeAlbum.genre}
                                         </span>
                                     </div>
 
-                                    <p className="text-xs text-slate-400 line-clamp-2 sm:line-clamp-3 pt-0.5 font-normal leading-relaxed">
+                                    <p className="text-xs sm:text-sm text-slate-400 line-clamp-2 pt-1 font-normal leading-relaxed">
                                         {activeAlbum.description}
                                     </p>
 
-                                    {/* Botón de Favorito y Estado de Reproducción */}
-                                    <div className="pt-1.5 flex items-center justify-center sm:justify-start gap-3 flex-wrap">
+                                    <div className="pt-2 flex items-center justify-center sm:justify-start gap-3.5 flex-wrap">
                                         <button 
                                             onClick={() => toggleLikeAlbum(activeAlbum.id)}
-                                            className={`flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/10 text-xs font-semibold transition-colors ${likedAlbums.includes(activeAlbum.id) ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' : 'bg-white/5 text-slate-300 hover:text-white'}`}
+                                            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-white/10 text-xs font-semibold transition-colors ${likedAlbums.includes(activeAlbum.id) ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' : 'bg-white/5 text-slate-300 hover:text-white'}`}
                                             title="Guardar en favoritos"
                                         >
-                                            <Icon name="heart" size={13} fill={likedAlbums.includes(activeAlbum.id) ? "currentColor" : "none"} />
-                                            <span>{likedAlbums.includes(activeAlbum.id) ? 'Favorito' : 'Guardar'}</span>
+                                            <Icon name="heart" size={14} fill={likedAlbums.includes(activeAlbum.id) ? "currentColor" : "none"} />
+                                            <span>{likedAlbums.includes(activeAlbum.id) ? 'En Favoritos' : 'Guardar en Favoritos'}</span>
                                         </button>
 
                                         {isPlayingThisAlbum && (
@@ -2737,85 +2732,97 @@
                                         )}
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* LISTA DE PISTAS DEL ÁLBUM */}
-                            <div className="bg-[#111827]/40 backdrop-blur-md rounded-xl p-3 border border-white/5 flex flex-col">
-                                <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 border-b border-white/10 pb-2.5 px-2 uppercase tracking-wider">
-                                    <div className="flex items-center gap-3 sm:gap-4">
-                                        <span className="w-6 text-center">#</span>
-                                        <span>Título</span>
+                                {/* Tabla de Canciones estilo Spotify */}
+                                <div className="bg-[#05070d]/60 backdrop-blur-md rounded-2xl p-3 border border-white/5 flex flex-col mt-2">
+                                    <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 border-b border-white/10 pb-2 px-3 uppercase tracking-wider">
+                                        <div className="flex items-center gap-4">
+                                            <span className="w-6 text-center">#</span>
+                                            <span>Título de la Canción</span>
+                                        </div>
+                                        <span className="flex items-center gap-1 font-mono">
+                                            Duración
+                                        </span>
                                     </div>
-                                    <span className="flex items-center gap-1 font-mono">
-                                        Duración
-                                    </span>
-                                </div>
 
-                                <div className="divide-y divide-white/5 mt-1 overflow-y-auto max-h-[300px] sm:max-h-[350px] custom-scrollbar">
-                                    {activeAlbum.tracks.map((track, idx) => {
-                                        const isThisTrackPlaying = currentPlayback.albumId === activeAlbum.id 
-                                            && currentPlayback.trackIndex === idx 
-                                            && isPlaying;
-                                        const isArchive = isArchiveTrack(track);
+                                    <div className="divide-y divide-white/5 mt-1 overflow-y-auto max-h-[220px] lg:max-h-[250px] custom-scrollbar">
+                                        {activeAlbum.tracks.map((track, idx) => {
+                                            const isThisTrackPlaying = currentPlayback.albumId === activeAlbum.id 
+                                                && currentPlayback.trackIndex === idx 
+                                                && isPlaying;
+                                            const isArchive = isArchiveTrack(track);
 
-                                        return (
-                                            <div 
-                                                key={idx}
-                                                onClick={() => {
-                                                    playTrack(activeAlbum, idx);
-                                                    scrollToTop();
-                                                }}
-                                                className={`flex items-center justify-between py-2.5 px-2 rounded-lg cursor-pointer transition-all group ${isThisTrackPlaying ? 'bg-white/10 text-cyan-400' : 'hover:bg-white/5 text-slate-300'}`}
-                                            >
-                                                <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-                                                    <div className="w-6 text-center flex items-center justify-center">
-                                                        {isThisTrackPlaying ? (
-                                                            <span className="flex gap-0.5 items-end h-3 text-cyan-400">
-                                                                <span className="w-0.5 bg-cyan-400 animate-pulse h-full rounded-full"></span>
-                                                                <span className="w-0.5 bg-cyan-400 animate-pulse delay-100 h-2/3 rounded-full"></span>
-                                                                <span className="w-0.5 bg-cyan-400 animate-pulse delay-200 h-4/5 rounded-full"></span>
-                                                            </span>
-                                                        ) : (
-                                                            <>
-                                                                <span className="text-xs font-mono text-slate-400 group-hover:hidden">{idx + 1}</span>
-                                                                <span className="hidden group-hover:block text-white text-xs">▶</span>
-                                                            </>
-                                                        )}
-                                                    </div>
-                                                    <div className="min-w-0">
-                                                        <p className={`text-xs sm:text-sm font-semibold truncate ${isThisTrackPlaying ? 'text-cyan-400 font-bold' : 'text-white'}`}>
-                                                            {track.title}
-                                                        </p>
-                                                        <p className="text-[10px] sm:text-xs text-slate-400 truncate flex items-center gap-1.5">
-                                                            <span>{activeAlbum.artist}</span>
-                                                            {isArchive && (
-                                                                <span className="text-[8px] font-mono px-1 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40">
-                                                                    ARCHIVE
+                                            return (
+                                                <div 
+                                                    key={idx}
+                                                    onClick={() => {
+                                                        playTrack(activeAlbum, idx);
+                                                        scrollToTop();
+                                                    }}
+                                                    className={`flex items-center justify-between py-2 px-3 rounded-xl cursor-pointer transition-all group ${isThisTrackPlaying ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/30' : 'hover:bg-white/5 text-slate-300'}`}
+                                                >
+                                                    <div className="flex items-center gap-4 min-w-0">
+                                                        <div className="w-6 text-center flex items-center justify-center">
+                                                            {isThisTrackPlaying ? (
+                                                                <span className="flex gap-0.5 items-end h-3 text-cyan-400">
+                                                                    <span className="w-0.5 bg-cyan-400 animate-pulse h-full rounded-full"></span>
+                                                                    <span className="w-0.5 bg-cyan-400 animate-pulse delay-100 h-2/3 rounded-full"></span>
+                                                                    <span className="w-0.5 bg-cyan-400 animate-pulse delay-200 h-4/5 rounded-full"></span>
                                                                 </span>
+                                                            ) : (
+                                                                <>
+                                                                    <span className="text-xs font-mono text-slate-400 group-hover:hidden">{idx + 1}</span>
+                                                                    <span className="hidden group-hover:block text-white text-xs">▶</span>
+                                                                </>
                                                             )}
-                                                        </p>
+                                                        </div>
+                                                        <div className="min-w-0">
+                                                            <p className={`text-sm font-semibold truncate ${isThisTrackPlaying ? 'text-cyan-400 font-bold' : 'text-white'}`}>
+                                                                {track.title}
+                                                            </p>
+                                                            <p className="text-[11px] text-slate-400 truncate flex items-center gap-2">
+                                                                <span>{activeAlbum.artist}</span>
+                                                                {isArchive && (
+                                                                    <span className="text-[8px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40">
+                                                                        ARCHIVE
+                                                                    </span>
+                                                                )}
+                                                            </p>
+                                                        </div>
                                                     </div>
+                                                    <span className="text-xs font-mono text-slate-400">{track.duration || '—'}</span>
                                                 </div>
-                                                <span className="text-xs font-mono text-slate-400">{track.duration || '—'}</span>
-                                            </div>
-                                        );
-                                    })}
+                                            );
+                                        })}
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Columna Derecha: Catálogo "Explorar Álbumes" (Al hacer tap en cualquiera, SUBE ARRIBA EN AUTOMÁTICO) */}
-                        <div className="w-full lg:w-5/12 flex flex-col space-y-3 sm:space-y-4 pt-2 lg:pt-0">
-                            <div className="flex items-center justify-between flex-wrap gap-2">
-                                <h2 className="text-sm sm:text-base font-black text-white tracking-tight flex items-center gap-1.5">
-                                    <Icon name="disc" size={15} className="text-cyan-400" /> Explorar Álbumes
-                                </h2>
-                                <div className="flex gap-1 overflow-x-auto no-scrollbar">
+                        {/* 2. SECCIÓN INFERIOR: EXPLORAR COLECCIÓN COMPLETA (AMPLIA, PROFESIONAL EN PC, SIN CAJÓN) */}
+                        <div className="flex flex-col space-y-4 pt-4">
+                            <div className="flex items-center justify-between flex-wrap gap-3 pb-2 border-b border-white/10">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 shadow-sm">
+                                        <Icon name="disc" size={18} />
+                                    </div>
+                                    <div>
+                                        <h2 className="text-lg sm:text-2xl font-black text-white tracking-tight">
+                                            Explorar Colección de Discos
+                                        </h2>
+                                        <p className="text-xs text-slate-400 hidden sm:block">
+                                            Catálogo completo de joyas musicales clásicas
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Filtros de Género estilo Spotify */}
+                                <div className="flex gap-1.5 overflow-x-auto no-scrollbar py-1">
                                     {genres.map(g => (
                                         <button 
                                             key={g} 
                                             onClick={() => setSelectedGenre(g)}
-                                            className={`px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold transition-all whitespace-nowrap ${selectedGenre === g ? 'bg-white text-black' : 'bg-white/10 text-slate-300 hover:text-white'}`}
+                                            className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap ${selectedGenre === g ? 'bg-cyan-400 text-black shadow-md shadow-cyan-400/25' : 'bg-white/5 text-slate-300 hover:text-white hover:bg-white/10 border border-white/5'}`}
                                         >
                                             {g}
                                         </button>
@@ -2823,7 +2830,8 @@
                                 </div>
                             </div>
 
-                            <div className="grid grid-cols-2 gap-3 sm:gap-4 overflow-y-auto max-h-[500px] sm:max-h-[600px] custom-scrollbar pr-0.5">
+                            {/* Cuadrícula Amplia y Espaciosa (En PC muestra 5, 6 o 7 discos por fila, sin cajón de scroll) */}
+                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4 sm:gap-5 lg:gap-6 pt-2">
                                 {filteredAlbums.map(alb => {
                                     const isSelected = activeAlbum.id === alb.id;
                                     const isThisAlbumPlaying = currentPlayback.albumId === alb.id && isPlaying;
@@ -2831,25 +2839,32 @@
                                         <div 
                                             key={alb.id} 
                                             onClick={() => handleSelectAlbum(alb)}
-                                            className={`p-2.5 sm:p-3.5 rounded-xl cursor-pointer transition-all duration-300 group flex flex-col justify-between relative ${isThisAlbumPlaying ? 'bg-[#1e293b] ring-2 ring-cyan-400 shadow-[0_8px_20px_rgba(6,182,212,0.2)]' : isSelected ? 'bg-[#181f30]' : 'bg-[#111827]/70 hover:bg-[#181f30]'}`}
+                                            className={`p-3 rounded-2xl cursor-pointer transition-all duration-300 group flex flex-col justify-between relative ${isThisAlbumPlaying ? 'bg-[#1a233a] ring-2 ring-cyan-400 shadow-[0_12px_30px_rgba(6,182,212,0.3)] scale-[1.02]' : isSelected ? 'bg-[#151c2e] border border-cyan-500/40' : 'bg-[#0e1422]/90 hover:bg-[#182138] border border-white/5 hover:border-white/15 hover:shadow-xl hover:-translate-y-1'}`}
                                         >
-                                            <div className="aspect-square w-full rounded-lg overflow-hidden mb-2 sm:mb-3 relative bg-black shadow-md">
+                                            <div className="aspect-square w-full rounded-xl overflow-hidden mb-3 relative bg-black shadow-lg">
                                                 <img 
                                                     src={alb.cover} 
                                                     alt={alb.album} 
-                                                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+                                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
                                                 />
                                                 
-                                                {/* Botón Flotante */}
-                                                <div className={`absolute bottom-2 right-2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-2xl transition-all duration-300 ${isThisAlbumPlaying ? 'opacity-100 translate-y-0 scale-100 shadow-cyan-500/50' : 'opacity-90 sm:opacity-0 translate-y-0 sm:translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 hover:scale-110'}`}>
-                                                    <Icon name={isThisAlbumPlaying ? "pause" : "play"} size={14} fill="currentColor" />
+                                                {/* Botón Circular Flotante estilo Spotify */}
+                                                <div className={`absolute bottom-2.5 right-2.5 w-10 h-10 rounded-full bg-cyan-400 hover:bg-cyan-300 text-black flex items-center justify-center shadow-2xl transition-all duration-300 ${isThisAlbumPlaying ? 'opacity-100 translate-y-0 scale-100 shadow-cyan-500/50' : 'opacity-90 sm:opacity-0 translate-y-0 sm:translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 hover:scale-110'}`}>
+                                                    <Icon name={isThisAlbumPlaying ? "pause" : "play"} size={16} fill="currentColor" />
                                                 </div>
+
+                                                {/* Badge Sonando */}
+                                                {isThisAlbumPlaying && (
+                                                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-cyan-400 text-black font-mono text-[8px] font-black uppercase tracking-wider shadow">
+                                                        Sonando
+                                                    </div>
+                                                )}
                                             </div>
                                             <div>
-                                                <h4 className={`text-xs sm:text-sm font-bold truncate ${isThisAlbumPlaying ? 'text-cyan-400' : 'text-white'}`}>
+                                                <h4 className={`text-xs sm:text-sm font-bold truncate ${isThisAlbumPlaying ? 'text-cyan-400' : 'text-white group-hover:text-cyan-300 transition-colors'}`}>
                                                     {alb.album}
                                                 </h4>
-                                                <p className="text-[10px] sm:text-xs text-slate-400 truncate mt-0.5">
+                                                <p className="text-[11px] sm:text-xs text-slate-400 truncate mt-0.5">
                                                     {alb.artist}
                                                 </p>
                                             </div>
@@ -2862,6 +2877,7 @@
                 </div>
             );
         };
+
 
 
 
