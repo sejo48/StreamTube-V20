@@ -2369,7 +2369,7 @@
                 </div>
             );
         });
-        // Sección Colección Musical / Discos Clásicos con Archive.org (Estilo Spotify)
+        // Sección Colección Musical: Reproductor Incorporado Directamente en la Portada (Estilo Spotify Pro)
         const ClassicMusicSection = ({ albumsData = FALLBACK_ALBUMS }) => {
             const [selectedGenre, setSelectedGenre] = useState('TODOS');
             const [activeAlbum, setActiveAlbum] = useState(albumsData[0]);
@@ -2448,7 +2448,6 @@
                 const track = album.tracks[safeIdx];
                 if (!track) return;
 
-                // Si ya está reproduciendo este mismo track
                 if (currentPlayback.albumId === album.id && currentPlayback.trackIndex === safeIdx) {
                     if (isArchiveTrack(track)) {
                         setIsPlaying(!isPlaying);
@@ -2463,7 +2462,6 @@
                     return;
                 }
 
-                // Detener inmediatamente el audio anterior
                 stopAllAudio();
 
                 if (isArchiveTrack(track)) {
@@ -2488,7 +2486,7 @@
                 }).catch(e => console.warn("Error al reproducir audio:", e));
             };
 
-            // Un solo clic para cambiar de álbum y reproducir de inmediato (Estilo Spotify)
+            // Un solo clic para cambiar de álbum y reproducir de inmediato
             const handleSelectAlbum = (alb) => {
                 if (!alb) return;
 
@@ -2502,7 +2500,6 @@
                 handleTogglePlayCurrentAlbum();
             };
 
-            // Alternar reproducción del álbum activo con el botón principal de Spotify
             const handleTogglePlayCurrentAlbum = () => {
                 if (!activeAlbum) return;
                 const isThisAlbumPlaying = currentPlayback.albumId === activeAlbum.id && isPlaying;
@@ -2552,47 +2549,112 @@
                 return matchGenre;
             });
 
-            const currentPlayingAlbum = currentPlayback.albumId 
-                ? albumsData.find(a => a.id === currentPlayback.albumId) 
-                : activeAlbum;
-            const currentPlayingTrack = currentPlayingAlbum && currentPlayback.trackIndex !== -1 
-                ? currentPlayingAlbum.tracks[currentPlayback.trackIndex] 
-                : null;
-
-            const isCurrentArchive = isArchiveTrack(currentPlayingTrack);
+            // Pista activa y datos de Archive.org
+            const currentTrackIdx = (currentPlayback.albumId === activeAlbum?.id && currentPlayback.trackIndex >= 0) 
+                ? currentPlayback.trackIndex 
+                : 0;
+            const activeTrack = activeAlbum?.tracks?.[currentTrackIdx] || activeAlbum?.tracks?.[0] || null;
+            const isCurrentArchive = isArchiveTrack(activeTrack);
+            const activeTrackArchiveId = activeTrack?.archiveId || getArchiveIdFromUrl(activeTrack?.audio || activeAlbum?.musicUrl || '');
             const isPlayingThisAlbum = currentPlayback.albumId === activeAlbum?.id && isPlaying;
 
             return (
-                <div className="min-h-[85vh] bg-[#0c0f17] text-white flex flex-col pb-36 animate-fade-in select-none">
+                <div className="min-h-[85vh] bg-[#0c0f17] text-white flex flex-col pb-28 animate-fade-in select-none">
                     {/* Contenedor Principal */}
-                    <div className="flex-1 flex flex-col lg:flex-row p-4 sm:p-8 gap-8 max-w-7xl mx-auto w-full">
+                    <div className="flex-1 flex flex-col lg:flex-row p-3 sm:p-8 gap-6 sm:gap-8 max-w-7xl mx-auto w-full">
                         
-                        {/* Columna Izquierda: Vista del Álbum (Estilo Spotify Limpio) */}
+                        {/* Columna Izquierda: PORTADA CON REPRODUCTOR INCORPORADO + Metadatos + Lista de Canciones */}
                         <div className="w-full lg:w-7/12 flex flex-col space-y-6">
                             
-                            {/* 1. Spotify Album Header (Sin pantallas negras ni botones duplicados) */}
-                            <div className="flex flex-col sm:flex-row items-center sm:items-end gap-6 bg-gradient-to-b from-cyan-950/30 via-[#111827]/80 to-[#0b0f19] p-6 sm:p-8 rounded-2xl border border-white/5 shadow-2xl">
+                            {/* CABECERA: Portada Integrada con su propio Reproductor */}
+                            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 bg-gradient-to-b from-cyan-950/30 via-[#111827]/80 to-[#0b0f19] p-4 sm:p-7 rounded-2xl border border-white/5 shadow-2xl">
                                 
-                                {/* Carátula del Álbum estilo Spotify */}
-                                <div 
-                                    onClick={handleTogglePlayCurrentAlbum}
-                                    className="w-44 sm:w-52 aspect-square rounded-xl overflow-hidden shadow-[0_12px_32px_rgba(0,0,0,0.6)] flex-shrink-0 cursor-pointer group relative border border-white/10"
-                                    title={isPlayingThisAlbum ? "Pausar álbum" : "Reproducir álbum"}
-                                >
-                                    <img 
-                                        src={activeAlbum.cover} 
-                                        alt={activeAlbum.album} 
-                                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
-                                    />
-                                    {/* Hover sutil con botón de play */}
-                                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <div className="w-14 h-14 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-2xl transform scale-90 group-hover:scale-100 transition-transform">
-                                            <Icon name={isPlayingThisAlbum ? "pause" : "play"} size={22} fill="currentColor" />
+                                {/* BLOQUE DE PORTADA CON EL REPRODUCTOR INCORPORADO DIRECTAMENTE */}
+                                <div className="w-full sm:w-60 md:w-64 flex-shrink-0 flex flex-col items-center">
+                                    <div className="w-full max-w-[260px] sm:max-w-none rounded-2xl overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.85)] border border-cyan-500/30 bg-[#080c14] flex flex-col">
+                                        {/* Imagen de la Carátula */}
+                                        <div className="w-full aspect-square relative bg-black overflow-hidden group">
+                                            <img 
+                                                src={activeAlbum.cover} 
+                                                alt={activeAlbum.album} 
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                                            />
+                                            {isPlayingThisAlbum && (
+                                                <div className="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-full bg-cyan-400 text-black font-mono text-[9px] font-black uppercase tracking-wider shadow-lg flex items-center gap-1.5 animate-pulse">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-black"></span>
+                                                    En Reproducción
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* REPRODUCTOR INCORPORADO DIRECTAMENTE EN LA MISMA PORTADA */}
+                                        <div className="p-2.5 sm:p-3 bg-[#05070d] border-t border-cyan-500/30 flex flex-col gap-1.5">
+                                            <div className="flex items-center justify-between text-[10px] font-mono text-cyan-300 font-bold px-0.5">
+                                                <span className="flex items-center gap-1 truncate max-w-[150px]">
+                                                    <Icon name="music" size={12} className="text-cyan-400 flex-shrink-0" />
+                                                    <span className="truncate">{activeTrack?.title || activeAlbum.album}</span>
+                                                </span>
+                                                <span className="text-[9px] text-amber-300 bg-amber-500/20 px-1.5 py-0.2 rounded border border-amber-500/30 font-bold uppercase">
+                                                    {isCurrentArchive ? 'Archive' : 'HD'}
+                                                </span>
+                                            </div>
+
+                                            {/* Si es Archive.org: La barra de audio con el botón PLAY está AQUÍ MISMO en la portada */}
+                                            {isCurrentArchive ? (
+                                                <div className="w-full h-[46px] overflow-hidden rounded-lg bg-black border border-cyan-500/50 shadow-inner flex items-center">
+                                                    <ArchivePlayer 
+                                                        key={`${activeAlbum.id}-${currentTrackIdx}`}
+                                                        archiveId={activeTrackArchiveId} 
+                                                        title={activeTrack?.title}
+                                                        height="46"
+                                                        autoPlay={isPlayingThisAlbum}
+                                                    />
+                                                </div>
+                                            ) : (
+                                                /* Controles nativos en la portada */
+                                                <div className="w-full flex flex-col gap-1 bg-black/80 p-1.5 rounded-lg border border-white/10">
+                                                    <div className="flex items-center justify-between text-[9px] font-mono text-slate-400 px-1">
+                                                        <span>{formatTime(currentTime)}</span>
+                                                        <span>{formatTime(duration)}</span>
+                                                    </div>
+                                                    <input 
+                                                        type="range" 
+                                                        min="0" max="100" 
+                                                        value={progress} 
+                                                        onChange={(e) => {
+                                                            const val = parseFloat(e.target.value);
+                                                            setProgress(val);
+                                                            if (audioRef.current && audioRef.current.duration) {
+                                                                audioRef.current.currentTime = (val / 100) * audioRef.current.duration;
+                                                            }
+                                                        }}
+                                                        className="w-full h-1 bg-white/20 rounded-full accent-cyan-400 cursor-pointer"
+                                                    />
+                                                    <div className="flex items-center justify-center gap-3 pt-0.5">
+                                                        <button onClick={prevTrack} className="text-slate-400 hover:text-white transition-colors p-1">
+                                                            <i className="fas fa-backward-step text-xs"></i>
+                                                        </button>
+                                                        <button 
+                                                            onClick={togglePlayPause} 
+                                                            className="w-7 h-7 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-md hover:scale-105 transition-transform"
+                                                        >
+                                                            <Icon name={isPlaying ? "pause" : "play"} size={12} fill="currentColor" />
+                                                        </button>
+                                                        <button onClick={nextTrack} className="text-slate-400 hover:text-white transition-colors p-1">
+                                                            <i className="fas fa-forward-step text-xs"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            <div className="text-[10px] text-center text-slate-400 pt-0.5">
+                                                <span>Presiona el <b className="text-cyan-400">Play</b> de arriba para escuchar</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Metadatos limpios del Álbum */}
+                                {/* Metadatos del Álbum al lado de la portada */}
                                 <div className="flex flex-col text-center sm:text-left space-y-2 flex-1 min-w-0">
                                     <span className="text-[11px] font-bold tracking-widest uppercase text-cyan-400">
                                         Álbum • Colección BoxPlay
@@ -2609,50 +2671,43 @@
                                         <span>•</span>
                                         <span className="text-slate-400">{activeAlbum.year}</span>
                                         <span>•</span>
-                                        <span className="text-slate-400">{activeAlbum.tracks?.length || 0} canciones</span>
+                                        <span className="text-slate-400">{activeAlbum.tracks?.length || 0} pistas</span>
                                         <span>•</span>
                                         <span className="px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-mono text-cyan-300">
                                             {activeAlbum.genre}
                                         </span>
                                     </div>
 
-                                    <p className="text-xs text-slate-400 line-clamp-2 pt-1 font-normal leading-relaxed">
+                                    <p className="text-xs text-slate-400 line-clamp-3 pt-1 font-normal leading-relaxed">
                                         {activeAlbum.description}
                                     </p>
+
+                                    {/* Botón de Favorito y Atajos */}
+                                    <div className="pt-2 flex items-center justify-center sm:justify-start gap-4">
+                                        <button 
+                                            onClick={() => toggleLikeAlbum(activeAlbum.id)}
+                                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 text-xs font-semibold transition-colors ${likedAlbums.includes(activeAlbum.id) ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' : 'bg-white/5 text-slate-300 hover:text-white'}`}
+                                            title="Guardar en favoritos"
+                                        >
+                                            <Icon name="heart" size={14} fill={likedAlbums.includes(activeAlbum.id) ? "currentColor" : "none"} />
+                                            <span>{likedAlbums.includes(activeAlbum.id) ? 'Favorito' : 'Guardar'}</span>
+                                        </button>
+
+                                        {isPlayingThisAlbum && (
+                                            <div className="flex items-center gap-2 text-cyan-400 text-xs font-mono font-bold">
+                                                <span className="flex gap-1 items-end h-3">
+                                                    <span className="w-1 bg-cyan-400 animate-pulse h-full rounded-full"></span>
+                                                    <span className="w-1 bg-cyan-400 animate-pulse delay-100 h-2/3 rounded-full"></span>
+                                                    <span className="w-1 bg-cyan-400 animate-pulse delay-200 h-4/5 rounded-full"></span>
+                                                </span>
+                                                <span className="tracking-wider uppercase text-[10px]">Sonando en portada</span>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             </div>
 
-                            {/* 2. Barra de Acción estilo Spotify: Botón Circular Play Grande de 56px */}
-                            <div className="flex items-center gap-6 px-2 py-1">
-                                <button 
-                                    onClick={handleTogglePlayCurrentAlbum}
-                                    className="w-14 h-14 rounded-full bg-cyan-400 hover:bg-cyan-300 text-black flex items-center justify-center shadow-[0_8px_25px_rgba(6,182,212,0.45)] hover:scale-105 transition-all cursor-pointer"
-                                    title={isPlayingThisAlbum ? "Pausar álbum" : "Reproducir álbum"}
-                                >
-                                    <Icon name={isPlayingThisAlbum ? "pause" : "play"} size={22} fill="currentColor" />
-                                </button>
-
-                                <button 
-                                    onClick={() => toggleLikeAlbum(activeAlbum.id)}
-                                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${likedAlbums.includes(activeAlbum.id) ? 'text-cyan-400' : 'text-slate-400 hover:text-white'}`}
-                                    title="Guardar en favoritos"
-                                >
-                                    <Icon name="heart" size={22} fill={likedAlbums.includes(activeAlbum.id) ? "currentColor" : "none"} />
-                                </button>
-
-                                {isPlayingThisAlbum && (
-                                    <div className="flex items-center gap-2 text-cyan-400 text-xs font-mono font-bold ml-auto">
-                                        <span className="flex gap-1 items-end h-4">
-                                            <span className="w-1 bg-cyan-400 animate-pulse h-full rounded-full"></span>
-                                            <span className="w-1 bg-cyan-400 animate-pulse delay-100 h-2/3 rounded-full"></span>
-                                            <span className="w-1 bg-cyan-400 animate-pulse delay-200 h-4/5 rounded-full"></span>
-                                        </span>
-                                        <span className="hidden sm:inline tracking-wider uppercase text-[11px]">En Reproducción</span>
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* 3. Lista de Canciones estilo Spotify (Un clic en cualquier pista para escuchar) */}
+                            {/* LISTA DE PISTAS DEL ÁLBUM */}
                             <div className="bg-[#111827]/40 backdrop-blur-md rounded-xl p-3 border border-white/5 flex flex-col">
                                 <div className="flex items-center justify-between text-[11px] font-bold text-slate-400 border-b border-white/10 pb-3 px-3 uppercase tracking-wider">
                                     <div className="flex items-center gap-4">
@@ -2664,7 +2719,7 @@
                                     </span>
                                 </div>
 
-                                <div className="divide-y divide-white/5 mt-1 overflow-y-auto max-h-[380px] custom-scrollbar">
+                                <div className="divide-y divide-white/5 mt-1 overflow-y-auto max-h-[350px] custom-scrollbar">
                                     {activeAlbum.tracks.map((track, idx) => {
                                         const isThisTrackPlaying = currentPlayback.albumId === activeAlbum.id 
                                             && currentPlayback.trackIndex === idx 
@@ -2693,7 +2748,7 @@
                                                         )}
                                                     </div>
                                                     <div className="min-w-0">
-                                                        <p className={`text-sm font-semibold truncate ${isThisTrackPlaying ? 'text-cyan-400' : 'text-white'}`}>
+                                                        <p className={`text-sm font-semibold truncate ${isThisTrackPlaying ? 'text-cyan-400 font-bold' : 'text-white'}`}>
                                                             {track.title}
                                                         </p>
                                                         <p className="text-xs text-slate-400 truncate flex items-center gap-2">
@@ -2714,7 +2769,7 @@
                             </div>
                         </div>
 
-                        {/* Columna Derecha: Catálogo "Explorar Álbumes" (Tarjetas estilo Spotify) */}
+                        {/* Columna Derecha: Catálogo "Explorar Álbumes" */}
                         <div className="w-full lg:w-5/12 flex flex-col space-y-4">
                             <div className="flex items-center justify-between flex-wrap gap-2">
                                 <h2 className="text-base font-black text-white tracking-tight flex items-center gap-2">
@@ -2750,7 +2805,7 @@
                                                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
                                                 />
                                                 
-                                                {/* Botón Flotante de Spotify (aparece en hover o cuando está sonando) */}
+                                                {/* Botón Flotante */}
                                                 <div className={`absolute bottom-2 right-2 w-10 h-10 rounded-full bg-cyan-400 text-black flex items-center justify-center shadow-2xl transition-all duration-300 ${isThisAlbumPlaying ? 'opacity-100 translate-y-0 scale-100 shadow-cyan-500/50' : 'opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 hover:scale-110'}`}>
                                                     <Icon name={isThisAlbumPlaying ? "pause" : "play"} size={16} fill="currentColor" />
                                                 </div>
@@ -2769,129 +2824,10 @@
                             </div>
                         </div>
                     </div>
-
-                    {/* 4. Barra Inferior Persistente de Spotify (Dock de Reproducción Elegante) */}
-                    {isPlaying && currentPlayingAlbum && currentPlayingTrack && (
-                        <div className="fixed bottom-0 left-0 right-0 z-[120] bg-[#0b0f19]/98 backdrop-blur-2xl border-t border-white/10 px-4 sm:px-8 py-3 shadow-[0_-8px_30px_rgba(0,0,0,0.8)] animate-slide-up">
-                            <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-                                
-                                {/* Izquierda: Portada y Canción actual */}
-                                <div 
-                                    onClick={() => {
-                                        setActiveAlbum(currentPlayingAlbum);
-                                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                                    }}
-                                    className="flex items-center gap-3 w-1/4 min-w-0 cursor-pointer group"
-                                >
-                                    <img 
-                                        src={currentPlayingAlbum.cover} 
-                                        alt="" 
-                                        className="w-12 sm:w-14 h-12 sm:h-14 rounded-lg object-cover shadow-md flex-shrink-0" 
-                                    />
-                                    <div className="min-w-0 flex-1">
-                                        <div className="text-xs sm:text-sm font-bold text-white truncate group-hover:underline">
-                                            {currentPlayingTrack.title}
-                                        </div>
-                                        <div className="text-[11px] text-slate-400 truncate">
-                                            {currentPlayingAlbum.artist}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Centro: Reproductor Spotify (Barra compacta de 42px SIN caja negra) */}
-                                <div className="flex-1 max-w-xl flex flex-col items-center justify-center">
-                                    {isCurrentArchive ? (
-                                        <div className="w-full flex items-center gap-3">
-                                            <button onClick={prevTrack} className="text-slate-400 hover:text-white transition-colors p-1" title="Anterior">
-                                                <i className="fas fa-backward-step text-sm"></i>
-                                            </button>
-                                            
-                                            <div className="flex-1 h-[42px] overflow-hidden rounded-lg bg-black border border-white/10">
-                                                <ArchivePlayer 
-                                                    key={`${currentPlayingAlbum.id}-${currentPlayback.trackIndex}`}
-                                                    archiveId={currentPlayingTrack?.archiveId || getArchiveIdFromUrl(currentPlayingTrack?.audio)} 
-                                                    title={currentPlayingTrack?.title}
-                                                    height="42"
-                                                    autoPlay={true}
-                                                />
-                                            </div>
-
-                                            <button onClick={nextTrack} className="text-slate-400 hover:text-white transition-colors p-1" title="Siguiente">
-                                                <i className="fas fa-forward-step text-sm"></i>
-                                            </button>
-                                        </div>
-                                    ) : (
-                                        <div className="w-full flex flex-col items-center">
-                                            <div className="flex items-center gap-4 mb-1">
-                                                <button onClick={prevTrack} className="text-slate-400 hover:text-white transition-colors">
-                                                    <i className="fas fa-backward-step text-sm"></i>
-                                                </button>
-                                                <button 
-                                                    onClick={togglePlayPause} 
-                                                    className="w-9 h-9 rounded-full bg-white hover:scale-105 text-black flex items-center justify-center shadow-lg transition-transform"
-                                                >
-                                                    <Icon name={isPlaying ? "pause" : "play"} size={16} fill="currentColor" />
-                                                </button>
-                                                <button onClick={nextTrack} className="text-slate-400 hover:text-white transition-colors">
-                                                    <i className="fas fa-forward-step text-sm"></i>
-                                                </button>
-                                            </div>
-                                            <div className="w-full flex items-center gap-2.5 text-[10px] font-mono text-slate-400">
-                                                <span>{formatTime(currentTime)}</span>
-                                                <input 
-                                                    type="range" 
-                                                    min="0" max="100" 
-                                                    value={progress} 
-                                                    onChange={(e) => {
-                                                        const val = parseFloat(e.target.value);
-                                                        setProgress(val);
-                                                        if (audioRef.current && audioRef.current.duration) {
-                                                            audioRef.current.currentTime = (val / 100) * audioRef.current.duration;
-                                                        }
-                                                    }}
-                                                    className="w-full h-1 bg-white/20 rounded-full accent-cyan-400 cursor-pointer"
-                                                />
-                                                <span>{formatTime(duration)}</span>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* Derecha: Volumen y Detener */}
-                                <div className="w-1/4 justify-end items-center gap-3 flex">
-                                    <div className="hidden sm:flex items-center gap-2">
-                                        <Icon name="radio" size={14} className="text-slate-400" />
-                                        <input 
-                                            type="range" 
-                                            min="0" max="1" step="0.05"
-                                            value={volume}
-                                            onChange={(e) => {
-                                                const v = parseFloat(e.target.value);
-                                                setVolume(v);
-                                                if (audioRef.current) audioRef.current.volume = v;
-                                            }}
-                                            className="w-20 h-1 bg-white/20 rounded-full accent-cyan-400 cursor-pointer"
-                                        />
-                                    </div>
-
-                                    <button 
-                                        onClick={() => {
-                                            stopAllAudio();
-                                            setCurrentPlayback({ albumId: null, trackIndex: -1 });
-                                            setIsPlaying(false);
-                                        }} 
-                                        className="text-slate-400 hover:text-white transition-colors p-1.5 rounded-lg hover:bg-white/10" 
-                                        title="Cerrar reproductor"
-                                    >
-                                        <Icon name="x" size={16} />
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    )}
                 </div>
             );
         };
+
 
 
 
