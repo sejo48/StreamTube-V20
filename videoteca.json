@@ -1,24 +1,22 @@
-{
-"albums": [
-{
-"id": "bib-1",
-"title": "Wanna Be Startin' Somethin' - Michael Jackson (Mix 80s)",
-"artist": "Michael Jackson",
-"decade": "Años 80",
-"genre": "Pop / Disco / Funk",
-"cover": "https://decibeles.cr/cdn/shop/files/MichaelJackson_Thriller25.jpg?v=1776199984",
-"archiveEmbedUrl": "https://archive.org/embed/wanna-be-startin-somethin-128k",
-"description": "Pista completa en directo basada en el archivo de Internet Archive con la dirección exacta."
-},
-{
-"id": "bib-2",
-"title": "Bob Marley & The Wailers - Greatest Hits Reggae",
-"artist": "Bob Marley",
-"decade": "Años 70 / 80",
-"genre": "Reggae / Roots",
-"cover": "https://cdn-images.dzcdn.net/images/cover/c43e3b1d83e0107dfff7e4238096fe5b/0x1900-000000-80-0-0.jpg",
-"archiveEmbedUrl": "https://archive.org/embed/top-10-best-song-of-bob-marley-playlist-ever-greatest-hits-reggae-song-2024-collection-128k",
-"description": "Colección exclusiva en directo desde Internet Archive con lo mejor del reggae mundial remasterizado."
-}
+[
+  {
+    "artist": "Bob Marley",
+    "album": "Bob Marley Playlist Ever",
+    "year": "1980",
+    "genre": "Reggae",
+    "cover": "https://www.sevenoakssoundandvision.co.uk/images/product/large/0600753030523.jpg",
+    "musicUrl": "https://ia601408.us.archive.org/2/items/top-10-best-song-of-bob-marley-playlist-ever-greatest-hits-reggae-song-2024-collection-128k/Top%2010%20Best%20Song%20Of%20Bob%20Marley%20Playlist%20Ever%20-%20Greatest%20Hits%20Reggae%20Song%202024%20Collection_128k.m4a",
+    "description": "Legend es la colección esencial de Bob Marley, que reúne sus canciones más icónicas en un solo lanzamiento impactante. Publicada originalmente en 1984, esta compilación incluye clásicos atemporales como No Woman, No Cry, Redemption Song, Buffalo Soldier y Three Little Birds. Muestra la inigualable habilidad de Marley para fusionar la convicción política con melodías irresistibles. Como uno de los álbumes de reggae más vendidos de todos los tiempos, Legend sigue siendo una puerta de entrada al mensaje de paz, resistencia y amor de Marley. Imprescindible tanto para quienes lo escuchan por primera vez como para sus fans de siempre: inspirador, estimulante y con un potencial de escucha infinitamente amplio.",
+    "tracks": []
+  },
+  {
+    "artist": "Artista Clásico",
+    "album": "Thriller",
+    "year": "1980",
+    "genre": "Rock",
+    "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdpk9wDhB0lW3GA82kKAAwiABZS0yZqHxkYZ-EWAPgrw&s",
+    "musicUrl": "",
+    "description": "El álbum Thriller de Michael Jackson, lanzado en 1982, contiene exactamente 9 canciones originales: «Wanna Be Startin' Somethin'», «Baby Be Mine», «The Girl Is Mine» (con Paul McCartney), «Thriller», «Beat It», «Billie Jean», «Human Nature», «P.Y.T. (Pretty Young Thing)» y «The Lady in My Life». ",
+    "tracks": []
+  }
 ]
-}
