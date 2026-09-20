@@ -386,9 +386,9 @@
                 tracks: [
                     { 
                         title: 'Greatest Hits Reggae Collection (Full)', 
-                        type: 'archive',
-                        archiveId: 'top-10-best-song-of-bob-marley-playlist-ever-greatest-hits-reggae-song-2024-collection-128k',
-                        duration: 'Álbum' 
+                        type: 'audio',
+                        audio: 'https://ia600605.us.archive.org/15/items/top-10-best-song-of-bob-marley-playlist-ever-greatest-hits-reggae-song-2024-collection-128k_202609/Top%2010%20Best%20Song%20Of%20Bob%20Marley%20Playlist%20Ever%20-%20Greatest%20Hits%20Reggae%20Song%202024%20Collection_128k.m4a',
+                        duration: '58:29' 
                     },
                     { 
                         title: 'Legend - Full Album', 
@@ -612,8 +612,19 @@
             return url;
         };
 
+        const isAudioFileUrl = (url) => {
+            if (!url) return false;
+            const clean = url.split('?')[0].toLowerCase();
+            return clean.endsWith('.m4a') || 
+                   clean.endsWith('.mp3') || 
+                   clean.endsWith('.aac') || 
+                   clean.endsWith('.ogg') || 
+                   clean.endsWith('.wav') || 
+                   clean.endsWith('.flac');
+        };
+
         const getArchiveIdFromUrl = (url) => {
-            if (!url) return null;
+            if (!url || isAudioFileUrl(url)) return null;
             const match = url.match(/archive\.org\/(?:details|download|embed)\/([^\/\?]+)/);
             return match ? match[1] : null;
         };
@@ -2440,9 +2451,10 @@
             }, [albumsData]);
 
             const isArchiveTrack = (track) => {
+                if (isAudioFileUrl(track?.audio)) return false;
                 return track?.type === 'archive' || 
-                       Boolean(track?.archiveId) ||
-                       (track?.audio && track.audio.includes('archive.org'));
+                       (Boolean(track?.archiveId) && !isAudioFileUrl(track?.audio)) ||
+                       (track?.audio && track.audio.includes('archive.org') && !isAudioFileUrl(track?.audio));
             };
 
             const stopAllAudio = () => {
