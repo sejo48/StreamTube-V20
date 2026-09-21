@@ -391,7 +391,7 @@
                 artist: 'Bob Marley & The Wailers',
                 album: 'Legend',
                 year: '1984',
-                genre: 'Reggae',
+                genre: 'Reggae & Soul',
                 cover: 'https://m.media-amazon.com/images/I/71uV2qTz21L._UF1000,1000_QL80_.jpg',
                 description: 'El álbum de grandes éxitos más vendido de la historia del reggae. Una colección atemporal que trascendió fronteras y definió un movimiento cultural.',
                 tracks: [
@@ -437,7 +437,7 @@
                 artist: 'Michael Jackson',
                 album: 'Thriller',
                 year: '1982',
-                genre: 'Pop',
+                genre: 'Pop & Disco',
                 cover: 'https://m.media-amazon.com/images/I/81cO8mB26aL._UF1000,1000_QL80_.jpg',
                 description: 'El disco cumbre del Rey del Pop y el más vendido de la historia mundial, producido magistralmente por Quincy Jones.',
                 tracks: [
@@ -477,7 +477,7 @@
                 artist: 'José José',
                 album: 'Secretos',
                 year: '1983',
-                genre: 'Baladas',
+                genre: 'Baladas & Romántica',
                 cover: 'https://m.media-amazon.com/images/I/81M14IOfVzL._UF1000,1000_QL80_.jpg',
                 description: 'El álbum de habla hispana más emblemático de la balada romántica, compuesto por el maestro Manuel Alejandro.',
                 tracks: [
@@ -494,7 +494,7 @@
                 artist: 'Bee Gees',
                 album: 'Saturday Night Fever',
                 year: '1977',
-                genre: 'Disco',
+                genre: 'Pop & Disco',
                 cover: 'https://m.media-amazon.com/images/I/81Hh8Xp7VBL._UF1000,1000_QL80_.jpg',
                 description: 'La banda sonora que definió para siempre la época dorada de la música disco.',
                 tracks: [
@@ -525,52 +525,52 @@
             },
             {
                 id: 'alb-8',
-                artist: 'Miles Davis',
-                album: 'Kind of Blue',
-                year: '1959',
-                genre: 'Jazz',
-                cover: 'https://m.media-amazon.com/images/I/71R2yqY1lbL._UF1000,1000_QL80_.jpg',
-                description: 'El disco de jazz más vendido de todos los tiempos. Una obra maestra del cool jazz y la improvisación modal.',
+                artist: 'La Sonora Santanera',
+                album: '60 Años de Éxitos',
+                year: '1965',
+                genre: 'Tropical & Salsa',
+                cover: 'https://m.media-amazon.com/images/I/81x+8N6p-OL._UF1000,1000_QL80_.jpg',
+                description: 'Grandes clásicos de la música tropical, boleros y ritmos caribeños interpretados por la máxima institución de la música latina.',
                 tracks: [
                     { 
-                        title: 'Kind of Blue (Full Album)', 
+                        title: 'La Boa / Perfume de Gardenias (Grandes Éxitos)', 
                         type: 'archive',
-                        archiveId: 'kind-of-blue_195908',
+                        archiveId: 'sonora-santanera-exitos',
                         duration: 'Álbum' 
                     }
                 ]
             },
             {
                 id: 'alb-9',
-                artist: 'Ludwig van Beethoven',
-                album: 'Symphony No. 9',
-                year: '1824',
-                genre: 'Clásica',
-                cover: 'https://m.media-amazon.com/images/I/81Lg9h2Xe-L._UF1000,1000_QL80_.jpg',
-                description: 'La Novena Sinfonía, con su inmortal "Oda a la Alegría". Un pilar de la música clásica universal.',
+                artist: 'Led Zeppelin',
+                album: 'Led Zeppelin IV',
+                year: '1971',
+                genre: 'Rock',
+                cover: 'https://m.media-amazon.com/images/I/71c1VpM5mPL._UF1000,1000_QL80_.jpg',
+                description: 'Uno de los álbumes más vendidos e influyentes de todos los tiempos, con obras maestras del Hard Rock como Stairway to Heaven y Black Dog.',
                 tracks: [
                     { 
-                        title: 'Symphony No. 9 (Full)', 
+                        title: 'Led Zeppelin IV (Remastered Album)', 
                         type: 'archive',
-                        archiveId: 'beethoven-symphony-no-9',
-                        duration: 'Sinfonía' 
+                        archiveId: 'led-zeppelin-iv-remastered',
+                        duration: 'Álbum' 
                     }
                 ]
             },
             {
                 id: 'alb-10',
-                artist: 'Antonio Vivaldi',
-                album: 'The Four Seasons',
-                year: '1725',
-                genre: 'Clásica',
-                cover: 'https://m.media-amazon.com/images/I/81sY0dKHQCL._UF1000,1000_QL80_.jpg',
-                description: 'Los conciertos para violín más famosos del barroco. Una obra maestra descriptiva de la naturaleza.',
+                artist: 'The Beatles',
+                album: 'Rubber Soul',
+                year: '1965',
+                genre: 'Rock',
+                cover: 'https://m.media-amazon.com/images/I/71dK4+y0bCL._UF1000,1000_QL80_.jpg',
+                description: 'Álbum revolucionario que definió una era en el pop y rock internacional, con temas legendarios como Drive My Car y In My Life.',
                 tracks: [
                     { 
-                        title: 'The Four Seasons (Full)', 
+                        title: 'Rubber Soul (Full Album)', 
                         type: 'archive',
-                        archiveId: 'vivaldi-the-four-seasons',
-                        duration: 'Concierto' 
+                        archiveId: 'the-beatles-rubber-soul',
+                        duration: 'Álbum' 
                     }
                 ]
             }
@@ -640,29 +640,46 @@
             return match ? match[1] : null;
         };
 
+        const isFileProtocol = typeof window !== 'undefined' && window.location.protocol === 'file:';
+
         const fetchSmart = async (localUrl, rawUrl, isJson = true) => {
             const cacheBust = `?t=${Date.now()}`;
-            try {
-                const res = await fetch(localUrl + cacheBust);
-                if (res.ok) {
-                    const text = await res.text();
-                    if (!text.trim().startsWith('<!DOCTYPE html') && !text.trim().startsWith('<html')) {
-                        return isJson ? JSON.parse(text) : text;
+            
+            // Si corre en un servidor (http:, https:), intentamos primero el recurso local
+            if (!isFileProtocol && localUrl) {
+                try {
+                    const res = await fetch(localUrl + cacheBust);
+                    if (res.ok) {
+                        const text = await res.text();
+                        if (!text.trim().startsWith('<!DOCTYPE html') && !text.trim().startsWith('<html')) {
+                            return isJson ? JSON.parse(text) : text;
+                        }
                     }
-                }
-            } catch (e) {}
+                } catch (e) {}
+            }
 
-            try {
-                const resRaw = await fetch(rawUrl + cacheBust);
-                if (resRaw.ok) {
-                    return isJson ? await resRaw.json() : await resRaw.text();
-                }
-            } catch (e) {}
+            // Si se abre directamente desde el explorador (file://) o si falló el local, cargar desde GitHub Raw
+            if (rawUrl) {
+                try {
+                    const resRaw = await fetch(rawUrl + cacheBust);
+                    if (resRaw.ok) {
+                        return isJson ? await resRaw.json() : await resRaw.text();
+                    }
+                } catch (e) {}
+            }
 
             return null;
         };
 
         const fetchSmartCandidates = async (localUrls, rawUrls, isJson = true) => {
+            if (isFileProtocol) {
+                for (const raw of rawUrls) {
+                    if (!raw) continue;
+                    const res = await fetchSmart('', raw, isJson);
+                    if (res) return res;
+                }
+                return null;
+            }
             const maxLen = Math.max(localUrls.length, rawUrls.length);
             for (let i = 0; i < maxLen; i++) {
                 const local = localUrls[i];
@@ -1781,8 +1798,12 @@
                                     </div>
                                     {isLocked ? (
                                         <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => {setSelectedItem(null); setIsLocked(false); window.history.pushState({ appState: 'main', activeTab }, '');}} />
-                                    ) : (
+                                    ) : convertUrl(selectedItem.type === 'series' && selectedEpisode ? selectedEpisode.url : selectedItem.url) ? (
                                         <iframe src={convertUrl(selectedItem.type === 'series' && selectedEpisode ? selectedEpisode.url : selectedItem.url)} className="w-full h-full border-0 absolute inset-0 object-contain" style={{width: '100%', height: '100%'}} allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen></iframe>
+                                    ) : (
+                                        <div className="flex flex-col items-center justify-center p-6 text-center text-slate-400">
+                                            <p className="text-xs">No se encontró un enlace de video válido para reproducir.</p>
+                                        </div>
                                     )}
                                 </div>
                                 {!isLocked && (
@@ -2414,7 +2435,7 @@
             const [duration, setDuration] = useState(0);
             const [volume, setVolume] = useState(0.85);
 
-            const genres = ['TODOS', 'Rock', 'Pop', 'Baladas', 'Reggae', 'Disco', 'Jazz', 'Clásica'];
+            const genres = ['TODOS', 'Rock', 'Pop & Disco', 'Baladas & Romántica', 'Tropical & Salsa', 'Reggae & Soul'];
 
             // Función para subir suavemente arriba donde se encuentra el álbum y su reproductor
             const scrollToTop = () => {
@@ -2445,7 +2466,9 @@
                 const handleLoadedMetadata = () => { setDuration(audio.duration || 0); };
                 const handleEnded = () => { nextTrack(); };
                 const handleError = (e) => {
-                    console.warn("Error al cargar audio:", e);
+                    if (audio.src && audio.src !== window.location.href && !audio.src.endsWith('/')) {
+                        console.warn("Error al cargar audio:", e);
+                    }
                     setIsPlaying(false);
                 };
 
@@ -2589,8 +2612,16 @@
             };
 
             const filteredAlbums = albumsData.filter(album => {
-                const matchGenre = selectedGenre === 'TODOS' || (album.genre || '').toLowerCase() === selectedGenre.toLowerCase();
-                return matchGenre;
+                const albGenre = (album.genre || album.genero || '').toLowerCase();
+                const sel = selectedGenre.toLowerCase();
+                if (selectedGenre === 'TODOS') return true;
+                if (albGenre === sel) return true;
+                if (selectedGenre === 'Rock') return /rock|metal/i.test(albGenre);
+                if (selectedGenre === 'Pop & Disco') return /pop|disco|dance|new wave/i.test(albGenre);
+                if (selectedGenre === 'Baladas & Romántica') return /balada|rom[aá]ntic|bolero/i.test(albGenre);
+                if (selectedGenre === 'Tropical & Salsa') return /tropical|salsa|cumbia|merengue|cha-cha|latino/i.test(albGenre);
+                if (selectedGenre === 'Reggae & Soul') return /reggae|soul|funk|r&b|ska/i.test(albGenre);
+                return albGenre.includes(sel);
             });
 
             // Pista activa y datos de Archive.org o Audio
