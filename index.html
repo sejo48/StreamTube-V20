@@ -625,19 +625,29 @@
 
         const isAudioFileUrl = (url) => {
             if (!url) return false;
-            const clean = url.split('?')[0].toLowerCase();
+            const clean = String(url).split('?')[0].split('#')[0].toLowerCase();
             return clean.endsWith('.m4a') || 
                    clean.endsWith('.mp3') || 
                    clean.endsWith('.aac') || 
                    clean.endsWith('.ogg') || 
                    clean.endsWith('.wav') || 
-                   clean.endsWith('.flac');
+                   clean.endsWith('.flac') ||
+                   clean.endsWith('.mp4') ||
+                   clean.includes('.mp3') ||
+                   clean.includes('.m4a');
         };
 
         const getArchiveIdFromUrl = (url) => {
-            if (!url || isAudioFileUrl(url)) return null;
-            const match = url.match(/archive\.org\/(?:details|download|embed)\/([^\/\?]+)/);
-            return match ? match[1] : null;
+            if (!url) return null;
+            const cleanUrl = String(url).trim();
+            const match = cleanUrl.match(/archive\.org\/(?:(?:\d+\/)?items\/|details\/|download\/|embed\/)([^\/\?#]+)/i);
+            if (match && match[1]) {
+                return match[1].trim();
+            }
+            if (!cleanUrl.includes('/') && !cleanUrl.includes('http') && cleanUrl.length > 2) {
+                return cleanUrl;
+            }
+            return null;
         };
 
         const isFileProtocol = typeof window !== 'undefined' && window.location.protocol === 'file:';
@@ -710,16 +720,24 @@
             return channels;
         };
 
-        const ArchivePlayer = ({ archiveId, title, height = "150", autoPlay = true }) => {
-            if (!archiveId) {
+        const ArchivePlayer = ({ archiveId, title, height = "150", autoPlay = true, fallbackAudio = "" }) => {
+            const cleanId = archiveId ? String(archiveId).trim() : '';
+            if (!cleanId) {
+                if (fallbackAudio) {
+                    return (
+                        <div className="w-full h-full flex items-center justify-center p-2 bg-black">
+                            <audio src={fallbackAudio} controls autoPlay={autoPlay} className="w-full h-8" />
+                        </div>
+                    );
+                }
                 return (
-                    <div className="bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs p-3 rounded-xl text-center font-mono">
-                        ⚠️ No se encontró el ID del item de Archive.org
+                    <div className="bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs p-2.5 rounded-xl text-center font-mono flex items-center justify-center gap-2">
+                        <Icon name="music" size={13} className="text-cyan-400 animate-pulse" />
+                        <span>Presiona una canción para reproducir</span>
                     </div>
                 );
             }
-            const cleanId = String(archiveId).trim();
-            const embedSrc = "https://archive.org/embed/" + cleanId + (autoPlay ? "?autoplay=1" : "");
+            const embedSrc = "https://archive.org/embed/" + encodeURIComponent(cleanId) + (autoPlay ? "?autoplay=1" : "");
             return (
                 <div className="archive-embed-container w-full rounded-2xl overflow-hidden bg-black/80">
                     <iframe 
@@ -1010,26 +1028,38 @@
                                     const albumMusicUrl = convertUrl(alb.musicUrl || alb.urlDrive || alb.url || '');
                                     
                                     const finalTracks = rawTracks.length > 0 ? rawTracks.map((t, ti) => {
-                                        if (t.type === 'archive' || t.archiveId) {
+                                        const rawAudioUrl = t.audio || t.urlDrive || t.url || '';
+                                        const audioUrl = convertUrl(rawAudioUrl);
+                                        const isDirectAudio = isAudioFileUrl(audioUrl) || (audioUrl && (audioUrl.includes('.mp3') || audioUrl.includes('.m4a') || audioUrl.includes('.aac') || audioUrl.includes('.ogg') || audioUrl.includes('/items/') || audioUrl.includes('/download/')));
+                                        const archIdFromUrl = getArchiveIdFromUrl(audioUrl);
+                                        const archId = t.archiveId || archIdFromUrl || alb.archiveId || getArchiveIdFromUrl(albumMusicUrl);
+
+                                        // Si la pista tiene archivo de audio directo (.mp3, etc.) o no se forzó iframe de archive
+                                        if (isDirectAudio || (audioUrl && t.type !== 'archive' && !t.archiveId)) {
+                                            const cleanDuration = (t.duration && t.duration !== 'Álbum') ? t.duration : (t.duracion && t.duracion !== 'Álbum') ? t.duracion : '3:30';
+                                            return {
+                                                title: t.title || t.titulo || `Pista ${ti + 1}`,
+                                                type: 'audio',
+                                                audio: audioUrl,
+                                                archiveId: archId || undefined,
+                                                duration: cleanDuration
+                                            };
+                                        }
+
+                                        // Si explícitamente es un embed o item general de Archive.org sin MP3 directo
+                                        if (t.type === 'archive' || archId) {
                                             return {
                                                 title: t.title || t.titulo || `Pista ${ti + 1}`,
                                                 type: 'archive',
-                                                archiveId: t.archiveId || getArchiveIdFromUrl(t.audio || t.url || ''),
+                                                archiveId: archId,
+                                                audio: audioUrl,
                                                 duration: t.duration || t.duracion || 'Álbum'
                                             };
                                         }
-                                        const audioUrl = convertUrl(t.audio || t.urlDrive || t.url || albumMusicUrl || '');
-                                        const archiveIdFromUrl = getArchiveIdFromUrl(audioUrl);
-                                        if (archiveIdFromUrl) {
-                                            return {
-                                                title: t.title || t.titulo || `Pista ${ti + 1}`,
-                                                type: 'archive',
-                                                archiveId: archiveIdFromUrl,
-                                                duration: t.duration || t.duracion || 'Álbum'
-                                            };
-                                        }
+
                                         return {
                                             title: t.title || t.titulo || `Pista ${ti + 1}`,
+                                            type: 'audio',
                                             audio: audioUrl,
                                             duration: t.duration || t.duracion || '3:30'
                                         };
@@ -2435,6 +2465,18 @@
             const [duration, setDuration] = useState(0);
             const [volume, setVolume] = useState(0.85);
 
+            // Refs para sincronización en tiempo real sin cierres obsoletos (evita stale closure de React)
+            const currentPlaybackRef = useRef(currentPlayback);
+            currentPlaybackRef.current = currentPlayback;
+
+            const activeAlbumRef = useRef(activeAlbum);
+            activeAlbumRef.current = activeAlbum;
+
+            const albumsDataRef = useRef(albumsData);
+            albumsDataRef.current = albumsData;
+
+            const playTrackRef = useRef(null);
+
             const genres = ['TODOS', 'Rock', 'Pop & Disco', 'Baladas & Romántica', 'Tropical & Salsa', 'Reggae & Soul'];
 
             // Función para subir suavemente arriba donde se encuentra el álbum y su reproductor
@@ -2464,12 +2506,48 @@
                     }
                 };
                 const handleLoadedMetadata = () => { setDuration(audio.duration || 0); };
-                const handleEnded = () => { nextTrack(); };
+                
+                // REPRODUCCIÓN SECUENCIAL AUTOMÁTICA (Canción por canción hasta el final de la lista)
+                const handleEnded = () => {
+                    const cur = currentPlaybackRef.current;
+                    const album = cur.albumId 
+                        ? albumsDataRef.current.find(a => a.id === cur.albumId) 
+                        : activeAlbumRef.current;
+                    if (!album || !album.tracks || album.tracks.length === 0) return;
+
+                    const nextIdx = cur.trackIndex + 1;
+                    if (nextIdx < album.tracks.length) {
+                        // Siguiente pista del álbum
+                        if (playTrackRef.current) {
+                            playTrackRef.current(album, nextIdx);
+                        }
+                    } else {
+                        // Llegó al final de la lista de canciones
+                        setIsPlaying(false);
+                        setProgress(0);
+                        setCurrentTime(0);
+                        setCurrentPlayback({ albumId: album.id, trackIndex: 0 });
+                    }
+                };
+
                 const handleError = (e) => {
                     if (audio.src && audio.src !== window.location.href && !audio.src.endsWith('/')) {
-                        console.warn("Error al cargar audio:", e);
+                        console.warn("Aviso en reproducción de audio:", e);
                     }
-                    setIsPlaying(false);
+                    // Si ocurre un error de red en una pista, intentar pasar a la siguiente
+                    const cur = currentPlaybackRef.current;
+                    const album = cur.albumId 
+                        ? albumsDataRef.current.find(a => a.id === cur.albumId) 
+                        : activeAlbumRef.current;
+                    if (album && album.tracks && cur.trackIndex + 1 < album.tracks.length) {
+                        setTimeout(() => {
+                            if (playTrackRef.current) {
+                                playTrackRef.current(album, cur.trackIndex + 1);
+                            }
+                        }, 800);
+                    } else {
+                        setIsPlaying(false);
+                    }
                 };
 
                 audio.addEventListener('timeupdate', handleTimeUpdate);
@@ -2484,13 +2562,16 @@
                     audio.removeEventListener('ended', handleEnded);
                     audio.removeEventListener('error', handleError);
                 };
-            }, [albumsData]);
+            }, []);
 
             const isArchiveTrack = (track) => {
-                if (isAudioFileUrl(track?.audio)) return false;
-                return track?.type === 'archive' || 
-                       (Boolean(track?.archiveId) && !isAudioFileUrl(track?.audio)) ||
-                       (track?.audio && track.audio.includes('archive.org') && !isAudioFileUrl(track?.audio));
+                if (!track) return false;
+                const audioUrl = track.audio || track.urlDrive || track.url || '';
+                // Si la pista tiene enlace directo a archivo de audio (.mp3, .m4a), SIEMPRE se reproduce con el reproductor nativo
+                if (isAudioFileUrl(audioUrl)) return false;
+                if (track.type === 'audio') return false;
+                const archId = track.archiveId || getArchiveIdFromUrl(audioUrl);
+                return Boolean(archId) || track.type === 'archive';
             };
 
             const stopAllAudio = () => {
@@ -2530,7 +2611,10 @@
 
                 stopAllAudio();
 
-                if (isArchiveTrack(track)) {
+                const audioSource = track?.audio || track?.urlDrive || track?.url || album.musicUrl || album.urlDrive || album.url || '';
+                const hasDirectAudio = isAudioFileUrl(audioSource) || (audioSource && audioSource.includes('.mp3'));
+
+                if (!hasDirectAudio && isArchiveTrack(track)) {
                     setCurrentPlayback({ albumId: album.id, trackIndex: safeIdx });
                     setIsPlaying(true);
                     setProgress(0);
@@ -2539,18 +2623,17 @@
                     return;
                 }
 
-                const audioSource = track.audio || album.musicUrl || album.urlDrive || album.url || '';
                 if (!audioSource) return;
                 const audio = audioRef.current;
                 if (!audio) return;
 
+                setCurrentPlayback({ albumId: album.id, trackIndex: safeIdx });
+                setIsPlaying(true);
                 audio.src = audioSource;
                 audio.volume = volume;
-                audio.play().then(() => {
-                    setCurrentPlayback({ albumId: album.id, trackIndex: safeIdx });
-                    setIsPlaying(true);
-                }).catch(e => console.warn("Error al reproducir audio:", e));
+                audio.play().catch(e => console.warn("Aviso al iniciar audio:", e));
             };
+            playTrackRef.current = playTrack;
 
             // Al elegir un álbum en PC o móvil: cambia de álbum y SUBE AUTOMÁTICAMENTE A LA PORTADA
             const handleSelectAlbum = (alb) => {
@@ -2629,8 +2712,13 @@
                 ? currentPlayback.trackIndex 
                 : 0;
             const activeTrack = activeAlbum?.tracks?.[currentTrackIdx] || activeAlbum?.tracks?.[0] || null;
-            const isCurrentArchive = isArchiveTrack(activeTrack);
-            const activeTrackArchiveId = activeTrack?.archiveId || getArchiveIdFromUrl(activeTrack?.audio || activeAlbum?.musicUrl || '');
+            const activeTrackAudio = activeTrack?.audio || activeTrack?.urlDrive || activeTrack?.url || '';
+            const hasDirectAudio = isAudioFileUrl(activeTrackAudio) || (activeTrackAudio && activeTrackAudio.includes('.mp3'));
+            const activeTrackArchiveId = activeTrack?.archiveId || 
+                getArchiveIdFromUrl(activeTrackAudio) || 
+                activeAlbum?.archiveId || 
+                getArchiveIdFromUrl(activeAlbum?.musicUrl || activeAlbum?.urlDrive || '');
+            const isCurrentArchive = !hasDirectAudio && (Boolean(activeTrackArchiveId) || activeTrack?.type === 'archive');
             const isPlayingThisAlbum = currentPlayback.albumId === activeAlbum?.id && isPlaying;
 
             return (
@@ -2644,17 +2732,35 @@
                             {/* PORTADA CON REPRODUCTOR FÍSICO INCORPORADO */}
                             <div className="w-full sm:w-56 md:w-64 lg:w-72 flex-shrink-0 flex flex-col items-center mx-auto lg:mx-0">
                                 <div className="w-full max-w-[210px] sm:max-w-[250px] lg:max-w-none rounded-2xl overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.85)] border border-cyan-500/40 bg-[#080c14] flex flex-col">
-                                    {/* Imagen de la Portada */}
-                                    <div className="w-full aspect-square relative bg-black overflow-hidden group">
+                                    {/* Imagen de la Portada con Botón de Reproducción Principal de Álbum */}
+                                    <div 
+                                        onClick={handleTogglePlayCurrentAlbum}
+                                        className="w-full aspect-square relative bg-black overflow-hidden group cursor-pointer"
+                                        title={isPlayingThisAlbum ? "Pausar álbum" : "Reproducir álbum completo"}
+                                    >
                                         <img 
                                             src={activeAlbum.cover} 
                                             alt={activeAlbum.album} 
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                                            className={`w-full h-full object-cover transition-transform duration-500 ${isPlayingThisAlbum ? 'scale-105 brightness-90' : 'group-hover:scale-105'}`} 
                                         />
-                                        {isPlayingThisAlbum && (
-                                            <div className="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full bg-cyan-400 text-black font-mono text-[9px] font-black uppercase tracking-wider shadow-lg flex items-center gap-1 animate-pulse">
-                                                <span className="w-1.5 h-1.5 rounded-full bg-black"></span>
-                                                Sonando
+                                        
+                                        {/* Overlay central interactivo: Play / Pause gigante */}
+                                        <div className={`absolute inset-0 bg-black/40 backdrop-blur-[2px] transition-all duration-300 flex items-center justify-center ${isPlayingThisAlbum ? 'opacity-0 hover:opacity-100' : 'opacity-85 sm:opacity-0 group-hover:opacity-100'}`}>
+                                            <div className="w-16 h-16 rounded-full bg-cyan-400 hover:bg-cyan-300 text-black flex items-center justify-center shadow-[0_0_35px_rgba(6,182,212,0.9)] transform transition-transform group-hover:scale-110 active:scale-95">
+                                                <Icon name={isPlayingThisAlbum ? "pause" : "play"} size={26} fill="currentColor" />
+                                            </div>
+                                        </div>
+
+                                        {/* Insignia de estado animada */}
+                                        {isPlayingThisAlbum ? (
+                                            <div className="absolute top-2.5 left-2.5 px-3 py-1 rounded-full bg-cyan-400 text-black font-mono text-[9px] font-black uppercase tracking-wider shadow-xl flex items-center gap-1.5 animate-pulse z-10">
+                                                <span className="w-2 h-2 rounded-full bg-black animate-ping"></span>
+                                                Reproduciendo Lista
+                                            </div>
+                                        ) : (
+                                            <div className="absolute bottom-2.5 left-2.5 right-2.5 px-2.5 py-1 rounded-xl bg-black/80 backdrop-blur-md border border-cyan-500/40 text-cyan-300 font-mono text-[9px] font-bold text-center z-10 flex items-center justify-center gap-1.5 shadow-lg group-hover:border-cyan-400">
+                                                <Icon name="play" size={10} fill="currentColor" />
+                                                <span>Clic para reproducir álbum</span>
                                             </div>
                                         )}
                                     </div>
@@ -2759,10 +2865,18 @@
                                             {activeAlbum.description}
                                         </p>
 
-                                        <div className="pt-2 flex items-center justify-center sm:justify-start gap-3.5 flex-wrap">
+                                        <div className="pt-2 flex items-center justify-center sm:justify-start gap-3 flex-wrap">
+                                            <button 
+                                                onClick={handleTogglePlayCurrentAlbum}
+                                                className="flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-cyan-400 to-teal-400 hover:from-cyan-300 hover:to-teal-300 text-black font-extrabold text-xs shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.7)] transition-all active:scale-95 cursor-pointer"
+                                                title={isPlayingThisAlbum ? "Pausar álbum" : "Reproducir álbum completo"}
+                                            >
+                                                <Icon name={isPlayingThisAlbum ? "pause" : "play"} size={13} fill="currentColor" />
+                                                <span>{isPlayingThisAlbum ? 'Pausar Álbum' : 'Reproducir Álbum Completo'}</span>
+                                            </button>
                                             <button 
                                                 onClick={() => toggleLikeAlbum(activeAlbum.id)}
-                                                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-white/10 text-xs font-semibold transition-colors ${likedAlbums.includes(activeAlbum.id) ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' : 'bg-white/5 text-slate-300 hover:text-white'}`}
+                                                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-white/10 text-xs font-semibold transition-colors ${likedAlbums.includes(activeAlbum.id) ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/30' : 'bg-white/5 text-slate-300 hover:text-white'}`}
                                                 title="Guardar en favoritos"
                                             >
                                                 <Icon name="heart" size={14} fill={likedAlbums.includes(activeAlbum.id) ? "currentColor" : "none"} />
