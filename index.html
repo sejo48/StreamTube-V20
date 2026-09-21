@@ -315,7 +315,6 @@
             VIDEOTECA: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/videoteca.json'
         };
 
-        const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/ClI93uJrk1A4hA8MoS1J7Z';
         const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
         const DOWNLOAD_PIN_API = '/api/validate-download-pin';
 
@@ -810,7 +809,6 @@
                 { id: 'radio', icon: 'radio', label: 'Radio Pro' }, 
                 { id: 'coleccion', icon: 'disc', label: 'BoxPlayMusic' },
                 { id: 'smartview', icon: 'tv', label: 'Smart TV' },
-                { id: 'community', icon: 'users', label: 'Comunidad' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
 
@@ -827,7 +825,6 @@
                 { id: 'animated', icon: 'film', label: 'Animados' },
                 { id: 'coleccion', icon: 'disc', label: 'BoxPlayMusic' },
                 { id: 'smartview', icon: 'tv', label: 'Smart TV' },
-                { id: 'community', icon: 'users', label: 'Comunidad' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
 
@@ -1655,8 +1652,6 @@
                             <ClassicMusicSection albumsData={content.albums} />
                         ) : activeTab === 'aiassistant' ? (
                             <AiAssistantSection content={content} onSelectMovie={handlePlay} />
-                        ) : activeTab === 'community' ? (
-                            <CommunitySection />
                         ) : activeTab === 'smartview' ? (
                             <SmartViewGuideSection />
                         ) : activeTab === 'favorites' && !selectedItem ? (
@@ -3126,38 +3121,6 @@
             </div>
         );
 
-        // Sección Comunidad WhatsApp
-        const CommunitySection = () => (
-            <div className="p-4 sm:p-10 max-w-2xl mx-auto w-full animate-fade-in space-y-6">
-                <div className="glass-panel rounded-3xl p-6 sm:p-10 shadow-2xl border border-cyan-500/30 text-center space-y-6">
-                    <div className="flex justify-center">
-                        <div className="p-4 bg-emerald-500/20 rounded-3xl text-emerald-400 border border-emerald-500/40">
-                            <Icon name="users" size={36} />
-                        </div>
-                    </div>
-                    <div>
-                        <h2 className="text-2xl font-black text-white">Comunidad Oficial Boxplaytv</h2>
-                        <p className="text-xs sm:text-sm text-slate-400 mt-2">Únete a nuestro grupo oficial de WhatsApp para solicitar películas, enterarte de nuevos lanzamientos y compartir recomendaciones.</p>
-                    </div>
-
-                    <div className="bg-white p-4 rounded-2xl shadow-inner inline-block mx-auto">
-                        <img src={QR_IMAGE_URL} alt="WhatsApp QR" className="w-48 h-48 object-contain mx-auto" onError={(e)=>{e.target.style.display='none';}} />
-                    </div>
-
-                    <div className="pt-2">
-                        <a 
-                            href={WHATSAPP_GROUP_URL} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="inline-flex items-center justify-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-8 rounded-full shadow-[0_0_25px_rgba(16,185,129,0.5)] transition-all hover:scale-105 active:scale-95 text-sm"
-                        >
-                            <i className="fa-brands fa-whatsapp text-lg"></i>
-                            <span>Entrar al Grupo de WhatsApp</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        );
 
         // Intro Screen
         const IntroScreen = ({ onEnter }) => {
