@@ -1,5 +1,86 @@
 [
   {
+    "artist": "Milli Vanilli",
+    "album": "Milli Vanilli Greatest Hits",
+    "year": "2006",
+    "genre": "Pop & Disco",
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/18/1a/1c/181a1ce2-b172-7bb3-f3fe-cff3d914d4eb/dj.mnpsvuec.jpg/1000x1000bb.jpg",
+    "musicUrl": "https://archive.org/details/baby-dont-forget-my-number",
+    "description": "This is a discography of Milli Vanilli, a pop/dance music project formed by Frank Farian in Germany in 1988, fronted by Fab Morvan and Rob Pilatus.",
+    "tracks": [
+      {
+        "title": "All or Nothing",
+        "audio": "https://archive.org/download/baby-dont-forget-my-number/All_or_Nothing.mp3",
+        "duration": "3:21",
+        "type": "archive",
+        "archiveId": "baby-dont-forget-my-number"
+      },
+      {
+        "title": "Baby Don't Forget My Number",
+        "audio": "https://archive.org/download/baby-dont-forget-my-number/Baby_Don't_Forget_My_Number.mp3",
+        "duration": "4:09",
+        "type": "archive",
+        "archiveId": "baby-dont-forget-my-number"
+      },
+      {
+        "title": "Blame It on the Rain",
+        "audio": "https://archive.org/download/baby-dont-forget-my-number/Blame_It_on_the_Rain.mp3",
+        "duration": "4:08",
+        "type": "archive",
+        "archiveId": "baby-dont-forget-my-number"
+      },
+      {
+        "title": "Boy in the Tree",
+        "audio": "https://archive.org/download/baby-dont-forget-my-number/Boy_in_the_Tree.mp3",
+        "duration": "3:10",
+        "type": "archive",
+        "archiveId": "baby-dont-forget-my-number"
+      },
+      {
+        "title": "Can't You Feel My Love",
+        "audio": "https://archive.org/download/baby-dont-forget-my-number/Can't_You_Feel_My_Love.mp3",
+        "duration": "3:32",
+        "type": "archive",
+        "archiveId": "baby-dont-forget-my-number"
+      },
+      {
+        "title": "Dance with a Devil",
+        "audio": "https://archive.org/download/baby-dont-forget-my-number/Dance_with_a_Devil.mp3",
+        "duration": "3:12",
+        "type": "archive",
+        "archiveId": "baby-dont-forget-my-number"
+      },
+      {
+        "title": "Dream to Remember",
+        "audio": "https://archive.org/download/baby-dont-forget-my-number/Dream_to_Remember.mp3",
+        "duration": "3:56",
+        "type": "archive",
+        "archiveId": "baby-dont-forget-my-number"
+      },
+      {
+        "title": "Girl You Know It's True (N.Y.C.Subway Remix)",
+        "audio": "https://archive.org/download/baby-dont-forget-my-number/Girl_You_Know_It's_True_(N.Y.C.Subway_Remix).mp3",
+        "duration": "4:00",
+        "type": "archive",
+        "archiveId": "baby-dont-forget-my-number"
+      },
+      {
+        "title": "I'm Gonna Miss You",
+        "audio": "https://archive.org/download/baby-dont-forget-my-number/I'm_Gonna_Miss_You.mp3",
+        "duration": "3:59",
+        "type": "archive",
+        "archiveId": "baby-dont-forget-my-number"
+      },
+      {
+        "title": "Is It Love",
+        "audio": "https://archive.org/download/baby-dont-forget-my-number/Is_It_Love.mp3",
+        "duration": "3:22",
+        "type": "archive",
+        "archiveId": "baby-dont-forget-my-number"
+      }
+    ]
+  },
+  {
     "artist": "Queen",
     "album": "Queen / The Game",
     "year": "1980",
