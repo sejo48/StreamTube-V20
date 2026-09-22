@@ -1,5 +1,86 @@
 [
   {
+    "artist": "UB40",
+    "album": "UB40 - Greatest Hits",
+    "year": "2008",
+    "genre": "Pop & Disco",
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/8e/fc/d7/8efcd7fa-9922-ecbe-7024-d777d9b154d6/13UABIM50818.rgb.jpg/1000x1000bb.jpg",
+    "musicUrl": "https://archive.org/details/ub-40-kingston-town-lyrics",
+    "description": "Producción discográfica clásica de UB40, lanzada originalmente en el año 2008. Obra cumbre dentro de la categoría Pop & Disco, conservada en calidad máster para la colección BoxPlayMusic.",
+    "tracks": [
+      {
+        "title": "UB40 - Can't Help Falling In Love (lyrics)",
+        "audio": "https://archive.org/download/ub-40-kingston-town-lyrics/UB40_-_Can't_Help_Falling_In_Love_(lyrics).mp3",
+        "duration": "3:27",
+        "type": "archive",
+        "archiveId": "ub-40-kingston-town-lyrics"
+      },
+      {
+        "title": "UB40 - Food For Thought (With Lyrics)",
+        "audio": "https://archive.org/download/ub-40-kingston-town-lyrics/UB40_-_Food_For_Thought_(With_Lyrics).mp3",
+        "duration": "4:09",
+        "type": "archive",
+        "archiveId": "ub-40-kingston-town-lyrics"
+      },
+      {
+        "title": "UB40 - Here I Am (Come and Take Me)",
+        "audio": "https://archive.org/download/ub-40-kingston-town-lyrics/UB40_-_Here_I_Am_(Come_and_Take_Me).mp3",
+        "duration": "4:16",
+        "type": "archive",
+        "archiveId": "ub-40-kingston-town-lyrics"
+      },
+      {
+        "title": "UB40 - Homely Girl (lyrics)",
+        "audio": "https://archive.org/download/ub-40-kingston-town-lyrics/UB40_-_Homely_Girl_(lyrics).mp3",
+        "duration": "3:23",
+        "type": "archive",
+        "archiveId": "ub-40-kingston-town-lyrics"
+      },
+      {
+        "title": "UB40 - If It Happens Again (lyrics)",
+        "audio": "https://archive.org/download/ub-40-kingston-town-lyrics/UB40_-_If_It_Happens_Again_(lyrics).mp3",
+        "duration": "3:40",
+        "type": "archive",
+        "archiveId": "ub-40-kingston-town-lyrics"
+      },
+      {
+        "title": "UB40 - Kingston Town (lyrics)",
+        "audio": "https://archive.org/download/ub-40-kingston-town-lyrics/UB40_-_Kingston_Town_(lyrics).mp3",
+        "duration": "7:29",
+        "type": "archive",
+        "archiveId": "ub-40-kingston-town-lyrics"
+      },
+      {
+        "title": "UB40 - Many Rivers To Cross (lyrics)",
+        "audio": "https://archive.org/download/ub-40-kingston-town-lyrics/UB40_-_Many_Rivers_To_Cross_(lyrics).mp3",
+        "duration": "4:27",
+        "type": "archive",
+        "archiveId": "ub-40-kingston-town-lyrics"
+      },
+      {
+        "title": "UB40 - One in Ten",
+        "audio": "https://archive.org/download/ub-40-kingston-town-lyrics/UB40_-_One_in_Ten.mp3",
+        "duration": "4:31",
+        "type": "archive",
+        "archiveId": "ub-40-kingston-town-lyrics"
+      },
+      {
+        "title": "UB40 - Red Red Wine",
+        "audio": "https://archive.org/download/ub-40-kingston-town-lyrics/UB40_-_Red_Red_Wine.mp3",
+        "duration": "5:19",
+        "type": "archive",
+        "archiveId": "ub-40-kingston-town-lyrics"
+      },
+      {
+        "title": "UB40 - The Way You Do the Things You Do",
+        "audio": "https://archive.org/download/ub-40-kingston-town-lyrics/UB40_-_The_Way_You_Do_the_Things_You_Do.mp3",
+        "duration": "3:01",
+        "type": "archive",
+        "archiveId": "ub-40-kingston-town-lyrics"
+      }
+    ]
+  },
+  {
     "artist": "Milli Vanilli",
     "album": "Milli Vanilli Greatest Hits",
     "year": "2006",
