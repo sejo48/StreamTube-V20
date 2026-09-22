@@ -1,5 +1,86 @@
 [
   {
+    "artist": "Grupo Niche",
+    "album": "Grupo Niche The Best",
+    "year": "1990",
+    "genre": "Tropical & Salsa",
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/3a/6f/0b/3a6f0b81-d605-067a-ddc3-1d9640757db0/mzi.hmbxemtg.jpg/1000x1000bb.jpg",
+    "musicUrl": "https://archive.org/details/nuestro-sueno",
+    "description": "Producción discográfica clásica de Grupo Niche, lanzada originalmente en el año 1990. Obra cumbre dentro de la categoría Tropical & Salsa, conservada en calidad máster para la colección BoxPlayMusic.",
+    "tracks": [
+      {
+        "title": "Bar y Copas",
+        "audio": "https://archive.org/download/nuestro-sueno/Bar_y_Copas.mp3",
+        "duration": "4:17",
+        "type": "archive",
+        "archiveId": "nuestro-sueno"
+      },
+      {
+        "title": "Cali Ají",
+        "audio": "https://archive.org/download/nuestro-sueno/Cali_Aj%C3%AD.mp3",
+        "duration": "4:36",
+        "type": "archive",
+        "archiveId": "nuestro-sueno"
+      },
+      {
+        "title": "Duele Más",
+        "audio": "https://archive.org/download/nuestro-sueno/Duele_M%C3%A1s.mp3",
+        "duration": "5:38",
+        "type": "archive",
+        "archiveId": "nuestro-sueno"
+      },
+      {
+        "title": "Hagamos Lo Que Diga El Corazón",
+        "audio": "https://archive.org/download/nuestro-sueno/Hagamos_Lo_Que_Diga_El_Coraz%C3%B3n.mp3",
+        "duration": "5:02",
+        "type": "archive",
+        "archiveId": "nuestro-sueno"
+      },
+      {
+        "title": "La Negra No Quiere",
+        "audio": "https://archive.org/download/nuestro-sueno/La_Negra_No_Quiere.mp3",
+        "duration": "5:46",
+        "type": "archive",
+        "archiveId": "nuestro-sueno"
+      },
+      {
+        "title": "Mexico, Mexico",
+        "audio": "https://archive.org/download/nuestro-sueno/Mexico%2C_Mexico.mp3",
+        "duration": "5:26",
+        "type": "archive",
+        "archiveId": "nuestro-sueno"
+      },
+      {
+        "title": "Mi Pueblo",
+        "audio": "https://archive.org/download/nuestro-sueno/Mi_Pueblo.mp3",
+        "duration": "5:20",
+        "type": "archive",
+        "archiveId": "nuestro-sueno"
+      },
+      {
+        "title": "Nuestro Sueño",
+        "audio": "https://archive.org/download/nuestro-sueno/Nuestro_Sue%C3%B1o.mp3",
+        "duration": "5:59",
+        "type": "archive",
+        "archiveId": "nuestro-sueno"
+      },
+      {
+        "title": "Se Pareció Tanto a Ti",
+        "audio": "https://archive.org/download/nuestro-sueno/Se_Pareci%C3%B3_Tanto_a_Ti.mp3",
+        "duration": "5:28",
+        "type": "archive",
+        "archiveId": "nuestro-sueno"
+      },
+      {
+        "title": "Una Aventura",
+        "audio": "https://archive.org/download/nuestro-sueno/Una_Aventura.mp3",
+        "duration": "5:16",
+        "type": "archive",
+        "archiveId": "nuestro-sueno"
+      }
+    ]
+  },
+  {
     "artist": "UB40",
     "album": "UB40 - Greatest Hits",
     "year": "2008",
