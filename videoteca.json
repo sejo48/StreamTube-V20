@@ -1,5 +1,79 @@
 [
   {
+    "artist": "Billo's Caracas Boys",
+    "album": "Billo's Caracas Boys - Billo 76",
+    "year": "1978",
+    "genre": "Christmas",
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/e1/d5/3f/e1d53f09-d388-459f-142c-6401ca250048/191018073053_cover.jpg/1000x1000bb.jpg",
+    "musicUrl": "https://archive.org/details/temperamento-sentimental",
+    "description": "Producción discográfica clásica de Billo's Caracas Boys, lanzada originalmente en el año 1978. Obra cumbre dentro de la categoría Christmas, conservada en calidad máster para la colección BoxPlayMusic.",
+    "tracks": [
+      {
+        "title": "Boquita Salá",
+        "audio": "https://archive.org/download/temperamento-sentimental/Boquita_Sal%C3%A1.mp3",
+        "duration": "2:59",
+        "type": "archive",
+        "archiveId": "temperamento-sentimental"
+      },
+      {
+        "title": "Carita de Rosa",
+        "audio": "https://archive.org/download/temperamento-sentimental/Carita_de_Rosa.mp3",
+        "duration": "2:25",
+        "type": "archive",
+        "archiveId": "temperamento-sentimental"
+      },
+      {
+        "title": "El Cumbiambero",
+        "audio": "https://archive.org/download/temperamento-sentimental/El_Cumbiambero.mp3",
+        "duration": "2:26",
+        "type": "archive",
+        "archiveId": "temperamento-sentimental"
+      },
+      {
+        "title": "La Cancion de Caracas",
+        "audio": "https://archive.org/download/temperamento-sentimental/La_Cancion_de_Caracas.mp3",
+        "duration": "2:15",
+        "type": "archive",
+        "archiveId": "temperamento-sentimental"
+      },
+      {
+        "title": "Linda Mujer",
+        "audio": "https://archive.org/download/temperamento-sentimental/Linda_Mujer.mp3",
+        "duration": "3:11",
+        "type": "archive",
+        "archiveId": "temperamento-sentimental"
+      },
+      {
+        "title": "Pa Oriente Me Voy",
+        "audio": "https://archive.org/download/temperamento-sentimental/Pa_Oriente_Me_Voy.mp3",
+        "duration": "2:56",
+        "type": "archive",
+        "archiveId": "temperamento-sentimental"
+      },
+      {
+        "title": "Playas de Cartagena",
+        "audio": "https://archive.org/download/temperamento-sentimental/Playas_de_Cartagena.mp3",
+        "duration": "3:16",
+        "type": "archive",
+        "archiveId": "temperamento-sentimental"
+      },
+      {
+        "title": "Temperamento Sentimental",
+        "audio": "https://archive.org/download/temperamento-sentimental/Temperamento_Sentimental.mp3",
+        "duration": "3:20",
+        "type": "archive",
+        "archiveId": "temperamento-sentimental"
+      },
+      {
+        "title": "Y Si Mañana",
+        "audio": "https://archive.org/download/temperamento-sentimental/Y_Si_Ma%C3%B1ana.mp3",
+        "duration": "2:32",
+        "type": "archive",
+        "archiveId": "temperamento-sentimental"
+      }
+    ]
+  },
+  {
     "artist": "Germain y sus Angeles Negros",
     "album": "os Angeles Negros - 20 Exitos",
     "year": "1977",
