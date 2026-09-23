@@ -1,5 +1,86 @@
 [
   {
+    "artist": "Germain y sus Angeles Negros",
+    "album": "os Angeles Negros - 20 Exitos",
+    "year": "1977",
+    "genre": "Música Mexicana",
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/f1/30/61/f13061df-fd9c-00a0-d834-4954fad29b82/600484150729_Cover.jpg/1000x1000bb.jpg",
+    "musicUrl": "https://archive.org/details/los-angeles-negros-y-volvere",
+    "description": "Producción discográfica clásica de Germain y sus Angeles Negros, lanzada originalmente en el año 1977. Obra cumbre dentro de la categoría Música Mexicana, conservada en calidad máster para la colección BoxPlayMusic.",
+    "tracks": [
+      {
+        "title": "Los Angeles Negros - A Ti",
+        "audio": "https://archive.org/download/los-angeles-negros-y-volvere/Los_Angeles_Negros_-_A_Ti.mp3",
+        "duration": "3:44",
+        "type": "archive",
+        "archiveId": "los-angeles-negros-y-volvere"
+      },
+      {
+        "title": "Los Angeles Negros - Amar Y Vivir",
+        "audio": "https://archive.org/download/los-angeles-negros-y-volvere/Los_Angeles_Negros_-_Amar_Y_Vivir.mp3",
+        "duration": "3:33",
+        "type": "archive",
+        "archiveId": "los-angeles-negros-y-volvere"
+      },
+      {
+        "title": "Los Angeles Negros - Como Quisiera Decirte",
+        "audio": "https://archive.org/download/los-angeles-negros-y-volvere/Los_Angeles_Negros_-_Como_Quisiera_Decirte.mp3",
+        "duration": "2:44",
+        "type": "archive",
+        "archiveId": "los-angeles-negros-y-volvere"
+      },
+      {
+        "title": "Los Angeles Negros - Debut Y Despedida",
+        "audio": "https://archive.org/download/los-angeles-negros-y-volvere/Los_Angeles_Negros_-_Debut_Y_Despedida.mp3",
+        "duration": "2:52",
+        "type": "archive",
+        "archiveId": "los-angeles-negros-y-volvere"
+      },
+      {
+        "title": "Los Angeles Negros - Dejenme Si Estoy Llorando",
+        "audio": "https://archive.org/download/los-angeles-negros-y-volvere/Los_Angeles_Negros_-_Dejenme_Si_Estoy_Llorando.mp3",
+        "duration": "2:45",
+        "type": "archive",
+        "archiveId": "los-angeles-negros-y-volvere"
+      },
+      {
+        "title": "Los Angeles Negros - Mi Nina",
+        "audio": "https://archive.org/download/los-angeles-negros-y-volvere/Los_Angeles_Negros_-_Mi_Nina.mp3",
+        "duration": "3:05",
+        "type": "archive",
+        "archiveId": "los-angeles-negros-y-volvere"
+      },
+      {
+        "title": "Los Angeles Negros - Murio La Flor",
+        "audio": "https://archive.org/download/los-angeles-negros-y-volvere/Los_Angeles_Negros_-_Murio_La_Flor.mp3",
+        "duration": "3:23",
+        "type": "archive",
+        "archiveId": "los-angeles-negros-y-volvere"
+      },
+      {
+        "title": "Los Angeles Negros - Pasion Y Vida",
+        "audio": "https://archive.org/download/los-angeles-negros-y-volvere/Los_Angeles_Negros_-_Pasion_Y_Vida.mp3",
+        "duration": "2:53",
+        "type": "archive",
+        "archiveId": "los-angeles-negros-y-volvere"
+      },
+      {
+        "title": "Los Angeles Negros - Vete En Silencio",
+        "audio": "https://archive.org/download/los-angeles-negros-y-volvere/Los_Angeles_Negros_-_Vete_En_Silencio.mp3",
+        "duration": "3:18",
+        "type": "archive",
+        "archiveId": "los-angeles-negros-y-volvere"
+      },
+      {
+        "title": "Los Angeles Negros - Y Volveré",
+        "audio": "https://archive.org/download/los-angeles-negros-y-volvere/Los_Angeles_Negros_-_Y_Volver%C3%A9.mp3",
+        "duration": "3:58",
+        "type": "archive",
+        "archiveId": "los-angeles-negros-y-volvere"
+      }
+    ]
+  },
+  {
     "artist": "Los Pasteles Verdes",
     "album": "Los Pasteles Verdes - Recuerdos de una noche",
     "year": "1974",
