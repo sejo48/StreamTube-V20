@@ -2476,6 +2476,43 @@
             albumsDataRef.current = albumsData;
 
             const playTrackRef = useRef(null);
+            const nextTrackRef = useRef(null);
+            const prevTrackRef = useRef(null);
+
+            const updateMediaSession = (track, album) => {
+                if (typeof navigator !== 'undefined' && 'mediaSession' in navigator && track && album) {
+                    try {
+                        navigator.mediaSession.metadata = new MediaMetadata({
+                            title: track.title || 'Pista de Audio',
+                            artist: album.artist || 'Artista Clásico',
+                            album: album.album || 'Álbum',
+                            artwork: [
+                                { src: album.cover || '', sizes: '512x512', type: 'image/jpeg' }
+                            ]
+                        });
+                        navigator.mediaSession.playbackState = 'playing';
+                        navigator.mediaSession.setActionHandler('play', () => {
+                            if (audioRef.current) {
+                                audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+                            }
+                        });
+                        navigator.mediaSession.setActionHandler('pause', () => {
+                            if (audioRef.current) {
+                                audioRef.current.pause();
+                                setIsPlaying(false);
+                            }
+                        });
+                        navigator.mediaSession.setActionHandler('nexttrack', () => {
+                            if (nextTrackRef.current) nextTrackRef.current();
+                        });
+                        navigator.mediaSession.setActionHandler('previoustrack', () => {
+                            if (prevTrackRef.current) prevTrackRef.current();
+                        });
+                    } catch (e) {
+                        console.warn('MediaSession notice:', e);
+                    }
+                }
+            };
 
             const genres = ['TODOS', 'Rock', 'Pop & Disco', 'Baladas & Romántica', 'Tropical & Salsa', 'Reggae & Soul'];
 
@@ -2497,6 +2534,10 @@
 
             useEffect(() => {
                 const audio = new Audio();
+                audio.preload = 'auto';
+                audio.setAttribute('playsinline', 'true');
+                audio.setAttribute('webkit-playsinline', 'true');
+                audio.setAttribute('x-webkit-airplay', 'allow');
                 audioRef.current = audio;
 
                 const handleTimeUpdate = () => {
@@ -2507,7 +2548,7 @@
                 };
                 const handleLoadedMetadata = () => { setDuration(audio.duration || 0); };
                 
-                // REPRODUCCIÓN SECUENCIAL AUTOMÁTICA (Canción por canción hasta el final de la lista)
+                // REPRODUCCIÓN SECUENCIAL AUTOMÁTICA EN MÓVIL Y ESCRITORIO
                 const handleEnded = () => {
                     const cur = currentPlaybackRef.current;
                     const album = cur.albumId 
@@ -2517,7 +2558,7 @@
 
                     const nextIdx = cur.trackIndex + 1;
                     if (nextIdx < album.tracks.length) {
-                        // Siguiente pista del álbum
+                        // Siguiente pista del álbum: continua inmediatamente en la misma instancia de audio
                         if (playTrackRef.current) {
                             playTrackRef.current(album, nextIdx);
                         }
@@ -2527,6 +2568,10 @@
                         setProgress(0);
                         setCurrentTime(0);
                         setCurrentPlayback({ albumId: album.id, trackIndex: 0 });
+                        currentPlaybackRef.current = { albumId: album.id, trackIndex: 0 };
+                        if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
+                            navigator.mediaSession.playbackState = 'none';
+                        }
                     }
                 };
 
@@ -2534,7 +2579,7 @@
                     if (audio.src && audio.src !== window.location.href && !audio.src.endsWith('/')) {
                         console.warn("Aviso en reproducción de audio:", e);
                     }
-                    // Si ocurre un error de red en una pista, intentar pasar a la siguiente
+                    // Si ocurre un error de red en una pista, intentar pasar a la siguiente de forma fluida
                     const cur = currentPlaybackRef.current;
                     const album = cur.albumId 
                         ? albumsDataRef.current.find(a => a.id === cur.albumId) 
@@ -2544,7 +2589,7 @@
                             if (playTrackRef.current) {
                                 playTrackRef.current(album, cur.trackIndex + 1);
                             }
-                        }, 800);
+                        }, 500);
                     } else {
                         setIsPlaying(false);
                     }
@@ -2577,7 +2622,7 @@
             const stopAllAudio = () => {
                 if (audioRef.current) {
                     audioRef.current.pause();
-                    audioRef.current.src = '';
+                    audioRef.current.currentTime = 0;
                 }
             };
 
@@ -2595,7 +2640,8 @@
                 const track = album.tracks[safeIdx];
                 if (!track) return;
 
-                if (currentPlayback.albumId === album.id && currentPlayback.trackIndex === safeIdx) {
+                const cur = currentPlaybackRef.current;
+                if (cur.albumId === album.id && cur.trackIndex === safeIdx) {
                     if (isArchiveTrack(track)) {
                         setIsPlaying(!isPlaying);
                         return;
@@ -2603,19 +2649,27 @@
                     if (isPlaying) {
                         audioRef.current?.pause();
                         setIsPlaying(false);
+                        if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
+                            navigator.mediaSession.playbackState = 'paused';
+                        }
                     } else {
-                        audioRef.current?.play().then(() => setIsPlaying(true)).catch(e => console.warn(e));
+                        audioRef.current?.play().then(() => {
+                            setIsPlaying(true);
+                            if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
+                                navigator.mediaSession.playbackState = 'playing';
+                            }
+                        }).catch(e => console.warn(e));
                     }
                     return;
                 }
-
-                stopAllAudio();
 
                 const audioSource = track?.audio || track?.urlDrive || track?.url || album.musicUrl || album.urlDrive || album.url || '';
                 const hasDirectAudio = isAudioFileUrl(audioSource) || (audioSource && audioSource.includes('.mp3'));
 
                 if (!hasDirectAudio && isArchiveTrack(track)) {
                     setCurrentPlayback({ albumId: album.id, trackIndex: safeIdx });
+                    currentPlaybackRef.current = { albumId: album.id, trackIndex: safeIdx };
+                    activeAlbumRef.current = album;
                     setIsPlaying(true);
                     setProgress(0);
                     setCurrentTime(0);
@@ -2627,11 +2681,31 @@
                 const audio = audioRef.current;
                 if (!audio) return;
 
+                // Sincronización inmediata de estado y referencias para móvil
                 setCurrentPlayback({ albumId: album.id, trackIndex: safeIdx });
+                currentPlaybackRef.current = { albumId: album.id, trackIndex: safeIdx };
+                activeAlbumRef.current = album;
                 setIsPlaying(true);
-                audio.src = audioSource;
+
+                // REGLA CLAVE PARA MÓVIL (iOS / Android):
+                // No se llama a stopAllAudio() ni se asigna src = '' porque eso revoca el token de interacción táctil
+                // del usuario en Safari/Chrome móvil. Se actualiza el src directamente en la misma instancia y se llama load() y play().
+                if (audio.src !== audioSource) {
+                    audio.src = audioSource;
+                    audio.load();
+                }
+                audio.currentTime = 0;
                 audio.volume = volume;
-                audio.play().catch(e => console.warn("Aviso al iniciar audio:", e));
+
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        setIsPlaying(true);
+                        updateMediaSession(track, album);
+                    }).catch(e => {
+                        console.warn("Aviso al iniciar audio móvil:", e);
+                    });
+                }
             };
             playTrackRef.current = playTrack;
 
@@ -2670,22 +2744,28 @@
             };
 
             const nextTrack = () => {
-                const album = currentPlayback.albumId 
-                    ? albumsData.find(a => a.id === currentPlayback.albumId) 
-                    : activeAlbum;
+                const cur = currentPlaybackRef.current;
+                const album = cur.albumId 
+                    ? albumsDataRef.current.find(a => a.id === cur.albumId) 
+                    : activeAlbumRef.current;
                 if (!album || !album.tracks || album.tracks.length === 0) return;
-                const nextIdx = (currentPlayback.trackIndex + 1) % album.tracks.length;
+                const curIdx = cur.trackIndex >= 0 ? cur.trackIndex : 0;
+                const nextIdx = (curIdx + 1) % album.tracks.length;
                 playTrack(album, nextIdx);
             };
+            nextTrackRef.current = nextTrack;
 
             const prevTrack = () => {
-                const album = currentPlayback.albumId 
-                    ? albumsData.find(a => a.id === currentPlayback.albumId) 
-                    : activeAlbum;
+                const cur = currentPlaybackRef.current;
+                const album = cur.albumId 
+                    ? albumsDataRef.current.find(a => a.id === cur.albumId) 
+                    : activeAlbumRef.current;
                 if (!album || !album.tracks || album.tracks.length === 0) return;
-                const prevIdx = (currentPlayback.trackIndex - 1 + album.tracks.length) % album.tracks.length;
+                const curIdx = cur.trackIndex >= 0 ? cur.trackIndex : 0;
+                const prevIdx = (curIdx - 1 + album.tracks.length) % album.tracks.length;
                 playTrack(album, prevIdx);
             };
+            prevTrackRef.current = prevTrack;
 
             const formatTime = (secs) => {
                 if (isNaN(secs) || secs === 0) return "0:00";
