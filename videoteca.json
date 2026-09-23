@@ -1,5 +1,72 @@
 [
   {
+    "artist": "Grupo Miramar",
+    "album": "30 Exitos de Oro Grupo Miramar",
+    "year": "1994",
+    "genre": "Música Mexicana",
+    "cover": "https://m.media-amazon.com/images/I/615zVEysUnL._UXNaN_FMjpg_QL85_.jpg",
+    "musicUrl": "https://archive.org/details/el-mudo_202609",
+    "description": "Producción discográfica clásica de Los Cadetes De Linares, lanzada originalmente en el año 1994. Obra cumbre dentro de la categoría Música Mexicana, conservada en calidad máster para la colección BoxPlayMusic.",
+    "tracks": [
+      {
+        "title": "Aquel Inmenso Amor",
+        "audio": "https://archive.org/download/el-mudo_202609/Aquel_Inmenso_Amor.mp3",
+        "duration": "3:27",
+        "type": "archive",
+        "archiveId": "el-mudo_202609"
+      },
+      {
+        "title": "Con una Lagrima en la Garganta",
+        "audio": "https://archive.org/download/el-mudo_202609/Con_una_Lagrima_en_la_Garganta.mp3",
+        "duration": "3:25",
+        "type": "archive",
+        "archiveId": "el-mudo_202609"
+      },
+      {
+        "title": "El Libro de los Dioses",
+        "audio": "https://archive.org/download/el-mudo_202609/El_Libro_de_los_Dioses.mp3",
+        "duration": "2:52",
+        "type": "archive",
+        "archiveId": "el-mudo_202609"
+      },
+      {
+        "title": "El Mudo",
+        "audio": "https://archive.org/download/el-mudo_202609/El_Mudo.mp3",
+        "duration": "3:58",
+        "type": "archive",
+        "archiveId": "el-mudo_202609"
+      },
+      {
+        "title": "Pobres Niños",
+        "audio": "https://archive.org/download/el-mudo_202609/Pobres_Ni%C3%B1os.mp3",
+        "duration": "3:38",
+        "type": "archive",
+        "archiveId": "el-mudo_202609"
+      },
+      {
+        "title": "Pobreza Fatal",
+        "audio": "https://archive.org/download/el-mudo_202609/Pobreza_Fatal.mp3",
+        "duration": "3:10",
+        "type": "archive",
+        "archiveId": "el-mudo_202609"
+      },
+      {
+        "title": "Que Nos Entierren Juntos",
+        "audio": "https://archive.org/download/el-mudo_202609/Que_Nos_Entierren_Juntos.mp3",
+        "duration": "2:42",
+        "type": "archive",
+        "archiveId": "el-mudo_202609"
+      },
+      {
+        "title": "Una Lagrima un Recuerdo",
+        "audio": "https://archive.org/download/el-mudo_202609/Una_Lagrima_un_Recuerdo.mp3",
+        "duration": "2:55",
+        "type": "archive",
+        "archiveId": "el-mudo_202609"
+      }
+    ]
+  },
+  {
     "artist": "mana",
     "album": "Maná grandes éxitos",
     "year": "2005",
