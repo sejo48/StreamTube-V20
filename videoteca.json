@@ -1,5 +1,89 @@
 [
   {
+    "artist": "Kiss",
+    "album": "Kiss Dynasty",
+    "year": "1979",
+    "genre": "Rock",
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/92/7f/5c/927f5c6f-e24a-8db5-e165-38d8b9314d8d/14UMGIM16041.rgb.jpg/1000x1000bb.jpg",
+    "musicUrl": "https://archive.org/details/2-000-man",
+    "description": "Producción discográfica clásica de Ernő Kállai Kiss Jr. and His Gypsy Band, Ernő Kállay & János Balázs Jr., lanzada originalmente en el año 2010. Obra cumbre dentro de la categoría Classical, conservada en calidad máster para la colección BoxPlayMusic.",
+    "tracks": [
+      {
+        "title": "2,000 Man",
+        "audio": "https://archive.org/download/2-000-man/2%2C000_Man.mp3",
+        "duration": "4:55",
+        "type": "archive",
+        "archiveId": "2-000-man"
+      },
+      {
+        "title": "Charisma",
+        "audio": "https://archive.org/download/2-000-man/Charisma.mp3",
+        "duration": "4:25",
+        "type": "archive",
+        "archiveId": "2-000-man"
+      },
+      {
+        "title": "Dirty Livin'",
+        "audio": "https://archive.org/download/2-000-man/Dirty_Livin'.mp3",
+        "duration": "4:27",
+        "type": "archive",
+        "archiveId": "2-000-man"
+      },
+      {
+        "title": "Hard Times",
+        "audio": "https://archive.org/download/2-000-man/Hard_Times.mp3",
+        "duration": "3:31",
+        "type": "archive",
+        "archiveId": "2-000-man"
+      },
+      {
+        "title": "I Was Made For Lovin' You",
+        "audio": "https://archive.org/download/2-000-man/I_Was_Made_For_Lovin'_You.mp3",
+        "duration": "4:31",
+        "type": "archive",
+        "archiveId": "2-000-man"
+      },
+      {
+        "title": "Magic Touch",
+        "audio": "https://archive.org/download/2-000-man/Magic_Touch.mp3",
+        "duration": "4:42",
+        "type": "archive",
+        "archiveId": "2-000-man"
+      },
+      {
+        "title": "Save Your Love",
+        "audio": "https://archive.org/download/2-000-man/Save_Your_Love.mp3",
+        "duration": "4:40",
+        "type": "archive",
+        "archiveId": "2-000-man"
+      },
+      {
+        "title": "Sure Know Something",
+        "audio": "https://archive.org/download/2-000-man/Sure_Know_Something.mp3",
+        "duration": "4:01",
+        "type": "archive",
+        "archiveId": "2-000-man"
+      },
+      {
+        "title": "X-Ray Eyes",
+        "audio": "https://archive.org/download/2-000-man/X-Ray_Eyes.mp3",
+        "duration": "3:46",
+        "type": "archive",
+        "archiveId": "2-000-man"
+      }
+    ]
+  },
+  {
+    "artist": "Funky Town",
+    "album": "Lipps Inc. - Funkytown",
+    "year": "2006",
+    "genre": "Pop & Disco",
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music/84/4e/3e/mzi.vpjzjskq.jpg/1000x1000bb.jpg",
+    "musicUrl": "",
+    "description": "«Funkytown» es una canción interpretada por la banda estadounidense Lipps Inc. y escrita por Steven Greenberg. Fue lanzada en 1979 y pertenece a los géneros disco, R&B y electro funk. Alcanzó gran popularidad en su época y hasta la fecha sigue siendo icónica. En la lista Billboard Hot 100, alcanzó el primer puesto y, en la R&B Singles, el segundo puesto. Además, tuvo el primer puesto en Alemania, Austria, Suiza, Noruega, Australia y los Países Bajos. En el Reino Unido y Suecia, obtuvo el segundo puesto. Se cree que la canción se escribió mientras la banda de música vivía en Minneapolis y deseaba mudarse a la ciudad de Nueva York.",
+    "tracks": []
+  },
+  {
     "artist": "Galy Galiano",
     "album": "Galy Galiano - Solo Salsa",
     "year": "1993",
