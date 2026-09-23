@@ -1,5 +1,86 @@
 [
   {
+    "artist": "Los Pasteles Verdes",
+    "album": "Los Pasteles Verdes - Recuerdos de una noche",
+    "year": "1974",
+    "genre": "Pop & Disco",
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/58/70/61/587061ee-6c76-7ae6-d805-5a67fb6a7a50/197187200726.jpg/1000x1000bb.jpg",
+    "musicUrl": "https://archive.org/details/baby_20260923",
+    "description": "Producción discográfica clásica de Los Pasteles Verdes, lanzada originalmente en el año 1974. Obra cumbre dentro de la categoría Pop & Disco, conservada en calidad máster para la colección BoxPlayMusic.",
+    "tracks": [
+      {
+        "title": "Amanecer de Amor",
+        "audio": "https://archive.org/download/baby_20260923/Amanecer_de_Amor.mp3",
+        "duration": "2:49",
+        "type": "archive",
+        "archiveId": "baby_20260923"
+      },
+      {
+        "title": "Angelitos Negros",
+        "audio": "https://archive.org/download/baby_20260923/Angelitos_Negros.mp3",
+        "duration": "3:20",
+        "type": "archive",
+        "archiveId": "baby_20260923"
+      },
+      {
+        "title": "Baby",
+        "audio": "https://archive.org/download/baby_20260923/Baby.mp3",
+        "duration": "3:48",
+        "type": "archive",
+        "archiveId": "baby_20260923"
+      },
+      {
+        "title": "El Presidiario",
+        "audio": "https://archive.org/download/baby_20260923/El_Presidiario.mp3",
+        "duration": "3:09",
+        "type": "archive",
+        "archiveId": "baby_20260923"
+      },
+      {
+        "title": "El Reloj",
+        "audio": "https://archive.org/download/baby_20260923/El_Reloj.mp3",
+        "duration": "3:28",
+        "type": "archive",
+        "archiveId": "baby_20260923"
+      },
+      {
+        "title": "Es de Noche y Es Mejor",
+        "audio": "https://archive.org/download/baby_20260923/Es_de_Noche_y_Es_Mejor.mp3",
+        "duration": "3:29",
+        "type": "archive",
+        "archiveId": "baby_20260923"
+      },
+      {
+        "title": "Recuerdos de una Noche",
+        "audio": "https://archive.org/download/baby_20260923/Recuerdos_de_una_Noche.mp3",
+        "duration": "2:59",
+        "type": "archive",
+        "archiveId": "baby_20260923"
+      },
+      {
+        "title": "Siempre Estarás en Mi",
+        "audio": "https://archive.org/download/baby_20260923/Siempre_Estar%C3%A1s_en_Mi.mp3",
+        "duration": "2:29",
+        "type": "archive",
+        "archiveId": "baby_20260923"
+      },
+      {
+        "title": "Te Amo y No Soy Correspondido",
+        "audio": "https://archive.org/download/baby_20260923/Te_Amo_y_No_Soy_Correspondido.mp3",
+        "duration": "3:17",
+        "type": "archive",
+        "archiveId": "baby_20260923"
+      },
+      {
+        "title": "Vuelvo a Casa",
+        "audio": "https://archive.org/download/baby_20260923/Vuelvo_a_Casa.mp3",
+        "duration": "3:08",
+        "type": "archive",
+        "archiveId": "baby_20260923"
+      }
+    ]
+  },
+  {
     "artist": "Kiss",
     "album": "Kiss Dynasty",
     "year": "1979",
