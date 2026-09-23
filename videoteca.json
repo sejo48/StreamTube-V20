@@ -1,5 +1,114 @@
 [
   {
+    "artist": "mana",
+    "album": "Maná grandes éxitos",
+    "year": "2005",
+    "genre": "Pop & Disco",
+    "cover": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da844235bb7ce1c85319f490619d",
+    "musicUrl": "https://archive.org/details/track-01_20260923",
+    "description": "Producción discográfica clásica de, lanzada originalmente en el año 2005. Obra cumbre dentro de la categoría Pop & Disco, conservada en calidad máster para la colección BoxPlayMusic.",
+    "tracks": [
+      {
+        "title": "Track 01",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2001.mp3",
+        "duration": "5:52",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 02",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2002.mp3",
+        "duration": "4:52",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 03",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2003.mp3",
+        "duration": "4:32",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 04",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2004.mp3",
+        "duration": "4:57",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 05",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2005.mp3",
+        "duration": "4:32",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 06",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2006.mp3",
+        "duration": "5:11",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 07",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2007.mp3",
+        "duration": "5:24",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 08",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2008.mp3",
+        "duration": "4:22",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 09",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2009.mp3",
+        "duration": "5:07",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 10",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2010.mp3",
+        "duration": "4:39",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 11",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2011.mp3",
+        "duration": "4:14",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 12",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2012.mp3",
+        "duration": "4:14",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 13",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2013.mp3",
+        "duration": "5:01",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      },
+      {
+        "title": "Track 14",
+        "audio": "https://archive.org/download/track-01_20260923/Track%2014.mp3",
+        "duration": "5:21",
+        "type": "archive",
+        "archiveId": "track-01_20260923"
+      }
+    ]
+  },
+  {
     "artist": "DANIEL SANTO",
     "album": "LA DESPEDIDA",
     "year": "1970",
