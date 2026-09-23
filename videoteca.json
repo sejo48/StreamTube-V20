@@ -1,5 +1,86 @@
 [
   {
+    "artist": "Donna Summer",
+    "album": "Donna Summer - Bad Girls (Deluxe)",
+    "year": "2013",
+    "genre": "Pop & Disco",
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/f5/89/4f/f5894f7a-726a-27ae-8730-2a4956c105ff/00602537583737.rgb.jpg/1000x1000bb.jpg",
+    "musicUrl": "https://archive.org/details/hot-stuff_20260923",
+    "description": "Producción discográfica clásica de Donna Summer, lanzada originalmente en el año 2013. Obra cumbre dentro de la categoría Pop & Disco, conservada en calidad máster para la colección BoxPlayMusic.",
+    "tracks": [
+      {
+        "title": "Bad Girls (12 Version)",
+        "audio": "https://archive.org/download/hot-stuff_20260923/Bad_Girls_(12_Version).mp3",
+        "duration": "4:55",
+        "type": "archive",
+        "archiveId": "hot-stuff_20260923"
+      },
+      {
+        "title": "Can't Get To Sleep At Night",
+        "audio": "https://archive.org/download/hot-stuff_20260923/Can't_Get_To_Sleep_At_Night.mp3",
+        "duration": "4:48",
+        "type": "archive",
+        "archiveId": "hot-stuff_20260923"
+      },
+      {
+        "title": "Dim All The Lights",
+        "audio": "https://archive.org/download/hot-stuff_20260923/Dim_All_The_Lights.mp3",
+        "duration": "4:41",
+        "type": "archive",
+        "archiveId": "hot-stuff_20260923"
+      },
+      {
+        "title": "Hot Stuff",
+        "audio": "https://archive.org/download/hot-stuff_20260923/Hot_Stuff.mp3",
+        "duration": "5:15",
+        "type": "archive",
+        "archiveId": "hot-stuff_20260923"
+      },
+      {
+        "title": "Journey To The Centre Of Your Heart",
+        "audio": "https://archive.org/download/hot-stuff_20260923/Journey_To_The_Centre_Of_Your_Heart.mp3",
+        "duration": "4:36",
+        "type": "archive",
+        "archiveId": "hot-stuff_20260923"
+      },
+      {
+        "title": "Love Will Always Find You",
+        "audio": "https://archive.org/download/hot-stuff_20260923/Love_Will_Always_Find_You.mp3",
+        "duration": "3:59",
+        "type": "archive",
+        "archiveId": "hot-stuff_20260923"
+      },
+      {
+        "title": "On My Honor",
+        "audio": "https://archive.org/download/hot-stuff_20260923/On_My_Honor.mp3",
+        "duration": "3:33",
+        "type": "archive",
+        "archiveId": "hot-stuff_20260923"
+      },
+      {
+        "title": "One Night In A Lifetime",
+        "audio": "https://archive.org/download/hot-stuff_20260923/One_Night_In_A_Lifetime.mp3",
+        "duration": "4:12",
+        "type": "archive",
+        "archiveId": "hot-stuff_20260923"
+      },
+      {
+        "title": "There Will Always Be A You",
+        "audio": "https://archive.org/download/hot-stuff_20260923/There_Will_Always_Be_A_You.mp3",
+        "duration": "5:05",
+        "type": "archive",
+        "archiveId": "hot-stuff_20260923"
+      },
+      {
+        "title": "Walk Away",
+        "audio": "https://archive.org/download/hot-stuff_20260923/Walk_Away.mp3",
+        "duration": "4:32",
+        "type": "archive",
+        "archiveId": "hot-stuff_20260923"
+      }
+    ]
+  },
+  {
     "artist": "Grupo Miramar",
     "album": "30 Exitos de Oro Grupo Miramar",
     "year": "1994",
