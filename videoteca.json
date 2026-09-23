@@ -74,14 +74,78 @@
     ]
   },
   {
-    "artist": "Funky Town",
+    "artist": "Lipps, Inc.",
     "album": "Lipps Inc. - Funkytown",
-    "year": "2006",
+    "year": "2003",
     "genre": "Pop & Disco",
-    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music/84/4e/3e/mzi.vpjzjskq.jpg/1000x1000bb.jpg",
-    "musicUrl": "",
+    "cover": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f2/8c/af/f28cafdd-e76e-5cef-42f9-80670b65f1ab/00044006305622.rgb.jpg/1000x1000bb.jpg",
+    "musicUrl": "https://archive.org/details/tight-pair",
     "description": "«Funkytown» es una canción interpretada por la banda estadounidense Lipps Inc. y escrita por Steven Greenberg. Fue lanzada en 1979 y pertenece a los géneros disco, R&B y electro funk. Alcanzó gran popularidad en su época y hasta la fecha sigue siendo icónica. En la lista Billboard Hot 100, alcanzó el primer puesto y, en la R&B Singles, el segundo puesto. Además, tuvo el primer puesto en Alemania, Austria, Suiza, Noruega, Australia y los Países Bajos. En el Reino Unido y Suecia, obtuvo el segundo puesto. Se cree que la canción se escribió mientras la banda de música vivía en Minneapolis y deseaba mudarse a la ciudad de Nueva York.",
-    "tracks": []
+    "tracks": [
+      {
+        "title": "I Need Some Cash",
+        "audio": "https://archive.org/download/tight-pair/I_Need_Some_Cash.mp3",
+        "duration": "4:59",
+        "type": "archive",
+        "archiveId": "tight-pair"
+      },
+      {
+        "title": "Jazzy",
+        "audio": "https://archive.org/download/tight-pair/Jazzy.mp3",
+        "duration": "3:58",
+        "type": "archive",
+        "archiveId": "tight-pair"
+      },
+      {
+        "title": "Let's Get Back To The Floor (Album Version)",
+        "audio": "https://archive.org/download/tight-pair/Let's_Get_Back_To_The_Floor_(Album_Version).mp3",
+        "duration": "6:39",
+        "type": "archive",
+        "archiveId": "tight-pair"
+      },
+      {
+        "title": "Lipps Inc. - Designer Music (Official Video)",
+        "audio": "https://archive.org/download/tight-pair/Lipps_Inc._-_Designer_Music_(Official_Video).mp3",
+        "duration": "5:42",
+        "type": "archive",
+        "archiveId": "tight-pair"
+      },
+      {
+        "title": "Lipps Inc. - Funkytown (Official Audio)",
+        "audio": "https://archive.org/download/tight-pair/Lipps_Inc._-_Funkytown_(Official_Audio).mp3",
+        "duration": "7:49",
+        "type": "archive",
+        "archiveId": "tight-pair"
+      },
+      {
+        "title": "Obsessed (Album Version)",
+        "audio": "https://archive.org/download/tight-pair/Obsessed_(Album_Version).mp3",
+        "duration": "3:55",
+        "type": "archive",
+        "archiveId": "tight-pair"
+      },
+      {
+        "title": "On To You (Radio Edit)",
+        "audio": "https://archive.org/download/tight-pair/On_To_You_(Radio_Edit).mp3",
+        "duration": "3:22",
+        "type": "archive",
+        "archiveId": "tight-pair"
+      },
+      {
+        "title": "Rock It (Edit)",
+        "audio": "https://archive.org/download/tight-pair/Rock_It_(Edit).mp3",
+        "duration": "3:42",
+        "type": "archive",
+        "archiveId": "tight-pair"
+      },
+      {
+        "title": "Tight Pair",
+        "audio": "https://archive.org/download/tight-pair/Tight_Pair.mp3",
+        "duration": "8:31",
+        "type": "archive",
+        "archiveId": "tight-pair"
+      }
+    ]
   },
   {
     "artist": "Galy Galiano",
