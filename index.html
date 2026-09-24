@@ -2487,6 +2487,7 @@
             const [currentTime, setCurrentTime] = useState(0);
             const [duration, setDuration] = useState(0);
             const [volume, setVolume] = useState(0.85);
+            const [isInterrupted, setIsInterrupted] = useState(false);
 
             // Refs para sincronización en tiempo real sin cierres obsoletos (evita stale closure de React)
             const currentPlaybackRef = useRef(currentPlayback);
@@ -2546,17 +2547,21 @@
                 const isTimeStalled = (now - lastProgressTimestampRef.current) > 1300;
 
                 if (isPaused || isTimeStalled) {
+                    setIsInterrupted(true);
                     const p = curAudio.play();
                     if (p !== undefined) {
                         p.then(() => {
                             lastProgressTimestampRef.current = Date.now();
                             setIsPlaying(true);
+                            setIsInterrupted(false);
                             requestWakeLock();
                         }).catch(() => {
                             // El sistema operativo sigue ocupado con la notificación o llamada entrante;
                             // el supervisor reintentará en el siguiente pulso
                         });
                     }
+                } else if (!isPaused && !isTimeStalled) {
+                    setIsInterrupted(false);
                 }
             };
 
@@ -2646,6 +2651,7 @@
             // Detección de visibilidad, foco y pageshow + latido supervisor continuo
             useEffect(() => {
                 const handleVisibilityOrFocus = () => {
+                    requestWakeLock();
                     if (!userPausedRef.current) {
                         checkAndRecoverPlayback();
                     }
@@ -3106,8 +3112,48 @@
 
             return (
                 <div ref={topSectionRef} id="coleccion-top" className="min-h-[85vh] bg-[#090d16] text-white flex flex-col pb-32 animate-fade-in select-none">
+                    {/* Video imperceptible para garantizar que la pantalla permanezca despierta al estar abierta la app */}
+                    <video 
+                        playsInline 
+                        webkit-playsinline="true"
+                        muted 
+                        loop 
+                        autoPlay 
+                        src="data:video/mp4;base64,AAAAHGZ0eXBtcDQyAAAAAG1wNDJpc29tYXZjMQAAAAhmcmVlAAAABG1kYXQ=" 
+                        style={{ position: 'fixed', top: 0, left: 0, width: '1px', height: '1px', opacity: 0.001, pointerEvents: 'none', zIndex: -1 }} 
+                    />
+
                     {/* Contenedor Principal Amplio (En PC aprovecha toda la pantalla hasta 1650px) */}
                     <div className="flex-1 flex flex-col p-3 sm:p-6 lg:p-10 gap-8 max-w-[1650px] mx-auto w-full">
+
+                        {/* Banner Flotante de Notificación / Mensaje Entrante */}
+                        {isInterrupted && !userPausedRef.current && (
+                            <div className="w-full bg-gradient-to-r from-amber-500/25 via-cyan-500/20 to-teal-500/25 border-2 border-cyan-400/60 rounded-2xl p-3 sm:p-4 flex items-center justify-between shadow-2xl animate-pulse">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-3 h-3 rounded-full bg-cyan-400 animate-ping flex-shrink-0"></div>
+                                    <div className="flex flex-col">
+                                        <span className="text-xs sm:text-sm font-black text-white">Audio en pausa por mensaje o notificación</span>
+                                        <span className="text-[10px] text-cyan-300 font-mono font-bold">Reanudando automáticamente...</span>
+                                    </div>
+                                </div>
+                                <button 
+                                    onClick={() => {
+                                        const cur = activeDeckRef.current === 0 ? audioARef.current : audioBRef.current;
+                                        if (cur) {
+                                            cur.play().then(() => {
+                                                setIsInterrupted(false);
+                                                setIsPlaying(true);
+                                                requestWakeLock();
+                                            }).catch(() => {});
+                                        }
+                                    }}
+                                    className="px-4 py-2 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-extrabold text-xs shadow-lg transition-transform active:scale-95 flex items-center gap-1.5 flex-shrink-0"
+                                >
+                                    <Icon name="play" size={12} fill="currentColor" />
+                                    <span>Reanudar Ahora</span>
+                                </button>
+                            </div>
+                        )}
                         
                         {/* 1. SECCIÓN SUPERIOR: ÁLBUM ACTIVO (Banner Amplio estilo Spotify) */}
                         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 bg-gradient-to-b from-cyan-950/30 via-[#101726]/80 to-[#0a0e1a] p-4 sm:p-6 lg:p-8 rounded-3xl border border-white/5 shadow-2xl">
@@ -3222,9 +3268,15 @@
                                 <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4">
                                     {/* Metadatos */}
                                     <div className="flex flex-col text-center sm:text-left space-y-2 flex-1 min-w-0">
-                                        <span className="text-[10px] sm:text-[11px] font-bold tracking-widest uppercase text-cyan-400">
-                                            Álbum • BoxPlayMusic
-                                        </span>
+                                        <div className="flex items-center justify-center sm:justify-start gap-2.5 flex-wrap">
+                                            <span className="text-[10px] sm:text-[11px] font-bold tracking-widest uppercase text-cyan-400">
+                                                Álbum • BoxPlayMusic
+                                            </span>
+                                            <span className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-[9px] font-mono font-bold shadow-sm">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                                PANTALLA DESPIERTA
+                                            </span>
+                                        </div>
                                         
                                         <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
                                             {activeAlbum.album}
