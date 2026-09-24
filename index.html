@@ -2474,9 +2474,11 @@
             const isUnlockedRef = useRef(false);
             const wakeLockRef = useRef(null);
 
-            // Control estricto de interrupciones externas (mensajes, llamadas, notificaciones del sistema)
-            const userPausedRef = useRef(true); // Solo es true si el usuario tocó explícitamente el botón 'Pausa'
-            const resumeWatchdogRef = useRef(null);
+            // MOTOR DE RECUPERACIÓN DE REPRODUCCIÓN MÓVIL v2
+            // Control estricto de interrupciones del sistema (llamadas, mensajes, alarmas y notificaciones)
+            const userPausedRef = useRef(true); // Estrictamente true SOLO si el usuario presionó 'Pausa' manualmente
+            const lastProgressTimeRef = useRef(-1); // Última posición currentTime verificada
+            const lastProgressTimestampRef = useRef(Date.now()); // Marca de tiempo del último avance real de audio
 
             const topSectionRef = useRef(null);
             const [currentPlayback, setCurrentPlayback] = useState({ albumId: null, trackIndex: -1 });
@@ -2503,7 +2505,7 @@
 
             const genres = ['TODOS', 'Rock', 'Pop & Disco', 'Baladas & Romántica', 'Tropical & Salsa', 'Reggae & Soul'];
 
-            // Control de Screen WakeLock
+            // Control de Screen WakeLock para mantener pantalla despierta en primer plano
             const requestWakeLock = async () => {
                 if (typeof navigator !== 'undefined' && 'wakeLock' in navigator) {
                     try {
@@ -2524,60 +2526,38 @@
                 }
             };
 
-            // Detener el vigilante de reanudación
-            const stopResumeWatchdog = () => {
-                if (resumeWatchdogRef.current) {
-                    clearInterval(resumeWatchdogRef.current);
-                    resumeWatchdogRef.current = null;
-                }
-            };
-
-            // Intentar reanudar inmediatamente
-            const attemptResumeNow = () => {
-                if (userPausedRef.current) {
-                    stopResumeWatchdog();
-                    return;
-                }
-                const curAudio = activeDeckRef.current === 0 ? audioARef.current : audioBRef.current;
-                if (!curAudio) return;
-
-                if (!curAudio.paused && curAudio.currentTime > 0) {
-                    stopResumeWatchdog();
-                    setIsPlaying(true);
-                    return;
-                }
-
-                const p = curAudio.play();
-                if (p !== undefined) {
-                    p.then(() => {
-                        stopResumeWatchdog();
-                        setIsPlaying(true);
-                        requestWakeLock();
-                    }).catch(() => {
-                        // El canal sigue ocupado por el timbre/llamada; continuará intentando
-                    });
-                }
-            };
-
-            // Vigilante que reintenta reproducir continuamente cuando entra un mensaje o llamada
-            const startResumeWatchdog = () => {
-                stopResumeWatchdog();
+            // Comprobación periódica y recuperación automática v2
+            // No asume que el audio suena solo por !audio.paused, sino que verifica el progreso real del tiempo.
+            // Si la llamada o notificación interrumpió el foco de audio, vuelve a ejecutar play() desde currentTime sin reiniciar.
+            const checkAndRecoverPlayback = () => {
                 if (userPausedRef.current) return;
 
-                // 1. Reintento inmediato a los 500ms y 900ms para tonos cortos de mensajes de texto / WhatsApp
-                setTimeout(attemptResumeNow, 500);
-                setTimeout(attemptResumeNow, 950);
+                const curAudio = activeDeckRef.current === 0 ? audioARef.current : audioBRef.current;
+                if (!curAudio || !curAudio.src) return;
 
-                // 2. Reintento cada 1.1 segundos durante hasta 1 minuto para llamadas o audios largos
-                let attempts = 0;
-                resumeWatchdogRef.current = setInterval(() => {
-                    attempts++;
-                    if (attempts > 55 || userPausedRef.current) {
-                        stopResumeWatchdog();
-                        return;
+                // Si está cerca del final, el evento natural 'ended' se encarga de pasar a la siguiente canción
+                if (curAudio.duration && curAudio.currentTime >= curAudio.duration - 0.4) {
+                    return;
+                }
+
+                const now = Date.now();
+                const isPaused = curAudio.paused;
+                // Si el audio dice estar reproduciendo pero currentTime lleva más de 1.3s congelado sin avanzar:
+                const isTimeStalled = (now - lastProgressTimestampRef.current) > 1300;
+
+                if (isPaused || isTimeStalled) {
+                    const p = curAudio.play();
+                    if (p !== undefined) {
+                        p.then(() => {
+                            lastProgressTimestampRef.current = Date.now();
+                            setIsPlaying(true);
+                            requestWakeLock();
+                        }).catch(() => {
+                            // El sistema operativo sigue ocupado con la notificación o llamada entrante;
+                            // el supervisor reintentará en el siguiente pulso
+                        });
                     }
-                    attemptResumeNow();
-                }, 1100);
+                }
             };
 
             // Desbloqueo inicial simultáneo de ambos reproductores para iOS Safari y Android Chrome
@@ -2599,8 +2579,7 @@
                 } catch (e) {}
             };
 
-            // Configuración de MediaSession: NO sobreescribimos 'play' ni 'pause' para permitir
-            // que Android y Chrome gestionen de forma nativa el foco de audio y el ducking automático
+            // Soporte nativo de MediaSession en la pantalla de bloqueo y barra de notificaciones del teléfono
             const updateMediaSession = (track, album) => {
                 if (typeof navigator !== 'undefined' && 'mediaSession' in navigator && track && album) {
                     try {
@@ -2614,13 +2593,27 @@
                         });
                         navigator.mediaSession.playbackState = 'playing';
 
-                        // Dejar 'play' y 'pause' en null permite que Android Chrome ejecute su
-                        // manejador nativo C++ de audio focus, restaurando el sonido automáticamente
-                        // al finalizar un tono de notificación o mensaje.
-                        try {
-                            navigator.mediaSession.setActionHandler('play', null);
-                            navigator.mediaSession.setActionHandler('pause', null);
-                        } catch (e) {}
+                        navigator.mediaSession.setActionHandler('play', () => {
+                            userPausedRef.current = false;
+                            const curAudio = activeDeckRef.current === 0 ? audioARef.current : audioBRef.current;
+                            if (curAudio) {
+                                curAudio.play().then(() => {
+                                    lastProgressTimestampRef.current = Date.now();
+                                    setIsPlaying(true);
+                                    requestWakeLock();
+                                }).catch(() => {});
+                            }
+                        });
+
+                        navigator.mediaSession.setActionHandler('pause', () => {
+                            userPausedRef.current = true;
+                            const curAudio = activeDeckRef.current === 0 ? audioARef.current : audioBRef.current;
+                            if (curAudio) {
+                                curAudio.pause();
+                                setIsPlaying(false);
+                                releaseWakeLock();
+                            }
+                        });
 
                         navigator.mediaSession.setActionHandler('nexttrack', () => {
                             if (nextTrackRef.current) nextTrackRef.current();
@@ -2650,11 +2643,11 @@
                 }, 60);
             };
 
-            // Recuperación inmediata cuando el usuario vuelve a enfocar la aplicación
+            // Detección de visibilidad, foco y pageshow + latido supervisor continuo
             useEffect(() => {
                 const handleVisibilityOrFocus = () => {
                     if (!userPausedRef.current) {
-                        attemptResumeNow();
+                        checkAndRecoverPlayback();
                     }
                 };
 
@@ -2662,11 +2655,21 @@
                 window.addEventListener('pageshow', handleVisibilityOrFocus);
                 document.addEventListener('visibilitychange', handleVisibilityOrFocus);
 
+                // Supervisor periódico cada 1000ms: vigila que la música avance realmente
+                // Cuando desaparece una interrupción o mensaje, vuelve a ejecutar audio.play()
+                // exactamente desde currentTime sin reiniciar la pista.
+                const supervisorInterval = setInterval(() => {
+                    if (!userPausedRef.current) {
+                        checkAndRecoverPlayback();
+                    }
+                }, 1000);
+
                 return () => {
                     window.removeEventListener('focus', handleVisibilityOrFocus);
                     window.removeEventListener('pageshow', handleVisibilityOrFocus);
                     document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
-                    stopResumeWatchdog();
+                    clearInterval(supervisorInterval);
+                    releaseWakeLock();
                 };
             }, []);
 
@@ -2681,9 +2684,15 @@
 
                     const handleTimeUpdate = () => {
                         if (activeDeckRef.current !== deckIdx) return;
-                        setCurrentTime(audio.currentTime);
+                        const curTime = audio.currentTime;
+                        setCurrentTime(curTime);
                         if (audio.duration) {
-                            setProgress((audio.currentTime / audio.duration) * 100);
+                            setProgress((curTime / audio.duration) * 100);
+                        }
+                        // Registrar avance real del audio para el supervisor
+                        if (curTime !== lastProgressTimeRef.current) {
+                            lastProgressTimeRef.current = curTime;
+                            lastProgressTimestampRef.current = Date.now();
                         }
                     };
 
@@ -2693,21 +2702,30 @@
                         }
                     };
 
-                    // Notificación de inicio / reanudación de reproducción
                     const handlePlay = () => {
                         if (activeDeckRef.current !== deckIdx) return;
-                        stopResumeWatchdog();
                         setIsPlaying(true);
                         requestWakeLock();
                     };
 
-                    // Detección de pausa provocada por el sistema (mensaje, llamada, notificación)
+                    const handlePlaying = () => {
+                        if (activeDeckRef.current !== deckIdx) return;
+                        lastProgressTimestampRef.current = Date.now();
+                        setIsPlaying(true);
+                        requestWakeLock();
+                    };
+
                     const handlePause = () => {
                         if (activeDeckRef.current !== deckIdx) return;
-                        setIsPlaying(false);
-                        // Si el usuario NO fue quien presionó el botón de pausa, regenerar automáticamente
-                        if (!userPausedRef.current) {
-                            startResumeWatchdog();
+                        // Si el usuario pulsó pausa manualmente, actualizar estado y no auto-reanudar
+                        if (userPausedRef.current) {
+                            setIsPlaying(false);
+                            releaseWakeLock();
+                        } else {
+                            // Pausa provocada por el sistema (mensaje, llamada, notificación)
+                            // Ejecutar reintentos rápidos inmediatos para sonidos breves de notificación
+                            setTimeout(checkAndRecoverPlayback, 300);
+                            setTimeout(checkAndRecoverPlayback, 750);
                         }
                     };
 
@@ -2728,7 +2746,6 @@
                         } else {
                             // Fin de la lista de canciones del álbum
                             userPausedRef.current = true;
-                            stopResumeWatchdog();
                             setIsPlaying(false);
                             setProgress(0);
                             setCurrentTime(0);
@@ -2764,11 +2781,12 @@
                     audio.addEventListener('timeupdate', handleTimeUpdate);
                     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
                     audio.addEventListener('play', handlePlay);
+                    audio.addEventListener('playing', handlePlaying);
                     audio.addEventListener('pause', handlePause);
                     audio.addEventListener('ended', handleEnded);
                     audio.addEventListener('error', handleError);
 
-                    return { audio, handleTimeUpdate, handleLoadedMetadata, handlePlay, handlePause, handleEnded, handleError };
+                    return { audio, handleTimeUpdate, handleLoadedMetadata, handlePlay, handlePlaying, handlePause, handleEnded, handleError };
                 };
 
                 const deckA = initDeck(0);
@@ -2780,12 +2798,12 @@
 
                 return () => {
                     releaseWakeLock();
-                    stopResumeWatchdog();
-                    [deckA, deckB].forEach(({ audio, handleTimeUpdate, handleLoadedMetadata, handlePlay, handlePause, handleEnded, handleError }) => {
+                    [deckA, deckB].forEach(({ audio, handleTimeUpdate, handleLoadedMetadata, handlePlay, handlePlaying, handlePause, handleEnded, handleError }) => {
                         audio.pause();
                         audio.removeEventListener('timeupdate', handleTimeUpdate);
                         audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
                         audio.removeEventListener('play', handlePlay);
+                        audio.removeEventListener('playing', handlePlaying);
                         audio.removeEventListener('pause', handlePause);
                         audio.removeEventListener('ended', handleEnded);
                         audio.removeEventListener('error', handleError);
@@ -2804,7 +2822,6 @@
 
             const stopAllAudio = () => {
                 userPausedRef.current = true;
-                stopResumeWatchdog();
                 if (audioARef.current) {
                     audioARef.current.pause();
                     audioARef.current.currentTime = 0;
@@ -2865,7 +2882,7 @@
                 }
 
                 userPausedRef.current = false;
-                stopResumeWatchdog();
+                lastProgressTimestampRef.current = Date.now();
 
                 setCurrentPlayback({ albumId: album.id, trackIndex: nextIdx });
                 currentPlaybackRef.current = { albumId: album.id, trackIndex: nextIdx };
@@ -2886,6 +2903,7 @@
                     if (p !== undefined) {
                         p.then(() => {
                             setIsPlaying(true);
+                            lastProgressTimestampRef.current = Date.now();
                             updateMediaSession(track, album);
                             requestWakeLock();
                         }).catch(err => {
@@ -2921,22 +2939,16 @@
                     }
                     if (isPlaying) {
                         userPausedRef.current = true;
-                        stopResumeWatchdog();
                         currentAudio?.pause();
                         setIsPlaying(false);
                         releaseWakeLock();
-                        if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
-                            navigator.mediaSession.playbackState = 'paused';
-                        }
                     } else {
                         userPausedRef.current = false;
-                        stopResumeWatchdog();
+                        lastProgressTimestampRef.current = Date.now();
                         currentAudio?.play().then(() => {
                             setIsPlaying(true);
+                            lastProgressTimestampRef.current = Date.now();
                             requestWakeLock();
-                            if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
-                                navigator.mediaSession.playbackState = 'playing';
-                            }
                         }).catch(e => console.warn(e));
                     }
                     return;
@@ -2947,7 +2959,6 @@
 
                 if (!hasDirectAudio && isArchiveTrack(track)) {
                     userPausedRef.current = false;
-                    stopResumeWatchdog();
                     setCurrentPlayback({ albumId: album.id, trackIndex: safeIdx });
                     currentPlaybackRef.current = { albumId: album.id, trackIndex: safeIdx };
                     activeAlbumRef.current = album;
@@ -2969,7 +2980,7 @@
                 audioRef.current = currentAudio;
 
                 userPausedRef.current = false;
-                stopResumeWatchdog();
+                lastProgressTimestampRef.current = Date.now();
 
                 setCurrentPlayback({ albumId: album.id, trackIndex: safeIdx });
                 currentPlaybackRef.current = { albumId: album.id, trackIndex: safeIdx };
@@ -2987,6 +2998,7 @@
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
                         setIsPlaying(true);
+                        lastProgressTimestampRef.current = Date.now();
                         updateMediaSession(track, album);
                         requestWakeLock();
                     }).catch(e => {
