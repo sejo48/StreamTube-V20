@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+full album<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -2456,7 +2456,14 @@
                 } catch (e) { return []; }
             });
             
-            const audioRef = useRef(null);
+            // Sistema Dual-Deck para reproducción continua en segundo plano y con pantalla apagada en móviles (iOS y Android)
+            const activeDeckRef = useRef(0); // 0 = Deck A, 1 = Deck B
+            const audioARef = useRef(null);
+            const audioBRef = useRef(null);
+            const audioRef = useRef(null); // Apunta siempre al deck actualmente en reproducción
+            const isUnlockedRef = useRef(false);
+            const wakeLockRef = useRef(null);
+
             const topSectionRef = useRef(null);
             const [currentPlayback, setCurrentPlayback] = useState({ albumId: null, trackIndex: -1 });
             const [isPlaying, setIsPlaying] = useState(false);
@@ -2476,9 +2483,53 @@
             albumsDataRef.current = albumsData;
 
             const playTrackRef = useRef(null);
+            const playNextPreloadedRef = useRef(null);
             const nextTrackRef = useRef(null);
             const prevTrackRef = useRef(null);
 
+            const genres = ['TODOS', 'Rock', 'Pop & Disco', 'Baladas & Romántica', 'Tropical & Salsa', 'Reggae & Soul'];
+
+            // Control de Screen WakeLock para mantener pantalla activa si el usuario lo desea
+            const requestWakeLock = async () => {
+                if (typeof navigator !== 'undefined' && 'wakeLock' in navigator) {
+                    try {
+                        if (!wakeLockRef.current) {
+                            wakeLockRef.current = await navigator.wakeLock.request('screen');
+                            wakeLockRef.current.addEventListener('release', () => {
+                                wakeLockRef.current = null;
+                            });
+                        }
+                    } catch (e) {}
+                }
+            };
+
+            const releaseWakeLock = () => {
+                if (wakeLockRef.current) {
+                    try { wakeLockRef.current.release(); } catch (e) {}
+                    wakeLockRef.current = null;
+                }
+            };
+
+            // Desbloqueo inicial simultáneo de ambos reproductores para iOS Safari y Android Chrome
+            const unlockAudioDecks = () => {
+                if (isUnlockedRef.current) return;
+                try {
+                    const silentWav = 'data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA';
+                    const a = audioARef.current;
+                    const b = audioBRef.current;
+                    if (a && !a.src) {
+                        a.src = silentWav;
+                        a.play().then(() => { a.pause(); a.currentTime = 0; }).catch(() => {});
+                    }
+                    if (b && !b.src) {
+                        b.src = silentWav;
+                        b.play().then(() => { b.pause(); b.currentTime = 0; }).catch(() => {});
+                    }
+                    isUnlockedRef.current = true;
+                } catch (e) {}
+            };
+
+            // Soporte nativo de MediaSession en la pantalla de bloqueo y barra de notificaciones del móvil
             const updateMediaSession = (track, album) => {
                 if (typeof navigator !== 'undefined' && 'mediaSession' in navigator && track && album) {
                     try {
@@ -2492,14 +2543,20 @@
                         });
                         navigator.mediaSession.playbackState = 'playing';
                         navigator.mediaSession.setActionHandler('play', () => {
-                            if (audioRef.current) {
-                                audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+                            const curAudio = activeDeckRef.current === 0 ? audioARef.current : audioBRef.current;
+                            if (curAudio) {
+                                curAudio.play().then(() => {
+                                    setIsPlaying(true);
+                                    requestWakeLock();
+                                }).catch(() => {});
                             }
                         });
                         navigator.mediaSession.setActionHandler('pause', () => {
-                            if (audioRef.current) {
-                                audioRef.current.pause();
+                            const curAudio = activeDeckRef.current === 0 ? audioARef.current : audioBRef.current;
+                            if (curAudio) {
+                                curAudio.pause();
                                 setIsPlaying(false);
+                                releaseWakeLock();
                             }
                         });
                         navigator.mediaSession.setActionHandler('nexttrack', () => {
@@ -2513,8 +2570,6 @@
                     }
                 }
             };
-
-            const genres = ['TODOS', 'Rock', 'Pop & Disco', 'Baladas & Romántica', 'Tropical & Salsa', 'Reggae & Soul'];
 
             // Función para subir suavemente arriba donde se encuentra el álbum y su reproductor
             const scrollToTop = () => {
@@ -2532,87 +2587,109 @@
                 }, 60);
             };
 
+            // Inicialización de los dos reproductores alternantes (Dual Deck)
             useEffect(() => {
-                const audio = new Audio();
-                audio.preload = 'auto';
-                audio.setAttribute('playsinline', 'true');
-                audio.setAttribute('webkit-playsinline', 'true');
-                audio.setAttribute('x-webkit-airplay', 'allow');
-                audioRef.current = audio;
+                const initDeck = (deckIdx) => {
+                    const audio = new Audio();
+                    audio.preload = 'auto';
+                    audio.setAttribute('playsinline', 'true');
+                    audio.setAttribute('webkit-playsinline', 'true');
+                    audio.setAttribute('x-webkit-airplay', 'allow');
 
-                const handleTimeUpdate = () => {
-                    setCurrentTime(audio.currentTime);
-                    if (audio.duration) {
-                        setProgress((audio.currentTime / audio.duration) * 100);
-                    }
-                };
-                const handleLoadedMetadata = () => { setDuration(audio.duration || 0); };
-                
-                // REPRODUCCIÓN SECUENCIAL AUTOMÁTICA EN MÓVIL Y ESCRITORIO
-                const handleEnded = () => {
-                    const cur = currentPlaybackRef.current;
-                    const album = cur.albumId 
-                        ? albumsDataRef.current.find(a => a.id === cur.albumId) 
-                        : activeAlbumRef.current;
-                    if (!album || !album.tracks || album.tracks.length === 0) return;
-
-                    const nextIdx = cur.trackIndex + 1;
-                    if (nextIdx < album.tracks.length) {
-                        // Siguiente pista del álbum: continua inmediatamente en la misma instancia de audio
-                        if (playTrackRef.current) {
-                            playTrackRef.current(album, nextIdx);
+                    const handleTimeUpdate = () => {
+                        if (activeDeckRef.current !== deckIdx) return;
+                        setCurrentTime(audio.currentTime);
+                        if (audio.duration) {
+                            setProgress((audio.currentTime / audio.duration) * 100);
                         }
-                    } else {
-                        // Llegó al final de la lista de canciones
-                        setIsPlaying(false);
-                        setProgress(0);
-                        setCurrentTime(0);
-                        setCurrentPlayback({ albumId: album.id, trackIndex: 0 });
-                        currentPlaybackRef.current = { albumId: album.id, trackIndex: 0 };
-                        if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
-                            navigator.mediaSession.playbackState = 'none';
-                        }
-                    }
-                };
+                    };
 
-                const handleError = (e) => {
-                    if (audio.src && audio.src !== window.location.href && !audio.src.endsWith('/')) {
-                        console.warn("Aviso en reproducción de audio:", e);
-                    }
-                    // Si ocurre un error de red en una pista, intentar pasar a la siguiente de forma fluida
-                    const cur = currentPlaybackRef.current;
-                    const album = cur.albumId 
-                        ? albumsDataRef.current.find(a => a.id === cur.albumId) 
-                        : activeAlbumRef.current;
-                    if (album && album.tracks && cur.trackIndex + 1 < album.tracks.length) {
-                        setTimeout(() => {
-                            if (playTrackRef.current) {
-                                playTrackRef.current(album, cur.trackIndex + 1);
+                    const handleLoadedMetadata = () => {
+                        if (activeDeckRef.current === deckIdx) {
+                            setDuration(audio.duration || 0);
+                        }
+                    };
+
+                    // REPRODUCCIÓN SECUENCIAL AUTOMÁTICA EN MÓVIL Y ESCRITORIO
+                    // Al terminar la pista actual, conmuta inmediatamente al siguiente deck que ya fue precargado
+                    // en segundo plano mientras sonaba la anterior. Esto evita la suspensión por pantalla apagada.
+                    const handleEnded = () => {
+                        if (activeDeckRef.current !== deckIdx) return;
+                        const cur = currentPlaybackRef.current;
+                        const album = cur.albumId 
+                            ? albumsDataRef.current.find(a => a.id === cur.albumId) 
+                            : activeAlbumRef.current;
+                        if (!album || !album.tracks || album.tracks.length === 0) return;
+
+                        const nextIdx = cur.trackIndex + 1;
+                        if (nextIdx < album.tracks.length) {
+                            if (playNextPreloadedRef.current) {
+                                playNextPreloadedRef.current(album, nextIdx);
                             }
-                        }, 500);
-                    } else {
-                        setIsPlaying(false);
-                    }
+                        } else {
+                            // Fin de la lista de canciones del álbum
+                            setIsPlaying(false);
+                            setProgress(0);
+                            setCurrentTime(0);
+                            setCurrentPlayback({ albumId: album.id, trackIndex: 0 });
+                            currentPlaybackRef.current = { albumId: album.id, trackIndex: 0 };
+                            releaseWakeLock();
+                            if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
+                                navigator.mediaSession.playbackState = 'none';
+                            }
+                        }
+                    };
+
+                    const handleError = (e) => {
+                        if (activeDeckRef.current !== deckIdx) return;
+                        if (audio.src && audio.src !== window.location.href && !audio.src.endsWith('/')) {
+                            console.warn("Aviso en reproducción de audio deck " + deckIdx + ":", e);
+                        }
+                        const cur = currentPlaybackRef.current;
+                        const album = cur.albumId 
+                            ? albumsDataRef.current.find(a => a.id === cur.albumId) 
+                            : activeAlbumRef.current;
+                        if (album && album.tracks && cur.trackIndex + 1 < album.tracks.length) {
+                            setTimeout(() => {
+                                if (playNextPreloadedRef.current) {
+                                    playNextPreloadedRef.current(album, cur.trackIndex + 1);
+                                }
+                            }, 500);
+                        } else {
+                            setIsPlaying(false);
+                        }
+                    };
+
+                    audio.addEventListener('timeupdate', handleTimeUpdate);
+                    audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+                    audio.addEventListener('ended', handleEnded);
+                    audio.addEventListener('error', handleError);
+
+                    return { audio, handleTimeUpdate, handleLoadedMetadata, handleEnded, handleError };
                 };
 
-                audio.addEventListener('timeupdate', handleTimeUpdate);
-                audio.addEventListener('loadedmetadata', handleLoadedMetadata);
-                audio.addEventListener('ended', handleEnded);
-                audio.addEventListener('error', handleError);
+                const deckA = initDeck(0);
+                const deckB = initDeck(1);
+
+                audioARef.current = deckA.audio;
+                audioBRef.current = deckB.audio;
+                audioRef.current = deckA.audio;
 
                 return () => {
-                    audio.pause();
-                    audio.removeEventListener('timeupdate', handleTimeUpdate);
-                    audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
-                    audio.removeEventListener('ended', handleEnded);
-                    audio.removeEventListener('error', handleError);
+                    releaseWakeLock();
+                    [deckA, deckB].forEach(({ audio, handleTimeUpdate, handleLoadedMetadata, handleEnded, handleError }) => {
+                        audio.pause();
+                        audio.removeEventListener('timeupdate', handleTimeUpdate);
+                        audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+                        audio.removeEventListener('ended', handleEnded);
+                        audio.removeEventListener('error', handleError);
+                    });
                 };
             }, []);
 
             const isArchiveTrack = (track) => {
                 if (!track) return false;
                 const audioUrl = track.audio || track.urlDrive || track.url || '';
-                // Si la pista tiene enlace directo a archivo de audio (.mp3, .m4a), SIEMPRE se reproduce con el reproductor nativo
                 if (isAudioFileUrl(audioUrl)) return false;
                 if (track.type === 'audio') return false;
                 const archId = track.archiveId || getArchiveIdFromUrl(audioUrl);
@@ -2620,10 +2697,15 @@
             };
 
             const stopAllAudio = () => {
-                if (audioRef.current) {
-                    audioRef.current.pause();
-                    audioRef.current.currentTime = 0;
+                if (audioARef.current) {
+                    audioARef.current.pause();
+                    audioARef.current.currentTime = 0;
                 }
+                if (audioBRef.current) {
+                    audioBRef.current.pause();
+                    audioBRef.current.currentTime = 0;
+                }
+                releaseWakeLock();
             };
 
             const toggleLikeAlbum = (albumId) => {
@@ -2634,27 +2716,108 @@
                 });
             };
 
+            // Precarga anticipada de la siguiente pista en el reproductor de reserva (en segundo plano)
+            const preloadTrack = (album, nextIdx) => {
+                if (!album || !album.tracks || nextIdx < 0 || nextIdx >= album.tracks.length) return;
+                const nextTrack = album.tracks[nextIdx];
+                if (!nextTrack) return;
+                const nextSource = nextTrack.audio || nextTrack.urlDrive || nextTrack.url || album.musicUrl || album.urlDrive || album.url || '';
+                if (!nextSource) return;
+
+                const standbyAudio = activeDeckRef.current === 0 ? audioBRef.current : audioARef.current;
+                if (!standbyAudio) return;
+
+                if (standbyAudio.src !== nextSource) {
+                    standbyAudio.src = nextSource;
+                    standbyAudio.preload = 'auto';
+                    standbyAudio.load();
+                }
+            };
+
+            // Conmutación inmediata al siguiente deck ya precargado (0ms de retraso, compatible con pantalla apagada)
+            const playNextPreloaded = (album, nextIdx) => {
+                if (!album || !album.tracks || nextIdx >= album.tracks.length) return;
+                const track = album.tracks[nextIdx];
+                if (!track) return;
+
+                const audioSource = track.audio || track.urlDrive || track.url || album.musicUrl || album.urlDrive || album.url || '';
+                if (!audioSource) return;
+
+                const oldDeck = activeDeckRef.current;
+                const newDeck = oldDeck === 0 ? 1 : 0;
+                activeDeckRef.current = newDeck;
+
+                const currentAudio = newDeck === 0 ? audioARef.current : audioBRef.current;
+                const prevAudio = oldDeck === 0 ? audioARef.current : audioBRef.current;
+
+                audioRef.current = currentAudio;
+
+                if (prevAudio) {
+                    prevAudio.pause();
+                }
+
+                setCurrentPlayback({ albumId: album.id, trackIndex: nextIdx });
+                currentPlaybackRef.current = { albumId: album.id, trackIndex: nextIdx };
+                activeAlbumRef.current = album;
+                setIsPlaying(true);
+                setProgress(0);
+                setCurrentTime(0);
+
+                if (currentAudio) {
+                    if (currentAudio.src !== audioSource) {
+                        currentAudio.src = audioSource;
+                        currentAudio.load();
+                    }
+                    currentAudio.currentTime = 0;
+                    currentAudio.volume = volume;
+
+                    const p = currentAudio.play();
+                    if (p !== undefined) {
+                        p.then(() => {
+                            setIsPlaying(true);
+                            updateMediaSession(track, album);
+                            requestWakeLock();
+                        }).catch(err => {
+                            console.warn("Aviso play continuado en segundo plano:", err);
+                        });
+                    }
+                }
+
+                // Inmediatamente precargar la pista posterior (nextIdx + 1) en el deck que quedó libre
+                if (nextIdx + 1 < album.tracks.length) {
+                    preloadTrack(album, nextIdx + 1);
+                }
+            };
+            playNextPreloadedRef.current = playNextPreloaded;
+
+            // Reproducir pista específica (por clic o inicio de álbum)
             const playTrack = (album, index = 0) => {
                 if (!album || !album.tracks || album.tracks.length === 0) return;
                 const safeIdx = (index >= 0 && index < album.tracks.length) ? index : 0;
                 const track = album.tracks[safeIdx];
                 if (!track) return;
 
+                unlockAudioDecks();
+
                 const cur = currentPlaybackRef.current;
+                const currentAudio = activeDeckRef.current === 0 ? audioARef.current : audioBRef.current;
+
                 if (cur.albumId === album.id && cur.trackIndex === safeIdx) {
                     if (isArchiveTrack(track)) {
                         setIsPlaying(!isPlaying);
                         return;
                     }
                     if (isPlaying) {
-                        audioRef.current?.pause();
+                        currentAudio?.pause();
                         setIsPlaying(false);
+                        releaseWakeLock();
                         if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
                             navigator.mediaSession.playbackState = 'paused';
                         }
                     } else {
-                        audioRef.current?.play().then(() => {
+                        currentAudio?.play().then(() => {
                             setIsPlaying(true);
+                            requestWakeLock();
                             if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
                                 navigator.mediaSession.playbackState = 'playing';
                             }
@@ -2678,33 +2841,41 @@
                 }
 
                 if (!audioSource) return;
-                const audio = audioRef.current;
-                if (!audio) return;
+                if (!currentAudio) return;
 
-                // Sincronización inmediata de estado y referencias para móvil
+                const standbyAudio = activeDeckRef.current === 0 ? audioBRef.current : audioARef.current;
+                if (standbyAudio) {
+                    standbyAudio.pause();
+                }
+
+                audioRef.current = currentAudio;
+
                 setCurrentPlayback({ albumId: album.id, trackIndex: safeIdx });
                 currentPlaybackRef.current = { albumId: album.id, trackIndex: safeIdx };
                 activeAlbumRef.current = album;
                 setIsPlaying(true);
 
-                // REGLA CLAVE PARA MÓVIL (iOS / Android):
-                // No se llama a stopAllAudio() ni se asigna src = '' porque eso revoca el token de interacción táctil
-                // del usuario en Safari/Chrome móvil. Se actualiza el src directamente en la misma instancia y se llama load() y play().
-                if (audio.src !== audioSource) {
-                    audio.src = audioSource;
-                    audio.load();
+                if (currentAudio.src !== audioSource) {
+                    currentAudio.src = audioSource;
+                    currentAudio.load();
                 }
-                audio.currentTime = 0;
-                audio.volume = volume;
+                currentAudio.currentTime = 0;
+                currentAudio.volume = volume;
 
-                const playPromise = audio.play();
+                const playPromise = currentAudio.play();
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
                         setIsPlaying(true);
                         updateMediaSession(track, album);
+                        requestWakeLock();
                     }).catch(e => {
                         console.warn("Aviso al iniciar audio móvil:", e);
                     });
+                }
+
+                // Precargar inmediatamente la siguiente canción (safeIdx + 1) en el deck secundario
+                if (safeIdx + 1 < album.tracks.length) {
+                    preloadTrack(album, safeIdx + 1);
                 }
             };
             playTrackRef.current = playTrack;
