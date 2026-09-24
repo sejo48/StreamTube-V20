@@ -1,4 +1,4 @@
-full album<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -1234,6 +1234,16 @@ full album<!DOCTYPE html>
                         setIsLoadingRadio(false);
                         setStreamError('');
                     };
+                    audio.onpause = () => {
+                        // Reanudación automática de radio tras mensaje, llamada o notificación
+                        if (shouldPlayRadioRef.current) {
+                            setTimeout(() => {
+                                if (shouldPlayRadioRef.current && audio.paused) {
+                                    audio.play().then(() => setIsRadioPlaying(true)).catch(() => {});
+                                }
+                            }, 900);
+                        }
+                    };
                     audioRef.current = audio;
                 }
 
@@ -2464,6 +2474,12 @@ full album<!DOCTYPE html>
             const isUnlockedRef = useRef(false);
             const wakeLockRef = useRef(null);
 
+            // Control de Interrupciones Externas del Sistema (Llamadas, Mensajes, Notificaciones de WhatsApp, etc.)
+            const userPausedRef = useRef(true); // Indica si el usuario presionó 'Pausa' deliberadamente
+            const wasInterruptedRef = useRef(false); // Indica si se pausó involuntariamente por el sistema
+            const resumeTimeoutRef = useRef(null);
+            const resumeIntervalRef = useRef(null);
+
             const topSectionRef = useRef(null);
             const [currentPlayback, setCurrentPlayback] = useState({ albumId: null, trackIndex: -1 });
             const [isPlaying, setIsPlaying] = useState(false);
@@ -2510,6 +2526,75 @@ full album<!DOCTYPE html>
                 }
             };
 
+            // Limpieza de temporizadores de reanudación automática
+            const clearAutoResume = () => {
+                if (resumeTimeoutRef.current) {
+                    clearTimeout(resumeTimeoutRef.current);
+                    resumeTimeoutRef.current = null;
+                }
+                if (resumeIntervalRef.current) {
+                    clearInterval(resumeIntervalRef.current);
+                    resumeIntervalRef.current = null;
+                }
+            };
+
+            // Intento de reanudación automática de la música tras terminar el sonido de notificación o llamada
+            const attemptResume = () => {
+                if (userPausedRef.current) {
+                    clearAutoResume();
+                    return;
+                }
+                const curAudio = activeDeckRef.current === 0 ? audioARef.current : audioBRef.current;
+                if (!curAudio) return;
+
+                // Si ya está reproduciendo, limpiar y finalizar
+                if (!curAudio.paused && curAudio.currentTime > 0) {
+                    wasInterruptedRef.current = false;
+                    setIsPlaying(true);
+                    clearAutoResume();
+                    return;
+                }
+
+                // Intentar regenerar la reproducción
+                const p = curAudio.play();
+                if (p !== undefined) {
+                    p.then(() => {
+                        wasInterruptedRef.current = false;
+                        setIsPlaying(true);
+                        clearAutoResume();
+                        requestWakeLock();
+                        if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
+                            navigator.mediaSession.playbackState = 'playing';
+                        }
+                    }).catch(() => {
+                        // El sistema operativo sigue ocupado con la notificación o la llamada entrante;
+                        // el watchdog seguirá intentando en los intervalos configurados.
+                    });
+                }
+            };
+
+            // Disparador del watchdog de reanudación automática
+            const triggerAutoResume = () => {
+                clearAutoResume();
+                if (userPausedRef.current) return;
+
+                // 1. Reintento rápido para tonos cortos de mensajes de texto y WhatsApp (600ms y 1200ms)
+                resumeTimeoutRef.current = setTimeout(() => {
+                    attemptResume();
+                }, 650);
+
+                // 2. Reintento continuo periódico para llamadas telefónicas o audios largos
+                let attempts = 0;
+                resumeIntervalRef.current = setInterval(() => {
+                    attempts++;
+                    if (attempts > 50 || userPausedRef.current || !wasInterruptedRef.current) {
+                        clearAutoResume();
+                        return;
+                    }
+                    attemptResume();
+                }, 1200);
+            };
+
             // Desbloqueo inicial simultáneo de ambos reproductores para iOS Safari y Android Chrome
             const unlockAudioDecks = () => {
                 if (isUnlockedRef.current) return;
@@ -2543,6 +2628,9 @@ full album<!DOCTYPE html>
                         });
                         navigator.mediaSession.playbackState = 'playing';
                         navigator.mediaSession.setActionHandler('play', () => {
+                            userPausedRef.current = false;
+                            wasInterruptedRef.current = false;
+                            clearAutoResume();
                             const curAudio = activeDeckRef.current === 0 ? audioARef.current : audioBRef.current;
                             if (curAudio) {
                                 curAudio.play().then(() => {
@@ -2552,6 +2640,9 @@ full album<!DOCTYPE html>
                             }
                         });
                         navigator.mediaSession.setActionHandler('pause', () => {
+                            userPausedRef.current = true;
+                            wasInterruptedRef.current = false;
+                            clearAutoResume();
                             const curAudio = activeDeckRef.current === 0 ? audioARef.current : audioBRef.current;
                             if (curAudio) {
                                 curAudio.pause();
@@ -2587,6 +2678,26 @@ full album<!DOCTYPE html>
                 }, 60);
             };
 
+            // Listener de visibilidad de la página para reanudar cuando el usuario vuelve de una llamada o notificación
+            useEffect(() => {
+                const handleVisibilityOrFocus = () => {
+                    if (!userPausedRef.current && wasInterruptedRef.current) {
+                        attemptResume();
+                    }
+                };
+
+                window.addEventListener('focus', handleVisibilityOrFocus);
+                window.addEventListener('pageshow', handleVisibilityOrFocus);
+                document.addEventListener('visibilitychange', handleVisibilityOrFocus);
+
+                return () => {
+                    window.removeEventListener('focus', handleVisibilityOrFocus);
+                    window.removeEventListener('pageshow', handleVisibilityOrFocus);
+                    document.removeEventListener('visibilitychange', handleVisibilityOrFocus);
+                    clearAutoResume();
+                };
+            }, []);
+
             // Inicialización de los dos reproductores alternantes (Dual Deck)
             useEffect(() => {
                 const initDeck = (deckIdx) => {
@@ -2610,9 +2721,29 @@ full album<!DOCTYPE html>
                         }
                     };
 
+                    // Notificación de inicio de reproducción
+                    const handlePlay = () => {
+                        if (activeDeckRef.current !== deckIdx) return;
+                        wasInterruptedRef.current = false;
+                        clearAutoResume();
+                        setIsPlaying(true);
+                        requestWakeLock();
+                        if (typeof navigator !== 'undefined' && 'mediaSession' in navigator) {
+                            navigator.mediaSession.playbackState = 'playing';
+                        }
+                    };
+
+                    // Detección de pausa involuntaria provocada por mensajes, llamadas o notificaciones
+                    const handlePause = () => {
+                        if (activeDeckRef.current !== deckIdx) return;
+                        // Si el usuario NO pausó la música con un botón, fue una interrupción del sistema
+                        if (!userPausedRef.current) {
+                            wasInterruptedRef.current = true;
+                            triggerAutoResume();
+                        }
+                    };
+
                     // REPRODUCCIÓN SECUENCIAL AUTOMÁTICA EN MÓVIL Y ESCRITORIO
-                    // Al terminar la pista actual, conmuta inmediatamente al siguiente deck que ya fue precargado
-                    // en segundo plano mientras sonaba la anterior. Esto evita la suspensión por pantalla apagada.
                     const handleEnded = () => {
                         if (activeDeckRef.current !== deckIdx) return;
                         const cur = currentPlaybackRef.current;
@@ -2628,6 +2759,9 @@ full album<!DOCTYPE html>
                             }
                         } else {
                             // Fin de la lista de canciones del álbum
+                            userPausedRef.current = true;
+                            wasInterruptedRef.current = false;
+                            clearAutoResume();
                             setIsPlaying(false);
                             setProgress(0);
                             setCurrentTime(0);
@@ -2662,10 +2796,12 @@ full album<!DOCTYPE html>
 
                     audio.addEventListener('timeupdate', handleTimeUpdate);
                     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+                    audio.addEventListener('play', handlePlay);
+                    audio.addEventListener('pause', handlePause);
                     audio.addEventListener('ended', handleEnded);
                     audio.addEventListener('error', handleError);
 
-                    return { audio, handleTimeUpdate, handleLoadedMetadata, handleEnded, handleError };
+                    return { audio, handleTimeUpdate, handleLoadedMetadata, handlePlay, handlePause, handleEnded, handleError };
                 };
 
                 const deckA = initDeck(0);
@@ -2677,10 +2813,13 @@ full album<!DOCTYPE html>
 
                 return () => {
                     releaseWakeLock();
-                    [deckA, deckB].forEach(({ audio, handleTimeUpdate, handleLoadedMetadata, handleEnded, handleError }) => {
+                    clearAutoResume();
+                    [deckA, deckB].forEach(({ audio, handleTimeUpdate, handleLoadedMetadata, handlePlay, handlePause, handleEnded, handleError }) => {
                         audio.pause();
                         audio.removeEventListener('timeupdate', handleTimeUpdate);
                         audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+                        audio.removeEventListener('play', handlePlay);
+                        audio.removeEventListener('pause', handlePause);
                         audio.removeEventListener('ended', handleEnded);
                         audio.removeEventListener('error', handleError);
                     });
@@ -2697,6 +2836,9 @@ full album<!DOCTYPE html>
             };
 
             const stopAllAudio = () => {
+                userPausedRef.current = true;
+                wasInterruptedRef.current = false;
+                clearAutoResume();
                 if (audioARef.current) {
                     audioARef.current.pause();
                     audioARef.current.currentTime = 0;
@@ -2756,6 +2898,10 @@ full album<!DOCTYPE html>
                     prevAudio.pause();
                 }
 
+                userPausedRef.current = false;
+                wasInterruptedRef.current = false;
+                clearAutoResume();
+
                 setCurrentPlayback({ albumId: album.id, trackIndex: nextIdx });
                 currentPlaybackRef.current = { albumId: album.id, trackIndex: nextIdx };
                 activeAlbumRef.current = album;
@@ -2808,6 +2954,9 @@ full album<!DOCTYPE html>
                         return;
                     }
                     if (isPlaying) {
+                        userPausedRef.current = true;
+                        wasInterruptedRef.current = false;
+                        clearAutoResume();
                         currentAudio?.pause();
                         setIsPlaying(false);
                         releaseWakeLock();
@@ -2815,6 +2964,9 @@ full album<!DOCTYPE html>
                             navigator.mediaSession.playbackState = 'paused';
                         }
                     } else {
+                        userPausedRef.current = false;
+                        wasInterruptedRef.current = false;
+                        clearAutoResume();
                         currentAudio?.play().then(() => {
                             setIsPlaying(true);
                             requestWakeLock();
@@ -2830,6 +2982,9 @@ full album<!DOCTYPE html>
                 const hasDirectAudio = isAudioFileUrl(audioSource) || (audioSource && audioSource.includes('.mp3'));
 
                 if (!hasDirectAudio && isArchiveTrack(track)) {
+                    userPausedRef.current = false;
+                    wasInterruptedRef.current = false;
+                    clearAutoResume();
                     setCurrentPlayback({ albumId: album.id, trackIndex: safeIdx });
                     currentPlaybackRef.current = { albumId: album.id, trackIndex: safeIdx };
                     activeAlbumRef.current = album;
@@ -2849,6 +3004,10 @@ full album<!DOCTYPE html>
                 }
 
                 audioRef.current = currentAudio;
+
+                userPausedRef.current = false;
+                wasInterruptedRef.current = false;
+                clearAutoResume();
 
                 setCurrentPlayback({ albumId: album.id, trackIndex: safeIdx });
                 currentPlaybackRef.current = { albumId: album.id, trackIndex: safeIdx };
@@ -2879,7 +3038,6 @@ full album<!DOCTYPE html>
                 }
             };
             playTrackRef.current = playTrack;
-
             // Al elegir un álbum en PC o móvil: cambia de álbum y SUBE AUTOMÁTICAMENTE A LA PORTADA
             const handleSelectAlbum = (alb) => {
                 if (!alb) return;
