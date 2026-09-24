@@ -1,5 +1,79 @@
 [
   {
+    "artist": "FUNK",
+    "album": "BEST 80s FUNK",
+    "year": "1970",
+    "genre": "Pop & Disco",
+    "cover": "https://i1.sndcdn.com/artworks-000347359917-550pcn-t500x500.jpg",
+    "musicUrl": "https://archive.org/details/anita-ward-ring-my-bell_202609",
+    "description": "",
+    "tracks": [
+      {
+        "title": "ABBA - Gimme! Gimme! Gimme! (A Man After Midnight)",
+        "audio": "https://archive.org/download/anita-ward-ring-my-bell_202609/ABBA_-_Gimme!_Gimme!_Gimme!_(A_Man_After_Midnight).mp3",
+        "duration": "3:16",
+        "type": "archive",
+        "archiveId": "anita-ward-ring-my-bell_202609"
+      },
+      {
+        "title": "Ace of Base - All That She Wants (Official Music Video)",
+        "audio": "https://archive.org/download/anita-ward-ring-my-bell_202609/Ace_of_Base_-_All_That_She_Wants_(Official_Music_Video).mp3",
+        "duration": "3:33",
+        "type": "archive",
+        "archiveId": "anita-ward-ring-my-bell_202609"
+      },
+      {
+        "title": "Anita Ward - Ring My Bell",
+        "audio": "https://archive.org/download/anita-ward-ring-my-bell_202609/Anita_Ward_-_Ring_My_Bell.mp3",
+        "duration": "8:14",
+        "type": "archive",
+        "archiveId": "anita-ward-ring-my-bell_202609"
+      },
+      {
+        "title": "Boney M. - Daddy Cool (Sopot Festival 1979)",
+        "audio": "https://archive.org/download/anita-ward-ring-my-bell_202609/Boney_M._-_Daddy_Cool_(Sopot_Festival_1979).mp3",
+        "duration": "3:25",
+        "type": "archive",
+        "archiveId": "anita-ward-ring-my-bell_202609"
+      },
+      {
+        "title": "Imagination ft. O.C. - Just An Illusion (1981)",
+        "audio": "https://archive.org/download/anita-ward-ring-my-bell_202609/Imagination_ft._O.C._-_Just_An_Illusion_(1981).mp3",
+        "duration": "3:53",
+        "type": "archive",
+        "archiveId": "anita-ward-ring-my-bell_202609"
+      },
+      {
+        "title": "Rufus and Chaka Khan - Ain't Nobody [HD Remaster] (Official Video)",
+        "audio": "https://archive.org/download/anita-ward-ring-my-bell_202609/Rufus_and_Chaka_Khan_-_Ain't_Nobody_%5BHD_Remaster%5D_(Official_Video).mp3",
+        "duration": "3:21",
+        "type": "archive",
+        "archiveId": "anita-ward-ring-my-bell_202609"
+      },
+      {
+        "title": "SNAP! - Rhythm Is A Dancer (Official 4K Music Video)",
+        "audio": "https://archive.org/download/anita-ward-ring-my-bell_202609/SNAP!_-_Rhythm_Is_A_Dancer_(Official_4K_Music_Video).mp3",
+        "duration": "3:41",
+        "type": "archive",
+        "archiveId": "anita-ward-ring-my-bell_202609"
+      },
+      {
+        "title": "Upside Down",
+        "audio": "https://archive.org/download/anita-ward-ring-my-bell_202609/Upside_Down.mp3",
+        "duration": "4:06",
+        "type": "archive",
+        "archiveId": "anita-ward-ring-my-bell_202609"
+      },
+      {
+        "title": "Whitney Houston - I Wanna Dance with Somebody (Who Loves Me) Moreno J Remix",
+        "audio": "https://archive.org/download/anita-ward-ring-my-bell_202609/Whitney_Houston_-_I_Wanna_Dance_with_Somebody_(Who_Loves_Me)_Moreno_J_Remix.mp3",
+        "duration": "7:24",
+        "type": "archive",
+        "archiveId": "anita-ward-ring-my-bell_202609"
+      }
+    ]
+  },
+  {
     "artist": "boxplaytv",
     "album": "boxplaytv",
     "year": "1970",
