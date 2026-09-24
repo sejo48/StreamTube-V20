@@ -1,9 +1,230 @@
 [
   {
+    "artist": "José José",
+    "album": "José José",
+    "year": "1974",
+    "genre": "Baladas & Romántica",
+    "cover": "https://http2.mlstatic.com/D_NQ_NP_2X_975966-MLM47781130528_102021-F.webp",
+    "musicUrl": "https://archive.org/details/el-amar-y-el-querer",
+    "description": "",
+    "tracks": [
+      {
+        "title": "y 20",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/40_y_20.mp3",
+        "duration": "4:01",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Almohada (Remasterizado)",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Almohada_(Remasterizado).mp3",
+        "duration": "3:00",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Amantes",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Amantes.mp3",
+        "duration": "3:01",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Amnesia",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Amnesia.mp3",
+        "duration": "3:43",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Amor, Amor (Remasterizado)",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Amor%2C_Amor_(Remasterizado).mp3",
+        "duration": "3:10",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Cinco Minutos",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Cinco_Minutos.mp3",
+        "duration": "3:26",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Contigo en la Distancia",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Contigo_en_la_Distancia.mp3",
+        "duration": "3:40",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Cuando Tú Me Quieras",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Cuando_T%C3%BA_Me_Quieras.mp3",
+        "duration": "2:57",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Déjame Conocerte (Let Me Get to Know You)",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/D%C3%A9jame_Conocerte_(Let_Me_Get_to_Know_You).mp3",
+        "duration": "3:20",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "El Amar y el Querer",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/El_Amar_y_el_Querer.mp3",
+        "duration": "3:56",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Eso Nomás",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Eso_Nom%C3%A1s.mp3",
+        "duration": "4:14",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Farolero",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Farolero.mp3",
+        "duration": "3:42",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Gotas de Fuego",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Gotas_de_Fuego.mp3",
+        "duration": "4:48",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Gracias",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Gracias.mp3",
+        "duration": "3:05",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Grandeza Mexicana",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Grandeza_Mexicana.mp3",
+        "duration": "3:29",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Lo Que Quedó de Mí",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Lo_Que_Qued%C3%B3_de_M%C3%AD.mp3",
+        "duration": "3:48",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Mi Vida",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Mi_Vida.mp3",
+        "duration": "4:03",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Muchachita",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Muchachita.mp3",
+        "duration": "3:35",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "No Es a Mí",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/No_Es_a_M%C3%AD.mp3",
+        "duration": "3:51",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Pero Te Extraño",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Pero_Te_Extra%C3%B1o.mp3",
+        "duration": "2:23",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Piel de Azúcar",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Piel_de_Az%C3%BAcar.mp3",
+        "duration": "3:39",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Por Este Amor Que Siento en Mí",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Por_Este_Amor_Que_Siento_en_M%C3%AD.mp3",
+        "duration": "3:01",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Regálame Esta Noche",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Reg%C3%A1lame_Esta_Noche.mp3",
+        "duration": "2:50",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Rosa de Fuego",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Rosa_de_Fuego.mp3",
+        "duration": "3:54",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Sabrás Que Te Quiero",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Sabr%C3%A1s_Que_Te_Quiero.mp3",
+        "duration": "3:27",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Si Me Dejas Ahora",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Si_Me_Dejas_Ahora.mp3",
+        "duration": "4:28",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Te Quiero Tal Como Eres (Just the Way You Are)",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Te_Quiero_Tal_Como_Eres_(Just_the_Way_You_Are).mp3",
+        "duration": "4:20",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Una Mañana",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Una_Ma%C3%B1ana.mp3",
+        "duration": "2:56",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "Yo",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/Yo.mp3",
+        "duration": "3:07",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      },
+      {
+        "title": "¿Cómo Fue",
+        "audio": "https://archive.org/download/el-amar-y-el-querer/%C2%BFC%C3%B3mo_Fue.mp3",
+        "duration": "3:16",
+        "type": "archive",
+        "archiveId": "el-amar-y-el-querer"
+      }
+    ]
+  },
+  {
     "artist": "Vicente Fernández",
     "album": "Vicente Fernández",
     "year": "1970",
-    "genre": "Rock",
+    "genre": "Baladas & Romántica",
     "cover": "https://album99.cdn107.com/af/c3/afc3962e11458d2f01d3f28fbbf91a6e_xl.jpg",
     "musicUrl": "https://archive.org/details/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version",
     "description": "",
