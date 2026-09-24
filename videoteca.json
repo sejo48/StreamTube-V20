@@ -5,120 +5,533 @@
     "year": "1970",
     "genre": "Rock",
     "cover": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwuE4SDv-B3kTE6ahmjAgu7MQ9kWawnYDl_4LLw5VsLptv_ZN17ubp7TngRnf70UqX4Begp_cX7J3KgRtapmuSnTkqM4lb9lEXshXvXqC3HwL82dzrTl6CN5eQEchqdPwY637tf2IZBC88QLh6tUoa8onyhwKFiTouLuPDjVkIjy3bwE_Gn7l-fzsQgbI/s320/Gemini_Generated_Image_20xaaz20xaaz20xa.jpeg",
-    "musicUrl": "https://archive.org/details/frankie-smith-double-dutch-bus-official-music-video",
+    "musicUrl": "https://archive.org/details/frankie-smith-double-dutch-bus-official-music-video_202609",
     "description": "",
     "tracks": [
       {
-        "title": "Breakfast in America Written & Composed by Roger Hodgson of Supertramp",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/Breakfast_in_America_Written_%26_Composed_by_Roger_Hodgson_of_Supertramp.mp3",
+        "title": "'A Fifth Of Beethoven by: Walter Murphy",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/'A_Fifth_Of_Beethoven_by_Walter_Murphy.mp3",
+        "duration": "3:00",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "ABBA - Dancing Queen (Official Music Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/ABBA_-_Dancing_Queen_(Official_Music_Video).mp3",
+        "duration": "3:52",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Alannah Myles - Black Velvet",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Alannah_Myles_-_Black_Velvet.mp3",
+        "duration": "4:50",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Ambrosia - Biggest Part Of Me Live",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Ambrosia_-_Biggest_Part_Of_Me_Live.mp3",
+        "duration": "5:06",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Barbara Anne - The Beach Boys - Remake by Oldies Refreshed",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Barbara_Anne_-_The_Beach_Boys_-_Remake_by_Oldies_Refreshed.mp3",
+        "duration": "2:15",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Bee Gees - Night Fever (Official Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Bee_Gees_-_Night_Fever_(Official_Video).mp3",
+        "duration": "3:28",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Bee Gees - Stayin' Alive (Official Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Bee_Gees_-_Stayin'_Alive_(Official_Video).mp3",
+        "duration": "4:09",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Bee Gees - Stayin alive (Live Subtitulado en Español).avi",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Bee_Gees_-_Stayin_alive_(Live_Subtitulado_en_Espa%C3%B1ol).avi.mp3",
+        "duration": "3:57",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Bee Gees - You Should Be Dancing",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Bee_Gees_-_You_Should_Be_Dancing.mp3",
+        "duration": "4:14",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Billy Ray Cyrus - Achy Breaky Heart (Official Music Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Billy_Ray_Cyrus_-_Achy_Breaky_Heart_(Official_Music_Video).mp3",
+        "duration": "3:53",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Blondie - Heart Of Glass",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Blondie_-_Heart_Of_Glass.mp3",
+        "duration": "3:42",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Bon Jovi - Livin' On A Prayer",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Bon_Jovi_-_Livin'_On_A_Prayer.mp3",
+        "duration": "4:08",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Bon Jovi - You Give Love A Bad Name",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Bon_Jovi_-_You_Give_Love_A_Bad_Name.mp3",
+        "duration": "3:50",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Boney M. - Ma Baker (Sopot Festival 1979)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Boney_M._-_Ma_Baker_(Sopot_Festival_1979).mp3",
+        "duration": "4:38",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "\"Breakfast in America\" Written & Composed by Roger Hodgson of Supertramp",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Breakfast_in_America_Written_%26_Composed_by_Roger_Hodgson_of_Supertramp.mp3",
         "duration": "3:44",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Breakin' Up Is Hard To Do - Neil Sedaka",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Breakin'_Up_Is_Hard_To_Do_-_Neil_Sedaka.mp3",
+        "duration": "3:10",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "Chic - Le Freak",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/Chic_-_Le_Freak.mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Chic_-_Le_Freak.mp3",
         "duration": "3:37",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "Creedence Clearwater Revival - Green River (Lyric Video)",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/Creedence_Clearwater_Revival_-_Green_River_(Lyric_Video).mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Creedence_Clearwater_Revival_-_Green_River_(Lyric_Video).mp3",
         "duration": "2:36",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Culture Club - Karma Chameleon (Official Music Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Culture_Club_-_Karma_Chameleon_(Official_Music_Video).mp3",
+        "duration": "3:58",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Daryl Hall & John Oates - Maneater (Official Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Daryl_Hall_%26_John_Oates_-_Maneater_(Official_Video).mp3",
+        "duration": "4:24",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Diana Ross - Upside down",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Diana_Ross_-_Upside_down.mp3",
+        "duration": "3:12",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "ELO - Livin' Thing (1977)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/ELO_-_Livin'_Thing_(1977).mp3",
+        "duration": "3:31",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Earth, Wind & Fire - Let's Groove (Official HD Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Earth%2C_Wind_%26_Fire_-_Let's_Groove_(Official_HD_Video).mp3",
+        "duration": "3:55",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Earth, Wind & Fire - September (Official HD Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Earth%2C_Wind_%26_Fire_-_September_(Official_HD_Video).mp3",
+        "duration": "3:35",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Edgar Winter \"Frankenstein\" Live at Rockpalast 2007",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Edgar_Winter_Frankenstein_Live_at_Rockpalast_2007.mp3",
+        "duration": "12:40",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Elton John - Nikita",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Elton_John_-_Nikita.mp3",
+        "duration": "4:52",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Eric Clapton[70] 16. Cocaine",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Eric_Clapton%5B70%5D_16._Cocaine.mp3",
+        "duration": "7:47",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Eurythmics, Annie Lennox, Dave Stewart - Sweet Dreams (Are Made Of This) (Official Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Eurythmics%2C_Annie_Lennox%2C_Dave_Stewart_-_Sweet_Dreams_(Are_Made_Of_This)_(Official_Video).mp3",
+        "duration": "3:34",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Extreme - More Than Words (Official Music Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Extreme_-_More_Than_Words_(Official_Music_Video).mp3",
+        "duration": "4:15",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "Frankie Smith - Double Dutch Bus (Official Music Video)",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/Frankie_Smith_-_Double_Dutch_Bus_(Official_Music_Video).mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Frankie_Smith_-_Double_Dutch_Bus_(Official_Music_Video).mp3",
         "duration": "5:00",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
-        "title": "Gary Glitter - Baby Please Don't Go Remastered",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/Gary_Glitter_-_Baby_Please_Don't_Go_Remastered.mp3",
+        "title": "Gary Glitter - Baby Please Don't Go : Remastered",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Gary_Glitter_-_Baby_Please_Don't_Go_Remastered.mp3",
         "duration": "2:52",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "George Benson - Give Me The Night (12'')",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/George_Benson_-_Give_Me_The_Night_(12'').mp3",
+        "duration": "5:01",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Gino Soccio - \"Try It Out\" 1981",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Gino_Soccio_-_Try_It_Out_1981.mp3",
+        "duration": "3:59",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Grease - Summer NIghts - with lyrics",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Grease_-_Summer_NIghts_-_with_lyrics.mp3",
+        "duration": "3:28",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Gregory Abbott - Shake You Down",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Gregory_Abbott_-_Shake_You_Down.mp3",
+        "duration": "4:03",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Hot Chocolate - You Sexy Thing (Live 1976)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Hot_Chocolate_-_You_Sexy_Thing_(Live_1976).mp3",
+        "duration": "4:06",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "IN THE NAVY---VILLAGE PEOPLE, Official Music Video (1979) HD",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/IN_THE_NAVY---VILLAGE_PEOPLE%2C_Official_Music_Video_(1979)_HD.mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/IN_THE_NAVY---VILLAGE_PEOPLE%2C_Official_Music_Video_(1979)_HD.mp3",
         "duration": "3:55",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "John Fogerty - The Old Man Down The Road",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/John_Fogerty_-_The_Old_Man_Down_The_Road.mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/John_Fogerty_-_The_Old_Man_Down_The_Road.mp3",
         "duration": "3:49",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "KC & The Sunshine Band - That's the way (I like it) (retro video with edited music) HQ",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/KC_%26_The_Sunshine_Band_-_That's_the_way_(I_like_it)_(retro_video_with_edited_music)_HQ.mp3",
+        "duration": "3:09",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Kansas - Dust in the Wind (Official Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Kansas_-_Dust_in_the_Wind_(Official_Video).mp3",
+        "duration": "3:19",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "Kim Carnes - Bette Davis Eyes",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/Kim_Carnes_-_Bette_Davis_Eyes.mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Kim_Carnes_-_Bette_Davis_Eyes.mp3",
         "duration": "3:33",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Kool & The Gang - Get Down On It",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Kool_%26_The_Gang_-_Get_Down_On_It.mp3",
+        "duration": "4:36",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Lionel Richie - All Night Long (All Night)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Lionel_Richie_-_All_Night_Long_(All_Night).mp3",
+        "duration": "3:48",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "Long Cool Woman in a Black Dress - The Hollies",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/Long_Cool_Woman_in_a_Black_Dress_-_The_Hollies.mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Long_Cool_Woman_in_a_Black_Dress_-_The_Hollies.mp3",
         "duration": "3:14",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "M.C. Hammer - U Can't Touch This",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/M.C._Hammer_-_U_Can't_Touch_This.mp3",
+        "duration": "4:33",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Men At Work - Down Under (Official HD Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Men_At_Work_-_Down_Under_(Official_HD_Video).mp3",
+        "duration": "3:40",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Men At Work - Who Can It Be Now? (Official Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Men_At_Work_-_Who_Can_It_Be_Now_(Official_Video).mp3",
+        "duration": "3:28",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Michael Sembello - Maniac (1983)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Michael_Sembello_-_Maniac_(1983).mp3",
+        "duration": "4:12",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Moon Martin -  Bad News (Live 1981)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Moon_Martin_-_Bad_News_(Live_1981).mp3",
+        "duration": "4:21",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Murray Head - One Night In Bangkok \"From CHESS\"",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Murray_Head_-_One_Night_In_Bangkok_From_CHESS.mp3",
+        "duration": "3:54",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Olivia Newton-John - Physical (Official Music Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Olivia_Newton-John_-_Physical_(Official_Music_Video).mp3",
+        "duration": "3:43",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "Patrick Hernandez - Born to Be Alive - Official Video (Clip Officiel)",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/Patrick_Hernandez_-_Born_to_Be_Alive_-_Official_Video_(Clip_Officiel).mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Patrick_Hernandez_-_Born_to_Be_Alive_-_Official_Video_(Clip_Officiel).mp3",
         "duration": "3:09",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "People's Choice - Do it anyway you wanna ''Special Disco Version'' (1975)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/People's_Choice_-_Do_it_anyway_you_wanna_''Special_Disco_Version''_(1975).mp3",
+        "duration": "5:38",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "Queen - Another One Bites the Dust (Official Video Remastered)",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/Queen_-_Another_One_Bites_the_Dust_(Official_Video_Remastered).mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Queen_-_Another_One_Bites_the_Dust_(Official_Video_Remastered).mp3",
         "duration": "3:38",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Queen - We Will Rock You (Official Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Queen_-_We_Will_Rock_You_(Official_Video).mp3",
+        "duration": "2:14",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "Ram Jam - Black Betty (Official Video)",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/Ram_Jam_-_Black_Betty_(Official_Video).mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Ram_Jam_-_Black_Betty_(Official_Video).mp3",
         "duration": "2:24",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Rick James - Give It To Me Baby",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Rick_James_-_Give_It_To_Me_Baby.mp3",
+        "duration": "4:01",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Rick James - Super Freak (Official Music Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Rick_James_-_Super_Freak_(Official_Music_Video).mp3",
+        "duration": "3:22",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Shocking Blue - Venus (Official Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Shocking_Blue_-_Venus_(Official_Video).mp3",
+        "duration": "3:00",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Shocking Blue - Venus - Subtitulado Español & Inglés",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Shocking_Blue_-_Venus_-_Subtitulado_Espa%C3%B1ol_%26_Ingl%C3%A9s.mp3",
+        "duration": "3:13",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Silver Convention - Fly, Robin, Fly (1975) HD 0815007",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Silver_Convention_-_Fly%2C_Robin%2C_Fly_(1975)_HD_0815007.mp3",
+        "duration": "5:34",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Steve Miller Band-Abracadabra",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Steve_Miller_Band-Abracadabra.mp3",
+        "duration": "5:32",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Styx - Boat On The River",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Styx_-_Boat_On_The_River.mp3",
+        "duration": "3:10",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Styx   Mr  Roboto (1983 video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Styx_Mr_Roboto_(1983_video).mp3",
+        "duration": "5:35",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Sweet - Fox On The Run - 45 (OFFICIAL)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Sweet_-_Fox_On_The_Run_-_45_(OFFICIAL).mp3",
+        "duration": "3:13",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "THE EMOTIONS ❖ Best of My Love【music video】",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/THE_EMOTIONS_%E2%9D%96_Best_of_My_Love%E3%80%90music_video%E3%80%91.mp3",
+        "duration": "3:01",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "The Donna Summer Special - Bad Girls",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/The_Donna_Summer_Special_-_Bad_Girls.mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/The_Donna_Summer_Special_-_Bad_Girls.mp3",
         "duration": "3:04",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "The J. Geils Band - Centerfold (Official Music Video)",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/The_J._Geils_Band_-_Centerfold_(Official_Music_Video).mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/The_J._Geils_Band_-_Centerfold_(Official_Music_Video).mp3",
         "duration": "3:38",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "The Logical Song by Roger Hodgson (former Supertramp singer songwriter)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/The_Logical_Song_by_Roger_Hodgson_(former_Supertramp_singer_songwriter).mp3",
+        "duration": "4:07",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "The Marcels   -   Blue Moon",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/The_Marcels_-_Blue_Moon.mp3",
+        "duration": "2:11",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "The Rolling Stones - (I Can't Get No) Satisfaction (Official Lyric Video)",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/The_Rolling_Stones_-_(I_Can't_Get_No)_Satisfaction_(Official_Lyric_Video).mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/The_Rolling_Stones_-_(I_Can't_Get_No)_Satisfaction_(Official_Lyric_Video).mp3",
         "duration": "3:54",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "The Whispers - \"And The Beat Goes On\" (Official Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/The_Whispers_-_And_The_Beat_Goes_On_(Official_Video).mp3",
+        "duration": "4:29",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "Vanilla Ice - Ice Ice Baby (Official Music Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/Vanilla_Ice_-_Ice_Ice_Baby_(Official_Music_Video).mp3",
+        "duration": "3:57",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
+      },
+      {
+        "title": "YES - Owner of a Lonely Heart (Official Music Video)",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/YES_-_Owner_of_a_Lonely_Heart_(Official_Music_Video).mp3",
+        "duration": "6:41",
+        "type": "archive",
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       },
       {
         "title": "jimmy castor - bertha butt boogie",
-        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video/jimmy_castor_-_bertha_butt_boogie.mp3",
+        "audio": "https://archive.org/download/frankie-smith-double-dutch-bus-official-music-video_202609/jimmy_castor_-_bertha_butt_boogie.mp3",
         "duration": "2:40",
         "type": "archive",
-        "archiveId": "frankie-smith-double-dutch-bus-official-music-video"
+        "archiveId": "frankie-smith-double-dutch-bus-official-music-video_202609"
       }
     ]
   },
