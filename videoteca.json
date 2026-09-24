@@ -1,5 +1,100 @@
 [
   {
+    "artist": "Vicente Fernández",
+    "album": "Vicente Fernández",
+    "year": "1970",
+    "genre": "Rock",
+    "cover": "https://album99.cdn107.com/af/c3/afc3962e11458d2f01d3f28fbbf91a6e_xl.jpg",
+    "musicUrl": "https://archive.org/details/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version",
+    "description": "",
+    "tracks": [
+      {
+        "title": "Adivinanza (Album Version)",
+        "audio": "https://archive.org/download/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version/Adivinanza_(Album_Version).mp3",
+        "duration": "3:16",
+        "type": "archive",
+        "archiveId": "golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version"
+      },
+      {
+        "title": "Bohemio de Afición",
+        "audio": "https://archive.org/download/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version/Bohemio_de_Afici%C3%B3n.mp3",
+        "duration": "3:26",
+        "type": "archive",
+        "archiveId": "golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version"
+      },
+      {
+        "title": "Entre el Amor y Yo (Album Version)",
+        "audio": "https://archive.org/download/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version/Entre_el_Amor_y_Yo_(Album_Version).mp3",
+        "duration": "2:35",
+        "type": "archive",
+        "archiveId": "golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version"
+      },
+      {
+        "title": "Golondrina Sin Nido (A Dúo Con Alejandro Fernández) (Album Version)",
+        "audio": "https://archive.org/download/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version/Golondrina_Sin_Nido_(A_D%C3%BAo_Con_Alejandro_Fern%C3%A1ndez)_(Album_Version).mp3",
+        "duration": "4:35",
+        "type": "archive",
+        "archiveId": "golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version"
+      },
+      {
+        "title": "Me Voy a Quitar de en Medio",
+        "audio": "https://archive.org/download/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version/Me_Voy_a_Quitar_de_en_Medio.mp3",
+        "duration": "2:46",
+        "type": "archive",
+        "archiveId": "golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version"
+      },
+      {
+        "title": "Mi Fiel Compañera (Album Version)",
+        "audio": "https://archive.org/download/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version/Mi_Fiel_Compa%C3%B1era_(Album_Version).mp3",
+        "duration": "2:22",
+        "type": "archive",
+        "archiveId": "golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version"
+      },
+      {
+        "title": "No, Que No (Album Version)",
+        "audio": "https://archive.org/download/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version/No%2C_Que_No_(Album_Version).mp3",
+        "duration": "2:28",
+        "type": "archive",
+        "archiveId": "golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version"
+      },
+      {
+        "title": "No Lo Puedo Creer (Album Version)",
+        "audio": "https://archive.org/download/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version/No_Lo_Puedo_Creer_(Album_Version).mp3",
+        "duration": "4:10",
+        "type": "archive",
+        "archiveId": "golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version"
+      },
+      {
+        "title": "Sangre de Indio (Album Version)",
+        "audio": "https://archive.org/download/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version/Sangre_de_Indio_(Album_Version).mp3",
+        "duration": "2:49",
+        "type": "archive",
+        "archiveId": "golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version"
+      },
+      {
+        "title": "Sublime Mujer",
+        "audio": "https://archive.org/download/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version/Sublime_Mujer.mp3",
+        "duration": "3:07",
+        "type": "archive",
+        "archiveId": "golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version"
+      },
+      {
+        "title": "Te Arranqué del Corazón (Album Version)",
+        "audio": "https://archive.org/download/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version/Te_Arranqu%C3%A9_del_Coraz%C3%B3n_(Album_Version).mp3",
+        "duration": "4:10",
+        "type": "archive",
+        "archiveId": "golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version"
+      },
+      {
+        "title": "Y Me Vieron Llorar (Album Version)",
+        "audio": "https://archive.org/download/golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version/Y_Me_Vieron_Llorar_(Album_Version).mp3",
+        "duration": "3:05",
+        "type": "archive",
+        "archiveId": "golondrina-sin-nido-a-duo-con-alejandro-fernandez-album-version"
+      }
+    ]
+  },
+  {
     "artist": "Pedro Infante",
     "album": "Discografía completa de Pedro Infante",
     "year": "1970",
