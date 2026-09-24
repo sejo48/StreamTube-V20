@@ -1,5 +1,226 @@
 [
   {
+    "artist": "Pedro Infante",
+    "album": "Discografía completa de Pedro Infante",
+    "year": "1970",
+    "genre": "Baladas & Romántica",
+    "cover": "https://cdn-images.dzcdn.net/images/cover/093404bca5a22590a472abd791addec1/0x1900-000000-80-0-0.jpg",
+    "musicUrl": "https://archive.org/details/fallaste-corazon-remastered",
+    "description": "",
+    "tracks": [
+      {
+        "title": "de Septiembre (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/15_de_Septiembre_(Remastered).mp3",
+        "duration": "2:50",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "A la Orilla del Mar (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/A_la_Orilla_del_Mar_(Remastered).mp3",
+        "duration": "3:21",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Amorcito Corazón (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Amorcito_Coraz%C3%B3n_(Remastered).mp3",
+        "duration": "3:03",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Así Es la Vida (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/As%C3%AD_Es_la_Vida_(Remastered).mp3",
+        "duration": "2:28",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Atardecer Huasteco (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Atardecer_Huasteco_(Remastered).mp3",
+        "duration": "2:28",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Corazoncito Tirano (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Corazoncito_Tirano_(Remastered).mp3",
+        "duration": "3:00",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Criolla (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Criolla_(Remastered).mp3",
+        "duration": "2:57",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Cuando Sale la Luna (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Cuando_Sale_la_Luna_(Remastered).mp3",
+        "duration": "3:27",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "El Copetin (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/El_Copetin_(Remastered).mp3",
+        "duration": "2:44",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "El Durazno (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/El_Durazno_(Remastered).mp3",
+        "duration": "2:53",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "El Gavilán Pollero (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/El_Gavil%C3%A1n_Pollero_(Remastered).mp3",
+        "duration": "2:32",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Ella (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Ella_(Remastered).mp3",
+        "duration": "2:49",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Fallaste Corazon (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Fallaste_Corazon_(Remastered).mp3",
+        "duration": "3:45",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Flor Sin Retoño (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Flor_Sin_Reto%C3%B1o_(Remastered).mp3",
+        "duration": "3:08",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Flor de Espino (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Flor_de_Espino_(Remastered).mp3",
+        "duration": "3:08",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Historia de un Amor (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Historia_de_un_Amor_(Remastered).mp3",
+        "duration": "3:23",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Las Dos Caras (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Las_Dos_Caras_(Remastered).mp3",
+        "duration": "3:13",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Las Golondrinas (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Las_Golondrinas_(Remastered).mp3",
+        "duration": "3:08",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Mexicano Hasta las Cachas (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Mexicano_Hasta_las_Cachas_(Remastered).mp3",
+        "duration": "2:44",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Mi Adoración (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Mi_Adoraci%C3%B3n_(Remastered).mp3",
+        "duration": "2:47",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Mi Cariñito (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Mi_Cari%C3%B1ito_(Remastered).mp3",
+        "duration": "2:40",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Paloma, Dejame Ir (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Paloma%2C_Dejame_Ir_(Remastered).mp3",
+        "duration": "2:45",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Paloma Querida (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Paloma_Querida_(Remastered).mp3",
+        "duration": "2:56",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Que Te Ha Dado Esa Mujer (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Que_Te_Ha_Dado_Esa_Mujer_(Remastered).mp3",
+        "duration": "2:34",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Que Vulgares Somos (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Que_Vulgares_Somos_(Remastered).mp3",
+        "duration": "3:02",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Serenata en la Noche (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Serenata_en_la_Noche_(Remastered).mp3",
+        "duration": "3:04",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Sus Ojitos (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Sus_Ojitos_(Remastered).mp3",
+        "duration": "2:34",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Te Vengo a Buscar (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Te_Vengo_a_Buscar_(Remastered).mp3",
+        "duration": "3:02",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Vete de Mí (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Vete_de_M%C3%AD_(Remastered).mp3",
+        "duration": "2:42",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      },
+      {
+        "title": "Yo Te Quise (Remastered)",
+        "audio": "https://archive.org/download/fallaste-corazon-remastered/Yo_Te_Quise_(Remastered).mp3",
+        "duration": "2:41",
+        "type": "archive",
+        "archiveId": "fallaste-corazon-remastered"
+      }
+    ]
+  },
+  {
     "artist": "Julio Jaramillo",
     "album": "Julio Jaramillo",
     "year": "1970",
