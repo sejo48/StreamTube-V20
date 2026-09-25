@@ -1,5 +1,366 @@
 [
   {
+    "artist": "JUAN GABRIEL",
+    "album": "JUAN GABRIEL - 100 SÚPER ÉXITOS",
+    "year": "1970",
+    "genre": "Tropical & Salsa",
+    "cover": "https://i.ytimg.com/vi/o3J3nrdS2_c/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLCUeo7K7l3n1mLNEUqXDh8G-7SggQ",
+    "musicUrl": "https://archive.org/details/debo-hacerlo",
+    "description": "",
+    "tracks": [
+      {
+        "title": "Abrázame Muy Fuerte",
+        "audio": "https://archive.org/download/debo-hacerlo/Abr%C3%A1zame_Muy_Fuerte.mp3",
+        "duration": "3:59",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Adiós Amor, Te Vas",
+        "audio": "https://archive.org/download/debo-hacerlo/Adi%C3%B3s_Amor%2C_Te_Vas.mp3",
+        "duration": "4:16",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Amor Eterno (En Vivo [En el Palacio de Bellas Artes])",
+        "audio": "https://archive.org/download/debo-hacerlo/Amor_Eterno_(En_Vivo_%5BEn_el_Palacio_de_Bellas_Artes%5D).mp3",
+        "duration": "7:08",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Así Fue (En Vivo [Desde el Instituto Nacional de Bellas Artes])",
+        "audio": "https://archive.org/download/debo-hacerlo/As%C3%AD_Fue_(En_Vivo_%5BDesde_el_Instituto_Nacional_de_Bellas_Artes%5D).mp3",
+        "duration": "7:24",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Aunque Te Enamores",
+        "audio": "https://archive.org/download/debo-hacerlo/Aunque_Te_Enamores.mp3",
+        "duration": "3:37",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Buenos Días Señor Sol",
+        "audio": "https://archive.org/download/debo-hacerlo/Buenos_D%C3%ADas_Se%C3%B1or_Sol.mp3",
+        "duration": "2:39",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Bésame",
+        "audio": "https://archive.org/download/debo-hacerlo/B%C3%A9same.mp3",
+        "duration": "4:08",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Canta, Canta",
+        "audio": "https://archive.org/download/debo-hacerlo/Canta%2C_Canta.mp3",
+        "duration": "3:16",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Caray",
+        "audio": "https://archive.org/download/debo-hacerlo/Caray.mp3",
+        "duration": "3:49",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Debo Hacerlo",
+        "audio": "https://archive.org/download/debo-hacerlo/Debo_Hacerlo.mp3",
+        "duration": "9:39",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Déjame Vivir",
+        "audio": "https://archive.org/download/debo-hacerlo/D%C3%A9jame_Vivir.mp3",
+        "duration": "3:42",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "El Destino",
+        "audio": "https://archive.org/download/debo-hacerlo/El_Destino.mp3",
+        "duration": "4:43",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "El Noa Noa",
+        "audio": "https://archive.org/download/debo-hacerlo/El_Noa_Noa.mp3",
+        "duration": "4:17",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Esta Noche Voy a Verla",
+        "audio": "https://archive.org/download/debo-hacerlo/Esta_Noche_Voy_a_Verla.mp3",
+        "duration": "2:34",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Fue un Placer Conocerte (En Vivo)",
+        "audio": "https://archive.org/download/debo-hacerlo/Fue_un_Placer_Conocerte_(En_Vivo).mp3",
+        "duration": "3:20",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Hasta Que Te Conocí",
+        "audio": "https://archive.org/download/debo-hacerlo/Hasta_Que_Te_Conoc%C3%AD.mp3",
+        "duration": "7:15",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "He Venido a Pedirte Perdón",
+        "audio": "https://archive.org/download/debo-hacerlo/He_Venido_a_Pedirte_Perd%C3%B3n.mp3",
+        "duration": "4:58",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Inocente Pobre Amigo",
+        "audio": "https://archive.org/download/debo-hacerlo/Inocente_Pobre_Amigo.mp3",
+        "duration": "4:05",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Insensible",
+        "audio": "https://archive.org/download/debo-hacerlo/Insensible.mp3",
+        "duration": "2:50",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "La Farsante",
+        "audio": "https://archive.org/download/debo-hacerlo/La_Farsante.mp3",
+        "duration": "2:52",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "La Incertidumbre",
+        "audio": "https://archive.org/download/debo-hacerlo/La_Incertidumbre.mp3",
+        "duration": "3:19",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Mañana Te Acordaras",
+        "audio": "https://archive.org/download/debo-hacerlo/Ma%C3%B1ana_Te_Acordaras.mp3",
+        "duration": "3:55",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Me He Quedado Solo",
+        "audio": "https://archive.org/download/debo-hacerlo/Me_He_Quedado_Solo.mp3",
+        "duration": "3:23",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Mi Fracaso",
+        "audio": "https://archive.org/download/debo-hacerlo/Mi_Fracaso.mp3",
+        "duration": "2:41",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Mi Más Bello Error",
+        "audio": "https://archive.org/download/debo-hacerlo/Mi_M%C3%A1s_Bello_Error.mp3",
+        "duration": "3:28",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Muriendo de Amor",
+        "audio": "https://archive.org/download/debo-hacerlo/Muriendo_de_Amor.mp3",
+        "duration": "5:31",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "No Me Vuelvo a Enamorar (En Vivo)",
+        "audio": "https://archive.org/download/debo-hacerlo/No_Me_Vuelvo_a_Enamorar_(En_Vivo).mp3",
+        "duration": "3:22",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "No Se Ha Dado Cuenta",
+        "audio": "https://archive.org/download/debo-hacerlo/No_Se_Ha_Dado_Cuenta.mp3",
+        "duration": "2:23",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "No Tengo Dinero",
+        "audio": "https://archive.org/download/debo-hacerlo/No_Tengo_Dinero.mp3",
+        "duration": "3:05",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "No Vale la Pena",
+        "audio": "https://archive.org/download/debo-hacerlo/No_Vale_la_Pena.mp3",
+        "duration": "2:30",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Nuestro Amor Es el Más Bello del Mundo",
+        "audio": "https://archive.org/download/debo-hacerlo/Nuestro_Amor_Es_el_M%C3%A1s_Bello_del_Mundo.mp3",
+        "duration": "3:09",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Perdóname, Olvídalo",
+        "audio": "https://archive.org/download/debo-hacerlo/Perd%C3%B3name%2C_Olv%C3%ADdalo.mp3",
+        "duration": "3:38",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Pero Qué Necesidad",
+        "audio": "https://archive.org/download/debo-hacerlo/Pero_Qu%C3%A9_Necesidad.mp3",
+        "duration": "5:54",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Que Sea Mi Condena",
+        "audio": "https://archive.org/download/debo-hacerlo/Que_Sea_Mi_Condena.mp3",
+        "duration": "3:09",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Querida",
+        "audio": "https://archive.org/download/debo-hacerlo/Querida.mp3",
+        "duration": "5:28",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Se Me Olvidó Otra Vez",
+        "audio": "https://archive.org/download/debo-hacerlo/Se_Me_Olvid%C3%B3_Otra_Vez.mp3",
+        "duration": "2:55",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Si Quieres",
+        "audio": "https://archive.org/download/debo-hacerlo/Si_Quieres.mp3",
+        "duration": "4:14",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Siempre en Mi Mente",
+        "audio": "https://archive.org/download/debo-hacerlo/Siempre_en_Mi_Mente.mp3",
+        "duration": "3:25",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Sólo Sé Que Fue en Marzo",
+        "audio": "https://archive.org/download/debo-hacerlo/S%C3%B3lo_S%C3%A9_Que_Fue_en_Marzo.mp3",
+        "duration": "4:03",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Te Lo Pido por Favor",
+        "audio": "https://archive.org/download/debo-hacerlo/Te_Lo_Pido_por_Favor.mp3",
+        "duration": "3:38",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Te Sigo Amando",
+        "audio": "https://archive.org/download/debo-hacerlo/Te_Sigo_Amando.mp3",
+        "duration": "2:45",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Te Voy a Olvidar",
+        "audio": "https://archive.org/download/debo-hacerlo/Te_Voy_a_Olvidar.mp3",
+        "duration": "3:23",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Todo",
+        "audio": "https://archive.org/download/debo-hacerlo/Todo.mp3",
+        "duration": "2:23",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Tus Ojos Mexicanos Lindos",
+        "audio": "https://archive.org/download/debo-hacerlo/Tus_Ojos_Mexicanos_Lindos.mp3",
+        "duration": "4:58",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Ya Lo Sé Que Tú Te Vas",
+        "audio": "https://archive.org/download/debo-hacerlo/Ya_Lo_S%C3%A9_Que_T%C3%BA_Te_Vas.mp3",
+        "duration": "3:44",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Ya No Vivo Por Vivir",
+        "audio": "https://archive.org/download/debo-hacerlo/Ya_No_Vivo_Por_Vivir.mp3",
+        "duration": "6:14",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Yo No Nací para Amar",
+        "audio": "https://archive.org/download/debo-hacerlo/Yo_No_Nac%C3%AD_para_Amar.mp3",
+        "duration": "4:26",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Yo No Sé Qué Me Pasó",
+        "audio": "https://archive.org/download/debo-hacerlo/Yo_No_S%C3%A9_Qu%C3%A9_Me_Pas%C3%B3.mp3",
+        "duration": "5:12",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "Yo Te Recuerdo",
+        "audio": "https://archive.org/download/debo-hacerlo/Yo_Te_Recuerdo.mp3",
+        "duration": "3:34",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      },
+      {
+        "title": "¿Por Qué Me Haces Llorar",
+        "audio": "https://archive.org/download/debo-hacerlo/%C2%BFPor_Qu%C3%A9_Me_Haces_Llorar.mp3",
+        "duration": "3:02",
+        "type": "archive",
+        "archiveId": "debo-hacerlo"
+      }
+    ]
+  },
+  {
     "artist": "Salsa Dura",
     "album": "Salsa Dura",
     "year": "1970",
