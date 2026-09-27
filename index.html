@@ -779,6 +779,60 @@
                 default: return <svg width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"/></svg>;
             }
         };
+        // ============================================================
+        // SISTEMA ROBUSTO DE PORTADAS
+        // ============================================================
+        const POSTER_FALLBACK = 'https://placehold.co/600x900/0f172a/ffffff?text=Portada+no+disponible';
+
+        const getPosterCandidates = (url) => {
+            const clean = typeof url === 'string' ? url.trim() : '';
+            if (!clean) return [POSTER_FALLBACK];
+            if (clean.startsWith('data:')) return [clean, POSTER_FALLBACK];
+
+            const candidates = [];
+            const add = (value) => {
+                if (value && !candidates.includes(value)) candidates.push(value);
+            };
+
+            // Primero la URL original para conservar la máxima calidad.
+            add(clean);
+
+            // Si el servidor bloquea hotlinking, usamos un proxy de imágenes.
+            // Esto evita que Amazon, FilmAffinity, Walmart, etc. dejen la tarjeta vacía.
+            if (!clean.includes('wsrv.nl/')) {
+                add(`https://wsrv.nl/?url=${encodeURIComponent(clean)}&w=600&output=jpg&q=85`);
+            }
+
+            add(POSTER_FALLBACK);
+            return candidates;
+        };
+
+        const PosterImage = ({ src, alt = '', className = '', loading = 'lazy', ...props }) => {
+            const candidates = useMemo(() => getPosterCandidates(src), [src]);
+            const [candidateIndex, setCandidateIndex] = useState(0);
+            const currentSrc = candidates[Math.min(candidateIndex, candidates.length - 1)] || POSTER_FALLBACK;
+
+            useEffect(() => {
+                setCandidateIndex(0);
+            }, [src]);
+
+            const handleError = () => {
+                setCandidateIndex(prev => Math.min(prev + 1, candidates.length - 1));
+            };
+
+            return (
+                <img
+                    src={currentSrc}
+                    alt={alt}
+                    loading={loading}
+                    referrerPolicy="no-referrer"
+                    className={className}
+                    onError={handleError}
+                    {...props}
+                />
+            );
+        };
+
         const App = () => {
             const [showIntro, setShowIntro] = useState(true);
             const [activeTab, setActiveTab] = useState('home');
@@ -910,7 +964,9 @@
                                 type: 'movies', 
                                 title: m.titulo || m.title || m.name, 
                                 description: m.descripcion || m.sinopsis || m.plot, 
-                                image: m.imagen || m.poster || m.image, 
+                                image: m.imagen || m.poster || m.image,
+                                imagen: m.imagen || m.poster || m.image,
+                                poster: m.imagen || m.poster || m.image,
                                 url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
                                 rawUrl: m.urlDrive || m.url || m.urlOkRu
                             }));
@@ -925,7 +981,9 @@
                                 type: 'movies2', 
                                 title: m.titulo || m.title || m.name, 
                                 description: m.descripcion || m.sinopsis || m.plot, 
-                                image: m.imagen || m.poster || m.image, 
+                                image: m.imagen || m.poster || m.image,
+                                imagen: m.imagen || m.poster || m.image,
+                                poster: m.imagen || m.poster || m.image,
                                 url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
                                 rawUrl: m.urlDrive || m.url || m.urlOkRu
                             }));
@@ -941,6 +999,8 @@
                                 title: s.tituloSerie || s.titulo || s.title || s.name,
                                 description: s.descripcion || s.sinopsis,
                                 image: s.imagen || s.poster || s.image,
+                                imagen: s.imagen || s.poster || s.image,
+                                poster: s.imagen || s.poster || s.image,
                                 seasons: (s.temporadas || []).map((t, tIdx) => ({
                                     seasonNumber: t.numeroTemporada || (tIdx + 1),
                                     episodes: (t.episodios || []).map((ep, eIdx) => ({
@@ -963,6 +1023,8 @@
                                 title: a.titulo || a.tituloSerie || a.title || a.name,
                                 description: a.descripcion || a.sinopsis || a.description || a.plot,
                                 image: a.imagen || a.poster || a.image,
+                                imagen: a.imagen || a.poster || a.image,
+                                poster: a.imagen || a.poster || a.image,
                                 url: convertUrl(a.urlDrive || a.url || a.urlOkRu),
                                 rawUrl: a.urlDrive || a.url || a.urlOkRu,
                                 seasons: (a.temporadas || []).map((t, tIdx) => ({
@@ -1851,7 +1913,7 @@
                                         <div className="lg:col-span-2 space-y-6">
                                             <div className="flex items-start gap-4 sm:gap-6">
                                                 <div className="w-28 sm:w-36 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black">
-                                                    <img src={selectedItem.imagen || selectedItem.image || selectedItem.poster} alt={selectedItem.titulo || selectedItem.title} className="w-full h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/300x450/0f172a/ffffff?text=Poster'; }} />
+                                                    <PosterImage src={selectedItem.imagen || selectedItem.image || selectedItem.poster} alt={selectedItem.titulo || selectedItem.title} className="w-full h-full object-cover" />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex items-start justify-between gap-4">
@@ -2055,7 +2117,7 @@
                                                     <div key={nIdx} className="glass-panel rounded-xl sm:rounded-2xl p-2.5 sm:p-4 border border-slate-800 flex flex-col justify-between group hover:border-[#e50914]/50 transition-all card-glow">
                                                         <div>
                                                             <div className="aspect-[2/3] rounded-lg sm:rounded-xl overflow-hidden mb-2 sm:mb-3 relative bg-black">
-                                                                <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                                                <PosterImage src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                                                 <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 bg-black/80 backdrop-blur-md px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-white/10 text-[9px] sm:text-[10px] font-mono text-yellow-400 font-bold flex items-center gap-1">
                                                                     <span>★</span> {item.score}
                                                                 </div>
@@ -3786,7 +3848,7 @@
 
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4 sm:gap-10 text-center sm:text-left">
                         <div className="w-64 sm:w-60 md:w-68 aspect-[2/3] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
-                            <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => e.target.src='https://placehold.co/300x450/0f172a/ffffff?text=Poster'} />
+                            <PosterImage src={imgSource} alt={titleSource} className="w-full h-full object-cover" loading="eager" />
                         </div>
                         <div className="flex-1 flex flex-col gap-2.5 sm:gap-3 items-center sm:items-start max-w-xl">
                             <span className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white text-[9px] sm:text-[10px] font-black px-3.5 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(6,182,212,0.4)]">Destacado Boxplaytv</span>
@@ -3855,7 +3917,7 @@
                         </button>
                     </div>
                     <div className="aspect-[2/3] w-full rounded-lg sm:rounded-xl overflow-hidden mb-1 sm:mb-2.5 bg-black/80 relative shadow-inner">
-                        <img src={imgUrl} alt={titleText} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/300x450/0f172a/ffffff?text=Poster'; }} />
+                        <PosterImage src={imgUrl} alt={titleText} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
                             <span className="w-full py-1.5 sm:py-2 bg-cyan-600/90 text-white rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold text-center shadow-lg backdrop-blur-sm">Ver Ahora</span>
                         </div>
@@ -3922,4 +3984,3 @@
     </script>
 </body>
 </html>
-
