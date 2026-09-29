@@ -1,5 +1,79 @@
 [
   {
+    "artist": "Soda Stereo",
+    "album": "Soda Stereo Grandes Éxitos",
+    "year": "2005",
+    "genre": "Rock",
+    "cover": "https://i.ytimg.com/vi/H7A6hsYpc88/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDbtyfwxoC2zmEPT5FYvFMhii4xrQ&usqp=CBQ",
+    "musicUrl": "https://archive.org/details/soda-stereo-signos-official-audio",
+    "description": "Producción discográfica clásica de Soda Stereo, lanzada originalmente en el año 2005. Obra cumbre dentro de la categoría Rock, conservada en calidad máster para la colección BoxPlayMusic.",
+    "tracks": [
+      {
+        "title": "Bronski Beat - Smalltown Boy (Official Video)",
+        "audio": "https://archive.org/download/soda-stereo-signos-official-audio/Bronski_Beat_-_Smalltown_Boy_(Official_Video).mp3",
+        "duration": "5:03",
+        "type": "archive",
+        "archiveId": "soda-stereo-signos-official-audio"
+      },
+      {
+        "title": "Depeche Mode - Enjoy the Silence (Official Video)",
+        "audio": "https://archive.org/download/soda-stereo-signos-official-audio/Depeche_Mode_-_Enjoy_the_Silence_(Official_Video).mp3",
+        "duration": "4:40",
+        "type": "archive",
+        "archiveId": "soda-stereo-signos-official-audio"
+      },
+      {
+        "title": "Kate Bush - Running Up That Hill - Official Music Video",
+        "audio": "https://archive.org/download/soda-stereo-signos-official-audio/Kate_Bush_-_Running_Up_That_Hill_-_Official_Music_Video.mp3",
+        "duration": "4:55",
+        "type": "archive",
+        "archiveId": "soda-stereo-signos-official-audio"
+      },
+      {
+        "title": "Maniac",
+        "audio": "https://archive.org/download/soda-stereo-signos-official-audio/Maniac.mp3",
+        "duration": "4:04",
+        "type": "archive",
+        "archiveId": "soda-stereo-signos-official-audio"
+      },
+      {
+        "title": "Queen - Radio Ga Ga (Official Video)",
+        "audio": "https://archive.org/download/soda-stereo-signos-official-audio/Queen_-_Radio_Ga_Ga_(Official_Video).mp3",
+        "duration": "5:53",
+        "type": "archive",
+        "archiveId": "soda-stereo-signos-official-audio"
+      },
+      {
+        "title": "Simple Minds - Don't You (Forget About Me)",
+        "audio": "https://archive.org/download/soda-stereo-signos-official-audio/Simple_Minds_-_Don't_You_(Forget_About_Me).mp3",
+        "duration": "4:22",
+        "type": "archive",
+        "archiveId": "soda-stereo-signos-official-audio"
+      },
+      {
+        "title": "Soda Stereo - Corazón Delator (Letra)",
+        "audio": "https://archive.org/download/soda-stereo-signos-official-audio/Soda_Stereo_-_Coraz%C3%B3n_Delator_(Letra).mp3",
+        "duration": "5:13",
+        "type": "archive",
+        "archiveId": "soda-stereo-signos-official-audio"
+      },
+      {
+        "title": "Soda Stereo - Signos (Official Audio)",
+        "audio": "https://archive.org/download/soda-stereo-signos-official-audio/Soda_Stereo_-_Signos_(Official_Audio).mp3",
+        "duration": "6:22",
+        "type": "archive",
+        "archiveId": "soda-stereo-signos-official-audio"
+      },
+      {
+        "title": "a-ha - Take On Me (Official Video) [4K]",
+        "audio": "https://archive.org/download/soda-stereo-signos-official-audio/a-ha_-_Take_On_Me_(Official_Video)_%5B4K%5D.mp3",
+        "duration": "4:04",
+        "type": "archive",
+        "archiveId": "soda-stereo-signos-official-audio"
+      }
+    ]
+  },
+  {
     "artist": "JUAN GABRIEL",
     "album": "JUAN GABRIEL - 100 SÚPER ÉXITOS",
     "year": "1970",
