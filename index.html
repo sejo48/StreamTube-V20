@@ -254,13 +254,8 @@
             box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
         }
 
-        /* Fix para imágenes que no cargan */
         img {
             background-color: #0f172a;
-        }
-        img[data-fallback="true"] {
-            object-fit: contain !important;
-            padding: 8px;
         }
     </style>
 </head>
@@ -308,8 +303,8 @@
 
         const DOWNLOAD_PIN_API = '/api/validate-download-pin';
 
-        // URL de fallback para imágenes que no cargan
-        const FALLBACK_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQ1MCIgZmlsbD0iIzBmMTcyYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk7DoCBpbWFnZW48L3RleHQ+PC9zdmc+';
+        // Fallback ligero usando placehold.co (carga rápido y siempre funciona)
+        const FALLBACK_IMAGE = 'https://placehold.co/300x450/0f172a/64748b?text=No+Image';
 
         const DEFAULT_RADIO_STATIONS = [
             { id: 'cr-discofunk', title: 'B4B Disco Funk', group: 'Global', genre: 'Disco / Funk 80s', logo: 'https://placehold.co/300x300/0f172a/00f2fe?text=Disco+Funk', url: 'https://icecasthd.teletica.com/teleticaradio' },
@@ -356,17 +351,22 @@
             { id: 'alb-10', artist: 'The Beatles', album: 'Rubber Soul', year: '1965', genre: 'Rock', cover: 'https://m.media-amazon.com/images/I/71dK4+y0bCL._UF1000,1000_QL80_.jpg', description: 'Álbum revolucionario que definió una era en el pop y rock internacional.', tracks: [ { title: 'Rubber Soul (Full Album)', type: 'archive', archiveId: 'the-beatles-rubber-soul', duration: 'Álbum' } ] }
         ];
 
-        // Función para convertir URLs de imágenes
+        // Función corregida: NO fuerza https:// a rutas relativas ni modifica URLs válidas
         const convertImageUrl = (url) => {
             if (!url || typeof url !== 'string') return FALLBACK_IMAGE;
-            let cleanUrl = url.trim();
-            // Si ya es una URL de datos o blob, devolverla tal cual
+            const cleanUrl = url.trim();
+            if (cleanUrl.length === 0) return FALLBACK_IMAGE;
+            // Data URL o blob -> devolver tal cual
             if (cleanUrl.startsWith('data:') || cleanUrl.startsWith('blob:')) return cleanUrl;
-            // Si no tiene protocolo, añadir https://
-            if (!cleanUrl.startsWith('http://') && !cleanUrl.startsWith('https://')) {
-                cleanUrl = 'https://' + cleanUrl;
-            }
-            return cleanUrl;
+            // Protocolo relativo //dominio.com -> añadir https:
+            if (cleanUrl.startsWith('//')) return 'https:' + cleanUrl;
+            // Ya tiene protocolo -> devolver tal cual
+            if (cleanUrl.startsWith('http://') || cleanUrl.startsWith('https://')) return cleanUrl;
+            // Ruta relativa (./, ../, /) -> devolver tal cual
+            if (cleanUrl.startsWith('/') || cleanUrl.startsWith('./') || cleanUrl.startsWith('../')) return cleanUrl;
+            // Parece un dominio simple sin protocolo -> añadir https://
+            if (cleanUrl.includes('.') && !cleanUrl.includes(' ')) return 'https://' + cleanUrl;
+            return FALLBACK_IMAGE;
         };
 
         const convertUrl = (url) => {
@@ -468,6 +468,14 @@
                 }
             }
             return channels;
+        };
+
+        // Helper global para el onError anti-loop
+        const handleImgError = (e) => {
+            if (e.target.dataset.fallbackApplied === 'true') return;
+            e.target.dataset.fallbackApplied = 'true';
+            e.target.onerror = null;
+            e.target.src = FALLBACK_IMAGE;
         };
 
         const ArchivePlayer = ({ archiveId, title, height = "150", autoPlay = true, fallbackAudio = "" }) => {
@@ -1245,7 +1253,7 @@
                                             return (
                                                 <div key={channel.id || idx} onClick={() => handlePlay(channel)} className={`group relative flex items-center gap-3 p-2.5 sm:p-3 rounded-2xl border cursor-pointer transition-all duration-200 ${isActive ? 'bg-cyan-950/50 border-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.3)] border-l-4' : 'bg-[#0f172a]/90 hover:bg-[#1e293b] border-slate-800/80 hover:border-slate-700'}`}>
                                                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/90 flex items-center justify-center overflow-hidden flex-shrink-0 border border-slate-800 relative shadow-inner p-1">
-                                                        {channel.image ? (<img src={convertImageUrl(channel.image)} alt={channel.title} loading="lazy" referrerPolicy="no-referrer" crossOrigin="anonymous" className="w-full h-full object-cover rounded-full" onError={(e) => { e.target.onerror = null; e.target.src = FALLBACK_IMAGE; }} />) : (<Icon className="text-slate-500" name="tv" size={14}/>)}
+                                                        {channel.image ? (<img src={channel.image} alt={channel.title} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover rounded-full" onError={handleImgError} />) : (<Icon className="text-slate-500" name="tv" size={14}/>)}
                                                         {isActive && (<div className="absolute inset-0 bg-cyan-600/30 rounded-full flex items-center justify-center"><div className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></div></div>)}
                                                     </div>
                                                     <div className="flex-1 min-w-0">
@@ -1285,7 +1293,7 @@
                                             {selectedItem && selectedItem.type === 'tv' ? (
                                                 <>
                                                     <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center overflow-hidden border border-cyan-500/40 flex-shrink-0 shadow-md p-0.5">
-                                                        {selectedItem.image ? (<img src={convertImageUrl(selectedItem.image)} alt={selectedItem.title} referrerPolicy="no-referrer" crossOrigin="anonymous" className="w-full h-full object-cover rounded-full" onError={(e) => { e.target.onerror = null; e.target.src = FALLBACK_IMAGE; }} />) : (<Icon className="text-slate-400" name="tv" size={14}/>)}
+                                                        {selectedItem.image ? (<img src={selectedItem.image} alt={selectedItem.title} referrerPolicy="no-referrer" className="w-full h-full object-cover rounded-full" onError={handleImgError} />) : (<Icon className="text-slate-400" name="tv" size={14}/>)}
                                                     </div>
                                                     <div className="truncate">
                                                         <h3 className="text-xs font-bold text-white truncate">{selectedItem.title}</h3>
@@ -1329,7 +1337,7 @@
                                         <div className="lg:col-span-2 space-y-6">
                                             <div className="flex items-start gap-4 sm:gap-6">
                                                 <div className="w-28 sm:w-36 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black">
-                                                    <img src={convertImageUrl(selectedItem.imagen || selectedItem.image || selectedItem.poster)} alt={selectedItem.titulo || selectedItem.title} referrerPolicy="no-referrer" crossOrigin="anonymous" className="w-full h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src = FALLBACK_IMAGE; }} />
+                                                    <img src={selectedItem.image} alt={selectedItem.titulo || selectedItem.title} referrerPolicy="no-referrer" className="w-full h-full object-cover" onError={handleImgError} />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex items-start justify-between gap-4">
@@ -1499,7 +1507,7 @@
                                                     <div key={nIdx} className="glass-panel rounded-xl sm:rounded-2xl p-2.5 sm:p-4 border border-slate-800 flex flex-col justify-between group hover:border-[#e50914]/50 transition-all card-glow">
                                                         <div>
                                                             <div className="aspect-[2/3] rounded-lg sm:rounded-xl overflow-hidden mb-2 sm:mb-3 relative bg-black">
-                                                                <img src={convertImageUrl(item.image)} alt={item.title} referrerPolicy="no-referrer" crossOrigin="anonymous" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => { e.target.onerror = null; e.target.src = FALLBACK_IMAGE; }} />
+                                                                <img src={item.image} alt={item.title} referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={handleImgError} />
                                                                 <div className="absolute top-1.5 right-1.5 sm:top-2 sm:right-2 bg-black/80 backdrop-blur-md px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-white/10 text-[9px] sm:text-[10px] font-mono text-yellow-400 font-bold flex items-center gap-1">
                                                                     <span>★</span> {item.score}
                                                                 </div>
@@ -1594,7 +1602,7 @@
                                     <span className="text-xs font-black uppercase text-cyan-400 tracking-widest">Compartir Boxplaytv</span>
                                 </div>
                                 <div className="bg-white p-3 rounded-2xl shadow-inner flex justify-center items-center">
-                                    <img src={QR_IMAGE_URL} alt="Boxplaytv QR Code" referrerPolicy="no-referrer" crossOrigin="anonymous" className="w-40 h-40 object-contain" onError={(e)=>{e.target.style.display='none';}} />
+                                    <img src={QR_IMAGE_URL} alt="Boxplaytv QR Code" referrerPolicy="no-referrer" className="w-40 h-40 object-contain" onError={(e)=>{e.target.style.display='none';}} />
                                 </div>
                                 <div>
                                     <h3 className="font-extrabold text-base text-white">BOXPLAY<span className="text-cyan-400">TV</span></h3>
@@ -1668,7 +1676,7 @@
 
                                 <div className="flex items-center space-x-4">
                                     <div className={`w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-black/80 border-2 border-cyan-500/50 relative shadow-2xl flex-shrink-0 vinyl-spin ${isPlaying ? 'playing' : ''}`}>
-                                        <img src={station.logo || station.image} alt="" className="w-full h-full object-cover opacity-90" referrerPolicy="no-referrer" crossOrigin="anonymous" onError={(e)=>{e.target.onerror = null; e.target.src='https://placehold.co/150x150/111827/00f2fe?text=FM';}} />
+                                        <img src={station.logo || station.image} alt="" className="w-full h-full object-cover opacity-90" referrerPolicy="no-referrer" onError={(e)=>{e.target.onerror = null; e.target.src='https://placehold.co/150x150/111827/00f2fe?text=FM';}} />
                                         <div className="absolute inset-0 flex items-center justify-center"><div className="w-6 h-6 rounded-full bg-cyan-950 border border-cyan-400 shadow-[0_0_10px_#00f2fe]"></div></div>
                                     </div>
                                     <div className="flex flex-col justify-center min-w-0 flex-1">
@@ -1753,7 +1761,7 @@
                                                             <td className="py-3.5 px-3 font-mono text-cyan-400 font-bold">#{String(index + 1).padStart(2, '0')}</td>
                                                             <td className="py-3.5 px-3 font-semibold flex items-center gap-3">
                                                                 <div className="w-8 h-8 rounded-xl border border-white/10 overflow-hidden bg-black flex-shrink-0 p-0.5 shadow-md">
-                                                                    <img src={s.logo || s.image} alt="" className="w-full h-full object-cover rounded-lg" referrerPolicy="no-referrer" crossOrigin="anonymous" onError={(e)=>{e.target.onerror = null; e.target.src='https://placehold.co/150x150/111827/00f2fe?text=FM';}} />
+                                                                    <img src={s.logo || s.image} alt="" className="w-full h-full object-cover rounded-lg" referrerPolicy="no-referrer" onError={(e)=>{e.target.onerror = null; e.target.src='https://placehold.co/150x150/111827/00f2fe?text=FM';}} />
                                                                 </div>
                                                                 <div className="flex flex-col min-w-0">
                                                                     <span className="truncate font-bold text-white group-hover:text-cyan-300 transition-colors">{s.title}</span>
@@ -1934,7 +1942,7 @@
                             <div className="w-full sm:w-56 md:w-64 lg:w-72 flex-shrink-0 flex flex-col items-center mx-auto lg:mx-0">
                                 <div className="w-full max-w-[210px] sm:max-w-[250px] lg:max-w-none rounded-2xl overflow-hidden shadow-[0_16px_40px_rgba(0,0,0,0.85)] border border-cyan-500/40 bg-[#080c14] flex flex-col">
                                     <div onClick={handleTogglePlayCurrentAlbum} className="w-full aspect-square relative bg-black overflow-hidden group cursor-pointer">
-                                        <img src={activeAlbum.cover} alt={activeAlbum.album} referrerPolicy="no-referrer" crossOrigin="anonymous" className={`w-full h-full object-cover transition-transform duration-500 ${isPlayingThisAlbum ? 'scale-105 brightness-90' : 'group-hover:scale-105'}`} onError={(e) => { e.target.onerror = null; e.target.src = FALLBACK_IMAGE; }} />
+                                        <img src={activeAlbum.cover} alt={activeAlbum.album} referrerPolicy="no-referrer" className={`w-full h-full object-cover transition-transform duration-500 ${isPlayingThisAlbum ? 'scale-105 brightness-90' : 'group-hover:scale-105'}`} onError={handleImgError} />
                                         <div className={`absolute inset-0 bg-black/40 backdrop-blur-[2px] transition-all duration-300 flex items-center justify-center ${isPlayingThisAlbum ? 'opacity-0 hover:opacity-100' : 'opacity-85 sm:opacity-0 group-hover:opacity-100'}`}>
                                             <div className="w-16 h-16 rounded-full bg-cyan-400 hover:bg-cyan-300 text-black flex items-center justify-center shadow-[0_0_35px_rgba(6,182,212,0.9)] transform transition-transform group-hover:scale-110 active:scale-95">
                                                 <Icon name={isPlayingThisAlbum ? "pause" : "play"} size={26} fill="currentColor" />
@@ -2051,7 +2059,7 @@
                                     return (
                                         <div key={alb.id} onClick={() => handleSelectAlbum(alb)} className={`p-3 rounded-2xl cursor-pointer transition-all duration-300 group flex flex-col justify-between relative ${isThisAlbumPlaying ? 'bg-[#1a233a] ring-2 ring-cyan-400 shadow-[0_12px_30px_rgba(6,182,212,0.3)] scale-[1.02]' : isSelected ? 'bg-[#151c2e] border border-cyan-500/40' : 'bg-[#0e1422]/90 hover:bg-[#182138] border border-white/5 hover:border-white/15 hover:shadow-xl hover:-translate-y-1'}`}>
                                             <div className="aspect-square w-full rounded-xl overflow-hidden mb-3 relative bg-black shadow-lg">
-                                                <img src={alb.cover} alt={alb.album} referrerPolicy="no-referrer" crossOrigin="anonymous" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onError={(e) => { e.target.onerror = null; e.target.src = FALLBACK_IMAGE; }} />
+                                                <img src={alb.cover} alt={alb.album} referrerPolicy="no-referrer" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onError={handleImgError} />
                                                 <div className={`absolute bottom-2.5 right-2.5 w-10 h-10 rounded-full bg-cyan-400 hover:bg-cyan-300 text-black flex items-center justify-center shadow-2xl transition-all duration-300 ${isThisAlbumPlaying ? 'opacity-100 translate-y-0 scale-100 shadow-cyan-500/50' : 'opacity-90 sm:opacity-0 translate-y-0 sm:translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 hover:scale-110'}`}>
                                                     <Icon name={isThisAlbumPlaying ? "pause" : "play"} size={16} fill="currentColor" />
                                                 </div>
@@ -2157,7 +2165,7 @@
             return (
                 <div className="fixed inset-0 z-[100] bg-[#020617] flex items-center justify-center overflow-hidden font-sans p-4">
                     <div className="absolute inset-0">
-                        <img src="https://img.magnific.com/foto-gratis/cine-caja-palomitas-maiz_23-2148133612.jpg?semt=ais_hybrid&w=740&q=80" className="w-full h-full object-cover opacity-15" referrerPolicy="no-referrer" crossOrigin="anonymous" onError={(e)=>{e.target.style.display='none';}} />
+                        <img src="https://img.magnific.com/foto-gratis/cine-caja-palomitas-maiz_23-2148133612.jpg?semt=ais_hybrid&w=740&q=80" className="w-full h-full object-cover opacity-15" referrerPolicy="no-referrer" onError={(e)=>{e.target.style.display='none';}} />
                         <div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-[#020617]/90 to-[#020617]"></div>
                     </div>
                     <div className="relative z-10 text-center max-w-sm sm:max-w-md w-full animate-scale-in glass-panel p-6 sm:p-8 rounded-3xl shadow-[0_0_80px_rgba(6,182,212,0.2)] border border-cyan-500/20">
@@ -2195,13 +2203,13 @@
             return (
                 <div className="relative w-full bg-[#070b19] overflow-hidden rounded-none sm:rounded-3xl mb-4 sm:mb-8 group animate-fade-in shadow-2xl border-b sm:border border-slate-800 flex items-center max-w-7xl mx-auto px-4 sm:px-12 cinema-glow w-full py-6 sm:py-16 md:py-20">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        <img src="https://img.magnific.com/foto-gratis/cine-caja-palomitas-maiz_23-2148133612.jpg?semt=ais_hybrid&w=740&q=80" alt="Hero BG" referrerPolicy="no-referrer" crossOrigin="anonymous" className="w-full h-full object-cover opacity-25 scale-105 brightness-90" onError={(e)=>{e.target.style.display='none';}} />
+                        <img src="https://img.magnific.com/foto-gratis/cine-caja-palomitas-maiz_23-2148133612.jpg?semt=ais_hybrid&w=740&q=80" alt="Hero BG" referrerPolicy="no-referrer" className="w-full h-full object-cover opacity-25 scale-105 brightness-90" onError={(e)=>{e.target.style.display='none';}} />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/90 to-transparent"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
                     </div>
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-4 sm:gap-10 text-center sm:text-left">
                         <div className="w-64 sm:w-60 md:w-68 aspect-[2/3] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
-                            <img src={convertImageUrl(imgSource)} alt={titleSource} referrerPolicy="no-referrer" crossOrigin="anonymous" className="w-full h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src = FALLBACK_IMAGE; }} />
+                            <img src={imgSource} alt={titleSource} referrerPolicy="no-referrer" className="w-full h-full object-cover" onError={handleImgError} />
                         </div>
                         <div className="flex-1 flex flex-col gap-2.5 sm:gap-3 items-center sm:items-start max-w-xl">
                             <span className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white text-[9px] sm:text-[10px] font-black px-3.5 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(6,182,212,0.4)]">Destacado Boxplaytv</span>
@@ -2261,7 +2269,7 @@
                         </button>
                     </div>
                     <div className="aspect-[2/3] w-full rounded-lg sm:rounded-xl overflow-hidden mb-1 sm:mb-2.5 bg-black/80 relative shadow-inner">
-                        <img src={convertImageUrl(imgUrl)} alt={titleText} loading="lazy" referrerPolicy="no-referrer" crossOrigin="anonymous" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => { e.target.onerror = null; e.target.src = FALLBACK_IMAGE; }} />
+                        <img src={imgUrl} alt={titleText} loading="lazy" referrerPolicy="no-referrer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={handleImgError} />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 sm:p-3">
                             <span className="w-full py-1.5 sm:py-2 bg-cyan-600/90 text-white rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold text-center shadow-lg backdrop-blur-sm">Ver Ahora</span>
                         </div>
