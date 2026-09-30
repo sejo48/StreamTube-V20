@@ -303,8 +303,13 @@
 
         const DOWNLOAD_PIN_API = '/api/validate-download-pin';
 
-        // Fallback ligero usando placehold.co (carga rápido y siempre funciona)
-        const FALLBACK_IMAGE = 'https://placehold.co/300x450/0f172a/64748b?text=No+Image';
+        // ✅ Fallback SVG inline (funciona sin depender de red externa)
+        const FALLBACK_IMAGE = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="450" viewBox="0 0 300 450">' +
+            '<rect width="300" height="450" fill="#0f172a"/>' +
+            '<text x="150" y="225" font-family="sans-serif" font-size="18" fill="#64748b" text-anchor="middle" dominant-baseline="middle">Sin Portada</text>' +
+            '</svg>'
+        );
 
         const DEFAULT_RADIO_STATIONS = [
             { id: 'cr-discofunk', title: 'B4B Disco Funk', group: 'Global', genre: 'Disco / Funk 80s', logo: 'https://placehold.co/300x300/0f172a/00f2fe?text=Disco+Funk', url: 'https://icecasthd.teletica.com/teleticaradio' },
@@ -351,21 +356,32 @@
             { id: 'alb-10', artist: 'The Beatles', album: 'Rubber Soul', year: '1965', genre: 'Rock', cover: 'https://m.media-amazon.com/images/I/71dK4+y0bCL._UF1000,1000_QL80_.jpg', description: 'Álbum revolucionario que definió una era en el pop y rock internacional.', tracks: [ { title: 'Rubber Soul (Full Album)', type: 'archive', archiveId: 'the-beatles-rubber-soul', duration: 'Álbum' } ] }
         ];
 
-        // Función corregida: NO fuerza https:// a rutas relativas ni modifica URLs válidas
+        // ✅ FUNCIÓN CORREGIDA: No modifica URLs válidas, solo arregla las problemáticas
         const convertImageUrl = (url) => {
             if (!url || typeof url !== 'string') return FALLBACK_IMAGE;
-            const cleanUrl = url.trim();
+            let cleanUrl = url.trim();
             if (cleanUrl.length === 0) return FALLBACK_IMAGE;
-            // Data URL o blob -> devolver tal cual
+            
+            // Codificar espacios internos que rompen las URLs (si no están ya codificados)
+            if (cleanUrl.includes(' ') && !cleanUrl.includes('%20')) {
+                cleanUrl = cleanUrl.replace(/ /g, '%20');
+            }
+            
+            // Data URL o blob → devolver tal cual
             if (cleanUrl.startsWith('data:') || cleanUrl.startsWith('blob:')) return cleanUrl;
-            // Protocolo relativo //dominio.com -> añadir https:
+            
+            // Protocolo relativo //dominio.com → añadir https:
             if (cleanUrl.startsWith('//')) return 'https:' + cleanUrl;
-            // Ya tiene protocolo -> devolver tal cual
+            
+            // Ya tiene protocolo http/https → devolver tal cual SIN MODIFICAR
             if (cleanUrl.startsWith('http://') || cleanUrl.startsWith('https://')) return cleanUrl;
-            // Ruta relativa (./, ../, /) -> devolver tal cual
+            
+            // Ruta relativa (./, ../, /) → devolver tal cual
             if (cleanUrl.startsWith('/') || cleanUrl.startsWith('./') || cleanUrl.startsWith('../')) return cleanUrl;
-            // Parece un dominio simple sin protocolo -> añadir https://
+            
+            // Sin protocolo pero parece dominio → añadir https://
             if (cleanUrl.includes('.') && !cleanUrl.includes(' ')) return 'https://' + cleanUrl;
+            
             return FALLBACK_IMAGE;
         };
 
@@ -470,7 +486,7 @@
             return channels;
         };
 
-        // Helper global para el onError anti-loop
+        // ✅ Helper anti-loop para onError en imágenes
         const handleImgError = (e) => {
             if (e.target.dataset.fallbackApplied === 'true') return;
             e.target.dataset.fallbackApplied = 'true';
@@ -608,12 +624,30 @@
                         let moviesList = [];
                         if (dataMovies) {
                             const rawMovies = Array.isArray(dataMovies) ? dataMovies : (dataMovies.peliculas || dataMovies.content || []);
-                            moviesList = rawMovies.map((m, idx) => ({ ...m, id: `mov-1-${idx}`, type: 'movies', title: m.titulo || m.title || m.name, description: m.descripcion || m.sinopsis || m.plot, image: convertImageUrl(m.imagen || m.poster || m.image), url: convertUrl(m.urlDrive || m.url || m.urlOkRu), rawUrl: m.urlDrive || m.url || m.urlOkRu }));
+                            moviesList = rawMovies.map((m, idx) => ({ 
+                                ...m, 
+                                id: `mov-1-${idx}`, 
+                                type: 'movies', 
+                                title: m.titulo || m.title || m.name, 
+                                description: m.descripcion || m.sinopsis || m.plot, 
+                                image: convertImageUrl(m.imagen || m.poster || m.image), 
+                                url: convertUrl(m.urlDrive || m.url || m.urlOkRu), 
+                                rawUrl: m.urlDrive || m.url || m.urlOkRu 
+                            }));
                         }
                         let movies2List = [];
                         if (dataMovies2) {
                             const rawMovies2 = Array.isArray(dataMovies2) ? dataMovies2 : (dataMovies2.peliculas || dataMovies2.content || []);
-                            movies2List = rawMovies2.map((m, idx) => ({ ...m, id: `mov-2-${idx}`, type: 'movies2', title: m.titulo || m.title || m.name, description: m.descripcion || m.sinopsis || m.plot, image: convertImageUrl(m.imagen || m.poster || m.image), url: convertUrl(m.urlDrive || m.url || m.urlOkRu), rawUrl: m.urlDrive || m.url || m.urlOkRu }));
+                            movies2List = rawMovies2.map((m, idx) => ({ 
+                                ...m, 
+                                id: `mov-2-${idx}`, 
+                                type: 'movies2', 
+                                title: m.titulo || m.title || m.name, 
+                                description: m.descripcion || m.sinopsis || m.plot, 
+                                image: convertImageUrl(m.imagen || m.poster || m.image), 
+                                url: convertUrl(m.urlDrive || m.url || m.urlOkRu), 
+                                rawUrl: m.urlDrive || m.url || m.urlOkRu 
+                            }));
                         }
 
                         let seriesList = [];
@@ -626,7 +660,12 @@
                                 image: convertImageUrl(s.imagen || s.poster || s.image),
                                 seasons: (s.temporadas || []).map((t, tIdx) => ({
                                     seasonNumber: t.numeroTemporada || (tIdx + 1),
-                                    episodes: (t.episodios || []).map((ep, eIdx) => ({ id: `ep-${idx}-${tIdx}-${eIdx}`, title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url }))
+                                    episodes: (t.episodios || []).map((ep, eIdx) => ({ 
+                                        id: `ep-${idx}-${tIdx}-${eIdx}`, 
+                                        title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, 
+                                        url: convertUrl(ep.urlDrive || ep.url), 
+                                        rawUrl: ep.urlDrive || ep.url 
+                                    }))
                                 }))
                             }));
                         }
@@ -640,7 +679,15 @@
                                 image: convertImageUrl(a.imagen || a.poster || a.image),
                                 url: convertUrl(a.urlDrive || a.url || a.urlOkRu),
                                 rawUrl: a.urlDrive || a.url || a.urlOkRu,
-                                seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: (t.episodios || []).map((ep, eIdx) => ({ id: `aep-${idx}-${tIdx}-${eIdx}`, title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })) }))
+                                seasons: (a.temporadas || []).map((t, tIdx) => ({ 
+                                    seasonNumber: t.numeroTemporada || (tIdx + 1), 
+                                    episodes: (t.episodios || []).map((ep, eIdx) => ({ 
+                                        id: `aep-${idx}-${tIdx}-${eIdx}`, 
+                                        title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, 
+                                        url: convertUrl(ep.urlDrive || ep.url), 
+                                        rawUrl: ep.urlDrive || ep.url 
+                                    })) 
+                                }))
                             })).filter(a => a.title);
                         }
 
@@ -654,8 +701,8 @@
                                     title: r.titulo || r.title || r.name || `Emisora ${idx + 1}`,
                                     group: r.group || r.categoria || (r.nacional ? 'Nacionales' : 'Global'),
                                     genre: r.genre || r.genero || 'Radio HD',
-                                    image: r.imagen || r.image || r.logo || 'https://placehold.co/300x300/0f172a/00f2fe?text=Radio',
-                                    logo: r.logo || r.imagen || r.image || 'https://placehold.co/300x300/0f172a/00f2fe?text=Radio',
+                                    image: convertImageUrl(r.imagen || r.image || r.logo || ''),
+                                    logo: convertImageUrl(r.logo || r.imagen || r.image || ''),
                                     url: r.urlDrive || r.url || r.stream || r.urlStream || ''
                                 }));
                             }
