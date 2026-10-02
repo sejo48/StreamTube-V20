@@ -210,30 +210,122 @@
         const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/ClI93uJrk1A4hA8MoS1J7Z';
         const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
 
-        // ==================== UTILIDADES DE IMÁGENES (CORREGIDO) ====================
-        // Extrae la URL de imagen de un objeto usando múltiples campos posibles
+        // ==================== UTILIDADES DE IMÁGENES ROBUSTAS ====================
+        // El catálogo utiliza imágenes alojadas en muchos servidores diferentes.
+        // Algunos bloquean hotlink, devuelven 403/404 o cambian la URL.
+        // Por eso se intenta primero la imagen original y después un proxy de imágenes.
+        const normalizeImageUrl = (value) => {
+            if (typeof value !== 'string') return '';
+            let url = value.trim().replace(/^['"]|['"]$/g, '');
+            if (!url) return '';
+            url = url.replace(/&amp;/gi, '&');
+            if (url.startsWith('//')) url = 'https:' + url;
+            if (url.startsWith('http://')) url = 'https://' + url.substring(7);
+            return url;
+        };
+
+        // Extrae la URL de imagen de un objeto usando múltiples campos posibles.
         const extractImageUrl = (obj) => {
-            if (!obj) return '';
-            const fields = ['imagen', 'image', 'poster', 'img', 'logo', 'portada', 'cover', 'thumbnail', 'thumb', 'tvg-logo', 'backdrop'];
+            if (!obj || typeof obj !== 'object') return '';
+            const fields = [
+                'imagen', 'image', 'poster', 'img', 'logo', 'portada',
+                'cover', 'thumbnail', 'thumb', 'tvg-logo', 'backdrop'
+            ];
+
             for (const f of fields) {
-                if (obj[f] && typeof obj[f] === 'string' && obj[f].trim().length > 0) {
-                    return obj[f].trim();
-                }
+                const value = normalizeImageUrl(obj[f]);
+                if (value) return value;
             }
             return '';
         };
 
-        // Genera un placeholder SVG con el título
+        // Devuelve varias fuentes para la misma portada.
+        const getImageCandidates = (url) => {
+            const original = normalizeImageUrl(url);
+            if (!original) return [];
+
+            const candidates = [original];
+
+            // images.weserv.nl sirve como respaldo cuando el servidor original
+            // bloquea hotlink, referrer o determinadas peticiones del navegador.
+            if (/^https?:\/\//i.test(original)) {
+                candidates.push(
+                    `https://images.weserv.nl/?url=${encodeURIComponent(original)}`
+                );
+            }
+
+            return [...new Set(candidates)];
+        };
+
+        // Evita que una misma URL rota se vuelva a descargar innecesariamente.
+        const failedImageUrls = new Set();
+
+        // Genera un placeholder con el título.
         const generatePlaceholder = (title, type = 'poster') => {
-            const safeTitle = (title || 'Sin Título').substring(0, 25).replace(/[<>&"']/g, '');
+            const safeTitle = (title || 'Sin Título')
+                .substring(0, 32)
+                .replace(/[<>&"']/g, '');
+
             if (type === 'tv') {
                 return `https://placehold.co/300x300/0f172a/06b6d4?text=${encodeURIComponent(safeTitle)}`;
             }
+
             return `https://placehold.co/300x450/0f172a/06b6d4?text=${encodeURIComponent(safeTitle)}`;
         };
 
-        // Maneja el error de carga de imagen
+        // Componente de imagen con recuperación automática:
+        // 1) URL original
+        // 2) proxy de imágenes
+        // 3) placeholder
+        const RobustImage = ({
+            src,
+            alt = '',
+            title = alt,
+            type = 'poster',
+            className = '',
+            ...props
+        }) => {
+            const candidates = useMemo(() => getImageCandidates(src), [src]);
+            const fallback = generatePlaceholder(title, type);
+            const [sourceIndex, setSourceIndex] = useState(0);
+
+            useEffect(() => {
+                setSourceIndex(0);
+            }, [src]);
+
+            const currentSrc = candidates[
+                failedImageUrls.has(candidates[0]) && candidates.length > 1
+                    ? Math.max(sourceIndex, 1)
+                    : sourceIndex
+            ] || fallback;
+
+            const handleError = () => {
+                if (currentSrc && currentSrc !== fallback) {
+                    failedImageUrls.add(currentSrc);
+                }
+
+                if (sourceIndex < candidates.length - 1) {
+                    setSourceIndex(prev => prev + 1);
+                } else if (sourceIndex !== candidates.length) {
+                    setSourceIndex(candidates.length);
+                }
+            };
+
+            return (
+                <img
+                    src={currentSrc}
+                    alt={alt || title}
+                    className={className}
+                    onError={handleError}
+                    referrerPolicy="no-referrer"
+                    {...props}
+                />
+            );
+        };
+
+        // Compatibilidad con imágenes que todavía usan onError directamente.
         const handleImageError = (e, title, type = 'poster') => {
+            if (!e || !e.target) return;
             e.target.onerror = null;
             e.target.src = generatePlaceholder(title, type);
         };
@@ -1251,7 +1343,7 @@
                                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
                                         {radioFavorites.map((station, i) => (
                                             <div key={station.id || i} onClick={() => { handlePlayRadioStation(station); setActiveTab('radio'); }} className="glass-panel p-4 rounded-2xl flex items-center gap-3 cursor-pointer hover:border-cyan-500 transition-all card-glow">
-                                                <img src={station.image} alt={station.title} className="w-12 h-12 rounded-full object-cover border border-cyan-500/40" onError={(e) => handleImageError(e, station.title, 'tv')} />
+                                                <RobustImage src={station.image} alt={station.title} title={station.title} type="tv" className="w-12 h-12 rounded-full object-cover border border-cyan-500/40" />
                                                 <div className="flex-1 min-w-0">
                                                     <h4 className="text-xs font-bold text-white truncate">{station.title}</h4>
                                                     <span className="text-[10px] text-cyan-400">{station.group || 'Radio'}</span>
@@ -1301,7 +1393,7 @@
                                             return (
                                                 <div key={channel.id || idx} onClick={() => handlePlay(channel)} className={`group relative flex items-center gap-3 p-2.5 sm:p-3 rounded-2xl border cursor-pointer transition-all duration-200 ${isActive ? 'bg-cyan-950/50 border-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.3)] border-l-4' : 'bg-[#0f172a]/90 hover:bg-[#1e293b] border-slate-800/80 hover:border-slate-700'}`}>
                                                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/90 flex items-center justify-center overflow-hidden flex-shrink-0 border border-slate-800 relative shadow-inner p-1">
-                                                        {channel.image ? (<img src={channel.image} alt={channel.title} loading="lazy" className="w-full h-full object-cover rounded-full" onError={(e) => handleImageError(e, channel.title, 'tv')} />) : (<Icon className="text-slate-500" name="tv" size={14}/>)}
+                                                        {channel.image ? (<RobustImage src={channel.image} alt={channel.title} title={channel.title} type="tv" loading="lazy" className="w-full h-full object-cover rounded-full" />) : (<Icon className="text-slate-500" name="tv" size={14}/>)}
                                                         {isActive && (<div className="absolute inset-0 bg-cyan-600/30 rounded-full flex items-center justify-center"><div className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></div></div>)}
                                                     </div>
                                                     <div className="flex-1 min-w-0">
@@ -1348,7 +1440,7 @@
                                             {selectedItem && selectedItem.type === 'tv' ? (
                                                 <>
                                                     <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center overflow-hidden border border-cyan-500/40 flex-shrink-0 shadow-md p-0.5">
-                                                        {selectedItem.image ? (<img src={selectedItem.image} alt={selectedItem.title} className="w-full h-full object-cover rounded-full" onError={(e) => handleImageError(e, selectedItem.title, 'tv')} />) : (<Icon className="text-slate-400" name="tv" size={14}/>)}
+                                                        {selectedItem.image ? (<RobustImage src={selectedItem.image} alt={selectedItem.title} title={selectedItem.title} type="tv" className="w-full h-full object-cover rounded-full" />) : (<Icon className="text-slate-400" name="tv" size={14}/>)}
                                                     </div>
                                                     <div className="truncate">
                                                         <h3 className="text-xs font-bold text-white truncate">{selectedItem.title}</h3>
@@ -1392,11 +1484,12 @@
                                         <div className="lg:col-span-2 space-y-6">
                                             <div className="flex items-start gap-4 sm:gap-6">
                                                 <div className="w-28 sm:w-36 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black">
-                                                    <img 
-                                                        src={extractImageUrl(selectedItem) || generatePlaceholder(selectedItem.title || selectedItem.titulo, 'poster')} 
-                                                        alt={selectedItem.titulo || selectedItem.title} 
-                                                        className="w-full h-full object-cover" 
-                                                        onError={(e) => handleImageError(e, selectedItem.title || selectedItem.titulo, 'poster')} 
+                                                    <RobustImage
+                                                        src={extractImageUrl(selectedItem)}
+                                                        alt={selectedItem.titulo || selectedItem.title}
+                                                        title={selectedItem.title || selectedItem.titulo}
+                                                        type="poster"
+                                                        className="w-full h-full object-cover"
                                                     />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
@@ -1599,11 +1692,12 @@
                                                     <div key={nIdx} className="glass-panel rounded-2xl p-4 border border-slate-800 flex flex-col justify-between group hover:border-[#e50914]/50 transition-all card-glow">
                                                         <div>
                                                             <div className="aspect-[2/3] rounded-xl overflow-hidden mb-3 relative bg-black">
-                                                                <img 
-                                                                    src={item.image} 
-                                                                    alt={item.title} 
-                                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                                                                    onError={(e) => handleImageError(e, item.title, 'poster')} 
+                                                                <RobustImage
+                                                                    src={item.image}
+                                                                    alt={item.title}
+                                                                    title={item.title}
+                                                                    type="poster"
+                                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                                                 />
                                                                 <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 text-[10px] font-mono text-yellow-400 font-bold flex items-center gap-1">
                                                                     <span>★</span> {item.score}
@@ -1955,7 +2049,7 @@
                         <div className="flex items-center gap-5 relative z-10 w-full md:w-auto">
                             <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-black border-2 border-cyan-400 p-1 flex items-center justify-center shadow-[0_0_30px_rgba(6,182,212,0.6)] flex-shrink-0">
                                 {currentStation?.image ? (
-                                    <img src={currentStation.image} alt={currentStation.title} className={`w-full h-full object-cover rounded-full ${isPlaying && isPowerOn ? 'vinyl-animation' : ''}`} onError={(e) => handleImageError(e, currentStation.title, 'tv')} />
+                                    <RobustImage src={currentStation.image} alt={currentStation.title} title={currentStation.title} type="tv" className={`w-full h-full object-cover rounded-full ${isPlaying && isPowerOn ? 'vinyl-animation' : ''}`} />
                                 ) : (
                                     <div className="w-full h-full rounded-full bg-cyan-950 flex items-center justify-center text-cyan-400"><Icon name="radio" size={32}/></div>
                                 )}
@@ -2080,7 +2174,7 @@
                                             >
                                                 <div className="w-12 h-12 rounded-2xl bg-black border border-slate-800 flex items-center justify-center overflow-hidden flex-shrink-0 relative shadow-inner p-1">
                                                     {station.image ? (
-                                                        <img src={station.image} alt={station.title} className="w-full h-full object-cover rounded-xl" onError={(e) => handleImageError(e, station.title, 'tv')} />
+                                                        <RobustImage src={station.image} alt={station.title} title={station.title} type="tv" className="w-full h-full object-cover rounded-xl" />
                                                     ) : (
                                                         <Icon name="radio" size={18} className="text-slate-400"/>
                                                     )}
@@ -2187,11 +2281,12 @@
 
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-6 sm:gap-10 text-center sm:text-left">
                         <div className="w-48 sm:w-60 md:w-68 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
-                            <img 
-                                src={imgSource} 
-                                alt={titleSource} 
-                                className="w-full h-full object-cover" 
-                                onError={(e) => handleImageError(e, titleSource, 'poster')} 
+                            <RobustImage
+                                src={imgSource}
+                                alt={titleSource}
+                                title={titleSource}
+                                type="poster"
+                                className="w-full h-full object-cover"
                             />
                         </div>
                         <div className="flex-1 flex flex-col gap-3 items-center sm:items-start max-w-xl">
@@ -2242,12 +2337,13 @@
             return ( 
                 <div tabIndex="0" className="group relative flex flex-col gap-2 cursor-pointer active:scale-95 transition-transform card-glow rounded-2xl w-full" onClick={() => onClick(item)}> 
                     <div className={`relative overflow-hidden bg-[#0f172a] border border-slate-800 shadow-xl ${isTv ? 'aspect-video rounded-full p-2' : 'aspect-[2/3] rounded-2xl'}`}> 
-                        <img 
-                            src={imgSource || fallbackImg} 
-                            loading="lazy" 
-                            className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${isTv ? 'object-cover rounded-full' : 'object-cover'}`} 
-                            onError={(e) => handleImageError(e, titleSource, isTv ? 'tv' : 'poster')} 
-                            alt={titleSource} 
+                        <RobustImage
+                            src={imgSource || fallbackImg}
+                            loading="lazy"
+                            className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${isTv ? 'object-cover rounded-full' : 'object-cover'}`}
+                            type={isTv ? 'tv' : 'poster'}
+                            title={titleSource}
+                            alt={titleSource}
                         /> 
                         <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isTv ? 'rounded-full' : ''}`}></div> 
                         <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }} className="absolute top-2 right-2 p-2 bg-black/70 rounded-full text-white backdrop-blur-md hover:bg-black transition-colors z-20"> 
