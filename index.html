@@ -303,7 +303,6 @@
 
         const DOWNLOAD_PIN_API = '/api/validate-download-pin';
 
-        // ✅ Fallback SVG inline (funciona sin depender de red externa)
         const FALLBACK_IMAGE = 'data:image/svg+xml;utf8,' + encodeURIComponent(
             '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="450" viewBox="0 0 300 450">' +
             '<rect width="300" height="450" fill="#0f172a"/>' +
@@ -356,63 +355,60 @@
             { id: 'alb-10', artist: 'The Beatles', album: 'Rubber Soul', year: '1965', genre: 'Rock', cover: 'https://m.media-amazon.com/images/I/71dK4+y0bCL._UF1000,1000_QL80_.jpg', description: 'Álbum revolucionario que definió una era en el pop y rock internacional.', tracks: [ { title: 'Rubber Soul (Full Album)', type: 'archive', archiveId: 'the-beatles-rubber-soul', duration: 'Álbum' } ] }
         ];
 
-        // ✅ FUNCIÓN CORREGIDA: No modifica URLs válidas, solo arregla las problemáticas
         const convertImageUrl = (url) => {
             if (!url || typeof url !== 'string') return FALLBACK_IMAGE;
             let cleanUrl = url.trim();
             if (cleanUrl.length === 0) return FALLBACK_IMAGE;
-            
-            // Codificar espacios internos que rompen las URLs (si no están ya codificados)
             if (cleanUrl.includes(' ') && !cleanUrl.includes('%20')) {
                 cleanUrl = cleanUrl.replace(/ /g, '%20');
             }
-            
-            // Data URL o blob → devolver tal cual
             if (cleanUrl.startsWith('data:') || cleanUrl.startsWith('blob:')) return cleanUrl;
-            
-            // Protocolo relativo //dominio.com → añadir https:
             if (cleanUrl.startsWith('//')) return 'https:' + cleanUrl;
-            
-            // Ya tiene protocolo http/https → devolver tal cual SIN MODIFICAR
             if (cleanUrl.startsWith('http://') || cleanUrl.startsWith('https://')) return cleanUrl;
-            
-            // Ruta relativa (./, ../, /) → devolver tal cual
             if (cleanUrl.startsWith('/') || cleanUrl.startsWith('./') || cleanUrl.startsWith('../')) return cleanUrl;
-            
-            // Sin protocolo pero parece dominio → añadir https://
             if (cleanUrl.includes('.') && !cleanUrl.includes(' ')) return 'https://' + cleanUrl;
-            
             return FALLBACK_IMAGE;
         };
 
+        // ✅ CONVERTURL CORREGIDO - Ok.ru ahora funciona correctamente
         const convertUrl = (url) => {
             if (!url) return '';
-            if (url.includes('ok.ru/video/search') || url.includes('ok.ru/search')) return url;
-            if (url.includes('ok.ru/video/')) {
-                const videoId = url.split('ok.ru/video/')[1]?.split(/[?#&]/)[0];
-                if (videoId) return `https://ok.ru/videoembed/${videoId}?autoplay=1`;
-            }
-            if (url.includes('ok.ru/videoembed/')) {
-                const sep = url.includes('?') ? '&' : '?';
-                if (!url.includes('autoplay=')) return `${url}${sep}autoplay=1`;
-            }
-            if (url.includes('youtube.com') && !url.includes('/embed/')) {
+            const raw = String(url).trim();
+            
+            if (raw.includes('ok.ru/video/search') || raw.includes('ok.ru/search')) return raw;
+            
+            // ✅ OK.RU: Detectar cualquier formato y normalizar SIEMPRE igual
+            if (raw.includes('ok.ru/')) {
                 let videoId = '';
-                if (url.includes('watch?v=')) videoId = url.split('watch?v=')[1]?.split('&')[0];
-                else if (url.includes('youtu.be/')) videoId = url.split('youtu.be/')[1]?.split('?')[0];
+                if (raw.includes('ok.ru/video/')) {
+                    videoId = raw.split('ok.ru/video/')[1]?.split(/[?#&\/]/)[0];
+                } else if (raw.includes('ok.ru/videoembed/')) {
+                    videoId = raw.split('ok.ru/videoembed/')[1]?.split(/[?#&\/]/)[0];
+                }
+                // Limpiar ID de posibles parámetros residuales
+                if (videoId) videoId = videoId.replace(/[^0-9]/g, '');
+                if (videoId && videoId.length >= 5) {
+                    return `https://ok.ru/videoembed/${videoId}`;
+                }
+            }
+            
+            if (raw.includes('youtube.com') && !raw.includes('/embed/')) {
+                let videoId = '';
+                if (raw.includes('watch?v=')) videoId = raw.split('watch?v=')[1]?.split('&')[0];
+                else if (raw.includes('youtu.be/')) videoId = raw.split('youtu.be/')[1]?.split('?')[0];
                 if (videoId) return `https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`;
             }
-            if (url.includes('/embed/') && !url.includes('enablejsapi=1')) {
-                const sep = url.includes('?') ? '&' : '?';
-                return `${url}${sep}enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`;
+            if (raw.includes('youtube.com/embed/') && !raw.includes('enablejsapi=1')) {
+                const sep = raw.includes('?') ? '&' : '?';
+                return `${raw}${sep}enablejsapi=1&origin=${encodeURIComponent(window.location.origin)}`;
             }
-            if (url.includes('drive.google.com')) {
+            if (raw.includes('drive.google.com')) {
                 let fileId = '';
-                if (url.includes('/file/d/')) { const parts = url.split('/file/d/'); if (parts[1]) fileId = parts[1].split('/')[0]; }
-                else if (url.includes('id=')) { const parts = url.split('id='); if (parts[1]) fileId = parts[1].split('&')[0]; }
+                if (raw.includes('/file/d/')) { const parts = raw.split('/file/d/'); if (parts[1]) fileId = parts[1].split('/')[0]; }
+                else if (raw.includes('id=')) { const parts = raw.split('id='); if (parts[1]) fileId = parts[1].split('&')[0]; }
                 if (fileId) return `https://drive.google.com/file/d/${fileId}/preview`;
             }
-            return url;
+            return raw;
         };
 
         const getDriveDownloadUrl = (url) => {
@@ -493,7 +489,6 @@
             return channels;
         };
 
-        // ✅ Helper anti-loop para onError en imágenes
         const handleImgError = (e) => {
             if (e.target.dataset.fallbackApplied === 'true') return;
             e.target.dataset.fallbackApplied = 'true';
@@ -1840,9 +1835,6 @@
             );
         });
 
-        // ============================================================
-        // ==================== BOXPLAYMUSIC ==========================
-        // ============================================================
         const ClassicMusicSection = ({ albumsData = FALLBACK_ALBUMS }) => {
             const [selectedGenre, setSelectedGenre] = useState('TODOS');
             const [activeAlbum, setActiveAlbum] = useState(albumsData[0]);
@@ -2312,18 +2304,22 @@
             );
         };
 
+        // ✅ UNIVERSAL MEDIA PLAYER CORREGIDO - Ok.ru funciona
         const UniversalMediaPlayer = ({ item, episodeUrl = '', onReload }) => {
             const sourceUrl = episodeUrl || item?.url || item?.urlDrive || item?.rawUrl || '';
             const [reloadKey, setReloadKey] = React.useState(0);
             const [showFallback, setShowFallback] = React.useState(false);
             const videoRef = React.useRef(null);
             const hlsRef = React.useRef(null);
+            
+            // ✅ Convertir la URL (ya devuelve formato correcto para ok.ru)
             const normalized = convertUrl(sourceUrl);
 
             const isDirectVideo = /\.(mp4|webm|ogg)(\?|#|$)/i.test(sourceUrl);
             const isHls = /\.m3u8(\?|#|$)/i.test(sourceUrl);
             const isOk = /ok\.ru\/video(?:embed)?\//i.test(normalized);
             const isDrive = /drive\.google\.com/i.test(normalized);
+            const isYouTube = /youtube\.com|youtu\.be/i.test(normalized);
 
             React.useEffect(() => {
                 const video = videoRef.current;
@@ -2384,14 +2380,18 @@
                 );
             }
 
-            const embedUrl = (() => {
-                if (isOk) {
-                    const base = normalized.split('?')[0];
-                    return `${base}?autoplay=1&nochat=1`;
+            // ✅ OK.RU / YOUTUBE / DRIVE → iframe con URL ya normalizada
+            // Para Ok.ru: "https://ok.ru/videoembed/12345"
+            // Los parámetros autoplay se manejan desde convertUrl para YouTube
+            // Para Ok.ru usamos su URL limpia (ok.ru funciona mejor sin parámetros extra en algunos casos)
+            let embedUrl = normalized;
+            
+            if (isOk) {
+                // Asegurar que tenga autoplay para Ok.ru
+                if (!embedUrl.includes('autoplay')) {
+                    embedUrl = embedUrl + (embedUrl.includes('?') ? '&' : '?') + 'autoplay=1';
                 }
-                if (isDrive) return normalized;
-                return normalized;
-            })();
+            }
 
             return (
                 <div className="w-full h-full relative bg-black overflow-hidden">
