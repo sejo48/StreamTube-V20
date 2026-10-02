@@ -5,17 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Boxplaytv - Ultimate Streaming & Anime Hub</title>
     
-    <!-- OpenGraph & WhatsApp Sharing Meta Tags -->
     <meta property="og:title" content="BOXPLAYTV">
     <meta property="og:description" content="Streaming de alta calidad cinematográfica y canales en directo">
     <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjx4dt02lbSvoCJhKRtkyUa2NEhqRyvI8_G82p4jz_8iK5rfeJMVjKAcGXH9ukveI5c6kC_dlasscvR4CoUxCxbeDcEctr3zFJLJys7E76ZvAk6w4hOD1iwJTPj5g4Kfe-FLHhSO9HGLKtmapJZWXvRMMs23WdLnPqoj20RIrLjhFAHCqOsBk7NrmjoJlg/s320/07b01546-33f7-442e-b459-f3698b5a6120.png">
     <meta property="og:url" content="https://sejo48.github.io/StreamTube-V20/">
     <meta property="og:type" content="website">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='28' fill='%2306b6d4'/%3E%3Cpolygon points='40,30 70,50 40,70' fill='%23ffffff'/%3E%3C/svg%3E">
     
-    <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -149,6 +146,28 @@
         input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
 
         button:focus, div[tabindex="0"]:focus, input:focus, select:focus { outline: none; }
+
+        /* Estilos para imágenes de portada */
+        .poster-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .poster-img-fallback {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #64748b;
+            font-size: 0.65rem;
+            text-align: center;
+            padding: 0.5rem;
+            font-weight: 600;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -190,6 +209,34 @@
 
         const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/ClI93uJrk1A4hA8MoS1J7Z';
         const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
+
+        // ==================== UTILIDADES DE IMÁGENES (CORREGIDO) ====================
+        // Extrae la URL de imagen de un objeto usando múltiples campos posibles
+        const extractImageUrl = (obj) => {
+            if (!obj) return '';
+            const fields = ['imagen', 'image', 'poster', 'img', 'logo', 'portada', 'cover', 'thumbnail', 'thumb', 'tvg-logo', 'backdrop'];
+            for (const f of fields) {
+                if (obj[f] && typeof obj[f] === 'string' && obj[f].trim().length > 0) {
+                    return obj[f].trim();
+                }
+            }
+            return '';
+        };
+
+        // Genera un placeholder SVG con el título
+        const generatePlaceholder = (title, type = 'poster') => {
+            const safeTitle = (title || 'Sin Título').substring(0, 25).replace(/[<>&"']/g, '');
+            if (type === 'tv') {
+                return `https://placehold.co/300x300/0f172a/06b6d4?text=${encodeURIComponent(safeTitle)}`;
+            }
+            return `https://placehold.co/300x450/0f172a/06b6d4?text=${encodeURIComponent(safeTitle)}`;
+        };
+
+        // Maneja el error de carga de imagen
+        const handleImageError = (e, title, type = 'poster') => {
+            e.target.onerror = null;
+            e.target.src = generatePlaceholder(title, type);
+        };
 
         const DEFAULT_RADIO_STATIONS = [
             { id: 'cr-discofunk', title: 'B4B Disco Funk', group: 'Variedad', image: 'https://placehold.co/300x300/0f172a/ffffff?text=Disco+Funk', url: 'https://icecasthd.teletica.com/teleticaradio' },
@@ -475,138 +522,169 @@
                             fetchSmart(URLS.TUDUM, RAW_URLS.TUDUM, true)
                         ]);
 
+                        // ========== CANALES DE TV ==========
                         let tvChannels = [];
                         if (dataTV) tvChannels = parseM3U(dataTV);
                         if (tvChannels.length === 0) {
                             tvChannels = [
-                                { id: 'tv-1', title: 'Telered', image: 'https://placehold.co/300x300/0f172a/ffffff?text=Telered', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' },
-                                { id: 'tv-2', title: 'Tele Sistema', image: 'https://placehold.co/300x300/06b6d4/ffffff?text=TeleSistema', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' },
-                                { id: 'tv-3', title: 'Costa Rica Channel', image: 'https://placehold.co/300x300/14b8a6/ffffff?text=CRC', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' }
+                                { id: 'tv-1', title: 'Telered', image: 'https://placehold.co/300x300/0f172a/06b6d4?text=Telered', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' },
+                                { id: 'tv-2', title: 'Tele Sistema', image: 'https://placehold.co/300x300/0f172a/06b6d4?text=TeleSistema', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' },
+                                { id: 'tv-3', title: 'Costa Rica Channel', image: 'https://placehold.co/300x300/0f172a/06b6d4?text=CRC', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' }
                             ];
                         }
 
+                        // ========== PELÍCULAS ==========
                         let moviesList = [];
                         if (dataMovies) {
                             const rawMovies = Array.isArray(dataMovies) ? dataMovies : (dataMovies.peliculas || dataMovies.content || []);
-                            moviesList = rawMovies.map((m, idx) => ({ 
-                                ...m, 
-                                id: `mov-1-${idx}`, 
-                                type: 'movies', 
-                                title: m.titulo || m.title || m.name, 
-                                description: m.descripcion || m.sinopsis || m.plot, 
-                                image: m.imagen || m.poster || m.image || m.img, 
-                                url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
-                                rawUrl: m.urlDrive || m.url || m.urlOkRu
-                            }));
+                            moviesList = rawMovies.map((m, idx) => {
+                                const title = m.titulo || m.title || m.name || `Película ${idx + 1}`;
+                                const imgUrl = extractImageUrl(m);
+                                return { 
+                                    ...m, 
+                                    id: `mov-1-${idx}`, 
+                                    type: 'movies', 
+                                    title: title, 
+                                    description: m.descripcion || m.sinopsis || m.plot || '',
+                                    image: imgUrl || generatePlaceholder(title, 'poster'),
+                                    url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
+                                    rawUrl: m.urlDrive || m.url || m.urlOkRu
+                                };
+                            });
                         }
                         if (moviesList.length === 0) {
                             moviesList = [
-                                { id: 'm-1', type: 'movies', title: 'STARSKY & HUTCH', description: 'Acción policial clásica.', image: 'https://placehold.co/300x450/0f172a/ffffff?text=Starsky+Hutch', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-                                { id: 'm-2', type: 'movies', title: 'La Novicia Rebelde (1965)', description: 'Clásico musical galardonado.', image: 'https://placehold.co/300x450/14b8a6/ffffff?text=La+Novicia', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+                                { id: 'm-1', type: 'movies', title: 'STARSKY & HUTCH', description: 'Acción policial clásica.', image: 'https://placehold.co/300x450/0f172a/06b6d4?text=Starsky+Hutch', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+                                { id: 'm-2', type: 'movies', title: 'La Novicia Rebelde (1965)', description: 'Clásico musical galardonado.', image: 'https://placehold.co/300x450/0f172a/06b6d4?text=La+Novicia', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
                             ];
                         }
 
+                        // ========== PELÍCULAS 2 (ESTRENOS) ==========
                         let movies2List = [];
                         if (dataMovies2) {
                             const rawMovies2 = Array.isArray(dataMovies2) ? dataMovies2 : (dataMovies2.peliculas || dataMovies2.content || []);
-                            movies2List = rawMovies2.map((m, idx) => ({ 
-                                ...m, 
-                                id: `mov-2-${idx}`, 
-                                type: 'movies2', 
-                                title: m.titulo || m.title || m.name, 
-                                description: m.descripcion || m.sinopsis || m.plot, 
-                                image: m.imagen || m.poster || m.image || m.img, 
-                                url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
-                                rawUrl: m.urlDrive || m.url || m.urlOkRu
-                            }));
+                            movies2List = rawMovies2.map((m, idx) => {
+                                const title = m.titulo || m.title || m.name || `Estreno ${idx + 1}`;
+                                const imgUrl = extractImageUrl(m);
+                                return { 
+                                    ...m, 
+                                    id: `mov-2-${idx}`, 
+                                    type: 'movies2', 
+                                    title: title, 
+                                    description: m.descripcion || m.sinopsis || m.plot || '',
+                                    image: imgUrl || generatePlaceholder(title, 'poster'),
+                                    url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
+                                    rawUrl: m.urlDrive || m.url || m.urlOkRu
+                                };
+                            });
                         }
 
+                        // ========== SERIES ==========
                         let seriesList = [];
                         if (dataSeries) {
                             const rawSeries = Array.isArray(dataSeries) ? dataSeries : (dataSeries.series || []);
-                            seriesList = rawSeries.map((s, idx) => ({
-                                ...s,
-                                id: `serie-${idx}`,
-                                type: 'series',
-                                title: s.tituloSerie || s.titulo || s.title || s.name,
-                                description: s.descripcion || s.sinopsis,
-                                image: s.imagen || s.poster || s.image || s.img,
-                                seasons: (s.temporadas || []).map((t, tIdx) => ({
-                                    seasonNumber: t.numeroTemporada || (tIdx + 1),
-                                    episodes: (t.episodios || []).map((ep, eIdx) => ({
-                                        id: `ep-${idx}-${tIdx}-${eIdx}`,
-                                        title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`,
-                                        url: convertUrl(ep.urlDrive || ep.url),
-                                        rawUrl: ep.urlDrive || ep.url
+                            seriesList = rawSeries.map((s, idx) => {
+                                const title = s.tituloSerie || s.titulo || s.title || s.name || `Serie ${idx + 1}`;
+                                const imgUrl = extractImageUrl(s);
+                                return {
+                                    ...s,
+                                    id: `serie-${idx}`,
+                                    type: 'series',
+                                    title: title,
+                                    description: s.descripcion || s.sinopsis || '',
+                                    image: imgUrl || generatePlaceholder(title, 'poster'),
+                                    seasons: (s.temporadas || []).map((t, tIdx) => ({
+                                        seasonNumber: t.numeroTemporada || (tIdx + 1),
+                                        episodes: (t.episodios || []).map((ep, eIdx) => ({
+                                            id: `ep-${idx}-${tIdx}-${eIdx}`,
+                                            title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`,
+                                            url: convertUrl(ep.urlDrive || ep.url),
+                                            rawUrl: ep.urlDrive || ep.url
+                                        }))
                                     }))
-                                }))
-                            }));
+                                };
+                            });
                         }
                         if (seriesList.length === 0) {
                             seriesList = [
                                 {
-                                    id: 's-1', type: 'series', title: 'La Isla de Gilligan', description: 'Comedia de situación clásica.', image: 'https://placehold.co/300x450/06b6d4/ffffff?text=Gilligans+Island',
+                                    id: 's-1', type: 'series', title: 'La Isla de Gilligan', description: 'Comedia de situación clásica.', image: 'https://placehold.co/300x450/0f172a/06b6d4?text=Gilligans+Island',
                                     seasons: [{ seasonNumber: 1, episodes: [{ id: 'ep-1', title: 'Episodio 1: Naufragio', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }] }]
                                 }
                             ];
                         }
 
+                        // ========== ANIMADOS ==========
                         let animadosList = [];
                         if (dataAnimados) {
                             const rawAnimados = Array.isArray(dataAnimados) ? dataAnimados : (dataAnimados.animados || []);
-                            animadosList = rawAnimados.map((a, idx) => ({
-                                ...a,
-                                id: `anim-${idx}`,
-                                type: 'animados',
-                                title: a.titulo || a.tituloSerie || a.title || a.name,
-                                description: a.descripcion || a.sinopsis,
-                                image: a.imagen || a.poster || a.image || a.img,
-                                url: convertUrl(a.urlDrive || a.url),
-                                rawUrl: a.urlDrive || a.url,
-                                seasons: (a.temporadas || []).map((t, tIdx) => ({
-                                    seasonNumber: t.numeroTemporada || (tIdx + 1),
-                                    episodes: (t.episodios || []).map((ep, eIdx) => ({
-                                        id: `ep-anim-${idx}-${tIdx}-${eIdx}`,
-                                        title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`,
-                                        url: convertUrl(ep.urlDrive || ep.url),
-                                        rawUrl: ep.urlDrive || ep.url
+                            animadosList = rawAnimados.map((a, idx) => {
+                                const title = a.titulo || a.tituloSerie || a.title || a.name || `Animado ${idx + 1}`;
+                                const imgUrl = extractImageUrl(a);
+                                return {
+                                    ...a,
+                                    id: `anim-${idx}`,
+                                    type: 'animados',
+                                    title: title,
+                                    description: a.descripcion || a.sinopsis || '',
+                                    image: imgUrl || generatePlaceholder(title, 'poster'),
+                                    url: convertUrl(a.urlDrive || a.url),
+                                    rawUrl: a.urlDrive || a.url,
+                                    seasons: (a.temporadas || []).map((t, tIdx) => ({
+                                        seasonNumber: t.numeroTemporada || (tIdx + 1),
+                                        episodes: (t.episodios || []).map((ep, eIdx) => ({
+                                            id: `ep-anim-${idx}-${tIdx}-${eIdx}`,
+                                            title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`,
+                                            url: convertUrl(ep.urlDrive || ep.url),
+                                            rawUrl: ep.urlDrive || ep.url
+                                        }))
                                     }))
-                                }))
-                            }));
+                                };
+                            });
                         }
 
+                        // ========== RADIOS ==========
                         let loadedStations = DEFAULT_RADIO_STATIONS;
                         if (dataRadios) {
                             const list = Array.isArray(dataRadios) ? dataRadios : (dataRadios.radios || dataRadios.emisoras || []);
                             if (list.length > 0) {
-                                loadedStations = list.map((r, idx) => ({
-                                    ...r,
-                                    id: r.id || `radio-fetched-${idx}-${(r.titulo || r.title || '').toLowerCase().replace(/[^a-z0-9]/g, '')}`,
-                                    title: r.titulo || r.title || r.name || `Emisora ${idx + 1}`,
-                                    group: r.group || r.genero || r.categoria || 'Variedad',
-                                    image: r.imagen || r.image || r.logo || 'https://placehold.co/300x300/0f172a/ffffff?text=Radio',
-                                    url: r.urlDrive || r.url || r.stream || r.urlStream || '',
-                                    type: 'radio'
-                                }));
+                                loadedStations = list.map((r, idx) => {
+                                    const title = r.titulo || r.title || r.name || `Emisora ${idx + 1}`;
+                                    const imgUrl = extractImageUrl(r);
+                                    return {
+                                        ...r,
+                                        id: r.id || `radio-fetched-${idx}-${title.toLowerCase().replace(/[^a-z0-9]/g, '')}`,
+                                        title: title,
+                                        group: r.group || r.genero || r.categoria || 'Variedad',
+                                        image: imgUrl || generatePlaceholder(title, 'tv'),
+                                        url: r.urlDrive || r.url || r.stream || r.urlStream || '',
+                                        type: 'radio'
+                                    };
+                                });
                             }
                         }
                         loadedStations = loadedStations.map(s => ({ ...s, type: 'radio' }));
                         setRadioStations(loadedStations);
 
+                        // ========== TUDUM ==========
                         let tudumList = FALLBACK_NETFLIX_TUDUM;
                         if (dataTudum) {
                             const tList = Array.isArray(dataTudum) ? dataTudum : (dataTudum.tudum || dataTudum.estrenos || []);
                             if (tList.length > 0) {
-                                tudumList = tList.map(t => ({
-                                    title: t.titulo || t.title,
-                                    releaseDate: t.fechaEstreno || t.releaseDate || 'Próximamente',
-                                    genre: t.genero || t.genre || 'Estreno',
-                                    synopsis: t.sinopsis || t.descripcion || t.synopsis || '',
-                                    image: t.imagen || t.poster || t.image || 'https://placehold.co/300x450/0f172a/ffffff?text=Estreno',
-                                    trailerUrl: convertUrl(t.urlTrailer || t.trailerUrl || t.url) || 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-                                    availability: t.disponibilidad || t.availability || 'Costa Rica',
-                                    score: t.puntuacion || t.score || '9.0 / 10'
-                                }));
+                                tudumList = tList.map(t => {
+                                    const title = t.titulo || t.title || 'Estreno';
+                                    const imgUrl = extractImageUrl(t);
+                                    return {
+                                        title: title,
+                                        releaseDate: t.fechaEstreno || t.releaseDate || 'Próximamente',
+                                        genre: t.genero || t.genre || 'Estreno',
+                                        synopsis: t.sinopsis || t.descripcion || t.synopsis || '',
+                                        image: imgUrl || generatePlaceholder(title, 'poster'),
+                                        trailerUrl: convertUrl(t.urlTrailer || t.trailerUrl || t.url) || 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                                        availability: t.disponibilidad || t.availability || 'Costa Rica',
+                                        score: t.puntuacion || t.score || '9.0 / 10'
+                                    };
+                                });
                             }
                         }
 
@@ -804,7 +882,14 @@
                             const groupMatch = line.match(/group-title="([^"]*)"/); const group = groupMatch ? groupMatch[1] : 'General';
                             const commaIndex = line.lastIndexOf(',');
                             if (commaIndex !== -1) title = line.substring(commaIndex + 1).trim();
-                            channels.push({ id: `tv-${i}`, title, image: logo, group, url, type: 'tv' });
+                            channels.push({ 
+                                id: `tv-${i}`, 
+                                title, 
+                                image: logo || generatePlaceholder(title, 'tv'), 
+                                group, 
+                                url, 
+                                type: 'tv' 
+                            });
                         }
                     }
                 }
@@ -1166,7 +1251,7 @@
                                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-5">
                                         {radioFavorites.map((station, i) => (
                                             <div key={station.id || i} onClick={() => { handlePlayRadioStation(station); setActiveTab('radio'); }} className="glass-panel p-4 rounded-2xl flex items-center gap-3 cursor-pointer hover:border-cyan-500 transition-all card-glow">
-                                                <img src={station.image} alt={station.title} className="w-12 h-12 rounded-full object-cover border border-cyan-500/40" />
+                                                <img src={station.image} alt={station.title} className="w-12 h-12 rounded-full object-cover border border-cyan-500/40" onError={(e) => handleImageError(e, station.title, 'tv')} />
                                                 <div className="flex-1 min-w-0">
                                                     <h4 className="text-xs font-bold text-white truncate">{station.title}</h4>
                                                     <span className="text-[10px] text-cyan-400">{station.group || 'Radio'}</span>
@@ -1216,7 +1301,7 @@
                                             return (
                                                 <div key={channel.id || idx} onClick={() => handlePlay(channel)} className={`group relative flex items-center gap-3 p-2.5 sm:p-3 rounded-2xl border cursor-pointer transition-all duration-200 ${isActive ? 'bg-cyan-950/50 border-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.3)] border-l-4' : 'bg-[#0f172a]/90 hover:bg-[#1e293b] border-slate-800/80 hover:border-slate-700'}`}>
                                                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/90 flex items-center justify-center overflow-hidden flex-shrink-0 border border-slate-800 relative shadow-inner p-1">
-                                                        {channel.image ? (<img src={channel.image} alt={channel.title} loading="lazy" className="w-full h-full object-cover rounded-full" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/100x100/0f172a/ffffff?text=TV'; }} />) : (<Icon className="text-slate-500" name="tv" size={14}/>)}
+                                                        {channel.image ? (<img src={channel.image} alt={channel.title} loading="lazy" className="w-full h-full object-cover rounded-full" onError={(e) => handleImageError(e, channel.title, 'tv')} />) : (<Icon className="text-slate-500" name="tv" size={14}/>)}
                                                         {isActive && (<div className="absolute inset-0 bg-cyan-600/30 rounded-full flex items-center justify-center"><div className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></div></div>)}
                                                     </div>
                                                     <div className="flex-1 min-w-0">
@@ -1263,7 +1348,7 @@
                                             {selectedItem && selectedItem.type === 'tv' ? (
                                                 <>
                                                     <div className="w-9 h-9 rounded-full bg-black flex items-center justify-center overflow-hidden border border-cyan-500/40 flex-shrink-0 shadow-md p-0.5">
-                                                        {selectedItem.image ? (<img src={selectedItem.image} alt={selectedItem.title} className="w-full h-full object-cover rounded-full" />) : (<Icon className="text-slate-400" name="tv" size={14}/>)}
+                                                        {selectedItem.image ? (<img src={selectedItem.image} alt={selectedItem.title} className="w-full h-full object-cover rounded-full" onError={(e) => handleImageError(e, selectedItem.title, 'tv')} />) : (<Icon className="text-slate-400" name="tv" size={14}/>)}
                                                     </div>
                                                     <div className="truncate">
                                                         <h3 className="text-xs font-bold text-white truncate">{selectedItem.title}</h3>
@@ -1307,7 +1392,12 @@
                                         <div className="lg:col-span-2 space-y-6">
                                             <div className="flex items-start gap-4 sm:gap-6">
                                                 <div className="w-28 sm:w-36 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black">
-                                                    <img src={selectedItem.imagen || selectedItem.image || selectedItem.poster} alt={selectedItem.titulo || selectedItem.title} className="w-full h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/300x450/0f172a/ffffff?text=Sin+Portada'; }} />
+                                                    <img 
+                                                        src={extractImageUrl(selectedItem) || generatePlaceholder(selectedItem.title || selectedItem.titulo, 'poster')} 
+                                                        alt={selectedItem.titulo || selectedItem.title} 
+                                                        className="w-full h-full object-cover" 
+                                                        onError={(e) => handleImageError(e, selectedItem.title || selectedItem.titulo, 'poster')} 
+                                                    />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex items-start justify-between gap-4">
@@ -1509,7 +1599,12 @@
                                                     <div key={nIdx} className="glass-panel rounded-2xl p-4 border border-slate-800 flex flex-col justify-between group hover:border-[#e50914]/50 transition-all card-glow">
                                                         <div>
                                                             <div className="aspect-[2/3] rounded-xl overflow-hidden mb-3 relative bg-black">
-                                                                <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/300x450/0f172a/ffffff?text=Estreno'; }} />
+                                                                <img 
+                                                                    src={item.image} 
+                                                                    alt={item.title} 
+                                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                                                                    onError={(e) => handleImageError(e, item.title, 'poster')} 
+                                                                />
                                                                 <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 text-[10px] font-mono text-yellow-400 font-bold flex items-center gap-1">
                                                                     <span>★</span> {item.score}
                                                                 </div>
@@ -1806,7 +1901,7 @@
         };
 
         const CyberRadioSection = ({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef, clockTime, isMuted, setIsMuted, isPowerOn, setIsPowerOn, spectrumHeights, radioFilter, setRadioFilter, hlsRef, radioFavorites, onToggleFavorite, isItemFavorite }) => {
-            const [radioViewMode, setRadioViewMode] = useState('all'); // 'all' or 'favorites'
+            const [radioViewMode, setRadioViewMode] = useState('all');
 
             const currentIndex = useMemo(() => {
                 if (!currentStation) return 0;
@@ -1860,7 +1955,7 @@
                         <div className="flex items-center gap-5 relative z-10 w-full md:w-auto">
                             <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-black border-2 border-cyan-400 p-1 flex items-center justify-center shadow-[0_0_30px_rgba(6,182,212,0.6)] flex-shrink-0">
                                 {currentStation?.image ? (
-                                    <img src={currentStation.image} alt={currentStation.title} className={`w-full h-full object-cover rounded-full ${isPlaying && isPowerOn ? 'vinyl-animation' : ''}`} onError={(e)=>{e.target.src='https://placehold.co/200x200/0f172a/ffffff?text=Radio';}} />
+                                    <img src={currentStation.image} alt={currentStation.title} className={`w-full h-full object-cover rounded-full ${isPlaying && isPowerOn ? 'vinyl-animation' : ''}`} onError={(e) => handleImageError(e, currentStation.title, 'tv')} />
                                 ) : (
                                     <div className="w-full h-full rounded-full bg-cyan-950 flex items-center justify-center text-cyan-400"><Icon name="radio" size={32}/></div>
                                 )}
@@ -1985,7 +2080,7 @@
                                             >
                                                 <div className="w-12 h-12 rounded-2xl bg-black border border-slate-800 flex items-center justify-center overflow-hidden flex-shrink-0 relative shadow-inner p-1">
                                                     {station.image ? (
-                                                        <img src={station.image} alt={station.title} className="w-full h-full object-cover rounded-xl" onError={(e)=>{e.target.src='https://placehold.co/100x100/0f172a/ffffff?text=Radio';}} />
+                                                        <img src={station.image} alt={station.title} className="w-full h-full object-cover rounded-xl" onError={(e) => handleImageError(e, station.title, 'tv')} />
                                                     ) : (
                                                         <Icon name="radio" size={18} className="text-slate-400"/>
                                                     )}
@@ -2078,7 +2173,7 @@
             }, [item]);
 
             if (!featuredItem) return null;
-            const imgSource = featuredItem.imagen || featuredItem.image || featuredItem.poster || featuredItem.img;
+            const imgSource = extractImageUrl(featuredItem) || generatePlaceholder(featuredItem.title || featuredItem.titulo, 'poster');
             const titleSource = featuredItem.titulo || featuredItem.title || featuredItem.name;
             const descSource = featuredItem.descripcion || featuredItem.sinopsis || featuredItem.plot;
             
@@ -2092,7 +2187,12 @@
 
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-6 sm:gap-10 text-center sm:text-left">
                         <div className="w-48 sm:w-60 md:w-68 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
-                            <img src={imgSource} alt={titleSource} className="w-full h-full object-cover" onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/300x450/0f172a/ffffff?text=Sin+Portada'; }} />
+                            <img 
+                                src={imgSource} 
+                                alt={titleSource} 
+                                className="w-full h-full object-cover" 
+                                onError={(e) => handleImageError(e, titleSource, 'poster')} 
+                            />
                         </div>
                         <div className="flex-1 flex flex-col gap-3 items-center sm:items-start max-w-xl">
                             <span className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white text-[9px] sm:text-[10px] font-black px-3.5 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(6,182,212,0.4)]">Destacado Boxplaytv</span>
@@ -2135,19 +2235,18 @@
             const isTv = item.type === 'tv'; 
             const hasLock = item.codigo || item.password || item.pin; 
             const isKids = item.isKids || item.type === 'animados';
-            const imgSource = item.imagen || item.image || item.poster || item.logo || item.img;
-            const titleSource = item.titulo || item.title || item.name;
+            const imgSource = extractImageUrl(item);
+            const titleSource = item.titulo || item.title || item.name || 'Sin Título';
+            const fallbackImg = generatePlaceholder(titleSource, isTv ? 'tv' : 'poster');
+            
             return ( 
                 <div tabIndex="0" className="group relative flex flex-col gap-2 cursor-pointer active:scale-95 transition-transform card-glow rounded-2xl w-full" onClick={() => onClick(item)}> 
                     <div className={`relative overflow-hidden bg-[#0f172a] border border-slate-800 shadow-xl ${isTv ? 'aspect-video rounded-full p-2' : 'aspect-[2/3] rounded-2xl'}`}> 
                         <img 
-                            src={imgSource} 
+                            src={imgSource || fallbackImg} 
                             loading="lazy" 
                             className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${isTv ? 'object-cover rounded-full' : 'object-cover'}`} 
-                            onError={(e) => { 
-                                e.target.onerror = null; 
-                                e.target.src = 'https://placehold.co/300x450/0f172a/ffffff?text=Sin+Portada'; 
-                            }} 
+                            onError={(e) => handleImageError(e, titleSource, isTv ? 'tv' : 'poster')} 
                             alt={titleSource} 
                         /> 
                         <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isTv ? 'rounded-full' : ''}`}></div> 
@@ -2198,6 +2297,38 @@
             const [input, setInput] = useState(''); const [error, setError] = useState(false);
             const handleSubmit = (e) => { e.preventDefault(); if (input === String(correctCode)) onUnlock(); else { setError(true); setInput(''); } };
             return (<div className="absolute inset-0 z-50 bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-4 animate-fade-in"><div className="glass-panel p-6 rounded-3xl max-w-xs w-full text-center shadow-2xl border border-cyan-500/30 animate-scale-in"><div className="mb-4 flex justify-center"><div className="p-3.5 bg-cyan-500/15 rounded-2xl text-cyan-400 border border-cyan-500/30"><Icon name="lock" size={24}/></div></div><h2 className="text-sm font-extrabold text-white mb-1">Contenido Protegido</h2><p className="text-[11px] text-slate-400 mb-4">Introduce el código PIN de acceso</p><form onSubmit={handleSubmit}><input type="password" maxLength="4" className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-3 text-center text-xl tracking-[0.4em] text-white focus:border-cyan-500 outline-none mb-3 shadow-inner" value={input} onChange={(e) => { setInput(e.target.value); setError(false); }} placeholder="••••" autoFocus />{error && <p className="text-rose-400 text-xs mb-3 font-bold">Código incorrecto</p>}<div className="flex gap-2.5"><button type="button" onClick={onCancel} className="flex-1 py-2.5 rounded-xl border border-slate-800 text-slate-300 hover:bg-white/5 text-xs font-semibold">Cancelar</button><button type="submit" className="flex-1 py-2.5 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 text-white font-bold hover:brightness-110 text-xs shadow-[0_0_15px_rgba(6,182,212,0.5)]">Acceder</button></div></form></div></div>);
+        };
+
+        const CommunitySection = () => {
+            return (
+                <div className="p-4 sm:p-10 max-w-4xl mx-auto w-full animate-fade-in space-y-8">
+                    <div className="text-center space-y-3">
+                        <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 border border-cyan-500/30 inline-block"><Icon name="chat" size={28}/></div>
+                        <h1 className="text-2xl sm:text-4xl font-black text-white">Comunidad Boxplaytv</h1>
+                        <p className="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">Únete a nuestra comunidad oficial y mantente al día con los últimos estrenos, canales y eventos especiales.</p>
+                    </div>
+                    <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
+                        <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer" className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-4 rounded-2xl font-extrabold text-sm transition-all shadow-[0_0_25px_rgba(16,185,129,0.4)] flex items-center justify-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            <span>Unirse al Grupo Oficial de WhatsApp</span>
+                        </a>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
+                                <h3 className="text-sm font-bold text-cyan-400 flex items-center gap-2"><Icon name="star" size={14}/> Estrenos Semanales</h3>
+                                <p className="text-xs text-slate-300 leading-relaxed">Recibe notificaciones de nuevas películas, series y canales añadidos a la plataforma.</p>
+                            </div>
+                            <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
+                                <h3 className="text-sm font-bold text-teal-400 flex items-center gap-2"><Icon name="chat" size={14}/> Soporte Técnico</h3>
+                                <p className="text-xs text-slate-300 leading-relaxed">Resuelve dudas, reporta fallos y solicita contenido directamente con nuestro equipo.</p>
+                            </div>
+                        </div>
+                        <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
+                            <h3 className="text-sm font-bold text-yellow-400 flex items-center gap-2"><Icon name="heart" size={14}/> Beneficios Exclusivos</h3>
+                            <p className="text-xs text-slate-300 leading-relaxed">Accede a promociones, sorteos y contenido VIP solo para miembros del grupo.</p>
+                        </div>
+                    </div>
+                </div>
+            );
         };
 
         const rootNode = document.getElementById('root');
