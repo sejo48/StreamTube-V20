@@ -388,7 +388,14 @@
         const convertUrl = (url) => {
             if (!url) return '';
             if (url.includes('ok.ru/video/search') || url.includes('ok.ru/search')) return url;
-            if (url.includes('ok.ru/video/')) return url.replace('ok.ru/video/', 'ok.ru/videoembed/');
+            if (url.includes('ok.ru/video/')) {
+                const videoId = url.split('ok.ru/video/')[1]?.split(/[?#&]/)[0];
+                if (videoId) return `https://ok.ru/videoembed/${videoId}?autoplay=1`;
+            }
+            if (url.includes('ok.ru/videoembed/')) {
+                const sep = url.includes('?') ? '&' : '?';
+                if (!url.includes('autoplay=')) return `${url}${sep}autoplay=1`;
+            }
             if (url.includes('youtube.com') && !url.includes('/embed/')) {
                 let videoId = '';
                 if (url.includes('watch?v=')) videoId = url.split('watch?v=')[1]?.split('&')[0];
@@ -1085,12 +1092,12 @@
             return (
                 <div className="min-h-screen bg-[#020617] text-[#f8fafc] font-sans flex flex-col relative selection:bg-cyan-500 selection:text-white w-full max-w-[100vw] overflow-x-hidden">
                     {dataErrors.length > 0 && (
-                        <div className="error-banner fixed top-[68px] left-0 right-0 z-[90] px-4 py-2 text-xs text-center font-medium shadow-lg">
+                        <div className="error-banner px-4 py-2 text-xs text-center font-medium sticky top-0 z-[60]">
                             ⚠️ No se pudieron cargar algunas secciones: {dataErrors.join(', ')}. Mostrando datos disponibles.
                         </div>
                     )}
 
-                    <header className="fixed top-0 left-0 right-0 z-[100] glass-header px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl w-full min-h-[68px]">
+                    <header className="sticky top-0 z-50 glass-header px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl w-full">
                         <div className="flex items-center gap-4 lg:gap-8">
                             <div className="flex items-center gap-2.5 cursor-pointer group" onClick={() => handleTabClick('home')}>
                                 <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.4)] group-hover:scale-105 transition-transform flex-shrink-0">
@@ -1174,7 +1181,7 @@
                         </div>
                     )}
 
-                    <main className={`flex-1 min-h-screen pb-32 md:pb-16 relative z-10 w-full max-w-[100vw] overflow-x-hidden ${dataErrors.length > 0 ? "pt-[104px]" : "pt-[68px]"}`}>
+                    <main className="flex-1 min-h-screen pb-32 md:pb-16 relative z-10 w-full max-w-[100vw] overflow-x-hidden">
                         {activeTab === 'radio' ? (
                             <CyberRadioProUltraSection
                                 ref={radioPlayerTopRef}
@@ -1376,7 +1383,7 @@
                                     {isLocked ? (
                                         <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => { setSelectedItem(null); setIsLocked(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} />
                                     ) : (
-                                        <iframe src={convertUrl(selectedItem.type === 'series' && selectedEpisode ? selectedEpisode.url : selectedItem.url)} className="w-full h-full border-0 absolute inset-0 object-contain" style={{ width: '100%', height: '100%' }} allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen></iframe>
+                                        <UniversalMediaPlayer item={selectedItem} episodeUrl={selectedItem.type === 'series' && selectedEpisode ? selectedEpisode.url : ''} />
                                     )}
                                 </div>
                                 {!isLocked && (
@@ -2301,6 +2308,104 @@
                             return <Card item={item} key={item.id || item.title || idx} onClick={onPlay} isFavorite={isFav} onToggleFavorite={onToggleFavorite} />;
                         })}
                     </div>
+                </div>
+            );
+        };
+
+        const UniversalMediaPlayer = ({ item, episodeUrl = '', onReload }) => {
+            const sourceUrl = episodeUrl || item?.url || item?.urlDrive || item?.rawUrl || '';
+            const [reloadKey, setReloadKey] = React.useState(0);
+            const [showFallback, setShowFallback] = React.useState(false);
+            const videoRef = React.useRef(null);
+            const hlsRef = React.useRef(null);
+            const normalized = convertUrl(sourceUrl);
+
+            const isDirectVideo = /\.(mp4|webm|ogg)(\?|#|$)/i.test(sourceUrl);
+            const isHls = /\.m3u8(\?|#|$)/i.test(sourceUrl);
+            const isOk = /ok\.ru\/video(?:embed)?\//i.test(normalized);
+            const isDrive = /drive\.google\.com/i.test(normalized);
+
+            React.useEffect(() => {
+                const video = videoRef.current;
+                if (!video || (!isHls && !isDirectVideo)) return;
+                if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; }
+
+                if (isHls && typeof Hls !== 'undefined' && Hls.isSupported()) {
+                    const hls = new Hls({ enableWorker: true });
+                    hlsRef.current = hls;
+                    hls.loadSource(sourceUrl);
+                    hls.attachMedia(video);
+                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        video.play().catch(() => {});
+                    });
+                } else {
+                    video.src = sourceUrl;
+                    video.load();
+                }
+                return () => {
+                    if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; }
+                };
+            }, [sourceUrl, isHls, isDirectVideo, reloadKey]);
+
+            const reloadPlayer = () => {
+                setShowFallback(false);
+                setReloadKey(k => k + 1);
+                if (onReload) onReload();
+            };
+
+            if (!sourceUrl) {
+                return <div className="w-full h-full flex items-center justify-center bg-black text-slate-400 text-sm">No hay una fuente de video disponible.</div>;
+            }
+
+            if (isDirectVideo || isHls) {
+                return (
+                    <div className="w-full h-full relative bg-black flex items-center justify-center">
+                        <video
+                            key={reloadKey}
+                            ref={videoRef}
+                            className="w-full h-full object-contain"
+                            controls
+                            playsInline
+                            preload="metadata"
+                            crossOrigin="anonymous"
+                            onError={() => setShowFallback(true)}
+                        />
+                        {showFallback && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-black/75 p-6 text-center z-20">
+                                <div className="max-w-md space-y-3">
+                                    <div className="text-rose-400 text-3xl">⚠️</div>
+                                    <h3 className="text-white font-black">No se pudo reproducir esta fuente</h3>
+                                    <p className="text-slate-300 text-xs">La dirección existe, pero el navegador no pudo abrir el formato de video.</p>
+                                    <button onClick={reloadPlayer} className="px-5 py-2.5 rounded-xl bg-cyan-600 text-white font-bold text-xs">Reintentar</button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                );
+            }
+
+            const embedUrl = (() => {
+                if (isOk) {
+                    const base = normalized.split('?')[0];
+                    return `${base}?autoplay=1&nochat=1`;
+                }
+                if (isDrive) return normalized;
+                return normalized;
+            })();
+
+            return (
+                <div className="w-full h-full relative bg-black overflow-hidden">
+                    <iframe
+                        key={`${embedUrl}-${reloadKey}`}
+                        src={embedUrl}
+                        title={item?.title || item?.titulo || 'Reproductor BoxPlayTV'}
+                        className="w-full h-full border-0 absolute inset-0"
+                        style={{ width: '100%', height: '100%', pointerEvents: 'auto' }}
+                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; web-share"
+                        allowFullScreen
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        onLoad={() => setShowFallback(false)}
+                    />
                 </div>
             );
         };
