@@ -96,7 +96,7 @@
         }
 
         .glass-header {
-            background: rgba(2, 6, 23, 0.92);
+            background: rgba(2, 6, 23, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-subtle);
@@ -493,7 +493,7 @@
                                 type: 'movies', 
                                 title: m.titulo || m.title || m.name, 
                                 description: m.descripcion || m.sinopsis || m.plot, 
-                                image: m.imagen || m.poster || m.image, 
+                                image: m.imagen || m.poster || m.image || m.img, 
                                 url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
                                 rawUrl: m.urlDrive || m.url || m.urlOkRu
                             }));
@@ -514,7 +514,7 @@
                                 type: 'movies2', 
                                 title: m.titulo || m.title || m.name, 
                                 description: m.descripcion || m.sinopsis || m.plot, 
-                                image: m.imagen || m.poster || m.image, 
+                                image: m.imagen || m.poster || m.image || m.img, 
                                 url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
                                 rawUrl: m.urlDrive || m.url || m.urlOkRu
                             }));
@@ -529,7 +529,7 @@
                                 type: 'series',
                                 title: s.tituloSerie || s.titulo || s.title || s.name,
                                 description: s.descripcion || s.sinopsis,
-                                image: s.imagen || s.poster || s.image,
+                                image: s.imagen || s.poster || s.image || s.img,
                                 seasons: (s.temporadas || []).map((t, tIdx) => ({
                                     seasonNumber: t.numeroTemporada || (tIdx + 1),
                                     episodes: (t.episodios || []).map((ep, eIdx) => ({
@@ -559,7 +559,7 @@
                                 type: 'animados',
                                 title: a.titulo || a.tituloSerie || a.title || a.name,
                                 description: a.descripcion || a.sinopsis,
-                                image: a.imagen || a.poster || a.image,
+                                image: a.imagen || a.poster || a.image || a.img,
                                 url: convertUrl(a.urlDrive || a.url),
                                 rawUrl: a.urlDrive || a.url,
                                 seasons: (a.temporadas || []).map((t, tIdx) => ({
@@ -1728,11 +1728,10 @@
                 displayed = displayed.filter(s => (s.title || '').toLowerCase().includes(q) || (s.group || '').toLowerCase().includes(q));
             }
 
-            const currentIsFav = currentStation ? isItemFavorite(currentStation) : false;
+            const currentIsFav = currentStation ? isItemFavorite({ ...currentStation, type: 'radio' }) : false;
 
             return (
                 <div className="min-h-[calc(100vh-5rem)] flex flex-col p-4 sm:p-8 animate-fade-in w-full max-w-7xl mx-auto space-y-6">
-                    {/* Modern Neon Header Banner */}
                     <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-cyan-500/30 relative overflow-hidden shadow-2xl pulse-glow-box flex flex-col md:flex-row items-center justify-between gap-6">
                         <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
                         
@@ -1769,7 +1768,6 @@
                             </div>
                         </div>
 
-                        {/* Interactive Player Controls & Volume */}
                         <div className="flex flex-col sm:flex-row items-center gap-4 relative z-10 w-full md:w-auto justify-end">
                             <div className="flex items-center gap-2 bg-black/60 px-4 py-3 rounded-2xl border border-slate-800 shadow-inner w-full sm:w-auto">
                                 <Icon name="volume" size={16} className="text-cyan-400 flex-shrink-0"/>
@@ -1792,9 +1790,7 @@
                         </div>
                     </div>
 
-                    {/* Radio Grid & Audio Visualizer Section */}
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        {/* Audio Visualizer & Equalizer Card */}
                         <div className="glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col justify-between shadow-xl space-y-6">
                             <div>
                                 <div className="flex items-center justify-between mb-4">
@@ -1820,7 +1816,6 @@
                             </div>
                         </div>
 
-                        {/* Stations Grid with Internal Radio Favorites */}
                         <div className="lg:col-span-2 glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col h-[520px] shadow-xl">
                             <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-3 pb-4 border-b border-slate-800">
                                 <div className="flex items-center gap-2">
@@ -1961,7 +1956,7 @@
             }, [item]);
 
             if (!featuredItem) return null;
-            const imgSource = featuredItem.imagen || featuredItem.image || featuredItem.poster;
+            const imgSource = featuredItem.imagen || featuredItem.image || featuredItem.poster || featuredItem.img;
             const titleSource = featuredItem.titulo || featuredItem.title || featuredItem.name;
             const descSource = featuredItem.descripcion || featuredItem.sinopsis || featuredItem.plot;
             
@@ -2018,7 +2013,7 @@
             const isTv = item.type === 'tv'; 
             const hasLock = item.codigo || item.password || item.pin; 
             const isKids = item.isKids || item.type === 'animados';
-            const imgSource = item.imagen || item.image || item.poster || item.logo;
+            const imgSource = item.imagen || item.image || item.poster || item.logo || item.img;
             const titleSource = item.titulo || item.title || item.name;
             return ( 
                 <div tabIndex="0" className="group relative flex flex-col gap-2 cursor-pointer active:scale-95 transition-transform card-glow rounded-2xl w-full" onClick={() => onClick(item)}> 
