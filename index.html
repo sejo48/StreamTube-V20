@@ -147,7 +147,6 @@
 
         button:focus, div[tabindex="0"]:focus, input:focus, select:focus { outline: none; }
 
-        /* Estilos para imágenes de portada */
         .poster-img {
             width: 100%;
             height: 100%;
@@ -191,7 +190,7 @@
             TV: './listaoficial.m3u',
             SERIES: './playlist.json',
             MOVIES: './peliculas.json',
-            MOVIES2: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/refs/heads/main/peliculas2.json',
+            MOVIES2: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas2.json',
             ANIMADOS: './animados.json',
             RADIOS: './radios.json',
             TUDUM: './tudum.json'
@@ -211,9 +210,6 @@
         const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
 
         // ==================== UTILIDADES DE IMÁGENES ROBUSTAS ====================
-        // El catálogo utiliza imágenes alojadas en muchos servidores diferentes.
-        // Algunos bloquean hotlink, devuelven 403/404 o cambian la URL.
-        // Por eso se intenta primero la imagen original y después un proxy de imágenes.
         const normalizeImageUrl = (value) => {
             if (typeof value !== 'string') return '';
             let url = value.trim().replace(/^['"]|['"]$/g, '');
@@ -224,14 +220,12 @@
             return url;
         };
 
-        // Extrae la URL de imagen de un objeto usando múltiples campos posibles.
         const extractImageUrl = (obj) => {
             if (!obj || typeof obj !== 'object') return '';
             const fields = [
                 'imagen', 'image', 'poster', 'img', 'logo', 'portada',
                 'cover', 'thumbnail', 'thumb', 'tvg-logo', 'backdrop'
             ];
-
             for (const f of fields) {
                 const value = normalizeImageUrl(obj[f]);
                 if (value) return value;
@@ -239,44 +233,28 @@
             return '';
         };
 
-        // Devuelve varias fuentes para la misma portada.
         const getImageCandidates = (url) => {
             const original = normalizeImageUrl(url);
             if (!original) return [];
-
             const candidates = [original];
-
-            // images.weserv.nl sirve como respaldo cuando el servidor original
-            // bloquea hotlink, referrer o determinadas peticiones del navegador.
             if (/^https?:\/\//i.test(original)) {
-                candidates.push(
-                    `https://images.weserv.nl/?url=${encodeURIComponent(original)}`
-                );
+                candidates.push(`https://images.weserv.nl/?url=${encodeURIComponent(original)}`);
             }
-
             return [...new Set(candidates)];
         };
 
-        // Evita que una misma URL rota se vuelva a descargar innecesariamente.
         const failedImageUrls = new Set();
 
-        // Genera un placeholder con el título.
         const generatePlaceholder = (title, type = 'poster') => {
             const safeTitle = (title || 'Sin Título')
                 .substring(0, 32)
                 .replace(/[<>&"']/g, '');
-
             if (type === 'tv') {
                 return `https://placehold.co/300x300/0f172a/06b6d4?text=${encodeURIComponent(safeTitle)}`;
             }
-
             return `https://placehold.co/300x450/0f172a/06b6d4?text=${encodeURIComponent(safeTitle)}`;
         };
 
-        // Componente de imagen con recuperación automática:
-        // 1) URL original
-        // 2) proxy de imágenes
-        // 3) placeholder
         const RobustImage = ({
             src,
             alt = '',
@@ -303,7 +281,6 @@
                 if (currentSrc && currentSrc !== fallback) {
                     failedImageUrls.add(currentSrc);
                 }
-
                 if (sourceIndex < candidates.length - 1) {
                     setSourceIndex(prev => prev + 1);
                 } else if (sourceIndex !== candidates.length) {
@@ -323,7 +300,6 @@
             );
         };
 
-        // Compatibilidad con imágenes que todavía usan onError directamente.
         const handleImageError = (e, title, type = 'poster') => {
             if (!e || !e.target) return;
             e.target.onerror = null;
@@ -651,7 +627,7 @@
                             ];
                         }
 
-                        // ========== PELÍCULAS 2 (ESTRENOS) ==========
+                        // ========== PELÍCULAS 2 (ESTRENOS) — CON FICHA COMPLETA ==========
                         let movies2List = [];
                         if (dataMovies2) {
                             const rawMovies2 = Array.isArray(dataMovies2) ? dataMovies2 : (dataMovies2.peliculas || dataMovies2.content || []);
@@ -659,7 +635,7 @@
                                 const title = m.titulo || m.title || m.name || `Estreno ${idx + 1}`;
                                 const imgUrl = extractImageUrl(m);
                                 return { 
-                                    ...m, 
+                                    ...m,   // ✅ Conserva TODOS los campos enriquecidos (reparto, director, rating, runtime, genres, generosTexto, trailerUrl, similares, backdrop, etc.)
                                     id: `mov-2-${idx}`, 
                                     type: 'movies2', 
                                     title: title, 
@@ -1527,14 +1503,191 @@
                                                 </div>
                                             </div>
 
-                                            <div className="pt-2">
-                                                <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
-                                                    <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
-                                                </h3>
-                                                <p className="text-slate-100 text-sm sm:text-base md:text-lg leading-relaxed bg-black/50 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-inner font-medium">
-                                                    {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
-                                                </p>
-                                            </div>
+                                            {/* ========== FICHA COMPLETA — SOLO ESTRENOS 2026 ========== */}
+                                            {selectedItem.type === 'movies2' ? (
+                                                <div className="space-y-5 pt-2">
+                                                    {/* Chips de metadata */}
+                                                    <div className="flex flex-wrap items-center gap-2">
+                                                        {selectedItem.year && (
+                                                            <span className="bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-[11px] font-bold px-3 py-1 rounded-lg">
+                                                                📅 {selectedItem.year}
+                                                            </span>
+                                                        )}
+                                                        {selectedItem.runtime && (
+                                                            <span className="bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-[11px] font-bold px-3 py-1 rounded-lg">
+                                                                ⏱ {selectedItem.runtime}
+                                                            </span>
+                                                        )}
+                                                        {selectedItem.rating && (
+                                                            <span className="bg-amber-950/80 border border-amber-500/40 text-amber-300 text-[11px] font-bold px-3 py-1 rounded-lg">
+                                                                ⭐ {selectedItem.rating} / 10
+                                                            </span>
+                                                        )}
+                                                        {selectedItem.clasificacion && (
+                                                            <span className="bg-red-950/80 border border-red-500/40 text-red-300 text-[11px] font-bold px-3 py-1 rounded-lg">
+                                                                🔞 {selectedItem.clasificacion}
+                                                            </span>
+                                                        )}
+                                                        {selectedItem.qualityTag && (
+                                                            <span className="bg-teal-950/80 border border-teal-500/40 text-teal-300 text-[11px] font-bold px-3 py-1 rounded-lg uppercase">
+                                                                {selectedItem.qualityTag}
+                                                            </span>
+                                                        )}
+                                                    </div>
+
+                                                    {/* Géneros */}
+                                                    {selectedItem.generosTexto && (
+                                                        <div className="flex flex-wrap gap-2">
+                                                            {selectedItem.generosTexto.split(',').map((g, gIdx) => (
+                                                                <span key={gIdx} className="bg-slate-800/60 text-slate-200 text-[11px] font-bold px-3 py-1 rounded-full border border-slate-700">
+                                                                    {g.trim()}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                    )}
+
+                                                    {/* Tagline */}
+                                                    {selectedItem.tagline && (
+                                                        <p className="text-cyan-300 italic text-xs sm:text-sm pl-3 border-l-2 border-cyan-500">
+                                                            "{selectedItem.tagline}"
+                                                        </p>
+                                                    )}
+
+                                                    {/* Sinopsis */}
+                                                    <div>
+                                                        <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
+                                                            <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
+                                                        </h3>
+                                                        <p className="text-slate-100 text-sm sm:text-base md:text-lg leading-relaxed bg-black/50 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-inner font-medium">
+                                                            {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
+                                                        </p>
+                                                    </div>
+
+                                                    {/* Director y guionistas */}
+                                                    {(selectedItem.director || selectedItem.guionistas) && (
+                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                            {selectedItem.director && (
+                                                                <div className="bg-black/50 p-4 rounded-2xl border border-slate-800">
+                                                                    <p className="text-[10px] uppercase text-cyan-400 font-black tracking-wider mb-1">🎬 Director</p>
+                                                                    <p className="text-white text-sm font-bold">{selectedItem.director}</p>
+                                                                </div>
+                                                            )}
+                                                            {selectedItem.guionistas && (
+                                                                <div className="bg-black/50 p-4 rounded-2xl border border-slate-800">
+                                                                    <p className="text-[10px] uppercase text-cyan-400 font-black tracking-wider mb-1">✍️ Guion</p>
+                                                                    <p className="text-white text-sm font-bold">{selectedItem.guionistas}</p>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    )}
+
+                                                    {/* Reparto con fotos */}
+                                                    {selectedItem.reparto && selectedItem.reparto.length > 0 && (
+                                                        <div>
+                                                            <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-3 flex items-center gap-2">
+                                                                <span className="w-2 h-2 rounded-full bg-cyan-400"></span> REPARTO PRINCIPAL
+                                                            </h3>
+                                                            <div className="flex gap-4 overflow-x-auto pb-3 custom-scrollbar">
+                                                                {selectedItem.reparto.map((actor, aIdx) => (
+                                                                    <div key={aIdx} className="text-center shrink-0 w-20">
+                                                                        <div className="w-20 h-20 rounded-full overflow-hidden bg-slate-800 border-2 border-cyan-500/40 mx-auto shadow-lg">
+                                                                            {actor.foto ? (
+                                                                                <img
+                                                                                    src={actor.foto}
+                                                                                    alt={actor.nombre}
+                                                                                    className="w-full h-full object-cover"
+                                                                                    onError={(e) => { e.target.style.display = 'none'; }}
+                                                                                    referrerPolicy="no-referrer"
+                                                                                />
+                                                                            ) : (
+                                                                                <div className="w-full h-full flex items-center justify-center text-slate-500 text-xl">👤</div>
+                                                                            )}
+                                                                        </div>
+                                                                        <p className="text-[11px] font-bold text-white mt-2 leading-tight line-clamp-2">{actor.nombre}</p>
+                                                                        {actor.personaje && (
+                                                                            <p className="text-[9px] text-slate-400 mt-0.5 leading-tight line-clamp-2 italic">{actor.personaje}</p>
+                                                                        )}
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
+
+                                                    {/* País y productoras */}
+                                                    {(selectedItem.pais || selectedItem.productoras) && (
+                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                                                            {selectedItem.pais && (
+                                                                <div className="bg-black/50 p-4 rounded-2xl border border-slate-800">
+                                                                    <p className="text-[10px] uppercase text-cyan-400 font-black tracking-wider mb-1">🌎 País</p>
+                                                                    <p className="text-white text-sm font-bold">{selectedItem.pais}</p>
+                                                                </div>
+                                                            )}
+                                                            {selectedItem.productoras && (
+                                                                <div className="bg-black/50 p-4 rounded-2xl border border-slate-800">
+                                                                    <p className="text-[10px] uppercase text-cyan-400 font-black tracking-wider mb-1">🏢 Productoras</p>
+                                                                    <p className="text-white text-sm font-bold">{selectedItem.productoras}</p>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                    )}
+
+                                                    {/* Botón de Tráiler */}
+                                                    {selectedItem.trailerUrl && (
+                                                        <a
+                                                            href={selectedItem.trailerUrl}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-600 to-red-500 hover:brightness-110 text-white px-5 py-3 rounded-xl font-bold text-xs shadow-[0_0_20px_rgba(244,63,94,0.4)] transition-all"
+                                                        >
+                                                            🎬 Ver Tráiler Oficial
+                                                        </a>
+                                                    )}
+
+                                                    {/* Películas similares */}
+                                                    {selectedItem.similares && selectedItem.similares.length > 0 && (
+                                                        <div className="pt-4">
+                                                            <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-3 flex items-center gap-2">
+                                                                <span className="w-2 h-2 rounded-full bg-cyan-400"></span> TAMBIÉN TE PUEDE GUSTAR
+                                                            </h3>
+                                                            <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+                                                                {selectedItem.similares.map((sim, sIdx) => (
+                                                                    <div
+                                                                        key={sIdx}
+                                                                        className="aspect-[2/3] rounded-xl overflow-hidden border border-slate-800 bg-black cursor-pointer hover:border-cyan-500 transition-all group"
+                                                                        onClick={() => {
+                                                                            setSearch(sim.titulo);
+                                                                            setSelectedItem(null);
+                                                                            setActiveTab('movies2');
+                                                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                                        }}
+                                                                    >
+                                                                        {sim.poster ? (
+                                                                            <img
+                                                                                src={sim.poster}
+                                                                                alt={sim.titulo}
+                                                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                                                                referrerPolicy="no-referrer"
+                                                                            />
+                                                                        ) : (
+                                                                            <div className="w-full h-full flex items-center justify-center text-slate-500 text-[10px] p-2 text-center">{sim.titulo}</div>
+                                                                        )}
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            ) : (
+                                                /* Ficha normal para el resto del catálogo */
+                                                <div className="pt-2">
+                                                    <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
+                                                        <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
+                                                    </h3>
+                                                    <p className="text-slate-100 text-sm sm:text-base md:text-lg leading-relaxed bg-black/50 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-inner font-medium">
+                                                        {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
+                                                    </p>
+                                                </div>
+                                            )}
                                         </div>
 
                                         {((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
