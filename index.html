@@ -300,12 +300,6 @@
             );
         };
 
-        const handleImageError = (e, title, type = 'poster') => {
-            if (!e || !e.target) return;
-            e.target.onerror = null;
-            e.target.src = generatePlaceholder(title, type);
-        };
-
         const DEFAULT_RADIO_STATIONS = [
             { id: 'cr-discofunk', title: 'B4B Disco Funk', group: 'Variedad', image: 'https://placehold.co/300x300/0f172a/ffffff?text=Disco+Funk', url: 'https://icecasthd.teletica.com/teleticaradio' },
             { id: 'cr-teletica', title: 'Teletica Radio: 91.5 FM', group: 'Variedad', image: 'https://placehold.co/300x300/0f172a/ffffff?text=Teletica+91.5', url: 'https://icecasthd.teletica.com/teleticaradio' },
@@ -326,46 +320,10 @@
         ];
 
         const FALLBACK_NETFLIX_TUDUM = [
-            {
-                title: "Stranger Things 5: El Desenlace",
-                releaseDate: "Verano 2026",
-                genre: "Ciencia Ficción / Terror",
-                synopsis: "La batalla final por Hawkins ha comenzado. El grupo se une para enfrentar la amenaza definitiva del Upside Down.",
-                image: "https://placehold.co/300x450/e50914/ffffff?text=Stranger+Things+5",
-                trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                availability: "Costa Rica (Disponible globalmente)",
-                score: "9.8 / 10"
-            },
-            {
-                title: "The Electric State",
-                releaseDate: "Próximamente 2026",
-                genre: "Sci-Fi / Aventura",
-                synopsis: "En un futuro retrofuturista, una adolescente huérfana viaja por el oeste americano con un robot dulce pero misterioso.",
-                image: "https://placehold.co/300x450/111827/ffffff?text=The+Electric+State",
-                trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                availability: "Costa Rica (Estreno en Netflix)",
-                score: "9.2 / 10"
-            },
-            {
-                title: "El Agente Nocturno: Temporada 2",
-                releaseDate: "Otoño 2026",
-                genre: "Acción / Suspenso",
-                synopsis: "Peter Sutherland regresa con una nueva conspiración de alto nivel que pondrá en riesgo la seguridad nacional de EE.UU.",
-                image: "https://placehold.co/300x450/0f172a/ffffff?text=The+Night+Agent+S2",
-                trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                availability: "Costa Rica (Estreno simultáneo)",
-                score: "9.4 / 10"
-            },
-            {
-                title: "One Piece: Temporada 2",
-                releaseDate: "Invierno 2026",
-                genre: "Fantasía / Acción",
-                synopsis: "Monkey D. Luffy y su tripulación de los Sombrero de Paja se adentran en la Grand Line en busca del tesoro legendario.",
-                image: "https://placehold.co/300x450/b91c1c/ffffff?text=One+Piece+S2",
-                trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                availability: "Costa Rica (Estreno en alta definición)",
-                score: "9.6 / 10"
-            }
+            { title: "Stranger Things 5: El Desenlace", releaseDate: "Verano 2026", genre: "Ciencia Ficción / Terror", synopsis: "La batalla final por Hawkins ha comenzado. El grupo se une para enfrentar la amenaza definitiva del Upside Down.", image: "https://placehold.co/300x450/e50914/ffffff?text=Stranger+Things+5", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Disponible globalmente)", score: "9.8 / 10" },
+            { title: "The Electric State", releaseDate: "Próximamente 2026", genre: "Sci-Fi / Aventura", synopsis: "En un futuro retrofuturista, una adolescente huérfana viaja por el oeste americano con un robot dulce pero misterioso.", image: "https://placehold.co/300x450/111827/ffffff?text=The+Electric+State", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Estreno en Netflix)", score: "9.2 / 10" },
+            { title: "El Agente Nocturno: Temporada 2", releaseDate: "Otoño 2026", genre: "Acción / Suspenso", synopsis: "Peter Sutherland regresa con una nueva conspiración de alto nivel que pondrá en riesgo la seguridad nacional de EE.UU.", image: "https://placehold.co/300x450/0f172a/ffffff?text=The+Night+Agent+S2", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Estreno simultáneo)", score: "9.4 / 10" },
+            { title: "One Piece: Temporada 2", releaseDate: "Invierno 2026", genre: "Fantasía / Acción", synopsis: "Monkey D. Luffy y su tripulación de los Sombrero de Paja se adentran en la Grand Line en busca del tesoro legendario.", image: "https://placehold.co/300x450/b91c1c/ffffff?text=One+Piece+S2", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Estreno en alta definición)", score: "9.6 / 10" }
         ];
 
         const convertUrl = (url) => {
@@ -540,35 +498,11 @@
                 window.history.replaceState({ appState: 'main', activeTab }, '');
 
                 const handlePopState = (event) => {
-                    if (showQrModal) {
-                        setShowQrModal(false);
-                        window.history.pushState({ appState: 'main', activeTab }, '');
-                        return;
-                    }
-                    if (showSmartViewModal) {
-                        setShowSmartViewModal(false);
-                        window.history.pushState({ appState: 'main', activeTab }, '');
-                        return;
-                    }
-                    if (showDownloadPinModal) {
-                        setShowDownloadPinModal(false);
-                        window.history.pushState({ appState: 'main', activeTab }, '');
-                        return;
-                    }
-
-                    if (selectedItem) {
-                        setSelectedItem(null);
-                        setIsLocked(false);
-                        window.history.pushState({ appState: 'main', activeTab }, '');
-                        return;
-                    }
-
-                    if (activeTab !== 'home') {
-                        setActiveTab('home');
-                        setSearch('');
-                        window.history.pushState({ appState: 'main', activeTab: 'home' }, '');
-                        return;
-                    }
+                    if (showQrModal) { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
+                    if (showSmartViewModal) { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
+                    if (showDownloadPinModal) { setShowDownloadPinModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
+                    if (selectedItem) { setSelectedItem(null); setIsLocked(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
+                    if (activeTab !== 'home') { setActiveTab('home'); setSearch(''); window.history.pushState({ appState: 'main', activeTab: 'home' }, ''); return; }
                 };
 
                 window.addEventListener('popstate', handlePopState);
@@ -590,7 +524,7 @@
                             fetchSmart(URLS.TUDUM, RAW_URLS.TUDUM, true)
                         ]);
 
-                        // ========== CANALES DE TV ==========
+                        // CANALES TV
                         let tvChannels = [];
                         if (dataTV) tvChannels = parseM3U(dataTV);
                         if (tvChannels.length === 0) {
@@ -601,33 +535,23 @@
                             ];
                         }
 
-                        // ========== PELÍCULAS ==========
+                        // PELÍCULAS
                         let moviesList = [];
                         if (dataMovies) {
                             const rawMovies = Array.isArray(dataMovies) ? dataMovies : (dataMovies.peliculas || dataMovies.content || []);
                             moviesList = rawMovies.map((m, idx) => {
                                 const title = m.titulo || m.title || m.name || `Película ${idx + 1}`;
                                 const imgUrl = extractImageUrl(m);
-                                return { 
-                                    ...m, 
-                                    id: `mov-1-${idx}`, 
-                                    type: 'movies', 
-                                    title: title, 
-                                    description: m.descripcion || m.sinopsis || m.plot || '',
-                                    image: imgUrl || generatePlaceholder(title, 'poster'),
-                                    url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
-                                    rawUrl: m.urlDrive || m.url || m.urlOkRu
-                                };
+                                return { ...m, id: `mov-1-${idx}`, type: 'movies', title, description: m.descripcion || m.sinopsis || m.plot || '', image: imgUrl || generatePlaceholder(title, 'poster'), url: convertUrl(m.urlDrive || m.url || m.urlOkRu), rawUrl: m.urlDrive || m.url || m.urlOkRu };
                             });
                         }
                         if (moviesList.length === 0) {
                             moviesList = [
-                                { id: 'm-1', type: 'movies', title: 'STARSKY & HUTCH', description: 'Acción policial clásica.', image: 'https://placehold.co/300x450/0f172a/06b6d4?text=Starsky+Hutch', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-                                { id: 'm-2', type: 'movies', title: 'La Novicia Rebelde (1965)', description: 'Clásico musical galardonado.', image: 'https://placehold.co/300x450/0f172a/06b6d4?text=La+Novicia', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+                                { id: 'm-1', type: 'movies', title: 'STARSKY & HUTCH', description: 'Acción policial clásica.', image: 'https://placehold.co/300x450/0f172a/06b6d4?text=Starsky+Hutch', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
                             ];
                         }
 
-                        // ========== PELÍCULAS 2 (ESTRENOS) — CON FICHA COMPLETA ==========
+                        // ESTRENOS 2026 (movies2) — CONSERVA TODOS LOS CAMPOS ENRIQUECIDOS
                         let movies2List = [];
                         if (dataMovies2) {
                             const rawMovies2 = Array.isArray(dataMovies2) ? dataMovies2 : (dataMovies2.peliculas || dataMovies2.content || []);
@@ -635,10 +559,10 @@
                                 const title = m.titulo || m.title || m.name || `Estreno ${idx + 1}`;
                                 const imgUrl = extractImageUrl(m);
                                 return { 
-                                    ...m,   // ✅ Conserva TODOS los campos enriquecidos (reparto, director, rating, runtime, genres, generosTexto, trailerUrl, similares, backdrop, etc.)
+                                    ...m,
                                     id: `mov-2-${idx}`, 
                                     type: 'movies2', 
-                                    title: title, 
+                                    title, 
                                     description: m.descripcion || m.sinopsis || m.plot || '',
                                     image: imgUrl || generatePlaceholder(title, 'poster'),
                                     url: convertUrl(m.urlDrive || m.url || m.urlOkRu),
@@ -647,71 +571,29 @@
                             });
                         }
 
-                        // ========== SERIES ==========
+                        // SERIES
                         let seriesList = [];
                         if (dataSeries) {
                             const rawSeries = Array.isArray(dataSeries) ? dataSeries : (dataSeries.series || []);
                             seriesList = rawSeries.map((s, idx) => {
                                 const title = s.tituloSerie || s.titulo || s.title || s.name || `Serie ${idx + 1}`;
                                 const imgUrl = extractImageUrl(s);
-                                return {
-                                    ...s,
-                                    id: `serie-${idx}`,
-                                    type: 'series',
-                                    title: title,
-                                    description: s.descripcion || s.sinopsis || '',
-                                    image: imgUrl || generatePlaceholder(title, 'poster'),
-                                    seasons: (s.temporadas || []).map((t, tIdx) => ({
-                                        seasonNumber: t.numeroTemporada || (tIdx + 1),
-                                        episodes: (t.episodios || []).map((ep, eIdx) => ({
-                                            id: `ep-${idx}-${tIdx}-${eIdx}`,
-                                            title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`,
-                                            url: convertUrl(ep.urlDrive || ep.url),
-                                            rawUrl: ep.urlDrive || ep.url
-                                        }))
-                                    }))
-                                };
+                                return { ...s, id: `serie-${idx}`, type: 'series', title, description: s.descripcion || s.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), seasons: (s.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: (t.episodios || []).map((ep, eIdx) => ({ id: `ep-${idx}-${tIdx}-${eIdx}`, title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })) })) };
                             });
                         }
-                        if (seriesList.length === 0) {
-                            seriesList = [
-                                {
-                                    id: 's-1', type: 'series', title: 'La Isla de Gilligan', description: 'Comedia de situación clásica.', image: 'https://placehold.co/300x450/0f172a/06b6d4?text=Gilligans+Island',
-                                    seasons: [{ seasonNumber: 1, episodes: [{ id: 'ep-1', title: 'Episodio 1: Naufragio', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }] }]
-                                }
-                            ];
-                        }
 
-                        // ========== ANIMADOS ==========
+                        // ANIMADOS
                         let animadosList = [];
                         if (dataAnimados) {
                             const rawAnimados = Array.isArray(dataAnimados) ? dataAnimados : (dataAnimados.animados || []);
                             animadosList = rawAnimados.map((a, idx) => {
                                 const title = a.titulo || a.tituloSerie || a.title || a.name || `Animado ${idx + 1}`;
                                 const imgUrl = extractImageUrl(a);
-                                return {
-                                    ...a,
-                                    id: `anim-${idx}`,
-                                    type: 'animados',
-                                    title: title,
-                                    description: a.descripcion || a.sinopsis || '',
-                                    image: imgUrl || generatePlaceholder(title, 'poster'),
-                                    url: convertUrl(a.urlDrive || a.url),
-                                    rawUrl: a.urlDrive || a.url,
-                                    seasons: (a.temporadas || []).map((t, tIdx) => ({
-                                        seasonNumber: t.numeroTemporada || (tIdx + 1),
-                                        episodes: (t.episodios || []).map((ep, eIdx) => ({
-                                            id: `ep-anim-${idx}-${tIdx}-${eIdx}`,
-                                            title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`,
-                                            url: convertUrl(ep.urlDrive || ep.url),
-                                            rawUrl: ep.urlDrive || ep.url
-                                        }))
-                                    }))
-                                };
+                                return { ...a, id: `anim-${idx}`, type: 'animados', title, description: a.descripcion || a.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), url: convertUrl(a.urlDrive || a.url), rawUrl: a.urlDrive || a.url, seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: (t.episodios || []).map((ep, eIdx) => ({ id: `ep-anim-${idx}-${tIdx}-${eIdx}`, title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })) })) };
                             });
                         }
 
-                        // ========== RADIOS ==========
+                        // RADIOS
                         let loadedStations = DEFAULT_RADIO_STATIONS;
                         if (dataRadios) {
                             const list = Array.isArray(dataRadios) ? dataRadios : (dataRadios.radios || dataRadios.emisoras || []);
@@ -719,22 +601,14 @@
                                 loadedStations = list.map((r, idx) => {
                                     const title = r.titulo || r.title || r.name || `Emisora ${idx + 1}`;
                                     const imgUrl = extractImageUrl(r);
-                                    return {
-                                        ...r,
-                                        id: r.id || `radio-fetched-${idx}-${title.toLowerCase().replace(/[^a-z0-9]/g, '')}`,
-                                        title: title,
-                                        group: r.group || r.genero || r.categoria || 'Variedad',
-                                        image: imgUrl || generatePlaceholder(title, 'tv'),
-                                        url: r.urlDrive || r.url || r.stream || r.urlStream || '',
-                                        type: 'radio'
-                                    };
+                                    return { ...r, id: r.id || `radio-fetched-${idx}-${title.toLowerCase().replace(/[^a-z0-9]/g, '')}`, title, group: r.group || r.genero || r.categoria || 'Variedad', image: imgUrl || generatePlaceholder(title, 'tv'), url: r.urlDrive || r.url || r.stream || r.urlStream || '', type: 'radio' };
                                 });
                             }
                         }
                         loadedStations = loadedStations.map(s => ({ ...s, type: 'radio' }));
                         setRadioStations(loadedStations);
 
-                        // ========== TUDUM ==========
+                        // TUDUM
                         let tudumList = FALLBACK_NETFLIX_TUDUM;
                         if (dataTudum) {
                             const tList = Array.isArray(dataTudum) ? dataTudum : (dataTudum.tudum || dataTudum.estrenos || []);
@@ -742,25 +616,13 @@
                                 tudumList = tList.map(t => {
                                     const title = t.titulo || t.title || 'Estreno';
                                     const imgUrl = extractImageUrl(t);
-                                    return {
-                                        title: title,
-                                        releaseDate: t.fechaEstreno || t.releaseDate || 'Próximamente',
-                                        genre: t.genero || t.genre || 'Estreno',
-                                        synopsis: t.sinopsis || t.descripcion || t.synopsis || '',
-                                        image: imgUrl || generatePlaceholder(title, 'poster'),
-                                        trailerUrl: convertUrl(t.urlTrailer || t.trailerUrl || t.url) || 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-                                        availability: t.disponibilidad || t.availability || 'Costa Rica',
-                                        score: t.puntuacion || t.score || '9.0 / 10'
-                                    };
+                                    return { title, releaseDate: t.fechaEstreno || t.releaseDate || 'Próximamente', genre: t.genero || t.genre || 'Estreno', synopsis: t.sinopsis || t.descripcion || t.synopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), trailerUrl: convertUrl(t.urlTrailer || t.trailerUrl || t.url) || 'https://www.youtube.com/embed/dQw4w9WgXcQ', availability: t.disponibilidad || t.availability || 'Costa Rica', score: t.puntuacion || t.score || '9.0 / 10' };
                                 });
                             }
                         }
 
                         const defaultStation = loadedStations.find(s => s.title.toLowerCase().includes('disco funk')) || loadedStations[0];
-                        if (defaultStation) {
-                            setCurrentRadioStation(defaultStation);
-                            setIsRadioPlaying(true);
-                        }
+                        if (defaultStation) { setCurrentRadioStation(defaultStation); setIsRadioPlaying(true); }
 
                         setContent({ tv: tvChannels, movies: moviesList, movies2: movies2List, series: seriesList, animados: animadosList, tudum: tudumList });
                     } catch (err) {
@@ -772,19 +634,14 @@
 
                 const storedFavs = safeStorage.getItem('boxplay_favs'); 
                 if (storedFavs) { try { setFavorites(JSON.parse(storedFavs)); } catch(e) {} }
-
                 const storedTvFavs = safeStorage.getItem('boxplay_tv_favs');
                 if (storedTvFavs) { try { setTvFavorites(JSON.parse(storedTvFavs)); } catch(e) {} }
-
                 const storedRadioFavs = safeStorage.getItem('boxplay_radio_favs');
                 if (storedRadioFavs) { try { setRadioFavorites(JSON.parse(storedRadioFavs)); } catch(e) {} }
-
                 const storedCW = safeStorage.getItem('boxplay_continue_watching');
                 if (storedCW) { try { setContinueWatching(JSON.parse(storedCW)); } catch(e) {} }
-
                 const storedWatched = safeStorage.getItem('boxplay_watched_eps');
                 if (storedWatched) { try { setWatchedEpisodes(JSON.parse(storedWatched)); } catch(e) {} }
-
                 const storedSearches = safeStorage.getItem('boxplay_recent_searches');
                 if (storedSearches) { try { setRecentSearches(JSON.parse(storedSearches)); } catch(e) {} }
 
@@ -794,9 +651,7 @@
             useEffect(() => {
                 let tvInterval;
                 if (activeTab === 'tv' && selectedItem?.type === 'tv') {
-                    tvInterval = setInterval(() => {
-                        setTvRefreshTrigger(prev => prev + 1);
-                    }, 480000);
+                    tvInterval = setInterval(() => { setTvRefreshTrigger(prev => prev + 1); }, 480000);
                 }
                 return () => clearInterval(tvInterval);
             }, [activeTab, selectedItem]);
@@ -804,16 +659,8 @@
             useEffect(() => {
                 if (activeTab === 'tv' && content.tv.length > 0) {
                     if (!selectedItem || selectedItem.type !== 'tv') {
-                        const telerredChannel = content.tv.find(c => 
-                            c.title.toLowerCase().includes('telerred') || 
-                            c.title.toLowerCase().includes('tele red') ||
-                            c.title.toLowerCase().includes('tele-red')
-                        ) || content.tv[0];
-                        
-                        if (telerredChannel) {
-                            setSelectedItem(telerredChannel);
-                            setIsLocked(false);
-                        }
+                        const telerredChannel = content.tv.find(c => c.title.toLowerCase().includes('telerred') || c.title.toLowerCase().includes('tele red') || c.title.toLowerCase().includes('tele-red')) || content.tv[0];
+                        if (telerredChannel) { setSelectedItem(telerredChannel); setIsLocked(false); }
                     }
                 }
             }, [activeTab, content.tv]);
@@ -823,88 +670,42 @@
                     const audio = new Audio();
                     audio.crossOrigin = "anonymous";
                     audio.preload = "none";
-                    
-                    audio.onerror = () => {
-                        setIsRadioPlaying(false);
-                        setStreamError(true);
-                        setIsLoadingRadio(false);
-                    };
-                    
+                    audio.onerror = () => { setIsRadioPlaying(false); setStreamError(true); setIsLoadingRadio(false); };
                     audio.onwaiting = () => setIsLoadingRadio(true);
-                    audio.onplaying = () => {
-                        setIsLoadingRadio(false);
-                        setStreamError(false);
-                    };
-                    audio.oncanplay = () => {
-                        setIsLoadingRadio(false);
-                        setStreamError(false);
-                    };
+                    audio.onplaying = () => { setIsLoadingRadio(false); setStreamError(false); };
+                    audio.oncanplay = () => { setIsLoadingRadio(false); setStreamError(false); };
                     audioRef.current = audio;
                 }
-
                 const audio = audioRef.current;
-                if (audio) {
-                    audio.volume = radioVolume;
-                }
+                if (audio) audio.volume = radioVolume;
 
                 if (currentRadioStation && activeTab === 'radio') {
-                    const playAudio = () => {
-                        try {
-                            const playPromise = audio.play();
-                            if (playPromise !== undefined) {
-                                playPromise.catch((e) => {
-                                    setIsRadioPlaying(false);
-                                    setStreamError(true);
-                                    setIsLoadingRadio(false);
-                                });
-                            }
-                        } catch (e) {}
-                    };
-
+                    const playAudio = () => { try { const p = audio.play(); if (p !== undefined) p.catch(() => { setIsRadioPlaying(false); setStreamError(true); setIsLoadingRadio(false); }); } catch (e) {} };
                     const targetUrl = currentRadioStation.url || currentRadioStation.stream || '';
-
                     if (audio.dataset.currentUrl !== targetUrl) {
-                        setIsLoadingRadio(true);
-                        setStreamError(false);
-                        audio.dataset.currentUrl = targetUrl;
-                        
-                        if (hlsRef.current) {
-                            hlsRef.current.destroy();
-                            hlsRef.current = null;
-                        }
-
+                        setIsLoadingRadio(true); setStreamError(false); audio.dataset.currentUrl = targetUrl;
+                        if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; }
                         if (targetUrl.includes('.m3u8') && typeof Hls !== 'undefined' && Hls.isSupported()) {
                             const hls = new Hls({ enableWorker: true, lowLatencyMode: true });
                             hlsRef.current = hls;
                             hls.loadSource(targetUrl);
                             hls.attachMedia(audio);
-                            hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                                if (isRadioPlaying) playAudio();
-                            });
-                            hls.on(Hls.Events.ERROR, function (event, data) {
-                                if (data.fatal) {
-                                    setIsRadioPlaying(false);
-                                    setStreamError(true);
-                                    setIsLoadingRadio(false);
-                                }
-                            });
+                            hls.on(Hls.Events.MANIFEST_PARSED, () => { if (isRadioPlaying) playAudio(); });
+                            hls.on(Hls.Events.ERROR, function (event, data) { if (data.fatal) { setIsRadioPlaying(false); setStreamError(true); setIsLoadingRadio(false); } });
                         } else {
                             audio.src = targetUrl; 
                             audio.load();
                             if (isRadioPlaying) playAudio();
                         }
                     } else {
-                        if (isRadioPlaying) playAudio();
-                        else audio.pause();
+                        if (isRadioPlaying) playAudio(); else audio.pause();
                     }
                 } else if (audioRef.current && activeTab !== 'radio') {
                     audioRef.current.pause();
                 }
             }, [currentRadioStation, isRadioPlaying, activeTab]);
 
-            useEffect(() => {
-                if (audioRef.current) audioRef.current.volume = radioVolume;
-            }, [radioVolume]);
+            useEffect(() => { if (audioRef.current) audioRef.current.volume = radioVolume; }, [radioVolume]);
 
             const recordContinueWatching = (item, episode = null) => {
                 if (item.type === 'tv' || item.type === 'radio') return;
@@ -921,11 +722,8 @@
                 const epId = episode.id || episode.url;
                 const currentWatched = { ...watchedEpisodes };
                 if (!currentWatched[itemId]) currentWatched[itemId] = [];
-                if (isWatched) {
-                    if (!currentWatched[itemId].includes(epId)) currentWatched[itemId].push(epId);
-                } else {
-                    currentWatched[itemId] = currentWatched[itemId].filter(id => id !== epId);
-                }
+                if (isWatched) { if (!currentWatched[itemId].includes(epId)) currentWatched[itemId].push(epId); }
+                else { currentWatched[itemId] = currentWatched[itemId].filter(id => id !== epId); }
                 setWatchedEpisodes(currentWatched);
                 safeStorage.setItem('boxplay_watched_eps', JSON.stringify(currentWatched));
             };
@@ -950,14 +748,7 @@
                             const groupMatch = line.match(/group-title="([^"]*)"/); const group = groupMatch ? groupMatch[1] : 'General';
                             const commaIndex = line.lastIndexOf(',');
                             if (commaIndex !== -1) title = line.substring(commaIndex + 1).trim();
-                            channels.push({ 
-                                id: `tv-${i}`, 
-                                title, 
-                                image: logo || generatePlaceholder(title, 'tv'), 
-                                group, 
-                                url, 
-                                type: 'tv' 
-                            });
+                            channels.push({ id: `tv-${i}`, title, image: logo || generatePlaceholder(title, 'tv'), group, url, type: 'tv' });
                         }
                     }
                 }
@@ -1055,47 +846,30 @@
                 } else if (item.type === 'movies' || item.type === 'movies2') {
                     setSelectedEpisode(null);
                     recordContinueWatching(item, null);
-                } else {
-                    setSelectedEpisode(null);
-                }
+                } else { setSelectedEpisode(null); }
                 if (search.trim()) addRecentSearch(search);
                 window.history.pushState({ appState: 'player', item: item.title }, '');
                 window.scrollTo({ top: 0, behavior: 'smooth' }); 
             };
 
-            const handlePlayRadioStation = (station) => {
-                setCurrentRadioStation(station);
-                setIsRadioPlaying(true);
-                setStreamError(false);
-            };
+            const handlePlayRadioStation = (station) => { setCurrentRadioStation(station); setIsRadioPlaying(true); setStreamError(false); };
 
             const handleTabClick = (tab) => {
-                if (tab.isExternal) {
-                    window.open(tab.url, '_blank');
-                } else {
-                    setActiveTab(tab.id); 
-                    setSearch(''); 
-                    setIsLocked(false);
-                    setShowMobileMoreMenu(false);
+                if (tab.isExternal) { window.open(tab.url, '_blank'); }
+                else {
+                    setActiveTab(tab.id); setSearch(''); setIsLocked(false); setShowMobileMoreMenu(false);
                     window.history.pushState({ appState: 'main', activeTab: tab.id }, '');
                     if (tab.id === 'tv') {
                         if (!selectedItem || selectedItem.type !== 'tv') {
-                            const telerredChannel = content.tv.find(c => 
-                                c.title.toLowerCase().includes('telerred') || 
-                                c.title.toLowerCase().includes('tele red') ||
-                                c.title.toLowerCase().includes('tele-red')
-                            ) || content.tv[0];
+                            const telerredChannel = content.tv.find(c => c.title.toLowerCase().includes('telerred') || c.title.toLowerCase().includes('tele red') || c.title.toLowerCase().includes('tele-red')) || content.tv[0];
                             if (telerredChannel) setSelectedItem(telerredChannel);
                         }
                     } else if (tab.id === 'radio') {
                         if (!currentRadioStation && radioStations.length > 0) {
                             const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
-                            setCurrentRadioStation(def);
-                            setIsRadioPlaying(true);
+                            setCurrentRadioStation(def); setIsRadioPlaying(true);
                         }
-                    } else {
-                        setSelectedItem(null); 
-                    }
+                    } else { setSelectedItem(null); }
                 }
             };
 
@@ -1103,10 +877,7 @@
                 setShowIntro(false); 
                 window.history.pushState({ appState: 'main', activeTab: 'home' }, ''); 
                 const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
-                if (def && !currentRadioStation) {
-                    setCurrentRadioStation(def);
-                    setIsRadioPlaying(true);
-                }
+                if (def && !currentRadioStation) { setCurrentRadioStation(def); setIsRadioPlaying(true); }
             }}/>;
 
             return (
@@ -1115,57 +886,36 @@
                         <div className="flex items-center gap-4 lg:gap-8">
                             <div className="flex items-center gap-2.5 cursor-pointer group" onClick={() => handleTabClick(navTabs[0])}>
                                 <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.4)] group-hover:scale-105 transition-transform flex-shrink-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 fill-white">
-                                        <polygon points="40,30 70,50 40,70"/>
-                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 fill-white"><polygon points="40,30 70,50 40,70"/></svg>
                                 </div>
                                 <span className="font-black text-base sm:text-lg tracking-tight">BOXPLAY<span className="text-cyan-400">TV</span></span>
                             </div>
-
                             <nav className="hidden lg:flex items-center gap-1.5">
                                 {navTabs.slice(0, 9).map(tab => (
-                                    <button 
-                                        key={tab.id} 
-                                        onClick={() => handleTabClick(tab)} 
-                                        className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${activeTab === tab.id && !tab.isExternal ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]' : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'}`}
-                                    >
+                                    <button key={tab.id} onClick={() => handleTabClick(tab)} className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${activeTab === tab.id && !tab.isExternal ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]' : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'}`}>
                                         <Icon name={tab.icon} size={14}/>
                                         <span>{tab.label}</span>
                                     </button>
                                 ))}
                             </nav>
                         </div>
-
                         <div className="flex items-center gap-2 sm:gap-3">
                             <button onClick={() => { setShowSmartViewModal(true); window.history.pushState({ appState: 'smartview-modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Ver en Smart TV">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
                                 <span className="hidden lg:inline">Smart TV</span>
                             </button>
-
                             <button onClick={() => handleTabClick(navTabs.find(t => t.id === 'favorites'))} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
                                 <Icon name="heart" size={16} fill={activeTab === 'favorites' ? '#06b6d4' : 'none'} className="text-cyan-400"/>
                                 <span className="hidden md:inline">Favs</span>
                             </button>
-
                             <button onClick={handleInstallApp} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
                                 <Icon name="download" size={14}/>
                                 <span className="hidden md:inline">Instalar App</span>
                             </button>
-
                             <div className="relative hidden sm:block w-36 lg:w-48">
-                                <input 
-                                    type="text" 
-                                    placeholder="Buscar contenido..." 
-                                    className="w-full bg-[#090d1f] border border-slate-800 rounded-full px-4 py-2 text-xs text-white focus:border-cyan-500 outline-none pl-9 transition-colors placeholder-slate-500 shadow-inner" 
-                                    value={search} 
-                                    onChange={(e) => setSearch(e.target.value)}
-                                    onFocus={() => setIsSearchFocused(true)}
-                                    onBlur={() => setTimeout(() => setIsSearchFocused(false), 250)}
-                                    onKeyDown={(e) => { if (e.key === 'Enter' && search.trim()) { addRecentSearch(search); setIsSearchFocused(false); } }}
-                                />
+                                <input type="text" placeholder="Buscar contenido..." className="w-full bg-[#090d1f] border border-slate-800 rounded-full px-4 py-2 text-xs text-white focus:border-cyan-500 outline-none pl-9 transition-colors placeholder-slate-500 shadow-inner" value={search} onChange={(e) => setSearch(e.target.value)} onFocus={() => setIsSearchFocused(true)} onBlur={() => setTimeout(() => setIsSearchFocused(false), 250)} onKeyDown={(e) => { if (e.key === 'Enter' && search.trim()) { addRecentSearch(search); setIsSearchFocused(false); } }}/>
                                 <Icon className="absolute left-3 top-2.5 text-slate-400" name="search" size={14}/>
                                 {search && <button onClick={() => setSearch('')} className="absolute right-3 top-2.5 text-slate-400 hover:text-white"><Icon name="x" size={14}/></button>}
-
                                 {isSearchFocused && recentSearches.length > 0 && !search && (
                                     <div className="absolute top-full left-0 right-0 mt-2 glass-panel rounded-2xl p-2 shadow-2xl z-50 animate-fade-in">
                                         <div className="flex items-center justify-between px-2.5 py-1 text-[10px] text-cyan-400 font-bold uppercase tracking-wider border-b border-slate-800 mb-1">
@@ -1174,11 +924,7 @@
                                         </div>
                                         <div className="flex flex-col gap-1 max-h-48 overflow-y-auto custom-scrollbar">
                                             {recentSearches.map((term, sIdx) => (
-                                                <div 
-                                                    key={sIdx} 
-                                                    onMouseDown={() => { setSearch(term); addRecentSearch(term); setIsSearchFocused(false); }}
-                                                    className="px-3 py-2 rounded-xl text-xs text-slate-300 hover:bg-cyan-500/20 hover:text-white cursor-pointer transition-colors flex items-center justify-between"
-                                                >
+                                                <div key={sIdx} onMouseDown={() => { setSearch(term); addRecentSearch(term); setIsSearchFocused(false); }} className="px-3 py-2 rounded-xl text-xs text-slate-300 hover:bg-cyan-500/20 hover:text-white cursor-pointer transition-colors flex items-center justify-between">
                                                     <div className="flex items-center gap-2 truncate">
                                                         <Icon name="search" size={12} className="text-slate-500"/>
                                                         <span className="truncate">{term}</span>
@@ -1189,7 +935,6 @@
                                     </div>
                                 )}
                             </div>
-
                             <button onClick={() => { setShowQrModal(true); window.history.pushState({ appState: 'modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-[#090d1f] hover:bg-slate-800 text-cyan-300 border border-slate-800 transition-all hover:scale-105 shadow-md flex items-center gap-1.5" title="Escanear QR">
                                 <Icon name="qr" size={16}/>
                                 <span className="text-xs font-bold hidden lg:inline">Compartir</span>
@@ -1198,14 +943,7 @@
                     </header>
 
                     <div className="lg:hidden fixed bottom-0 w-full max-w-[100vw] glass-panel border-t border-slate-800 z-50 flex py-2 pb-safe px-1 items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.9)]">
-                        {[
-                            { id: 'home', icon: 'search', label: 'Inicio' },
-                            { id: 'movies', icon: 'clapperboard', label: 'Películas' },
-                            { id: 'tv', icon: 'tv', label: 'TV' },
-                            { id: 'radio', icon: 'radio', label: 'Radio' },
-                            { id: 'payments', icon: 'star', label: 'Pagos' },
-                            { id: 'favorites', icon: 'heart', label: 'Favs' }
-                        ].map(tab => (
+                        {[{ id: 'home', icon: 'search', label: 'Inicio' }, { id: 'movies', icon: 'clapperboard', label: 'Películas' }, { id: 'tv', icon: 'tv', label: 'TV' }, { id: 'radio', icon: 'radio', label: 'Radio' }, { id: 'payments', icon: 'star', label: 'Pagos' }, { id: 'favorites', icon: 'heart', label: 'Favs' }].map(tab => (
                             <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-1 py-1 gap-1 transition-all active:scale-95 rounded-xl ${activeTab === tab.id ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-400 hover:text-white'}`}>
                                 <Icon name={tab.icon} size={16}/>
                                 <span className="text-[9px] font-medium tracking-wide">{tab.label}</span>
@@ -1226,19 +964,12 @@
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
                                     {navTabs.slice(3, 11).map(tab => (
-                                        <button 
-                                            key={tab.id}
-                                            onClick={() => handleTabClick(tab)}
-                                            className={`p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id && !tab.isExternal ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}
-                                        >
+                                        <button key={tab.id} onClick={() => handleTabClick(tab)} className={`p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id && !tab.isExternal ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
                                             <Icon name={tab.icon} size={16}/>
                                             <span className="truncate">{tab.label}</span>
                                         </button>
                                     ))}
-                                    <button 
-                                        onClick={() => { setShowSmartViewModal(true); setShowMobileMoreMenu(false); window.history.pushState({ appState: 'smartview-modal' }, ''); }}
-                                        className="p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border bg-cyan-500/20 text-cyan-400 border-cyan-500/40 col-span-2 justify-center"
-                                    >
+                                    <button onClick={() => { setShowSmartViewModal(true); setShowMobileMoreMenu(false); window.history.pushState({ appState: 'smartview-modal' }, ''); }} className="p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border bg-cyan-500/20 text-cyan-400 border-cyan-500/40 col-span-2 justify-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
                                         <span>Smart TV</span>
                                     </button>
@@ -1291,7 +1022,6 @@
                                         <div className="glass-panel p-8 rounded-2xl text-center text-slate-400 text-xs font-medium">No tienes películas o series guardadas en favoritos todavía.</div>
                                     )}
                                 </div>
-
                                 <div className="space-y-4 pt-4">
                                     <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
                                         <div className="p-2.5 bg-teal-500/15 rounded-xl text-teal-400 border border-teal-500/30"><Icon fill="currentColor" name="tv" size={22}/></div>
@@ -1307,7 +1037,6 @@
                                         <div className="glass-panel p-8 rounded-2xl text-center text-slate-400 text-xs font-medium">No tienes canales de TV guardados en favoritos todavía.</div>
                                     )}
                                 </div>
-
                                 <div className="space-y-4 pt-4">
                                     <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
                                         <div className="p-2.5 bg-blue-500/15 rounded-xl text-blue-400 border border-blue-500/30"><Icon fill="currentColor" name="radio" size={22}/></div>
@@ -1392,14 +1121,7 @@
                                     <div className="w-full aspect-video lg:aspect-auto lg:flex-1 relative flex items-center justify-center bg-black overflow-hidden video-container-fix">
                                         {selectedItem && selectedItem.type === 'tv' ? (
                                             <div className="w-full h-full relative flex items-center justify-center overflow-hidden bg-black video-container-fix">
-                                                <iframe 
-                                                    key={tvRefreshTrigger} 
-                                                    src={selectedItem.url} 
-                                                    className="w-full h-full border-0 absolute inset-0 object-fill" 
-                                                    style={{ width: '100%', height: '100%', pointerEvents: 'auto' }}
-                                                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture" 
-                                                    allowFullScreen
-                                                ></iframe>
+                                                <iframe key={tvRefreshTrigger} src={selectedItem.url} className="w-full h-full border-0 absolute inset-0 object-fill" style={{ width: '100%', height: '100%', pointerEvents: 'auto' }} allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen></iframe>
                                             </div>
                                         ) : (
                                             <div className="flex flex-col items-center justify-center p-6 text-center max-w-sm space-y-3 animate-fade-in">
@@ -1460,13 +1182,7 @@
                                         <div className="lg:col-span-2 space-y-6">
                                             <div className="flex items-start gap-4 sm:gap-6">
                                                 <div className="w-28 sm:w-36 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black">
-                                                    <RobustImage
-                                                        src={extractImageUrl(selectedItem)}
-                                                        alt={selectedItem.titulo || selectedItem.title}
-                                                        title={selectedItem.title || selectedItem.titulo}
-                                                        type="poster"
-                                                        className="w-full h-full object-cover"
-                                                    />
+                                                    <RobustImage src={extractImageUrl(selectedItem)} alt={selectedItem.titulo || selectedItem.title} title={selectedItem.title || selectedItem.titulo} type="poster" className="w-full h-full object-cover" />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <div className="flex items-start justify-between gap-4">
@@ -1478,19 +1194,7 @@
                                                         </div>
                                                         <div className="flex items-center gap-2">
                                                             {((selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url || '').includes('drive.google.com')) && (
-                                                                <button 
-                                                                    onClick={() => {
-                                                                        const targetUrl = selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url;
-                                                                        const downloadLink = getDriveDownloadUrl(targetUrl);
-                                                                        setPendingDownloadUrl(downloadLink);
-                                                                        setDownloadPinInput('');
-                                                                        setDownloadPinError(false);
-                                                                        setShowDownloadPinModal(true);
-                                                                        window.history.pushState({ appState: 'download-modal' }, '');
-                                                                    }}
-                                                                    className="p-3 glass-panel rounded-2xl hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 transition-colors shadow-2xl flex items-center gap-2 text-xs font-bold"
-                                                                    title="Descargar Película"
-                                                                >
+                                                                <button onClick={() => { const targetUrl = selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url; const downloadLink = getDriveDownloadUrl(targetUrl); setPendingDownloadUrl(downloadLink); setDownloadPinInput(''); setDownloadPinError(false); setShowDownloadPinModal(true); window.history.pushState({ appState: 'download-modal' }, ''); }} className="p-3 glass-panel rounded-2xl hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 transition-colors shadow-2xl flex items-center gap-2 text-xs font-bold" title="Descargar Película">
                                                                     <Icon name="download" size={18}/>
                                                                     <span className="hidden sm:inline">Descargar</span>
                                                                 </button>
@@ -1506,54 +1210,26 @@
                                             {/* ========== FICHA COMPLETA — SOLO ESTRENOS 2026 ========== */}
                                             {selectedItem.type === 'movies2' ? (
                                                 <div className="space-y-5 pt-2">
-                                                    {/* Chips de metadata */}
                                                     <div className="flex flex-wrap items-center gap-2">
-                                                        {selectedItem.year && (
-                                                            <span className="bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-[11px] font-bold px-3 py-1 rounded-lg">
-                                                                📅 {selectedItem.year}
-                                                            </span>
-                                                        )}
-                                                        {selectedItem.runtime && (
-                                                            <span className="bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-[11px] font-bold px-3 py-1 rounded-lg">
-                                                                ⏱ {selectedItem.runtime}
-                                                            </span>
-                                                        )}
-                                                        {selectedItem.rating && (
-                                                            <span className="bg-amber-950/80 border border-amber-500/40 text-amber-300 text-[11px] font-bold px-3 py-1 rounded-lg">
-                                                                ⭐ {selectedItem.rating} / 10
-                                                            </span>
-                                                        )}
-                                                        {selectedItem.clasificacion && (
-                                                            <span className="bg-red-950/80 border border-red-500/40 text-red-300 text-[11px] font-bold px-3 py-1 rounded-lg">
-                                                                🔞 {selectedItem.clasificacion}
-                                                            </span>
-                                                        )}
-                                                        {selectedItem.qualityTag && (
-                                                            <span className="bg-teal-950/80 border border-teal-500/40 text-teal-300 text-[11px] font-bold px-3 py-1 rounded-lg uppercase">
-                                                                {selectedItem.qualityTag}
-                                                            </span>
-                                                        )}
+                                                        {selectedItem.year && (<span className="bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-[11px] font-bold px-3 py-1 rounded-lg">📅 {selectedItem.year}</span>)}
+                                                        {selectedItem.runtime && (<span className="bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-[11px] font-bold px-3 py-1 rounded-lg">⏱ {selectedItem.runtime}</span>)}
+                                                        {selectedItem.rating && (<span className="bg-amber-950/80 border border-amber-500/40 text-amber-300 text-[11px] font-bold px-3 py-1 rounded-lg">⭐ {selectedItem.rating} / 10</span>)}
+                                                        {selectedItem.clasificacion && (<span className="bg-red-950/80 border border-red-500/40 text-red-300 text-[11px] font-bold px-3 py-1 rounded-lg">🔞 {selectedItem.clasificacion}</span>)}
+                                                        {selectedItem.qualityTag && (<span className="bg-teal-950/80 border border-teal-500/40 text-teal-300 text-[11px] font-bold px-3 py-1 rounded-lg uppercase">{selectedItem.qualityTag}</span>)}
                                                     </div>
 
-                                                    {/* Géneros */}
                                                     {selectedItem.generosTexto && (
                                                         <div className="flex flex-wrap gap-2">
                                                             {selectedItem.generosTexto.split(',').map((g, gIdx) => (
-                                                                <span key={gIdx} className="bg-slate-800/60 text-slate-200 text-[11px] font-bold px-3 py-1 rounded-full border border-slate-700">
-                                                                    {g.trim()}
-                                                                </span>
+                                                                <span key={gIdx} className="bg-slate-800/60 text-slate-200 text-[11px] font-bold px-3 py-1 rounded-full border border-slate-700">{g.trim()}</span>
                                                             ))}
                                                         </div>
                                                     )}
 
-                                                    {/* Tagline */}
                                                     {selectedItem.tagline && (
-                                                        <p className="text-cyan-300 italic text-xs sm:text-sm pl-3 border-l-2 border-cyan-500">
-                                                            "{selectedItem.tagline}"
-                                                        </p>
+                                                        <p className="text-cyan-300 italic text-xs sm:text-sm pl-3 border-l-2 border-cyan-500">"{selectedItem.tagline}"</p>
                                                     )}
 
-                                                    {/* Sinopsis */}
                                                     <div>
                                                         <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
                                                             <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
@@ -1563,7 +1239,6 @@
                                                         </p>
                                                     </div>
 
-                                                    {/* Director y guionistas */}
                                                     {(selectedItem.director || selectedItem.guionistas) && (
                                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                                             {selectedItem.director && (
@@ -1581,7 +1256,6 @@
                                                         </div>
                                                     )}
 
-                                                    {/* Reparto con fotos */}
                                                     {selectedItem.reparto && selectedItem.reparto.length > 0 && (
                                                         <div>
                                                             <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-3 flex items-center gap-2">
@@ -1591,29 +1265,16 @@
                                                                 {selectedItem.reparto.map((actor, aIdx) => (
                                                                     <div key={aIdx} className="text-center shrink-0 w-20">
                                                                         <div className="w-20 h-20 rounded-full overflow-hidden bg-slate-800 border-2 border-cyan-500/40 mx-auto shadow-lg">
-                                                                            {actor.foto ? (
-                                                                                <img
-                                                                                    src={actor.foto}
-                                                                                    alt={actor.nombre}
-                                                                                    className="w-full h-full object-cover"
-                                                                                    onError={(e) => { e.target.style.display = 'none'; }}
-                                                                                    referrerPolicy="no-referrer"
-                                                                                />
-                                                                            ) : (
-                                                                                <div className="w-full h-full flex items-center justify-center text-slate-500 text-xl">👤</div>
-                                                                            )}
+                                                                            {actor.foto ? (<img src={actor.foto} alt={actor.nombre} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} referrerPolicy="no-referrer" />) : (<div className="w-full h-full flex items-center justify-center text-slate-500 text-xl">👤</div>)}
                                                                         </div>
                                                                         <p className="text-[11px] font-bold text-white mt-2 leading-tight line-clamp-2">{actor.nombre}</p>
-                                                                        {actor.personaje && (
-                                                                            <p className="text-[9px] text-slate-400 mt-0.5 leading-tight line-clamp-2 italic">{actor.personaje}</p>
-                                                                        )}
+                                                                        {actor.personaje && (<p className="text-[9px] text-slate-400 mt-0.5 leading-tight line-clamp-2 italic">{actor.personaje}</p>)}
                                                                     </div>
                                                                 ))}
                                                             </div>
                                                         </div>
                                                     )}
 
-                                                    {/* País y productoras */}
                                                     {(selectedItem.pais || selectedItem.productoras) && (
                                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                                                             {selectedItem.pais && (
@@ -1631,19 +1292,12 @@
                                                         </div>
                                                     )}
 
-                                                    {/* Botón de Tráiler */}
                                                     {selectedItem.trailerUrl && (
-                                                        <a
-                                                            href={selectedItem.trailerUrl}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-600 to-red-500 hover:brightness-110 text-white px-5 py-3 rounded-xl font-bold text-xs shadow-[0_0_20px_rgba(244,63,94,0.4)] transition-all"
-                                                        >
+                                                        <a href={selectedItem.trailerUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-600 to-red-500 hover:brightness-110 text-white px-5 py-3 rounded-xl font-bold text-xs shadow-[0_0_20px_rgba(244,63,94,0.4)] transition-all">
                                                             🎬 Ver Tráiler Oficial
                                                         </a>
                                                     )}
 
-                                                    {/* Películas similares */}
                                                     {selectedItem.similares && selectedItem.similares.length > 0 && (
                                                         <div className="pt-4">
                                                             <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-3 flex items-center gap-2">
@@ -1651,26 +1305,8 @@
                                                             </h3>
                                                             <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
                                                                 {selectedItem.similares.map((sim, sIdx) => (
-                                                                    <div
-                                                                        key={sIdx}
-                                                                        className="aspect-[2/3] rounded-xl overflow-hidden border border-slate-800 bg-black cursor-pointer hover:border-cyan-500 transition-all group"
-                                                                        onClick={() => {
-                                                                            setSearch(sim.titulo);
-                                                                            setSelectedItem(null);
-                                                                            setActiveTab('movies2');
-                                                                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                                                                        }}
-                                                                    >
-                                                                        {sim.poster ? (
-                                                                            <img
-                                                                                src={sim.poster}
-                                                                                alt={sim.titulo}
-                                                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                                                                referrerPolicy="no-referrer"
-                                                                            />
-                                                                        ) : (
-                                                                            <div className="w-full h-full flex items-center justify-center text-slate-500 text-[10px] p-2 text-center">{sim.titulo}</div>
-                                                                        )}
+                                                                    <div key={sIdx} className="aspect-[2/3] rounded-xl overflow-hidden border border-slate-800 bg-black cursor-pointer hover:border-cyan-500 transition-all group" onClick={() => { setSearch(sim.titulo); setSelectedItem(null); setActiveTab('movies2'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                                                                        {sim.poster ? (<img src={sim.poster} alt={sim.titulo} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" referrerPolicy="no-referrer" />) : (<div className="w-full h-full flex items-center justify-center text-slate-500 text-[10px] p-2 text-center">{sim.titulo}</div>)}
                                                                     </div>
                                                                 ))}
                                                             </div>
@@ -1678,7 +1314,6 @@
                                                     )}
                                                 </div>
                                             ) : (
-                                                /* Ficha normal para el resto del catálogo */
                                                 <div className="pt-2">
                                                     <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
                                                         <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
@@ -1717,37 +1352,16 @@
                                                         const epId = ep.id || ep.url;
                                                         const isWatched = (watchedEpisodes[itemId] || []).includes(epId);
                                                         const isCurrent = selectedEpisode?.url === ep.url;
-
                                                         return (
-                                                            <div 
-                                                                key={ep.id || eIdx} 
-                                                                onClick={() => {
-                                                                    setSelectedEpisode(ep);
-                                                                    recordContinueWatching(selectedItem, ep);
-                                                                }} 
-                                                                className={`p-3 rounded-2xl cursor-pointer flex items-center justify-between text-xs transition-all ${isCurrent ? 'bg-cyan-950/85 text-white border border-cyan-500/60 shadow-lg' : isWatched ? 'bg-black/30 text-slate-400 border border-slate-800/60 opacity-75' : 'hover:bg-cyan-950/30 text-slate-300 border border-transparent'}`}
-                                                            >
+                                                            <div key={ep.id || eIdx} onClick={() => { setSelectedEpisode(ep); recordContinueWatching(selectedItem, ep); }} className={`p-3 rounded-2xl cursor-pointer flex items-center justify-between text-xs transition-all ${isCurrent ? 'bg-cyan-950/85 text-white border border-cyan-500/60 shadow-lg' : isWatched ? 'bg-black/30 text-slate-400 border border-slate-800/60 opacity-75' : 'hover:bg-cyan-950/30 text-slate-300 border border-transparent'}`}>
                                                                 <div className="flex items-center gap-2.5 truncate flex-1 pr-2">
                                                                     <div className="w-5 flex justify-center shrink-0">
-                                                                        {isCurrent ? (
-                                                                            <div className="flex items-end h-3.5 gap-[2px]">
-                                                                                <div className="bar w-[2px]"></div><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div>
-                                                                            </div>
-                                                                        ) : (
-                                                                            <span className={`font-bold ${isWatched ? 'text-cyan-400' : 'text-slate-500'}`}>{isWatched ? '✓' : `${eIdx + 1}.`}</span>
-                                                                        )}
+                                                                        {isCurrent ? (<div className="flex items-end h-3.5 gap-[2px]"><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div></div>) : (<span className={`font-bold ${isWatched ? 'text-cyan-400' : 'text-slate-500'}`}>{isWatched ? '✓' : `${eIdx + 1}.`}</span>)}
                                                                     </div>
                                                                     <span className={`truncate font-medium ${isWatched ? 'line-through decoration-cyan-500/60 text-slate-400' : ''}`}>{ep.title}</span>
                                                                 </div>
-
                                                                 <div className="flex items-center gap-1.5 flex-shrink-0">
-                                                                    <button 
-                                                                        onClick={(e) => {
-                                                                            e.stopPropagation();
-                                                                            markEpisodeAsWatched(selectedItem, ep, !isWatched);
-                                                                        }}
-                                                                        className={`px-2 py-1 rounded-lg text-[9px] font-bold transition-all border ${isWatched ? 'bg-cyan-600/30 text-cyan-300 border-cyan-500/50' : 'bg-black/50 text-slate-400 border-slate-800 hover:text-white'}`}
-                                                                    >
+                                                                    <button onClick={(e) => { e.stopPropagation(); markEpisodeAsWatched(selectedItem, ep, !isWatched); }} className={`px-2 py-1 rounded-lg text-[9px] font-bold transition-all border ${isWatched ? 'bg-cyan-600/30 text-cyan-300 border-cyan-500/50' : 'bg-black/50 text-slate-400 border-slate-800 hover:text-white'}`}>
                                                                         {isWatched ? 'Visto ✓' : 'Visto'}
                                                                     </button>
                                                                     <Icon name="play" size={14} fill={isCurrent ? "#06b6d4" : "none"} className={isCurrent ? "text-cyan-400" : "text-slate-500"}/>
@@ -1767,14 +1381,7 @@
                             <>
                                 {activeTab === 'home' && !search && (
                                     <>
-                                        {currentHeroItem && (
-                                            <HeroSection 
-                                                item={currentHeroItem} 
-                                                onPlay={handlePlay} 
-                                                isFavorite={isItemFavorite(currentHeroItem)} 
-                                                onToggleFavorite={toggleFavorite}
-                                            />
-                                        )}
+                                        {currentHeroItem && (<HeroSection item={currentHeroItem} onPlay={handlePlay} isFavorite={isItemFavorite(currentHeroItem)} onToggleFavorite={toggleFavorite} />)}
                                         
                                         <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full">
                                             <div className="flex items-center gap-3 mb-4">
@@ -1786,9 +1393,7 @@
                                                     <div className="hub-scanner"></div>
                                                     <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl group-hover:bg-cyan-500/15 transition-colors"></div>
                                                     <div className="flex items-center justify-between mb-8 relative z-10">
-                                                        <div className="p-3 bg-cyan-500/15 rounded-2xl text-cyan-400 border border-cyan-500/30 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-                                                            <Icon name="tv" size={24}/>
-                                                        </div>
+                                                        <div className="p-3 bg-cyan-500/15 rounded-2xl text-cyan-400 border border-cyan-500/30 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300"><Icon name="tv" size={24}/></div>
                                                         <span className="text-[10px] font-mono tracking-wider font-extrabold text-cyan-300 bg-cyan-950/80 border border-cyan-500/30 px-2.5 py-1 rounded-full group-hover:bg-cyan-500 group-hover:text-black transition-colors">EN VIVO</span>
                                                     </div>
                                                     <div className="relative z-10">
@@ -1796,14 +1401,11 @@
                                                         <p className="text-xs text-slate-400">{content.tv.length || 63} canales disponibles</p>
                                                     </div>
                                                 </div>
-
                                                 <div onClick={() => handleTabClick(navTabs.find(t => t.id === 'movies'))} className="hub-card-cine group glass-panel rounded-2xl p-5 border border-slate-800/80 hover:border-teal-500/50 cursor-pointer transition-all duration-300 hover:shadow-[0_10px_30px_rgba(20,184,166,0.25)] flex flex-col justify-between relative overflow-hidden">
                                                     <div className="hub-projector-beam"></div>
                                                     <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-full blur-2xl group-hover:bg-teal-500/15 transition-colors"></div>
                                                     <div className="flex items-center justify-between mb-8 relative z-10">
-                                                        <div className="p-3 bg-teal-500/15 rounded-2xl text-teal-400 border border-teal-500/30 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300">
-                                                            <Icon name="clapperboard" size={24}/>
-                                                        </div>
+                                                        <div className="p-3 bg-teal-500/15 rounded-2xl text-teal-400 border border-teal-500/30 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300"><Icon name="clapperboard" size={24}/></div>
                                                         <span className="text-[10px] font-mono tracking-wider font-extrabold text-teal-300 bg-teal-950/80 border border-cyan-500/30 px-2.5 py-1 rounded-full group-hover:bg-teal-500 group-hover:text-black transition-colors">HD / 4K</span>
                                                     </div>
                                                     <div className="relative z-10">
@@ -1811,13 +1413,10 @@
                                                         <p className="text-xs text-slate-400">{content.movies.length || 146} películas</p>
                                                     </div>
                                                 </div>
-
                                                 <div onClick={() => handleTabClick(navTabs.find(t => t.id === 'payments'))} className="hub-card-radio group glass-panel rounded-2xl p-5 border border-slate-800/80 hover:border-blue-500/50 cursor-pointer transition-all duration-300 hover:shadow-[0_10px_30px_rgba(59,130,246,0.25)] flex flex-col justify-between relative overflow-hidden">
                                                     <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/15 transition-colors"></div>
                                                     <div className="flex items-center justify-between mb-8 relative z-10">
-                                                        <div className="p-3 bg-blue-500/15 rounded-2xl text-blue-400 border border-blue-500/30 group-hover:scale-110 transition-transform duration-300">
-                                                            <Icon name="star" size={24}/>
-                                                        </div>
+                                                        <div className="p-3 bg-blue-500/15 rounded-2xl text-blue-400 border border-blue-500/30 group-hover:scale-110 transition-transform duration-300"><Icon name="star" size={24}/></div>
                                                         <span className="text-[10px] font-mono tracking-wider font-extrabold text-blue-300 bg-blue-950/80 border border-blue-500/30 px-2.5 py-1 rounded-full group-hover:bg-blue-500 group-hover:text-black transition-colors">VIP</span>
                                                     </div>
                                                     <div className="relative z-10">
@@ -1839,25 +1438,14 @@
                                                 </div>
                                                 <span className="text-xs text-slate-400 hidden sm:inline">Administrado vía tudum.json</span>
                                             </div>
-
                                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                                                 {(content.tudum.length > 0 ? content.tudum : FALLBACK_NETFLIX_TUDUM).map((item, nIdx) => (
                                                     <div key={nIdx} className="glass-panel rounded-2xl p-4 border border-slate-800 flex flex-col justify-between group hover:border-[#e50914]/50 transition-all card-glow">
                                                         <div>
                                                             <div className="aspect-[2/3] rounded-xl overflow-hidden mb-3 relative bg-black">
-                                                                <RobustImage
-                                                                    src={item.image}
-                                                                    alt={item.title}
-                                                                    title={item.title}
-                                                                    type="poster"
-                                                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                                                                />
-                                                                <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 text-[10px] font-mono text-yellow-400 font-bold flex items-center gap-1">
-                                                                    <span>★</span> {item.score}
-                                                                </div>
-                                                                <div className="absolute bottom-2 left-2 bg-[#e50914] text-white text-[9px] font-black px-2 py-0.5 rounded uppercase tracking-wider">
-                                                                    {item.releaseDate}
-                                                                </div>
+                                                                <RobustImage src={item.image} alt={item.title} title={item.title} type="poster" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                                                <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 text-[10px] font-mono text-yellow-400 font-bold flex items-center gap-1"><span>★</span> {item.score}</div>
+                                                                <div className="absolute bottom-2 left-2 bg-[#e50914] text-white text-[9px] font-black px-2 py-0.5 rounded uppercase tracking-wider">{item.releaseDate}</div>
                                                             </div>
                                                             <h3 className="text-sm font-bold text-white mb-1 group-hover:text-[#e50914] transition-colors">{item.title}</h3>
                                                             <p className="text-[11px] text-cyan-400 font-medium mb-2">{item.genre}</p>
@@ -1865,19 +1453,7 @@
                                                         </div>
                                                         <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[10px]">
                                                             <span className="text-slate-400 truncate pr-2">🇨🇷 {item.availability}</span>
-                                                            <button 
-                                                                onClick={() => {
-                                                                    setSelectedItem({
-                                                                        title: item.title,
-                                                                        description: `${item.synopsis} (Estreno en Netflix: ${item.releaseDate} - ${item.availability})`,
-                                                                        image: item.image,
-                                                                        url: item.trailerUrl,
-                                                                        type: 'movies'
-                                                                    });
-                                                                    window.history.pushState({ appState: 'player', item: item.title }, '');
-                                                                }} 
-                                                                className="px-3 py-1.5 rounded-lg bg-[#e50914] hover:bg-[#b91c1c] text-white font-bold transition-all shadow-[0_0_10px_rgba(229,9,20,0.4)] flex items-center gap-1.5 flex-shrink-0"
-                                                            >
+                                                            <button onClick={() => { setSelectedItem({ title: item.title, description: `${item.synopsis} (Estreno en Netflix: ${item.releaseDate} - ${item.availability})`, image: item.image, url: item.trailerUrl, type: 'movies' }); window.history.pushState({ appState: 'player', item: item.title }, ''); }} className="px-3 py-1.5 rounded-lg bg-[#e50914] hover:bg-[#b91c1c] text-white font-bold transition-all shadow-[0_0_10px_rgba(229,9,20,0.4)] flex items-center gap-1.5 flex-shrink-0">
                                                                 <Icon name="play" size={10} fill="white"/> Tráiler
                                                             </button>
                                                         </div>
@@ -1890,20 +1466,13 @@
                                 
                                 {activeTab === 'home' && !search ? (
                                     <div className="space-y-8 sm:space-y-10 pb-16 w-full">
-                                        {continueWatching.length > 0 && (
-                                            <ContentRow title="▶️ Continuar Viendo" items={continueWatching} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} maxItems={6} />
-                                        )}
-                                        {content.movies2.length > 0 && (
-                                            <ContentRow title="✨ Estrenos 2026" items={content.movies2} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        )}
+                                        {continueWatching.length > 0 && (<ContentRow title="▶️ Continuar Viendo" items={continueWatching} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} maxItems={6} />)}
+                                        {content.movies2.length > 0 && (<ContentRow title="✨ Estrenos 2026" items={content.movies2} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />)}
                                         <ContentRow title="🎬 Últimos Estrenos" items={content.movies} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🔥 Tendencias Actuales (Anime & Más)" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="⭐ Programas Populares" items={content.series} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🏆 Vista Superior (Top Shows)" items={content.animados.slice().reverse()} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        
-                                        {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length > 0 && (
-                                            <ContentRow title="❤️ Mis Favoritos (Películas y Series)" items={favorites.filter(item => item.type !== 'tv' && item.type !== 'radio')} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        )}
+                                        {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length > 0 && (<ContentRow title="❤️ Mis Favoritos (Películas y Series)" items={favorites.filter(item => item.type !== 'tv' && item.type !== 'radio')} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />)}
                                     </div>
                                 ) : activeTab === 'topshows' ? (
                                     <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
@@ -1915,9 +1484,7 @@
                                             </div>
                                         </div>
                                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
-                                            {displayedItems.map((item, i) => (
-                                                <Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />
-                                            ))}
+                                            {displayedItems.map((item, i) => (<Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />))}
                                         </div>
                                     </div>
                                 ) : (
@@ -1932,9 +1499,7 @@
                                             <div className="text-center py-24 text-slate-500 text-sm"><p>No se encontraron resultados para tu búsqueda.</p></div>
                                         ) : (
                                             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5 animate-slide-up">
-                                                {displayedItems.map((item, i) => (
-                                                    <Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />
-                                                ))}
+                                                {displayedItems.map((item, i) => (<Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />))}
                                             </div>
                                         )}
                                     </div>
@@ -1946,32 +1511,11 @@
                     {showDownloadPinModal && (
                         <div className="fixed inset-0 z-[110] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
                             <div className="glass-panel p-6 rounded-3xl max-w-xs w-full text-center shadow-2xl border border-cyan-500/30 animate-scale-in space-y-4">
-                                <div className="flex justify-center">
-                                    <div className="p-3.5 bg-cyan-500/15 rounded-2xl text-cyan-400 border border-cyan-500/30">
-                                        <Icon name="download" size={24}/>
-                                    </div>
-                                </div>
+                                <div className="flex justify-center"><div className="p-3.5 bg-cyan-500/15 rounded-2xl text-cyan-400 border border-cyan-500/30"><Icon name="download" size={24}/></div></div>
                                 <h2 className="text-sm font-extrabold text-white mb-1">Descarga Segura</h2>
                                 <p className="text-[11px] text-slate-400 mb-2">Introduce la clave de descarga</p>
-                                <form onSubmit={(e) => {
-                                    e.preventDefault();
-                                    if (downloadPinInput === '8384') {
-                                        setShowDownloadPinModal(false);
-                                        window.open(pendingDownloadUrl, '_blank');
-                                    } else {
-                                        setDownloadPinError(true);
-                                        setDownloadPinInput('');
-                                    }
-                                }}>
-                                    <input 
-                                        type="password" 
-                                        maxLength="4" 
-                                        className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-3 text-center text-xl tracking-[0.4em] text-white focus:border-cyan-500 outline-none mb-3 shadow-inner" 
-                                        value={downloadPinInput} 
-                                        onChange={(e) => { setDownloadPinInput(e.target.value); setDownloadPinError(false); }} 
-                                        placeholder="••••" 
-                                        autoFocus 
-                                    />
+                                <form onSubmit={(e) => { e.preventDefault(); if (downloadPinInput === '8384') { setShowDownloadPinModal(false); window.open(pendingDownloadUrl, '_blank'); } else { setDownloadPinError(true); setDownloadPinInput(''); } }}>
+                                    <input type="password" maxLength="4" className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-3 text-center text-xl tracking-[0.4em] text-white focus:border-cyan-500 outline-none mb-3 shadow-inner" value={downloadPinInput} onChange={(e) => { setDownloadPinInput(e.target.value); setDownloadPinError(false); }} placeholder="••••" autoFocus />
                                     {downloadPinError && <p className="text-rose-400 text-xs mb-3 font-bold">Clave incorrecta</p>}
                                     <div className="flex gap-2.5">
                                         <button type="button" onClick={() => { setShowDownloadPinModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="flex-1 py-2.5 rounded-xl border border-slate-800 text-slate-300 hover:bg-white/5 text-xs font-semibold">Cancelar</button>
@@ -1985,21 +1529,15 @@
                     {showSmartViewModal && (
                         <div className="fixed inset-0 z-[105] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
                             <div className="glass-panel rounded-3xl p-6 max-w-md w-full relative shadow-2xl space-y-4 animate-scale-in">
-                                <button onClick={() => { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-full bg-black/40">
-                                    <Icon name="x" size={18}/>
-                                </button>
-                                <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 border border-cyan-500/30 inline-block">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-                                </div>
+                                <button onClick={() => { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-full bg-black/40"><Icon name="x" size={18}/></button>
+                                <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 border border-cyan-500/30 inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
                                 <h3 className="text-base font-extrabold text-white">Transmitir a Smart TV / Smart View</h3>
                                 <div className="text-xs text-slate-300 space-y-3 text-left bg-black/50 p-4 rounded-2xl border border-slate-800 leading-relaxed">
                                     <p>📺 <strong>Samsung Smart TV (Smart View):</strong><br/>Desliza el panel de ajustes rápidos en tu teléfono Android y toca el botón <em>Smart View</em> o <em>Transmitir</em>. Selecciona tu televisor Samsung para duplicar la pantalla.</p>
                                     <p>📱 <strong>Google Chromecast / Android TV:</strong><br/>Abre el navegador o app y selecciona <em>Transmitir</em> para enviar Boxplaytv directo a tu TV.</p>
                                     <p>🍏 <strong>Apple TV / AirPlay (iPhone/iPad):</strong><br/>Desliza hacia abajo el Centro de Control en tu dispositivo Apple y toca el ícono de <em>Duplicar pantalla (AirPlay)</em>.</p>
                                 </div>
-                                <button onClick={() => { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">
-                                    Entendido
-                                </button>
+                                <button onClick={() => { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">Entendido</button>
                             </div>
                         </div>
                     )}
@@ -2007,12 +1545,8 @@
                     {showQrModal && (
                         <div className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
                             <div className="glass-panel rounded-3xl p-6 max-w-xs w-full text-center relative shadow-2xl space-y-4 animate-scale-in">
-                                <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-full bg-black/40">
-                                    <Icon name="x" size={18}/>
-                                </button>
-                                <div className="p-3 bg-cyan-500/10 rounded-2xl border border-cyan-500/30 inline-block">
-                                    <span className="text-xs font-black uppercase text-cyan-400 tracking-widest">Comunidad Boxplaytv</span>
-                                </div>
+                                <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-full bg-black/40"><Icon name="x" size={18}/></button>
+                                <div className="p-3 bg-cyan-500/10 rounded-2xl border border-cyan-500/30 inline-block"><span className="text-xs font-black uppercase text-cyan-400 tracking-widest">Comunidad Boxplaytv</span></div>
                                 <div className="bg-white p-3 rounded-2xl shadow-inner flex justify-center items-center">
                                     <img src={QR_IMAGE_URL} alt="Boxplaytv QR Code" className="w-40 h-40 object-contain" onError={(e)=>{e.target.style.display='none';}} />
                                 </div>
@@ -2020,30 +1554,22 @@
                                     <h3 className="font-extrabold text-base text-white">BOXPLAY<span className="text-cyan-400">TV</span></h3>
                                     <p className="text-xs text-slate-400 mt-1 leading-relaxed">Únete al grupo oficial de WhatsApp para estar al día con los estrenos.</p>
                                 </div>
-                                <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer" className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl font-bold text-xs transition-colors shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center justify-center gap-2">
-                                    <span>Unirse al Grupo de WhatsApp</span>
-                                </a>
-                                <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-2.5 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.4)]">
-                                    Cerrar
-                                </button>
+                                <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer" className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl font-bold text-xs transition-colors shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center justify-center gap-2"><span>Unirse al Grupo de WhatsApp</span></a>
+                                <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-2.5 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.4)]">Cerrar</button>
                             </div>
                         </div>
                     )}
 
                     <div id="install-guide-modal" className="hidden fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
                         <div className="glass-panel rounded-3xl p-6 max-w-sm w-full text-center relative shadow-2xl space-y-4 animate-scale-in">
-                            <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 border border-cyan-500/30 inline-block">
-                                <Icon name="download" size={24}/>
-                            </div>
+                            <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 border border-cyan-500/30 inline-block"><Icon name="download" size={24}/></div>
                             <h3 className="text-base font-extrabold text-white">Cómo Instalar Boxplaytv</h3>
                             <div className="text-xs text-slate-300 space-y-2 text-left bg-black/40 p-4 rounded-2xl border border-slate-800">
                                 <p><strong>💻 En Windows / PC (Chrome, Edge, Brave):</strong><br/>Haz clic en el ícono de instalación o en el menú (⋮) y selecciona <em>'Instalar Boxplaytv'</em>.</p>
                                 <p><strong>📱 En Android:</strong><br/>Toca el menú (⋮) y selecciona <em>'Instalar aplicación'</em> o <em>'Agregar a pantalla principal'</em>.</p>
                                 <p><strong>🍏 En iPhone / iPad (Safari):</strong><br/>Toca el botón Compartir (⎋) y selecciona <em>'Agregar al inicio'</em>.</p>
                             </div>
-                            <button onClick={() => document.getElementById('install-guide-modal').classList.add('hidden')} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">
-                                Entendido
-                            </button>
+                            <button onClick={() => document.getElementById('install-guide-modal').classList.add('hidden')} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">Entendido</button>
                         </div>
                     </div>
                 </div>
@@ -2069,14 +1595,9 @@
                         <h1 className="text-2xl sm:text-4xl font-black text-white">Planes & Pagos Seguros</h1>
                         <p className="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">Desbloquea contenido en máxima resolución 4K, canales VIP y sin anuncios con nuestros planes flexibles.</p>
                     </div>
-
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                         {Object.entries(plans).map(([key, plan]) => (
-                            <div 
-                                key={key} 
-                                onClick={() => setSelectedPlan(key)}
-                                className={`glass-panel p-6 rounded-3xl border cursor-pointer transition-all flex flex-col justify-between card-glow ${selectedPlan === key ? 'border-cyan-400 bg-cyan-950/40 shadow-[0_0_30px_rgba(6,182,212,0.3)]' : 'border-slate-800'}`}
-                            >
+                            <div key={key} onClick={() => setSelectedPlan(key)} className={`glass-panel p-6 rounded-3xl border cursor-pointer transition-all flex flex-col justify-between card-glow ${selectedPlan === key ? 'border-cyan-400 bg-cyan-950/40 shadow-[0_0_30px_rgba(6,182,212,0.3)]' : 'border-slate-800'}`}>
                                 <div className="space-y-4">
                                     <div className="flex justify-between items-center">
                                         <h3 className="text-sm font-extrabold text-white">{plan.name}</h3>
@@ -2097,19 +1618,12 @@
                             </div>
                         ))}
                     </div>
-
                     <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 max-w-2xl mx-auto space-y-6">
                         <h3 className="text-sm font-extrabold text-white uppercase tracking-wider text-center border-b border-slate-800 pb-3">Método de Pago Seleccionado</h3>
-                        
                         <div className="grid grid-cols-2 gap-3">
-                            <button onClick={() => setPaymentMethod('sinpe')} className={`p-3 rounded-xl border text-xs font-bold transition-all flex items-center justify-center gap-2 ${paymentMethod === 'sinpe' ? 'bg-cyan-500/20 border-cyan-500 text-cyan-300' : 'bg-black/40 border-slate-800 text-slate-400'}`}>
-                                <span>📱 SINPE Móvil (Costa Rica)</span>
-                            </button>
-                            <button onClick={() => setPaymentMethod('card')} className={`p-3 rounded-xl border text-xs font-bold transition-all flex items-center justify-center gap-2 ${paymentMethod === 'card' ? 'bg-cyan-500/20 border-cyan-500 text-cyan-300' : 'bg-black/40 border-slate-800 text-slate-400'}`}>
-                                <span>💳 Tarjeta Crédito / Débito</span>
-                            </button>
+                            <button onClick={() => setPaymentMethod('sinpe')} className={`p-3 rounded-xl border text-xs font-bold transition-all flex items-center justify-center gap-2 ${paymentMethod === 'sinpe' ? 'bg-cyan-500/20 border-cyan-500 text-cyan-300' : 'bg-black/40 border-slate-800 text-slate-400'}`}><span>📱 SINPE Móvil (Costa Rica)</span></button>
+                            <button onClick={() => setPaymentMethod('card')} className={`p-3 rounded-xl border text-xs font-bold transition-all flex items-center justify-center gap-2 ${paymentMethod === 'card' ? 'bg-cyan-500/20 border-cyan-500 text-cyan-300' : 'bg-black/40 border-slate-800 text-slate-400'}`}><span>💳 Tarjeta Crédito / Débito</span></button>
                         </div>
-
                         {paymentMethod === 'sinpe' ? (
                             <div className="bg-black/60 p-4 rounded-2xl border border-slate-800 space-y-3 text-xs text-slate-300">
                                 <p><strong>Instrucciones SINPE Móvil:</strong></p>
@@ -2131,11 +1645,7 @@
                                 </div>
                             </div>
                         )}
-
-                        <button onClick={() => setShowSuccess(true)} className="w-full bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white py-3.5 rounded-xl font-extrabold text-xs shadow-[0_0_20px_rgba(6,182,212,0.5)]">
-                            Confirmar y Activar Suscripción
-                        </button>
-
+                        <button onClick={() => setShowSuccess(true)} className="w-full bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white py-3.5 rounded-xl font-extrabold text-xs shadow-[0_0_20px_rgba(6,182,212,0.5)]">Confirmar y Activar Suscripción</button>
                         {showSuccess && (
                             <div className="p-4 bg-emerald-950/60 border border-emerald-500/50 rounded-2xl text-center text-emerald-300 text-xs animate-scale-in space-y-1">
                                 <p className="font-bold">¡Solicitud de pago recibida con éxito!</p>
@@ -2149,11 +1659,6 @@
 
         const CyberRadioSection = ({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef, clockTime, isMuted, setIsMuted, isPowerOn, setIsPowerOn, spectrumHeights, radioFilter, setRadioFilter, hlsRef, radioFavorites, onToggleFavorite, isItemFavorite }) => {
             const [radioViewMode, setRadioViewMode] = useState('all');
-
-            const currentIndex = useMemo(() => {
-                if (!currentStation) return 0;
-                return stations.findIndex(s => s.id === currentStation.id || s.url === currentStation.url);
-            }, [currentStation, stations]);
 
             const handleNext = () => {
                 const activeList = radioViewMode === 'favorites' ? radioFavorites : stations;
@@ -2173,16 +1678,10 @@
 
             const handleTogglePlayPause = () => {
                 if (!isPowerOn) return;
-                if (!currentStation && stations.length > 0) {
-                    onPlayStation(stations[0]);
-                    return;
-                }
+                if (!currentStation && stations.length > 0) { onPlayStation(stations[0]); return; }
                 if (audioRef.current) {
-                    if (isPlaying) {
-                        audioRef.current.pause();
-                    } else {
-                        audioRef.current.play().catch(() => {});
-                    }
+                    if (isPlaying) { audioRef.current.pause(); }
+                    else { audioRef.current.play().catch(() => {}); }
                 }
             };
 
@@ -2198,156 +1697,82 @@
                 <div className="min-h-[calc(100vh-5rem)] flex flex-col p-4 sm:p-8 animate-fade-in w-full max-w-7xl mx-auto space-y-6">
                     <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-cyan-500/30 relative overflow-hidden shadow-2xl pulse-glow-box flex flex-col md:flex-row items-center justify-between gap-6">
                         <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                        
                         <div className="flex items-center gap-5 relative z-10 w-full md:w-auto">
                             <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-black border-2 border-cyan-400 p-1 flex items-center justify-center shadow-[0_0_30px_rgba(6,182,212,0.6)] flex-shrink-0">
-                                {currentStation?.image ? (
-                                    <RobustImage src={currentStation.image} alt={currentStation.title} title={currentStation.title} type="tv" className={`w-full h-full object-cover rounded-full ${isPlaying && isPowerOn ? 'vinyl-animation' : ''}`} />
-                                ) : (
-                                    <div className="w-full h-full rounded-full bg-cyan-950 flex items-center justify-center text-cyan-400"><Icon name="radio" size={32}/></div>
-                                )}
-                                <div className="absolute w-6 h-6 bg-cyan-500 rounded-full border-2 border-black flex items-center justify-center shadow-lg">
-                                    <div className="w-2 h-2 bg-black rounded-full"></div>
-                                </div>
+                                {currentStation?.image ? (<RobustImage src={currentStation.image} alt={currentStation.title} title={currentStation.title} type="tv" className={`w-full h-full object-cover rounded-full ${isPlaying && isPowerOn ? 'vinyl-animation' : ''}`} />) : (<div className="w-full h-full rounded-full bg-cyan-950 flex items-center justify-center text-cyan-400"><Icon name="radio" size={32}/></div>)}
+                                <div className="absolute w-6 h-6 bg-cyan-500 rounded-full border-2 border-black flex items-center justify-center shadow-lg"><div className="w-2 h-2 bg-black rounded-full"></div></div>
                             </div>
-
                             <div className="space-y-1.5 min-w-0 flex-1">
                                 <div className="flex items-center gap-2">
-                                    <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-500/40 text-[10px] font-mono text-cyan-300 font-bold uppercase tracking-widest">
-                                        {isPlaying && isPowerOn ? '🔴 En Directo' : '⏸ En Pausa'}
-                                    </span>
-                                    {currentStation && (
-                                        <button onClick={() => onToggleFavorite({ ...currentStation, type: 'radio' })} className="px-2.5 py-0.5 rounded-full bg-black/60 border border-slate-800 text-xs text-cyan-400 flex items-center gap-1 hover:bg-white/5 transition-colors">
-                                            <Icon name="heart" size={12} fill={currentIsFav ? "#06b6d4" : "none"} className={currentIsFav ? "text-cyan-400" : "text-slate-400"}/>
-                                            <span className="text-[10px]">{currentIsFav ? 'En Favs' : 'Añadir Fav'}</span>
-                                        </button>
-                                    )}
+                                    <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-500/40 text-[10px] font-mono text-cyan-300 font-bold uppercase tracking-widest">{isPlaying && isPowerOn ? '🔴 En Directo' : '⏸ En Pausa'}</span>
+                                    {currentStation && (<button onClick={() => onToggleFavorite({ ...currentStation, type: 'radio' })} className="px-2.5 py-0.5 rounded-full bg-black/60 border border-slate-800 text-xs text-cyan-400 flex items-center gap-1 hover:bg-white/5 transition-colors"><Icon name="heart" size={12} fill={currentIsFav ? "#06b6d4" : "none"} className={currentIsFav ? "text-cyan-400" : "text-slate-400"}/><span className="text-[10px]">{currentIsFav ? 'En Favs' : 'Añadir Fav'}</span></button>)}
                                 </div>
-                                <h1 className="text-xl sm:text-2xl font-black text-white truncate orbitron drop-shadow">
-                                    {currentStation ? currentStation.title : 'Selecciona una Emisora'}
-                                </h1>
-                                <p className="text-xs text-cyan-400 font-medium truncate">
-                                    {currentStation?.group || 'Variedad Musical'} • {streamError ? 'Error en flujo' : isLoading ? 'Conectando...' : 'Alta Calidad HD'}
-                                </p>
+                                <h1 className="text-xl sm:text-2xl font-black text-white truncate orbitron drop-shadow">{currentStation ? currentStation.title : 'Selecciona una Emisora'}</h1>
+                                <p className="text-xs text-cyan-400 font-medium truncate">{currentStation?.group || 'Variedad Musical'} • {streamError ? 'Error en flujo' : isLoading ? 'Conectando...' : 'Alta Calidad HD'}</p>
                             </div>
                         </div>
-
                         <div className="flex flex-col sm:flex-row items-center gap-4 relative z-10 w-full md:w-auto justify-end">
                             <div className="flex items-center gap-2 bg-black/60 px-4 py-3 rounded-2xl border border-slate-800 shadow-inner w-full sm:w-auto">
                                 <Icon name="volume" size={16} className="text-cyan-400 flex-shrink-0"/>
                                 <input type="range" min="0" max="1" step="0.05" value={volume} onChange={(e) => setVolume(parseFloat(e.target.value))} className="w-28 sm:w-36 accent-cyan-400"/>
                                 <span className="text-xs font-mono font-bold text-cyan-300 w-8 text-right">{Math.round(volume * 100)}%</span>
                             </div>
-
                             <div className="flex items-center gap-2 w-full sm:w-auto justify-center">
-                                <button onClick={handlePrev} className="p-3.5 rounded-2xl bg-black/60 hover:bg-cyan-500/20 text-cyan-300 border border-slate-800 hover:border-cyan-500/40 transition-all shadow-lg active:scale-95" title="Anterior">
-                                    <i className="fa-solid fa-backward-step"></i>
-                                </button>
-                                <button onClick={handleTogglePlayPause} className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white font-extrabold text-xs tracking-wider transition-all shadow-[0_0_20px_rgba(6,182,212,0.5)] flex items-center gap-2 active:scale-95">
-                                    <i className={`fa-solid ${isPlaying && isPowerOn ? 'fa-pause' : 'fa-play'}`}></i>
-                                    <span>{isPlaying && isPowerOn ? 'PAUSAR' : 'REPRODUCIR'}</span>
-                                </button>
-                                <button onClick={handleNext} className="p-3.5 rounded-2xl bg-black/60 hover:bg-cyan-500/20 text-cyan-300 border border-slate-800 hover:border-cyan-500/40 transition-all shadow-lg active:scale-95" title="Siguiente">
-                                    <i className="fa-solid fa-forward-step"></i>
-                                </button>
+                                <button onClick={handlePrev} className="p-3.5 rounded-2xl bg-black/60 hover:bg-cyan-500/20 text-cyan-300 border border-slate-800 hover:border-cyan-500/40 transition-all shadow-lg active:scale-95" title="Anterior"><i className="fa-solid fa-backward-step"></i></button>
+                                <button onClick={handleTogglePlayPause} className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white font-extrabold text-xs tracking-wider transition-all shadow-[0_0_20px_rgba(6,182,212,0.5)] flex items-center gap-2 active:scale-95"><i className={`fa-solid ${isPlaying && isPowerOn ? 'fa-pause' : 'fa-play'}`}></i><span>{isPlaying && isPowerOn ? 'PAUSAR' : 'REPRODUCIR'}</span></button>
+                                <button onClick={handleNext} className="p-3.5 rounded-2xl bg-black/60 hover:bg-cyan-500/20 text-cyan-300 border border-slate-800 hover:border-cyan-500/40 transition-all shadow-lg active:scale-95" title="Siguiente"><i className="fa-solid fa-forward-step"></i></button>
                             </div>
                         </div>
                     </div>
-
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <div className="glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col justify-between shadow-xl space-y-6">
                             <div>
                                 <div className="flex items-center justify-between mb-4">
-                                    <h3 className="text-xs font-black uppercase text-cyan-400 tracking-wider flex items-center gap-2">
-                                        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Ecualizador Visualizador
-                                    </h3>
+                                    <h3 className="text-xs font-black uppercase text-cyan-400 tracking-wider flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Ecualizador Visualizador</h3>
                                     <span className="text-[10px] font-mono text-slate-400">{clockTime}</span>
                                 </div>
                                 <div className="h-40 bg-black/80 rounded-2xl border border-slate-800/80 p-4 flex items-end justify-around gap-2 shadow-inner overflow-hidden relative">
                                     <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 to-transparent pointer-events-none"></div>
-                                    {spectrumHeights.map((h, sIdx) => (
-                                        <div key={sIdx} className="w-8 bg-gradient-to-t from-cyan-600 via-teal-400 to-cyan-300 rounded-t-lg transition-all duration-75 shadow-[0_0_15px_rgba(6,182,212,0.5)]" style={{ height: `${h}%` }}></div>
-                                    ))}
+                                    {spectrumHeights.map((h, sIdx) => (<div key={sIdx} className="w-8 bg-gradient-to-t from-cyan-600 via-teal-400 to-cyan-300 rounded-t-lg transition-all duration-75 shadow-[0_0_15px_rgba(6,182,212,0.5)]" style={{ height: `${h}%` }}></div>))}
                                 </div>
                             </div>
-
                             <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
-                                <div className="flex justify-between text-[11px] font-bold text-slate-300">
-                                    <span>Estado del Servidor</span>
-                                    <span className="text-emerald-400 font-mono">100% Estable</span>
-                                </div>
+                                <div className="flex justify-between text-[11px] font-bold text-slate-300"><span>Estado del Servidor</span><span className="text-emerald-400 font-mono">100% Estable</span></div>
                                 <p className="text-[11px] text-slate-400 leading-relaxed">Disfruta de las emisoras más populares de Costa Rica con transmisión directa digital sin interrupciones.</p>
                             </div>
                         </div>
-
                         <div className="lg:col-span-2 glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col h-[520px] shadow-xl">
                             <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-3 pb-4 border-b border-slate-800">
                                 <div className="flex items-center gap-2">
-                                    <button 
-                                        onClick={() => setRadioViewMode('all')} 
-                                        className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${radioViewMode === 'all' ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'bg-black/40 text-slate-400 hover:text-white border border-slate-800'}`}
-                                    >
-                                        Todas ({stations.length})
-                                    </button>
-                                    <button 
-                                        onClick={() => setRadioViewMode('favorites')} 
-                                        className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${radioViewMode === 'favorites' ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'bg-black/40 text-slate-400 hover:text-white border border-slate-800'}`}
-                                    >
-                                        <Icon name="heart" size={12} fill={radioViewMode === 'favorites' ? 'black' : 'none'}/>
-                                        <span>Mis Favoritas ({radioFavorites.length})</span>
-                                    </button>
+                                    <button onClick={() => setRadioViewMode('all')} className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${radioViewMode === 'all' ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'bg-black/40 text-slate-400 hover:text-white border border-slate-800'}`}>Todas ({stations.length})</button>
+                                    <button onClick={() => setRadioViewMode('favorites')} className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${radioViewMode === 'favorites' ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'bg-black/40 text-slate-400 hover:text-white border border-slate-800'}`}><Icon name="heart" size={12} fill={radioViewMode === 'favorites' ? 'black' : 'none'}/><span>Mis Favoritas ({radioFavorites.length})</span></button>
                                 </div>
                                 <div className="relative w-full sm:w-56">
-                                    <input 
-                                        type="text" 
-                                        placeholder="Buscar emisora..." 
-                                        value={radioFilter} 
-                                        onChange={(e) => setRadioFilter(e.target.value)} 
-                                        className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white focus:border-cyan-500 outline-none pl-9 shadow-inner"
-                                    />
+                                    <input type="text" placeholder="Buscar emisora..." value={radioFilter} onChange={(e) => setRadioFilter(e.target.value)} className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white focus:border-cyan-500 outline-none pl-9 shadow-inner"/>
                                     <Icon name="search" size={14} className="absolute left-3 top-2.5 text-slate-400"/>
                                     {radioFilter && <button onClick={() => setRadioFilter('')} className="absolute right-3 top-2.5 text-slate-400 hover:text-white"><Icon name="x" size={14}/></button>}
                                 </div>
                             </div>
-
                             <div className="flex-1 overflow-y-auto custom-scrollbar pr-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
                                 {displayed.length === 0 ? (
-                                    <div className="col-span-2 text-center py-16 text-slate-500 text-xs font-medium">
-                                        {radioViewMode === 'favorites' ? 'No tienes emisoras de radio marcadas como favoritas todavía. Pulsa el corazón en tus preferidas.' : 'No se encontraron emisoras con ese término.'}
-                                    </div>
+                                    <div className="col-span-2 text-center py-16 text-slate-500 text-xs font-medium">{radioViewMode === 'favorites' ? 'No tienes emisoras marcadas como favoritas todavía.' : 'No se encontraron emisoras con ese término.'}</div>
                                 ) : (
                                     displayed.map((station, sIdx) => {
                                         const isCurrent = currentStation && (currentStation.id === station.id || currentStation.url === station.url);
                                         const isFav = isItemFavorite({ ...station, type: 'radio' });
                                         return (
-                                            <div 
-                                                key={station.id || sIdx}
-                                                onClick={() => onPlayStation(station)}
-                                                className={`group relative p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center gap-3.5 ${isCurrent && isPlaying ? 'bg-cyan-950/60 border-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.3)]' : 'bg-black/40 hover:bg-white/5 border-slate-800/80 hover:border-slate-700'}`}
-                                            >
+                                            <div key={station.id || sIdx} onClick={() => onPlayStation(station)} className={`group relative p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center gap-3.5 ${isCurrent && isPlaying ? 'bg-cyan-950/60 border-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.3)]' : 'bg-black/40 hover:bg-white/5 border-slate-800/80 hover:border-slate-700'}`}>
                                                 <div className="w-12 h-12 rounded-2xl bg-black border border-slate-800 flex items-center justify-center overflow-hidden flex-shrink-0 relative shadow-inner p-1">
-                                                    {station.image ? (
-                                                        <RobustImage src={station.image} alt={station.title} title={station.title} type="tv" className="w-full h-full object-cover rounded-xl" />
-                                                    ) : (
-                                                        <Icon name="radio" size={18} className="text-slate-400"/>
-                                                    )}
-                                                    {isCurrent && isPlaying && (
-                                                        <div className="absolute inset-0 bg-cyan-600/30 backdrop-blur-[1px] rounded-xl flex items-center justify-center">
-                                                            <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></div>
-                                                        </div>
-                                                    )}
+                                                    {station.image ? (<RobustImage src={station.image} alt={station.title} title={station.title} type="tv" className="w-full h-full object-cover rounded-xl" />) : (<Icon name="radio" size={18} className="text-slate-400"/>)}
+                                                    {isCurrent && isPlaying && (<div className="absolute inset-0 bg-cyan-600/30 backdrop-blur-[1px] rounded-xl flex items-center justify-center"><div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></div></div>)}
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <h4 className={`text-xs font-bold truncate transition-colors ${isCurrent && isPlaying ? 'text-cyan-400' : 'text-white group-hover:text-cyan-300'}`}>{station.title}</h4>
                                                     <span className="text-[10px] text-slate-400 truncate block mt-0.5 font-medium">{station.group || 'Variedad'}</span>
                                                 </div>
                                                 <div className="flex items-center gap-2">
-                                                    <button onClick={(e) => { e.stopPropagation(); onToggleFavorite({ ...station, type: 'radio' }); }} className="p-2 rounded-xl text-slate-400 hover:text-white transition-colors">
-                                                        <Icon name="heart" size={14} fill={isFav ? '#06b6d4' : 'none'} className={isFav ? 'text-cyan-500' : 'text-slate-500'}/>
-                                                    </button>
-                                                    <div className="w-8 h-8 rounded-xl bg-black/60 border border-slate-800 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-600 group-hover:text-white transition-all flex-shrink-0">
-                                                        <Icon name={isCurrent && isPlaying ? "pause" : "play"} size={12} fill="currentColor"/>
-                                                    </div>
+                                                    <button onClick={(e) => { e.stopPropagation(); onToggleFavorite({ ...station, type: 'radio' }); }} className="p-2 rounded-xl text-slate-400 hover:text-white transition-colors"><Icon name="heart" size={14} fill={isFav ? '#06b6d4' : 'none'} className={isFav ? 'text-cyan-500' : 'text-slate-500'}/></button>
+                                                    <div className="w-8 h-8 rounded-xl bg-black/60 border border-slate-800 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-600 group-hover:text-white transition-all flex-shrink-0"><Icon name={isCurrent && isPlaying ? "pause" : "play"} size={12} fill="currentColor"/></div>
                                                 </div>
                                             </div>
                                         );
@@ -2369,12 +1794,8 @@
                 let current = 0;
                 const interval = setInterval(() => {
                     current += 2;
-                    if (current <= 100) {
-                        setProgress(current);
-                    } else {
-                        clearInterval(interval);
-                        onEnter();
-                    }
+                    if (current <= 100) { setProgress(current); }
+                    else { clearInterval(interval); onEnter(); }
                 }, 30);
             };
 
@@ -2385,28 +1806,19 @@
                         <div className="mb-3 inline-block bg-gradient-to-r from-cyan-600 to-teal-500 px-3 py-1 rounded-full text-[9px] font-black tracking-widest uppercase text-white shadow-[0_0_15px_rgba(6,182,212,0.4)]">Cinematic Experience</div>
                         <div className="flex items-center justify-center gap-2.5 mb-2">
                             <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-cyan-600 to-teal-500 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.5)]">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 fill-white">
-                                    <polygon points="40,30 70,50 40,70"/>
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 fill-white"><polygon points="40,30 70,50 40,70"/></svg>
                             </div>
                             <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tighter">BOXPLAY<span className="text-cyan-400">TV</span></h1>
                         </div>
                         <p className="text-xs sm:text-sm text-slate-300 font-light mb-6 italic">"Streaming de alta calidad cinematográfica."</p>
-                        
                         {isLoading ? (
                             <div className="space-y-3 mb-6">
-                                <div className="flex justify-between text-xs text-cyan-300 font-bold px-1">
-                                    <span>Cargando plataforma...</span>
-                                    <span>{progress}%</span>
-                                </div>
-                                <div className="w-full h-2.5 bg-black/60 rounded-full overflow-hidden border border-slate-800 p-0.5">
-                                    <div className="h-full bg-gradient-to-r from-cyan-600 to-teal-400 rounded-full transition-all duration-75 shadow-[0_0_15px_#06b6d4]" style={{ width: `${progress}%` }}></div>
-                                </div>
+                                <div className="flex justify-between text-xs text-cyan-300 font-bold px-1"><span>Cargando plataforma...</span><span>{progress}%</span></div>
+                                <div className="w-full h-2.5 bg-black/60 rounded-full overflow-hidden border border-slate-800 p-0.5"><div className="h-full bg-gradient-to-r from-cyan-600 to-teal-400 rounded-full transition-all duration-75 shadow-[0_0_15px_#06b6d4]" style={{ width: `${progress}%` }}></div></div>
                             </div>
                         ) : (
                             <button onClick={handleStart} className="w-full bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white py-3.5 rounded-full font-extrabold text-sm sm:text-base shadow-[0_0_25px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2 mb-6 active:scale-95 transition-all"><span>Comenzar Experiencia</span> <Icon fill="white" name="play" size={16}/></button>
                         )}
-
                         <div className="opacity-80 pt-3 border-t border-slate-800"><p className="text-[8px] text-slate-400 uppercase tracking-widest mb-0.5">DISEÑADO Y PROGRAMADO POR</p><h3 className="text-sm font-serif text-gold-gradient font-bold mb-1">JORGE ARTURO HERNÁNDEZ MÉNDEZ</h3><p className="text-[8px] text-slate-500">Boxplaytv • Todos los derechos reservados</p></div>
                     </div>
                 </div>
@@ -2414,16 +1826,11 @@
         };
 
         const HeroSection = ({ item, onPlay, isFavorite, onToggleFavorite }) => {
-            const featuredItem = useMemo(() => {
-                if (!item) return null;
-                return item;
-            }, [item]);
-
+            const featuredItem = useMemo(() => { if (!item) return null; return item; }, [item]);
             if (!featuredItem) return null;
             const imgSource = extractImageUrl(featuredItem) || generatePlaceholder(featuredItem.title || featuredItem.titulo, 'poster');
             const titleSource = featuredItem.titulo || featuredItem.title || featuredItem.name;
             const descSource = featuredItem.descripcion || featuredItem.sinopsis || featuredItem.plot;
-            
             return (
                 <div className="relative w-full bg-[#070b19] overflow-hidden rounded-none sm:rounded-3xl mb-8 group animate-fade-in shadow-2xl border-b sm:border border-slate-800 flex items-center max-w-7xl mx-auto px-4 sm:px-12 cinema-glow w-full py-8 sm:py-16 md:py-20">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -2431,28 +1838,17 @@
                         <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/90 to-transparent"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
                     </div>
-
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-6 sm:gap-10 text-center sm:text-left">
                         <div className="w-48 sm:w-60 md:w-68 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
-                            <RobustImage
-                                src={imgSource}
-                                alt={titleSource}
-                                title={titleSource}
-                                type="poster"
-                                className="w-full h-full object-cover"
-                            />
+                            <RobustImage src={imgSource} alt={titleSource} title={titleSource} type="poster" className="w-full h-full object-cover" />
                         </div>
                         <div className="flex-1 flex flex-col gap-3 items-center sm:items-start max-w-xl">
                             <span className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white text-[9px] sm:text-[10px] font-black px-3.5 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(6,182,212,0.4)]">Destacado Boxplaytv</span>
                             <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white leading-tight drop-shadow-md line-clamp-2">{titleSource}</h1>
                             <p className="text-slate-300 text-xs sm:text-sm md:text-base line-clamp-3 leading-relaxed drop-shadow">{descSource || "Disfruta de las mejores películas y series en alta definición."}</p>
                             <div className="flex flex-wrap justify-center sm:justify-start gap-3 mt-2">
-                                <button onClick={() => onPlay(featuredItem)} className="bg-gradient-to-tr from-cyan-600 to-teal-500 hover:brightness-110 text-white px-6 sm:px-8 py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-95 transition-transform shadow-[0_0_20px_rgba(6,182,212,0.5)]">
-                                    <Icon fill="white" name="play" size={15}/> Reproducir Ahora
-                                </button>
-                                <button onClick={() => onToggleFavorite(featuredItem)} className="glass-panel text-white p-3 rounded-xl flex items-center justify-center backdrop-blur-md border border-cyan-500/40 hover:bg-slate-800 transition-colors shadow-lg">
-                                    <Icon name="heart" size={16} fill={isFavorite ? "#06b6d4" : "none"} className={isFavorite ? "text-cyan-500" : "text-white"}/>
-                                </button>
+                                <button onClick={() => onPlay(featuredItem)} className="bg-gradient-to-tr from-cyan-600 to-teal-500 hover:brightness-110 text-white px-6 sm:px-8 py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-95 transition-transform shadow-[0_0_20px_rgba(6,182,212,0.5)]"><Icon fill="white" name="play" size={15}/> Reproducir Ahora</button>
+                                <button onClick={() => onToggleFavorite(featuredItem)} className="glass-panel text-white p-3 rounded-xl flex items-center justify-center backdrop-blur-md border border-cyan-500/40 hover:bg-slate-800 transition-colors shadow-lg"><Icon name="heart" size={16} fill={isFavorite ? "#06b6d4" : "none"} className={isFavorite ? "text-cyan-500" : "text-white"}/></button>
                             </div>
                         </div>
                     </div>
@@ -2486,18 +1882,10 @@
             const imgSource = extractImageUrl(item);
             const titleSource = item.titulo || item.title || item.name || 'Sin Título';
             const fallbackImg = generatePlaceholder(titleSource, isTv ? 'tv' : 'poster');
-            
             return ( 
                 <div tabIndex="0" className="group relative flex flex-col gap-2 cursor-pointer active:scale-95 transition-transform card-glow rounded-2xl w-full" onClick={() => onClick(item)}> 
                     <div className={`relative overflow-hidden bg-[#0f172a] border border-slate-800 shadow-xl ${isTv ? 'aspect-video rounded-full p-2' : 'aspect-[2/3] rounded-2xl'}`}> 
-                        <RobustImage
-                            src={imgSource || fallbackImg}
-                            loading="lazy"
-                            className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${isTv ? 'object-cover rounded-full' : 'object-cover'}`}
-                            type={isTv ? 'tv' : 'poster'}
-                            title={titleSource}
-                            alt={titleSource}
-                        /> 
+                        <RobustImage src={imgSource || fallbackImg} loading="lazy" className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${isTv ? 'object-cover rounded-full' : 'object-cover'}`} type={isTv ? 'tv' : 'poster'} title={titleSource} alt={titleSource}/> 
                         <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isTv ? 'rounded-full' : ''}`}></div> 
                         <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }} className="absolute top-2 right-2 p-2 bg-black/70 rounded-full text-white backdrop-blur-md hover:bg-black transition-colors z-20"> 
                             <Icon name="heart" size={14} fill={isFavorite ? "#06b6d4" : "none"} className={isFavorite ? "text-cyan-500" : "text-white"}/> 
