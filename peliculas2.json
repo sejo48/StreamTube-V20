@@ -810,69 +810,271 @@
   },
   {
     "titulo": "Insaciable",
-    "tituloOriginal": "",
-    "descripcion": "Hana es una estudiante de medicina que está cada vez más obsesionada con cambiar su cuerpo. Después de reencontrarse con una amiga que ha perdido mucho peso, descubre un extraño método que promete resultados rápidos. Desesperada por transformarse, comienza a consumir cenizas humanas, sin imaginar las consecuencias. Poco después, una presencia siniestra empieza a perseguirla y su vida se convierte en una pesadilla. Mientras su obsesión aumenta y la situación se vuelve más peligrosa, Hana deberá enfrentar aquello que ha despertado antes de que ese hambre imposible de controlar termine consumiéndola por completo.",
-    "imagen": "https://image.tmdb.org/t/p/w500/zMYFsfuHttGtHnXquWkIWI9Min8.jpg",
-    "backdrop": "",
+    "tituloOriginal": "Saccharine",
+    "descripcion": "Hana, una estudiante de medicina con una fuerte dismorfia corporal, se somete a una moda de adelgazamiento tan absurda como macabra: comer cenizas humanas. A partir de ese momento, comienza a ser acosada por un fantasma hambriento, una manifestación literal del mito del 'hungry ghost'.",
+    "imagen": "https://image.tmdb.org/t/p/w780/v9st6lwP4K2i6YCa7kLQVQEuvNZ.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/7NUx7bQAD4lo9yMDbprvIblhWo2.jpg",
     "urlDrive": "https://drive.google.com/file/d/1bLjAZenM7TDunjyjnRySFGpS2Iy_IPJ5/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-05-22",
+    "rating": "6.9",
+    "votos": 200,
+    "runtime": "1h 53min",
+    "genres": [
+      "Terror"
+    ],
+    "generosTexto": "Terror",
+    "clasificacion": "16",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Natalie Erika James",
+    "guionistas": "Natalie Erika James",
+    "reparto": [
+      {
+        "nombre": "Midori Francis",
+        "personaje": "Hana",
+        "foto": "https://image.tmdb.org/t/p/w185/we9Z3uiLUi06NxKXYNpcexrYOJx.jpg"
+      },
+      {
+        "nombre": "Danielle Macdonald",
+        "personaje": "Josie",
+        "foto": "https://image.tmdb.org/t/p/w185/pPaypOzZ4oldd7KJHvDEfPSynSi.jpg"
+      },
+      {
+        "nombre": "Madeleine Madden",
+        "personaje": "Alanya",
+        "foto": "https://image.tmdb.org/t/p/w185/oOZ1EJeq2DHxNNLAkLEyYYOlqlM.jpg"
+      },
+      {
+        "nombre": "Robert Taylor",
+        "personaje": "Travis",
+        "foto": "https://image.tmdb.org/t/p/w185/wjeEGFarZNyvrqLL4W52eXnAnXe.jpg"
+      },
+      {
+        "nombre": "Showko Showfukutei",
+        "personaje": "Kimie",
+        "foto": "https://image.tmdb.org/t/p/w185/xB4BRallUxSofsgDZLjTaZ1nXRe.jpg"
+      },
+      {
+        "nombre": "Octavia Barron-Martin",
+        "personaje": "Grace",
+        "foto": "https://image.tmdb.org/t/p/w185/1lRy9ZY2RYEFlK7PTuWYmd9TG3M.jpg"
+      },
+      {
+        "nombre": "Anna Adams",
+        "personaje": "Ghost Cadaver",
+        "foto": ""
+      },
+      {
+        "nombre": "Annie Shapero",
+        "personaje": "Melissa",
+        "foto": "https://image.tmdb.org/t/p/w185/orBQJJrQVQdbNkT4Vx5Hkw91xPX.jpg"
+      },
+      {
+        "nombre": "Louisa Mignone",
+        "personaje": "Professor Kasab",
+        "foto": "https://image.tmdb.org/t/p/w185/aTq0QihzbgXuNJmhe8pWixpD4ID.jpg"
+      },
+      {
+        "nombre": "Joseph Baldwin",
+        "personaje": "Ryan",
+        "foto": ""
+      },
+      {
+        "nombre": "Emily Milledge",
+        "personaje": "Georgie",
+        "foto": "https://image.tmdb.org/t/p/w185/zJDJkoW87uyU3sv3CYHbZv475jZ.jpg"
+      },
+      {
+        "nombre": "Gemma Bird Matheson",
+        "personaje": "Nikita",
+        "foto": "https://image.tmdb.org/t/p/w185/lLkcxVuN3p8eLWFAXhICnQX4ptM.jpg"
+      }
+    ],
+    "pais": "Australia, Finland, United States of America",
+    "idioma": "en",
+    "productoras": "Carver Films, XYZ Films, Stan, Thrum Films, Screen Australia, IPR.VC, VicScreen, Maslow Entertainment",
     "presupuesto": 0,
-    "recaudacion": 0,
-    "trailerUrl": "",
+    "recaudacion": 456091,
+    "trailerUrl": "https://www.youtube.com/watch?v=WuLd6f3ylAI",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "supernatural, evil spirit, ashes, mortician, eating disorder, supernatural horror, psychological, body horror, psychological horror, horror",
+    "similares": [
+      {
+        "titulo": "El Ente",
+        "poster": "https://image.tmdb.org/t/p/w342/ws8tfaqgwGNp3w3q1DUFchlo0zx.jpg",
+        "year": "1982",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Nunca te sueltes",
+        "poster": "https://image.tmdb.org/t/p/w342/giOoI3tmCjQREvUgqcXTVD9EBfL.jpg",
+        "year": "2024",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Hellraiser",
+        "poster": "https://image.tmdb.org/t/p/w342/lfE0u0Th1thZ4slkEtIgvreauh4.jpg",
+        "year": "1987",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Ya vienen",
+        "poster": "https://image.tmdb.org/t/p/w342/wX1t2sPKN2JGzp0rcg4sVx8fyid.jpg",
+        "year": "2020",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Nightmare Cinema",
+        "poster": "https://image.tmdb.org/t/p/w342/ftdhL4zamDnjSD4TML1ES79DueX.jpg",
+        "year": "2018",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Madre oscura",
+        "poster": "https://image.tmdb.org/t/p/w342/i9ErzjpaE6BOHajCvcKx9fycemT.jpg",
+        "year": "2019",
+        "rating": "6.0"
+      }
+    ],
+    "tmdbId": 1363387
   },
   {
     "titulo": "La muerte de Robin Hood",
-    "tituloOriginal": "",
-    "descripcion": "Después de una larga vida marcada por la violencia y los crímenes, Robin Hood llega al final de sus días convertido en un hombre muy distinto a la leyenda que todos conocen. Gravemente herido durante una batalla, encuentra refugio bajo el cuidado de la hermana Brígida, una mujer que le ofrece compasión cuando más la necesita. Mientras intenta recuperarse, Robin comienza a enfrentar los recuerdos y las decisiones de su pasado. Con la muerte cada vez más cerca, deberá preguntarse si todavía existe una oportunidad de cambiar y encontrar la redención antes de que sea demasiado tarde.",
-    "imagen": "https://image.tmdb.org/t/p/w500/pC2hVl4J522GcMVc5OghRHSs0tq.jpg",
-    "backdrop": "",
+    "tituloOriginal": "The Death of Robin Hood",
+    "descripcion": "Robin Hood intenta lidiar con sus demonios tras una larga vida de crímenes y asesinatos. Cuando en una sangrienta batalla resulta herido de gravedad, es enviado a un misterioso castillo para que curen sus heridas. Allí conocerá a una mujer que le ofrecerá una última oportunidad de redención.",
+    "imagen": "https://image.tmdb.org/t/p/w780/pC2hVl4J522GcMVc5OghRHSs0tq.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/lh3BDkmWJh998n4fQcHYcVi7dpm.jpg",
     "urlDrive": "https://drive.google.com/file/d/1-LBtqbX7d3QGNcfr38JzEELsS0WpUdvO/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-06-18",
+    "rating": "6.7",
+    "votos": 483,
+    "runtime": "2h 3min",
+    "genres": [
+      "Aventura",
+      "Drama",
+      "Acción"
+    ],
+    "generosTexto": "Aventura, Drama, Acción",
+    "clasificacion": "16",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
-    "presupuesto": 0,
-    "recaudacion": 0,
-    "trailerUrl": "",
+    "director": "Michael Sarnoski",
+    "guionistas": "Michael Sarnoski",
+    "reparto": [
+      {
+        "nombre": "Hugh Jackman",
+        "personaje": "Robin Hood",
+        "foto": "https://image.tmdb.org/t/p/w185/4Xujtewxqt6aU0Y81tsS9gkjizk.jpg"
+      },
+      {
+        "nombre": "Jodie Comer",
+        "personaje": "Sister Brigid",
+        "foto": "https://image.tmdb.org/t/p/w185/AfsBpnfw0E2h8NZK4zkFcOjYlEb.jpg"
+      },
+      {
+        "nombre": "Bill Skarsgård",
+        "personaje": "Little John",
+        "foto": "https://image.tmdb.org/t/p/w185/xBXLx1m0uzhXIbY3wN8lmPGeUHl.jpg"
+      },
+      {
+        "nombre": "Murray Bartlett",
+        "personaje": "The Leper",
+        "foto": "https://image.tmdb.org/t/p/w185/eN20zfcRB2F51bmUbTK9byQCpb9.jpg"
+      },
+      {
+        "nombre": "Noah Jupe",
+        "personaje": "Arthur / Godwyn",
+        "foto": "https://image.tmdb.org/t/p/w185/cBhJisZrIsZzamiUCVjOZODcqOK.jpg"
+      },
+      {
+        "nombre": "Jade Croot",
+        "personaje": "Wainwright",
+        "foto": "https://image.tmdb.org/t/p/w185/j4DuuFPDdnEcDWFWCyBUuhhHkxg.jpg"
+      },
+      {
+        "nombre": "Faith Delaney",
+        "personaje": "Little Margaret",
+        "foto": "https://image.tmdb.org/t/p/w185/jIKjTzr4dCoybQgNhyREahh9Aym.jpg"
+      },
+      {
+        "nombre": "Tabitha Smyth",
+        "personaje": "Sarah",
+        "foto": "https://image.tmdb.org/t/p/w185/uREVbfIi4rD2W29zWbtzNqIhP4u.jpg"
+      },
+      {
+        "nombre": "Beau Thompson",
+        "personaje": "Hob",
+        "foto": "https://image.tmdb.org/t/p/w185/9mGiYt7w8YqsqM6TLoGqYV9SvFY.jpg"
+      },
+      {
+        "nombre": "Alfie Lawless",
+        "personaje": "Hendrie",
+        "foto": "https://image.tmdb.org/t/p/w185/761sH9H88m86M3iUuxMJpLQ2GE2.jpg"
+      },
+      {
+        "nombre": "Asher de Silva",
+        "personaje": "Moshe",
+        "foto": "https://image.tmdb.org/t/p/w185/fQinMbIfOTCCqtAFuLwMqNoXzYw.jpg"
+      },
+      {
+        "nombre": "Elijah Ungvary",
+        "personaje": "Hairy Kinsman",
+        "foto": "https://image.tmdb.org/t/p/w185/fpuW3g10qPuJHrhI4Eu6lC3WsxZ.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Lyrical Media, Ryder Picture Company",
+    "presupuesto": 25000000,
+    "recaudacion": 3200000,
+    "trailerUrl": "https://www.youtube.com/watch?v=CE-B1PSgsnA",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "robin hood, based on myths, legends or folklore, grim, salvation, grimdark",
+    "similares": [
+      {
+        "titulo": "Robin Hood",
+        "poster": "https://image.tmdb.org/t/p/w342/tSxcUPAC1ihAtDpAQX2rydOucns.jpg",
+        "year": "2018",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Oro negro",
+        "poster": "https://image.tmdb.org/t/p/w342/wt52bLaphOqFvyvey1QPiaS5ObZ.jpg",
+        "year": "2011",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Campeón de campeones 4: Sin aliento",
+        "poster": "https://image.tmdb.org/t/p/w342/uXwY1TKs5uaJDQYFYW3bV7Qx73j.jpg",
+        "year": "1998",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Sin Escape (Ganar o morir)",
+        "poster": "https://image.tmdb.org/t/p/w342/1m7Md2MUef2PyAwYT5Z94AbEC5u.jpg",
+        "year": "1993",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Gold",
+        "poster": "https://image.tmdb.org/t/p/w342/fjz7yOtEaRFumJK2NMpdkazLHwV.jpg",
+        "year": "2022",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "SAS: el ascenso del Cisne Negro",
+        "poster": "https://image.tmdb.org/t/p/w342/p2rZZnLJ6QvJ6UV7h9JgUy8l0rh.jpg",
+        "year": "2021",
+        "rating": "5.8"
+      }
+    ],
+    "tmdbId": 1284465
   },
   {
     "titulo": "El Día De La Revelación 2026",
@@ -908,70 +1110,273 @@
     "tmdbId": null
   },
   {
-    "titulo": "La señal del apocalipsis (2026)",
-    "tituloOriginal": "",
-    "descripcion": "n un futuro caótico, Jemma, agente de una unidad especial internacional, sufre visiones inquietantes. Cuando niños desaparecen en todo el mundo, descubre un patrón ligado a una antigua profecía apocalíptica. Con el caos en aumento, deberá descifrar sus visiones para evitar una catástrofe global.\n\n",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BNGE5MDc5NzAtNWRjYS00M2ZjLTg2YWItMDc1MDAzNjUzNjIyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
-    "backdrop": "",
+    "titulo": "La señal del apocalipsis",
+    "tituloOriginal": "Rage of Stars",
+    "descripcion": "En un futuro caótico, Jemma, agente de una unidad especial internacional, sufre visiones inquietantes. Cuando niños desaparecen en todo el mundo, descubre un patrón ligado a una antigua profecía apocalíptica. Con el caos en aumento, deberá descifrar sus visiones para evitar una catástrofe global.",
+    "imagen": "https://image.tmdb.org/t/p/w780/vK9tTyWlVKlBGPTFp1e4WPGMJ7w.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/z7lZgL5tzefTfhyRtouThFhsuUS.jpg",
     "urlDrive": "https://drive.google.com/file/d/1N4UaYWf6a4NYY-62Yjomea0UGykHhg_t/view?usp=sharing",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-08-06",
+    "rating": "6.6",
+    "votos": 217,
+    "runtime": "1h 46min",
+    "genres": [
+      "Acción",
+      "Ciencia ficción",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Ciencia ficción, Suspense",
+    "clasificacion": "16",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Łukasz Róg",
+    "guionistas": "Łukasz Róg, Krzysztof Klader",
+    "reparto": [
+      {
+        "nombre": "Andrea Tivadar",
+        "personaje": "Jemma",
+        "foto": "https://image.tmdb.org/t/p/w185/iYtFxJGcrNmxYTq6rhivdFsotMx.jpg"
+      },
+      {
+        "nombre": "Jord Knotter",
+        "personaje": "Luk",
+        "foto": "https://image.tmdb.org/t/p/w185/f0ufZ6YbyWnu36kFg1d2OOjcM2S.jpg"
+      },
+      {
+        "nombre": "Jack McEvoy",
+        "personaje": "Kriss",
+        "foto": "https://image.tmdb.org/t/p/w185/pmE0tQiPxQT5yI6DZlnnjd8m8nB.jpg"
+      },
+      {
+        "nombre": "Elijah Rowen",
+        "personaje": "Tom",
+        "foto": "https://image.tmdb.org/t/p/w185/9aa2UljPdCZlp7meRE4dIzeu4Ej.jpg"
+      },
+      {
+        "nombre": "Małgorzata Klara",
+        "personaje": "Commander",
+        "foto": "https://image.tmdb.org/t/p/w185/aOpwXHLkh2KrctgTX7cD7Cs1QN0.jpg"
+      },
+      {
+        "nombre": "Mayu Gralińska Sakai",
+        "personaje": "Maya",
+        "foto": ""
+      },
+      {
+        "nombre": "Jakub Ormaniec",
+        "personaje": "Mike",
+        "foto": ""
+      },
+      {
+        "nombre": "Milena Grzybek",
+        "personaje": "Waitress",
+        "foto": ""
+      },
+      {
+        "nombre": "Monika Gieron",
+        "personaje": "Dancer",
+        "foto": ""
+      },
+      {
+        "nombre": "Natalia Filak",
+        "personaje": "Receptionist",
+        "foto": ""
+      },
+      {
+        "nombre": "Noah Culbreth",
+        "personaje": "Son",
+        "foto": ""
+      },
+      {
+        "nombre": "Aleksandra Bąk",
+        "personaje": "Reporter",
+        "foto": ""
+      }
+    ],
+    "pais": "Poland",
+    "idioma": "en",
+    "productoras": "Lukra Films",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "military unit, mysterious, prophetic visions, dark visions",
+    "similares": [
+      {
+        "titulo": "Spectral",
+        "poster": "https://image.tmdb.org/t/p/w342/5yprxs7ZyBr58RsTQJrKCVmqk8X.jpg",
+        "year": "2016",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Next",
+        "poster": "https://image.tmdb.org/t/p/w342/yNeoZYQ93Mkl6NxdEGuoBKJz1G8.jpg",
+        "year": "2007",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Aliens vs. comandos",
+        "poster": "https://image.tmdb.org/t/p/w342/ky0P36kdTD86ZFPEcBapc6gbue3.jpg",
+        "year": "2025",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Foxtrot Six",
+        "poster": "https://image.tmdb.org/t/p/w342/o7c8FKCZFIrLKrZSzgqufvNo4mr.jpg",
+        "year": "2019",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Expediente X: Creer es la clave",
+        "poster": "https://image.tmdb.org/t/p/w342/8qNSaQVnPRAR5Hje5PPTH9DOZF0.jpg",
+        "year": "2008",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "La Señal",
+        "poster": "https://image.tmdb.org/t/p/w342/qRs8osQJZLItwQER2bzuuK9A0sp.jpg",
+        "year": "2007",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 1323244
   },
   {
     "titulo": "Alpha",
-    "tituloOriginal": "",
+    "tituloOriginal": "अल्फा",
     "descripcion": "Alpha desvela la historia de una joven criada y entrenada para convertirse en un arma letal. Una misión pondrá a prueba todo aquello para lo que fue preparada: infiltrarse, sobrevivir y eliminar sin margen de error.",
-    "imagen": "https://image.tmdb.org/t/p/w185/bPtRt3ajQ0EkyeQ1O6iJwAIi9Py.jpg",
-    "backdrop": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/mbz1hhLxj1P0Ni6AROznUzl8uMH.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/b4WXm5ahmtubYXy3wqHUG2nUKoM.jpg",
     "urlDrive": "https://drive.google.com/file/d/1z4ezAXNA0DKAl1MwtNT1KU4xI3pt9b0H/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-07-02",
+    "rating": "5.2",
+    "votos": 31,
+    "runtime": "2h 21min",
+    "genres": [
+      "Acción",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Suspense",
+    "clasificacion": "NR",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
-    "presupuesto": 0,
-    "recaudacion": 0,
+    "director": "Shiv Rawail",
+    "guionistas": "Soumil Shukla, Shridhar Raghavan, Uday Chopra",
+    "reparto": [
+      {
+        "nombre": "आलिया भट्ट",
+        "personaje": "Sita",
+        "foto": "https://image.tmdb.org/t/p/w185/lAgBZgHKTo6amIO9CfNxUbm1usH.jpg"
+      },
+      {
+        "nombre": "Sharvari Wagh",
+        "personaje": "Durga",
+        "foto": "https://image.tmdb.org/t/p/w185/zAkx24qd7eH1Ck3ouBnPOysAOaJ.jpg"
+      },
+      {
+        "nombre": "बॉबी द्योल",
+        "personaje": "Fateh Singh Lakhawat / Major Zarrar Khan",
+        "foto": "https://image.tmdb.org/t/p/w185/2npVa3PduichY8e7qBiE54m9VVP.jpg"
+      },
+      {
+        "nombre": "अनिल कपूर",
+        "personaje": "Vikrant Kaul",
+        "foto": "https://image.tmdb.org/t/p/w185/dwvnpiwg9m2zj0VHzlgzEotFl0G.jpg"
+      },
+      {
+        "nombre": "Dibyendu Bhattacharya",
+        "personaje": "Dr. John Verghese",
+        "foto": "https://image.tmdb.org/t/p/w185/uLlGKCL9y5CFBwcAafTDQhupz5h.jpg"
+      },
+      {
+        "nombre": "Dia Mirza",
+        "personaje": "Janaki Kaul",
+        "foto": "https://image.tmdb.org/t/p/w185/oJSZlMkIGC1Yr8QxdBLliUjPRSd.jpg"
+      },
+      {
+        "nombre": "Hrithik Roshan",
+        "personaje": "Kabir Dhaliwal",
+        "foto": "https://image.tmdb.org/t/p/w185/d7XGTvyYgmrsA05XOn1YtxYcuY1.jpg"
+      },
+      {
+        "nombre": "Shubhi Mehta",
+        "personaje": "Susan Cherian",
+        "foto": ""
+      },
+      {
+        "nombre": "Pavleen Gujral",
+        "personaje": "Dr. Preeti",
+        "foto": "https://image.tmdb.org/t/p/w185/r21Gu2FvK0fNQpbsq95y6RUprI.jpg"
+      },
+      {
+        "nombre": "Pranay Narayan",
+        "personaje": "General Sodhi",
+        "foto": ""
+      },
+      {
+        "nombre": "Bhushan Simpi",
+        "personaje": "Amit Thakur",
+        "foto": ""
+      },
+      {
+        "nombre": "Digvijay Sawant",
+        "personaje": "Subrato Das",
+        "foto": ""
+      }
+    ],
+    "pais": "India",
+    "idioma": "hi",
+    "productoras": "Yash Raj Films",
+    "presupuesto": 10500000,
+    "recaudacion": 1856084,
     "trailerUrl": "",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "female spy, raw agent",
+    "similares": [
+      {
+        "titulo": "Sniper: La última resistencia",
+        "poster": "https://image.tmdb.org/t/p/w342/iEscED4NZCHsbA5maY4jnd3Z7xh.jpg",
+        "year": "2025",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Section 8",
+        "poster": "https://image.tmdb.org/t/p/w342/3rJDTaxBKLZ6XLvcVK7V20Eaj2d.jpg",
+        "year": "2022",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Perros de guerra",
+        "poster": "https://image.tmdb.org/t/p/w342/fks0SX3SAOjjV6Rd9sJhXPyI5ai.jpg",
+        "year": "2024",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Art of Eight Limbs",
+        "poster": "https://image.tmdb.org/t/p/w342/fMN3YAtIb8MgkGs46fhjxC7f5JG.jpg",
+        "year": "2024",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Rey de asesinos",
+        "poster": "https://image.tmdb.org/t/p/w342/59PHpiaLvVsCriuRzW8aftRoO5D.jpg",
+        "year": "2023",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Luces fuera",
+        "poster": "https://image.tmdb.org/t/p/w342/w77zHTSykW74c19rgV5JOA0nGmd.jpg",
+        "year": "2024",
+        "rating": "7.0"
+      }
+    ],
+    "tmdbId": 1122030
   },
   {
     "titulo": "Proyecto Sacrificio",
@@ -1007,37 +1412,137 @@
     "tmdbId": null
   },
   {
-    "titulo": "Untold Mr. T: I Pity the Fool",
-    "tituloOriginal": "",
+    "titulo": "Secretos del deporte: Mr. T",
+    "tituloOriginal": "Untold Mr. T: I Pity the Fool",
     "descripcion": "Mr. T conquistó el mundo como icono de los 80. Este documental desvela, de su propia mano, la historia que se esconde tras su cresta, sus cadenas y su frase característica.",
-    "imagen": "https://image.tmdb.org/t/p/w185/bUWHsZqPiYl8GwxhXA1nCdKRZbn.jpg",
-    "backdrop": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/bUWHsZqPiYl8GwxhXA1nCdKRZbn.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/tCxXRtEn4nQVtxQzaH32ZUjoX3C.jpg",
     "urlDrive": "https://drive.google.com/file/d/1_GFKBLtJDZnJdze_ZPO6-6SzVZoqFrbJ/view?usp=sharing",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
+    "year": "2026",
+    "fechaEstreno": "2026-09-08",
+    "rating": "7.6",
+    "votos": 25,
+    "runtime": "48min",
+    "genres": [
+      "Documental"
+    ],
+    "generosTexto": "Documental",
     "clasificacion": "",
     "tagline": "",
-    "director": "",
+    "director": "Scott Weintrob",
     "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
+    "reparto": [
+      {
+        "nombre": "Mr. T",
+        "personaje": "Self",
+        "foto": "https://image.tmdb.org/t/p/w185/pJbHlEsrhyW8dptDwBdXpoY9EmQ.jpg"
+      },
+      {
+        "nombre": "Terry Crews",
+        "personaje": "Self",
+        "foto": "https://image.tmdb.org/t/p/w185/pxTY4SglLo5hFcMH00MxPeC5u55.jpg"
+      },
+      {
+        "nombre": "Dirk Benedict",
+        "personaje": "Self",
+        "foto": "https://image.tmdb.org/t/p/w185/lQG0YpiHdhQgs5DKS0185JA60mr.jpg"
+      },
+      {
+        "nombre": "Sylvester Stallone",
+        "personaje": "Self (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/gn3pDWthJqR0VDYGViGD3048og7.jpg"
+      },
+      {
+        "nombre": "Ronald Reagan",
+        "personaje": "Self (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/tuB7bNPABSP3MtPKpdttbz2OdSU.jpg"
+      },
+      {
+        "nombre": "Nancy Reagan",
+        "personaje": "Self (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/dPGlSbpLf6ixZYYhg8fuZCIqrGp.jpg"
+      },
+      {
+        "nombre": "Hulk Hogan",
+        "personaje": "Self (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/i27iSeP7hhtlFOeVnthRQ9Ox2m4.jpg"
+      },
+      {
+        "nombre": "George Peppard",
+        "personaje": "Self (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/td2SN1HGqgGsWLi4YhReMYvH2ik.jpg"
+      },
+      {
+        "nombre": "Dwight Schultz",
+        "personaje": "Self (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/kVXkC94gNdSWRvDAs0DqBCduJ4S.jpg"
+      },
+      {
+        "nombre": "Muhammad Ali",
+        "personaje": "Self (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/u1ck2Lfx34GvW3YOoEE1ddNVdw6.jpg"
+      },
+      {
+        "nombre": "Carl Weathers",
+        "personaje": "Self (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/oUwtC5hEbcIZv53WPerZ9HhlSJR.jpg"
+      },
+      {
+        "nombre": "Scoop Jackson",
+        "personaje": "Self",
+        "foto": "https://image.tmdb.org/t/p/w185/cleNN4ICmoaTFVoKRekFHeFomLG.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
     "productoras": "",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
-    "coleccion": "",
+    "coleccion": "Untold Collection",
     "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "similares": [
+      {
+        "titulo": "The Curse of the Dragon",
+        "poster": "https://image.tmdb.org/t/p/w342/gffJgLXQJUGAhIodvzormubuLHU.jpg",
+        "year": "1993",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Lucy and Desi",
+        "poster": "https://image.tmdb.org/t/p/w342/vCwR4RSZTFzyZvX8FcBON2COnU9.jpg",
+        "year": "2022",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Cuando caiga la noche",
+        "poster": "https://image.tmdb.org/t/p/w342/lEsfJbN5BBw1wlqCvzxuBLGwitt.jpg",
+        "year": "2014",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Come See Me in the Good Light",
+        "poster": "https://image.tmdb.org/t/p/w342/hMPhJIVIndESo1ORZRFwjo9TUoA.jpg",
+        "year": "2025",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "The Battered Bastards of Baseball",
+        "poster": "https://image.tmdb.org/t/p/w342/h7hdQt7zpCRlDU3EqeJR6IVqNZW.jpg",
+        "year": "2014",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "El chico que conquistó Hollywood",
+        "poster": "https://image.tmdb.org/t/p/w342/s1bNQZyvg6hf10fYcnxc3XbkN19.jpg",
+        "year": "2002",
+        "rating": "6.6"
+      }
+    ],
+    "tmdbId": 1739206
   },
   {
     "titulo": "La apuesta más alta",
@@ -1074,168 +1579,614 @@
   },
   {
     "titulo": "Hugo 24",
-    "tituloOriginal": "",
-    "descripcion": "Hugo tiene 23 años y aún no ha madurado. En la víspera de su 24 cumpleaños se enfrenta a la vida adulta: no tiene trabajo, pero acude a una entrevista en una inmobiliaria, un empleo soñado que le permitiría vestir en traje, algo que le recuerda a su padre ausente. Arrastra un profundo miedo al abandono: su madre está en prisión, su novia se marcha y su familia se resquebraja. Cuando su casero amenaza con desahuciarlo en 24 horas, inicia una carrera contrarreloj que marcará su paso definitivo a la adultez.",
-    "imagen": "https://image.tmdb.org/t/p/w185/5zRjTzZEd8yrC7crED3WOHr6mF6.jpg",
-    "backdrop": "",
+    "tituloOriginal": "Hugo 24",
+    "descripcion": "En las 24 horas previas a su cumpleaños, Hugo, un joven perdido entre la inmadurez y el vértigo a crecer, se enfrenta a un inminente deshaucio y a la sensación constante de abandono. Con la ayuda de su mejor amigo, emprende una carrera contrarreloj para salvar su hogar y, sin saberlo, dar el primer paso hacia la madurez.",
+    "imagen": "https://image.tmdb.org/t/p/w780/cWsoaIjJ3kWRDAgXhAaLtYIDBVO.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/9twQ0xc8nl8QVzhf0Y0gfHde8pP.jpg",
     "urlDrive": "https://drive.google.com/file/d/1_GFKBLtJDZnJdze_ZPO6-6SzVZoqFrbJ/view?usp=sharing",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
+    "year": "2026",
+    "fechaEstreno": "2026-05-15",
+    "rating": "5.0",
+    "votos": 11,
+    "runtime": "1h 31min",
+    "genres": [
+      "Drama",
+      "Suspense"
+    ],
+    "generosTexto": "Drama, Suspense",
     "clasificacion": "",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Luc Knowles",
+    "guionistas": "Luc Knowles",
+    "reparto": [
+      {
+        "nombre": "Arón Piper",
+        "personaje": "Hugo",
+        "foto": "https://image.tmdb.org/t/p/w185/v4zaydubluolMYxKlzyQBfXCoP5.jpg"
+      },
+      {
+        "nombre": "Marco Cáceres",
+        "personaje": "Manu",
+        "foto": "https://image.tmdb.org/t/p/w185/5J8Cc6135T2s9rtH1BZDogkYeU.jpg"
+      },
+      {
+        "nombre": "Marta Etura",
+        "personaje": "Cris",
+        "foto": "https://image.tmdb.org/t/p/w185/a6aAilLDKbIXGwBfNgGc44RufVB.jpg"
+      },
+      {
+        "nombre": "Greta Fernández",
+        "personaje": "Alba",
+        "foto": "https://image.tmdb.org/t/p/w185/iNZZThidLYeZGBZGi9qhsVA1YRd.jpg"
+      },
+      {
+        "nombre": "Javier Pereira",
+        "personaje": "Jose \"el Loco\"",
+        "foto": "https://image.tmdb.org/t/p/w185/edGc0hGWGc11sFOxROosilqyoVp.jpg"
+      },
+      {
+        "nombre": "Elio Toffana",
+        "personaje": "Carlos \"Taller\"",
+        "foto": "https://image.tmdb.org/t/p/w185/pfx61VbyrcXOX8iN8PJlX3s82bw.jpg"
+      },
+      {
+        "nombre": "Gloria García Barquero",
+        "personaje": "Madre Hugo",
+        "foto": "https://image.tmdb.org/t/p/w185/3GyuLBCp1CL1HgYyephYGObpkfA.jpg"
+      },
+      {
+        "nombre": "Chema Tena",
+        "personaje": "Casero",
+        "foto": "https://image.tmdb.org/t/p/w185/uAK7Rf5TedgLwizGfnF670xqUwW.jpg"
+      },
+      {
+        "nombre": "Emilio Siegfried",
+        "personaje": "Padre Hugo",
+        "foto": ""
+      },
+      {
+        "nombre": "Mabel del Pozo",
+        "personaje": "Mujer Padre de Hugo",
+        "foto": "https://image.tmdb.org/t/p/w185/rcl3y06AXmHd3Xwiebdqh8xcbys.jpg"
+      },
+      {
+        "nombre": "Abril García Lorenzo",
+        "personaje": "Hija Padre Hugo",
+        "foto": "https://image.tmdb.org/t/p/w185/24DENsBwrbKYS6CPEDJxPMD2yNK.jpg"
+      },
+      {
+        "nombre": "Miguelo García",
+        "personaje": "Padre Alba",
+        "foto": "https://image.tmdb.org/t/p/w185/d6rye3ndnWwst4AMuI7VjEO74wR.jpg"
+      }
+    ],
+    "pais": "Spain, Argentina",
+    "idioma": "es",
+    "productoras": "Clapham, RV Entertainment, Dadá Films, Lágrima Films, NonStop, Caramel Films",
     "presupuesto": 0,
     "recaudacion": 0,
-    "trailerUrl": "",
+    "trailerUrl": "https://www.youtube.com/watch?v=9JfNeOqOqHU",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "social thriller",
+    "similares": [
+      {
+        "titulo": "La casa de Carroll Street",
+        "poster": "https://image.tmdb.org/t/p/w342/3EtWVezkKmp4tXGbwHraQfk7aEt.jpg",
+        "year": "1988",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "No mires a los ojos",
+        "poster": "https://image.tmdb.org/t/p/w342/8YHnuK9dowN47XAgSry4EtIuOBZ.jpg",
+        "year": "2022",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "La verdad sobre Emmanuel",
+        "poster": "https://image.tmdb.org/t/p/w342/z98jqAlVlnXyYnTlC95Na8FQXHF.jpg",
+        "year": "2013",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Little Boy Blue",
+        "poster": "https://image.tmdb.org/t/p/w342/8A9DICuchF1woO13mvUb9dmUIj8.jpg",
+        "year": "1998",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Hombres de hierro",
+        "poster": "https://image.tmdb.org/t/p/w342/27iADagjEjBvO3Lg10QGmzVSpLf.jpg",
+        "year": "1983",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Generación perdida",
+        "poster": "https://image.tmdb.org/t/p/w342/sHbII8OHz2uoyOpPAVYe0LIJcdN.jpg",
+        "year": "1999",
+        "rating": "6.6"
+      }
+    ],
+    "tmdbId": 1506747
   },
   {
-    "titulo": "Volcán: Fuego bajo tierra",
-    "tituloOriginal": "",
+    "titulo": "Eldarnir",
+    "tituloOriginal": "Eldarnir",
     "descripcion": "Una reconocida vulcanóloga detecta señales inequívocas de una inminente erupción volcánica que podría devastar la ciudad. A medida que la actividad sísmica aumenta y los terremotos se intensifican, comienza una carrera contra el tiempo para evacuar, advertir a las autoridades y salvar vidas. Pero cuando la tierra empieza a romperse, cada decisión puede ser la última.",
-    "imagen": "https://wv3.cuevana3.eu/_next/image?url=https://image.tmdb.org/t/p/original/1Knvd73GFfW50F6wFEqQAQDqyUa.jpg&w=640&q=75",
-    "backdrop": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/1Knvd73GFfW50F6wFEqQAQDqyUa.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/miydeUpspKXPRHZ5llPp2mIn0Cb.jpg",
     "urlDrive": "https://drive.google.com/file/d/1oNS-iVMPKPtuywuho9Lr4kluUS3LU3a9/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
+    "year": "2025",
+    "fechaEstreno": "2025-09-11",
+    "rating": "6.0",
+    "votos": 40,
+    "runtime": "1h 45min",
+    "genres": [
+      "Suspense"
+    ],
+    "generosTexto": "Suspense",
     "clasificacion": "",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Ugla Hauksdóttir",
+    "guionistas": "Ugla Hauksdóttir, Markus Englmair",
+    "reparto": [
+      {
+        "nombre": "Vigdís Hrefna Pálsdóttir",
+        "personaje": "Anna Arnardóttir",
+        "foto": "https://image.tmdb.org/t/p/w185/32fka8oFx3UuwwF3IIpavKtV78M.jpg"
+      },
+      {
+        "nombre": "Pilou Asbæk",
+        "personaje": "Thomas",
+        "foto": "https://image.tmdb.org/t/p/w185/hUJAtjbYG7rqm54aoWtNWeeKjTY.jpg"
+      },
+      {
+        "nombre": "Joi Johannsson",
+        "personaje": "Kristinn",
+        "foto": "https://image.tmdb.org/t/p/w185/mXkaCKZDlUXvLWxabCgsURnBzvy.jpg"
+      },
+      {
+        "nombre": "Steinunn Kaldal Jakobsdóttir",
+        "personaje": "Salka",
+        "foto": ""
+      },
+      {
+        "nombre": "María Heba Þorkelsdóttir",
+        "personaje": "Ebba",
+        "foto": "https://image.tmdb.org/t/p/w185/hEJjLvlzVSWt72F4dBpwtt39X7W.jpg"
+      },
+      {
+        "nombre": "Thor Tulinius",
+        "personaje": "Jóhannes",
+        "foto": "https://image.tmdb.org/t/p/w185/70t9zgX0STvGa5pATI9obt6gmB8.jpg"
+      },
+      {
+        "nombre": "Sigurður Sigurjónsson",
+        "personaje": "Ragnar",
+        "foto": "https://image.tmdb.org/t/p/w185/771PMUbylZqX4TbUmONzfOBhsSK.jpg"
+      },
+      {
+        "nombre": "Guðmundur Ólafsson",
+        "personaje": "Eiríkur",
+        "foto": ""
+      },
+      {
+        "nombre": "Arndís Hrönn Egilsdóttir",
+        "personaje": "Sigríður",
+        "foto": "https://image.tmdb.org/t/p/w185/2MxDcdXTALRXIAou8rB7I2Vjhnq.jpg"
+      },
+      {
+        "nombre": "Almar Blær Sigurjonsson",
+        "personaje": "Úlfar",
+        "foto": "https://image.tmdb.org/t/p/w185/yLGkGDFkw8qlP6hnGbtEla8BZ9I.jpg"
+      },
+      {
+        "nombre": "Jörundur Ragnarsson",
+        "personaje": "Stefán",
+        "foto": "https://image.tmdb.org/t/p/w185/ujI7fC6g0kyjM0W2sbCKdUR3qTe.jpg"
+      },
+      {
+        "nombre": "Ingvar E. Sigurðsson",
+        "personaje": "Örn",
+        "foto": "https://image.tmdb.org/t/p/w185/m7pllSNc0HRorwZmT6flaR3LdRE.jpg"
+      }
+    ],
+    "pais": "Iceland, United Kingdom",
+    "idioma": "is",
+    "productoras": "Madants, Netop Films, Bankside Films",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "volcano, volcanology, love affair, troubled marriage, reykjavík, iceland",
+    "similares": [
+      {
+        "titulo": "Seducción",
+        "poster": "https://image.tmdb.org/t/p/w342/7JCbXlLvGxYvGuKSciweViGfeUv.jpg",
+        "year": "2024",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Agente doble",
+        "poster": "https://image.tmdb.org/t/p/w342/raKIPzbaOEal7nOqGg6KAove1lb.jpg",
+        "year": "2012",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Aquellos que desean mi muerte",
+        "poster": "https://image.tmdb.org/t/p/w342/tu6kz9Ejm7wljiO58waAuwn1miV.jpg",
+        "year": "2021",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Mortal",
+        "poster": "https://image.tmdb.org/t/p/w342/b3QfqB5hYIBaguFxKliDabRIciU.jpg",
+        "year": "2020",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Black's Game",
+        "poster": "https://image.tmdb.org/t/p/w342/iG3e6KeIvhbkryLolUGx8BNfCnj.jpg",
+        "year": "2012",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Lo que te mantiene viva",
+        "poster": "https://image.tmdb.org/t/p/w342/zpmr3Jx4NJBIuNs8DkuXcPllvxF.jpg",
+        "year": "2018",
+        "rating": "5.8"
+      }
+    ],
+    "tmdbId": 1307384
   },
   {
-    "titulo": "Alien Storm 2026",
-    "tituloOriginal": "",
-    "descripcion": "Un padre, empresario y preparador secreto del fin del mundo escolta a la gente a la seguridad de su búnker —en realidad una casa subterránea— cuando una niebla masiva y potencialmente mortal desciende y corta la electricidad en su casa.",
-    "imagen": "https://media.themoviedb.org/t/p/w300_and_h450_face/qXHqQm3K4XspsgqGUbsk0dUcZwo.jpg",
-    "backdrop": "",
+    "titulo": "Alien Storm",
+    "tituloOriginal": "Alien Storm",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/7s1bJdyNvJWEj88GlG1ZasvmrqG.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/vHToMb5AuLQPLCmeonZt1CnkDyO.jpg",
     "urlDrive": "https://drive.google.com/file/d/1pffIeJ911W4XnYv01opvGr9iOxIL8Ktb/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
+    "year": "2026",
+    "fechaEstreno": "2026-07-21",
+    "rating": "2.3",
+    "votos": 5,
+    "runtime": "1h 14min",
+    "genres": [
+      "Ciencia ficción",
+      "Terror"
+    ],
+    "generosTexto": "Ciencia ficción, Terror",
     "clasificacion": "",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Adam Werth",
+    "guionistas": "Adam Werth, Sonny Mahal, Michael Mahal",
+    "reparto": [
+      {
+        "nombre": "Kevin Sorbo",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/a6rDi3tkNJwaVoP7VGbdGelwtYw.jpg"
+      },
+      {
+        "nombre": "Tom Arnold",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/z2ajL1ozVCS4Ug04zOGCNH06OPP.jpg"
+      },
+      {
+        "nombre": "Dawna Lee Heising",
+        "personaje": "Clair Flemmich",
+        "foto": "https://image.tmdb.org/t/p/w185/8Ky9a7fx4BhJzdkhbfHA0cOj8Xo.jpg"
+      },
+      {
+        "nombre": "Laura Mason",
+        "personaje": "Ophelia McConnely",
+        "foto": "https://image.tmdb.org/t/p/w185/8rIPPfTA3QMMMAUXY5aYvMV8MFp.jpg"
+      },
+      {
+        "nombre": "Robert Standley",
+        "personaje": "Frank McConnely",
+        "foto": ""
+      },
+      {
+        "nombre": "Molly Jean Edwards",
+        "personaje": "Grace MCconnelly",
+        "foto": ""
+      },
+      {
+        "nombre": "William Delesk",
+        "personaje": "Bernie McConnelly",
+        "foto": "https://image.tmdb.org/t/p/w185/uSxQbo39leTPGmV7KJK8W7Mji9g.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Mahal Empire",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "escape, alien, survival, aliens, mystery",
+    "similares": [
+      {
+        "titulo": "Horizonte Final",
+        "poster": "https://image.tmdb.org/t/p/w342/dFu9IMDEzCet9lkws1ZCI7jdd4z.jpg",
+        "year": "1997",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "El resucitado",
+        "poster": "https://image.tmdb.org/t/p/w342/llmd6Ftc6JIKsRF7SCH7Gw8nJSw.jpg",
+        "year": "1991",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Prometheus",
+        "poster": "https://image.tmdb.org/t/p/w342/wDVap4INWE33SPiAMcFUVlPDNIb.jpg",
+        "year": "2012",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Secuestradores de cuerpos (Body Snatchers)",
+        "poster": "https://image.tmdb.org/t/p/w342/7UgZSZxya01j0tBKUPRgEbjTVfb.jpg",
+        "year": "1993",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "El final de nuestros días",
+        "poster": "https://image.tmdb.org/t/p/w342/lWw56vQLL33rS3Hq19ECv28dj6a.jpg",
+        "year": "2024",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Arcadian",
+        "poster": "https://image.tmdb.org/t/p/w342/2paAs9Azw9CXZe3jD5F3weQVwyr.jpg",
+        "year": "2024",
+        "rating": "6.1"
+      }
+    ],
+    "tmdbId": 1080959
   },
   {
     "titulo": "Quantum Supremacy",
-    "tituloOriginal": "",
+    "tituloOriginal": "Quantum Supremacy",
     "descripcion": "En un futuro amenazado por robots deshonestos y una IA todopoderosa, el Capitán Monroe y su tripulación corren para evitar la caída de la humanidad.",
-    "imagen": "https://media.themoviedb.org/t/p/w300_and_h450_face/oU9td2mvEu04rLGlynziVmNo16b.jpg",
-    "backdrop": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/gytLKZR6X3w8iwpgPuzILY77Wda.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/zEsFCfW7c8x2X7q3uLbZYoGka7O.jpg",
     "urlDrive": "https://drive.google.com/file/d/1wG76wj_sFjRPDXItxfW18fuVOcXVOW2d/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-02-16",
+    "rating": "4.3",
+    "votos": 55,
+    "runtime": "1h 17min",
+    "genres": [
+      "Ciencia ficción",
+      "Animación",
+      "Aventura",
+      "Acción"
+    ],
+    "generosTexto": "Ciencia ficción, Animación, Aventura, Acción",
+    "clasificacion": "PG-13",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Jesse Baget",
+    "guionistas": "Steven Barton",
+    "reparto": [
+      {
+        "nombre": "Cuba Gooding Jr.",
+        "personaje": "Captain Marcus Monroe",
+        "foto": "https://image.tmdb.org/t/p/w185/2JguzbpOXoTGzSmLbWFlulKyyAe.jpg"
+      },
+      {
+        "nombre": "Mike Ayiotis",
+        "personaje": "Bronze",
+        "foto": ""
+      },
+      {
+        "nombre": "Storm Watters",
+        "personaje": "KK/Rominoff",
+        "foto": ""
+      },
+      {
+        "nombre": "Andrew Helbig",
+        "personaje": "Admiral Genus",
+        "foto": ""
+      },
+      {
+        "nombre": "Richie Ammons",
+        "personaje": "Aggros",
+        "foto": ""
+      },
+      {
+        "nombre": "Art Brown",
+        "personaje": "Detour",
+        "foto": ""
+      },
+      {
+        "nombre": "Tyler Gotch",
+        "personaje": "Farenheit",
+        "foto": ""
+      },
+      {
+        "nombre": "Michael Hajintonis",
+        "personaje": "Human Hostage",
+        "foto": ""
+      },
+      {
+        "nombre": "Steven Rathbone",
+        "personaje": "Ice",
+        "foto": ""
+      },
+      {
+        "nombre": "Mike Ayiotis",
+        "personaje": "Jumper",
+        "foto": ""
+      },
+      {
+        "nombre": "Simon Jackson",
+        "personaje": "Quantum",
+        "foto": ""
+      },
+      {
+        "nombre": "Addison Ford",
+        "personaje": "Stickler",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Ruthless Studios",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
     "coleccion": "",
     "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "similares": [
+      {
+        "titulo": "Babylon 5: El viaje a casa",
+        "poster": "https://image.tmdb.org/t/p/w342/wRU8I8q7N23bFA6vtxktgPrjZxu.jpg",
+        "year": "2023",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Escuadrón Suicida: Consecuencias infernales",
+        "poster": "https://image.tmdb.org/t/p/w342/gcEYpZR6fiivjya7SkQ6fzhv2VX.jpg",
+        "year": "2018",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Babylon 5: La Leyenda de los Rangers",
+        "poster": "https://image.tmdb.org/t/p/w342/bIhOn8xKsOQGjiNCQ8sKoQyYmNa.jpg",
+        "year": "2002",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Código 8 (Parte 2)",
+        "poster": "https://image.tmdb.org/t/p/w342/ao4eKQf4K8qOQWACLSqkwt4y6CT.jpg",
+        "year": "2024",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Batman: El Regreso del Caballero Oscuro (Edición Deluxe)",
+        "poster": "https://image.tmdb.org/t/p/w342/9atLJg6vLlsVIYIGihDv8Vp9QVG.jpg",
+        "year": "2013",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Los hermanos Venture: Radiante es la sangre del corazón del babuino",
+        "poster": "https://image.tmdb.org/t/p/w342/ooPJM965UewJFJFSqndO37RS0z0.jpg",
+        "year": "2023",
+        "rating": "7.3"
+      }
+    ],
+    "tmdbId": 1297311
   },
   {
     "titulo": "Zip Wire",
-    "tituloOriginal": "",
-    "descripcion": "Cuando su innovador descubrimiento farmacéutico es robado y su compañero asesinado, la investigadora Amy debe enfrentarse a su miedo a las alturas para escapar de atacantes nefastos, siendo la única vía de salvación una traicionera pista aérea. Para burlar a los misteriosos hostiles, tiene que reunir todo el valor para proteger el descubrimiento científico que cambiará el mundo —y a sí misma— antes de que sea demasiado tarde.\n\nDirector\nHoward J. Ford\n\n",
-    "imagen": "https://media2.firstshowing.net/firstshowing/img18/zipwirepostermainimgbigsv5991.jpg",
-    "backdrop": "",
+    "tituloOriginal": "Zip Wire",
+    "descripcion": "Cuando le roban su revolucionario descubrimiento farmacéutico y asesinan a su compañero, la investigadora Amy debe enfrentarse a su miedo a las alturas para escapar de unos atacantes sin escrúpulos, siendo la única vía de salvación una traicionera pasarela aérea. Para burlar a sus misteriosos perseguidores, tendrá que reunir hasta la última pizca de valor para proteger el descubrimiento científico que cambiará el mundo, y a sí misma, antes de que sea demasiado tarde.",
+    "imagen": "https://image.tmdb.org/t/p/w780/eLMHUOQ4mCMxePMbv0TIVB48zfe.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/sbkkAtymJaH5UzExiK974uPzCY4.jpg",
     "urlDrive": "https://media.themoviedb.org/t/p/w300_and_h450_face/oU9td2mvEu04rLGlynziVmNo16b.jpg",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
+    "year": "2026",
+    "fechaEstreno": "2026-08-31",
+    "rating": "7.8",
+    "votos": 38,
+    "runtime": "1h 35min",
+    "genres": [
+      "Acción",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Suspense",
     "clasificacion": "",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Howard J. Ford",
+    "guionistas": "Tom Boyle",
+    "reparto": [
+      {
+        "nombre": "MyAnna Buring",
+        "personaje": "Amy Watson",
+        "foto": "https://image.tmdb.org/t/p/w185/boC5LKewKpz8zhtUmPScHfkSAlV.jpg"
+      },
+      {
+        "nombre": "Joseph Millson",
+        "personaje": "Evan",
+        "foto": "https://image.tmdb.org/t/p/w185/pd5iENRPBpybR935qv8C2TVtGNL.jpg"
+      },
+      {
+        "nombre": "Saffron Burrows",
+        "personaje": "Donaldson",
+        "foto": "https://image.tmdb.org/t/p/w185/2qMLZh9XWquBt7TZF9wmDiOtJdm.jpg"
+      },
+      {
+        "nombre": "Michael Amariah",
+        "personaje": "Robert",
+        "foto": "https://image.tmdb.org/t/p/w185/mWsW3cdo2gFsvymHSoefrRBHGuq.jpg"
+      },
+      {
+        "nombre": "Silvia Presente",
+        "personaje": "Chloe",
+        "foto": ""
+      }
+    ],
+    "pais": "Denmark, United States of America, United Kingdom",
+    "idioma": "en",
+    "productoras": "Scanner-Rhodes Productions, Untitled Entertainment, Reinvent Yellow",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
     "coleccion": "",
     "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "similares": [
+      {
+        "titulo": "Rastreado",
+        "poster": "https://image.tmdb.org/t/p/w342/p54x9dKLWZQ78aSo5jPf2NodFVs.jpg",
+        "year": "2025",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Exit Protocol",
+        "poster": "https://image.tmdb.org/t/p/w342/iZTUevEKSwMJPPUu04rqvNAngx7.jpg",
+        "year": "2025",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Rey de asesinos",
+        "poster": "https://image.tmdb.org/t/p/w342/59PHpiaLvVsCriuRzW8aftRoO5D.jpg",
+        "year": "2023",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Marcados para morir",
+        "poster": "https://image.tmdb.org/t/p/w342/sIZo7dF3U7nsLAxlUhKCPAkFwjB.jpg",
+        "year": "2011",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "El mejor padrino",
+        "poster": "https://image.tmdb.org/t/p/w342/vLdKyqdHFdcPRm9xtzfz2DeZOv1.jpg",
+        "year": "2023",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Point Blank: Cuenta atrás",
+        "poster": "https://image.tmdb.org/t/p/w342/6kX02JwHYaKYIvhP4HN5Qjrug7D.jpg",
+        "year": "2019",
+        "rating": "6.0"
+      }
+    ],
+    "tmdbId": 1482547
   },
   {
     "titulo": "Hechizo de amor:",
