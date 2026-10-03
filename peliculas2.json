@@ -136,168 +136,677 @@
   },
   {
     "titulo": "El hombre que desafió al rey",
-    "tituloOriginal": "",
-    "descripcion": "n la Inglaterra del siglo XIV, asolada por la peste, un campesino desencadena una rebelión contra el rey Ricardo II y se convierte involuntariamente en una leyenda de la resistencia.",
-    "imagen": "https://image.tmdb.org/t/p/w185/rveEjlQQ0LlyyPk8ev2pHBmQPZZ.jpg",
-    "backdrop": "",
+    "tituloOriginal": "The Uprising",
+    "descripcion": "En la Inglaterra del siglo XIV, asolada por la peste, un campesino desencadena una rebelión contra el rey Ricardo II y se convierte involuntariamente en una leyenda de la resistencia.",
+    "imagen": "https://image.tmdb.org/t/p/w780/rveEjlQQ0LlyyPk8ev2pHBmQPZZ.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/y0reRTsewsPh0ePtgvDeLIsb5Wk.jpg",
     "urlDrive": "https://drive.google.com/file/d/1FXM_hxbEJzKTJ5zLQrheutYJIkuQP4Jq/view?usp=sharing",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
-    "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
-    "presupuesto": 0,
-    "recaudacion": 0,
+    "year": "2026",
+    "fechaEstreno": "2026-09-10",
+    "rating": "7.8",
+    "votos": 161,
+    "runtime": "2h 7min",
+    "genres": [
+      "Historia",
+      "Drama"
+    ],
+    "generosTexto": "Historia, Drama",
+    "clasificacion": "16",
+    "tagline": "Levántate o muere.",
+    "director": "Paul Greengrass",
+    "guionistas": "Paul Greengrass",
+    "reparto": [
+      {
+        "nombre": "Andrew Garfield",
+        "personaje": "Ploughman",
+        "foto": "https://image.tmdb.org/t/p/w185/5ydZ6TluPtxlz5G8nlWMB7SGmow.jpg"
+      },
+      {
+        "nombre": "Jamie Bell",
+        "personaje": "John Ball",
+        "foto": "https://image.tmdb.org/t/p/w185/xAfNYOJYOy5ee9PHbBF8Y6xzZ9I.jpg"
+      },
+      {
+        "nombre": "Stephen Dillane",
+        "personaje": "Archbishop Sudbury",
+        "foto": "https://image.tmdb.org/t/p/w185/qjIa6pXD4Z7nL7nH2LxyHDfxNgC.jpg"
+      },
+      {
+        "nombre": "Woody Norman",
+        "personaje": "King Richard II",
+        "foto": "https://image.tmdb.org/t/p/w185/jQlx4bAGAmQfvzEuXw6A9cEmb95.jpg"
+      },
+      {
+        "nombre": "Tom Hollander",
+        "personaje": "Treasurer Hales",
+        "foto": "https://image.tmdb.org/t/p/w185/cqZiJsImFZ6TaeShRRg49AZ9TyT.jpg"
+      },
+      {
+        "nombre": "Cosmo Jarvis",
+        "personaje": "Wat Tyler",
+        "foto": "https://image.tmdb.org/t/p/w185/1kgghZ558CxZCJip5ufO6BAqUGp.jpg"
+      },
+      {
+        "nombre": "Thomasin McKenzie",
+        "personaje": "Alyce",
+        "foto": "https://image.tmdb.org/t/p/w185/WOpnEFG5Q8LWxP81MtUrskmVox.jpg"
+      },
+      {
+        "nombre": "Jonny Lee Miller",
+        "personaje": "Mayor Walworth",
+        "foto": "https://image.tmdb.org/t/p/w185/otCQdDtnrMvZ5tPC62zLx0SaXeR.jpg"
+      },
+      {
+        "nombre": "Katherine Waterston",
+        "personaje": "Countess",
+        "foto": "https://image.tmdb.org/t/p/w185/zaqbXjr5jE1DnEoyAHokUDoCKOM.jpg"
+      },
+      {
+        "nombre": "Stanley Townsend",
+        "personaje": "Chief Justice Bealknap",
+        "foto": "https://image.tmdb.org/t/p/w185/ry1kek817WYHOh1npa3ojxmGJcI.jpg"
+      },
+      {
+        "nombre": "Sky Yang",
+        "personaje": "Scribe",
+        "foto": "https://image.tmdb.org/t/p/w185/vOkkOgn7CrSHY1pecVr5p8ZHIcB.jpg"
+      },
+      {
+        "nombre": "Dónal Finn",
+        "personaje": "Village Priest",
+        "foto": "https://image.tmdb.org/t/p/w185/4LXCZdrP9OOYQ9PeGGCCBQsyIUP.jpg"
+      }
+    ],
+    "pais": "Germany, United Kingdom, United States of America",
+    "idioma": "en",
+    "productoras": "Blumhouse Productions, Supernix, Thank You Pictures, Atomic Monster, Electric Shadow Company, FilmNation Entertainment",
+    "presupuesto": 20000000,
+    "recaudacion": 8079597,
     "trailerUrl": "",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "rebellion, peasant, based on true story, farmer, medieval, revolt, plague, medieval england, 14th century, 1300s",
+    "similares": [
+      {
+        "titulo": "Braveheart",
+        "poster": "https://image.tmdb.org/t/p/w342/cDMYybBU4COJfTwcPgnihwY5EiP.jpg",
+        "year": "1995",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Medieval",
+        "poster": "https://image.tmdb.org/t/p/w342/eeUNWsdoiOijOZAMaWFDA5Pb1n8.jpg",
+        "year": "2022",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Harvest",
+        "poster": "https://image.tmdb.org/t/p/w342/gU6nO3g5c67HlxyBTPHeGAYgRLY.jpg",
+        "year": "2025",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "El rey proscrito",
+        "poster": "https://image.tmdb.org/t/p/w342/wbuKZsSvoqaOhCeghh5MGcPhzDc.jpg",
+        "year": "2018",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "The King",
+        "poster": "https://image.tmdb.org/t/p/w342/2z99tqGA3AO81lOeZYvpjEKutI9.jpg",
+        "year": "2019",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Cristiada",
+        "poster": "https://image.tmdb.org/t/p/w342/tedXuy1anekSC5sqA5o3R75IVPI.jpg",
+        "year": "2012",
+        "rating": "6.9"
+      }
+    ],
+    "tmdbId": 977942
   },
   {
     "titulo": "LifeHack",
-    "tituloOriginal": "",
-    "descripcion": "yle y sus tres amigos pasan el tiempo usando sus habilidades informáticas para engañar a estafadores y meterse en sistemas ajenos. Buscando un desafío mayor, deciden atacar la fortuna en criptomonedas del multimillonario Don Heard, utilizando la información que su hija Lindsey comparte en internet. El plan funciona y creen haber cometido el robo perfecto, pero todo cambia cuando Lindsey descubre quiénes son. En lugar de denunciarlos, los obliga a participar en un nuevo golpe mucho más peligroso. Lo que comenzó como una aventura entre amigos pronto se convierte en un juego donde cada error puede tener graves consecuencias.",
-    "imagen": "https://image.tmdb.org/t/p/w500/ab8uFG6L3gKnog7ntrUdgo28hzK.jpg",
-    "backdrop": "",
+    "tituloOriginal": "LifeHack",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/ab8uFG6L3gKnog7ntrUdgo28hzK.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/k13za3wUhd8uejKJ2v9XQsRjxaw.jpg",
     "urlDrive": "https://drive.google.com/file/d/1H5KYBJm84LqqZjH7Pn9dddU5TfLe9zU_/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
+    "year": "2026",
+    "fechaEstreno": "2026-05-15",
+    "rating": "6.9",
+    "votos": 27,
+    "runtime": "1h 37min",
+    "genres": [
+      "Crimen",
+      "Suspense"
+    ],
+    "generosTexto": "Crimen, Suspense",
     "clasificacion": "",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Ronan Corrigan",
+    "guionistas": "Hope Elliott Kemp, Ronan Corrigan",
+    "reparto": [
+      {
+        "nombre": "Georgie Farmer",
+        "personaje": "Kyle Peters",
+        "foto": "https://image.tmdb.org/t/p/w185/lWhHmiwqvtUIln5OPPVbXqtUofI.jpg"
+      },
+      {
+        "nombre": "Yasmin Finney",
+        "personaje": "Alex",
+        "foto": "https://image.tmdb.org/t/p/w185/uohDEeGQGSFrV5yvxUF2G8tPQwu.jpg"
+      },
+      {
+        "nombre": "Roman Hayeck-Green",
+        "personaje": "Sid Daniels",
+        "foto": ""
+      },
+      {
+        "nombre": "James Scholz",
+        "personaje": "Petey Le",
+        "foto": ""
+      },
+      {
+        "nombre": "Jessica Reynolds",
+        "personaje": "Lindsey Heard",
+        "foto": "https://image.tmdb.org/t/p/w185/iHmfCsbGOs7kkr3JNpupLYdrdrj.jpg"
+      },
+      {
+        "nombre": "Charlie Creed-Miles",
+        "personaje": "Don Heard",
+        "foto": "https://image.tmdb.org/t/p/w185/aVPpJs7X03oNmbxFtHNaQdsnNod.jpg"
+      },
+      {
+        "nombre": "Cael King",
+        "personaje": "Sanjay",
+        "foto": "https://image.tmdb.org/t/p/w185/vWJ5mUfKTA34ySdLDNTAUIx5ubW.jpg"
+      },
+      {
+        "nombre": "Jill Winternitz",
+        "personaje": "Rachel Walker",
+        "foto": "https://image.tmdb.org/t/p/w185/bBfmth2C93OkyYir6w8qxjmHpiR.jpg"
+      },
+      {
+        "nombre": "Frances Katz",
+        "personaje": "Maid",
+        "foto": "https://image.tmdb.org/t/p/w185/kztik39r0zZo8tnMJefy1XL3OoJ.jpg"
+      },
+      {
+        "nombre": "Boo Holmes",
+        "personaje": "News Reporter",
+        "foto": ""
+      },
+      {
+        "nombre": "Penelope Granycome",
+        "personaje": "Kyle's Mum",
+        "foto": ""
+      },
+      {
+        "nombre": "Matteo Arnaldi",
+        "personaje": "Andrew Peters - Kyle's Dad",
+        "foto": ""
+      }
+    ],
+    "pais": "United Kingdom, United States of America, Russia",
+    "idioma": "en",
+    "productoras": "Screenlife Liverpool, Sky Original Productions, The Avenue Entertainment, Highland Film Group, Bazelevs",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "hacker, heist, found footage, bitcoin, screenlife, suspenseful",
+    "similares": [
+      {
+        "titulo": "Sneakers (Los fisgones)",
+        "poster": "https://image.tmdb.org/t/p/w342/xU5iAPmI2zAcZjjgCqCceabogSY.jpg",
+        "year": "1992",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Ocean's Eleven. Hagan juego",
+        "poster": "https://image.tmdb.org/t/p/w342/rDWIeM3bOOxh0uP9wd9baGOtx2p.jpg",
+        "year": "2001",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Hackers 2: Asalto final",
+        "poster": "https://image.tmdb.org/t/p/w342/qxL9cGIAYxGzK8kk402wzgL2OEc.jpg",
+        "year": "2000",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "The Italian Job",
+        "poster": "https://image.tmdb.org/t/p/w342/qmS0qlJ7JJFZFqv6iTVDXyjn97r.jpg",
+        "year": "2003",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Lift: Un robo de primera clase",
+        "poster": "https://image.tmdb.org/t/p/w342/n6ObvEy7ApfHVoyFLAHEEJx3F8b.jpg",
+        "year": "2024",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Un plan brillante",
+        "poster": "https://image.tmdb.org/t/p/w342/5SgSuCHLsdAhtJtYpzNjYO7dfLl.jpg",
+        "year": "2007",
+        "rating": "6.8"
+      }
+    ],
+    "tmdbId": 1285669
   },
   {
     "titulo": "Unabomber",
-    "tituloOriginal": "",
-    "descripcion": "ed Kaczynski es un brillante estudiante que ingresa a Harvard siendo muy joven y termina participando en inquietantes experimentos psicológicos que dejan una profunda marca en su vida. Años después, aislado en una pequeña cabaña, comienza una violenta campaña de atentados con bombas contra personas relacionadas con universidades, tecnología y la sociedad industrial. Mientras sus ataques mantienen al país en alerta, el FBI inicia una extensa investigación para descubrir su identidad. La búsqueda se vuelve cada vez más intensa y las pistas comienzan a acercar a los agentes hasta el hombre que se esconde detrás del nombre Unabomber.",
-    "imagen": "https://image.tmdb.org/t/p/w500/jfYo76IOCphg2fmKX5UJvgcimy4.jpg",
-    "backdrop": "",
+    "tituloOriginal": "UNABOMBER",
+    "descripcion": "Un estudiante de Harvard se convierte en 'Unabomber' tras someterse a una serie de experimentos psicológicos. Años más tarde, la investigación de un agente del FBI revela cómo su pasado determinó la campaña mortal que se cobró la vida de tres personas e hirió a otras veintitrés entre 1978 y 1995.",
+    "imagen": "https://image.tmdb.org/t/p/w780/crV6ba2FVfHW64PzjJehMxUj9e7.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/58D9nalUYW5L5K0guw7hcpsEJBH.jpg",
     "urlDrive": "https://drive.google.com/file/d/1badb_WEw-iShEBk2NK17V_MTJOdxYc2Z/view?usp=sharing",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
-    "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "year": "2026",
+    "fechaEstreno": "2026-09-25",
+    "rating": "6.6",
+    "votos": 310,
+    "runtime": "1h 41min",
+    "genres": [
+      "Suspense",
+      "Drama",
+      "Crimen"
+    ],
+    "generosTexto": "Suspense, Drama, Crimen",
+    "clasificacion": "R",
+    "tagline": "Una mente puede caer en la locura",
+    "director": "Janus Metz",
+    "guionistas": "Sam Chalsen, Nelson Greaves",
+    "reparto": [
+      {
+        "nombre": "Russell Crowe",
+        "personaje": "Henry Murray",
+        "foto": "https://image.tmdb.org/t/p/w185/3IBZF0qCZMZ7zJYlgrH0sQzNZV.jpg"
+      },
+      {
+        "nombre": "Jacob Tremblay",
+        "personaje": "Ted Kaczynski",
+        "foto": "https://image.tmdb.org/t/p/w185/h8CXDp86Y36CUENF4SXJq5ZRTsf.jpg"
+      },
+      {
+        "nombre": "Shailene Woodley",
+        "personaje": "Joanne Miller",
+        "foto": "https://image.tmdb.org/t/p/w185/gL2NvHKW9wAH3qkZuJ76ULUiArB.jpg"
+      },
+      {
+        "nombre": "Annabelle Wallis",
+        "personaje": "Christiana Morgan",
+        "foto": "https://image.tmdb.org/t/p/w185/2ZmO2Zz9TcR0rmSJHOkivcu0heR.jpg"
+      },
+      {
+        "nombre": "Alexander Ludwig",
+        "personaje": "Leo Driver",
+        "foto": "https://image.tmdb.org/t/p/w185/3KpzKT4iGhNivSISQMe6EwpAmCi.jpg"
+      },
+      {
+        "nombre": "Marc Menchaca",
+        "personaje": "Eddie Turrell",
+        "foto": "https://image.tmdb.org/t/p/w185/fL0LmdBwau30M4AFPVJrpLRXXsU.jpg"
+      },
+      {
+        "nombre": "Steven Ogg",
+        "personaje": "Dean Kaplan",
+        "foto": "https://image.tmdb.org/t/p/w185/dorBNAwR8qpB13pe0zd3OkFjqWR.jpg"
+      },
+      {
+        "nombre": "Mark Camacho",
+        "personaje": "Bill Ford",
+        "foto": ""
+      },
+      {
+        "nombre": "David Webster",
+        "personaje": "Roy",
+        "foto": "https://image.tmdb.org/t/p/w185/gWQ9r3s8fAsmEs0hvKBSgZppWEQ.jpg"
+      },
+      {
+        "nombre": "Bruce Ramsay",
+        "personaje": "Turk Kaczynski",
+        "foto": "https://image.tmdb.org/t/p/w185/xvVbXMzHqZ0kMs77EScQ76S4gWH.jpg"
+      },
+      {
+        "nombre": "Michelle Leblanc",
+        "personaje": "Wanda Kaczynski",
+        "foto": ""
+      },
+      {
+        "nombre": "Gus Halper",
+        "personaje": "Mr. C",
+        "foto": "https://image.tmdb.org/t/p/w185/50KfZII4TVqgYngoAjPgdxhwESP.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "MRC, 2.0 Entertainment",
     "presupuesto": 0,
     "recaudacion": 0,
-    "trailerUrl": "",
+    "trailerUrl": "https://www.youtube.com/watch?v=IXvat2Qeb2Y",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "bomb, fbi, based on true story, terrorism, mk ultra, biopic",
+    "similares": [
+      {
+        "titulo": "Unabomber: Terrorista",
+        "poster": "https://image.tmdb.org/t/p/w342/nT5DbMJDwtsUKzF3oSfl3kr1f9y.jpg",
+        "year": "2021",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Infiltrado",
+        "poster": "https://image.tmdb.org/t/p/w342/1ihXzqt84MH1d3lp1iIkp37je0b.jpg",
+        "year": "2023",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Driven: El origen de la leyenda",
+        "poster": "https://image.tmdb.org/t/p/w342/vwezMLR6Fq3tTEGvSuU7R2b1Q0l.jpg",
+        "year": "2019",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Amenazados",
+        "poster": "https://image.tmdb.org/t/p/w342/1DfkbLnyV5cjZCGwtmwq3tgGAZV.jpg",
+        "year": "2010",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "El ojo público",
+        "poster": "https://image.tmdb.org/t/p/w342/jOStkUE8TfrNcNimpFoDhWqBzAk.jpg",
+        "year": "1992",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "El confidente",
+        "poster": "https://image.tmdb.org/t/p/w342/jps3oFSMhg9OMdHkbqoblUy9ZMs.jpg",
+        "year": "1973",
+        "rating": "7.2"
+      }
+    ],
+    "tmdbId": 1492640
   },
   {
     "titulo": "Hot Spot",
-    "tituloOriginal": "",
-    "descripcion": "En un futuro cercano controlado por una inteligencia artificial consciente, el detective Djonny investiga un misterioso asesinato ocurrido en un campamento de refugiados. Durante el caso conoce a Rana, una mujer vinculada a un grupo rebelde que podría tener la capacidad de enfrentarse al sistema que vigila y controla a la sociedad. A medida que Djonny se acerca a la verdad, comienza a descubrir secretos que ponen en duda todo lo que conoce, incluso su propia identidad. La investigación pronto se convierte en una peligrosa lucha donde las personas que ama también quedan amenazadas.",
-    "imagen": "https://image.tmdb.org/t/p/w500/42egzT6e4CIEdrEo4Xc31DKyGjA.jpg",
-    "backdrop": "",
+    "tituloOriginal": "Hot Spot",
+    "descripcion": "A finales del siglo XXI, un investigador y un miembro de una temida secta religiosa se unen tras un asesinato en un campo de refugiados.",
+    "imagen": "https://image.tmdb.org/t/p/w780/42egzT6e4CIEdrEo4Xc31DKyGjA.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/aRsmRuomE4vIGNUPIGLrp9ojM5a.jpg",
     "urlDrive": "https://drive.google.com/file/d/1DCec98dZIn1I0loojyAgOuflK0mpzThG/view?usp=sharing",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-08-21",
+    "rating": "4.6",
+    "votos": 38,
+    "runtime": "1h 41min",
+    "genres": [
+      "Ciencia ficción",
+      "Acción",
+      "Crimen",
+      "Fantasía",
+      "Suspense"
+    ],
+    "generosTexto": "Ciencia ficción, Acción, Crimen, Fantasía, Suspense",
+    "clasificacion": "R",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
-    "presupuesto": 0,
-    "recaudacion": 0,
+    "director": "Agnieszka Smoczyńska",
+    "guionistas": "Robert Bolesto",
+    "reparto": [
+      {
+        "nombre": "Andrzej Konopka",
+        "personaje": "Jan 623",
+        "foto": "https://image.tmdb.org/t/p/w185/3QoIbqsBXj9Si1kuGOl0YCxM52v.jpg"
+      },
+      {
+        "nombre": "Noomi Rapace",
+        "personaje": "Rana",
+        "foto": "https://image.tmdb.org/t/p/w185/m0J6ZqEyNljqF1DXBoC9DcMStHP.jpg"
+      },
+      {
+        "nombre": "Reika Kirishima",
+        "personaje": "Ayka",
+        "foto": "https://image.tmdb.org/t/p/w185/htxRwdj2L0SxP18PzNIt21m6qEt.jpg"
+      },
+      {
+        "nombre": "Filippa Kaye",
+        "personaje": "Maria",
+        "foto": "https://image.tmdb.org/t/p/w185/x013EwZl9JQwlMIC0VwpIa7cTUl.jpg"
+      },
+      {
+        "nombre": "George Aurimas Cris",
+        "personaje": "Zen",
+        "foto": ""
+      },
+      {
+        "nombre": "Νίκη Σερέτη",
+        "personaje": "Bossa",
+        "foto": "https://image.tmdb.org/t/p/w185/19sm6GzEHH3VTONbVX6zrzeqZd.jpg"
+      },
+      {
+        "nombre": "Έκτορας Λιάτσος",
+        "personaje": "TseTse",
+        "foto": "https://image.tmdb.org/t/p/w185/yHJCLaSURVYSgmXtseiePtGoMKc.jpg"
+      },
+      {
+        "nombre": "Ράσμη Τσόπελα",
+        "personaje": "Granny",
+        "foto": "https://image.tmdb.org/t/p/w185/93IBKGgxSbgEjj0OfXhwAlpUOHk.jpg"
+      },
+      {
+        "nombre": "Eleni Tzangka",
+        "personaje": "Mona",
+        "foto": ""
+      },
+      {
+        "nombre": "Thanasis Barkas",
+        "personaje": "Male Soldier",
+        "foto": ""
+      },
+      {
+        "nombre": "Stavros Kotas",
+        "personaje": "Tom",
+        "foto": ""
+      },
+      {
+        "nombre": "Sylwia Gola",
+        "personaje": "Amal",
+        "foto": "https://image.tmdb.org/t/p/w185/A1QxsRRbFXvZ0LX433o9TUk4LQB.jpg"
+      }
+    ],
+    "pais": "Poland, Greece, Sweden",
+    "idioma": "en",
+    "productoras": "Madants, Neda Film, Film i Väst, Zentropa International Sweden",
+    "presupuesto": 6000000,
+    "recaudacion": 256350,
     "trailerUrl": "",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "artificial intelligence (a.i.), telepathy, post-apocalyptic future, hypnosis, private detective, vagrant, woman director, seizure, cybercrime, self-driving car, public execution, independent film, authoritarian regime, psychic powers, absurd",
+    "similares": [
+      {
+        "titulo": "Upgrade (Ilimitado)",
+        "poster": "https://image.tmdb.org/t/p/w342/sjR6S9pP9OcLaQTqgFLdaFd672R.jpg",
+        "year": "2018",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Wifelike",
+        "poster": "https://image.tmdb.org/t/p/w342/9HueT0J7EQxZVoNwIytb2nupM1r.jpg",
+        "year": "2022",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Chappie",
+        "poster": "https://image.tmdb.org/t/p/w342/g2kVBpRljENCi8KskBi0tedK3UE.jpg",
+        "year": "2015",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Alice (Subservience)",
+        "poster": "https://image.tmdb.org/t/p/w342/4S7Enfu0ZzOja8xMTIHKU2L0yLN.jpg",
+        "year": "2024",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Anon",
+        "poster": "https://image.tmdb.org/t/p/w342/zv03BoK68TbrnzVO7T3mcl7ipfy.jpg",
+        "year": "2018",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Archive",
+        "poster": "https://image.tmdb.org/t/p/w342/hmz9ySdCqW9FiHpM9JdSCkjQzFA.jpg",
+        "year": "2020",
+        "rating": "6.4"
+      }
+    ],
+    "tmdbId": 813418
   },
   {
-    "titulo": "La última bala",
-    "tituloOriginal": "",
-    "descripcion": "Jake Harris, un experimentado miembro de los Navy SEAL, vuelve a la acción cuando un antiguo compañero se convierte en una grave amenaza para Estados Unidos. Elliot Carter ha tomado como rehenes a varios altos mandos dentro de un búnker nuclear y pretende conseguir los códigos necesarios para controlar el sistema de defensa del país. Con el tiempo en contra, Jake debe liderar una peligrosa misión en territorio enemigo, enfrentándose a mercenarios, trampas y ataques constantes. Mientras intenta detener a Carter antes de que provoque una catástrofe, también tendrá que enfrentar asuntos pendientes de su propio pasado.",
-    "imagen": "https://image.tmdb.org/t/p/w500/eB3hWY62tpjjR8Be8Jl8tQF444A.jpg",
-    "backdrop": "",
+    "titulo": "Un último disparo",
+    "tituloOriginal": "One Last Shot",
+    "descripcion": "El Navy Seal Jake Harris debe evitar que un equipo de mercenarios, dirigido por su excamarada desilusionado, inhabilite la red de defensa antimisiles de Estados Unidos.",
+    "imagen": "https://image.tmdb.org/t/p/w780/opmrLPrV2GPSazjWbX2PhkLjxBe.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/8giIQcHpxgsPVP6c7aQtHl3txuh.jpg",
     "urlDrive": "https://drive.google.com/file/d/1Jxhj4QclEd8RstJUErm9zF-i_PKF0-l-/view?usp=sharing",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-09-22",
+    "rating": "7.5",
+    "votos": 86,
+    "runtime": "1h 38min",
+    "genres": [
+      "Acción",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Suspense",
+    "clasificacion": "16",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "James Nunn",
+    "guionistas": "Jamie Russell",
+    "reparto": [
+      {
+        "nombre": "Scott Adkins",
+        "personaje": "Jake Harris",
+        "foto": "https://image.tmdb.org/t/p/w185/9NRr2a1riIn5CWn5McZLJlk4vxR.jpg"
+      },
+      {
+        "nombre": "Steven Cree",
+        "personaje": "Elliot Carter",
+        "foto": "https://image.tmdb.org/t/p/w185/oH9uSQMJPdFHeVggqvMwheW7nZl.jpg"
+      },
+      {
+        "nombre": "Hannah Ware",
+        "personaje": "Elena Torres",
+        "foto": "https://image.tmdb.org/t/p/w185/vQqZkQsGZnikCk0QfJFW7OBuQ07.jpg"
+      },
+      {
+        "nombre": "Dolph Lundgren",
+        "personaje": "Admiral Mulholland",
+        "foto": "https://image.tmdb.org/t/p/w185/fB1tOws6Gav0xE8LYlELEb82hJt.jpg"
+      },
+      {
+        "nombre": "ケイン・コスギ",
+        "personaje": "Lee",
+        "foto": "https://image.tmdb.org/t/p/w185/wqMaPmNgrtqwZDktG0WFeKcqzJx.jpg"
+      },
+      {
+        "nombre": "Neil Linpow",
+        "personaje": "Long",
+        "foto": "https://image.tmdb.org/t/p/w185/1be5xAB1L4gCdo6cd01pYfSZMc0.jpg"
+      },
+      {
+        "nombre": "Ray Fearon",
+        "personaje": "Robinson",
+        "foto": "https://image.tmdb.org/t/p/w185/ou2cqhqdhfQoKVEBpIh0P3sKZti.jpg"
+      },
+      {
+        "nombre": "Tom Dunne",
+        "personaje": "Greene",
+        "foto": "https://image.tmdb.org/t/p/w185/uxjZmYJ231RwfZsFQI2cksvz2jJ.jpg"
+      },
+      {
+        "nombre": "Michel Curiel",
+        "personaje": "Perez",
+        "foto": "https://image.tmdb.org/t/p/w185/ml4NqwB24Vr0PpRXiKjelUAWab5.jpg"
+      },
+      {
+        "nombre": "Tom Leigh",
+        "personaje": "Jericho",
+        "foto": "https://image.tmdb.org/t/p/w185/z54gxrnWeFTDrxIfEkkU1RQLmTV.jpg"
+      },
+      {
+        "nombre": "Jack Trueman",
+        "personaje": "Phillips",
+        "foto": "https://image.tmdb.org/t/p/w185/97FIP23vtxyazLplDmJFg4CLZe9.jpg"
+      },
+      {
+        "nombre": "Sofian Francis",
+        "personaje": "Flynn",
+        "foto": "https://image.tmdb.org/t/p/w185/iWFEG28z0hiFRPQHfeVWs54aVVp.jpg"
+      }
+    ],
+    "pais": "United Kingdom, United States of America",
+    "idioma": "en",
+    "productoras": "Sky Cinema, Signature Films",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
-    "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "coleccion": "One Shot - Colección",
+    "keywords": "betrayal, navy seals, mercenaries, missile defense",
+    "similares": [
+      {
+        "titulo": "Cúbrete",
+        "poster": "https://image.tmdb.org/t/p/w342/w1rPoRYXAX7q9IBeGcFJbr0ojFo.jpg",
+        "year": "2024",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Sin remordimientos",
+        "poster": "https://image.tmdb.org/t/p/w342/3A2owG58gqx8fzRWhVOMAO6lbWq.jpg",
+        "year": "2021",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Código Gerónimo: La caza de Bin Laden",
+        "poster": "https://image.tmdb.org/t/p/w342/tOo1gwTmWHbvrfKLdfW9SEC7n18.jpg",
+        "year": "2012",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Perros de guerra",
+        "poster": "https://image.tmdb.org/t/p/w342/fks0SX3SAOjjV6Rd9sJhXPyI5ai.jpg",
+        "year": "2024",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Alerta máxima",
+        "poster": "https://image.tmdb.org/t/p/w342/iPTjwvyBiKNW86e0MOk30r64zWQ.jpg",
+        "year": "1992",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "One shot (Misión de rescate)",
+        "poster": "https://image.tmdb.org/t/p/w342/aJCqUjcUgjqS7bxLpgH0C7pe3WW.jpg",
+        "year": "2021",
+        "rating": "6.7"
+      }
+    ],
+    "tmdbId": 1607127
   },
   {
     "titulo": "Insaciable",
