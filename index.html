@@ -209,7 +209,6 @@
         const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/ClI93uJrk1A4hA8MoS1J7Z';
         const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
 
-        // ==================== UTILIDADES DE IMÁGENES ROBUSTAS ====================
         const normalizeImageUrl = (value) => {
             if (typeof value !== 'string') return '';
             let url = value.trim().replace(/^['"]|['"]$/g, '');
@@ -222,10 +221,7 @@
 
         const extractImageUrl = (obj) => {
             if (!obj || typeof obj !== 'object') return '';
-            const fields = [
-                'imagen', 'image', 'poster', 'img', 'logo', 'portada',
-                'cover', 'thumbnail', 'thumb', 'tvg-logo', 'backdrop'
-            ];
+            const fields = ['imagen', 'image', 'poster', 'img', 'logo', 'portada', 'cover', 'thumbnail', 'thumb', 'tvg-logo', 'backdrop'];
             for (const f of fields) {
                 const value = normalizeImageUrl(obj[f]);
                 if (value) return value;
@@ -246,30 +242,17 @@
         const failedImageUrls = new Set();
 
         const generatePlaceholder = (title, type = 'poster') => {
-            const safeTitle = (title || 'Sin Título')
-                .substring(0, 32)
-                .replace(/[<>&"']/g, '');
-            if (type === 'tv') {
-                return `https://placehold.co/300x300/0f172a/06b6d4?text=${encodeURIComponent(safeTitle)}`;
-            }
+            const safeTitle = (title || 'Sin Título').substring(0, 32).replace(/[<>&"']/g, '');
+            if (type === 'tv') return `https://placehold.co/300x300/0f172a/06b6d4?text=${encodeURIComponent(safeTitle)}`;
             return `https://placehold.co/300x450/0f172a/06b6d4?text=${encodeURIComponent(safeTitle)}`;
         };
 
-        const RobustImage = ({
-            src,
-            alt = '',
-            title = alt,
-            type = 'poster',
-            className = '',
-            ...props
-        }) => {
+        const RobustImage = ({ src, alt = '', title = alt, type = 'poster', className = '', ...props }) => {
             const candidates = useMemo(() => getImageCandidates(src), [src]);
             const fallback = generatePlaceholder(title, type);
             const [sourceIndex, setSourceIndex] = useState(0);
 
-            useEffect(() => {
-                setSourceIndex(0);
-            }, [src]);
+            useEffect(() => { setSourceIndex(0); }, [src]);
 
             const currentSrc = candidates[
                 failedImageUrls.has(candidates[0]) && candidates.length > 1
@@ -278,26 +261,12 @@
             ] || fallback;
 
             const handleError = () => {
-                if (currentSrc && currentSrc !== fallback) {
-                    failedImageUrls.add(currentSrc);
-                }
-                if (sourceIndex < candidates.length - 1) {
-                    setSourceIndex(prev => prev + 1);
-                } else if (sourceIndex !== candidates.length) {
-                    setSourceIndex(candidates.length);
-                }
+                if (currentSrc && currentSrc !== fallback) failedImageUrls.add(currentSrc);
+                if (sourceIndex < candidates.length - 1) setSourceIndex(prev => prev + 1);
+                else if (sourceIndex !== candidates.length) setSourceIndex(candidates.length);
             };
 
-            return (
-                <img
-                    src={currentSrc}
-                    alt={alt || title}
-                    className={className}
-                    onError={handleError}
-                    referrerPolicy="no-referrer"
-                    {...props}
-                />
-            );
+            return <img src={currentSrc} alt={alt || title} className={className} onError={handleError} referrerPolicy="no-referrer" {...props} />;
         };
 
         const DEFAULT_RADIO_STATIONS = [
@@ -332,13 +301,8 @@
             if (url.includes('ok.ru/video/')) return url.replace('ok.ru/video/', 'ok.ru/videoembed/');
             if (url.includes('drive.google.com')) {
                 let fileId = '';
-                if (url.includes('/file/d/')) {
-                    const parts = url.split('/file/d/');
-                    if (parts[1]) fileId = parts[1].split('/')[0];
-                } else if (url.includes('id=')) {
-                    const parts = url.split('id=');
-                    if (parts[1]) fileId = parts[1].split('&')[0];
-                }
+                if (url.includes('/file/d/')) { const parts = url.split('/file/d/'); if (parts[1]) fileId = parts[1].split('/')[0]; }
+                else if (url.includes('id=')) { const parts = url.split('id='); if (parts[1]) fileId = parts[1].split('&')[0]; }
                 if (fileId) return `https://drive.google.com/file/d/${fileId}/preview`;
             }
             return url;
@@ -348,13 +312,8 @@
             if (!url) return '';
             if (url.includes('drive.google.com')) {
                 let fileId = '';
-                if (url.includes('/file/d/')) {
-                    const parts = url.split('/file/d/');
-                    if (parts[1]) fileId = parts[1].split('/')[0];
-                } else if (url.includes('id=')) {
-                    const parts = url.split('id=');
-                    if (parts[1]) fileId = parts[1].split('&')[0];
-                }
+                if (url.includes('/file/d/')) { const parts = url.split('/file/d/'); if (parts[1]) fileId = parts[1].split('/')[0]; }
+                else if (url.includes('id=')) { const parts = url.split('id='); if (parts[1]) fileId = parts[1].split('&')[0]; }
                 if (fileId) return `https://drive.google.com/uc?export=download&id=${fileId}`;
             }
             return url;
@@ -371,14 +330,10 @@
                     }
                 }
             } catch (e) {}
-
             try {
                 const resRaw = await fetch(rawUrl + cacheBust);
-                if (resRaw.ok) {
-                    return isJson ? await resRaw.json() : await resRaw.text();
-                }
+                if (resRaw.ok) return isJson ? await resRaw.json() : await resRaw.text();
             } catch (e) {}
-
             return null;
         };
 
@@ -426,7 +381,6 @@
 
             const audioRef = useRef(null);
             const hlsRef = useRef(null);
-
             const tvContainerRef = useRef(null);
             const movieContainerRef = useRef(null);
 
@@ -459,12 +413,7 @@
                 let specInterval;
                 if (isRadioPlaying && isPowerOn) {
                     specInterval = setInterval(() => {
-                        setSpectrumHeights([
-                            Math.floor(Math.random() * 85) + 15,
-                            Math.floor(Math.random() * 95) + 10,
-                            Math.floor(Math.random() * 80) + 20,
-                            Math.floor(Math.random() * 90) + 10
-                        ]);
+                        setSpectrumHeights([Math.floor(Math.random() * 85) + 15, Math.floor(Math.random() * 95) + 10, Math.floor(Math.random() * 80) + 20, Math.floor(Math.random() * 90) + 10]);
                     }, 80);
                 } else {
                     setSpectrumHeights([25, 25, 25, 25]);
@@ -473,10 +422,7 @@
             }, [isRadioPlaying, isPowerOn]);
 
             useEffect(() => {
-                const handleBeforeInstallPrompt = (e) => {
-                    e.preventDefault();
-                    setDeferredPrompt(e);
-                };
+                const handleBeforeInstallPrompt = (e) => { e.preventDefault(); setDeferredPrompt(e); };
                 window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
                 return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
             }, []);
@@ -485,9 +431,7 @@
                 if (deferredPrompt) {
                     deferredPrompt.prompt();
                     const { outcome } = await deferredPrompt.userChoice;
-                    if (outcome === 'accepted') {
-                        setDeferredPrompt(null);
-                    }
+                    if (outcome === 'accepted') setDeferredPrompt(null);
                 } else {
                     const msgBox = document.getElementById('install-guide-modal');
                     if (msgBox) msgBox.classList.remove('hidden');
@@ -496,7 +440,6 @@
 
             useEffect(() => {
                 window.history.replaceState({ appState: 'main', activeTab }, '');
-
                 const handlePopState = (event) => {
                     if (showQrModal) { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (showSmartViewModal) { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
@@ -504,7 +447,6 @@
                     if (selectedItem) { setSelectedItem(null); setIsLocked(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (activeTab !== 'home') { setActiveTab('home'); setSearch(''); window.history.pushState({ appState: 'main', activeTab: 'home' }, ''); return; }
                 };
-
                 window.addEventListener('popstate', handlePopState);
                 return () => window.removeEventListener('popstate', handlePopState);
             }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showDownloadPinModal]);
@@ -513,7 +455,6 @@
                 const init = async () => {
                     try {
                         setLoading(true);
-
                         const [dataTV, dataSeries, dataAnimados, dataRadios, dataMovies, dataMovies2, dataTudum] = await Promise.all([ 
                             fetchSmart(URLS.TV, RAW_URLS.TV, false),
                             fetchSmart(URLS.SERIES, RAW_URLS.SERIES, true),
@@ -1345,46 +1286,84 @@
                                                     </div>
                                                 )}
 
-                                                {/* SECCIÓN 4: PELÍCULAS SIMILARES */}
-                                                {selectedItem.similares && selectedItem.similares.length > 0 && (
-                                                    <div>
-                                                        <div className="flex items-center gap-3 mb-6">
-                                                            <span className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></span>
-                                                            <h3 className="text-lg sm:text-xl font-black uppercase tracking-wider text-white">También te puede gustar</h3>
+                                                {/* SECCIÓN 4: MÁS ESTRENOS 2026 (DEL PROPIO CATÁLOGO) */}
+                                                {(() => {
+                                                    const currentId = selectedItem.id;
+                                                    const currentTitle = (selectedItem.titulo || selectedItem.title || '').toLowerCase();
+                                                    
+                                                    const otrasPeliculas = (content.movies2 || [])
+                                                        .filter(m => {
+                                                            if (m.id === currentId) return false;
+                                                            const mTitle = (m.titulo || m.title || '').toLowerCase();
+                                                            if (mTitle === currentTitle) return false;
+                                                            return true;
+                                                        })
+                                                        .slice(0, 6);
+
+                                                    if (otrasPeliculas.length === 0) return null;
+
+                                                    return (
+                                                        <div>
+                                                            <div className="flex items-center gap-3 mb-6">
+                                                                <span className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></span>
+                                                                <h3 className="text-lg sm:text-xl font-black uppercase tracking-wider text-white">
+                                                                    Más estrenos 2026
+                                                                </h3>
+                                                                <span className="text-xs bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-2.5 py-0.5 rounded-full font-mono">
+                                                                    {otrasPeliculas.length}
+                                                                </span>
+                                                            </div>
+                                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                                                                {otrasPeliculas.map((sim, sIdx) => {
+                                                                    const simTitle = sim.titulo || sim.title || 'Estreno';
+                                                                    const simImg = extractImageUrl(sim);
+                                                                    return (
+                                                                        <div
+                                                                            key={sim.id || sIdx}
+                                                                            className="group cursor-pointer transition-transform duration-300 hover:-translate-y-2"
+                                                                            onClick={() => {
+                                                                                setSelectedItem(sim);
+                                                                                setSelectedEpisode(null);
+                                                                                setExpandedSeason(0);
+                                                                                recordContinueWatching(sim, null);
+                                                                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                                            }}
+                                                                        >
+                                                                            <div className="aspect-[2/3] rounded-2xl overflow-hidden border-2 border-slate-800 group-hover:border-cyan-500 transition-all duration-300 bg-black shadow-xl relative">
+                                                                                <RobustImage
+                                                                                    src={simImg}
+                                                                                    alt={simTitle}
+                                                                                    title={simTitle}
+                                                                                    type="poster"
+                                                                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                                                                />
+                                                                                {sim.qualityTag && (
+                                                                                    <span className="absolute top-2 right-2 bg-cyan-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded uppercase">
+                                                                                        {sim.qualityTag}
+                                                                                    </span>
+                                                                                )}
+                                                                                {sim.rating && (
+                                                                                    <span className="absolute bottom-2 left-2 bg-black/80 backdrop-blur-md text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-500/40">
+                                                                                        ⭐ {sim.rating}
+                                                                                    </span>
+                                                                                )}
+                                                                            </div>
+                                                                            <p className="text-xs font-bold text-white mt-2 line-clamp-2 group-hover:text-cyan-300 transition-colors">
+                                                                                {simTitle}
+                                                                            </p>
+                                                                            {(sim.year || sim.generosTexto) && (
+                                                                                <p className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">
+                                                                                    {sim.year}
+                                                                                    {sim.generosTexto && ` · ${sim.generosTexto.split(',')[0].trim()}`}
+                                                                                </p>
+                                                                            )}
+                                                                        </div>
+                                                                    );
+                                                                })}
+                                                            </div>
                                                         </div>
-                                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                                                            {selectedItem.similares.map((sim, sIdx) => (
-                                                                <div 
-                                                                    key={sIdx} 
-                                                                    className="group cursor-pointer transition-transform duration-300 hover:-translate-y-2" 
-                                                                    onClick={() => { 
-                                                                        setSearch(sim.titulo); 
-                                                                        setSelectedItem(null); 
-                                                                        setActiveTab('movies2'); 
-                                                                        window.scrollTo({ top: 0, behavior: 'smooth' }); 
-                                                                    }}
-                                                                >
-                                                                    <div className="aspect-[2/3] rounded-2xl overflow-hidden border-2 border-slate-800 group-hover:border-cyan-500 transition-all duration-300 bg-black shadow-xl">
-                                                                        {sim.poster ? (
-                                                                            <img 
-                                                                                src={sim.poster} 
-                                                                                alt={sim.titulo} 
-                                                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                                                                                referrerPolicy="no-referrer" 
-                                                                            />
-                                                                        ) : (
-                                                                            <div className="w-full h-full flex items-center justify-center text-slate-500 text-xs p-3 text-center">{sim.titulo}</div>
-                                                                        )}
-                                                                    </div>
-                                                                    <p className="text-xs font-bold text-white mt-2 line-clamp-2 group-hover:text-cyan-300 transition-colors">{sim.titulo}</p>
-                                                                    {sim.year && (
-                                                                        <p className="text-[10px] text-slate-400 mt-0.5">{sim.year} {sim.rating && `· ⭐ ${sim.rating}`}</p>
-                                                                    )}
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    </div>
-                                                )}
+                                                    );
+                                                })()}
                                             </div>
                                         ) : (
                                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10">
