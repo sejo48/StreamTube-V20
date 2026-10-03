@@ -524,18 +524,14 @@
                             fetchSmart(URLS.TUDUM, RAW_URLS.TUDUM, true)
                         ]);
 
-                        // CANALES TV
                         let tvChannels = [];
                         if (dataTV) tvChannels = parseM3U(dataTV);
                         if (tvChannels.length === 0) {
                             tvChannels = [
-                                { id: 'tv-1', title: 'Telered', image: 'https://placehold.co/300x300/0f172a/06b6d4?text=Telered', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' },
-                                { id: 'tv-2', title: 'Tele Sistema', image: 'https://placehold.co/300x300/0f172a/06b6d4?text=TeleSistema', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' },
-                                { id: 'tv-3', title: 'Costa Rica Channel', image: 'https://placehold.co/300x300/0f172a/06b6d4?text=CRC', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' }
+                                { id: 'tv-1', title: 'Telered', image: 'https://placehold.co/300x300/0f172a/06b6d4?text=Telered', group: 'Nacionales', url: 'https://www.youtube.com/embed/live_stream?channel=UC...', type: 'tv' }
                             ];
                         }
 
-                        // PELÍCULAS
                         let moviesList = [];
                         if (dataMovies) {
                             const rawMovies = Array.isArray(dataMovies) ? dataMovies : (dataMovies.peliculas || dataMovies.content || []);
@@ -545,13 +541,7 @@
                                 return { ...m, id: `mov-1-${idx}`, type: 'movies', title, description: m.descripcion || m.sinopsis || m.plot || '', image: imgUrl || generatePlaceholder(title, 'poster'), url: convertUrl(m.urlDrive || m.url || m.urlOkRu), rawUrl: m.urlDrive || m.url || m.urlOkRu };
                             });
                         }
-                        if (moviesList.length === 0) {
-                            moviesList = [
-                                { id: 'm-1', type: 'movies', title: 'STARSKY & HUTCH', description: 'Acción policial clásica.', image: 'https://placehold.co/300x450/0f172a/06b6d4?text=Starsky+Hutch', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ', rawUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
-                            ];
-                        }
 
-                        // ESTRENOS 2026 (movies2) — CONSERVA TODOS LOS CAMPOS ENRIQUECIDOS
                         let movies2List = [];
                         if (dataMovies2) {
                             const rawMovies2 = Array.isArray(dataMovies2) ? dataMovies2 : (dataMovies2.peliculas || dataMovies2.content || []);
@@ -571,7 +561,6 @@
                             });
                         }
 
-                        // SERIES
                         let seriesList = [];
                         if (dataSeries) {
                             const rawSeries = Array.isArray(dataSeries) ? dataSeries : (dataSeries.series || []);
@@ -582,7 +571,6 @@
                             });
                         }
 
-                        // ANIMADOS
                         let animadosList = [];
                         if (dataAnimados) {
                             const rawAnimados = Array.isArray(dataAnimados) ? dataAnimados : (dataAnimados.animados || []);
@@ -593,7 +581,6 @@
                             });
                         }
 
-                        // RADIOS
                         let loadedStations = DEFAULT_RADIO_STATIONS;
                         if (dataRadios) {
                             const list = Array.isArray(dataRadios) ? dataRadios : (dataRadios.radios || dataRadios.emisoras || []);
@@ -608,7 +595,6 @@
                         loadedStations = loadedStations.map(s => ({ ...s, type: 'radio' }));
                         setRadioStations(loadedStations);
 
-                        // TUDUM
                         let tudumList = FALLBACK_NETFLIX_TUDUM;
                         if (dataTudum) {
                             const tList = Array.isArray(dataTudum) ? dataTudum : (dataTudum.tudum || dataTudum.estrenos || []);
@@ -1178,198 +1164,331 @@
                                     )}
                                 </div>
                                 {!isLocked && (
-                                    <div className="p-4 sm:p-12 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10 pb-32">
-                                        <div className="lg:col-span-2 space-y-6">
-                                            <div className="flex items-start gap-4 sm:gap-6">
-                                                <div className="w-28 sm:w-36 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black">
-                                                    <RobustImage src={extractImageUrl(selectedItem)} alt={selectedItem.titulo || selectedItem.title} title={selectedItem.title || selectedItem.titulo} type="poster" className="w-full h-full object-cover" />
-                                                </div>
-                                                <div className="flex-1 min-w-0">
-                                                    <div className="flex items-start justify-between gap-4">
-                                                        <div>
-                                                            <h1 className="text-xl sm:text-3xl font-black text-white mb-2 tracking-tight">{selectedItem.titulo || selectedItem.title || selectedItem.name}</h1>
-                                                            <div className="flex items-center gap-3 text-xs text-slate-300">
-                                                                <span className="bg-cyan-950/80 border border-cyan-500/40 px-3 py-1 rounded-lg text-cyan-300 font-bold uppercase tracking-wider">{selectedItem.type}</span>
-                                                            </div>
+                                    <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 py-8 sm:py-12 pb-32">
+                                        {selectedItem.type === 'movies2' ? (
+                                            <div className="space-y-10">
+                                                {/* SECCIÓN 1: CABECERA CON POSTER Y INFO PRINCIPAL */}
+                                                <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8 lg:gap-12">
+                                                    <div className="flex justify-center lg:justify-start">
+                                                        <div className="w-56 sm:w-64 lg:w-full max-w-[320px] aspect-[2/3] rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(6,182,212,0.35)] border-2 border-cyan-500/40 bg-black">
+                                                            <RobustImage 
+                                                                src={extractImageUrl(selectedItem)} 
+                                                                alt={selectedItem.titulo || selectedItem.title} 
+                                                                title={selectedItem.title || selectedItem.titulo} 
+                                                                type="poster" 
+                                                                className="w-full h-full object-cover" 
+                                                            />
                                                         </div>
-                                                        <div className="flex items-center gap-2">
+                                                    </div>
+
+                                                    <div className="flex flex-col justify-center space-y-6">
+                                                        <div>
+                                                            <span className="inline-block bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 text-[10px] font-mono font-black px-3 py-1 rounded-full uppercase tracking-widest mb-4">
+                                                                ✨ Estreno 2026
+                                                            </span>
+                                                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight">
+                                                                {selectedItem.titulo || selectedItem.title}
+                                                            </h1>
+                                                            {selectedItem.tituloOriginal && selectedItem.tituloOriginal !== selectedItem.titulo && (
+                                                                <p className="text-slate-400 italic text-sm mt-2">({selectedItem.tituloOriginal})</p>
+                                                            )}
+                                                        </div>
+
+                                                        <div className="flex flex-wrap items-center gap-2">
+                                                            {selectedItem.year && (
+                                                                <span className="bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-bold px-3 py-1.5 rounded-lg">📅 {selectedItem.year}</span>
+                                                            )}
+                                                            {selectedItem.runtime && (
+                                                                <span className="bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-bold px-3 py-1.5 rounded-lg">⏱ {selectedItem.runtime}</span>
+                                                            )}
+                                                            {selectedItem.rating && (
+                                                                <span className="bg-amber-950/80 border border-amber-500/40 text-amber-300 text-xs font-bold px-3 py-1.5 rounded-lg">⭐ {selectedItem.rating} / 10</span>
+                                                            )}
+                                                            {selectedItem.clasificacion && (
+                                                                <span className="bg-red-950/80 border border-red-500/40 text-red-300 text-xs font-bold px-3 py-1.5 rounded-lg">🔞 {selectedItem.clasificacion}</span>
+                                                            )}
+                                                            {selectedItem.qualityTag && (
+                                                                <span className="bg-teal-950/80 border border-teal-500/40 text-teal-300 text-xs font-bold px-3 py-1.5 rounded-lg uppercase">{selectedItem.qualityTag}</span>
+                                                            )}
+                                                        </div>
+
+                                                        {selectedItem.generosTexto && (
+                                                            <div className="flex flex-wrap gap-2">
+                                                                {selectedItem.generosTexto.split(',').map((g, gIdx) => (
+                                                                    <span key={gIdx} className="bg-slate-800/60 text-slate-200 text-xs font-bold px-3 py-1.5 rounded-full border border-slate-700">{g.trim()}</span>
+                                                                ))}
+                                                            </div>
+                                                        )}
+
+                                                        {selectedItem.tagline && (
+                                                            <p className="text-cyan-300 italic text-sm sm:text-base pl-4 border-l-4 border-cyan-500 py-1">"{selectedItem.tagline}"</p>
+                                                        )}
+
+                                                        <div className="flex flex-wrap items-center gap-3 pt-2">
                                                             {((selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url || '').includes('drive.google.com')) && (
-                                                                <button onClick={() => { const targetUrl = selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url; const downloadLink = getDriveDownloadUrl(targetUrl); setPendingDownloadUrl(downloadLink); setDownloadPinInput(''); setDownloadPinError(false); setShowDownloadPinModal(true); window.history.pushState({ appState: 'download-modal' }, ''); }} className="p-3 glass-panel rounded-2xl hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 transition-colors shadow-2xl flex items-center gap-2 text-xs font-bold" title="Descargar Película">
-                                                                    <Icon name="download" size={18}/>
-                                                                    <span className="hidden sm:inline">Descargar</span>
+                                                                <button 
+                                                                    onClick={() => {
+                                                                        const targetUrl = selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url;
+                                                                        const downloadLink = getDriveDownloadUrl(targetUrl);
+                                                                        setPendingDownloadUrl(downloadLink);
+                                                                        setDownloadPinInput('');
+                                                                        setDownloadPinError(false);
+                                                                        setShowDownloadPinModal(true);
+                                                                        window.history.pushState({ appState: 'download-modal' }, '');
+                                                                    }}
+                                                                    className="px-5 py-3 bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white rounded-2xl font-bold text-sm shadow-[0_0_20px_rgba(6,182,212,0.5)] flex items-center gap-2 transition-all"
+                                                                >
+                                                                    <Icon name="download" size={16}/>
+                                                                    <span>Descargar</span>
                                                                 </button>
                                                             )}
-                                                            <button onClick={() => toggleFavorite(selectedItem)} className="p-3 glass-panel rounded-2xl hover:bg-slate-800 transition-colors shadow-2xl flex-shrink-0">
-                                                                <Icon name="heart" size={20} fill={isItemFavorite(selectedItem) ? "#06b6d4" : "none"} className={isItemFavorite(selectedItem) ? "text-cyan-500" : "text-slate-300"} />
+                                                            <button 
+                                                                onClick={() => toggleFavorite(selectedItem)} 
+                                                                className={`px-5 py-3 rounded-2xl font-bold text-sm flex items-center gap-2 transition-all border-2 ${
+                                                                    isItemFavorite(selectedItem) 
+                                                                        ? 'bg-cyan-500/20 border-cyan-500 text-cyan-300' 
+                                                                        : 'bg-white/5 border-slate-700 text-slate-300 hover:border-cyan-500'
+                                                                }`}
+                                                            >
+                                                                <Icon name="heart" size={16} fill={isItemFavorite(selectedItem) ? "#06b6d4" : "none"} />
+                                                                <span>{isItemFavorite(selectedItem) ? 'En Favoritos' : 'Añadir a Favoritos'}</span>
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            {/* ========== FICHA COMPLETA — SOLO ESTRENOS 2026 ========== */}
-                                            {selectedItem.type === 'movies2' ? (
-                                                <div className="space-y-5 pt-2">
-                                                    <div className="flex flex-wrap items-center gap-2">
-                                                        {selectedItem.year && (<span className="bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-[11px] font-bold px-3 py-1 rounded-lg">📅 {selectedItem.year}</span>)}
-                                                        {selectedItem.runtime && (<span className="bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-[11px] font-bold px-3 py-1 rounded-lg">⏱ {selectedItem.runtime}</span>)}
-                                                        {selectedItem.rating && (<span className="bg-amber-950/80 border border-amber-500/40 text-amber-300 text-[11px] font-bold px-3 py-1 rounded-lg">⭐ {selectedItem.rating} / 10</span>)}
-                                                        {selectedItem.clasificacion && (<span className="bg-red-950/80 border border-red-500/40 text-red-300 text-[11px] font-bold px-3 py-1 rounded-lg">🔞 {selectedItem.clasificacion}</span>)}
-                                                        {selectedItem.qualityTag && (<span className="bg-teal-950/80 border border-teal-500/40 text-teal-300 text-[11px] font-bold px-3 py-1 rounded-lg uppercase">{selectedItem.qualityTag}</span>)}
-                                                    </div>
-
-                                                    {selectedItem.generosTexto && (
-                                                        <div className="flex flex-wrap gap-2">
-                                                            {selectedItem.generosTexto.split(',').map((g, gIdx) => (
-                                                                <span key={gIdx} className="bg-slate-800/60 text-slate-200 text-[11px] font-bold px-3 py-1 rounded-full border border-slate-700">{g.trim()}</span>
-                                                            ))}
-                                                        </div>
-                                                    )}
-
-                                                    {selectedItem.tagline && (
-                                                        <p className="text-cyan-300 italic text-xs sm:text-sm pl-3 border-l-2 border-cyan-500">"{selectedItem.tagline}"</p>
-                                                    )}
-
-                                                    <div>
-                                                        <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
-                                                            <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
+                                                {/* SECCIÓN 2: SINOPSIS + DIRECTOR/GUION */}
+                                                <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8">
+                                                    <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800">
+                                                        <h3 className="text-sm font-black uppercase text-cyan-400 tracking-widest mb-4 flex items-center gap-3">
+                                                            <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#06b6d4]"></span> 
+                                                            Sinopsis
                                                         </h3>
-                                                        <p className="text-slate-100 text-sm sm:text-base md:text-lg leading-relaxed bg-black/50 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-inner font-medium">
+                                                        <p className="text-slate-100 text-base sm:text-lg leading-relaxed font-light">
                                                             {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
                                                         </p>
                                                     </div>
 
-                                                    {(selectedItem.director || selectedItem.guionistas) && (
-                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                                            {selectedItem.director && (
-                                                                <div className="bg-black/50 p-4 rounded-2xl border border-slate-800">
-                                                                    <p className="text-[10px] uppercase text-cyan-400 font-black tracking-wider mb-1">🎬 Director</p>
-                                                                    <p className="text-white text-sm font-bold">{selectedItem.director}</p>
-                                                                </div>
-                                                            )}
-                                                            {selectedItem.guionistas && (
-                                                                <div className="bg-black/50 p-4 rounded-2xl border border-slate-800">
-                                                                    <p className="text-[10px] uppercase text-cyan-400 font-black tracking-wider mb-1">✍️ Guion</p>
-                                                                    <p className="text-white text-sm font-bold">{selectedItem.guionistas}</p>
-                                                                </div>
-                                                            )}
-                                                        </div>
-                                                    )}
-
-                                                    {selectedItem.reparto && selectedItem.reparto.length > 0 && (
-                                                        <div>
-                                                            <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-3 flex items-center gap-2">
-                                                                <span className="w-2 h-2 rounded-full bg-cyan-400"></span> REPARTO PRINCIPAL
-                                                            </h3>
-                                                            <div className="flex gap-4 overflow-x-auto pb-3 custom-scrollbar">
-                                                                {selectedItem.reparto.map((actor, aIdx) => (
-                                                                    <div key={aIdx} className="text-center shrink-0 w-20">
-                                                                        <div className="w-20 h-20 rounded-full overflow-hidden bg-slate-800 border-2 border-cyan-500/40 mx-auto shadow-lg">
-                                                                            {actor.foto ? (<img src={actor.foto} alt={actor.nombre} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} referrerPolicy="no-referrer" />) : (<div className="w-full h-full flex items-center justify-center text-slate-500 text-xl">👤</div>)}
-                                                                        </div>
-                                                                        <p className="text-[11px] font-bold text-white mt-2 leading-tight line-clamp-2">{actor.nombre}</p>
-                                                                        {actor.personaje && (<p className="text-[9px] text-slate-400 mt-0.5 leading-tight line-clamp-2 italic">{actor.personaje}</p>)}
-                                                                    </div>
-                                                                ))}
+                                                    <div className="space-y-4">
+                                                        {selectedItem.director && (
+                                                            <div className="glass-panel rounded-2xl p-5 border border-slate-800">
+                                                                <p className="text-[10px] uppercase text-cyan-400 font-black tracking-widest mb-2">🎬 Director</p>
+                                                                <p className="text-white text-base font-bold leading-tight">{selectedItem.director}</p>
                                                             </div>
-                                                        </div>
-                                                    )}
-
-                                                    {(selectedItem.pais || selectedItem.productoras) && (
-                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                                                            {selectedItem.pais && (
-                                                                <div className="bg-black/50 p-4 rounded-2xl border border-slate-800">
-                                                                    <p className="text-[10px] uppercase text-cyan-400 font-black tracking-wider mb-1">🌎 País</p>
-                                                                    <p className="text-white text-sm font-bold">{selectedItem.pais}</p>
-                                                                </div>
-                                                            )}
-                                                            {selectedItem.productoras && (
-                                                                <div className="bg-black/50 p-4 rounded-2xl border border-slate-800">
-                                                                    <p className="text-[10px] uppercase text-cyan-400 font-black tracking-wider mb-1">🏢 Productoras</p>
-                                                                    <p className="text-white text-sm font-bold">{selectedItem.productoras}</p>
-                                                                </div>
-                                                            )}
-                                                        </div>
-                                                    )}
-
-                                                    {selectedItem.trailerUrl && (
-                                                        <a href={selectedItem.trailerUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-600 to-red-500 hover:brightness-110 text-white px-5 py-3 rounded-xl font-bold text-xs shadow-[0_0_20px_rgba(244,63,94,0.4)] transition-all">
-                                                            🎬 Ver Tráiler Oficial
-                                                        </a>
-                                                    )}
-
-                                                    {selectedItem.similares && selectedItem.similares.length > 0 && (
-                                                        <div className="pt-4">
-                                                            <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-3 flex items-center gap-2">
-                                                                <span className="w-2 h-2 rounded-full bg-cyan-400"></span> TAMBIÉN TE PUEDE GUSTAR
-                                                            </h3>
-                                                            <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
-                                                                {selectedItem.similares.map((sim, sIdx) => (
-                                                                    <div key={sIdx} className="aspect-[2/3] rounded-xl overflow-hidden border border-slate-800 bg-black cursor-pointer hover:border-cyan-500 transition-all group" onClick={() => { setSearch(sim.titulo); setSelectedItem(null); setActiveTab('movies2'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                                                                        {sim.poster ? (<img src={sim.poster} alt={sim.titulo} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" referrerPolicy="no-referrer" />) : (<div className="w-full h-full flex items-center justify-center text-slate-500 text-[10px] p-2 text-center">{sim.titulo}</div>)}
-                                                                    </div>
-                                                                ))}
+                                                        )}
+                                                        {selectedItem.guionistas && (
+                                                            <div className="glass-panel rounded-2xl p-5 border border-slate-800">
+                                                                <p className="text-[10px] uppercase text-cyan-400 font-black tracking-widest mb-2">✍️ Guion</p>
+                                                                <p className="text-white text-base font-bold leading-tight">{selectedItem.guionistas}</p>
                                                             </div>
-                                                        </div>
-                                                    )}
+                                                        )}
+                                                        {selectedItem.pais && (
+                                                            <div className="glass-panel rounded-2xl p-5 border border-slate-800">
+                                                                <p className="text-[10px] uppercase text-cyan-400 font-black tracking-widest mb-2">🌎 País</p>
+                                                                <p className="text-white text-sm font-bold leading-tight">{selectedItem.pais}</p>
+                                                            </div>
+                                                        )}
+                                                        {selectedItem.productoras && (
+                                                            <div className="glass-panel rounded-2xl p-5 border border-slate-800">
+                                                                <p className="text-[10px] uppercase text-cyan-400 font-black tracking-widest mb-2">🏢 Productoras</p>
+                                                                <p className="text-white text-sm font-bold leading-tight">{selectedItem.productoras}</p>
+                                                            </div>
+                                                        )}
+                                                        {selectedItem.trailerUrl && (
+                                                            <a 
+                                                                href={selectedItem.trailerUrl} 
+                                                                target="_blank" 
+                                                                rel="noopener noreferrer" 
+                                                                className="flex items-center justify-center gap-2 bg-gradient-to-r from-rose-600 to-red-500 hover:brightness-110 text-white px-5 py-4 rounded-2xl font-black text-sm shadow-[0_0_25px_rgba(244,63,94,0.5)] transition-all w-full"
+                                                            >
+                                                                🎬 Ver Tráiler Oficial
+                                                            </a>
+                                                        )}
+                                                    </div>
                                                 </div>
-                                            ) : (
-                                                <div className="pt-2">
-                                                    <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
-                                                        <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
-                                                    </h3>
-                                                    <p className="text-slate-100 text-sm sm:text-base md:text-lg leading-relaxed bg-black/50 p-6 sm:p-8 rounded-2xl border border-slate-800 shadow-inner font-medium">
-                                                        {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
-                                                    </p>
-                                                </div>
-                                            )}
-                                        </div>
 
-                                        {((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
-                                            <div className="glass-panel rounded-3xl p-4 sm:p-6 flex flex-col h-[480px] sm:h-[540px] shadow-2xl">
-                                                <div className="flex items-center justify-between mb-3">
-                                                    <h3 className="font-extrabold text-xs sm:text-sm text-white flex items-center gap-2">
-                                                        <span className="w-2 h-2 rounded-full bg-cyan-500"></span> Episodios
-                                                    </h3>
-                                                    {(() => {
-                                                        const itemId = selectedItem.id || selectedItem.title;
-                                                        const watchedList = watchedEpisodes[itemId] || [];
-                                                        let totalEps = 0;
-                                                        selectedItem.seasons.forEach(s => totalEps += (s.episodes?.length || 0));
-                                                        return <span className="text-[10px] font-mono text-cyan-400 bg-cyan-950/80 px-2.5 py-1 rounded-full border border-cyan-900/60">{watchedList.length} / {totalEps} vistos</span>;
-                                                    })()}
-                                                </div>
-                                                <div className="flex gap-2 mb-3 overflow-x-auto pb-2 no-scrollbar">
-                                                    {selectedItem.seasons.map((season, sIdx) => (
-                                                        <button key={sIdx} onClick={() => setExpandedSeason(sIdx)} className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${expandedSeason === sIdx ? 'bg-cyan-600 text-white shadow-[0_0_20px_rgba(6,182,212,0.5)] border border-cyan-400' : 'bg-black/55 text-slate-400 hover:text-white border border-slate-800'}`}>
-                                                            Temp {season.seasonNumber}
-                                                        </button>
-                                                    ))}
-                                                </div>
-                                                <div className="flex-1 overflow-y-auto custom-scrollbar space-y-2 pr-1">
-                                                    {selectedItem.seasons[expandedSeason]?.episodes?.map((ep, eIdx) => {
-                                                        const itemId = selectedItem.id || selectedItem.title;
-                                                        const epId = ep.id || ep.url;
-                                                        const isWatched = (watchedEpisodes[itemId] || []).includes(epId);
-                                                        const isCurrent = selectedEpisode?.url === ep.url;
-                                                        return (
-                                                            <div key={ep.id || eIdx} onClick={() => { setSelectedEpisode(ep); recordContinueWatching(selectedItem, ep); }} className={`p-3 rounded-2xl cursor-pointer flex items-center justify-between text-xs transition-all ${isCurrent ? 'bg-cyan-950/85 text-white border border-cyan-500/60 shadow-lg' : isWatched ? 'bg-black/30 text-slate-400 border border-slate-800/60 opacity-75' : 'hover:bg-cyan-950/30 text-slate-300 border border-transparent'}`}>
-                                                                <div className="flex items-center gap-2.5 truncate flex-1 pr-2">
-                                                                    <div className="w-5 flex justify-center shrink-0">
-                                                                        {isCurrent ? (<div className="flex items-end h-3.5 gap-[2px]"><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div></div>) : (<span className={`font-bold ${isWatched ? 'text-cyan-400' : 'text-slate-500'}`}>{isWatched ? '✓' : `${eIdx + 1}.`}</span>)}
+                                                {/* SECCIÓN 3: REPARTO EN GRID */}
+                                                {selectedItem.reparto && selectedItem.reparto.length > 0 && (
+                                                    <div>
+                                                        <div className="flex items-center gap-3 mb-6">
+                                                            <span className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></span>
+                                                            <h3 className="text-lg sm:text-xl font-black uppercase tracking-wider text-white">Reparto Principal</h3>
+                                                            <span className="text-xs bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-2.5 py-0.5 rounded-full font-mono">{selectedItem.reparto.length}</span>
+                                                        </div>
+                                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4">
+                                                            {selectedItem.reparto.map((actor, aIdx) => (
+                                                                <div key={aIdx} className="text-center group">
+                                                                    <div className="aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 border-2 border-slate-800 group-hover:border-cyan-500/60 mx-auto shadow-lg transition-all duration-300 group-hover:scale-105">
+                                                                        {actor.foto ? (
+                                                                            <img 
+                                                                                src={actor.foto} 
+                                                                                alt={actor.nombre} 
+                                                                                className="w-full h-full object-cover" 
+                                                                                onError={(e) => { e.target.style.display = 'none'; }} 
+                                                                                referrerPolicy="no-referrer" 
+                                                                            />
+                                                                        ) : (
+                                                                            <div className="w-full h-full flex items-center justify-center text-slate-600 text-3xl">👤</div>
+                                                                        )}
                                                                     </div>
-                                                                    <span className={`truncate font-medium ${isWatched ? 'line-through decoration-cyan-500/60 text-slate-400' : ''}`}>{ep.title}</span>
+                                                                    <p className="text-xs font-bold text-white mt-2.5 leading-tight line-clamp-2 group-hover:text-cyan-300 transition-colors">
+                                                                        {actor.nombre}
+                                                                    </p>
+                                                                    {actor.personaje && (
+                                                                        <p className="text-[10px] text-slate-400 mt-1 leading-tight line-clamp-2 italic">
+                                                                            {actor.personaje}
+                                                                        </p>
+                                                                    )}
                                                                 </div>
-                                                                <div className="flex items-center gap-1.5 flex-shrink-0">
-                                                                    <button onClick={(e) => { e.stopPropagation(); markEpisodeAsWatched(selectedItem, ep, !isWatched); }} className={`px-2 py-1 rounded-lg text-[9px] font-bold transition-all border ${isWatched ? 'bg-cyan-600/30 text-cyan-300 border-cyan-500/50' : 'bg-black/50 text-slate-400 border-slate-800 hover:text-white'}`}>
-                                                                        {isWatched ? 'Visto ✓' : 'Visto'}
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                )}
+
+                                                {/* SECCIÓN 4: PELÍCULAS SIMILARES */}
+                                                {selectedItem.similares && selectedItem.similares.length > 0 && (
+                                                    <div>
+                                                        <div className="flex items-center gap-3 mb-6">
+                                                            <span className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></span>
+                                                            <h3 className="text-lg sm:text-xl font-black uppercase tracking-wider text-white">También te puede gustar</h3>
+                                                        </div>
+                                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                                                            {selectedItem.similares.map((sim, sIdx) => (
+                                                                <div 
+                                                                    key={sIdx} 
+                                                                    className="group cursor-pointer transition-transform duration-300 hover:-translate-y-2" 
+                                                                    onClick={() => { 
+                                                                        setSearch(sim.titulo); 
+                                                                        setSelectedItem(null); 
+                                                                        setActiveTab('movies2'); 
+                                                                        window.scrollTo({ top: 0, behavior: 'smooth' }); 
+                                                                    }}
+                                                                >
+                                                                    <div className="aspect-[2/3] rounded-2xl overflow-hidden border-2 border-slate-800 group-hover:border-cyan-500 transition-all duration-300 bg-black shadow-xl">
+                                                                        {sim.poster ? (
+                                                                            <img 
+                                                                                src={sim.poster} 
+                                                                                alt={sim.titulo} 
+                                                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                                                                                referrerPolicy="no-referrer" 
+                                                                            />
+                                                                        ) : (
+                                                                            <div className="w-full h-full flex items-center justify-center text-slate-500 text-xs p-3 text-center">{sim.titulo}</div>
+                                                                        )}
+                                                                    </div>
+                                                                    <p className="text-xs font-bold text-white mt-2 line-clamp-2 group-hover:text-cyan-300 transition-colors">{sim.titulo}</p>
+                                                                    {sim.year && (
+                                                                        <p className="text-[10px] text-slate-400 mt-0.5">{sim.year} {sim.rating && `· ⭐ ${sim.rating}`}</p>
+                                                                    )}
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        ) : (
+                                            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-10">
+                                                <div className="lg:col-span-2 space-y-6">
+                                                    <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+                                                        <div className="w-40 sm:w-56 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black mx-auto sm:mx-0">
+                                                            <RobustImage 
+                                                                src={extractImageUrl(selectedItem)} 
+                                                                alt={selectedItem.titulo || selectedItem.title} 
+                                                                title={selectedItem.title || selectedItem.titulo} 
+                                                                type="poster" 
+                                                                className="w-full h-full object-cover" 
+                                                            />
+                                                        </div>
+                                                        <div className="flex-1 min-w-0 w-full">
+                                                            <div className="flex items-start justify-between gap-4 flex-wrap">
+                                                                <div className="min-w-0">
+                                                                    <h1 className="text-2xl sm:text-4xl font-black text-white mb-2 tracking-tight">{selectedItem.titulo || selectedItem.title || selectedItem.name}</h1>
+                                                                    <div className="flex items-center gap-3 text-xs text-slate-300">
+                                                                        <span className="bg-cyan-950/80 border border-cyan-500/40 px-3 py-1 rounded-lg text-cyan-300 font-bold uppercase tracking-wider">{selectedItem.type}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="flex items-center gap-2">
+                                                                    {((selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url || '').includes('drive.google.com')) && (
+                                                                        <button 
+                                                                            onClick={() => {
+                                                                                const targetUrl = selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url;
+                                                                                const downloadLink = getDriveDownloadUrl(targetUrl);
+                                                                                setPendingDownloadUrl(downloadLink);
+                                                                                setDownloadPinInput('');
+                                                                                setDownloadPinError(false);
+                                                                                setShowDownloadPinModal(true);
+                                                                                window.history.pushState({ appState: 'download-modal' }, '');
+                                                                            }}
+                                                                            className="p-3 glass-panel rounded-2xl hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 transition-colors shadow-2xl flex items-center gap-2 text-xs font-bold"
+                                                                        >
+                                                                            <Icon name="download" size={18}/>
+                                                                            <span className="hidden sm:inline">Descargar</span>
+                                                                        </button>
+                                                                    )}
+                                                                    <button onClick={() => toggleFavorite(selectedItem)} className="p-3 glass-panel rounded-2xl hover:bg-slate-800 transition-colors shadow-2xl flex-shrink-0">
+                                                                        <Icon name="heart" size={20} fill={isItemFavorite(selectedItem) ? "#06b6d4" : "none"} className={isItemFavorite(selectedItem) ? "text-cyan-500" : "text-slate-300"} />
                                                                     </button>
-                                                                    <Icon name="play" size={14} fill={isCurrent ? "#06b6d4" : "none"} className={isCurrent ? "text-cyan-400" : "text-slate-500"}/>
                                                                 </div>
                                                             </div>
-                                                        );
-                                                    })}
+                                                            <div className="pt-4">
+                                                                <h3 className="text-xs sm:text-sm font-black uppercase text-cyan-400 tracking-wider mb-2.5 flex items-center gap-2">
+                                                                    <span className="w-2 h-2 rounded-full bg-cyan-400"></span> SINOPSIS
+                                                                </h3>
+                                                                <p className="text-slate-100 text-sm sm:text-base leading-relaxed bg-black/50 p-5 sm:p-6 rounded-2xl border border-slate-800 shadow-inner font-medium">
+                                                                    {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
+
+                                                {((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
+                                                    <div className="glass-panel rounded-3xl p-4 sm:p-6 flex flex-col h-[480px] sm:h-[540px] shadow-2xl">
+                                                        <div className="flex items-center justify-between mb-3">
+                                                            <h3 className="font-extrabold text-xs sm:text-sm text-white flex items-center gap-2">
+                                                                <span className="w-2 h-2 rounded-full bg-cyan-500"></span> Episodios
+                                                            </h3>
+                                                            {(() => {
+                                                                const itemId = selectedItem.id || selectedItem.title;
+                                                                const watchedList = watchedEpisodes[itemId] || [];
+                                                                let totalEps = 0;
+                                                                selectedItem.seasons.forEach(s => totalEps += (s.episodes?.length || 0));
+                                                                return <span className="text-[10px] font-mono text-cyan-400 bg-cyan-950/80 px-2.5 py-1 rounded-full border border-cyan-900/60">{watchedList.length} / {totalEps} vistos</span>;
+                                                            })()}
+                                                        </div>
+                                                        <div className="flex gap-2 mb-3 overflow-x-auto pb-2 no-scrollbar">
+                                                            {selectedItem.seasons.map((season, sIdx) => (
+                                                                <button key={sIdx} onClick={() => setExpandedSeason(sIdx)} className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${expandedSeason === sIdx ? 'bg-cyan-600 text-white shadow-[0_0_20px_rgba(6,182,212,0.5)] border border-cyan-400' : 'bg-black/55 text-slate-400 hover:text-white border border-slate-800'}`}>
+                                                                    Temp {season.seasonNumber}
+                                                                </button>
+                                                            ))}
+                                                        </div>
+                                                        <div className="flex-1 overflow-y-auto custom-scrollbar space-y-2 pr-1">
+                                                            {selectedItem.seasons[expandedSeason]?.episodes?.map((ep, eIdx) => {
+                                                                const itemId = selectedItem.id || selectedItem.title;
+                                                                const epId = ep.id || ep.url;
+                                                                const isWatched = (watchedEpisodes[itemId] || []).includes(epId);
+                                                                const isCurrent = selectedEpisode?.url === ep.url;
+                                                                return (
+                                                                    <div key={ep.id || eIdx} onClick={() => { setSelectedEpisode(ep); recordContinueWatching(selectedItem, ep); }} className={`p-3 rounded-2xl cursor-pointer flex items-center justify-between text-xs transition-all ${isCurrent ? 'bg-cyan-950/85 text-white border border-cyan-500/60 shadow-lg' : isWatched ? 'bg-black/30 text-slate-400 border border-slate-800/60 opacity-75' : 'hover:bg-cyan-950/30 text-slate-300 border border-transparent'}`}>
+                                                                        <div className="flex items-center gap-2.5 truncate flex-1 pr-2">
+                                                                            <div className="w-5 flex justify-center shrink-0">
+                                                                                {isCurrent ? (<div className="flex items-end h-3.5 gap-[2px]"><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div><div className="bar w-[2px]"></div></div>) : (<span className={`font-bold ${isWatched ? 'text-cyan-400' : 'text-slate-500'}`}>{isWatched ? '✓' : `${eIdx + 1}.`}</span>)}
+                                                                            </div>
+                                                                            <span className={`truncate font-medium ${isWatched ? 'line-through decoration-cyan-500/60 text-slate-400' : ''}`}>{ep.title}</span>
+                                                                        </div>
+                                                                        <div className="flex items-center gap-1.5 flex-shrink-0">
+                                                                            <button onClick={(e) => { e.stopPropagation(); markEpisodeAsWatched(selectedItem, ep, !isWatched); }} className={`px-2 py-1 rounded-lg text-[9px] font-bold transition-all border ${isWatched ? 'bg-cyan-600/30 text-cyan-300 border-cyan-500/50' : 'bg-black/50 text-slate-400 border-slate-800 hover:text-white'}`}>
+                                                                                {isWatched ? 'Visto ✓' : 'Visto'}
+                                                                            </button>
+                                                                            <Icon name="play" size={14} fill={isCurrent ? "#06b6d4" : "none"} className={isCurrent ? "text-cyan-400" : "text-slate-500"}/>
+                                                                        </div>
+                                                                    </div>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
                                         )}
                                     </div>
