@@ -1,5 +1,139 @@
 [
   {
+    "titulo": "Find Your Friends",
+    "tituloOriginal": "Find Your Friends",
+    "descripcion": "Amber y sus amigas visitan Joshua Tree para divertirse, pero se enfrentan a la hostilidad de los lugareños. A medida que la tensión aumenta, descubren el trauma del pasado de Amber, lo que enciende su rebelión contra la masculinidad tóxica, convirtiendo su viaje en uno de venganza",
+    "imagen": "https://image.tmdb.org/t/p/w780/h1Pwk8HPWKjtUnqgGbbdjGe37rh.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/vGVWjxlWRzevTG5R7E2HziDjueA.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1705jKjIRVyVfJ2WuuKznERgySpEXjPci/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-06-04",
+    "rating": "4.4",
+    "votos": 12,
+    "runtime": "1h 32min",
+    "genres": [
+      "Suspense",
+      "Crimen"
+    ],
+    "generosTexto": "Suspense, Crimen",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Izabel Pakzad",
+    "guionistas": "Izabel Pakzad",
+    "reparto": [
+      {
+        "nombre": "Helena Howard",
+        "personaje": "Amber",
+        "foto": "https://image.tmdb.org/t/p/w185/xOb2IwfqTCERL3vKZkEItA1Dhme.jpg"
+      },
+      {
+        "nombre": "Bella Thorne",
+        "personaje": "Lavinia",
+        "foto": "https://image.tmdb.org/t/p/w185/lgz1eArGmzrN8pDbFhRnoXxC7c4.jpg"
+      },
+      {
+        "nombre": "Zión Moreno",
+        "personaje": "Zosia",
+        "foto": "https://image.tmdb.org/t/p/w185/hh1MYhL2BV1rJsh7x9s2Y3I1cVI.jpg"
+      },
+      {
+        "nombre": "Chloe Cherry",
+        "personaje": "Lola",
+        "foto": "https://image.tmdb.org/t/p/w185/czDZr2NO24E6aGGeb7PnLhJRiQR.jpg"
+      },
+      {
+        "nombre": "Sophia Ali",
+        "personaje": "Maddy",
+        "foto": "https://image.tmdb.org/t/p/w185/45B39NY2LEYewNUiWtvFb7LrDct.jpg"
+      },
+      {
+        "nombre": "Israel Broussard",
+        "personaje": "Will",
+        "foto": "https://image.tmdb.org/t/p/w185/7HmcvPVEkzKncyn2KKaX3AX0Yc0.jpg"
+      },
+      {
+        "nombre": "Blaine Kern III",
+        "personaje": "Tye",
+        "foto": "https://image.tmdb.org/t/p/w185/u0KBbbuEcRC4E7otk5y955TjREv.jpg"
+      },
+      {
+        "nombre": "Zak Steiner",
+        "personaje": "Blaine",
+        "foto": "https://image.tmdb.org/t/p/w185/kv2EAljlsru1XWF6uC4P9tRrNGc.jpg"
+      },
+      {
+        "nombre": "Chris Bauer",
+        "personaje": "Russell",
+        "foto": "https://image.tmdb.org/t/p/w185/1AjdNxbVmy6azlOxIfnCX5OruEA.jpg"
+      },
+      {
+        "nombre": "Jake Manley",
+        "personaje": "Jake",
+        "foto": "https://image.tmdb.org/t/p/w185/mu8otJW0iA89jqF7SVe59ccrfAI.jpg"
+      },
+      {
+        "nombre": "Harrison Gilbertson",
+        "personaje": "Coby",
+        "foto": "https://image.tmdb.org/t/p/w185/qlB00ZkN8LCReIje5PGDJ2UeCAg.jpg"
+      },
+      {
+        "nombre": "Izabel Pakzad",
+        "personaje": "Sidney",
+        "foto": "https://image.tmdb.org/t/p/w185/jiHfnCgAhBHzuumv01UHIW0vE9s.jpg"
+      }
+    ],
+    "pais": "United States of America, Italy",
+    "idioma": "en",
+    "productoras": "FYF Film, Welcome to Italy, Walters Media Group, WWPS.TV, Angry Cloud, 828 Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "female friendship, revenge, los angeles, california, found footage, party weekend, real incident, joshua tree, good for her, weekend",
+    "similares": [
+      {
+        "titulo": "Freaky Tales",
+        "poster": "https://image.tmdb.org/t/p/w342/z17yqLUxfyNUGE75uJxFPTCOmvV.jpg",
+        "year": "2025",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Escupiré sobre tu tumba",
+        "poster": "https://image.tmdb.org/t/p/w342/inUlrn9Sk59SJLlY90bZ4Web8Ic.jpg",
+        "year": "2010",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "La última casa a la izquierda",
+        "poster": "https://image.tmdb.org/t/p/w342/rTT7XocGdSHs4WDtzZ1a1YnVk42.jpg",
+        "year": "1972",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Caramelo asesino",
+        "poster": "https://image.tmdb.org/t/p/w342/yUdkn57AcZJCBiO74D9xQYq99Bm.jpg",
+        "year": "1999",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "You Kill Me",
+        "poster": "https://image.tmdb.org/t/p/w342/cWZVNARGGeF7WF3IK7jDoq1VX7A.jpg",
+        "year": "2007",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Escupiré sobre tu tumba 2",
+        "poster": "https://image.tmdb.org/t/p/w342/hC3zDl28waEPRoaweasE4vNfnkf.jpg",
+        "year": "2013",
+        "rating": "6.3"
+      }
+    ],
+    "tmdbId": 1283636
+  },
+  {
     "titulo": "1923 - El Hombre Mosca",
     "tituloOriginal": "",
     "descripcion": "Un joven de campo recién llegado a la ciudad debe tratar de escalar un edificio de 12 pisos, cuando su plan para ganar dinero acaba resultando contraproducente.",
