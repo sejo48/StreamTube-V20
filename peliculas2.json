@@ -1,5 +1,129 @@
 [
   {
+    "titulo": "Siete francotiradores",
+    "tituloOriginal": "Seven Snipers",
+    "descripcion": "Cuando una antigua francotirador de élite es perseguida por el despiadado caudillo que una vez la mantuvo cautiva, debe luchar hasta la muerte para proteger a la hija que ha criado en la clandestinidad, en una remota granja australiana.",
+    "imagen": "https://image.tmdb.org/t/p/w780/1VypkhG0LlvIzt26K4nYDEJr1qq.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/g2aOpyCO1vEyUZURh3V5uaHu187.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1rASMnZ6EYzKf_wI85_Fr9jmAQDxPssoc/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-04-30",
+    "rating": "5.9",
+    "votos": 151,
+    "runtime": "1h 27min",
+    "genres": [
+      "Acción",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Suspense",
+    "clasificacion": "16",
+    "tagline": "Ella escapó de su pasado. Pero el pasado aún la persigue.",
+    "director": "Sandra Sciberras",
+    "guionistas": "Andrew O'Keefe",
+    "reparto": [
+      {
+        "nombre": "Radha Mitchell",
+        "personaje": "Kris Hendricks / Voodoo Child",
+        "foto": "https://image.tmdb.org/t/p/w185/8EVKyEkwPfIA6GxlIo0PJv0A5mm.jpg"
+      },
+      {
+        "nombre": "Tim Roth",
+        "personaje": "The Dragon",
+        "foto": "https://image.tmdb.org/t/p/w185/qSizF2i9gz6c6DbAC5RoIq8sVqX.jpg"
+      },
+      {
+        "nombre": "Annabel Wolfe",
+        "personaje": "Anja",
+        "foto": "https://image.tmdb.org/t/p/w185/4NONXcOJfAiLb8f3EcGgWETna9f.jpg"
+      },
+      {
+        "nombre": "Ioan Gruffudd",
+        "personaje": "Milk",
+        "foto": "https://image.tmdb.org/t/p/w185/h2pg2XwJPcOWotHgiohXjEZUBLa.jpg"
+      },
+      {
+        "nombre": "Ryan Kwanten",
+        "personaje": "Phillips",
+        "foto": "https://image.tmdb.org/t/p/w185/vvbEabUWIeaHMBA2wrUChiLTjch.jpg"
+      },
+      {
+        "nombre": "Lee Tiger Halley",
+        "personaje": "Michael",
+        "foto": "https://image.tmdb.org/t/p/w185/dEoFIS64jLAM5anf3A9DIs9vw6e.jpg"
+      },
+      {
+        "nombre": "Charles Cottier",
+        "personaje": "Junior",
+        "foto": "https://image.tmdb.org/t/p/w185/gTxlPJMQeY1YBIY8BcbiUz2AAai.jpg"
+      },
+      {
+        "nombre": "Pacharo Mzembe",
+        "personaje": "Nico",
+        "foto": "https://image.tmdb.org/t/p/w185/lXeEgdThQ8eqFiAv6HTwqJn6AU5.jpg"
+      },
+      {
+        "nombre": "Damien Ryan",
+        "personaje": "White Dog",
+        "foto": ""
+      },
+      {
+        "nombre": "Bianca Wallace",
+        "personaje": "Kaldayev",
+        "foto": "https://image.tmdb.org/t/p/w185/4SNehmA66o6PEFTT7MBGqEhAdd8.jpg"
+      }
+    ],
+    "pais": "Australia, United Kingdom",
+    "idioma": "en",
+    "productoras": "Filmbarr, Monster Pictures Studios, Head Gear Films, Screen Queensland, Metrol Technology, Kreo Films, Signature Films, Sandy Pictures",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "apathetic, cliché, powerful",
+    "similares": [
+      {
+        "titulo": "Rastreado",
+        "poster": "https://image.tmdb.org/t/p/w342/p54x9dKLWZQ78aSo5jPf2NodFVs.jpg",
+        "year": "2025",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Rey de asesinos",
+        "poster": "https://image.tmdb.org/t/p/w342/59PHpiaLvVsCriuRzW8aftRoO5D.jpg",
+        "year": "2023",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Zip Wire",
+        "poster": "https://image.tmdb.org/t/p/w342/eLMHUOQ4mCMxePMbv0TIVB48zfe.jpg",
+        "year": "2026",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Zona de caza",
+        "poster": "https://image.tmdb.org/t/p/w342/u6DNzvz4y3XS5QYqsvvauIx4Xvc.jpg",
+        "year": "2025",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "El mejor padrino",
+        "poster": "https://image.tmdb.org/t/p/w342/vLdKyqdHFdcPRm9xtzfz2DeZOv1.jpg",
+        "year": "2023",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "El último gran golpe",
+        "poster": "https://image.tmdb.org/t/p/w342/zlkeH0s7dDxcnuPcHBqAyXFUxqN.jpg",
+        "year": "2026",
+        "rating": "6.0"
+      }
+    ],
+    "tmdbId": 1288341
+  },
+  {
     "titulo": "Find Your Friends",
     "tituloOriginal": "Find Your Friends",
     "descripcion": "",
