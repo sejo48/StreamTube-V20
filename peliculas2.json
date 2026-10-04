@@ -1,5 +1,120 @@
 [
   {
+    "titulo": "No dejes a los niños solos",
+    "tituloOriginal": "No dejes a los niños solos",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/jxg1sLzG0TJRDPSNU6AmR4wR4Ce.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/flo7Xmyxz2wDUjr5Ff0VrxaVwlY.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1P0gZYncbpdtF_HjESX1x8AGi9mSaRs2v/view?usp=sharing&t=2.613",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-05-14",
+    "rating": "6.8",
+    "votos": 31,
+    "runtime": "1h 37min",
+    "genres": [
+      "Terror",
+      "Drama",
+      "Suspense"
+    ],
+    "generosTexto": "Terror, Drama, Suspense",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Emilio Portes",
+    "guionistas": "Emilio Portes, Alan Maldonado",
+    "reparto": [
+      {
+        "nombre": "Ana Serradilla",
+        "personaje": "Catalina",
+        "foto": "https://image.tmdb.org/t/p/w185/6IsTKEIyID6IKRxoW8812XQPSAU.jpg"
+      },
+      {
+        "nombre": "Juan Pablo Velasco",
+        "personaje": "Matías Camacho",
+        "foto": ""
+      },
+      {
+        "nombre": "Ricardo Galina",
+        "personaje": "Emiliano Camacho",
+        "foto": ""
+      },
+      {
+        "nombre": "Jesús Zavala",
+        "personaje": "Marco",
+        "foto": "https://image.tmdb.org/t/p/w185/HSniatMJvkYkIKwnJQtrEM12DI.jpg"
+      },
+      {
+        "nombre": "José Sefami",
+        "personaje": "Licenciado",
+        "foto": "https://image.tmdb.org/t/p/w185/e1ZXLb0kXNJt3rmHsi8ttck4WKF.jpg"
+      },
+      {
+        "nombre": "Paloma Woolrich",
+        "personaje": "Marcela",
+        "foto": ""
+      },
+      {
+        "nombre": "Armando Silva",
+        "personaje": "Mau the pizza maker",
+        "foto": ""
+      },
+      {
+        "nombre": "Ayelen Bonacina",
+        "personaje": "Invitada fiesta Beto que ríe y llora",
+        "foto": ""
+      }
+    ],
+    "pais": "Mexico",
+    "idioma": "es",
+    "productoras": "Pastorela Películas, Instituto Mexicano de Cinematografía, Eficine",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Uno para morir",
+        "poster": "https://image.tmdb.org/t/p/w342/tP0xZWNqNNM0PEhkURsKriTQT9j.jpg",
+        "year": "2023",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "The Surrender",
+        "poster": "https://image.tmdb.org/t/p/w342/5rQUk8ePj8ggSebtOfF5lFh01my.jpg",
+        "year": "2025",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Caged",
+        "poster": "https://image.tmdb.org/t/p/w342/a1QClTDR4Sc8Aa10mSPEUSJzUCi.jpg",
+        "year": "2021",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Bloodline",
+        "poster": "https://image.tmdb.org/t/p/w342/u9UfbDVilnhT3fa82aTFs3O0TsA.jpg",
+        "year": "2019",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Castigos de la traición",
+        "poster": "https://image.tmdb.org/t/p/w342/al7ugHcazS5Eo6n7bm8dzF8vy1J.jpg",
+        "year": "2023",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Frank y Penelope Hasta que la Muerte nos Separe",
+        "poster": "https://image.tmdb.org/t/p/w342/5NpXoAi3nEQkEgLO09nmotPfyNa.jpg",
+        "year": "2022",
+        "rating": "7.4"
+      }
+    ],
+    "tmdbId": 1339274
+  },
+  {
     "titulo": "Cuenta atrás",
     "tituloOriginal": "Fuze",
     "descripcion": "Unos obreros de la construcción encuentran una bomba de la Segunda Guerra Mundial sin explotar en pleno centro de Londres, lo que les obliga a evacuar la ciudad para salvar a la multitud de transeúntes inocentes que se encuentran en las inmediaciones. Unos ladrones oportunistas aprovecharán el caos para llevar a cabo un elaborado atraco.",
@@ -2848,37 +2963,139 @@
     "tmdbId": null
   },
   {
-    "titulo": "La última casa (2026)",
-    "tituloOriginal": "",
-    "descripcion": "La trama de La última casa se desata cuando una familia (con unos padres interpretados por Greta Lee y Wagner Moura) queda completamente encerrada en su propio hogar sin ninguna explicación aparente. Aislados por completo, los protagonistas inician una desesperada lucha por la supervivencia a medida que los víveres comienzan a agotarse en la vivienda. Para subsistir en este asfixiante encierro, se ven obligados a cultivar plantas en sus propias habitaciones en un intento desesperado por autoabastecerse. Sin embargo, la mayor amenaza de este thriller de ciencia ficción y terror no reside solo en el aislamiento físico, sino en lo que acecha en el exterior: un peligro desconocido del cual nadie puede asegurar si es de origen natural o sobrenatural.",
-    "imagen": "https://pics.filmaffinity.com/La_aultima_casa-289678563-large.jpg",
-    "backdrop": "",
+    "titulo": "La última casa",
+    "tituloOriginal": "The Last House",
+    "descripcion": "Una familia encerrada en su casa misteriosamente tendrá que unirse para sobrevivir a la escasez de recursos y a la siniestra amenaza que no los deja salir.",
+    "imagen": "https://image.tmdb.org/t/p/w780/CIGQ7ONbNaSDK3KGkXjBILcj1d.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/1RhfevWmWCVHtEqxWBEjPOC5KG1.jpg",
     "urlDrive": "https://drive.google.com/file/d/1b2YHpMjeMhjVp6UScVCWXMkuya4wI-kC/view?usp=sharing",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
-    "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "year": "2026",
+    "fechaEstreno": "2026-08-06",
+    "rating": "6.8",
+    "votos": 1434,
+    "runtime": "1h 50min",
+    "genres": [
+      "Terror",
+      "Ciencia ficción",
+      "Suspense"
+    ],
+    "generosTexto": "Terror, Ciencia ficción, Suspense",
+    "clasificacion": "16",
+    "tagline": "¿Cuánto tiempo puedes sobrevivir?",
+    "director": "Louis Leterrier",
+    "guionistas": "Matthew Robinson",
+    "reparto": [
+      {
+        "nombre": "Greta Lee",
+        "personaje": "Ann",
+        "foto": "https://image.tmdb.org/t/p/w185/6SydTis4XUcovlwIGskT59JowLX.jpg"
+      },
+      {
+        "nombre": "Wagner Moura",
+        "personaje": "Jason",
+        "foto": "https://image.tmdb.org/t/p/w185/53IbAed4t1dOWxY3iygbRYZBBnm.jpg"
+      },
+      {
+        "nombre": "Riley Chung",
+        "personaje": "Ruth (8 Years Old)",
+        "foto": "https://image.tmdb.org/t/p/w185/9yKaWeYlhnUmit4JN0H2YYgmR50.jpg"
+      },
+      {
+        "nombre": "Noah Alexander Sosnowski",
+        "personaje": "Graham (12 Years Old)",
+        "foto": "https://image.tmdb.org/t/p/w185/v2xlpMiOqgKCXjRAvZQ3lVyY3JJ.jpg"
+      },
+      {
+        "nombre": "Emma Ho",
+        "personaje": "Ruth (13 Years Old)",
+        "foto": "https://image.tmdb.org/t/p/w185/mUVxoj09thSFpHhHD6xzam7XyNm.jpg"
+      },
+      {
+        "nombre": "Gabriel Barbosa",
+        "personaje": "Graham (17 Years Old)",
+        "foto": "https://image.tmdb.org/t/p/w185/tHWVcUd8tnoSiep76nI4rsquZY5.jpg"
+      },
+      {
+        "nombre": "Arden Cho",
+        "personaje": "Adult Ruth",
+        "foto": "https://image.tmdb.org/t/p/w185/9YYeDthohs1Iv7IFG0hs8U3p50Z.jpg"
+      },
+      {
+        "nombre": "Audrey Anderson",
+        "personaje": "Susan",
+        "foto": "https://image.tmdb.org/t/p/w185/aXuOgHcxoeSmhd1qY60nCISUVW9.jpg"
+      },
+      {
+        "nombre": "Sid Edwards",
+        "personaje": "Max Richardson",
+        "foto": "https://image.tmdb.org/t/p/w185/wvUcpP28vu5gk6UMi5nIIXyqon4.jpg"
+      },
+      {
+        "nombre": "Eveline Reynolds-Boison",
+        "personaje": "Marcia Richardson",
+        "foto": ""
+      },
+      {
+        "nombre": "Lewis Goody",
+        "personaje": "Greg 'Bike Boy'",
+        "foto": "https://image.tmdb.org/t/p/w185/uvgQHSazVztGVWfvBb752lcGcnQ.jpg"
+      },
+      {
+        "nombre": "Nancy Baldwin",
+        "personaje": "Nancy",
+        "foto": "https://image.tmdb.org/t/p/w185/kGF3vUek0UpQjUfGonuPq1HRyBv.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Chernin Entertainment, 3 Arts Entertainment",
     "presupuesto": 0,
     "recaudacion": 0,
-    "trailerUrl": "",
+    "trailerUrl": "https://www.youtube.com/watch?v=4I2bcxL8Wxw",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "monster, isolation, water monster, family, sea creature, baffled, disapproving, dangerous rain",
+    "similares": [
+      {
+        "titulo": "Underwater",
+        "poster": "https://image.tmdb.org/t/p/w342/xx6i7QlMPYaMaQaVnJxmK99P6l5.jpg",
+        "year": "2020",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Asfixia",
+        "poster": "https://image.tmdb.org/t/p/w342/grAI6PofWfdW41bNUY5uKRiLn4z.jpg",
+        "year": "1972",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Asesino invisible",
+        "poster": "https://image.tmdb.org/t/p/w342/aBfysVA326A2CJhk3VTAZZPlgaM.jpg",
+        "year": "1977",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "El final de Oak Street",
+        "poster": "https://image.tmdb.org/t/p/w342/g9DUGw8ufetrwhCIrwq3h1NlpWO.jpg",
+        "year": "2026",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "La masa devoradora",
+        "poster": "https://image.tmdb.org/t/p/w342/sYItq4tfcmFOLTfNqVvYQuY87bQ.jpg",
+        "year": "1958",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Megalodón",
+        "poster": "https://image.tmdb.org/t/p/w342/kBl4wXkKVZep4AVVxju67uh6uVV.jpg",
+        "year": "2018",
+        "rating": "6.3"
+      }
+    ],
+    "tmdbId": 1284041
   },
   {
     "titulo": "Carrera de bestias (2026)",
@@ -2946,36 +3163,139 @@
     "tmdbId": null
   },
   {
-    "titulo": "la realidad paralela de Homero (2026)",
-    "tituloOriginal": "",
-    "imagen": "https://pics.filmaffinity.com/Yellow_Mirror_la_realidad_paralela_de_Homero_TV-905481707-large.jpg",
-    "backdrop": "",
+    "titulo": "Los Simpson: Yellow Mirror: la realidad paralela de Homero",
+    "tituloOriginal": "Yellow Mirror",
+    "descripcion": "Una lámpara defectuosa revela una verdad desgarradora sobre lo que Homer cree que es la realidad, y una tableta con inteligencia artificial se hace amiga de Maggie y la controla. Los Simpson luchan por encontrar la luz a través de dos historias oscuras, curiosas y extrañas.",
+    "imagen": "https://image.tmdb.org/t/p/w780/wybH2AK9kazNW7WYKST1YzUKP75.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/rFjlsx5IygrHmBqr0KsVolAHhy7.jpg",
     "urlDrive": "https://drive.google.com/file/d/1fYkBxILnHOIgirgx5Iy_rZH8rJDZh68g/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-08-26",
+    "rating": "8.1",
+    "votos": 66,
+    "runtime": "27min",
+    "genres": [
+      "Animación",
+      "Comedia",
+      "Ciencia ficción"
+    ],
+    "generosTexto": "Animación, Comedia, Ciencia ficción",
+    "clasificacion": "PG",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Matthew Faughnan",
+    "guionistas": "Carolyn Omine, Kai Omine",
+    "reparto": [
+      {
+        "nombre": "Dan Castellaneta",
+        "personaje": "Homer Simpson / Barney Gumble (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/AmeqWhP4A46AWkM4kVphg6jOTQX.jpg"
+      },
+      {
+        "nombre": "Nancy Cartwright",
+        "personaje": "Bart Simpson / Ralph Wiggum (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/kJQEz3NAwHGdb2sQzAnBf1RmMV4.jpg"
+      },
+      {
+        "nombre": "Julie Kavner",
+        "personaje": "Marge Simpson / Jacqueline Bouvier (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/87kSPYlWcHvqOVEkhdqxysiAf6w.jpg"
+      },
+      {
+        "nombre": "Yeardley Smith",
+        "personaje": "Lisa Simpson (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/9AjPwbb3uz4GfgOPBYsy2ILvwkB.jpg"
+      },
+      {
+        "nombre": "Patti Harrison",
+        "personaje": "Hailey (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/n9h4QmVkRzdOVqKTQoQESIbDjuX.jpg"
+      },
+      {
+        "nombre": "Demi Moore",
+        "personaje": "Lydia (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/wApParZYBDi4yxekjfxjKEifJYh.jpg"
+      },
+      {
+        "nombre": "Harry Shearer",
+        "personaje": "Lenny Leonard (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/wZpovXxQQqP7kxXPy2yj6QMbM55.jpg"
+      },
+      {
+        "nombre": "Alex Désert",
+        "personaje": "Carl Carlson (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/iz5fLxrOTKYUkpUmGXgVfCfIZxn.jpg"
+      },
+      {
+        "nombre": "Hank Azaria",
+        "personaje": "Chief Wiggum (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/yFDw4b0jucuFWNnGcBPfpYUtn16.jpg"
+      },
+      {
+        "nombre": "Tress MacNeille",
+        "personaje": "Dr. Thurston (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/gI2LsgByvSffQY34vabVnPmrHzw.jpg"
+      },
+      {
+        "nombre": "Kai Omine",
+        "personaje": "Sideshow Mel Cosplayer (voice)",
+        "foto": ""
+      },
+      {
+        "nombre": "Chris Edgerly",
+        "personaje": "(voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/bjkN9Ugv6Kd3Z3y9p9DgWAc10Q7.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Gracie Films, 20th Television Animation",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
     "coleccion": "",
     "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "similares": [
+      {
+        "titulo": "Robot Chicken: Star Wars Episodio I",
+        "poster": "https://image.tmdb.org/t/p/w342/h44WN4mVJ6wEpJgLaaNoFjv0NAo.jpg",
+        "year": "2007",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Padre de familia presenta Blue Harvest",
+        "poster": "https://image.tmdb.org/t/p/w342/oZRuqRaliZaOYQwIHQd0EUee64F.jpg",
+        "year": "2007",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "La Liga de la Justicia: Dioses y Monstruos",
+        "poster": "https://image.tmdb.org/t/p/w342/pLj9T1wDzFWg8FEJSxTPZXWTPCu.jpg",
+        "year": "2015",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Simpsley",
+        "poster": "https://image.tmdb.org/t/p/w342/e0ienqvJZUPbVH7ym0ShQOwhb5z.jpg",
+        "year": "2026",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Hulk vs. Lobezno",
+        "poster": "https://image.tmdb.org/t/p/w342/p8PZfkrCuXanfYr3k6xAS6WzN8Y.jpg",
+        "year": "2009",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Marvel Rising: La batalla de las bandas",
+        "poster": "https://image.tmdb.org/t/p/w342/mFL0EzAhEj3vscyGUMk6sT7pfQg.jpg",
+        "year": "2019",
+        "rating": "6.1"
+      }
+    ],
+    "tmdbId": 1729723
   },
   {
     "titulo": "La Patrulla Canina",
@@ -3473,37 +3793,139 @@
     "tmdbId": null
   },
   {
-    "titulo": "Elize: Sombras de una Mujer",
-    "tituloOriginal": "",
-    "descripcion": "Una antigua escort trata de ignorar las infidelidades de su rico marido. Pero esa traición envenena su matrimonio.\n",
-    "imagen": "https://pics.filmaffinity.com/elize_sombras_de_uma_mulher-545166941-mmed.jpg",
-    "backdrop": "",
+    "titulo": "Elize: Sombras de una mujer",
+    "tituloOriginal": "Elize: Sombras de uma Mulher",
+    "descripcion": "Una antigua escort trata de ignorar las infidelidades de su rico marido. Pero esa traición envenena su matrimonio.",
+    "imagen": "https://image.tmdb.org/t/p/w780/h3LAj6vviwdJ36F0JrPG8R9U94Q.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/z8mTDyKdAWjKsD0vwa7e9LTSY1j.jpg",
     "urlDrive": "https://drive.google.com/file/d/1Z6ndNIlBOqOpsasiMQ2-V9QTkPxCJF-9/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-07-22",
+    "rating": "7.5",
+    "votos": 220,
+    "runtime": "1h 33min",
+    "genres": [
+      "Suspense",
+      "Crimen",
+      "Drama"
+    ],
+    "generosTexto": "Suspense, Crimen, Drama",
+    "clasificacion": "16",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Vellas",
+    "guionistas": "Raphael Montes, Mariana Torres, Raphael Montes",
+    "reparto": [
+      {
+        "nombre": "Lorena Comparato",
+        "personaje": "Elize Matsunaga",
+        "foto": "https://image.tmdb.org/t/p/w185/cWF3OGztHzaHNiGQU4C14RV5G95.jpg"
+      },
+      {
+        "nombre": "Henrique Kimura",
+        "personaje": "Marcos Matsunaga",
+        "foto": "https://image.tmdb.org/t/p/w185/kTlKFf27pfVKAyug8VxOnLue1Of.jpg"
+      },
+      {
+        "nombre": "Denise Weinberg",
+        "personaje": "Tia Marta",
+        "foto": "https://image.tmdb.org/t/p/w185/l4XZHjhc7GFjTfxBp3mqlHrvz6N.jpg"
+      },
+      {
+        "nombre": "Gustavo Falcão",
+        "personaje": "Heitor",
+        "foto": "https://image.tmdb.org/t/p/w185/ghw4GN9zvCTS1HB2lCUJ3ekNWL1.jpg"
+      },
+      {
+        "nombre": "Julia Shimura",
+        "personaje": "Clarice",
+        "foto": "https://image.tmdb.org/t/p/w185/vfK9XUlc5VK70jLnkJk2PTkp04x.jpg"
+      },
+      {
+        "nombre": "Flora Sandyá",
+        "personaje": "Babá",
+        "foto": "https://image.tmdb.org/t/p/w185/liMmKjTuq3cPR82gAkaAbXw3wXC.jpg"
+      },
+      {
+        "nombre": "Edson Kameda",
+        "personaje": "Takashi",
+        "foto": "https://image.tmdb.org/t/p/w185/wlJ8ISAwTM4sVbClbSs1Vu7sXzm.jpg"
+      },
+      {
+        "nombre": "Miwa Yanagizawa",
+        "personaje": "Masuyo",
+        "foto": "https://image.tmdb.org/t/p/w185/fNtieBDuyibQOOp31OMzhe2qTvv.jpg"
+      },
+      {
+        "nombre": "Arthur Toyoshima",
+        "personaje": "Lauro",
+        "foto": ""
+      },
+      {
+        "nombre": "Julia Konrad",
+        "personaje": "Larissa \"aka\" Bianca",
+        "foto": "https://image.tmdb.org/t/p/w185/4L9a0Ix7wwZ4l9R2D2qH97kcEcK.jpg"
+      },
+      {
+        "nombre": "Erica Montanheiro",
+        "personaje": "Elize's mother",
+        "foto": ""
+      },
+      {
+        "nombre": "Marat Descartes",
+        "personaje": "Elize's stepfather",
+        "foto": "https://image.tmdb.org/t/p/w185/vsjsehuV8ragp3MxdGz0KJNfArC.jpg"
+      }
+    ],
+    "pais": "Brazil",
+    "idioma": "pt",
+    "productoras": "Boutique Filmes",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "biography, based on true story, real incident, true story",
+    "similares": [
+      {
+        "titulo": "Driven: El origen de la leyenda",
+        "poster": "https://image.tmdb.org/t/p/w342/vwezMLR6Fq3tTEGvSuU7R2b1Q0l.jpg",
+        "year": "2019",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Extremadamente cruel, malvado y perverso",
+        "poster": "https://image.tmdb.org/t/p/w342/jzo6I6SKTFPLXK8BqZhq7sTVCSV.jpg",
+        "year": "2019",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Tiro letal",
+        "poster": "https://image.tmdb.org/t/p/w342/x83W8j9Qv2jMH0qbJkjQWytxnht.jpg",
+        "year": "2020",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Duplicidad, de Tyler Perry",
+        "poster": "https://image.tmdb.org/t/p/w342/k4fJun2pJ70BBFMgGAZddk3m7sg.jpg",
+        "year": "2025",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "El ojo público",
+        "poster": "https://image.tmdb.org/t/p/w342/jOStkUE8TfrNcNimpFoDhWqBzAk.jpg",
+        "year": "1992",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Rey Marfil",
+        "poster": "https://image.tmdb.org/t/p/w342/bj0kbIqqPqz32IG7lnVpUEAHxCu.jpg",
+        "year": "2025",
+        "rating": "7.0"
+      }
+    ],
+    "tmdbId": 1487861
   },
   {
     "titulo": "Amos del Universo",
@@ -3738,36 +4160,139 @@
   },
   {
     "titulo": "Toy Story 5",
-    "tituloOriginal": "",
-    "descripcion": "Cuando Woody logra regresar con Buzz, Jessie y el resto de la pandilla, descubren una nueva amenaza: la tecnología. Un nuevo tiempo de juego para los niños.",
-    "imagen": "https://pics.filmaffinity.com/Toy_Story_5-982803748-large.jpg",
-    "backdrop": "",
+    "tituloOriginal": "Toy Story 5",
+    "descripcion": "Los juguetes de Bonnie se enfrentan a otra amenaza cuando la niña recibe una tableta llamada Lilypad, la cual absorbe toda su atención y pone en peligro el juego tradicional. Todos deben unirse para competir contra la tecnología y recuperar su lugar.",
+    "imagen": "https://image.tmdb.org/t/p/w780/pTjZfbFVWUIwUM5OzX3LVh84ejU.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/qjTqY5coNiz6sVtPng40IzltsoN.jpg",
     "urlDrive": "https://drive.google.com/file/d/1prGXhjyalLAxx7Aax-DczKVMsz3F7TIH/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
-    "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
-    "presupuesto": 0,
-    "recaudacion": 0,
-    "trailerUrl": "",
-    "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "year": "2026",
+    "fechaEstreno": "2026-06-17",
+    "rating": "8.3",
+    "votos": 2460,
+    "runtime": "1h 42min",
+    "genres": [
+      "Animación",
+      "Familia",
+      "Comedia",
+      "Aventura"
+    ],
+    "generosTexto": "Animación, Familia, Comedia, Aventura",
+    "clasificacion": "A",
+    "tagline": "Se activó.",
+    "director": "Andrew Stanton",
+    "guionistas": "Andrew Stanton, Kenna Harris, Andrew Stanton",
+    "reparto": [
+      {
+        "nombre": "Joan Cusack",
+        "personaje": "Jessie (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/59UIeHZFYrKyP20lXqijtfTXglO.jpg"
+      },
+      {
+        "nombre": "Tom Hanks",
+        "personaje": "Woody (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/oFvZoKI6lvU03n4YoNGAll9rkas.jpg"
+      },
+      {
+        "nombre": "Tim Allen",
+        "personaje": "Buzz Lightyear (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/k8XPNHBO459FaqkqqM4tfX5GMKk.jpg"
+      },
+      {
+        "nombre": "Conan O'Brien",
+        "personaje": "Smarty Pants (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/deRbViPut0t80miscBpP2DhBJU5.jpg"
+      },
+      {
+        "nombre": "Scarlett Spears",
+        "personaje": "Bonnie (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/h0loJ4v3wbUfUA6dxUYv7B6fET1.jpg"
+      },
+      {
+        "nombre": "Greta Lee",
+        "personaje": "Lilypad (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/6SydTis4XUcovlwIGskT59JowLX.jpg"
+      },
+      {
+        "nombre": "Shelby Rabara",
+        "personaje": "Snappy (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/ouMiEKlhCj2LFKEQtI6fGRMDemF.jpg"
+      },
+      {
+        "nombre": "Mykal-Michelle Harris",
+        "personaje": "Blaze (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/4TvVJYo8gEks8cegfNoZogXJgp2.jpg"
+      },
+      {
+        "nombre": "Craig Robinson",
+        "personaje": "Atlas (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/mTyTrOWUSOBJMOlDpnd4OYx7FlJ.jpg"
+      },
+      {
+        "nombre": "Jay Hernandez",
+        "personaje": "Bonnie’s Dad (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/rh4pzTAJvy0i84HYV4xZxCXuXgV.jpg"
+      },
+      {
+        "nombre": "Lori Alan",
+        "personaje": "Bonnie's Mom (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/cavATg4fX0zAl2MHwlt1IZei7EI.jpg"
+      },
+      {
+        "nombre": "Bonnie Hunt",
+        "personaje": "Dolly (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/tT9C6uLztgN8OxJULq6F9iEzqlA.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Pixar",
+    "presupuesto": 250000000,
+    "recaudacion": 1136476240,
+    "trailerUrl": "https://www.youtube.com/watch?v=9_reo5Jl1OM",
+    "coleccion": "Toy Story - Colección",
+    "keywords": "farm, island, pig, horse, rescue mission, rivalry, sequel, love, stranded, wedding, tire swing, walkie talkie, cowgirl, blunt, cowboy, buddy comedy, duringcreditsstinger, toy comes to life, hippo, abandonment, toilet paper, replacement, toy, frog, 3d animation, tablet, pixar",
+    "similares": [
+      {
+        "titulo": "Toy Story 4",
+        "poster": "https://image.tmdb.org/t/p/w342/yF1vPDuHVrAUMX5dy1tVMbAjkEL.jpg",
+        "year": "2019",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "La abeja Maya: Los juegos de la miel",
+        "poster": "https://image.tmdb.org/t/p/w342/ctC40TabH9GwqBXpEgBeJXs9Dzl.jpg",
+        "year": "2018",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Toy Story 2: Los juguetes vuelven a la carga",
+        "poster": "https://image.tmdb.org/t/p/w342/8OTDKkJv2jXg5ZHKazFxBAttKkR.jpg",
+        "year": "1999",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Héroes de Central Park",
+        "poster": "https://image.tmdb.org/t/p/w342/t9j3tntCqqlF45e2uuNBsp2u3Ti.jpg",
+        "year": "2023",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Campanilla y el tesoro perdido",
+        "poster": "https://image.tmdb.org/t/p/w342/s5ggvZQMXhP3O2dQD8iQE46K6b6.jpg",
+        "year": "2009",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Mascotas 2",
+        "poster": "https://image.tmdb.org/t/p/w342/dqGsG2uNV9JGgrfODbTafPUukci.jpg",
+        "year": "2019",
+        "rating": "6.9"
+      }
+    ],
+    "tmdbId": 1084244
   },
   {
     "titulo": "El Instinto Asesino",
@@ -3869,37 +4394,139 @@
     "tmdbId": null
   },
   {
-    "titulo": "La Astronauta",
-    "tituloOriginal": "",
-    "descripcion": "Tras regresar de su primera misión espacial, la astronauta Sam Walker queda bajo el cuidado de la NASA en una residencia de alta seguridad para rehabilitación y pruebas médicas. Sin embargo, cuando comienzan a ocurrir sucesos inquietantes en la propiedad, teme que algo extraterrestre la haya seguido de regreso a la Tierra.\n\n",
-    "imagen": "https://pics.filmaffinity.com/the_astronaut-694341331-mmed.jpg",
-    "backdrop": "",
+    "titulo": "La astronauta",
+    "tituloOriginal": "The Astronaut",
+    "descripcion": "Sam Walker (Kate Mara) regresa en extrañas circunstancias de su primera misión espacial. El general William Harris (Laurence Fishburne) la obliga a permanecer en cuarentena, bajo la estricta vigilancia de la NASA, en una casa aislada de alta seguridad. Pese a vivir en una aparente normalidad, Walker empieza a percibir sucesos inquietantes en los alrededores de la propiedad. Es entonces cuando comienza a temer que no haya vuelto sola a la Tierra.",
+    "imagen": "https://image.tmdb.org/t/p/w780/78plNwd87erkJOWlFK956QuKnoi.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/3C01kAcKGR6FwsUUSOvJ8N82pqr.jpg",
     "urlDrive": "https://drive.google.com/file/d/1i6K5Gxo7yhtU-ZOWAUQYJav7J4N9HNfc/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
+    "year": "2025",
+    "fechaEstreno": "2025-09-26",
+    "rating": "6.1",
+    "votos": 457,
+    "runtime": "1h 30min",
+    "genres": [
+      "Terror",
+      "Ciencia ficción",
+      "Suspense"
+    ],
+    "generosTexto": "Terror, Ciencia ficción, Suspense",
     "clasificacion": "",
-    "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "tagline": "No regresó a La Tierra sola",
+    "director": "Jess Varley",
+    "guionistas": "Jess Varley",
+    "reparto": [
+      {
+        "nombre": "Kate Mara",
+        "personaje": "Sam Walker",
+        "foto": "https://image.tmdb.org/t/p/w185/xZYD8wYHMmN9dMMPiohnKEFoTGx.jpg"
+      },
+      {
+        "nombre": "Laurence Fishburne",
+        "personaje": "General William Harris",
+        "foto": "https://image.tmdb.org/t/p/w185/2GbXERENPpl5MmlqOLlPVaVtifD.jpg"
+      },
+      {
+        "nombre": "Gabriel Luna",
+        "personaje": "Mark",
+        "foto": "https://image.tmdb.org/t/p/w185/bIPORtYxTJPEUJIThbZrpqf4A11.jpg"
+      },
+      {
+        "nombre": "Ivana Miličević",
+        "personaje": "Dr. Michelle Aiden",
+        "foto": "https://image.tmdb.org/t/p/w185/3bWPeAnqRwuCAoYBDig3E3cFx5m.jpg"
+      },
+      {
+        "nombre": "Scarlett Holmes",
+        "personaje": "Izzy",
+        "foto": "https://image.tmdb.org/t/p/w185/4vci4gVNDn6LZSNsLA5DEsJLqGl.jpg"
+      },
+      {
+        "nombre": "Macy Gray",
+        "personaje": "Val",
+        "foto": "https://image.tmdb.org/t/p/w185/sKgKxFF49EdIGknA8Z0yLnrGTFU.jpg"
+      },
+      {
+        "nombre": "Reza Diako",
+        "personaje": "Ethan Marshall",
+        "foto": "https://image.tmdb.org/t/p/w185/z3f2f2Pl2Uw4JZLPhFnwosNR4sV.jpg"
+      },
+      {
+        "nombre": "Daniel Quirke",
+        "personaje": "Guard",
+        "foto": ""
+      },
+      {
+        "nombre": "Daiana Madeira",
+        "personaje": "Medical Specialist",
+        "foto": ""
+      },
+      {
+        "nombre": "Christine Abernathy",
+        "personaje": "Medical Assistant",
+        "foto": ""
+      },
+      {
+        "nombre": "Ezrael MacTire",
+        "personaje": "Young Harris",
+        "foto": ""
+      },
+      {
+        "nombre": "Erin Gill",
+        "personaje": "Young Sam",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Fuller Media, The Wonder Company, Wild Atlantic Pictures",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "paranoia, astronaut, surveillance, survival horror, woman director, inner conflict, unknown threat, nasa mission, unseen presence, immersive tension, unseen danger, deep‑space mission, cosmic threat, orbital survival, solitary struggle, slow‑burn suspense",
+    "similares": [
+      {
+        "titulo": "Asfixia",
+        "poster": "https://image.tmdb.org/t/p/w342/grAI6PofWfdW41bNUY5uKRiLn4z.jpg",
+        "year": "1972",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Círculo",
+        "poster": "https://image.tmdb.org/t/p/w342/24kN2gCvEPWcNy6TG0RljTr53SF.jpg",
+        "year": "2015",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "El día de la revelación",
+        "poster": "https://image.tmdb.org/t/p/w342/dPTa7jSIeaDhie2d9JSZr7qI0Tf.jpg",
+        "year": "2026",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Señales",
+        "poster": "https://image.tmdb.org/t/p/w342/r4q93grfe8xO28bY6MFMOZdffoo.jpg",
+        "year": "2002",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "El núcleo",
+        "poster": "https://image.tmdb.org/t/p/w342/l4HpogVLiVtx0LWW8XuJoWT7WfZ.jpg",
+        "year": "2003",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "I Am Mother",
+        "poster": "https://image.tmdb.org/t/p/w342/qnYBbh8MQLrvSbgp6uKRqy2HxEQ.jpg",
+        "year": "2019",
+        "rating": "6.7"
+      }
+    ],
+    "tmdbId": 1086260
   },
   {
     "titulo": "Xeno: Amistad Desde el Más Allá",
@@ -4529,103 +5156,409 @@
     "tmdbId": null
   },
   {
-    "titulo": "Proyecto Fin del Mundo",
-    "tituloOriginal": "",
-    "descripcion": "El profesor de ciencias Ryland Grace (Ryan Gosling) se despierta en una nave espacial a años luz de casa sin recordar quién es ni cómo ha llegado hasta allí. A medida que recupera la memoria, empieza a descubrir su misión: resolver el enigma de la misteriosa sustancia que provoca la extinción del sol. Deberá recurrir a sus conocimientos científicos y a sus ideas poco ortodoxas para salvar todo lo que hay en la Tierra de la extinción... pero una amistad inesperada significa que quizá no tenga que hacerlo solo",
-    "imagen": "https://pics.filmaffinity.com/project_hail_mary-366657509-mmed.jpg",
-    "backdrop": "",
+    "titulo": "Proyecto Salvación",
+    "tituloOriginal": "Project Hail Mary",
+    "descripcion": "El profesor de ciencias Ryland Grace se despierta en una nave espacial a años luz de casa sin recordar quién es ni cómo ha llegado hasta allí. A medida que recupera la memoria, empieza a descubrir su misión: resolver el enigma de la misteriosa sustancia que provoca la extinción del sol. Deberá recurrir a sus conocimientos científicos y a sus ideas poco ortodoxas para salvar todo lo que hay en la Tierra de la extinción... pero una amistad inesperada significa que quizá no tenga que hacerlo solo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/7lwOTxajURKEWO6gI370NTrVdBO.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/8Tfys3mDZVp4tNoH2ktm06a0Tau.jpg",
     "urlDrive": "https://drive.google.com/file/d/1L40Eo43P766BldYCG25aj8Vwo6_zRn1E/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
-    "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
-    "presupuesto": 0,
-    "recaudacion": 0,
-    "trailerUrl": "",
+    "year": "2026",
+    "fechaEstreno": "2026-03-15",
+    "rating": "8.6",
+    "votos": 8100,
+    "runtime": "2h 37min",
+    "genres": [
+      "Ciencia ficción",
+      "Aventura"
+    ],
+    "generosTexto": "Ciencia ficción, Aventura",
+    "clasificacion": "12",
+    "tagline": "Dos mundos una misión imposible.",
+    "director": "Phil Lord, Christopher Miller",
+    "guionistas": "Drew Goddard",
+    "reparto": [
+      {
+        "nombre": "Ryan Gosling",
+        "personaje": "Ryland Grace",
+        "foto": "https://image.tmdb.org/t/p/w185/lyUyVARQKhGxaxy0FbPJCQRpiaW.jpg"
+      },
+      {
+        "nombre": "Sandra Hüller",
+        "personaje": "Eva Stratt",
+        "foto": "https://image.tmdb.org/t/p/w185/jQfKXVCPTH9KEnzHHU4QemCnlMe.jpg"
+      },
+      {
+        "nombre": "James Ortiz",
+        "personaje": "Rocky (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/unzBwVsoq8rAH8BAYlPR1zsWQ4E.jpg"
+      },
+      {
+        "nombre": "Lionel Boyce",
+        "personaje": "Carl",
+        "foto": "https://image.tmdb.org/t/p/w185/hpIxX5nkfA3pWCW8rYkEUCSBVyS.jpg"
+      },
+      {
+        "nombre": "Milana Vayntrub",
+        "personaje": "Olesya Ilyukhina",
+        "foto": "https://image.tmdb.org/t/p/w185/i5Cou9ExwTZvRRtl79V75CsI7oC.jpg"
+      },
+      {
+        "nombre": "Ken Leung",
+        "personaje": "Yao",
+        "foto": "https://image.tmdb.org/t/p/w185/hpatUP6u74gkpDRmn9voNY9V43O.jpg"
+      },
+      {
+        "nombre": "Priya Kansara",
+        "personaje": "Mary (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/zv9kpaQ8AVBfjI2LAAZV58NeVQg.jpg"
+      },
+      {
+        "nombre": "Mia Soteriou",
+        "personaje": "Dr. Browne",
+        "foto": "https://image.tmdb.org/t/p/w185/bU4Twfk4as290gPFouByj7Wjd2.jpg"
+      },
+      {
+        "nombre": "Annelle Olaleye",
+        "personaje": "Olivia",
+        "foto": "https://image.tmdb.org/t/p/w185/V0UqW30EQaHjGhwDnb6dT0AWmz.jpg"
+      },
+      {
+        "nombre": "Maya Eva Hosein",
+        "personaje": "Rekha",
+        "foto": "https://image.tmdb.org/t/p/w185/lDHbsnyUoBzmtbMevNl4F2n8B8B.jpg"
+      },
+      {
+        "nombre": "Bastian Antonio Fuentes",
+        "personaje": "Parker",
+        "foto": "https://image.tmdb.org/t/p/w185/u7SDAocZ7ZCMOCejLRZtZFdb2Bl.jpg"
+      },
+      {
+        "nombre": "Alice Brittain",
+        "personaje": "Hardware Store Cashier",
+        "foto": "https://image.tmdb.org/t/p/w185/qOlSX2GtTU1Rhn5iYf4K0bqQJgu.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Lord Miller, Amazon MGM Studios, Pascal Pictures, Open Invite Entertainment, Waypoint Entertainment",
+    "presupuesto": 200000000,
+    "recaudacion": 684586806,
+    "trailerUrl": "https://www.youtube.com/watch?v=in-lUuKi0eE",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "friendship, coma, based on novel or book, bravery, sun, language barrier, space travel, space mission, alien, space, memory loss, astronaut, scientist, science teacher, save the planet, spaceship, interspecies friendship",
+    "similares": [
+      {
+        "titulo": "Solaris",
+        "poster": "https://image.tmdb.org/t/p/w342/bBDXyW7YyEixEeJdRBTv1oj9dFB.jpg",
+        "year": "2002",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Polizón",
+        "poster": "https://image.tmdb.org/t/p/w342/5wEKcx7g3YRocecq18MwZd4dTyd.jpg",
+        "year": "2021",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Guardianes de la galaxia",
+        "poster": "https://image.tmdb.org/t/p/w342/zqZNnuMtrmK99Xux91KiCdnZxgb.jpg",
+        "year": "2014",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "John Carter",
+        "poster": "https://image.tmdb.org/t/p/w342/lRvQP1wLqyPJEgBjjn35bInO7it.jpg",
+        "year": "2012",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Interstellar",
+        "poster": "https://image.tmdb.org/t/p/w342/d1QKiYtceF3GDtxvTFXFAqwwah9.jpg",
+        "year": "2014",
+        "rating": "8.5"
+      },
+      {
+        "titulo": "Gravity",
+        "poster": "https://image.tmdb.org/t/p/w342/3CKbEXrw88LNvBU3baISh1I7JP4.jpg",
+        "year": "2013",
+        "rating": "7.2"
+      }
+    ],
+    "tmdbId": 687163
   },
   {
-    "titulo": "Los descendientes: Viaje al mundo oscuro",
-    "tituloOriginal": "",
-    "descripcion": "Cuando Wonderland acoge los Juegos de la Copa del Reino, Red y Chloe Charming deben luchar para salvar a todos de un villano inesperado.",
-    "imagen": "https://pics.filmaffinity.com/descendants_wicked_wonderland-907738684-mmed.jpg",
-    "backdrop": "",
+    "titulo": "Los Descendientes: viaje al mundo oscuro",
+    "tituloOriginal": "Descendants: Wicked Wonderland",
+    "descripcion": "Red y Chloe logran cambiar la historia: impiden que la Reina de Corazones se vuelva villana y salvan a Cenicienta. Todo parece irles de maravilla, pero alterar el pasado tiene consecuencias inesperadas. Sombrerero, antiguo amigo de Red, emerge como nuevo villano y captura a la Reina. Para salvarla a ella y al País de las Maravillas, Red y Chloe deben cruzar de nuevo la madriguera y aliarse con Pink, la hermana de Red; Luis, el hijo de Luisa Madrigal, y la banda de villanos de Max, el hijo de Sombrerero.",
+    "imagen": "https://image.tmdb.org/t/p/w780/pBY8LeKTcgqeWKztgclJvRs8z1T.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/qlfqDJ9Piv5ufzYA8j2319mwKZU.jpg",
     "urlDrive": "https://drive.google.com/file/d/1Gyvy1awP5Z4HZX4beJdNtMCkZojtgzza/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-07-16",
+    "rating": "7.5",
+    "votos": 188,
+    "runtime": "1h 38min",
+    "genres": [
+      "Fantasía",
+      "Película de TV",
+      "Familia",
+      "Aventura"
+    ],
+    "generosTexto": "Fantasía, Película de TV, Familia, Aventura",
+    "clasificacion": "G",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Kimmy Gatewood",
+    "guionistas": "Dan Frey, Russell Sommer, Tamara Chestna",
+    "reparto": [
+      {
+        "nombre": "Kylie Cantrall",
+        "personaje": "Red",
+        "foto": "https://image.tmdb.org/t/p/w185/wLEvYdLjfWn7LzxBYHMGgCSs7jV.jpg"
+      },
+      {
+        "nombre": "Malia Baker",
+        "personaje": "Chloe",
+        "foto": "https://image.tmdb.org/t/p/w185/sHaoKRA4VGmmd8b4fTEwrBr9x3m.jpg"
+      },
+      {
+        "nombre": "Liamani Segura",
+        "personaje": "Pink",
+        "foto": "https://image.tmdb.org/t/p/w185/jqjmZQwrYQNj9QModC9HoEfF3N2.jpg"
+      },
+      {
+        "nombre": "Rita Ora",
+        "personaje": "Queen of Hearts",
+        "foto": "https://image.tmdb.org/t/p/w185/tti3t4tDPt0LgSfY2vBsR5rofn0.jpg"
+      },
+      {
+        "nombre": "Brandy Norwood",
+        "personaje": "Cinderella",
+        "foto": "https://image.tmdb.org/t/p/w185/ie1IH8LQI3aGzke4FoYRbcdHv88.jpg"
+      },
+      {
+        "nombre": "Leonardo Nam",
+        "personaje": "Maddox Hatter",
+        "foto": "https://image.tmdb.org/t/p/w185/yKL70EoAdjJV2JI2CN1Dr5qzAlJ.jpg"
+      },
+      {
+        "nombre": "Alexandro Byrd",
+        "personaje": "Luis Madrigal",
+        "foto": "https://image.tmdb.org/t/p/w185/aUsMXqVtRqlYibOJqol6LOrneI0.jpg"
+      },
+      {
+        "nombre": "Brendon Tremblay",
+        "personaje": "Max Hatter",
+        "foto": "https://image.tmdb.org/t/p/w185/pl8fWH1TIY3bAkZJrYL3V9Xt42w.jpg"
+      },
+      {
+        "nombre": "Kiara Romero",
+        "personaje": "Hazel Hook",
+        "foto": "https://image.tmdb.org/t/p/w185/p9LGO09tpl6aqy0z4BEPWaztFJ6.jpg"
+      },
+      {
+        "nombre": "Melanie Paxson",
+        "personaje": "Fairy Godmother",
+        "foto": "https://image.tmdb.org/t/p/w185/bCrs1WqTEFY1muwuCfKqrCyPhu7.jpg"
+      },
+      {
+        "nombre": "Paolo Montalbán",
+        "personaje": "King Charming",
+        "foto": "https://image.tmdb.org/t/p/w185/5bTHfAw2lzd08PosLa9vYqjgsJh.jpg"
+      },
+      {
+        "nombre": "Awkwafina",
+        "personaje": "Chessy the Cat (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/l5AKkg3H1QhMuXmTTmq1EyjyiRb.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Suzanne Todd Productions, Potato Monkey Productions, GWave Productions, Disney Kids & Family, Bear Claw Productions",
     "presupuesto": 0,
     "recaudacion": 0,
-    "trailerUrl": "",
-    "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "trailerUrl": "https://www.youtube.com/watch?v=pJelsSF5il8",
+    "coleccion": "Los descendientes - Colección",
+    "keywords": "musical, sequel, spin off, wonderland",
+    "similares": [
+      {
+        "titulo": "Los descendientes 2",
+        "poster": "https://image.tmdb.org/t/p/w342/uQCZ12XelnvTchY9ncdLgnm4Gqy.jpg",
+        "year": "2017",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Los descendientes 3",
+        "poster": "https://image.tmdb.org/t/p/w342/iQICsH7ckxRExHu0fvPrsczpKJu.jpg",
+        "year": "2019",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Los descendientes: Corazón rebelde",
+        "poster": "https://image.tmdb.org/t/p/w342/57XarHzHxeDouUyjAb6BpVxIkC0.jpg",
+        "year": "2024",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Halloweentown: La venganza",
+        "poster": "https://image.tmdb.org/t/p/w342/xNIqg8RYBkgr7QIdItlkw9lOhO0.jpg",
+        "year": "2001",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Halloweentown 3: Academia de brujas",
+        "poster": "https://image.tmdb.org/t/p/w342/bvaERDIkVtMhPBdQMlsoBleBNtP.jpg",
+        "year": "2004",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Alicia a través del espejo",
+        "poster": "https://image.tmdb.org/t/p/w342/i804UHtu68Hn9uDc1y9eBTobMZG.jpg",
+        "year": "2016",
+        "rating": "6.6"
+      }
+    ],
+    "tmdbId": 1318621
   },
   {
-    "titulo": "Amos del Universo",
-    "tituloOriginal": "",
-    "descripcion": "Un niño de diez años, el príncipe Adam, se estrelló en la Tierra en una nave espacial y fue separado de su espada mágica, el único vínculo con su hogar en Eternia. Tras localizarla casi dos décadas después, el príncipe Adam es transportado de vuelta al espacio para defender su planeta natal de las malvadas fuerzas de Skeletor. Pero para derrotar a un villano tan poderoso, el Príncipe Adam primero tendrá que descubrir los misterios de su pasado y convertirse en He-Man: el hombre más poderoso del Universo",
-    "imagen": "https://pics.filmaffinity.com/Amos_del_Universo-348884293-large.jpg",
-    "backdrop": "",
+    "titulo": "He-Man y los Masters del Universo",
+    "tituloOriginal": "Masters of the Universe",
+    "descripcion": "En las regiones más lejanas del espacio, el reino de Eternia está amenazado por el villano Skeletor y sus traviesos ejércitos de oscuridad. Para salvar el reino de su padre y proteger las vidas de sus seres queridos, el joven príncipe Adam tiene que recuperar una espada mítica y convertirse en el legendario guerrero conocido como He-Man.",
+    "imagen": "https://image.tmdb.org/t/p/w780/A6kqScyPEsn6akDS5HyPf9jE4Od.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/5MUMB3aPEPEQPCIAaygXFUTWE9Y.jpg",
     "urlDrive": "https://drive.google.com/file/d/1dvGFsmurPC4ax_cQPc1vMmsRtJhvoeMd/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
-    "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
-    "presupuesto": 0,
-    "recaudacion": 0,
-    "trailerUrl": "",
+    "year": "2026",
+    "fechaEstreno": "2026-06-03",
+    "rating": "7.1",
+    "votos": 2193,
+    "runtime": "2h 20min",
+    "genres": [
+      "Acción",
+      "Fantasía",
+      "Ciencia ficción"
+    ],
+    "generosTexto": "Acción, Fantasía, Ciencia ficción",
+    "clasificacion": "12",
+    "tagline": "Sé testigo del origen de He-Man",
+    "director": "Travis Knight",
+    "guionistas": "Chris Butler, Aaron Nee, Adam Nee",
+    "reparto": [
+      {
+        "nombre": "Nicholas Galitzine",
+        "personaje": "Adam / He-Man",
+        "foto": "https://image.tmdb.org/t/p/w185/hG4rH7eBMs117746bBOd8fUa4PA.jpg"
+      },
+      {
+        "nombre": "Camila Mendes",
+        "personaje": "Teela",
+        "foto": "https://image.tmdb.org/t/p/w185/pZAWRHdJtJlDcWuQHlgIwX12s02.jpg"
+      },
+      {
+        "nombre": "Idris Elba",
+        "personaje": "Duncan",
+        "foto": "https://image.tmdb.org/t/p/w185/be1bVF7qGX91a6c5WeRPs5pKXln.jpg"
+      },
+      {
+        "nombre": "Jared Leto",
+        "personaje": "Skeletor",
+        "foto": "https://image.tmdb.org/t/p/w185/ca3x0OfIKbJppZh8S1Alx3GfUZO.jpg"
+      },
+      {
+        "nombre": "Alison Brie",
+        "personaje": "Evil-Lyn",
+        "foto": "https://image.tmdb.org/t/p/w185/uu16GiwYblS6IJV3o4qFSLWKXOC.jpg"
+      },
+      {
+        "nombre": "Jóhannes Haukur Jóhannesson",
+        "personaje": "Fisto",
+        "foto": "https://image.tmdb.org/t/p/w185/oqZftP0WS1rD5NFpR7vLp6JU52I.jpg"
+      },
+      {
+        "nombre": "Jon Xue Zhang",
+        "personaje": "Ram Man",
+        "foto": "https://image.tmdb.org/t/p/w185/olCEAjH9KeWte5ei24ej8MJAkZz.jpg"
+      },
+      {
+        "nombre": "Sam C. Wilson",
+        "personaje": "Trap Jaw",
+        "foto": "https://image.tmdb.org/t/p/w185/riwTkODF3CH1bJZG6K7U3dTUHhb.jpg"
+      },
+      {
+        "nombre": "James Purefoy",
+        "personaje": "King Randor",
+        "foto": "https://image.tmdb.org/t/p/w185/nCNyifrD9wOao27A1nT5n4Soxt1.jpg"
+      },
+      {
+        "nombre": "Charlotte Riley",
+        "personaje": "Queen Marlena",
+        "foto": "https://image.tmdb.org/t/p/w185/cTZ8RhEk67OtOa4yosJLA4l5v5r.jpg"
+      },
+      {
+        "nombre": "Morena Baccarin",
+        "personaje": "The Sorceress",
+        "foto": "https://image.tmdb.org/t/p/w185/4gyHyg6FJ1oFczOm5pmMkdEEo2J.jpg"
+      },
+      {
+        "nombre": "Kristen Wiig",
+        "personaje": "Roboto (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/6U6UGztBwk7c4lg8n5BS5QOByot.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Escape Artists, Mattel Studios, Amazon MGM Studios",
+    "presupuesto": 200000000,
+    "recaudacion": 113763426,
+    "trailerUrl": "https://www.youtube.com/watch?v=G9h_pOtmkEg",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "skeleton, superhero, nostalgia, alien planet, based on toy, super power, reboot, aftercreditsstinger, duringcreditsstinger, warrior, sword and planet, father son conflict, ironic, sword and sorcery, father daughter relationship, based on tv series, joyful",
+    "similares": [
+      {
+        "titulo": "Guardianes de la galaxia Vol. 2",
+        "poster": "https://image.tmdb.org/t/p/w342/kdg6Y06jfq9FV7qknWNcKLYtBJn.jpg",
+        "year": "2017",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Liga de la Justicia",
+        "poster": "https://image.tmdb.org/t/p/w342/wUWqnavD8iGZ5F4xXhWlrtEzKjV.jpg",
+        "year": "2017",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Superman",
+        "poster": "https://image.tmdb.org/t/p/w342/fvUJb08yatV2b3NUSwuYdQKYoFd.jpg",
+        "year": "2025",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Guardianes de la Galaxia: Volumen 3",
+        "poster": "https://image.tmdb.org/t/p/w342/6GkKzdNosVAL7UGgwTtCHSxLQ67.jpg",
+        "year": "2023",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Capitán América: Civil War",
+        "poster": "https://image.tmdb.org/t/p/w342/jPPy7tCfglppQo6J9nGwU6UmJ8X.jpg",
+        "year": "2016",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Ant-Man y la Avispa: Quantumanía",
+        "poster": "https://image.tmdb.org/t/p/w342/lKHy0ntGPdQeFwvNq8gK1D0anEr.jpg",
+        "year": "2023",
+        "rating": "6.2"
+      }
+    ],
+    "tmdbId": 454639
   },
   {
     "titulo": "Depredador: Tierras salvajes",
@@ -4662,36 +5595,138 @@
   },
   {
     "titulo": "Mortal Kombat II",
-    "tituloOriginal": "",
+    "tituloOriginal": "Mortal Kombat II",
     "descripcion": "Los campeones favoritos de los fans, ahora acompañados por el propio Johnny Cage, se enfrentan cara a cara en la definitiva y sangrienta batalla a muerte para vencer al oscuro régimen de Shao Kahn, que amenaza la existencia del Reino de la Tierra y a sus defensores.",
-    "imagen": "https://pics.filmaffinity.com/Mortal_Kombat_II-200647200-large.jpg",
-    "backdrop": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/ivVKHht5jutNGnObn1y5sSDrAXn.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/4EAAwpylq313qrDqpCxulUrXBNF.jpg",
     "urlDrive": "https://drive.google.com/file/d/1BDxBvZkbOmogkFfJlw9cXhg-kzkN9imA/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-05-06",
+    "rating": "7.8",
+    "votos": 2649,
+    "runtime": "1h 56min",
+    "genres": [
+      "Acción",
+      "Fantasía",
+      "Aventura"
+    ],
+    "generosTexto": "Acción, Fantasía, Aventura",
+    "clasificacion": "16",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
-    "presupuesto": 0,
-    "recaudacion": 0,
-    "trailerUrl": "",
-    "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "director": "Simon McQuoid",
+    "guionistas": "Jeremy Slater",
+    "reparto": [
+      {
+        "nombre": "Karl Urban",
+        "personaje": "Johnny Cage",
+        "foto": "https://image.tmdb.org/t/p/w185/7Y96dAfg0HcFrcLjlD5eD9N0uj4.jpg"
+      },
+      {
+        "nombre": "Adeline Rudolph",
+        "personaje": "Kitana",
+        "foto": "https://image.tmdb.org/t/p/w185/rkcZTtTTqTe8QK4UMIjHHVefdnN.jpg"
+      },
+      {
+        "nombre": "Ludi Lin",
+        "personaje": "Liu Kang",
+        "foto": "https://image.tmdb.org/t/p/w185/9Ila4K8POeuVWRO9hzyekFjvCDk.jpg"
+      },
+      {
+        "nombre": "Jessica McNamee",
+        "personaje": "Sonya Blade",
+        "foto": "https://image.tmdb.org/t/p/w185/xX1WxRZyJqVAx24Q3ziziGq2T8A.jpg"
+      },
+      {
+        "nombre": "Martyn Ford",
+        "personaje": "Shao Kahn",
+        "foto": "https://image.tmdb.org/t/p/w185/nt1gfbZPSywrHX1XnuZhQ0gU5BS.jpg"
+      },
+      {
+        "nombre": "Josh Lawson",
+        "personaje": "Kano",
+        "foto": "https://image.tmdb.org/t/p/w185/Am9vM77uZd9bGODugwmWtOfzx6E.jpg"
+      },
+      {
+        "nombre": "Tati Gabrielle",
+        "personaje": "Jade",
+        "foto": "https://image.tmdb.org/t/p/w185/txZTL1HkPVxliTilbjlwR51VIt6.jpg"
+      },
+      {
+        "nombre": "Mehcad Brooks",
+        "personaje": "Jax Briggs",
+        "foto": "https://image.tmdb.org/t/p/w185/s7Cu6Si9n5qsH64eLBVGXaf55bE.jpg"
+      },
+      {
+        "nombre": "Tadanobu Asano",
+        "personaje": "Lord Raiden",
+        "foto": "https://image.tmdb.org/t/p/w185/3CBpfGRcPq1jEeYr51TiOiNbZzT.jpg"
+      },
+      {
+        "nombre": "Chin Han",
+        "personaje": "Shang Tsung",
+        "foto": "https://image.tmdb.org/t/p/w185/3XJXmYm6r4Hvm3izOArU58fhQrT.jpg"
+      },
+      {
+        "nombre": "Damon Herriman",
+        "personaje": "Quan Chi",
+        "foto": "https://image.tmdb.org/t/p/w185/hzh9i0BlAEQDAhJxEgkEcBxMlJv.jpg"
+      },
+      {
+        "nombre": "Joe Taslim",
+        "personaje": "Bi-Han",
+        "foto": "https://image.tmdb.org/t/p/w185/bk2j6Oa8T02KtvpD4qOXXGJe4Vy.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "New Line Cinema, Atomic Monster, Broken Road Productions, Fireside Films, Domain Entertainment",
+    "presupuesto": 80000000,
+    "recaudacion": 129570110,
+    "trailerUrl": "https://www.youtube.com/watch?v=nUfwLpIiWCU",
+    "coleccion": "Mortal Kombat (Reboot) - Colección",
+    "keywords": "martial arts, magic, ninja fighter, gore, sequel, god, alternate dimension, ninja, fighting, based on video game, martial arts tournament, struggling actor, hand to hand combat, aggressive, amused",
+    "similares": [
+      {
+        "titulo": "Mortal Kombat",
+        "poster": "https://image.tmdb.org/t/p/w342/t2GbiMJfO8txoihdJC8RsfK1ds7.jpg",
+        "year": "2021",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Mortal Kombat Legends: La venganza de Scorpion",
+        "poster": "https://image.tmdb.org/t/p/w342/sqBl12v4AXVoc5PmeGnd8oZ7HHY.jpg",
+        "year": "2020",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Retroceder nunca, rendirse jamás 2",
+        "poster": "https://image.tmdb.org/t/p/w342/2EX1oEuDy2oegNY8BL4JrD1ESrP.jpg",
+        "year": "1987",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Mortal Kombat Leyendas: Frío y Penumbra",
+        "poster": "https://image.tmdb.org/t/p/w342/1hJufJphSKP7WaVEfyDYAtmfcU.jpg",
+        "year": "2022",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Mortal Kombat Legends - Demonios y Ángeles",
+        "poster": "https://image.tmdb.org/t/p/w342/4rcPUwkY51UL4f2JAzcKV1Ny8Oy.jpg",
+        "year": "2023",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Mortal Kombat",
+        "poster": "https://image.tmdb.org/t/p/w342/cFUmccohbDHEYvXtMCxVwWH0pVQ.jpg",
+        "year": "1995",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 931285
   },
   {
     "titulo": "El Cobrador De Deudas",
@@ -4862,7 +5897,7 @@
     "titulo": "Operaciaon Sombra",
     "tituloOriginal": "",
     "descripcion": "Unos astutos y traicioneros ladrones desafian a la Policía Judicial de Macao. La Policía, que se encontraba en una dura batalla, invita de nuevo al experto en rastreo Huang De Zhong, retirado desde hace muchos años, a unir fuerzas con la joven élite del Departamento de Investigación Criminal de la Policía Judicial. Bajo la colisión de las técnicas tradicionales de rastreo y la alta tecnología, la policía y los criminales luchan con ingenio y valentía, y se lanzan a un duelo entre el bien y el mal parecido al juego del gato y el ratón",
-    "imagen": "https://pics.filmaffinity.com/Operaciaon_Sombra-514653674-large.jpg",
+    "imagen": "https://m.media-amazon.com/images/M/MV5BYjk2Yzk2NjgtYTZkYi00NjZjLTllMGMtZmI2ZThlM2JlMjNiXkEyXkFqcGc@._V1_.jpg",
     "backdrop": "",
     "urlDrive": "https://drive.google.com/file/d/1M2TdKpQfK8eNxpSESBn1frxFJVsK5tmv/view?usp=drive_link",
     "urlOkRu": "",
@@ -4892,37 +5927,95 @@
     "tmdbId": null
   },
   {
-    "titulo": "Una mirada extendida",
-    "tituloOriginal": "",
-    "descripcion": "Un recorrido por 'Grand Theft Auto VI', la próxima entrega de la serie 'Grand Theft Auto', que arranca con la presentación de Jason y Lucía -protagonistas de la historia- y se desarrolla mostrando varias de sus actividades y relaciones por la ciudad, capturado en PS5 con cámaras cinematográficas a intercalando segmentos de gameplay. Fue estrenado originalmente en Netflix y horas más tardes en el resto de canales de distribución y redes sociales como Youtube",
-    "imagen": "https://pics.filmaffinity.com/grand_theft_auto_vi_an_extended_look-826875815-mmed.jpg",
-    "backdrop": "",
+    "titulo": "Grand Theft Auto VI: Una mirada extendida",
+    "tituloOriginal": "Grand Theft Auto VI: An Extended Look",
+    "descripcion": "No te pierdas la próxima evolución de la revolucionaria saga Grand Theft Auto.",
+    "imagen": "https://image.tmdb.org/t/p/w780/923Rlahei29QkKDFSKXoGAu6Uj7.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/po0uFYwWNByHQzHLCVJ6FetkN4M.jpg",
     "urlDrive": "https://drive.google.com/file/d/1UQ533Xt8dygJumtFGgD8HStZ7zJ3PNjR/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-08-27",
+    "rating": "8.8",
+    "votos": 356,
+    "runtime": "27min",
+    "genres": [
+      "Animación",
+      "Acción",
+      "Aventura",
+      "Crimen"
+    ],
+    "generosTexto": "Animación, Acción, Aventura, Crimen",
+    "clasificacion": "18",
     "tagline": "",
     "director": "",
     "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "reparto": [
+      {
+        "nombre": "Manni L. Perez",
+        "personaje": "(voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/tDlJ6on1pgtAWbp9xt3haVTLI9I.jpg"
+      },
+      {
+        "nombre": "Dylan Rourke",
+        "personaje": "(voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/8yAAllBLJJKWrGEk1QuagZRlvfb.jpg"
+      },
+      {
+        "nombre": "Stephen Root",
+        "personaje": "Brian Heder (voice) (uncredited)",
+        "foto": "https://image.tmdb.org/t/p/w185/2Zwi6AydqQQ9InVdhjYcfJXNzkp.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Rockstar Games",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "video game, grand theft auto, crime, enthusiastic, straightforward, vibrant",
+    "similares": [
+      {
+        "titulo": "La tierra de nadie",
+        "poster": "https://image.tmdb.org/t/p/w342/hWl5MMqvr0laJ3080SqoNge4euK.jpg",
+        "year": "1987",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Juego sucio",
+        "poster": "https://image.tmdb.org/t/p/w342/70Na5MXfOsFlJvoX6oKYAwOhNN9.jpg",
+        "year": "2025",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Sheroes",
+        "poster": "https://image.tmdb.org/t/p/w342/g6aZwW7jhvXCKHDqPfnXbC2te7I.jpg",
+        "year": "2023",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "En acto de servicio",
+        "poster": "https://image.tmdb.org/t/p/w342/3OWWcVsfAFXGJigw9TOnA9aOhF0.jpg",
+        "year": "2019",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "El último encargo",
+        "poster": "https://image.tmdb.org/t/p/w342/lbpyI9nwzSVDjS7OnE0uC41UciP.jpg",
+        "year": "2025",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "El principiante",
+        "poster": "https://image.tmdb.org/t/p/w342/542tWkfki58i0srl9RY4GPoX1oO.jpg",
+        "year": "1990",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 1744462
   },
   {
     "titulo": "Carrera contra el tiempo",
@@ -4958,37 +6051,132 @@
     "tmdbId": null
   },
   {
-    "titulo": "911: Llamada Infernal",
-    "tituloOriginal": "",
-    "descripcion": "Durante una llamada rutinaria por disturbios domésticos, un trágico accidente lleva a dos oficiales de policía a una pesadilla implacable que revela la existencia de un culto aterrador. ",
-    "imagen": "https://pics.filmaffinity.com/911_Llamada_infernal-213365548-large.jpg",
-    "backdrop": "",
+    "titulo": "911: Llamada infernal",
+    "tituloOriginal": "Bodycam",
+    "descripcion": "Durante una llamada rutinaria por disturbios domésticos, un trágico accidente lleva a dos oficiales de policía a una pesadilla implacable que revela la existencia de un culto aterrador.",
+    "imagen": "https://image.tmdb.org/t/p/w780/4RLPhr9JUtGIChD0Yh9CdFltuX3.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/qmWypRw88VYp35oTQn0a1sqdZRs.jpg",
     "urlDrive": "https://drive.google.com/file/d/10oPfzqAMOOFqUAjPf_V6TWhFZ3aqhyTr/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-03-12",
+    "rating": "5.9",
+    "votos": 128,
+    "runtime": "1h 15min",
+    "genres": [
+      "Terror"
+    ],
+    "generosTexto": "Terror",
+    "clasificacion": "R",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Brandon Christensen",
+    "guionistas": "Brandon Christensen, Ryan Christensen",
+    "reparto": [
+      {
+        "nombre": "Jaime M. Callica",
+        "personaje": "Officer Jackson",
+        "foto": "https://image.tmdb.org/t/p/w185/bMdYe1mrsvLp638lNqTqQELroNr.jpg"
+      },
+      {
+        "nombre": "Sean Rogerson",
+        "personaje": "Officer Bryce",
+        "foto": "https://image.tmdb.org/t/p/w185/AeU4FinI8HOEh7CFhx99YTS5FkY.jpg"
+      },
+      {
+        "nombre": "Catherine Lough Haggquist",
+        "personaje": "Ally Jackson",
+        "foto": "https://image.tmdb.org/t/p/w185/3q6uhNYa7Dapl09YtqVrwndmj1l.jpg"
+      },
+      {
+        "nombre": "Angel Prater",
+        "personaje": "Esposito",
+        "foto": "https://image.tmdb.org/t/p/w185/5r2Dxz6pcFaDG4wfBLD6Fa53c9s.jpg"
+      },
+      {
+        "nombre": "Keegan Connor Tracy",
+        "personaje": "The Mother",
+        "foto": "https://image.tmdb.org/t/p/w185/lP5rlqK8YIqobtFghURPbNdN5zw.jpg"
+      },
+      {
+        "nombre": "Chris Casson",
+        "personaje": "The Father",
+        "foto": "https://image.tmdb.org/t/p/w185/tE14eWGWlf9bWdGurjcUwmmtjWJ.jpg"
+      },
+      {
+        "nombre": "Elizabeth Longshaw",
+        "personaje": "Michelle",
+        "foto": ""
+      },
+      {
+        "nombre": "Colette Nwachi",
+        "personaje": "Neisha",
+        "foto": ""
+      },
+      {
+        "nombre": "Joe Perry",
+        "personaje": "Tommy",
+        "foto": "https://image.tmdb.org/t/p/w185/6NMVlMatC1bVTwIGDwWE2Xe3uIx.jpg"
+      },
+      {
+        "nombre": "Onyx Shelton",
+        "personaje": "Customer",
+        "foto": ""
+      },
+      {
+        "nombre": "Kevin Doree",
+        "personaje": "Cashier",
+        "foto": "https://image.tmdb.org/t/p/w185/4FQEKbzF0f1Dhxai33ReyUTWQBd.jpg"
+      }
+    ],
+    "pais": "Canada",
+    "idioma": "en",
+    "productoras": "Superchill, Essential Film Group",
     "presupuesto": 0,
-    "recaudacion": 0,
+    "recaudacion": 124154,
     "trailerUrl": "",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "paranormal phenomena, police corruption, macabre, found footage, pov (point of view), police murders, screenlife, bodycam, absurd, tragic, unknown entity",
+    "similares": [
+      {
+        "titulo": "The Den",
+        "poster": "https://image.tmdb.org/t/p/w342/o0cHa11nmOUaF4kYQ7vh1Xtssek.jpg",
+        "year": "2013",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "VHS",
+        "poster": "https://image.tmdb.org/t/p/w342/Auwk2Fr3cNRseHBXEGfcjXLyH8m.jpg",
+        "year": "2012",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Spiral: Saw",
+        "poster": "https://image.tmdb.org/t/p/w342/97WyFdS8pQerysSSGezafXHW5ZH.jpg",
+        "year": "2021",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Grindhouse",
+        "poster": "https://image.tmdb.org/t/p/w342/tvMBwJlmQTIQf5EBjHzzyE9tjcN.jpg",
+        "year": "2007",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Play Dead",
+        "poster": "https://image.tmdb.org/t/p/w342/5THjBLt4vE9lAnLODqXFf5qEwxa.jpg",
+        "year": "2025",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Psycho Killer",
+        "poster": "https://image.tmdb.org/t/p/w342/5xgxxmLivJXL8aF0HdZfpx8aAIo.jpg",
+        "year": "2026",
+        "rating": "6.6"
+      }
+    ],
+    "tmdbId": 1510745
   },
   {
     "titulo": "EL FURIOSO",
@@ -5322,69 +6510,272 @@
   },
   {
     "titulo": "El botín",
-    "tituloOriginal": "",
-    "descripcion": "La confianza de un grupo de policías de Miami comienza a resquebrajarse después de descubrir millones de dólares en efectivo en un escondite abandonado. A medida que fuerzas externas se enteran del tamaño de la incautación, todo se pone en duda, incluso en quién pueden confiar.",
-    "imagen": "https://pics.filmaffinity.com/the_rip-920255282-large.jpg",
-    "backdrop": "",
+    "tituloOriginal": "The Rip",
+    "descripcion": "El descubrimiento de varios millones de dólares en efectivo en un zulo abandonado de Miami quiebra la confianza de un grupo de policías. Ahora, todo y todos están bajo sospecha.",
+    "imagen": "https://image.tmdb.org/t/p/w780/55C5loKFkw7Cj0nMLWux4FJCRHI.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/kwNIQW7egAmI66sb0zIugMbpCfU.jpg",
     "urlDrive": "https://drive.google.com/file/d/1oMMyTPNkIuCOJlQmX_G2_fSSt4r52Inn/view?usp=sharing",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-01-13",
+    "rating": "7.1",
+    "votos": 1957,
+    "runtime": "1h 53min",
+    "genres": [
+      "Acción",
+      "Suspense",
+      "Crimen"
+    ],
+    "generosTexto": "Acción, Suspense, Crimen",
+    "clasificacion": "16",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
-    "presupuesto": 0,
+    "director": "Joe Carnahan",
+    "guionistas": "Joe Carnahan, Michael McGrale, Joe Carnahan",
+    "reparto": [
+      {
+        "nombre": "Matt Damon",
+        "personaje": "Lieutenant Dane Dumars",
+        "foto": "https://image.tmdb.org/t/p/w185/aCvBXTAR9B1qRjIRzMBYhhbm1fR.jpg"
+      },
+      {
+        "nombre": "Ben Affleck",
+        "personaje": "Detective Sergeant J.D. Byrne",
+        "foto": "https://image.tmdb.org/t/p/w185/aTcqu8cI4wMohU17xTdqmXKTGrw.jpg"
+      },
+      {
+        "nombre": "Teyana Taylor",
+        "personaje": "Detective Numa Baptistie",
+        "foto": "https://image.tmdb.org/t/p/w185/5b2dAuTsBejBsdm9SkWX4F7jG9w.jpg"
+      },
+      {
+        "nombre": "Steven Yeun",
+        "personaje": "Detective Mike Ro",
+        "foto": "https://image.tmdb.org/t/p/w185/fOMFO2Xx4duzpNgS9Q5ytO44yGb.jpg"
+      },
+      {
+        "nombre": "Catalina Sandino Moreno",
+        "personaje": "Detective Lolo Salazar",
+        "foto": "https://image.tmdb.org/t/p/w185/4nLPgs0v1rFZz3c0p9e5Euk0VkU.jpg"
+      },
+      {
+        "nombre": "Sasha Calle",
+        "personaje": "Desiree 'Desi' Lopez Molina",
+        "foto": "https://image.tmdb.org/t/p/w185/yLZY25AQOC2xKzsWqteyJTcWPK3.jpg"
+      },
+      {
+        "nombre": "Kyle Chandler",
+        "personaje": "DEA Agent Mateo 'Matty' Nix",
+        "foto": "https://image.tmdb.org/t/p/w185/66n7XNj1dyYkzCBWR3Lq8Vz4PJ1.jpg"
+      },
+      {
+        "nombre": "Scott Adkins",
+        "personaje": "FBI Agent Del Byrne",
+        "foto": "https://image.tmdb.org/t/p/w185/9NRr2a1riIn5CWn5McZLJlk4vxR.jpg"
+      },
+      {
+        "nombre": "Daisuke Tsuji",
+        "personaje": "FBI Agent Logan Casiano",
+        "foto": "https://image.tmdb.org/t/p/w185/nhJfIy1TH4knV2J8ILDWztz75aI.jpg"
+      },
+      {
+        "nombre": "Nestor Carbonell",
+        "personaje": "Major Thom Vallejo",
+        "foto": "https://image.tmdb.org/t/p/w185/4Xn03t2qDEMR2ecM7BtLwpvs3J0.jpg"
+      },
+      {
+        "nombre": "Lina Esco",
+        "personaje": "Captain Jackie Velez",
+        "foto": "https://image.tmdb.org/t/p/w185/wznqU0k7art3jux3umSwMMbrLWv.jpg"
+      },
+      {
+        "nombre": "Alex Hernandez",
+        "personaje": "Hialeah Patrolman Warwick",
+        "foto": "https://image.tmdb.org/t/p/w185/9St75rKolzCNpTXNRiBUM7YANn4.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Artists Equity",
+    "presupuesto": 100000000,
     "recaudacion": 0,
     "trailerUrl": "",
     "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "keywords": "drug crime, miami, florida, police, investigation, cover-up, betrayal, shootout, dirty cop, trust, double cross, attic, sting operation, cartel, hidden money, fbi agent, drug money, violence, loyalty conflict",
+    "similares": [
+      {
+        "titulo": "Corrupción en Miami",
+        "poster": "https://image.tmdb.org/t/p/w342/iQF9F38wOiL5LKUpvxNDL3kqsux.jpg",
+        "year": "2006",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Dos policías rebeldes",
+        "poster": "https://image.tmdb.org/t/p/w342/ZYpSdXaTMFYCGbmVmXOFbdJmSv.jpg",
+        "year": "1995",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Estragos",
+        "poster": "https://image.tmdb.org/t/p/w342/tbsDLmo2Ej8YFM0HKcOGfNMTlyJ.jpg",
+        "year": "2025",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Dos policías rebeldes II",
+        "poster": "https://image.tmdb.org/t/p/w342/qyHDZB87UQF9cu6uuQzhhaKGvuo.jpg",
+        "year": "2003",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "La cara sucia de la ley",
+        "poster": "https://image.tmdb.org/t/p/w342/g7jtIVCuiRy3Yd9vZvJdLbkcpaO.jpg",
+        "year": "1992",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Donnie Brasco",
+        "poster": "https://image.tmdb.org/t/p/w342/8ZtSStirIYiGF6HWjYTSWppo6c6.jpg",
+        "year": "1997",
+        "rating": "7.5"
+      }
+    ],
+    "tmdbId": 1306368
   },
   {
-    "titulo": "Luchadores 2",
-    "tituloOriginal": "",
-    "descripcion": "Tras apoyar la carrera de lucha libre de su esposa, un padre dedicado al hogar debe afrontar las críticas, los retos de la crianza y las dificultades de su matrimonio.",
-    "imagen": "https://pics.filmaffinity.com/gatta_kusthi_2-909339045-mmed.jpg",
-    "backdrop": "",
+    "titulo": "கட்டா குஸ்தி 2",
+    "tituloOriginal": "கட்டா குஸ்தி 2",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/5U8MWIk9XZ60NALyOTpyX7vXIR7.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/nLMUoZn09tjeqae7lzK3x9Wf84V.jpg",
     "urlDrive": "https://drive.google.com/file/d/1vJiYG77DPTBwYssYfzcO21TpkLMf8PyB/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-07-03",
+    "rating": "4.9",
+    "votos": 7,
+    "runtime": "2h 33min",
+    "genres": [
+      "Comedia",
+      "Drama"
+    ],
+    "generosTexto": "Comedia, Drama",
+    "clasificacion": "12",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
+    "director": "Chella Ayyavu",
+    "guionistas": "Chella Ayyavu",
+    "reparto": [
+      {
+        "nombre": "Vishnu Vishal",
+        "personaje": "Veera",
+        "foto": "https://image.tmdb.org/t/p/w185/ce1735USZaHA6w7sacqRDGSy9bL.jpg"
+      },
+      {
+        "nombre": "Aishwarya Lekshmi",
+        "personaje": "Keerthi",
+        "foto": "https://image.tmdb.org/t/p/w185/b3yxjhc62X0JZghaRTYNMVrI78a.jpg"
+      },
+      {
+        "nombre": "Zara Zyanna",
+        "personaje": "Madhi",
+        "foto": ""
+      },
+      {
+        "nombre": "Karunas",
+        "personaje": "'Mama' Ratnam",
+        "foto": "https://image.tmdb.org/t/p/w185/dnh00MeOyiWFQ21l5az3UVJ5rhp.jpg"
+      },
+      {
+        "nombre": "Munishkanth",
+        "personaje": "'Chithappa' Ganesan",
+        "foto": "https://image.tmdb.org/t/p/w185/n2SjFPNv3EN1ziqfdpyjiEvoqt7.jpg"
+      },
+      {
+        "nombre": "Kaali Venkat",
+        "personaje": "'Sattam' Sattanathan",
+        "foto": "https://image.tmdb.org/t/p/w185/5TPRkYe5sQ2vx8UG4K2U4vm2UIm.jpg"
+      },
+      {
+        "nombre": "Lizzie Antony",
+        "personaje": "Ratnam's Wife",
+        "foto": "https://image.tmdb.org/t/p/w185/ixHVL81eCUTr1iy3C8d1EwScukK.jpg"
+      },
+      {
+        "nombre": "Gajaraj",
+        "personaje": "Keerthi's Father",
+        "foto": "https://image.tmdb.org/t/p/w185/gCne3VndSODoFuqAfmW4xxizSty.jpg"
+      },
+      {
+        "nombre": "Sreeja Ravi",
+        "personaje": "Keerthi's Mother",
+        "foto": "https://image.tmdb.org/t/p/w185/fzSMF0kJTVh7cfdkDJvUFQK2Tlk.jpg"
+      },
+      {
+        "nombre": "Karunakaran",
+        "personaje": "Partha",
+        "foto": "https://image.tmdb.org/t/p/w185/3unnOmeQ0r4GhAY1EDbZaCdt1N.jpg"
+      },
+      {
+        "nombre": "Tarak Ponnappa",
+        "personaje": "Coach Dheena Dhayal",
+        "foto": "https://image.tmdb.org/t/p/w185/aDIglGyZgmTbrLbva0vtgy96K3X.jpg"
+      },
+      {
+        "nombre": "Mokksha",
+        "personaje": "Meenu",
+        "foto": "https://image.tmdb.org/t/p/w185/kDjSXnWdXJHxjbs0XwjSQE6lJe2.jpg"
+      }
+    ],
+    "pais": "India",
+    "idioma": "ta",
+    "productoras": "Vels Film International, Vishnu Vishal Studioz",
     "presupuesto": 0,
     "recaudacion": 0,
     "trailerUrl": "",
-    "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "coleccion": "கட்டா குஸ்தி Collection",
+    "keywords": "sequel, domestic life, professional wrestling, gender role reversal",
+    "similares": [
+      {
+        "titulo": "The Cheetah Girls: Un Mundo",
+        "poster": "https://image.tmdb.org/t/p/w342/ntkwXUgR7SldMs5XGGf28zK32eZ.jpg",
+        "year": "2008",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Colegas en el bosque 4: Una aventura de miedo",
+        "poster": "https://image.tmdb.org/t/p/w342/h0qiSWs9phG2rZoH93CuJ09Q0WK.jpg",
+        "year": "2015",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Super Buddies",
+        "poster": "https://image.tmdb.org/t/p/w342/u7sMtMLSe5CrsLqOPVnYseJj7wE.jpg",
+        "year": "2013",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Colegas en el bosque 2",
+        "poster": "https://image.tmdb.org/t/p/w342/nbppDvunl6Mn8NAxYSHMPp3qkNo.jpg",
+        "year": "2008",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Mi primer gran combate",
+        "poster": "https://image.tmdb.org/t/p/w342/mWTh9XfbDSOZiafEbtaCfyp75s4.jpg",
+        "year": "2020",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "3 generaciones",
+        "poster": "https://image.tmdb.org/t/p/w342/qXBu9wF7wz6TCvdrQube9OtyxMB.jpg",
+        "year": "2016",
+        "rating": "6.4"
+      }
+    ],
+    "tmdbId": 1509599
   },
   {
     "titulo": "N121: Última parada",
@@ -5519,35 +6910,137 @@
   },
   {
     "titulo": "Máquina de guerra",
-    "tituloOriginal": "",
-    "descripcion": "Durante la etapa final de selección del Ejército de EE. UU., el entrenamiento de un equipo de élite se convierte en una lucha por la supervivencia contra una amenaza inimaginable. ",
-    "imagen": "https://pics.filmaffinity.com/war_machine-777127020-mmed.jpg",
-    "backdrop": "",
+    "tituloOriginal": "War Machine",
+    "descripcion": "En una última misión agotadora durante el entrenamiento para ser ranger, un ingeniero de combate debe liderar a su unidad contra una gigantesca máquina asesina de otro mundo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/5C18uOTbDZRvVIZcVRO747k2fUi.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/6yeVcxFR0j08vlv2OlL6zbewm4D.jpg",
     "urlDrive": "https://drive.google.com/file/d/14lWpru0B7C6nUjQ8Xn99bVLIio5cNaQ1/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
-    "year": "",
-    "fechaEstreno": "",
-    "rating": "",
-    "votos": 0,
-    "runtime": "",
-    "genres": [],
-    "generosTexto": "",
-    "clasificacion": "",
+    "year": "2026",
+    "fechaEstreno": "2026-02-12",
+    "rating": "7.5",
+    "votos": 2549,
+    "runtime": "1h 46min",
+    "genres": [
+      "Acción",
+      "Ciencia ficción",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Ciencia ficción, Suspense",
+    "clasificacion": "16",
     "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [],
-    "pais": "",
-    "idioma": "",
-    "productoras": "",
-    "presupuesto": 0,
+    "director": "Patrick Hughes",
+    "guionistas": "James Beaufort, Patrick Hughes, Patrick Hughes",
+    "reparto": [
+      {
+        "nombre": "Alan Ritchson",
+        "personaje": "81",
+        "foto": "https://image.tmdb.org/t/p/w185/92YNEEpCyugkTzPprJwZpvVtvuK.jpg"
+      },
+      {
+        "nombre": "Stephan James",
+        "personaje": "7",
+        "foto": "https://image.tmdb.org/t/p/w185/itWiVFI7uE8s4QQjcQBbVO0hY7K.jpg"
+      },
+      {
+        "nombre": "Blake Richardson",
+        "personaje": "15",
+        "foto": "https://image.tmdb.org/t/p/w185/58QVBtwjZODn9FGighvL94pgmsH.jpg"
+      },
+      {
+        "nombre": "Dennis Quaid",
+        "personaje": "Sheridan",
+        "foto": "https://image.tmdb.org/t/p/w185/lMaDAJHzsKH7U3dln2B3kY3rOhE.jpg"
+      },
+      {
+        "nombre": "Esai Morales",
+        "personaje": "Torres",
+        "foto": "https://image.tmdb.org/t/p/w185/cNYciYzUzxraGlw0BPql1QePi5H.jpg"
+      },
+      {
+        "nombre": "Jai Courtney",
+        "personaje": "Squad Leader",
+        "foto": "https://image.tmdb.org/t/p/w185/6vEaNwbOKov6yzQx15CdtrqfK3L.jpg"
+      },
+      {
+        "nombre": "Alex King",
+        "personaje": "44",
+        "foto": "https://image.tmdb.org/t/p/w185/D8J38ItNO357JpJOsnjwdSnh8A.jpg"
+      },
+      {
+        "nombre": "Keiynan Lonsdale",
+        "personaje": "60",
+        "foto": "https://image.tmdb.org/t/p/w185/lSIKty1Y8JLIE4aqL6VmZYx0JEB.jpg"
+      },
+      {
+        "nombre": "Jack Patten",
+        "personaje": "109",
+        "foto": "https://image.tmdb.org/t/p/w185/sIE11wI7czGjYCUOlEKqXguIdsl.jpg"
+      },
+      {
+        "nombre": "James Beaufort",
+        "personaje": "23",
+        "foto": "https://image.tmdb.org/t/p/w185/7CC5blDvn1tRoVoVW0ZPASepf23.jpg"
+      },
+      {
+        "nombre": "Jacob Hohua",
+        "personaje": "72",
+        "foto": ""
+      },
+      {
+        "nombre": "Daniel Webber",
+        "personaje": "57",
+        "foto": "https://image.tmdb.org/t/p/w185/ldOZipwbPQP7AXoQTQHXQymwu9q.jpg"
+      }
+    ],
+    "pais": "Australia, United States of America",
+    "idioma": "en",
+    "productoras": "Lionsgate, Hidden Pictures, Huge Film, Range Media Partners",
+    "presupuesto": 73000000,
     "recaudacion": 0,
     "trailerUrl": "",
-    "coleccion": "",
-    "keywords": "",
-    "similares": [],
-    "tmdbId": null
+    "coleccion": "War Machine Collection",
+    "keywords": "struggle for survival, military training, afghanistan veteran, grim, alien hunters, alien arrival, military sci-fi, u.s. army ranger, special forces training, firefights, hostile encounter, high‑intensity conflict, gore elements, veteran soldier, remote outpost",
+    "similares": [
+      {
+        "titulo": "Larga Distancia",
+        "poster": "https://image.tmdb.org/t/p/w342/reDAdPDDZs5diNTef6UNuRwHomW.jpg",
+        "year": "2024",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Depredador",
+        "poster": "https://image.tmdb.org/t/p/w342/bzLLeqhNBNmO6WImHrrmLNyhMxi.jpg",
+        "year": "1987",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Starship Troopers: Las brigadas del espacio",
+        "poster": "https://image.tmdb.org/t/p/w342/rK7LafXBhHKjALYOT3jRUTlFdpk.jpg",
+        "year": "1997",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Aliens vs. comandos",
+        "poster": "https://image.tmdb.org/t/p/w342/ky0P36kdTD86ZFPEcBapc6gbue3.jpg",
+        "year": "2025",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Valiente",
+        "poster": "https://image.tmdb.org/t/p/w342/njCc9bEut22FkxoRdPzcLkSa1np.jpg",
+        "year": "2025",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Misión hostil",
+        "poster": "https://image.tmdb.org/t/p/w342/cawaXqf12YFiThhngc1wbt5MfBs.jpg",
+        "year": "2024",
+        "rating": "7.3"
+      }
+    ],
+    "tmdbId": 1265609
   }
 ]
