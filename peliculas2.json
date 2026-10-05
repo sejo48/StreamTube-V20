@@ -1,5 +1,273 @@
 [
   {
+    "titulo": "Depredador dominante",
+    "tituloOriginal": "Apex",
+    "descripcion": "Una mujer en duelo se adentra en la naturaleza de Australia para ponerse a prueba y queda atrapada en un juego mortal con un astuto asesino que la considera su presa.",
+    "imagen": "https://image.tmdb.org/t/p/w780/mV7uFS1U8iP0p4CcXZp4znBVpch.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/9nzfyiYbmTUXWC4B2kwjl4NAlqO.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1GkNFmQ2g2tcBFXjm70xX7ihO7RaA-16X/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-04-24",
+    "rating": "6.9",
+    "votos": 1970,
+    "runtime": "1h 36min",
+    "genres": [
+      "Acción",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Suspense",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "Baltasar Kormákur",
+    "guionistas": "Jeremy Robbins",
+    "reparto": [
+      {
+        "nombre": "Charlize Theron",
+        "personaje": "Sasha",
+        "foto": "https://image.tmdb.org/t/p/w185/gd7ShD0yt4bsR2STeQ19KQ6hvXL.jpg"
+      },
+      {
+        "nombre": "Taron Egerton",
+        "personaje": "Ben",
+        "foto": "https://image.tmdb.org/t/p/w185/uCaPhyKAQIfEzAWWCYIrO2004CB.jpg"
+      },
+      {
+        "nombre": "Eric Bana",
+        "personaje": "Tommy",
+        "foto": "https://image.tmdb.org/t/p/w185/l9yoDgw3YFC2gMD1HTo5djGOwSY.jpg"
+      },
+      {
+        "nombre": "Caitlin Stasey",
+        "personaje": "Leah",
+        "foto": "https://image.tmdb.org/t/p/w185/uJW62qSjIyI0OP30s5U8KLlDw32.jpg"
+      },
+      {
+        "nombre": "Bessie Holland",
+        "personaje": "Cashier",
+        "foto": "https://image.tmdb.org/t/p/w185/pWjjlOAs61Rxy2KbAXACxL2eJ9w.jpg"
+      },
+      {
+        "nombre": "Zachary Garred",
+        "personaje": "Sean",
+        "foto": "https://image.tmdb.org/t/p/w185/zBveIZvcVCkWTcAWEV88MwpynyG.jpg"
+      },
+      {
+        "nombre": "Matt Whelan",
+        "personaje": "Hunter",
+        "foto": "https://image.tmdb.org/t/p/w185/qTIe7SblKwxR9DF6iNuVX0pEWIZ.jpg"
+      },
+      {
+        "nombre": "Rob Carlton",
+        "personaje": "2nd Hunter",
+        "foto": "https://image.tmdb.org/t/p/w185/8K0E0FaNDiCWvx1u6Xe3MAOHEGu.jpg"
+      },
+      {
+        "nombre": "Aaron Pedersen",
+        "personaje": "Park Ranger",
+        "foto": "https://image.tmdb.org/t/p/w185/3SoOwjIPULquiuo0yBWAwVamJFj.jpg"
+      },
+      {
+        "nombre": "Duncan Fellows",
+        "personaje": "Dad",
+        "foto": "https://image.tmdb.org/t/p/w185/kG6EGc5dR5A0mGhTpIcxK9lkL1k.jpg"
+      },
+      {
+        "nombre": "Julia Ohannessian",
+        "personaje": "Mom",
+        "foto": ""
+      },
+      {
+        "nombre": "Niam Hogan",
+        "personaje": "Boy",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America, Iceland, Australia",
+    "idioma": "en",
+    "productoras": "Chernin Entertainment, Ian Bryce Productions, Secret Menu, RVK Studios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "norway, cat and mouse, canoe trip, rock climbing, nutcase, survival instinct, australian wilderness, dangerous threat, extreme challenges, grieving woman",
+    "similares": [
+      {
+        "titulo": "Wolf Creek",
+        "poster": "https://image.tmdb.org/t/p/w342/dlYvWs7mihNuactKLRIFQEbgg6L.jpg",
+        "year": "2005",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Outback",
+        "poster": "https://image.tmdb.org/t/p/w342/1eEaliCKndXuINMjcb2ATXUMYIa.jpg",
+        "year": "2020",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "The Descent: Part 2",
+        "poster": "https://image.tmdb.org/t/p/w342/tqJR40qXPdI0AfkuFwEJA9mfd2D.jpg",
+        "year": "2009",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "127 horas",
+        "poster": "https://image.tmdb.org/t/p/w342/1XbNkZMLXD9dYGZJ87nmQ62Mp2l.jpg",
+        "year": "2010",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Stranger in the Woods",
+        "poster": "https://image.tmdb.org/t/p/w342/dGGXoFRiXiHi72GKst6ulBny87I.jpg",
+        "year": "2024",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "A ciegas",
+        "poster": "https://image.tmdb.org/t/p/w342/rntHx0Wet69rb5aUIVrcr4MbqAj.jpg",
+        "year": "2018",
+        "rating": "6.8"
+      }
+    ],
+    "tmdbId": 1318447
+  },
+  {
+    "titulo": "La momia de Lee Cronin",
+    "tituloOriginal": "Lee Cronin's The Mummy",
+    "descripcion": "Nueva versión del clásico 'La momia'. La joven hija de un periodista desaparece en el desierto sin dejar rastro. Ocho años más tarde, la familia rota se conmociona cuando ella es devuelta a ellos, y lo que debiera haber sido una reunión jubilosa se convierte en una auténtica pesadilla.",
+    "imagen": "https://image.tmdb.org/t/p/w780/btXGqRlctQdbML6ifPmacZuykcC.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/xugEpZk9YQ0DIz1aFvH5HGkqpZK.jpg",
+    "urlDrive": "https://drive.google.com/file/d/12bjIcYHlg4GI4TZfSu7NDRAaKszNJ1Lr/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-04-15",
+    "rating": "7.8",
+    "votos": 2751,
+    "runtime": "2h 13min",
+    "genres": [
+      "Terror",
+      "Misterio"
+    ],
+    "generosTexto": "Terror, Misterio",
+    "clasificacion": "18",
+    "tagline": "¿Qué le pasó a Katie?",
+    "director": "Lee Cronin",
+    "guionistas": "Lee Cronin",
+    "reparto": [
+      {
+        "nombre": "Jack Reynor",
+        "personaje": "Charlie Cannon",
+        "foto": "https://image.tmdb.org/t/p/w185/vbPewOkSGGQl93wgshDlczMqiOk.jpg"
+      },
+      {
+        "nombre": "Laia Costa",
+        "personaje": "Larissa Cannon",
+        "foto": "https://image.tmdb.org/t/p/w185/kSbdpHWLlfzvOfZKJ0dgP0ieVL6.jpg"
+      },
+      {
+        "nombre": "May Calamawy",
+        "personaje": "Detective Dalia Zaki",
+        "foto": "https://image.tmdb.org/t/p/w185/i1yy5xxPE0bsvdJ3BgyLHGfk1c1.jpg"
+      },
+      {
+        "nombre": "Natalie Grace",
+        "personaje": "Katie Cannon",
+        "foto": "https://image.tmdb.org/t/p/w185/qnjgunIujTZpBSrMRjTJvgb2pNS.jpg"
+      },
+      {
+        "nombre": "Shylo Molina",
+        "personaje": "Sebastián Cannon",
+        "foto": "https://image.tmdb.org/t/p/w185/rIhBsRY6c7B4ClLOJbc4qEWter1.jpg"
+      },
+      {
+        "nombre": "Billie Roy",
+        "personaje": "Maud Cannon",
+        "foto": "https://image.tmdb.org/t/p/w185/criWuHntMq5c6Duv505NApONwUu.jpg"
+      },
+      {
+        "nombre": "Veronica Falcón",
+        "personaje": "Carmen Santiago",
+        "foto": "https://image.tmdb.org/t/p/w185/uanObSCuuyirFuncV7pBrja2qWT.jpg"
+      },
+      {
+        "nombre": "Hayat Kamille",
+        "personaje": "The Magician",
+        "foto": "https://image.tmdb.org/t/p/w185/ftzaSEGIEn5uLHy8U7uQrXC7SZc.jpg"
+      },
+      {
+        "nombre": "مي الغيطي",
+        "personaje": "Layla Khalil",
+        "foto": "https://image.tmdb.org/t/p/w185/dFpkIOfCrUVIASpN5wutX1OaYls.jpg"
+      },
+      {
+        "nombre": "Emily Mitchell",
+        "personaje": "Young Katie Cannon",
+        "foto": "https://image.tmdb.org/t/p/w185/A6gzXB5KbLwnrMH07lX3i43Lahs.jpg"
+      },
+      {
+        "nombre": "Husam Chadat",
+        "personaje": "Detective Ismail",
+        "foto": "https://image.tmdb.org/t/p/w185/7okl24O3qALa87yZ9vo85NZGHWD.jpg"
+      },
+      {
+        "nombre": "Tim Seyfi",
+        "personaje": "Doctor El-Sayed",
+        "foto": "https://image.tmdb.org/t/p/w185/9csZ96eXdjtlxgkpg8X69xboVgD.jpg"
+      }
+    ],
+    "pais": "United States of America, Ireland",
+    "idioma": "en",
+    "productoras": "Atomic Monster, Blumhouse Productions, New Line Cinema, Domain Entertainment, Wicked/Good, Wild Atlantic Pictures",
+    "presupuesto": 22000000,
+    "recaudacion": 90552113,
+    "trailerUrl": "https://www.youtube.com/watch?v=o7UFmdCgDEc",
+    "coleccion": "",
+    "keywords": "journalist, egypt, monster, ritual, kidnapping, pyramid, investigation, supernatural, mummy, possession, disappearance, curse, demon, tomb, missing person, mysterious, monster movie, supernatural horror, body horror, bewildered, frightened",
+    "similares": [
+      {
+        "titulo": "The Ring (La señal)",
+        "poster": "https://image.tmdb.org/t/p/w342/4TPPSB8OAtgYo9EdFzr7tsTsLDB.jpg",
+        "year": "2002",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Líbranos del mal",
+        "poster": "https://image.tmdb.org/t/p/w342/uvhfvwbM39csF1RXdVUfgSuINRK.jpg",
+        "year": "2014",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Paranormal Activity",
+        "poster": "https://image.tmdb.org/t/p/w342/919Xf5NshBIKuj4HP2XkGIfNaCF.jpg",
+        "year": "2009",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Until Dawn",
+        "poster": "https://image.tmdb.org/t/p/w342/exgfubqSbF4veI4uXFOdbV66gEf.jpg",
+        "year": "2025",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "La momia",
+        "poster": "https://image.tmdb.org/t/p/w342/sOkKfiUGBGZIFyjG6jQ3mCprgYY.jpg",
+        "year": "1932",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Invocando al Demonio",
+        "poster": "https://image.tmdb.org/t/p/w342/6V4OtnYK70bjpDTMkmhBW3UiO3j.jpg",
+        "year": "2014",
+        "rating": "6.2"
+      }
+    ],
+    "tmdbId": 1304313
+  },
+  {
     "titulo": "Capitán América: Brave New World",
     "tituloOriginal": "Captain America: Brave New World",
     "descripcion": "Tras reunirse con el recién elegido presidente de los EE. UU., Thaddeus Ross, Sam se encuentra en medio de un incidente internacional. Debe descubrir el motivo que se esconde tras un perverso complot global, antes de que su verdadero artífice enfurezca al mundo entero.",
