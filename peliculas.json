@@ -1,5 +1,139 @@
 [
   {
+    "titulo": "La vida de Pi",
+    "tituloOriginal": "Life of Pi",
+    "descripcion": "Pi Patel es un muchacho cuyo padre es el dueño del zoológico de la ciudad de la India en la que viven. Su familia decide marcharse a Canadá, pero una tormenta hace naufragar el barco en el que viajan. Pi consigue salvarse gracias a una barcaza en la que también hay otro \"pasajero\", un tigre de Bengala al que el joven intentará domar para poder sobrevivir.",
+    "imagen": "https://image.tmdb.org/t/p/w780/9jpQ6BRScQmTULj10mUkjEKelhX.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/21YsCNMub5455NQCn3jh9SmRFyG.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1PI5OX9_F2SMKBiK3x2xl-ROqpTgubA7X/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "4k",
+    "year": "2012",
+    "fechaEstreno": "2012-11-20",
+    "rating": "7.4",
+    "votos": 14049,
+    "runtime": "2h 7min",
+    "genres": [
+      "Aventura",
+      "Drama"
+    ],
+    "generosTexto": "Aventura, Drama",
+    "clasificacion": "7",
+    "tagline": "Creerás en lo increíble.",
+    "director": "Ang Lee",
+    "guionistas": "David Magee",
+    "reparto": [
+      {
+        "nombre": "Suraj Sharma",
+        "personaje": "Pi Patel",
+        "foto": "https://image.tmdb.org/t/p/w185/zM1GN7rnzdhoIK3FBXaBCOx7igy.jpg"
+      },
+      {
+        "nombre": "Irrfan Khan",
+        "personaje": "Adult Pi Patel",
+        "foto": "https://image.tmdb.org/t/p/w185/qkA9PpWJRw3rNjVkWfNZdwLvRZx.jpg"
+      },
+      {
+        "nombre": "Ayush Tandon",
+        "personaje": "Pi Patel (11-12 Years)",
+        "foto": "https://image.tmdb.org/t/p/w185/iVq1xDK3dYPSAulHdDW2JiIlco1.jpg"
+      },
+      {
+        "nombre": "Gautam Belur",
+        "personaje": "Pi Patel (5 Years)",
+        "foto": ""
+      },
+      {
+        "nombre": "Adil Hussain",
+        "personaje": "Santosh Patel",
+        "foto": "https://image.tmdb.org/t/p/w185/eCWVa1pH7mmz0i9Q0l4VEKs7g6m.jpg"
+      },
+      {
+        "nombre": "Tabu",
+        "personaje": "Gita Patel",
+        "foto": "https://image.tmdb.org/t/p/w185/cvt5nvCHr1ICf5u8A2mlzLQ8LsV.jpg"
+      },
+      {
+        "nombre": "Ayaan Khan",
+        "personaje": "Ravi Patel (7 Years)",
+        "foto": ""
+      },
+      {
+        "nombre": "Mohd Abbas Khaleeli",
+        "personaje": "Ravi Patel (13-14 Years)",
+        "foto": ""
+      },
+      {
+        "nombre": "Vibish Sivakumar",
+        "personaje": "Ravi Patel (18-19 Years)",
+        "foto": ""
+      },
+      {
+        "nombre": "Rafe Spall",
+        "personaje": "Writer",
+        "foto": "https://image.tmdb.org/t/p/w185/zcqUqAvO7RQnitcCNNfTVPaiQtS.jpg"
+      },
+      {
+        "nombre": "Gérard Depardieu",
+        "personaje": "Cook",
+        "foto": "https://image.tmdb.org/t/p/w185/cibkIAJN6ctlqHohhdDEcfbiCAL.jpg"
+      },
+      {
+        "nombre": "James Saito",
+        "personaje": "Older Insurance Investigator",
+        "foto": "https://image.tmdb.org/t/p/w185/2XiFPyvmJWUtaWHAJOhrMa6JJhQ.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Fox 2000 Pictures, Dune Entertainment, Ingenious Media, Haishang Films, Netter Productions, Big Screen Productions",
+    "presupuesto": 120000000,
+    "recaudacion": 609016565,
+    "trailerUrl": "https://www.youtube.com/watch?v=qcSs_K_G10o",
+    "coleccion": "",
+    "keywords": "sea, faith, loss of loved one, 1970s, zebra, survival, young boy, zookeeper, orangutan, teenage boy, hyena, meerkat, magic realism, cargo ship, lifeboat, injured animal, storm at sea, told in flashback, wreckage, loss of family, teenage protagonist, family loss, flying fish, exhilarated, vibrant, teen fantasy",
+    "similares": [
+      {
+        "titulo": "La aventura del Poseidón",
+        "poster": "https://image.tmdb.org/t/p/w342/i3Ozx85FSgiHZl1LgmxhRMkVTSz.jpg",
+        "year": "1972",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Donde viven los monstruos",
+        "poster": "https://image.tmdb.org/t/p/w342/4TYxogMbzDSkzL4t49IAIwoHJ58.jpg",
+        "year": "2009",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Tormenta blanca",
+        "poster": "https://image.tmdb.org/t/p/w342/pU1TIpZr2FrweppIWUPxWjZFaVr.jpg",
+        "year": "1996",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Buscando a Nemo",
+        "poster": "https://image.tmdb.org/t/p/w342/jPhak722pNGxQIXSEfeWIUqBrO5.jpg",
+        "year": "2003",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Kensuke's Kingdom",
+        "poster": "https://image.tmdb.org/t/p/w342/9M8tTHbYFrGxCXxNMvAkvRbhtER.jpg",
+        "year": "2024",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Abandonados",
+        "poster": "https://image.tmdb.org/t/p/w342/fAUo9hQmK5D2yqwTZsZxns2hVXZ.jpg",
+        "year": "2016",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 87827
+  },
+  {
     "titulo": "1923 - El Hombre Mosca",
     "tituloOriginal": "",
     "descripcion": "Un joven de campo recién llegado a la ciudad debe tratar de escalar un edificio de 12 pisos, cuando su plan para ganar dinero acaba resultando contraproducente.",
