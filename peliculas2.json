@@ -1,5 +1,140 @@
 [
   {
+    "titulo": "SEND HELP (Enviad ayuda)",
+    "tituloOriginal": "Send Help",
+    "descripcion": "Después de que un accidente de avión deje varados en una isla remota a una competente empleada y a su insoportable jefe, ella deberá utilizar sus habilidades de supervivencia para mantenerlos a ambos con vida, a pesar de su difícil relación.",
+    "imagen": "https://image.tmdb.org/t/p/w780/qXZZtyzuTX3KMfSLssCR6J0mODd.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/hO2jx1H3XafR7Y8QbFgVH1sHTY9.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1K2mLB0lKlanDEy7N-eIsUbYKTqf9dqu4/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-01-22",
+    "rating": "7.0",
+    "votos": 2358,
+    "runtime": "1h 53min",
+    "genres": [
+      "Terror",
+      "Suspense",
+      "Comedia"
+    ],
+    "generosTexto": "Terror, Suspense, Comedia",
+    "clasificacion": "18",
+    "tagline": "Esta es Linda Liddle... Trabaja en estrategia y planificación... Ahora es la jefa.",
+    "director": "Sam Raimi",
+    "guionistas": "Damian Shannon, Mark Swift",
+    "reparto": [
+      {
+        "nombre": "Rachel McAdams",
+        "personaje": "Linda Liddle",
+        "foto": "https://image.tmdb.org/t/p/w185/2DPh6KoNg0p57vvGc6N468zr3ct.jpg"
+      },
+      {
+        "nombre": "Dylan O'Brien",
+        "personaje": "Bradley Preston",
+        "foto": "https://image.tmdb.org/t/p/w185/xN3GdvIlqsR838gDoblhPH0numP.jpg"
+      },
+      {
+        "nombre": "Edyll Ismail",
+        "personaje": "Zuri",
+        "foto": "https://image.tmdb.org/t/p/w185/lCpAsh5kViYm6tx7lKyIyeefScd.jpg"
+      },
+      {
+        "nombre": "Xavier Samuel",
+        "personaje": "Donovan",
+        "foto": "https://image.tmdb.org/t/p/w185/gHvKqCXfpzaGp46gqsy9MVDfmSf.jpg"
+      },
+      {
+        "nombre": "Dennis Haysbert",
+        "personaje": "Franklin",
+        "foto": "https://image.tmdb.org/t/p/w185/lcnjaw2CFN6q9eaes1jTYrUB0rb.jpg"
+      },
+      {
+        "nombre": "Chris Pang",
+        "personaje": "Chase",
+        "foto": "https://image.tmdb.org/t/p/w185/rd1ScdIuW0Wo4qdjIDsnXeZDr8a.jpg"
+      },
+      {
+        "nombre": "ธเนศ วรากุลนุเคราะห์",
+        "personaje": "Boat Captain",
+        "foto": "https://image.tmdb.org/t/p/w185/kbxNQFbI8HscicB1Y1RkwDLV4us.jpg"
+      },
+      {
+        "nombre": "Emma Raimi",
+        "personaje": "River",
+        "foto": "https://image.tmdb.org/t/p/w185/lrzUm5whjsyqOfADa8cJYVl6del.jpg"
+      },
+      {
+        "nombre": "Kristy Best",
+        "personaje": "Polly Perera",
+        "foto": "https://image.tmdb.org/t/p/w185/59SfxmgV30kqIlsgNfYG20EimHu.jpg"
+      },
+      {
+        "nombre": "Francesca Waters",
+        "personaje": "Barbara",
+        "foto": "https://image.tmdb.org/t/p/w185/z0zXS5qNuts4sJmf1KFNhmDWMIZ.jpg"
+      },
+      {
+        "nombre": "Olivia Sawyer",
+        "personaje": "Applicant",
+        "foto": "https://image.tmdb.org/t/p/w185/ySOw6VloUnCFUi3apHvcJcOGiWr.jpg"
+      },
+      {
+        "nombre": "Brad Flett",
+        "personaje": "Trainer",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Raimi Productions, 20th Century Studios, TSG Entertainment",
+    "presupuesto": 40000000,
+    "recaudacion": 94041481,
+    "trailerUrl": "https://www.youtube.com/watch?v=OTMeWZNhE64",
+    "coleccion": "",
+    "keywords": "bullying, role reversal, survival, struggle for survival, survival horror, deserted island, power struggle, colleagues, bullying in the workplace, plane crash, gender inequality, comedy thriller, comedy horror",
+    "similares": [
+      {
+        "titulo": "La caza",
+        "poster": "https://image.tmdb.org/t/p/w342/5WCuPRfa0h8jMT4Iu2jIIQXqllM.jpg",
+        "year": "2020",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Parpadea dos veces",
+        "poster": "https://image.tmdb.org/t/p/w342/rtvvyUXTLVDWWYlHBaBlA4CeTLg.jpg",
+        "year": "2024",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Trampa en alta mar",
+        "poster": "https://image.tmdb.org/t/p/w342/tIbIgFQBYiXj6dRTGwy5rkeMMdc.jpg",
+        "year": "2024",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Te van a matar",
+        "poster": "https://image.tmdb.org/t/p/w342/9dEn8a12dqkQw48zxQhPcpQ7D5W.jpg",
+        "year": "2026",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "La larga marcha",
+        "poster": "https://image.tmdb.org/t/p/w342/vH7WPEgHxy1JLKsjBgSfY7NIf9W.jpg",
+        "year": "2025",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Stranger in the Woods",
+        "poster": "https://image.tmdb.org/t/p/w342/dGGXoFRiXiHi72GKst6ulBny87I.jpg",
+        "year": "2024",
+        "rating": "6.0"
+      }
+    ],
+    "tmdbId": 1198994
+  },
+  {
     "titulo": "Depredador dominante",
     "tituloOriginal": "Apex",
     "descripcion": "Una mujer en duelo se adentra en la naturaleza de Australia para ponerse a prueba y queda atrapada en un juego mortal con un astuto asesino que la considera su presa.",
