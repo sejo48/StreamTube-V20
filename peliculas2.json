@@ -1,5 +1,142 @@
 [
   {
+    "titulo": "La isla olvidada",
+    "tituloOriginal": "Forgotten Island",
+    "descripcion": "Dos amigas se quedan varadas en el místico mundo de Nakali, donde su único escape podría costarles su vida compartida de recuerdos.",
+    "imagen": "https://image.tmdb.org/t/p/w780/vpTdXFoZGzwnCWzkVYU7JH8teAZ.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/e2R2O5QLIdAEcAZih8tNjkDBtcH.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1saJa_hf09f97exOwFrc5LWpJYMAYMMES/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-09-10",
+    "rating": "8.2",
+    "votos": 52,
+    "runtime": "1h 49min",
+    "genres": [
+      "Animación",
+      "Aventura",
+      "Fantasía",
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Animación, Aventura, Fantasía, Comedia, Familia",
+    "clasificacion": "7",
+    "tagline": "Sin dejar ningún recuerdo atrás.",
+    "director": "Januel Mercado, Joel Crawford",
+    "guionistas": "Joel Crawford, Januel Mercado",
+    "reparto": [
+      {
+        "nombre": "H.E.R.",
+        "personaje": "Jo (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/3OgApAmRJF6Y79HyHS1BZjNMgZd.jpg"
+      },
+      {
+        "nombre": "Liza Soberano",
+        "personaje": "Raissa (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/xsgT139b39OHdLkY87yIabNLi5Y.jpg"
+      },
+      {
+        "nombre": "Dave Franco",
+        "personaje": "Raww (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/to7ee1xcCOpDSKMXjBIRuYEfbEc.jpg"
+      },
+      {
+        "nombre": "Jenny Slate",
+        "personaje": "Batiba (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/mMxsNO6r966ut0sordYzj2iDOb6.jpg"
+      },
+      {
+        "nombre": "Manny Jacinto",
+        "personaje": "Bungi (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/jMbNV4nr5647r6CZJbT6nsnspMz.jpg"
+      },
+      {
+        "nombre": "Lea Salonga",
+        "personaje": "Manang (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/cA8lv5GCU5DkZMEeplaVgttrlXr.jpg"
+      },
+      {
+        "nombre": "Dolly de Leon",
+        "personaje": "Lola Fatima (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/fwwvPAJaJA3F8P35MYGf8MmYfe8.jpg"
+      },
+      {
+        "nombre": "Jo Koy",
+        "personaje": "Datu (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/rbD9UnkYFYsmewSn2YFPI8lL5UI.jpg"
+      },
+      {
+        "nombre": "Ronny Chieng",
+        "personaje": "King Truffle Wuffle (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/yRUGjqALyg1LcJO75cO58cVJ2ud.jpg"
+      },
+      {
+        "nombre": "Kevin McCann",
+        "personaje": "Prince Mermahn (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/tY9R5lQyA0vI7Bz6COiyyzOtkqJ.jpg"
+      },
+      {
+        "nombre": "Kailey Crawford",
+        "personaje": "Young Jo / Classroom Kid 1 (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/qWRa5Ewo7P6yrUqOWhvzFJpG8I8.jpg"
+      },
+      {
+        "nombre": "Kayla Teruel",
+        "personaje": "Young Raissa (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/bMgrPLCEv5vmZqD7vgfvwEl95B7.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "DreamWorks Animation",
+    "presupuesto": 80000000,
+    "recaudacion": 29227910,
+    "trailerUrl": "https://www.youtube.com/watch?v=uW2uWXiBpIs",
+    "coleccion": "",
+    "keywords": "friendship, island, mythology, female friendship, mythical creature, philippines, coming of age, memory loss, memory, best friend, demon, 1990s, found family, grandmother granddaughter relationship, 3d animation, filipino, filipino mythology, filipino culture, magic portal, art shift, animesque",
+    "similares": [
+      {
+        "titulo": "Barbie presenta: Pulgarcita",
+        "poster": "https://image.tmdb.org/t/p/w342/e84WWGGJVAdRAACEazoTXiajqk.jpg",
+        "year": "2009",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "La casa de muñecas de Gabby: La película",
+        "poster": "https://image.tmdb.org/t/p/w342/ruAIbycacQIIXeTf4xh1r1NjvJa.jpg",
+        "year": "2025",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "¡Scooby-Doo! La Leyenda de Scoobydur",
+        "poster": "https://image.tmdb.org/t/p/w342/miESEXyqDJV4TolIWc5ZdF30uRU.jpg",
+        "year": "2021",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "El jinete del dragón",
+        "poster": "https://image.tmdb.org/t/p/w342/g8TTuBZFSFzQLTyP92XE1I9WVVC.jpg",
+        "year": "2020",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Sola en casa",
+        "poster": "https://image.tmdb.org/t/p/w342/ljwpX7zSWAG5BRG9AIKliWVLQyL.jpg",
+        "year": "2017",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Historias corrientes: La película",
+        "poster": "https://image.tmdb.org/t/p/w342/7eWLv7mxAKnFPqbtPOJy6iHb2Bx.jpg",
+        "year": "2015",
+        "rating": "7.9"
+      }
+    ],
+    "tmdbId": 1465063
+  },
+  {
     "titulo": "Entrega al límite",
     "tituloOriginal": "Runner",
     "descripcion": "Un exsoldado se ve envuelto en una brutal carrera contrarreloj cuando una entrega médica crucial los convierte, a él y a su inesperada compañera, en el objetivo de un cártel despiadado. A medida que la misión se transforma en una cacería mortal, cada desvío, retraso y bala los acerca más al fracaso. Acosados ​​por la traición desde todos los frentes, deberán sobrevivir a la persecución y entregar su carga para salvar la vida de una niña.",
