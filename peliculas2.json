@@ -1,5 +1,383 @@
 [
   {
+    "titulo": "Resident Evil",
+    "tituloOriginal": "Resident Evil",
+    "descripcion": "Película basada en la saga de videojuegos de Capcom del mismo nombre. En una reinvención totalmente nueva, el mensajero médico Bryan se ve inmerso en una carrera de acción sin descanso por la supervivencia, mientras el caos se desata a su alrededor.",
+    "imagen": "https://image.tmdb.org/t/p/w780/ntmaNFJ7O60n45E1E6HZlXeSV5e.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/3icyRAqgakNcQn6aDVz9libFmBA.jpg",
+    "urlDrive": "",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-09-16",
+    "rating": "7.3",
+    "votos": 800,
+    "runtime": "1h 33min",
+    "genres": [
+      "Terror",
+      "Ciencia ficción",
+      "Aventura"
+    ],
+    "generosTexto": "Terror, Ciencia ficción, Aventura",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "Zach Cregger",
+    "guionistas": "Shay Hatten, Zach Cregger",
+    "reparto": [
+      {
+        "nombre": "Austin Abrams",
+        "personaje": "Bryan",
+        "foto": "https://image.tmdb.org/t/p/w185/nvbJNwyhIICUFcS4lhxj9mGvL5z.jpg"
+      },
+      {
+        "nombre": "Paul Walter Hauser",
+        "personaje": "Paul",
+        "foto": "https://image.tmdb.org/t/p/w185/hXjjbYg1Ah8mFf5ZcaakyXzDKMx.jpg"
+      },
+      {
+        "nombre": "Kali Reis",
+        "personaje": "Maxine",
+        "foto": "https://image.tmdb.org/t/p/w185/ruLDXHnKA4aHEQCcFGDAJ7bLTdt.jpg"
+      },
+      {
+        "nombre": "Zach Cherry",
+        "personaje": "Carl",
+        "foto": "https://image.tmdb.org/t/p/w185/fT3Wv8ef0Vn0daHWAObCp2Bd4Y.jpg"
+      },
+      {
+        "nombre": "Johnno Wilson",
+        "personaje": "Officer Wilson",
+        "foto": "https://image.tmdb.org/t/p/w185/eZtBoBE0F7Qb9ZyNpacMOQtmWnM.jpg"
+      },
+      {
+        "nombre": "Shaun W. Loeser",
+        "personaje": "Puker",
+        "foto": "https://image.tmdb.org/t/p/w185/pMV7kzy7OHk4X93uRGbrdvuFgQB.jpg"
+      },
+      {
+        "nombre": "Zach Cregger",
+        "personaje": "Intercom (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/bpFGFfWYIrZVK7WjwkVLwIoMKEb.jpg"
+      },
+      {
+        "nombre": "Emily Piggford",
+        "personaje": "Dr. Maria Stokes",
+        "foto": "https://image.tmdb.org/t/p/w185/ruijvaNNXzGXqGphQXsoHts1Ovc.jpg"
+      },
+      {
+        "nombre": "Will Merrick",
+        "personaje": "Dave",
+        "foto": "https://image.tmdb.org/t/p/w185/zqyH01TJ9WW6TaAULCG2ChSbNwI.jpg"
+      },
+      {
+        "nombre": "Zoé Bellas",
+        "personaje": "Birdie",
+        "foto": "https://image.tmdb.org/t/p/w185/3nw4EhStA4IcJQxz4Yevm25u5ov.jpg"
+      },
+      {
+        "nombre": "Chris Lew Kum Hoi",
+        "personaje": "Stanley",
+        "foto": "https://image.tmdb.org/t/p/w185/7kHYxjhnRErXDRNYaSRemLCx9J7.jpg"
+      },
+      {
+        "nombre": "Griffin Newman",
+        "personaje": "Wade",
+        "foto": "https://image.tmdb.org/t/p/w185/vRnjx2UGdMhvFn5coYZJLKHVWbq.jpg"
+      }
+    ],
+    "pais": "United States of America, Germany, France",
+    "idioma": "en",
+    "productoras": "Constantin Film, Subconscious, Vertigo Entertainment, Davis Films, Columbia Pictures, PlayStation Productions, TriStar Pictures",
+    "presupuesto": 75000000,
+    "recaudacion": 245400000,
+    "trailerUrl": "https://www.youtube.com/watch?v=d6oszs7f5aI",
+    "coleccion": "",
+    "keywords": "outbreak, survival, decapitation, zombie, based on video game, survival horror, reboot, zombie apocalypse, courier service, body horror, zombie horror",
+    "similares": [
+      {
+        "titulo": "El final de nuestros días",
+        "poster": "https://image.tmdb.org/t/p/w342/lWw56vQLL33rS3Hq19ECv28dj6a.jpg",
+        "year": "2024",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "La tierra de los muertos vivientes",
+        "poster": "https://image.tmdb.org/t/p/w342/bLFow6tnwCZ2LPiUbSu94V8klpl.jpg",
+        "year": "2005",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Resident Evil",
+        "poster": "https://image.tmdb.org/t/p/w342/nlAi9cw2uLZ9hHwhzCMOG6TZMHc.jpg",
+        "year": "2002",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Resident Evil III. Extinción",
+        "poster": "https://image.tmdb.org/t/p/w342/lP0cconRQqe6O4c6L2mVADDvFyt.jpg",
+        "year": "2007",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Re-Kill",
+        "poster": "https://image.tmdb.org/t/p/w342/wpofLYUv0aJmDNxyUZux0wTFXJH.jpg",
+        "year": "2015",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Resident Evil 2: Apocalipsis",
+        "poster": "https://image.tmdb.org/t/p/w342/8tNrm8TgAeSgH35rPs2WJD26Hnf.jpg",
+        "year": "2004",
+        "rating": "6.4"
+      }
+    ],
+    "tmdbId": 1423191
+  },
+  {
+    "titulo": "Padre de familia: Happy Hell-o-ween",
+    "tituloOriginal": "Family Guy Happy Hell-o-ween",
+    "descripcion": "Brian y Stewie acaban en el infierno tras 24 temporadas de mal comportamiento y terminan al mando cuando consiguen sacar de quicio incluso al mismísimo diablo.",
+    "imagen": "https://image.tmdb.org/t/p/original/aHIq3DbkglpVgVrS5rvrLtxbLTd.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/iMx8vNPaiekbxMmn9DT7ozKOmnR.jpg",
+    "urlDrive": "https://drive.google.com/file/d/19wva19k4fTgVzW49CwIN9RQXCfr7uiHn/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-10-05",
+    "rating": "6.4",
+    "votos": 9,
+    "runtime": "22min",
+    "genres": [
+      "Animación",
+      "Terror"
+    ],
+    "generosTexto": "Animación, Terror",
+    "clasificacion": "PG-13",
+    "tagline": "",
+    "director": "Joe Vaux",
+    "guionistas": "Travis Bowe",
+    "reparto": [
+      {
+        "nombre": "Seth MacFarlane",
+        "personaje": "Brian Griffin / Stewie Griffin / Peter Griffin (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/8oQJqM51Z0Qtdb7sE6ZfX1peNCB.jpg"
+      },
+      {
+        "nombre": "Kieran Culkin",
+        "personaje": "The Devil (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/b5EC4nziLhBRX4GOcYx2BdS3FTt.jpg"
+      },
+      {
+        "nombre": "Alex Borstein",
+        "personaje": "Lois Griffin (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/evbCnRe5Yfuy0B41PONLTIcvbem.jpg"
+      },
+      {
+        "nombre": "Seth Green",
+        "personaje": "Chris Griffin (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/l4No5Eu6j0U80hCIkaSn17AOWrj.jpg"
+      },
+      {
+        "nombre": "Mila Kunis",
+        "personaje": "Meg Griffin (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/cJAHQWX9hVadDFx5WTSBIW0VjvP.jpg"
+      },
+      {
+        "nombre": "Patrick Warburton",
+        "personaje": "Joe Swanson (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/nDoOii5HaGwPxYa28xFC2sDkF8y.jpg"
+      },
+      {
+        "nombre": "Arif Zahir",
+        "personaje": "Cleveland Brown (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/b8tKuHh132LcOFKC4Nd2fCJDGMt.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "20th Television Animation, Fuzzy Door Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Ya vienen",
+        "poster": "https://image.tmdb.org/t/p/w342/wX1t2sPKN2JGzp0rcg4sVx8fyid.jpg",
+        "year": "2020",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Play Dead",
+        "poster": "https://image.tmdb.org/t/p/w342/pVf8a0SYi6NjV5G5oa4zjLLp433.jpg",
+        "year": "2022",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "The Unhealer",
+        "poster": "https://image.tmdb.org/t/p/w342/jEuKhYfeS4dz0uQj1yTZ2Gl8yNH.jpg",
+        "year": "2021",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "La noche del fin de los tiempos",
+        "poster": "https://image.tmdb.org/t/p/w342/dM6R6LSe0LHYNnizWjPHI404DBK.jpg",
+        "year": "2021",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "La liberación",
+        "poster": "https://image.tmdb.org/t/p/w342/3lWDYiLxVhb7G9jBNDtsLwsyowy.jpg",
+        "year": "2024",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Los hermanos Venture: Radiante es la sangre del corazón del babuino",
+        "poster": "https://image.tmdb.org/t/p/w342/ooPJM965UewJFJFSqndO37RS0z0.jpg",
+        "year": "2023",
+        "rating": "7.3"
+      }
+    ],
+    "tmdbId": 1788735
+  },
+  {
+    "titulo": "La leyenda del dragón blanco",
+    "tituloOriginal": "Legend of the White Dragon",
+    "descripcion": "Tras el Aftermath, la ciudad quedó diezmada. Es un recordatorio de una gran batalla y la caída de los héroes. Como resultado de la muerte y la destrucción, la ciudad comenzó a ser conocida como Angel Graves. Los héroes fueron culpados, despojados de sus títulos y cazados. Pero el mal amenaza de nuevo, así que ellos deben resurgir de las cenizas con el poder del Dragón Blanco. Película-tributo hecha por fans de los Power Rangers.",
+    "imagen": "https://image.tmdb.org/t/p/w780/zCV1Uq4XiBWbKVwmxnSRLya8CZV.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/iBfpVJCn2nKSkuWjv1Wp4GTiqoG.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1_rIehFmX1UOvI2L6bHawip7A3Sik3oZd/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-08-28",
+    "rating": "6.4",
+    "votos": 27,
+    "runtime": "1h 37min",
+    "genres": [
+      "Acción",
+      "Fantasía"
+    ],
+    "generosTexto": "Acción, Fantasía",
+    "clasificacion": "R",
+    "tagline": "",
+    "director": "Aaron Schoenke",
+    "guionistas": "Aaron Schoenke, Alex Kellerman",
+    "reparto": [
+      {
+        "nombre": "Jason David Frank",
+        "personaje": "Erik Reed / White Dragon",
+        "foto": "https://image.tmdb.org/t/p/w185/lR7VkHYktJTgim0UGpafC1t8gLS.jpg"
+      },
+      {
+        "nombre": "Aaron Schoenke",
+        "personaje": "Jai / Dragon Prime",
+        "foto": "https://image.tmdb.org/t/p/w185/3p6fPXzK3sC5CRR1EQNNdOlTkcc.jpg"
+      },
+      {
+        "nombre": "Jason Faunt",
+        "personaje": "Connor",
+        "foto": "https://image.tmdb.org/t/p/w185/q77cLcg8waE30E87Lc9MSjx13T6.jpg"
+      },
+      {
+        "nombre": "Rachele Brooke Smith",
+        "personaje": "Iris",
+        "foto": "https://image.tmdb.org/t/p/w185/8g6FOJ918pzh3tjRYiKZwyiM5B2.jpg"
+      },
+      {
+        "nombre": "Michael Søren Madsen",
+        "personaje": "Max Reed",
+        "foto": "https://image.tmdb.org/t/p/w185/fvr2EXEPrVwsF2JlfRp0Olbj4g8.jpg"
+      },
+      {
+        "nombre": "Andrew Bachelor",
+        "personaje": "U.R.I.",
+        "foto": "https://image.tmdb.org/t/p/w185/dReXjimiVOydELw2ASQwRcStkbo.jpg"
+      },
+      {
+        "nombre": "David Ramsey",
+        "personaje": "Mayor Trevon Sterns",
+        "foto": "https://image.tmdb.org/t/p/w185/bZWO7WfBYI8iojTFozzqN2X3RWL.jpg"
+      },
+      {
+        "nombre": "Mark Dacascos",
+        "personaje": "Xang",
+        "foto": "https://image.tmdb.org/t/p/w185/trOACuJz1KzhB51qe6asaxRuxrh.jpg"
+      },
+      {
+        "nombre": "Chalet Lizette Brannan",
+        "personaje": "Jade",
+        "foto": "https://image.tmdb.org/t/p/w185/wmiGKkowQn2f6DqwkZOD90AkhzU.jpg"
+      },
+      {
+        "nombre": "Kevin Porter",
+        "personaje": "Lighthouse",
+        "foto": "https://image.tmdb.org/t/p/w185/wEgU4DLvR3DNClIJPTXkcOc7D57.jpg"
+      },
+      {
+        "nombre": "Ciara Hanna",
+        "personaje": "Vanessa",
+        "foto": "https://image.tmdb.org/t/p/w185/o9ZXZiAOE5FAJuvQyPIgs9xeUVA.jpg"
+      },
+      {
+        "nombre": "Mayling Ng",
+        "personaje": "Tek Boh",
+        "foto": "https://image.tmdb.org/t/p/w185/ffQlGCqXcESQtOuRHX5sgINqYUq.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Bat in the Sun Productions, Paradox House",
+    "presupuesto": 508578,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "superhero, redemption, fugitive",
+    "similares": [
+      {
+        "titulo": "Escuadrón suicida",
+        "poster": "https://image.tmdb.org/t/p/w342/9ymhU7NclJr29MpZnBQbJurYbuc.jpg",
+        "year": "2016",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Bionicle 3: La red de las sombras",
+        "poster": "https://image.tmdb.org/t/p/w342/qDnAGBnvEkita89yC8dVFfmKeUG.jpg",
+        "year": "2005",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Dragonheart: Vengeance",
+        "poster": "https://image.tmdb.org/t/p/w342/mPGAlXyPH21qg38GF1Ydd0xDg7B.jpg",
+        "year": "2021",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Liga de la Justicia x RWBY: Superhéroes y Cazadores: Parte 1",
+        "poster": "https://image.tmdb.org/t/p/w342/7twNCiHS1rR7P2fyGOH1sUmLDyY.jpg",
+        "year": "2023",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Batman: El asalto de Arkham",
+        "poster": "https://image.tmdb.org/t/p/w342/6eCyJHdj6XiW0PVyj7WWPlgmQ9H.jpg",
+        "year": "2014",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Liga de la Justicia x RWBY: Superhéroes y Cazadores: Parte 2",
+        "poster": "https://image.tmdb.org/t/p/w342/cyh9hxRjItIOb0gMt2P44LXnUMH.jpg",
+        "year": "2023",
+        "rating": "6.9"
+      }
+    ],
+    "tmdbId": 843352
+  },
+  {
     "titulo": "Hokum",
     "tituloOriginal": "Hokum",
     "descripcion": "Un escritor especializado en historias de terror decide viajar a una posada de Irlanda con la intención de esparcir en la zona las cenizas de sus difuntos padres. Lo que no sabe es que la posada es un lugar maldito habitado por una bruja. O eso cuentan los lugareños que viven cerca del lugar...",
