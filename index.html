@@ -473,48 +473,26 @@
                 }
             };
 
-            const handleCastVideo = (videoUrl) => {
-                if (!videoUrl) return;
-                // Try Native Presentation API (Casts only the media stream to a connected TV/Screen)
-                if (window.PresentationRequest) {
-                    try {
-                        const presentationRequest = new PresentationRequest(videoUrl);
-                        presentationRequest.start().then((connection) => {
-                            console.log('Connected to TV:', connection.id);
-                        }).catch((err) => {
-                            console.log('Presentation API error or cancelled:', err);
-                            // Fallback to Picture-in-Picture or opening direct source stream in external cast player
-                            window.open(videoUrl, '_blank');
-                        });
-                        return;
-                    } catch (e) {
-                        console.log('PresentationRequest failed:', e);
-                    }
-                }
-                // Fallback: open direct media URL for external DLNA/Cast apps
-                window.open(videoUrl, '_blank');
-            };
-
             useEffect(() => {
-                window.history.replaceState({ appState: 'main', activeTab }, '');
+                try {
+                    window.history.replaceState({ appState: 'main', activeTab }, '');
+                } catch(e) {}
                 const handlePopState = (event) => {
-                    if (showQrModal) { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
-                    if (showSmartViewModal) { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
-                    if (showDownloadPinModal) { setShowDownloadPinModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
+                    if (showQrModal) { setShowQrModal(false); return; }
+                    if (showSmartViewModal) { setShowSmartViewModal(false); return; }
+                    if (showDownloadPinModal) { setShowDownloadPinModal(false); return; }
                     if (selectedItem) { 
                         if (document.fullscreenElement) document.exitFullscreen().catch(()=>{});
                         if (isPlaying) {
                             setIsPlaying(false);
-                            window.history.pushState({ appState: 'details' }, '');
                             return;
                         }
                         setSelectedItem(null); 
                         setIsLocked(false); 
                         setIsPlaying(false); 
-                        window.history.pushState({ appState: 'main', activeTab }, ''); 
                         return; 
                     }
-                    if (activeTab !== 'home') { setActiveTab('home'); setSearch(''); window.history.pushState({ appState: 'main', activeTab: 'home' }, ''); return; }
+                    if (activeTab !== 'home') { setActiveTab('home'); setSearch(''); return; }
                 };
                 window.addEventListener('popstate', handlePopState);
                 return () => window.removeEventListener('popstate', handlePopState);
@@ -836,7 +814,6 @@
                     setSelectedItem(item);
                     setIsPlaying(false);
                     setIsLocked(false);
-                    window.history.pushState({ appState: 'player', item: item.title }, '');
                     return;
                 }
                 setSelectedItem(item);
@@ -850,7 +827,6 @@
                 } else {
                     setSelectedEpisode(null);
                 }
-                window.history.pushState({ appState: 'details', item: item.title }, '');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             };
 
@@ -875,7 +851,6 @@
                 }
                 
                 if (search.trim()) addRecentSearch(search);
-                window.history.pushState({ appState: 'player', item: item.title }, '');
                 
                 if (item.type === 'movies' || item.type === 'movies2' || item.type === 'series' || item.type === 'animados') {
                     setTimeout(() => {
@@ -903,7 +878,6 @@
                 if (tab.isExternal) { window.open(tab.url, '_blank'); }
                 else {
                     setActiveTab(tab.id); setSearch(''); setIsLocked(false); setIsPlaying(false); setShowMobileMoreMenu(false);
-                    window.history.pushState({ appState: 'main', activeTab: tab.id }, '');
                     if (tab.id === 'tv') {
                         if (!selectedItem || selectedItem.type !== 'tv') {
                             const telerredChannel = content.tv.find(c => c.title.toLowerCase().includes('telerred') || c.title.toLowerCase().includes('tele red') || c.title.toLowerCase().includes('tele-red')) || content.tv[0];
@@ -920,7 +894,6 @@
 
             if (showIntro) return <IntroScreen onEnter={() => { 
                 setShowIntro(false); 
-                window.history.pushState({ appState: 'main', activeTab: 'home' }, ''); 
                 const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
                 if (def && !currentRadioStation) { setCurrentRadioStation(def); setIsRadioPlaying(true); }
             }}/>;
@@ -945,9 +918,9 @@
                             </nav>
                         </div>
                         <div className="flex items-center gap-2 sm:gap-3">
-                            <button onClick={() => { setShowSmartViewModal(true); window.history.pushState({ appState: 'smartview-modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Enviar video a la TV">
+                            <button onClick={() => setShowSmartViewModal(true)} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Transmitir a Smart TV">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-                                <span className="hidden lg:inline">Transmitir a TV</span>
+                                <span className="hidden lg:inline">Smart TV</span>
                             </button>
                             <button onClick={() => handleTabClick(navTabs.find(t => t.id === 'favorites'))} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
                                 <Icon name="heart" size={16} fill={activeTab === 'favorites' ? '#06b6d4' : 'none'} className="text-cyan-400"/>
@@ -980,7 +953,7 @@
                                     </div>
                                 )}
                             </div>
-                            <button onClick={() => { setShowQrModal(true); window.history.pushState({ appState: 'modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-[#090d1f] hover:bg-slate-800 text-cyan-300 border border-slate-800 transition-all hover:scale-105 shadow-md flex items-center gap-1.5" title="Escanear QR">
+                            <button onClick={() => setShowQrModal(true)} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-[#090d1f] hover:bg-slate-800 text-cyan-300 border border-slate-800 transition-all hover:scale-105 shadow-md flex items-center gap-1.5" title="Escanear QR">
                                 <Icon name="qr" size={16}/>
                                 <span className="text-xs font-bold hidden lg:inline">Compartir</span>
                             </button>
@@ -1014,9 +987,9 @@
                                             <span className="truncate">{tab.label}</span>
                                         </button>
                                     ))}
-                                    <button onClick={() => { setShowSmartViewModal(true); setShowMobileMoreMenu(false); window.history.pushState({ appState: 'smartview-modal' }, ''); }} className="p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border bg-cyan-500/20 text-cyan-400 border-cyan-500/40 col-span-2 justify-center">
+                                    <button onClick={() => { setShowSmartViewModal(true); setShowMobileMoreMenu(false); }} className="p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border bg-cyan-500/20 text-cyan-400 border-cyan-500/40 col-span-2 justify-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-                                        <span>Transmitir a TV</span>
+                                        <span>Transmitir a Smart TV</span>
                                     </button>
                                 </div>
                             </div>
@@ -1192,11 +1165,10 @@
                                         </div>
                                         {selectedItem && selectedItem.type === 'tv' && (
                                             <div className="flex items-center gap-1.5 sm:gap-2">
-                                                <button onClick={() => handleCastVideo(selectedItem.url)} className="p-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-bold flex items-center gap-1.5 text-xs shadow-[0_0_15px_rgba(6,182,212,0.4)] transition-all" title="Enviar video a la TV"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg><span className="hidden sm:inline">Transmitir video</span></button>
                                                 <button onClick={() => setTvRefreshTrigger(prev => prev + 1)} className="p-2 rounded-xl bg-cyan-500/25 text-cyan-300 border border-cyan-500/30" title="Refrescar"><Icon name="refresh" size={14}/></button>
                                                 <button onClick={() => toggleFavorite(selectedItem)} className="p-2 rounded-xl bg-white/5 text-white border border-white/10" title="Favorito"><Icon name="heart" size={14} className={isItemFavorite(selectedItem) ? "text-cyan-500 fill-cyan-500" : "text-slate-300"}/></button>
                                                 <button onClick={toggleTvFullscreen} className="p-2 rounded-xl bg-white/5 text-white border border-white/10" title="Pantalla Completa"><Icon name="clapperboard" size={14}/></button>
-                                                <button onClick={() => { setSelectedItem(null); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="p-2 rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/30" title="Cerrar"><Icon name="x" size={14}/></button>
+                                                <button onClick={() => setSelectedItem(null)} className="p-2 rounded-xl bg-rose-500/20 text-rose-400 border border-rose-500/30" title="Cerrar"><Icon name="x" size={14}/></button>
                                             </div>
                                         )}
                                     </div>
@@ -1205,7 +1177,6 @@
                         ) : selectedItem ? (
                             <div className="animate-fade-in flex flex-col min-h-screen bg-[#020617] w-full">
                                 {isPlaying ? (
-                                    /* ============ MODO REPRODUCTOR FULLSCREEN ============ */
                                     <div className="w-full bg-black relative h-[60vh] sm:h-[70vh] md:h-screen flex items-center justify-center overflow-hidden video-container-fix" ref={movieContainerRef}>
                                         <div className="absolute top-4 left-4 z-30 flex gap-2">
                                             <button onClick={() => { 
@@ -1213,13 +1184,6 @@
                                                 setIsPlaying(false);
                                             }} className="bg-black/80 hover:bg-cyan-600 text-white px-3 sm:px-5 py-2 rounded-full backdrop-blur-md flex items-center gap-2 text-xs transition-all border border-cyan-500/40 shadow-2xl font-bold">
                                                 <Icon name="arrowLeft" size={14}/> <span className="hidden sm:inline">Volver a Info</span><span className="sm:hidden">Info</span>
-                                            </button>
-                                            <button onClick={() => {
-                                                const targetUrl = (selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedEpisode ? selectedEpisode.url : selectedItem.url;
-                                                handleCastVideo(targetUrl);
-                                            }} className="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-full backdrop-blur-md flex items-center gap-2 text-xs transition-all border border-cyan-500/40 shadow-2xl font-bold">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-                                                <span>Transmitir video a TV</span>
                                             </button>
                                         </div>
                                         <div className="absolute top-4 right-4 z-30 flex gap-2">
@@ -1234,9 +1198,7 @@
                                         )}
                                     </div>
                                 ) : (
-                                    /* ============ MODO DETALLES ESTILO NETFLIX ============ */
                                     <div className="relative w-full">
-                                        
                                         <div className="relative w-full" style={{ height: '85vh', minHeight: '600px' }}>
                                             <RobustImage 
                                                 src={extractBackdropUrl(selectedItem) || extractImageUrl(selectedItem)} 
@@ -1249,7 +1211,7 @@
                                             <div className="netflix-gradient-top"></div>
                                             
                                             <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 z-30 flex items-center justify-between">
-                                                <button onClick={() => { setSelectedItem(null); setIsPlaying(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-10 h-10 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/70 transition-all border border-white/10">
+                                                <button onClick={() => { setSelectedItem(null); setIsPlaying(false); }} className="w-10 h-10 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/70 transition-all border border-white/10">
                                                     <Icon name="arrowLeft" size={18}/>
                                                 </button>
                                                 <button onClick={() => toggleFavorite(selectedItem)} className="w-10 h-10 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center hover:bg-black/70 transition-all border border-white/10" title="Compartir / Favorito">
@@ -1259,7 +1221,6 @@
 
                                             <div className="absolute bottom-0 left-0 right-0 z-20 px-5 sm:px-12 md:px-16 pb-6 sm:pb-10">
                                                 <div className="max-w-2xl space-y-3 sm:space-y-4">
-                                                    
                                                     <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white leading-[0.95] tracking-tight uppercase drop-shadow-2xl">
                                                         {selectedItem.titulo || selectedItem.title || selectedItem.name}
                                                     </h1>
@@ -1280,20 +1241,18 @@
                                                     <div className="pt-3 flex flex-wrap gap-3">
                                                         <button 
                                                             onClick={() => handlePlayNow(selectedItem, selectedEpisode)} 
-                                                            className="w-full sm:w-auto bg-white hover:bg-slate-200 text-black px-6 sm:px-10 py-3.5 rounded-lg font-black text-sm sm:text-base flex items-center justify-center gap-3 active:scale-95 transition-all shadow-2xl"
+                                                            className="bg-white hover:bg-slate-200 text-black px-6 sm:px-10 py-3.5 rounded-lg font-black text-sm sm:text-base flex items-center justify-center gap-3 active:scale-95 transition-all shadow-2xl"
                                                         >
                                                             <Icon fill="black" name="play" size={18}/> 
                                                             <span>Ver ahora</span>
                                                         </button>
+                                                        
                                                         <button 
-                                                            onClick={() => {
-                                                                const targetUrl = (selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedEpisode ? selectedEpisode.url : selectedItem.url;
-                                                                handleCastVideo(targetUrl);
-                                                            }} 
-                                                            className="w-full sm:w-auto bg-cyan-600 hover:bg-cyan-500 text-white px-6 py-3.5 rounded-lg font-black text-sm sm:text-base flex items-center justify-center gap-2 active:scale-95 transition-all shadow-xl"
+                                                            onClick={() => setShowSmartViewModal(true)} 
+                                                            className="bg-cyan-600/30 hover:bg-cyan-600/50 text-cyan-300 border border-cyan-500/50 px-5 py-3.5 rounded-lg font-bold text-sm flex items-center gap-2 backdrop-blur-md transition-all"
                                                         >
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-                                                            <span>Transmitir video a TV</span>
+                                                            <span>Transmitir a TV (Cast)</span>
                                                         </button>
                                                     </div>
 
@@ -1327,7 +1286,6 @@
                                                                     setDownloadPinInput('');
                                                                     setDownloadPinError(false);
                                                                     setShowDownloadPinModal(true);
-                                                                    window.history.pushState({ appState: 'download-modal' }, '');
                                                                 }}
                                                                 className="flex flex-col items-center gap-1.5 text-white hover:text-cyan-400 transition-colors"
                                                             >
@@ -1342,17 +1300,10 @@
                                                     <p className="text-slate-100 text-sm sm:text-base leading-relaxed pt-3 max-w-xl">
                                                         {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
                                                     </p>
-
-                                                    {selectedItem.generosTexto && (
-                                                        <p className="text-slate-400 text-xs font-medium pt-1">
-                                                            {selectedItem.generosTexto.split(',')[0].trim()}
-                                                        </p>
-                                                    )}
                                                 </div>
                                             </div>
                                         </div>
 
-                                        {/* ===== PESTAÑAS: Similar / Información ===== */}
                                         <div className="max-w-7xl mx-auto px-5 sm:px-12 md:px-16 pt-6">
                                             <div className="flex gap-8 border-b border-slate-800/80">
                                                 <button 
@@ -1377,19 +1328,11 @@
                                                             const currentId = selectedItem.id;
                                                             const similares = [...content.movies2, ...content.movies]
                                                                 .filter(m => (m.id || m.title) !== currentId)
-                                                                .filter(m => {
-                                                                    if (!selectedItem.generosTexto || !m.generosTexto) return true;
-                                                                    const currentGenres = selectedItem.generosTexto.toLowerCase().split(',').map(s => s.trim());
-                                                                    const mGenres = m.generosTexto.toLowerCase();
-                                                                    return currentGenres.some(g => g && mGenres.includes(g));
-                                                                })
                                                                 .slice(0, 12);
-                                                            
-                                                            const fallbackList = similares.length > 0 ? similares : [...content.movies2, ...content.movies].filter(m => (m.id || m.title) !== currentId).slice(0, 12);
                                                             
                                                             return (
                                                                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
-                                                                    {fallbackList.map((sim, sIdx) => (
+                                                                    {similares.map((sim, sIdx) => (
                                                                         <div
                                                                             key={sim.id || sIdx}
                                                                             className="group cursor-pointer transition-transform duration-300 hover:scale-105"
@@ -1409,9 +1352,6 @@
                                                                                     type="poster"
                                                                                     className="w-full h-full object-cover"
                                                                                 />
-                                                                                <div className="absolute top-1.5 right-1.5 bg-black/70 backdrop-blur-md px-1.5 py-0.5 rounded text-[9px] font-mono text-yellow-400 font-bold border border-white/10">
-                                                                                    ★ {sim.rating || '7.0'}
-                                                                                </div>
                                                                             </div>
                                                                             <p className="text-[11px] font-bold text-white mt-2 line-clamp-2 group-hover:text-cyan-300 transition-colors">
                                                                                 {sim.titulo || sim.title}
@@ -1424,7 +1364,6 @@
                                                     </div>
                                                 ) : (
                                                     <div className="space-y-8">
-                                                        
                                                         {selectedItem.reparto && selectedItem.reparto.length > 0 && (
                                                             <div>
                                                                 <h3 className="text-base sm:text-lg font-black text-white mb-4">Reparto</h3>
@@ -1433,57 +1372,17 @@
                                                                         <div key={aIdx} className="text-center group">
                                                                             <div className="aspect-square rounded-full overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-800 group-hover:border-cyan-500/60 mb-2 transition-colors">
                                                                                 {actor.foto ? (
-                                                                                    <img 
-                                                                                        src={actor.foto} 
-                                                                                        alt={actor.nombre} 
-                                                                                        className="w-full h-full object-cover" 
-                                                                                        onError={(e) => { e.target.style.display = 'none'; }} 
-                                                                                        referrerPolicy="no-referrer" 
-                                                                                    />
+                                                                                    <img src={actor.foto} alt={actor.nombre} className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none'; }} referrerPolicy="no-referrer" />
                                                                                 ) : (
                                                                                     <div className="w-full h-full flex items-center justify-center text-slate-600 text-3xl">👤</div>
                                                                                 )}
                                                                             </div>
-                                                                            <p className="text-[11px] font-bold text-white leading-tight line-clamp-2">
-                                                                                {actor.nombre}
-                                                                            </p>
-                                                                            {actor.personaje && (
-                                                                                <p className="text-[10px] text-slate-500 mt-0.5 leading-tight line-clamp-2 italic">
-                                                                                    {actor.personaje}
-                                                                                </p>
-                                                                            )}
+                                                                            <p className="text-[11px] font-bold text-white leading-tight line-clamp-2">{actor.nombre}</p>
                                                                         </div>
                                                                     ))}
                                                                 </div>
                                                             </div>
                                                         )}
-
-                                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                                                            {selectedItem.director && (
-                                                                <div>
-                                                                    <p className="text-[10px] uppercase text-slate-500 font-black tracking-widest mb-1.5">Director</p>
-                                                                    <p className="text-white text-sm font-medium">{selectedItem.director}</p>
-                                                                </div>
-                                                            )}
-                                                            {selectedItem.guionistas && (
-                                                                <div>
-                                                                    <p className="text-[10px] uppercase text-slate-500 font-black tracking-widest mb-1.5">Guion</p>
-                                                                    <p className="text-white text-sm font-medium">{selectedItem.guionistas}</p>
-                                                                </div>
-                                                            )}
-                                                            {selectedItem.pais && (
-                                                                <div>
-                                                                    <p className="text-[10px] uppercase text-slate-500 font-black tracking-widest mb-1.5">País</p>
-                                                                    <p className="text-white text-sm font-medium">{selectedItem.pais}</p>
-                                                                </div>
-                                                            )}
-                                                            {selectedItem.productoras && (
-                                                                <div>
-                                                                    <p className="text-[10px] uppercase text-slate-500 font-black tracking-widest mb-1.5">Productoras</p>
-                                                                    <p className="text-white text-sm font-medium leading-relaxed">{selectedItem.productoras}</p>
-                                                                </div>
-                                                            )}
-                                                        </div>
 
                                                         <div>
                                                             <h3 className="text-base sm:text-lg font-black text-white mb-3">Sinopsis</h3>
@@ -1491,19 +1390,6 @@
                                                                 {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible."}
                                                             </p>
                                                         </div>
-
-                                                        {selectedItem.trailerUrl && (
-                                                            <div>
-                                                                <a 
-                                                                    href={selectedItem.trailerUrl} 
-                                                                    target="_blank" 
-                                                                    rel="noopener noreferrer" 
-                                                                    className="inline-flex items-center gap-2 bg-rose-600 hover:bg-rose-500 text-white px-6 py-3 rounded-lg font-bold text-sm shadow-lg transition-all"
-                                                                >
-                                                                    🎬 Ver Tráiler Oficial
-                                                                </a>
-                                                            </div>
-                                                        )}
 
                                                         {((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
                                                             <div className="glass-panel rounded-2xl p-5">
@@ -1538,78 +1424,6 @@
                                                 )}
                                             </div>
                                         </div>
-                                        
-                                        {/* 🔥 SECCIÓN FINAL: MÁS ESTRENOS 2026 (SIEMPRE VISIBLE) */}
-                                        {(() => {
-                                            const currentId = selectedItem.id || selectedItem.title;
-                                            const otrasPeliculas = (content.movies2 || [])
-                                                .filter(m => (m.id || m.title) !== currentId)
-                                                .slice(0, 6);
-                                            
-                                            if (otrasPeliculas.length === 0) return null;
-                                            
-                                            return (
-                                                <div className="mt-16 pt-8 border-t border-slate-800/80">
-                                                    <div className="flex items-center gap-3 mb-6">
-                                                        <span className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></span>
-                                                        <h3 className="text-lg sm:text-xl font-black uppercase tracking-wider text-white">
-                                                            Más estrenos 2026
-                                                        </h3>
-                                                        <span className="text-xs bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 px-2.5 py-0.5 rounded-full font-mono">
-                                                            {otrasPeliculas.length}
-                                                        </span>
-                                                    </div>
-                                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                                                        {otrasPeliculas.map((sim, sIdx) => {
-                                                            const simTitle = sim.titulo || sim.title || 'Estreno';
-                                                            const simImg = extractImageUrl(sim);
-                                                            return (
-                                                                <div
-                                                                    key={sim.id || sIdx}
-                                                                    className="group cursor-pointer transition-transform duration-300 hover:-translate-y-2"
-                                                                    onClick={() => {
-                                                                        setSelectedItem(sim);
-                                                                        setSelectedEpisode(null);
-                                                                        setExpandedSeason(0);
-                                                                        setDetailTab('info');
-                                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                                                                    }}
-                                                                >
-                                                                    <div className="aspect-[2/3] rounded-2xl overflow-hidden border-2 border-slate-800 group-hover:border-cyan-500 transition-all duration-300 bg-black shadow-xl relative">
-                                                                        <RobustImage
-                                                                            src={simImg}
-                                                                            alt={simTitle}
-                                                                            title={simTitle}
-                                                                            type="poster"
-                                                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                                                        />
-                                                                        {sim.qualityTag && (
-                                                                            <span className="absolute top-2 right-2 bg-cyan-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded uppercase">
-                                                                                {sim.qualityTag}
-                                                                            </span>
-                                                                        )}
-                                                                        {sim.rating && (
-                                                                            <span className="absolute bottom-2 left-2 bg-black/80 backdrop-blur-md text-amber-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-amber-500/40">
-                                                                                ⭐ {sim.rating}
-                                                                            </span>
-                                                                        )}
-                                                                    </div>
-                                                                    <p className="text-xs font-bold text-white mt-2 line-clamp-2 group-hover:text-cyan-300 transition-colors">
-                                                                        {simTitle}
-                                                                    </p>
-                                                                    {(sim.year || sim.generosTexto) && (
-                                                                        <p className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">
-                                                                            {sim.year}
-                                                                            {sim.generosTexto && ` · ${sim.generosTexto.split(',')[0].trim()}`}
-                                                                        </p>
-                                                                    )}
-                                                                </div>
-                                                            );
-                                                        })}
-                                                    </div>
-                                                </div>
-                                            );
-                                        })()}
                                     </div>
                                 )}
                             </div>
@@ -1662,41 +1476,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full space-y-4">
-                                            <div className="flex items-center justify-between">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-1.5 h-6 bg-[#e50914] rounded-full shadow-[0_0_15px_#e50914]"></div>
-                                                    <h2 className="text-base sm:text-lg font-black uppercase tracking-wider text-white flex items-center gap-2">
-                                                        <span>PRÓXIMAMENTE / NETFLIX TUDUM</span>
-                                                        <span className="text-[10px] bg-[#e50914]/20 text-[#e50914] border border-[#e50914]/40 px-2 py-0.5 rounded-full font-mono">Tudum</span>
-                                                    </h2>
-                                                </div>
-                                                <span className="text-xs text-slate-400 hidden sm:inline">Administrado vía tudum.json</span>
-                                            </div>
-                                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                                                {(content.tudum.length > 0 ? content.tudum : FALLBACK_NETFLIX_TUDUM).map((item, nIdx) => (
-                                                    <div key={nIdx} className="glass-panel rounded-2xl p-4 border border-slate-800 flex flex-col justify-between group hover:border-[#e50914]/50 transition-all card-glow">
-                                                        <div>
-                                                            <div className="aspect-[2/3] rounded-xl overflow-hidden mb-3 relative bg-black">
-                                                                <RobustImage src={item.image} alt={item.title} title={item.title} type="poster" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                                                                <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 text-[10px] font-mono text-yellow-400 font-bold flex items-center gap-1"><span>★</span> {item.score}</div>
-                                                                <div className="absolute bottom-2 left-2 bg-[#e50914] text-white text-[9px] font-black px-2 py-0.5 rounded uppercase tracking-wider">{item.releaseDate}</div>
-                                                            </div>
-                                                            <h3 className="text-sm font-bold text-white mb-1 group-hover:text-[#e50914] transition-colors">{item.title}</h3>
-                                                            <p className="text-[11px] text-cyan-400 font-medium mb-2">{item.genre}</p>
-                                                            <p className="text-xs text-slate-300 line-clamp-3 mb-3">{item.synopsis}</p>
-                                                        </div>
-                                                        <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[10px]">
-                                                            <span className="text-slate-400 truncate pr-2">🇨🇷 {item.availability}</span>
-                                                            <button onClick={() => { handlePlayNow({ title: item.title, description: `${item.synopsis} (Estreno en Netflix: ${item.releaseDate} - ${item.availability})`, image: item.image, url: item.trailerUrl, type: 'movies' }); }} className="px-3 py-1.5 rounded-lg bg-[#e50914] hover:bg-[#b91c1c] text-white font-bold transition-all shadow-[0_0_10px_rgba(229,9,20,0.4)] flex items-center gap-1.5 flex-shrink-0">
-                                                                <Icon name="play" size={10} fill="white"/> Tráiler
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
                                     </>
                                 )}
                                 
@@ -1708,7 +1487,6 @@
                                         <ContentRow title="🔥 Tendencias Actuales (Anime & Más)" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="⭐ Programas Populares" items={content.series} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🏆 Vista Superior (Top Shows)" items={content.animados.slice().reverse()} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length > 0 && (<ContentRow title="❤️ Mis Favoritos (Películas y Series)" items={favorites.filter(item => item.type !== 'tv' && item.type !== 'radio')} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />)}
                                     </div>
                                 ) : activeTab === 'topshows' ? (
                                     <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
@@ -1744,6 +1522,7 @@
                         )}
                     </main>
 
+                    {/* Modal de PIN para Descarga */}
                     {showDownloadPinModal && (
                         <div className="fixed inset-0 z-[110] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
                             <div className="glass-panel p-6 rounded-3xl max-w-xs w-full text-center shadow-2xl border border-cyan-500/30 animate-scale-in space-y-4">
@@ -1754,7 +1533,7 @@
                                     <input type="password" maxLength="4" className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-3 text-center text-xl tracking-[0.4em] text-white focus:border-cyan-500 outline-none mb-3 shadow-inner" value={downloadPinInput} onChange={(e) => { setDownloadPinInput(e.target.value); setDownloadPinError(false); }} placeholder="••••" autoFocus />
                                     {downloadPinError && <p className="text-rose-400 text-xs mb-3 font-bold">Clave incorrecta</p>}
                                     <div className="flex gap-2.5">
-                                        <button type="button" onClick={() => { setShowDownloadPinModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="flex-1 py-2.5 rounded-xl border border-slate-800 text-slate-300 hover:bg-white/5 text-xs font-semibold">Cancelar</button>
+                                        <button type="button" onClick={() => setShowDownloadPinModal(false)} className="flex-1 py-2.5 rounded-xl border border-slate-800 text-slate-300 hover:bg-white/5 text-xs font-semibold">Cancelar</button>
                                         <button type="submit" className="flex-1 py-2.5 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 text-white font-bold hover:brightness-110 text-xs shadow-[0_0_15px_rgba(6,182,212,0.5)]">Descargar</button>
                                     </div>
                                 </form>
@@ -1762,25 +1541,27 @@
                         </div>
                     )}
 
+                    {/* Modal Smart TV / Casting */}
                     {showSmartViewModal && (
                         <div className="fixed inset-0 z-[105] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
                             <div className="glass-panel rounded-3xl p-6 max-w-md w-full relative shadow-2xl space-y-4 animate-scale-in">
-                                <button onClick={() => { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-full bg-black/40"><Icon name="x" size={18}/></button>
+                                <button onClick={() => setShowSmartViewModal(false)} className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-full bg-black/40"><Icon name="x" size={18}/></button>
                                 <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 border border-cyan-500/30 inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
-                                <h3 className="text-base font-extrabold text-white">Transmitir solo el video a la TV</h3>
+                                <h3 className="text-base font-extrabold text-white">Transmitir Video a Smart TV (Cast)</h3>
                                 <div className="text-xs text-slate-300 space-y-3 text-left bg-black/50 p-4 rounded-2xl border border-slate-800 leading-relaxed">
-                                    <p>📺 <strong>Transmisión Directa del Reproductor:</strong><br/>En lugar de duplicar toda la pantalla de tu celular o PC, ahora al hacer clic en el botón <strong>"Transmitir video a TV"</strong> que aparece en cada canal, película o serie, se envía <em>únicamente el flujo del video</em> al televisor (vía API de presentación o reproductor externo de casting).</p>
-                                    <p>💡 Esto te permite seguir usando tu teléfono o computadora de forma independiente mientras el contenido se reproduce a pantalla completa en la TV.</p>
+                                    <p>📺 <strong>Para transmitir solo el video (Screen Casting / Cast):</strong><br/>Al abrir cualquier película o canal, utiliza el reproductor integrado. Si usas Google Chrome o Android, toca el ícono de <strong>Chromecast (Transmitir)</strong> integrado en la esquina inferior del reproductor de video para enviar únicamente la película a tu pantalla.</p>
+                                    <p>📱 <strong>Smart View / Duplicar Pantalla:</strong><br/>Si prefieres duplicar todo tu teléfono, desliza el panel rápido y activa <em>Smart View</em> o <em>AirPlay</em>.</p>
                                 </div>
-                                <button onClick={() => { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">Entendido</button>
+                                <button onClick={() => setShowSmartViewModal(false)} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">Entendido</button>
                             </div>
                         </div>
                     )}
 
+                    {/* Modal QR */}
                     {showQrModal && (
                         <div className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
                             <div className="glass-panel rounded-3xl p-6 max-w-xs w-full text-center relative shadow-2xl space-y-4 animate-scale-in">
-                                <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-full bg-black/40"><Icon name="x" size={18}/></button>
+                                <button onClick={() => setShowQrModal(false)} className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-full bg-black/40"><Icon name="x" size={18}/></button>
                                 <div className="p-3 bg-cyan-500/10 rounded-2xl border border-cyan-500/30 inline-block"><span className="text-xs font-black uppercase text-cyan-400 tracking-widest">Comunidad Boxplaytv</span></div>
                                 <div className="bg-white p-3 rounded-2xl shadow-inner flex justify-center items-center">
                                     <img src={QR_IMAGE_URL} alt="Boxplaytv QR Code" className="w-40 h-40 object-contain" onError={(e)=>{e.target.style.display='none';}} />
@@ -1790,7 +1571,7 @@
                                     <p className="text-xs text-slate-400 mt-1 leading-relaxed">Únete al grupo oficial de WhatsApp para estar al día con los estrenos.</p>
                                 </div>
                                 <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer" className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl font-bold text-xs transition-colors shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center justify-center gap-2"><span>Unirse al Grupo de WhatsApp</span></a>
-                                <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-2.5 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.4)]">Cerrar</button>
+                                <button onClick={() => setShowQrModal(false)} className="w-full bg-cyan-600 text-white py-2.5 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.4)]">Cerrar</button>
                             </div>
                         </div>
                     )}
@@ -1947,10 +1728,10 @@
                 setIsLoading(true);
                 let current = 0;
                 const interval = setInterval(() => {
-                    current += 2;
+                    current += 5;
                     if (current <= 100) { setProgress(current); }
                     else { clearInterval(interval); onEnter(); }
-                }, 30);
+                }, 20);
             };
 
             return (
