@@ -1568,7 +1568,7 @@
                                                             )}
                                                             {selectedItem.guionistas && (
                                                                 <div>
-                                                                    <p className="text-[10px] uppercase text-slate-500 font-black tracking-widest mb-1.5">Guion</p>
+                                                                    <p className="text-[10px] uppercase text-slate-500 font-black tracking-widest mb-1.5">Guión</p>
                                                                     <p className="text-white text-sm font-medium">{selectedItem.guionistas}</p>
                                                                 </div>
                                                             )}
@@ -2225,51 +2225,46 @@
         };
 
         // Bloque de protección con Firebase y SINPE Móvil
-  const rootNode = document.getElementById('root');
-  if (rootNode) {
-    const root = ReactDOM.createRoot(rootNode);
+        const rootNode = document.getElementById('root');
+        if (rootNode) {
+            const root = ReactDOM.createRoot(rootNode);
 
-    async function iniciarAppProtegida() {
-      // Muestra un mensaje mientras consulta tu Firestore
-      root.render(
-        <div style={{color: '#94a3b8', padding: '40px', textAlign: 'center', background: '#020617', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif'}}>
-          <h2>Verificando suscripción de Box Play TV...</h2>
-        </div>
-      );
+            async function iniciarAppProtegida() {
+                root.render(
+                    <div style={{color: '#94a3b8', padding: '40px', textAlign: 'center', background: '#020617', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif'}}>
+                        <h2>Verificando suscripción de Box Play TV...</h2>
+                    </div>
+                );
 
-      const emailUsuario = "sejo48@gmail.com"; // Tu correo de prueba
-      let autorizado = false;
+                const emailUsuario = "sejo48@gmail.com"; 
+                let autorizado = false;
 
-      try {
-        if (window.verificarSuscripcion) {
-          autorizado = await window.verificarSuscripcion(emailUsuario);
-        }
-      } catch (e) {
-        console.error("Error al validar:", e);
-      }
+                try {
+                    if (window.verificarSuscripcion) {
+                        autorizado = await window.verificarSuscripcion(emailUsuario);
+                    }
+                } catch (e) {
+                    console.error("Error al validar:", e);
+                }
 
-      if (autorizado) {
-        // Si está activo, carga tu plataforma normal de streaming
-        root.render(<App />);
-      } else {
-        // Si está inactivo o vencido, bloquea y muestra las instrucciones de SINPE Móvil
-        root.render(
-          <div style={{ padding: '40px', maxWidth: '450px', margin: '80px auto', background: '#0f172a', color: 'white', borderRadius: '16px', textAlign: 'center', border: '1px solid #06b6d4', fontFamily: 'sans-serif' }}>
-            <h2 style={{ color: '#06b6d4', marginBottom: '15px' }}>Suscripción Requerida</h2>
-            <p style={{ color: '#94a3b8', marginBottom: '20px' }}>Realiza tu pago mensual mediante <strong>SINPE Móvil</strong> para continuar disfrutando de Box Play TV.</p>
-            <div style={{ background: '#020617', padding: '15px', borderRadius: '8px', textAlign: 'left', marginBottom: '15px' }}>
-              <p style={{ margin: '8px 0' }}>📱 <strong>Teléfono SINPE:</strong> [Tu Número]</p>
-              <p style={{ margin: '8px 0' }}>👤 <strong>Titular:</strong> Jorge Hernández</p>
-            </div>
-            <p style={{ fontSize: '0.8rem', color: '#64748b' }}>Cuenta evaluada: {emailUsuario}</p>
-          </div>
-        );
-      }
-    }
+                if (autorizado) {
+                    root.render(<App />);
+                } else {
+                    root.render(
+                        <div style={{ padding: '40px', maxWidth: '450px', margin: '80px auto', background: '#0f172a', color: 'white', borderRadius: '16px', textAlign: 'center', border: '1px solid #06b6d4', fontFamily: 'sans-serif' }}>
+                            <h2 style={{ color: '#06b6d4', marginBottom: '15px' }}>Suscripción Requerida</h2>
+                            <p style={{ color: '#94a3b8', marginBottom: '20px' }}>Realiza tu pago mensual mediante <strong>SINPE Móvil</strong> para continuar disfrutando de Box Play TV.</p>
+                            <div style={{ background: '#020617', padding: '15px', borderRadius: '8px', textAlign: 'left', marginBottom: '15px' }}>
+                                <p style={{ margin: '8px 0' }}>📱 <strong>Teléfono SINPE:</strong> [Tu Número]</p>
+                                <p style={{ margin: '8px 0' }}>👤 <strong>Titular:</strong> Jorge Hernández</p>
+                            </div>
+                            <p style={{ fontSize: '0.8rem', color: '#64748b' }}>Cuenta evaluada: {emailUsuario}</p>
+                        </div>
+                    );
+                }
+            }
 
-    iniciarAppProtegida();
-  } {
-            ReactDOM.createRoot(rootNode).render(<App/>);
+            iniciarAppProtegida();
         }
     </script>
 </body>
