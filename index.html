@@ -197,7 +197,7 @@
     </style>
 </head>
 
-<!-- SDK y Motor de Autorización Segura en Servidor (Firebase Auth + Firestore) -->
+<!-- SDK y Motor de Autorización con Ciclo Automático de 30 Días -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
@@ -216,7 +216,6 @@
   const auth = getAuth(app);
   const db = getFirestore(app);
 
-  // Generar o recuperar huella digital segura de hardware/dispositivo
   function getSecureDeviceFingerprint() {
     let fp = localStorage.getItem('boxplay_secure_hw_id');
     if (!fp) {
@@ -250,12 +249,11 @@
 
         if (data.status !== "active" || hoy > expiracion) {
           await signOut(auth);
-          return { success: false, message: "⌛ Su suscripción ha vencido. Realice su pago por SINPE Móvil para renovar." };
+          return { success: false, message: "⌛ Su suscripción de 30 días ha vencido. Realice su pago por SINPE Móvil (₡3,000) para renovar." };
         }
 
         const currentDevice = getSecureDeviceFingerprint();
 
-        // Vincular dispositivo automáticamente si está vacío
         if (!data.deviceId) {
           await updateDoc(docRef, { 
             deviceId: currentDevice,
@@ -264,13 +262,12 @@
           return { success: true, user: user.email };
         }
 
-        // Validar si el equipo coincide
         if (data.deviceId === currentDevice) {
           await updateDoc(docRef, { lastLogin: new Date().toISOString() });
           return { success: true, user: user.email };
         } else {
           await signOut(auth);
-          return { success: false, message: "🔒 Esta suscripción ya está vinculada a otro dispositivo autorizado. Solicite un restablecimiento al administrador si cambió de equipo." };
+          return { success: false, message: "🔒 Esta suscripción ya está vinculada a otro dispositivo autorizado. Solicite un restablecimiento al administrador si cambió de móvil." };
         }
       } catch (err) {
         return { success: false, message: "Correo o contraseña incorrectos." };
@@ -280,15 +277,22 @@
     onStateChange: (callback) => onAuthStateChanged(auth, callback)
   };
 
-  // Función de administración para restablecer dispositivo autorizado
-  window.boxAdminResetDevice = async function(adminEmail, adminPass, targetUserEmail) {
+  // Función administrativa para renovar automáticamente por 30 días adicionales
+  window.boxAdminRenovar30Dias = async function(adminEmail, adminPass, targetUserEmail) {
     try {
       await signInWithEmailAndPassword(auth, adminEmail, adminPass);
+      const nuevaExpiracion = new Date();
+      nuevaExpiracion.setDate(nuevaExpiracion.getDate() + 30);
+
       const docRef = doc(db, "suscripciones", targetUserEmail);
-      await updateDoc(docRef, { deviceId: "" });
-      alert(`¡Dispositivo desvinculado exitosamente para ${targetUserEmail}! Ya puede iniciar sesión en un nuevo equipo.`);
+      await updateDoc(docRef, {
+        status: "active",
+        expires_at: nuevaExpiracion.toISOString(),
+        deviceId: "" // Libera el dispositivo anterior para permitir actualización si es necesario
+      });
+      alert(`¡Suscripción renovada por 30 días exactos para ${targetUserEmail}!`);
     } catch (e) {
-      alert("Error de credenciales de administrador o usuario no encontrado.");
+      alert("Error de credenciales o usuario no encontrado.");
     }
   };
 </script>
@@ -587,8 +591,7 @@
             );
         };
 
-        // Componente de Login Seguro (Servidor BoxAuth)
-        function LoginScreen({ onLoginSuccess }) {
+        const LoginScreen = ({ onLoginSuccess }) => {
             const [email, setEmail] = useState('');
             const [password, setPassword] = useState('');
             const [loading, setLoading] = useState(false);
@@ -638,8 +641,8 @@
                             </button>
                         </form>
                         <div className="bg-[#020617] p-4 rounded-2xl border border-slate-800 text-left space-y-1.5">
-                            <p className="text-[11px] text-cyan-300 font-bold">💡 Nota de Acceso:</p>
-                            <p className="text-[10px] text-slate-400 leading-relaxed">Tu cuenta quedará vinculada al primer dispositivo desde el que inicies sesión. Para pagos y renovaciones mediante SINPE Móvil (₡3,000 / mes), comunícate al 506-6013-2444.</p>
+                            <p className="text-[11px] text-cyan-300 font-bold">💡 Nota de Acceso (30 Días):</p>
+                            <p className="text-[10px] text-slate-400 leading-relaxed">Tu suscripción mensual se renueva por 30 días exactos mediante SINPE Móvil (₡3,000) al 506-6013-2444.</p>
                         </div>
                     </div>
                 </div>
@@ -794,6 +797,63 @@
                                 <button onClick={handlePrev} className="p-3.5 rounded-2xl bg-black/60 hover:bg-cyan-500/20 text-cyan-300 border border-slate-800 hover:border-cyan-500/40 transition-all shadow-lg active:scale-95" title="Anterior"><i className="fa-solid fa-backward-step"></i></button>
                                 <button onClick={handleTogglePlayPause} className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white font-extrabold text-xs tracking-wider transition-all shadow-[0_0_20px_rgba(6,182,212,0.5)] flex items-center gap-2 active:scale-95"><i className={`fa-solid ${isPlaying && isPowerOn ? 'fa-pause' : 'fa-play'}`}></i><span>{isPlaying && isPowerOn ? 'PAUSAR' : 'REPRODUCIR'}</span></button>
                                 <button onClick={handleNext} className="p-3.5 rounded-2xl bg-black/60 hover:bg-cyan-500/20 text-cyan-300 border border-slate-800 hover:border-cyan-500/40 transition-all shadow-lg active:scale-95" title="Siguiente"><i className="fa-solid fa-forward-step"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div className="glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col justify-between shadow-xl space-y-6">
+                            <div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-xs font-black uppercase text-cyan-400 tracking-wider flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Ecualizador Visualizador</h3>
+                                    <span className="text-[10px] font-mono text-slate-400">{clockTime}</span>
+                                </div>
+                                <div className="h-40 bg-black/80 rounded-2xl border border-slate-800/80 p-4 flex items-end justify-around gap-2 shadow-inner overflow-hidden relative">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 to-transparent pointer-events-none"></div>
+                                    {spectrumHeights.map((h, sIdx) => (<div key={sIdx} className="w-8 bg-gradient-to-t from-cyan-600 via-teal-400 to-cyan-300 rounded-t-lg transition-all duration-75 shadow-[0_0_15px_rgba(6,182,212,0.5)]" style={{ height: `${h}%` }}></div>))}
+                                </div>
+                            </div>
+                            <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
+                                <div className="flex justify-between text-[11px] font-bold text-slate-300"><span>Estado del Servidor</span><span className="text-emerald-400 font-mono">100% Estable</span></div>
+                                <p className="text-[11px] text-slate-400 leading-relaxed">Disfruta de las emisoras más populares de Costa Rica con transmisión directa digital sin interrupciones.</p>
+                            </div>
+                        </div>
+                        <div className="lg:col-span-2 glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col h-[520px] shadow-xl">
+                            <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-3 pb-4 border-b border-slate-800">
+                                <div className="flex items-center gap-2">
+                                    <button onClick={() => setRadioViewMode('all')} className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${radioViewMode === 'all' ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'bg-black/40 text-slate-400 hover:text-white border border-slate-800'}`}>Todas ({stations.length})</button>
+                                    <button onClick={() => setRadioViewMode('favorites')} className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${radioViewMode === 'favorites' ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'bg-black/40 text-slate-400 hover:text-white border border-slate-800'}`}><Icon name="heart" size={12} fill={radioViewMode === 'favorites' ? 'black' : 'none'}/><span>Mis Favoritas ({radioFavorites.length})</span></button>
+                                </div>
+                                <div className="relative w-full sm:w-56">
+                                    <input type="text" placeholder="Buscar emisora..." value={radioFilter} onChange={(e) => setRadioFilter(e.target.value)} className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white focus:border-cyan-500 outline-none pl-9 shadow-inner"/>
+                                    <Icon name="search" size={14} className="absolute left-3 top-2.5 text-slate-400"/>
+                                    {radioFilter && <button onClick={() => setRadioFilter('')} className="absolute right-3 top-2.5 text-slate-400 hover:text-white"><Icon name="x" size={14}/></button>}
+                                </div>
+                            </div>
+                            <div className="flex-1 overflow-y-auto custom-scrollbar pr-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                {displayed.length === 0 ? (
+                                    <div className="col-span-2 text-center py-16 text-slate-500 text-xs font-medium">{radioViewMode === 'favorites' ? 'No tienes emisoras marcadas como favoritas todavía.' : 'No se encontraron emisoras con ese término.'}</div>
+                                ) : (
+                                    displayed.map((station, sIdx) => {
+                                        const isCurrent = currentStation && (currentStation.id === station.id || currentStation.url === station.url);
+                                        const isFav = isItemFavorite({ ...station, type: 'radio' });
+                                        return (
+                                            <div key={station.id || sIdx} onClick={() => onPlayStation(station)} className={`group relative p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center gap-3.5 ${isCurrent && isPlaying ? 'bg-cyan-950/60 border-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.3)]' : 'bg-black/40 hover:bg-white/5 border-slate-800/80 hover:border-slate-700'}`}>
+                                                <div className="w-12 h-12 rounded-2xl bg-black border border-slate-800 flex items-center justify-center overflow-hidden flex-shrink-0 relative shadow-inner p-1">
+                                                    {station.image ? (<RobustImage src={station.image} alt={station.title} title={station.title} type="tv" className="w-full h-full object-cover rounded-xl" />) : (<Icon name="radio" size={18} className="text-slate-400"/>)}
+                                                    {isCurrent && isPlaying && (<div className="absolute inset-0 bg-cyan-600/30 backdrop-blur-[1px] rounded-xl flex items-center justify-center"><div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></div></div>)}
+                                                </div>
+                                                <div className="flex-1 min-w-0">
+                                                    <h4 className={`text-xs font-bold truncate transition-colors ${isCurrent && isPlaying ? 'text-cyan-400' : 'text-white group-hover:text-cyan-300'}`}>{station.title}</h4>
+                                                    <span className="text-[10px] text-slate-400 truncate block mt-0.5 font-medium">{station.group || 'Variedad'}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <button onClick={(e) => { e.stopPropagation(); onToggleFavorite({ ...station, type: 'radio' }); }} className="p-2 rounded-xl text-slate-400 hover:text-white transition-colors"><Icon name="heart" size={14} fill={isFav ? '#06b6d4' : 'none'} className={isFav ? 'text-cyan-500' : 'text-slate-500'}/></button>
+                                                    <div className="w-8 h-8 rounded-xl bg-black/60 border border-slate-800 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-600 group-hover:text-white transition-all flex-shrink-0"><Icon name={isCurrent && isPlaying ? "pause" : "play"} size={12} fill="currentColor"/></div>
+                                                </div>
+                                            </div>
+                                        );
+                                    })
+                                )}
                             </div>
                         </div>
                     </div>
