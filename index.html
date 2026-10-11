@@ -437,7 +437,7 @@
             { title: "Stranger Things 5: El Desenlace", releaseDate: "Verano 2026", genre: "Ciencia Ficción / Terror", synopsis: "La batalla final por Hawkins ha comenzado. El grupo se une para enfrentar la amenaza definitiva del Upside Down.", image: "https://placehold.co/300x450/e50914/ffffff?text=Stranger+Things+5", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Disponible globalmente)", score: "9.8 / 10" },
             { title: "The Electric State", releaseDate: "Próximamente 2026", genre: "Sci-Fi / Aventura", synopsis: "En un futuro retrofuturista, una adolescente huérfana viaja por el oeste americano con un robot dulce pero misterioso.", image: "https://placehold.co/300x450/111827/ffffff?text=The+Electric+State", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Estreno en Netflix)", score: "9.2 / 10" },
             { title: "El Agente Nocturno: Temporada 2", releaseDate: "Otoño 2026", genre: "Acción / Suspenso", synopsis: "Peter Sutherland regresa con una nueva conspiración de alto nivel que pondrá en riesgo la seguridad nacional de EE.UU.", image: "https://placehold.co/300x450/0f172a/ffffff?text=The+Night+Agent+S2", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Estreno simultáneo)", score: "9.4 / 10" },
-            { title: "One Piece: Temporada 2", releaseDate: "Invierno 2026", genre: "Fantasía / Acción", synopsis: "Monkey D. Luffy y su tripulación de los Sombrero de Paja se adentran en la Grand Line en busca del tesoro legendario.", image: "https://placehold.co/300x450/b91c1c/ffffff?text=One+Piece+S2", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Estreno alta definición)", score: "9.6 / 10" }
+            { title: "One Piece: Temporada 2", releaseDate: "Invierno 2026", genre: "Fantasía / Acción", synopsis: "Monkey D. Luffy y su tripulación de los Sombrero de Paja se adentran en la Grand Line en busca del tesoro legendario.", image: "https://placehold.co/300x450/b91c1c/ffffff?text=One+Piece+S2", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Estreno en alta definición)", score: "9.6 / 10" }
         ];
 
         const convertUrl = (url) => {
@@ -586,7 +586,6 @@
                 setVerificando(true);
                 setErrorMsg('');
                 try {
-                    // Verificación contra Firebase Firestore
                     const email = inputEmail.trim();
                     onVerificado(email);
                 } catch (err) {
@@ -1364,7 +1363,7 @@
                         else if (movieContainerRef.current.webkitRequestFullscreen) movieContainerRef.current.webkitRequestFullscreen();
                     } else {
                         if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
-                        else if (document.webkitExitFullscreen) document.exitFullscreen();
+                        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
                     }
                 }
             };
@@ -1416,7 +1415,6 @@
             };
 
             const handlePlayNow = (item, episode = null) => {
-                // Las películas y series requieren autenticación / suscripción activa
                 setShowPaywallModal(true);
                 window.history.pushState({ appState: 'paywall-modal' }, '');
             };
@@ -2298,7 +2296,7 @@
                                 <div className="text-xs text-slate-300 space-y-3 text-left bg-black/50 p-4 rounded-2xl border border-slate-800 leading-relaxed">
                                     <p>📺 <strong>Samsung Smart TV (Smart View):</strong><br/>Desliza el panel de ajustes rápidos en tu teléfono Android y toca el botón <em>Smart View</em> o <em>Transmitir</em>. Selecciona tu televisor Samsung para duplicar la pantalla.</p>
                                     <p>📱 <strong>Google Chromecast / Android TV:</strong><br/>Abre el reproductor de video en la app. Si la película o serie está alojada con streaming directo, aparecerá el ícono de Chromecast flotante en la esquina del video para enviar únicamente la transmisión multimedia a la televisión.</p>
-                                    <p>🍏 <strong>Apple TV / AirPlay (iPhone/iPad):</strong><br/>Desliza hacia abajo el Centro de Control en tu dispositivo Apple y toca el ícono de <em>Duplicar pantalla (AirPlay)</i>.</p>
+                                    <p>🍏 <strong>Apple TV / AirPlay (iPhone/iPad):</strong><br/>Desliza hacia abajo el Centro de Control en tu dispositivo Apple y toca el ícono de <em>Duplicar pantalla (AirPlay)</em>.</p>
                                     <p>🔒 <strong>Nota de Acceso:</strong> Recuerda que las secciones de TV en Directo y Radio HD son completamente gratuitas, mientras que las películas y series requieren iniciar sesión con tu cuenta activa.</p>
                                 </div>
                                 <button onClick={() => { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">Entendido</button>
@@ -2331,7 +2329,7 @@
                             <div className="text-xs text-slate-300 space-y-2 text-left bg-black/40 p-4 rounded-2xl border border-slate-800">
                                 <p><strong>💻 En Windows / PC (Chrome, Edge, Brave):</strong><br/>Haz clic en el ícono de instalación o en el menú (⋮) y selecciona <em>'Instalar Boxplaytv'</em>.</p>
                                 <p><strong>📱 En Android:</strong><br/>Toca el menú (⋮) y selecciona <em>'Instalar aplicación'</em> o <em>'Agregar a pantalla principal'</em>.</p>
-                                <p><strong>🍏 En iPhone / iPad (Safari):</strong><br/>Toca el botón Compartir (⎋) y selecciona <span>'Agregar al inicio'</span>.</p>
+                                <p><strong>🍏 En iPhone / iPad (Safari):</strong><br/>Toca el botón Compartir (⎋) y selecciona <em>'Agregar al inicio'</em>.</p>
                             </div>
                             <button onClick={() => document.getElementById('install-guide-modal').classList.add('hidden')} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">Entendido</button>
                         </div>
