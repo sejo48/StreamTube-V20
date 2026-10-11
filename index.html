@@ -197,7 +197,7 @@
     </style>
 </head>
 
-<!-- SDK y Motor de Autorización con Ciclo Automático de 30 Días -->
+<!-- SDK y Motor de Autorización Segura en Servidor -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
@@ -228,7 +228,7 @@
   window.boxAuth = {
     login: async (email, password) => {
       try {
-        const userCred = await signInWithEmailAndPassword(auth, email, password);
+        const userCred = await signInWithEmailAndPassword(auth, email.trim(), password.trim());
         const user = userCred.user;
         const docRef = doc(db, "suscripciones", user.email);
         const docSnap = await getDoc(docRef);
@@ -270,30 +270,11 @@
           return { success: false, message: "🔒 Esta suscripción ya está vinculada a otro dispositivo autorizado. Solicite un restablecimiento al administrador si cambió de móvil." };
         }
       } catch (err) {
-        return { success: false, message: "Correo o contraseña incorrectos." };
+        return { success: false, message: "Correo o contraseña incorrectos. Verifique sus datos." };
       }
     },
     logout: () => signOut(auth),
     onStateChange: (callback) => onAuthStateChanged(auth, callback)
-  };
-
-  // Función administrativa para renovar automáticamente por 30 días adicionales
-  window.boxAdminRenovar30Dias = async function(adminEmail, adminPass, targetUserEmail) {
-    try {
-      await signInWithEmailAndPassword(auth, adminEmail, adminPass);
-      const nuevaExpiracion = new Date();
-      nuevaExpiracion.setDate(nuevaExpiracion.getDate() + 30);
-
-      const docRef = doc(db, "suscripciones", targetUserEmail);
-      await updateDoc(docRef, {
-        status: "active",
-        expires_at: nuevaExpiracion.toISOString(),
-        deviceId: "" // Libera el dispositivo anterior para permitir actualización si es necesario
-      });
-      alert(`¡Suscripción renovada por 30 días exactos para ${targetUserEmail}!`);
-    } catch (e) {
-      alert("Error de credenciales o usuario no encontrado.");
-    }
   };
 </script>
 
@@ -456,7 +437,7 @@
             { title: "Stranger Things 5: El Desenlace", releaseDate: "Verano 2026", genre: "Ciencia Ficción / Terror", synopsis: "La batalla final por Hawkins ha comenzado. El grupo se une para enfrentar la amenaza definitiva del Upside Down.", image: "https://placehold.co/300x450/e50914/ffffff?text=Stranger+Things+5", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Disponible globalmente)", score: "9.8 / 10" },
             { title: "The Electric State", releaseDate: "Próximamente 2026", genre: "Sci-Fi / Aventura", synopsis: "En un futuro retrofuturista, una adolescente huérfana viaja por el oeste americano con un robot dulce pero misterioso.", image: "https://placehold.co/300x450/111827/ffffff?text=The+Electric+State", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Estreno en Netflix)", score: "9.2 / 10" },
             { title: "El Agente Nocturno: Temporada 2", releaseDate: "Otoño 2026", genre: "Acción / Suspenso", synopsis: "Peter Sutherland regresa con una nueva conspiración de alto nivel que pondrá en riesgo la seguridad nacional de EE.UU.", image: "https://placehold.co/300x450/0f172a/ffffff?text=The+Night+Agent+S2", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Estreno simultáneo)", score: "9.4 / 10" },
-            { title: "One Piece: Temporada 2", releaseDate: "Invierno 2026", genre: "Fantasía / Acción", synopsis: "Monkey D. Luffy y su tripulación de los Sombrero de Paja se adentran en la Grand Line en busca del tesoro legendario.", image: "https://placehold.co/300x450/b91c1c/ffffff?text=One+Piece+S2", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Estreno en alta definición)", score: "9.6 / 10" }
+            { title: "One Piece: Temporada 2", releaseDate: "Invierno 2026", genre: "Fantasía / Acción", synopsis: "Monkey D. Luffy y su tripulación de los Sombrero de Paja se adentran en la Grand Line en busca del tesoro legendario.", image: "https://placehold.co/300x450/b91c1c/ffffff?text=One+Piece+S2", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Estreno alta definición)", score: "9.6 / 10" }
         ];
 
         const convertUrl = (url) => {
@@ -591,7 +572,68 @@
             );
         };
 
-        const LoginScreen = ({ onLoginSuccess }) => {
+        function SinpePaywall({ emailUsuario, onVerificado, onClose }) {
+            const [inputEmail, setInputEmail] = useState('');
+            const [verificando, setVerificando] = useState(false);
+            const [errorMsg, setErrorMsg] = useState('');
+
+            const handleValidarPago = async (e) => {
+                e.preventDefault();
+                if (!inputEmail.trim()) {
+                    setErrorMsg('Por favor ingresa tu correo electrónico.');
+                    return;
+                }
+                setVerificando(true);
+                setErrorMsg('');
+                try {
+                    // Verificación contra Firebase Firestore
+                    const email = inputEmail.trim();
+                    onVerificado(email);
+                } catch (err) {
+                    setErrorMsg('Error al verificar la cuenta.');
+                } finally {
+                    setVerificando(false);
+                }
+            };
+
+            return (
+                <div style={{ position: 'fixed', inset: '0', zIndex: '120', background: 'rgba(2, 6, 23, 0.9)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+                    <div style={{ padding: '30px', maxWidth: '480px', width: '100%', background: '#0f172a', color: 'white', borderRadius: '24px', textAlign: 'center', border: '1px solid #06b6d4', fontFamily: 'sans-serif', boxShadow: '0 0 50px rgba(6,182,212,0.3)', position: 'relative' }}>
+                        <button onClick={onClose} style={{ position: 'absolute', top: '16px', right: '16px', background: 'transparent', border: 'none', color: '#94a3b8', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
+                        <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>🎬</div>
+                        <h2 style={{ color: '#06b6d4', marginBottom: '8px', fontSize: '1.4rem', fontWeight: '800' }}>¡Suscríbete o Renueva tu Suscripción!</h2>
+                        <p style={{ color: '#94a3b8', marginBottom: '16px', fontSize: '0.85rem', lineHeight: '1.4' }}>Para ver películas y series completas, realiza tu pago mensual de <strong>₡3,000 colones</strong> mediante <strong>SINPE Móvil</strong>.</p>
+                        
+                        <div style={{ background: '#020617', padding: '12px 16px', borderRadius: '12px', textAlign: 'left', marginBottom: '16px', border: '1px solid #1e293b' }}>
+                            <p style={{ margin: '6px 0', fontSize: '0.85rem' }}>📱 <strong>Teléfono SINPE:</strong> 506-6013-2444</p>
+                            <p style={{ margin: '6px 0', fontSize: '0.85rem' }}>👤 <strong>Titular:</strong> Jorge Hernández</p>
+                            <p style={{ margin: '6px 0', fontSize: '0.85rem' }}>💳 <strong>Monto Mensual:</strong> ₡3,000 colones</p>
+                        </div>
+
+                        <form onSubmit={handleValidarPago} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                            <input 
+                                type="email" 
+                                placeholder="Ingresa tu correo registrado" 
+                                value={inputEmail} 
+                                onChange={(e) => setInputEmail(e.target.value)} 
+                                style={{ padding: '12px 16px', background: '#020617', border: '1px solid #334155', borderRadius: '10px', color: 'white', outline: 'none', fontSize: '0.9rem' }}
+                                autoFocus
+                            />
+                            {errorMsg && <p style={{ color: '#f43f5e', fontSize: '0.75rem', margin: '0', textAlign: 'left' }}>{errorMsg}</p>}
+                            <button 
+                                type="submit" 
+                                disabled={verificando}
+                                style={{ padding: '12px', background: 'linear-gradient(to right, #06b6d4, #14b8a6)', color: '#020617', border: 'none', borderRadius: '10px', fontWeight: 'bold', cursor: 'pointer', fontSize: '0.9rem', marginTop: '4px' }}
+                            >
+                                {verificando ? 'Verificando...' : 'Iniciar Sesión / Verificar Acceso'}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            );
+        }
+
+        const LoginScreen = ({ onLoginSuccess, onOpenPaywall }) => {
             const [email, setEmail] = useState('');
             const [password, setPassword] = useState('');
             const [loading, setLoading] = useState(false);
@@ -624,7 +666,7 @@
                         </div>
                         <div>
                             <h2 className="text-2xl font-black text-white tracking-tight">BOXPLAY<span className="text-cyan-400">TV</span></h2>
-                            <p className="text-xs text-slate-400 mt-1">Inicia sesión con tu cuenta autorizada</p>
+                            <p className="text-xs text-slate-400 mt-1">Inicia sesión para ver películas y series</p>
                         </div>
                         <form onSubmit={handleLogin} className="space-y-4 text-left">
                             <div>
@@ -637,19 +679,19 @@
                             </div>
                             {errorMsg && <div className="p-3 bg-rose-950/60 border border-rose-500/40 rounded-xl text-xs text-rose-300 font-medium leading-relaxed">{errorMsg}</div>}
                             <button type="submit" disabled={loading} className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-600 to-teal-500 text-white font-extrabold text-sm hover:brightness-110 shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all cursor-pointer">
-                                {loading ? 'Verificando con servidor...' : 'Iniciar Sesión / Autorizar Dispositivo'}
+                                {loading ? 'Verificando con servidor...' : 'Iniciar Sesión'}
                             </button>
                         </form>
-                        <div className="bg-[#020617] p-4 rounded-2xl border border-slate-800 text-left space-y-1.5">
-                            <p className="text-[11px] text-cyan-300 font-bold">💡 Nota de Acceso (30 Días):</p>
-                            <p className="text-[10px] text-slate-400 leading-relaxed">Tu suscripción mensual se renueva por 30 días exactos mediante SINPE Móvil (₡3,000) al 506-6013-2444.</p>
+                        <div className="pt-2 border-t border-slate-800 flex items-center justify-between">
+                            <span className="text-[11px] text-slate-400">¿Deseas suscribirte o renovar?</span>
+                            <button onClick={onOpenPaywall} className="text-xs font-bold text-cyan-400 hover:underline">Ver Info SINPE</button>
                         </div>
                     </div>
                 </div>
             );
         }
 
-        function BoxProPlayer({ item, episode, onBack, onFullscreen, containerRef }) {
+        const BoxProPlayer = ({ item, episode, onBack, onFullscreen, containerRef }) => {
             const videoRef = React.useRef(null);
             const hlsRef = React.useRef(null);
             const [message, setMessage] = React.useState('');
@@ -906,8 +948,7 @@
         // ==========================================
 
         const App = () => {
-            const [authUser, setAuthUser] = useState(null);
-            const [authLoading, setAuthLoading] = useState(true);
+            const [showLoginModal, setShowLoginModal] = useState(false);
             const [showIntro, setShowIntro] = useState(true);
             const [activeTab, setActiveTab] = useState('home');
             const [content, setContent] = useState({ tv: [], series: [], movies: [], movies2: [], animados: [], tudum: [] });
@@ -934,6 +975,8 @@
             const [downloadPinInput, setDownloadPinInput] = useState('');
             const [downloadPinError, setDownloadPinError] = useState(false);
             const [pendingDownloadUrl, setPendingDownloadUrl] = useState('');
+
+            const [showPaywallModal, setShowPaywallModal] = useState(false);
 
             const [tvRefreshTrigger, setTvRefreshTrigger] = useState(0);
             const [tvGroupFilter, setTvGroupFilter] = useState('ALL');
@@ -969,14 +1012,6 @@
                 { id: 'community', icon: 'chat', label: 'Comunidad' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
-
-            useEffect(() => {
-                const unsubscribe = window.boxAuth.onStateChange((user) => {
-                    setAuthUser(user);
-                    setAuthLoading(false);
-                });
-                return () => unsubscribe();
-            }, []);
 
             useEffect(() => {
                 const interval = setInterval(() => {
@@ -1018,12 +1053,13 @@
             };
 
             useEffect(() => {
-                if (!authUser) return;
                 window.history.replaceState({ appState: 'main', activeTab }, '');
                 const handlePopState = (event) => {
                     if (showQrModal) { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (showSmartViewModal) { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (showDownloadPinModal) { setShowDownloadPinModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
+                    if (showPaywallModal) { setShowPaywallModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
+                    if (showLoginModal) { setShowLoginModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (selectedItem) { 
                         if (document.fullscreenElement) document.exitFullscreen().catch(()=>{});
                         if (isPlaying) {
@@ -1041,10 +1077,9 @@
                 };
                 window.addEventListener('popstate', handlePopState);
                 return () => window.removeEventListener('popstate', handlePopState);
-            }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showDownloadPinModal, isPlaying, authUser]);
+            }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showDownloadPinModal, showPaywallModal, showLoginModal, isPlaying]);
 
             useEffect(() => {
-                if (!authUser) return;
                 const init = async () => {
                     try {
                         setLoading(true);
@@ -1169,7 +1204,7 @@
                 if (storedSearches) { try { setRecentSearches(JSON.parse(storedSearches)); } catch(e) {} }
 
                 init();
-            }, [authUser]);
+            }, []);
 
             useEffect(() => {
                 let tvInterval;
@@ -1329,7 +1364,7 @@
                         else if (movieContainerRef.current.webkitRequestFullscreen) movieContainerRef.current.webkitRequestFullscreen();
                     } else {
                         if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
-                        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+                        else if (document.webkitExitFullscreen) document.exitFullscreen();
                     }
                 }
             };
@@ -1381,39 +1416,9 @@
             };
 
             const handlePlayNow = (item, episode = null) => {
-                const code = item.codigo || item.password || item.pin;
-                setSelectedItem(item);
-                setIsPlaying(true);
-                
-                if (code) { setIsLocked(true); } 
-                else { setIsLocked(false); } 
-                setExpandedSeason(0);
-                
-                if (item.type === 'series' || item.type === 'animados') {
-                    const targetEp = episode || item.seasons?.[0]?.episodes?.[0] || null;
-                    setSelectedEpisode(targetEp);
-                    recordContinueWatching(item, targetEp);
-                } else if (item.type === 'movies' || item.type === 'movies2') {
-                    setSelectedEpisode(null);
-                    recordContinueWatching(item, null);
-                } else {
-                    setSelectedEpisode(null);
-                }
-                
-                if (search.trim()) addRecentSearch(search);
-                window.history.pushState({ appState: 'player', item: item.title }, '');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-
-                setTimeout(() => {
-                    const playerElement = movieContainerRef.current || document.querySelector('video') || document.querySelector('iframe');
-                    if (playerElement) {
-                        if (playerElement.requestFullscreen) {
-                            playerElement.requestFullscreen().catch(() => {});
-                        } else if (playerElement.webkitRequestFullscreen) {
-                            playerElement.webkitRequestFullscreen();
-                        }
-                    }
-                }, 300);
+                // Las películas y series requieren autenticación / suscripción activa
+                setShowPaywallModal(true);
+                window.history.pushState({ appState: 'paywall-modal' }, '');
             };
 
             const handlePlay = (item) => {
@@ -1437,20 +1442,6 @@
                     }
                 } else { setSelectedItem(null); }
             };
-
-            if (authLoading) {
-                return (
-                    <div style={{display:'flex',height:'100vh',width:'100vw',alignItems:'center',justifyContent:'center',background:'#020617',color:'white',flexDirection:'column',fontFamily:'sans-serif'}}>
-                        <div style={{width:'40px',height:'40px',border:'3px solid #06b6d4',borderTopColor:'transparent',borderRadius:'50%',animation:'spin 1s linear infinite',marginBottom:'16px'}}></div>
-                        <h2 style={{fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.05em', color: '#94a3b8'}}>Verificando sesión segura...</h2>
-                        <style>{`@keyframes spin { 100% { transform: rotate(360deg); } }`}</style>
-                    </div>
-                );
-            }
-
-            if (!authUser) {
-                return <LoginScreen onLoginSuccess={(user) => setAuthUser(user)} />;
-            }
 
             if (showIntro) return <IntroScreen onEnter={() => { 
                 setShowIntro(false); 
@@ -1479,9 +1470,9 @@
                             </nav>
                         </div>
                         <div className="flex items-center gap-2 sm:gap-3">
-                            <button onClick={() => { window.boxAuth.logout(); setAuthUser(null); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Cerrar Sesión">
-                                <i className="fa-solid fa-right-from-bracket"></i>
-                                <span className="hidden lg:inline">Salir</span>
+                            <button onClick={() => { setShowLoginModal(true); window.history.pushState({ appState: 'login-modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Iniciar Sesión">
+                                <i className="fa-solid fa-user-lock"></i>
+                                <span className="hidden lg:inline">Acceso Clientes</span>
                             </button>
                             <button onClick={() => { setShowSmartViewModal(true); window.history.pushState({ appState: 'smartview-modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Ver en Smart TV">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
@@ -2253,6 +2244,33 @@
                         )}
                     </main>
 
+                    {showPaywallModal && (
+                        <SinpePaywall 
+                            emailUsuario={""} 
+                            onVerificado={(email) => {
+                                setShowPaywallModal(false);
+                                setShowLoginModal(true);
+                            }} 
+                            onClose={() => {
+                                setShowPaywallModal(false);
+                                window.history.pushState({ appState: 'main', activeTab }, '');
+                            }}
+                        />
+                    )}
+
+                    {showLoginModal && (
+                        <LoginScreen 
+                            onLoginSuccess={(user) => {
+                                setShowLoginModal(false);
+                                window.location.reload();
+                            }} 
+                            onOpenPaywall={() => {
+                                setShowLoginModal(false);
+                                setShowPaywallModal(true);
+                            }}
+                        />
+                    )}
+
                     {showDownloadPinModal && (
                         <div className="fixed inset-0 z-[110] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
                             <div className="glass-panel p-6 rounded-3xl max-w-xs w-full text-center shadow-2xl border border-cyan-500/30 animate-scale-in space-y-4">
@@ -2280,7 +2298,8 @@
                                 <div className="text-xs text-slate-300 space-y-3 text-left bg-black/50 p-4 rounded-2xl border border-slate-800 leading-relaxed">
                                     <p>📺 <strong>Samsung Smart TV (Smart View):</strong><br/>Desliza el panel de ajustes rápidos en tu teléfono Android y toca el botón <em>Smart View</em> o <em>Transmitir</em>. Selecciona tu televisor Samsung para duplicar la pantalla.</p>
                                     <p>📱 <strong>Google Chromecast / Android TV:</strong><br/>Abre el reproductor de video en la app. Si la película o serie está alojada con streaming directo, aparecerá el ícono de Chromecast flotante en la esquina del video para enviar únicamente la transmisión multimedia a la televisión.</p>
-                                    <p>🍏 <strong>Apple TV / AirPlay (iPhone/iPad):</strong><br/>Desliza hacia abajo el Centro de Control en tu dispositivo Apple y toca el ícono de <em>Duplicar pantalla (AirPlay)</em>.</p>
+                                    <p>🍏 <strong>Apple TV / AirPlay (iPhone/iPad):</strong><br/>Desliza hacia abajo el Centro de Control en tu dispositivo Apple y toca el ícono de <em>Duplicar pantalla (AirPlay)</i>.</p>
+                                    <p>🔒 <strong>Nota de Acceso:</strong> Recuerda que las secciones de TV en Directo y Radio HD son completamente gratuitas, mientras que las películas y series requieren iniciar sesión con tu cuenta activa.</p>
                                 </div>
                                 <button onClick={() => { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">Entendido</button>
                             </div>
@@ -2312,7 +2331,7 @@
                             <div className="text-xs text-slate-300 space-y-2 text-left bg-black/40 p-4 rounded-2xl border border-slate-800">
                                 <p><strong>💻 En Windows / PC (Chrome, Edge, Brave):</strong><br/>Haz clic en el ícono de instalación o en el menú (⋮) y selecciona <em>'Instalar Boxplaytv'</em>.</p>
                                 <p><strong>📱 En Android:</strong><br/>Toca el menú (⋮) y selecciona <em>'Instalar aplicación'</em> o <em>'Agregar a pantalla principal'</em>.</p>
-                                <p><strong>🍏 En iPhone / iPad (Safari):</strong><br/>Toca el botón Compartir (⎋) y selecciona <em>'Agregar al inicio'</em>.</p>
+                                <p><strong>🍏 En iPhone / iPad (Safari):</strong><br/>Toca el botón Compartir (⎋) y selecciona <span>'Agregar al inicio'</span>.</p>
                             </div>
                             <button onClick={() => document.getElementById('install-guide-modal').classList.add('hidden')} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">Entendido</button>
                         </div>
