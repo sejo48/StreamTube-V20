@@ -432,6 +432,101 @@
             return url;
         };
 
+        const fetchSmart = async (localUrl, rawUrl, isJson = true) => {
+            const cacheBust = `?t=${Date.now()}`;
+            try {
+                const res = await fetch(localUrl + cacheBust);
+                if (res.ok) {
+                    const text = await res.text();
+                    if (!text.trim().startsWith('<!DOCTYPE html') && !text.trim().startsWith('<html')) {
+                        return isJson ? JSON.parse(text) : text;
+                    }
+                }
+            } catch (e) {}
+            try {
+                const resRaw = await fetch(rawUrl + cacheBust);
+                if (resRaw.ok) return isJson ? await resRaw.json() : await resRaw.text();
+            } catch (e) {}
+            return null;
+        };
+
+        // Componentes auxiliares de UI (Card, HeroSection, ContentRow, etc.)
+        const Card = ({ item, onClick, isFavorite, onToggleFavorite }) => { 
+            const isTv = item.type === 'tv'; 
+            const hasLock = item.codigo || item.password || item.pin; 
+            const isKids = item.isKids || item.type === 'animados';
+            const imgSource = extractImageUrl(item);
+            const titleSource = item.titulo || item.title || item.name || 'Sin Título';
+            const fallbackImg = generatePlaceholder(titleSource, isTv ? 'tv' : 'poster');
+            return ( 
+                <div tabIndex="0" className="group relative flex flex-col gap-2 cursor-pointer active:scale-95 transition-transform card-glow rounded-2xl w-full" onClick={() => onClick(item)}> 
+                    <div className={`relative overflow-hidden bg-[#0f172a] border border-slate-800 shadow-xl ${isTv ? 'aspect-video rounded-full p-2' : 'aspect-[2/3] rounded-2xl'}`}> 
+                        <RobustImage src={imgSource || fallbackImg} loading="lazy" className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${isTv ? 'object-cover rounded-full' : 'object-cover'}`} type={isTv ? 'tv' : 'poster'} title={titleSource} alt={titleSource}/> 
+                        <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isTv ? 'rounded-full' : ''}`}></div> 
+                        <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }} className="absolute top-2 right-2 p-2 bg-black/70 rounded-full text-white backdrop-blur-md hover:bg-black transition-colors z-20"> 
+                            <Icon name="heart" size={14} fill={isFavorite ? "#06b6d4" : "none"} className={isFavorite ? "text-cyan-500" : "text-white"}/> 
+                        </button> 
+                        <div className="absolute bottom-2 left-2 flex gap-1 flex-wrap z-10"> 
+                            {isTv && <span className="bg-cyan-600 text-white text-[8px] font-black px-1.5 py-0.5 rounded shadow">LIVE</span>} 
+                            {isKids && <span className="bg-teal-600 text-white text-[8px] font-black px-1.5 py-0.5 rounded shadow">KIDS</span>} 
+                            {hasLock && <span className="bg-amber-500 text-black text-[8px] font-black px-1.5 py-0.5 rounded shadow flex items-center gap-0.5"><Icon name="lock" size={7}/> PIN</span>} 
+                        </div> 
+                    </div> 
+                    <h3 className="text-[11px] sm:text-xs font-bold text-slate-200 truncate px-0.5 group-hover:text-cyan-400 transition-colors text-center">{titleSource}</h3> 
+                </div> 
+            ); 
+        };
+
+        const ContentRow = ({ title, items, onPlay, favorites, tvFavorites, onToggleFavorite, maxItems = 6 }) => {
+            if (!items || items.length === 0) return null;
+            return (
+                <div className="max-w-7xl mx-auto px-4 sm:px-8 w-full space-y-3">
+                    <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
+                        <h2 className="text-base sm:text-lg font-black uppercase tracking-wider text-white">{title}</h2>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
+                        {items.slice(0, maxItems).map((item, i) => {
+                            const itemId = item.id || item.title;
+                            const isFav = item.type === 'tv' ? tvFavorites.some(f => (f.id || f.title) === itemId) : favorites.some(f => (f.id || f.title) === itemId);
+                            return <Card item={item} key={itemId || i} onClick={onPlay} isFavorite={isFav} onToggleFavorite={onToggleFavorite} />;
+                        })}
+                    </div>
+                </div>
+            );
+        };
+
+        const HeroSection = ({ item, onPlay, isFavorite, onToggleFavorite }) => {
+            const featuredItem = useMemo(() => { if (!item) return null; return item; }, [item]);
+            if (!featuredItem) return null;
+            const imgSource = extractImageUrl(featuredItem) || generatePlaceholder(featuredItem.title || featuredItem.titulo, 'poster');
+            const titleSource = featuredItem.titulo || featuredItem.title || featuredItem.name;
+            const descSource = featuredItem.descripcion || featuredItem.sinopsis || featuredItem.plot;
+            return (
+                <div className="relative w-full bg-[#070b19] overflow-hidden rounded-none sm:rounded-3xl mb-8 group animate-fade-in shadow-2xl border-b sm:border border-slate-800 flex items-center max-w-7xl mx-auto px-4 sm:px-12 cinema-glow w-full py-8 sm:py-16 md:py-20">
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                        <img src="https://img.magnific.com/foto-gratis/cine-caja-palomitas-maiz_23-2148133612.jpg?semt=ais_hybrid&w=740&q=80" alt="Hero BG" className="w-full h-full object-cover opacity-25 scale-105 brightness-90" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/90 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
+                    </div>
+                    <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-6 sm:gap-10 text-center sm:text-left">
+                        <div className="w-48 sm:w-60 md:w-68 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
+                            <RobustImage src={imgSource} alt={titleSource} title={titleSource} type="poster" className="w-full h-full object-cover" />
+                        </div>
+                        <div className="flex-1 flex flex-col gap-3 items-center sm:items-start max-w-xl">
+                            <span className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white text-[9px] sm:text-[10px] font-black px-3.5 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(6,182,212,0.4)]">Destacado Boxplaytv</span>
+                            <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white leading-tight drop-shadow-md line-clamp-2">{titleSource}</h1>
+                            <p className="text-slate-300 text-xs sm:text-sm md:text-base line-clamp-3 leading-relaxed drop-shadow">{descSource || "Disfruta de las mejores películas y series en alta definición."}</p>
+                            <div className="flex flex-wrap justify-center sm:justify-start gap-3 mt-2">
+                                <button onClick={() => onPlay(featuredItem)} className="bg-gradient-to-tr from-cyan-600 to-teal-500 hover:brightness-110 text-white px-6 sm:px-8 py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-95 transition-transform shadow-[0_0_20px_rgba(6,182,212,0.5)]"><Icon fill="white" name="play" size={15}/> Reproducir Ahora</button>
+                                <button onClick={() => onToggleFavorite(featuredItem)} className="glass-panel text-white p-3 rounded-xl flex items-center justify-center backdrop-blur-md border border-cyan-500/40 hover:bg-slate-800 transition-colors shadow-lg"><Icon name="heart" size={16} fill={isFavorite ? "#06b6d4" : "none"} className={isFavorite ? "text-cyan-500" : "text-white"}/></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
         // Componente de Pasarela de Pago SINPE Móvil
         function SinpePaywall({ emailUsuario, onEmailChange, onVerificado, onClose }) {
             const [inputEmail, setInputEmail] = useState(emailUsuario || '');
@@ -498,7 +593,7 @@
             );
         }
 
-        // Reproductor central BOXProPlayer con soporte de pantalla completa automático
+        // Reproductor central BOXProPlayer
         function BoxProPlayer({ item, episode, onBack, onFullscreen, containerRef }) {
             const videoRef = React.useRef(null);
             const hlsRef = React.useRef(null);
@@ -561,6 +656,212 @@
                 {message && <div className="absolute z-30 bottom-14 left-3 right-3 bg-slate-900 border border-cyan-400/40 rounded-xl p-3 text-xs text-center">{message}</div>}
             </div>;
         }
+
+        const LockScreen = ({ onUnlock, correctCode, onCancel }) => {
+            const [input, setInput] = useState(''); const [error, setError] = useState(false);
+            const handleSubmit = (e) => { e.preventDefault(); if (input === String(correctCode)) onUnlock(); else { setError(true); setInput(''); } };
+            return (<div className="absolute inset-0 z-50 bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-4 animate-fade-in"><div className="glass-panel p-6 rounded-3xl max-w-xs w-full text-center shadow-2xl border border-cyan-500/30 animate-scale-in"><div className="mb-4 flex justify-center"><div className="p-3.5 bg-cyan-500/15 rounded-2xl text-cyan-400 border border-cyan-500/30"><Icon name="lock" size={24}/></div></div><h2 className="text-sm font-extrabold text-white mb-1">Contenido Protegido</h2><p className="text-[11px] text-slate-400 mb-4">Introduce el código PIN de acceso</p><form onSubmit={handleSubmit}><input type="password" maxLength="4" className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-3 text-center text-xl tracking-[0.4em] text-white focus:border-cyan-500 outline-none mb-3 shadow-inner" value={input} onChange={(e) => { setInput(e.target.value); setError(false); }} placeholder="••••" autoFocus />{error && <p className="text-rose-400 text-xs mb-3 font-bold">Código incorrecto</p>}<div className="flex gap-2.5"><button type="button" onClick={onCancel} className="flex-1 py-2.5 rounded-xl border border-slate-800 text-slate-300 hover:bg-white/5 text-xs font-semibold">Cancelar</button><button type="submit" className="flex-1 py-2.5 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 text-white font-bold hover:brightness-110 text-xs shadow-[0_0_15px_rgba(6,182,212,0.5)]">Acceder</button></div></form></div></div>);
+        };
+
+        const CommunitySection = () => {
+            return (
+                <div className="p-4 sm:p-10 max-w-4xl mx-auto w-full animate-fade-in space-y-8">
+                    <div className="text-center space-y-3">
+                        <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 border border-cyan-500/30 inline-block"><Icon name="chat" size={28}/></div>
+                        <h1 className="text-2xl sm:text-4xl font-black text-white">Comunidad Boxplaytv</h1>
+                        <p className="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">Únete a nuestra comunidad oficial y mantente al día con los últimos estrenos, canales y eventos especiales.</p>
+                    </div>
+                    <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
+                        <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer" className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-4 rounded-2xl font-extrabold text-sm transition-all shadow-[0_0_25px_rgba(16,185,129,0.4)] flex items-center justify-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            <span>Unirse al Grupo Oficial de WhatsApp</span>
+                        </a>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
+                                <h3 className="text-sm font-bold text-cyan-400 flex items-center gap-2"><Icon name="star" size={14}/> Estrenos Semanales</h3>
+                                <p className="text-xs text-slate-300 leading-relaxed">Recibe notificaciones de nuevas películas, series y canales añadidos a la plataforma.</p>
+                            </div>
+                            <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
+                                <h3 className="text-sm font-bold text-teal-400 flex items-center gap-2"><Icon name="chat" size={14}/> Soporte Técnico</h3>
+                                <p className="text-xs text-slate-300 leading-relaxed">Resuelve dudas, reporta fallos y solicita contenido directamente con nuestro equipo.</p>
+                            </div>
+                        </div>
+                        <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
+                            <h3 className="text-sm font-bold text-yellow-400 flex items-center gap-2"><Icon name="heart" size={14}/> Beneficios Exclusivos</h3>
+                            <p className="text-xs text-slate-300 leading-relaxed">Accede a promociones, sorteos y contenido VIP solo para miembros del grupo.</p>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const CyberRadioSection = ({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef, clockTime, isMuted, setIsMuted, isPowerOn, setIsPowerOn, spectrumHeights, radioFilter, setRadioFilter, hlsRef, radioFavorites, onToggleFavorite, isItemFavorite }) => {
+            const [radioViewMode, setRadioViewMode] = useState('all');
+
+            const handleNext = () => {
+                const activeList = radioViewMode === 'favorites' ? radioFavorites : stations;
+                if (activeList.length === 0) return;
+                const currentActiveIndex = activeList.findIndex(s => s.id === currentStation?.id);
+                const nextIdx = (currentActiveIndex + 1) % activeList.length;
+                onPlayStation(activeList[nextIdx]);
+            };
+
+            const handlePrev = () => {
+                const activeList = radioViewMode === 'favorites' ? radioFavorites : stations;
+                if (activeList.length === 0) return;
+                const currentActiveIndex = activeList.findIndex(s => s.id === currentStation?.id);
+                const prevIdx = (currentActiveIndex - 1 + activeList.length) % activeList.length;
+                onPlayStation(activeList[prevIdx]);
+            };
+
+            const handleTogglePlayPause = () => {
+                if (!isPowerOn) return;
+                if (!currentStation && stations.length > 0) { onPlayStation(stations[0]); return; }
+                if (audioRef.current) {
+                    if (isPlaying) { audioRef.current.pause(); }
+                    else { audioRef.current.play().catch(() => {}); }
+                }
+            };
+
+            let displayed = radioViewMode === 'favorites' ? radioFavorites : stations;
+            if (radioFilter.trim()) {
+                const q = radioFilter.toLowerCase();
+                displayed = displayed.filter(s => (s.title || '').toLowerCase().includes(q) || (s.group || '').toLowerCase().includes(q));
+            }
+
+            const currentIsFav = currentStation ? isItemFavorite({ ...currentStation, type: 'radio' }) : false;
+
+            return (
+                <div className="min-h-[calc(100vh-5rem)] flex flex-col p-4 sm:p-8 animate-fade-in w-full max-w-7xl mx-auto space-y-6">
+                    <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-cyan-500/30 relative overflow-hidden shadow-2xl pulse-glow-box flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div className="flex items-center gap-5 relative z-10 w-full md:w-auto">
+                            <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-black border-2 border-cyan-400 p-1 flex items-center justify-center shadow-[0_0_30px_rgba(6,182,212,0.6)] flex-shrink-0">
+                                {currentStation?.image ? (<RobustImage src={currentStation.image} alt={currentStation.title} title={currentStation.title} type="tv" className={`w-full h-full object-cover rounded-full ${isPlaying && isPowerOn ? 'vinyl-animation' : ''}`} />) : (<div className="w-full h-full rounded-full bg-cyan-950 flex items-center justify-center text-cyan-400"><Icon name="radio" size={32}/></div>)}
+                                <div className="absolute w-6 h-6 bg-cyan-500 rounded-full border-2 border-black flex items-center justify-center shadow-lg"><div className="w-2 h-2 bg-black rounded-full"></div></div>
+                            </div>
+                            <div className="space-y-1.5 min-w-0 flex-1">
+                                <div className="flex items-center gap-2">
+                                    <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-500/40 text-[10px] font-mono text-cyan-300 font-bold uppercase tracking-widest">{isPlaying && isPowerOn ? '🔴 En Directo' : '⏸ En Pausa'}</span>
+                                    {currentStation && (<button onClick={() => onToggleFavorite({ ...currentStation, type: 'radio' })} className="px-2.5 py-0.5 rounded-full bg-black/60 border border-slate-800 text-xs text-cyan-400 flex items-center gap-1 hover:bg-white/5 transition-colors"><Icon name="heart" size={12} fill={currentIsFav ? "#06b6d4" : "none"} className={currentIsFav ? "text-cyan-400" : "text-slate-400"}/><span className="text-[10px]">{currentIsFav ? 'En Favs' : 'Añadir Fav'}</span></button>)}
+                                </div>
+                                <h1 className="text-xl sm:text-2xl font-black text-white truncate orbitron drop-shadow">{currentStation ? currentStation.title : 'Selecciona una Emisora'}</h1>
+                                <p className="text-xs text-cyan-400 font-medium truncate">{currentStation?.group || 'Variedad Musical'} • {streamError ? 'Error en flujo' : isLoading ? 'Conectando...' : 'Alta Calidad HD'}</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-col sm:flex-row items-center gap-4 relative z-10 w-full md:w-auto justify-end">
+                            <div className="flex items-center gap-2 bg-black/60 px-4 py-3 rounded-2xl border border-slate-800 shadow-inner w-full sm:w-auto">
+                                <Icon name="volume" size={16} className="text-cyan-400 flex-shrink-0"/>
+                                <input type="range" min="0" max="1" step="0.05" value={volume} onChange={(e) => setVolume(parseFloat(e.target.value))} className="w-28 sm:w-36 accent-cyan-400"/>
+                                <span className="text-xs font-mono font-bold text-cyan-300 w-8 text-right">{Math.round(volume * 100)}%</span>
+                            </div>
+                            <div className="flex items-center gap-2 w-full sm:w-auto justify-center">
+                                <button onClick={handlePrev} className="p-3.5 rounded-2xl bg-black/60 hover:bg-cyan-500/20 text-cyan-300 border border-slate-800 hover:border-cyan-500/40 transition-all shadow-lg active:scale-95" title="Anterior"><i className="fa-solid fa-backward-step"></i></button>
+                                <button onClick={handleTogglePlayPause} className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white font-extrabold text-xs tracking-wider transition-all shadow-[0_0_20px_rgba(6,182,212,0.5)] flex items-center gap-2 active:scale-95"><i className={`fa-solid ${isPlaying && isPowerOn ? 'fa-pause' : 'fa-play'}`}></i><span>{isPlaying && isPowerOn ? 'PAUSAR' : 'REPRODUCIR'}</span></button>
+                                <button onClick={handleNext} className="p-3.5 rounded-2xl bg-black/60 hover:bg-cyan-500/20 text-cyan-300 border border-slate-800 hover:border-cyan-500/40 transition-all shadow-lg active:scale-95" title="Siguiente"><i className="fa-solid fa-forward-step"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div className="glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col justify-between shadow-xl space-y-6">
+                            <div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-xs font-black uppercase text-cyan-400 tracking-wider flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Ecualizador Visualizador</h3>
+                                    <span className="text-[10px] font-mono text-slate-400">{clockTime}</span>
+                                </div>
+                                <div className="h-40 bg-black/80 rounded-2xl border border-slate-800/80 p-4 flex items-end justify-around gap-2 shadow-inner overflow-hidden relative">
+                                    <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 to-transparent pointer-events-none"></div>
+                                    {spectrumHeights.map((h, sIdx) => (<div key={sIdx} className="w-8 bg-gradient-to-t from-cyan-600 via-teal-400 to-cyan-300 rounded-t-lg transition-all duration-75 shadow-[0_0_15px_rgba(6,182,212,0.5)]" style={{ height: `${h}%` }}></div>))}
+                                </div>
+                            </div>
+                            <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
+                                <div className="flex justify-between text-[11px] font-bold text-slate-300"><span>Estado del Servidor</span><span className="text-emerald-400 font-mono">100% Estable</span></div>
+                                <p className="text-[11px] text-slate-400 leading-relaxed">Disfruta de las emisoras más populares de Costa Rica con transmisión directa digital sin interrupciones.</p>
+                            </div>
+                        </div>
+                        <div className="lg:col-span-2 glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col h-[520px] shadow-xl">
+                            <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-3 pb-4 border-b border-slate-800">
+                                <div className="flex items-center gap-2">
+                                    <button onClick={() => setRadioViewMode('all')} className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${radioViewMode === 'all' ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'bg-black/40 text-slate-400 hover:text-white border border-slate-800'}`}>Todas ({stations.length})</button>
+                                    <button onClick={() => setRadioViewMode('favorites')} className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${radioViewMode === 'favorites' ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'bg-black/40 text-slate-400 hover:text-white border border-slate-800'}`}><Icon name="heart" size={12} fill={radioViewMode === 'favorites' ? 'black' : 'none'}/><span>Mis Favoritas ({radioFavorites.length})</span></button>
+                                </div>
+                                <div className="relative w-full sm:w-56">
+                                    <input type="text" placeholder="Buscar emisora..." value={radioFilter} onChange={(e) => setRadioFilter(e.target.value)} className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white focus:border-cyan-500 outline-none pl-9 shadow-inner"/>
+                                    <Icon name="search" size={14} className="absolute left-3 top-2.5 text-slate-400"/>
+                                    {radioFilter && <button onClick={() => setRadioFilter('')} className="absolute right-3 top-2.5 text-slate-400 hover:text-white"><Icon name="x" size={14}/></button>}
+                                </div>
+                            </div>
+                            <div className="flex-1 overflow-y-auto custom-scrollbar pr-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                {displayed.length === 0 ? (
+                                    <div className="col-span-2 text-center py-16 text-slate-500 text-xs font-medium">{radioViewMode === 'favorites' ? 'No tienes emisoras marcadas como favoritas todavía.' : 'No se encontraron emisoras con ese término.'}</div>
+                                ) : (
+                                    displayed.map((station, sIdx) => {
+                                        const isCurrent = currentStation && (currentStation.id === station.id || currentStation.url === station.url);
+                                        const isFav = isItemFavorite({ ...station, type: 'radio' });
+                                        return (
+                                            <div key={station.id || sIdx} onClick={() => onPlayStation(station)} className={`group relative p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center gap-3.5 ${isCurrent && isPlaying ? 'bg-cyan-950/60 border-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.3)]' : 'bg-black/40 hover:bg-white/5 border-slate-800/80 hover:border-slate-700'}`}>
+                                                <div className="w-12 h-12 rounded-2xl bg-black border border-slate-800 flex items-center justify-center overflow-hidden flex-shrink-0 relative shadow-inner p-1">
+                                                    {station.image ? (<RobustImage src={station.image} alt={station.title} title={station.title} type="tv" className="w-full h-full object-cover rounded-xl" />) : (<Icon name="radio" size={18} className="text-slate-400"/>)}
+                                                    {isCurrent && isPlaying && (<div className="absolute inset-0 bg-cyan-600/30 backdrop-blur-[1px] rounded-xl flex items-center justify-center"><div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></div></div>)}
+                                                </div>
+                                                <div className="flex-1 min-w-0">
+                                                    <h4 className={`text-xs font-bold truncate transition-colors ${isCurrent && isPlaying ? 'text-cyan-400' : 'text-white group-hover:text-cyan-300'}`}>{station.title}</h4>
+                                                    <span className="text-[10px] text-slate-400 truncate block mt-0.5 font-medium">{station.group || 'Variedad'}</span>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <button onClick={(e) => { e.stopPropagation(); onToggleFavorite({ ...station, type: 'radio' }); }} className="p-2 rounded-xl text-slate-400 hover:text-white transition-colors"><Icon name="heart" size={14} fill={isFav ? '#06b6d4' : 'none'} className={isFav ? 'text-cyan-500' : 'text-slate-500'}/></button>
+                                                    <div className="w-8 h-8 rounded-xl bg-black/60 border border-slate-800 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-600 group-hover:text-white transition-all flex-shrink-0"><Icon name={isCurrent && isPlaying ? "pause" : "play"} size={12} fill="currentColor"/></div>
+                                                </div>
+                                            </div>
+                                        );
+                                    })
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const IntroScreen = ({ onEnter }) => {
+            const [isLoading, setIsLoading] = useState(false);
+            const [progress, setProgress] = useState(0);
+
+            const handleStart = () => {
+                setIsLoading(true);
+                let current = 0;
+                const interval = setInterval(() => {
+                    current += 2;
+                    if (current <= 100) { setProgress(current); }
+                    else { clearInterval(interval); onEnter(); }
+                }, 30);
+            };
+
+            return (
+                <div className="fixed inset-0 z-[100] bg-[#020617] flex items-center justify-center overflow-hidden font-sans p-4">
+                    <div className="absolute inset-0"><img src="https://img.magnific.com/foto-gratis/cine-caja-palomitas-maiz_23-2148133612.jpg?semt=ais_hybrid&w=740&q=80" className="w-full h-full object-cover opacity-15" /><div className="absolute inset-0 bg-gradient-to-b from-[#020617] via-[#020617]/90 to-[#020617]"></div></div>
+                    <div className="relative z-10 text-center max-w-sm sm:max-w-md w-full animate-scale-in glass-panel p-6 sm:p-8 rounded-3xl shadow-[0_0_80px_rgba(6,182,212,0.2)] border border-cyan-500/20">
+                        <div className="mb-3 inline-block bg-gradient-to-r from-cyan-600 to-teal-500 px-3 py-1 rounded-full text-[9px] font-black tracking-widest uppercase text-white shadow-[0_0_15px_rgba(6,182,212,0.4)]">Cinematic Experience</div>
+                        <div className="flex items-center justify-center gap-2.5 mb-2">
+                            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-cyan-600 to-teal-500 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.5)]">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 fill-white"><polygon points="40,30 70,50 40,70"/></svg>
+                            </div>
+                            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tighter">BOXPLAY<span className="text-cyan-400">TV</span></h1>
+                        </div>
+                        <p className="text-xs sm:text-sm text-slate-300 font-light mb-6 italic">"Streaming de alta calidad cinematográfica."</p>
+                        {isLoading ? (
+                            <div className="space-y-3 mb-6">
+                                <div className="flex justify-between text-xs text-cyan-300 font-bold px-1"><span>Cargando plataforma...</span><span>{progress}%</span></div>
+                                <div className="w-full h-2.5 bg-black/60 rounded-full overflow-hidden border border-slate-800 p-0.5"><div className="h-full bg-gradient-to-r from-cyan-600 to-teal-400 rounded-full transition-all duration-75 shadow-[0_0_15px_#06b6d4]" style={{ width: `${progress}%` }}></div></div>
+                            </div>
+                        ) : (
+                            <button onClick={handleStart} className="w-full bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white py-3.5 rounded-full font-extrabold text-sm sm:text-base shadow-[0_0_25px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2 mb-6 active:scale-95 transition-all"><span>Comenzar Experiencia</span> <Icon fill="white" name="play" size={16}/></button>
+                        )}
+                        <div className="opacity-80 pt-3 border-t border-slate-800"><p className="text-[8px] text-slate-400 uppercase tracking-widest mb-0.5">DISEÑADO Y PROGRAMADO POR</p><h3 className="text-sm font-serif text-gold-gradient font-bold mb-1">JORGE ARTURO HERNÁNDEZ MÉNDEZ</h3><p className="text-[8px] text-slate-500">Boxplaytv • Todos los derechos reservados</p></div>
+                    </div>
+                </div>
+            );
+        };
 
         const App = () => {
             const [showIntro, setShowIntro] = useState(true);
@@ -626,7 +927,6 @@
                 { id: 'radio', icon: 'radio', label: 'Radio HD' }, 
                 { id: 'payments', icon: 'star', label: 'Planes & Pagos' },
                 { id: 'community', icon: 'chat', label: 'Comunidad' },
-                { id: 'spotify', icon: 'music', label: 'Música', isExternal: true, url: './spotify.html' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
 
@@ -1071,7 +1371,7 @@
                 window.history.pushState({ appState: 'player', item: item.title }, '');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
-                // Activación automática en pantalla completa tras reproducir
+                // Activar pantalla completa automática
                 setTimeout(() => {
                     const playerElement = movieContainerRef.current || document.querySelector('video') || document.querySelector('iframe');
                     if (playerElement) {
@@ -1091,22 +1391,19 @@
             const handlePlayRadioStation = (station) => { setCurrentRadioStation(station); setIsRadioPlaying(true); setStreamError(false); };
 
             const handleTabClick = (tab) => {
-                if (tab.isExternal) { window.open(tab.url, '_blank'); }
-                else {
-                    setActiveTab(tab.id); setSearch(''); setIsLocked(false); setIsPlaying(false); setShowMobileMoreMenu(false);
-                    window.history.pushState({ appState: 'main', activeTab: tab.id }, '');
-                    if (tab.id === 'tv') {
-                        if (!selectedItem || selectedItem.type !== 'tv') {
-                            const telerredChannel = content.tv.find(c => c.title.toLowerCase().includes('telerred') || c.title.toLowerCase().includes('tele red') || c.title.toLowerCase().includes('tele-red')) || content.tv[0];
-                            if (telerredChannel) setSelectedItem(telerredChannel);
-                        }
-                    } else if (tab.id === 'radio') {
-                        if (!currentRadioStation && radioStations.length > 0) {
-                            const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
-                            setCurrentRadioStation(def); setIsRadioPlaying(true);
-                        }
-                    } else { setSelectedItem(null); }
-                }
+                setActiveTab(tab.id); setSearch(''); setIsLocked(false); setIsPlaying(false); setShowMobileMoreMenu(false);
+                window.history.pushState({ appState: 'main', activeTab: tab.id }, '');
+                if (tab.id === 'tv') {
+                    if (!selectedItem || selectedItem.type !== 'tv') {
+                        const telerredChannel = content.tv.find(c => c.title.toLowerCase().includes('telerred') || c.title.toLowerCase().includes('tele red') || c.title.toLowerCase().includes('tele-red')) || content.tv[0];
+                        if (telerredChannel) setSelectedItem(telerredChannel);
+                    }
+                } else if (tab.id === 'radio') {
+                    if (!currentRadioStation && radioStations.length > 0) {
+                        const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
+                        setCurrentRadioStation(def); setIsRadioPlaying(true);
+                    }
+                } else { setSelectedItem(null); }
             };
 
             if (showIntro) return <IntroScreen onEnter={() => { 
@@ -1128,7 +1425,7 @@
                             </div>
                             <nav className="hidden lg:flex items-center gap-1.5">
                                 {navTabs.slice(0, 9).map(tab => (
-                                    <button key={tab.id} onClick={() => handleTabClick(tab)} className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${activeTab === tab.id && !tab.isExternal ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]' : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'}`}>
+                                    <button key={tab.id} onClick={() => handleTabClick(tab)} className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${activeTab === tab.id ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]' : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'}`}>
                                         <Icon name={tab.icon} size={14}/>
                                         <span>{tab.label}</span>
                                     </button>
@@ -1199,8 +1496,8 @@
                                     <button onClick={() => setShowMobileMoreMenu(false)} className="text-slate-400 hover:text-white"><Icon name="x" size={16}/></button>
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
-                                    {navTabs.slice(3, 11).map(tab => (
-                                        <button key={tab.id} onClick={() => handleTabClick(tab)} className={`p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id && !tab.isExternal ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
+                                    {navTabs.slice(3, 10).map(tab => (
+                                        <button key={tab.id} onClick={() => handleTabClick(tab)} className={`p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
                                             <Icon name={tab.icon} size={16}/>
                                             <span className="truncate">{tab.label}</span>
                                         </button>
