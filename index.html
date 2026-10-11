@@ -403,8 +403,8 @@
             return url;
         };
 
-        // Componente de Pasarela de Pago SINPE Móvil (₡3,000 / mes y Teléfono 506-6013-2444)
-        function SinpePaywall({ emailUsuario, onEmailChange, onVerificado }) {
+        // Componente de Pasarela de Pago SINPE Móvil con mensaje personalizado
+        function SinpePaywall({ emailUsuario, onEmailChange, onVerificado, onClose }) {
             const [inputEmail, setInputEmail] = useState(emailUsuario || '');
             const [verificando, setVerificando] = useState(false);
             const [errorMsg, setErrorMsg] = useState('');
@@ -423,7 +423,7 @@
                         onEmailChange(inputEmail.trim());
                         onVerificado();
                     } else {
-                        setErrorMsg('Suscripción pendiente o vencida. Realiza tu pago de ₡3,000 por SINPE Móvil para continuar.');
+                        setErrorMsg('Suscripción pendiente o vencida. Realiza tu pago de ₡3,000 por SINPE Móvil para continuar disfrutando del contenido.');
                     }
                 } catch (err) {
                     setErrorMsg('Error al conectar con la base de datos.');
@@ -433,34 +433,38 @@
             };
 
             return (
-                <div style={{ padding: '40px', maxWidth: '480px', margin: '60px auto', background: '#0f172a', color: 'white', borderRadius: '20px', textAlign: 'center', border: '1px solid #06b6d4', fontFamily: 'sans-serif', boxShadow: '0 0 40px rgba(6,182,212,0.2)' }}>
-                    <div style={{ fontSize: '3rem', marginBottom: '10px' }}>🎬</div>
-                    <h2 style={{ color: '#06b6d4', marginBottom: '10px', fontSize: '1.5rem', fontWeight: '800' }}>Suscripción Requerida</h2>
-                    <p style={{ color: '#94a3b8', marginBottom: '20px', fontSize: '0.9rem', lineHeight: '1.5' }}>Para ver películas y series completas, realiza tu pago mensual de <strong>₡3,000 colones</strong> mediante <strong>SINPE Móvil</strong>.</p>
-                    
-                    <div style={{ background: '#020617', padding: '15px', borderRadius: '12px', textAlign: 'left', marginBottom: '20px', border: '1px solid #1e293b' }}>
-                        <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>📱 <strong>Teléfono SINPE:</strong> 506-6013-2444</p>
-                        <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>👤 <strong>Titular:</strong> Jorge Hernández</p>
-                        <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>💳 <strong>Monto Mensual:</strong> ₡3,000 colones</p>
-                    </div>
+                <div style={{ position: 'fixed', inset: '0', zIndex: '120', background: 'rgba(2, 6, 23, 0.9)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
+                    <div style={{ padding: '30px', maxWidth: '480px', width: '100%', background: '#0f172a', color: 'white', borderRadius: '24px', textAlign: 'center', border: '1px solid #06b6d4', fontFamily: 'sans-serif', boxShadow: '0 0 50px rgba(6,182,212,0.3)', position: 'relative' }}>
+                        <button onClick={onClose} style={{ position: 'absolute', top: '16px', right: '16px', background: 'transparent', border: 'none', color: '#94a3b8', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
+                        <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>🎬</div>
+                        <h2 style={{ color: '#06b6d4', marginBottom: '8px', fontSize: '1.4rem', fontWeight: '800' }}>¡Suscríbete o Renueva tu Suscripción!</h2>
+                        <p style={{ color: '#94a3b8', marginBottom: '16px', fontSize: '0.85rem', lineHeight: '1.4' }}>Para seguir viendo películas y series exclusivas, realiza tu aporte mensual de <strong>₡3,000 colones</strong> y activa tu acceso inmediato.</p>
+                        
+                        <div style={{ background: '#020617', padding: '12px 16px', borderRadius: '12px', textAlign: 'left', marginBottom: '16px', border: '1px solid #1e293b' }}>
+                            <p style={{ margin: '6px 0', fontSize: '0.85rem' }}>📱 <strong>Teléfono SINPE:</strong> 506-6013-2444</p>
+                            <p style={{ margin: '6px 0', fontSize: '0.85rem' }}>👤 <strong>Titular:</strong> Jorge Hernández</p>
+                            <p style={{ margin: '6px 0', fontSize: '0.85rem' }}>💳 <strong>Monto:</strong> ₡3,000 / mes</p>
+                        </div>
 
-                    <form onSubmit={handleValidarPago} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                        <input 
-                            type="email" 
-                            placeholder="Ingresa tu correo registrado" 
-                            value={inputEmail} 
-                            onChange={(e) => setInputEmail(e.target.value)} 
-                            style={{ padding: '12px 16px', background: '#020617', border: '1px solid #334155', borderRadius: '10px', color: 'white', outline: 'none', fontSize: '0.9rem' }}
-                        />
-                        {errorMsg && <p style={{ color: '#f43f5e', fontSize: '0.8rem', margin: '0' }}>{errorMsg}</p>}
-                        <button 
-                            type="submit" 
-                            disabled={verificando}
-                            style={{ padding: '12px', background: 'linear-gradient(to right, #06b6d4, #14b8a6)', color: '#020617', border: 'none', borderRadius: '10px', fontWeight: 'bold', cursor: 'pointer', fontSize: '0.9rem', transition: 'opacity 0.2s' }}
-                        >
-                            {verificando ? 'Verificando pago...' : 'Ya pagué / Verificar acceso'}
-                        </button>
-                    </form>
+                        <form onSubmit={handleValidarPago} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                            <input 
+                                type="email" 
+                                placeholder="Ingresa tu correo electrónico" 
+                                value={inputEmail} 
+                                onChange={(e) => setInputEmail(e.target.value)} 
+                                style={{ padding: '12px 16px', background: '#020617', border: '1px solid #334155', borderRadius: '10px', color: 'white', outline: 'none', fontSize: '0.9rem' }}
+                                autoFocus
+                            />
+                            {errorMsg && <p style={{ color: '#f43f5e', fontSize: '0.75rem', margin: '0', textAlign: 'left' }}>{errorMsg}</p>}
+                            <button 
+                                type="submit" 
+                                disabled={verificando}
+                                style={{ padding: '12px', background: 'linear-gradient(to right, #06b6d4, #14b8a6)', color: '#020617', border: 'none', borderRadius: '10px', fontWeight: 'bold', cursor: 'pointer', fontSize: '0.9rem', marginTop: '4px' }}
+                            >
+                                {verificando ? 'Verificando pago...' : 'Verificar mi suscripción'}
+                            </button>
+                        </form>
+                    </div>
                 </div>
             );
         }
@@ -1077,7 +1081,7 @@
             };
 
             const handlePlayNow = (item, episode = null) => {
-                // Validación de suscripción para películas y series
+                // Validación estricta de suscripción activa para películas y series
                 if (item.type !== 'tv' && item.type !== 'radio' && !isSubscriberActive) {
                     setShowPaywallModal(true);
                     window.history.pushState({ appState: 'paywall-modal' }, '');
@@ -1801,7 +1805,9 @@
                             </div>
                         ) : activeTab === 'community' ? (
                             <CommunitySection />
-                        ) : showPaywallModal ? (
+                        ) : null}
+
+                        {showPaywallModal && (
                             <SinpePaywall 
                                 emailUsuario={emailUsuario} 
                                 onEmailChange={(email) => { setEmailUsuario(email); safeStorage.setItem('boxplay_user_email', email); }} 
@@ -1810,133 +1816,11 @@
                                     setShowPaywallModal(false);
                                     window.history.pushState({ appState: 'main', activeTab }, '');
                                 }} 
+                                onClose={() => {
+                                    setShowPaywallModal(false);
+                                    window.history.pushState({ appState: 'main', activeTab }, '');
+                                }}
                             />
-                        ) : (
-                            <>
-                                {activeTab === 'home' && !search && (
-                                    <>
-                                        {currentHeroItem && (<HeroSection item={currentHeroItem} onPlay={handlePlay} isFavorite={isItemFavorite(currentHeroItem)} onToggleFavorite={toggleFavorite} />)}
-                                        
-                                        <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full">
-                                            <div className="flex items-center gap-3 mb-4">
-                                                <div className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
-                                                <h2 className="text-base sm:text-lg font-black uppercase tracking-wider text-white">ACCESO RÁPIDO / HUB PRINCIPAL</h2>
-                                            </div>
-                                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                                <div onClick={() => handleTabClick(navTabs.find(t => t.id === 'tv'))} className="hub-card-tv group glass-panel rounded-2xl p-5 border border-slate-800/80 hover:border-cyan-500/50 cursor-pointer transition-all duration-300 hover:shadow-[0_10px_30px_rgba(6,182,212,0.25)] flex flex-col justify-between relative overflow-hidden">
-                                                    <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl group-hover:bg-cyan-500/15 transition-colors"></div>
-                                                    <div className="flex items-center justify-between mb-8 relative z-10">
-                                                        <div className="p-3 bg-cyan-500/15 rounded-2xl text-cyan-400 border border-cyan-500/30 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300"><Icon name="tv" size={24}/></div>
-                                                        <span className="text-[10px] font-mono tracking-wider font-extrabold text-cyan-300 bg-cyan-950/80 border border-cyan-500/30 px-2.5 py-1 rounded-full group-hover:bg-cyan-500 group-hover:text-black transition-colors">EN VIVO</span>
-                                                    </div>
-                                                    <div className="relative z-10">
-                                                        <h3 className="text-base font-black text-white group-hover:text-cyan-400 transition-colors mb-1">Televisión en Vivo</h3>
-                                                        <p className="text-xs text-slate-400">{content.tv.length || 63} canales disponibles</p>
-                                                    </div>
-                                                </div>
-                                                <div onClick={() => handleTabClick(navTabs.find(t => t.id === 'movies'))} className="hub-card-cine group glass-panel rounded-2xl p-5 border border-slate-800/80 hover:border-teal-500/50 cursor-pointer transition-all duration-300 hover:shadow-[0_10px_30px_rgba(20,184,166,0.25)] flex flex-col justify-between relative overflow-hidden">
-                                                    <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-full blur-2xl group-hover:bg-teal-500/15 transition-colors"></div>
-                                                    <div className="flex items-center justify-between mb-8 relative z-10">
-                                                        <div className="p-3 bg-teal-500/15 rounded-2xl text-teal-400 border border-teal-500/30 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300"><Icon name="clapperboard" size={24}/></div>
-                                                        <span className="text-[10px] font-mono tracking-wider font-extrabold text-teal-300 bg-teal-950/80 border border-cyan-500/30 px-2.5 py-1 rounded-full group-hover:bg-teal-500 group-hover:text-black transition-colors">HD / 4K</span>
-                                                    </div>
-                                                    <div className="relative z-10">
-                                                        <h3 className="text-base font-black text-white group-hover:text-teal-400 transition-colors mb-1">Estrenos de Cine</h3>
-                                                        <p className="text-xs text-slate-400">{content.movies.length || 146} películas</p>
-                                                    </div>
-                                                </div>
-                                                <div onClick={() => handleTabClick(navTabs.find(t => t.id === 'movies2'))} className="hub-card-radio group glass-panel rounded-2xl p-5 border border-slate-800/80 hover:border-amber-500/50 cursor-pointer transition-all duration-300 hover:shadow-[0_10px_30px_rgba(245,158,11,0.25)] flex flex-col justify-between relative overflow-hidden">
-                                                    <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/15 transition-colors"></div>
-                                                    <div className="flex items-center justify-between mb-8 relative z-10">
-                                                        <div className="p-3 bg-amber-500/15 rounded-2xl text-amber-400 border border-amber-500/30 group-hover:scale-110 transition-transform duration-300"><Icon name="star" size={24}/></div>
-                                                        <span className="text-[10px] font-mono tracking-wider font-extrabold text-amber-300 bg-amber-950/80 border border-amber-500/30 px-2.5 py-1 rounded-full group-hover:bg-amber-500 group-hover:text-black transition-colors">2026</span>
-                                                    </div>
-                                                    <div className="relative z-10">
-                                                        <h3 className="text-base font-black text-white group-hover:text-amber-400 transition-colors mb-1">Estrenos 2026</h3>
-                                                        <p className="text-xs text-slate-400">{content.movies2.length || 0} títulos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full space-y-4">
-                                            <div className="flex items-center justify-between">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-1.5 h-6 bg-[#e50914] rounded-full shadow-[0_0_15px_#e50914]"></div>
-                                                    <h2 className="text-base sm:text-lg font-black uppercase tracking-wider text-white flex items-center gap-2">
-                                                        <span>PRÓXIMAMENTE / NETFLIX TUDUM</span>
-                                                        <span className="text-[10px] bg-[#e50914]/20 text-[#e50914] border border-[#e50914]/40 px-2 py-0.5 rounded-full font-mono">Tudum</span>
-                                                    </h2>
-                                                </div>
-                                                <span className="text-xs text-slate-400 hidden sm:inline">Administrado vía tudum.json</span>
-                                            </div>
-                                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                                                {(content.tudum.length > 0 ? content.tudum : FALLBACK_NETFLIX_TUDUM).map((item, nIdx) => (
-                                                    <div key={nIdx} className="glass-panel rounded-2xl p-4 border border-slate-800 flex flex-col justify-between group hover:border-[#e50914]/50 transition-all card-glow">
-                                                        <div>
-                                                            <div className="aspect-[2/3] rounded-xl overflow-hidden mb-3 relative bg-black">
-                                                                <RobustImage src={item.image} alt={item.title} title={item.title} type="poster" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                                                                <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 text-[10px] font-mono text-yellow-400 font-bold flex items-center gap-1"><span>★</span> {item.score}</div>
-                                                                <div className="absolute bottom-2 left-2 bg-[#e50914] text-white text-[9px] font-black px-2 py-0.5 rounded uppercase tracking-wider">{item.releaseDate}</div>
-                                                            </div>
-                                                            <h3 className="text-sm font-bold text-white mb-1 group-hover:text-[#e50914] transition-colors">{item.title}</h3>
-                                                            <p className="text-[11px] text-cyan-400 font-medium mb-2">{item.genre}</p>
-                                                            <p className="text-xs text-slate-300 line-clamp-3 mb-3">{item.synopsis}</p>
-                                                        </div>
-                                                        <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[10px]">
-                                                            <span className="text-slate-400 truncate pr-2">🇨🇷 {item.availability}</span>
-                                                            <button onClick={() => { handlePlayNow({ title: item.title, description: `${item.synopsis} (Estreno en Netflix: ${item.releaseDate} - ${item.availability})`, image: item.image, url: item.trailerUrl, type: 'movies' }); }} className="px-3 py-1.5 rounded-lg bg-[#e50914] hover:bg-[#b91c1c] text-white font-bold transition-all shadow-[0_0_10px_rgba(229,9,20,0.4)] flex items-center gap-1.5 flex-shrink-0">
-                                                                <Icon name="play" size={10} fill="white"/> Tráiler
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </>
-                                )}
-                                
-                                {activeTab === 'home' && !search ? (
-                                    <div className="space-y-8 sm:space-y-10 pb-16 w-full">
-                                        {continueWatching.length > 0 && (<ContentRow title="▶️ Continuar Viendo" items={continueWatching} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} maxItems={6} />)}
-                                        {content.movies2.length > 0 && (<ContentRow title="✨ Estrenos 2026" items={content.movies2} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />)}
-                                        <ContentRow title="🎬 Últimos Estrenos" items={content.movies} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        <ContentRow title="🔥 Tendencias Actuales (Anime & Más)" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        <ContentRow title="⭐ Programas Populares" items={content.series} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        <ContentRow title="🏆 Vista Superior (Top Shows)" items={content.animados.slice().reverse()} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length > 0 && (<ContentRow title="❤️ Mis Favoritos (Películas y Series)" items={favorites.filter(item => item.type !== 'tv' && item.type !== 'radio')} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />)}
-                                    </div>
-                                ) : activeTab === 'topshows' ? (
-                                    <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
-                                        <div className="mb-6 flex items-center gap-3 border-b border-slate-800 pb-4">
-                                            <div className="p-2.5 bg-yellow-500/20 rounded-xl text-yellow-400 border border-yellow-500/30"><Icon fill="currentColor" name="star" size={20}/></div>
-                                            <div>
-                                                <h2 className="text-lg sm:text-2xl font-black text-white">Vista Superior / Top Shows</h2>
-                                                <p className="text-xs text-slate-400 mt-0.5">Los programas mejor valorados y más reproducidos por la comunidad.</p>
-                                            </div>
-                                        </div>
-                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
-                                            {displayedItems.map((item, i) => (<Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />))}
-                                        </div>
-                                    </div>
-                                ) : (
-                                    <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
-                                        <div className="mb-6 flex items-center gap-3">
-                                            <div className="w-1.5 h-6 sm:h-7 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
-                                            <h2 className="text-lg sm:text-2xl font-black uppercase tracking-wide text-white">{activeTab === 'home' ? 'Resultados de Búsqueda' : activeTab === 'movies2' ? 'Estrenos 2026' : activeTab}</h2>
-                                        </div>
-                                        {loading ? (
-                                            <div className="flex justify-center py-24"><div className="animate-spin rounded-full h-12 w-12 border-4 border-cyan-500 border-t-transparent shadow-[0_0_25px_#06b6d4]"></div></div>
-                                        ) : displayedItems.length === 0 ? (
-                                            <div className="text-center py-24 text-slate-500 text-sm"><p>No se encontraron resultados para tu búsqueda.</p></div>
-                                        ) : (
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5 animate-slide-up">
-                                                {displayedItems.map((item, i) => (<Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />))}
-                                            </div>
-                                        )}
-                                    </div>
-                                )}
-                            </>
                         )}
                     </main>
 
