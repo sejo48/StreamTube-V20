@@ -196,6 +196,56 @@
         }
     </style>
 </head>
+
+<!-- SDK y Validación de Firebase Firestore para SINPE Móvil -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAaa4Rs4vk2xq0PzXnb9tdLnt1oqqj4qa4",
+    authDomain: "boxplaytv-b32d8.firebaseapp.com",
+    projectId: "boxplaytv-b32d8",
+    storageBucket: "boxplaytv-b32d8.firebasestorage.app",
+    messagingSenderId: "165114643998",
+    appId: "1:165114643998:web:d12cb70574ac11f29a100f"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.verificarSuscripcion = async function(emailUsuario) {
+    try {
+      const docRef = doc(db, "suscripciones", emailUsuario);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        const hoy = new Date();
+        const expiracion = new Date(data.expires_at);
+        if (data.status === "active" && hoy <= expiracion) return true; 
+      }
+      return false; 
+    } catch (error) {
+      console.error("Error al verificar la suscripción:", error);
+      return false;
+    }
+  };
+
+  window.aprobarPagoSinpe = async function(emailUsuario) {
+    try {
+      const fechaExpiracion = new Date();
+      fechaExpiracion.setDate(fechaExpiracion.getDate() + 30);
+      const docRef = doc(db, "suscripciones", emailUsuario);
+      await updateDoc(docRef, {
+        status: "active",
+        expires_at: fechaExpiracion.toISOString()
+      });
+      alert(`¡Suscripción de 30 días aprobada para ${emailUsuario}!`);
+    } catch (error) {
+      console.error("Error al aprobar el pago:", error);
+    }
+  };
+</script>
 <body>
     <div id="root">
         <div style="display:flex;height:100vh;width:100vw;align-items:center;justify-content:center;background:#020617;color:white;flex-direction:column;font-family:sans-serif;">
@@ -2174,8 +2224,51 @@
             );
         };
 
-        const rootNode = document.getElementById('root');
-        if (rootNode) {
+        // Bloque de protección con Firebase y SINPE Móvil
+  const rootNode = document.getElementById('root');
+  if (rootNode) {
+    const root = ReactDOM.createRoot(rootNode);
+
+    async function iniciarAppProtegida() {
+      // Muestra un mensaje mientras consulta tu Firestore
+      root.render(
+        <div style={{color: '#94a3b8', padding: '40px', textAlign: 'center', background: '#020617', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif'}}>
+          <h2>Verificando suscripción de Box Play TV...</h2>
+        </div>
+      );
+
+      const emailUsuario = "sejo48@gmail.com"; // Tu correo de prueba
+      let autorizado = false;
+
+      try {
+        if (window.verificarSuscripcion) {
+          autorizado = await window.verificarSuscripcion(emailUsuario);
+        }
+      } catch (e) {
+        console.error("Error al validar:", e);
+      }
+
+      if (autorizado) {
+        // Si está activo, carga tu plataforma normal de streaming
+        root.render(<App />);
+      } else {
+        // Si está inactivo o vencido, bloquea y muestra las instrucciones de SINPE Móvil
+        root.render(
+          <div style={{ padding: '40px', maxWidth: '450px', margin: '80px auto', background: '#0f172a', color: 'white', borderRadius: '16px', textAlign: 'center', border: '1px solid #06b6d4', fontFamily: 'sans-serif' }}>
+            <h2 style={{ color: '#06b6d4', marginBottom: '15px' }}>Suscripción Requerida</h2>
+            <p style={{ color: '#94a3b8', marginBottom: '20px' }}>Realiza tu pago mensual mediante <strong>SINPE Móvil</strong> para continuar disfrutando de Box Play TV.</p>
+            <div style={{ background: '#020617', padding: '15px', borderRadius: '8px', textAlign: 'left', marginBottom: '15px' }}>
+              <p style={{ margin: '8px 0' }}>📱 <strong>Teléfono SINPE:</strong> [Tu Número]</p>
+              <p style={{ margin: '8px 0' }}>👤 <strong>Titular:</strong> Jorge Hernández</p>
+            </div>
+            <p style={{ fontSize: '0.8rem', color: '#64748b' }}>Cuenta evaluada: {emailUsuario}</p>
+          </div>
+        );
+      }
+    }
+
+    iniciarAppProtegida();
+  } {
             ReactDOM.createRoot(rootNode).render(<App/>);
         }
     </script>
