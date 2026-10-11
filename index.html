@@ -403,7 +403,7 @@
             return url;
         };
 
-        // Componente de Pasarela de Pago SINPE Móvil con tarifa de 3,000 colones
+        // Componente de Pasarela de Pago SINPE Móvil (₡3,000 / mes y Teléfono 506-6013-2444)
         function SinpePaywall({ emailUsuario, onEmailChange, onVerificado }) {
             const [inputEmail, setInputEmail] = useState(emailUsuario || '');
             const [verificando, setVerificando] = useState(false);
@@ -423,7 +423,7 @@
                         onEmailChange(inputEmail.trim());
                         onVerificado();
                     } else {
-                        setErrorMsg('No encontramos una suscripción activa para este correo. Realiza tu pago de ₡3,000 por SINPE Móvil.');
+                        setErrorMsg('Suscripción pendiente o vencida. Realiza tu pago de ₡3,000 por SINPE Móvil para continuar.');
                     }
                 } catch (err) {
                     setErrorMsg('Error al conectar con la base de datos.');
@@ -436,10 +436,10 @@
                 <div style={{ padding: '40px', maxWidth: '480px', margin: '60px auto', background: '#0f172a', color: 'white', borderRadius: '20px', textAlign: 'center', border: '1px solid #06b6d4', fontFamily: 'sans-serif', boxShadow: '0 0 40px rgba(6,182,212,0.2)' }}>
                     <div style={{ fontSize: '3rem', marginBottom: '10px' }}>🎬</div>
                     <h2 style={{ color: '#06b6d4', marginBottom: '10px', fontSize: '1.5rem', fontWeight: '800' }}>Suscripción Requerida</h2>
-                    <p style={{ color: '#94a3b8', marginBottom: '20px', fontSize: '0.9rem', lineHeight: '1.5' }}>Para ver películas y series completas, suscríbete por tan solo <strong>₡3,000 colones al mes</strong> mediante <strong>SINPE Móvil</strong>.</p>
+                    <p style={{ color: '#94a3b8', marginBottom: '20px', fontSize: '0.9rem', lineHeight: '1.5' }}>Para ver películas y series completas, realiza tu pago mensual de <strong>₡3,000 colones</strong> mediante <strong>SINPE Móvil</strong>.</p>
                     
                     <div style={{ background: '#020617', padding: '15px', borderRadius: '12px', textAlign: 'left', marginBottom: '20px', border: '1px solid #1e293b' }}>
-                        <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>📱 <strong>Teléfono SINPE:</strong> [Tu Número]</p>
+                        <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>📱 <strong>Teléfono SINPE:</strong> 506-6013-2444</p>
                         <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>👤 <strong>Titular:</strong> Jorge Hernández</p>
                         <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>💳 <strong>Monto Mensual:</strong> ₡3,000 colones</p>
                     </div>
