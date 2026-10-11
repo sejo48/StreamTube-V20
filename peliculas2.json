@@ -1,5 +1,140 @@
 [
   {
+    "titulo": "Matchbox: La película",
+    "tituloOriginal": "Matchbox the Movie",
+    "descripcion": "Varios amigos de la infancia se reúnen y el reencuentro se sale de madre cuando acaban metidos en un peligroso complot internacional y se ven obligados a salvar el mundo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/ev2GnYar3LUyui8sOu4gqeMXvLi.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/jdJsnhHfkIi3J7jwfiCFT4gXNx5.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1lwU64dZrzibCQje0OLWf4SwtKYnKFcr0/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-10-05",
+    "rating": "7.7",
+    "votos": 121,
+    "runtime": "2h 7min",
+    "genres": [
+      "Acción",
+      "Comedia",
+      "Aventura"
+    ],
+    "generosTexto": "Acción, Comedia, Aventura",
+    "clasificacion": "12",
+    "tagline": "Salva el mundo y tráete a tus amigos.",
+    "director": "Sam Hargrave",
+    "guionistas": "David Coggeshall",
+    "reparto": [
+      {
+        "nombre": "John Cena",
+        "personaje": "Sean",
+        "foto": "https://image.tmdb.org/t/p/w185/rgB2eIOt7WyQjdgJCOuESdDlrjg.jpg"
+      },
+      {
+        "nombre": "Jessica Biel",
+        "personaje": "Aimee",
+        "foto": "https://image.tmdb.org/t/p/w185/u5DzbWKvAzS0M4ZhYqpUR9MZr2M.jpg"
+      },
+      {
+        "nombre": "Sam Richardson",
+        "personaje": "Crosby",
+        "foto": "https://image.tmdb.org/t/p/w185/hUN7IIbegvL7aSqQI5KRWoqqJLm.jpg"
+      },
+      {
+        "nombre": "Arturo Castro",
+        "personaje": "Ted",
+        "foto": "https://image.tmdb.org/t/p/w185/pbLoDCfjm3fLtGHVqQcnbM2d0cu.jpg"
+      },
+      {
+        "nombre": "Teyonah Parris",
+        "personaje": "Charmaine",
+        "foto": "https://image.tmdb.org/t/p/w185/iGvBTOi0y2fbBVwgnBRXgY0IXDY.jpg"
+      },
+      {
+        "nombre": "Corey Stoll",
+        "personaje": "Mosier",
+        "foto": "https://image.tmdb.org/t/p/w185/2eMxKecTZBiS60gPUVWcimYgGDp.jpg"
+      },
+      {
+        "nombre": "Bill Camp",
+        "personaje": "Smalley",
+        "foto": "https://image.tmdb.org/t/p/w185/wxYyJSltCHwU0MTg838SllOlvNT.jpg"
+      },
+      {
+        "nombre": "گلشیفته فراهانی",
+        "personaje": "Robbie",
+        "foto": "https://image.tmdb.org/t/p/w185/lbsd2lAIQq4egOUXDIfjhte12vv.jpg"
+      },
+      {
+        "nombre": "Danai Gurira",
+        "personaje": "Helen",
+        "foto": "https://image.tmdb.org/t/p/w185/z7H7QeQvr24vskGlANQhG43vozQ.jpg"
+      },
+      {
+        "nombre": "Daniel Bernhardt",
+        "personaje": "Falko",
+        "foto": "https://image.tmdb.org/t/p/w185/3BLz32inDr1jznU6pKQmh20zfhK.jpg"
+      },
+      {
+        "nombre": "Randeep Hooda",
+        "personaje": "Mustafa",
+        "foto": "https://image.tmdb.org/t/p/w185/6Raio06bsLalCe4XDsknXxfDamV.jpg"
+      },
+      {
+        "nombre": "Graham Harvey",
+        "personaje": "Young Sean",
+        "foto": "https://image.tmdb.org/t/p/w185/npf6JiNKasP0jmOBxG7yyeouCUm.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Mattel Studios, Skydance Media",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=4x2ZfYax9io",
+    "coleccion": "",
+    "keywords": "friendship, undercover agent, reunion, based on toy, childhood friends, nostalgic, friends reunion, save the world, arrogant, assertive, cia agent",
+    "similares": [
+      {
+        "titulo": "Operación U.N.C.L.E.",
+        "poster": "https://image.tmdb.org/t/p/w342/pdkOcFgb2entKG6K3TqWhXVUnm2.jpg",
+        "year": "2015",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Juego de espías",
+        "poster": "https://image.tmdb.org/t/p/w342/sDLMU7Hdb8GI4mN3JHtPfIs4wD6.jpg",
+        "year": "2020",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Un espía y medio",
+        "poster": "https://image.tmdb.org/t/p/w342/vOZnX2PXASGjWXJdJSR4RjATDun.jpg",
+        "year": "2016",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "El cuartel secreto",
+        "poster": "https://image.tmdb.org/t/p/w342/hpH62pdEhkeXnbj4qchqz4QssuR.jpg",
+        "year": "2022",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Fast & Furious: Hobbs & Shaw",
+        "poster": "https://image.tmdb.org/t/p/w342/3KHGWvWDfMa8enQqezGim3aMBQw.jpg",
+        "year": "2019",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Austin Powers II. La espía que me achuchó",
+        "poster": "https://image.tmdb.org/t/p/w342/6QyOlwOMojFcdaLBSqSGhpQETfG.jpg",
+        "year": "1999",
+        "rating": "6.3"
+      }
+    ],
+    "tmdbId": 1148365
+  },
+  {
     "titulo": "La otra madre",
     "tituloOriginal": "Other Mommy",
     "descripcion": "Una joven llamada Bela entabla una relación con una entidad siniestra que habita en su casa y que guarda un parecido asombroso con su propia madre.",
