@@ -1,5 +1,138 @@
 [
   {
+    "titulo": "Salvando el Zoo",
+    "tituloOriginal": "Kangaroo Kids",
+    "descripcion": "Un grupo de niños en un pequeño pueblo de los Estados Unidos de América salvan un zoológico.",
+    "imagen": "https://image.tmdb.org/t/p/w780/5PRVyY78aYMiUuoSIvJdMFEJz9v.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/zQDvKkEaGD8Rzoy8VcRpud1fUde.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1wCExYxPZpx9BYnz8JLfxwMNzty2I19jU/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-02-17",
+    "rating": "10.0",
+    "votos": 1,
+    "runtime": "",
+    "genres": [
+      "Familia"
+    ],
+    "generosTexto": "Familia",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Fairai Branscombe Richmond",
+    "guionistas": "Fairai Branscombe Richmond",
+    "reparto": [
+      {
+        "nombre": "Branscombe Richmond",
+        "personaje": "Kodiak",
+        "foto": "https://image.tmdb.org/t/p/w185/4UFwrT68uzusdG1hcPARjxpJUIx.jpg"
+      },
+      {
+        "nombre": "Robbie Allen",
+        "personaje": "Jacob",
+        "foto": ""
+      },
+      {
+        "nombre": "Emily Ashby",
+        "personaje": "Maria",
+        "foto": "https://image.tmdb.org/t/p/w185/vkRNd0J6ldzedAebVBO8UV1Z3ua.jpg"
+      },
+      {
+        "nombre": "Josefina Baeza",
+        "personaje": "Johnny",
+        "foto": ""
+      },
+      {
+        "nombre": "Ella Branstetter",
+        "personaje": "Roxy",
+        "foto": ""
+      },
+      {
+        "nombre": "Ray Fite",
+        "personaje": "Jack",
+        "foto": ""
+      },
+      {
+        "nombre": "Steve Hodges",
+        "personaje": "Marty",
+        "foto": ""
+      },
+      {
+        "nombre": "Michael G. Kehoe",
+        "personaje": "Lizard",
+        "foto": ""
+      },
+      {
+        "nombre": "Michael G. Kehoe",
+        "personaje": "Lizard",
+        "foto": ""
+      },
+      {
+        "nombre": "Melissa Lugo",
+        "personaje": "Audrey",
+        "foto": ""
+      },
+      {
+        "nombre": "Thomas McCrady",
+        "personaje": "Joe Boy",
+        "foto": ""
+      },
+      {
+        "nombre": "Maliq Nelms",
+        "personaje": "Benjy",
+        "foto": ""
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "Sunn Stream Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "La patrulla al rescate",
+        "poster": "https://image.tmdb.org/t/p/w342/qHcn3PbjVHxBweDZxWpYH3JfugS.jpg",
+        "year": "2020",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Una noche de locos",
+        "poster": "https://image.tmdb.org/t/p/w342/yADcc2D0uaIwP2BHCaKPz0daAAI.jpg",
+        "year": "2020",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Pollyanna",
+        "poster": "https://image.tmdb.org/t/p/w342/9lWkRXg35SjUZXLr10ez8DERvRv.jpg",
+        "year": "1960",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "La Banda del Patio vuelve a la guardería",
+        "poster": "https://image.tmdb.org/t/p/w342/4QxhyegmKAkfW3yHvbljWMs1I7r.jpg",
+        "year": "2003",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Marineros de agua dulce",
+        "poster": "https://image.tmdb.org/t/p/w342/7DBiY6Z6gTsyCdgOJIpSm55aARy.jpg",
+        "year": "2001",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "¡Oye, Arnold! La película",
+        "poster": "https://image.tmdb.org/t/p/w342/lRoSR6ibaJglCXwuN7Od8FaAsbr.jpg",
+        "year": "2002",
+        "rating": "6.5"
+      }
+    ],
+    "tmdbId": 1249663
+  },
+  {
     "titulo": "Matchbox: La película",
     "tituloOriginal": "Matchbox the Movie",
     "descripcion": "Varios amigos de la infancia se reúnen y el reencuentro se sale de madre cuando acaban metidos en un peligroso complot internacional y se ven obligados a salvar el mundo.",
