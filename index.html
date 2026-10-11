@@ -414,7 +414,7 @@
             if (url.includes('ok.ru/video/')) return url.replace('ok.ru/video/', 'ok.ru/videoembed/');
             if (url.includes('drive.google.com')) {
                 let fileId = '';
-                if (url.includes('/file/d/')) { const parts = url.includes('/file/d/'); if (parts[1]) fileId = parts[1].split('/')[0]; }
+                if (url.includes('/file/d/')) { const parts = url.split('/file/d/'); if (parts[1]) fileId = parts[1].split('/')[0]; }
                 else if (url.includes('id=')) { const parts = url.split('id='); if (parts[1]) fileId = parts[1].split('&')[0]; }
                 if (fileId) return `https://drive.google.com/file/d/${fileId}/preview`;
             }
