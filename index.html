@@ -1,261 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Boxplaytv - Ultimate Streaming & Anime Hub</title>
-    
-    <meta property="og:title" content="BOXPLAYTV">
-    <meta property="og:description" content="Streaming de alta calidad cinematográfica y canales en directo">
-    <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjx4dt02lbSvoCJhKRtkyUa2NEhqRyvI8_G82p4jz_8iK5rfeJMVjKAcGXH9ukveI5c6kC_dlasscvR4CoUxCxbeDcEctr3zFJLJys7E76ZvAk6w4hOD1iwJTPj5g4Kfe-FLHhSO9HGLKtmapJZWXvRMMs23WdLnPqoj20RIrLjhFAHCqOsBk7NrmjoJlg/s320/07b01546-33f7-442e-b459-f3698b5a6120.png">
-    <meta property="og:url" content="https://sejo48.github.io/StreamTube-V20/">
-    <meta property="og:type" content="website">
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='28' fill='%2306b6d4'/%3E%3Cpolygon points='40,30 70,50 40,70' fill='%23ffffff'/%3E%3C/svg%3E">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1" async></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        if (typeof Babel !== 'undefined') {
-            Babel.registerPreset('react-classic', {
-                presets: [[Babel.availablePresets['react'], { runtime: 'classic' }]]
-            });
-        }
-    </script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-primary: #020617;
-            --bg-surface: #090d1f;
-            --bg-card: #0f172a;
-            --accent-cyan: #06b6d4;
-            --accent-teal: #14b8a6;
-            --accent-blue: #3b82f6;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-subtle: rgba(148, 163, 184, 0.12);
-        }
-
-        body { 
-            background-color: var(--bg-primary); 
-            color: var(--text-main); 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            overflow-x: hidden; 
-            -webkit-tap-highlight-color: transparent; 
-            width: 100%;
-            max-width: 100vw;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: -20vh;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80vw;
-            height: 50vh;
-            background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, rgba(20, 184, 166, 0.04) 40%, transparent 70%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        ::-webkit-scrollbar { width: 5px; height: 5px; }
-        ::-webkit-scrollbar-track { background: var(--bg-primary); }
-        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(6, 182, 212, 0.5); border-radius: 4px; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes scaleIn { from { transform: scale(0.96); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 25px rgba(6,182,212,0.4); } 50% { box-shadow: 0 0 50px rgba(6,182,212,0.8); } }
-        @keyframes vinylSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        
-        .animate-fade-in { animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .animate-scale-in { animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .vinyl-animation { animation: vinylSpin 10s linear infinite; }
-        .pulse-glow-box { animation: pulseGlow 3s infinite ease-in-out; }
-        
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.78);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border-subtle);
-        }
-
-        .glass-header {
-            background: rgba(2, 6, 23, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .cinema-glow { box-shadow: 0 0 50px -10px rgba(6, 182, 212, 0.22); }
-        .card-glow { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
-        .card-glow:hover {
-            box-shadow: 0 15px 30px -10px rgba(6, 182, 212, 0.32);
-            transform: translateY(-4px) scale(1.02);
-            border-color: rgba(6, 182, 212, 0.4);
-        }
-
-        .orbitron { font-family: 'Orbitron', sans-serif; }
-        .cyber-mono { font-family: 'Share Tech Mono', monospace; }
-
-        .text-gold-gradient { background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
-
-        .video-container-fix iframe, .video-container-fix video {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: fill !important;
-            border: none !important;
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
-        }
-
-        input[type=range] {
-            -webkit-appearance: none;
-            background: #081920;
-            height: 8px;
-            border-radius: 4px;
-            border: 1px solid #1b5b68;
-            cursor: pointer;
-            width: 100%;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 22px;
-            width: 16px;
-            border-radius: 4px;
-            background: linear-gradient(to bottom, #38bdf8, #0369a1);
-            border: 1px solid #7dd3fc;
-            cursor: pointer;
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
-            transition: transform 0.1s;
-        }
-        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
-
-        button:focus, div[tabindex="0"]:focus, input:focus, select:focus { outline: none; }
-
-        .netflix-poster-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
-
-        .netflix-gradient-bottom {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, 
-                #020617 0%, 
-                #020617 8%, 
-                rgba(2,6,23,0.9) 20%,
-                rgba(2,6,23,0.5) 45%,
-                rgba(2,6,23,0.15) 70%,
-                transparent 100%);
-        }
-
-        .netflix-gradient-top {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, 
-                rgba(2,6,23,0.7) 0%, 
-                transparent 30%);
-        }
-
-        .netflix-tab {
-            position: relative;
-            padding-bottom: 8px;
-            font-weight: 700;
-            transition: color 0.2s;
-        }
-
-        .netflix-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: #06b6d4;
-            border-radius: 3px;
-        }
-    </style>
-</head>
-
-<!-- SDK y Funciones de Firebase Firestore para Validación SINPE -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAaa4Rs4vk2xq0PzXnb9tdLnt1oqqj4qa4",
-    authDomain: "boxplaytv-b32d8.firebaseapp.com",
-    projectId: "boxplaytv-b32d8",
-    storageBucket: "boxplaytv-b32d8.firebasestorage.app",
-    messagingSenderId: "165114643998",
-    appId: "1:165114643998:web:d12cb70574ac11f29a100f"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  window.verificarSuscripcion = async function(emailUsuario) {
-    try {
-      const docRef = doc(db, "suscripciones", emailUsuario);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        const hoy = new Date();
-        const expiracion = new Date(data.expires_at);
-        if (data.status === "active" && hoy <= expiracion) return true; 
-      }
-      return false; 
-    } catch (error) {
-      console.error("Error al verificar la suscripción:", error);
-      return false;
-    }
-  };
-
-  window.aprobarPagoSinpe = async function(emailUsuario) {
-    try {
-      const fechaExpiracion = new Date();
-      fechaExpiracion.setDate(fechaExpiracion.getDate() + 30);
-      const docRef = doc(db, "suscripciones", emailUsuario);
-      await updateDoc(docRef, {
-        status: "active",
-        expires_at: fechaExpiracion.toISOString()
-      });
-      alert(`¡Suscripción de 30 días aprobada para ${emailUsuario}!`);
-    } catch (error) {
-      console.error("Error al aprobar el pago:", error);
-    }
-  };
-</script>
-<body>
-    <div id="root">
-        <div style="display:flex;height:100vh;width:100vw;align-items:center;justify-content:center;background:#020617;color:white;flex-direction:column;font-family:sans-serif;">
-            <div style="width:40px;height:40px;border:3px solid #06b6d4;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:16px;"></div>
-            <h2 style="font-weight: 700; font-size: 0.95rem; letter-spacing: 0.05em; color: #94a3b8;">Cargando Boxplaytv...</h2>
-            <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
-        </div>
-    </div>
-
-    <script type="text/babel" data-presets="react-classic">
+<script type="text/babel" data-presets="react-classic">
         const { useState, useEffect, useRef, useMemo } = React;
 
         const safeStorage = {
@@ -450,7 +193,86 @@
             return null;
         };
 
-        // Componente de Pasarela de Pago SINPE Móvil
+        // ==========================================
+        // DECLARACIÓN DE COMPONENTES AUXILIARES
+        // ==========================================
+
+        const Card = ({ item, onClick, isFavorite, onToggleFavorite }) => { 
+            const isTv = item.type === 'tv'; 
+            const hasLock = item.codigo || item.password || item.pin; 
+            const isKids = item.isKids || item.type === 'animados';
+            const imgSource = extractImageUrl(item);
+            const titleSource = item.titulo || item.title || item.name || 'Sin Título';
+            const fallbackImg = generatePlaceholder(titleSource, isTv ? 'tv' : 'poster');
+            return ( 
+                <div tabIndex="0" className="group relative flex flex-col gap-2 cursor-pointer active:scale-95 transition-transform card-glow rounded-2xl w-full" onClick={() => onClick(item)}> 
+                    <div className={`relative overflow-hidden bg-[#0f172a] border border-slate-800 shadow-xl ${isTv ? 'aspect-video rounded-full p-2' : 'aspect-[2/3] rounded-2xl'}`}> 
+                        <RobustImage src={imgSource || fallbackImg} loading="lazy" className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${isTv ? 'object-cover rounded-full' : 'object-cover'}`} type={isTv ? 'tv' : 'poster'} title={titleSource} alt={titleSource}/> 
+                        <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isTv ? 'rounded-full' : ''}`}></div> 
+                        <button onClick={(e) => { e.stopPropagation(); onToggleFavorite(item); }} className="absolute top-2 right-2 p-2 bg-black/70 rounded-full text-white backdrop-blur-md hover:bg-black transition-colors z-20"> 
+                            <Icon name="heart" size={14} fill={isFavorite ? "#06b6d4" : "none"} className={isFavorite ? "text-cyan-500" : "text-white"}/> 
+                        </button> 
+                        <div className="absolute bottom-2 left-2 flex gap-1 flex-wrap z-10"> 
+                            {isTv && <span className="bg-cyan-600 text-white text-[8px] font-black px-1.5 py-0.5 rounded shadow">LIVE</span>} 
+                            {isKids && <span className="bg-teal-600 text-white text-[8px] font-black px-1.5 py-0.5 rounded shadow">KIDS</span>} 
+                            {hasLock && <span className="bg-amber-500 text-black text-[8px] font-black px-1.5 py-0.5 rounded shadow flex items-center gap-0.5"><Icon name="lock" size={7}/> PIN</span>} 
+                        </div> 
+                    </div> 
+                    <h3 className="text-[11px] sm:text-xs font-bold text-slate-200 truncate px-0.5 group-hover:text-cyan-400 transition-colors text-center">{titleSource}</h3> 
+                </div> 
+            ); 
+        };
+
+        const ContentRow = ({ title, items, onPlay, favorites, tvFavorites, onToggleFavorite, maxItems = 6 }) => {
+            if (!items || items.length === 0) return null;
+            return (
+                <div className="max-w-7xl mx-auto px-4 sm:px-8 w-full space-y-3">
+                    <div className="flex items-center gap-3">
+                        <div className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
+                        <h2 className="text-base sm:text-lg font-black uppercase tracking-wider text-white">{title}</h2>
+                    </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
+                        {items.slice(0, maxItems).map((item, i) => {
+                            const itemId = item.id || item.title;
+                            const isFav = item.type === 'tv' ? tvFavorites.some(f => (f.id || f.title) === itemId) : favorites.some(f => (f.id || f.title) === itemId);
+                            return <Card item={item} key={itemId || i} onClick={onPlay} isFavorite={isFav} onToggleFavorite={onToggleFavorite} />;
+                        })}
+                    </div>
+                </div>
+            );
+        };
+
+        const HeroSection = ({ item, onPlay, isFavorite, onToggleFavorite }) => {
+            const featuredItem = useMemo(() => { if (!item) return null; return item; }, [item]);
+            if (!featuredItem) return null;
+            const imgSource = extractImageUrl(featuredItem) || generatePlaceholder(featuredItem.title || featuredItem.titulo, 'poster');
+            const titleSource = featuredItem.titulo || featuredItem.title || featuredItem.name;
+            const descSource = featuredItem.descripcion || featuredItem.sinopsis || featuredItem.plot;
+            return (
+                <div className="relative w-full bg-[#070b19] overflow-hidden rounded-none sm:rounded-3xl mb-8 group animate-fade-in shadow-2xl border-b sm:border border-slate-800 flex items-center max-w-7xl mx-auto px-4 sm:px-12 cinema-glow w-full py-8 sm:py-16 md:py-20">
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                        <img src="https://img.magnific.com/foto-gratis/cine-caja-palomitas-maiz_23-2148133612.jpg?semt=ais_hybrid&w=740&q=80" alt="Hero BG" className="w-full h-full object-cover opacity-25 scale-105 brightness-90" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/90 to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
+                    </div>
+                    <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-6 sm:gap-10 text-center sm:text-left">
+                        <div className="w-48 sm:w-60 md:w-68 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
+                            <RobustImage src={imgSource} alt={titleSource} title={titleSource} type="poster" className="w-full h-full object-cover" />
+                        </div>
+                        <div className="flex-1 flex flex-col gap-3 items-center sm:items-start max-w-xl">
+                            <span className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white text-[9px] sm:text-[10px] font-black px-3.5 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(6,182,212,0.4)]">Destacado Boxplaytv</span>
+                            <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white leading-tight drop-shadow-md line-clamp-2">{titleSource}</h1>
+                            <p className="text-slate-300 text-xs sm:text-sm md:text-base line-clamp-3 leading-relaxed drop-shadow">{descSource || "Disfruta de las mejores películas y series en alta definición."}</p>
+                            <div className="flex flex-wrap justify-center sm:justify-start gap-3 mt-2">
+                                <button onClick={() => onPlay(featuredItem)} className="bg-gradient-to-tr from-cyan-600 to-teal-500 hover:brightness-110 text-white px-6 sm:px-8 py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-95 transition-transform shadow-[0_0_20px_rgba(6,182,212,0.5)]"><Icon fill="white" name="play" size={15}/> Reproducir Ahora</button>
+                                <button onClick={() => onToggleFavorite(featuredItem)} className="glass-panel text-white p-3 rounded-xl flex items-center justify-center backdrop-blur-md border border-cyan-500/40 hover:bg-slate-800 transition-colors shadow-lg"><Icon name="heart" size={16} fill={isFavorite ? "#06b6d4" : "none"} className={isFavorite ? "text-cyan-500" : "text-white"}/></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
         function SinpePaywall({ emailUsuario, onEmailChange, onVerificado, onClose }) {
             const [inputEmail, setInputEmail] = useState(emailUsuario || '');
             const [verificando, setVerificando] = useState(false);
@@ -516,14 +338,10 @@
             );
         }
 
-        // Reproductor central BOXProPlayer
         function BoxProPlayer({ item, episode, onBack, onFullscreen, containerRef }) {
             const videoRef = React.useRef(null);
             const hlsRef = React.useRef(null);
             const [message, setMessage] = React.useState('');
-            const [castReady, setCastReady] = React.useState(false);
-            const [speed, setSpeed] = React.useState('1');
-            const [muted, setMuted] = React.useState(false);
             const targetUrl = (item?.type === 'series' || item?.type === 'animados') && episode
                 ? (episode.url || episode.urlDrive || episode.rawUrl || '')
                 : (item?.url || item?.urlDrive || item?.rawUrl || '');
@@ -785,6 +603,10 @@
                 </div>
             );
         };
+
+        // ==========================================
+        // COMPONENTE PRINCIPAL (APP)
+        // ==========================================
 
         const App = () => {
             const [showIntro, setShowIntro] = useState(true);
@@ -1294,7 +1116,6 @@
                 window.history.pushState({ appState: 'player', item: item.title }, '');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
-                // Activar pantalla completa automática
                 setTimeout(() => {
                     const playerElement = movieContainerRef.current || document.querySelector('video') || document.querySelector('iframe');
                     if (playerElement) {
