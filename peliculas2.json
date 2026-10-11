@@ -1,5 +1,123 @@
 [
   {
+    "titulo": "Dead Residents Evil",
+    "tituloOriginal": "Resident Dead",
+    "descripcion": "Un padre lucha contra un ejercito de no-muertos junto a su hija, gravemente herida, para llegar a la cura antes de que ella se transforme. Si logra llegar al laboratorio con la vacuna a tiempo, cree que su hija estará a salvo. Lamentablemente, el desafío más horrible lo espera en su destino final.",
+    "imagen": "https://image.tmdb.org/t/p/w780/yX8ziNTZ5aOszJ3l4R3BlT2gBIa.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/yKx5gYrYgakKZuUWAsuFDStBroy.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1ULcVxiL2rQrRnt-DlD5hpJhvvG9AKuc1/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-09-04",
+    "rating": "5.9",
+    "votos": 7,
+    "runtime": "1h 26min",
+    "genres": [
+      "Terror"
+    ],
+    "generosTexto": "Terror",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Ryan Ebert",
+    "guionistas": "Ryan Ebert",
+    "reparto": [
+      {
+        "nombre": "John Wells",
+        "personaje": "Joe",
+        "foto": "https://image.tmdb.org/t/p/w185/udDheh1OOGggBFQm56N5QSdrc6q.jpg"
+      },
+      {
+        "nombre": "Isabel Ramirez",
+        "personaje": "Ashley",
+        "foto": "https://image.tmdb.org/t/p/w185/wVyHo6XE3o3QbeiftOF0bgIfhcU.jpg"
+      },
+      {
+        "nombre": "Thandiwe McMillan",
+        "personaje": "Dawn",
+        "foto": "https://image.tmdb.org/t/p/w185/mr5BEL2guLAYOuXJyreNziKtwfV.jpg"
+      },
+      {
+        "nombre": "Hamid-Reza Benjamin Thompson",
+        "personaje": "Wilt",
+        "foto": "https://image.tmdb.org/t/p/w185/rOBcfuKyRp2mA6cAAOvxz8rfLIi.jpg"
+      },
+      {
+        "nombre": "Jarod Brock",
+        "personaje": "Sal",
+        "foto": "https://image.tmdb.org/t/p/w185/iBnnLpaOEuKeLGkIfqz8S2xXH7A.jpg"
+      },
+      {
+        "nombre": "Sai Piña",
+        "personaje": "Zack",
+        "foto": "https://image.tmdb.org/t/p/w185/8ZShtSAxpHuJvThPlyG082k9VAI.jpg"
+      },
+      {
+        "nombre": "Chase Breithoff",
+        "personaje": "Gino",
+        "foto": "https://image.tmdb.org/t/p/w185/dS1R97bN9RsgZz0zEPgDrEiyoEv.jpg"
+      },
+      {
+        "nombre": "Rob Eubanks",
+        "personaje": "Ned",
+        "foto": "https://image.tmdb.org/t/p/w185/igeQXcD0pV38QM2ln8Obeu8DRaL.jpg"
+      },
+      {
+        "nombre": "Tevin Paul",
+        "personaje": "Manny",
+        "foto": "https://image.tmdb.org/t/p/w185/rYaoblRidaFQw5ibj5mFRiVnuq5.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "The Asylum",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "mockbuster, enchant",
+    "similares": [
+      {
+        "titulo": "Silent Zone",
+        "poster": "https://image.tmdb.org/t/p/w342/7YZ0JRRD7mt8Ov9eIEGWMbDybx2.jpg",
+        "year": "2025",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "El final de nuestros días",
+        "poster": "https://image.tmdb.org/t/p/w342/lWw56vQLL33rS3Hq19ECv28dj6a.jpg",
+        "year": "2024",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Renacida de la Oscuridad",
+        "poster": "https://image.tmdb.org/t/p/w342/dTDiATqCtOvFAQPokIarn1vCFDC.jpg",
+        "year": "2018",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Extinción",
+        "poster": "https://image.tmdb.org/t/p/w342/ljo1ocj3rQP6X9lpuxDWsW47iWd.jpg",
+        "year": "2022",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "El diablo viene de noche",
+        "poster": "https://image.tmdb.org/t/p/w342/6QIeZuKirT4cXVpW7ilVZmcRmdK.jpg",
+        "year": "2023",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Extinction",
+        "poster": "https://image.tmdb.org/t/p/w342/h2peRx0F8tO8crFVkOeKUK2q8BR.jpg",
+        "year": "2015",
+        "rating": "6.4"
+      }
+    ],
+    "tmdbId": 1712451
+  },
+  {
     "titulo": "Salvando el Zoo",
     "tituloOriginal": "Kangaroo Kids",
     "descripcion": "Un grupo de niños en un pequeño pueblo de los Estados Unidos de América salvan un zoológico.",
