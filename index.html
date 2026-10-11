@@ -469,7 +469,7 @@
             );
         }
 
-        // Reproductor central BOXPLAYTV
+        // Reproductor central BOXPLAYTV: video directo/HLS, OK.ru, Google Drive y Google Cast.
         function BoxProPlayer({ item, episode, onBack, onFullscreen, containerRef }) {
             const videoRef = React.useRef(null);
             const hlsRef = React.useRef(null);
@@ -1080,6 +1080,7 @@
             };
 
             const handlePlayNow = (item, episode = null) => {
+                // Validación para exigir suscripción activa en Películas y Series
                 if (item.type !== 'tv' && item.type !== 'radio' && !isSubscriberActive) {
                     setShowPaywallModal(true);
                     window.history.pushState({ appState: 'paywall-modal' }, '');
