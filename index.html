@@ -197,7 +197,7 @@
     </style>
 </head>
 
-<!-- SDK y Validación de Firebase Firestore para SINPE Móvil -->
+<!-- SDK y Funciones de Firebase Firestore para Validación SINPE -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getFirestore, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
@@ -403,6 +403,68 @@
             return url;
         };
 
+        // Componente de Pasarela de Pago SINPE Móvil (para contenido protegido)
+        function SinpePaywall({ emailUsuario, onEmailChange, onVerificado }) {
+            const [inputEmail, setInputEmail] = useState(emailUsuario || '');
+            const [verificando, setVerificando] = useState(false);
+            const [errorMsg, setErrorMsg] = useState('');
+
+            const handleValidarPago = async (e) => {
+                e.preventDefault();
+                if (!inputEmail.trim()) {
+                    setErrorMsg('Por favor ingresa tu correo electrónico.');
+                    return;
+                }
+                setVerificando(true);
+                setErrorMsg('');
+                try {
+                    const ok = await window.verificarSuscripcion(inputEmail.trim());
+                    if (ok) {
+                        onEmailChange(inputEmail.trim());
+                        onVerificado();
+                    } else {
+                        setErrorMsg('No encontramos una suscripción activa para este correo. Realiza tu pago por SINPE Móvil.');
+                    }
+                } catch (err) {
+                    setErrorMsg('Error al conectar con la base de datos.');
+                } finally {
+                    setVerificando(false);
+                }
+            };
+
+            return (
+                <div style={{ padding: '40px', maxWidth: '480px', margin: '60px auto', background: '#0f172a', color: 'white', borderRadius: '20px', textAlign: 'center', border: '1px solid #06b6d4', fontFamily: 'sans-serif', boxShadow: '0 0 40px rgba(6,182,212,0.2)' }}>
+                    <div style={{ fontSize: '3rem', marginBottom: '10px' }}>🎬</div>
+                    <h2 style={{ color: '#06b6d4', marginBottom: '10px', fontSize: '1.5rem', fontWeight: '800' }}>Suscripción Requerida</h2>
+                    <p style={{ color: '#94a3b8', marginBottom: '20px', fontSize: '0.9rem', lineHeight: '1.5' }}>Para ver películas y series completas, realiza tu aporte mensual mediante <strong>SINPE Móvil</strong>.</p>
+                    
+                    <div style={{ background: '#020617', padding: '15px', borderRadius: '12px', textAlign: 'left', marginBottom: '20px', border: '1px solid #1e293b' }}>
+                        <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>📱 <strong>Teléfono SINPE:</strong> [Tu Número]</p>
+                        <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>👤 <strong>Titular:</strong> Jorge Hernández</p>
+                        <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>💳 <strong>Monto:</strong> ₡[Monto] / mes</p>
+                    </div>
+
+                    <form onSubmit={handleValidarPago} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                        <input 
+                            type="email" 
+                            placeholder="Ingresa tu correo registrado" 
+                            value={inputEmail} 
+                            onChange={(e) => setInputEmail(e.target.value)} 
+                            style={{ padding: '12px 16px', background: '#020617', border: '1px solid #334155', borderRadius: '10px', color: 'white', outline: 'none', fontSize: '0.9rem' }}
+                        />
+                        {errorMsg && <p style={{ color: '#f43f5e', fontSize: '0.8rem', margin: '0' }}>{errorMsg}</p>}
+                        <button 
+                            type="submit" 
+                            disabled={verificando}
+                            style={{ padding: '12px', background: 'linear-gradient(to right, #06b6d4, #14b8a6)', color: '#020617', border: 'none', borderRadius: '10px', fontWeight: 'bold', cursor: 'pointer', fontSize: '0.9rem', transition: 'opacity 0.2s' }}
+                        >
+                            {verificando ? 'Verificando pago...' : 'Ya pagué / Verificar acceso'}
+                        </button>
+                    </form>
+                </div>
+            );
+        }
+
         // Reproductor central BOXPLAYTV: video directo/HLS, OK.ru, Google Drive y Google Cast.
         function BoxProPlayer({ item, episode, onBack, onFullscreen, containerRef }) {
             const videoRef = React.useRef(null);
@@ -562,6 +624,11 @@
             const [downloadPinError, setDownloadPinError] = useState(false);
             const [pendingDownloadUrl, setPendingDownloadUrl] = useState('');
 
+            // Estado de validación por correo (por defecto usa tu correo de prueba)
+            const [emailUsuario, setEmailUsuario] = useState(safeStorage.getItem('boxplay_user_email') || 'sejo48@gmail.com');
+            const [isSubscriberActive, setIsSubscriberActive] = useState(false);
+            const [showPaywallModal, setShowPaywallModal] = useState(false);
+
             const [tvRefreshTrigger, setTvRefreshTrigger] = useState(0);
             const [tvGroupFilter, setTvGroupFilter] = useState('ALL');
 
@@ -597,6 +664,17 @@
                 { id: 'spotify', icon: 'music', label: 'Música', isExternal: true, url: './spotify.html' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
+
+            // Comprobar suscripción al cargar o cambiar correo
+            useEffect(() => {
+                async function checkSub() {
+                    if (window.verificarSuscripcion && emailUsuario) {
+                        const active = await window.verificarSuscripcion(emailUsuario);
+                        setIsSubscriberActive(active);
+                    }
+                }
+                checkSub();
+            }, [emailUsuario]);
 
             useEffect(() => {
                 const interval = setInterval(() => {
@@ -643,6 +721,7 @@
                     if (showQrModal) { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (showSmartViewModal) { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (showDownloadPinModal) { setShowDownloadPinModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
+                    if (showPaywallModal) { setShowPaywallModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (selectedItem) { 
                         if (document.fullscreenElement) document.exitFullscreen().catch(()=>{});
                         if (isPlaying) {
@@ -660,7 +739,7 @@
                 };
                 window.addEventListener('popstate', handlePopState);
                 return () => window.removeEventListener('popstate', handlePopState);
-            }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showDownloadPinModal, isPlaying]);
+            }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showDownloadPinModal, showPaywallModal, isPlaying]);
 
             useEffect(() => {
                 const init = async () => {
@@ -976,7 +1055,7 @@
             const currentHeroItem = randomHeroItem || (content.movies.length ? content.movies[0] : null);
 
             const handleShowDetails = (item) => {
-                if (item.type === 'tv') {
+                if (item.type === 'tv' || item.type === 'radio') {
                     setSelectedItem(item);
                     setIsPlaying(false);
                     setIsLocked(false);
@@ -999,6 +1078,13 @@
             };
 
             const handlePlayNow = (item, episode = null) => {
+                // Validación: Si es Película o Serie, verificar si la suscripción está activa
+                if (item.type !== 'tv' && item.type !== 'radio' && !isSubscriberActive) {
+                    setShowPaywallModal(true);
+                    window.history.pushState({ appState: 'paywall-modal' }, '');
+                    return;
+                }
+
                 const code = item.codigo || item.password || item.pin;
                 setSelectedItem(item);
                 setIsPlaying(true);
@@ -1716,6 +1802,16 @@
                             </div>
                         ) : activeTab === 'community' ? (
                             <CommunitySection />
+                        ) : showPaywallModal ? (
+                            <SinpePaywall 
+                                emailUsuario={emailUsuario} 
+                                onEmailChange={(email) => { setEmailUsuario(email); safeStorage.setItem('boxplay_user_email', email); }} 
+                                onVerificado={() => {
+                                    setIsSubscriberActive(true);
+                                    setShowPaywallModal(false);
+                                    window.history.pushState({ appState: 'main', activeTab }, '');
+                                }} 
+                            />
                         ) : (
                             <>
                                 {activeTab === 'home' && !search && (
@@ -2224,47 +2320,11 @@
             );
         };
 
-        // Bloque de protección con Firebase y SINPE Móvil
+        // Renderizado general libre (TV y Radio sin restricciones, Películas protegidas al reproducir)
         const rootNode = document.getElementById('root');
         if (rootNode) {
             const root = ReactDOM.createRoot(rootNode);
-
-            async function iniciarAppProtegida() {
-                root.render(
-                    <div style={{color: '#94a3b8', padding: '40px', textAlign: 'center', background: '#020617', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'sans-serif'}}>
-                        <h2>Verificando suscripción de Box Play TV...</h2>
-                    </div>
-                );
-
-                const emailUsuario = "sejo48@gmail.com"; 
-                let autorizado = false;
-
-                try {
-                    if (window.verificarSuscripcion) {
-                        autorizado = await window.verificarSuscripcion(emailUsuario);
-                    }
-                } catch (e) {
-                    console.error("Error al validar:", e);
-                }
-
-                if (autorizado) {
-                    root.render(<App />);
-                } else {
-                    root.render(
-                        <div style={{ padding: '40px', maxWidth: '450px', margin: '80px auto', background: '#0f172a', color: 'white', borderRadius: '16px', textAlign: 'center', border: '1px solid #06b6d4', fontFamily: 'sans-serif' }}>
-                            <h2 style={{ color: '#06b6d4', marginBottom: '15px' }}>Suscripción Requerida</h2>
-                            <p style={{ color: '#94a3b8', marginBottom: '20px' }}>Realiza tu pago mensual mediante <strong>SINPE Móvil</strong> para continuar disfrutando de Box Play TV.</p>
-                            <div style={{ background: '#020617', padding: '15px', borderRadius: '8px', textAlign: 'left', marginBottom: '15px' }}>
-                                <p style={{ margin: '8px 0' }}>📱 <strong>Teléfono SINPE:</strong> [Tu Número]</p>
-                                <p style={{ margin: '8px 0' }}>👤 <strong>Titular:</strong> Jorge Hernández</p>
-                            </div>
-                            <p style={{ fontSize: '0.8rem', color: '#64748b' }}>Cuenta evaluada: {emailUsuario}</p>
-                        </div>
-                    );
-                }
-            }
-
-            iniciarAppProtegida();
+            root.render(<App />);
         }
     </script>
 </body>
