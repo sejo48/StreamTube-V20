@@ -403,7 +403,7 @@
             return url;
         };
 
-        // Componente de Pasarela de Pago SINPE Móvil (para contenido protegido)
+        // Componente de Pasarela de Pago SINPE Móvil con tarifa de 3,000 colones
         function SinpePaywall({ emailUsuario, onEmailChange, onVerificado }) {
             const [inputEmail, setInputEmail] = useState(emailUsuario || '');
             const [verificando, setVerificando] = useState(false);
@@ -423,7 +423,7 @@
                         onEmailChange(inputEmail.trim());
                         onVerificado();
                     } else {
-                        setErrorMsg('No encontramos una suscripción activa para este correo. Realiza tu pago por SINPE Móvil.');
+                        setErrorMsg('No encontramos una suscripción activa para este correo. Realiza tu pago de ₡3,000 por SINPE Móvil.');
                     }
                 } catch (err) {
                     setErrorMsg('Error al conectar con la base de datos.');
@@ -436,12 +436,12 @@
                 <div style={{ padding: '40px', maxWidth: '480px', margin: '60px auto', background: '#0f172a', color: 'white', borderRadius: '20px', textAlign: 'center', border: '1px solid #06b6d4', fontFamily: 'sans-serif', boxShadow: '0 0 40px rgba(6,182,212,0.2)' }}>
                     <div style={{ fontSize: '3rem', marginBottom: '10px' }}>🎬</div>
                     <h2 style={{ color: '#06b6d4', marginBottom: '10px', fontSize: '1.5rem', fontWeight: '800' }}>Suscripción Requerida</h2>
-                    <p style={{ color: '#94a3b8', marginBottom: '20px', fontSize: '0.9rem', lineHeight: '1.5' }}>Para ver películas y series completas, realiza tu aporte mensual mediante <strong>SINPE Móvil</strong>.</p>
+                    <p style={{ color: '#94a3b8', marginBottom: '20px', fontSize: '0.9rem', lineHeight: '1.5' }}>Para ver películas y series completas, suscríbete por tan solo <strong>₡3,000 colones al mes</strong> mediante <strong>SINPE Móvil</strong>.</p>
                     
                     <div style={{ background: '#020617', padding: '15px', borderRadius: '12px', textAlign: 'left', marginBottom: '20px', border: '1px solid #1e293b' }}>
                         <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>📱 <strong>Teléfono SINPE:</strong> [Tu Número]</p>
                         <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>👤 <strong>Titular:</strong> Jorge Hernández</p>
-                        <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>💳 <strong>Monto:</strong> ₡[Monto] / mes</p>
+                        <p style={{ margin: '8px 0', fontSize: '0.9rem' }}>💳 <strong>Monto Mensual:</strong> ₡3,000 colones</p>
                     </div>
 
                     <form onSubmit={handleValidarPago} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -624,7 +624,7 @@
             const [downloadPinError, setDownloadPinError] = useState(false);
             const [pendingDownloadUrl, setPendingDownloadUrl] = useState('');
 
-            // Estado de validación por correo (por defecto usa tu correo de prueba)
+            // Estado de validación por correo
             const [emailUsuario, setEmailUsuario] = useState(safeStorage.getItem('boxplay_user_email') || 'sejo48@gmail.com');
             const [isSubscriberActive, setIsSubscriberActive] = useState(false);
             const [showPaywallModal, setShowPaywallModal] = useState(false);
@@ -665,7 +665,6 @@
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
 
-            // Comprobar suscripción al cargar o cambiar correo
             useEffect(() => {
                 async function checkSub() {
                     if (window.verificarSuscripcion && emailUsuario) {
@@ -1078,7 +1077,7 @@
             };
 
             const handlePlayNow = (item, episode = null) => {
-                // Validación: Si es Película o Serie, verificar si la suscripción está activa
+                // Validación de suscripción para películas y series
                 if (item.type !== 'tv' && item.type !== 'radio' && !isSubscriberActive) {
                     setShowPaywallModal(true);
                     window.history.pushState({ appState: 'paywall-modal' }, '');
@@ -2320,7 +2319,6 @@
             );
         };
 
-        // Renderizado general libre (TV y Radio sin restricciones, Películas protegidas al reproducir)
         const rootNode = document.getElementById('root');
         if (rootNode) {
             const root = ReactDOM.createRoot(rootNode);
