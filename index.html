@@ -498,7 +498,7 @@
             );
         }
 
-        // Reproductor central BOXProPlayer
+        // Reproductor central BOXProPlayer con soporte de pantalla completa automático
         function BoxProPlayer({ item, episode, onBack, onFullscreen, containerRef }) {
             const videoRef = React.useRef(null);
             const hlsRef = React.useRef(null);
@@ -615,7 +615,6 @@
             const tvContainerRef = useRef(null);
             const movieContainerRef = useRef(null);
 
-            // ⚠️ SE ELIMINÓ LA PESTAÑA DE MÚSICA/SPOTIFY QUE NO SE USABA
             const navTabs = [
                 { id: 'home', icon: 'search', label: 'Inicio' }, 
                 { id: 'movies', icon: 'clapperboard', label: 'Películas' }, 
@@ -627,6 +626,7 @@
                 { id: 'radio', icon: 'radio', label: 'Radio HD' }, 
                 { id: 'payments', icon: 'star', label: 'Planes & Pagos' },
                 { id: 'community', icon: 'chat', label: 'Comunidad' },
+                { id: 'spotify', icon: 'music', label: 'Música', isExternal: true, url: './spotify.html' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
 
@@ -1071,7 +1071,7 @@
                 window.history.pushState({ appState: 'player', item: item.title }, '');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
-                // Activar pantalla completa automática
+                // Activación automática en pantalla completa tras reproducir
                 setTimeout(() => {
                     const playerElement = movieContainerRef.current || document.querySelector('video') || document.querySelector('iframe');
                     if (playerElement) {
@@ -1091,19 +1091,22 @@
             const handlePlayRadioStation = (station) => { setCurrentRadioStation(station); setIsRadioPlaying(true); setStreamError(false); };
 
             const handleTabClick = (tab) => {
-                setActiveTab(tab.id); setSearch(''); setIsLocked(false); setIsPlaying(false); setShowMobileMoreMenu(false);
-                window.history.pushState({ appState: 'main', activeTab: tab.id }, '');
-                if (tab.id === 'tv') {
-                    if (!selectedItem || selectedItem.type !== 'tv') {
-                        const telerredChannel = content.tv.find(c => c.title.toLowerCase().includes('telerred') || c.title.toLowerCase().includes('tele red') || c.title.toLowerCase().includes('tele-red')) || content.tv[0];
-                        if (telerredChannel) setSelectedItem(telerredChannel);
-                    }
-                } else if (tab.id === 'radio') {
-                    if (!currentRadioStation && radioStations.length > 0) {
-                        const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
-                        setCurrentRadioStation(def); setIsRadioPlaying(true);
-                    }
-                } else { setSelectedItem(null); }
+                if (tab.isExternal) { window.open(tab.url, '_blank'); }
+                else {
+                    setActiveTab(tab.id); setSearch(''); setIsLocked(false); setIsPlaying(false); setShowMobileMoreMenu(false);
+                    window.history.pushState({ appState: 'main', activeTab: tab.id }, '');
+                    if (tab.id === 'tv') {
+                        if (!selectedItem || selectedItem.type !== 'tv') {
+                            const telerredChannel = content.tv.find(c => c.title.toLowerCase().includes('telerred') || c.title.toLowerCase().includes('tele red') || c.title.toLowerCase().includes('tele-red')) || content.tv[0];
+                            if (telerredChannel) setSelectedItem(telerredChannel);
+                        }
+                    } else if (tab.id === 'radio') {
+                        if (!currentRadioStation && radioStations.length > 0) {
+                            const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
+                            setCurrentRadioStation(def); setIsRadioPlaying(true);
+                        }
+                    } else { setSelectedItem(null); }
+                }
             };
 
             if (showIntro) return <IntroScreen onEnter={() => { 
@@ -1125,7 +1128,7 @@
                             </div>
                             <nav className="hidden lg:flex items-center gap-1.5">
                                 {navTabs.slice(0, 9).map(tab => (
-                                    <button key={tab.id} onClick={() => handleTabClick(tab)} className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${activeTab === tab.id ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]' : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'}`}>
+                                    <button key={tab.id} onClick={() => handleTabClick(tab)} className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${activeTab === tab.id && !tab.isExternal ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]' : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'}`}>
                                         <Icon name={tab.icon} size={14}/>
                                         <span>{tab.label}</span>
                                     </button>
@@ -1196,8 +1199,8 @@
                                     <button onClick={() => setShowMobileMoreMenu(false)} className="text-slate-400 hover:text-white"><Icon name="x" size={16}/></button>
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
-                                    {navTabs.slice(3, 10).map(tab => (
-                                        <button key={tab.id} onClick={() => handleTabClick(tab)} className={`p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
+                                    {navTabs.slice(3, 11).map(tab => (
+                                        <button key={tab.id} onClick={() => handleTabClick(tab)} className={`p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id && !tab.isExternal ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
                                             <Icon name={tab.icon} size={16}/>
                                             <span className="truncate">{tab.label}</span>
                                         </button>
