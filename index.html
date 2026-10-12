@@ -442,6 +442,15 @@
             { title: "One Piece: Temporada 2", releaseDate: "Invierno 2026", genre: "Fantasía / Acción", synopsis: "Monkey D. Luffy y su tripulación de los Sombrero de Paja se adentran en la Grand Line en busca del tesoro legendario.", image: "https://placehold.co/300x450/b91c1c/ffffff?text=One+Piece+S2", trailerUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", availability: "Costa Rica (Estreno en alta definición)", score: "9.6 / 10" }
         ];
 
+        const calcularDiasRestantes = (expiresAtStr) => {
+            if (!expiresAtStr) return 0;
+            const hoy = new Date();
+            const expiracion = new Date(expiresAtStr);
+            const diferenciaMs = expiracion - hoy;
+            const diasRestantes = Math.ceil(diferenciaMs / (1000 * 60 * 60 * 24));
+            return diasRestantes > 0 ? diasRestantes : 0;
+        };
+
         const convertUrl = (url) => {
             if (!url) return '';
             if (url.includes('ok.ru/video/search') || url.includes('ok.ru/search')) return url;
@@ -764,6 +773,21 @@
                                     <span className="text-xs text-slate-400">Estado:</span>
                                     <span className={`text-xs font-bold ${isSubscriberActive ? 'text-emerald-400' : 'text-rose-400'}`}>{isSubscriberActive ? 'Suscripción Premium' : 'Plan Gratuito / Vencido'}</span>
                                 </div>
+                                {(() => {
+                                    const dias = calcularDiasRestantes(typeof userData !== 'undefined' && userData?.expires_at ? userData.expires_at : "2026-11-10T00:00:00.000Z");
+                                    return (
+                                        <div className="space-y-2 mt-4 pt-4 border-t border-slate-800">
+                                            <div className="flex justify-between text-xs">
+                                                <span className="text-slate-400">Vencimiento:</span>
+                                                <span className="text-white font-mono">10 Nov 2026</span>
+                                            </div>
+                                            <div className="flex justify-between text-xs">
+                                                <span className="text-slate-400">Tiempo restante:</span>
+                                                <span className="text-cyan-400 font-bold">{dias} días restantes</span>
+                                            </div>
+                                        </div>
+                                    );
+                                })()}
                             </div>
                             <button onClick={onVerify} className="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-all">Actualizar / Verificar Estado</button>
                         </div>
