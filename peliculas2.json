@@ -1,5 +1,140 @@
 [
   {
+    "titulo": "V/H/S/Mixtape",
+    "tituloOriginal": "V/H/S/Mixtape",
+    "descripcion": "V/H/S/MIXTAPE sube el volumen del terror con una colección sangrienta de videoclips malditos, actuaciones aterradoras y material encontrado. Dale al play. Ruega que pare.",
+    "imagen": "https://image.tmdb.org/t/p/w780/uS8yoiA6NfsuYeOTbVfpem8Ib9.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/mpB4pgtUcc7rCLxvlknzCbAQQEE.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1UGcUKSMF0oGISJ8dvpq54934jWnO1bAv/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-10-09",
+    "rating": "4.1",
+    "votos": 13,
+    "runtime": "1h 38min",
+    "genres": [
+      "Terror",
+      "Música",
+      "Suspense"
+    ],
+    "generosTexto": "Terror, Música, Suspense",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "David Moreau, Renee Zhan, RZA, Ernest R. Dickerson, Flying Lotus, Tobias Forge",
+    "guionistas": "Zoe Cooper, RZA, Ernest R. Dickerson",
+    "reparto": [
+      {
+        "nombre": "Mike Derks",
+        "personaje": "BalSac the Jaws o' Death (segment \"Frame Narrative\")",
+        "foto": "https://image.tmdb.org/t/p/w185/r9mRxHFlULratYXjwsG0TcLNBxF.jpg"
+      },
+      {
+        "nombre": "Michael Bishop",
+        "personaje": "Blothar the Berserker (segment \"Frame Narrative\")",
+        "foto": "https://image.tmdb.org/t/p/w185/yZgoAxZ5skun4WrCUKSRDatuVcB.jpg"
+      },
+      {
+        "nombre": "Brad Roberts",
+        "personaje": "Jizmak Da Gusha (segment \"Frame Narrative\")",
+        "foto": "https://image.tmdb.org/t/p/w185/1eMj8wchto0YrwZdUI1ZoZ33Lwk.jpg"
+      },
+      {
+        "nombre": "Casey Orr",
+        "personaje": "Beefcake the Mighty (segment \"Frame Narrative\")",
+        "foto": "https://image.tmdb.org/t/p/w185/kJJFZ5zhiY3inK5TDUjlWFWTmk8.jpg"
+      },
+      {
+        "nombre": "Bob Gorman",
+        "personaje": "Bonesnapper the Cave Troll (segment \"Frame Narrative\")",
+        "foto": "https://image.tmdb.org/t/p/w185/eqJZTWakanINqNQb94vXoMRTP2b.jpg"
+      },
+      {
+        "nombre": "Josh Willis",
+        "personaje": "George (segment \"Dance, Dance, Dance, Dance\")",
+        "foto": ""
+      },
+      {
+        "nombre": "Christopher Romero Sosa",
+        "personaje": "Sam (segment \"Dance, Dance, Dance, Dance\")",
+        "foto": ""
+      },
+      {
+        "nombre": "Barbara Crampton",
+        "personaje": "Vanessa (segment \"Dance, Dance, Dance, Dance\")",
+        "foto": "https://image.tmdb.org/t/p/w185/AaLIWSrUgHIESuJEh6w7UD5RzV4.jpg"
+      },
+      {
+        "nombre": "Erin Griff",
+        "personaje": "Daisy (segment \"Dance, Dance, Dance, Dance\")",
+        "foto": ""
+      },
+      {
+        "nombre": "Zach Jobe",
+        "personaje": "Chris (segment \"Dance, Dance, Dance, Dance\")",
+        "foto": ""
+      },
+      {
+        "nombre": "Raymond Carr",
+        "personaje": "Riptide (segment \"Dance, Dance, Dance, Dance\")",
+        "foto": ""
+      },
+      {
+        "nombre": "Dan Garza",
+        "personaje": "Botulism (segment \"Dance, Dance, Dance, Dance\")",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America, United Arab Emirates",
+    "idioma": "en",
+    "productoras": "Spooky Pictures, Image Nation Studios, Be Afraid Media, Speed Demon Productions, Cinepocalypse, Shudder",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "V/H/S - Colección",
+    "keywords": "anthology, sequel, found footage, pov (point of view), cosmic horror, horror anthology, psychological horror, analog horror, found footage horror",
+    "similares": [
+      {
+        "titulo": "V/H/S/94",
+        "poster": "https://image.tmdb.org/t/p/w342/9fSogEkqDfJQTuGHsTFloQz3Tw8.jpg",
+        "year": "2021",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "V/H/S/99",
+        "poster": "https://image.tmdb.org/t/p/w342/1bOMmFtnykBmvhFcx8zdXO6bCAa.jpg",
+        "year": "2022",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "V/H/S/2",
+        "poster": "https://image.tmdb.org/t/p/w342/o4hcWsHaHaNQ9BBReOxLvYJNRhA.jpg",
+        "year": "2013",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "V/H/S/Halloween",
+        "poster": "https://image.tmdb.org/t/p/w342/bvMKSZtN8KAdtlKoYbEi1Zhyaou.jpg",
+        "year": "2025",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Southbound",
+        "poster": "https://image.tmdb.org/t/p/w342/tn59CaBSq64XrJrC5bajrI0ZCD2.jpg",
+        "year": "2015",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "VHS",
+        "poster": "https://image.tmdb.org/t/p/w342/Auwk2Fr3cNRseHBXEGfcjXLyH8m.jpg",
+        "year": "2012",
+        "rating": "6.1"
+      }
+    ],
+    "tmdbId": 1742441
+  },
+  {
     "titulo": "Dead Residents Evil",
     "tituloOriginal": "Resident Dead",
     "descripcion": "Un padre lucha contra un ejercito de no-muertos junto a su hija, gravemente herida, para llegar a la cura antes de que ella se transforme. Si logra llegar al laboratorio con la vacuna a tiempo, cree que su hija estará a salvo. Lamentablemente, el desafío más horrible lo espera en su destino final.",
