@@ -215,6 +215,22 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
+  // Función pública para registrar actividad. El componente React está en otro script
+  // y no puede acceder directamente a la variable db de este módulo.
+  window.registrarPresenciaBoxplay = async function(emailUsuario, deviceId) {
+    const email = String(emailUsuario || '').trim().toLowerCase();
+    const id = String(deviceId || '').trim();
+    if (!email || !id) throw new Error('Falta el correo o el identificador del dispositivo.');
+    const presenceId = encodeURIComponent(email) + '__' + id;
+    await setDoc(doc(db, 'presencia', presenceId), {
+      email,
+      deviceId: id,
+      lastSeenMs: Date.now(),
+      estado: 'online'
+    }, { merge: true });
+    return true;
+  };
+
   // Verifica suscripción Y valida deviceId (1 dispositivo por cuenta)
   window.verificarSuscripcion = async function(emailUsuario, deviceId) {
     try {
@@ -1107,19 +1123,17 @@
                 let cancelled = false;
                 const deviceId = getOrCreateDeviceId();
                 const emailNormalizado = String(emailUsuario).trim().toLowerCase();
-                const presenceId = encodeURIComponent(emailNormalizado) + '__' + deviceId;
 
                 const heartbeat = async () => {
                     if (cancelled || document.visibilityState === 'hidden') return;
                     try {
-                        await setDoc(doc(db, 'presencia', presenceId), {
-                            email: emailNormalizado,
-                            deviceId,
-                            lastSeenMs: Date.now(),
-                            estado: 'online'
-                        }, { merge: true });
+                        if (typeof window.registrarPresenciaBoxplay !== 'function') {
+                            throw new Error('La función de presencia de Firebase no está disponible.');
+                        }
+                        await window.registrarPresenciaBoxplay(emailNormalizado, deviceId);
+                        console.debug('Presencia BOXPLAYTV actualizada:', emailNormalizado);
                     } catch (error) {
-                        console.warn('No se pudo actualizar la presencia:', error);
+                        console.warn('No se pudo actualizar la presencia. Revise las reglas de Firestore para la colección presencia:', error);
                     }
                 };
 
