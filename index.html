@@ -215,18 +215,12 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // Indicador visible para diagnosticar el registro desde móvil sin abrir la consola.
+  // Diagnóstico interno: no mostrar avisos técnicos a los espectadores.
   window.mostrarDiagnosticoPresencia = function(mensaje, error = false) {
-    let box = document.getElementById('boxplay-presence-debug');
-    if (!box) {
-      box = document.createElement('div');
-      box.id = 'boxplay-presence-debug';
-      box.style.cssText = 'position:fixed;z-index:99999;left:8px;right:8px;bottom:8px;padding:10px 12px;border-radius:10px;font:12px/1.4 system-ui,sans-serif;box-shadow:0 3px 18px #0008;word-break:break-word;';
-      document.body.appendChild(box);
-    }
-    box.style.background = error ? '#7f1d1d' : '#082f49';
-    box.style.color = '#fff';
-    box.textContent = mensaje;
+    const avisoAnterior = document.getElementById('boxplay-presence-debug');
+    if (avisoAnterior) avisoAnterior.remove();
+    if (error) console.warn('[BOXPLAYTV presencia]', mensaje);
+    else console.debug('[BOXPLAYTV presencia]', mensaje);
   };
 
   // Función pública para registrar actividad. El componente React está en otro script
@@ -1115,19 +1109,18 @@
 
             // 🔒 VALIDACIÓN DE SUSCRIPCIÓN (con deviceId)
             useEffect(() => {
+                let cancelled = false;
+                setIsSubscriberActive(false);
                 async function checkSub() {
-                    if (window.verificarSuscripcion && emailUsuario) {
-                        const deviceId = getOrCreateDeviceId();
-                        const resultado = await window.verificarSuscripcion(emailUsuario, deviceId);
-                        setIsSubscriberActive(resultado.activo);
-                        if (!resultado.activo) {
-                            console.log("Suscripción no activa:", resultado.razon);
-                        }
-                    } else {
-                        setIsSubscriberActive(false);
-                    }
+                    if (typeof window.verificarSuscripcion !== 'function' || !emailUsuario) return;
+                    const deviceId = getOrCreateDeviceId();
+                    const resultado = await window.verificarSuscripcion(emailUsuario, deviceId);
+                    if (cancelled) return;
+                    setIsSubscriberActive(resultado.activo === true);
+                    if (!resultado.activo) console.info('Suscripción no autorizada:', resultado.razon);
                 }
                 checkSub();
+                return () => { cancelled = true; };
             }, [emailUsuario]);
 
             // PRESENCIA: registra actividad solo si la suscripción y el dispositivo están autorizados.
