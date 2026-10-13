@@ -1100,6 +1100,40 @@
                 checkSub();
             }, [emailUsuario]);
 
+            // PRESENCIA: registra actividad solo si la suscripción y el dispositivo están autorizados.
+            // El panel considera en línea a un dispositivo con latido en los últimos 90 segundos.
+            useEffect(() => {
+                if (!emailUsuario || !isSubscriberActive) return;
+                let cancelled = false;
+                const deviceId = getOrCreateDeviceId();
+                const emailNormalizado = String(emailUsuario).trim().toLowerCase();
+                const presenceId = encodeURIComponent(emailNormalizado) + '__' + deviceId;
+
+                const heartbeat = async () => {
+                    if (cancelled || document.visibilityState === 'hidden') return;
+                    try {
+                        await setDoc(doc(db, 'presencia', presenceId), {
+                            email: emailNormalizado,
+                            deviceId,
+                            lastSeenMs: Date.now(),
+                            estado: 'online'
+                        }, { merge: true });
+                    } catch (error) {
+                        console.warn('No se pudo actualizar la presencia:', error);
+                    }
+                };
+
+                heartbeat();
+                const timer = setInterval(heartbeat, 30000);
+                const onVisible = () => { if (document.visibilityState === 'visible') heartbeat(); };
+                document.addEventListener('visibilitychange', onVisible);
+                return () => {
+                    cancelled = true;
+                    clearInterval(timer);
+                    document.removeEventListener('visibilitychange', onVisible);
+                };
+            }, [emailUsuario, isSubscriberActive]);
+
             useEffect(() => {
                 const interval = setInterval(() => {
                     const now = new Date();
