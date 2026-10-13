@@ -215,6 +215,20 @@
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
+  // Indicador visible para diagnosticar el registro desde móvil sin abrir la consola.
+  window.mostrarDiagnosticoPresencia = function(mensaje, error = false) {
+    let box = document.getElementById('boxplay-presence-debug');
+    if (!box) {
+      box = document.createElement('div');
+      box.id = 'boxplay-presence-debug';
+      box.style.cssText = 'position:fixed;z-index:99999;left:8px;right:8px;bottom:8px;padding:10px 12px;border-radius:10px;font:12px/1.4 system-ui,sans-serif;box-shadow:0 3px 18px #0008;word-break:break-word;';
+      document.body.appendChild(box);
+    }
+    box.style.background = error ? '#7f1d1d' : '#082f49';
+    box.style.color = '#fff';
+    box.textContent = mensaje;
+  };
+
   // Función pública para registrar actividad. El componente React está en otro script
   // y no puede acceder directamente a la variable db de este módulo.
   window.registrarPresenciaBoxplay = async function(emailUsuario, deviceId) {
@@ -1119,7 +1133,14 @@
             // PRESENCIA: registra actividad solo si la suscripción y el dispositivo están autorizados.
             // El panel considera en línea a un dispositivo con latido en los últimos 90 segundos.
             useEffect(() => {
-                if (!emailUsuario || !isSubscriberActive) return;
+                if (!emailUsuario) {
+                    window.mostrarDiagnosticoPresencia?.('BOXPLAYTV: falta el correo del cliente; no se puede registrar presencia.', true);
+                    return;
+                }
+                if (!isSubscriberActive) {
+                    window.mostrarDiagnosticoPresencia?.('BOXPLAYTV: esperando validación de la suscripción para registrar presencia…', true);
+                    return;
+                }
                 let cancelled = false;
                 const deviceId = getOrCreateDeviceId();
                 const emailNormalizado = String(emailUsuario).trim().toLowerCase();
@@ -1131,8 +1152,11 @@
                             throw new Error('La función de presencia de Firebase no está disponible.');
                         }
                         await window.registrarPresenciaBoxplay(emailNormalizado, deviceId);
+                        window.mostrarDiagnosticoPresencia?.('BOXPLAYTV: presencia registrada en Firebase para ' + emailNormalizado + '. El panel debería mostrarlo en línea.', false);
                         console.debug('Presencia BOXPLAYTV actualizada:', emailNormalizado);
                     } catch (error) {
+                        const detalle = error?.code ? error.code + ': ' : '';
+                        window.mostrarDiagnosticoPresencia?.('ERROR al registrar presencia: ' + detalle + (error?.message || String(error)) + '. Revise permisos de Firestore.', true);
                         console.warn('No se pudo actualizar la presencia. Revise las reglas de Firestore para la colección presencia:', error);
                     }
                 };
