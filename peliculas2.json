@@ -12,7 +12,7 @@
     "year": "2026",
     "fechaEstreno": "2026-09-28",
     "rating": "7.5",
-    "votos": 317,
+    "votos": 347,
     "runtime": "2h 8min",
     "genres": [
       "Comedia",
@@ -89,17 +89,11 @@
     "idioma": "en",
     "productoras": "Warner Bros. Pictures, Legendary Pictures, Domain Entertainment",
     "presupuesto": 180000000,
-    "recaudacion": 26532754,
+    "recaudacion": 35332754,
     "trailerUrl": "https://www.youtube.com/watch?v=xU2jWSsaWY0",
     "coleccion": "",
-    "keywords": "capitalism, greed, climate change, dark comedy, redemption, satire, billionaire, oil industry, ego, corporate power, political satire, disturbed, thoughtful, environmental disaster, political, serious, power, commanding, farcical",
+    "keywords": "capitalism, greed, climate change, dark comedy, redemption, satire, billionaire, oil industry, ego, corporate power, political satire, environmental disaster, political, serious, power, commanding, farcical",
     "similares": [
-      {
-        "titulo": "Bugonia",
-        "poster": "https://image.tmdb.org/t/p/w342/gaplD9IEUxez3GeX16SkgLXQJEb.jpg",
-        "year": "2025",
-        "rating": "7.3"
-      },
       {
         "titulo": "Un rey en Nueva York",
         "poster": "https://image.tmdb.org/t/p/w342/1mAzXMAPMcvNLsEVce0CNd7rRRP.jpg",
@@ -113,10 +107,10 @@
         "rating": "7.0"
       },
       {
-        "titulo": "The Middle Man",
-        "poster": "https://image.tmdb.org/t/p/w342/lp0wpfAih1g4yUB78x0fVvzAJzu.jpg",
+        "titulo": "Una estafa celestial",
+        "poster": "https://image.tmdb.org/t/p/w342/evpyqT25VJzFT5juDflTM6OW5zW.jpg",
         "year": "2021",
-        "rating": "6.1"
+        "rating": "6.0"
       },
       {
         "titulo": "Hospital Britannia",
@@ -125,15 +119,26 @@
         "rating": "6.2"
       },
       {
-        "titulo": "Una estafa celestial",
-        "poster": "https://image.tmdb.org/t/p/w342/evpyqT25VJzFT5juDflTM6OW5zW.jpg",
-        "year": "2021",
-        "rating": "6.0"
+        "titulo": "La familia Jones",
+        "poster": "https://image.tmdb.org/t/p/w342/bdCShhWErRDlvx8Q01CDT0FfFqZ.jpg",
+        "year": "2010",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Ricky Gervais: Armageddon",
+        "poster": "https://image.tmdb.org/t/p/w342/i4fbnHXE7qW6AT41xv9XLekvJeZ.jpg",
+        "year": "2023",
+        "rating": "7.1"
       }
     ],
     "tmdbId": 1248832,
+    "tmdbType": "movie",
     "runtimeMin": 128,
-    "homepage": ""
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
   },
   {
     "titulo": "V/H/S/Mixtape",
