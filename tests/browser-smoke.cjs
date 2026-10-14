@@ -101,6 +101,7 @@ const server = http.createServer((req, res) => {
         await main.goto(origin + '/');
         await main.getByRole('button', { name: 'Comenzar Experiencia' }).click();
         await main.getByRole('button', { name: 'Actualizar catálogo', exact: true }).waitFor();
+        assert.deepEqual((await main.locator('header nav button').allTextContents()).slice(0, 5).map(label => label.trim()), ['Inicio', 'Estrenos 2026', 'Películas', 'Series', 'Animados']);
         await main.getByRole('status').filter({ hasText: 'Catálogo actualizado.' }).waitFor();
         const favorite = await main.evaluate(() => JSON.parse(localStorage.getItem('boxplay_favs'))[0]);
         assert.equal(favorite.id, storedMovie.id);
