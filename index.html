@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script src="./install.js" defer></script>
     <script src="./catalog.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <meta name="theme-color" content="#020617">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Box Play TV">
+    <link rel="apple-touch-icon" href="./favicon.png">
     <title>Boxplaytv - Ultimate Streaming & Anime Hub</title>
     
     <meta property="og:title" content="BOXPLAYTV">
@@ -229,6 +236,7 @@
             .box-bottom-nav { padding: 8px 8px max(8px, env(safe-area-inset-bottom)); background: rgba(2,6,23,.97); box-shadow: none; }
             .box-bottom-nav > button { min-height: 48px; }
             .box-bottom-nav > button span { font-size: 11px; }
+            .box-more-panel { max-height: calc(100svh - 120px); overflow-y: auto; }
             .box-phone-tools { display: grid; gap: 8px; margin-top: 8px; }
             .box-phone-tools button { min-height: 44px; border: 1px solid #334155; border-radius: 12px; font-size: 13px; }
             .box-catalog-status { top: 68px; }
@@ -1132,7 +1140,11 @@
             const [isPowerOn, setIsPowerOn] = useState(true);
             const [spectrumHeights, setSpectrumHeights] = useState([70, 85, 50, 90]);
 
-            const [deferredPrompt, setDeferredPrompt] = useState(null);
+            const [deferredPrompt, setDeferredPrompt] = useState(window.BoxPlayInstall?.prompt || null);
+            const [isAppInstalled, setIsAppInstalled] = useState(window.BoxPlayInstall?.installed === true);
+            const [showInstallGuide, setShowInstallGuide] = useState(false);
+            const [installingApp, setInstallingApp] = useState(false);
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
             const audioRef = useRef(null);
             const hlsRef = useRef(null);
@@ -1278,20 +1290,31 @@
             }, [isRadioPlaying, isPowerOn]);
 
             useEffect(() => {
-                const handleBeforeInstallPrompt = (e) => { e.preventDefault(); setDeferredPrompt(e); };
-                window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-                return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+                const syncInstallState = () => {
+                    setDeferredPrompt(window.BoxPlayInstall?.prompt || null);
+                    setIsAppInstalled(window.BoxPlayInstall?.installed === true);
+                };
+                syncInstallState();
+                window.addEventListener('boxplay-install-change', syncInstallState);
+                return () => window.removeEventListener('boxplay-install-change', syncInstallState);
             }, []);
 
             const handleInstallApp = async () => {
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    const { outcome } = await deferredPrompt.userChoice;
-                    if (outcome === 'accepted') setDeferredPrompt(null);
-                } else {
-                    const msgBox = document.getElementById('install-guide-modal');
-                    if (msgBox) msgBox.classList.remove('hidden');
-                }
+                if (isAppInstalled || installingApp) return;
+                const request = window.BoxPlayInstall?.prompt || deferredPrompt;
+                if (!request) { setShowInstallGuide(true); return; }
+                setInstallingApp(true);
+                // A browser install request can only be used once; dismissal remains optional.
+                window.BoxPlayInstall?.consume();
+                setDeferredPrompt(null);
+                try {
+                    await request.prompt();
+                    await request.userChoice;
+                    // appinstalled / standalone mode supplies installation confirmation.
+                } catch (error) {
+                    console.warn('No se pudo abrir la solicitud de instalación.', error);
+                    setShowInstallGuide(true);
+                } finally { setInstallingApp(false); }
             };
 
             useEffect(() => {
@@ -1775,9 +1798,9 @@
                                 <Icon name="heart" size={16} fill={activeTab === 'favorites' ? '#06b6d4' : 'none'} className="text-cyan-400"/>
                                 <span className="hidden md:inline">Favs</span>
                             </button>
-                            <button onClick={handleInstallApp} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
+                            <button onClick={handleInstallApp} disabled={isAppInstalled || installingApp} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
                                 <Icon name="download" size={14}/>
-                                <span className="hidden md:inline">Instalar App</span>
+                                <span className="hidden md:inline">{isAppInstalled ? 'App instalada' : 'Instalar App'}</span>
                             </button>
                             <div className="relative hidden sm:block w-36 lg:w-48">
                                 <input type="text" placeholder="Buscar contenido..." className="w-full bg-[#090d1f] border border-slate-800 rounded-full px-4 py-2 text-xs text-white focus:border-cyan-500 outline-none pl-9 transition-colors placeholder-slate-500 shadow-inner" value={search} onChange={(e) => setSearch(e.target.value)} onFocus={() => setIsSearchFocused(true)} onBlur={() => setTimeout(() => setIsSearchFocused(false), 250)} onKeyDown={(e) => { if (e.key === 'Enter' && search.trim()) { addRecentSearch(search); setIsSearchFocused(false); } }}/>
@@ -1833,7 +1856,7 @@
 
                     {showMobileMoreMenu && (
                         <div className="lg:hidden fixed inset-0 z-[90] bg-black/80 backdrop-blur-md flex flex-col justify-end p-4 animate-fade-in pb-24" onClick={() => setShowMobileMoreMenu(false)}>
-                            <div className="glass-panel rounded-3xl p-4 shadow-2xl space-y-2 animate-scale-in" onClick={(e) => e.stopPropagation()}>
+                            <div className="box-more-panel glass-panel rounded-3xl p-4 shadow-2xl space-y-2 animate-scale-in" onClick={(e) => e.stopPropagation()}>
                                 <div className="flex items-center justify-between pb-3 border-b border-slate-800 px-2">
                                     <span className="text-xs font-black uppercase text-cyan-400 tracking-wider">Más Secciones & Herramientas</span>
                                     <button aria-label="Cerrar menú" onClick={() => setShowMobileMoreMenu(false)} className="text-slate-400 hover:text-white"><Icon name="x" size={16}/></button>
@@ -1852,7 +1875,7 @@
                                     </button>
                                     <div className="box-phone-only col-span-2"><div className="box-phone-tools">
                                         <button disabled={loading} onClick={() => { setCatalogRefresh(value => value + 1); setShowMobileMoreMenu(false); }}>Actualizar catálogo</button>
-                                        <button onClick={() => { handleInstallApp(); setShowMobileMoreMenu(false); }}>Instalar aplicación</button>
+                                        <button disabled={isAppInstalled || installingApp} onClick={() => { handleInstallApp(); setShowMobileMoreMenu(false); }} className="flex items-center justify-center gap-2 disabled:opacity-60"><Icon name="download" size={18}/>{isAppInstalled ? 'Aplicación agregada' : installingApp ? 'Abriendo instalación…' : 'Agregar a pantalla de inicio'}</button>
                                         <button onClick={() => { setShowQrModal(true); setShowMobileMoreMenu(false); }}>Compartir aplicación</button>
                                     </div></div>
                                 </div>
@@ -2621,18 +2644,27 @@
                         </div>
                     )}
 
-                    <div id="install-guide-modal" className="hidden fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
-                        <div className="glass-panel rounded-3xl p-6 max-w-sm w-full text-center relative shadow-2xl space-y-4 animate-scale-in">
-                            <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 border border-cyan-500/30 inline-block"><Icon name="download" size={24}/></div>
-                            <h3 className="text-base font-extrabold text-white">Cómo Instalar Boxplaytv</h3>
-                            <div className="text-xs text-slate-300 space-y-2 text-left bg-black/40 p-4 rounded-2xl border border-slate-800">
-                                <p><strong>💻 En Windows / PC (Chrome, Edge, Brave):</strong><br/>Haz clic en el ícono de instalación o en el menú (⋮) y selecciona <em>'Instalar Boxplaytv'</em>.</p>
-                                <p><strong>📱 En Android:</strong><br/>Toca el menú (⋮) y selecciona <em>'Instalar aplicación'</em> o <em>'Agregar a pantalla principal'</em>.</p>
-                                <p><strong>🍏 En iPhone / iPad (Safari):</strong><br/>Toca el botón Compartir (⎋) y selecciona <em>'Agregar al inicio'</em>.</p>
-                            </div>
-                            <button onClick={() => document.getElementById('install-guide-modal').classList.add('hidden')} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">Entendido</button>
+                    {showInstallGuide && <div className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+                        <div role="dialog" aria-modal="true" aria-labelledby="install-guide-title" style={{ maxHeight: '90dvh', overflowY: 'auto' }} className="glass-panel rounded-3xl p-6 max-w-sm w-full text-center relative shadow-2xl space-y-4">
+                            <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 inline-block"><Icon name="download" size={24}/></div>
+                            <h3 id="install-guide-title" className="text-lg font-bold text-white">Agregar Box Play TV</h3>
+                            <p className="text-sm text-slate-300">Ten un acceso directo en la pantalla de inicio. Tu teléfono te pedirá confirmar.</p>
+                            <ol className="text-sm text-slate-200 space-y-3 text-left bg-black/40 p-4 rounded-2xl border border-slate-800 list-decimal list-inside">
+                                {isIOS ? <>
+                                    <li>Abre Box Play TV en Safari.</li>
+                                    <li>Toca Compartir y busca «Agregar a pantalla de inicio».</li>
+                                    <li>Confirma con «Agregar».</li>
+                                </> : <>
+                                    <li>Abre Box Play TV en Chrome o en un navegador compatible.</li>
+                                    <li>Abre el menú (⋮) y selecciona «Instalar aplicación» o «Agregar a pantalla de inicio».</li>
+                                    <li>Confirma la instalación.</li>
+                                </>}
+                            </ol>
+                            <p className="text-xs text-slate-400">Si abriste el enlace desde WhatsApp, ábrelo primero en el navegador. La reproducción requiere Internet.</p>
+                            <button onClick={() => setShowInstallGuide(false)} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-sm">Entendido</button>
                         </div>
-                    </div>
+                    </div>}
+
                 </div>
             );
         };

@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "Box Play TV",
+  "short_name": "BOXPLAYTV",
+  "description": "Películas, series, TV y radio en un solo lugar.",
+  "lang": "es",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    { "src": "./icons/app-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

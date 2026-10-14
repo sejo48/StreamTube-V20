@@ -84,3 +84,11 @@ Se comprobó en 360 y 1280 px con respuestas de verificación simuladas (vigente
 ## Bienvenida automática
 
 La pantalla de bienvenida reemplaza la atribución personal por «Tu entretenimiento, en un solo lugar». Entra al inicio automáticamente después de 2 segundos; el botón permite entrar de inmediato. El temporizador se limpia al salir y no se reinicia al actualizar los catálogos. Se comprobó sin clic en móvil y PC (aproximadamente 2,05 segundos), y se retiró el porcentaje de carga simulado.
+
+## Agregar a pantalla de inicio
+
+Más incluye «Agregar a pantalla de inicio». Se añadieron `manifest.webmanifest`, iconos 192/512, metadatos de iOS, captura temprana de la solicitud de instalación y un service worker de red sin caché de catálogo ni contenido Premium.
+
+En navegadores compatibles el botón abre la solicitud del sistema. La confirmación del usuario es obligatoria; no se instala automáticamente ni se insiste cuando se rechaza. Cuando no hay solicitud disponible muestra pasos para Chrome/Android o Safari/iPhone. En modo independiente o tras confirmarse la instalación muestra «Aplicación agregada».
+
+La app instalada requiere Internet. El service worker muestra un aviso de conexión ante navegación sin red, sin guardar una versión antigua de los catálogos. Se verificaron el manifest, dimensiones reales de los iconos, registro del service worker y flujos del botón con eventos de instalación simulados. Se comprobaron instrucciones específicas para iPhone con su agente de navegador; no se efectuó una instalación real en un teléfono desde este entorno.

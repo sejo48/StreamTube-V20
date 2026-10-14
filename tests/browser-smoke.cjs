@@ -13,12 +13,12 @@ let failCatalog = false, requestsWithWrites = [];
 const server = http.createServer((req, res) => {
     if (!['GET', 'HEAD'].includes(req.method)) { requestsWithWrites.push(req.method + ' ' + req.url); res.writeHead(405); return res.end(); }
     const filename = decodeURIComponent(new URL(req.url, 'http://localhost').pathname.slice(1)) || 'index.html';
-    if (filename.includes('..') || filename.includes('/')) { res.writeHead(404); return res.end(); }
+    if (filename.includes('..') || (filename.includes('/') && !/^icons\/[\w.-]+$/.test(filename))) { res.writeHead(404); return res.end(); }
     if (failCatalog && filename === 'peliculas.json') { res.writeHead(503); return res.end('Unavailable'); }
     try {
         let body = files.get(filename) || fs.readFileSync(path.join(root, filename));
         if (filename.endsWith('.html')) body = body.toString().replace(/<script type="module">[\s\S]*?<\/script>/g, '<!-- Firebase excluded from offline integration tests -->');
-        res.setHeader('Content-Type', filename.endsWith('.html') ? 'text/html; charset=utf-8' : filename.endsWith('.js') ? 'application/javascript' : filename.endsWith('.json') ? 'application/json' : 'text/plain');
+        res.setHeader('Content-Type', filename.endsWith('.html') ? 'text/html; charset=utf-8' : filename.endsWith('.js') ? 'application/javascript' : filename.endsWith('.json') ? 'application/json' : filename.endsWith('.webmanifest') ? 'application/manifest+json' : filename.endsWith('.png') ? 'image/png' : 'text/plain');
         res.end(body);
     } catch { res.writeHead(404); res.end(); }
 });
@@ -139,6 +139,33 @@ const server = http.createServer((req, res) => {
         assert(await phone.getByText(movie.titulo, { exact: true }).filter({ visible: true }).count() > 0);
         assert(await phone.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
         console.log('PASS: phone hero, five navigation options, More and search work without horizontal overflow');
+        await phone.evaluate(() => {
+            const event = new Event('beforeinstallprompt', { cancelable: true });
+            event.prompt = async () => { window.testPromptCalls = (window.testPromptCalls || 0) + 1; };
+            event.userChoice = Promise.resolve({ outcome: 'dismissed' });
+            window.dispatchEvent(event);
+        });
+        await navigation.getByRole('button', { name: 'Más', exact: true }).click();
+        await phone.getByRole('button', { name: 'Agregar a pantalla de inicio', exact: true }).click();
+        assert.equal(await phone.evaluate(() => window.testPromptCalls), 1);
+        assert.equal(await phone.evaluate(() => window.BoxPlayInstall.prompt), null);
+        await navigation.getByRole('button', { name: 'Más', exact: true }).click();
+        await phone.getByRole('button', { name: 'Agregar a pantalla de inicio', exact: true }).click();
+        const installGuide = phone.getByRole('dialog', { name: 'Agregar Box Play TV' });
+        await installGuide.waitFor();
+        await installGuide.getByRole('button', { name: 'Entendido' }).click();
+        await phone.evaluate(() => window.dispatchEvent(new Event('appinstalled')));
+        await navigation.getByRole('button', { name: 'Más', exact: true }).click();
+        assert(await phone.getByRole('button', { name: 'Aplicación agregada', exact: true }).isDisabled());
+        const manifest = await phone.evaluate(async () => (await fetch('./manifest.webmanifest')).json());
+        assert.equal(manifest.display, 'standalone');
+        for (const icon of manifest.icons) {
+            const dimensions = await phone.evaluate(async src => { const image = new Image(); image.src = src; await image.decode(); return image.naturalWidth + 'x' + image.naturalHeight; }, icon.src);
+            assert.equal(dimensions, icon.sizes);
+        }
+        await phone.evaluate(() => navigator.serviceWorker.ready);
+        assert.equal(await phone.evaluate(async () => (await caches.keys()).length), 0);
+        console.log('PASS: installation button, dismissal, guide, installed state, manifest, icons and network-only service worker');
         await phone.close();
         assert.deepEqual(requestsWithWrites, []);
         assert.deepEqual(errors, []);
