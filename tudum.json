@@ -1,5 +1,345 @@
 [
   {
+    "tmdbId": 1302904,
+    "tmdbType": "movie",
+    "tituloOriginal": "Practical Magic 2",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/oIglj0Jy9duG4LnrRUpH8n001Pk.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-09-09",
+    "runtime": "130 min",
+    "runtimeMin": 130,
+    "clasificacion": "PG-13",
+    "director": "Susanne Bier, Farhan Rana Rajpoot",
+    "reparto": [
+      {
+        "nombre": "Sandra Bullock",
+        "personaje": "Sally Owens",
+        "foto": "https://image.tmdb.org/t/p/w185/4rfjISL3Flx16jfiusXoHbpt87X.jpg"
+      },
+      {
+        "nombre": "Nicole Kidman",
+        "personaje": "Gillian Owens",
+        "foto": "https://image.tmdb.org/t/p/w185/4KSQDodyBtTDMaREYgMdWD1LbH1.jpg"
+      },
+      {
+        "nombre": "Joey King",
+        "personaje": "Kylie",
+        "foto": "https://image.tmdb.org/t/p/w185/94c69mPYSK9jFsAEu0OKB7Qs684.jpg"
+      },
+      {
+        "nombre": "Maisie Williams",
+        "personaje": "Antonia",
+        "foto": "https://image.tmdb.org/t/p/w185/zk1rlBVci2fmnFhMezaPpa4kwZF.jpg"
+      },
+      {
+        "nombre": "Xolo Maridueña",
+        "personaje": "Gideon",
+        "foto": "https://image.tmdb.org/t/p/w185/tJMI7BpjlhHSMpzSz9e1XxygnKd.jpg"
+      },
+      {
+        "nombre": "Lee Pace",
+        "personaje": "Ian Wright",
+        "foto": "https://image.tmdb.org/t/p/w185/eeTc0d2AX1vFYVxZ6Qw7qZpg4Tz.jpg"
+      },
+      {
+        "nombre": "Dianne Wiest",
+        "personaje": "Jet",
+        "foto": "https://image.tmdb.org/t/p/w185/p9mfzY68FtEbedOMNB5X4eBShhx.jpg"
+      },
+      {
+        "nombre": "Stockard Channing",
+        "personaje": "Franny",
+        "foto": "https://image.tmdb.org/t/p/w185/fsk0HkOVKtdcbHfsc99bQvMJep3.jpg"
+      },
+      {
+        "nombre": "Solly McLeod",
+        "personaje": "Tom Lockland",
+        "foto": "https://image.tmdb.org/t/p/w185/6aMA4kUV1ji4uu3zzBzQ9fwgUDO.jpg"
+      },
+      {
+        "nombre": "Ema Cavolli",
+        "personaje": "Maria Owens",
+        "foto": "https://image.tmdb.org/t/p/w185/mzAXiBoJeY1fA9Nc6KNsKNPfsgO.jpg"
+      },
+      {
+        "nombre": "Cassie Bradley",
+        "personaje": "Hannah Owens",
+        "foto": "https://image.tmdb.org/t/p/w185/u1rqfCyqHMjeOewKuaIaA9D3WqY.jpg"
+      },
+      {
+        "nombre": "Liz Kingsman",
+        "personaje": "Jane",
+        "foto": "https://image.tmdb.org/t/p/w185/sNCFfAVWGe4d4SLlUiNWvLk1Vwe.jpg"
+      }
+    ],
+    "trailerUrl": "https://www.youtube.com/watch?v=UOmntM7mHI8",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "title": "Prácticamente magia 2",
+    "releaseDate": "8 de septiembre de 2026",
+    "genre": "Romance, Fantasía, Comedia",
+    "synopsis": "Las hermanas Owens deben enfrentarse a la oscura maldición que amenaza con desintegrar a su familia de una vez por todas.",
+    "image": "https://image.tmdb.org/t/p/w780/xCXznyg1BOAKISMuduRJLtcAgCR.jpg",
+    "availability": "Netflix (Película)",
+    "score": "6.3 / 10"
+  },
+  {
+    "tmdbId": 1248832,
+    "tmdbType": "movie",
+    "tituloOriginal": "Digger",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/b7t3r39Oll5qPxBKzLZ8eHMBD7l.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-09-28",
+    "runtime": "128 min",
+    "runtimeMin": 128,
+    "clasificacion": "16",
+    "director": "Alejandro González Iñárritu",
+    "reparto": [
+      {
+        "nombre": "Tom Cruise",
+        "personaje": "Digger Rockwell",
+        "foto": "https://image.tmdb.org/t/p/w185/maf8PhSvDCdEwjEMbYfGpojR5RP.jpg"
+      },
+      {
+        "nombre": "Riz Ahmed",
+        "personaje": "Dr. Nirav Ganesh",
+        "foto": "https://image.tmdb.org/t/p/w185/1uP9RaX7BGVx7XGTEmwObBJJzsC.jpg"
+      },
+      {
+        "nombre": "John Goodman",
+        "personaje": "President Compson",
+        "foto": "https://image.tmdb.org/t/p/w185/yyYqoyKHO7hE1zpgEV2XlqYWcNV.jpg"
+      },
+      {
+        "nombre": "Sandra Hüller",
+        "personaje": "Emma Rockwell",
+        "foto": "https://image.tmdb.org/t/p/w185/jQfKXVCPTH9KEnzHHU4QemCnlMe.jpg"
+      },
+      {
+        "nombre": "Michael Stuhlbarg",
+        "personaje": "Vice President Eddie",
+        "foto": "https://image.tmdb.org/t/p/w185/aYB3SQm3h6ZyAdlbGyiNfakjx56.jpg"
+      },
+      {
+        "nombre": "Jesse Plemons",
+        "personaje": "Kenny",
+        "foto": "https://image.tmdb.org/t/p/w185/og4I51GsuwohdPgoELOHVMMqMre.jpg"
+      },
+      {
+        "nombre": "Robert John Burke",
+        "personaje": "General Fitzgerald",
+        "foto": "https://image.tmdb.org/t/p/w185/uWEaY5gypb6cp1bdUYG4uCKw4sK.jpg"
+      },
+      {
+        "nombre": "Emma D'Arcy",
+        "personaje": "Lina",
+        "foto": "https://image.tmdb.org/t/p/w185/9Zlmb7VmtVCxkLq5yqFFRRxCaED.jpg"
+      },
+      {
+        "nombre": "Burn Gorman",
+        "personaje": "Defense Secretary Amos",
+        "foto": "https://image.tmdb.org/t/p/w185/udgACYWqCSuu6nvtrSjmyU28B0V.jpg"
+      },
+      {
+        "nombre": "Sophie Wilde",
+        "personaje": "Hannah",
+        "foto": "https://image.tmdb.org/t/p/w185/fMZvMsvTv9MYSC6LTNdIUaMGjIv.jpg"
+      },
+      {
+        "nombre": "Danny Kirrane",
+        "personaje": "Clarkson",
+        "foto": "https://image.tmdb.org/t/p/w185/yfui1GBLB2UBktBi9WRuxJoJqcs.jpg"
+      },
+      {
+        "nombre": "Ross Hatt",
+        "personaje": "Dr. Berg / Reader",
+        "foto": "https://image.tmdb.org/t/p/w185/5FKIImFCpbRzcyyBzyUXDLfvcdd.jpg"
+      }
+    ],
+    "trailerUrl": "https://www.youtube.com/watch?v=xU2jWSsaWY0",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "title": "Digger",
+    "releaseDate": "27 de septiembre de 2026",
+    "genre": "Comedia, Drama",
+    "synopsis": "El hombre más poderoso del mundo se embarca en una misión frenética para demostrar que es el salvador de la humanidad antes de que el desastre que ha desencadenado lo destruya todo.",
+    "image": "https://image.tmdb.org/t/p/w780/koqE0V2IgIPVy5o2vVkoGJvnB8b.jpg",
+    "availability": "Netflix (Película)",
+    "score": "7.5 / 10"
+  },
+  {
+    "tmdbId": 1236045,
+    "tmdbType": "movie",
+    "tituloOriginal": "Animals",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/tzoarEu7TsG959upiELyYPm5kO9.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-10-09",
+    "runtime": "109 min",
+    "runtimeMin": 109,
+    "clasificacion": "16",
+    "director": "Ben Affleck",
+    "reparto": [
+      {
+        "nombre": "Ben Affleck",
+        "personaje": "Mark Kimball",
+        "foto": "https://image.tmdb.org/t/p/w185/aTcqu8cI4wMohU17xTdqmXKTGrw.jpg"
+      },
+      {
+        "nombre": "Kerry Washington",
+        "personaje": "Abigail Kimball",
+        "foto": "https://image.tmdb.org/t/p/w185/zgyjYlxmHG6Ntbg16JcTp8Vu8M3.jpg"
+      },
+      {
+        "nombre": "Gillian Anderson",
+        "personaje": "Dayle Burton",
+        "foto": "https://image.tmdb.org/t/p/w185/3Ny8ZYahb33vpqNEPNCE2IOXPew.jpg"
+      },
+      {
+        "nombre": "Steven Yeun",
+        "personaje": "Sam Allison",
+        "foto": "https://image.tmdb.org/t/p/w185/fOMFO2Xx4duzpNgS9Q5ytO44yGb.jpg"
+      },
+      {
+        "nombre": "Adriana Paz",
+        "personaje": "Cecilia Trujillo",
+        "foto": "https://image.tmdb.org/t/p/w185/aUBNKmudV1CCMUHskWemg58vc3n.jpg"
+      },
+      {
+        "nombre": "Luis Gerardo Méndez",
+        "personaje": "Ramon",
+        "foto": "https://image.tmdb.org/t/p/w185/uV8XXAlTxNFsD4sBzCHsgo5MpKZ.jpg"
+      },
+      {
+        "nombre": "Christopher Woodley",
+        "personaje": "Denny Kimball",
+        "foto": "https://image.tmdb.org/t/p/w185/7qIR7rpHoQDUjtW0PUxPAvD2znu.jpg"
+      },
+      {
+        "nombre": "Jacob Estrada",
+        "personaje": "Hector",
+        "foto": "https://image.tmdb.org/t/p/w185/eai64zk7gMEyqOnK28r7P26oO9d.jpg"
+      },
+      {
+        "nombre": "Ray Fisher",
+        "personaje": "Ron Sperling",
+        "foto": "https://image.tmdb.org/t/p/w185/310snvA05xDOQZDn2fJSp242GHw.jpg"
+      },
+      {
+        "nombre": "Taylor Cooper",
+        "personaje": "Hannah",
+        "foto": "https://image.tmdb.org/t/p/w185/ai4yynRG9h8VASG76NZQgnj2Kx1.jpg"
+      },
+      {
+        "nombre": "Chris Gann",
+        "personaje": "Rand",
+        "foto": "https://image.tmdb.org/t/p/w185/jX73lEGi5TNjordeEEZRKjqGL9x.jpg"
+      },
+      {
+        "nombre": "Matt Gerald",
+        "personaje": "Kidnapper / James Bureaux",
+        "foto": "https://image.tmdb.org/t/p/w185/six7c3aZpiEomHjj4ZYokq8Vgtx.jpg"
+      }
+    ],
+    "trailerUrl": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "title": "Animales",
+    "releaseDate": "8 de octubre de 2026",
+    "genre": "Suspense, Drama",
+    "synopsis": "El secuestro de su hijo obliga a un candidato a la alcaldía de Los Ángeles y a su mujer a reunir el dinero del rescate y a tomar decisiones que podrían destruir sus vidas.",
+    "image": "https://image.tmdb.org/t/p/w780/hhycOr6ji35RMGHnstHN4UKAvR4.jpg",
+    "availability": "Netflix (Película)",
+    "score": "7.4 / 10"
+  },
+  {
+    "tmdbId": 969681,
+    "tmdbType": "movie",
+    "tituloOriginal": "Spider-Man: Brand New Day",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-07-29",
+    "runtime": "145 min",
+    "runtimeMin": 145,
+    "clasificacion": "12",
+    "director": "Destin Daniel Cretton",
+    "reparto": [
+      {
+        "nombre": "Tom Holland",
+        "personaje": "Peter Parker / Spider-Man",
+        "foto": "https://image.tmdb.org/t/p/w185/adwEBb2sCSzqwnpVgNEG7irl1Ne.jpg"
+      },
+      {
+        "nombre": "Sadie Sink",
+        "personaje": "Jean Grey",
+        "foto": "https://image.tmdb.org/t/p/w185/92FddzBfK50XOUbtwjqHPraoGHy.jpg"
+      },
+      {
+        "nombre": "Tramell Tillman",
+        "personaje": "William 'Bill' Metzger",
+        "foto": "https://image.tmdb.org/t/p/w185/2Uxa2M5HIoEuBb6gVOnNAuyn5wN.jpg"
+      },
+      {
+        "nombre": "Zendaya",
+        "personaje": "MJ",
+        "foto": "https://image.tmdb.org/t/p/w185/qGkBlyn1AwQpuFnRARMRwj0iHZp.jpg"
+      },
+      {
+        "nombre": "Jacob Batalon",
+        "personaje": "Ned Leeds",
+        "foto": "https://image.tmdb.org/t/p/w185/53YhaL4xw4Sb1ssoHkeSSBaO29c.jpg"
+      },
+      {
+        "nombre": "Jon Bernthal",
+        "personaje": "Frank Castle / Punisher",
+        "foto": "https://image.tmdb.org/t/p/w185/bjcglF1IpDcZNs1HwFxakGpzBo6.jpg"
+      },
+      {
+        "nombre": "Mark Ruffalo",
+        "personaje": "Bruce Banner / Hulk",
+        "foto": "https://image.tmdb.org/t/p/w185/5GilHMOt5PAQh6rlUKZzGmaKEI7.jpg"
+      },
+      {
+        "nombre": "Florence Pugh",
+        "personaje": "Yelena Belova / Black Widow",
+        "foto": "https://image.tmdb.org/t/p/w185/2URrZb95t3kY6pLroKny3Enmabp.jpg"
+      },
+      {
+        "nombre": "Liza Colón-Zayas",
+        "personaje": "Detective Jean DeWolff",
+        "foto": "https://image.tmdb.org/t/p/w185/q2gHcef0wckji0AS8ZEO6cYx065.jpg"
+      },
+      {
+        "nombre": "Marisa Tomei",
+        "personaje": "May Parker",
+        "foto": "https://image.tmdb.org/t/p/w185/vAQ10fvGfVyuJdMNKVMA4ZkacWL.jpg"
+      },
+      {
+        "nombre": "Naomi Watts",
+        "personaje": "E.V. (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/7ysvff7ZhW388SIh2YjQ0XIryOn.jpg"
+      },
+      {
+        "nombre": "Michael Mando",
+        "personaje": "Mac Gargan / Scorpion",
+        "foto": "https://image.tmdb.org/t/p/w185/gvM2wG66bjEpiirdeQdyG9EzUfv.jpg"
+      }
+    ],
+    "trailerUrl": "https://www.youtube.com/watch?v=o8EccyRIwQQ",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "title": "Spider-Man: Brand New Day",
+    "releaseDate": "28 de julio de 2026",
+    "genre": "Ciencia ficción, Acción, Aventura",
+    "synopsis": "Han pasado cuatro años desde los acontecimientos de No Way Home, y Peter Parker ahora es un adulto que vive completamente solo, ha desaparecido voluntariamente de las vidas y recuerdos de quienes ama. Combatiendo el crimen en una Nueva York que ya no conoce su nombre, se ha dedicado por completo a proteger su ciudad—un Spider-Man a tiempo completo—, pero a medida que aumentan las exigencias sobre él, la presión desencadena una evolución física que amenaza su existencia, al mismo tiempo que un extraño nuevo patrón de crímenes da lugar a una de las amenazas más poderosas a las que se ha enfrentado.",
+    "image": "https://image.tmdb.org/t/p/w780/9g0sEFhmvmK4nGhXj8DHuv2noYI.jpg",
+    "availability": "Netflix (Película)",
+    "score": "8.5 / 10"
+  },
+  {
     "tmdbId": 1255833,
     "fechaEstreno": "2026-10-14",
     "clasificacion": "PG-13",
