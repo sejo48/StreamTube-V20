@@ -1915,7 +1915,7 @@
                                 <span className="text-[9px] font-medium tracking-wide">{tab.label}</span>
                             </button>
                         ))}
-                        {[{ id: 'home', icon: 'search', label: 'Inicio' }, { id: 'movies', icon: 'clapperboard', label: 'Películas' }, { id: 'series', icon: 'film', label: 'Series' }, { id: 'tv', icon: 'tv', label: 'TV' }].map(tab => (
+                        {[{ id: 'home', icon: 'search', label: 'Inicio' }, { id: 'movies2', icon: 'star', label: 'Estrenos' }, { id: 'movies', icon: 'clapperboard', label: 'Películas' }, { id: 'series', icon: 'film', label: 'Series' }, { id: 'animados', icon: 'smile', label: 'Animados' }].map(tab => (
                             <button key={'phone-' + tab.id} onClick={() => handleTabClick(tab)} aria-current={activeTab === tab.id ? 'page' : undefined} className={`box-phone-nav-button flex-col items-center justify-center flex-1 gap-1 rounded-xl ${activeTab === tab.id ? 'text-cyan-400 bg-cyan-950/40' : 'text-slate-400'}`}>
                                 <Icon name={tab.icon} size={20}/><span>{tab.label}</span>
                             </button>

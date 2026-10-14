@@ -129,7 +129,12 @@ const server = http.createServer((req, res) => {
         const heroBox = await hero.boundingBox();
         assert.equal(heroBox.width, 390); assert(heroBox.height < 520);
         const navigation = phone.getByRole('navigation', { name: 'Navegación principal móvil' });
-        assert.equal(await navigation.getByRole('button').filter({ visible: true }).count(), 5);
+        assert.deepEqual(await navigation.getByRole('button').filter({ visible: true }).allTextContents().then(labels => labels.map(label => label.trim())), ['Inicio', 'Estrenos', 'Películas', 'Series', 'Animados', 'Más']);
+        for (const label of ['Estrenos', 'Películas', 'Series', 'Animados', 'Inicio']) {
+            const button = navigation.getByRole('button', { name: label, exact: true });
+            await button.click();
+            assert.equal(await button.getAttribute('aria-current'), 'page');
+        }
         await navigation.getByRole('button', { name: 'Más', exact: true }).click();
         await phone.getByRole('button', { name: 'Favs', exact: true }).filter({ visible: true }).click();
         await phone.getByRole('button', { name: 'Buscar contenido', exact: true }).click();
@@ -138,7 +143,7 @@ const server = http.createServer((req, res) => {
         await phone.getByText('Resultados de Búsqueda', { exact: true }).waitFor();
         assert(await phone.getByText(movie.titulo, { exact: true }).filter({ visible: true }).count() > 0);
         assert(await phone.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-        console.log('PASS: phone hero, five navigation options, More and search work without horizontal overflow');
+        console.log('PASS: phone hero, ordered navigation, More and search work without horizontal overflow');
         await phone.evaluate(() => {
             const event = new Event('beforeinstallprompt', { cancelable: true });
             event.prompt = async () => { window.testPromptCalls = (window.testPromptCalls || 0) + 1; };
