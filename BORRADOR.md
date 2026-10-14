@@ -110,3 +110,9 @@ Se ejecutaron 15 pruebas unitarias, `tests/notices-browser.cjs` y la prueba gene
 ## Administrador que utiliza el propietario
 
 El administrador habitual está en `sejo48/admisboxplaytv` (https://sejo48.github.io/admisboxplaytv/), no en el `admin.html` adicional de este repositorio. También se incorporó Avisos allí, conservando Explorar TMDB y GitHub Sync. El enlace directo es https://sejo48.github.io/admisboxplaytv/#avisos y el botón «Enviar avisos» aparece en la barra superior. Ambos administradores publican la misma lista de avisos de StreamTube-V20.
+
+## Administrador en producción y comprobación de credenciales
+
+El administrador habitual de admisboxplaytv ahora publica HTML/CSS/JS precompilados desde fuentes en `src/`, con versiones de React/ReactDOM/HLS fijadas y dependencias locales para compilación. Su navegador no ejecuta Tailwind CDN ni Babel para transformar la aplicación.
+
+La lista de avisos se abre mediante su fuente pública; no se usa automáticamente un token guardado para consultarla. Antes de publicar, el propietario pulsa «Comprobar conexión». Un 401 se identifica como token rechazado y un 403 como denegación de acceso. El borrador se conserva y la publicación queda bloqueada hasta que se compruebe una credencial válida. El propietario debe reemplazar el token rechazado directamente en el campo protegido del panel; el código no puede renovar una credencial de su cuenta de GitHub.

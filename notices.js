@@ -59,9 +59,15 @@
         return { Authorization: `Bearer ${token.trim()}`, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' };
     }
     function failure(status) {
-        if (status === 409 || status === 422) return new Error('Los avisos cambiaron en GitHub. Actualiza la lista antes de volver a publicar.');
-        if ([401, 403, 404].includes(status)) return new Error('No se pudo acceder a los avisos. Verifica la credencial, el repositorio y el permiso Contents: escritura.');
-        return new Error('No se confirmó la publicación. Conserva tu borrador y comprueba la lista antes de reintentar.');
+        let message;
+        if (status === 401) message = 'GitHub rechazó el token. Puede estar vencido, revocado o ser incorrecto. Introduce un token personal válido y comprueba la conexión.';
+        else if (status === 403) message = 'GitHub denegó el acceso. Comprueba el permiso Contents: escritura para este repositorio y las restricciones de la cuenta.';
+        else if (status === 404) message = 'No se encontró el archivo de avisos o el token no tiene acceso al repositorio. Comprueba la cuenta y el repositorio autorizado.';
+        else if (status === 409 || status === 422) message = 'Los avisos cambiaron en GitHub. Actualiza la lista antes de volver a publicar.';
+        else message = 'No se confirmó la publicación. Conserva tu borrador y comprueba la lista antes de reintentar.';
+        const error = new Error(message);
+        error.status = status;
+        return error;
     }
     async function repository(token, fetcher = root.fetch.bind(root)) {
         const { url, branch } = await endpoint();

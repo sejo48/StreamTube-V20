@@ -68,3 +68,8 @@ test('separately hosted administrator reads the principal feed using explicit co
         assert.match(calls[1], /repos\/sejo48\/StreamTube-V20\/contents\/avisos\.json\?ref=main$/);
     } finally { delete globalThis.BoxNoticesConfig; }
 });
+
+test('401 identifies a rejected credential separately from a 403 permission failure', async () => {
+    await assert.rejects(N.repository('example-test-credential', async () => ({ ok: false, status: 401 })), error => error.status === 401 && /rechazó el token/.test(error.message));
+    await assert.rejects(N.repository('example-test-credential', async () => ({ ok: false, status: 403 })), error => error.status === 403 && /permiso/.test(error.message));
+});
