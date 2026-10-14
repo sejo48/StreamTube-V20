@@ -28,9 +28,15 @@ Abra `index.html` y `admin.html` mediante el servidor HTTP. No abra los HTML dir
 - La actualización conserva la selección/reproducción actual y las listas personales. Ante un error mantiene el catálogo anterior. Solo actualiza el contenido cuando todas las descargas requeridas terminan.
 - El panel conserva los cambios locales ante errores y muestra el catálogo que falló. Las exportaciones individuales y los respaldos retienen IDs y metadatos.
 
-## Ajuste móvil de la portada recomendada
+## Inicio móvil
 
-La portada destacada ocupa todo el ancho en pantallas menores de 640 px. El título y los botones conservan sus márgenes. A partir de 640 px se conservan las dimensiones, márgenes y efecto de la portada anteriores. El cambio permanece en este borrador.
+Por debajo de 640 px se muestra un encabezado compacto con búsqueda, recomendación a todo el ancho con imagen de fondo y controles superpuestos, filas deslizables y navegación inferior Inicio / Películas / Series / TV / Más. El bloque de recomendación ocupa aproximadamente el 58% de la altura visible, entre 340 y 510 px. Usa `backdrop` si existe, con portada como respaldo. El detalle conserva la sinopsis completa.
+
+Cuando hay historial, Continuar viendo aparece justo después de la recomendación y permite abrir el último episodio guardado. No se inventan porcentajes de reproducción: los datos actuales guardan el episodio, pero no el tiempo reproducido.
+
+Favoritos, estrenos, radio, actualización del catálogo, instalación y compartir siguen accesibles desde Más. A partir de 640 px se conservan la distribución y dimensiones anteriores de PC/tablet.
+
+Se verificaron 360, 390 y 430 px sin desbordamiento horizontal y se compararon las medidas del encabezado, portada, recomendación y contenido de PC (1280 px) con la versión anterior.
 
 ## Datos existentes que requieren revisión
 

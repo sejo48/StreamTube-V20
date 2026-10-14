@@ -195,6 +195,45 @@
             background: #06b6d4;
             border-radius: 3px;
         }
+
+        /* Phone layout only; desktop and tablet styles retain their existing rules. */
+        .box-phone-hero, .box-phone-nav-button, .box-phone-search, .box-phone-only { display: none; }
+        @media (max-width: 639px) {
+            .box-desktop-hero, .box-legacy-nav-button, .box-home-extras, .box-desktop-continue { display: none !important; }
+            .box-phone-only { display: block; }
+            .box-phone-nav-button { display: flex; }
+            .box-header { height: 64px; padding: 10px 16px; box-shadow: none; }
+            .box-header-actions > :not(.box-phone-search) { display: none; }
+            .box-phone-search { display: flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+            .box-main { padding-top: 64px; }
+            .box-search-panel { position: fixed; top: 64px; left: 0; right: 0; z-index: 60; padding: 12px 16px; background: #020617; border-bottom: 1px solid #1e293b; }
+            .box-search-panel input { width: 100%; min-height: 44px; padding: 10px 14px; background: #0f172a; color: white; border: 1px solid #334155; border-radius: 12px; font-size: 16px; }
+            .box-phone-hero { display: flex; position: relative; width: 100%; height: clamp(340px, 58svh, 510px); align-items: flex-end; overflow: hidden; background: #0f172a; margin-bottom: 28px; }
+            .box-phone-hero-art { position: absolute; inset: 0; }
+            .box-phone-hero-art img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+            .box-phone-hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2,6,23,.04) 15%, rgba(2,6,23,.3) 45%, rgba(2,6,23,.94) 85%, #020617 100%); }
+            .box-phone-hero-copy { position: relative; width: 100%; padding: 24px 20px; text-align: left; }
+            .box-phone-hero-copy h1 { font-size: clamp(26px, 7vw, 34px); font-weight: 900; line-height: 1.12; margin: 10px 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+            .box-phone-hero-label { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: #67e8f9; }
+            .box-phone-hero-meta { display: flex; flex-wrap: wrap; gap: 8px; color: #cbd5e1; font-size: 12px; margin-bottom: 18px; }
+            .box-phone-hero-controls { display: flex; gap: 12px; }
+            .box-phone-play { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 24px; border-radius: 12px; background: #06b6d4; color: #020617; font-size: 14px; font-weight: 800; }
+            .box-phone-favorite { display: flex; align-items: center; justify-content: center; width: 48px; min-height: 48px; border-radius: 12px; border: 1px solid #64748b; background: rgba(15,23,42,.7); }
+            .box-content-strip { display: grid; grid-auto-flow: column; grid-auto-columns: 42%; grid-template-columns: none; gap: 12px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; scrollbar-width: none; overscroll-behavior-x: contain; }
+            .box-content-strip > * { scroll-snap-align: start; min-width: 0; }
+            .box-content-strip::-webkit-scrollbar { display: none; }
+            .box-content-row h2 { font-size: 17px; text-transform: none; letter-spacing: 0; }
+            .box-content-row .card-glow { box-shadow: none; }
+            .box-content-row h3 { text-align: left; font-size: 13px; }
+            .box-resume-caption { font-size: 11px; color: #94a3b8; margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            .box-bottom-nav { padding: 8px 8px max(8px, env(safe-area-inset-bottom)); background: rgba(2,6,23,.97); box-shadow: none; }
+            .box-bottom-nav > button { min-height: 48px; }
+            .box-bottom-nav > button span { font-size: 11px; }
+            .box-phone-tools { display: grid; gap: 8px; margin-top: 8px; }
+            .box-phone-tools button { min-height: 44px; border: 1px solid #334155; border-radius: 12px; font-size: 13px; }
+            .box-catalog-status { top: 68px; }
+            .box-catalog-success { display: none; }
+        }
     </style>
 </head>
 
@@ -537,19 +576,19 @@
             ); 
         };
 
-        const ContentRow = ({ title, items, onPlay, favorites, tvFavorites, onToggleFavorite, maxItems = 6 }) => {
+        const ContentRow = ({ title, items, onPlay, favorites, tvFavorites, onToggleFavorite, maxItems = 6, resume = false }) => {
             if (!items || items.length === 0) return null;
             return (
-                <div className="max-w-7xl mx-auto px-4 sm:px-8 w-full space-y-3">
+                <div className="box-content-row max-w-7xl mx-auto px-4 sm:px-8 w-full space-y-3">
                     <div className="flex items-center gap-3">
                         <div className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
                         <h2 className="text-base sm:text-lg font-black uppercase tracking-wider text-white">{title}</h2>
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
+                    <div className="box-content-strip grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
                         {items.slice(0, maxItems).map((item, i) => {
                             const itemId = item.id || item.title;
                             const isFav = item.type === 'tv' ? tvFavorites.some(f => (f.id || f.title) === itemId) : favorites.some(f => (f.id || f.title) === itemId);
-                            return <Card item={item} key={itemId || i} onClick={onPlay} isFavorite={isFav} onToggleFavorite={onToggleFavorite} />;
+                            return <div key={itemId || i}><Card item={item} onClick={onPlay} isFavorite={isFav} onToggleFavorite={onToggleFavorite} />{resume && <p className="box-phone-only box-resume-caption">{item.lastEpisode ? 'Retomar · ' + item.lastEpisode : 'Retomar película'}</p>}</div>;
                         })}
                     </div>
                 </div>
@@ -562,8 +601,24 @@
             const imgSource = extractImageUrl(featuredItem) || generatePlaceholder(featuredItem.title || featuredItem.titulo, 'poster');
             const titleSource = featuredItem.titulo || featuredItem.title || featuredItem.name;
             const descSource = featuredItem.descripcion || featuredItem.sinopsis || featuredItem.plot;
+            const mobileArt = normalizeImageUrl(featuredItem.backdrop || featuredItem.banner || imgSource);
+            const mobileMeta = [featuredItem.year, (featuredItem.generosTexto || featuredItem.genre || '').split(',')[0], featuredItem.qualityTag].filter(Boolean);
             return (
-                <div className="relative w-full bg-[#070b19] overflow-hidden rounded-none sm:rounded-3xl mb-8 group animate-fade-in shadow-2xl border-b sm:border border-slate-800 flex items-center max-w-7xl mx-auto px-0 sm:px-12 cinema-glow w-full py-8 sm:py-16 md:py-20">
+                <>
+                <section className="box-phone-hero" aria-label="Película recomendada">
+                    <div className="box-phone-hero-art"><RobustImage src={mobileArt} alt={titleSource} title={titleSource} type="backdrop" className="w-full h-full object-cover" /></div>
+                    <div className="box-phone-hero-shade"></div>
+                    <div className="box-phone-hero-copy">
+                        <span className="box-phone-hero-label">Recomendado para ti</span>
+                        <h1>{titleSource}</h1>
+                        {mobileMeta.length > 0 && <p className="box-phone-hero-meta">{mobileMeta.map((value, index) => <span key={index}>{value}</span>)}</p>}
+                        <div className="box-phone-hero-controls">
+                            <button className="box-phone-play" onClick={() => onPlay(featuredItem)}><Icon name="play" size={18} fill="currentColor" />Ver ahora</button>
+                            <button className="box-phone-favorite" aria-label={isFavorite ? 'Quitar de favoritos' : 'Añadir a favoritos'} aria-pressed={isFavorite} onClick={() => onToggleFavorite(featuredItem)}><Icon name="heart" size={20} fill={isFavorite ? '#06b6d4' : 'none'} /></button>
+                        </div>
+                    </div>
+                </section>
+                <div className="box-desktop-hero relative w-full bg-[#070b19] overflow-hidden rounded-none sm:rounded-3xl mb-8 group animate-fade-in shadow-2xl border-b sm:border border-slate-800 flex items-center max-w-7xl mx-auto px-0 sm:px-12 cinema-glow w-full py-8 sm:py-16 md:py-20">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
                         <img src="https://img.magnific.com/foto-gratis/cine-caja-palomitas-maiz_23-2148133612.jpg?semt=ais_hybrid&w=740&q=80" alt="Hero BG" className="w-full h-full object-cover opacity-25 scale-105 brightness-90" />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/90 to-transparent"></div>
@@ -584,6 +639,7 @@
                         </div>
                     </div>
                 </div>
+                </>
             );
         };
 
@@ -1045,6 +1101,7 @@
             const [showQrModal, setShowQrModal] = useState(false);
             const [showSmartViewModal, setShowSmartViewModal] = useState(false);
             const [showMobileMoreMenu, setShowMobileMoreMenu] = useState(false);
+            const [showMobileSearch, setShowMobileSearch] = useState(false);
             const [showDownloadPinModal, setShowDownloadPinModal] = useState(false);
             const [downloadPinInput, setDownloadPinInput] = useState('');
             const [downloadPinError, setDownloadPinError] = useState(false);
@@ -1645,6 +1702,12 @@
                 }, 300);
             };
 
+            const handleResume = item => {
+                handleShowDetails(item);
+                const episode = (item.seasons || []).flatMap(season => season.episodes).find(episode => episode.url === item.lastEpisodeUrl);
+                if (episode) setSelectedEpisode(episode);
+            };
+
             const handlePlay = (item) => {
                 handleShowDetails(item);
             };
@@ -1652,7 +1715,7 @@
             const handlePlayRadioStation = (station) => { setCurrentRadioStation(station); setIsRadioPlaying(true); setStreamError(false); };
 
             const handleTabClick = (tab) => {
-                setActiveTab(tab.id); setSearch(''); setIsLocked(false); setIsPlaying(false); setShowMobileMoreMenu(false);
+                setActiveTab(tab.id); setSearch(''); setShowMobileSearch(false); setIsLocked(false); setIsPlaying(false); setShowMobileMoreMenu(false);
                 window.history.pushState({ appState: 'main', activeTab: tab.id }, '');
                 if (tab.id === 'tv') {
                     if (!selectedItem || selectedItem.type !== 'tv') {
@@ -1676,7 +1739,7 @@
 
             return (
                 <div className="min-h-screen bg-[#020617] text-[#f8fafc] font-sans flex flex-col relative selection:bg-cyan-500 selection:text-white w-full max-w-[100vw] overflow-x-hidden">
-                    <header className="fixed top-0 left-0 right-0 z-50 glass-header px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl w-full">
+                    <header className="box-header fixed top-0 left-0 right-0 z-50 glass-header px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl w-full">
                         <div className="flex items-center gap-4 lg:gap-8">
                             <div className="flex items-center gap-2.5 cursor-pointer group" onClick={() => handleTabClick(navTabs[0])}>
                                 <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.4)] group-hover:scale-105 transition-transform flex-shrink-0">
@@ -1693,7 +1756,8 @@
                                 ))}
                             </nav>
                         </div>
-                        <div className="flex items-center gap-2 sm:gap-3">
+                        <div className="box-header-actions flex items-center gap-2 sm:gap-3">
+                            <button className="box-phone-search" aria-label="Buscar contenido" aria-expanded={showMobileSearch} onClick={() => { if (!showMobileSearch) { setActiveTab('home'); setSelectedItem(null); setIsPlaying(false); } setShowMobileSearch(value => !value); }}><Icon name={showMobileSearch ? 'x' : 'search'} size={22} /></button>
                             <button onClick={() => setCatalogRefresh(value => value + 1)} disabled={loading} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-xs font-bold disabled:opacity-50" title="Actualizar catálogo">Actualizar catálogo</button>
                             <button onClick={() => { setShowSmartViewModal(true); window.history.pushState({ appState: 'smartview-modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Ver en Smart TV">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
@@ -1736,29 +1800,38 @@
                             </button>
                         </div>
                     </header>
-                    {catalogMessage && <p role="status" className="fixed top-20 left-4 z-40 text-xs bg-slate-900 text-cyan-100 p-2 rounded-xl max-w-[90vw]">{catalogMessage}</p>}
+                    {showMobileSearch && <form className="box-phone-only box-search-panel" role="search" onSubmit={event => { event.preventDefault(); addRecentSearch(search); setShowMobileSearch(false); }}>
+                        <input autoFocus type="search" aria-label="Buscar películas y series" placeholder="Buscar películas y series…" value={search} onChange={event => { setSearch(event.target.value); if (selectedItem) { setSelectedItem(null); setIsPlaying(false); } }} />
+                    </form>}
+                    {catalogMessage && <p role="status" className={`box-catalog-status ${catalogMessage === 'Catálogo actualizado.' ? 'box-catalog-success' : ''} fixed top-20 left-4 z-40 text-xs bg-slate-900 text-cyan-100 p-2 rounded-xl max-w-[90vw]`}>{catalogMessage}</p>}
 
-                    <div className="lg:hidden fixed bottom-0 w-full max-w-[100vw] glass-panel border-t border-slate-800 z-50 flex py-2 pb-safe px-1 items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.9)]">
+                    <nav aria-label="Navegación principal móvil" className="box-bottom-nav lg:hidden fixed bottom-0 w-full max-w-[100vw] glass-panel border-t border-slate-800 z-50 flex py-2 pb-safe px-1 items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.9)]">
                         {[{ id: 'home', icon: 'search', label: 'Inicio' }, { id: 'movies', icon: 'clapperboard', label: 'Películas' }, { id: 'movies2', icon: 'star', label: 'Estrenos' }, { id: 'tv', icon: 'tv', label: 'TV' }, { id: 'radio', icon: 'radio', label: 'Radio' }, { id: 'favorites', icon: 'heart', label: 'Favs' }].map(tab => (
-                            <button key={tab.id} onClick={() => handleTabClick(tab)} className={`flex flex-col items-center justify-center flex-1 py-1 gap-1 transition-all active:scale-95 rounded-xl ${activeTab === tab.id ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-400 hover:text-white'}`}>
+                            <button key={tab.id} onClick={() => handleTabClick(tab)} className={`box-legacy-nav-button flex flex-col items-center justify-center flex-1 py-1 gap-1 transition-all active:scale-95 rounded-xl ${activeTab === tab.id ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-400 hover:text-white'}`}>
                                 <Icon name={tab.icon} size={16}/>
                                 <span className="text-[9px] font-medium tracking-wide">{tab.label}</span>
+                            </button>
+                        ))}
+                        {[{ id: 'home', icon: 'search', label: 'Inicio' }, { id: 'movies', icon: 'clapperboard', label: 'Películas' }, { id: 'series', icon: 'film', label: 'Series' }, { id: 'tv', icon: 'tv', label: 'TV' }].map(tab => (
+                            <button key={'phone-' + tab.id} onClick={() => handleTabClick(tab)} aria-current={activeTab === tab.id ? 'page' : undefined} className={`box-phone-nav-button flex-col items-center justify-center flex-1 gap-1 rounded-xl ${activeTab === tab.id ? 'text-cyan-400 bg-cyan-950/40' : 'text-slate-400'}`}>
+                                <Icon name={tab.icon} size={20}/><span>{tab.label}</span>
                             </button>
                         ))}
                         <button onClick={() => setShowMobileMoreMenu(!showMobileMoreMenu)} className={`flex flex-col items-center justify-center flex-1 py-1 gap-1 transition-all active:scale-95 rounded-xl ${showMobileMoreMenu ? 'text-cyan-400 bg-cyan-950/40 border border-cyan-500/30' : 'text-slate-400 hover:text-white'}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
                             <span className="text-[9px] font-medium tracking-wide">Más</span>
                         </button>
-                    </div>
+                    </nav>
 
                     {showMobileMoreMenu && (
                         <div className="lg:hidden fixed inset-0 z-[90] bg-black/80 backdrop-blur-md flex flex-col justify-end p-4 animate-fade-in pb-24" onClick={() => setShowMobileMoreMenu(false)}>
                             <div className="glass-panel rounded-3xl p-4 shadow-2xl space-y-2 animate-scale-in" onClick={(e) => e.stopPropagation()}>
                                 <div className="flex items-center justify-between pb-3 border-b border-slate-800 px-2">
                                     <span className="text-xs font-black uppercase text-cyan-400 tracking-wider">Más Secciones & Herramientas</span>
-                                    <button onClick={() => setShowMobileMoreMenu(false)} className="text-slate-400 hover:text-white"><Icon name="x" size={16}/></button>
+                                    <button aria-label="Cerrar menú" onClick={() => setShowMobileMoreMenu(false)} className="text-slate-400 hover:text-white"><Icon name="x" size={16}/></button>
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
+                                    <div className="box-phone-only col-span-2"><div className="grid grid-cols-2 gap-2">{navTabs.filter(tab => ['movies2', 'favorites'].includes(tab.id)).map(tab => <button key={tab.id} onClick={() => handleTabClick(tab)} className="p-3 rounded-2xl border border-slate-800 text-xs flex items-center gap-3"><Icon name={tab.icon} size={16}/>{tab.label}</button>)}</div></div>
                                     {navTabs.slice(3, 10).map(tab => (
                                         <button key={tab.id} onClick={() => handleTabClick(tab)} className={`p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
                                             <Icon name={tab.icon} size={16}/>
@@ -1769,12 +1842,17 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
                                         <span>Smart TV</span>
                                     </button>
+                                    <div className="box-phone-only col-span-2"><div className="box-phone-tools">
+                                        <button disabled={loading} onClick={() => { setCatalogRefresh(value => value + 1); setShowMobileMoreMenu(false); }}>Actualizar catálogo</button>
+                                        <button onClick={() => { handleInstallApp(); setShowMobileMoreMenu(false); }}>Instalar aplicación</button>
+                                        <button onClick={() => { setShowQrModal(true); setShowMobileMoreMenu(false); }}>Compartir aplicación</button>
+                                    </div></div>
                                 </div>
                             </div>
                         </div>
                     )}
 
-                    <main className="flex-1 min-h-screen pt-20 pb-32 md:pb-16 relative z-10 w-full max-w-[100vw] overflow-x-hidden">
+                    <main className="box-main flex-1 min-h-screen pt-20 pb-32 md:pb-16 relative z-10 w-full max-w-[100vw] overflow-x-hidden">
                         {activeTab === 'radio' ? (
                             <CyberRadioSection 
                                 stations={radioStations}
@@ -2340,8 +2418,9 @@
                                 {activeTab === 'home' && !search && (
                                     <>
                                         {currentHeroItem && (<HeroSection item={currentHeroItem} onPlay={handlePlay} isFavorite={isItemFavorite(currentHeroItem)} onToggleFavorite={toggleFavorite} />)}
+                                        {continueWatching.length > 0 && <div className="box-phone-only mb-8"><ContentRow title="Continuar viendo" items={continueWatching} onPlay={handleResume} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} resume /></div>}
                                         
-                                        <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full">
+                                        <div className="box-home-extras max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full">
                                             <div className="flex items-center gap-3 mb-4">
                                                 <div className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
                                                 <h2 className="text-base sm:text-lg font-black uppercase tracking-wider text-white">ACCESO RÁPIDO / HUB PRINCIPAL</h2>
@@ -2383,7 +2462,7 @@
                                             </div>
                                         </div>
 
-                                        <div className="max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full space-y-4">
+                                        <div className="box-home-extras max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full space-y-4">
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center gap-3">
                                                     <div className="w-1.5 h-6 bg-[#e50914] rounded-full shadow-[0_0_15px_#e50914]"></div>
@@ -2422,7 +2501,7 @@
                                 
                                 {activeTab === 'home' && !search ? (
                                     <div className="space-y-8 sm:space-y-10 pb-16 w-full">
-                                        {continueWatching.length > 0 && (<ContentRow title="▶️ Continuar Viendo" items={continueWatching} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} maxItems={6} />)}
+                                        {continueWatching.length > 0 && (<div className="box-desktop-continue"><ContentRow title="▶️ Continuar Viendo" items={continueWatching} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} maxItems={6} /></div>)}
                                         {content.movies2.length > 0 && (<ContentRow title="✨ Estrenos 2026" items={content.movies2} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />)}
                                         <ContentRow title="🎬 Últimos Estrenos" items={content.movies} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
                                         <ContentRow title="🔥 Tendencias Actuales (Anime & Más)" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
