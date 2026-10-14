@@ -1,5 +1,148 @@
 [
   {
+    "titulo": "Una película de Minecraft",
+    "tituloOriginal": "A Minecraft Movie",
+    "descripcion": "Cuatro inadaptados se encuentran luchando con problemas ordinarios cuando de repente se ven arrastrados a través de un misterioso portal al Mundo Exterior: un extraño país de las maravillas cúbico que se nutre de la imaginación. Para volver a casa, tendrán que dominar este mundo mientras se embarcan en una búsqueda mágica con un inesperado experto artesano, Steve.",
+    "imagen": "https://image.tmdb.org/t/p/w780/mFjtmmh4RtK9tLv1aPnUsl6st3m.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/2Nti3gYAX513wvhp8IiLL6ZDyOm.jpg",
+    "urlDrive": "",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-03-31",
+    "rating": "6.2",
+    "votos": 3356,
+    "runtime": "1h 40min",
+    "genres": [
+      "Familia",
+      "Fantasía",
+      "Comedia",
+      "Aventura"
+    ],
+    "generosTexto": "Familia, Fantasía, Comedia, Aventura",
+    "clasificacion": "7",
+    "tagline": "Estar allí y ser cuadrado.",
+    "director": "Jared Hess",
+    "guionistas": "Hubbel Palmer, Chris Bowman, Allison Schroeder",
+    "reparto": [
+      {
+        "nombre": "Jason Momoa",
+        "personaje": "Garrett",
+        "foto": "https://image.tmdb.org/t/p/w185/3troAR6QbSb6nUFMDu61YCCWLKa.jpg"
+      },
+      {
+        "nombre": "Jack Black",
+        "personaje": "Steve",
+        "foto": "https://image.tmdb.org/t/p/w185/59IhgCtiWI5yTfzPhsjzg7GjCjm.jpg"
+      },
+      {
+        "nombre": "Sebastian Eugene Hansen",
+        "personaje": "Henry",
+        "foto": "https://image.tmdb.org/t/p/w185/40HNkoB3RKPMPgLhTyKQU6kG0sc.jpg"
+      },
+      {
+        "nombre": "Emma Myers",
+        "personaje": "Natalie",
+        "foto": "https://image.tmdb.org/t/p/w185/v1Y8RP39135ZOary9M4MbkrCAdn.jpg"
+      },
+      {
+        "nombre": "Danielle Brooks",
+        "personaje": "Dawn",
+        "foto": "https://image.tmdb.org/t/p/w185/hwrMFbcALcqrV7S2pRP9C5BXrU0.jpg"
+      },
+      {
+        "nombre": "Jennifer Coolidge",
+        "personaje": "Vice Principal Marlene",
+        "foto": "https://image.tmdb.org/t/p/w185/hcpbV0dY4ZJxmZi1WcAWe8euqV2.jpg"
+      },
+      {
+        "nombre": "Rachel House",
+        "personaje": "Malgosha (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/2LCQF7Bn0I91o17GGkox0ZhhbE7.jpg"
+      },
+      {
+        "nombre": "Allan Henry",
+        "personaje": "Malgosha (Creature Performer)",
+        "foto": "https://image.tmdb.org/t/p/w185/iZKNvaQutjb5Otlb7IyYqdfWJ7d.jpg"
+      },
+      {
+        "nombre": "Bram Scott-Breheny",
+        "personaje": "Young Steve",
+        "foto": "https://image.tmdb.org/t/p/w185/kI51jREZQm4Gvlh4A0PzNmroU6M.jpg"
+      },
+      {
+        "nombre": "Moana Williams",
+        "personaje": "Young Garrett",
+        "foto": "https://image.tmdb.org/t/p/w185/xJnJYBEu2ATZetA6eqEDEDhNFUn.jpg"
+      },
+      {
+        "nombre": "Jemaine Clement",
+        "personaje": "Daryl / Bruce (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/6eiNbeurpHb2fxIeT0RrJ0wRI25.jpg"
+      },
+      {
+        "nombre": "Mark Wright",
+        "personaje": "HR Person",
+        "foto": "https://image.tmdb.org/t/p/w185/7Qr433sjMWfpqJpsi1Nil8I4aS.jpg"
+      }
+    ],
+    "pais": "Sweden, United States of America",
+    "idioma": "en",
+    "productoras": "Warner Bros. Pictures, Legendary Pictures, Mojang Studios, Vertigo Entertainment, On the Roam, Domain Entertainment",
+    "presupuesto": 150000000,
+    "recaudacion": 960387780,
+    "trailerUrl": "https://www.youtube.com/watch?v=NOAmJa-dhCA",
+    "coleccion": "Minecraft Movie Collection",
+    "keywords": "friendship, village, idaho, surrealism, exploration, portal, miner, friends, survival, zombie, based on video game, aftercreditsstinger, duringcreditsstinger, farming, journey, live action and animation, crafting, imagination, teamwork, fantasy, exuberant, building",
+    "similares": [
+      {
+        "titulo": "Amigos imaginarios",
+        "poster": "https://image.tmdb.org/t/p/w342/8RgGuC7w8JxhykauzTC4bwha1J8.jpg",
+        "year": "2024",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Los Croods: Una nueva era",
+        "poster": "https://image.tmdb.org/t/p/w342/5uMWKEmegf5aTJnp1u98JF4QerP.jpg",
+        "year": "2020",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "El enigma del fuego",
+        "poster": "https://image.tmdb.org/t/p/w342/pUldekDqhcDSSHlKVuAlchUX9le.jpg",
+        "year": "2024",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Harold y el lápiz mágico",
+        "poster": "https://image.tmdb.org/t/p/w342/1LRmVHwhH4bCyMHHgz3ZZdqu7lO.jpg",
+        "year": "2024",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "El Gato con Botas",
+        "poster": "https://image.tmdb.org/t/p/w342/1VmrC82zY4U33l9UHlZTWDB1asN.jpg",
+        "year": "2011",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "La Leyenda de Ochi",
+        "poster": "https://image.tmdb.org/t/p/w342/vxqgIV6NBWGUZzwDQHgzSGz5DYN.jpg",
+        "year": "2025",
+        "rating": "6.1"
+      }
+    ],
+    "tmdbId": 950387,
+    "tmdbType": "movie",
+    "runtimeMin": 100,
+    "homepage": "https://www.warnerbros.es/peliculas/una-pelicula-de-minecraft",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "El pequeño fenómeno",
     "tituloOriginal": "Little Giant",
     "descripcion": "Un ingenuo campesino llamado Benny Miller, de Cucamonga, California, ha estado tomando clases por correspondencia en materia de ventas. Al finalizar el curso, deja a su madre y a su novia Martha para labrarse un porvenir en Los Ángeles. Va en busca de su tío Clarence, contable de una empresa, quien le va a facilitar una entrevista para trabajar en el departamento de ventas. El día de la entrevista, el corrupto gerente de ventas, John Morrison, lo confunde con uno de los modelos para una nueva campaña de ventas y le pide que se quite la ropa. La esposa secreta de Morrison, Hazel Temple, descubre el error y sugiere que Benny sea contratado para evitar que esa equivocación trascienda a la opinión pública...",
