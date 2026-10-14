@@ -80,3 +80,7 @@ Los avisos de pago y la sección de acceso indican ₡3.000 por 30 días, sin co
 Se retiró la fecha de vencimiento fija que mostraba la interfaz. La fecha y el tiempo restante se muestran únicamente a partir del resultado de verificación de la cuenta. Antes de verificar se pide consultar el acceso; no se muestra una fecha inventada. La fecha se presenta en horario de Costa Rica.
 
 Se comprobó en 360 y 1280 px con respuestas de verificación simuladas (vigente y vencida); no se hicieron escrituras ni cobros de prueba en Firebase. Este ajuste no cambia las fechas de cuentas existentes: siguen administrándose en Firebase.
+
+## Bienvenida automática
+
+La pantalla de bienvenida reemplaza la atribución personal por «Tu entretenimiento, en un solo lugar». Entra al inicio automáticamente después de 2 segundos; el botón permite entrar de inmediato. El temporizador se limpia al salir y no se reinicia al actualizar los catálogos. Se comprobó sin clic en móvil y PC (aproximadamente 2,05 segundos), y se retiró el porcentaje de carga simulado.

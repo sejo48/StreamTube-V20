@@ -1037,18 +1037,24 @@
         };
 
         const IntroScreen = ({ onEnter }) => {
-            const [isLoading, setIsLoading] = useState(false);
-            const [progress, setProgress] = useState(0);
+            const onEnterRef = useRef(onEnter);
+            const enteredRef = useRef(false);
+            onEnterRef.current = onEnter;
 
             const handleStart = () => {
-                setIsLoading(true);
-                let current = 0;
-                const interval = setInterval(() => {
-                    current += 2;
-                    if (current <= 100) { setProgress(current); }
-                    else { clearInterval(interval); onEnter(); }
-                }, 30);
+                if (enteredRef.current) return;
+                enteredRef.current = true;
+                onEnterRef.current();
             };
+
+            useEffect(() => {
+                const timer = setTimeout(() => {
+                    if (enteredRef.current) return;
+                    enteredRef.current = true;
+                    onEnterRef.current();
+                }, 2000);
+                return () => clearTimeout(timer);
+            }, []);
 
             return (
                 <div className="fixed inset-0 z-[100] bg-[#020617] flex items-center justify-center overflow-hidden font-sans p-4">
@@ -1062,15 +1068,9 @@
                             <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tighter">BOXPLAY<span className="text-cyan-400">TV</span></h1>
                         </div>
                         <p className="text-xs sm:text-sm text-slate-300 font-light mb-6 italic">"Streaming de alta calidad cinematográfica."</p>
-                        {isLoading ? (
-                            <div className="space-y-3 mb-6">
-                                <div className="flex justify-between text-xs text-cyan-300 font-bold px-1"><span>Cargando plataforma...</span><span>{progress}%</span></div>
-                                <div className="w-full h-2.5 bg-black/60 rounded-full overflow-hidden border border-slate-800 p-0.5"><div className="h-full bg-gradient-to-r from-cyan-600 to-teal-400 rounded-full transition-all duration-75 shadow-[0_0_15px_#06b6d4]" style={{ width: `${progress}%` }}></div></div>
-                            </div>
-                        ) : (
-                            <button onClick={handleStart} className="w-full bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white py-3.5 rounded-full font-extrabold text-sm sm:text-base shadow-[0_0_25px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2 mb-6 active:scale-95 transition-all"><span>Comenzar Experiencia</span> <Icon fill="white" name="play" size={16}/></button>
-                        )}
-                        <div className="opacity-80 pt-3 border-t border-slate-800"><p className="text-[8px] text-slate-400 uppercase tracking-widest mb-0.5">DISEÑADO Y PROGRAMADO POR</p><h3 className="text-sm font-serif text-gold-gradient font-bold mb-1">JORGE ARTURO HERNÁNDEZ MÉNDEZ</h3><p className="text-[8px] text-slate-500">Boxplaytv • Todos los derechos reservados</p></div>
+                        <button onClick={handleStart} className="w-full bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white py-3.5 rounded-full font-extrabold text-sm sm:text-base shadow-[0_0_25px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2 mb-3 active:scale-95 transition-all"><span>Comenzar Experiencia</span> <Icon fill="white" name="play" size={16}/></button>
+                        <p className="text-xs text-slate-400 mb-6">Entrando automáticamente en 2 segundos…</p>
+                        <div className="opacity-80 pt-3 border-t border-slate-800"><p className="text-[8px] text-slate-400 uppercase tracking-widest mb-0.5">BIENVENIDO A BOX PLAY TV</p><h3 className="text-sm font-serif text-gold-gradient font-bold mb-1">Tu entretenimiento, en un solo lugar</h3><p className="text-[8px] text-slate-500">Boxplaytv • Todos los derechos reservados</p></div>
                     </div>
                 </div>
             );
