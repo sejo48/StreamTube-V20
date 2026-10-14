@@ -75,7 +75,7 @@ test('restoring legacy administration data reuses shared IDs without discarding 
     assert.equal(restored[0].descripcion, 'Mi borrador');
     assert.deepEqual(restored[0].legacyIds, ['mov-1-0']);
 });
-test('draft administration has no GitHub write path or token collection', () => {
+test('catalog administration excludes the legacy GitHub token storage and direct writes', () => {
     const admin = fs.readFileSync(path.join(root, 'admin.html'), 'utf8');
     assert(!admin.includes('api.github.com'));
     assert(!admin.includes('boxplay_github_pat'));

@@ -1,6 +1,6 @@
 # Box Play TV — borrador para revisión
 
-Este documento registra el borrador previo a la aprobación de publicación del código. El panel conserva su modo borrador; publicar estas aplicaciones no publica automáticamente cambios de catálogos. El panel no contiene llamadas de escritura a GitHub, formulario de token ni botón de publicación.
+Este documento registra el borrador previo a la aprobación de publicación del código. El panel conserva su modo borrador; publicar estas aplicaciones no publica automáticamente cambios de catálogos. La publicación de catálogos sigue deshabilitada. La sección Avisos permite publicar únicamente `avisos.json` con una credencial autorizada.
 
 ## Probar las aplicaciones
 
@@ -92,3 +92,17 @@ Más incluye «Agregar a pantalla de inicio». Se añadieron `manifest.webmanife
 En navegadores compatibles el botón abre la solicitud del sistema. La confirmación del usuario es obligatoria; no se instala automáticamente ni se insiste cuando se rechaza. Cuando no hay solicitud disponible muestra pasos para Chrome/Android o Safari/iPhone. En modo independiente o tras confirmarse la instalación muestra «Aplicación agregada».
 
 La app instalada requiere Internet. El service worker muestra un aviso de conexión ante navegación sin red, sin guardar una versión antigua de los catálogos. Se verificaron el manifest, dimensiones reales de los iconos, registro del service worker y flujos del botón con eventos de instalación simulados. Se comprobaron instrucciones específicas para iPhone con su agente de navegador; no se efectuó una instalación real en un teléfono desde este entorno.
+
+## Avisos en la aplicación e indicador del icono
+
+La principal muestra una campana con el número de avisos sin leer. El panel permite marcar uno o todos como leídos y abrir la sección asociada. La lectura se conserva en el dispositivo y se sincroniza entre pestañas del mismo navegador. Los avisos vencidos quedan fuera del contador. Se consulta la lista al abrir/volver a la aplicación y cada minuto mientras está visible; no hay un servicio de notificaciones push para recibir nuevos mensajes con la app cerrada.
+
+En plataformas compatibles se usa la API de indicadores de la app instalada para establecer o limpiar el contador del icono. El soporte depende del sistema/navegador; no se garantiza que aparezca en todos los móviles. Si el sistema requiere permiso, el panel ofrece «Activar indicador en el icono» y lo solicita solo tras pulsarlo. La campana sigue disponible aunque el sistema no admita indicadores.
+
+En el administrador, **Avisos** permite escribir título/mensaje, elegir sección y duración, revisar una vista previa, publicar y retirar avisos. Son mensajes generales públicos; no contienen destinatarios ni datos privados de cuentas.
+
+Para publicar, el administrador introduce en el campo de contraseña una credencial de GitHub autorizada para `sejo48/StreamTube-V20` con permiso **Contents: escritura**. Puede crear una credencial restringida a este repositorio desde los ajustes de desarrollador de GitHub. Se usa únicamente en memoria durante la visita a la sección; no se persiste en almacenamiento local, respaldos, código ni archivos publicados. No hace falta una credencial para leer avisos en la principal.
+
+El archivo compartido es `avisos.json`, independiente de los catálogos. Se publica mediante una única actualización de GitHub con comprobación SHA contra conflictos. Tras publicarse, el sitio debe actualizarse antes de que los clientes reciban el aviso; el contador se actualizará al consultar la aplicación. Un reintento conserva la identidad del borrador para evitar duplicados si se perdió la respuesta.
+
+Se ejecutaron 15 pruebas unitarias, `tests/notices-browser.cjs` y la prueba general de navegador. Verifican publicación/lectura, marcado, persistencia, expiración, limpieza del indicador, errores de permisos, conflictos, pérdida de respuesta, Unicode y ausencia de credenciales guardadas. Las escrituras de prueba de GitHub y el indicador del sistema fueron simulados: no se enviaron avisos de ejemplo a clientes ni se verificó visualmente un icono en un teléfono real. La lista inicial publicada está vacía.

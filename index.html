@@ -3,6 +3,7 @@
 <head>
     <script src="./install.js" defer></script>
     <script src="./catalog.js"></script>
+    <script src="./notices.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="manifest" href="./manifest.webmanifest">
@@ -210,7 +211,7 @@
             .box-phone-only { display: block; }
             .box-phone-nav-button { display: flex; }
             .box-header { height: 64px; padding: 10px 16px; box-shadow: none; }
-            .box-header-actions > :not(.box-phone-search) { display: none; }
+            .box-header-actions > :not(.box-phone-search):not(.box-notification-toggle) { display: none; }
             .box-phone-search { display: flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
             .box-main { padding-top: 64px; }
             .box-search-panel { position: fixed; top: 64px; left: 0; right: 0; z-index: 60; padding: 12px 16px; background: #020617; border-bottom: 1px solid #1e293b; }
@@ -242,6 +243,14 @@
             .box-catalog-status { top: 68px; }
             .box-catalog-success { display: none; }
         }
+
+        .box-notification-toggle { position: relative; display: flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; border: 1px solid #164e63; border-radius: 12px; }
+        .box-notification-count { position: absolute; top: -5px; right: -5px; min-width: 20px; height: 20px; padding: 0 4px; border-radius: 20px; background: #ef4444; color: white; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+        .box-notification-dialog { width: 100%; max-width: 520px; max-height: 85dvh; overflow-y: auto; background: #0f172a; border: 1px solid #334155; border-radius: 24px; padding: 24px; }
+        .box-notification-dialog button { min-height: 44px; }
+        .box-notification-item { border: 1px solid #334155; border-radius: 14px; padding: 16px; margin-top: 12px; text-align: left; }
+        .box-notification-item[data-unread="true"] { border-color: #06b6d4; background: rgba(6,182,212,.07); }
+        .box-notification-item p { white-space: pre-wrap; overflow-wrap: anywhere; }
     </style>
 </head>
 
@@ -1090,6 +1099,64 @@
 
         const App = () => {
             const [showIntro, setShowIntro] = useState(true);
+            const [noticeFeed, setNoticeFeed] = useState({ schemaVersion: 1, notices: [] });
+            const [noticeError, setNoticeError] = useState('');
+            const [noticeLoaded, setNoticeLoaded] = useState(false);
+            const [showNotices, setShowNotices] = useState(false);
+            const [noticeNow, setNoticeNow] = useState(Date.now());
+            const [noticeReads, setNoticeReads] = useState(() => {
+                try { const value = JSON.parse(safeStorage.getItem('boxplay_notice_reads') || '[]'); return Array.isArray(value) ? value.filter(key => typeof key === 'string').slice(-600) : []; } catch { return []; }
+            });
+            const [badgePermission, setBadgePermission] = useState(typeof Notification !== 'undefined' ? Notification.permission : 'unavailable');
+            const visibleNotices = useMemo(() => BoxNotices.active(noticeFeed, noticeNow), [noticeFeed, noticeNow]);
+            const unreadNotices = useMemo(() => BoxNotices.unread(visibleNotices, noticeReads), [visibleNotices, noticeReads]);
+            const unreadNoticeCount = unreadNotices.length;
+            const refreshNotices = async () => {
+                try { const feed = await BoxNotices.load(); setNoticeFeed(feed); setNoticeNow(Date.now()); setNoticeError(''); setNoticeLoaded(true); }
+                catch (error) { setNoticeError(error.message); }
+            };
+            const markNoticeRead = keys => setNoticeReads(current => [...new Set([...current, ...keys])].slice(-600));
+            useEffect(() => {
+                let alive = true, busy = false;
+                const refresh = async () => {
+                    if (busy || document.visibilityState === 'hidden') return;
+                    busy = true;
+                    try { const feed = await BoxNotices.load(); if (alive) { setNoticeFeed(feed); setNoticeNow(Date.now()); setNoticeError(''); setNoticeLoaded(true); } }
+                    catch (error) { if (alive) setNoticeError(error.message); }
+                    finally { busy = false; }
+                };
+                const visible = () => { if (document.visibilityState === 'visible') refresh(); };
+                refresh();
+                const timer = setInterval(() => { setNoticeNow(Date.now()); refresh(); }, 60000);
+                document.addEventListener('visibilitychange', visible);
+                return () => { alive = false; clearInterval(timer); document.removeEventListener('visibilitychange', visible); };
+            }, []);
+            useEffect(() => {
+                const syncReads = event => {
+                    if (event.key !== 'boxplay_notice_reads') return;
+                    try {
+                        const value = JSON.parse(event.newValue || '[]');
+                        if (!Array.isArray(value)) return;
+                        const keys = value.filter(key => typeof key === 'string');
+                        setNoticeReads(current => {
+                            const next = event.newValue === null ? [] : [...new Set([...current, ...keys])].slice(-600);
+                            return JSON.stringify(next) === JSON.stringify(current) ? current : next;
+                        });
+                    } catch { /* Ignore damaged local storage without losing the current read state. */ }
+                };
+                window.addEventListener('storage', syncReads);
+                return () => window.removeEventListener('storage', syncReads);
+            }, []);
+            useEffect(() => {
+                safeStorage.setItem('boxplay_notice_reads', JSON.stringify(noticeReads));
+                BoxNotices.badge(unreadNoticeCount);
+            }, [noticeReads, unreadNoticeCount]);
+            const enableIconBadge = async () => {
+                if (typeof Notification === 'undefined') return;
+                try { const permission = await Notification.requestPermission(); setBadgePermission(permission); if (permission === 'granted') await BoxNotices.badge(unreadNoticeCount); }
+                catch { setBadgePermission('denied'); }
+            };
+
             const [activeTab, setActiveTab] = useState('home');
             const [content, setContent] = useState({ tv: [], series: [], movies: [], movies2: [], animados: [], tudum: [] });
             const [radioStations, setRadioStations] = useState(DEFAULT_RADIO_STATIONS);
@@ -1320,6 +1387,7 @@
             useEffect(() => {
                 window.history.replaceState({ appState: 'main', activeTab }, '');
                 const handlePopState = (event) => {
+                    if (showNotices) { setShowNotices(false); return; }
                     if (showQrModal) { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (showSmartViewModal) { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (showDownloadPinModal) { setShowDownloadPinModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
@@ -1341,7 +1409,7 @@
                 };
                 window.addEventListener('popstate', handlePopState);
                 return () => window.removeEventListener('popstate', handlePopState);
-            }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showDownloadPinModal, showPaywallModal, isPlaying]);
+            }, [selectedItem, activeTab, showNotices, showQrModal, showSmartViewModal, showDownloadPinModal, showPaywallModal, isPlaying]);
 
             useEffect(() => {
                 let cancelled = false;
@@ -1788,6 +1856,10 @@
                             </nav>
                         </div>
                         <div className="box-header-actions flex items-center gap-2 sm:gap-3">
+                            <button className="box-notification-toggle" aria-label={`Avisos${unreadNoticeCount ? ', ' + unreadNoticeCount + ' sin leer' : ''}`} aria-expanded={showNotices} onClick={() => { setShowNotices(true); refreshNotices(); }}>
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>
+                                {unreadNoticeCount > 0 && <span className="box-notification-count" aria-hidden="true">{unreadNoticeCount > 99 ? '99+' : unreadNoticeCount}</span>}
+                            </button>
                             <button className="box-phone-search" aria-label="Buscar contenido" aria-expanded={showMobileSearch} onClick={() => { if (!showMobileSearch) { setActiveTab('home'); setSelectedItem(null); setIsPlaying(false); } setShowMobileSearch(value => !value); }}><Icon name={showMobileSearch ? 'x' : 'search'} size={22} /></button>
                             <button onClick={() => setCatalogRefresh(value => value + 1)} disabled={loading} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-xs font-bold disabled:opacity-50" title="Actualizar catálogo">Actualizar catálogo</button>
                             <button onClick={() => { setShowSmartViewModal(true); window.history.pushState({ appState: 'smartview-modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Ver en Smart TV">
@@ -2573,6 +2645,27 @@
                             </>
                         )}
                     </main>
+
+                    {showNotices && <div className="fixed inset-0 z-[115] bg-black/80 flex items-center justify-center p-4" onClick={() => setShowNotices(false)}>
+                        <section role="dialog" aria-modal="true" aria-labelledby="notice-panel-title" className="box-notification-dialog" onKeyDown={event => { if (event.key === 'Escape') setShowNotices(false); }} onClick={event => event.stopPropagation()}>
+                            <div className="flex items-center justify-between gap-3"><h2 id="notice-panel-title" className="text-xl font-bold">Avisos de Box Play TV</h2><button autoFocus aria-label="Cerrar avisos" className="p-3" onClick={() => setShowNotices(false)}>✕</button></div>
+                            <p className="text-sm text-slate-400 mt-2">{noticeError ? 'No se pudo actualizar la lista' : !noticeLoaded ? 'Consultando avisos…' : unreadNoticeCount ? unreadNoticeCount + ' avisos sin leer' : 'Estás al día'}</p>
+                            <div className="flex flex-wrap gap-3 mt-3"><button className="text-sm text-cyan-300" onClick={refreshNotices}>Actualizar avisos</button>{unreadNoticeCount > 0 && <button className="text-sm text-cyan-300" onClick={() => markNoticeRead(visibleNotices.map(BoxNotices.revision))}>Marcar todos como leídos</button>}</div>
+                            {noticeError && <p role="alert" className="text-sm text-amber-300 mt-3">{noticeError}</p>}
+                            {noticeLoaded && !noticeError && visibleNotices.length === 0 && <p className="text-sm text-slate-300 py-6">Todavía no hay avisos disponibles.</p>}
+                            {visibleNotices.map(notice => {
+                                const isUnread = !noticeReads.includes(BoxNotices.revision(notice));
+                                return <article key={notice.id} className="box-notification-item" data-unread={isUnread}>
+                                    <h3 className="font-bold text-white">{notice.title}</h3><p className="text-sm text-slate-300 mt-2">{notice.message}</p>
+                                    <p className="text-xs text-slate-400 mt-2">{new Intl.DateTimeFormat('es-CR', { timeZone: 'America/Costa_Rica', day: 'numeric', month: 'long' }).format(new Date(notice.createdAt))}</p>
+                                    <div className="flex flex-wrap gap-4 mt-3">{isUnread && <button className="text-sm text-cyan-300" onClick={() => markNoticeRead([BoxNotices.revision(notice)])}>Marcar como leído</button>}<button className="text-sm text-cyan-300" onClick={() => { markNoticeRead([BoxNotices.revision(notice)]); setShowNotices(false); handleTabClick(navTabs.find(tab => tab.id === notice.target) || navTabs[0]); }}>Ir a la sección</button></div>
+                                </article>;
+                            })}
+                            {typeof navigator.setAppBadge === 'function' && badgePermission === 'default' && <button className="w-full mt-4 p-3 bg-cyan-600 rounded-xl text-sm font-bold" onClick={enableIconBadge}>Activar indicador en el icono</button>}
+                            {badgePermission === 'denied' && <p className="text-xs text-slate-400 mt-3">El permiso está desactivado. Puedes habilitarlo en la configuración del navegador o de la app instalada.</p>}
+                            <p className="text-xs text-slate-400 mt-4">En teléfonos compatibles, el icono muestra los avisos sin leer. El contador se actualiza al abrir la app y mientras permanece abierta.</p>
+                        </section>
+                    </div>}
 
                     {showPaywallModal && (
                         <SinpePaywall 
