@@ -974,9 +974,175 @@
     ]
   },
   {
-    "tituloSerie": "Viaje al Fondo del Mar",
-    "descripcion": "Serie de TV de 110 episodios (1964-1968). Un submarino cuya misión es investigar los misterios de las profundidades marinas",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BODhhNzVlMjMtMmZkZC00ZDhiLWIzN2EtM2NmZGRiMmUxMDI2XkEyXkFqcGc@._V1_.jpg",
+    "tmdbId": 321,
+    "tmdbType": "tv",
+    "tituloOriginal": "Voyage to the Bottom of the Sea",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/58JWKf2FjsXwuiIS4wngeFG5A6e.jpg",
+    "year": "1964",
+    "fechaEstreno": "1964-09-14",
+    "rating": "7.8",
+    "votos": 141,
+    "runtime": "50min",
+    "runtimeMin": 50,
+    "genres": [
+      "Action & Adventure",
+      "Drama",
+      "Sci-Fi & Fantasy"
+    ],
+    "generosTexto": "Action & Adventure, Drama, Sci-Fi & Fantasy",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Richard Basehart",
+        "personaje": "Adm. Harriman Nelson",
+        "foto": "https://image.tmdb.org/t/p/w185/rlk0wF1UbQH7DPGmkXKd1tMzDWo.jpg"
+      },
+      {
+        "nombre": "David Hedison",
+        "personaje": "Captain Crane",
+        "foto": "https://image.tmdb.org/t/p/w185/lLlEmLQQs61H0d4htGoba2p6qVe.jpg"
+      },
+      {
+        "nombre": "Terry Becker",
+        "personaje": "Chief Sharkey",
+        "foto": "https://image.tmdb.org/t/p/w185/14mxAtFC4w2rQspSOKJ64D5VbQP.jpg"
+      },
+      {
+        "nombre": "Del Monroe",
+        "personaje": "Kowalski",
+        "foto": "https://image.tmdb.org/t/p/w185/j2ANzOMQBPfDR6DjCeFPkDtQVFf.jpg"
+      },
+      {
+        "nombre": "Paul Trinka",
+        "personaje": "Patterson",
+        "foto": "https://image.tmdb.org/t/p/w185/Q941trEzeaC7CwZD1KMe34Ggc2.jpg"
+      },
+      {
+        "nombre": "Richard Bull",
+        "personaje": "Doctor",
+        "foto": "https://image.tmdb.org/t/p/w185/6Fe0rL1tPq9oWVxsBGcFKpoyL44.jpg"
+      },
+      {
+        "nombre": "Robert Dowdell",
+        "personaje": "Chip Morton",
+        "foto": ""
+      },
+      {
+        "nombre": "Marco López",
+        "personaje": "Crewman (uncredited)",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Irwin Allen Productions, 20th Century Fox Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "submarine, underwater",
+    "similares": [
+      {
+        "titulo": "Nautilus",
+        "poster": "https://image.tmdb.org/t/p/w342/eBHzItKQNfPdt2GL4LcHJy8P1sH.jpg",
+        "year": "2024",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Los invasores",
+        "poster": "https://image.tmdb.org/t/p/w342/a6hE0lx1ploE0bLw8R9nv3IrI5T.jpg",
+        "year": "1967",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "SeaQuest DSV",
+        "poster": "https://image.tmdb.org/t/p/w342/azbnl41bGqTcp2ajyfm9JYekEHp.jpg",
+        "year": "1993",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Marina",
+        "poster": "https://image.tmdb.org/t/p/w342/9JYXvIo0Cr1HAATz8hl8kyNQ76O.jpg",
+        "year": "1964",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Los Winchester",
+        "poster": "https://image.tmdb.org/t/p/w342/okAPf7KvGfUkzMr4dFlMQ1pizYJ.jpg",
+        "year": "2022",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Tierra de gigantes",
+        "poster": "https://image.tmdb.org/t/p/w342/ljbqDwgOoqYvQ6WRnuLr8QleEkH.jpg",
+        "year": "1968",
+        "rating": "6.8"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Irwin Allen"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 110,
+    "temporadasTmdb": [
+      {
+        "air_date": "1964-09-14",
+        "episode_count": 11,
+        "id": 957,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/vEsT5SPGORRJGcUkGqCglynLMID.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1964-09-13",
+        "episode_count": 32,
+        "id": 953,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/3zxVkN3VDaGUq5aUi1WBwhVdEEt.jpg",
+        "season_number": 1,
+        "vote_average": 6.9
+      },
+      {
+        "air_date": "1965-09-18",
+        "episode_count": 26,
+        "id": 955,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/ewfIOP3pU7dT7byqmh6kF13JHIj.jpg",
+        "season_number": 2,
+        "vote_average": 6
+      },
+      {
+        "air_date": "1966-09-18",
+        "episode_count": 26,
+        "id": 954,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/upe7dNQjoNN7trauTLumYTSF1G4.jpg",
+        "season_number": 3,
+        "vote_average": 6.3
+      },
+      {
+        "air_date": "1967-09-16",
+        "episode_count": 26,
+        "id": 956,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/vlkAMMEmNd3A8yWuJtF07k7JLek.jpg",
+        "season_number": 4,
+        "vote_average": 7
+      }
+    ],
+    "tituloSerie": "Viaje al fondo del mar",
+    "descripcion": "La serie narra las aventuras del submarino nuclear Seaview, mientras investiga el fondo del mar y realiza todo tipo de misiones.  La tripulación del Seaview, comandada por el almirante Nelson y el capitán Crane, deberán enfrentarse a todo tipo de peligros. Submarinos enemigos, monstruos marinos, saboteadores u organizaciones desconocidas, intentarán destruir el submarino más moderno que surca el fondo del mar.",
+    "imagen": "https://image.tmdb.org/t/p/w780/m0NdwZheYAPCqw6aa7GASbIpDvG.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -1310,9 +1476,148 @@
     ]
   },
   {
-    "tituloSerie": "Kung Fu (Serie de TV 1972–1975)",
-    "descripcion": "Las aventuras de un monje Shaolin que recorre el oeste de Estados Unidos armado tan solo con sus mortales habilidades en Kung Fu.",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BMThjZTE3YWYtZmVhZi00Njg3LWEyNGMtNTQ3MmFjYWJlMzI2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "tmdbId": 1472,
+    "tmdbType": "tv",
+    "tituloOriginal": "Kung Fu",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/tKrWxPuqYwr7bvOE93JVCz44GmC.jpg",
+    "year": "1972",
+    "fechaEstreno": "1972-10-14",
+    "rating": "7.7",
+    "votos": 243,
+    "runtime": "50min",
+    "runtimeMin": 50,
+    "genres": [
+      "Action & Adventure",
+      "Drama",
+      "Western",
+      "Sci-Fi & Fantasy"
+    ],
+    "generosTexto": "Action & Adventure, Drama, Western, Sci-Fi & Fantasy",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "David Carradine",
+        "personaje": "Kwai Chang Caine",
+        "foto": "https://image.tmdb.org/t/p/w185/1X2GlkMKS9FIG1kGou7o6LRqAjz.jpg"
+      },
+      {
+        "nombre": "Keye Luke",
+        "personaje": "Master Po",
+        "foto": "https://image.tmdb.org/t/p/w185/fh9RufZ6VQjKGFVtXFr3wv2MYCd.jpg"
+      },
+      {
+        "nombre": "Philip Ahn",
+        "personaje": "Master Kan",
+        "foto": "https://image.tmdb.org/t/p/w185/tCA7nrxPAGPFVSvfOIFlr6PlKU0.jpg"
+      },
+      {
+        "nombre": "Radames Pera",
+        "personaje": "Young Caine",
+        "foto": "https://image.tmdb.org/t/p/w185/u0Wz324ZH2RxjbMNLuODyFRYsn0.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Warner Bros. Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "martial arts, kung fu, shaolin monk, wild west",
+    "similares": [
+      {
+        "titulo": "Kung Fu",
+        "poster": "https://image.tmdb.org/t/p/w342/qDbaafRfWkOuQAhOOeI4kcFJl3a.jpg",
+        "year": "2021",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Warrior",
+        "poster": "https://image.tmdb.org/t/p/w342/mzzPjfwOYMYjkWeqYPEHd41WDSd.jpg",
+        "year": "2019",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Into the Badlands",
+        "poster": "https://image.tmdb.org/t/p/w342/jtceMKMxHSriLFUGAUfqHsW7uCo.jpg",
+        "year": "2015",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Marvel - Iron Fist",
+        "poster": "https://image.tmdb.org/t/p/w342/ywrvjIgK5K9Ff8RddgdFI3kfDqT.jpg",
+        "year": "2017",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Deputy",
+        "poster": "https://image.tmdb.org/t/p/w342/dlnbNP169odKEYKCfzBipRrUDdk.jpg",
+        "year": "2020",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Krypton",
+        "poster": "https://image.tmdb.org/t/p/w342/kMMWb4zIZKBnO3lOpVBXCL1BeNI.jpg",
+        "year": "2018",
+        "rating": "7.1"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Herman Miller",
+      "Ed Spielman",
+      "Jerry Thorpe"
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 62,
+    "temporadasTmdb": [
+      {
+        "air_date": "1972-02-22",
+        "episode_count": 6,
+        "id": 3969,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/d907RXMSHJSpRJ8DFNq98eZFO2I.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1972-10-14",
+        "episode_count": 15,
+        "id": 3966,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/91751ifaueKzby9wQ6EgfajSjjK.jpg",
+        "season_number": 1,
+        "vote_average": 7.6
+      },
+      {
+        "air_date": "1973-09-26",
+        "episode_count": 23,
+        "id": 3968,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/n4M8Di0DJsjFTcWYeuWMMsowIFB.jpg",
+        "season_number": 2,
+        "vote_average": 4.5
+      },
+      {
+        "air_date": "1974-09-13",
+        "episode_count": 24,
+        "id": 3967,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/cga2fCuayHk6IyM0wmW7u3Go4Bu.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Kung Fu",
+    "descripcion": "Narra la historia de un hombre que lleva a cabo un viaje de expiación, cuyo objetivo en encontrar la armonia entre la mente y el cuerpo. Al Pequeño Saltamontes (David Carradine) le ayudará el Maestro Po a realizar su sueño de peregrinar a la Ciudad Prohibida. Otro maestro le transmitirá conocimientos mantenidos en secreto por los monjes taoístas: la sabiduría del Kung-Fu.",
+    "imagen": "https://image.tmdb.org/t/p/w780/vUqmS40PRyAe3COHh7wHpDFnspC.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -1434,9 +1739,146 @@
     ]
   },
   {
+    "tmdbId": 2117,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Flying Nun",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/2jFfW1GWiPvdkvtna3ozyP3l1kQ.jpg",
+    "year": "1967",
+    "fechaEstreno": "1967-09-07",
+    "rating": "6.3",
+    "votos": 36,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "Comedia",
+      "Sci-Fi & Fantasy"
+    ],
+    "generosTexto": "Comedia, Sci-Fi & Fantasy",
+    "clasificacion": "TV-G",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Sally Field",
+        "personaje": "Sister Bertrille",
+        "foto": "https://image.tmdb.org/t/p/w185/iMeq1j9Xwvaf6PbTJ0FQz69fpuA.jpg"
+      },
+      {
+        "nombre": "Marge Redmond",
+        "personaje": "Sister Jacqueline",
+        "foto": "https://image.tmdb.org/t/p/w185/pyYtZ89LflU4JVI4FeouN96Yuo8.jpg"
+      },
+      {
+        "nombre": "Madeleine Sherwood",
+        "personaje": "Reverend Mother Superior Placido",
+        "foto": "https://image.tmdb.org/t/p/w185/bDwZn45GRRb4eS99bFrYLcdofAA.jpg"
+      },
+      {
+        "nombre": "Alejandro Rey",
+        "personaje": "Carlos Ramirez",
+        "foto": "https://image.tmdb.org/t/p/w185/yKpXhpCAd7PgrJrtcrHdkpeSPVF.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Screen Gems",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "nun, orphanage, priest, religion, catholic, mother superior, catholic school, convent (nunnery), novice, nunhood, sitcom, 1960s, playful, joyous, adoring, amused, enchant, exuberant, melodramatic, optimistic",
+    "similares": [
+      {
+        "titulo": "A Different World",
+        "poster": "https://image.tmdb.org/t/p/w342/v7fuifcJjcqQxAsOjPviupcmFIZ.jpg",
+        "year": "1987",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Amen",
+        "poster": "https://image.tmdb.org/t/p/w342/apEoBrwwcRGrjE3I4B7uAQheRjQ.jpg",
+        "year": "1986",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Daniel el travieso",
+        "poster": "https://image.tmdb.org/t/p/w342/1zpYhxqz9SUGMB3Q9HnyKTh31E4.jpg",
+        "year": "1959",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Laverne & Shirley",
+        "poster": "https://image.tmdb.org/t/p/w342/mUMK8AZ5uvJoTXqgGjYQNoIkf5N.jpg",
+        "year": "1976",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Yes, Dear",
+        "poster": "https://image.tmdb.org/t/p/w342/bEcwkwonvM9OSnfYFtOmhRFHuoZ.jpg",
+        "year": "2000",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "The Good Life",
+        "poster": "https://image.tmdb.org/t/p/w342/ll4SdFLqWCK2Ss2mYSAN6zJCzxZ.jpg",
+        "year": "1975",
+        "rating": "7.7"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Marie Teresa Ríos",
+      "Bernard Slade",
+      "Harry Ackerman"
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 82,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 1,
+        "id": 6427,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1967-09-07",
+        "episode_count": 30,
+        "id": 6425,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/6IZizDonzXx4C6lY8A3VjbjklgN.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1968-09-26",
+        "episode_count": 26,
+        "id": 6424,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/sAcBFdFxWy8TuMTsvKnLdDKh46P.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1969-09-17",
+        "episode_count": 26,
+        "id": 6426,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/brT4vZgvvvNUvj1qYlQ9cGhFnqX.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      }
+    ],
     "tituloSerie": "La novicia voladora",
-    "descripcion": "La Monja Voladora (en inglés y original: The Flying Nun) fue una comedia estadounidense sobre una comunidad de monjas que incluía una que podía volar cuando el viento atrapaba su corneta . Fue producido por Screen Gems para ABC[",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BMzg2ODM2NjA0NF5BMl5BanBnXkFtZTcwMzIyODMzMQ@@._V1_.jpg",
+    "descripcion": "Serie de TV de 82 episodios (1967-1970). La Hermana Bertrille, del convento San Tanco de Puerto Rico, pesa sólo 40 Kg. y lleva un gran toca en la cabeza. Gracias a ello puede volar si la brisa es fuerte. Usa este don para ayudar a los demás, tanto si quieren como si no.",
+    "imagen": "https://image.tmdb.org/t/p/w780/4LkhFq3yKKXvv81pkbkPqPfYMeh.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -1524,9 +1966,196 @@
     ]
   },
   {
-    "tituloSerie": "Hechizada",
-    "descripcion": "Una bruja casada con un hombre común no puede resistirse a usar sus poderes mágicos para resolver los problemas que enfrenta su familia.",
-    "imagen": "https://image.tmdb.org/t/p/original/38ouaMAYUoWJc6tiZWb6k0yXEYQ.jpg",
+    "tmdbId": 4482,
+    "tmdbType": "tv",
+    "tituloOriginal": "Bewitched",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/rFJUwDiZeSDWUR04nb3w62RqXK9.jpg",
+    "year": "1964",
+    "fechaEstreno": "1964-09-17",
+    "rating": "7.8",
+    "votos": 769,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Comedia",
+      "Familia",
+      "Drama"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Comedia, Familia, Drama",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Elizabeth Montgomery",
+        "personaje": "Samantha Stephens",
+        "foto": "https://image.tmdb.org/t/p/w185/eW78gIVT2uIh1yOBdnIvWsehBOu.jpg"
+      },
+      {
+        "nombre": "Dick Sargent",
+        "personaje": "Darrin Stephens",
+        "foto": "https://image.tmdb.org/t/p/w185/gMTyoOSBdDdMoITSmM8IgkHYfyc.jpg"
+      },
+      {
+        "nombre": "Agnes Moorehead",
+        "personaje": "Endora",
+        "foto": "https://image.tmdb.org/t/p/w185/h9vMkb6cjd5J3i0GCQ0t73DlQl0.jpg"
+      },
+      {
+        "nombre": "David White",
+        "personaje": "Larry Tate",
+        "foto": "https://image.tmdb.org/t/p/w185/h6jZkxOg7Z6I8SxkicURKqIHEn9.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Columbia Pictures Television, Screen Gems",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "witch, magic, housewife, time travel, telekinesis, slapstick comedy, romance, surrealism, family relationships, witchcraft, sitcom, casting spells, magic spell, playful, book of spells, hilarious, cheerful, witches, spells",
+    "similares": [
+      {
+        "titulo": "La familia Monster",
+        "poster": "https://image.tmdb.org/t/p/w342/dF4P2k9XgeFUT3OetAJqJJ0uQUj.jpg",
+        "year": "1964",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Embrujadas",
+        "poster": "https://image.tmdb.org/t/p/w342/4JRJGWdp8ZzjUPKrge7U5c1aGeu.jpg",
+        "year": "1998",
+        "rating": "8.2"
+      },
+      {
+        "titulo": "Los magos de Waverly Place",
+        "poster": "https://image.tmdb.org/t/p/w342/bJisSc7HGAfWgg1M7916CMfSZTX.jpg",
+        "year": "2007",
+        "rating": "8.6"
+      },
+      {
+        "titulo": "La familia Addams",
+        "poster": "https://image.tmdb.org/t/p/w342/9eqmCtAY9d2WwafLBYXRKYepgeA.jpg",
+        "year": "1964",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Good Witch",
+        "poster": "https://image.tmdb.org/t/p/w342/c5B9CdRs9MY6Fgknv5uZQKWtl6F.jpg",
+        "year": "2015",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Sabrina, cosas de brujas",
+        "poster": "https://image.tmdb.org/t/p/w342/cFJUK8xr5VMPCLe4drrMqjR2G1h.jpg",
+        "year": "1996",
+        "rating": "7.8"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Sol Saks"
+    ],
+    "numeroTemporadas": 8,
+    "numeroEpisodios": 254,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 7,
+        "id": 518197,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1964-09-17",
+        "episode_count": 36,
+        "id": 13430,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/rR36ueSO4YMQAGT08Y27efFt8ji.jpg",
+        "season_number": 1,
+        "vote_average": 9
+      },
+      {
+        "air_date": "1965-09-16",
+        "episode_count": 38,
+        "id": 13433,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/1eKhFoGMANB9VN4asXkZcCskNxD.jpg",
+        "season_number": 2,
+        "vote_average": 9.2
+      },
+      {
+        "air_date": "1966-09-15",
+        "episode_count": 33,
+        "id": 13432,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/19h4G7hRH70Eigx0mVZ6AfTKp1v.jpg",
+        "season_number": 3,
+        "vote_average": 9.2
+      },
+      {
+        "air_date": "1967-09-07",
+        "episode_count": 33,
+        "id": 13431,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/ezt0HZj2RpMuldBDlTV7gUKvxg3.jpg",
+        "season_number": 4,
+        "vote_average": 9.2
+      },
+      {
+        "air_date": "1968-09-26",
+        "episode_count": 30,
+        "id": 13436,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/tUh0Z0cgLjwhbTUXgvIUzgQagLk.jpg",
+        "season_number": 5,
+        "vote_average": 9.3
+      },
+      {
+        "air_date": "1969-09-18",
+        "episode_count": 30,
+        "id": 13435,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/vQlEYpIEq1nYVhbXVxtjhW6aZqt.jpg",
+        "season_number": 6,
+        "vote_average": 9.9
+      },
+      {
+        "air_date": "1970-09-24",
+        "episode_count": 28,
+        "id": 13434,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/38ouaMAYUoWJc6tiZWb6k0yXEYQ.jpg",
+        "season_number": 7,
+        "vote_average": 9.9
+      },
+      {
+        "air_date": "1971-09-15",
+        "episode_count": 26,
+        "id": 13437,
+        "name": "Temporada 8",
+        "overview": "",
+        "poster_path": "/y3o1jYd2eBrbyd2qnbHRDK0BjHX.jpg",
+        "season_number": 8,
+        "vote_average": 9.7
+      }
+    ],
+    "tituloSerie": "Embrujada",
+    "descripcion": "Samantha Stephens es aparentemente una típica ama de casa norteamericana, felizmente casada con un hombre normal y corriente. Pero Samantha además es una bruja que ha heredado ciertos poderes desde generaciones atrás. A pesar de que intentan ser una pareja normal, ella usará sus poderes mágicos para resolver los diversos problemas a los que se enfrenta su familia.",
+    "imagen": "https://image.tmdb.org/t/p/w780/38ouaMAYUoWJc6tiZWb6k0yXEYQ.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -1574,17 +2203,340 @@
     ]
   },
   {
-    "tituloSerie": "Misión: Imposible",
-    "descripcion": "Una unidad de operaciones de élite encubiertas lleva a cabo misiones altamente secretas sujetas a negación oficial en caso de muerte o captura.",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BMTg3MDQ4ODQwNF5BMl5BanBnXkFtZTcwODMwODM0MQ@@._V1_FMjpg_UX1000_.jpg",
+    "tmdbId": 4357,
+    "tmdbType": "tv",
+    "tituloOriginal": "Mission: Impossible",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/com4DoP6rNkf1fs5KiuLPCRVK6V.jpg",
+    "year": "1966",
+    "fechaEstreno": "1966-09-17",
+    "rating": "7.6",
+    "votos": 324,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Action & Adventure",
+      "Crimen",
+      "Drama"
+    ],
+    "generosTexto": "Action & Adventure, Crimen, Drama",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Peter Graves",
+        "personaje": "Jim Phelps",
+        "foto": "https://image.tmdb.org/t/p/w185/ySLwIT6L9mWIjFcCagmNENQGq7J.jpg"
+      },
+      {
+        "nombre": "Greg Morris",
+        "personaje": "Barney Collier",
+        "foto": "https://image.tmdb.org/t/p/w185/l4pyAMumC6p1V4aqxBra7PWlTvN.jpg"
+      },
+      {
+        "nombre": "Peter Lupus",
+        "personaje": "Willy Armitage",
+        "foto": "https://image.tmdb.org/t/p/w185/6GxndAwamcoQJqpK5MwYdiYj5be.jpg"
+      },
+      {
+        "nombre": "Lynda Day George",
+        "personaje": "Lisa Casey",
+        "foto": "https://image.tmdb.org/t/p/w185/9mLkUcq8wfaKWEFafIuwLpsq1JX.jpg"
+      },
+      {
+        "nombre": "Bob Johnson",
+        "personaje": "Man on Tape (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/emaIvNXoX3j0xXNBjRJ7kOdFaDr.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Desilu Productions, Paramount Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "secret agent, disguises, foreign intrigue, teamwork, elaborate deception",
+    "similares": [
+      {
+        "titulo": "The Sweeney",
+        "poster": "https://image.tmdb.org/t/p/w342/8dIJo5P3d1soSxKJvjkxDX1816H.jpg",
+        "year": "1975",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Misión: imposible",
+        "poster": "https://image.tmdb.org/t/p/w342/4AZwDa0RZLIVsOgZxlgOqNUw3U6.jpg",
+        "year": "1988",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "MacGyver",
+        "poster": "https://image.tmdb.org/t/p/w342/z3IpN86yJTmxCFz9KvoCDbB56Lp.jpg",
+        "year": "2016",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Police Story",
+        "poster": "https://image.tmdb.org/t/p/w342/wfhiGakYfjk8XeDKRpya9P4tNu9.jpg",
+        "year": "1973",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Los vengadores",
+        "poster": "https://image.tmdb.org/t/p/w342/7D2DosFWqmNc0vfZJPqwY5uIvsR.jpg",
+        "year": "1961",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "MacGyver",
+        "poster": "https://image.tmdb.org/t/p/w342/zhgJNHbFxGkqdsKdkZLBrDWagOv.jpg",
+        "year": "1985",
+        "rating": "7.7"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Bruce Geller"
+    ],
+    "numeroTemporadas": 7,
+    "numeroEpisodios": 171,
+    "temporadasTmdb": [
+      {
+        "air_date": "1966-09-17",
+        "episode_count": 28,
+        "id": 12890,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/eKcnwMMQJ7LXirLcfhwRCJdSbw9.jpg",
+        "season_number": 1,
+        "vote_average": 6.4
+      },
+      {
+        "air_date": "1967-09-10",
+        "episode_count": 25,
+        "id": 12889,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/eQY9PWTuc2mJaynaKRLTKrWefwi.jpg",
+        "season_number": 2,
+        "vote_average": 5
+      },
+      {
+        "air_date": "1968-09-29",
+        "episode_count": 25,
+        "id": 12892,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/5kGsGR2a17vDDGvsH8i02oTj8FA.jpg",
+        "season_number": 3,
+        "vote_average": 5.1
+      },
+      {
+        "air_date": "1969-09-28",
+        "episode_count": 26,
+        "id": 12893,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/6iCZl9Fi7Gi2v1227ruflKRDPld.jpg",
+        "season_number": 4,
+        "vote_average": 6.3
+      },
+      {
+        "air_date": "1970-09-19",
+        "episode_count": 23,
+        "id": 12888,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/gtucVMKUmreVQVSiSEbcATjFnk5.jpg",
+        "season_number": 5,
+        "vote_average": 6.5
+      },
+      {
+        "air_date": "1971-09-18",
+        "episode_count": 22,
+        "id": 12891,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/32Dn4lBPCgDdoc9OQ8sQh9LBGJv.jpg",
+        "season_number": 6,
+        "vote_average": 6.2
+      },
+      {
+        "air_date": "1972-09-16",
+        "episode_count": 22,
+        "id": 12887,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/2TuEYj4Jq3h7s6yx3uOWTFeZoNX.jpg",
+        "season_number": 7,
+        "vote_average": 6.4
+      }
+    ],
+    "tituloSerie": "Misión. Imposible",
+    "descripcion": "La Fuerza de Misiones Imposibles es un grupo de extraordinarios espías que son los mejores en sus respectivos ámbitos: el 'líder', el 'experto en tecnología', el 'músculo', el 'maestro del disfraz' y la 'mujer fatal'. Día tras día, esta fuerza de élite se enfrenta al fracaso, al apresamiento y a la muerte, pero nada importa más que su misión, anunciada en un mensaje que se autodestruirá tras emitirse...",
+    "imagen": "https://image.tmdb.org/t/p/w780/1PnUBKbDR1F2w5qicblLg1QGTif.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": []
   },
   {
+    "tmdbId": 4658,
+    "tmdbType": "tv",
+    "tituloOriginal": "ALF",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/ebLHsB8wsBnZnNa9UhGAqYeo33B.jpg",
+    "year": "1986",
+    "fechaEstreno": "1986-09-22",
+    "rating": "7.6",
+    "votos": 1273,
+    "runtime": "23min",
+    "runtimeMin": 23,
+    "genres": [
+      "Comedia",
+      "Familia",
+      "Sci-Fi & Fantasy"
+    ],
+    "generosTexto": "Comedia, Familia, Sci-Fi & Fantasy",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Max Wright",
+        "personaje": "Willie Tanner",
+        "foto": "https://image.tmdb.org/t/p/w185/bM0yC42RbFCSUWITFGVdiojn7ba.jpg"
+      },
+      {
+        "nombre": "Anne Schedeen",
+        "personaje": "Kate Tanner",
+        "foto": "https://image.tmdb.org/t/p/w185/80d6x82yH4WVW2GUVpNRdWIGz86.jpg"
+      },
+      {
+        "nombre": "Andrea Elson",
+        "personaje": "Lynn Tanner",
+        "foto": "https://image.tmdb.org/t/p/w185/lRXieogWbQElmsMxpH2rI6ripzX.jpg"
+      },
+      {
+        "nombre": "Benji Gregory",
+        "personaje": "Brian Tanner",
+        "foto": "https://image.tmdb.org/t/p/w185/e5yLx2eca61xRZlPqEO7ffkenQF.jpg"
+      },
+      {
+        "nombre": "Mihaly 'Michu' Meszaros",
+        "personaje": "Alf / Gordon Shumway",
+        "foto": "https://image.tmdb.org/t/p/w185/ycVmjUV46oVddJXrd8RTaYcWIIF.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Alien Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "alien life-form, extraterrestrial, alien, family relationships, sitcom, outer space",
+    "similares": [
+      {
+        "titulo": "Mork & Mindy",
+        "poster": "https://image.tmdb.org/t/p/w342/6qZsNHd5Kafc9AMQyKR5W6RRqIf.jpg",
+        "year": "1978",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Mi marciano favorito",
+        "poster": "https://image.tmdb.org/t/p/w342/kw90AgVKEPwfKLtC07hoRQFwOXk.jpg",
+        "year": "1963",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Miles del futuro",
+        "poster": "https://image.tmdb.org/t/p/w342/wK3sqd7mep4RtE3FKjUg9AitWAR.jpg",
+        "year": "2015",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Galaxia Wander",
+        "poster": "https://image.tmdb.org/t/p/w342/nHOo0c8efrwWJPb49HXMSTPsIpP.jpg",
+        "year": "2013",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "La familia Monster",
+        "poster": "https://image.tmdb.org/t/p/w342/dF4P2k9XgeFUT3OetAJqJJ0uQUj.jpg",
+        "year": "1964",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Home: Las aventuras de Tip y Oh",
+        "poster": "https://image.tmdb.org/t/p/w342/jpSonFtGAYyJtaYRuo44DJhiXrS.jpg",
+        "year": "2016",
+        "rating": "6.6"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Paul Fusco",
+      "Tom Patchett"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 101,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 12,
+        "id": 14233,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/cZvD4sgyX5ylghPXLcGZxXu0VUl.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1986-09-22",
+        "episode_count": 26,
+        "id": 14229,
+        "name": "Temporada 1",
+        "overview": "Gordon Shumway aterriza en el garaje de una familia estadounidense: los Tanner; lo adoptan y apodan como \"ALF\", Amorfismo Lejano Fantástico (Alien Life Form).",
+        "poster_path": "/6ivwRDbQYq7oqZo0fjNgE7cX0AD.jpg",
+        "season_number": 1,
+        "vote_average": 6.8
+      },
+      {
+        "air_date": "1987-09-21",
+        "episode_count": 25,
+        "id": 14230,
+        "name": "Temporada 2",
+        "overview": "La segunda temporada de ALF comenzó el 21 de Septiembre de 1987 y finalizó el 9 de Mayo de 1998 con un total de 26 episodios.",
+        "poster_path": "/903p8GxXt95SYdjmG8pCderovjb.jpg",
+        "season_number": 2,
+        "vote_average": 6.9
+      },
+      {
+        "air_date": "1988-10-03",
+        "episode_count": 26,
+        "id": 14231,
+        "name": "Temporada 3",
+        "overview": "La tercera temporada de ALF comenzó el 3 de Octubre de 1988 y finalizó el 8 de Mayo de 1989 con un total de 26 episodios.\n\n",
+        "poster_path": "/4nvtUVZgFfV1VWFmTP0C84Zru3J.jpg",
+        "season_number": 3,
+        "vote_average": 6.6
+      },
+      {
+        "air_date": "1989-09-18",
+        "episode_count": 24,
+        "id": 14232,
+        "name": "Temporada 4",
+        "overview": "La cuarta temporada de ALF comenzó el 18 de Septiembre de 1989 y finalizó el 24 de Marzo de 1990 con un total de 24 episodios.\n\n",
+        "poster_path": "/kSv52RU3y9EKsTGxlHY57ud9wUV.jpg",
+        "season_number": 4,
+        "vote_average": 6.5
+      }
+    ],
     "tituloSerie": "ALF",
-    "descripcion": "Un sabio alienígena peludo se muda a vivir con la familia Tanner después de chocar contra su garaje.",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BNDM5ZWQ1MmItMzk1My00NjhmLWE1NGMtN2E2ZmM4YmE3NWVkXkEyXkFqcGc@._V1_.jpg",
+    "descripcion": "La nave espacial de un pequeño extraterrestre del planeta Melmac se estrella contra la Tierra. Los Tanner, una típica familia norteamericana, lo acogen en su casa y lo ocultan no sólo a las autoridades, sino también a los vecinos, amigos y parientes, porque creen que de lo contrario la vida del simpático alienígena (al que llaman Alf) correría peligro. Muy pronto Alf se convierte en uno más de la familia, pero también creará problemas de convivencia, pues es un ser comodón y poco educado que sólo piensa en comer y en ver la tele.",
+    "imagen": "https://image.tmdb.org/t/p/w780/shRed7ZrCRjdIMEYNx2YBVFkkNu.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -1608,9 +2560,137 @@
     ]
   },
   {
+    "tmdbId": 10929,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Wild Wild West",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/4iSl4y1gWZwXmjyS3Ho8HqLWXAK.jpg",
+    "year": "1965",
+    "fechaEstreno": "1965-09-17",
+    "rating": "7.6",
+    "votos": 86,
+    "runtime": "50min",
+    "runtimeMin": 50,
+    "genres": [
+      "Action & Adventure",
+      "Comedia",
+      "Drama",
+      "Western",
+      "Sci-Fi & Fantasy"
+    ],
+    "generosTexto": "Action & Adventure, Comedia, Drama, Western, Sci-Fi & Fantasy",
+    "clasificacion": "TV-PG",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Robert Conrad",
+        "personaje": "James T. West",
+        "foto": "https://image.tmdb.org/t/p/w185/9ubtqzRUVv1rN368SsNbdYuHp3.jpg"
+      },
+      {
+        "nombre": "Ross Martin",
+        "personaje": "Artemus Gordon",
+        "foto": "https://image.tmdb.org/t/p/w185/iPcbC66R3ttFayu4PmH1TGmd9OJ.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Michael Garrison Productions, Bruce Lansbury Productions, CBS",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "secret agent, wild west, classic western",
+    "similares": [
+      {
+        "titulo": "El agente de CIPOL",
+        "poster": "https://image.tmdb.org/t/p/w342/a0nMOwNZXyJrMTPoaCzJJZeT0Yl.jpg",
+        "year": "1964",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Randall, el justiciero",
+        "poster": "https://image.tmdb.org/t/p/w342/mYgwFT8JXW6J5YTs8DuzDDOKXlS.jpg",
+        "year": "1958",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Almacén 13",
+        "poster": "https://image.tmdb.org/t/p/w342/2O70gYqzNGt7uYfjouojCEul9hy.jpg",
+        "year": "2009",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Agente Carter",
+        "poster": "https://image.tmdb.org/t/p/w342/scZsg0rfAyH8ADphzrdhgo5jAXd.jpg",
+        "year": "2015",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Walker",
+        "poster": "https://image.tmdb.org/t/p/w342/9uW1W9q0zKPzPdRwIcL3eCDJsfw.jpg",
+        "year": "2021",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "The Lone Ranger",
+        "poster": "https://image.tmdb.org/t/p/w342/sAQSKgrYC0l5kQbLk8QXINAK6F4.jpg",
+        "year": "1949",
+        "rating": "6.7"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Michael Garrison"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 104,
+    "temporadasTmdb": [
+      {
+        "air_date": "1965-09-17",
+        "episode_count": 28,
+        "id": 21322,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/bM2i1IQGORFhPlsjul2fXBNWWFB.jpg",
+        "season_number": 1,
+        "vote_average": 7.7
+      },
+      {
+        "air_date": "1966-09-16",
+        "episode_count": 28,
+        "id": 21324,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/jHWCmBMx9LrtENJeenbuzCKCefA.jpg",
+        "season_number": 2,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "1967-09-08",
+        "episode_count": 24,
+        "id": 21323,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/HIjp1F4k2LdZDyU1zvZrzInueV.jpg",
+        "season_number": 3,
+        "vote_average": 7.1
+      },
+      {
+        "air_date": "1968-09-27",
+        "episode_count": 24,
+        "id": 21321,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/7CH7kQgj8t8aVOQ3ObnqP6vMUen.jpg",
+        "season_number": 4,
+        "vote_average": 6.4
+      }
+    ],
     "tituloSerie": "Jim West",
-    "descripcion": "Jim West, (The Wild, Wild West, conocida en Latinoamérica como Espías con espuelas) es una serie de televisión del género western, transmitida originalmente por la cadena CBS, en 1965",
-    "imagen": "https://http2.mlstatic.com/D_NQ_NP_611453-MLA78134970435_082024-O.webp",
+    "descripcion": "The Wild Wild West es una serie de televisión americana desarrollada en un momento en que el western televisivo estaba perdiendo terreno frente al género espía, este programa fue concebido por su creador, Michael Garrison, como \"James Bond a caballo\". Ambientada durante la administración del presidente Ulysses Grant, la serie siguió a los agentes del Servicio Secreto James West y Artemus Gordon mientras resolvían crímenes, protegían al presidente y frustraban los planes de los villanos megalómanos de apoderarse de todo o parte de los EE.UU. El programa también incluía una serie de elementos de fantasía, tales como los dispositivos tecnológicamente avanzados utilizados por los agentes y sus adversarios. La combinación del marco temporal de la era victoriana y el uso de la tecnología de estilo Verne-esque han inspirado a algunos a dar crédito al programa por los orígenes de la subcultura del punk de vapor.",
+    "imagen": "https://image.tmdb.org/t/p/w780/4LSZNCSxDodwCP8EsKRTgMDUKY4.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -1768,9 +2848,212 @@
     ]
   },
   {
-    "tituloSerie": "Los Dukes de Hazzard",
-    "descripcion": "Los Dukes de Hazzard\nLos Dukes de Hazzard\nLos Dukes de Hazzard\n7 temporadas • 1979 • Finalizado\nTVT Rating\nDrama, Comedia, Aventura, Acción\nLos primos Bo y Luke Duke y su automóvil \"General Lee\", asistidos por la prima Daisy y el tío Jesse, tienen una batalla con las autoridades del condado de Hazzard (Boss Hogg y Sheriff Coltrane), además de una serie de nada bueno. a menudo respaldado por el intrigante Hogg.",
-    "imagen": "https://m.media-amazon.com/images/I/91t25BTahKL._AC_UF894,1000_QL80_.jpg",
+    "tmdbId": 397,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Dukes of Hazzard",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/usnCQeoAWw4MDCn7q6luOWqSwQO.jpg",
+    "year": "1979",
+    "fechaEstreno": "1979-01-26",
+    "rating": "7.4",
+    "votos": 365,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Action & Adventure",
+      "Drama",
+      "Comedia",
+      "Crimen"
+    ],
+    "generosTexto": "Action & Adventure, Drama, Comedia, Crimen",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Tom Wopat",
+        "personaje": "Luke Duke",
+        "foto": "https://image.tmdb.org/t/p/w185/wJXXcZe7XCQt1UVzb0W6gLtLR0x.jpg"
+      },
+      {
+        "nombre": "John Schneider",
+        "personaje": "Bo Duke",
+        "foto": "https://image.tmdb.org/t/p/w185/c3cM4MuGSfDFQScZsYyWzVkD0pp.jpg"
+      },
+      {
+        "nombre": "Catherine Bach",
+        "personaje": "Daisy Duke",
+        "foto": "https://image.tmdb.org/t/p/w185/vueGk7x86lnLFleG1OKF9bb8VSF.jpg"
+      },
+      {
+        "nombre": "Denver Pyle",
+        "personaje": "Jesse Duke",
+        "foto": "https://image.tmdb.org/t/p/w185/eYRwwhl3pWu3oNn1GKerUauooSV.jpg"
+      },
+      {
+        "nombre": "Ben Jones",
+        "personaje": "Cooter Davenport",
+        "foto": "https://image.tmdb.org/t/p/w185/oCAH7RQuhNMWGXyQYDeyKed2S42.jpg"
+      },
+      {
+        "nombre": "Sorrell Booke",
+        "personaje": "Boss Hogg",
+        "foto": "https://image.tmdb.org/t/p/w185/2fHx8TKyiieBr5Sonk5R5olVfMH.jpg"
+      },
+      {
+        "nombre": "James Best",
+        "personaje": "Rosco P. Coltrane",
+        "foto": "https://image.tmdb.org/t/p/w185/HjGVYpDakPcAeUb0ASkO06pNIP.jpg"
+      },
+      {
+        "nombre": "Sonny Shroyer",
+        "personaje": "Enos Strate",
+        "foto": "https://image.tmdb.org/t/p/w185/f68GKDlKc2KVGfmDoGNTQdO45of.jpg"
+      },
+      {
+        "nombre": "Waylon Jennings",
+        "personaje": "The Balladeer",
+        "foto": "https://image.tmdb.org/t/p/w185/6TmRIdAneW2hvZcvkfAQkCuGkRN.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Lou Step Productions, Warner Bros. Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "farm, uncle, cousin relationship",
+    "similares": [
+      {
+        "titulo": "The Sweeney",
+        "poster": "https://image.tmdb.org/t/p/w342/8dIJo5P3d1soSxKJvjkxDX1816H.jpg",
+        "year": "1975",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Walker",
+        "poster": "https://image.tmdb.org/t/p/w342/9uW1W9q0zKPzPdRwIcL3eCDJsfw.jpg",
+        "year": "2021",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Scarecrow and Mrs. King",
+        "poster": "https://image.tmdb.org/t/p/w342/36oUFRNJQORpL9fmnrSXdFqEGty.jpg",
+        "year": "1983",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "El santo",
+        "poster": "https://image.tmdb.org/t/p/w342/ep281gu4yv8an9xYsn2x8amZC72.jpg",
+        "year": "1962",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Los Persuasores",
+        "poster": "https://image.tmdb.org/t/p/w342/jDzoUNUwVKIPMaf67wAg4Nby3oo.jpg",
+        "year": "1971",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Hardcastle and McCormick",
+        "poster": "https://image.tmdb.org/t/p/w342/d3ZWBPAlcmYwvA183aI5z1mosv7.jpg",
+        "year": "1983",
+        "rating": "6.5"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Rod Amateau",
+      "Gy Waldron"
+    ],
+    "numeroTemporadas": 7,
+    "numeroEpisodios": 147,
+    "temporadasTmdb": [
+      {
+        "air_date": "1997-04-25",
+        "episode_count": 23,
+        "id": 188546,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/pvpe53kgjukRLEoP6FBZKUpw5Wl.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1979-01-26",
+        "episode_count": 13,
+        "id": 62599,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/wl16ZKeDjBsqPDSbO2JUNnhy8ye.jpg",
+        "season_number": 1,
+        "vote_average": 6.5
+      },
+      {
+        "air_date": "1979-09-21",
+        "episode_count": 23,
+        "id": 62600,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/ixgF7pzGHGcQxHi134nnNf1CmrC.jpg",
+        "season_number": 2,
+        "vote_average": 6
+      },
+      {
+        "air_date": "1980-09-16",
+        "episode_count": 23,
+        "id": 62606,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/jGJITmM8dgCCUdBhi8fzXehsz8U.jpg",
+        "season_number": 3,
+        "vote_average": 10
+      },
+      {
+        "air_date": "1981-10-09",
+        "episode_count": 27,
+        "id": 62607,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/w3VOtyrodJ2xplWsnAoFicJyhiX.jpg",
+        "season_number": 4,
+        "vote_average": 10
+      },
+      {
+        "air_date": "1982-09-24",
+        "episode_count": 22,
+        "id": 62608,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/1V5oUX8pRqeC20lGLd2PJoz2xb7.jpg",
+        "season_number": 5,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1983-09-23",
+        "episode_count": 22,
+        "id": 62609,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/v00eGoil7CXvgyyqROSmeUs9RnT.jpg",
+        "season_number": 6,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1984-09-21",
+        "episode_count": 17,
+        "id": 62610,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/3zOxxTMxvOPZiBES1IFogqjgN8p.jpg",
+        "season_number": 7,
+        "vote_average": 5
+      }
+    ],
+    "tituloSerie": "The Dukes of Hazzard",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/r9eXJUxP6zgrpCMEOJzaEXzXLsp.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -1838,9 +3121,169 @@
     ]
   },
   {
+    "tmdbId": 3051,
+    "tmdbType": "tv",
+    "tituloOriginal": "Lost in Space",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/upqfQF1LBPf7IRZao0sxt1BHZlx.jpg",
+    "year": "1965",
+    "fechaEstreno": "1965-09-15",
+    "rating": "7.3",
+    "votos": 139,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Comedia"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Comedia",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Guy Williams",
+        "personaje": "Dr. John Robinson",
+        "foto": "https://image.tmdb.org/t/p/w185/wAUDr5CsLZKyYluLLissLedGkFt.jpg"
+      },
+      {
+        "nombre": "June Lockhart",
+        "personaje": "Dr. Maureen Robinson",
+        "foto": "https://image.tmdb.org/t/p/w185/xTETf5AXFEyzmxOTBwyCUzi8fK3.jpg"
+      },
+      {
+        "nombre": "Mark Goddard",
+        "personaje": "Major Don West",
+        "foto": "https://image.tmdb.org/t/p/w185/8QUmlXwXyLxEKuXsVPDZ2b0Cilo.jpg"
+      },
+      {
+        "nombre": "Marta Kristen",
+        "personaje": "Judy Robinson",
+        "foto": "https://image.tmdb.org/t/p/w185/AuGTCrE9UqJ6QK9dmhbkMsLJTvj.jpg"
+      },
+      {
+        "nombre": "Angela Cartwright",
+        "personaje": "Penny Robinson",
+        "foto": "https://image.tmdb.org/t/p/w185/oX8UNl0V2MA2j6QVwHaV9h5wEGa.jpg"
+      },
+      {
+        "nombre": "Bill Mumy",
+        "personaje": "Will Robinson",
+        "foto": "https://image.tmdb.org/t/p/w185/pxjz9MOh1PMGV2SYu2hw7cmpO9e.jpg"
+      },
+      {
+        "nombre": "Jonathan Harris",
+        "personaje": "Dr. Zachary Smith",
+        "foto": "https://image.tmdb.org/t/p/w185/6UFydJAV96p3h3LLpq8xP4S8sh1.jpg"
+      },
+      {
+        "nombre": "Dick Tufeld",
+        "personaje": "Robot B-9",
+        "foto": "https://image.tmdb.org/t/p/w185/1aLohm3asIPl1JDKDsSUadFnBsB.jpg"
+      },
+      {
+        "nombre": "Bob May",
+        "personaje": "Robot B-9",
+        "foto": "https://image.tmdb.org/t/p/w185/4ZSPT6qzAW5aSdOaLsqX6e9PNUQ.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Irwin Allen Productions, 20th Century Fox Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "spacecraft, future, space, alien planet, anxious",
+    "similares": [
+      {
+        "titulo": "Galaxia Wander",
+        "poster": "https://image.tmdb.org/t/p/w342/nHOo0c8efrwWJPb49HXMSTPsIpP.jpg",
+        "year": "2013",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Mork & Mindy",
+        "poster": "https://image.tmdb.org/t/p/w342/6qZsNHd5Kafc9AMQyKR5W6RRqIf.jpg",
+        "year": "1978",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Star Trek: Prodigy",
+        "poster": "https://image.tmdb.org/t/p/w342/Aqub3PSzLm2F398vitkbkxjopjO.jpg",
+        "year": "2021",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "ALF",
+        "poster": "https://image.tmdb.org/t/p/w342/shRed7ZrCRjdIMEYNx2YBVFkkNu.jpg",
+        "year": "1986",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Enano rojo",
+        "poster": "https://image.tmdb.org/t/p/w342/cU9RFlyvJXbzyCzCGRqRmZrTDZU.jpg",
+        "year": "1988",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Final Space",
+        "poster": "https://image.tmdb.org/t/p/w342/cf4chvwB40cEpsagSrRaEIqBFoG.jpg",
+        "year": "2018",
+        "rating": "8.4"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Irwin Allen"
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 83,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 57,
+        "id": 9731,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/xYE8BXywyEi1eavwwglcf1RQhMa.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1965-09-15",
+        "episode_count": 29,
+        "id": 9729,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/cW5zmGlnfgPBQhEhRv4QGVY1xbQ.jpg",
+        "season_number": 1,
+        "vote_average": 6.1
+      },
+      {
+        "air_date": "1966-09-16",
+        "episode_count": 30,
+        "id": 9728,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/tiyo1h6UVneH5XM3JXaXJDbYE43.jpg",
+        "season_number": 2,
+        "vote_average": 5.4
+      },
+      {
+        "air_date": "1967-09-06",
+        "episode_count": 24,
+        "id": 9730,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/jAKft4sBtWBIL1eOCFB3bnnJJTI.jpg",
+        "season_number": 3,
+        "vote_average": 5.6
+      }
+    ],
     "tituloSerie": "Perdidos en el espacio",
-    "descripcion": "El profesor John Robinson decide abandonar la Tierra, con problemas de sobrepoblación, y mudarse con su esposa y sus dos hijos a un planeta habitable del sistema Alpha Centauri. Para ello, emprenden un viaje espacial durante el que permanecerán en animación suspendida, en la nave Jupiter 2 pilotada por el comandante Donald West, el mejor amigo de Robinson",
-    "imagen": "https://www.lavanguardia.com/peliculas-series/images/serie/poster/1965/9/w300/f7xArCMZPBW7SoCsqsOXvc3X8Ry.jpg",
+    "descripcion": "El profesor John Robinson decide abandonar la Tierra, con problemas de sobrepoblación, y mudarse con su esposa y sus dos hijos a un planeta habitable del sistema Alpha Centauri. Para ello, emprenden un viaje espacial durante el que permanecerán en animación suspendida, en la nave Jupiter 2 pilotada por el comandante Donald West, el mejor amigo de Robinson. Un agente extranjero intenta sabotear el viaje, lo que provocará que el Jupiter 2 se desvíe de su trayectoria. Emblemática serie de los 60, inspirada libremente en la novela Los robinsones suizos, de J. R. Wyss, pero en clave de ciencia ficción. La acción comienza en 1997, un año que parecía muy lejano en el tiempo cuando se rodó la serie. En 1998 se rodó una versión cinematográfica.",
+    "imagen": "https://image.tmdb.org/t/p/w780/f7xArCMZPBW7SoCsqsOXvc3X8Ry.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -1986,9 +3429,198 @@
     ]
   },
   {
-    "tituloSerie": "¿Quién manda a quién?",
-    "descripcion": "¿Quién manda a quién? es una serie televisiva de comedia de situaciones, creada por Martin Cohan y Blake Hunter y protagonizada por Tony Danza y Judith Light. Fue emitida originalmente desde 1984 hasta 1992 por la cadena ABC de Estados Unidos.",
-    "imagen": "https://cdn11.bigcommerce.com/s-ftsflnse4o/images/stencil/608x608/products/22595/87042/D_734335-MLA77151503125_062024-O__21377.1730701171.jpg?c=1",
+    "tmdbId": 634,
+    "tmdbType": "tv",
+    "tituloOriginal": "Who's the Boss?",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/bnyOvBONhZnY20Ogq5nNQCKoKYb.jpg",
+    "year": "1984",
+    "fechaEstreno": "1984-09-20",
+    "rating": "7.4",
+    "votos": 313,
+    "runtime": "23min",
+    "runtimeMin": 23,
+    "genres": [
+      "Comedia"
+    ],
+    "generosTexto": "Comedia",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Tony Danza",
+        "personaje": "Tony Micelli",
+        "foto": "https://image.tmdb.org/t/p/w185/qoUp1mtEFvrWHG3kEM35coysf5y.jpg"
+      },
+      {
+        "nombre": "Judith Light",
+        "personaje": "Angela Bower",
+        "foto": "https://image.tmdb.org/t/p/w185/aSjRraeP4GFJxZKYjXevcfeRDcF.jpg"
+      },
+      {
+        "nombre": "Alyssa Milano",
+        "personaje": "Samantha Micelli",
+        "foto": "https://image.tmdb.org/t/p/w185/q5RAaX57dLvlpigAhbX3lCb2dkZ.jpg"
+      },
+      {
+        "nombre": "Danny Pintauro",
+        "personaje": "Jonathan Bower",
+        "foto": "https://image.tmdb.org/t/p/w185/k3Bfzb3RCJTxkUi7cc8uM2qo32s.jpg"
+      },
+      {
+        "nombre": "Katherine Helmond",
+        "personaje": "Mona Robinson",
+        "foto": "https://image.tmdb.org/t/p/w185/ewqxAgTyclJLwQi4WWU5QZiCM0Q.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "ELP Communications",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "sitcom",
+    "similares": [
+      {
+        "titulo": "Benson",
+        "poster": "https://image.tmdb.org/t/p/w342/pXQIwDfMMDF6GVJdgLm68Exm5wo.jpg",
+        "year": "1979",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Coach",
+        "poster": "https://image.tmdb.org/t/p/w342/jxfsNMQxlgsoUoLOTF4CB6s5gxO.jpg",
+        "year": "1989",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Mama's Family",
+        "poster": "https://image.tmdb.org/t/p/w342/hRzbRLRJ8VgEJyTVyoVwDfGOfVr.jpg",
+        "year": "1983",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Cambio de marcha",
+        "poster": "https://image.tmdb.org/t/p/w342/vDfb3BPT6IXA0mBaUEhobMYwEiz.jpg",
+        "year": "2025",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "The Unicorn",
+        "poster": "https://image.tmdb.org/t/p/w342/464MyJvlG2Po8J1ObAwRljf2Exf.jpg",
+        "year": "2019",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "The George Burns and Gracie Allen Show",
+        "poster": "https://image.tmdb.org/t/p/w342/kvCVEK1AeNTBbY5OREw2YdRa9bF.jpg",
+        "year": "1950",
+        "rating": "7.2"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Blake Hunter"
+    ],
+    "numeroTemporadas": 8,
+    "numeroEpisodios": 196,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 8,
+        "id": 1915,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/aB77LQMVo0TTe54z9cPGcI8MPDt.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1984-09-20",
+        "episode_count": 22,
+        "id": 1909,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/efz5vszsZLfOcCBBGM5OgaV4SyX.jpg",
+        "season_number": 1,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "1985-09-24",
+        "episode_count": 26,
+        "id": 1911,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/z9QVkME88FsVDd9XcRLiJFE7Bki.jpg",
+        "season_number": 2,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "1986-09-23",
+        "episode_count": 24,
+        "id": 1910,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/eRqWrJNTyXpy4SKOq6l0mv8jvy3.jpg",
+        "season_number": 3,
+        "vote_average": 7.6
+      },
+      {
+        "air_date": "1987-09-22",
+        "episode_count": 24,
+        "id": 1907,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/7eyYKb7ajKDHwIpE4bbBUeYRyfQ.jpg",
+        "season_number": 4,
+        "vote_average": 7.8
+      },
+      {
+        "air_date": "1988-10-18",
+        "episode_count": 25,
+        "id": 1908,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/e08AMHkUVXH0r2ZaukoVrNuFypx.jpg",
+        "season_number": 5,
+        "vote_average": 7
+      },
+      {
+        "air_date": "1989-09-19",
+        "episode_count": 26,
+        "id": 1912,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/ab5exunWwUFRhgt4VoF20A4hJvQ.jpg",
+        "season_number": 6,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "1990-09-18",
+        "episode_count": 25,
+        "id": 1914,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/ePw9CGP62wchIGJLGRcgNuCRxFB.jpg",
+        "season_number": 7,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1991-09-28",
+        "episode_count": 24,
+        "id": 1913,
+        "name": "Temporada 8",
+        "overview": "",
+        "poster_path": "/3AUk4pZ1o3LelW2ITQ0J58av1bm.jpg",
+        "season_number": 8,
+        "vote_average": 7.5
+      }
+    ],
+    "tituloSerie": "¿Quién es el jefe?",
+    "descripcion": "Tony Micelli es un antiguo jugador de béisbol profesional que se muda junto con su hija adolescente Samantha a Connecticut. Allí, desafiando las tradiciones, Tony trabajará como \"amo de casa\", preparando la comida, limpiando y cuidando la casa de Angela Bower, una ejecutiva que vive con su hijo Jonathan y su alocada madre Mona.",
+    "imagen": "https://image.tmdb.org/t/p/w780/g2DGlUraEwKxrsKtbtCYqUSz7zy.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -2154,9 +3786,206 @@
     ]
   },
   {
-    "tituloSerie": "Blanco y Negro",
-    "descripcion": "Serie de TV (1978-1986). 6 temporadas. 189 episodios. Popular telecomedia de los años ochenta que narra las aventuras de Philip Drummond (Conrad Bain), un millonario de Nueva York que vive en un lujoso apartamento de Park Avenue y que adopta y cría a dos chicos afroamericanos (Gary Coleman y Todd Bridges).",
-    "imagen": "https://m.media-amazon.com/images/I/619OUF9QFRL._AC_UF894,1000_QL80_.jpg",
+    "tmdbId": 2410,
+    "tmdbType": "tv",
+    "tituloOriginal": "Diff'rent Strokes",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/brlf6CqE8GP0bxYZkuTDUB7h7w1.jpg",
+    "year": "1978",
+    "fechaEstreno": "1978-11-03",
+    "rating": "7.1",
+    "votos": 299,
+    "runtime": "30min",
+    "runtimeMin": 30,
+    "genres": [
+      "Comedia",
+      "Familia",
+      "Drama"
+    ],
+    "generosTexto": "Comedia, Familia, Drama",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Conrad Bain",
+        "personaje": "Phillip Drummond",
+        "foto": "https://image.tmdb.org/t/p/w185/qE7ywtFC8kI1iw42xPoN9UaASu7.jpg"
+      },
+      {
+        "nombre": "Gary Coleman",
+        "personaje": "Arnold Jackson",
+        "foto": "https://image.tmdb.org/t/p/w185/77YIEd2tastsT3fjEraKOjCvgyD.jpg"
+      },
+      {
+        "nombre": "Todd Bridges",
+        "personaje": "Willis Jackson",
+        "foto": "https://image.tmdb.org/t/p/w185/r3lqiGtFU9jCbKCdbLeR72ZQlBw.jpg"
+      },
+      {
+        "nombre": "Mary Jo Catlett",
+        "personaje": "Pearl Gallagher",
+        "foto": "https://image.tmdb.org/t/p/w185/nHDeiQ5jwx0M8HtGgki8ZEsmUQo.jpg"
+      },
+      {
+        "nombre": "Danny Cooksey",
+        "personaje": "Sam McKinney",
+        "foto": "https://image.tmdb.org/t/p/w185/1diDYWnss7hsYzRru9nfPCyg6Yb.jpg"
+      },
+      {
+        "nombre": "Mary Ann Mobley",
+        "personaje": "Maggie Drummond",
+        "foto": "https://image.tmdb.org/t/p/w185/pMGhURw48UhQ893BV129q3fnKEW.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Norman Lear/Tandem Productions, Embassy Television, Embassy Pictures Corporation, Tandem Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "family relationships, wealthy, orphan, class differences, widower, manhattan, new york city, interracial adoption, adopted child, sitcom, child care, brother brother relationship, african american",
+    "similares": [
+      {
+        "titulo": "Family Affair",
+        "poster": "https://image.tmdb.org/t/p/w342/ox29HlZkjVPAihnIr1tIL9fWcp9.jpg",
+        "year": "1966",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Los Jeffersons",
+        "poster": "https://image.tmdb.org/t/p/w342/iFjIaWr9qDKMLnnh8tHwO6Tzp6D.jpg",
+        "year": "1975",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "La familia Hogan",
+        "poster": "https://image.tmdb.org/t/p/w342/2deFhQTN01DGG2ys9tNmRRB4SsY.jpg",
+        "year": "1986",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "My Wife and Kids",
+        "poster": "https://image.tmdb.org/t/p/w342/eyQsN8bU27fdIs2D66gFmcIo0dM.jpg",
+        "year": "2001",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Cosas de casa",
+        "poster": "https://image.tmdb.org/t/p/w342/dBKoWVRgUwtoovFz4LeUO7heI0i.jpg",
+        "year": "1989",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "227",
+        "poster": "https://image.tmdb.org/t/p/w342/yoIFuErMvCb4ZTSnQ079cIcWYjf.jpg",
+        "year": "1985",
+        "rating": "6.9"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Bernie Kukoff",
+      "Jeff Harris"
+    ],
+    "numeroTemporadas": 8,
+    "numeroEpisodios": 189,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 2,
+        "id": 7581,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1978-11-03",
+        "episode_count": 24,
+        "id": 7576,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/7xONzfyX0PsgEebYEbfncBtgKrw.jpg",
+        "season_number": 1,
+        "vote_average": 6.4
+      },
+      {
+        "air_date": "1979-09-21",
+        "episode_count": 26,
+        "id": 7573,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/lvJvjt7cavKPnNatPPd2ABnuRXn.jpg",
+        "season_number": 2,
+        "vote_average": 7
+      },
+      {
+        "air_date": "1980-11-12",
+        "episode_count": 22,
+        "id": 7574,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/2VoyXDAkQBot6xgxnK4PZTy7NL4.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1981-10-29",
+        "episode_count": 26,
+        "id": 7575,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/c2gTrhEEcRVWgeb3XVqAe2PirRC.jpg",
+        "season_number": 4,
+        "vote_average": 7.7
+      },
+      {
+        "air_date": "1982-10-02",
+        "episode_count": 24,
+        "id": 7577,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/7FFEjGlt3ctOm3aC9pFdAXekRGd.jpg",
+        "season_number": 5,
+        "vote_average": 8
+      },
+      {
+        "air_date": "1983-10-01",
+        "episode_count": 24,
+        "id": 7578,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/xxmJIv5gHd7XrgjaU3suEIGzZOT.jpg",
+        "season_number": 6,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1984-09-29",
+        "episode_count": 24,
+        "id": 7579,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/5IuqwaubUBit1x6qSDPxyJG3Z37.jpg",
+        "season_number": 7,
+        "vote_average": 10
+      },
+      {
+        "air_date": "1985-09-27",
+        "episode_count": 19,
+        "id": 7580,
+        "name": "Temporada 8",
+        "overview": "",
+        "poster_path": "/hvYTLa4hpaknb2Bc28qdcEw3Tx8.jpg",
+        "season_number": 8,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Arnold",
+    "descripcion": "Popular telecomedia de los años ochenta que narra las aventuras de Philip Drummond (Conrad Bain), un millonario de Nueva York que vive en un lujoso apartamento de Park Avenue y que adopta y cría a dos chicos afroamericanos (Gary Coleman y Todd Bridges). El hombre, además, tiene una hija de rizos rubios y actitud angelical llamada Kimberly (Dana Plato). Los cuatro personajes protagonizaron una de las sitcoms con mayor éxito en los Estados Unidos y en el mundo entero. El aspecto aniñado de Arnold, interpretado por el pequeño Coleman, fue uno de los atrayentes más grandes para el público. La clásica frase era: \"¿De qué estás hablando Willis?\". ",
+    "imagen": "https://image.tmdb.org/t/p/w780/fbQUDdMfyPDCciwYpX8UOODBS9g.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -2212,9 +4041,135 @@
     ]
   },
   {
+    "tmdbId": 3882,
+    "tmdbType": "tv",
+    "tituloOriginal": "My Favorite Martian",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/hAoeLuQjL176bQ4jfGpqUhg442A.jpg",
+    "year": "1963",
+    "fechaEstreno": "1963-09-29",
+    "rating": "6.2",
+    "votos": 36,
+    "runtime": "30min",
+    "runtimeMin": 30,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Comedia, Familia",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Bill Bixby",
+        "personaje": "Tim O'Hara",
+        "foto": "https://image.tmdb.org/t/p/w185/eKcpqTutiVxQeAPbwupjSV5DXE.jpg"
+      },
+      {
+        "nombre": "Ray Walston",
+        "personaje": "Uncle Martin",
+        "foto": "https://image.tmdb.org/t/p/w185/pRVUmhdc9nxflBI5GJvokz0nPPb.jpg"
+      },
+      {
+        "nombre": "Alan Hewitt",
+        "personaje": "Det. Bill Brennan",
+        "foto": "https://image.tmdb.org/t/p/w185/3m1nUER9sa6PnwblodE8loOKOY4.jpg"
+      },
+      {
+        "nombre": "Pamela Britton",
+        "personaje": "Mrs. Lorelei Brown",
+        "foto": "https://image.tmdb.org/t/p/w185/dRDBaqZRfyKFSiBf5ZgbM6sVFuY.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "alien, reporter, los angeles, california, sitcom",
+    "similares": [
+      {
+        "titulo": "Mork & Mindy",
+        "poster": "https://image.tmdb.org/t/p/w342/6qZsNHd5Kafc9AMQyKR5W6RRqIf.jpg",
+        "year": "1978",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "ALF",
+        "poster": "https://image.tmdb.org/t/p/w342/shRed7ZrCRjdIMEYNx2YBVFkkNu.jpg",
+        "year": "1986",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Vaya vecinos",
+        "poster": "https://image.tmdb.org/t/p/w342/byYckInWgH6fjSc6HVg2CZapeNK.jpg",
+        "year": "2012",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Lab Rats",
+        "poster": "https://image.tmdb.org/t/p/w342/lcQMvn9ZptPd3dxn0a17viRfi7Y.jpg",
+        "year": "2012",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Mi bella genio",
+        "poster": "https://image.tmdb.org/t/p/w342/xxmtvp7WL70yjJO1beXD5WO5lpu.jpg",
+        "year": "1965",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Phil del Futuro",
+        "poster": "https://image.tmdb.org/t/p/w342/4r1luaFylkK48JcXmCNpZ0yKNZW.jpg",
+        "year": "2004",
+        "rating": "6.8"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "John L. Greene"
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 107,
+    "temporadasTmdb": [
+      {
+        "air_date": "1963-09-29",
+        "episode_count": 37,
+        "id": 11629,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/mvplwVSnfl6QKVDvtoQ7i1xq89F.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1964-09-27",
+        "episode_count": 38,
+        "id": 11630,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/iwGwUmi9UpNJAD3wR5MyTYU3mkf.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1965-09-12",
+        "episode_count": 32,
+        "id": 11628,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/vravChsTi2qZzlC5lBzeXA7i413.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      }
+    ],
     "tituloSerie": "Mi marciano favorito",
-    "descripcion": "Serie de TV (1963-1966). 3 temporadas. 107 episodios. Un sarcástico marciano se queda a vivir en el apartamento de un desventurado hombre.",
-    "imagen": "https://pics.filmaffinity.com/my_favorite_martian-719821490-mmed.jpg",
+    "descripcion": "Exigius Twelve and a Half, un exoantropólogo del planeta Marte, queda varado en la Tierra después de que su nave espacial unipersonal falla por poco un avión cohete de la NASA y se estrella cerca de Los Ángeles. El extraterrestre es rescatado por Tim O'Hara, un periodista que explica el marciano a amigos y autoridades presentándolo como su tío Martin. El \"tío Martín\" parece humano, excepto cuando extiende sus antenas retráctiles con las que puede volverse invisible. Sus poderes especiales y enfermedades inusuales presentan un desafío constante para Tim en sus esfuerzos por preservar la cobertura de su amigo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/kw90AgVKEPwfKLtC07hoRQFwOXk.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -2262,9 +4217,175 @@
     ]
   },
   {
-    "tituloSerie": "La isla de la fantasía",
-    "descripcion": "Las historias de los visitantes a un resort único en una isla del Pacífico que hace realidad todo lo que se le pide, aunque no exactamente como uno habría esperado.",
-    "imagen": "https://pics.filmaffinity.com/La_isla_de_la_fantasaia_Serie_de_TV-258002599-large.jpg",
+    "tmdbId": 39775,
+    "tmdbType": "tv",
+    "tituloOriginal": "Fantasy Island",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/yTJFf7N9ohXjssZQyZ1cSMNopix.jpg",
+    "year": "1978",
+    "fechaEstreno": "1978-01-28",
+    "rating": "6.5",
+    "votos": 131,
+    "runtime": "45min",
+    "runtimeMin": 45,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Drama",
+      "Comedia"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Drama, Comedia",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Ricardo Montalban",
+        "personaje": "Mr. Roarke",
+        "foto": "https://image.tmdb.org/t/p/w185/cadERRbhUJ0674YiIwKOwmeDOgE.jpg"
+      },
+      {
+        "nombre": "Christopher Hewett",
+        "personaje": "Lawrence",
+        "foto": "https://image.tmdb.org/t/p/w185/5RlXg2xDWXWpkD0cgLOoN6RRRed.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Columbia Pictures Television, Spelling-Goldberg Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "island",
+    "similares": [
+      {
+        "titulo": "The Ray Bradbury Theater",
+        "poster": "https://image.tmdb.org/t/p/w342/fFgcmn91k9zrlHm9WmQ1lCDD9Hs.jpg",
+        "year": "1985",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Debris",
+        "poster": "https://image.tmdb.org/t/p/w342/cILrZGHgsIEpZ6VKEB3VwC2CadB.jpg",
+        "year": "2021",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Las maravillosas desventuras de Flapjack",
+        "poster": "https://image.tmdb.org/t/p/w342/awwNiRmntNOguvc86jmrHxMf6RS.jpg",
+        "year": "2008",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "NEXT",
+        "poster": "https://image.tmdb.org/t/p/w342/u9bJd2cx2I3xfJqHKVVSAOCmdyL.jpg",
+        "year": "2020",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Galaxia Wander",
+        "poster": "https://image.tmdb.org/t/p/w342/nHOo0c8efrwWJPb49HXMSTPsIpP.jpg",
+        "year": "2013",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Mork & Mindy",
+        "poster": "https://image.tmdb.org/t/p/w342/6qZsNHd5Kafc9AMQyKR5W6RRqIf.jpg",
+        "year": "1978",
+        "rating": "7.1"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Gene Levitt"
+    ],
+    "numeroTemporadas": 7,
+    "numeroEpisodios": 152,
+    "temporadasTmdb": [
+      {
+        "air_date": "1977-01-14",
+        "episode_count": 4,
+        "id": 51034,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/5MDlJI8vj6zlhFSsY9VwzajqOv8.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1978-01-28",
+        "episode_count": 14,
+        "id": 51035,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/uM9yDtULpQiOH6N91wyBPPJj3p5.jpg",
+        "season_number": 1,
+        "vote_average": 6
+      },
+      {
+        "air_date": "1978-09-16",
+        "episode_count": 25,
+        "id": 51036,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/9JxC0IGVBv4mL9A6wQUuGWYa649.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1979-09-06",
+        "episode_count": 23,
+        "id": 51037,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/mhgohuR9oUBGAmrOwr3AsuKyiB7.jpg",
+        "season_number": 3,
+        "vote_average": 6
+      },
+      {
+        "air_date": "1980-10-25",
+        "episode_count": 24,
+        "id": 51038,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/hy0gDF8Cb5pTvnMQbSPPOs4kNMu.jpg",
+        "season_number": 4,
+        "vote_average": 5.2
+      },
+      {
+        "air_date": "1981-10-10",
+        "episode_count": 22,
+        "id": 51039,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/wpZu5ajBOQkhIwH5sfDrnLjLjYe.jpg",
+        "season_number": 5,
+        "vote_average": 6
+      },
+      {
+        "air_date": "1982-10-16",
+        "episode_count": 22,
+        "id": 51040,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/ycuDQ4TIEHSN3gkY1y7NKGdue1w.jpg",
+        "season_number": 6,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1983-10-08",
+        "episode_count": 22,
+        "id": 51041,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/1nn9dfhTJyYyEWSoTqggO59DQSR.jpg",
+        "season_number": 7,
+        "vote_average": 6
+      }
+    ],
+    "tituloSerie": "La isla de la Fantasía",
+    "descripcion": "En la Isla De La Fantasía, el enigmático Señor Roarke (Michael Peña) convierte en realidad los sueños de sus afortunados huéspedes en un lujoso pero alejado hotel tropical. Pero cuando sus fantasías se convierten en pesadillas, los huéspedes deben resolver el misterio de la isla para poder escapar con vida.",
+    "imagen": "https://image.tmdb.org/t/p/w780/1nn9dfhTJyYyEWSoTqggO59DQSR.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -2374,9 +4495,182 @@
     ]
   },
   {
-    "tituloSerie": "Combate",
-    "descripcion": "Narra la vida de un grupo de soldados durante la Segunda Guerra Mundial (1939-1945)",
-    "imagen": "https://www.lavanguardia.com/peliculas-series/images/serie/poster/1962/10/w1280/2FQKBkUvvWhfjpXr5THFLEW3E7e.jpg",
+    "tmdbId": 4316,
+    "tmdbType": "tv",
+    "tituloOriginal": "Combat!",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/gRm6VeU3glb0bV0wPJYaTysdfbz.jpg",
+    "year": "1962",
+    "fechaEstreno": "1962-10-02",
+    "rating": "7.9",
+    "votos": 121,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "War & Politics",
+      "Drama"
+    ],
+    "generosTexto": "War & Politics, Drama",
+    "clasificacion": "TV-PG",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Rick Jason",
+        "personaje": "Lieutenant Gil Hanley",
+        "foto": "https://image.tmdb.org/t/p/w185/kPrO6J8SVjDDF4kkgxEykc4lgC7.jpg"
+      },
+      {
+        "nombre": "Vic Morrow",
+        "personaje": "Sergeant Chip Saunders",
+        "foto": "https://image.tmdb.org/t/p/w185/i9UyJ4ltwwpnqeqbdA1FUPJjdP8.jpg"
+      },
+      {
+        "nombre": "Jack Hogan",
+        "personaje": "William G. Kirby",
+        "foto": "https://image.tmdb.org/t/p/w185/aEM8PJS8ygD1ml9q4J3bTRhsi13.jpg"
+      },
+      {
+        "nombre": "Pierre Jalbert",
+        "personaje": "Paul \"Caje\" Lemay",
+        "foto": ""
+      },
+      {
+        "nombre": "Conlan Carter",
+        "personaje": "Doc",
+        "foto": ""
+      },
+      {
+        "nombre": "Dick Peabody",
+        "personaje": "Little John",
+        "foto": ""
+      },
+      {
+        "nombre": "Tom Lowell",
+        "personaje": "Billy Nelson",
+        "foto": "https://image.tmdb.org/t/p/w185/keQGjnNfEof9qC7uNwX9KRHlSH5.jpg"
+      },
+      {
+        "nombre": "Steven Rogers",
+        "personaje": "Doc Walton",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "world war ii, us army, u.s. soldier, military, 1940s, occupied france (1940-44)",
+    "similares": [
+      {
+        "titulo": "12 O'Clock High",
+        "poster": "https://image.tmdb.org/t/p/w342/ocq6H8uIitqJQO4qD1odhRYaEbC.jpg",
+        "year": "1964",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Hornblower",
+        "poster": "https://image.tmdb.org/t/p/w342/wF4O8zmo2O0B6dQpzTDYruKOpcA.jpg",
+        "year": "1998",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Land Girls",
+        "poster": "https://image.tmdb.org/t/p/w342/q6V76CQOwAHlg2kZ1K7uu3tgkT1.jpg",
+        "year": "2009",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Army Wives",
+        "poster": "https://image.tmdb.org/t/p/w342/vycEpFfopE9M6AjCEubMOnrYSKm.jpg",
+        "year": "2007",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Laconia, el hundimiento",
+        "poster": "https://image.tmdb.org/t/p/w342/z7Ybv2H5ml4OATZv9o4dgOfe67U.jpg",
+        "year": "2011",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Bomb Girls",
+        "poster": "https://image.tmdb.org/t/p/w342/qZvYxdrvIXFtIYBR5R4bq9LseW4.jpg",
+        "year": "2012",
+        "rating": "7.2"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 5,
+    "numeroEpisodios": 152,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 7,
+        "id": 12733,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/7teoCT9JwPDeTCqS2r9puwuImfQ.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1962-10-02",
+        "episode_count": 32,
+        "id": 12729,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/5bzhsq4sV8yafysOaMlqWiZUs4Y.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1963-09-17",
+        "episode_count": 32,
+        "id": 12732,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/1TuC4l0pIzwfXt0IgowaUCClcaa.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1964-09-15",
+        "episode_count": 32,
+        "id": 12731,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/iv3v161omF0IxgR2xmZxWhmNCNy.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1965-09-14",
+        "episode_count": 31,
+        "id": 12730,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/k58bUomPCxqsnSza5STDtPAEr1n.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1966-09-13",
+        "episode_count": 25,
+        "id": 12728,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/94RCTnOfM7zp0AnN2HC7ROOwDmV.jpg",
+        "season_number": 5,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Combat",
+    "descripcion": "Narra la vida de un grupo de soldados durante la Segunda Guerra Mundial (1939-1945).",
+    "imagen": "https://image.tmdb.org/t/p/w780/4Xk9VQ5Xa6jkRHBINkHiRzRNgde.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -2428,9 +4722,149 @@
     ]
   },
   {
-    "tituloSerie": "Los Locos Addams",
-    "descripcion": "Los Addams son una familia con intereses macabros y habilidades sobrenaturales. En ningún momento de la serie se da explicación de sus poderes. El muy rico y entusiasta Homero Addams está enamorado perdidamente de su refinada esposa",
-    "imagen": "https://image.tmdb.org/t/p/w1280/aBZynbuxspjz01mxrWpP5ZyDIyq.jpg",
+    "tmdbId": 14009,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Addams Family",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/vPWjtsNklEMYiSF0BiQ1QLHbCSC.jpg",
+    "year": "1964",
+    "fechaEstreno": "1964-09-18",
+    "rating": "8.0",
+    "votos": 459,
+    "runtime": "30min",
+    "runtimeMin": 30,
+    "genres": [
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Comedia, Familia",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "Charles Addams",
+    "reparto": [
+      {
+        "nombre": "Carolyn Jones",
+        "personaje": "Morticia Addams",
+        "foto": "https://image.tmdb.org/t/p/w185/ylA0xqACyD6mXS2e9d5cuI9wKut.jpg"
+      },
+      {
+        "nombre": "John Astin",
+        "personaje": "Gomez Addams",
+        "foto": "https://image.tmdb.org/t/p/w185/jHKGkaYWJSq2Ie3wjMbKpvWKtMT.jpg"
+      },
+      {
+        "nombre": "Jackie Coogan",
+        "personaje": "Uncle Fester",
+        "foto": "https://image.tmdb.org/t/p/w185/nTyszFKR1OCzEDs0kmUtz1g2msq.jpg"
+      },
+      {
+        "nombre": "Ted Cassidy",
+        "personaje": "Lurch",
+        "foto": "https://image.tmdb.org/t/p/w185/w3KffYtOTw4bf0a72FUFVkVa3au.jpg"
+      },
+      {
+        "nombre": "Marie Blake",
+        "personaje": "Grandmama",
+        "foto": "https://image.tmdb.org/t/p/w185/avNxzJ7ozSl5jTjsI24XyeQkkzJ.jpg"
+      },
+      {
+        "nombre": "Lisa Loring",
+        "personaje": "Wednesday Addams",
+        "foto": "https://image.tmdb.org/t/p/w185/3a31hqB27ZsPnnPv7gUTEyL5vTt.jpg"
+      },
+      {
+        "nombre": "Ken Weatherwax",
+        "personaje": "Pugsley Addams",
+        "foto": "https://image.tmdb.org/t/p/w185/l1tQEaGeATbTyyoxXFkU3UwAwWG.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Filmways Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=6sTpvpxfu-Q",
+    "coleccion": "",
+    "keywords": "parent child relationship, butler, vampire, halloween, haunted house, marriage, satire, dark comedy, family relationships, wealthy, gothic, campy, macabre, uncle nephew relationship, dark fantasy, sitcom, eccentric family, goth girls, romantic",
+    "similares": [
+      {
+        "titulo": "La familia Monster",
+        "poster": "https://image.tmdb.org/t/p/w342/dF4P2k9XgeFUT3OetAJqJJ0uQUj.jpg",
+        "year": "1964",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Leave It to Beaver",
+        "poster": "https://image.tmdb.org/t/p/w342/1Tl9FH0gFmaFDyW4J3eAowMwt8O.jpg",
+        "year": "1957",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "The New Addams Family",
+        "poster": "https://image.tmdb.org/t/p/w342/ygyHj36qss3cE0W4wr0yMKlTW4D.jpg",
+        "year": "1998",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "La familia Hogan",
+        "poster": "https://image.tmdb.org/t/p/w342/2deFhQTN01DGG2ys9tNmRRB4SsY.jpg",
+        "year": "1986",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Matrimonio Con Hijos",
+        "poster": "https://image.tmdb.org/t/p/w342/5pBpIBWudxv1kisNL4rj41RLjpZ.jpg",
+        "year": "1987",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Paso a paso",
+        "poster": "https://image.tmdb.org/t/p/w342/4XMxYOxNvxEkfxUKhs8AoGBQiVD.jpg",
+        "year": "1991",
+        "rating": "7.8"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Charles Addams"
+    ],
+    "numeroTemporadas": 2,
+    "numeroEpisodios": 64,
+    "temporadasTmdb": [
+      {
+        "air_date": "1977-10-30",
+        "episode_count": 24,
+        "id": 25310,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/8Vs8jPzgXDk40V1ru8Ye3yEYyZN.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1964-09-18",
+        "episode_count": 34,
+        "id": 25308,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/ddA1L0BqYGBlLcQqlMDPcsXgVvU.jpg",
+        "season_number": 1,
+        "vote_average": 7.1
+      },
+      {
+        "air_date": "1965-09-17",
+        "episode_count": 30,
+        "id": 25309,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/iMe6GWXmIWIvWVGhKQ5ZVgR1Mdp.jpg",
+        "season_number": 2,
+        "vote_average": 7.3
+      }
+    ],
+    "tituloSerie": "La familia Addams",
+    "descripcion": "Los Addams son una familia estrafalaria que tiene plantas carnívoras como mascotas. Gómez, el padre, es un tipo siniestro que se tortura a sí mismo. Morticia, la madre, es una vampiresa a la que gusta caminar por el cementerio. Los demás miembros de la familia son sus tétricos hijos Miércoles y Pugsley, el extrañísimo tío Fétido, Lucas, el mayordomo, y Cosa, una mano con vida propia. \"La familia Addams\", creada a partir de unas tiras cómicas de Charles Addams, fue una popular serie emitida por la ABC desde 1964 a 1966. Propició además una serie de dibujos animados y algunas películas.",
+    "imagen": "https://image.tmdb.org/t/p/w780/9eqmCtAY9d2WwafLBYXRKYepgeA.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -2482,9 +4916,165 @@
     ]
   },
   {
+    "tmdbId": 4455,
+    "tmdbType": "tv",
+    "tituloOriginal": "Get Smart",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/hYAFCCbfhYdSdKxnlNqVadzg7dk.jpg",
+    "year": "1965",
+    "fechaEstreno": "1965-09-18",
+    "rating": "8.0",
+    "votos": 448,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "Comedia",
+      "Sci-Fi & Fantasy"
+    ],
+    "generosTexto": "Comedia, Sci-Fi & Fantasy",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Don Adams",
+        "personaje": "Maxwell Smart",
+        "foto": "https://image.tmdb.org/t/p/w185/egFBdfEG2hCrSKo3fCVD1Fz5sLe.jpg"
+      },
+      {
+        "nombre": "Barbara Feldon",
+        "personaje": "Agent 99",
+        "foto": "https://image.tmdb.org/t/p/w185/cJIQYxNI63XjEUaWxK1dvkQLoLo.jpg"
+      },
+      {
+        "nombre": "Edward Platt",
+        "personaje": "Thaddeus",
+        "foto": "https://image.tmdb.org/t/p/w185/uVl1ZzKXkvJSTHVYyfNriMV8BNV.jpg"
+      },
+      {
+        "nombre": "Robert Karvelas",
+        "personaje": "Larabee",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Talent Associates, CBS",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=_crj6n1ZDcU",
+    "coleccion": "",
+    "keywords": "spy, secret mission, secret organization, villain, secret agent, satire, agent, high tech, top secret, criminal gang, sitcom, archvillain, 1960s",
+    "similares": [
+      {
+        "titulo": "El agente de CIPOL",
+        "poster": "https://image.tmdb.org/t/p/w342/a0nMOwNZXyJrMTPoaCzJJZeT0Yl.jpg",
+        "year": "1964",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Batman",
+        "poster": "https://image.tmdb.org/t/p/w342/1ZEJuuDh0Zpi5ELM3Zev0GBhQ3R.jpg",
+        "year": "1966",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Equipo Danger",
+        "poster": "https://image.tmdb.org/t/p/w342/gsvZYRnpcYJoefRlFWFKx9o0P4H.jpg",
+        "year": "2020",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Odd Squad",
+        "poster": "https://image.tmdb.org/t/p/w342/yRVaHKUbUF7e97po0fulgG4yM3h.jpg",
+        "year": "2014",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Henry Danger",
+        "poster": "https://image.tmdb.org/t/p/w342/onddStWYELFaz4BbV8kavU11oCo.jpg",
+        "year": "2014",
+        "rating": "8.3"
+      },
+      {
+        "titulo": "Danger Mouse",
+        "poster": "https://image.tmdb.org/t/p/w342/1MLDMC8tsf92h8H920TGemN0PUo.jpg",
+        "year": "1981",
+        "rating": "7.1"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Buck Henry",
+      "Mel Brooks"
+    ],
+    "numeroTemporadas": 5,
+    "numeroEpisodios": 138,
+    "temporadasTmdb": [
+      {
+        "air_date": "2003-01-01",
+        "episode_count": 27,
+        "id": 13327,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/gsdzRNNHm5zX94YpRFBLizCrUhm.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1965-09-18",
+        "episode_count": 30,
+        "id": 13322,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/uikAWqHWKEhpQ5lGl0HMOSB2vVU.jpg",
+        "season_number": 1,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "1966-09-17",
+        "episode_count": 30,
+        "id": 13323,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/1LPUlaeugf8pyxwKYQcRtfHZiX9.jpg",
+        "season_number": 2,
+        "vote_average": 7
+      },
+      {
+        "air_date": "1967-09-16",
+        "episode_count": 26,
+        "id": 13324,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/51ezqaGiNrrmcLcSbaDEHP4VVWx.jpg",
+        "season_number": 3,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "1968-09-21",
+        "episode_count": 26,
+        "id": 13326,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/sYIUAa0n3C5szwykTOiiEduIEyN.jpg",
+        "season_number": 4,
+        "vote_average": 6.6
+      },
+      {
+        "air_date": "1969-09-26",
+        "episode_count": 26,
+        "id": 13325,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/f95KAo9N6DjkRfsOqDLXeBnr8Sr.jpg",
+        "season_number": 5,
+        "vote_average": 6.4
+      }
+    ],
     "tituloSerie": "El Superagente 86",
     "descripcion": "Serie de TV de 138 episodios (1965-1970) que parodia las películas de James Bond. El superagente 86 es Maxwell Smart, un chapucero agente secreto que debe cumplir misiones muy peligrosas con la ayuda de su inseparable compañera, la agente 99.",
-    "imagen": "https://i.pinimg.com/736x/cd/1a/db/cd1adb3a12f0cb4452d949c1782de4f0.jpg",
+    "imagen": "https://image.tmdb.org/t/p/w780/z8UlaXPb4L5bYZWhH9Ocq3w0HDr.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -2616,9 +5206,177 @@
     ]
   },
   {
-    "tituloSerie": "La marina de McHale (1964)",
-    "descripcion": "The crazy crew of McHale decide to use their PT boat as an off-track betting parlor and run in to lots of trouble when they owe money to some marines and a horse they bought causes a Japanese sub to run aground.",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BMjFjMGE3NjAtNWE2MS00OGQxLWFjOTItMTBhZmQyZmNiMTY0XkEyXkFqcGc@._V1_QL75_UX164_.jpg",
+    "tmdbId": 11258,
+    "tmdbType": "tv",
+    "tituloOriginal": "McHale's Navy",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/41vLAcBrxwJd3wO9hAZhGHDRUlQ.jpg",
+    "year": "1962",
+    "fechaEstreno": "1962-10-11",
+    "rating": "6.7",
+    "votos": 27,
+    "runtime": "30min",
+    "runtimeMin": 30,
+    "genres": [
+      "Comedia",
+      "War & Politics"
+    ],
+    "generosTexto": "Comedia, War & Politics",
+    "clasificacion": "TV-G",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Ernest Borgnine",
+        "personaje": "Quinton McHale",
+        "foto": "https://image.tmdb.org/t/p/w185/vlq94UdNfjLnd9DAkKC94vKLfJJ.jpg"
+      },
+      {
+        "nombre": "Joe Flynn",
+        "personaje": "Captain Wallace B. Binghamton",
+        "foto": "https://image.tmdb.org/t/p/w185/km1TY2ieAp51uKLDBNUEANvUmaq.jpg"
+      },
+      {
+        "nombre": "Tim Conway",
+        "personaje": "Ensign Charles Parker",
+        "foto": "https://image.tmdb.org/t/p/w185/ejIaBqJt4shL7n7LfphvKWAIgWl.jpg"
+      },
+      {
+        "nombre": "Carl Ballantine",
+        "personaje": "Lester Gruber",
+        "foto": "https://image.tmdb.org/t/p/w185/tTFgW98P0Gt4jof7kpjVleuRDR3.jpg"
+      },
+      {
+        "nombre": "Gary Vinson",
+        "personaje": "George Christopher",
+        "foto": "https://image.tmdb.org/t/p/w185/qcjhPCOgQh5qiqgVcoe8QFd05zC.jpg"
+      },
+      {
+        "nombre": "Billy Sands",
+        "personaje": "'Tinker' Bell",
+        "foto": "https://image.tmdb.org/t/p/w185/ph0mCUvWDwkFn7qOyUmx0aepJJ9.jpg"
+      },
+      {
+        "nombre": "Edson Stroll",
+        "personaje": "Virgil Edwards",
+        "foto": ""
+      },
+      {
+        "nombre": "John Wright",
+        "personaje": "Willy Moss",
+        "foto": ""
+      },
+      {
+        "nombre": "Yoshio Yoda",
+        "personaje": "Fuji Kobiaji",
+        "foto": ""
+      },
+      {
+        "nombre": "Gavin MacLeod",
+        "personaje": "Happy",
+        "foto": "https://image.tmdb.org/t/p/w185/ESyFJ9IR7vfaf0YdmYsFiI1JUv.jpg"
+      },
+      {
+        "nombre": "Bob Hastings",
+        "personaje": "Lt. Elroy Carpenter",
+        "foto": "https://image.tmdb.org/t/p/w185/j8Bcul6PCSDOwY4tl2wLkcelgYf.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Universal Television Entertainment",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "world war ii, u.s. navy, black and white, south pacific, sitcom, rogue navy, pt boats, imperial japanese navy",
+    "similares": [
+      {
+        "titulo": "Dad's Army",
+        "poster": "https://image.tmdb.org/t/p/w342/8MujdHdJaQKML59PNP9jFXlclBn.jpg",
+        "year": "1968",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Gomer Pyle, U.S.M.C.",
+        "poster": "https://image.tmdb.org/t/p/w342/iBtGm3Dk2mdOftPeEtiOMhAy2lw.jpg",
+        "year": "1964",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "'Allo 'Allo!",
+        "poster": "https://image.tmdb.org/t/p/w342/8r9k5JfEkewyCEORQ4qOcuDgZKY.jpg",
+        "year": "1984",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Martillo Hammer",
+        "poster": "https://image.tmdb.org/t/p/w342/exYBfVOkRDg9f7HlRIDZ6gy3A73.jpg",
+        "year": "1986",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Laverne & Shirley",
+        "poster": "https://image.tmdb.org/t/p/w342/mUMK8AZ5uvJoTXqgGjYQNoIkf5N.jpg",
+        "year": "1976",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Decker",
+        "poster": "https://image.tmdb.org/t/p/w342/kYGzp7bQEeUhqOwml09uyWDJSK6.jpg",
+        "year": "2014",
+        "rating": "6.7"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 138,
+    "temporadasTmdb": [
+      {
+        "air_date": "1962-10-11",
+        "episode_count": 36,
+        "id": 21751,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/gAg5n1cQJ7tTi4211f5UkVAtqWP.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1963-09-17",
+        "episode_count": 36,
+        "id": 21748,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/xaFzb7h2cdyrrqKv3fGBb3cEJXL.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1964-09-15",
+        "episode_count": 36,
+        "id": 21749,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/8V79jbpsaVRM3RVFZXM6q941cum.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1965-09-14",
+        "episode_count": 30,
+        "id": 21750,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/pktDp6zhtSx3vMnyBsI7ABJFe2k.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "McHale's Navy",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/fTbprFBTt4lZb9CQpHZ4FR4BAHk.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -2658,9 +5416,150 @@
     ]
   },
   {
-    "tituloSerie": "Tierra De Gigantes",
-    "descripcion": "En 1983, un vuelo suborbital de Los Angeles a Londres queda atrapado en una distorsión espacial y se estrella en un planeta muy parecido a La Tierra. Sin embargo, los habitantes y la vida vegetal son doce veces más grandes de lo normal y su tecnología está veinte años atrasada a la de La Tierra. También, el planeta es dirigido por un gobierno totalitario que usa a las \"personas pequeñas\" como chivos expiatorios y trata de seguirles la pista para usar su avanzada tecnología.",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BYWQ5OWM0NzItMTE0ZS00MTMyLWJkMGItOGUxMDMzZjY2MjI2XkEyXkFqcGc@._V1_.jpg",
+    "tmdbId": 3345,
+    "tmdbType": "tv",
+    "tituloOriginal": "Land of the Giants",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/qd8GllAmewP7VMSiqfQfpJvHfPN.jpg",
+    "year": "1968",
+    "fechaEstreno": "1968-09-22",
+    "rating": "6.8",
+    "votos": 50,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Action & Adventure",
+      "Drama"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Action & Adventure, Drama",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Don Marshall",
+        "personaje": "Dan Erickson",
+        "foto": "https://image.tmdb.org/t/p/w185/qe4vytoKr8f3wNz4unWYNOC7YjB.jpg"
+      },
+      {
+        "nombre": "Heather Young",
+        "personaje": "Betty Hamilton",
+        "foto": "https://image.tmdb.org/t/p/w185/tClVjZjCSjyZHg90UXF2ujqXy4D.jpg"
+      },
+      {
+        "nombre": "Don Matheson",
+        "personaje": "Mark Wilson",
+        "foto": "https://image.tmdb.org/t/p/w185/i2HMTNqAfoUfODP9eWbxyWtsXy8.jpg"
+      },
+      {
+        "nombre": "Stefan Arngrim",
+        "personaje": "Barry Lockridge",
+        "foto": "https://image.tmdb.org/t/p/w185/fLt3TUdxe9jvpFMDzZfM5kxxxm3.jpg"
+      },
+      {
+        "nombre": "Gary Conway",
+        "personaje": "Steve Burton",
+        "foto": "https://image.tmdb.org/t/p/w185/9vg3jyFntkhwiQgiV4Q1UhFys24.jpg"
+      },
+      {
+        "nombre": "Deanna Lund",
+        "personaje": "Valerie Scott",
+        "foto": "https://image.tmdb.org/t/p/w185/xDEkgHZB9g3MLPCPr9U8wgolKsi.jpg"
+      },
+      {
+        "nombre": "Kurt Kasznar",
+        "personaje": "Alexander B. Fitzhugh",
+        "foto": "https://image.tmdb.org/t/p/w185/ewpi0jZ6aPM5aQ0mIISXLQGZ04u.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Irwin Allen Productions, Kent Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "La mujer biónica",
+        "poster": "https://image.tmdb.org/t/p/w342/idou4N1oTTNkH5Pn3a9JJcZAQiE.jpg",
+        "year": "1976",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "El túnel del tiempo",
+        "poster": "https://image.tmdb.org/t/p/w342/iwKeOmf7nzaHXJgWn7LwkRNoVEh.jpg",
+        "year": "1966",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Automan",
+        "poster": "https://image.tmdb.org/t/p/w342/4dOlxvavpgpDyAFmLNIre1JmcCf.jpg",
+        "year": "1983",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Space: Above and Beyond",
+        "poster": "https://image.tmdb.org/t/p/w342/1nE5C8ivFXhwMgLOpFPvbXKpDnB.jpg",
+        "year": "1995",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Los Winchester",
+        "poster": "https://image.tmdb.org/t/p/w342/okAPf7KvGfUkzMr4dFlMQ1pizYJ.jpg",
+        "year": "2022",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "The Ray Bradbury Theater",
+        "poster": "https://image.tmdb.org/t/p/w342/fFgcmn91k9zrlHm9WmQ1lCDD9Hs.jpg",
+        "year": "1985",
+        "rating": "6.9"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Irwin Allen"
+    ],
+    "numeroTemporadas": 2,
+    "numeroEpisodios": 51,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 6,
+        "id": 10347,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/695gqorIBd8rp6u2z9np7Z3McJE.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1968-09-22",
+        "episode_count": 26,
+        "id": 10346,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/zn8zmkCOAoUmM4JjeCl2tX3PhQO.jpg",
+        "season_number": 1,
+        "vote_average": 6.3
+      },
+      {
+        "air_date": "1969-09-21",
+        "episode_count": 25,
+        "id": 10345,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/mw8qrsoOjVteVlqCfc3EtT1h9Wb.jpg",
+        "season_number": 2,
+        "vote_average": 7.5
+      }
+    ],
+    "tituloSerie": "Tierra de gigantes",
+    "descripcion": "Serie de TV (1968–1970). 51 episodios. Serie creada por Irwin Allen con el sello de \"Lost in Space\", que narra las aventuras de la tripulación y pasajeros de una nave de transporte suborbital, que es accidentalmente transportada hacia un mundo en el cual toda forma de vida tiene enormes proporciones en comparación de los personajes principales. El aspecto de estos gigantes es enteramente humano, pero su sociedad es completamente dictatorial.",
+    "imagen": "https://image.tmdb.org/t/p/w780/ljbqDwgOoqYvQ6WRnuLr8QleEkH.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
