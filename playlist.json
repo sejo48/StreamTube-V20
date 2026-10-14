@@ -1,8 +1,120 @@
 [
   {
-    "tituloSerie": "El juicio (2026)",
-    "descripcion": "n padre y una hija navegan por un sistema judicial defectuoso y se enfrentan a un adinerado oponente decidido a proteger a su hijo después de que la hija sea agredida sexualmente por el hijo, en su búsqueda de justicia.",
-    "imagen": "https://archive.org/download/image_20261014/image.jpg",
+    "tmdbId": 260249,
+    "tmdbType": "tv",
+    "tituloOriginal": "El juicio",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/bLcF9mcinphgFlXEfk7RkCSfqCv.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-09-11",
+    "rating": "9.2",
+    "votos": 80,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Drama"
+    ],
+    "generosTexto": "Drama",
+    "clasificacion": "TV-MA",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Eugenio Derbez",
+        "personaje": "Miguel",
+        "foto": "https://image.tmdb.org/t/p/w185/6o1w3mYF947N6TTakQXcs3NNy4w.jpg"
+      },
+      {
+        "nombre": "Pedro Alonso",
+        "personaje": "Huerta",
+        "foto": "https://image.tmdb.org/t/p/w185/38HeVKeOBztVYrLJOWzAtEZiB02.jpg"
+      },
+      {
+        "nombre": "Karla Gaytán",
+        "personaje": "Andrea Portillo",
+        "foto": "https://image.tmdb.org/t/p/w185/brrYnEezWDbjM4aLbRXT4iCwnd5.jpg"
+      },
+      {
+        "nombre": "Íker Sánchez Solano",
+        "personaje": "Carlos Huerta",
+        "foto": "https://image.tmdb.org/t/p/w185/eHvL807cehcshUoxwJMSCod8IjR.jpg"
+      },
+      {
+        "nombre": "Sergio Gava",
+        "personaje": "Agente MP",
+        "foto": "https://image.tmdb.org/t/p/w185/zWGEgeP8rA6vZ4toS5NmfDl5xbK.jpg"
+      },
+      {
+        "nombre": "Héctor Jiménez",
+        "personaje": "Joaquín Portillo",
+        "foto": "https://image.tmdb.org/t/p/w185/i6Q6G8HWLof7zXNbTgvpI6MuC3P.jpg"
+      }
+    ],
+    "pais": "Mexico, United States of America",
+    "idioma": "es",
+    "productoras": "Amazon MGM Studios, 3Pas Studios, Visceral, Reclaim Entertainment Ventures",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Bel-Air",
+        "poster": "https://image.tmdb.org/t/p/w342/j8tbXWXrL15RucA6H4khq87dEXa.jpg",
+        "year": "2022",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Ambitions",
+        "poster": "https://image.tmdb.org/t/p/w342/yZR31jvMgGwG4i0Z6Jee2iRUHyI.jpg",
+        "year": "2019",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Entre padre e hijo",
+        "poster": "https://image.tmdb.org/t/p/w342/oYG6EAnRalQRf0w1JQSGtCpcrNR.jpg",
+        "year": "2026",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Tyler Perry's Ruthless",
+        "poster": "https://image.tmdb.org/t/p/w342/c2sBZga1A6cQnKfsDjSXddhmkad.jpg",
+        "year": "2020",
+        "rating": "8.4"
+      },
+      {
+        "titulo": "Ni una más",
+        "poster": "https://image.tmdb.org/t/p/w342/poeF8MRkSJQSoJ5uMVBkKEXADxF.jpg",
+        "year": "2024",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Jenni Rivera: Mariposa de Barrio",
+        "poster": "https://image.tmdb.org/t/p/w342/vIHwoZF3YjLkoFKJGJMIiIO4HsF.jpg",
+        "year": "2017",
+        "rating": "7.9"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 8,
+    "temporadasTmdb": [
+      {
+        "air_date": "2026-09-10",
+        "episode_count": 8,
+        "id": 404296,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/ruBoYMwK3ODdREJZgNSg1UhE94K.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "El juicio",
+    "descripcion": "Una joven y su padre buscan justicia después de que ella fuese víctima de abuso sexual. Además de lidiar con las secuelas del delito, ambos luchan contra un fallido sistema judicial y el propio padre del joven agresor: un exitoso hombre dispuesto a usar todo su poder para proteger a su hijo y evitar que pague por su crimen.",
+    "imagen": "https://image.tmdb.org/t/p/w780/bFg26U2rS3TmcYRPSYY7FRkVWHc.jpg",
     "codigo": null,
     "qualityTag": "HD",
     "temporadas": [
@@ -26,9 +138,151 @@
     ]
   },
   {
-    "tituloSerie": "Don gato y su pandilla",
-    "descripcion": "",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BZDMxY2Q2N2ItOTQ4Zi00ODAxLThhNWYtMjE2NThmMDkwNTcxXkEyXkFqcGc@._V1_.jpg",
+    "tmdbId": 4232,
+    "tmdbType": "tv",
+    "tituloOriginal": "Top Cat",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/82czKnq7CcHaGjNSkxlHLwanE2k.jpg",
+    "year": "1961",
+    "fechaEstreno": "1961-09-27",
+    "rating": "7.5",
+    "votos": 373,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Animación",
+      "Comedia",
+      "Kids"
+    ],
+    "generosTexto": "Animación, Comedia, Kids",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Arnold Stang",
+        "personaje": "Top Cat  (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/oJCqwzVa65BgqrdNZh7Hf0QnQlq.jpg"
+      },
+      {
+        "nombre": "Maurice Gosfield",
+        "personaje": "Benny the Ball  (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/ihaiSnNgWN7ZUJOSWQKm063BGqG.jpg"
+      },
+      {
+        "nombre": "Leo De Lyon",
+        "personaje": "Brain / Spook  (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/fIIM9YxJ4Wy003KXd3ZBi495Lbo.jpg"
+      },
+      {
+        "nombre": "Marvin Kaplan",
+        "personaje": "Choo Choo  (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/jQ64Eu8L7RPiT5l9IujkwwxadkS.jpg"
+      },
+      {
+        "nombre": "John Stephenson",
+        "personaje": "Fancy-Fancy  (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/7Tl0KkH3Sw7RMmsvTIv3Alz9vrn.jpg"
+      },
+      {
+        "nombre": "Allen Jenkins",
+        "personaje": "Officer Dibble  (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/5Sx6PnCGo2NIDYqWwP3P2BCejqd.jpg"
+      },
+      {
+        "nombre": "Lars Thiesgaard",
+        "personaje": "Top Cat (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/9OmxmNGNpyEuZSqmgSSB9JSHpoA.jpg"
+      },
+      {
+        "nombre": "Paul Hüttel",
+        "personaje": "Choo Choo / Brain (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/uTspGautQqFXf8wHS8sqbM7mhs8.jpg"
+      },
+      {
+        "nombre": "Kjeld Nørgaard",
+        "personaje": "Politibetjent Charlie Dibble (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/d3dd2CITZPvAdFXJQlJvRdTyTFC.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Hanna-Barbera Cartoons, Screen Gems",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=YgbUEnNf7y8",
+    "coleccion": "",
+    "keywords": "cat, human animal relationship, police, surrealism, police officer, cartoon cat, animal human friendship, animation, new york's alley",
+    "similares": [
+      {
+        "titulo": "Isidoro",
+        "poster": "https://image.tmdb.org/t/p/w342/42g79zNS43oZNiuTasiL1sEOnDK.jpg",
+        "year": "1984",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "El show de Garfield",
+        "poster": "https://image.tmdb.org/t/p/w342/jBAXfUHvVTBCsCwP1xNG6B3bZ0d.jpg",
+        "year": "2009",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Catscratch",
+        "poster": "https://image.tmdb.org/t/p/w342/9OoaYeRxgzV530mKuPOx2N8AMSI.jpg",
+        "year": "2005",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "CatDog",
+        "poster": "https://image.tmdb.org/t/p/w342/fkSCg9negcHAVO3gXohqEidqrsX.jpg",
+        "year": "1998",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Los pequeños Tom & Jerry",
+        "poster": "https://image.tmdb.org/t/p/w342/pApniCXhegDnhxQda7RcpG8gFP0.jpg",
+        "year": "1990",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Garfield y sus amigos",
+        "poster": "https://image.tmdb.org/t/p/w342/3HyTfZ9sSCoZPYrYHMffhRVm3Af.jpg",
+        "year": "1988",
+        "rating": "7.3"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Joseph Barbera",
+      "William Hanna"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 30,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 6,
+        "id": 12419,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/vFKKJA55QnkLU4bVOysw9sFiCt6.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1961-09-27",
+        "episode_count": 30,
+        "id": 12418,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/nuxQmYvGFEHWJMnqmeSF6Y2cbcF.jpg",
+        "season_number": 1,
+        "vote_average": 7.2
+      }
+    ],
+    "tituloSerie": "Don Gato y su pandilla",
+    "descripcion": "El personaje principal Don Gato, es el líder de una pandilla felina callejera de Manhattan: Panza, Espanto, Benito Bodoque, Demóstenes y Cucho. Por su parte, el Oficial Matute, policía del vecindario, trata infructuosamente de atraparlos y llevarlos a la cárcel.",
+    "imagen": "https://image.tmdb.org/t/p/w780/f30lAglX7X0VXLnkYO62inqc7ww.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
