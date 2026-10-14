@@ -374,9 +374,159 @@
     ]
   },
   {
-    "tituloSerie": "La Isla de Gilligan",
-    "descripcion": "1964 ‧ Comedia de situación ‧ 3 Temporadas",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BMjM1Mjg3NzU4M15BMl5BanBnXkFtZTgwNzE3ODMyMTE@._V1_FMjpg_UX1000_.jpg",
+    "tmdbId": 1921,
+    "tmdbType": "tv",
+    "tituloOriginal": "Gilligan's Island",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/4Y2XnGhGnir8nx9pf7WGAAcho7K.jpg",
+    "year": "1964",
+    "fechaEstreno": "1964-09-26",
+    "rating": "7.4",
+    "votos": 267,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Comedia, Familia",
+    "clasificacion": "TV-G",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Bob Denver",
+        "personaje": "Gilligan",
+        "foto": "https://image.tmdb.org/t/p/w185/vt5qp7ZivbjLDOMtFBnKFGAPtOm.jpg"
+      },
+      {
+        "nombre": "Alan Hale Jr.",
+        "personaje": "Skipper",
+        "foto": "https://image.tmdb.org/t/p/w185/13hyaSRqAe9LTkGTp4iEyZQO5Il.jpg"
+      },
+      {
+        "nombre": "Jim Backus",
+        "personaje": "Thurston Howell",
+        "foto": "https://image.tmdb.org/t/p/w185/y2vIKLpjYlIo80sc5uvIpqEHn5n.jpg"
+      },
+      {
+        "nombre": "Natalie Schafer",
+        "personaje": "Lovey Howell",
+        "foto": "https://image.tmdb.org/t/p/w185/t0YUFqe7nbIlTOlipbWesmJW7Wd.jpg"
+      },
+      {
+        "nombre": "Tina Louise",
+        "personaje": "Ginger Grant",
+        "foto": "https://image.tmdb.org/t/p/w185/c4Sl8tnnI5XY6PnKkdaiUJjNZ2e.jpg"
+      },
+      {
+        "nombre": "Dawn Wells",
+        "personaje": "Mary Ann Summers",
+        "foto": "https://image.tmdb.org/t/p/w185/z7RW0tTRVXAzkDOIdKGsAxci9hs.jpg"
+      },
+      {
+        "nombre": "Russell Johnson",
+        "personaje": "Professor",
+        "foto": "https://image.tmdb.org/t/p/w185/91L5dJOnmlJ8CUXCgJ0yB5C2JTb.jpg"
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "United Artists Television, CBS, Gladysya Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "island, shipwreck, campy, deserted island, sitcom, clumsy, uncharted, hilarious, cheerful, comforting, boat travel, near hawaii",
+    "similares": [
+      {
+        "titulo": "Gomer Pyle, U.S.M.C.",
+        "poster": "https://image.tmdb.org/t/p/w342/iBtGm3Dk2mdOftPeEtiOMhAy2lw.jpg",
+        "year": "1964",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Mork & Mindy",
+        "poster": "https://image.tmdb.org/t/p/w342/6qZsNHd5Kafc9AMQyKR5W6RRqIf.jpg",
+        "year": "1978",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Total Drama Island",
+        "poster": "https://image.tmdb.org/t/p/w342/5H8n9dS2bypIAK4sUF3nCBk5tM7.jpg",
+        "year": "2007",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Phil del Futuro",
+        "poster": "https://image.tmdb.org/t/p/w342/4r1luaFylkK48JcXmCNpZ0yKNZW.jpg",
+        "year": "2004",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Father Ted",
+        "poster": "https://image.tmdb.org/t/p/w342/tKtsTAIw6ijAvTALpVzp1JOqOmy.jpg",
+        "year": "1995",
+        "rating": "8.2"
+      },
+      {
+        "titulo": "Petticoat Junction",
+        "poster": "https://image.tmdb.org/t/p/w342/2kTGzz870hmdmQ074CYTdKFRqSm.jpg",
+        "year": "1963",
+        "rating": "5.9"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Sherwood Schwartz"
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 98,
+    "temporadasTmdb": [
+      {
+        "air_date": "1964-09-01",
+        "episode_count": 7,
+        "id": 5562,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/q3QD7Ai0UhOT21ugR8NYulBWyt1.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1964-09-26",
+        "episode_count": 36,
+        "id": 5559,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/us1L5pfFnsT9RHgNXcoTjxit9WK.jpg",
+        "season_number": 1,
+        "vote_average": 6
+      },
+      {
+        "air_date": "1965-09-16",
+        "episode_count": 32,
+        "id": 5561,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/aGNScjiUNLmrXpG1Cznp2NCXFfm.jpg",
+        "season_number": 2,
+        "vote_average": 5.6
+      },
+      {
+        "air_date": "1966-09-12",
+        "episode_count": 30,
+        "id": 5560,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/88t4Yf0wLnX9tJuofB910hCjrTr.jpg",
+        "season_number": 3,
+        "vote_average": 4.8
+      }
+    ],
+    "tituloSerie": "La isla de Gilligan",
+    "descripcion": "Disparatada comedia ambientada en una isla del Pacífico. Un crucero de placer se ve interrumpido al naufragar el barco a causa de una tormenta. Los siete supervivientes se refugian en una isla. Entre ellos está Gilligan (Bob Denver), un tripulante; el Capitán Grumby (Alan Hale Jr.), el billonario Thurston Howell III (Jim Backus) y su esposa (Natalie Schafer), la actriz de cine Ginger Grant (Tina Louise), el Profesor Hinkley (Russell Johnson) y la campesina Mary Ann (Dawn Wells).",
+    "imagen": "https://image.tmdb.org/t/p/w780/7PjIzzCh43hNU77C8oKLdL7XXge.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
