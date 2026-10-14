@@ -1,5 +1,147 @@
 [
   {
+    "tmdbId": 1081003,
+    "tmdbType": "movie",
+    "tituloOriginal": "Supergirl",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/heZQmyNvkH236ha2M3JckdUQQqb.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-06-24",
+    "rating": "6.7",
+    "votos": 2560,
+    "runtime": "1h 48min",
+    "runtimeMin": 108,
+    "genres": [
+      "Acción",
+      "Aventura",
+      "Ciencia ficción"
+    ],
+    "generosTexto": "Acción, Aventura, Ciencia ficción",
+    "clasificacion": "12",
+    "tagline": "Verdad. Justicia. Lo que tú digas.",
+    "director": "Craig Gillespie",
+    "guionistas": "Ana Nogueira",
+    "reparto": [
+      {
+        "nombre": "Milly Alcock",
+        "personaje": "Supergirl",
+        "foto": "https://image.tmdb.org/t/p/w185/3xrkzYFRegwgvR1HVL8IgjF1tBs.jpg"
+      },
+      {
+        "nombre": "Eve Ridley",
+        "personaje": "Ruthye",
+        "foto": "https://image.tmdb.org/t/p/w185/vmEfK4PO6rUvTJnN8bbUZrSDgII.jpg"
+      },
+      {
+        "nombre": "Matthias Schoenaerts",
+        "personaje": "Krem",
+        "foto": "https://image.tmdb.org/t/p/w185/9mRssCj4si6f6IF3nJ2RB5w0J7g.jpg"
+      },
+      {
+        "nombre": "Jason Momoa",
+        "personaje": "Lobo",
+        "foto": "https://image.tmdb.org/t/p/w185/3troAR6QbSb6nUFMDu61YCCWLKa.jpg"
+      },
+      {
+        "nombre": "David Krumholtz",
+        "personaje": "Zor-El",
+        "foto": "https://image.tmdb.org/t/p/w185/2vaimzfyPQVxZGHbQS5M3z3tZw0.jpg"
+      },
+      {
+        "nombre": "Emily Beecham",
+        "personaje": "Alura In-Ze",
+        "foto": "https://image.tmdb.org/t/p/w185/u3Jgk4v7L23lKRQ9qxGJYmRkY4m.jpg"
+      },
+      {
+        "nombre": "David Corenswet",
+        "personaje": "Superman",
+        "foto": "https://image.tmdb.org/t/p/w185/yoQxpUPt3le9zY4Sab3g2ANy4CE.jpg"
+      },
+      {
+        "nombre": "Kadiff Kirwan",
+        "personaje": "Bomar Vran",
+        "foto": "https://image.tmdb.org/t/p/w185/dSCcuypWkQzspAQQq4AuejMzYfo.jpg"
+      },
+      {
+        "nombre": "Thalissa Teixeira",
+        "personaje": "Mareck Vran",
+        "foto": "https://image.tmdb.org/t/p/w185/jugWj8dbgGak8R2kCpwRsrh4e7H.jpg"
+      },
+      {
+        "nombre": "Ferdinand Kingsley",
+        "personaje": "Elias Knoll",
+        "foto": "https://image.tmdb.org/t/p/w185/arGWhGhfBl8CvNuUoKkUmfrDG0b.jpg"
+      },
+      {
+        "nombre": "Emily Piggford",
+        "personaje": "Delilah Knoll",
+        "foto": "https://image.tmdb.org/t/p/w185/ruijvaNNXzGXqGphQXsoHts1Ovc.jpg"
+      },
+      {
+        "nombre": "Diarmaid Murtagh",
+        "personaje": "Drom Baxton",
+        "foto": "https://image.tmdb.org/t/p/w185/QHWy0m8t0JrxSwlxcWZrawfUdi.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "DC Studios, Troll Court Entertainment, The Safran Company, Domain Entertainment",
+    "presupuesto": 175000000,
+    "recaudacion": 126366532,
+    "trailerUrl": "https://www.youtube.com/watch?v=9rZLuGQrrjs",
+    "coleccion": "",
+    "keywords": "galaxy, hero, superhero, villain, based on comic, space, female protagonist, dog, super power, heroine, reboot, solitude, supervillain, rescue dog, dc universe (dcu)",
+    "similares": [
+      {
+        "titulo": "Linterna Verde: Teman a mi poder",
+        "poster": "https://image.tmdb.org/t/p/w342/jkXGB3K0m0VgqHjO7u5rWjDzYca.jpg",
+        "year": "2022",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Superman: El hombre del mañana",
+        "poster": "https://image.tmdb.org/t/p/w342/eJqzdZ4CBmPz4pkp8IyRJ4EIn2k.jpg",
+        "year": "2020",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "El hombre de acero",
+        "poster": "https://image.tmdb.org/t/p/w342/5JW44QGgpEWx4aWXM0uVSi2xtrI.jpg",
+        "year": "2013",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Superman Returns",
+        "poster": "https://image.tmdb.org/t/p/w342/rtRlig4q4kUO1AzN7o7dzRIqzxI.jpg",
+        "year": "2006",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Superman",
+        "poster": "https://image.tmdb.org/t/p/w342/fvUJb08yatV2b3NUSwuYdQKYoFd.jpg",
+        "year": "2025",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "La Liga de la Justicia: El trono de Atlantis",
+        "poster": "https://image.tmdb.org/t/p/w342/hKHWoabqFg7QVS4Xqu5Q84PmuAo.jpg",
+        "year": "2015",
+        "rating": "7.0"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "title": "Supergirl",
+    "releaseDate": "2026-06-24",
+    "genre": "Acción, Aventura, Ciencia ficción",
+    "synopsis": "Kara Zor-El es una heroína errabunda que decide aliarse a regañadientes con un compañero improbable para comenzar un viaje épico e interestelar de venganza y justicia, en el cual deberá decidir si su fuerza sirve para destruir o para proteger.",
+    "image": "https://image.tmdb.org/t/p/w780/Ao9ucdnMaBhNt528Z5S4Wxovgnf.jpg",
+    "availability": "Costa Rica (Estreno)",
+    "score": "6.7"
+  },
+  {
     "tmdbId": 1302904,
     "tmdbType": "movie",
     "tituloOriginal": "Practical Magic 2",
@@ -83,91 +225,6 @@
     "image": "https://image.tmdb.org/t/p/w780/xCXznyg1BOAKISMuduRJLtcAgCR.jpg",
     "availability": "Netflix (Película)",
     "score": "6.3 / 10"
-  },
-  {
-    "tmdbId": 1248832,
-    "tmdbType": "movie",
-    "tituloOriginal": "Digger",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/b7t3r39Oll5qPxBKzLZ8eHMBD7l.jpg",
-    "year": "2026",
-    "fechaEstreno": "2026-09-28",
-    "runtime": "128 min",
-    "runtimeMin": 128,
-    "clasificacion": "16",
-    "director": "Alejandro González Iñárritu",
-    "reparto": [
-      {
-        "nombre": "Tom Cruise",
-        "personaje": "Digger Rockwell",
-        "foto": "https://image.tmdb.org/t/p/w185/maf8PhSvDCdEwjEMbYfGpojR5RP.jpg"
-      },
-      {
-        "nombre": "Riz Ahmed",
-        "personaje": "Dr. Nirav Ganesh",
-        "foto": "https://image.tmdb.org/t/p/w185/1uP9RaX7BGVx7XGTEmwObBJJzsC.jpg"
-      },
-      {
-        "nombre": "John Goodman",
-        "personaje": "President Compson",
-        "foto": "https://image.tmdb.org/t/p/w185/yyYqoyKHO7hE1zpgEV2XlqYWcNV.jpg"
-      },
-      {
-        "nombre": "Sandra Hüller",
-        "personaje": "Emma Rockwell",
-        "foto": "https://image.tmdb.org/t/p/w185/jQfKXVCPTH9KEnzHHU4QemCnlMe.jpg"
-      },
-      {
-        "nombre": "Michael Stuhlbarg",
-        "personaje": "Vice President Eddie",
-        "foto": "https://image.tmdb.org/t/p/w185/aYB3SQm3h6ZyAdlbGyiNfakjx56.jpg"
-      },
-      {
-        "nombre": "Jesse Plemons",
-        "personaje": "Kenny",
-        "foto": "https://image.tmdb.org/t/p/w185/og4I51GsuwohdPgoELOHVMMqMre.jpg"
-      },
-      {
-        "nombre": "Robert John Burke",
-        "personaje": "General Fitzgerald",
-        "foto": "https://image.tmdb.org/t/p/w185/uWEaY5gypb6cp1bdUYG4uCKw4sK.jpg"
-      },
-      {
-        "nombre": "Emma D'Arcy",
-        "personaje": "Lina",
-        "foto": "https://image.tmdb.org/t/p/w185/9Zlmb7VmtVCxkLq5yqFFRRxCaED.jpg"
-      },
-      {
-        "nombre": "Burn Gorman",
-        "personaje": "Defense Secretary Amos",
-        "foto": "https://image.tmdb.org/t/p/w185/udgACYWqCSuu6nvtrSjmyU28B0V.jpg"
-      },
-      {
-        "nombre": "Sophie Wilde",
-        "personaje": "Hannah",
-        "foto": "https://image.tmdb.org/t/p/w185/fMZvMsvTv9MYSC6LTNdIUaMGjIv.jpg"
-      },
-      {
-        "nombre": "Danny Kirrane",
-        "personaje": "Clarkson",
-        "foto": "https://image.tmdb.org/t/p/w185/yfui1GBLB2UBktBi9WRuxJoJqcs.jpg"
-      },
-      {
-        "nombre": "Ross Hatt",
-        "personaje": "Dr. Berg / Reader",
-        "foto": "https://image.tmdb.org/t/p/w185/5FKIImFCpbRzcyyBzyUXDLfvcdd.jpg"
-      }
-    ],
-    "trailerUrl": "https://www.youtube.com/watch?v=xU2jWSsaWY0",
-    "creadores": [],
-    "numeroTemporadas": 0,
-    "numeroEpisodios": 0,
-    "title": "Digger",
-    "releaseDate": "27 de septiembre de 2026",
-    "genre": "Comedia, Drama",
-    "synopsis": "El hombre más poderoso del mundo se embarca en una misión frenética para demostrar que es el salvador de la humanidad antes de que el desastre que ha desencadenado lo destruya todo.",
-    "image": "https://image.tmdb.org/t/p/w780/koqE0V2IgIPVy5o2vVkoGJvnB8b.jpg",
-    "availability": "Netflix (Película)",
-    "score": "7.5 / 10"
   },
   {
     "tmdbId": 969681,
