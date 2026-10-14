@@ -72,3 +72,11 @@ NODE_PATH=/workspace/streamtube-tools/node_modules BOXPLAY_TEST_CSS=/workspace/s
 Para habilitar la publicación de catálogos desde el panel se requiere corregir los datos que señale la validación actual y aprobar esa funcionalidad. La publicación futura deberá escribir los ocho catálogos en un único commit, comprobar que la versión base no cambió y conservar la anterior para volver atrás. Ese mecanismo de publicación remota queda fuera de este borrador: la ruta anterior que publicaba archivos por separado fue retirada. No hay publicación automática al aceptar o descargar un archivo.
 
 La integración de videoteca en la principal y la administración de suscripciones no forman parte de esta primera etapa.
+
+## Precio y renovación
+
+Los avisos de pago y la sección de acceso indican ₡3.000 por 30 días, sin cobros automáticos ni obligación de renovar. El cliente puede retirarse en cualquier momento y solo paga otro período si desea continuar. Los mensajes de acceso vencido ofrecen renovar como una opción.
+
+Se retiró la fecha de vencimiento fija que mostraba la interfaz. La fecha y el tiempo restante se muestran únicamente a partir del resultado de verificación de la cuenta. Antes de verificar se pide consultar el acceso; no se muestra una fecha inventada. La fecha se presenta en horario de Costa Rica.
+
+Se comprobó en 360 y 1280 px con respuestas de verificación simuladas (vigente y vencida); no se hicieron escrituras ni cobros de prueba en Firebase. Este ajuste no cambia las fechas de cuentas existentes: siguen administrándose en Firebase.

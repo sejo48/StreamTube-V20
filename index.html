@@ -294,19 +294,19 @@
       const hoy = new Date();
       const expiracion = new Date(data.expires_at);
 
-      if (data.status !== "active" || hoy > expiracion) {
-        return { activo: false, razon: 'vencida' };
+      if (data.status !== "active" || !Number.isFinite(expiracion.getTime()) || hoy >= expiracion) {
+        return { activo: false, razon: 'vencida', expiresAt: Number.isFinite(expiracion.getTime()) ? expiracion.toISOString() : null };
       }
 
       const devices = Array.isArray(data.devices) ? data.devices : [];
 
       if (devices.length === 0) {
         try { await updateDoc(docRef, { devices: [deviceId] }); } catch (e) {}
-        return { activo: true, razon: 'ok', primerDispositivo: true };
+        return { activo: true, razon: 'ok', primerDispositivo: true, expiresAt: expiracion.toISOString() };
       }
 
       if (devices.includes(deviceId)) {
-        return { activo: true, razon: 'ok' };
+        return { activo: true, razon: 'ok', expiresAt: expiracion.toISOString() };
       }
 
       return { activo: false, razon: 'dispositivo_no_autorizado' };
@@ -643,7 +643,7 @@
             );
         };
 
-        function SinpePaywall({ emailUsuario, onEmailChange, onVerificado, onClose }) {
+        function SinpePaywall({ emailUsuario, onEmailChange, onExpiryChange, onStatusChange, onVerificado, onClose }) {
             const [inputEmail, setInputEmail] = useState(emailUsuario || '');
             const [verificando, setVerificando] = useState(false);
             const [errorMsg, setErrorMsg] = useState('');
@@ -664,6 +664,8 @@
                 try {
                     const deviceId = getOrCreateDeviceId();
                     const resultado = await window.verificarSuscripcion(emailLimpio, deviceId);
+                    onExpiryChange(resultado.expiresAt || null);
+                    onStatusChange(resultado.activo === true);
 
                     if (resultado.activo) {
                         setSuccessMsg('✅ Acceso autorizado. Cargando contenido...');
@@ -673,11 +675,11 @@
                     }
 
                     if (resultado.razon === 'dispositivo_no_autorizado') {
-                        setErrorMsg('⚠️ Esta cuenta ya está activa en otro dispositivo. Cada suscripción funciona en UN solo dispositivo. Si cambiaste de equipo, contacta al administrador.');
+                        setErrorMsg('⚠️ Esta cuenta ya está activa en otro dispositivo. Cada acceso de pago funciona en UN solo dispositivo. Si cambiaste de equipo, contacta al administrador.');
                     } else if (resultado.razon === 'vencida') {
-                        setErrorMsg('⏰ Tu suscripción venció o está inactiva. Renueva tu pago de ₡3,000 por SINPE Móvil y luego verifica de nuevo.');
+                        setErrorMsg('⏰ Tu acceso venció o está inactivo. Solo si deseas continuar, puedes pagar ₡3.000 por otros 30 días y verificar de nuevo. No estás obligado a renovar.');
                     } else if (resultado.razon === 'no_existe') {
-                        setErrorMsg('🔍 No encontramos una suscripción con este correo. Realiza tu pago de ₡3,000 por SINPE Móvil y avisa al administrador para activar tu cuenta.');
+                        setErrorMsg('🔍 No encontramos un acceso de pago con este correo. Si deseas activar 30 días de acceso, paga ₡3.000 por SINPE Móvil y avisa al administrador. La renovación es opcional.');
                     } else {
                         setErrorMsg('❌ Error al verificar. Intenta de nuevo en unos segundos.');
                     }
@@ -691,20 +693,25 @@
 
             return (
                 <div style={{ position: 'fixed', inset: '0', zIndex: '120', background: 'rgba(2, 6, 23, 0.92)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-                    <div style={{ padding: '30px', maxWidth: '500px', width: '100%', background: '#0f172a', color: 'white', borderRadius: '24px', textAlign: 'center', border: '1px solid #06b6d4', fontFamily: 'sans-serif', boxShadow: '0 0 50px rgba(6,182,212,0.3)', position: 'relative' }}>
+                    <div style={{ padding: '30px', maxWidth: '500px', maxHeight: '90dvh', overflowY: 'auto', width: '100%', background: '#0f172a', color: 'white', borderRadius: '24px', textAlign: 'center', border: '1px solid #06b6d4', fontFamily: 'sans-serif', boxShadow: '0 0 50px rgba(6,182,212,0.3)', position: 'relative' }}>
                         <button onClick={onClose} style={{ position: 'absolute', top: '16px', right: '16px', background: 'transparent', border: 'none', color: '#94a3b8', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
                         <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>🎬</div>
                         <h2 style={{ color: '#06b6d4', marginBottom: '8px', fontSize: '1.4rem', fontWeight: '800' }}>Contenido Premium</h2>
                         <p style={{ color: '#94a3b8', marginBottom: '16px', fontSize: '0.85rem', lineHeight: '1.5' }}>
-                            Para ver <strong style={{ color: '#fff' }}>películas, series y animados</strong> necesitas una suscripción activa.<br/>
+                            Para ver <strong style={{ color: '#fff' }}>películas, series y animados</strong> necesitas un acceso de pago vigente.<br/>
                             La <strong style={{ color: '#22d3ee' }}>TV en vivo</strong> y la <strong style={{ color: '#22d3ee' }}>Radio HD</strong> siguen siendo gratis. 🎁
                         </p>
 
                         <div style={{ background: '#020617', padding: '14px 16px', borderRadius: '12px', textAlign: 'left', marginBottom: '16px', border: '1px solid #1e293b' }}>
                             <p style={{ margin: '6px 0', fontSize: '0.85rem' }}>📱 <strong>Teléfono SINPE:</strong> 506-6013-2444</p>
                             <p style={{ margin: '6px 0', fontSize: '0.85rem' }}>👤 <strong>Titular:</strong> Jorge Hernández</p>
-                            <p style={{ margin: '6px 0', fontSize: '0.85rem' }}>💳 <strong>Monto Mensual:</strong> ₡3,000 colones</p>
-                            <p style={{ margin: '6px 0', fontSize: '0.75rem', color: '#f59e0b', marginTop: '10px' }}>🔒 <strong>1 suscripción = 1 dispositivo</strong></p>
+                            <p style={{ margin: '6px 0', fontSize: '0.85rem' }}>💳 <strong>Precio por 30 días:</strong> ₡3.000</p>
+                            <p style={{ margin: '6px 0', fontSize: '0.75rem', color: '#f59e0b', marginTop: '10px' }}>🔒 <strong>1 acceso = 1 dispositivo</strong></p>
+                        </div>
+
+                        <div role="note" style={{ textAlign: 'left', padding: '14px', marginBottom: '16px', borderRadius: '12px', background: 'rgba(6,182,212,0.08)', border: '1px solid #164e63', fontSize: '0.85rem', lineHeight: '1.6' }}>
+                            <strong>₡3.000 por 30 días de acceso.</strong><br />
+                            Sin cobros automáticos ni obligación de renovar. Puedes retirarte en cualquier momento. Al finalizar los 30 días, solo pagas de nuevo si deseas continuar.
                         </div>
 
                         <form onSubmit={handleValidarPago} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -812,13 +819,15 @@
             return (<div className="absolute inset-0 z-50 bg-black/95 backdrop-blur-sm flex flex-col items-center justify-center p-4 animate-fade-in"><div className="glass-panel p-6 rounded-3xl max-w-xs w-full text-center shadow-2xl border border-cyan-500/30 animate-scale-in"><div className="mb-4 flex justify-center"><div className="p-3.5 bg-cyan-500/15 rounded-2xl text-cyan-400 border border-cyan-500/30"><Icon name="lock" size={24}/></div></div><h2 className="text-sm font-extrabold text-white mb-1">Contenido Protegido</h2><p className="text-[11px] text-slate-400 mb-4">Introduce el código PIN de acceso</p><form onSubmit={handleSubmit}><input type="password" maxLength="4" className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-3 text-center text-xl tracking-[0.4em] text-white focus:border-cyan-500 outline-none mb-3 shadow-inner" value={input} onChange={(e) => { setInput(e.target.value); setError(false); }} placeholder="••••" autoFocus />{error && <p className="text-rose-400 text-xs mb-3 font-bold">Código incorrecto</p>}<div className="flex gap-2.5"><button type="button" onClick={onCancel} className="flex-1 py-2.5 rounded-xl border border-slate-800 text-slate-300 hover:bg-white/5 text-xs font-semibold">Cancelar</button><button type="submit" className="flex-1 py-2.5 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 text-white font-bold hover:brightness-110 text-xs shadow-[0_0_15px_rgba(6,182,212,0.5)]">Acceder</button></div></form></div></div>);
         };
 
-        const PaymentsSection = ({ emailUsuario, isSubscriberActive, onVerify }) => {
+        const PaymentsSection = ({ emailUsuario, isSubscriberActive, expiresAt, onVerify }) => {
+            const expiry = expiresAt ? new Date(expiresAt) : null;
+            const hasExpiry = expiry && Number.isFinite(expiry.getTime());
             return (
                 <div className="p-4 sm:p-10 max-w-4xl mx-auto w-full animate-fade-in space-y-8">
                     <div className="text-center space-y-3">
                         <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 border border-cyan-500/30 inline-block"><Icon name="star" size={28}/></div>
-                        <h1 className="text-2xl sm:text-4xl font-black text-white">Planes y Suscripción</h1>
-                        <p className="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">Gestiona tu acceso Premium para disfrutar de todo el contenido sin límites.</p>
+                        <h1 className="text-2xl sm:text-4xl font-black text-white">Acceso por 30 días</h1>
+                        <p className="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">Elige cuándo usar tu acceso Premium. La renovación siempre es opcional.</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className={`glass-panel p-6 rounded-3xl border ${isSubscriberActive ? 'border-emerald-500/50' : 'border-slate-800'} space-y-4 relative overflow-hidden`}>
@@ -831,29 +840,25 @@
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <span className="text-xs text-slate-400">Estado:</span>
-                                    <span className={`text-xs font-bold ${isSubscriberActive ? 'text-emerald-400' : 'text-rose-400'}`}>{isSubscriberActive ? 'Suscripción Premium' : 'Plan Gratuito / Vencido'}</span>
+                                    <span className={`text-xs font-bold ${isSubscriberActive ? 'text-emerald-400' : 'text-rose-400'}`}>{isSubscriberActive ? 'Acceso Premium vigente' : 'Acceso gratuito / Premium inactivo'}</span>
                                 </div>
-                                {(() => {
-                                    const dias = calcularDiasRestantes(typeof userData !== 'undefined' && userData?.expires_at ? userData.expires_at : "2026-11-10T00:00:00.000Z");
-                                    return (
-                                        <div className="space-y-2 mt-4 pt-4 border-t border-slate-800">
-                                            <div className="flex justify-between text-xs">
-                                                <span className="text-slate-400">Vencimiento:</span>
-                                                <span className="text-white font-mono">10 Nov 2026</span>
-                                            </div>
-                                            <div className="flex justify-between text-xs">
-                                                <span className="text-slate-400">Tiempo restante:</span>
-                                                <span className="text-cyan-400 font-bold">{dias} días restantes</span>
-                                            </div>
-                                        </div>
-                                    );
-                                })()}
+                                <div className="space-y-2 mt-4 pt-4 border-t border-slate-800">
+                                    <div className="flex justify-between gap-3 text-xs">
+                                        <span className="text-slate-400">Vencimiento:</span>
+                                        <span className="text-white">{hasExpiry ? new Intl.DateTimeFormat('es-CR', { timeZone: 'America/Costa_Rica', day: 'numeric', month: 'long', year: 'numeric' }).format(expiry) : 'Verifica tu acceso para consultar la fecha'}</span>
+                                    </div>
+                                    {hasExpiry && <div className="flex justify-between text-xs"><span className="text-slate-400">Tiempo restante:</span><span className="text-cyan-400 font-bold">{isSubscriberActive ? calcularDiasRestantes(expiresAt) : 0} días</span></div>}
+                                </div>
                             </div>
                             <button onClick={onVerify} className="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-all">Actualizar / Verificar Estado</button>
                         </div>
                         <div className="glass-panel p-6 rounded-3xl border border-cyan-500/30 bg-gradient-to-br from-cyan-500/5 to-transparent space-y-4">
                             <h3 className="text-xl font-bold text-white flex items-center gap-2">Plan Premium <span className="text-[10px] bg-cyan-500 text-black px-2 py-0.5 rounded-full">ACCESO TOTAL</span></h3>
-                            <div className="text-3xl font-black text-white">₡3,000 <span className="text-sm text-slate-400 font-normal">/ mes</span></div>
+                            <div className="text-3xl font-black text-white">₡3.000 <span className="text-sm text-slate-400 font-normal">/ 30 días</span></div>
+                            <div role="note" className="rounded-xl border border-cyan-500/30 bg-cyan-500/5 p-4 text-sm text-slate-200 leading-relaxed">
+                                <p className="font-bold text-white">Pago por 30 días, sin obligación de renovar.</p>
+                                <p className="mt-2">No hay cobros automáticos. Puedes retirarte en cualquier momento. Al finalizar los 30 días, solo pagas de nuevo si deseas continuar.</p>
+                            </div>
                             <ul className="space-y-2">
                                 {['Películas y Series Ilimitadas', 'Calidad Full HD y 4K', 'Acceso a Estrenos 2026', 'Soporte Premium'].map((feat, idx) => (
                                     <li key={idx} className="flex items-center gap-2 text-xs text-slate-300">
@@ -1110,6 +1115,7 @@
             // ⚠️ IMPORTANTE: Email por defecto VACÍO (nadie hereda la cuenta del admin)
             const [emailUsuario, setEmailUsuario] = useState(safeStorage.getItem('boxplay_user_email') || '');
             const [isSubscriberActive, setIsSubscriberActive] = useState(false);
+            const [accessExpiresAt, setAccessExpiresAt] = useState(null);
             const [showPaywallModal, setShowPaywallModal] = useState(false);
 
             const [tvRefreshTrigger, setTvRefreshTrigger] = useState(0);
@@ -1193,12 +1199,14 @@
             useEffect(() => {
                 let cancelled = false;
                 setIsSubscriberActive(false);
+                setAccessExpiresAt(null);
                 async function checkSub() {
                     if (typeof window.verificarSuscripcion !== 'function' || !emailUsuario) return;
                     const deviceId = getOrCreateDeviceId();
                     const resultado = await window.verificarSuscripcion(emailUsuario, deviceId);
                     if (cancelled) return;
                     setIsSubscriberActive(resultado.activo === true);
+                    setAccessExpiresAt(resultado.expiresAt || null);
                     if (!resultado.activo) console.info('Suscripción no autorizada:', resultado.razon);
                 }
                 checkSub();
@@ -2412,7 +2420,7 @@
                         ) : activeTab === 'community' ? (
                             <CommunitySection />
                         ) : activeTab === 'payments' ? (
-                            <PaymentsSection emailUsuario={emailUsuario} isSubscriberActive={isSubscriberActive} onVerify={() => setShowPaywallModal(true)} />
+                            <PaymentsSection emailUsuario={emailUsuario} isSubscriberActive={isSubscriberActive} expiresAt={accessExpiresAt} onVerify={() => setShowPaywallModal(true)} />
                         ) : (
                             <>
                                 {activeTab === 'home' && !search && (
@@ -2547,6 +2555,8 @@
                         <SinpePaywall 
                             emailUsuario={emailUsuario} 
                             onEmailChange={(email) => { setEmailUsuario(email); safeStorage.setItem('boxplay_user_email', email); }} 
+                            onExpiryChange={setAccessExpiresAt}
+                            onStatusChange={setIsSubscriberActive}
                             onVerificado={() => {
                                 setIsSubscriberActive(true);
                                 setShowPaywallModal(false);
