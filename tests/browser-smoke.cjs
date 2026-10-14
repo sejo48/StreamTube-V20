@@ -1,0 +1,125 @@
+/* Offline integration checks: local React/Babel/HLS/Tailwind assets, no Firebase or media services. */
+const fs = require('node:fs');
+const path = require('node:path');
+const http = require('node:http');
+const assert = require('node:assert/strict');
+const { chromium } = require('playwright');
+const C = require('../catalog.js');
+const root = path.resolve(__dirname, '..');
+const moduleFile = (name, file) => path.join(path.dirname(require.resolve(name + '/package.json')), file);
+const styles = fs.readFileSync(process.env.BOXPLAY_TEST_CSS, 'utf8');
+const files = new Map();
+let failCatalog = false, requestsWithWrites = [];
+const server = http.createServer((req, res) => {
+    if (!['GET', 'HEAD'].includes(req.method)) { requestsWithWrites.push(req.method + ' ' + req.url); res.writeHead(405); return res.end(); }
+    const filename = decodeURIComponent(new URL(req.url, 'http://localhost').pathname.slice(1)) || 'index.html';
+    if (filename.includes('..') || filename.includes('/')) { res.writeHead(404); return res.end(); }
+    if (failCatalog && filename === 'peliculas.json') { res.writeHead(503); return res.end('Unavailable'); }
+    try {
+        let body = files.get(filename) || fs.readFileSync(path.join(root, filename));
+        if (filename.endsWith('.html')) body = body.toString().replace(/<script type="module">[\s\S]*?<\/script>/g, '<!-- Firebase excluded from offline integration tests -->');
+        res.setHeader('Content-Type', filename.endsWith('.html') ? 'text/html; charset=utf-8' : filename.endsWith('.js') ? 'application/javascript' : filename.endsWith('.json') ? 'application/json' : 'text/plain');
+        res.end(body);
+    } catch { res.writeHead(404); res.end(); }
+});
+(async () => {
+    await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+    const origin = `http://127.0.0.1:${server.address().port}`;
+    const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium', args: ['--no-sandbox'] });
+    const context = await browser.newContext({ acceptDownloads: true });
+    const errors = [];
+    await context.route('https://**/*', async route => {
+        const request = route.request(), url = request.url();
+        if (!['GET', 'HEAD'].includes(request.method())) requestsWithWrites.push(request.method() + ' ' + url);
+        let resource;
+        if (url.includes('unpkg.com/react-dom@')) resource = moduleFile('react-dom', 'umd/react-dom.development.js');
+        else if (url.includes('unpkg.com/react@')) resource = moduleFile('react', 'umd/react.development.js');
+        else if (url.includes('unpkg.com/@babel/standalone')) resource = moduleFile('@babel/standalone', 'babel.min.js');
+        else if (url.includes('cdn.jsdelivr.net/npm/hls.js')) resource = moduleFile('hls.js', 'dist/hls.js');
+        if (resource) return route.fulfill({ contentType: 'application/javascript', body: fs.readFileSync(resource) });
+        if (url.includes('cdn.tailwindcss.com')) return route.fulfill({ contentType: 'application/javascript', body: `window.tailwind={};const style=document.createElement('style');style.textContent=${JSON.stringify(styles)};document.head.appendChild(style);` });
+        if (request.resourceType() === 'image') return route.fulfill({ contentType: 'image/png', body: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aZ1sAAAAASUVORK5CYII=', 'base64') });
+        return route.abort();
+    });
+    try {
+        const admin = await context.newPage();
+        admin.on('pageerror', error => errors.push('admin: ' + error.message));
+        await admin.goto(origin + '/admin.html');
+        await admin.getByText('Datos descargados y actualizados correctamente', { exact: true }).waitFor();
+        const storedMovie = await admin.evaluate(() => JSON.parse(localStorage.getItem('boxplay_admin_movies'))[0]);
+        assert(storedMovie.id.startsWith('peliculas-json-'));
+        await admin.getByRole('button', { name: 'Revisar borrador', exact: true }).click();
+        await admin.getByRole('button', { name: 'Validar y revisar cambios', exact: true }).click();
+        const dialog = admin.getByRole('dialog', { name: 'Revisar borrador' });
+        await dialog.getByRole('button', { name: 'Descargar borrador y respaldo' }).waitFor();
+        assert.equal(await dialog.locator('tbody tr').count(), 8);
+        const downloadWait = admin.waitForEvent('download');
+        await dialog.getByRole('button', { name: 'Descargar borrador y respaldo' }).click();
+        const download = await downloadWait;
+        const draft = JSON.parse(fs.readFileSync(await download.path(), 'utf8'));
+        assert.equal(draft.mode, 'draft'); assert.equal(draft.published, false);
+        assert.equal(draft.datasets['peliculas.json'][0].id, storedMovie.id);
+        assert.equal(Object.keys(draft.baseline).length, 8);
+        const row = draft.summary.find(row => row.file === 'peliculas.json');
+        console.log('Initial summary:', JSON.stringify(draft.summary));
+        assert.equal(draft.summary.every(row => !row.added && !row.modified && !row.removed), true);
+        console.log('PASS: admin loads catalogs, validates, summarizes and downloads a draft with rollback data');
+        await dialog.getByRole('button', { name: 'Cerrar', exact: true }).click();
+        await admin.getByTitle('Editar', { exact: true }).first().click();
+        await admin.locator('input[name="titulo"]').fill(storedMovie.titulo + ' · Borrador');
+        await admin.getByRole('button', { name: 'Guardar Película', exact: true }).click();
+        await admin.waitForFunction(title => JSON.parse(localStorage.getItem('boxplay_admin_movies'))[0].titulo === title, storedMovie.titulo + ' · Borrador');
+        const edited = await admin.evaluate(() => JSON.parse(localStorage.getItem('boxplay_admin_movies'))[0]);
+        assert.equal(edited.id, storedMovie.id);
+        assert.deepEqual(edited.legacyIds, storedMovie.legacyIds);
+        await admin.getByRole('button', { name: 'Revisar borrador', exact: true }).click();
+        await admin.getByRole('button', { name: 'Validar y revisar cambios', exact: true }).click();
+        await dialog.getByRole('button', { name: 'Descargar borrador y respaldo' }).waitFor();
+        const changes = await dialog.locator('tbody tr').filter({ hasText: 'peliculas.json' }).innerText();
+        assert.match(changes, /peliculas\.json\s+0\s+1\s+0/);
+        await dialog.getByRole('button', { name: 'Restaurar respaldo en el panel' }).click();
+        await admin.getByRole('button', { name: 'Confirmar', exact: true }).click();
+        await admin.waitForFunction(title => JSON.parse(localStorage.getItem('boxplay_admin_movies'))[0].titulo === title, storedMovie.titulo);
+        assert.equal(await admin.evaluate(() => JSON.parse(localStorage.getItem('boxplay_admin_movies'))[0].id), storedMovie.id);
+        console.log('PASS: editing preserves IDs and progress aliases; review counts one modification; rollback restores the previous catalog locally');
+        const cachedBefore = await admin.evaluate(() => localStorage.getItem('boxplay_admin_movies'));
+        failCatalog = true;
+        await admin.getByRole('button', { name: 'Revisar borrador', exact: true }).click();
+        await admin.getByRole('button', { name: 'Validar y revisar cambios', exact: true }).click();
+        await admin.getByRole('alert').filter({ hasText: 'descarga fallida' }).waitFor();
+        assert.equal(await dialog.getByRole('button', { name: 'Descargar borrador y respaldo' }).count(), 0);
+        assert.equal(await admin.evaluate(() => localStorage.getItem('boxplay_admin_movies')), cachedBefore);
+        failCatalog = false;
+        console.log('PASS: failed baseline blocks draft generation and preserves local edits');
+        const main = await context.newPage();
+        main.on('pageerror', error => errors.push('main: ' + error.message));
+        const movie = JSON.parse(fs.readFileSync(path.join(root, 'peliculas.json'), 'utf8'))[0];
+        await main.addInitScript(({ movie }) => {
+            localStorage.setItem('boxplay_favs', JSON.stringify([{ ...movie, id: 'mov-1-0', title: movie.titulo, type: 'movies' }]));
+            localStorage.setItem('boxplay_watched_eps', JSON.stringify({ 'serie-0': ['ep-0-0-0'] }));
+        }, { movie });
+        await main.goto(origin + '/');
+        await main.getByRole('button', { name: 'Comenzar Experiencia' }).click();
+        await main.getByRole('button', { name: 'Actualizar catálogo', exact: true }).waitFor();
+        await main.getByRole('status').filter({ hasText: 'Catálogo actualizado.' }).waitFor();
+        const favorite = await main.evaluate(() => JSON.parse(localStorage.getItem('boxplay_favs'))[0]);
+        assert.equal(favorite.id, storedMovie.id);
+        const series = C.identify(JSON.parse(fs.readFileSync(path.join(root, 'playlist.json'), 'utf8')), 'playlist.json')[0];
+        const watched = await main.evaluate(() => JSON.parse(localStorage.getItem('boxplay_watched_eps')));
+        assert(watched[series.id].includes(series.temporadas[0].episodios[0].id));
+        const reordered = C.identify(JSON.parse(fs.readFileSync(path.join(root, 'peliculas.json'), 'utf8')), 'peliculas.json').reverse();
+        files.set('peliculas.json', JSON.stringify(reordered));
+        await main.getByRole('button', { name: 'Actualizar catálogo', exact: true }).click();
+        await main.getByRole('status').filter({ hasText: 'Catálogo actualizado.' }).waitFor();
+        assert.equal(await main.evaluate(() => JSON.parse(localStorage.getItem('boxplay_favs'))[0].id), favorite.id);
+        console.log('PASS: principal refreshes catalogs, keeps favorites after reorder, and migrates watched episodes');
+        failCatalog = true;
+        await main.getByRole('button', { name: 'Actualizar catálogo', exact: true }).click();
+        await main.getByRole('status').filter({ hasText: 'Se conservó el catálogo anterior' }).waitFor();
+        assert.equal(await main.evaluate(() => JSON.parse(localStorage.getItem('boxplay_favs'))[0].id), favorite.id);
+        console.log('PASS: principal keeps its previous catalog on network failure');
+        assert.deepEqual(requestsWithWrites, []);
+        assert.deepEqual(errors, []);
+        console.log('PASS: no JavaScript exceptions or network write requests');
+    } finally { await browser.close(); await new Promise(resolve => server.close(resolve)); }
+})().catch(error => { console.error(error); process.exitCode = 1; server.close(); });

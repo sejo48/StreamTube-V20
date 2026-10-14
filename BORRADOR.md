@@ -1,0 +1,68 @@
+# Box Play TV — borrador para revisión
+
+Este documento registra el borrador previo a la aprobación de publicación del código. El panel conserva su modo borrador; publicar estas aplicaciones no publica automáticamente cambios de catálogos. El panel no contiene llamadas de escritura a GitHub, formulario de token ni botón de publicación.
+
+## Probar las aplicaciones
+
+Desde este directorio:
+
+```sh
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Abra `index.html` y `admin.html` mediante el servidor HTTP. No abra los HTML directamente con `file://`. Las aplicaciones originales usan React, Babel y Tailwind desde CDN; se necesita acceso a esas dependencias. Firebase, imágenes, emisoras, vídeo y Chromecast siguen siendo servicios externos.
+
+1. En la principal, pulse **Comenzar Experiencia** y **Actualizar catálogo**.
+2. En administración, edite una película y guárdela. El cambio permanece en el navegador.
+3. Pulse **Revisar borrador → Validar y revisar cambios**. Aparecen los ocho catálogos con nuevos, modificados y eliminados.
+4. **Descargar borrador y respaldo** guarda `boxplaytv_borrador.json`. Contiene `baseline` (versión anterior), `datasets` (versión propuesta), resumen y errores de validación. No publica nada ni contiene credenciales.
+5. **Restaurar respaldo en el panel** pide confirmación y restaura únicamente el estado local. El botón **Backup** conserva los IDs. El botón **Importar** también admite el borrador descargado y restaura sus datos propuestos.
+
+## Cambios
+
+- `catalog-config.json` fija el repositorio, rama y modo borrador para ambas aplicaciones.
+- `catalog.js` comparte lectura estricta, identificación, validación, resúmenes, serialización y respaldo. Una descarga fallida nunca se interpreta como catálogo vacío. Las fuentes locales se usan primero; solo un HTTP 404 permite el respaldo remoto configurado.
+- Todos los catálogos conservan IDs al editar, exportar e importar. Las series conservan IDs de episodios y temporadas. TV admite `tvg-id` en M3U.
+- Los catálogos antiguos reciben IDs deterministas al cargarse. El borrador exportado persiste esos IDs y referencias de migración. No se modificaron los JSON/M3U originales del repositorio.
+- La principal migra favoritos y referencias de episodios vistos; la migración de favoritos antiguos con títulos ambiguos conserva el registro original para no asociarlo a otro contenido.
+- La actualización conserva la selección/reproducción actual y las listas personales. Ante un error mantiene el catálogo anterior. Solo actualiza el contenido cuando todas las descargas requeridas terminan.
+- El panel conserva los cambios locales ante errores y muestra el catálogo que falló. Las exportaciones individuales y los respaldos retienen IDs y metadatos.
+
+## Ajuste móvil de la portada recomendada
+
+La portada destacada ocupa todo el ancho en pantallas menores de 640 px. El título y los botones conservan sus márgenes. A partir de 640 px se conservan las dimensiones, márgenes y efecto de la portada anteriores. El cambio permanece en este borrador.
+
+## Datos existentes que requieren revisión
+
+La validación del borrador original detectó seis problemas en los catálogos de ese momento; los datos de GitHub pueden haber cambiado desde esa revisión:
+
+- `peliculas2.json`: enlaces ausentes o inválidos en **Cuenta atrás**, **En un abrir y cerrar de ojos** y **Avatar: Fuego y ceniza**.
+- `playlist.json`: **Misión: Imposible** no tiene temporadas.
+- `playlist.json`: un **Episodio 4** repetido en **Los Locos Addams** genera una identidad duplicada.
+- `listaoficial.m3u`: una entrada repetida de **Extrema TV** genera una identidad duplicada.
+
+No se inventaron enlaces ni se eliminaron entradas. Estos problemas aparecen en la revisión del panel; descargar el borrador sigue permitido, pero su validación indica que necesita corrección.
+
+## Validación ejecutada
+
+```sh
+node --test tests/catalog.test.cjs
+```
+
+Nueve pruebas unitarias pasan. Cubren IDs, progreso antiguo, resumen, respaldo, descargas fallidas, destino compartido, validación, conservación de metadatos y ausencia de escritura a GitHub.
+
+`tests/browser-smoke.cjs` pasa en Chromium: carga del panel, descarga del borrador, edición y restauración local, bloqueo ante fallo de descarga, actualización de la principal, migración de favoritos/progreso y ausencia de excepciones JavaScript o peticiones de escritura.
+
+La prueba de navegador usa paquetes locales verificados de React/Babel/HLS y CSS compilado de Tailwind, porque los CDN siguen bloqueados en este entorno. Excluye Firebase y servicios de reproducción; no afirma haber probado suscripciones, reproducción externa ni Chromecast.
+
+Para reproducir esa prueba se requieren Playwright 1.61.1, React/ReactDOM 18.3.1, Babel standalone 7.28.5, HLS.js 1.6.16 y Tailwind 3.4.17, instalados fuera del checkout. En la máquina actual:
+
+```sh
+NODE_PATH=/workspace/streamtube-tools/node_modules BOXPLAY_TEST_CSS=/workspace/streamtube-tools/browser-test.css node tests/browser-smoke.cjs
+```
+
+## Pendiente antes de publicar
+
+Para habilitar la publicación de catálogos desde el panel se requiere corregir los datos que señale la validación actual y aprobar esa funcionalidad. La publicación futura deberá escribir los ocho catálogos en un único commit, comprobar que la versión base no cambió y conservar la anterior para volver atrás. Ese mecanismo de publicación remota queda fuera de este borrador: la ruta anterior que publicaba archivos por separado fue retirada. No hay publicación automática al aceptar o descargar un archivo.
+
+La integración de videoteca en la principal y la administración de suscripciones no forman parte de esta primera etapa.

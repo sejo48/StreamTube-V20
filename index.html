@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script src="./catalog.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Boxplaytv - Ultimate Streaming & Anime Hub</title>
@@ -325,21 +326,13 @@
             TV: './listaoficial.m3u',
             SERIES: './playlist.json',
             MOVIES: './peliculas.json',
-            MOVIES2: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas2.json',
+            MOVIES2: './peliculas2.json',
             ANIMADOS: './animados.json',
             RADIOS: './radios.json',
             TUDUM: './tudum.json'
         };
 
-        const RAW_URLS = {
-            TV: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/listaoficial.m3u',
-            SERIES: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/playlist.json',
-            MOVIES: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas.json',
-            MOVIES2: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/peliculas2.json',
-            ANIMADOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/animados.json',
-            RADIOS: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/radios.json',
-            TUDUM: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/tudum.json'
-        };
+        const RAW_URLS = URLS; // Destination is resolved by catalog.js.
 
         const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/ClI93uJrk1A4hA8MoS1J7Z';
         const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
@@ -510,21 +503,8 @@
         };
 
         const fetchSmart = async (localUrl, rawUrl, isJson = true) => {
-            const cacheBust = `?t=${Date.now()}`;
-            try {
-                const res = await fetch(localUrl + cacheBust);
-                if (res.ok) {
-                    const text = await res.text();
-                    if (!text.trim().startsWith('<!DOCTYPE html') && !text.trim().startsWith('<html')) {
-                        return isJson ? JSON.parse(text) : text;
-                    }
-                }
-            } catch (e) {}
-            try {
-                const resRaw = await fetch(rawUrl + cacheBust);
-                if (resRaw.ok) return isJson ? await resRaw.json() : await resRaw.text();
-            } catch (e) {}
-            return null;
+            const file = localUrl.split('/').pop().split('?')[0];
+            return BoxCatalog.read(file);
         };
 
         // ==========================================
@@ -583,17 +563,17 @@
             const titleSource = featuredItem.titulo || featuredItem.title || featuredItem.name;
             const descSource = featuredItem.descripcion || featuredItem.sinopsis || featuredItem.plot;
             return (
-                <div className="relative w-full bg-[#070b19] overflow-hidden rounded-none sm:rounded-3xl mb-8 group animate-fade-in shadow-2xl border-b sm:border border-slate-800 flex items-center max-w-7xl mx-auto px-4 sm:px-12 cinema-glow w-full py-8 sm:py-16 md:py-20">
+                <div className="relative w-full bg-[#070b19] overflow-hidden rounded-none sm:rounded-3xl mb-8 group animate-fade-in shadow-2xl border-b sm:border border-slate-800 flex items-center max-w-7xl mx-auto px-0 sm:px-12 cinema-glow w-full py-8 sm:py-16 md:py-20">
                     <div className="absolute inset-0 overflow-hidden pointer-events-none">
                         <img src="https://img.magnific.com/foto-gratis/cine-caja-palomitas-maiz_23-2148133612.jpg?semt=ais_hybrid&w=740&q=80" alt="Hero BG" className="w-full h-full object-cover opacity-25 scale-105 brightness-90" />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/90 to-transparent"></div>
                         <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
                     </div>
                     <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-6 sm:gap-10 text-center sm:text-left">
-                        <div className="w-48 sm:w-60 md:w-68 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 group-hover:scale-105 transition-transform duration-500">
+                        <div className="w-full sm:w-60 md:w-68 aspect-[2/3] rounded-none sm:rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 sm:group-hover:scale-105 transition-transform duration-500">
                             <RobustImage src={imgSource} alt={titleSource} title={titleSource} type="poster" className="w-full h-full object-cover" />
                         </div>
-                        <div className="flex-1 flex flex-col gap-3 items-center sm:items-start max-w-xl">
+                        <div className="flex-1 flex flex-col gap-3 items-center sm:items-start max-w-xl px-4 sm:px-0">
                             <span className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white text-[9px] sm:text-[10px] font-black px-3.5 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(6,182,212,0.4)]">Destacado Boxplaytv</span>
                             <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white leading-tight drop-shadow-md line-clamp-2">{titleSource}</h1>
                             <p className="text-slate-300 text-xs sm:text-sm md:text-base line-clamp-3 leading-relaxed drop-shadow">{descSource || "Disfruta de las mejores películas y series en alta definición."}</p>
@@ -1058,6 +1038,9 @@
             const [continueWatching, setContinueWatching] = useState([]);
             const [watchedEpisodes, setWatchedEpisodes] = useState({});
             const [loading, setLoading] = useState(true);
+            const [catalogRefresh, setCatalogRefresh] = useState(0);
+            const [catalogMessage, setCatalogMessage] = useState('');
+            const catalogLoaded = useRef(false);
             const [expandedSeason, setExpandedSeason] = useState(0);
             const [showQrModal, setShowQrModal] = useState(false);
             const [showSmartViewModal, setShowSmartViewModal] = useState(false);
@@ -1108,6 +1091,48 @@
             ];
 
             // 🔒 VALIDACIÓN DE SUSCRIPCIÓN (con deviceId)
+            const migratePersonalCatalog = lists => {
+                const all = Object.values(lists).flat();
+                const migrate = item => {
+                    const candidates = all.filter(entry => entry.type === item.type && entry.title === item.title);
+                    const match = all.find(entry => entry.type === item.type && entry.id === item.id) || (candidates.length === 1 ? candidates[0] : null);
+                    if (!match) return item;
+                    return { ...item, ...match };
+                };
+                const watched = safeStorage.getItem('boxplay_watched_eps');
+                if (watched) {
+                    try {
+                        const old = JSON.parse(watched), next = { ...old };
+                        for (const item of all) {
+                            const previous = [item.id, ...(item.legacyIds || [])];
+                            const ids = previous.flatMap(key => Array.isArray(old[key]) ? old[key] : []);
+                            if (!ids.length) continue;
+                            const episodes = (item.seasons || []).flatMap(season => season.episodes);
+                            next[item.id] = [...new Set(ids.map(key => {
+                                const episode = episodes.find(ep => ep.id === key || (ep.legacyIds || []).includes(key));
+                                return episode ? episode.id : key;
+                            }))];
+                        }
+                        setWatchedEpisodes(next);
+                        safeStorage.setItem('boxplay_watched_eps', JSON.stringify(next));
+                    } catch (err) { console.warn('No se pudo migrar el progreso.', err); }
+                }
+                for (const [key, setter] of [
+                    ['boxplay_favs', setFavorites], ['boxplay_tv_favs', setTvFavorites],
+                    ['boxplay_radio_favs', setRadioFavorites], ['boxplay_continue_watching', setContinueWatching]
+                ]) {
+                    const saved = safeStorage.getItem(key);
+                    if (!saved) continue;
+                    try {
+                        const records = JSON.parse(saved);
+                        if (!Array.isArray(records)) continue;
+                        const migrated = records.map(migrate);
+                        setter(migrated);
+                        safeStorage.setItem(key, JSON.stringify(migrated));
+                    } catch (err) { console.warn('No se pudo actualizar la biblioteca personal.', err); }
+                }
+            };
+
             useEffect(() => {
                 let cancelled = false;
                 setIsSubscriberActive(false);
@@ -1231,9 +1256,11 @@
             }, [selectedItem, activeTab, showQrModal, showSmartViewModal, showDownloadPinModal, showPaywallModal, isPlaying]);
 
             useEffect(() => {
+                let cancelled = false;
                 const init = async () => {
                     try {
                         setLoading(true);
+                        setCatalogMessage('Actualizando catálogo…');
                         const [dataTV, dataSeries, dataAnimados, dataRadios, dataMovies, dataMovies2, dataTudum] = await Promise.all([ 
                             fetchSmart(URLS.TV, RAW_URLS.TV, false),
                             fetchSmart(URLS.SERIES, RAW_URLS.SERIES, true),
@@ -1244,6 +1271,7 @@
                             fetchSmart(URLS.TUDUM, RAW_URLS.TUDUM, true)
                         ]);
 
+                        if (cancelled) return;
                         let tvChannels = [];
                         if (dataTV) tvChannels = parseM3U(dataTV);
                         if (tvChannels.length === 0) {
@@ -1259,7 +1287,7 @@
                                 const title = m.titulo || m.title || m.name || `Película ${idx + 1}`;
                                 const imgUrl = extractImageUrl(m);
                                 const rawTarget = m.urlDrive || m.url || m.urlOkRu;
-                                return { ...m, id: `mov-1-${idx}`, type: 'movies', title, description: m.descripcion || m.sinopsis || m.plot || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: m.backdrop || m.banner || imgUrl, url: convertUrl(rawTarget), rawUrl: rawTarget };
+                                return { ...m, id: BoxCatalog.id(m, 'peliculas.json'), type: 'movies', title, description: m.descripcion || m.sinopsis || m.plot || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: m.backdrop || m.banner || imgUrl, url: convertUrl(rawTarget), rawUrl: rawTarget };
                             });
                         }
 
@@ -1272,7 +1300,7 @@
                                 const rawTarget = m.urlDrive || m.url || m.urlOkRu;
                                 return { 
                                     ...m,
-                                    id: `mov-2-${idx}`, 
+                                    id: BoxCatalog.id(m, 'peliculas2.json'),
                                     type: 'movies2', 
                                     title, 
                                     description: m.descripcion || m.sinopsis || m.plot || '',
@@ -1290,7 +1318,7 @@
                             seriesList = rawSeries.map((s, idx) => {
                                 const title = s.tituloSerie || s.titulo || s.title || s.name || `Serie ${idx + 1}`;
                                 const imgUrl = extractImageUrl(s);
-                                return { ...s, id: `serie-${idx}`, type: 'series', title, description: s.descripcion || s.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: s.backdrop || s.banner || imgUrl, seasons: (s.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: (t.episodios || []).map((ep, eIdx) => ({ id: `ep-${idx}-${tIdx}-${eIdx}`, title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })) })) };
+                                return { ...s, id: BoxCatalog.id(s, 'playlist.json'), type: 'series', title, description: s.descripcion || s.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: s.backdrop || s.banner || imgUrl, seasons: (s.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: (t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, s.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })) })) };
                             });
                         }
 
@@ -1300,7 +1328,7 @@
                             animadosList = rawAnimados.map((a, idx) => {
                                 const title = a.titulo || a.tituloSerie || a.title || a.name || `Animado ${idx + 1}`;
                                 const imgUrl = extractImageUrl(a);
-                                return { ...a, id: `anim-${idx}`, type: 'animados', title, description: a.descripcion || a.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: a.backdrop || a.banner || imgUrl, url: convertUrl(a.urlDrive || a.url), rawUrl: a.urlDrive || a.url, seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: (t.episodios || []).map((ep, eIdx) => ({ id: `ep-anim-${idx}-${tIdx}-${eIdx}`, title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })) })) };
+                                return { ...a, id: BoxCatalog.id(a, 'animados.json'), type: 'animados', title, description: a.descripcion || a.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: a.backdrop || a.banner || imgUrl, url: convertUrl(a.urlDrive || a.url), rawUrl: a.urlDrive || a.url, seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: (t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, a.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })) })) };
                             });
                         }
 
@@ -1331,16 +1359,21 @@
                         }
 
                         const defaultStation = loadedStations.find(s => s.title.toLowerCase().includes('disco funk')) || loadedStations[0];
-                        if (defaultStation) { setCurrentRadioStation(defaultStation); setIsRadioPlaying(true); }
+                        if (defaultStation && !catalogLoaded.current) { setCurrentRadioStation(defaultStation); setIsRadioPlaying(true); }
 
+                        migratePersonalCatalog({ movies: moviesList, movies2: movies2List, series: seriesList, animados: animadosList, tv: tvChannels, radio: loadedStations });
+                        catalogLoaded.current = true;
+                        setCatalogMessage('Catálogo actualizado.');
                         setContent({ tv: tvChannels, movies: moviesList, movies2: movies2List, series: seriesList, animados: animadosList, tudum: tudumList });
                     } catch (err) {
                         console.error("Error cargando contenido", err);
+                        if (!cancelled) setCatalogMessage('No se pudo actualizar. Se conservó el catálogo anterior. ' + err.message);
                     } finally {
-                        setLoading(false);
+                        if (!cancelled) setLoading(false);
                     }
                 };
 
+                if (!catalogLoaded.current) {
                 const storedFavs = safeStorage.getItem('boxplay_favs'); 
                 if (storedFavs) { try { setFavorites(JSON.parse(storedFavs)); } catch(e) {} }
                 const storedTvFavs = safeStorage.getItem('boxplay_tv_favs');
@@ -1354,8 +1387,10 @@
                 const storedSearches = safeStorage.getItem('boxplay_recent_searches');
                 if (storedSearches) { try { setRecentSearches(JSON.parse(storedSearches)); } catch(e) {} }
 
+                }
                 init();
-            }, []);
+                return () => { cancelled = true; };
+            }, [catalogRefresh]);
 
             useEffect(() => {
                 let tvInterval;
@@ -1457,7 +1492,7 @@
                             const groupMatch = line.match(/group-title="([^"]*)"/); const group = groupMatch ? groupMatch[1] : 'General';
                             const commaIndex = line.lastIndexOf(',');
                             if (commaIndex !== -1) title = line.substring(commaIndex + 1).trim();
-                            channels.push({ id: `tv-${i}`, title, image: logo || generatePlaceholder(title, 'tv'), group, url, type: 'tv' });
+                            channels.push({ id: (line.match(/tvg-id="([^"]*)"/) || [,''])[1] || BoxCatalog.id({title}, 'tv'), title, image: logo || generatePlaceholder(title, 'tv'), group, url, type: 'tv' });
                         }
                     }
                 }
@@ -1659,6 +1694,7 @@
                             </nav>
                         </div>
                         <div className="flex items-center gap-2 sm:gap-3">
+                            <button onClick={() => setCatalogRefresh(value => value + 1)} disabled={loading} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-xs font-bold disabled:opacity-50" title="Actualizar catálogo">Actualizar catálogo</button>
                             <button onClick={() => { setShowSmartViewModal(true); window.history.pushState({ appState: 'smartview-modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Ver en Smart TV">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
                                 <span className="hidden lg:inline">Smart TV</span>
@@ -1700,6 +1736,7 @@
                             </button>
                         </div>
                     </header>
+                    {catalogMessage && <p role="status" className="fixed top-20 left-4 z-40 text-xs bg-slate-900 text-cyan-100 p-2 rounded-xl max-w-[90vw]">{catalogMessage}</p>}
 
                     <div className="lg:hidden fixed bottom-0 w-full max-w-[100vw] glass-panel border-t border-slate-800 z-50 flex py-2 pb-safe px-1 items-center justify-around shadow-[0_-10px_30px_rgba(0,0,0,0.9)]">
                         {[{ id: 'home', icon: 'search', label: 'Inicio' }, { id: 'movies', icon: 'clapperboard', label: 'Películas' }, { id: 'movies2', icon: 'star', label: 'Estrenos' }, { id: 'tv', icon: 'tv', label: 'TV' }, { id: 'radio', icon: 'radio', label: 'Radio' }, { id: 'favorites', icon: 'heart', label: 'Favs' }].map(tab => (
