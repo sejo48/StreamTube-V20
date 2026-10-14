@@ -106,3 +106,7 @@ Para publicar, el administrador introduce en el campo de contraseña una credenc
 El archivo compartido es `avisos.json`, independiente de los catálogos. Se publica mediante una única actualización de GitHub con comprobación SHA contra conflictos. Tras publicarse, el sitio debe actualizarse antes de que los clientes reciban el aviso; el contador se actualizará al consultar la aplicación. Un reintento conserva la identidad del borrador para evitar duplicados si se perdió la respuesta.
 
 Se ejecutaron 15 pruebas unitarias, `tests/notices-browser.cjs` y la prueba general de navegador. Verifican publicación/lectura, marcado, persistencia, expiración, limpieza del indicador, errores de permisos, conflictos, pérdida de respuesta, Unicode y ausencia de credenciales guardadas. Las escrituras de prueba de GitHub y el indicador del sistema fueron simulados: no se enviaron avisos de ejemplo a clientes ni se verificó visualmente un icono en un teléfono real. La lista inicial publicada está vacía.
+
+## Administrador que utiliza el propietario
+
+El administrador habitual está en `sejo48/admisboxplaytv` (https://sejo48.github.io/admisboxplaytv/), no en el `admin.html` adicional de este repositorio. También se incorporó Avisos allí, conservando Explorar TMDB y GitHub Sync. El enlace directo es https://sejo48.github.io/admisboxplaytv/#avisos y el botón «Enviar avisos» aparece en la barra superior. Ambos administradores publican la misma lista de avisos de StreamTube-V20.

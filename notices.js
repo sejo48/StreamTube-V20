@@ -26,7 +26,8 @@
         return notice;
     }
     async function load(fetcher = root.fetch.bind(root)) {
-        const response = await fetcher(`./${FILE}?t=${Date.now()}`, { cache: 'no-store' });
+        const source = root.BoxNoticesConfig?.feedUrl || `./${FILE}`;
+        const response = await fetcher(`${source}${source.includes('?') ? '&' : '?'}t=${Date.now()}`, { cache: 'no-store' });
         if (!response.ok) throw new Error('No se pudieron actualizar los avisos. Intenta de nuevo.');
         return validate(await response.json());
     }
@@ -48,8 +49,8 @@
         return JSON.parse(new TextDecoder().decode(bytes));
     }
     async function endpoint() {
-        await root.BoxCatalog.ready;
-        const { repository, branch } = root.BoxCatalog.config;
+        if (!root.BoxNoticesConfig) await root.BoxCatalog.ready;
+        const { repository, branch } = root.BoxNoticesConfig || root.BoxCatalog.config;
         if (!/^[\w.-]+\/[\w.-]+$/.test(repository) || typeof branch !== 'string' || !branch) throw new Error('El destino de los avisos no está configurado.');
         return { url: `https://api.github.com/repos/${repository}/contents/${FILE}`, branch };
     }

@@ -56,3 +56,15 @@ test('access failure and concurrent edits stop publication instead of overwritin
     await assert.rejects(N.publish({ token: 'example-test-credential', feed, sha: 'old' }, async () => ({ ok: false, status: 409 })), /cambiaron/);
     await assert.rejects(N.load(async () => ({ ok: false, status: 503 })), /actualizar/);
 });
+
+test('separately hosted administrator reads the principal feed using explicit configuration', async () => {
+    globalThis.BoxNoticesConfig = { repository: 'sejo48/StreamTube-V20', branch: 'main', feedUrl: 'https://raw.githubusercontent.com/sejo48/StreamTube-V20/main/avisos.json' };
+    try {
+        const calls = [];
+        const feed = { schemaVersion: 1, notices: [] };
+        await N.load(async url => { calls.push(url); return { ok: true, json: async () => feed }; });
+        assert.match(calls[0], /^https:\/\/raw\.githubusercontent\.com\/sejo48\/StreamTube-V20\/main\/avisos\.json\?t=/);
+        await N.repository('example-test-credential', async url => { calls.push(url); return { ok: true, json: async () => ({ sha: 'current', encoding: 'base64', content: N.encode(feed) }) }; });
+        assert.match(calls[1], /repos\/sejo48\/StreamTube-V20\/contents\/avisos\.json\?ref=main$/);
+    } finally { delete globalThis.BoxNoticesConfig; }
+});
