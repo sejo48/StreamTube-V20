@@ -1,8 +1,108 @@
 [
   {
-    "titulo": "Capitán América",
-    "descripcion": "",
-    "imagen": "https://pics.filmaffinity.com/captain_america_tv_series-726135562-mmed.jpg",
+    "tmdbId": 2164,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Marvel Super Heroes",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/wumQlzmEGhABxD84c6sFUq4qSug.jpg",
+    "year": "1966",
+    "fechaEstreno": "1966-09-05",
+    "rating": "6.8",
+    "votos": 21,
+    "runtime": "6min",
+    "runtimeMin": 6,
+    "genres": [
+      "Animación",
+      "Action & Adventure",
+      "Sci-Fi & Fantasy",
+      "Kids"
+    ],
+    "generosTexto": "Animación, Action & Adventure, Sci-Fi & Fantasy, Kids",
+    "clasificacion": "TV-G",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Chris Wiggins",
+        "personaje": "Thor (Dr. Donald Blake) (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/HMpppR5Jc1YX9YfTUE3jlvJOlf.jpg"
+      },
+      {
+        "nombre": "John Vernon",
+        "personaje": "Iron Man (Tony Stark) (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/xlHU7X2FhjnZVxu7fjoguCWlXeC.jpg"
+      },
+      {
+        "nombre": "Paul Soles",
+        "personaje": "Rick Jones (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/96fdxpuz3gUUMWhvpPQXrsiUGmh.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Grantray-Lawrence Animation",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "El Capitán Planeta y los Planetarios",
+        "poster": "https://image.tmdb.org/t/p/w342/dYHburcl1LKnUQrmB7BOUpOiHx.jpg",
+        "year": "1990",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Justice League Action",
+        "poster": "https://image.tmdb.org/t/p/w342/AdTh5kAXYwo0dwHONqCFO7y8Jmf.jpg",
+        "year": "2016",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Fantasma del Espacio",
+        "poster": "https://image.tmdb.org/t/p/w342/hVdj8XEGpLkx5lQoCwWM73HPeHv.jpg",
+        "year": "1966",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "LEGO DREAMZzz",
+        "poster": "https://image.tmdb.org/t/p/w342/s8ESNOulP57tLmaVzMBSZwwzUG2.jpg",
+        "year": "2023",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Los 4 Fantásticos",
+        "poster": "https://image.tmdb.org/t/p/w342/8ZnnVgar6YTZyR8XAkJSvzTSj9.jpg",
+        "year": "1994",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Silver Surfer",
+        "poster": "https://image.tmdb.org/t/p/w342/18rhdRDXAAHUTsbWtIQn2ZkjRL9.jpg",
+        "year": "1998",
+        "rating": "7.4"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 195,
+    "temporadasTmdb": [
+      {
+        "air_date": "1966-09-05",
+        "episode_count": 195,
+        "id": 6601,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/nkY0h3WxWWKIxrcpUJdziMV3IN3.jpg",
+        "season_number": 1,
+        "vote_average": 3.9
+      }
+    ],
+    "titulo": "The Marvel Super Heroes",
+    "descripcion": "Esta serie de dibujos animados, caracterizada por una animación extremadamente limitada, presenta cinco de los héroes con superpoderes más populares de Marvel Comics: el Increíble Hulk, el Poderoso Thor, el Capitán América, Iron Man y el Submarino.",
+    "imagen": "https://image.tmdb.org/t/p/w780/nkY0h3WxWWKIxrcpUJdziMV3IN3.jpg",
     "codigo": null,
     "qualityTag": "",
     "urlDrive": "https://ok.ru/video/1627110443736"
@@ -16,9 +116,131 @@
     "urlDrive": "https://ok.ru/video/3085547801304"
   },
   {
-    "titulo": "Astroboy 1963",
+    "tmdbId": 12050,
+    "tmdbType": "tv",
+    "tituloOriginal": "ASTROBOY 鉄腕アトム",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/nDvUaUCrAcfqdswRSRxOZMotS4V.jpg",
+    "year": "2003",
+    "fechaEstreno": "2003-04-06",
+    "rating": "7.9",
+    "votos": 23,
+    "runtime": "24min",
+    "runtimeMin": 24,
+    "genres": [
+      "Animación",
+      "Action & Adventure",
+      "Sci-Fi & Fantasy",
+      "Familia",
+      "Comedia",
+      "Kids"
+    ],
+    "generosTexto": "Animación, Action & Adventure, Sci-Fi & Fantasy, Familia, Comedia, Kids",
+    "clasificacion": "TV-G",
+    "tagline": "",
+    "director": "小中和哉",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "津村まこと",
+        "personaje": "Atom (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/81DYZwZ4M7Atf6w5Zk1e18QeIW8.jpg"
+      },
+      {
+        "nombre": "丸山美紀",
+        "personaje": "Uran (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/sGUcpfpFruhT4ryirmtlIIzD6Nk.jpg"
+      },
+      {
+        "nombre": "勝田久",
+        "personaje": "Ochanomizu Hakase (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/nrW3rbsBytJmdDgQqBwdvV7Kwnx.jpg"
+      },
+      {
+        "nombre": "大和田伸也",
+        "personaje": "Nagamiya Tenma (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/l8MbVpBPsZlboO6eMuF0x5YV1tm.jpg"
+      },
+      {
+        "nombre": "熊倉一雄",
+        "personaje": "Higeoyaji (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/s3sB3k74Qcsx2IKBPSqlvezOafy.jpg"
+      }
+    ],
+    "pais": "Japan",
+    "idioma": "ja",
+    "productoras": "Tezuka Productions, dentsu, Sony Pictures, Fuji Television Network",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "android, mecha, based on manga, robot, shounen, anime",
+    "similares": [
+      {
+        "titulo": "Astro Boy",
+        "poster": "https://image.tmdb.org/t/p/w342/imCrEQ7DXqM83SKgvk0l8atUaUO.jpg",
+        "year": "1963",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Astroboy",
+        "poster": "https://image.tmdb.org/t/p/w342/q574IeK0wB3lgh1pxZpWETFlNMS.jpg",
+        "year": "1980",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Doraemon",
+        "poster": "https://image.tmdb.org/t/p/w342/bHMqPDsW7Lb71CVHXq4PuEvQ4NY.jpg",
+        "year": "1979",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Doraemon, el gato cósmico",
+        "poster": "https://image.tmdb.org/t/p/w342/9ZN1P32SHviL3SV51qLivxycvcx.jpg",
+        "year": "2005",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Transformers Armada",
+        "poster": "https://image.tmdb.org/t/p/w342/tjbBjYfXyISFZMbpNQBNoiKwJp2.jpg",
+        "year": "2003",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "El proyecto Z",
+        "poster": "https://image.tmdb.org/t/p/w342/pv3PAeb6H5OUUQradMTbK31JCn8.jpg",
+        "year": "2001",
+        "rating": "7.5"
+      }
+    ],
+    "homepage": "https://tezukaosamu.net/jp/anime/51.html",
+    "creadores": [],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 50,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 0,
+        "id": 535388,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "2003-04-06",
+        "episode_count": 50,
+        "id": 80800,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/84dvDGeBxLSXNpoLgp6dq2VDhz6.jpg",
+        "season_number": 1,
+        "vote_average": 7.7
+      }
+    ],
+    "titulo": "Astroboy",
     "descripcion": "",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BYTUyODg4NzQtNGQ4Ni00ZTI1LTkxM2EtZmRhZjA5YWM0N2Q0XkEyXkFqcGc@._V1_.jpg",
+    "imagen": "https://image.tmdb.org/t/p/w780/aX1bbw3bINbrdYWVlnC42YZfDbO.jpg",
     "codigo": null,
     "qualityTag": "",
     "urlDrive": "https://ok.ru/video/7012232989400"
@@ -40,17 +262,358 @@
     "urlDrive": "https://ok.ru/video/3331419278040"
   },
   {
-    "titulo": "Los Verdaderos Cazafantasmas 1986",
-    "descripcion": "",
-    "imagen": "https://pics.filmaffinity.com/Los_autaenticos_cazafantasmas_Serie_de_TV-274824594-large.jpg",
+    "tmdbId": 2286,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Real Ghostbusters",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/fE1HSYnlUlGYBdq81oLuiOnTDC7.jpg",
+    "year": "1986",
+    "fechaEstreno": "1986-09-13",
+    "rating": "7.7",
+    "votos": 303,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "Action & Adventure",
+      "Animación",
+      "Comedia",
+      "Kids",
+      "Sci-Fi & Fantasy"
+    ],
+    "generosTexto": "Action & Adventure, Animación, Comedia, Kids, Sci-Fi & Fantasy",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Maurice LaMarche",
+        "personaje": "Egon Spengler (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/qCiL3EYAhLcNo0rNj5pczWo9MwG.jpg"
+      },
+      {
+        "nombre": "Dave Coulier",
+        "personaje": "Peter Venkman (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/mpWFTLJqVh3Wa42CG6X4tAND2bB.jpg"
+      },
+      {
+        "nombre": "Frank Welker",
+        "personaje": "Ray Stantz / Slimer (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/aC37aQtsfZZDZN5y3paDTLJJHCi.jpg"
+      },
+      {
+        "nombre": "Kath Soucie",
+        "personaje": "Janine Melnitz (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/dSE1JtsdA1aSgIIw415bsXtmkPg.jpg"
+      },
+      {
+        "nombre": "Buster Jones",
+        "personaje": "Winston Zeddemore (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/hbJs5xn6XZy1SVTAimmNnxqNrza.jpg"
+      },
+      {
+        "nombre": "Rodger Bumpass",
+        "personaje": "Louis Tully (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/lGQkw6adxqB6Hcm7VK8nVHbKupe.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "DiC, Columbia Pictures Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=N1K13XZnX1o",
+    "coleccion": "",
+    "keywords": "new york city, slime, ghostbuster, halloween, paranormal, ghost hunting, paranormal investigation, ghost, based on movie, science fiction, monsters, spooky comedy, slimer",
+    "similares": [
+      {
+        "titulo": "El regreso de los Cazafantasmas",
+        "poster": "https://image.tmdb.org/t/p/w342/iqpfrbnrC9j4R0e5JK3dxTNj33Y.jpg",
+        "year": "1997",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Cazafantasmas de Filmation",
+        "poster": "https://image.tmdb.org/t/p/w342/zQY7k5T20TJHCNyLHE0M7Geg86v.jpg",
+        "year": "1986",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Monstruos contra alienígenas",
+        "poster": "https://image.tmdb.org/t/p/w342/zi05IgJHd1uUCUo81RltepW9mC2.jpg",
+        "year": "2013",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Aaahhh!!! Monstruos",
+        "poster": "https://image.tmdb.org/t/p/w342/fnh1Mi108eNKayutKLSqesFgaRv.jpg",
+        "year": "1994",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Los héroes del tiempo",
+        "poster": "https://image.tmdb.org/t/p/w342/htHL4Sny3rxI7flIbiNfQqgjUjA.jpg",
+        "year": "2024",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "¡Enróllate, Scooby-Doo!",
+        "poster": "https://image.tmdb.org/t/p/w342/nad2SFuRHKaZFtJu3NeHct4JK25.jpg",
+        "year": "2015",
+        "rating": "8.0"
+      }
+    ],
+    "homepage": "http://www.ghostbusters.com/film_and_tv/ghostbusters-real",
+    "creadores": [
+      "Dan Aykroyd",
+      "Harold Ramis"
+    ],
+    "numeroTemporadas": 7,
+    "numeroEpisodios": 140,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 3,
+        "id": 7127,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/r6aDJVrIVGAYbPmq7zIvsXL5mXt.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1986-09-13",
+        "episode_count": 13,
+        "id": 7121,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/85ifEBbSo1Dvnkna2ep3CZvGc6C.jpg",
+        "season_number": 1,
+        "vote_average": 6.7
+      },
+      {
+        "air_date": "1987-09-14",
+        "episode_count": 65,
+        "id": 7120,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/mjLZ1RpARlIEw2KaRgYecCFj6Xv.jpg",
+        "season_number": 2,
+        "vote_average": 8
+      },
+      {
+        "air_date": "1987-09-12",
+        "episode_count": 13,
+        "id": 7122,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/6ne0fMbLBwQvGQK0Hns7YOKBuTY.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1988-09-10",
+        "episode_count": 8,
+        "id": 7125,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/u0u9lg2ZNmB4sMxKus4tldGyftO.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1989-09-16",
+        "episode_count": 21,
+        "id": 7126,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/9iCjCOboq2eXVlcVPVx4JXm6wFj.jpg",
+        "season_number": 5,
+        "vote_average": 8
+      },
+      {
+        "air_date": "1990-09-08",
+        "episode_count": 16,
+        "id": 7124,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/nZ4r2lzH64EBP7ypHRyqi8BkvXm.jpg",
+        "season_number": 6,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1991-09-07",
+        "episode_count": 4,
+        "id": 7123,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/ycBrAMEcS4MExujukU85FHYGg2a.jpg",
+        "season_number": 7,
+        "vote_average": 0
+      }
+    ],
+    "titulo": "Los Auténticos Cazafantasmas",
+    "descripcion": "Es una serie de animación basada en la película Los cazafantasmas, que fue un gran éxito de los años 1980. Esta serie se realizó entre los años 1986 y 1991, y fue producida por Columbia Pictures y DiC Entertainment. El títuloReal («Verdaderos») estuvo en disputa con la compañía Filmation y su propia versión animada de Los Cazafantasmas (The Original Ghostbusters). La serie continúa las aventuras de los doctores Peter Venkman, Egon Spengler y Ray Stantz, de Winston Zeddemore, la secretaria Janine Melnitz y su mascota, el fantasma Slimer (Pegajoso en Latinoamérica o Moquete en la versión española), en el negocio de la investigación de fenómenos paranormales.",
+    "imagen": "https://image.tmdb.org/t/p/w780/kLquadlhGPfpKHkVNRgrq0tzHkL.jpg",
     "codigo": null,
     "qualityTag": "",
     "urlDrive": "https://ok.ru/video/9927044237996"
   },
   {
-    "titulo": "Dumbo 1941",
+    "tmdbId": 1491,
+    "tmdbType": "tv",
+    "tituloOriginal": "Dumbo's Circus",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/jZ0OZrbOFvGp1550IDqf9NTqhNg.jpg",
+    "year": "1985",
+    "fechaEstreno": "1985-05-06",
+    "rating": "5.8",
+    "votos": 5,
+    "runtime": "30min",
+    "runtimeMin": 30,
+    "genres": [
+      "Animación"
+    ],
+    "generosTexto": "Animación",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Katie Leigh",
+        "personaje": "Dumbo (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/jApn1mOWTxQG6a8a3IJmgjRaxqH.jpg"
+      },
+      {
+        "nombre": "Jim Cummings",
+        "personaje": "Lionel (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/c0sQPRCM5Ri3F4gVyxPr4AcPmIq.jpg"
+      },
+      {
+        "nombre": "Patricia Parris",
+        "personaje": "Lilly (voice)",
+        "foto": ""
+      },
+      {
+        "nombre": "Hal Smith",
+        "personaje": "Fair Dinkum (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/xVXbKpSgCHvP5ymJNeB1fyf4GMP.jpg"
+      },
+      {
+        "nombre": "Will Ryan",
+        "personaje": "Barnaby (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/qRkyGcSju2VmEb7RTBM3Wpa0rvI.jpg"
+      },
+      {
+        "nombre": "Ron Gans",
+        "personaje": "Q.T. (voice)",
+        "foto": ""
+      },
+      {
+        "nombre": "Walker Edmiston",
+        "personaje": "Sebastian (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/owFE05CO42VX3aSOe3tdd55mPhg.jpg"
+      },
+      {
+        "nombre": "Patty Maloney",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/8M4Tmj95RYnNlzkrLVrR4DybP6h.jpg"
+      },
+      {
+        "nombre": "Van Snowden",
+        "personaje": "",
+        "foto": ""
+      },
+      {
+        "nombre": "Sharon Baird",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/qpTO1hXqBvQILvO94NLI7D0IHVq.jpg"
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "Left Coast Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "The Gumby Show",
+        "poster": "https://image.tmdb.org/t/p/w342/ycC23EiA1VZ3DWx0v2GwCNycps1.jpg",
+        "year": "1956",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Squidbillies",
+        "poster": "https://image.tmdb.org/t/p/w342/ffXx3qq4eopQMof6M26tZ2yiiT3.jpg",
+        "year": "2005",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Los Thornberrys",
+        "poster": "https://image.tmdb.org/t/p/w342/eriWVQpepRZOu0Sdzg2MgJpNHgx.jpg",
+        "year": "1998",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "What a Cartoon!",
+        "poster": "https://image.tmdb.org/t/p/w342/hxlRNgdB1dvtylJuLyXHGtVo3Tu.jpg",
+        "year": "1995",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Central Park",
+        "poster": "https://image.tmdb.org/t/p/w342/ckmEgQdbSAw0jiJFJT1a1W1LEFy.jpg",
+        "year": "2020",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "The Wonderful World of Disney",
+        "poster": "https://image.tmdb.org/t/p/w342/liQIvgYvnNwqjV6MvnFzvlXJNL2.jpg",
+        "year": "1997",
+        "rating": "6.9"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 120,
+    "temporadasTmdb": [
+      {
+        "air_date": "1985-05-06",
+        "episode_count": 39,
+        "id": 4031,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1985-06-26",
+        "episode_count": 55,
+        "id": 4032,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1986-05-08",
+        "episode_count": 26,
+        "id": 4033,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 3,
+        "vote_average": 0
+      }
+    ],
+    "titulo": "Dumbo's Circus",
     "descripcion": "",
-    "imagen": "https://es.web.img3.acsta.net/c_310_420/pictures/14/03/20/09/28/045404.jpg",
+    "imagen": "https://image.tmdb.org/t/p/w780/4LDmbhF0aKqvWg5KjupctZJJXEm.jpg",
     "codigo": null,
     "qualityTag": "",
     "urlDrive": "https://ok.ru/video/9139772459673"
@@ -88,33 +651,627 @@
     "urlDrive": "https://drive.google.com/file/d/1Lqf3VKx_2--9XZpQIgPVw59Op10VEsJH/view?usp=sharing"
   },
   {
+    "tmdbId": 22172,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Atom Ant Show",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/rRwzxH8LG6MmGD4DoxHCf2DCbZA.jpg",
+    "year": "1965",
+    "fechaEstreno": "1965-10-02",
+    "rating": "7.4",
+    "votos": 213,
+    "runtime": "21min",
+    "runtimeMin": 21,
+    "genres": [
+      "Animación",
+      "Kids",
+      "Comedia"
+    ],
+    "generosTexto": "Animación, Kids, Comedia",
+    "clasificacion": "TP",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Howard Morris",
+        "personaje": "Atom Ant (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/rwoGFiGtC5oZV9W2cPKtTUt5h0N.jpg"
+      },
+      {
+        "nombre": "Henry Corden",
+        "personaje": "Paw Rugg (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/wTt3jkTCEYyej9vGYQjgHERYzgo.jpg"
+      },
+      {
+        "nombre": "Don Messick",
+        "personaje": "Shag Rugg (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/frB2GkFxLzJkUC1NizEad1OYJQ7.jpg"
+      },
+      {
+        "nombre": "Janet Waldo",
+        "personaje": "Granny Sweet (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/liuY8vTRtKsQeDN7HYZD2oRkE80.jpg"
+      },
+      {
+        "nombre": "Jean Vander Pyl",
+        "personaje": "Maw Rugg / Floral Rugg (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/pHJjddmRyn3f2TP2HmgcGhY0HMT.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Hanna-Barbera Cartoons, NBC, Screen Gems",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "insect, police, cartoon, slapstick comedy, superhero, parody, anthropomorphism, animals, super power, cartoon dog, short film",
+    "similares": [
+      {
+        "titulo": "Jellystone!",
+        "poster": "https://image.tmdb.org/t/p/w342/7SwSAG48QvvMy8jlAgm3LGt3VGq.jpg",
+        "year": "2021",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Looney Tunes Cartoons",
+        "poster": "https://image.tmdb.org/t/p/w342/2pDQfZMJq95hckoaez9ou93Hmqy.jpg",
+        "year": "2020",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Garfield y sus amigos",
+        "poster": "https://image.tmdb.org/t/p/w342/3HyTfZ9sSCoZPYrYHMffhRVm3Af.jpg",
+        "year": "1988",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Pixie, Dixie y el gato Jinks",
+        "poster": "https://image.tmdb.org/t/p/w342/5ZumU878KJndWedQICQAKz6kCf4.jpg",
+        "year": "1958",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "T.U.F.F. Puppy",
+        "poster": "https://image.tmdb.org/t/p/w342/mzJSwX75Gjty8hZIEbqblPbEvkl.jpg",
+        "year": "2010",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "El show de Garfield",
+        "poster": "https://image.tmdb.org/t/p/w342/jBAXfUHvVTBCsCwP1xNG6B3bZ0d.jpg",
+        "year": "2009",
+        "rating": "6.5"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 78,
+    "temporadasTmdb": [
+      {
+        "air_date": "1965-10-02",
+        "episode_count": 78,
+        "id": 32064,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/7ur5q1QMXd5FP8zcAEdNAffymZ3.jpg",
+        "season_number": 1,
+        "vote_average": 7.3
+      }
+    ],
     "titulo": "La hormiga atómica",
-    "descripcion": "",
-    "imagen": "https://images.justwatch.com/poster/300678122/s718/la-hormiga-atomica.jpg",
+    "descripcion": "La hormiga atómica no es una hormiga normal y corriente. Tiene extraños poderes, una fuerza descomunal, un oído maravilloso, la capacidad de volar. En definitiva es una SuperHormiga, y su misión es ayudar a defender la Tierra de los malvados.",
+    "imagen": "https://image.tmdb.org/t/p/w780/7ur5q1QMXd5FP8zcAEdNAffymZ3.jpg",
     "codigo": null,
     "qualityTag": "",
     "urlDrive": "https://drive.google.com/file/d/1m_f6U8vS-BPyNMp2z5tehpImrmRqIwpW/view?usp=sharing"
   },
   {
-    "titulo": "Snooper y Blabber",
-    "descripcion": "",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BYTVhZDgyNzUtOWQzZS00NWJiLWJiZWYtYjJkZDNmNjFlZDUzXkEyXkFqcGc@._V1_.jpg",
+    "tmdbId": 12462,
+    "tmdbType": "tv",
+    "tituloOriginal": "Snooper and Blabber",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/41C3inQ87l22ncENvbWXalf6ugi.jpg",
+    "year": "1959",
+    "fechaEstreno": "1959-09-19",
+    "rating": "6.3",
+    "votos": 9,
+    "runtime": "7min",
+    "runtimeMin": 7,
+    "genres": [
+      "Animación",
+      "Action & Adventure",
+      "Comedia",
+      "Crimen",
+      "Kids"
+    ],
+    "generosTexto": "Animación, Action & Adventure, Comedia, Crimen, Kids",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "William Hanna, Joseph Barbera",
+    "guionistas": "Michael Maltese",
+    "reparto": [
+      {
+        "nombre": "Daws Butler",
+        "personaje": "Super Snooper/Blabber Mouse",
+        "foto": "https://image.tmdb.org/t/p/w185/qxaOMbICdts0qpUmkYj3OMhDGt8.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Hanna-Barbera Cartoons",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "detective, cartoon, anthropomorphism, animals, private detective, short film",
+    "similares": [
+      {
+        "titulo": "El inspector Ardilla",
+        "poster": "https://image.tmdb.org/t/p/w342/A9yvtVflorbf0MmzkzWkQ0nmg3U.jpg",
+        "year": "1965",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Tiro Loco McGraw",
+        "poster": "https://image.tmdb.org/t/p/w342/yhmPhhNzp9YWgzLrVSL6LTyDpYH.jpg",
+        "year": "1959",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Maguila el Gorila",
+        "poster": "https://image.tmdb.org/t/p/w342/cwbHVJe44wGsDAv7lFOFxwkFXh0.jpg",
+        "year": "1964",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Canuto Y Canito",
+        "poster": "https://image.tmdb.org/t/p/w342/5jAIzVTg08r7bqCdQm0733oDeLR.jpg",
+        "year": "1959",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "T.U.F.F. Puppy",
+        "poster": "https://image.tmdb.org/t/p/w342/mzJSwX75Gjty8hZIEbqblPbEvkl.jpg",
+        "year": "2010",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Calle Dálmatas 101",
+        "poster": "https://image.tmdb.org/t/p/w342/g7PG67FGIsr5bQNYyxV79FBhmFE.jpg",
+        "year": "2019",
+        "rating": "7.3"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Joseph Barbera",
+      "William Hanna"
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 45,
+    "temporadasTmdb": [
+      {
+        "air_date": "1959-09-19",
+        "episode_count": 26,
+        "id": 23322,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/j6bCJ3wWE89Hfq1cm90bA6CkvSU.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1960-09-10",
+        "episode_count": 13,
+        "id": 23323,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/qwb5Pz3FEJaJ83mJFR64c33iTiv.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1961-09-15",
+        "episode_count": 6,
+        "id": 23324,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/bVde4yOXZV0bRr41LWMDoaaIvxH.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      }
+    ],
+    "titulo": "Super Fisgón y Despistado",
+    "descripcion": "Super Fisgón y Despistado son dos investigadores privados de fama internacional que trabajan en la agencia de detectives de Super Fisgón y se encargan de investigar los más disparatados casos. Despistado estará a las órdenes de Super Fisgón que, aunque cree ser más listo atrapando criminales, no tiene las más brillantes ideas. Despistado, sin embargo, admira a su jefe y desea llegar a ser tan buen detective como él.",
+    "imagen": "https://image.tmdb.org/t/p/w780/2HRMSRXDOPMxvUhSKNB3pHQN332.jpg",
     "codigo": null,
     "qualityTag": "",
     "urlDrive": "https://drive.google.com/file/d/1aoGMoUudrLgZxFYeYXEqcIGYz581D7ZU/view?usp=sharing"
   },
   {
-    "titulo": "Los Súper Amigos",
-    "descripcion": "",
-    "imagen": "https://m.media-amazon.com/images/M/MV5BMzg0NTg3MzAxNF5BMl5BanBnXkFtZTYwMTg4OTk5._V1_.jpg",
+    "tmdbId": 936,
+    "tmdbType": "tv",
+    "tituloOriginal": "Super Friends",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/ebbeTgwFRvKEdFSAoHsBPvZsAFf.jpg",
+    "year": "1973",
+    "fechaEstreno": "1973-09-08",
+    "rating": "7.7",
+    "votos": 164,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Animación",
+      "Sci-Fi & Fantasy"
+    ],
+    "generosTexto": "Animación, Sci-Fi & Fantasy",
+    "clasificacion": "NR",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "René Auberjonois",
+        "personaje": "Desaad (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/1EZ6FnJGzwRl7XndkX8fBo8Tej3.jpg"
+      },
+      {
+        "nombre": "William Callaway",
+        "personaje": "Aquaman (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/hbKZmeOoZT9okB7ckrgJQ8NBf6C.jpg"
+      },
+      {
+        "nombre": "Danny Dark",
+        "personaje": "Superman (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/lzf8QxKtcYk1ZUC0RAvUbC0cYdf.jpg"
+      },
+      {
+        "nombre": "Ernie Hudson",
+        "personaje": "Cyborg (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/kgAdQA2ItCDVvKXufeDHc6Omiso.jpg"
+      },
+      {
+        "nombre": "Casey Kasem",
+        "personaje": "Robin (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/sBKx2Da5Igy55Sjk2dnhtI3JekC.jpg"
+      },
+      {
+        "nombre": "Mark L. Taylor",
+        "personaje": "Firestorm (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/aUeetSgCWR3tOrJ6RoD77zkPHdO.jpg"
+      },
+      {
+        "nombre": "Frank Welker",
+        "personaje": "Darkseid (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/aC37aQtsfZZDZN5y3paDTLJJHCi.jpg"
+      },
+      {
+        "nombre": "B.J. Ward",
+        "personaje": "Wonder Woman (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/kD8iaIEmdsqURAbebzsox40EJAQ.jpg"
+      },
+      {
+        "nombre": "Adam West",
+        "personaje": "Batman (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/a3Yw8bb6AF7a8Zr7IyEZhZxWVWN.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Eric Porter Studios, Hanna-Barbera Cartoons",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "superhero",
+    "similares": [
+      {
+        "titulo": "Liga de la Justicia Ilimitada",
+        "poster": "https://image.tmdb.org/t/p/w342/vRRvCUREeqqnp3hHdqep83eQjdP.jpg",
+        "year": "2004",
+        "rating": "8.3"
+      },
+      {
+        "titulo": "Spidey y su Superequipo",
+        "poster": "https://image.tmdb.org/t/p/w342/p9tgZcQKpaAxs0auXWLNvN1m0o3.jpg",
+        "year": "2021",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Birdman y el trio galaxia",
+        "poster": "https://image.tmdb.org/t/p/w342/52DGvCSbyKfprQ9OwPcxpBMdpv6.jpg",
+        "year": "1967",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Los Vengadores unidos",
+        "poster": "https://image.tmdb.org/t/p/w342/r7C5c5Un1zsiAfixa8HEd5ebYmM.jpg",
+        "year": "2013",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "The Marvel Super Heroes",
+        "poster": "https://image.tmdb.org/t/p/w342/nkY0h3WxWWKIxrcpUJdziMV3IN3.jpg",
+        "year": "1966",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Los padrinos mágicos",
+        "poster": "https://image.tmdb.org/t/p/w342/dEMhp3WLscZj7bGTKnJIEMLdk2Y.jpg",
+        "year": "2001",
+        "rating": "7.6"
+      }
+    ],
+    "homepage": "https://play.hbomax.com/page/urn:hbo:page:GYKaOxA4KeJ7DwwEAAAAR:type:series",
+    "creadores": [],
+    "numeroTemporadas": 9,
+    "numeroEpisodios": 109,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 2,
+        "id": 2713,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/rsSDrN3M1J145o83mV9JCOTujPp.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1973-09-08",
+        "episode_count": 16,
+        "id": 2712,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/lWXduWuJT9Ffo7Pu9CHCOMC5Ceh.jpg",
+        "season_number": 1,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "1977-09-10",
+        "episode_count": 15,
+        "id": 165135,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/looFpzovTpeEnhlwUzYmuF9ZhmH.jpg",
+        "season_number": 2,
+        "vote_average": 6.7
+      },
+      {
+        "air_date": "1978-09-09",
+        "episode_count": 32,
+        "id": 165136,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/b9GUurdQhhTPLNeaRrueb1emIwt.jpg",
+        "season_number": 3,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "1979-09-22",
+        "episode_count": 8,
+        "id": 165137,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/hEakdNnXl9B0wRE22ejqTMoc97Z.jpg",
+        "season_number": 4,
+        "vote_average": 6.8
+      },
+      {
+        "air_date": "1980-09-13",
+        "episode_count": 8,
+        "id": 165138,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/jIV5qTxHYXUhxp3eBtM92RRqBoI.jpg",
+        "season_number": 5,
+        "vote_average": 7
+      },
+      {
+        "air_date": "1981-09-26",
+        "episode_count": 6,
+        "id": 165139,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/gsxe898kzakcxUTMPhUkO3jeRKb.jpg",
+        "season_number": 6,
+        "vote_average": 6.8
+      },
+      {
+        "air_date": "1983-09-10",
+        "episode_count": 8,
+        "id": 165140,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/jH1gBavzMRwAgzleb8vRtDhcF1D.jpg",
+        "season_number": 7,
+        "vote_average": 6.8
+      },
+      {
+        "air_date": "1984-09-08",
+        "episode_count": 8,
+        "id": 165141,
+        "name": "Temporada 8",
+        "overview": "",
+        "poster_path": "/AeI1X9eGRTyvMHgbrDUwjvniVDb.jpg",
+        "season_number": 8,
+        "vote_average": 6.6
+      },
+      {
+        "air_date": "1985-09-07",
+        "episode_count": 8,
+        "id": 165142,
+        "name": "Temporada 9",
+        "overview": "",
+        "poster_path": "/6pC7YGlx2EDBTQ1XRxoU8yha6c6.jpg",
+        "season_number": 9,
+        "vote_average": 6.7
+      }
+    ],
+    "titulo": "Los Super Amigos",
+    "descripcion": "En el Salón de la Justicia, los cuatro superheroes más famosos del mundo se reúnen para ayuda a la humanidad y conservar la paz en el Universo, son ayudados por dos jovenes Adolescenetes Wendy Harris y Marvin White y su perro llamado Super Mascota.",
+    "imagen": "https://image.tmdb.org/t/p/w780/kxGE7IkT4QWeYOS5tS5R5yhI4d5.jpg",
     "codigo": null,
     "qualityTag": "",
     "urlDrive": "https://drive.google.com/file/d/157BqTCD3fjF4Q-XCzqJ8LRNZh6ZSlCKJ/view?usp=sharing"
   },
   {
-    "titulo": "Spider-Man - 1967",
-    "descripcion": "",
-    "imagen": "https://i.pinimg.com/474x/0c/58/4b/0c584bc36adca11427931d4d2c802833.jpg",
+    "tmdbId": 888,
+    "tmdbType": "tv",
+    "tituloOriginal": "Spider-Man",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/tszlsbfyTOPSZe2z6K4mwHtcnmI.jpg",
+    "year": "1994",
+    "fechaEstreno": "1994-11-19",
+    "rating": "8.3",
+    "votos": 1184,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Animación",
+      "Action & Adventure"
+    ],
+    "generosTexto": "Animación, Action & Adventure",
+    "clasificacion": "7",
+    "tagline": "CON GRAN PODER VIENE GRAN RESPONSABILIDAD",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Christopher Daniel Barnes",
+        "personaje": "Peter Parker / Spider-Man (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/dE99eEJ9F8RweONabFIzb2p57iK.jpg"
+      },
+      {
+        "nombre": "Sara Ballantine",
+        "personaje": "Mary Jane Watson (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/1U5cbBlLEWGvtFY0fCgevwVNWQ4.jpg"
+      },
+      {
+        "nombre": "Jennifer Hale",
+        "personaje": "Felicia Hardy (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/oNQCrdiSm0mABCcE5YaHwuZQK8X.jpg"
+      },
+      {
+        "nombre": "Ed Asner",
+        "personaje": "J. Jonah Jameson (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/AeVizz1AfAB2TbsfyzgBvqeSR3G.jpg"
+      },
+      {
+        "nombre": "Rodney Saulsberry",
+        "personaje": "Joe 'Robbie' Robertson (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/oq8ppTU9gFt6pju7Kkxd2CfuciJ.jpg"
+      },
+      {
+        "nombre": "Roscoe Lee Browne",
+        "personaje": "Kingpin (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/zNOJbPMeQd5thNTA1dvb1ZT61mI.jpg"
+      }
+    ],
+    "pais": "United States of America, Japan",
+    "idioma": "en",
+    "productoras": "Marvel Entertainment Group, Marvel Films, Tokyo Movie Shinsha, Kyokuichi-Tokyo Movie",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "superhero, based on comic, radioactivity",
+    "similares": [
+      {
+        "titulo": "Las Increíbles Aventuras de Spiderman",
+        "poster": "https://image.tmdb.org/t/p/w342/mFcSBC5ckNJ1BSFBjSJmpDTtrXw.jpg",
+        "year": "2003",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Marvel Spider-Man",
+        "poster": "https://image.tmdb.org/t/p/w342/dKdcyyHUR5WTMnrbPdYN5y9xPVp.jpg",
+        "year": "2017",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "El Escuadrón de Superhéroes",
+        "poster": "https://image.tmdb.org/t/p/w342/xJqJ4kgsZ2XoKP0QLBOuMtppfYo.jpg",
+        "year": "2009",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Spider-Man",
+        "poster": "https://image.tmdb.org/t/p/w342/3vpKx5Cx06OePP1VQEpjS0ybl6t.jpg",
+        "year": "1967",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Guardianes de la Galaxia",
+        "poster": "https://image.tmdb.org/t/p/w342/aSr0IfRApuhRYzhLY7RWhUB6jCn.jpg",
+        "year": "2015",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Los Vengadores: Los Super Héroes más poderosos de la Tierra",
+        "poster": "https://image.tmdb.org/t/p/w342/m4xJb9O6Hc3C1Kt0vE6hZRaE9BE.jpg",
+        "year": "2010",
+        "rating": "8.2"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 5,
+    "numeroEpisodios": 65,
+    "temporadasTmdb": [
+      {
+        "air_date": "1994-11-19",
+        "episode_count": 13,
+        "id": 2572,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/f1Dy2F8of9uZiSz6Z3kTlzpWz6L.jpg",
+        "season_number": 1,
+        "vote_average": 7.7
+      },
+      {
+        "air_date": "1995-09-09",
+        "episode_count": 14,
+        "id": 2570,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/qIDlAgHTlVxc0Htyi5TPUSuePNJ.jpg",
+        "season_number": 2,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "1996-04-27",
+        "episode_count": 14,
+        "id": 2568,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/A2NlIAdGRYFqTXUcJJKWcAHlSz1.jpg",
+        "season_number": 3,
+        "vote_average": 7.8
+      },
+      {
+        "air_date": "1997-02-01",
+        "episode_count": 11,
+        "id": 2569,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/fivAtoyYPNg4UoIPgbcJFBvQLRj.jpg",
+        "season_number": 4,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1997-09-12",
+        "episode_count": 13,
+        "id": 2573,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/49aGt5hbNj60ocKpXjgNJRb9cpY.jpg",
+        "season_number": 5,
+        "vote_average": 7.4
+      }
+    ],
+    "titulo": "Spiderman",
+    "descripcion": "¿Imaginas ser capaz de sentir el peligro, subir cualquier pared, ser lo suficientemente fuerte como para doblar el acero, y tener más agilidad que cualquier otro ser humano? Para Peter Parker es un hecho. Excepto que él no piensa que es un regalo. En su último año de instituto, Peter Parker fue mordido por una araña radioactiva. Después de breves alucinaciones, Peter se despierta con poderes increíbles - muy parecidos a los de una araña. Por lo tanto, para hacer algo de dinero extra, Peter toma el personaje de Spider-Man, y trata de seguir una carrera como luchador profesional. Cuando es testigo de un robo, permite que el criminal escape simplemente porque \"no es su problema\". Luego, cuando su querido tío Ben es asesinado, Peter descubre que el asesino no es otro que el criminal que no detuvo anteriormente. Ahora, Peter usa sus poderes para detener el crimen porque \"un gran poder conlleva una gran responsabilidad\".",
+    "imagen": "https://image.tmdb.org/t/p/w780/cwgW8j4yh5hNMnvokozpVkjuSu2.jpg",
     "codigo": null,
     "qualityTag": "",
     "urlDrive": "https://drive.google.com/file/d/1Ov0hLjvapndwagUPA6pNeeAALWEs0OBu/view?usp=sharing"
@@ -128,9 +1285,124 @@
     "urlDrive": "https://drive.google.com/file/d/1kxZOvjnl56vBHL2ZwU5TLGBMrKBIiE9-/view?usp=sharing"
   },
   {
-    "titulo": "El Fantasma Revoltoso",
-    "descripcion": "",
-    "imagen": "https://pics.filmaffinity.com/the_funky_phantom_tv_series-529847219-mmed.jpg",
+    "tmdbId": 10481,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Funky Phantom",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/kE97zLjKTJ8aNr4V0g6nM9ZnclB.jpg",
+    "year": "1971",
+    "fechaEstreno": "1971-09-11",
+    "rating": "5.9",
+    "votos": 8,
+    "runtime": "30min",
+    "runtimeMin": 30,
+    "genres": [
+      "Animación"
+    ],
+    "generosTexto": "Animación",
+    "clasificacion": "TP",
+    "tagline": "",
+    "director": "Joseph Barbera, William Hanna",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Jerry Dexter",
+        "personaje": "Elmo (voice)",
+        "foto": ""
+      },
+      {
+        "nombre": "Daws Butler",
+        "personaje": "Mudsy (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/qxaOMbICdts0qpUmkYj3OMhDGt8.jpg"
+      },
+      {
+        "nombre": "Micky Dolenz",
+        "personaje": "Skip Gilroy (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/uupy664Z4952JHCGffM3Q7t31xj.jpg"
+      },
+      {
+        "nombre": "Don Messick",
+        "personaje": "Boo (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/frB2GkFxLzJkUC1NizEad1OYJQ7.jpg"
+      },
+      {
+        "nombre": "Kristina Holland",
+        "personaje": "April Stewart (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/u00BLt6Z2ovxpfWV7BTd3w2JcfD.jpg"
+      },
+      {
+        "nombre": "Tommy Cook",
+        "personaje": "Augie Anderson (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/vYfPMjg8TvZG5nyx4cCGq6eZe17.jpg"
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "Hanna-Barbera Cartoons, Air Programs International (API)",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "cat, haunted house, ghost",
+    "similares": [
+      {
+        "titulo": "Scooby-Doo ¿Dónde estás?",
+        "poster": "https://image.tmdb.org/t/p/w342/oNVRq6CTUrTwu54WkjIxl98coqf.jpg",
+        "year": "1969",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "¿Qué hay de nuevo, Scooby-Doo?",
+        "poster": "https://image.tmdb.org/t/p/w342/ovTA7Cym4YObvDKCVtetFpg3jMi.jpg",
+        "year": "2002",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "El Show de Ren y Stimpy",
+        "poster": "https://image.tmdb.org/t/p/w342/u4YZhMms48mgP756hniUcw6PQPU.jpg",
+        "year": "1991",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Danny Phantom",
+        "poster": "https://image.tmdb.org/t/p/w342/pBUOFBmZLaIxzjDjQP7d3QZrd4w.jpg",
+        "year": "2004",
+        "rating": "8.3"
+      },
+      {
+        "titulo": "La maldición de Molly McGee",
+        "poster": "https://image.tmdb.org/t/p/w342/cwzSRD0dI0zGbVHyN6UFAUST8u0.jpg",
+        "year": "2021",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Los 13 fantasmas de Scooby-Doo",
+        "poster": "https://image.tmdb.org/t/p/w342/v7S15heYWQSJLM60uZjim7Y9nzG.jpg",
+        "year": "1985",
+        "rating": "7.9"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "William Hanna",
+      "Joseph Barbera"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 17,
+    "temporadasTmdb": [
+      {
+        "air_date": "1971-09-11",
+        "episode_count": 17,
+        "id": 20680,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/fzuer9sh2grHoTtBWJwQoCv5gQl.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      }
+    ],
+    "titulo": "El fantasma revoltoso",
+    "descripcion": "17 episodios. Emitida entre 1971-1972. Esta serie de Hanna Barbera nos presenta a un grupo de adolescentes que acompañados de un añejo fantasma y su gato viven una serie de aventuras sin igual a la vez que resulten todo tipo de misterios.",
+    "imagen": "https://image.tmdb.org/t/p/w780/cDlHGv6ajkAQBdjYPDUwb2LgzwY.jpg",
     "codigo": null,
     "qualityTag": "",
     "urlDrive": "https://drive.google.com/file/d/180jk9LNhg6uzfgg-T9C22gehrke9t5-6/view?usp=sharing"
