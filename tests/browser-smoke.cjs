@@ -149,7 +149,19 @@ const server = http.createServer((req, res) => {
             assert.equal(await button.getAttribute('aria-current'), 'page');
         }
         await navigation.getByRole('button', { name: 'Más', exact: true }).click();
-        await phone.getByRole('button', { name: 'Favs', exact: true }).filter({ visible: true }).click();
+        for (const width of [320, 390]) {
+            await phone.setViewportSize({ width, height: 700 });
+            const panel = phone.locator('.box-more-panel');
+            const options = panel.locator('.box-more-option:visible');
+            assert.deepEqual(await options.allTextContents().then(labels => labels.map(label => label.trim())), ['TV', 'Radio HD', 'Top Shows', 'Favoritos', 'Planes & Pagos', 'Instalar y dispositivos']);
+            const install = panel.getByRole('button', { name: 'Instalar y dispositivos', exact: true });
+            const bounds = await install.boundingBox(), panelBounds = await panel.boundingBox();
+            assert(bounds.width > panelBounds.width * .8);
+            assert(await options.locator('span').evaluateAll(spans => spans.every(span => span.scrollWidth <= span.clientWidth)));
+            assert(await phone.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+        }
+        await phone.setViewportSize({ width: 390, height: 800 });
+        await phone.getByRole('button', { name: 'Favoritos', exact: true }).filter({ visible: true }).click();
         await phone.getByRole('button', { name: 'Buscar contenido', exact: true }).click();
         const search = phone.getByRole('searchbox', { name: 'Buscar películas y series' });
         await search.fill(movie.titulo); await search.press('Enter');
@@ -169,6 +181,7 @@ const server = http.createServer((req, res) => {
         assert.equal(await phone.locator('main article').count(), 7);
         await phone.locator('main summary').first().click();
         assert(await phone.getByText('Abre Box Play TV en Chrome.', { exact: true }).isVisible());
+        assert.equal(await phone.getByRole('link', { name: 'boxplaytv.com', exact: true }).getAttribute('href'), 'https://boxplaytv.com/');
         const qr = phone.getByAltText('Código QR para abrir Box Play TV');
         await qr.evaluate(image => image.decode());
         assert(await qr.evaluate(image => image.naturalWidth > 100));

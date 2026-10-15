@@ -246,8 +246,13 @@
             .box-bottom-nav { padding: 8px 8px max(8px, env(safe-area-inset-bottom)); background: rgba(2,6,23,.97); box-shadow: none; }
             .box-bottom-nav > button { min-height: 48px; }
             .box-bottom-nav > button span { font-size: 11px; }
-            .box-more-panel { max-height: calc(100svh - 120px); overflow-y: auto; }
-            .box-phone-tools { display: grid; gap: 8px; margin-top: 8px; }
+            .box-more-panel { max-height: calc(100dvh - 112px); overflow-y: auto; overscroll-behavior: contain; padding: 16px; }
+            .box-more-option { min-height: 52px; font-size: 13px; text-align: left; }
+            .box-more-option > :first-child { flex-shrink: 0; }
+            .box-more-option span { white-space: normal; overflow-wrap: anywhere; }
+            .box-more-panel > div:first-child { margin-bottom: 14px; }
+            .box-more-panel button[aria-label="Cerrar menú"] { min-width: 44px; min-height: 44px; }
+            .box-phone-tools { display: grid; gap: 8px; margin-top: 8px; padding-top: 14px; border-top: 1px solid #1e293b; }
             .box-phone-tools button { min-height: 44px; border: 1px solid #334155; border-radius: 12px; font-size: 13px; }
             .box-catalog-status { top: 68px; }
             .box-catalog-success { display: none; }
@@ -913,8 +918,8 @@
             return <section aria-labelledby="devices-title" className="max-w-5xl mx-auto p-4 sm:p-8 space-y-6">
                 <div><h1 id="devices-title" className="text-2xl font-black text-white">Instalar y usar en dispositivos</h1><p className="text-sm text-slate-300 mt-2">Elige tu dispositivo y sigue el tutorial. La reproducción requiere conexión a Internet.</p></div>
                 <div className="glass-panel rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-5">
-                    <img src="./icons/app-qr.png" alt="Código QR para abrir Box Play TV" width="180" height="180" className="bg-white rounded-xl p-2" />
-                    <div className="space-y-3 min-w-0"><h2 className="font-bold text-white">Abrir la página web con QR</h2><p className="text-sm text-slate-300">Escanea el QR con la cámara del móvil para abrir directamente la página web de Box Play TV en el navegador.</p><a href="https://sejo48.github.io/StreamTube-V20/" className="block text-cyan-300 text-xs break-all">https://sejo48.github.io/StreamTube-V20/</a>
+                    <img src="./icons/web-qr.png" alt="Código QR para abrir Box Play TV" width="180" height="180" className="bg-white rounded-xl p-2" />
+                    <div className="space-y-3 min-w-0"><h2 className="font-bold text-white">Abrir la página web con QR</h2><p className="text-sm text-slate-300">Escanea el QR con la cámara del móvil para abrir directamente la página web de Box Play TV en el navegador.</p><a href="https://boxplaytv.com/" className="block text-cyan-300 text-sm break-all">boxplaytv.com</a>
 </div>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">{guides.map(guide => <article key={guide.title} className="glass-panel rounded-2xl p-5 space-y-3"><h2 className="font-bold text-cyan-300">{guide.title}</h2><p className="text-sm text-slate-300">{guide.text}</p>{guide.code && <p className="text-sm text-slate-300">Código Downloader: <strong className="text-cyan-300 text-xl">{guide.code}</strong></p>}<details><summary className="cursor-pointer text-sm font-bold text-white py-2">Ver tutorial paso a paso</summary><ol className="list-decimal pl-5 space-y-3 text-sm text-slate-300 mt-3">{guide.steps.map(step => <li key={step}>{step}</li>)}</ol></details></article>)}</div>
@@ -1913,18 +1918,17 @@
                         <div className="lg:hidden fixed inset-0 z-[90] bg-black/80 backdrop-blur-md flex flex-col justify-end p-4 animate-fade-in pb-24" onClick={() => setShowMobileMoreMenu(false)}>
                             <div className="box-more-panel glass-panel rounded-3xl p-4 shadow-2xl space-y-2 animate-scale-in" onClick={(e) => e.stopPropagation()}>
                                 <div className="flex items-center justify-between pb-3 border-b border-slate-800 px-2">
-                                    <span className="text-xs font-black uppercase text-cyan-400 tracking-wider">Más Secciones & Herramientas</span>
+                                    <span className="text-sm font-black text-cyan-400">Más opciones</span>
                                     <button aria-label="Cerrar menú" onClick={() => setShowMobileMoreMenu(false)} className="text-slate-400 hover:text-white"><Icon name="x" size={16}/></button>
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
-                                    <div className="box-phone-only col-span-2"><div className="grid grid-cols-2 gap-2">{navTabs.filter(tab => tab.id === 'favorites').map(tab => <button key={tab.id} onClick={() => handleTabClick(tab)} className="p-3 rounded-2xl border border-slate-800 text-xs flex items-center gap-3"><Icon name={tab.icon} size={16}/>{tab.label}</button>)}</div></div>
-                                    {navTabs.slice(3, 10).map(tab => (
-                                        <button key={tab.id} onClick={() => handleTabClick(tab)} className={`${['series', 'animados'].includes(tab.id) ? 'box-phone-primary-duplicate' : ''} p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
-                                            <Icon name={tab.icon} size={16}/>
-                                            <span className="truncate">{tab.label}</span>
+                                    {['tv', 'radio', 'topshows', 'favorites', 'series', 'animados', 'payments', 'devices'].map(id => navTabs.find(tab => tab.id === id)).map(tab => (
+                                        <button key={tab.id} onClick={() => handleTabClick(tab)} className={`box-more-option ${['series', 'animados'].includes(tab.id) ? 'box-phone-primary-duplicate' : ''} ${['payments', 'devices'].includes(tab.id) ? 'col-span-2' : ''} p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
+                                            <Icon name={tab.icon} size={18}/>
+                                            <span>{tab.id === 'favorites' ? 'Favoritos' : tab.label}</span>
                                         </button>
                                     ))}
-                                    <div className="box-phone-only col-span-2"><div className="box-phone-tools">
+                                    <div className="box-phone-only col-span-2"><div className="box-phone-tools"><p className="text-xs text-slate-400 font-bold">Aplicación</p>
                                         <button disabled={loading} onClick={() => { setCatalogRefresh(value => value + 1); setShowMobileMoreMenu(false); }}>Actualizar catálogo</button>
                                         <button disabled={isAppInstalled || installingApp} onClick={() => { handleInstallApp(); setShowMobileMoreMenu(false); }} className="flex items-center justify-center gap-2 disabled:opacity-60"><Icon name="download" size={18}/>{isAppInstalled ? 'Aplicación agregada' : installingApp ? 'Abriendo instalación…' : 'Agregar a pantalla de inicio'}</button>
                                     </div></div>
