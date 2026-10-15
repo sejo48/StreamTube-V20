@@ -1,4 +1,14 @@
 {
   "schemaVersion": 1,
-  "notices": []
+  "notices": [
+    {
+      "id": "21207da0-2815-46a5-8dce-191eb00e6fa7",
+      "title": "BOXPLAYTV",
+      "message": "BOXPLAYTV",
+      "target": "home",
+      "expiresAt": "2026-10-22T01:02:32.149Z",
+      "createdAt": "2026-10-15T01:02:32.149Z",
+      "updatedAt": "2026-10-15T01:02:32.149Z"
+    }
+  ]
 }
