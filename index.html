@@ -223,6 +223,14 @@
             .box-header-actions > :not(.box-phone-search):not(.box-notification-toggle) { display: none; }
             .box-phone-search { display: flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
             .box-main { padding-top: 64px; }
+            .box-detail-hero { height: auto !important; min-height: 0 !important; }
+            .box-detail-hero .box-detail-copy { position: relative; padding: clamp(104px, 22svh, 176px) clamp(16px, 5vw, 24px) 24px; }
+            .box-detail-copy > div { min-width: 0; max-width: 100%; }
+            .box-detail-copy .box-detail-title { font-size: clamp(24px, 7.4vw, 36px); line-height: 1.1; letter-spacing: -.025em; overflow-wrap: anywhere; text-wrap: balance; }
+            .box-detail-copy p { overflow-wrap: anywhere; }
+            .box-detail-copy .box-detail-description { font-size: clamp(14px, 3.8vw, 16px); line-height: 1.65; }
+            .box-detail-copy .box-detail-actions { flex-wrap: wrap; gap: clamp(16px, 6vw, 32px); }
+
             .box-search-panel { position: fixed; top: 64px; left: 0; right: 0; z-index: 60; padding: 12px 16px; background: #020617; border-bottom: 1px solid #1e293b; }
             .box-search-panel input { width: 100%; min-height: 44px; padding: 10px 14px; background: #0f172a; color: white; border: 1px solid #334155; border-radius: 12px; font-size: 16px; }
             .box-phone-hero { display: flex; position: relative; width: 100%; height: clamp(340px, 58svh, 510px); align-items: flex-end; overflow: hidden; background: #0f172a; margin-bottom: 28px; }
@@ -2135,7 +2143,7 @@
                                 ) : (
                                     <div className="relative w-full">
                                         
-                                        <div className="relative w-full" style={{ height: '85vh', minHeight: '600px' }}>
+                                        <div className="box-detail-hero relative w-full" style={{ height: '85vh', minHeight: '600px' }}>
                                             <RobustImage 
                                                 src={extractBackdropUrl(selectedItem) || extractImageUrl(selectedItem)} 
                                                 alt={selectedItem.title || selectedItem.titulo} 
@@ -2155,10 +2163,10 @@
                                                 </button>
                                             </div>
 
-                                            <div className="absolute bottom-0 left-0 right-0 z-20 px-5 sm:px-12 md:px-16 pb-6 sm:pb-10">
+                                            <div className="box-detail-copy absolute bottom-0 left-0 right-0 z-20 px-5 sm:px-12 md:px-16 pb-6 sm:pb-10">
                                                 <div className="max-w-2xl space-y-3 sm:space-y-4">
                                                     
-                                                    <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white leading-[0.95] tracking-tight uppercase drop-shadow-2xl">
+                                                    <h1 className="box-detail-title text-4xl sm:text-6xl md:text-7xl font-black text-white leading-[0.95] tracking-tight uppercase drop-shadow-2xl">
                                                         {selectedItem.titulo || selectedItem.title || selectedItem.name}
                                                     </h1>
                                                     
@@ -2185,7 +2193,7 @@
                                                         </button>
                                                     </div>
 
-                                                    <div className="flex items-center gap-8 pt-3">
+                                                    <div className="box-detail-actions flex items-center gap-8 pt-3">
                                                         <button onClick={() => toggleFavorite(selectedItem)} className="flex flex-col items-center gap-1.5 text-white hover:text-cyan-400 transition-colors group">
                                                             <div className="w-9 h-9 flex items-center justify-center">
                                                                 {isItemFavorite(selectedItem) 
@@ -2227,7 +2235,7 @@
                                                         )}
                                                     </div>
 
-                                                    <p className="text-slate-100 text-sm sm:text-base leading-relaxed pt-3 max-w-xl">
+                                                    <p className="box-detail-description text-slate-100 text-sm sm:text-base leading-relaxed pt-3 max-w-xl">
                                                         {selectedItem.descripcion || selectedItem.sinopsis || "Sin descripción disponible para este contenido."}
                                                     </p>
 

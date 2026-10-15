@@ -226,6 +226,37 @@ const server = http.createServer((req, res) => {
         assert.equal(await phone.evaluate(async () => (await caches.keys()).length), 0);
         console.log('PASS: installation button, dismissal, guide, installed state, manifest, icons and network-only service worker');
         await phone.close();
+        const longTitle = 'STREET FIGHTER ( CAM ) La batalla final de los guerreros extraordinarios SupercalifragilisticoespialidosoSinEspacios';
+        const longDescription = ('En 1993, los luchadores regresan para enfrentarse a una conspiración. ').repeat(14);
+        files.set('peliculas.json', JSON.stringify([{ ...movie, titulo: longTitle, descripcion: longDescription }]));
+        const details = await context.newPage();
+        details.on('pageerror', error => errors.push('details: ' + error.message));
+        await details.setViewportSize({ width: 390, height: 800 });
+        await details.goto(origin + '/');
+        await details.getByRole('button', { name: 'Comenzar Experiencia' }).click();
+        await details.getByRole('button', { name: 'Buscar contenido', exact: true }).click();
+        await details.getByRole('searchbox').fill(longTitle);
+        await details.getByRole('searchbox').press('Enter');
+        await details.locator('.card-glow').filter({ hasText: longTitle }).first().click();
+        await details.locator('.box-detail-title').waitFor();
+        let smallerFont;
+        for (const width of [320, 390, 430]) {
+            await details.setViewportSize({ width, height: 800 });
+            const metrics = await details.evaluate(() => {
+                const title = document.querySelector('.box-detail-title'), hero = document.querySelector('.box-detail-hero'), description = document.querySelector('.box-detail-description');
+                return { title: title.textContent.trim(), font: parseFloat(getComputedStyle(title).fontSize), fits: title.scrollWidth <= title.clientWidth + 1, heroTop: hero.getBoundingClientRect().top, titleTop: title.getBoundingClientRect().top, heroBottom: hero.getBoundingClientRect().bottom, descriptionBottom: description.getBoundingClientRect().bottom, pageFits: document.documentElement.scrollWidth <= innerWidth };
+            });
+            assert.equal(metrics.title, longTitle);
+            assert(metrics.fits && metrics.pageFits);
+            assert(metrics.titleTop >= metrics.heroTop + 80);
+            assert(metrics.descriptionBottom <= metrics.heroBottom);
+            if (width === 320) smallerFont = metrics.font;
+            if (width === 430) assert(metrics.font > smallerFont);
+        }
+        await details.setViewportSize({ width: 1280, height: 900 });
+        assert.equal(await details.locator('.box-detail-copy').evaluate(el => getComputedStyle(el).position), 'absolute');
+        await details.close();
+        console.log('PASS: fluid mobile detail text, long titles and synopsis fit at 320/390/430px; desktop positioning retained');
         assert.deepEqual(requestsWithWrites, []);
         assert.deepEqual(errors, []);
         console.log('PASS: no JavaScript exceptions or network write requests');
