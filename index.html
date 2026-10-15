@@ -204,10 +204,19 @@
             border-radius: 3px;
         }
 
+        @media (min-width: 1024px) {
+            .box-header { gap: 16px; }
+            .box-header > div:first-child { flex: 1; min-width: 0; }
+            .box-header > div:first-child > div { flex-shrink: 0; }
+            .box-header nav { min-width: 0; overflow-x: auto; }
+            .box-header nav button { flex-shrink: 0; white-space: nowrap; }
+            .box-header-actions { flex-shrink: 0; }
+        }
+
         /* Phone layout only; desktop and tablet styles retain their existing rules. */
         .box-phone-hero, .box-phone-nav-button, .box-phone-search, .box-phone-only { display: none; }
         @media (max-width: 639px) {
-            .box-desktop-hero, .box-legacy-nav-button, .box-home-extras, .box-desktop-continue { display: none !important; }
+            .box-desktop-hero, .box-legacy-nav-button, .box-home-extras, .box-desktop-continue, .box-phone-primary-duplicate { display: none !important; }
             .box-phone-only { display: block; }
             .box-phone-nav-button { display: flex; }
             .box-header { height: 64px; padding: 10px 16px; box-shadow: none; }
@@ -390,8 +399,6 @@
 
         const RAW_URLS = URLS; // Destination is resolved by catalog.js.
 
-        const WHATSAPP_GROUP_URL = 'https://chat.whatsapp.com/ClI93uJrk1A4hA8MoS1J7Z';
-        const QR_IMAGE_URL = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsPiFVGiGuwJ3smwIQGJ-25kEkpEZpmR4PNZLdRF0_3LVfWAj2xhWSHiK7pY-C3jera3PD_XpmEtNy0kaCW1m8dayT9ebTV3YNBmbzMZeHF_oIf2XlniVGt6pj6BqtTyWEaUts1Ll_vYx2RuJvlrF9rqIwWcYcwMkTcdLCI-bShcR_KhhoILWEkdJ4Z4w/s1600/mi-qr-pro.png';
 
         const normalizeImageUrl = (value) => {
             if (typeof value !== 'string') return '';
@@ -763,7 +770,7 @@
                         </form>
 
                         <p style={{ color: '#64748b', fontSize: '0.7rem', marginTop: '16px', lineHeight: '1.4' }}>
-                            ¿Problemas para activar? Únete al grupo de WhatsApp y avisa al administrador.
+                            ¿Problemas para activar? Contacta directamente con el administrador que te facilitó el acceso.
                         </p>
                     </div>
                 </div>
@@ -885,7 +892,7 @@
                                 ))}
                             </ul>
                             <div className="bg-black/40 p-3 rounded-xl border border-slate-800 text-[10px] text-slate-400">
-                                Paga vía SINPE Móvil al <strong>6013-2444</strong> y envía el comprobante al grupo.
+                                Paga vía SINPE Móvil al <strong>6013-2444</strong> y envía el comprobante directamente al administrador.
                             </div>
                         </div>
                     </div>
@@ -893,36 +900,25 @@
             );
         };
 
-        const CommunitySection = () => {
-            return (
-                <div className="p-4 sm:p-10 max-w-4xl mx-auto w-full animate-fade-in space-y-8">
-                    <div className="text-center space-y-3">
-                        <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 border border-cyan-500/30 inline-block"><Icon name="chat" size={28}/></div>
-                        <h1 className="text-2xl sm:text-4xl font-black text-white">Comunidad Boxplaytv</h1>
-                        <p className="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">Únete a nuestra comunidad oficial y mantente al día con los últimos estrenos, canales y eventos especiales.</p>
-                    </div>
-                    <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
-                        <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer" className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-4 rounded-2xl font-extrabold text-sm transition-all shadow-[0_0_25px_rgba(16,185,129,0.4)] flex items-center justify-center gap-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                            <span>Unirse al Grupo Oficial de WhatsApp</span>
-                        </a>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
-                                <h3 className="text-sm font-bold text-cyan-400 flex items-center gap-2"><Icon name="star" size={14}/> Estrenos Semanales</h3>
-                                <p className="text-xs text-slate-300 leading-relaxed">Recibe notificaciones de nuevas películas, series y canales añadidos a la plataforma.</p>
-                            </div>
-                            <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
-                                <h3 className="text-sm font-bold text-teal-400 flex items-center gap-2"><Icon name="chat" size={14}/> Soporte Técnico</h3>
-                                <p className="text-xs text-slate-300 leading-relaxed">Resuelve dudas, reporta fallos y solicita contenido directamente con nuestro equipo.</p>
-                            </div>
-                        </div>
-                        <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
-                            <h3 className="text-sm font-bold text-yellow-400 flex items-center gap-2"><Icon name="heart" size={14}/> Beneficios Exclusivos</h3>
-                            <p className="text-xs text-slate-300 leading-relaxed">Accede a promociones, sorteos y contenido VIP solo para miembros del grupo.</p>
-                        </div>
-                    </div>
+        const DevicesSection = ({ onInstall, installed, installing }) => {
+            const guides = [
+                { title: 'Android', text: 'Crea un acceso como aplicación desde el navegador.', steps: ['Abre Box Play TV en Chrome.', 'Pulsa «Agregar a pantalla de inicio» aquí debajo. Si no aparece la solicitud, abre el menú ⋮ de Chrome y busca «Instalar aplicación» o «Agregar a pantalla de inicio».', 'Confirma la instalación y abre Box Play TV desde su icono.'] },
+                { title: 'iPhone y iPad', text: 'Añade la aplicación a tu pantalla de inicio con Safari.', steps: ['Abre Box Play TV en Safari.', 'Pulsa Compartir y selecciona «Agregar a pantalla de inicio».', 'Confirma con «Agregar».'] },
+                { title: 'PC y Mac', text: 'Instala un acceso desde un navegador compatible.', steps: ['Abre Box Play TV en Chrome o Edge.', 'Busca el icono de instalación en la barra de direcciones o la opción «Instalar» en el menú del navegador.', 'Confirma. Si tu navegador no permite instalar, guarda la página en Favoritos.'] },
+                { title: 'Fire TV y Android TV · Downloader', text: 'Utiliza el código de descarga facilitado para Box Play TV.', steps: ['Instala y abre Downloader desde la tienda de tu dispositivo, si está disponible.', 'Introduce el código 5766835 en el campo de dirección y pulsa Go / Ir.', 'Comprueba que el destino corresponde a Box Play TV. Si descarga un instalador, sigue las instrucciones del dispositivo; si abre la web, úsala desde el navegador.', 'Si solicita permiso para instalar, concédelo solo para esta instalación y desactívalo al terminar.'] },
+                { title: 'Samsung Smart TV · Smart View', text: 'Duplica la pantalla desde un teléfono compatible.', steps: ['Conecta el móvil y el televisor a la misma red Wi-Fi.', 'Abre los ajustes rápidos del móvil y busca Smart View o Transmitir.', 'Selecciona el televisor, acepta la conexión y reproduce el contenido. La disponibilidad depende del móvil y el televisor.'] },
+                { title: 'Chromecast y Google TV', text: 'Envía contenido cuando el reproductor y el dispositivo lo permitan.', steps: ['Conecta ambos dispositivos a la misma red Wi-Fi.', 'Abre el video y busca el botón Transmitir. Si aparece, selecciona el televisor.', 'Si el reproductor no ofrece ese botón, usa la duplicación de pantalla de tu dispositivo o la opción Transmitir de Chrome en PC. Algunos videos pueden limitar esta función.'] },
+                { title: 'Apple TV · AirPlay', text: 'Reproduce en un televisor compatible desde iPhone, iPad o Mac.', steps: ['Conecta los dispositivos a la misma red Wi-Fi.', 'Abre el Centro de Control y pulsa «Duplicar pantalla», o usa AirPlay si el reproductor lo ofrece.', 'Selecciona tu Apple TV o televisor compatible y escribe el código que aparezca. Algunos videos pueden limitar la transmisión.'] }
+            ];
+            return <section aria-labelledby="devices-title" className="max-w-5xl mx-auto p-4 sm:p-8 space-y-6">
+                <div><h1 id="devices-title" className="text-2xl font-black text-white">Instalar y usar en dispositivos</h1><p className="text-sm text-slate-300 mt-2">Elige tu dispositivo y sigue el tutorial. La reproducción requiere conexión a Internet.</p></div>
+                <div className="glass-panel rounded-2xl p-5 flex flex-col sm:flex-row items-center gap-5">
+                    <img src="./icons/app-qr.png" alt="Código QR para abrir Box Play TV" width="180" height="180" className="bg-white rounded-xl p-2" />
+                    <div className="space-y-3 min-w-0"><h2 className="font-bold text-white">Abrir en otro dispositivo</h2><p className="text-sm text-slate-300">Escanea el QR con la cámara del móvil. Abre la aplicación principal y después elige aquí cómo instalarla.</p><a href="https://sejo48.github.io/StreamTube-V20/" className="block text-cyan-300 text-xs break-all">https://sejo48.github.io/StreamTube-V20/</a><p className="text-sm text-slate-300">Código Downloader: <strong className="text-cyan-300 text-xl">5766835</strong></p>
+                    <button onClick={onInstall} disabled={installed || installing} className="px-4 py-3 rounded-xl bg-cyan-600 text-white font-bold text-sm disabled:opacity-60">{installed ? 'Aplicación agregada' : installing ? 'Abriendo instalación…' : 'Agregar a pantalla de inicio'}</button></div>
                 </div>
-            );
+                <div className="grid sm:grid-cols-2 gap-4">{guides.map(guide => <article key={guide.title} className="glass-panel rounded-2xl p-5 space-y-3"><h2 className="font-bold text-cyan-300">{guide.title}</h2><p className="text-sm text-slate-300">{guide.text}</p><details><summary className="cursor-pointer text-sm font-bold text-white py-2">Ver tutorial paso a paso</summary><ol className="list-decimal pl-5 space-y-3 text-sm text-slate-300 mt-3">{guide.steps.map(step => <li key={step}>{step}</li>)}</ol></details></article>)}</div>
+            </section>;
         };
 
         const CyberRadioSection = ({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef, clockTime, isMuted, setIsMuted, isPowerOn, setIsPowerOn, spectrumHeights, radioFilter, setRadioFilter, hlsRef, radioFavorites, onToggleFavorite, isItemFavorite }) => {
@@ -1178,8 +1174,6 @@
             const [catalogMessage, setCatalogMessage] = useState('');
             const catalogLoaded = useRef(false);
             const [expandedSeason, setExpandedSeason] = useState(0);
-            const [showQrModal, setShowQrModal] = useState(false);
-            const [showSmartViewModal, setShowSmartViewModal] = useState(false);
             const [showMobileMoreMenu, setShowMobileMoreMenu] = useState(false);
             const [showMobileSearch, setShowMobileSearch] = useState(false);
             const [showDownloadPinModal, setShowDownloadPinModal] = useState(false);
@@ -1228,7 +1222,7 @@
                 { id: 'tv', icon: 'tv', label: 'TV' }, 
                 { id: 'radio', icon: 'radio', label: 'Radio HD' }, 
                 { id: 'payments', icon: 'star', label: 'Planes & Pagos' },
-                { id: 'community', icon: 'chat', label: 'Comunidad' },
+                { id: 'devices', icon: 'download', label: 'Instalar y dispositivos' },
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
 
@@ -1387,9 +1381,8 @@
             useEffect(() => {
                 window.history.replaceState({ appState: 'main', activeTab }, '');
                 const handlePopState = (event) => {
+                    if (showInstallGuide) { setShowInstallGuide(false); return; }
                     if (showNotices) { setShowNotices(false); return; }
-                    if (showQrModal) { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
-                    if (showSmartViewModal) { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (showDownloadPinModal) { setShowDownloadPinModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (showPaywallModal) { setShowPaywallModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); return; }
                     if (selectedItem) { 
@@ -1409,7 +1402,7 @@
                 };
                 window.addEventListener('popstate', handlePopState);
                 return () => window.removeEventListener('popstate', handlePopState);
-            }, [selectedItem, activeTab, showNotices, showQrModal, showSmartViewModal, showDownloadPinModal, showPaywallModal, isPlaying]);
+            }, [selectedItem, activeTab, showInstallGuide, showNotices, showDownloadPinModal, showPaywallModal, isPlaying]);
 
             useEffect(() => {
                 let cancelled = false;
@@ -1862,18 +1855,11 @@
                             </button>
                             <button className="box-phone-search" aria-label="Buscar contenido" aria-expanded={showMobileSearch} onClick={() => { if (!showMobileSearch) { setActiveTab('home'); setSelectedItem(null); setIsPlaying(false); } setShowMobileSearch(value => !value); }}><Icon name={showMobileSearch ? 'x' : 'search'} size={22} /></button>
                             <button onClick={() => setCatalogRefresh(value => value + 1)} disabled={loading} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-xs font-bold disabled:opacity-50" title="Actualizar catálogo">Actualizar catálogo</button>
-                            <button onClick={() => { setShowSmartViewModal(true); window.history.pushState({ appState: 'smartview-modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md" title="Ver en Smart TV">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan-400"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-                                <span className="hidden lg:inline">Smart TV</span>
-                            </button>
                             <button onClick={() => handleTabClick(navTabs.find(t => t.id === 'favorites'))} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
                                 <Icon name="heart" size={16} fill={activeTab === 'favorites' ? '#06b6d4' : 'none'} className="text-cyan-400"/>
                                 <span className="hidden md:inline">Favs</span>
                             </button>
-                            <button onClick={handleInstallApp} disabled={isAppInstalled || installingApp} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition-all text-xs font-bold flex items-center gap-1.5 shadow-md">
-                                <Icon name="download" size={14}/>
-                                <span className="hidden md:inline">{isAppInstalled ? 'App instalada' : 'Instalar App'}</span>
-                            </button>
+                            <button onClick={() => handleTabClick(navTabs.find(tab => tab.id === 'devices'))} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-xs font-bold flex items-center gap-1.5"><Icon name="download" size={16}/><span>Instalar y dispositivos</span></button>
                             <div className="relative hidden sm:block w-36 lg:w-48">
                                 <input type="text" placeholder="Buscar contenido..." className="w-full bg-[#090d1f] border border-slate-800 rounded-full px-4 py-2 text-xs text-white focus:border-cyan-500 outline-none pl-9 transition-colors placeholder-slate-500 shadow-inner" value={search} onChange={(e) => setSearch(e.target.value)} onFocus={() => setIsSearchFocused(true)} onBlur={() => setTimeout(() => setIsSearchFocused(false), 250)} onKeyDown={(e) => { if (e.key === 'Enter' && search.trim()) { addRecentSearch(search); setIsSearchFocused(false); } }}/>
                                 <Icon className="absolute left-3 top-2.5 text-slate-400" name="search" size={14}/>
@@ -1897,10 +1883,7 @@
                                     </div>
                                 )}
                             </div>
-                            <button onClick={() => { setShowQrModal(true); window.history.pushState({ appState: 'modal' }, ''); }} className="p-2 sm:px-3 sm:py-2 rounded-xl bg-[#090d1f] hover:bg-slate-800 text-cyan-300 border border-slate-800 transition-all hover:scale-105 shadow-md flex items-center gap-1.5" title="Escanear QR">
-                                <Icon name="qr" size={16}/>
-                                <span className="text-xs font-bold hidden lg:inline">Compartir</span>
-                            </button>
+
                         </div>
                     </header>
                     {showMobileSearch && <form className="box-phone-only box-search-panel" role="search" onSubmit={event => { event.preventDefault(); addRecentSearch(search); setShowMobileSearch(false); }}>
@@ -1934,21 +1917,15 @@
                                     <button aria-label="Cerrar menú" onClick={() => setShowMobileMoreMenu(false)} className="text-slate-400 hover:text-white"><Icon name="x" size={16}/></button>
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
-                                    <div className="box-phone-only col-span-2"><div className="grid grid-cols-2 gap-2">{navTabs.filter(tab => ['movies2', 'favorites'].includes(tab.id)).map(tab => <button key={tab.id} onClick={() => handleTabClick(tab)} className="p-3 rounded-2xl border border-slate-800 text-xs flex items-center gap-3"><Icon name={tab.icon} size={16}/>{tab.label}</button>)}</div></div>
+                                    <div className="box-phone-only col-span-2"><div className="grid grid-cols-2 gap-2">{navTabs.filter(tab => tab.id === 'favorites').map(tab => <button key={tab.id} onClick={() => handleTabClick(tab)} className="p-3 rounded-2xl border border-slate-800 text-xs flex items-center gap-3"><Icon name={tab.icon} size={16}/>{tab.label}</button>)}</div></div>
                                     {navTabs.slice(3, 10).map(tab => (
-                                        <button key={tab.id} onClick={() => handleTabClick(tab)} className={`p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
+                                        <button key={tab.id} onClick={() => handleTabClick(tab)} className={`${['series', 'animados'].includes(tab.id) ? 'box-phone-primary-duplicate' : ''} p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
                                             <Icon name={tab.icon} size={16}/>
                                             <span className="truncate">{tab.label}</span>
                                         </button>
                                     ))}
-                                    <button onClick={() => { setShowSmartViewModal(true); setShowMobileMoreMenu(false); window.history.pushState({ appState: 'smartview-modal' }, ''); }} className="p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border bg-cyan-500/20 text-cyan-400 border-cyan-500/40 col-span-2 justify-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-                                        <span>Smart TV</span>
-                                    </button>
                                     <div className="box-phone-only col-span-2"><div className="box-phone-tools">
                                         <button disabled={loading} onClick={() => { setCatalogRefresh(value => value + 1); setShowMobileMoreMenu(false); }}>Actualizar catálogo</button>
-                                        <button disabled={isAppInstalled || installingApp} onClick={() => { handleInstallApp(); setShowMobileMoreMenu(false); }} className="flex items-center justify-center gap-2 disabled:opacity-60"><Icon name="download" size={18}/>{isAppInstalled ? 'Aplicación agregada' : installingApp ? 'Abriendo instalación…' : 'Agregar a pantalla de inicio'}</button>
-                                        <button onClick={() => { setShowQrModal(true); setShowMobileMoreMenu(false); }}>Compartir aplicación</button>
                                     </div></div>
                                 </div>
                             </div>
@@ -2512,8 +2489,8 @@
                                     </div>
                                 )}
                             </div>
-                        ) : activeTab === 'community' ? (
-                            <CommunitySection />
+                        ) : activeTab === 'devices' ? (
+                            <DevicesSection onInstall={handleInstallApp} installed={isAppInstalled} installing={installingApp} />
                         ) : activeTab === 'payments' ? (
                             <PaymentsSection emailUsuario={emailUsuario} isSubscriberActive={isSubscriberActive} expiresAt={accessExpiresAt} onVerify={() => setShowPaywallModal(true)} />
                         ) : (
@@ -2703,57 +2680,27 @@
                         </div>
                     )}
 
-                    {showSmartViewModal && (
-                        <div className="fixed inset-0 z-[105] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
-                            <div className="glass-panel rounded-3xl p-6 max-w-md w-full relative shadow-2xl space-y-4 animate-scale-in">
-                                <button onClick={() => { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-full bg-black/40"><Icon name="x" size={18}/></button>
-                                <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 border border-cyan-500/30 inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg></div>
-                                <h3 className="text-base font-extrabold text-white">Transmitir a Smart TV / Smart View</h3>
-                                <div className="text-xs text-slate-300 space-y-3 text-left bg-black/50 p-4 rounded-2xl border border-slate-800 leading-relaxed">
-                                    <p>📺 <strong>Samsung Smart TV (Smart View):</strong><br/>Desliza el panel de ajustes rápidos en tu teléfono Android y toca el botón <em>Smart View</em> o <em>Transmitir</em>. Selecciona tu televisor Samsung para duplicar la pantalla.</p>
-                                    <p>📱 <strong>Google Chromecast / Android TV:</strong><br/>Abre el reproductor de video en la app. Si la película o serie está alojada con streaming directo, aparecerá el ícono de Chromecast flotante en la esquina del video para enviar únicamente la transmisión multimedia a la televisión.</p>
-                                    <p>🍏 <strong>Apple TV / AirPlay (iPhone/iPad):</strong><br/>Desliza hacia abajo el Centro de Control en tu dispositivo Apple y toca el ícono de <em>Duplicar pantalla (AirPlay)</em>.</p>
-                                </div>
-                                <button onClick={() => { setShowSmartViewModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.5)]">Entendido</button>
-                            </div>
-                        </div>
-                    )}
-
-                    {showQrModal && (
-                        <div className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in">
-                            <div className="glass-panel rounded-3xl p-6 max-w-xs w-full text-center relative shadow-2xl space-y-4 animate-scale-in">
-                                <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="absolute top-4 right-4 text-slate-400 hover:text-white p-1.5 rounded-full bg-black/40"><Icon name="x" size={18}/></button>
-                                <div className="p-3 bg-cyan-500/10 rounded-2xl border border-cyan-500/30 inline-block"><span className="text-xs font-black uppercase text-cyan-400 tracking-widest">Comunidad Boxplaytv</span></div>
-                                <div className="bg-white p-3 rounded-2xl shadow-inner flex justify-center items-center">
-                                    <img src={QR_IMAGE_URL} alt="Boxplaytv QR Code" className="w-40 h-40 object-contain" onError={(e)=>{e.target.style.display='none';}} />
-                                </div>
-                                <div>
-                                    <h3 className="font-extrabold text-base text-white">BOXPLAY<span className="text-cyan-400">TV</span></h3>
-                                    <p className="text-xs text-slate-400 mt-1 leading-relaxed">Únete al grupo oficial de WhatsApp para estar al día con los estrenos.</p>
-                                </div>
-                                <a href={WHATSAPP_GROUP_URL} target="_blank" rel="noopener noreferrer" className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-3 rounded-xl font-bold text-xs transition-colors shadow-[0_0_20px_rgba(16,185,129,0.5)] flex items-center justify-center gap-2"><span>Unirse al Grupo de WhatsApp</span></a>
-                                <button onClick={() => { setShowQrModal(false); window.history.pushState({ appState: 'main', activeTab }, ''); }} className="w-full bg-cyan-600 text-white py-2.5 rounded-xl font-bold text-xs hover:bg-cyan-500 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.4)]">Cerrar</button>
-                            </div>
-                        </div>
-                    )}
-
                     {showInstallGuide && <div className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
                         <div role="dialog" aria-modal="true" aria-labelledby="install-guide-title" style={{ maxHeight: '90dvh', overflowY: 'auto' }} className="glass-panel rounded-3xl p-6 max-w-sm w-full text-center relative shadow-2xl space-y-4">
                             <div className="p-3 bg-cyan-500/20 rounded-2xl text-cyan-400 inline-block"><Icon name="download" size={24}/></div>
                             <h3 id="install-guide-title" className="text-lg font-bold text-white">Agregar Box Play TV</h3>
-                            <p className="text-sm text-slate-300">Ten un acceso directo en la pantalla de inicio. Tu teléfono te pedirá confirmar.</p>
+                            <p className="text-sm text-slate-300">Crea un acceso en tu dispositivo. El navegador te pedirá confirmar.</p>
                             <ol className="text-sm text-slate-200 space-y-3 text-left bg-black/40 p-4 rounded-2xl border border-slate-800 list-decimal list-inside">
                                 {isIOS ? <>
                                     <li>Abre Box Play TV en Safari.</li>
                                     <li>Toca Compartir y busca «Agregar a pantalla de inicio».</li>
                                     <li>Confirma con «Agregar».</li>
+                                </> : !/Android/i.test(navigator.userAgent) ? <>
+                                    <li>Abre Box Play TV en Chrome o Edge.</li>
+                                    <li>Busca el icono de instalación en la barra de direcciones o la opción «Instalar» en el menú del navegador.</li>
+                                    <li>Confirma la instalación. Si no está disponible, guarda la página en Favoritos.</li>
                                 </> : <>
                                     <li>Abre Box Play TV en Chrome o en un navegador compatible.</li>
                                     <li>Abre el menú (⋮) y selecciona «Instalar aplicación» o «Agregar a pantalla de inicio».</li>
                                     <li>Confirma la instalación.</li>
                                 </>}
                             </ol>
-                            <p className="text-xs text-slate-400">Si abriste el enlace desde WhatsApp, ábrelo primero en el navegador. La reproducción requiere Internet.</p>
+                            <p className="text-xs text-slate-400">Si abriste el enlace desde otra aplicación, ábrelo primero en el navegador. La reproducción requiere Internet.</p>
                             <button onClick={() => setShowInstallGuide(false)} className="w-full bg-cyan-600 text-white py-3 rounded-xl font-bold text-sm">Entendido</button>
                         </div>
                     </div>}
