@@ -1,5 +1,428 @@
 [
   {
+    "titulo": "La ambición de los Savage",
+    "tituloOriginal": "Savage House",
+    "descripcion": "En la Inglaterra del siglo XVIII, durante el brote de viruela y el levantamiento jacobita, Sir Chauncey y Lady Savage buscan una vida mejor entre la irónica decadencia y el derramamiento de sangre.",
+    "imagen": "https://image.tmdb.org/t/p/w780/nZobH7JvGEZj8gaauVHRPU2JHI3.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/9ZzJxEg9zyyGIZx3eplHojYsZ5k.jpg",
+    "urlDrive": "https://drive.google.com/file/d/18tPhiCn39HSlDvXGH33FRCx6MjfhH4cg/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-06-05",
+    "rating": "7.0",
+    "votos": 52,
+    "runtime": "1h 54min",
+    "genres": [
+      "Comedia",
+      "Drama"
+    ],
+    "generosTexto": "Comedia, Drama",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "Peter Glanz",
+    "guionistas": "Peter Glanz",
+    "reparto": [
+      {
+        "nombre": "Richard E. Grant",
+        "personaje": "Sir Chauncey Savage",
+        "foto": "https://image.tmdb.org/t/p/w185/92oaBntIXhndCxUXaGywUyILIIE.jpg"
+      },
+      {
+        "nombre": "Claire Foy",
+        "personaje": "Lady Savage",
+        "foto": "https://image.tmdb.org/t/p/w185/pI1lOswQWZRhc8TKu0MESulw9uF.jpg"
+      },
+      {
+        "nombre": "Jack Farthing",
+        "personaje": "Reginald Halifax",
+        "foto": "https://image.tmdb.org/t/p/w185/ta12nj6wG6vEUBG46oEWTHIQJBN.jpg"
+      },
+      {
+        "nombre": "Bel Powley",
+        "personaje": "Dorothy Neville",
+        "foto": "https://image.tmdb.org/t/p/w185/6u8u1eWJ0hZSNFIaPp0QfzMKgL1.jpg"
+      },
+      {
+        "nombre": "Kíla Lord Cassidy",
+        "personaje": "Fanny Savage",
+        "foto": "https://image.tmdb.org/t/p/w185/7vUPASAuPkgfXzS9DQhOo9uTLJc.jpg"
+      },
+      {
+        "nombre": "Richard McCabe",
+        "personaje": "Mr. Bennett",
+        "foto": "https://image.tmdb.org/t/p/w185/qhQbGDqm5W8frysaKJeNwJOkL1M.jpg"
+      },
+      {
+        "nombre": "Vicki Pepperdine",
+        "personaje": "Mrs. Bennett",
+        "foto": "https://image.tmdb.org/t/p/w185/yjB62bE4jH1KtAKDMjlicd27Em2.jpg"
+      },
+      {
+        "nombre": "Pip Torrens",
+        "personaje": "Mr. Black",
+        "foto": "https://image.tmdb.org/t/p/w185/1n7pzFfT6jDHe8kc6I0AEfRryhz.jpg"
+      },
+      {
+        "nombre": "Robert Bathurst",
+        "personaje": "The Narrator (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/7Y5uOaVJEyJsDksXYMwjsanzXj8.jpg"
+      },
+      {
+        "nombre": "Tony Way",
+        "personaje": "James Darby",
+        "foto": "https://image.tmdb.org/t/p/w185/u48ePSGsP1ww2VmPgNXgog3IM83.jpg"
+      },
+      {
+        "nombre": "Tom Godwin",
+        "personaje": "Leslie / Horace",
+        "foto": "https://image.tmdb.org/t/p/w185/qWEElzB8xpnu3Os0OZwv1KIztLt.jpg"
+      },
+      {
+        "nombre": "Roger Ashton-Griffiths",
+        "personaje": "Dr. Hemmings",
+        "foto": "https://image.tmdb.org/t/p/w185/dl5Otj3C7tQVrPJvTWh9Iei1Ofy.jpg"
+      }
+    ],
+    "pais": "United Kingdom, Canada, United States of America",
+    "idioma": "en",
+    "productoras": "Record Player Films, Deluge Pictures, Moon7, Valmont Productions, Calculus Media",
+    "presupuesto": 0,
+    "recaudacion": 564513,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "dark comedy, 18th century",
+    "similares": [
+      {
+        "titulo": "On Becoming a Guinea Fowl",
+        "poster": "https://image.tmdb.org/t/p/w342/6lMOpD8XVLKaB5uCsJXt1Fo7XNh.jpg",
+        "year": "2024",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "The Middle Man",
+        "poster": "https://image.tmdb.org/t/p/w342/lp0wpfAih1g4yUB78x0fVvzAJzu.jpg",
+        "year": "2021",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Suburbia",
+        "poster": "https://image.tmdb.org/t/p/w342/7PdRbG09K9JHYyOwwCSn3OdJb0N.jpg",
+        "year": "1997",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Enredos y mentiras",
+        "poster": "https://image.tmdb.org/t/p/w342/p7RVsyi67S95RyNJjX99E1MaOsA.jpg",
+        "year": "2017",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Mi vecino el asesino",
+        "poster": "https://image.tmdb.org/t/p/w342/6PhTg9rSa5ciZgDPgDP3lpR0Pxs.jpg",
+        "year": "2012",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "La leyenda de Barney Thomson",
+        "poster": "https://image.tmdb.org/t/p/w342/dPx6UpKJDX2le9Ucd8f8KvVGyR0.jpg",
+        "year": "2015",
+        "rating": "6.1"
+      }
+    ],
+    "tmdbId": 1245859,
+    "tmdbType": "movie",
+    "runtimeMin": 114,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Sultana",
+    "tituloOriginal": "Sultana",
+    "descripcion": "Meral, la reina indiscutible del club Sultana de Estambul, acoge bajo su protección a Anna, una bailarina con mucho talento. Pronto se da cuenta de que ha creado una poderosa rival que podría ocupar su lugar. Entonces comienza una despiadada lucha por el poder entre ambas mujeres.",
+    "imagen": "https://image.tmdb.org/t/p/w780/uE1TWEFVQ4OeWNDV0Wit5eEJCOJ.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/lDHfyYkTIWCWWdbHkLZwRXQx3Ul.jpg",
+    "urlDrive": "https://drive.google.com/file/d/18tPhiCn39HSlDvXGH33FRCx6MjfhH4cg/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-04-17",
+    "rating": "8.3",
+    "votos": 17,
+    "runtime": "2h 0min",
+    "genres": [
+      "Drama",
+      "Música"
+    ],
+    "generosTexto": "Drama, Música",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Ali Kemal Güven",
+    "guionistas": "Erdi Işık, Erdi Işık",
+    "reparto": [
+      {
+        "nombre": "Tuba Büyüküstün",
+        "personaje": "Meral",
+        "foto": "https://image.tmdb.org/t/p/w185/14QRLZqXAZglMB7Z25uXg6IG3LG.jpg"
+      },
+      {
+        "nombre": "Derya Pınar Ak",
+        "personaje": "Anna",
+        "foto": "https://image.tmdb.org/t/p/w185/9PxHCK6FifopvrEgsAnwOrRcxs5.jpg"
+      },
+      {
+        "nombre": "Seray Kaya",
+        "personaje": "Tülay",
+        "foto": "https://image.tmdb.org/t/p/w185/vonxi1y7pUDcbeOantOqYrBSizx.jpg"
+      },
+      {
+        "nombre": "Begüm Akkaya",
+        "personaje": "Gülistan",
+        "foto": "https://image.tmdb.org/t/p/w185/5JqzpYhyio17y0ievgDGEDiacBg.jpg"
+      },
+      {
+        "nombre": "Rojbin Erden",
+        "personaje": "Fahriye",
+        "foto": "https://image.tmdb.org/t/p/w185/nRTrcE1UHlPlaztsGvrawMHUN4Q.jpg"
+      },
+      {
+        "nombre": "Şirin Sultan Saldamlı",
+        "personaje": "Nezo",
+        "foto": "https://image.tmdb.org/t/p/w185/fHCuvVh6SGBW2VMh5gTMCUsIbxL.jpg"
+      },
+      {
+        "nombre": "Itır Esen",
+        "personaje": "Selin",
+        "foto": "https://image.tmdb.org/t/p/w185/g6nYeWkmL4bI0fxRNYxcX1QArm7.jpg"
+      },
+      {
+        "nombre": "Taro Emir Tekin",
+        "personaje": "Arif",
+        "foto": "https://image.tmdb.org/t/p/w185/jzq1kYMT7YZSRVbpqQTB3fcL9fW.jpg"
+      },
+      {
+        "nombre": "Hakan Kurtaş",
+        "personaje": "Cemal",
+        "foto": "https://image.tmdb.org/t/p/w185/bPqpPuQddPLqMNxbSwVYl4nc5O2.jpg"
+      },
+      {
+        "nombre": "Nur Sürer",
+        "personaje": "Asuman",
+        "foto": "https://image.tmdb.org/t/p/w185/dHTgCwwmGyvJK5LyCpFtzYpap2d.jpg"
+      },
+      {
+        "nombre": "Çağlar Çorumlu",
+        "personaje": "Bekir",
+        "foto": "https://image.tmdb.org/t/p/w185/xv15eYrkRvGvIFyvxIW4544XMAq.jpg"
+      },
+      {
+        "nombre": "Melike Güner",
+        "personaje": "Leyla",
+        "foto": "https://image.tmdb.org/t/p/w185/8dX00GPMBNYmAXGnrhRp7ocA9Yv.jpg"
+      }
+    ],
+    "pais": "Turkey",
+    "idioma": "tr",
+    "productoras": "Rodi Medya, Saros Film",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "El destino de Grace",
+        "poster": "https://image.tmdb.org/t/p/w342/1woGP3DCEyfPuifRPSkrwDanOQm.jpg",
+        "year": "2013",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "El violín de mi padre",
+        "poster": "https://image.tmdb.org/t/p/w342/aOnuOKJsD0aianDG9UJ5DzUrWNl.jpg",
+        "year": "2022",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Sinfonía en soledad: un retrato de Glenn Gould",
+        "poster": "https://image.tmdb.org/t/p/w342/3GTmkUpCb1uL7psLYqAHyIyld51.jpg",
+        "year": "1993",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Beyond the Sea",
+        "poster": "https://image.tmdb.org/t/p/w342/rSfstKrX8GtmPpcOjpmhmIdNKHx.jpg",
+        "year": "2004",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Rubia, sexy, alta",
+        "poster": "https://image.tmdb.org/t/p/w342/3FF9YFuVvh5t393NxfME47wxqrZ.jpg",
+        "year": "2012",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Muerte de un ángel",
+        "poster": "https://image.tmdb.org/t/p/w342/aC3BRsguTX4Dg6Sa2nMJq0x1zqw.jpg",
+        "year": "2001",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 1656489,
+    "tmdbType": "movie",
+    "runtimeMin": 120,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Stop! That! Train!",
+    "tituloOriginal": "Stop! That! Train!",
+    "descripcion": "Dos amigas azafatas de tren cambian un aburrido ferrocarril por el lujoso Glamazonian Express. Durante una gran tormenta, deben trabajar con la estirada tripulación de primera clase y el presidente Gagwell para evitar un desastre en Los Ángeles.",
+    "imagen": "https://image.tmdb.org/t/p/w780/wPvh5kZyn1yQVq6Nqhio27JZ8Hc.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/erNAhcSYrDMXQqAU1TVthYyFA71.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1rqets1UMhoS4Y_FUSeC1-Og31Gwge4aJ/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-06-12",
+    "rating": "4.9",
+    "votos": 59,
+    "runtime": "1h 30min",
+    "genres": [
+      "Acción",
+      "Comedia"
+    ],
+    "generosTexto": "Acción, Comedia",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Adam Shankman",
+    "guionistas": "Connor Wright, Christina Friel",
+    "reparto": [
+      {
+        "nombre": "RuPaul",
+        "personaje": "President Gagwell",
+        "foto": "https://image.tmdb.org/t/p/w185/px8XeYcAzKzAto4MFYfs6kBSEWF.jpg"
+      },
+      {
+        "nombre": "Jujubee",
+        "personaje": "DeeDee",
+        "foto": "https://image.tmdb.org/t/p/w185/kFXXqCaggZh1q3xslpKb3RXeGws.jpg"
+      },
+      {
+        "nombre": "Ginger Minj",
+        "personaje": "Tess",
+        "foto": "https://image.tmdb.org/t/p/w185/8yjbKH7rlB8Tot9mcOUnG2b6pan.jpg"
+      },
+      {
+        "nombre": "Brooke Lynn Hytes",
+        "personaje": "Amber",
+        "foto": "https://image.tmdb.org/t/p/w185/KR9wsbvgZ3w3lBWbtkrqA2vSVo.jpg"
+      },
+      {
+        "nombre": "Marcia Marcia Marcia",
+        "personaje": "Alli",
+        "foto": "https://image.tmdb.org/t/p/w185/6TWaO1jkjauhF0Z8SKdZoCdoEvq.jpg"
+      },
+      {
+        "nombre": "Symone",
+        "personaje": "Ayshleiygh",
+        "foto": "https://image.tmdb.org/t/p/w185/dByHEkuTr4aJGLA11pbexF4n0A6.jpg"
+      },
+      {
+        "nombre": "Latrice Royale",
+        "personaje": "Barbra",
+        "foto": "https://image.tmdb.org/t/p/w185/j1Wgqla14xUk4NmQXtKluxLDOgv.jpg"
+      },
+      {
+        "nombre": "Rachel Bloom",
+        "personaje": "Donna Dusk",
+        "foto": "https://image.tmdb.org/t/p/w185/hfnU70X7QOdiURFEd1hM7gQIe6J.jpg"
+      },
+      {
+        "nombre": "Angeria Paris VanMicheals",
+        "personaje": "Amelia",
+        "foto": "https://image.tmdb.org/t/p/w185/io1YLmFnyRuaiGGegFDqKqXyTF1.jpg"
+      },
+      {
+        "nombre": "Brian Jordan Alvarez",
+        "personaje": "Cal",
+        "foto": "https://image.tmdb.org/t/p/w185/fKOHVfG2TCmzcRdJhjkUgL2LJcz.jpg"
+      },
+      {
+        "nombre": "Chris Parnell",
+        "personaje": "Conductor Davenport",
+        "foto": "https://image.tmdb.org/t/p/w185/9Ga03Y9TVIqTZJ4I9rfL740ibgJ.jpg"
+      },
+      {
+        "nombre": "Guy Branum",
+        "personaje": "Train Traffic Controller",
+        "foto": "https://image.tmdb.org/t/p/w185/AfZvkYROxMDqyNxGGzdHfSZsceO.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "World of Wonder, Unapologetic Projects",
+    "presupuesto": 20000000,
+    "recaudacion": 3992733,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "post-traumatic stress disorder (ptsd), drag queen, stewardess, female friendship, train, campy, lgbt, runaway train, disaster movie, black lgbt, action comedy, best friends, female president, gay interest, musical number",
+    "similares": [
+      {
+        "titulo": "Doble amenaza",
+        "poster": "https://image.tmdb.org/t/p/w342/vJHl8GZPzdKyz4nSU5HQB9V43ZY.jpg",
+        "year": "2023",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Theater Camp",
+        "poster": "https://image.tmdb.org/t/p/w342/o8zGyEQppJY8cxH7O6NY271T24v.jpg",
+        "year": "2023",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Connie y Carla",
+        "poster": "https://image.tmdb.org/t/p/w342/mR0K8S5s2c5uxpcevnVam17HFrh.jpg",
+        "year": "2004",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Chris Rock: Kill the Messenger",
+        "poster": "https://image.tmdb.org/t/p/w342/cIuIOVRl558GziBkX3GbpsVGaik.jpg",
+        "year": "2008",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "La Liga de la Justicia vs Los Cinco Fatales",
+        "poster": "https://image.tmdb.org/t/p/w342/sw4s1RnhIYa2laxBZoOZ25tZFV9.jpg",
+        "year": "2019",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Undercover Brother (El hermano secreto)",
+        "poster": "https://image.tmdb.org/t/p/w342/zxf292SIQ53opWtRSQtUbi8vLJC.jpg",
+        "year": "2002",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 1541560,
+    "tmdbType": "movie",
+    "runtimeMin": 90,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Digger",
     "tituloOriginal": "Digger",
     "descripcion": "El hombre más poderoso del mundo se embarca en una misión frenética para demostrar que es el salvador de la humanidad antes de que el desastre que ha desencadenado lo destruya todo.",
