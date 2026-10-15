@@ -1,131 +1,130 @@
 [
   {
-    "tmdbId": 1081003,
+    "tmdbId": 1153576,
     "tmdbType": "movie",
-    "tituloOriginal": "Supergirl",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/heZQmyNvkH236ha2M3JckdUQQqb.jpg",
+    "tituloOriginal": "Street Fighter",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/zDE9hd1SG9695YncbZGjSf7Z9Jk.jpg",
     "year": "2026",
-    "fechaEstreno": "2026-06-24",
+    "fechaEstreno": "2026-10-13",
     "rating": "6.7",
-    "votos": 2560,
-    "runtime": "1h 48min",
-    "runtimeMin": 108,
+    "votos": 14,
+    "runtime": "2h 5min",
+    "runtimeMin": 125,
     "genres": [
       "Acción",
-      "Aventura",
-      "Ciencia ficción"
+      "Fantasía"
     ],
-    "generosTexto": "Acción, Aventura, Ciencia ficción",
-    "clasificacion": "12",
-    "tagline": "Verdad. Justicia. Lo que tú digas.",
-    "director": "Craig Gillespie",
-    "guionistas": "Ana Nogueira",
+    "generosTexto": "Acción, Fantasía",
+    "clasificacion": "16",
+    "tagline": "Listos. Preparados. ¡A luchar!",
+    "director": "Kitao Sakurai",
+    "guionistas": "Dalan Musson, Gary Dauberman, T.J. Fixman",
     "reparto": [
       {
-        "nombre": "Milly Alcock",
-        "personaje": "Supergirl",
-        "foto": "https://image.tmdb.org/t/p/w185/3xrkzYFRegwgvR1HVL8IgjF1tBs.jpg"
+        "nombre": "Andrew Koji",
+        "personaje": "Ryu",
+        "foto": "https://image.tmdb.org/t/p/w185/oU53nWLQ6wFHzERwSi1fD53LxZB.jpg"
       },
       {
-        "nombre": "Eve Ridley",
-        "personaje": "Ruthye",
-        "foto": "https://image.tmdb.org/t/p/w185/vmEfK4PO6rUvTJnN8bbUZrSDgII.jpg"
+        "nombre": "Noah Centineo",
+        "personaje": "Ken Masters",
+        "foto": "https://image.tmdb.org/t/p/w185/p1bcst401RyxfDGykx2iQLI7CV5.jpg"
       },
       {
-        "nombre": "Matthias Schoenaerts",
-        "personaje": "Krem",
-        "foto": "https://image.tmdb.org/t/p/w185/9mRssCj4si6f6IF3nJ2RB5w0J7g.jpg"
+        "nombre": "Callina Liang",
+        "personaje": "Chun-Li",
+        "foto": "https://image.tmdb.org/t/p/w185/yiajT9WAsvuxF9uNJrkSuzVv3On.jpg"
       },
       {
-        "nombre": "Jason Momoa",
-        "personaje": "Lobo",
-        "foto": "https://image.tmdb.org/t/p/w185/3troAR6QbSb6nUFMDu61YCCWLKa.jpg"
+        "nombre": "Joe Anoa'i",
+        "personaje": "Akuma",
+        "foto": "https://image.tmdb.org/t/p/w185/6BKc77eAUBQdL9MmgBorBc4SMdE.jpg"
       },
       {
-        "nombre": "David Krumholtz",
-        "personaje": "Zor-El",
-        "foto": "https://image.tmdb.org/t/p/w185/2vaimzfyPQVxZGHbQS5M3z3tZw0.jpg"
+        "nombre": "David Dastmalchian",
+        "personaje": "M. Bison",
+        "foto": "https://image.tmdb.org/t/p/w185/eLafwcpL64CqzwjjSgKpO7Rv4ae.jpg"
       },
       {
-        "nombre": "Emily Beecham",
-        "personaje": "Alura In-Ze",
-        "foto": "https://image.tmdb.org/t/p/w185/u3Jgk4v7L23lKRQ9qxGJYmRkY4m.jpg"
+        "nombre": "Cody Rhodes",
+        "personaje": "Guile",
+        "foto": "https://image.tmdb.org/t/p/w185/m9hfLcsQuESprcb7dJUj5lQLWCv.jpg"
       },
       {
-        "nombre": "David Corenswet",
-        "personaje": "Superman",
-        "foto": "https://image.tmdb.org/t/p/w185/yoQxpUPt3le9zY4Sab3g2ANy4CE.jpg"
+        "nombre": "Andrew Schulz",
+        "personaje": "Dan Hibiki",
+        "foto": "https://image.tmdb.org/t/p/w185/fdeYq1EraYvlYM3VmGXjIaSGoTz.jpg"
       },
       {
-        "nombre": "Kadiff Kirwan",
-        "personaje": "Bomar Vran",
-        "foto": "https://image.tmdb.org/t/p/w185/dSCcuypWkQzspAQQq4AuejMzYfo.jpg"
+        "nombre": "Eric Andre",
+        "personaje": "Don Sauvage",
+        "foto": "https://image.tmdb.org/t/p/w185/e9XlcFnZQiBSQ1vISQVyTOrkIaq.jpg"
       },
       {
-        "nombre": "Thalissa Teixeira",
-        "personaje": "Mareck Vran",
-        "foto": "https://image.tmdb.org/t/p/w185/jugWj8dbgGak8R2kCpwRsrh4e7H.jpg"
+        "nombre": "विद्युत जामवाल",
+        "personaje": "Dhalsim",
+        "foto": "https://image.tmdb.org/t/p/w185/9iBEIKvn1GGzymF3kVPBHtaMkWy.jpg"
       },
       {
-        "nombre": "Ferdinand Kingsley",
-        "personaje": "Elias Knoll",
-        "foto": "https://image.tmdb.org/t/p/w185/arGWhGhfBl8CvNuUoKkUmfrDG0b.jpg"
+        "nombre": "Mel Jarnson",
+        "personaje": "Cammy",
+        "foto": "https://image.tmdb.org/t/p/w185/8m0gnlADmLXkMkvSzDR2OhBfsCB.jpg"
       },
       {
-        "nombre": "Emily Piggford",
-        "personaje": "Delilah Knoll",
-        "foto": "https://image.tmdb.org/t/p/w185/ruijvaNNXzGXqGphQXsoHts1Ovc.jpg"
+        "nombre": "Orville Peck",
+        "personaje": "Vega",
+        "foto": "https://image.tmdb.org/t/p/w185/oW989m8J8gWGCBDkjplkqQoMob6.jpg"
       },
       {
-        "nombre": "Diarmaid Murtagh",
-        "personaje": "Drom Baxton",
-        "foto": "https://image.tmdb.org/t/p/w185/QHWy0m8t0JrxSwlxcWZrawfUdi.jpg"
+        "nombre": "Olivier Richters",
+        "personaje": "Zangief",
+        "foto": "https://image.tmdb.org/t/p/w185/8Zz5WYE1Muc3AX9daxCxgNTRE5.jpg"
       }
     ],
-    "pais": "United States of America",
+    "pais": "Japan, United States of America",
     "idioma": "en",
-    "productoras": "DC Studios, Troll Court Entertainment, The Safran Company, Domain Entertainment",
-    "presupuesto": 175000000,
-    "recaudacion": 126366532,
-    "trailerUrl": "https://www.youtube.com/watch?v=9rZLuGQrrjs",
+    "productoras": "Capcom, Legendary Pictures",
+    "presupuesto": 82000000,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=-MJAfIMUQ5s",
     "coleccion": "",
-    "keywords": "galaxy, hero, superhero, villain, based on comic, space, female protagonist, dog, super power, heroine, reboot, solitude, supervillain, rescue dog, dc universe (dcu)",
+    "keywords": "martial arts, based on video game, martial arts tournament, wuxia, hand to hand combat, 1990s, battle royale, power, powers",
     "similares": [
       {
-        "titulo": "Linterna Verde: Teman a mi poder",
-        "poster": "https://image.tmdb.org/t/p/w342/jkXGB3K0m0VgqHjO7u5rWjDzYca.jpg",
-        "year": "2022",
-        "rating": "6.8"
-      },
-      {
-        "titulo": "Superman: El hombre del mañana",
-        "poster": "https://image.tmdb.org/t/p/w342/eJqzdZ4CBmPz4pkp8IyRJ4EIn2k.jpg",
-        "year": "2020",
-        "rating": "7.0"
-      },
-      {
-        "titulo": "El hombre de acero",
-        "poster": "https://image.tmdb.org/t/p/w342/5JW44QGgpEWx4aWXM0uVSi2xtrI.jpg",
-        "year": "2013",
+        "titulo": "El reino prohibido",
+        "poster": "https://image.tmdb.org/t/p/w342/2Cl8oOuNiBPJGNYZzbyRR6BDhKd.jpg",
+        "year": "2008",
         "rating": "6.7"
       },
       {
-        "titulo": "Superman Returns",
-        "poster": "https://image.tmdb.org/t/p/w342/rtRlig4q4kUO1AzN7o7dzRIqzxI.jpg",
-        "year": "2006",
-        "rating": "5.8"
+        "titulo": "Gladiadores",
+        "poster": "https://image.tmdb.org/t/p/w342/mFslGVbAf1jHK5a2PsPrSQkuOt6.jpg",
+        "year": "2025",
+        "rating": "7.7"
       },
       {
-        "titulo": "Superman",
-        "poster": "https://image.tmdb.org/t/p/w342/fvUJb08yatV2b3NUSwuYdQKYoFd.jpg",
-        "year": "2025",
+        "titulo": "Tigre y dragón 2: La espada del destino",
+        "poster": "https://image.tmdb.org/t/p/w342/6DkTKD3LPXD6QpWGNy87jhIX5fB.jpg",
+        "year": "2016",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Los Juegos del Hambre: Balada de pájaros cantores y serpientes",
+        "poster": "https://image.tmdb.org/t/p/w342/2vIK81ikjvdewSLmrwIg7AMoJIv.jpg",
+        "year": "2023",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Alita: Ángel de combate",
+        "poster": "https://image.tmdb.org/t/p/w342/gn2OqceeLGLrPy5Abz2dceB0po8.jpg",
+        "year": "2019",
         "rating": "7.3"
       },
       {
-        "titulo": "La Liga de la Justicia: El trono de Atlantis",
-        "poster": "https://image.tmdb.org/t/p/w342/hKHWoabqFg7QVS4Xqu5Q84PmuAo.jpg",
-        "year": "2015",
-        "rating": "7.0"
+        "titulo": "La furia de Chicago",
+        "poster": "https://image.tmdb.org/t/p/w342/oQGcfsgCHmYvPMzraisRGjJUhOW.jpg",
+        "year": "1980",
+        "rating": "5.9"
       }
     ],
     "homepage": "",
@@ -133,11 +132,11 @@
     "numeroTemporadas": 0,
     "numeroEpisodios": 0,
     "temporadasTmdb": [],
-    "title": "Supergirl",
-    "releaseDate": "2026-06-24",
-    "genre": "Acción, Aventura, Ciencia ficción",
-    "synopsis": "Kara Zor-El es una heroína errabunda que decide aliarse a regañadientes con un compañero improbable para comenzar un viaje épico e interestelar de venganza y justicia, en el cual deberá decidir si su fuerza sirve para destruir o para proteger.",
-    "image": "https://image.tmdb.org/t/p/w780/Ao9ucdnMaBhNt528Z5S4Wxovgnf.jpg",
+    "title": "Street Fighter",
+    "releaseDate": "2026-10-13",
+    "genre": "Acción, Fantasía",
+    "synopsis": "En 1993, los distanciados luchadores callejeros Ryu y Ken Masters se ven arrastrados de nuevo al combate cuando la misteriosa Chun-Li los recluta para el próximo Torneo World Warrior: un enfrentamiento brutal de puños, destino y furia. Sin embargo, tras esta gran batalla se esconde una conspiración mortal que los obliga a enfrentarse tanto entre sí como a los demonios de su pasado. Y si no lo logran... ¡será el fin de la partida!",
+    "image": "https://image.tmdb.org/t/p/w780/2kdEEUkbkJe08kTDMCUbBrZ71Aw.jpg",
     "availability": "Costa Rica (Estreno)",
     "score": "6.7"
   },
