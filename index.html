@@ -905,7 +905,7 @@
             );
         };
 
-        const DevicesSection = () => {
+        const DevicesSection = ({ onInstall, installed, installing }) => {
             const guides = [
                 { title: 'Android', text: 'Crea un acceso como aplicación desde el navegador.', steps: ['Abre Box Play TV en Chrome.', 'En Box Play TV, abre «Más» y pulsa el botón «Agregar a pantalla de inicio». Si no aparece la solicitud, abre el menú ⋮ de Chrome y busca «Instalar aplicación» o «Agregar a pantalla de inicio».', 'Confirma la instalación y abre Box Play TV desde su icono.'] },
                 { title: 'iPhone y iPad', text: 'Añade la aplicación a tu pantalla de inicio con Safari.', steps: ['Abre Box Play TV en Safari.', 'Pulsa Compartir y selecciona «Agregar a pantalla de inicio».', 'Confirma con «Agregar».'] },
@@ -921,6 +921,11 @@
                     <img src="./icons/web-qr.png" alt="Código QR para abrir Box Play TV" width="180" height="180" className="bg-white rounded-xl p-2" />
                     <div className="space-y-3 min-w-0"><h2 className="font-bold text-white">Abrir la página web con QR</h2><p className="text-sm text-slate-300">Escanea el QR con la cámara del móvil para abrir directamente la página web de Box Play TV en el navegador.</p><a href="https://boxplaytv.com/" className="block text-cyan-300 text-sm break-all">boxplaytv.com</a>
 </div>
+                </div>
+                <div className="box-phone-only glass-panel rounded-2xl p-5 space-y-3">
+                    <h2 className="font-bold text-cyan-300">Acceso directo en tu móvil</h2>
+                    <p className="text-sm text-slate-300">Agrega Box Play TV a la pantalla de inicio. Si tu navegador necesita pasos adicionales, te mostraremos las instrucciones.</p>
+                    <button onClick={onInstall} disabled={installed || installing} className="w-full px-4 py-3 rounded-xl bg-cyan-600 text-white font-bold text-sm disabled:opacity-60">{installed ? 'Aplicación agregada' : installing ? 'Abriendo instalación…' : 'Agregar a pantalla de inicio'}</button>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">{guides.map(guide => <article key={guide.title} className="glass-panel rounded-2xl p-5 space-y-3"><h2 className="font-bold text-cyan-300">{guide.title}</h2><p className="text-sm text-slate-300">{guide.text}</p>{guide.code && <p className="text-sm text-slate-300">Código Downloader: <strong className="text-cyan-300 text-xl">{guide.code}</strong></p>}<details><summary className="cursor-pointer text-sm font-bold text-white py-2">Ver tutorial paso a paso</summary><ol className="list-decimal pl-5 space-y-3 text-sm text-slate-300 mt-3">{guide.steps.map(step => <li key={step}>{step}</li>)}</ol></details></article>)}</div>
             </section>;
@@ -2495,7 +2500,7 @@
                                 )}
                             </div>
                         ) : activeTab === 'devices' ? (
-                            <DevicesSection />
+                            <DevicesSection onInstall={handleInstallApp} installed={isAppInstalled} installing={installingApp} />
                         ) : activeTab === 'payments' ? (
                             <PaymentsSection emailUsuario={emailUsuario} isSubscriberActive={isSubscriberActive} expiresAt={accessExpiresAt} onVerify={() => setShowPaywallModal(true)} />
                         ) : (

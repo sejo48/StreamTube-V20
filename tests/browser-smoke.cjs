@@ -187,18 +187,18 @@ const server = http.createServer((req, res) => {
         assert(await qr.evaluate(image => image.naturalWidth > 100));
         assert.equal(await phone.locator('a[href*="chat.whatsapp.com"]').count(), 0);
         assert(await phone.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
-        await navigation.getByRole('button', { name: 'Más', exact: true }).click();
-        await phone.getByRole('button', { name: 'Agregar a pantalla de inicio', exact: true }).click();
+        await phone.locator('main').getByRole('button', { name: 'Agregar a pantalla de inicio', exact: true }).click();
         assert.equal(await phone.evaluate(() => window.testPromptCalls), 1);
         assert.equal(await phone.evaluate(() => window.BoxPlayInstall.prompt), null);
         await navigation.getByRole('button', { name: 'Más', exact: true }).click();
-        await phone.getByRole('button', { name: 'Agregar a pantalla de inicio', exact: true }).click();
+        await phone.locator('.box-more-panel').getByRole('button', { name: 'Agregar a pantalla de inicio', exact: true }).click();
         const installGuide = phone.getByRole('dialog', { name: 'Agregar Box Play TV' });
         await installGuide.waitFor();
         await installGuide.getByRole('button', { name: 'Entendido' }).click();
         await phone.evaluate(() => window.dispatchEvent(new Event('appinstalled')));
         await navigation.getByRole('button', { name: 'Más', exact: true }).click();
-        assert(await phone.getByRole('button', { name: 'Aplicación agregada', exact: true }).isDisabled());
+        assert(await phone.locator('.box-more-panel').getByRole('button', { name: 'Aplicación agregada', exact: true }).isDisabled());
+        assert(await phone.locator('main').getByRole('button', { name: 'Aplicación agregada', exact: true }).isDisabled());
         const manifest = await phone.evaluate(async () => (await fetch('./manifest.webmanifest')).json());
         assert.equal(manifest.display, 'standalone');
         for (const icon of manifest.icons) {
