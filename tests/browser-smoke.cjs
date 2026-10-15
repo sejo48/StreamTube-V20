@@ -131,6 +131,22 @@ const server = http.createServer((req, res) => {
         await downloader.locator('summary').click();
         assert(await downloader.getByText('Selecciona «Instalar». Cuando termine, pulsa «Abrir»; después encontrarás Box Play TV en la lista de aplicaciones del televisor.', { exact: true }).isVisible());
         assert.equal(await main.locator('main').getByRole('button', { name: 'Agregar a pantalla de inicio', exact: true }).count(), 0);
+        await main.evaluate(() => {
+            const event = new Event('beforeinstallprompt', { cancelable: true });
+            event.prompt = async () => { window.desktopPromptCalls = (window.desktopPromptCalls || 0) + 1; };
+            event.userChoice = Promise.resolve({ outcome: 'dismissed' });
+            window.dispatchEvent(event);
+        });
+        const windowsInstall = main.getByRole('button', { name: 'Instalar en Windows / PC', exact: true });
+        await windowsInstall.click();
+        assert.equal(await main.evaluate(() => window.desktopPromptCalls), 1);
+        await windowsInstall.click();
+        const desktopGuide = main.getByRole('dialog', { name: 'Agregar Box Play TV' });
+        await desktopGuide.getByText('Abre Box Play TV en Chrome o Edge.', { exact: true }).waitFor();
+        await desktopGuide.getByRole('button', { name: 'Entendido' }).click();
+        await main.evaluate(() => window.dispatchEvent(new Event('appinstalled')));
+        assert(await main.getByRole('button', { name: 'Aplicación instalada', exact: true }).isDisabled());
+        console.log('PASS: Windows install button opens native request, provides fallback and detects installed state');
         console.log('PASS: QR opens the website, Downloader has a separate TV installation tutorial');
         const phone = await context.newPage();
         phone.on('pageerror', error => errors.push('phone: ' + error.message));
@@ -179,6 +195,7 @@ const server = http.createServer((req, res) => {
         await phone.getByRole('button', { name: 'Instalar y dispositivos', exact: true }).click();
         await phone.getByRole('heading', { name: 'Instalar y usar en dispositivos' }).waitFor();
         assert.equal(await phone.locator('main article').count(), 7);
+        assert.equal(await phone.getByRole('button', { name: 'Instalar en Windows / PC', exact: true }).count(), 0);
         await phone.locator('main summary').first().click();
         assert(await phone.getByText('Abre Box Play TV en Chrome.', { exact: true }).isVisible());
         assert.equal(await phone.getByRole('link', { name: 'boxplaytv.com', exact: true }).getAttribute('href'), 'https://boxplaytv.com/');
