@@ -79,7 +79,12 @@ const server = http.createServer((req, res) => {
         await page.getByRole('button',{name:'Pausar radio',exact:true}).click();await status.filter({hasText:'En pausa'}).waitFor();assert.equal(await page.evaluate(()=>window.testRadioEngine.audio),null);
         await page.getByRole('button',{name:'Reproducir radio',exact:true}).click();await status.filter({hasText:'En directo'}).waitFor();
         await page.getByRole('button',{name:'Guardar emisora',exact:true}).click();
+        await page.getByRole('searchbox',{name:'Buscar emisora'}).fill('Jazz');
+        await page.getByRole('combobox',{name:'Filtrar emisoras por grupo'}).selectOption('Global');
         await page.getByRole('button',{name:/^Favoritas/}).click();assert.equal(await page.locator('.radio-station').count(),1);
+        assert.equal(await page.getByRole('searchbox',{name:'Buscar emisora'}).inputValue(),'');
+        assert.equal(await page.getByRole('combobox',{name:'Filtrar emisoras por grupo'}).inputValue(),'all');
+        assert(await page.getByRole('button',{name:'Escuchar Radio Prueba Digital',exact:true}).isVisible());
         await page.getByRole('button',{name:/^Todas/}).click();
         await page.getByRole('searchbox',{name:'Buscar emisora'}).fill('Jazz');assert.equal(await page.locator('.radio-station').count(),1);
         await page.getByRole('searchbox',{name:'Buscar emisora'}).fill('');
@@ -108,6 +113,22 @@ const server = http.createServer((req, res) => {
         await nav.getByRole('button',{name:'Más',exact:true}).click();await page.getByRole('button',{name:'Radio HD',exact:true}).click();
         await status.filter({hasText:'En pausa'}).waitFor();assert.equal(await page.evaluate(()=>window.testRadioEngine.audio),null);
         await page.setViewportSize({width:1440,height:1000});await page.screenshot({path:'/tmp/box-radio-desktop.png',fullPage:true});
+        await page.reload();
+        await page.getByRole('button',{name:'Comenzar Experiencia'}).click();
+        await page.locator('header nav').getByRole('button',{name:'Radio HD',exact:true}).click();
+        await page.getByRole('button',{name:/^Favoritas/}).click();
+        assert.equal(await page.locator('.radio-station').count(),1);
+        await page.getByRole('searchbox',{name:'Buscar emisora'}).fill('no existe esta emisora');
+        await page.getByRole('heading',{name:'Sin coincidencias',exact:true}).waitFor();
+        await page.getByRole('button',{name:'Limpiar filtros',exact:true}).click();
+        assert.equal(await page.getByRole('button',{name:/^Favoritas/}).getAttribute('aria-pressed'),'true');
+        assert.equal(await page.locator('.radio-station').count(),1);
+        await page.getByRole('button',{name:'Quitar de favoritos Radio Prueba Digital',exact:true}).click();
+        await page.getByRole('heading',{name:'Aún no tienes favoritas',exact:true}).waitFor();
+        assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('boxplay_radio_favs')).length),0);
+        await page.getByRole('button',{name:'Explorar emisoras',exact:true}).click();
+        assert.equal(await page.locator('.radio-station').count(),3);
+        console.log('PASS: favorites ignore previous filters, survive reload, can be searched and removed; clearing filters stays in Favorites');
         assert.deepEqual(errors,[]);assert.deepEqual(requestsWithWrites,[]);
         console.log('PASS: radio fits 320/390/430px, leaving releases media immediately, other sections remain silent, returning requires Play');
     } finally {await browser.close();await new Promise(resolve=>server.close(resolve));}
