@@ -5,6 +5,7 @@
     <script src="./catalog.js"></script>
     <script src="./notices.js"></script>
     <script src="./radio-engine.js?v=2026-2"></script>
+    <script src="./radio-favorites.js?v=2026-1"></script>
     <link rel="stylesheet" href="./radio.css?v=2026-2">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -995,12 +996,14 @@
             useEffect(() => { if (volume > 0) setMuted(false); }, [volume]);
             const lastVolume = useRef(volume || .8);
             const groups = [...new Set(stations.map(station => station.group || 'Variedad'))].sort((a,b) => a.localeCompare(b));
-            const list = view === 'favorites' ? radioFavorites : stations;
+            const savedStations = useMemo(() => BoxRadioFavorites.normalize(radioFavorites, stations).items, [radioFavorites, stations]);
+            const list = view === 'favorites' ? savedStations : stations;
             const query = radioFilter.trim().toLocaleLowerCase('es');
             const displayed = list.filter(station => (group === 'all' || (station.group || 'Variedad') === group) && (!query || [station.title, station.group, station.genre].some(value => String(value || '').toLocaleLowerCase('es').includes(query))));
             const move = direction => {
                 if (!displayed.length) return;
-                const index = displayed.findIndex(station => station.id === currentStation?.id);
+                const identity = BoxRadioFavorites.key(currentStation);
+                const index = displayed.findIndex(station => identity && BoxRadioFavorites.key(station) === identity);
                 onPlayStation(displayed[index < 0 ? (direction > 0 ? 0 : displayed.length - 1) : (index + direction + displayed.length) % displayed.length]);
             };
             const playing = radioState.status === 'playing', loading = radioState.status === 'loading';
@@ -1023,12 +1026,13 @@
                     </div>
                     <div className="radio-directory">
                         <div className="radio-directory-heading"><h2>Explora las emisoras</h2><span>{displayed.length} {displayed.length === 1 ? 'señal' : 'señales'}</span></div>
-                        <div className="radio-filters"><div className="radio-views" role="group" aria-label="Lista de emisoras"><button aria-pressed={view === 'all'} onClick={() => changeRadioView('all')} aria-controls="radio-station-results">Todas <span>{stations.length}</span></button><button aria-pressed={view === 'favorites'} onClick={() => changeRadioView('favorites')} aria-controls="radio-station-results">Favoritas <span>{radioFavorites.length}</span></button></div><label className="radio-search"><Icon name="search" size={17}/><input type="search" aria-label="Buscar emisora" placeholder="Nombre, género o país…" value={radioFilter} onChange={event => setRadioFilter(event.target.value)}/></label><label className="radio-group">Grupo<select aria-label="Filtrar emisoras por grupo" value={group} onChange={event => setGroup(event.target.value)}><option value="all">Todos los grupos</option>{groups.map(value => <option key={value}>{value}</option>)}</select></label></div>
+                        <div className="radio-filters"><div className="radio-views" role="group" aria-label="Lista de emisoras"><button aria-pressed={view === 'all'} onClick={() => changeRadioView('all')} aria-controls="radio-station-results">Todas <span>{stations.length}</span></button><button aria-pressed={view === 'favorites'} onClick={() => changeRadioView('favorites')} aria-controls="radio-station-results">Favoritas <span>{savedStations.length}</span></button></div><label className="radio-search"><Icon name="search" size={17}/><input type="search" aria-label="Buscar emisora" placeholder="Nombre, género o país…" value={radioFilter} onChange={event => setRadioFilter(event.target.value)}/></label><label className="radio-group">Grupo<select aria-label="Filtrar emisoras por grupo" value={group} onChange={event => setGroup(event.target.value)}><option value="all">Todos los grupos</option>{groups.map(value => <option key={value}>{value}</option>)}</select></label></div>
                         <div id="radio-station-results" className="radio-stations">{displayed.map(station => {
-                            const selected = currentStation?.id === station.id, saved = isItemFavorite({ ...station, type: 'radio' });
-                            return <article key={station.id || station.url} className={`radio-station ${selected ? 'is-selected' : ''}`}><button className="radio-station-select" aria-label={`Escuchar ${station.title}`} aria-pressed={selected} onClick={() => onPlayStation(station)}><div className="radio-station-logo">{station.image ? <RobustImage src={station.image} alt="" type="tv" className="radio-logo"/> : <Icon name="radio" size={22}/>}</div><div><h3>{station.title}</h3><p>{station.genre || station.group || 'Radio en directo'}</p>{selected && <span>{statusLabel}</span>}</div><span className="radio-station-play"><Icon name="play" size={16}/></span></button><button className="radio-station-fav" aria-label={`${saved ? 'Quitar de favoritos' : 'Guardar en favoritos'} ${station.title}`} aria-pressed={saved} onClick={() => onToggleFavorite({ ...station, type: 'radio' })}><Icon name="heart" size={17} fill={saved ? 'currentColor' : 'none'}/></button></article>;
+                            const identity = BoxRadioFavorites.key(station);
+                            const selected = !!identity && !!currentStation && BoxRadioFavorites.key(currentStation) === identity, saved = isItemFavorite({ ...station, type: 'radio' });
+                            return <article key={identity} className={`radio-station ${selected ? 'is-selected' : ''}`}><button className="radio-station-select" aria-label={`Escuchar ${station.title}`} aria-pressed={selected} onClick={() => onPlayStation(station)}><div className="radio-station-logo">{station.image ? <RobustImage src={station.image} alt="" type="tv" className="radio-logo"/> : <Icon name="radio" size={22}/>}</div><div><h3>{station.title}</h3><p>{station.genre || station.group || 'Radio en directo'}</p>{selected && <span>{statusLabel}</span>}</div><span className="radio-station-play"><Icon name="play" size={16}/></span></button><button className="radio-station-fav" aria-label={`${saved ? 'Quitar de favoritos' : 'Guardar en favoritos'} ${station.title}`} aria-pressed={saved} onClick={() => onToggleFavorite({ ...station, type: 'radio' })}><Icon name="heart" size={17} fill={saved ? 'currentColor' : 'none'}/></button></article>;
                         })}</div>
-                        {!displayed.length && <div className="radio-empty"><Icon name="radio" size={32}/><h3>{view === 'favorites' && !radioFavorites.length ? 'Aún no tienes favoritas' : 'Sin coincidencias'}</h3><p>{view === 'favorites' && !radioFavorites.length ? 'Pulsa el corazón de una emisora o «Guardar emisora» para añadirla aquí.' : 'Hay filtros activos. Prueba otro nombre o limpia los filtros para ver tus emisoras.'}</p><button onClick={() => { setRadioFilter(''); setGroup('all'); if (view === 'favorites' && !radioFavorites.length) setView('all'); }}>{view === 'favorites' && !radioFavorites.length ? 'Explorar emisoras' : 'Limpiar filtros'}</button></div>}
+                        {!displayed.length && <div className="radio-empty"><Icon name="radio" size={32}/><h3>{view === 'favorites' && !savedStations.length ? 'Aún no tienes favoritas' : 'Sin coincidencias'}</h3><p>{view === 'favorites' && !savedStations.length ? 'Pulsa el corazón de una emisora o «Guardar emisora» para añadirla aquí.' : 'Hay filtros activos. Prueba otro nombre o limpia los filtros para ver tus emisoras.'}</p><button onClick={() => { setRadioFilter(''); setGroup('all'); if (view === 'favorites' && !savedStations.length) setView('all'); }}>{view === 'favorites' && !savedStations.length ? 'Explorar emisoras' : 'Limpiar filtros'}</button></div>}
                     </div>
                 </div>
             </section>;
@@ -1220,6 +1224,14 @@
                 { id: 'favorites', icon: 'heart', label: 'Favs' }
             ];
 
+            const recoverRadioFavorites = (records, catalog) => {
+                const result = BoxRadioFavorites.normalize(records, catalog);
+                if (result.rejected.length && !safeStorage.getItem('boxplay_radio_favs_recovery')) {
+                    safeStorage.setItem('boxplay_radio_favs_recovery', JSON.stringify({ savedAt: new Date().toISOString(), records }));
+                }
+                return result.items;
+            };
+
             // 🔒 VALIDACIÓN DE SUSCRIPCIÓN (con deviceId)
             const migratePersonalCatalog = lists => {
                 const all = Object.values(lists).flat();
@@ -1255,6 +1267,10 @@
                     if (!saved) continue;
                     try {
                         const records = JSON.parse(saved);
+                        if (key === 'boxplay_radio_favs') {
+                            const recovered = recoverRadioFavorites(records, lists.radio || []);
+                            setter(recovered); safeStorage.setItem(key, JSON.stringify(recovered)); continue;
+                        }
                         if (!Array.isArray(records)) continue;
                         const migrated = records.map(migrate);
                         setter(migrated);
@@ -1460,7 +1476,7 @@
                                 loadedStations = list.map((r, idx) => {
                                     const title = r.titulo || r.title || r.name || `Emisora ${idx + 1}`;
                                     const imgUrl = extractImageUrl(r);
-                                    return { ...r, id: r.id || `radio-fetched-${idx}-${title.toLowerCase().replace(/[^a-z0-9]/g, '')}`, title, group: r.group || r.genero || r.categoria || 'Variedad', image: imgUrl || generatePlaceholder(title, 'tv'), url: r.urlDrive || r.url || r.stream || r.urlStream || '', type: 'radio' };
+                                    return { ...r, id: BoxCatalog.id(r, 'radios.json'), title, group: r.group || r.genero || r.categoria || 'Variedad', image: imgUrl || generatePlaceholder(title, 'tv'), url: r.urlDrive || r.url || r.stream || r.urlStream || '', type: 'radio' };
                                 });
                             }
                         }
@@ -1500,7 +1516,7 @@
                 const storedTvFavs = safeStorage.getItem('boxplay_tv_favs');
                 if (storedTvFavs) { try { setTvFavorites(JSON.parse(storedTvFavs)); } catch(e) {} }
                 const storedRadioFavs = safeStorage.getItem('boxplay_radio_favs');
-                if (storedRadioFavs) { try { setRadioFavorites(JSON.parse(storedRadioFavs)); } catch(e) {} }
+                if (storedRadioFavs) { try { setRadioFavorites(recoverRadioFavorites(JSON.parse(storedRadioFavs), [])); } catch(e) {} }
                 const storedCW = safeStorage.getItem('boxplay_continue_watching');
                 if (storedCW) { try { setContinueWatching(JSON.parse(storedCW)); } catch(e) {} }
                 const storedWatched = safeStorage.getItem('boxplay_watched_eps');
@@ -1604,10 +1620,15 @@
                     setTvFavorites(newTvFavs);
                     safeStorage.setItem('boxplay_tv_favs', JSON.stringify(newTvFavs));
                 } else if (item.type === 'radio') {
-                    const itemId = item.id || item.title;
-                    const newRadioFavs = radioFavorites.some(f => (f.id || f.title) === itemId) ? radioFavorites.filter(f => (f.id || f.title) !== itemId) : [item, ...radioFavorites];
-                    setRadioFavorites(newRadioFavs);
-                    safeStorage.setItem('boxplay_radio_favs', JSON.stringify(newRadioFavs));
+                    const station = BoxRadioFavorites.normalize([item], radioStations).items[0];
+                    if (!station) return;
+                    const identity = BoxRadioFavorites.key(station);
+                    setRadioFavorites(previous => {
+                        const saved = BoxRadioFavorites.normalize(previous, radioStations).items;
+                        const next = saved.some(entry => BoxRadioFavorites.key(entry) === identity) ? saved.filter(entry => BoxRadioFavorites.key(entry) !== identity) : [station, ...saved];
+                        safeStorage.setItem('boxplay_radio_favs', JSON.stringify(next));
+                        return next;
+                    });
                 } else {
                     const itemId = item.id || item.title; 
                     const newFavs = favorites.some(f => (f.id || f.title) === itemId) ? favorites.filter(f => (f.id || f.title) !== itemId) : [item, ...favorites]; 
@@ -1620,7 +1641,7 @@
                 if (!item) return false;
                 const itemId = item.id || item.title;
                 if (item.type === 'tv') return tvFavorites.some(f => (f.id || f.title) === itemId);
-                if (item.type === 'radio') return radioFavorites.some(f => (f.id || f.title) === itemId);
+                if (item.type === 'radio') { const identity = BoxRadioFavorites.key(item); return !!identity && radioFavorites.some(f => BoxRadioFavorites.key(f) === identity); }
                 return favorites.some(f => (f.id || f.title) === itemId);
             };
 
@@ -1749,7 +1770,9 @@
                 handleShowDetails(item);
             };
 
-            const handlePlayRadioStation = station => {
+            const handlePlayRadioStation = record => {
+                const station = BoxRadioFavorites.normalize([record], radioStations).items[0];
+                if (!station) return;
                 const engine = getRadioEngine(); engine.prepare();
                 setCurrentRadioStation(station); setIsRadioPlaying(true);
                 // A retry or selecting the current station must work without a state change.

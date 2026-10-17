@@ -164,6 +164,37 @@ const server = http.createServer((req, res) => {
         assert(await page.evaluate(()=>window.testRadioEngine.audio===null));
         assert(await page.evaluate(()=>window.hlsTest.created===window.hlsTest.destroyed));
         console.log('PASS: eight saved favorites work across direct audio, CORS fallback, delayed HLS and fatal errors; rapid changes stay responsive and release every HLS player');
+
+        // Reproduce old preferences: three valid objects, then Spanish fields,
+        // stream-only records, old IDs, primitives and completely empty cards.
+        await page.evaluate(batch => localStorage.setItem('boxplay_radio_favs',JSON.stringify([
+            ...batch.slice(0,3).map((entry,i)=>({...entry,id:'legacy-'+i,type:'radio'})),
+            {titulo:batch[3].title,urlStream:batch[3].url,logo:'https://radio.test/logo.png'},
+            {nombre:batch[4].title,stream:batch[4].url},
+            batch[5].url,batch[6].title,
+            {title:batch[7].title,url:batch[7].url},
+            {},{type:'radio'},null,[],'unknown-old-id'
+        ])),favoritesBatch);
+        await page.reload();await page.getByRole('button',{name:'Comenzar Experiencia'}).click();
+        await page.locator('header nav').getByRole('button',{name:'Radio HD',exact:true}).click();
+        await page.getByRole('button',{name:/^Favoritas/}).click();
+        assert.equal(await page.locator('.radio-station').count(),8);
+        assert(await page.evaluate(()=>!!localStorage.getItem('boxplay_radio_favs_recovery')));
+        for(const title of ['Favorita 4','Favorita 5','Favorita 6','Favorita 7','Favorita 8']){
+            await page.getByRole('button',{name:`Escuchar ${title}`,exact:true}).click();
+            assert.equal(await page.locator('.radio-station.is-selected').count(),1);
+            assert.equal(await page.locator('.radio-station-select[aria-pressed="true"]').getAttribute('aria-label'),`Escuchar ${title}`);
+            assert.equal(await page.locator('.radio-now h2').innerText(),title);
+        }
+        await page.getByRole('button',{name:'Quitar de favoritos Favorita 4',exact:true}).click();
+        assert.equal(await page.locator('.radio-station').count(),7);
+        const recovered = await page.evaluate(()=>JSON.parse(localStorage.getItem('boxplay_radio_favs')));
+        assert.equal(new Set(recovered.map(entry=>entry.id)).size,7);
+        assert(recovered.every(entry=>entry.title&&entry.id));
+        await page.reload();await page.getByRole('button',{name:'Comenzar Experiencia'}).click();
+        await page.locator('header nav').getByRole('button',{name:'Radio HD',exact:true}).click();
+        await page.getByRole('button',{name:/^Favoritas/}).click();assert.equal(await page.locator('.radio-station').count(),7);
+        console.log('PASS: old malformed favorite records recover names, URLs and unique identities; fourth and later select exactly one card; removing one preserves the rest after reload');
         assert.deepEqual(errors,[]);assert.deepEqual(requestsWithWrites,[]);
         console.log('PASS: radio fits 320/390/430px, leaving releases media immediately, other sections remain silent, returning requires Play');
     } finally {await browser.close();await new Promise(resolve=>server.close(resolve));}
