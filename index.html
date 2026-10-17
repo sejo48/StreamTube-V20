@@ -6,7 +6,7 @@
     <script src="./notices.js"></script>
     <script src="./radio-engine.js?v=2026-2"></script>
     <script src="./radio-favorites.js?v=2026-1"></script>
-    <link rel="stylesheet" href="./radio.css?v=2026-2">
+    <link rel="stylesheet" href="./radio.css?v=2026-3">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="manifest" href="./manifest.webmanifest">
@@ -1016,8 +1016,18 @@
                     <div className="radio-deck">
                         <div className="radio-deck-top"><span className={`radio-status ${playing ? 'is-live' : ''}`} role="status"><i />{statusLabel}</span><span className="radio-onair">LIVE AUDIO</span></div>
                         <div className="radio-now"><div className={`radio-art ${playing ? 'is-playing' : ''}`}>{currentStation?.image ? <RobustImage src={currentStation.image} alt={currentStation.title} title={currentStation.title} type="tv" className="radio-logo" /> : <Icon name="radio" size={38}/>}</div><p className="radio-eyebrow">{currentStation?.group || 'SEÑAL DIGITAL'}</p><h2>{currentStation?.title || 'Encuentra tu próxima emisora'}</h2><p>{currentStation?.genre || 'Música, voces e historias en vivo'}</p></div>
-                        <div className="radio-display"><div className="radio-display-label"><span>ESPECTRO DE AUDIO</span><span>{playing && radioState.analysis ? 'ANÁLISIS EN VIVO' : 'EN ESPERA'}</span></div><RadioSpectrum engine={engine} status={radioState.status}/><div className="radio-scale"><span>GRAVES</span><span>MEDIOS</span><span>AGUDOS</span></div></div>
-                        <p className="radio-analysis-note">{playing ? (radioState.analysis ? 'Las barras responden a las frecuencias de la señal de audio.' : 'Esta señal se reproduce sin visualizador de audio disponible.') : 'El espectro se activa al reproducir una señal compatible.'}</p>
+                        <div className="radio-display"><div className="radio-display-label"><span>{playing && !radioState.analysis ? 'AMBIENTE VISUAL' : 'ESPECTRO DE AUDIO'}</span><span>{playing ? (radioState.analysis ? 'ANÁLISIS EN VIVO' : 'SEÑAL EN DIRECTO') : 'EN ESPERA'}</span></div>
+                            {playing && !radioState.analysis ? <svg className="radio-spectrum radio-ambient" viewBox="0 0 480 154" preserveAspectRatio="none" role="img" aria-label="Ondas luminosas decorativas durante la reproducción">
+                                <ellipse cx="240" cy="77" rx="180" ry="55" fill="#22d3ee" opacity=".04" />
+                                <g fill="none" strokeWidth="2" strokeLinecap="round">
+                                    <path className="radio-ambient-wave" d="M-60 77 Q0 15 60 77 T180 77 T300 77 T420 77 T540 77" stroke="#22d3ee" opacity=".3"/>
+                                    <path className="radio-ambient-wave" d="M-60 77 Q0 120 60 77 T180 77 T300 77 T420 77 T540 77" stroke="#2dd4bf" opacity=".5"/>
+                                    <path className="radio-ambient-wave" d="M-60 77 Q30 35 120 77 T300 77 T480 77 T660 77" stroke="#a5f3fc" opacity=".8"/>
+                                </g>
+                            </svg> : <RadioSpectrum engine={engine} status={radioState.status}/>}
+                            <div className="radio-scale">{playing && !radioState.analysis ? <><span>ONDAS DE LUZ</span><span>DECORATIVO</span></> : <><span>GRAVES</span><span>MEDIOS</span><span>AGUDOS</span></>}</div>
+                        </div>
+                        <p className="radio-analysis-note">{playing ? (radioState.analysis ? 'Las barras responden a las frecuencias de la señal de audio.' : 'Animación ambiental decorativa durante la transmisión.') : 'El espectro se activa al reproducir una señal compatible.'}</p>
                         {failed && <div className="radio-error"><p>La emisora no respondió. Puedes reintentar o elegir otra.</p><button onClick={onRetry}>Reintentar conexión</button></div>}
                         <div className="radio-transport"><button aria-label="Emisora anterior" onClick={() => move(-1)} disabled={!displayed.length}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M5 5v14M19 5 8 12l11 7Z"/></svg></button><button className="radio-play" onClick={onTogglePlayback} disabled={!currentStation && !stations.length} aria-label={playing || loading ? 'Pausar radio' : 'Reproducir radio'}><Icon name={playing || loading ? 'pause' : 'play'} size={22}/><span>{loading ? 'Conectando…' : playing ? 'Pausar' : 'Reproducir'}</span></button><button aria-label="Emisora siguiente" onClick={() => move(1)} disabled={!displayed.length}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 5v14M5 5l11 7-11 7Z"/></svg></button></div>
                         <div className="radio-volume"><button aria-label={muted || volume === 0 ? 'Activar sonido de radio' : 'Silenciar radio'} onClick={() => { if (volume > 0) { lastVolume.current = volume; setVolume(0); setMuted(true); } else { setVolume(lastVolume.current || .8); setMuted(false); } }}><Icon name="volume" size={20}/>{volume === 0 && <span>×</span>}</button><input aria-label="Volumen de radio" type="range" min="0" max="1" step="0.01" value={volume} onChange={event => setVolume(Number(event.target.value))}/><output>{Math.round(volume * 100)}%</output></div>
