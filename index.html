@@ -5,7 +5,7 @@
     <script src="./catalog.js"></script>
     <script src="./notices.js"></script>
     <script src="./radio-engine.js?v=2026-2"></script>
-    <link rel="stylesheet" href="./radio.css?v=2026-1">
+    <link rel="stylesheet" href="./radio.css?v=2026-2">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="manifest" href="./manifest.webmanifest">
@@ -207,12 +207,14 @@
         }
 
         @media (min-width: 1024px) {
-            .box-header { gap: 16px; }
-            .box-header > div:first-child { flex: 1; min-width: 0; }
-            .box-header > div:first-child > div { flex-shrink: 0; }
-            .box-header nav { min-width: 0; overflow-x: auto; }
-            .box-header nav button { flex-shrink: 0; white-space: nowrap; }
-            .box-header-actions { flex-shrink: 0; }
+            header.box-header { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px 20px; }
+            .box-header > div:first-child { display: contents; }
+            .box-header > div:first-child > div { grid-column: 1; grid-row: 1; }
+            .box-header nav { display: flex; grid-column: 1 / -1; grid-row: 2; flex-wrap: wrap; justify-content: center; overflow: visible; padding-top: 10px; border-top: 1px solid #1e293b; }
+            .box-header nav button { flex-shrink: 0; white-space: nowrap; min-height: 40px; }
+            .box-header-actions { grid-column: 2; grid-row: 1; justify-self: end; min-width: 0; }
+            main.box-main { padding-top: var(--box-header-height, 132px); }
+            .box-catalog-status { top: calc(var(--box-header-height, 132px) + 8px); }
         }
 
         /* Phone layout only; desktop and tablet styles retain their existing rules. */
@@ -1193,6 +1195,16 @@
 
             const tvContainerRef = useRef(null);
             const movieContainerRef = useRef(null);
+            useEffect(() => {
+                const header = document.querySelector('.box-header');
+                if (!header) return;
+                const measure = () => document.documentElement.style.setProperty('--box-header-height', `${Math.ceil(header.getBoundingClientRect().height)}px`);
+                measure();
+                const observer = new ResizeObserver(measure);
+                observer.observe(header);
+                return () => observer.disconnect();
+            }, [showIntro]);
+
 
             const navTabs = [
                 { id: 'home', icon: 'search', label: 'Inicio' }, 
@@ -1781,7 +1793,7 @@
                                 </div>
                                 <span className="font-black text-base sm:text-lg tracking-tight">BOXPLAY<span className="text-cyan-400">TV</span></span>
                             </div>
-                            <nav className="hidden lg:flex items-center gap-1.5">
+                            <nav aria-label="Secciones principales" className="hidden lg:flex items-center gap-1.5">
                                 {navTabs.slice(0, 9).map(tab => (
                                     <button key={tab.id} onClick={() => handleTabClick(tab)} className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${activeTab === tab.id ? 'bg-cyan-500/15 text-cyan-400 border border-cyan-500/40 shadow-[0_0_15px_rgba(6,182,212,0.2)]' : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'}`}>
                                         <Icon name={tab.icon} size={14}/>

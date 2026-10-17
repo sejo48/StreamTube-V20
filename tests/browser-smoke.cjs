@@ -103,6 +103,21 @@ const server = http.createServer((req, res) => {
         await main.getByRole('button', { name: 'Actualizar catálogo', exact: true }).waitFor();
         assert.deepEqual((await main.locator('header nav button').allTextContents()).slice(0, 5).map(label => label.trim()), ['Inicio', 'Estrenos 2026', 'Películas', 'Series', 'Animados']);
         await main.getByRole('status').filter({ hasText: 'Catálogo actualizado.' }).waitFor();
+        for (const width of [1024, 1280, 1920]) {
+            await main.setViewportSize({ width, height: 1000 });
+            await main.waitForFunction(() => parseFloat(getComputedStyle(document.querySelector('main.box-main')).paddingTop) >= document.querySelector('.box-header').getBoundingClientRect().height);
+            const fullyVisible = await main.getByRole('navigation', { name: 'Secciones principales' }).getByRole('button').evaluateAll(buttons => buttons.every(button => {
+                const rect = button.getBoundingClientRect();
+                return rect.left >= 0 && rect.right <= innerWidth && rect.top >= 0 && rect.bottom <= innerHeight && button.contains(document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2));
+            }));
+            assert(fullyVisible, `All top sections must be visible at ${width}px`);
+        }
+        await main.getByRole('navigation', { name: 'Secciones principales' }).getByRole('button', { name: 'Radio HD', exact: true }).click();
+        await main.getByRole('heading', { name: 'Radio Digital', exact: true }).waitFor();
+        assert(await main.evaluate(() => document.querySelector('.radio-heading').getBoundingClientRect().top >= document.querySelector('.box-header').getBoundingClientRect().bottom));
+        await main.getByRole('navigation', { name: 'Secciones principales' }).getByRole('button', { name: 'Inicio', exact: true }).click();
+        await main.setViewportSize({ width: 1280, height: 900 });
+        console.log('PASS: Radio and all desktop sections remain fully visible at 1024/1280/1920px without horizontal scrolling');
         const favorite = await main.evaluate(() => JSON.parse(localStorage.getItem('boxplay_favs'))[0]);
         assert.equal(favorite.id, storedMovie.id);
         const series = C.identify(JSON.parse(fs.readFileSync(path.join(root, 'playlist.json'), 'utf8')), 'playlist.json')[0];
