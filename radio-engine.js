@@ -17,19 +17,22 @@
         }
         clear() {
             this.env.clearTimeout(this.timer); this.timer = null;
-            this.hls?.destroy(); this.hls = null;
-            if (this.audio) {
-                this.audio.onplaying = this.audio.onwaiting = this.audio.onerror = this.audio.onended = null;
-                this.audio.pause(); this.audio.removeAttribute('src'); this.audio.load(); this.audio = null;
-            }
-            this.source?.disconnect(); this.source = null;
-            this.analyser?.disconnect(); this.analyser = null;
+            const audio = this.audio, hls = this.hls, source = this.source, analyser = this.analyser;
+            // Detach first: destroy/load can synchronously emit more media errors.
+            this.audio = this.hls = this.source = this.analyser = null;
+            this.hlsReady = false;
+            if (audio) audio.onplaying = audio.onwaiting = audio.onerror = audio.onended = null;
+            try { hls?.destroy(); } catch { /* Continue releasing the rest of the player. */ }
+            if (audio) { audio.pause(); audio.removeAttribute('src'); audio.load(); }
+            try { source?.disconnect(); } catch {}
+            try { analyser?.disconnect(); } catch {}
         }
         start(station, volume = this.volume) {
             const url = station?.url || station?.stream || '';
             this.setVolume(volume);
             if (!/^https?:\/\//i.test(url)) { this.stop(); this.emit('error'); return; }
             if (url === this.url && this.audio && this.status !== 'error') {
+                if (['loading', 'playing'].includes(this.status) || (this.hls && !this.hlsReady)) return;
                 this.prepare(); this.emit('loading');
                 const audio = this.audio;
                 this.env.clearTimeout(this.timer);
@@ -84,9 +87,9 @@
             const Hls = this.env.Hls;
             if (/\.m3u8(?:[?#]|$)/i.test(url) && Hls?.isSupported()) {
                 const hls = this.hls = new Hls({ enableWorker: true });
-                hls.loadSource(url); hls.attachMedia(audio);
-                hls.on(Hls.Events.MANIFEST_PARSED, () => { if (current() && this.status !== 'paused') this.play(audio, generation); });
+                hls.on(Hls.Events.MANIFEST_PARSED, () => { if (current() && this.status !== 'paused') { this.hlsReady = true; this.play(audio, generation); } });
                 hls.on(Hls.Events.ERROR, (_, data) => { if (data.fatal) fail(); });
+                hls.loadSource(url); hls.attachMedia(audio);
             } else { audio.src = url; audio.load(); this.play(audio, generation); }
         }
         pause() {

@@ -70,3 +70,18 @@ test('pending HLS manifest never resumes after leaving or pausing Radio', () => 
     engine.pause();hls.events.ready();assert.equal(audios[0].playCalls,0);assert(hls.destroyed);assert.equal(states.at(-1).status,'paused');
     engine.dispose();assert.equal(engine.context,null);
 });
+test('a repeated start must wait for the HLS manifest before calling play', () => {
+    const {engine,env,audios} = fixture();let hls;
+    class Hls { static isSupported(){return true;}static Events={MANIFEST_PARSED:'ready',ERROR:'error'};constructor(){hls=this;this.events={};}on(n,fn){this.events[n]=fn;}loadSource(){}attachMedia(){}destroy(){} }
+    env.Hls=Hls;engine.prepare();const stream={url:'https://radio.example/third-favorite.m3u8'};
+    engine.start(stream);engine.start(stream);
+    assert.equal(audios[0].playCalls,0);
+    hls.events.ready();assert.equal(audios[0].playCalls,1);
+});
+test('fatal HLS errors detach callbacks before destroying a player that emits more errors', () => {
+    const {engine,env,states} = fixture();let hls, destroys=0;
+    class Hls { static isSupported(){return true;}static Events={MANIFEST_PARSED:'ready',ERROR:'error'};constructor(){hls=this;this.events={};}on(n,fn){this.events[n]=fn;}loadSource(){}attachMedia(){}destroy(){if(++destroys>3)throw new Error('recursive teardown');this.events.error(null,{fatal:true});} }
+    env.Hls=Hls;engine.prepare();engine.start({url:'https://radio.example/favorite.m3u8'});
+    assert.doesNotThrow(()=>hls.events.error(null,{fatal:true}));
+    assert.equal(destroys,1);assert.equal(states.at(-1).status,'error');assert.equal(engine.audio,null);
+});

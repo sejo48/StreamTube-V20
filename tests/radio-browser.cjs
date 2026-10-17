@@ -129,6 +129,41 @@ const server = http.createServer((req, res) => {
         await page.getByRole('button',{name:'Explorar emisoras',exact:true}).click();
         assert.equal(await page.locator('.radio-station').count(),3);
         console.log('PASS: favorites ignore previous filters, survive reload, can be searched and removed; clearing filters stays in Favorites');
+
+        const favoritesBatch = Array.from({length:8}, (_,index)=>({title:`Favorita ${index+1}`,group:'Pruebas',url:index===2||index===3||index===7?`https://radio.test/${index===3?'fatal':'favorite-'+index}.m3u8`:index===4?`http://localhost:${server.address().port}/no-cors.wav`:`https://radio.test/favorite-${index}.wav`}));
+        files.set('radios.json',JSON.stringify(favoritesBatch));
+        await page.reload();await page.getByRole('button',{name:'Comenzar Experiencia'}).click();
+        await page.locator('header nav').getByRole('button',{name:'Radio HD',exact:true}).click();
+        await page.evaluate(()=>{
+            const Base=window.BoxRadioEngine;window.BoxRadioEngine=class extends Base{constructor(...args){super(...args);window.testRadioEngine=this;}};
+            window.hlsTest={created:0,destroyed:0};
+            window.Hls=class {
+                static isSupported(){return true;}
+                static Events={MANIFEST_PARSED:'ready',ERROR:'error'};
+                constructor(){this.events={};window.hlsTest.created++;}
+                on(name,fn){this.events[name]=fn;}
+                loadSource(url){this.url=url;}
+                attachMedia(audio){this.timer=setTimeout(()=>{if(this.url.includes('fatal'))this.events.error(null,{fatal:true});else{audio.src='https://radio.test/real.wav';audio.load();this.events.ready();}},50);}
+                destroy(){clearTimeout(this.timer);window.hlsTest.destroyed++;this.events.error?.(null,{fatal:true});}
+            };
+        });
+        for(const favorite of favoritesBatch)await page.getByRole('button',{name:`Guardar en favoritos ${favorite.title}`,exact:true}).click();
+        await page.getByRole('button',{name:/^Favoritas/}).click();assert.equal(await page.locator('.radio-station').count(),8);
+        for(let i=0;i<favoritesBatch.length;i++){
+            await page.getByRole('button',{name:`Escuchar ${favoritesBatch[i].title}`,exact:true}).click();
+            if(i===3)await status.filter({hasText:'No se pudo conectar'}).waitFor();
+            else await page.waitForFunction(url=>window.testRadioEngine.url===url&&window.testRadioEngine.status==='playing',favoritesBatch[i].url);
+            assert.equal(await page.locator('.radio-station').count(),8);
+        }
+        // Rapidly replace a not-yet-ready HLS source, then return to it.
+        await page.getByRole('button',{name:'Escuchar Favorita 3',exact:true}).click();
+        await page.getByRole('button',{name:'Escuchar Favorita 6',exact:true}).click();
+        await page.getByRole('button',{name:'Escuchar Favorita 3',exact:true}).click();
+        await page.waitForFunction(()=>window.testRadioEngine.status==='playing'&&window.testRadioEngine.url.endsWith('favorite-2.m3u8'));
+        await page.locator('header nav').getByRole('button',{name:'Películas',exact:true}).click();
+        assert(await page.evaluate(()=>window.testRadioEngine.audio===null));
+        assert(await page.evaluate(()=>window.hlsTest.created===window.hlsTest.destroyed));
+        console.log('PASS: eight saved favorites work across direct audio, CORS fallback, delayed HLS and fatal errors; rapid changes stay responsive and release every HLS player');
         assert.deepEqual(errors,[]);assert.deepEqual(requestsWithWrites,[]);
         console.log('PASS: radio fits 320/390/430px, leaving releases media immediately, other sections remain silent, returning requires Play');
     } finally {await browser.close();await new Promise(resolve=>server.close(resolve));}

@@ -4,7 +4,7 @@
     <script src="./install.js" defer></script>
     <script src="./catalog.js"></script>
     <script src="./notices.js"></script>
-    <script src="./radio-engine.js?v=2026-1"></script>
+    <script src="./radio-engine.js?v=2026-2"></script>
     <link rel="stylesheet" href="./radio.css?v=2026-1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -1524,8 +1524,10 @@
                     setIsRadioPlaying(false);
                     return;
                 }
-                if (isRadioPlaying && currentRadioStation) getRadioEngine().start(currentRadioStation, radioVolume);
-                else radioEngineRef.current?.pause();
+                if (isRadioPlaying && currentRadioStation) {
+                    const engine = getRadioEngine(), url = currentRadioStation.url || currentRadioStation.stream || '';
+                    if (engine.url !== url || engine.status === 'idle') engine.start(currentRadioStation, radioVolume);
+                } else radioEngineRef.current?.pause();
             }, [currentRadioStation, isRadioPlaying, activeTab]);
             useEffect(() => { radioEngineRef.current?.setVolume(radioVolume); }, [radioVolume]);
             useEffect(() => () => radioEngineRef.current?.dispose(), []);
