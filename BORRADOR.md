@@ -116,3 +116,11 @@ El administrador habitual está en `sejo48/admisboxplaytv` (https://sejo48.githu
 El administrador habitual de admisboxplaytv ahora publica HTML/CSS/JS precompilados desde fuentes en `src/`, con versiones de React/ReactDOM/HLS fijadas y dependencias locales para compilación. Su navegador no ejecuta Tailwind CDN ni Babel para transformar la aplicación.
 
 La lista de avisos se abre mediante su fuente pública; no se usa automáticamente un token guardado para consultarla. Antes de publicar, el propietario pulsa «Comprobar conexión». Un 401 se identifica como token rechazado y un 403 como denegación de acceso. El borrador se conserva y la publicación queda bloqueada hasta que se compruebe una credencial válida. El propietario debe reemplazar el token rechazado directamente en el campo protegido del panel; el código no puede renovar una credencial de su cuenta de GitHub.
+
+## Radio Digital 2026
+
+La radio tiene un reproductor independiente, diseño adaptable, espectro de 48 bandas calculado con Web Audio, filtros por grupo y género, búsqueda y favoritos. Los indicadores muestran estados reales de conexión y reproducción. Se eliminaron las barras aleatorias y las afirmaciones de estabilidad y calidad no medidas.
+
+La reproducción empieza por una acción del usuario dentro de Radio. Al salir se descarga la fuente, se destruye la sesión HLS y se desconecta el analizador; al volver hace falta pulsar Reproducir. Las señales sin CORS se intentan reproducir directamente sin barras cuando el navegador lo permite; si no se pueden reproducir, aparece un error y una opción de reintento. El catálogo y los avisos existentes no se modifican.
+
+Verificación: seis pruebas del motor, integración en Chromium con una señal WAV de frecuencias conocidas y pruebas generales de la aplicación. Se verificaron muestras FFT reales, volumen, pausa, favoritos, filtros, alternativa sin CORS, errores, liberación al navegar y anchuras móviles de 320, 390 y 430 píxeles. Los permisos del navegador y la disponibilidad de cada emisora siguen dependiendo de su servidor y dispositivo.

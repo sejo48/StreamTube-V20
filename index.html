@@ -4,6 +4,8 @@
     <script src="./install.js" defer></script>
     <script src="./catalog.js"></script>
     <script src="./notices.js"></script>
+    <script src="./radio-engine.js?v=2026-1"></script>
+    <link rel="stylesheet" href="./radio.css?v=2026-1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="manifest" href="./manifest.webmanifest">
@@ -939,132 +941,94 @@
             </section>;
         };
 
-        const CyberRadioSection = ({ stations, currentStation, isPlaying, onPlayStation, volume, setVolume, streamError, isLoading, audioRef, clockTime, isMuted, setIsMuted, isPowerOn, setIsPowerOn, spectrumHeights, radioFilter, setRadioFilter, hlsRef, radioFavorites, onToggleFavorite, isItemFavorite }) => {
-            const [radioViewMode, setRadioViewMode] = useState('all');
+        const RadioSpectrum = ({ engine, status }) => {
+            const canvasRef = useRef(null);
+            useEffect(() => {
+                const canvas = canvasRef.current;
+                const painter = canvas.getContext('2d');
+                if (!painter) return;
+                const buffer = new Uint8Array(128), peaks = new Float32Array(48);
+                let frame, last = 0;
+                const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+                const draw = time => {
+                    frame = requestAnimationFrame(draw);
+                    if (document.hidden || time - last < (reduced.matches ? 160 : 33)) return;
+                    last = time;
+                    const width = canvas.clientWidth, height = canvas.clientHeight;
+                    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+                    if (canvas.width !== Math.round(width * ratio) || canvas.height !== Math.round(height * ratio)) { canvas.width = Math.round(width * ratio); canvas.height = Math.round(height * ratio); }
+                    painter.setTransform(ratio, 0, 0, ratio, 0, 0);
+                    painter.clearRect(0, 0, width, height);
+                    const active = engine?.frequencies(buffer);
+                    painter.strokeStyle = 'rgba(103,232,249,.09)'; painter.lineWidth = 1;
+                    for (let y = 24; y < height; y += 32) { painter.beginPath(); painter.moveTo(0,y); painter.lineTo(width,y); painter.stroke(); }
+                    const gap = 3, barWidth = Math.max(1, (width - 47 * gap) / 48);
+                    const gradient = painter.createLinearGradient(0, height, 0, 0);
+                    gradient.addColorStop(0, '#0891b2'); gradient.addColorStop(.55, '#2dd4bf'); gradient.addColorStop(1, '#a5f3fc');
+                    for (let i = 0; i < 48; i++) {
+                        const from = Math.floor(Math.pow(i / 48, 1.7) * 116) + 1;
+                        const to = Math.min(128, Math.max(from + 1, Math.floor(Math.pow((i + 1) / 48, 1.7) * 116) + 1));
+                        let value = 0; for (let j = from; j < to; j++) value += buffer[j];
+                        value = active ? value / (to - from) / 255 : 0;
+                        const barHeight = Math.max(2, value * (height - 26));
+                        peaks[i] = active ? Math.max(barHeight, peaks[i] - 2) : 2;
+                        const x = i * (barWidth + gap);
+                        painter.fillStyle = gradient; painter.fillRect(x, height - barHeight, barWidth, barHeight);
+                        if (active) { painter.fillStyle = '#cffafe'; painter.fillRect(x, height - peaks[i] - 4, barWidth, 2); }
+                    }
+                };
+                frame = requestAnimationFrame(draw);
+                return () => cancelAnimationFrame(frame);
+            }, [engine, status]);
+            return <canvas ref={canvasRef} className="radio-spectrum" aria-label="Espectro de frecuencias del audio de la emisora" role="img" />;
+        };
 
-            const handleNext = () => {
-                const activeList = radioViewMode === 'favorites' ? radioFavorites : stations;
-                if (activeList.length === 0) return;
-                const currentActiveIndex = activeList.findIndex(s => s.id === currentStation?.id);
-                const nextIdx = (currentActiveIndex + 1) % activeList.length;
-                onPlayStation(activeList[nextIdx]);
+        const CyberRadioSection = ({ stations, currentStation, onPlayStation, onTogglePlayback, onRetry, volume, setVolume, engine, radioState, radioFilter, setRadioFilter, radioFavorites, onToggleFavorite, isItemFavorite }) => {
+            const [view, setView] = useState('all');
+            const [group, setGroup] = useState('all');
+            const [muted, setMuted] = useState(false);
+            const [clock, setClock] = useState(() => new Date().toLocaleTimeString('es-CR', { hour: '2-digit', minute: '2-digit' }));
+            useEffect(() => { const id = setInterval(() => setClock(new Date().toLocaleTimeString('es-CR', { hour: '2-digit', minute: '2-digit' })), 1000); return () => clearInterval(id); }, []);
+            useEffect(() => { if (volume > 0) setMuted(false); }, [volume]);
+            const lastVolume = useRef(volume || .8);
+            const groups = [...new Set(stations.map(station => station.group || 'Variedad'))].sort((a,b) => a.localeCompare(b));
+            const list = view === 'favorites' ? radioFavorites : stations;
+            const query = radioFilter.trim().toLocaleLowerCase('es');
+            const displayed = list.filter(station => (group === 'all' || (station.group || 'Variedad') === group) && (!query || [station.title, station.group, station.genre].some(value => String(value || '').toLocaleLowerCase('es').includes(query))));
+            const move = direction => {
+                if (!displayed.length) return;
+                const index = displayed.findIndex(station => station.id === currentStation?.id);
+                onPlayStation(displayed[index < 0 ? (direction > 0 ? 0 : displayed.length - 1) : (index + direction + displayed.length) % displayed.length]);
             };
-
-            const handlePrev = () => {
-                const activeList = radioViewMode === 'favorites' ? radioFavorites : stations;
-                if (activeList.length === 0) return;
-                const currentActiveIndex = activeList.findIndex(s => s.id === currentStation?.id);
-                const prevIdx = (currentActiveIndex - 1 + activeList.length) % activeList.length;
-                onPlayStation(activeList[prevIdx]);
-            };
-
-            const handleTogglePlayPause = () => {
-                if (!isPowerOn) return;
-                if (!currentStation && stations.length > 0) { onPlayStation(stations[0]); return; }
-                if (audioRef.current) {
-                    if (isPlaying) { audioRef.current.pause(); }
-                    else { audioRef.current.play().catch(() => {}); }
-                }
-            };
-
-            let displayed = radioViewMode === 'favorites' ? radioFavorites : stations;
-            if (radioFilter.trim()) {
-                const q = radioFilter.toLowerCase();
-                displayed = displayed.filter(s => (s.title || '').toLowerCase().includes(q) || (s.group || '').toLowerCase().includes(q));
-            }
-
-            const currentIsFav = currentStation ? isItemFavorite({ ...currentStation, type: 'radio' }) : false;
-
-            return (
-                <div className="min-h-[calc(100vh-5rem)] flex flex-col p-4 sm:p-8 animate-fade-in w-full max-w-7xl mx-auto space-y-6">
-                    <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-cyan-500/30 relative overflow-hidden shadow-2xl pulse-glow-box flex flex-col md:flex-row items-center justify-between gap-6">
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                        <div className="flex items-center gap-5 relative z-10 w-full md:w-auto">
-                            <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-black border-2 border-cyan-400 p-1 flex items-center justify-center shadow-[0_0_30px_rgba(6,182,212,0.6)] flex-shrink-0">
-                                {currentStation?.image ? (<RobustImage src={currentStation.image} alt={currentStation.title} title={currentStation.title} type="tv" className={`w-full h-full object-cover rounded-full ${isPlaying && isPowerOn ? 'vinyl-animation' : ''}`} />) : (<div className="w-full h-full rounded-full bg-cyan-950 flex items-center justify-center text-cyan-400"><Icon name="radio" size={32}/></div>)}
-                                <div className="absolute w-6 h-6 bg-cyan-500 rounded-full border-2 border-black flex items-center justify-center shadow-lg"><div className="w-2 h-2 bg-black rounded-full"></div></div>
-                            </div>
-                            <div className="space-y-1.5 min-w-0 flex-1">
-                                <div className="flex items-center gap-2">
-                                    <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-500/40 text-[10px] font-mono text-cyan-300 font-bold uppercase tracking-widest">{isPlaying && isPowerOn ? '🔴 En Directo' : '⏸ En Pausa'}</span>
-                                    {currentStation && (<button onClick={() => onToggleFavorite({ ...currentStation, type: 'radio' })} className="px-2.5 py-0.5 rounded-full bg-black/60 border border-slate-800 text-xs text-cyan-400 flex items-center gap-1 hover:bg-white/5 transition-colors"><Icon name="heart" size={12} fill={currentIsFav ? "#06b6d4" : "none"} className={currentIsFav ? "text-cyan-400" : "text-slate-400"}/><span className="text-[10px]">{currentIsFav ? 'En Favs' : 'Añadir Fav'}</span></button>)}
-                                </div>
-                                <h1 className="text-xl sm:text-2xl font-black text-white truncate orbitron drop-shadow">{currentStation ? currentStation.title : 'Selecciona una Emisora'}</h1>
-                                <p className="text-xs text-cyan-400 font-medium truncate">{currentStation?.group || 'Variedad Musical'} • {streamError ? 'Error en flujo' : isLoading ? 'Conectando...' : 'Alta Calidad HD'}</p>
-                            </div>
-                        </div>
-                        <div className="flex flex-col sm:flex-row items-center gap-4 relative z-10 w-full md:w-auto justify-end">
-                            <div className="flex items-center gap-2 bg-black/60 px-4 py-3 rounded-2xl border border-slate-800 shadow-inner w-full sm:w-auto">
-                                <Icon name="volume" size={16} className="text-cyan-400 flex-shrink-0"/>
-                                <input type="range" min="0" max="1" step="0.05" value={volume} onChange={(e) => setVolume(parseFloat(e.target.value))} className="w-28 sm:w-36 accent-cyan-400"/>
-                                <span className="text-xs font-mono font-bold text-cyan-300 w-8 text-right">{Math.round(volume * 100)}%</span>
-                            </div>
-                            <div className="flex items-center gap-2 w-full sm:w-auto justify-center">
-                                <button onClick={handlePrev} className="p-3.5 rounded-2xl bg-black/60 hover:bg-cyan-500/20 text-cyan-300 border border-slate-800 hover:border-cyan-500/40 transition-all shadow-lg active:scale-95" title="Anterior"><i className="fa-solid fa-backward-step"></i></button>
-                                <button onClick={handleTogglePlayPause} className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-600 to-teal-500 hover:brightness-110 text-white font-extrabold text-xs tracking-wider transition-all shadow-[0_0_20px_rgba(6,182,212,0.5)] flex items-center gap-2 active:scale-95"><i className={`fa-solid ${isPlaying && isPowerOn ? 'fa-pause' : 'fa-play'}`}></i><span>{isPlaying && isPowerOn ? 'PAUSAR' : 'REPRODUCIR'}</span></button>
-                                <button onClick={handleNext} className="p-3.5 rounded-2xl bg-black/60 hover:bg-cyan-500/20 text-cyan-300 border border-slate-800 hover:border-cyan-500/40 transition-all shadow-lg active:scale-95" title="Siguiente"><i className="fa-solid fa-forward-step"></i></button>
-                            </div>
-                        </div>
+            const playing = radioState.status === 'playing', loading = radioState.status === 'loading';
+            const failed = radioState.status === 'error', blocked = radioState.status === 'blocked';
+            const statusLabel = failed ? 'No se pudo conectar' : blocked ? 'Pulsa reproducir para escuchar' : loading ? 'Conectando señal…' : playing ? 'En directo' : currentStation ? 'En pausa' : 'Elige una emisora';
+            const favorite = currentStation && isItemFavorite({ ...currentStation, type: 'radio' });
+            return <section className="radio-studio" aria-labelledby="radio-title">
+                <header className="radio-heading"><div><p className="radio-eyebrow">BOX PLAY TV · AUDIO EN DIRECTO</p><h1 id="radio-title">Radio <span>Digital</span></h1><p>Tu frecuencia. Tu momento.</p></div><div className="radio-clock"><span>{clock}</span><small>{stations.length} emisoras</small></div></header>
+                <div className="radio-layout">
+                    <div className="radio-deck">
+                        <div className="radio-deck-top"><span className={`radio-status ${playing ? 'is-live' : ''}`} role="status"><i />{statusLabel}</span><span className="radio-onair">LIVE AUDIO</span></div>
+                        <div className="radio-now"><div className={`radio-art ${playing ? 'is-playing' : ''}`}>{currentStation?.image ? <RobustImage src={currentStation.image} alt={currentStation.title} title={currentStation.title} type="tv" className="radio-logo" /> : <Icon name="radio" size={38}/>}</div><p className="radio-eyebrow">{currentStation?.group || 'SEÑAL DIGITAL'}</p><h2>{currentStation?.title || 'Encuentra tu próxima emisora'}</h2><p>{currentStation?.genre || 'Música, voces e historias en vivo'}</p></div>
+                        <div className="radio-display"><div className="radio-display-label"><span>ESPECTRO DE AUDIO</span><span>{playing && radioState.analysis ? 'ANÁLISIS EN VIVO' : 'EN ESPERA'}</span></div><RadioSpectrum engine={engine} status={radioState.status}/><div className="radio-scale"><span>GRAVES</span><span>MEDIOS</span><span>AGUDOS</span></div></div>
+                        <p className="radio-analysis-note">{playing ? (radioState.analysis ? 'Las barras responden a las frecuencias de la señal de audio.' : 'Esta señal se reproduce sin visualizador de audio disponible.') : 'El espectro se activa al reproducir una señal compatible.'}</p>
+                        {failed && <div className="radio-error"><p>La emisora no respondió. Puedes reintentar o elegir otra.</p><button onClick={onRetry}>Reintentar conexión</button></div>}
+                        <div className="radio-transport"><button aria-label="Emisora anterior" onClick={() => move(-1)} disabled={!displayed.length}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M5 5v14M19 5 8 12l11 7Z"/></svg></button><button className="radio-play" onClick={onTogglePlayback} disabled={!currentStation && !stations.length} aria-label={playing || loading ? 'Pausar radio' : 'Reproducir radio'}><Icon name={playing || loading ? 'pause' : 'play'} size={22}/><span>{loading ? 'Conectando…' : playing ? 'Pausar' : 'Reproducir'}</span></button><button aria-label="Emisora siguiente" onClick={() => move(1)} disabled={!displayed.length}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 5v14M5 5l11 7-11 7Z"/></svg></button></div>
+                        <div className="radio-volume"><button aria-label={muted || volume === 0 ? 'Activar sonido de radio' : 'Silenciar radio'} onClick={() => { if (volume > 0) { lastVolume.current = volume; setVolume(0); setMuted(true); } else { setVolume(lastVolume.current || .8); setMuted(false); } }}><Icon name="volume" size={20}/>{volume === 0 && <span>×</span>}</button><input aria-label="Volumen de radio" type="range" min="0" max="1" step="0.01" value={volume} onChange={event => setVolume(Number(event.target.value))}/><output>{Math.round(volume * 100)}%</output></div>
+                        {currentStation && <button className={`radio-save ${favorite ? 'is-saved' : ''}`} aria-pressed={!!favorite} onClick={() => onToggleFavorite({ ...currentStation, type: 'radio' })}><Icon name="heart" size={16} fill={favorite ? 'currentColor' : 'none'}/>{favorite ? 'Guardada en favoritos' : 'Guardar emisora'}</button>}
+                        <p className="radio-footnote">El audio se detiene al salir de Radio.</p>
                     </div>
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <div className="glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col justify-between shadow-xl space-y-6">
-                            <div>
-                                <div className="flex items-center justify-between mb-4">
-                                    <h3 className="text-xs font-black uppercase text-cyan-400 tracking-wider flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span> Ecualizador Visualizador</h3>
-                                    <span className="text-[10px] font-mono text-slate-400">{clockTime}</span>
-                                </div>
-                                <div className="h-40 bg-black/80 rounded-2xl border border-slate-800/80 p-4 flex items-end justify-around gap-2 shadow-inner overflow-hidden relative">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/5 to-transparent pointer-events-none"></div>
-                                    {spectrumHeights.map((h, sIdx) => (<div key={sIdx} className="w-8 bg-gradient-to-t from-cyan-600 via-teal-400 to-cyan-300 rounded-t-lg transition-all duration-75 shadow-[0_0_15px_rgba(6,182,212,0.5)]" style={{ height: `${h}%` }}></div>))}
-                                </div>
-                            </div>
-                            <div className="bg-black/40 p-4 rounded-2xl border border-slate-800 space-y-2">
-                                <div className="flex justify-between text-[11px] font-bold text-slate-300"><span>Estado del Servidor</span><span className="text-emerald-400 font-mono">100% Estable</span></div>
-                                <p className="text-[11px] text-slate-400 leading-relaxed">Disfruta de las emisoras más populares de Costa Rica con transmisión directa digital sin interrupciones.</p>
-                            </div>
-                        </div>
-                        <div className="lg:col-span-2 glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col h-[520px] shadow-xl">
-                            <div className="flex flex-col sm:flex-row items-center justify-between mb-4 gap-3 pb-4 border-b border-slate-800">
-                                <div className="flex items-center gap-2">
-                                    <button onClick={() => setRadioViewMode('all')} className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${radioViewMode === 'all' ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'bg-black/40 text-slate-400 hover:text-white border border-slate-800'}`}>Todas ({stations.length})</button>
-                                    <button onClick={() => setRadioViewMode('favorites')} className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${radioViewMode === 'favorites' ? 'bg-cyan-500 text-black shadow-[0_0_15px_rgba(6,182,212,0.4)]' : 'bg-black/40 text-slate-400 hover:text-white border border-slate-800'}`}><Icon name="heart" size={12} fill={radioViewMode === 'favorites' ? 'black' : 'none'}/><span>Mis Favoritas ({radioFavorites.length})</span></button>
-                                </div>
-                                <div className="relative w-full sm:w-56">
-                                    <input type="text" placeholder="Buscar emisora..." value={radioFilter} onChange={(e) => setRadioFilter(e.target.value)} className="w-full bg-black/60 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white focus:border-cyan-500 outline-none pl-9 shadow-inner"/>
-                                    <Icon name="search" size={14} className="absolute left-3 top-2.5 text-slate-400"/>
-                                    {radioFilter && <button onClick={() => setRadioFilter('')} className="absolute right-3 top-2.5 text-slate-400 hover:text-white"><Icon name="x" size={14}/></button>}
-                                </div>
-                            </div>
-                            <div className="flex-1 overflow-y-auto custom-scrollbar pr-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                {displayed.length === 0 ? (
-                                    <div className="col-span-2 text-center py-16 text-slate-500 text-xs font-medium">{radioViewMode === 'favorites' ? 'No tienes emisoras marcadas como favoritas todavía.' : 'No se encontraron emisoras con ese término.'}</div>
-                                ) : (
-                                    displayed.map((station, sIdx) => {
-                                        const isCurrent = currentStation && (currentStation.id === station.id || currentStation.url === station.url);
-                                        const isFav = isItemFavorite({ ...station, type: 'radio' });
-                                        return (
-                                            <div key={station.id || sIdx} onClick={() => onPlayStation(station)} className={`group relative p-3.5 rounded-2xl border cursor-pointer transition-all flex items-center gap-3.5 ${isCurrent && isPlaying ? 'bg-cyan-950/60 border-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.3)]' : 'bg-black/40 hover:bg-white/5 border-slate-800/80 hover:border-slate-700'}`}>
-                                                <div className="w-12 h-12 rounded-2xl bg-black border border-slate-800 flex items-center justify-center overflow-hidden flex-shrink-0 relative shadow-inner p-1">
-                                                    {station.image ? (<RobustImage src={station.image} alt={station.title} title={station.title} type="tv" className="w-full h-full object-cover rounded-xl" />) : (<Icon name="radio" size={18} className="text-slate-400"/>)}
-                                                    {isCurrent && isPlaying && (<div className="absolute inset-0 bg-cyan-600/30 backdrop-blur-[1px] rounded-xl flex items-center justify-center"><div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping"></div></div>)}
-                                                </div>
-                                                <div className="flex-1 min-w-0">
-                                                    <h4 className={`text-xs font-bold truncate transition-colors ${isCurrent && isPlaying ? 'text-cyan-400' : 'text-white group-hover:text-cyan-300'}`}>{station.title}</h4>
-                                                    <span className="text-[10px] text-slate-400 truncate block mt-0.5 font-medium">{station.group || 'Variedad'}</span>
-                                                </div>
-                                                <div className="flex items-center gap-2">
-                                                    <button onClick={(e) => { e.stopPropagation(); onToggleFavorite({ ...station, type: 'radio' }); }} className="p-2 rounded-xl text-slate-400 hover:text-white transition-colors"><Icon name="heart" size={14} fill={isFav ? '#06b6d4' : 'none'} className={isFav ? 'text-cyan-500' : 'text-slate-500'}/></button>
-                                                    <div className="w-8 h-8 rounded-xl bg-black/60 border border-slate-800 flex items-center justify-center text-cyan-400 group-hover:bg-cyan-600 group-hover:text-white transition-all flex-shrink-0"><Icon name={isCurrent && isPlaying ? "pause" : "play"} size={12} fill="currentColor"/></div>
-                                                </div>
-                                            </div>
-                                        );
-                                    })
-                                )}
-                            </div>
-                        </div>
+                    <div className="radio-directory">
+                        <div className="radio-directory-heading"><h2>Explora las emisoras</h2><span>{displayed.length} {displayed.length === 1 ? 'señal' : 'señales'}</span></div>
+                        <div className="radio-filters"><div className="radio-views" role="group" aria-label="Lista de emisoras"><button aria-pressed={view === 'all'} onClick={() => setView('all')}>Todas <span>{stations.length}</span></button><button aria-pressed={view === 'favorites'} onClick={() => setView('favorites')}>Favoritas <span>{radioFavorites.length}</span></button></div><label className="radio-search"><Icon name="search" size={17}/><input type="search" aria-label="Buscar emisora" placeholder="Nombre, género o país…" value={radioFilter} onChange={event => setRadioFilter(event.target.value)}/></label><label className="radio-group">Grupo<select aria-label="Filtrar emisoras por grupo" value={group} onChange={event => setGroup(event.target.value)}><option value="all">Todos los grupos</option>{groups.map(value => <option key={value}>{value}</option>)}</select></label></div>
+                        <div className="radio-stations">{displayed.map(station => {
+                            const selected = currentStation?.id === station.id, saved = isItemFavorite({ ...station, type: 'radio' });
+                            return <article key={station.id || station.url} className={`radio-station ${selected ? 'is-selected' : ''}`}><button className="radio-station-select" aria-label={`Escuchar ${station.title}`} aria-pressed={selected} onClick={() => onPlayStation(station)}><div className="radio-station-logo">{station.image ? <RobustImage src={station.image} alt="" type="tv" className="radio-logo"/> : <Icon name="radio" size={22}/>}</div><div><h3>{station.title}</h3><p>{station.genre || station.group || 'Radio en directo'}</p>{selected && <span>{statusLabel}</span>}</div><span className="radio-station-play"><Icon name="play" size={16}/></span></button><button className="radio-station-fav" aria-label={`${saved ? 'Quitar de favoritos' : 'Guardar en favoritos'} ${station.title}`} aria-pressed={saved} onClick={() => onToggleFavorite({ ...station, type: 'radio' })}><Icon name="heart" size={17} fill={saved ? 'currentColor' : 'none'}/></button></article>;
+                        })}</div>
+                        {!displayed.length && <div className="radio-empty"><Icon name="radio" size={32}/><h3>{view === 'favorites' ? 'Tu selección personal' : 'Sin resultados'}</h3><p>{view === 'favorites' ? 'Guarda emisoras con el corazón para encontrarlas aquí. Revisa también los filtros.' : 'Prueba otro nombre, género o grupo.'}</p><button onClick={() => { setRadioFilter(''); setGroup('all'); setView('all'); }}>Ver todas las emisoras</button></div>}
                     </div>
                 </div>
-            );
+            </section>;
         };
 
         const IntroScreen = ({ onEnter }) => {
@@ -1211,13 +1175,14 @@
             const [currentRadioStation, setCurrentRadioStation] = useState(null);
             const [isRadioPlaying, setIsRadioPlaying] = useState(false);
             const [radioVolume, setRadioVolume] = useState(0.8);
-            const [streamError, setStreamError] = useState(false);
-            const [isLoadingRadio, setIsLoadingRadio] = useState(false);
             const [radioFilter, setRadioFilter] = useState('');
-            const [clockTime, setClockTime] = useState('12:34');
-            const [isMuted, setIsMuted] = useState(false);
-            const [isPowerOn, setIsPowerOn] = useState(true);
-            const [spectrumHeights, setSpectrumHeights] = useState([70, 85, 50, 90]);
+            const [radioState, setRadioState] = useState({ status: 'idle', analysis: false });
+            const radioEngineRef = useRef(null);
+            const getRadioEngine = () => {
+                if (!radioEngineRef.current) radioEngineRef.current = new BoxRadioEngine(setRadioState);
+                return radioEngineRef.current;
+            };
+
 
             const [deferredPrompt, setDeferredPrompt] = useState(window.BoxPlayInstall?.prompt || null);
             const [isAppInstalled, setIsAppInstalled] = useState(window.BoxPlayInstall?.installed === true);
@@ -1225,8 +1190,6 @@
             const [installingApp, setInstallingApp] = useState(false);
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-            const audioRef = useRef(null);
-            const hlsRef = useRef(null);
             const tvContainerRef = useRef(null);
             const movieContainerRef = useRef(null);
 
@@ -1345,28 +1308,6 @@
                     document.removeEventListener('visibilitychange', onVisible);
                 };
             }, [emailUsuario, isSubscriberActive]);
-
-            useEffect(() => {
-                const interval = setInterval(() => {
-                    const now = new Date();
-                    const hours = String(now.getHours()).padStart(2, '0');
-                    const minutes = String(now.getMinutes()).padStart(2, '0');
-                    setClockTime(`${hours}:${minutes}`);
-                }, 1000);
-                return () => clearInterval(interval);
-            }, []);
-
-            useEffect(() => {
-                let specInterval;
-                if (isRadioPlaying && isPowerOn) {
-                    specInterval = setInterval(() => {
-                        setSpectrumHeights([Math.floor(Math.random() * 85) + 15, Math.floor(Math.random() * 95) + 10, Math.floor(Math.random() * 80) + 20, Math.floor(Math.random() * 90) + 10]);
-                    }, 80);
-                } else {
-                    setSpectrumHeights([25, 25, 25, 25]);
-                }
-                return () => clearInterval(specInterval);
-            }, [isRadioPlaying, isPowerOn]);
 
             useEffect(() => {
                 const syncInstallState = () => {
@@ -1526,7 +1467,7 @@
                         }
 
                         const defaultStation = loadedStations.find(s => s.title.toLowerCase().includes('disco funk')) || loadedStations[0];
-                        if (defaultStation && !catalogLoaded.current) { setCurrentRadioStation(defaultStation); setIsRadioPlaying(true); }
+                        if (defaultStation && !catalogLoaded.current) setCurrentRadioStation(defaultStation);
 
                         migratePersonalCatalog({ movies: moviesList, movies2: movies2List, series: seriesList, animados: animadosList, tv: tvChannels, radio: loadedStations });
                         catalogLoaded.current = true;
@@ -1577,46 +1518,16 @@
             }, [activeTab, content.tv]);
 
             useEffect(() => {
-                if (!audioRef.current) {
-                    const audio = new Audio();
-                    audio.crossOrigin = "anonymous";
-                    audio.preload = "none";
-                    audio.onerror = () => { setIsRadioPlaying(false); setStreamError(true); setIsLoadingRadio(false); };
-                    audio.onwaiting = () => setIsLoadingRadio(true);
-                    audio.onplaying = () => { setIsLoadingRadio(false); setStreamError(false); };
-                    audio.oncanplay = () => { setIsLoadingRadio(false); setStreamError(false); };
-                    audioRef.current = audio;
+                if (activeTab !== 'radio') {
+                    radioEngineRef.current?.stop();
+                    setIsRadioPlaying(false);
+                    return;
                 }
-                const audio = audioRef.current;
-                if (audio) audio.volume = radioVolume;
-
-                if (currentRadioStation && activeTab === 'radio') {
-                    const playAudio = () => { try { const p = audio.play(); if (p !== undefined) p.catch(() => { setIsRadioPlaying(false); setStreamError(true); setIsLoadingRadio(false); }); } catch (e) {} };
-                    const targetUrl = currentRadioStation.url || currentRadioStation.stream || '';
-                    if (audio.dataset.currentUrl !== targetUrl) {
-                        setIsLoadingRadio(true); setStreamError(false); audio.dataset.currentUrl = targetUrl;
-                        if (hlsRef.current) { hlsRef.current.destroy(); hlsRef.current = null; }
-                        if (targetUrl.includes('.m3u8') && typeof Hls !== 'undefined' && Hls.isSupported()) {
-                            const hls = new Hls({ enableWorker: true, lowLatencyMode: true });
-                            hlsRef.current = hls;
-                            hls.loadSource(targetUrl);
-                            hls.attachMedia(audio);
-                            hls.on(Hls.Events.MANIFEST_PARSED, () => { if (isRadioPlaying) playAudio(); });
-                            hls.on(Hls.Events.ERROR, function (event, data) { if (data.fatal) { setIsRadioPlaying(false); setStreamError(true); setIsLoadingRadio(false); } });
-                        } else {
-                            audio.src = targetUrl; 
-                            audio.load();
-                            if (isRadioPlaying) playAudio();
-                        }
-                    } else {
-                        if (isRadioPlaying) playAudio(); else audio.pause();
-                    }
-                } else if (audioRef.current && activeTab !== 'radio') {
-                    audioRef.current.pause();
-                }
+                if (isRadioPlaying && currentRadioStation) getRadioEngine().start(currentRadioStation, radioVolume);
+                else radioEngineRef.current?.pause();
             }, [currentRadioStation, isRadioPlaying, activeTab]);
-
-            useEffect(() => { if (audioRef.current) audioRef.current.volume = radioVolume; }, [radioVolume]);
+            useEffect(() => { radioEngineRef.current?.setVolume(radioVolume); }, [radioVolume]);
+            useEffect(() => () => radioEngineRef.current?.dispose(), []);
 
             const recordContinueWatching = (item, episode = null) => {
                 if (item.type === 'tv' || item.type === 'radio') return;
@@ -1746,6 +1657,7 @@
             const currentHeroItem = randomHeroItem || (content.movies.length ? content.movies[0] : null);
 
             const handleShowDetails = (item) => {
+                if (item.type === 'radio') { setSelectedItem(null); setActiveTab('radio'); handlePlayRadioStation(item); window.history.pushState({ appState: 'main', activeTab: 'radio' }, ''); return; }
                 if (item.type === 'tv' || item.type === 'radio') {
                     setSelectedItem(item);
                     setIsPlaying(false);
@@ -1822,9 +1734,20 @@
                 handleShowDetails(item);
             };
 
-            const handlePlayRadioStation = (station) => { setCurrentRadioStation(station); setIsRadioPlaying(true); setStreamError(false); };
+            const handlePlayRadioStation = station => {
+                const engine = getRadioEngine(); engine.prepare();
+                setCurrentRadioStation(station); setIsRadioPlaying(true);
+                // A retry or selecting the current station must work without a state change.
+                if (activeTab === 'radio') engine.start(station, radioVolume);
+            };
+            const handleToggleRadio = () => {
+                if (['playing', 'loading'].includes(radioState.status)) { radioEngineRef.current?.pause(); setIsRadioPlaying(false); }
+                else handlePlayRadioStation(currentRadioStation || radioStations[0]);
+            };
+
 
             const handleTabClick = (tab) => {
+                if (tab.id !== 'radio') { radioEngineRef.current?.stop(); setIsRadioPlaying(false); }
                 setActiveTab(tab.id); setSearch(''); setShowMobileSearch(false); setIsLocked(false); setIsPlaying(false); setShowMobileMoreMenu(false);
                 window.history.pushState({ appState: 'main', activeTab: tab.id }, '');
                 if (tab.id === 'tv') {
@@ -1835,7 +1758,7 @@
                 } else if (tab.id === 'radio') {
                     if (!currentRadioStation && radioStations.length > 0) {
                         const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
-                        setCurrentRadioStation(def); setIsRadioPlaying(true);
+                        setCurrentRadioStation(def);
                     }
                 } else { setSelectedItem(null); }
             };
@@ -1843,8 +1766,6 @@
             if (showIntro) return <IntroScreen onEnter={() => { 
                 setShowIntro(false); 
                 window.history.pushState({ appState: 'main', activeTab: 'home' }, ''); 
-                const def = radioStations.find(s => s.title.toLowerCase().includes('disco funk')) || radioStations[0];
-                if (def && !currentRadioStation) { setCurrentRadioStation(def); setIsRadioPlaying(true); }
             }}/>;
 
             return (
@@ -1952,29 +1873,12 @@
 
                     <main className="box-main flex-1 min-h-screen pt-20 pb-32 md:pb-16 relative z-10 w-full max-w-[100vw] overflow-x-hidden">
                         {activeTab === 'radio' ? (
-                            <CyberRadioSection 
-                                stations={radioStations}
-                                currentStation={currentRadioStation}
-                                isPlaying={isRadioPlaying}
-                                onPlayStation={handlePlayRadioStation}
-                                volume={radioVolume}
-                                setVolume={setRadioVolume}
-                                streamError={streamError}
-                                isLoading={isLoadingRadio}
-                                audioRef={audioRef}
-                                clockTime={clockTime}
-                                isMuted={isMuted}
-                                setIsMuted={setIsMuted}
-                                isPowerOn={isPowerOn}
-                                setIsPowerOn={setIsPowerOn}
-                                spectrumHeights={spectrumHeights}
-                                radioFilter={radioFilter}
-                                setRadioFilter={setRadioFilter}
-                                hlsRef={hlsRef}
-                                radioFavorites={radioFavorites}
-                                onToggleFavorite={toggleFavorite}
-                                isItemFavorite={isItemFavorite}
-                            />
+                            <CyberRadioSection stations={radioStations} currentStation={currentRadioStation}
+                                onPlayStation={handlePlayRadioStation} onTogglePlayback={handleToggleRadio}
+                                onRetry={() => handlePlayRadioStation(currentRadioStation)}
+                                volume={radioVolume} setVolume={setRadioVolume} engine={radioEngineRef.current}
+                                radioState={radioState} radioFilter={radioFilter} setRadioFilter={setRadioFilter}
+                                radioFavorites={radioFavorites} onToggleFavorite={toggleFavorite} isItemFavorite={isItemFavorite} />
                         ) : activeTab === 'favorites' && !selectedItem ? (
                             <div className="p-4 sm:p-10 animate-fade-in max-w-7xl mx-auto w-full space-y-10">
                                 <div className="space-y-4">
