@@ -1,5 +1,147 @@
 [
   {
+    "titulo": "Marsupilami",
+    "tituloOriginal": "Marsupilami",
+    "descripcion": "David debe entregar un paquete desde Sudamérica y descubre que transporta un bebé Marsupilami.",
+    "imagen": "https://image.tmdb.org/t/p/w780/mfI37T2mbc7Zzv7ow8suQQlqMPy.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/qGPJ9AvOUpbpZjM6R7yqBDs4gsk.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1plh5MH_bIzdJ5KFwIhp60d-plaUHvjVL/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-02-04",
+    "rating": "6.4",
+    "votos": 186,
+    "runtime": "1h 39min",
+    "genres": [
+      "Aventura",
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Aventura, Comedia, Familia",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Philippe Lacheau",
+    "guionistas": "Philippe Lacheau, Pierre Lacheau, Pierre Dudan",
+    "reparto": [
+      {
+        "nombre": "Philippe Lacheau",
+        "personaje": "David Ticoule",
+        "foto": "https://image.tmdb.org/t/p/w185/2ev0Ip2vNnC5UYe10gJNcApahZ4.jpg"
+      },
+      {
+        "nombre": "Jamel Debbouze",
+        "personaje": "Pablito Camaron",
+        "foto": "https://image.tmdb.org/t/p/w185/aiqWSWbRJ6rrjxxVE6y2Xb3KdSp.jpg"
+      },
+      {
+        "nombre": "Tarek Boudali",
+        "personaje": "Ricky Salsa",
+        "foto": "https://image.tmdb.org/t/p/w185/ubhbt0kZ6TX0t0tBFWe50A4u22y.jpg"
+      },
+      {
+        "nombre": "Élodie Fontan",
+        "personaje": "Tess",
+        "foto": "https://image.tmdb.org/t/p/w185/1uFWqxdrKxBa0utLqf55aq8ASzP.jpg"
+      },
+      {
+        "nombre": "Julien Arruti",
+        "personaje": "Stéphane Buisson",
+        "foto": "https://image.tmdb.org/t/p/w185/8mW9D3GiTU6KNnNYUM1t7NhKPRY.jpg"
+      },
+      {
+        "nombre": "Jean Reno",
+        "personaje": "Jeffrey Malone",
+        "foto": "https://image.tmdb.org/t/p/w185/mw0EZJYz3kiFq9fNxsML773gotF.jpg"
+      },
+      {
+        "nombre": "Corentin Guillot",
+        "personaje": "Léo Ticoule",
+        "foto": ""
+      },
+      {
+        "nombre": "Gérard Jugnot",
+        "personaje": "Le capitaine du paquebot",
+        "foto": "https://image.tmdb.org/t/p/w185/8fvIsaf0a5e60IvtNddKCcOZXFO.jpg"
+      },
+      {
+        "nombre": "Didier Bourdon",
+        "personaje": "Le père de Pablito",
+        "foto": "https://image.tmdb.org/t/p/w185/llffnXLuelL2gCu6LFH7aPiva4f.jpg"
+      },
+      {
+        "nombre": "Alban Ivanov",
+        "personaje": "Raymond Douanier",
+        "foto": "https://image.tmdb.org/t/p/w185/mqOnSEZb3hkq973YyQnFEaBm9mN.jpg"
+      },
+      {
+        "nombre": "Reem Kherici",
+        "personaje": "Hélène",
+        "foto": "https://image.tmdb.org/t/p/w185/nfOOJB41gb0aFrPxfyF3u3i4HZn.jpg"
+      },
+      {
+        "nombre": "Booder",
+        "personaje": "Juanito",
+        "foto": "https://image.tmdb.org/t/p/w185/ivuNKU2v5vTWnwXZUvWkLpa8jms.jpg"
+      }
+    ],
+    "pais": "France, Belgium",
+    "idioma": "fr",
+    "productoras": "Pathé, Dupuis, BAF Prod, TF1 Films Production, Artémis Productions, Logical Content Ventures",
+    "presupuesto": 33555600,
+    "recaudacion": 22174000,
+    "trailerUrl": "https://www.youtube.com/watch?v=XTTvrfMVukc",
+    "coleccion": "",
+    "keywords": "mythical creature, adaptation, amused, animal trafficking",
+    "similares": [
+      {
+        "titulo": "King, mi pequeño rey",
+        "poster": "https://image.tmdb.org/t/p/w342/7mgkVKU9yXUh2JEgY7a6WJqtB15.jpg",
+        "year": "2022",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "La panda de la selva 3: Una jungla de locura",
+        "poster": "https://image.tmdb.org/t/p/w342/xcWbe2pQ61mJwDavdwJBxNhIzxY.jpg",
+        "year": "2017",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Trasto, de la mansion a la calle",
+        "poster": "https://image.tmdb.org/t/p/w342/kbeVZtX9HcsrkSyF0KrB4odkkiM.jpg",
+        "year": "2019",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Tom y Jerry. El tesoro del galeón pirata",
+        "poster": "https://image.tmdb.org/t/p/w342/g85rGahQAntohJ8FqCI4pS6l2Jx.jpg",
+        "year": "2006",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Mascotas unidas",
+        "poster": "https://image.tmdb.org/t/p/w342/aLu16Bk5uJD7XyeWLDgrlugWQV8.jpg",
+        "year": "2019",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Tintín y el lago de los tiburones",
+        "poster": "https://image.tmdb.org/t/p/w342/aeYI56nPAmjl2orxHIEGP9ZGCpK.jpg",
+        "year": "1972",
+        "rating": "6.3"
+      }
+    ],
+    "tmdbId": 1145899,
+    "tmdbType": "movie",
+    "runtimeMin": 99,
+    "homepage": "https://www.pathefilms.com/fr/films/marsupilami/",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "La coleccionista",
     "tituloOriginal": "La coleccionista",
     "descripcion": "En el pueblo fronterizo de Reino del Duero, Fátima, conocida como \"La coleccionista\", obsequia a algunos forasteros que visitan el pueblo con un objeto aparentemente mundano. Lo que los visitantes no sospechan es que los regalos de Fátima desencadenarán una serie de inquietantes y dramáticos sucesos paranormales que cambiarán para siempre sus vidas.",
