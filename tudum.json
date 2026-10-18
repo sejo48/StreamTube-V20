@@ -1,5 +1,90 @@
 [
   {
+    "tmdbId": 1255833,
+    "tmdbType": "movie",
+    "tituloOriginal": "Whalefall",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/shW2jHkQLZVv4Fko2rJDqTGU0gx.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-10-14",
+    "runtime": "98 min",
+    "runtimeMin": 98,
+    "clasificacion": "PG-13",
+    "director": "Brian Duffield",
+    "reparto": [
+      {
+        "nombre": "Austin Abrams",
+        "personaje": "Jay Gardiner",
+        "foto": "https://image.tmdb.org/t/p/w185/nvbJNwyhIICUFcS4lhxj9mGvL5z.jpg"
+      },
+      {
+        "nombre": "Josh Brolin",
+        "personaje": "Mitt Gardiner",
+        "foto": "https://image.tmdb.org/t/p/w185/sX2etBbIkxRaCsATyw5ZpOVMPTD.jpg"
+      },
+      {
+        "nombre": "Elisabeth Shue",
+        "personaje": "Zara Gardiner",
+        "foto": "https://image.tmdb.org/t/p/w185/1pmjDSLvOuqKW1P2KRPlpFMeUFe.jpg"
+      },
+      {
+        "nombre": "John Ortiz",
+        "personaje": "Hewey",
+        "foto": "https://image.tmdb.org/t/p/w185/o2SOFI53N6Gv5S3fDEBNbeimbzY.jpg"
+      },
+      {
+        "nombre": "Jane Levy",
+        "personaje": "Eva Gardiner",
+        "foto": "https://image.tmdb.org/t/p/w185/iYyWPOOpZgAqZK6IddSaD4R9QW3.jpg"
+      },
+      {
+        "nombre": "Emily Rudd",
+        "personaje": "Nan Gardiner",
+        "foto": "https://image.tmdb.org/t/p/w185/vVl4ABlqUuh5n1M2B9AOOa9r6kV.jpg"
+      },
+      {
+        "nombre": "Kamy D. Bruder",
+        "personaje": "Whale Watcher Man",
+        "foto": "https://image.tmdb.org/t/p/w185/zClbeBZWyCogpRZz9zRQnBSl5X9.jpg"
+      },
+      {
+        "nombre": "Mark Meloro Jr.",
+        "personaje": "Whale Watcher Man",
+        "foto": ""
+      },
+      {
+        "nombre": "Sam Franich",
+        "personaje": "Jay at 10",
+        "foto": ""
+      },
+      {
+        "nombre": "Nicholas Gould",
+        "personaje": "US Coast Guard Petty Officer Third Class Whaley",
+        "foto": ""
+      },
+      {
+        "nombre": "Laurel Lane Bowen",
+        "personaje": "Cafe Patron",
+        "foto": ""
+      },
+      {
+        "nombre": "Sam Skolnik",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/wTqS6v4AIa1X3T9bNv3dRhpZynW.jpg"
+      }
+    ],
+    "trailerUrl": "https://www.youtube.com/watch?v=5webTf9wplE",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "title": "Whalefall",
+    "releaseDate": "13 de octubre de 2026",
+    "genre": "Suspense",
+    "synopsis": "Tras la muerte de su padre, Jay Gardiner se sumerge en la costa central de California en busca de sus restos, pero es tragado por una ballena. Atrapado en su interior con solo una hora de oxígeno restante, Jay se da cuenta de que las lecciones que su padre le enseñó pueden ser la clave para escapar.",
+    "image": "https://image.tmdb.org/t/p/w780/jmGVSLOrH9IxtcffbldrEHX4IfB.jpg",
+    "availability": "Netflix (Película)",
+    "score": "6.8 / 10"
+  },
+  {
     "tmdbId": 1153576,
     "tmdbType": "movie",
     "tituloOriginal": "Street Fighter",
