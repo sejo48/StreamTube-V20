@@ -2,13 +2,8 @@
   "schemaVersion": 1,
   "source": "peliculas2.json",
   "mode": "manual",
-  "updatedAt": "2026-10-18T12:59:14.102Z",
+  "updatedAt": "2026-10-18T13:04:45.307Z",
   "items": [
-    {
-      "movieKey": "tmdb:192139",
-      "title": "Al borde de la guerra",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/E812GNXYQqjJwN0cVPY3icHpaj.jpg"
-    },
     {
       "movieKey": "tmdb:1712451",
       "title": "Dead Residents Evil",
@@ -28,6 +23,11 @@
       "movieKey": "tmdb:1304313",
       "title": "La momia de Lee Cronin",
       "backdrop": "https://image.tmdb.org/t/p/w1280/xugEpZk9YQ0DIz1aFvH5HGkqpZK.jpg"
+    },
+    {
+      "movieKey": "tmdb:1081003",
+      "title": "Supergirl",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/heZQmyNvkH236ha2M3JckdUQQqb.jpg"
     }
   ]
 }
