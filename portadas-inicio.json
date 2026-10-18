@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": "peliculas2.json",
   "mode": "manual",
-  "updatedAt": "2026-10-18T03:53:46.603Z",
+  "updatedAt": "2026-10-18T03:55:54.652Z",
   "items": [
     {
       "movieKey": "tmdb:1186350",
@@ -27,7 +27,7 @@
     {
       "movieKey": "tmdb:1153576",
       "title": "Street Fighter ( CAM )",
-      "backdrop": "https://media.themoviedb.org/t/p/w533_and_h300_face/6kJENBnZsVZuhYTSR3zZi6FUe30.jpg"
+      "backdrop": "https://image.tmdb.org/t/p/original/ckW83Rz0ntZQ5bI2svMaZ3rxaow.jpg"
     }
   ]
 }
