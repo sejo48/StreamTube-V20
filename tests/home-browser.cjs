@@ -79,6 +79,32 @@ const server = http.createServer((req, res) => {
         await page.setViewportSize({width:1440,height:1000});await page.screenshot({path:'/tmp/box-home-desktop.png',fullPage:true});
         await page.setViewportSize({width:390,height:844});await page.screenshot({path:'/tmp/box-home-mobile.png',fullPage:true});
         console.log('PASS: five unique featured titles, keyboard selection, favorites, detail playback, explore buttons and 320–1920px layouts');
+
+        await page.setViewportSize({width:1440,height:1000});
+        const today=await page.evaluate(()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/Costa_Rica',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()));
+        const originalPremieres=JSON.parse(fs.readFileSync(path.join(root,'peliculas2.json'),'utf8'));
+        const oldPremieres=originalPremieres.map(item=>({...item,fechaEstreno:'2020-01-01'}));
+        const newest={...originalPremieres[0],id:'newest-home-test',titulo:'Estreno recién publicado de prueba',fechaEstreno:today,year:today.slice(0,4),descripcion:'Sinopsis actualizada del último estreno.'};
+        await page.getByRole('navigation',{name:'Secciones principales'}).getByRole('button',{name:'Películas',exact:true}).click();
+        files.set('peliculas2.json',JSON.stringify([...oldPremieres,newest]));
+        await page.getByRole('navigation',{name:'Secciones principales'}).getByRole('button',{name:'Inicio',exact:true}).click();
+        await hero.getByRole('heading',{level:1}).filter({hasText:newest.titulo}).waitFor();
+        assert.equal(await hero.locator('.home-feature-description').innerText(),newest.descripcion);
+        assert.equal(await hero.locator('[role=tab][aria-selected=true]').getAttribute('id'),'home-feature-tab-0');
+        const resumed={...newest,titulo:'Nuevo estreno al regresar a la pestaña'};
+        files.set('peliculas2.json',JSON.stringify([...oldPremieres,resumed]));
+        await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
+        await hero.getByRole('heading',{level:1}).filter({hasText:resumed.titulo}).waitFor();
+        const restored={...resumed,titulo:'Estreno al restaurar la página'};
+        files.set('peliculas2.json',JSON.stringify([...oldPremieres,restored]));
+        await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));
+        await hero.getByRole('heading',{level:1}).filter({hasText:restored.titulo}).waitFor();
+        failCatalog=true;
+        await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
+        await page.getByRole('status').filter({hasText:'Se conservó el catálogo anterior'}).waitFor();
+        assert((await hero.getByRole('heading',{level:1}).innerText()).includes(restored.titulo.toUpperCase()));
+        failCatalog=false;
+        console.log('PASS: returning to Home, browser focus and page restoration refresh the newest premiere; failures keep the previous hero');
         // Verify actual carousel timing with the browser clock; focus and reduced motion pause it.
         await page.setViewportSize({width:1440,height:1000});
         await page.evaluate(()=>document.activeElement?.blur());await page.mouse.move(0,0);

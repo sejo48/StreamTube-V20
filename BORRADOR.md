@@ -127,8 +127,12 @@ Verificación: seis pruebas del motor, integración en Chromium con una señal W
 
 ## Inicio panorámico inspirado en la referencia
 
-El inicio utiliza fondos panorámicos del catálogo, texto superpuesto y cinco destacados seleccionables. La selección respeta el orden del catálogo, prioriza Estrenos y evita títulos repetidos. El carrusel cambia cada nueve segundos y se pausa con el foco, al pasar el puntero, al ocultar la página o cuando se solicita reducir movimiento. Admite selección con flechas, Inicio y Fin, además de un botón de pausa.
+El inicio utiliza fondos panorámicos del catálogo, texto superpuesto y cinco destacados seleccionables. La selección prioriza Estrenos, ordena por fecha de lanzamiento de más reciente a más antiguo y evita títulos repetidos. Los títulos con fecha futura se reservan para sus secciones correspondientes. Cuando no hay fecha, se utiliza el año y después el orden del catálogo. El carrusel cambia cada nueve segundos y se pausa con el foco, al pasar el puntero, al ocultar la página o cuando se solicita reducir movimiento. Admite selección con flechas, Inicio y Fin, además de un botón de pausa.
 
 Las filas de Tendencias, Estrenos, Películas, Series, Animados, Mi lista y Continuar viendo usan portadas horizontales desplazables y accesos para explorar cada sección. Tendencias es una selección editorial del catálogo; no se muestran cifras de reproducciones inventadas. Los próximos lanzamientos y sus tráileres se conservan al final. El administrador y los datos de catálogo no se modificaron.
 
 Verificación: pruebas generales y pruebas del inicio en Chromium, incluyendo navegación al detalle correcto, favoritos guardados, controles por teclado, temporización y movimiento reducido, y anchos 320/390/430/1024/1440/1920. Las imágenes externas se sustituyen por imágenes de prueba en las comprobaciones sin conexión; sus enlaces de producción se conservan.
+
+## Actualización de la portada al regresar
+
+El catálogo vuelve a consultarse al entrar de nuevo en Inicio, al regresar a la pestaña o restaurar una página guardada por el navegador. La portada empieza por el estreno más reciente y mantiene los datos anteriores si falla la actualización. Los resultados de solicitudes canceladas no reemplazan un catálogo más nuevo. Se verificaron la ordenación por fecha, el límite de cinco, las fechas futuras y la recuperación al volver a Inicio, recuperar el foco y restaurar la página.

@@ -8,6 +8,7 @@
     <script src="./radio-favorites.js?v=2026-1"></script>
     <link rel="stylesheet" href="./radio.css?v=2026-3">
     <link rel="stylesheet" href="./home.css?v=2026-1">
+    <script src="./home-features.js?v=2026-1"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="manifest" href="./manifest.webmanifest">
@@ -1186,6 +1187,29 @@
             const [catalogRefresh, setCatalogRefresh] = useState(0);
             const [catalogMessage, setCatalogMessage] = useState('');
             const catalogLoaded = useRef(false);
+            const previousHomeTab = useRef('home');
+            const lastHomeWake = useRef(0);
+            useEffect(() => {
+                if (activeTab === 'home' && previousHomeTab.current !== 'home') {
+                    lastHomeWake.current = Date.now();
+                    setCatalogRefresh(value => value + 1);
+                }
+                previousHomeTab.current = activeTab;
+            }, [activeTab]);
+            useEffect(() => {
+                if (activeTab !== 'home') return;
+                const refresh = () => {
+                    if (document.visibilityState !== 'visible' || Date.now() - lastHomeWake.current < 1000) return;
+                    lastHomeWake.current = Date.now();
+                    setCatalogRefresh(value => value + 1);
+                };
+                const onPageShow = event => { if (event.persisted) refresh(); };
+                window.addEventListener('focus', refresh);
+                window.addEventListener('pageshow', onPageShow);
+                document.addEventListener('visibilitychange', refresh);
+                return () => { window.removeEventListener('focus', refresh); window.removeEventListener('pageshow', onPageShow); document.removeEventListener('visibilitychange', refresh); };
+            }, [activeTab]);
+
             const [expandedSeason, setExpandedSeason] = useState(0);
             const [showMobileMoreMenu, setShowMobileMoreMenu] = useState(false);
             const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -1431,6 +1455,7 @@
                             fetchSmart(URLS.MOVIES2, RAW_URLS.MOVIES2, true),
                             fetchSmart(URLS.TUDUM, RAW_URLS.TUDUM, true)
                         ]);
+                        if (cancelled) return;
 
                         if (cancelled) return;
                         let tvChannels = [];
@@ -1707,14 +1732,7 @@
 
             const displayedItems = getDisplayContent();
             
-            const featuredItems = useMemo(() => {
-                const seen = new Set();
-                return [...content.movies2, ...content.movies, ...content.series, ...content.animados].filter(item => {
-                    const key = (item.title || '').trim().toLocaleLowerCase('es') + '|' + (item.year || '');
-                    if (seen.has(key)) return false;
-                    seen.add(key); return true;
-                }).slice(0, 5);
-            }, [content]);
+            const featuredItems = useMemo(() => BoxHomeFeatures.select(content), [content]);
             const homeTrends = useMemo(() => [...content.movies2.slice(0, 8), ...content.movies.slice(0, 4), ...content.series.slice(0, 4)], [content]);
 
             const handleShowDetails = (item) => {
@@ -1810,6 +1828,7 @@
 
 
             const handleTabClick = (tab) => {
+                if (tab.id === 'home' && activeTab === 'home' && !loading) { lastHomeWake.current = Date.now(); setCatalogRefresh(value => value + 1); }
                 if (tab.id !== 'radio') { radioEngineRef.current?.stop(); setIsRadioPlaying(false); }
                 setActiveTab(tab.id); setSearch(''); setShowMobileSearch(false); setIsLocked(false); setIsPlaying(false); setShowMobileMoreMenu(false);
                 window.history.pushState({ appState: 'main', activeTab: tab.id }, '');
@@ -2480,7 +2499,7 @@
                             <PaymentsSection emailUsuario={emailUsuario} isSubscriberActive={isSubscriberActive} expiresAt={accessExpiresAt} onVerify={() => setShowPaywallModal(true)} />
                         ) : (
                             <>
-                                {activeTab === 'home' && !search && <FeaturedHome items={featuredItems} onPlay={handlePlay} isItemFavorite={isItemFavorite} onToggleFavorite={toggleFavorite} />}
+                                {activeTab === 'home' && !search && <FeaturedHome key={catalogRefresh + ':' + featuredItems.map(item => item.id).join('|')} items={featuredItems} onPlay={handlePlay} isItemFavorite={isItemFavorite} onToggleFavorite={toggleFavorite} />}
                                 {activeTab === 'home' && !search ? (
                                     <div className="home-shelves">
                                         {continueWatching.length > 0 && <HomeShelf title="Continuar viendo" subtitle="Retoma lo que estabas disfrutando." items={continueWatching} onPlay={handleResume} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} resume />}
