@@ -2,13 +2,8 @@
   "schemaVersion": 1,
   "source": "peliculas2.json",
   "mode": "manual",
-  "updatedAt": "2026-10-18T04:03:29.067Z",
+  "updatedAt": "2026-10-18T04:06:07.737Z",
   "items": [
-    {
-      "movieKey": "tmdb:1186350",
-      "title": "Marco",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/a6RkQIOZ6wThQOEDv6lHsfH53hD.jpg"
-    },
     {
       "movieKey": "tmdb:192139",
       "title": "Al borde de la guerra",
@@ -28,6 +23,11 @@
       "movieKey": "tmdb:1284465",
       "title": "La muerte de Robin Hood",
       "backdrop": "https://image.tmdb.org/t/p/w1280/lh3BDkmWJh998n4fQcHYcVi7dpm.jpg"
+    },
+    {
+      "movieKey": "tmdb:1421552",
+      "title": "Panda Plan: The Magical Tribe",
+      "backdrop": "https://image.tmdb.org/t/p/original/nDrwkgnNBAu4ytWRvinTQLHiqgh.jpg"
     }
   ]
 }
