@@ -51,13 +51,13 @@ const server = http.createServer((req, res) => {
         const hero=page.getByRole('region',{name:'Película recomendada'});
         const tabs=hero.getByRole('tab');await tabs.nth(4).waitFor();assert.equal(await tabs.count(),5);
         const titles=await tabs.allTextContents().then(labels=>labels.map(value=>value.trim()));assert.equal(new Set(titles).size,5);
-        await tabs.nth(3).click();const selectedTitle=await tabs.nth(3).locator('strong').innerText();
+        await tabs.nth(3).click();const selectedTitle=(await tabs.nth(3).locator('strong').textContent()).trim();
         assert.equal(await hero.getByRole('heading',{level:1}).innerText(),selectedTitle.toUpperCase());
         assert.equal(await tabs.nth(3).getAttribute('aria-selected'),'true');
         await tabs.nth(3).press('ArrowRight');assert.equal(await tabs.nth(4).getAttribute('aria-selected'),'true');
         await tabs.nth(4).press('Home');assert.equal(await tabs.nth(0).getAttribute('aria-selected'),'true');
         await tabs.nth(0).press('End');assert.equal(await tabs.nth(4).getAttribute('aria-selected'),'true');
-        const lastTitle=await tabs.nth(4).locator('strong').innerText();
+        const lastTitle=(await tabs.nth(4).locator('strong').textContent()).trim();
         await hero.getByRole('button',{name:'Añadir a favoritos',exact:true}).click();
         assert(await page.evaluate(title=>JSON.parse(localStorage.getItem('boxplay_favs')).some(entry=>entry.title===title),lastTitle));
         await hero.getByRole('button',{name:'Ver ahora',exact:true}).click();
@@ -72,7 +72,24 @@ const server = http.createServer((req, res) => {
             await page.waitForFunction(()=>{const el=document.querySelector('.home-featured');return el?.getBoundingClientRect().width===innerWidth&&!document.querySelector('button[title="Actualizar catálogo"]').disabled;});
             assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
             const metrics=await hero.evaluate(el=>{const title=el.querySelector('h1'),image=el.querySelector('.home-feature-backdrop');return{width:el.getBoundingClientRect().width, titleFits:title.scrollWidth<=title.clientWidth+1, fit:getComputedStyle(image).objectFit};});
-            assert.equal(metrics.width,width);assert(metrics.titleFits);assert.equal(metrics.fit,'cover');
+            assert.equal(metrics.width,width);assert(metrics.titleFits);assert.equal(metrics.fit,'contain');
+            const fitted=await hero.locator('.home-feature-backdrop').evaluate(async image=>{
+                const original=image.src, checks=[];
+                for(const [w,h] of [[900,1350],[1920,1080],[2400,800]]){
+                    image.src='data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="#164e63"/><circle cx="${w/2}" cy="${h*.1}" r="${Math.min(w,h)*.07}" fill="#67e8f9"/></svg>`);
+                    await image.decode();
+                    const rect=image.getBoundingClientRect(), hero=image.closest('.home-featured'), style=getComputedStyle(image);
+                    const factor=Math.min(rect.width/image.naturalWidth,rect.height/image.naturalHeight);
+                    const renderedWidth=image.naturalWidth*factor, renderedHeight=image.naturalHeight*factor;
+                    const heroRect=hero.getBoundingClientRect();
+                    checks.push(style.objectFit==='contain'&&renderedWidth<=rect.width+.1&&renderedHeight<=rect.height+.1&&rect.left>=heroRect.left&&rect.right<=heroRect.right&&rect.top>=heroRect.top&&rect.bottom<=heroRect.bottom);
+                    if(innerWidth<640)checks.push(rect.bottom<=hero.querySelector('h1').getBoundingClientRect().top);
+                    else checks.push(rect.bottom<=hero.querySelector('.home-feature-selectors').getBoundingClientRect().top);
+                }
+                image.src=original;await image.decode();return checks.every(Boolean);
+            });
+            assert(fitted,`Portrait and landscape artwork must fit completely at ${width}px`);
+
             if(width>=1024){
                 const bounds=await tabs.evaluateAll(buttons=>buttons.map(button=>button.getBoundingClientRect().toJSON()));
                 assert(bounds.every(rect=>rect.left>=0&&rect.right<=width));assert(bounds.every(rect=>Math.abs(rect.top-bounds[0].top)<1));

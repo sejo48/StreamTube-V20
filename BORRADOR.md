@@ -136,3 +136,7 @@ Verificación: pruebas generales y pruebas del inicio en Chromium, incluyendo na
 ## Actualización de la portada al regresar
 
 El catálogo vuelve a consultarse al entrar de nuevo en Inicio, al regresar a la pestaña o restaurar una página guardada por el navegador. La portada cambia a otra selección de Tendencias y mantiene los datos anteriores si falla la actualización. Los resultados de solicitudes canceladas no reemplazan un catálogo más nuevo. Se verificaron la participación de todo el catálogo, el límite de cinco, los títulos únicos, cuatro recargas consecutivas sin repetir portada, y la recuperación al volver a Inicio, recuperar el foco y restaurar la página.
+
+## Encuadre completo de la portada
+
+La imagen principal utiliza ajuste proporcional completo, tanto si es vertical como panorámica. El fondo independiente desenfocado cubre los espacios sobrantes. El encuadre reserva el espacio de las miniaturas en PC y se coloca por encima del texto en móvil. Se verificaron fuentes verticales, 16:9 y ultrapanorámicas en anchos de 320 a 1920 píxeles, sin recortes de la imagen principal.
