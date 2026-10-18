@@ -8,7 +8,7 @@
     <script src="./radio-favorites.js?v=2026-1"></script>
     <link rel="stylesheet" href="./radio.css?v=2026-3">
     <link rel="stylesheet" href="./home.css?v=2026-1">
-    <script src="./home-features.js?v=2026-1"></script>
+    <script src="./home-features.js?v=2026-2"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="manifest" href="./manifest.webmanifest">
@@ -648,6 +648,8 @@
             const [reduced, setReduced] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
             const selectors = useRef([]);
             const index = Math.min(selected, Math.max(0, items.length - 1));
+            const coverKey = items[index] ? BoxHomeFeatures.key(items[index]) : '';
+            useEffect(() => { if (coverKey) safeStorage.setItem('boxplay_home_feature_last', coverKey); }, [coverKey]);
             const paused = manualPause || hovered || focused || hidden || reduced;
             useEffect(() => {
                 const media = matchMedia('(prefers-reduced-motion: reduce)');
@@ -1721,6 +1723,7 @@
             const getDisplayContent = () => { 
                 let list = activeTab === 'home' 
                     ? [...content.movies2, ...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] 
+                    : activeTab === 'trends' ? BoxHomeFeatures.pool(content)
                     : activeTab === 'favorites' 
                     ? [...favorites.filter(item => item.type !== 'tv' && item.type !== 'radio'), ...tvFavorites] 
                     : activeTab === 'topshows'
@@ -1732,8 +1735,8 @@
 
             const displayedItems = getDisplayContent();
             
-            const featuredItems = useMemo(() => BoxHomeFeatures.select(content), [content]);
-            const homeTrends = useMemo(() => [...content.movies2.slice(0, 8), ...content.movies.slice(0, 4), ...content.series.slice(0, 4)], [content]);
+            const homeTrends = useMemo(() => BoxHomeFeatures.pool(content), [content]);
+            const featuredItems = useMemo(() => BoxHomeFeatures.select(content, { previous: safeStorage.getItem('boxplay_home_feature_last') || '' }), [content]);
 
             const handleShowDetails = (item) => {
                 if (item.type === 'radio') { setSelectedItem(null); setActiveTab('radio'); handlePlayRadioStation(item); window.history.pushState({ appState: 'main', activeTab: 'radio' }, ''); return; }
@@ -2499,11 +2502,11 @@
                             <PaymentsSection emailUsuario={emailUsuario} isSubscriberActive={isSubscriberActive} expiresAt={accessExpiresAt} onVerify={() => setShowPaywallModal(true)} />
                         ) : (
                             <>
-                                {activeTab === 'home' && !search && <FeaturedHome key={catalogRefresh + ':' + featuredItems.map(item => item.id).join('|')} items={featuredItems} onPlay={handlePlay} isItemFavorite={isItemFavorite} onToggleFavorite={toggleFavorite} />}
+                                {activeTab === 'home' && !search && <FeaturedHome key={featuredItems.map(item => item.id || BoxHomeFeatures.key(item)).join('|')} items={featuredItems} onPlay={handlePlay} isItemFavorite={isItemFavorite} onToggleFavorite={toggleFavorite} />}
                                 {activeTab === 'home' && !search ? (
                                     <div className="home-shelves">
                                         {continueWatching.length > 0 && <HomeShelf title="Continuar viendo" subtitle="Retoma lo que estabas disfrutando." items={continueWatching} onPlay={handleResume} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} resume />}
-                                        <HomeShelf title="Tendencias" subtitle="Una selección de estrenos y títulos para descubrir." items={homeTrends} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'movies2'))} />
+                                        <HomeShelf title="Tendencias" subtitle="Una selección de estrenos y títulos para descubrir." items={homeTrends} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick({ id: 'trends' })} />
                                         <HomeShelf title="Estrenos 2026" subtitle="Las novedades del catálogo, en un solo lugar." items={content.movies2} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'movies2'))} />
                                         <HomeShelf title="Películas para ti" items={content.movies} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'movies'))} />
                                         <HomeShelf title="Series" subtitle="Encuentra tu próxima historia." items={content.series} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'series'))} />
@@ -2528,7 +2531,7 @@
                                     <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
                                         <div className="mb-6 flex items-center gap-3">
                                             <div className="w-1.5 h-6 sm:h-7 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
-                                            <h2 className="text-lg sm:text-2xl font-black uppercase tracking-wide text-white">{activeTab === 'home' ? 'Resultados de Búsqueda' : activeTab === 'movies2' ? 'Estrenos 2026' : activeTab}</h2>
+                                            <h2 className="text-lg sm:text-2xl font-black uppercase tracking-wide text-white">{activeTab === 'home' ? 'Resultados de Búsqueda' : activeTab === 'movies2' ? 'Estrenos 2026' : activeTab === 'trends' ? 'Tendencias' : activeTab}</h2>
                                         </div>
                                         {loading ? (
                                             <div className="flex justify-center py-24"><div className="animate-spin rounded-full h-12 w-12 border-4 border-cyan-500 border-t-transparent shadow-[0_0_25px_#06b6d4]"></div></div>

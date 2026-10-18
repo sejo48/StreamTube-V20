@@ -64,10 +64,12 @@ const server = http.createServer((req, res) => {
         await page.locator('.box-detail-title').waitFor();assert.equal((await page.locator('.box-detail-title').innerText()).toLocaleUpperCase(),lastTitle.toLocaleUpperCase());
         await page.getByRole('navigation',{name:'Secciones principales'}).getByRole('button',{name:'Inicio',exact:true}).click();
         await page.getByRole('region',{name:'Tendencias',exact:true}).getByRole('button',{name:'Explorar todo',exact:true}).click();
-        await page.getByRole('heading',{name:'Estrenos 2026',exact:true}).waitFor();
+        await page.getByRole('heading',{name:'Tendencias',exact:true}).waitFor();
+        assert(await page.locator('.card-glow').count()>16);
         await page.getByRole('navigation',{name:'Secciones principales'}).getByRole('button',{name:'Inicio',exact:true}).click();
         for(const width of [320,390,430,1024,1440,1920]){
             await page.setViewportSize({width,height:1000});
+            await page.waitForFunction(()=>{const el=document.querySelector('.home-featured');return el?.getBoundingClientRect().width===innerWidth&&!document.querySelector('button[title="Actualizar catálogo"]').disabled;});
             assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
             const metrics=await hero.evaluate(el=>{const title=el.querySelector('h1'),image=el.querySelector('.home-feature-backdrop');return{width:el.getBoundingClientRect().width, titleFits:title.scrollWidth<=title.clientWidth+1, fit:getComputedStyle(image).objectFit};});
             assert.equal(metrics.width,width);assert(metrics.titleFits);assert.equal(metrics.fit,'cover');
@@ -81,30 +83,35 @@ const server = http.createServer((req, res) => {
         console.log('PASS: five unique featured titles, keyboard selection, favorites, detail playback, explore buttons and 320–1920px layouts');
 
         await page.setViewportSize({width:1440,height:1000});
-        const today=await page.evaluate(()=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/Costa_Rica',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date()));
-        const originalPremieres=JSON.parse(fs.readFileSync(path.join(root,'peliculas2.json'),'utf8'));
-        const oldPremieres=originalPremieres.map(item=>({...item,fechaEstreno:'2020-01-01'}));
-        const newest={...originalPremieres[0],id:'newest-home-test',titulo:'Estreno recién publicado de prueba',fechaEstreno:today,year:today.slice(0,4),descripcion:'Sinopsis actualizada del último estreno.'};
-        await page.getByRole('navigation',{name:'Secciones principales'}).getByRole('button',{name:'Películas',exact:true}).click();
-        files.set('peliculas2.json',JSON.stringify([...oldPremieres,newest]));
-        await page.getByRole('navigation',{name:'Secciones principales'}).getByRole('button',{name:'Inicio',exact:true}).click();
-        await hero.getByRole('heading',{level:1}).filter({hasText:newest.titulo}).waitFor();
-        assert.equal(await hero.locator('.home-feature-description').innerText(),newest.descripcion);
-        assert.equal(await hero.locator('[role=tab][aria-selected=true]').getAttribute('id'),'home-feature-tab-0');
-        const resumed={...newest,titulo:'Nuevo estreno al regresar a la pestaña'};
-        files.set('peliculas2.json',JSON.stringify([...oldPremieres,resumed]));
-        await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
-        await hero.getByRole('heading',{level:1}).filter({hasText:resumed.titulo}).waitFor();
-        const restored={...resumed,titulo:'Estreno al restaurar la página'};
-        files.set('peliculas2.json',JSON.stringify([...oldPremieres,restored]));
-        await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));
-        await hero.getByRole('heading',{level:1}).filter({hasText:restored.titulo}).waitFor();
+
+        // Hard reloads must change the leading cover and keep its metadata together.
+        for(let reload=0;reload<4;reload++){
+            const previous=await page.evaluate(()=>localStorage.getItem('boxplay_home_feature_last'));
+            await page.reload();await page.getByRole('button',{name:'Comenzar Experiencia'}).click();
+            await hero.getByRole('tab').nth(4).waitFor();
+            const next=await page.evaluate(()=>localStorage.getItem('boxplay_home_feature_last'));
+            assert.notEqual(next,previous);
+            const title=await hero.locator('h1').textContent();
+            assert(next.startsWith(title.trim().toLocaleLowerCase('es').replace(/\s+/g,' ')));
+        }
+        const originalSeries=JSON.parse(fs.readFileSync(path.join(root,'playlist.json'),'utf8'));
+        const edge={...originalSeries[0],id:'full-pool-last-test',tituloSerie:'Título al final del catálogo completo',descripcion:'Sinopsis del título seleccionado al final de Trends.',backdrop:originalSeries[0].imagen||originalSeries[0].backdrop};
+        files.set('playlist.json',JSON.stringify([...originalSeries,edge]));
+        const chooseLast=async()=>page.evaluate(()=>{let first=true;Math.random=()=>{if(first){first=false;return 0;}return .999999999;};});
+        await chooseLast();await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
+        await hero.getByRole('heading',{level:1}).filter({hasText:edge.tituloSerie}).waitFor();
+        assert.equal(await hero.locator('.home-feature-description').innerText(),edge.descripcion);
+        const updated={...edge,tituloSerie:'Título actualizado al restaurar la página'};
+        files.set('playlist.json',JSON.stringify([...originalSeries,updated]));
+        await chooseLast();await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));
+        await hero.getByRole('heading',{level:1}).filter({hasText:updated.tituloSerie}).waitFor();
+        const retained=await hero.locator('h1').innerText();
         failCatalog=true;
         await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
         await page.getByRole('status').filter({hasText:'Se conservó el catálogo anterior'}).waitFor();
-        assert((await hero.getByRole('heading',{level:1}).innerText()).includes(restored.titulo.toUpperCase()));
+        assert.equal(await hero.locator('h1').innerText(),retained);
         failCatalog=false;
-        console.log('PASS: returning to Home, browser focus and page restoration refresh the newest premiere; failures keep the previous hero');
+        console.log('PASS: consecutive page reloads choose different covers; end-of-catalog entries are eligible with matching metadata; focus/restoration refresh and failure retention work');
         // Verify actual carousel timing with the browser clock; focus and reduced motion pause it.
         await page.setViewportSize({width:1440,height:1000});
         await page.evaluate(()=>document.activeElement?.blur());await page.mouse.move(0,0);

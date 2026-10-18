@@ -1,23 +1,29 @@
 const {test}=require('node:test');const assert=require('node:assert/strict');const H=require('../home-features.js');
-const now=new Date('2026-10-18T04:00:00Z');
-test('latest premieres lead the carousel independent of insertion order',()=>{
- const input=[{title:'Vieja',fechaEstreno:'2026-01-01'},{title:'Nueva',fechaEstreno:'2026-10-17'},{title:'Intermedia',fechaEstreno:'2026-09-20'}];
- assert.deepEqual(H.select({movies2:input},now).map(x=>x.title),['Nueva','Intermedia','Vieja']);assert.equal(input[0].title,'Vieja');
+const content={movies2:Array.from({length:20},(_,i)=>({id:'p'+i,title:'Estreno '+i,year:'2026'})),movies:[{id:'m',title:'Película del catálogo',year:'1990'}],series:[{id:'s',title:'Serie del catálogo'}]};
+test('complete Trends pool includes older titles and all catalog positions',()=>{
+ const pool=H.pool(content);assert.equal(pool.length,22);assert(pool.some(x=>x.id==='p19'));assert(pool.some(x=>x.id==='m'));assert(pool.some(x=>x.id==='s'));
 });
-test('future releases are excluded using the current date in Costa Rica',()=>{
- const result=H.select({movies2:[{title:'Hoy',fechaEstreno:'2026-10-17'},{title:'Mañana',fechaEstreno:'2026-10-18'},{title:'Futuro',year:'2027'}]},now);
- assert.deepEqual(result.map(x=>x.title),['Hoy']);
+test('five unique highlights are drawn without mutating catalog order',()=>{
+ const before=JSON.stringify(content),items=H.select(content,{random:()=>.3});
+ assert.equal(items.length,5);assert.equal(new Set(items.map(H.key)).size,5);assert.equal(JSON.stringify(content),before);
 });
-test('five premieres are selected before falling back to other catalog sections',()=>{
- const movies2=Array.from({length:7},(_,i)=>({title:'Estreno '+i,fechaEstreno:`2026-10-${String(i+1).padStart(2,'0')}`}));
- assert.deepEqual(H.select({movies2,movies:[{title:'Otra',fechaEstreno:'2026-10-17'}]},now).map(x=>x.title),['Estreno 6','Estreno 5','Estreno 4','Estreno 3','Estreno 2']);
+test('every entry in the full catalog can become the leading cover',()=>{
+ const winners=new Set();let seed=7;
+ const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+ for(let i=0;i<500;i++)winners.add(H.select(content,{random})[0].id);
+ assert.equal(winners.size,H.pool(content).length);
 });
-test('undated ties retain catalog order; duplicate titles do not fill multiple slots',()=>{
- const result=H.select({movies2:[{title:'Uno',year:'2026'},{title:'Dos',year:'2026'},{title:'Sin fecha'}],movies:[{title:'Uno',year:'2026'},{title:'Tres'}]},now);
- assert.deepEqual(result.map(x=>x.title),['Uno','Dos','Sin fecha','Tres']);
+test('consecutive reloads never repeat the previously displayed cover',()=>{
+ let previous='';
+ for(let i=0;i<30;i++){
+  const items=H.select(content,{previous,random:()=>0});
+  assert.notEqual(H.key(items[0]),previous);previous=H.key(items[0]);
+ }
 });
-test('date aliases are supported and invalid dates do not outrank valid dates',()=>{
- assert.equal(H.releaseDay({fechaEstreno:'2026-02-30'}),'');
- assert.equal(H.releaseDay({release_date:'2026-10-10'}),'2026-10-10');
- assert.equal(H.releaseDay({releaseDate:'2026-10-10T12:00:00Z'}),'2026-10-10');
+test('duplicate titles and blank entries do not create duplicate highlights',()=>{
+ const result=H.pool({trends:[{title:'Una',year:'2026'},{titulo:'UNA',year:'2026'},{name:'Otra'},{},null]});
+ assert.equal(result.length,2);
+});
+test('a single title and an empty catalog remain usable',()=>{
+ assert.deepEqual(H.select({}),[]);assert.equal(H.select({trends:[{title:'Única'}]},{previous:H.key({title:'Única'})}).length,1);
 });
