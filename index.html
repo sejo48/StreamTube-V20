@@ -7,6 +7,7 @@
     <script src="./radio-engine.js?v=2026-2"></script>
     <script src="./radio-favorites.js?v=2026-1"></script>
     <link rel="stylesheet" href="./radio.css?v=2026-3">
+    <link rel="stylesheet" href="./home.css?v=2026-1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="manifest" href="./manifest.webmanifest">
@@ -637,53 +638,66 @@
             );
         };
 
-        const HeroSection = ({ item, onPlay, isFavorite, onToggleFavorite }) => {
-            const featuredItem = useMemo(() => { if (!item) return null; return item; }, [item]);
-            if (!featuredItem) return null;
-            const imgSource = extractImageUrl(featuredItem) || generatePlaceholder(featuredItem.title || featuredItem.titulo, 'poster');
-            const titleSource = featuredItem.titulo || featuredItem.title || featuredItem.name;
-            const descSource = featuredItem.descripcion || featuredItem.sinopsis || featuredItem.plot;
-            const mobileArt = normalizeImageUrl(featuredItem.backdrop || featuredItem.banner || imgSource);
-            const mobileMeta = [featuredItem.year, (featuredItem.generosTexto || featuredItem.genre || '').split(',')[0], featuredItem.qualityTag].filter(Boolean);
-            return (
-                <>
-                <section className="box-phone-hero" aria-label="Película recomendada">
-                    <div className="box-phone-hero-art"><RobustImage src={mobileArt} alt={titleSource} title={titleSource} type="backdrop" className="w-full h-full object-cover" /></div>
-                    <div className="box-phone-hero-shade"></div>
-                    <div className="box-phone-hero-copy">
-                        <span className="box-phone-hero-label">Recomendado para ti</span>
-                        <h1>{titleSource}</h1>
-                        {mobileMeta.length > 0 && <p className="box-phone-hero-meta">{mobileMeta.map((value, index) => <span key={index}>{value}</span>)}</p>}
-                        <div className="box-phone-hero-controls">
-                            <button className="box-phone-play" onClick={() => onPlay(featuredItem)}><Icon name="play" size={18} fill="currentColor" />Ver ahora</button>
-                            <button className="box-phone-favorite" aria-label={isFavorite ? 'Quitar de favoritos' : 'Añadir a favoritos'} aria-pressed={isFavorite} onClick={() => onToggleFavorite(featuredItem)}><Icon name="heart" size={20} fill={isFavorite ? '#06b6d4' : 'none'} /></button>
-                        </div>
+        const FeaturedHome = ({ items, onPlay, isItemFavorite, onToggleFavorite }) => {
+            const [selected, setSelected] = useState(0);
+            const [manualPause, setManualPause] = useState(false);
+            const [hovered, setHovered] = useState(false);
+            const [focused, setFocused] = useState(false);
+            const [hidden, setHidden] = useState(document.hidden);
+            const [reduced, setReduced] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
+            const selectors = useRef([]);
+            const index = Math.min(selected, Math.max(0, items.length - 1));
+            const paused = manualPause || hovered || focused || hidden || reduced;
+            useEffect(() => {
+                const media = matchMedia('(prefers-reduced-motion: reduce)');
+                const motion = () => setReduced(media.matches), visibility = () => setHidden(document.hidden);
+                media.addEventListener('change', motion); document.addEventListener('visibilitychange', visibility);
+                return () => { media.removeEventListener('change', motion); document.removeEventListener('visibilitychange', visibility); };
+            }, []);
+            useEffect(() => {
+                if (paused || items.length < 2) return;
+                const timer = setTimeout(() => setSelected((index + 1) % items.length), 9000);
+                return () => clearTimeout(timer);
+            }, [index, items.length, paused]);
+            useEffect(() => {
+                const button = selectors.current[index], strip = button?.parentElement;
+                if (strip && strip.scrollWidth > strip.clientWidth) strip.scrollTo({ left: Math.max(0, button.offsetLeft - strip.offsetLeft - (strip.clientWidth - button.clientWidth) / 2), behavior: reduced ? 'instant' : 'smooth' });
+            }, [index, reduced]);
+            if (!items.length) return null;
+            const item = items[index], title = item.title || item.titulo || item.name || 'Destacado';
+            const description = item.description || item.descripcion || item.sinopsis || 'Descubre este título en Box Play TV.';
+            const favorite = isItemFavorite(item);
+            const select = next => setSelected((next + items.length) % items.length);
+            const onKeys = event => {
+                let next;
+                if (event.key === 'ArrowRight') next = (index + 1) % items.length;
+                if (event.key === 'ArrowLeft') next = (index - 1 + items.length) % items.length;
+                if (event.key === 'Home') next = 0;
+                if (event.key === 'End') next = items.length - 1;
+                if (next === undefined) return;
+                event.preventDefault(); select(next); selectors.current[next]?.focus();
+            };
+            return <section className="home-featured" aria-label="Película recomendada" aria-roledescription="carrusel" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onFocusCapture={() => setFocused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
+                <div className="home-feature-art" aria-hidden="true"><RobustImage key={item.id || title} src={extractBackdropUrl(item) || extractImageUrl(item)} alt="" title={title} type="backdrop" className="home-feature-backdrop"/></div><div className="home-feature-shade"/>
+                <div className="home-feature-layout">
+                    <div id="home-feature-panel" role="tabpanel" aria-live={paused ? 'polite' : 'off'} aria-labelledby={`home-feature-tab-${index}`} className="home-feature-copy">
+                        <p className="home-feature-eyebrow">DESTACADA {index + 1} / {items.length}</p>
+                        <h1>{title}</h1>
+                        <div className="home-feature-meta">{item.rating && <span className="home-rating">★ {item.rating}</span>}{item.year && <span>{item.year}</span>}{item.runtime && <span>{item.runtime}</span>}{item.generosTexto && <span>{item.generosTexto.split(',')[0]}</span>}</div>
+                        <p className="home-feature-description">{description}</p>
+                        <div className="home-feature-actions"><button className="home-watch" onClick={() => onPlay(item)}><Icon name="play" size={18} fill="currentColor"/>Ver ahora</button><button className="home-save" aria-label={favorite ? 'Quitar de favoritos' : 'Añadir a favoritos'} aria-pressed={favorite} onClick={() => onToggleFavorite(item)}><Icon name="heart" size={20} fill={favorite ? 'currentColor' : 'none'}/></button></div>
                     </div>
-                </section>
-                <div className="box-desktop-hero relative w-full bg-[#070b19] overflow-hidden rounded-none sm:rounded-3xl mb-8 group animate-fade-in shadow-2xl border-b sm:border border-slate-800 flex items-center max-w-7xl mx-auto px-0 sm:px-12 cinema-glow w-full py-8 sm:py-16 md:py-20">
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                        <img src="https://img.magnific.com/foto-gratis/cine-caja-palomitas-maiz_23-2148133612.jpg?semt=ais_hybrid&w=740&q=80" alt="Hero BG" className="w-full h-full object-cover opacity-25 scale-105 brightness-90" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/90 to-transparent"></div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent"></div>
-                    </div>
-                    <div className="relative z-10 w-full h-full flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-6 sm:gap-10 text-center sm:text-left">
-                        <div className="w-full sm:w-60 md:w-68 aspect-[2/3] rounded-none sm:rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/40 flex-shrink-0 bg-black/70 flex items-center justify-center mx-auto sm:mx-0 sm:group-hover:scale-105 transition-transform duration-500">
-                            <RobustImage src={imgSource} alt={titleSource} title={titleSource} type="poster" className="w-full h-full object-cover" />
-                        </div>
-                        <div className="flex-1 flex flex-col gap-3 items-center sm:items-start max-w-xl px-4 sm:px-0">
-                            <span className="bg-gradient-to-r from-cyan-600 to-teal-500 text-white text-[9px] sm:text-[10px] font-black px-3.5 py-1 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(6,182,212,0.4)]">Destacado Boxplaytv</span>
-                            <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white leading-tight drop-shadow-md line-clamp-2">{titleSource}</h1>
-                            <p className="text-slate-300 text-xs sm:text-sm md:text-base line-clamp-3 leading-relaxed drop-shadow">{descSource || "Disfruta de las mejores películas y series en alta definición."}</p>
-                            <div className="flex flex-wrap justify-center sm:justify-start gap-3 mt-2">
-                                <button onClick={() => onPlay(featuredItem)} className="bg-gradient-to-tr from-cyan-600 to-teal-500 hover:brightness-110 text-white px-6 sm:px-8 py-3 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-2 active:scale-95 transition-transform shadow-[0_0_20px_rgba(6,182,212,0.5)]"><Icon fill="white" name="play" size={15}/> Reproducir Ahora</button>
-                                <button onClick={() => onToggleFavorite(featuredItem)} className="glass-panel text-white p-3 rounded-xl flex items-center justify-center backdrop-blur-md border border-cyan-500/40 hover:bg-slate-800 transition-colors shadow-lg"><Icon name="heart" size={16} fill={isFavorite ? "#06b6d4" : "none"} className={isFavorite ? "text-cyan-500" : "text-white"}/></button>
-                            </div>
-                        </div>
-                    </div>
+                    <div className="home-carousel-controls" role="group" aria-label="Controles de destacados"><button aria-label="Destacado anterior" onClick={() => select(index - 1)}><Icon name="arrowLeft" size={16}/></button><button aria-label={manualPause ? 'Activar cambio automático de destacados' : 'Pausar cambio automático de destacados'} aria-pressed={manualPause} onClick={() => setManualPause(value => !value)}><Icon name={manualPause ? 'play' : 'pause'} size={14}/></button><button aria-label="Destacado siguiente" onClick={() => select(index + 1)}><Icon name="arrowLeft" size={16} className="home-next-arrow"/></button></div>
+                    <div className="home-feature-selectors" role="tablist" aria-label="Películas destacadas" onKeyDown={onKeys}>{items.map((entry, position) => <button ref={el => selectors.current[position] = el} id={`home-feature-tab-${position}`} key={entry.id || entry.title} role="tab" aria-label={`Destacado ${position + 1}: ${entry.title || entry.titulo}`} aria-controls="home-feature-panel" aria-selected={position === index} tabIndex={position === index ? 0 : -1} onClick={() => select(position)} className={position === index ? 'is-current' : ''}><RobustImage src={extractImageUrl(entry)} alt="" title={entry.title} type="poster" loading="lazy"/><span><strong>{entry.title || entry.titulo}</strong>{entry.year && <small>{entry.year}</small>}</span></button>)}</div>
                 </div>
-                </>
-            );
+            </section>;
         };
+
+        const HomeShelf = ({ title, subtitle, items, onPlay, favorites, tvFavorites, onToggleFavorite, onExplore, resume = false }) => {
+            if (!items.length) return null;
+            return <section className="home-shelf" aria-label={title}><div className="home-shelf-heading"><div className="home-shelf-title"><span className="home-shelf-mark" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m5 17 12-12M5 5h12v12"/></svg></span><div><h2>{title}</h2>{subtitle && <p>{subtitle}</p>}</div></div>{onExplore && <button className="home-explore" onClick={onExplore}>Explorar todo<span aria-hidden="true">→</span></button>}</div><div className="home-poster-strip">{items.slice(0, 16).map(item => <div key={item.type + ':' + (item.id || item.title)}><Card item={item} onClick={onPlay} isFavorite={(item.type === 'tv' ? tvFavorites : favorites).some(saved => saved.id === item.id)} onToggleFavorite={onToggleFavorite}/>{resume && <p className="home-resume-caption">{item.lastEpisode ? `Retomar · ${item.lastEpisode}` : 'Continuar reproducción'}</p>}</div>)}</div></section>;
+        };
+
 
         function SinpePaywall({ emailUsuario, onEmailChange, onExpiryChange, onStatusChange, onVerificado, onClose }) {
             const [inputEmail, setInputEmail] = useState(emailUsuario || '');
@@ -1693,14 +1707,15 @@
 
             const displayedItems = getDisplayContent();
             
-            const randomHeroItem = useMemo(() => {
-                const pool = [...content.movies2, ...content.movies, ...content.series, ...content.animados];
-                if (pool.length === 0) return null;
-                const randomIndex = Math.floor(Math.random() * pool.length);
-                return pool[randomIndex];
+            const featuredItems = useMemo(() => {
+                const seen = new Set();
+                return [...content.movies2, ...content.movies, ...content.series, ...content.animados].filter(item => {
+                    const key = (item.title || '').trim().toLocaleLowerCase('es') + '|' + (item.year || '');
+                    if (seen.has(key)) return false;
+                    seen.add(key); return true;
+                }).slice(0, 5);
             }, [content]);
-
-            const currentHeroItem = randomHeroItem || (content.movies.length ? content.movies[0] : null);
+            const homeTrends = useMemo(() => [...content.movies2.slice(0, 8), ...content.movies.slice(0, 4), ...content.series.slice(0, 4)], [content]);
 
             const handleShowDetails = (item) => {
                 if (item.type === 'radio') { setSelectedItem(null); setActiveTab('radio'); handlePlayRadioStation(item); window.history.pushState({ appState: 'main', activeTab: 'radio' }, ''); return; }
@@ -2465,99 +2480,17 @@
                             <PaymentsSection emailUsuario={emailUsuario} isSubscriberActive={isSubscriberActive} expiresAt={accessExpiresAt} onVerify={() => setShowPaywallModal(true)} />
                         ) : (
                             <>
-                                {activeTab === 'home' && !search && (
-                                    <>
-                                        {currentHeroItem && (<HeroSection item={currentHeroItem} onPlay={handlePlay} isFavorite={isItemFavorite(currentHeroItem)} onToggleFavorite={toggleFavorite} />)}
-                                        {continueWatching.length > 0 && <div className="box-phone-only mb-8"><ContentRow title="Continuar viendo" items={continueWatching} onPlay={handleResume} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} resume /></div>}
-                                        
-                                        <div className="box-home-extras max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full">
-                                            <div className="flex items-center gap-3 mb-4">
-                                                <div className="w-1.5 h-6 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
-                                                <h2 className="text-base sm:text-lg font-black uppercase tracking-wider text-white">ACCESO RÁPIDO / HUB PRINCIPAL</h2>
-                                            </div>
-                                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                                <div onClick={() => handleTabClick(navTabs.find(t => t.id === 'tv'))} className="hub-card-tv group glass-panel rounded-2xl p-5 border border-slate-800/80 hover:border-cyan-500/50 cursor-pointer transition-all duration-300 hover:shadow-[0_10px_30px_rgba(6,182,212,0.25)] flex flex-col justify-between relative overflow-hidden">
-                                                    <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl group-hover:bg-cyan-500/15 transition-colors"></div>
-                                                    <div className="flex items-center justify-between mb-8 relative z-10">
-                                                        <div className="p-3 bg-cyan-500/15 rounded-2xl text-cyan-400 border border-cyan-500/30 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300"><Icon name="tv" size={24}/></div>
-                                                        <span className="text-[10px] font-mono tracking-wider font-extrabold text-cyan-300 bg-cyan-950/80 border border-cyan-500/30 px-2.5 py-1 rounded-full group-hover:bg-cyan-500 group-hover:text-black transition-colors">EN VIVO</span>
-                                                    </div>
-                                                    <div className="relative z-10">
-                                                        <h3 className="text-base font-black text-white group-hover:text-cyan-400 transition-colors mb-1">Televisión en Vivo</h3>
-                                                        <p className="text-xs text-slate-400">{content.tv.length || 63} canales disponibles</p>
-                                                    </div>
-                                                </div>
-                                                <div onClick={() => handleTabClick(navTabs.find(t => t.id === 'movies'))} className="hub-card-cine group glass-panel rounded-2xl p-5 border border-slate-800/80 hover:border-teal-500/50 cursor-pointer transition-all duration-300 hover:shadow-[0_10px_30px_rgba(20,184,166,0.25)] flex flex-col justify-between relative overflow-hidden">
-                                                    <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-full blur-2xl group-hover:bg-teal-500/15 transition-colors"></div>
-                                                    <div className="flex items-center justify-between mb-8 relative z-10">
-                                                        <div className="p-3 bg-teal-500/15 rounded-2xl text-teal-400 border border-teal-500/30 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300"><Icon name="clapperboard" size={24}/></div>
-                                                        <span className="text-[10px] font-mono tracking-wider font-extrabold text-teal-300 bg-teal-950/80 border border-cyan-500/30 px-2.5 py-1 rounded-full group-hover:bg-teal-500 group-hover:text-black transition-colors">HD / 4K</span>
-                                                    </div>
-                                                    <div className="relative z-10">
-                                                        <h3 className="text-base font-black text-white group-hover:text-teal-400 transition-colors mb-1">Estrenos de Cine</h3>
-                                                        <p className="text-xs text-slate-400">{content.movies.length || 146} películas</p>
-                                                    </div>
-                                                </div>
-                                                <div onClick={() => handleTabClick(navTabs.find(t => t.id === 'movies2'))} className="hub-card-radio group glass-panel rounded-2xl p-5 border border-slate-800/80 hover:border-amber-500/50 cursor-pointer transition-all duration-300 hover:shadow-[0_10px_30px_rgba(245,158,11,0.25)] flex flex-col justify-between relative overflow-hidden">
-                                                    <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/15 transition-colors"></div>
-                                                    <div className="flex items-center justify-between mb-8 relative z-10">
-                                                        <div className="p-3 bg-amber-500/15 rounded-2xl text-amber-400 border border-amber-500/30 group-hover:scale-110 transition-transform duration-300"><Icon name="star" size={24}/></div>
-                                                        <span className="text-[10px] font-mono tracking-wider font-extrabold text-amber-300 bg-amber-950/80 border border-amber-500/30 px-2.5 py-1 rounded-full group-hover:bg-amber-500 group-hover:text-black transition-colors">2026</span>
-                                                    </div>
-                                                    <div className="relative z-10">
-                                                        <h3 className="text-base font-black text-white group-hover:text-amber-400 transition-colors mb-1">Estrenos 2026</h3>
-                                                        <p className="text-xs text-slate-400">{content.movies2.length || 0} títulos</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="box-home-extras max-w-7xl mx-auto px-4 sm:px-8 mb-10 w-full space-y-4">
-                                            <div className="flex items-center justify-between">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-1.5 h-6 bg-[#e50914] rounded-full shadow-[0_0_15px_#e50914]"></div>
-                                                    <h2 className="text-base sm:text-lg font-black uppercase tracking-wider text-white flex items-center gap-2">
-                                                        <span>PRÓXIMAMENTE / NETFLIX TUDUM</span>
-                                                        <span className="text-[10px] bg-[#e50914]/20 text-[#e50914] border border-[#e50914]/40 px-2 py-0.5 rounded-full font-mono">Tudum</span>
-                                                    </h2>
-                                                </div>
-                                                <span className="text-xs text-slate-400 hidden sm:inline">Administrado vía tudum.json</span>
-                                            </div>
-                                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                                                {(content.tudum.length > 0 ? content.tudum : FALLBACK_NETFLIX_TUDUM).map((item, nIdx) => (
-                                                    <div key={nIdx} className="glass-panel rounded-2xl p-4 border border-slate-800 flex flex-col justify-between group hover:border-[#e50914]/50 transition-all card-glow">
-                                                        <div>
-                                                            <div className="aspect-[2/3] rounded-xl overflow-hidden mb-3 relative bg-black">
-                                                                <RobustImage src={item.image} alt={item.title} title={item.title} type="poster" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                                                                <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 text-[10px] font-mono text-yellow-400 font-bold flex items-center gap-1"><span>★</span> {item.score}</div>
-                                                                <div className="absolute bottom-2 left-2 bg-[#e50914] text-white text-[9px] font-black px-2 py-0.5 rounded uppercase tracking-wider">{item.releaseDate}</div>
-                                                            </div>
-                                                            <h3 className="text-sm font-bold text-white mb-1 group-hover:text-[#e50914] transition-colors">{item.title}</h3>
-                                                            <p className="text-[11px] text-cyan-400 font-medium mb-2">{item.genre}</p>
-                                                            <p className="text-xs text-slate-300 line-clamp-3 mb-3">{item.synopsis}</p>
-                                                        </div>
-                                                        <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[10px]">
-                                                            <span className="text-slate-400 truncate pr-2">🇨🇷 {item.availability}</span>
-                                                            <button onClick={() => { handlePlayNow({ title: item.title, description: `${item.synopsis} (Estreno en Netflix: ${item.releaseDate} - ${item.availability})`, image: item.image, url: item.trailerUrl, type: 'movies' }); }} className="px-3 py-1.5 rounded-lg bg-[#e50914] hover:bg-[#b91c1c] text-white font-bold transition-all shadow-[0_0_10px_rgba(229,9,20,0.4)] flex items-center gap-1.5 flex-shrink-0">
-                                                                <Icon name="play" size={10} fill="white"/> Tráiler
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </>
-                                )}
-                                
+                                {activeTab === 'home' && !search && <FeaturedHome items={featuredItems} onPlay={handlePlay} isItemFavorite={isItemFavorite} onToggleFavorite={toggleFavorite} />}
                                 {activeTab === 'home' && !search ? (
-                                    <div className="space-y-8 sm:space-y-10 pb-16 w-full">
-                                        {continueWatching.length > 0 && (<div className="box-desktop-continue"><ContentRow title="▶️ Continuar Viendo" items={continueWatching} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} maxItems={6} /></div>)}
-                                        {content.movies2.length > 0 && (<ContentRow title="✨ Estrenos 2026" items={content.movies2} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />)}
-                                        <ContentRow title="🎬 Últimos Estrenos" items={content.movies} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        <ContentRow title="🔥 Tendencias Actuales (Anime & Más)" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        <ContentRow title="⭐ Programas Populares" items={content.series} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        <ContentRow title="🏆 Vista Superior (Top Shows)" items={content.animados.slice().reverse()} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />
-                                        {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length > 0 && (<ContentRow title="❤️ Mis Favoritos (Películas y Series)" items={favorites.filter(item => item.type !== 'tv' && item.type !== 'radio')} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} />)}
+                                    <div className="home-shelves">
+                                        {continueWatching.length > 0 && <HomeShelf title="Continuar viendo" subtitle="Retoma lo que estabas disfrutando." items={continueWatching} onPlay={handleResume} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} resume />}
+                                        <HomeShelf title="Tendencias" subtitle="Una selección de estrenos y títulos para descubrir." items={homeTrends} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'movies2'))} />
+                                        <HomeShelf title="Estrenos 2026" subtitle="Las novedades del catálogo, en un solo lugar." items={content.movies2} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'movies2'))} />
+                                        <HomeShelf title="Películas para ti" items={content.movies} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'movies'))} />
+                                        <HomeShelf title="Series" subtitle="Encuentra tu próxima historia." items={content.series} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'series'))} />
+                                        <HomeShelf title="Animados" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'animados'))} />
+                                        <HomeShelf title="Mi lista" items={favorites.filter(item => item.type !== 'tv' && item.type !== 'radio')} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'favorites'))} />
+                                        {content.tudum.length > 0 && <section className="home-shelf" aria-label="Próximamente"><div className="home-shelf-heading"><div className="home-shelf-title"><span className="home-shelf-mark" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m5 17 12-12M5 5h12v12"/></svg></span><div><h2>Próximamente</h2><p>Avances y próximos lanzamientos.</p></div></div></div><div className="home-coming">{content.tudum.slice(0, 6).map((item, index) => <article key={item.title + index}><RobustImage src={item.image} alt={item.title} title={item.title} type="poster" loading="lazy"/><div><h3>{item.title}</h3><p>{item.releaseDate}</p><p>{item.genre}</p><button onClick={() => handlePlayNow({ title: item.title, description: item.synopsis, image: item.image, url: item.trailerUrl, type: 'movies' })}><Icon name="play" size={12} fill="currentColor"/>Ver tráiler</button></div></article>)}</div></section>}
                                     </div>
                                 ) : activeTab === 'topshows' ? (
                                     <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">

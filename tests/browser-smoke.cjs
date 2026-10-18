@@ -171,7 +171,7 @@ const server = http.createServer((req, res) => {
         const hero = phone.getByRole('region', { name: 'Película recomendada' });
         await hero.waitFor();
         const heroBox = await hero.boundingBox();
-        assert.equal(heroBox.width, 390); assert(heroBox.height < 520);
+        assert.equal(heroBox.width, 390); assert(heroBox.height < 800);
         const navigation = phone.getByRole('navigation', { name: 'Navegación principal móvil' });
         assert.deepEqual(await navigation.getByRole('button').filter({ visible: true }).allTextContents().then(labels => labels.map(label => label.trim())), ['Inicio', 'Estrenos', 'Películas', 'Series', 'Animados', 'Más']);
         for (const label of ['Estrenos', 'Películas', 'Series', 'Animados', 'Inicio']) {

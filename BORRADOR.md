@@ -124,3 +124,11 @@ La radio tiene un reproductor independiente, diseño adaptable, espectro de 48 b
 La reproducción empieza por una acción del usuario dentro de Radio. Al salir se descarga la fuente, se destruye la sesión HLS y se desconecta el analizador; al volver hace falta pulsar Reproducir. Las señales sin CORS se intentan reproducir directamente sin barras cuando el navegador lo permite; si no se pueden reproducir, aparece un error y una opción de reintento. El catálogo y los avisos existentes no se modifican.
 
 Verificación: seis pruebas del motor, integración en Chromium con una señal WAV de frecuencias conocidas y pruebas generales de la aplicación. Se verificaron muestras FFT reales, volumen, pausa, favoritos, filtros, alternativa sin CORS, errores, liberación al navegar y anchuras móviles de 320, 390 y 430 píxeles. Los permisos del navegador y la disponibilidad de cada emisora siguen dependiendo de su servidor y dispositivo.
+
+## Inicio panorámico inspirado en la referencia
+
+El inicio utiliza fondos panorámicos del catálogo, texto superpuesto y cinco destacados seleccionables. La selección respeta el orden del catálogo, prioriza Estrenos y evita títulos repetidos. El carrusel cambia cada nueve segundos y se pausa con el foco, al pasar el puntero, al ocultar la página o cuando se solicita reducir movimiento. Admite selección con flechas, Inicio y Fin, además de un botón de pausa.
+
+Las filas de Tendencias, Estrenos, Películas, Series, Animados, Mi lista y Continuar viendo usan portadas horizontales desplazables y accesos para explorar cada sección. Tendencias es una selección editorial del catálogo; no se muestran cifras de reproducciones inventadas. Los próximos lanzamientos y sus tráileres se conservan al final. El administrador y los datos de catálogo no se modificaron.
+
+Verificación: pruebas generales y pruebas del inicio en Chromium, incluyendo navegación al detalle correcto, favoritos guardados, controles por teclado, temporización y movimiento reducido, y anchos 320/390/430/1024/1440/1920. Las imágenes externas se sustituyen por imágenes de prueba en las comprobaciones sin conexión; sus enlaces de producción se conservan.
