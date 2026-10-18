@@ -7,7 +7,7 @@
     <script src="./radio-engine.js?v=2026-2"></script>
     <script src="./radio-favorites.js?v=2026-1"></script>
     <link rel="stylesheet" href="./radio.css?v=2026-3">
-    <link rel="stylesheet" href="./home.css?v=2026-3">
+    <link rel="stylesheet" href="./home.css?v=2026-4">
     <script src="./home-features.js?v=2026-3"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -494,6 +494,9 @@
                 tv: <path d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />,
                 film: <path d="M19.82 2H4.18C2.97 2 2 2.97 2 4.18v15.64C2 21.03 2.97 22 4.18 22h15.64c1.21 0 2.18-.97 2.18-2.18V4.18C22 2.97 21.03 2 19.82 2zM7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5" />,
                 play: <path d="M5 3l14 9-14 9V3z" />,
+                plus: <path d="M12 5v14M5 12h14" />,
+                check: <path d="m5 12 4 4L19 6" />,
+                thumbsUp: <path d="M7 10v12H3V10h4Zm0 0 4-8a3 3 0 0 1 3 3v4h5a2 2 0 0 1 2 2.3l-1.4 9a2 2 0 0 1-2 1.7H7" />,
                 pause: <path d="M6 4h4v16H6zM14 4h4v16h-4z" />,
                 heart: <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78 z" />,
                 arrowLeft: <path d="M19 12H5m7 7l-7-7 7-7" />,
@@ -639,59 +642,34 @@
             );
         };
 
-        const FeaturedHome = ({ items, onPlay, isItemFavorite, onToggleFavorite, onArtworkError }) => {
-            const [selected, setSelected] = useState(0);
-            const [manualPause, setManualPause] = useState(false);
-            const [hovered, setHovered] = useState(false);
-            const [focused, setFocused] = useState(false);
-            const [hidden, setHidden] = useState(document.hidden);
-            const [reduced, setReduced] = useState(() => matchMedia('(prefers-reduced-motion: reduce)').matches);
-            const selectors = useRef([]);
-            const index = Math.min(selected, Math.max(0, items.length - 1));
-            const coverKey = items[index] ? BoxHomeFeatures.key(items[index]) : '';
+        const FeaturedHome = ({ items, onPlay, isItemFavorite, onToggleFavorite, onArtworkError, onRate, onDownload, ratings, pending }) => {
+            const item = items[0];
+            const coverKey = item ? BoxHomeFeatures.key(item) : '';
             useEffect(() => { if (coverKey) safeStorage.setItem('boxplay_home_feature_last', coverKey); }, [coverKey]);
-            const paused = manualPause || hovered || focused || hidden || reduced;
-            useEffect(() => {
-                const media = matchMedia('(prefers-reduced-motion: reduce)');
-                const motion = () => setReduced(media.matches), visibility = () => setHidden(document.hidden);
-                media.addEventListener('change', motion); document.addEventListener('visibilitychange', visibility);
-                return () => { media.removeEventListener('change', motion); document.removeEventListener('visibilitychange', visibility); };
-            }, []);
-            useEffect(() => {
-                if (paused || items.length < 2) return;
-                const timer = setTimeout(() => setSelected((index + 1) % items.length), 9000);
-                return () => clearTimeout(timer);
-            }, [index, items.length, paused]);
-            useEffect(() => {
-                const button = selectors.current[index], strip = button?.parentElement;
-                if (strip && strip.scrollWidth > strip.clientWidth) strip.scrollTo({ left: Math.max(0, button.offsetLeft - strip.offsetLeft - (strip.clientWidth - button.clientWidth) / 2), behavior: reduced ? 'instant' : 'smooth' });
-            }, [index, reduced]);
-            if (!items.length) return null;
-            const item = items[index], title = item.title || item.titulo || item.name || 'Destacado';
-            const description = item.description || item.descripcion || item.sinopsis || 'Descubre este título en Box Play TV.';
+            if (!item) return null;
+            const title = item.title || item.titulo || item.name || 'Estreno';
+            const description = item.description || item.descripcion || item.sinopsis || 'Descubre este estreno en Box Play TV.';
             const favorite = isItemFavorite(item);
-            const select = next => setSelected((next + items.length) % items.length);
-            const onKeys = event => {
-                let next;
-                if (event.key === 'ArrowRight') next = (index + 1) % items.length;
-                if (event.key === 'ArrowLeft') next = (index - 1 + items.length) % items.length;
-                if (event.key === 'Home') next = 0;
-                if (event.key === 'End') next = items.length - 1;
-                if (next === undefined) return;
-                event.preventDefault(); select(next); selectors.current[next]?.focus();
-            };
-            return <section className="home-featured" aria-label="Película recomendada" aria-roledescription="carrusel" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onFocusCapture={() => setFocused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
-                <div className="home-feature-art" aria-hidden="true"><img src={BoxHomeFeatures.panorama(item)} alt="" className="home-feature-ambient"/><div className="home-feature-frame"><img key={item.id || title} src={BoxHomeFeatures.panorama(item)} alt="" className="home-feature-backdrop" onError={() => onArtworkError(item)}/></div></div><div className="home-feature-shade"/>
+            const personalRating = ratings[item.id || coverKey];
+            const downloadable = (item.urlDrive || item.rawUrl || item.url || '').includes('drive.google.com');
+            return <section className="home-featured" aria-label="Película recomendada" aria-busy={pending}>
+                <div className="home-feature-art" aria-hidden="true"><img src={BoxHomeFeatures.panorama(item)} alt="" className="home-feature-ambient"/><div className="home-feature-frame"><img key={item.id || title} src={BoxHomeFeatures.panorama(item)} alt="" className="home-feature-backdrop" onError={() => onArtworkError(item)}/></div></div>
+                <div className="home-feature-shade"/>
+                <button className="home-save" aria-label={favorite ? 'Quitar de favoritos' : 'Añadir a favoritos'} aria-pressed={favorite} onClick={() => onToggleFavorite(item)}><Icon name="heart" size={20} fill={favorite ? 'currentColor' : 'none'}/></button>
                 <div className="home-feature-layout">
-                    <div id="home-feature-panel" role="tabpanel" aria-live={paused ? 'polite' : 'off'} aria-labelledby={`home-feature-tab-${index}`} className="home-feature-copy">
-                        <p className="home-feature-eyebrow">ESTRENO DESTACADO {index + 1} / {items.length}</p>
+                    <div className="home-feature-copy">
                         <h1>{title}</h1>
-                        <div className="home-feature-meta">{item.rating && <span className="home-rating">★ {item.rating}</span>}{item.year && <span>{item.year}</span>}{item.runtime && <span>{item.runtime}</span>}{item.generosTexto && <span>{item.generosTexto.split(',')[0]}</span>}</div>
+                        <div className="home-feature-meta">{item.clasificacion && <span>{item.clasificacion}</span>}{item.runtime && <span>{item.runtime}</span>}{item.year && <span>{item.year}</span>}{item.rating && <span className="home-rating">★ {item.rating}</span>}</div>
+                        {item.generosTexto && <p className="home-feature-genres">{item.generosTexto}</p>}
+                        <button className="home-watch" onClick={() => onPlay(item)}><Icon name="play" size={18} fill="currentColor"/>Ver ahora</button>
+                        <div className="home-feature-tools">
+                            <button aria-pressed={favorite} onClick={() => onToggleFavorite(item)}><Icon name={favorite ? 'check' : 'plus'} size={26}/><span>{favorite ? 'En Mi lista' : 'Mi lista'}</span></button>
+                            <button onClick={() => onRate(item)}><Icon name="thumbsUp" size={24}/><span>{personalRating ? `Tu voto: ${personalRating}/5` : 'Calificar'}</span></button>
+                            {downloadable && <button onClick={() => onDownload(item)}><Icon name="download" size={24}/><span>Descargar</span></button>}
+                        </div>
                         <p className="home-feature-description">{description}</p>
-                        <div className="home-feature-actions"><button className="home-watch" onClick={() => onPlay(item)}><Icon name="play" size={18} fill="currentColor"/>Ver ahora</button><button className="home-save" aria-label={favorite ? 'Quitar de favoritos' : 'Añadir a favoritos'} aria-pressed={favorite} onClick={() => onToggleFavorite(item)}><Icon name="heart" size={20} fill={favorite ? 'currentColor' : 'none'}/></button></div>
+                        {item.generosTexto && <p className="home-feature-category">{item.generosTexto.split(',')[0].trim()}</p>}
                     </div>
-                    <div className="home-carousel-controls" role="group" aria-label="Controles de destacados"><button aria-label="Destacado anterior" onClick={() => select(index - 1)}><Icon name="arrowLeft" size={16}/></button><button aria-label={manualPause ? 'Activar cambio automático de destacados' : 'Pausar cambio automático de destacados'} aria-pressed={manualPause} onClick={() => setManualPause(value => !value)}><Icon name={manualPause ? 'play' : 'pause'} size={14}/></button><button aria-label="Destacado siguiente" onClick={() => select(index + 1)}><Icon name="arrowLeft" size={16} className="home-next-arrow"/></button></div>
-                    <div className="home-feature-selectors" role="tablist" aria-label="Películas destacadas" onKeyDown={onKeys}>{items.map((entry, position) => <button ref={el => selectors.current[position] = el} id={`home-feature-tab-${position}`} key={entry.id || entry.title} role="tab" aria-label={`Destacado ${position + 1}: ${entry.title || entry.titulo}`} aria-controls="home-feature-panel" aria-selected={position === index} tabIndex={position === index ? 0 : -1} onClick={() => select(position)} className={position === index ? 'is-current' : ''}><RobustImage src={extractImageUrl(entry)} alt="" title={entry.title} type="poster" loading="lazy"/><span><strong>{entry.title || entry.titulo}</strong>{entry.year && <small>{entry.year}</small>}</span></button>)}</div>
                 </div>
             </section>;
         };
@@ -1181,6 +1159,10 @@
             const [isPlaying, setIsPlaying] = useState(false);
             const [detailTab, setDetailTab] = useState('info');
             const [favorites, setFavorites] = useState([]);
+            const [personalRatings, setPersonalRatings] = useState(() => {
+                try { const saved = JSON.parse(safeStorage.getItem('boxplay_personal_ratings')); return saved && typeof saved === 'object' && !Array.isArray(saved) ? saved : {}; }
+                catch { return {}; }
+            });
             const [tvFavorites, setTvFavorites] = useState([]);
             const [radioFavorites, setRadioFavorites] = useState([]);
             const [continueWatching, setContinueWatching] = useState([]);
@@ -1738,12 +1720,14 @@
             
             const homeTrends = useMemo(() => BoxHomeFeatures.pool(content), [content]);
             const [featuredItems, setFeaturedItems] = useState([]);
+            const [featuredLoading, setFeaturedLoading] = useState(false);
             useEffect(() => {
                 let cancelled = false;
+                setFeaturedLoading(true);
                 BoxHomeFeatures.load(content, {
                     previous: safeStorage.getItem('boxplay_home_feature_last') || '',
                     isCancelled: () => cancelled
-                }).then(items => { if (!cancelled) setFeaturedItems(items); });
+                }).then(items => { if (!cancelled) { setFeaturedItems(items); setFeaturedLoading(false); } });
                 return () => { cancelled = true; };
             }, [content]);
             const discardFeaturedArtwork = item => setFeaturedItems(items => items.filter(entry => BoxHomeFeatures.key(entry) !== BoxHomeFeatures.key(item)));
@@ -1814,6 +1798,26 @@
                         }
                     }
                 }, 300);
+            };
+
+            const handleRateMovie = item => {
+                const identity = item.id || BoxHomeFeatures.key(item);
+                const answer = window.prompt('Tu calificación personal (1-5). Se guarda en este dispositivo.', String(personalRatings[identity] || 5));
+                if (answer === null) return;
+                if (!/^[1-5]$/.test(answer.trim())) { window.alert('Escribe un número entero del 1 al 5.'); return; }
+                const updated = { ...personalRatings, [identity]: Number(answer.trim()) };
+                safeStorage.setItem('boxplay_personal_ratings', JSON.stringify(updated));
+                setPersonalRatings(updated);
+            };
+
+            const handleDownloadMovie = item => {
+                const targetUrl = item.urlDrive || item.rawUrl || item.url || '';
+                if (!targetUrl.includes('drive.google.com')) return;
+                setPendingDownloadUrl(getDriveDownloadUrl(targetUrl));
+                setDownloadPinInput('');
+                setDownloadPinError(false);
+                setShowDownloadPinModal(true);
+                window.history.pushState({ appState: 'download-modal' }, '');
             };
 
             const handleResume = item => {
@@ -2203,10 +2207,7 @@
                                                             <span className="text-[11px] font-medium">{isItemFavorite(selectedItem) ? 'En Mi lista' : 'Mi lista'}</span>
                                                         </button>
                                                         
-                                                        <button onClick={() => {
-                                                            const hero = window.prompt('¿Cuántas estrellas le das? (1-5)', '5');
-                                                            if (hero) window.alert(`¡Gracias! Le diste ${hero} ⭐`);
-                                                        }} className="flex flex-col items-center gap-1.5 text-white hover:text-cyan-400 transition-colors">
+                                                        <button onClick={() => handleRateMovie(selectedItem)} className="flex flex-col items-center gap-1.5 text-white hover:text-cyan-400 transition-colors">
                                                             <div className="w-9 h-9 flex items-center justify-center">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
                                                             </div>
@@ -2215,15 +2216,7 @@
 
                                                         {((selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url || '').includes('drive.google.com')) && (
                                                             <button 
-                                                                onClick={() => {
-                                                                    const targetUrl = selectedItem.urlDrive || selectedItem.rawUrl || selectedItem.url;
-                                                                    const downloadLink = getDriveDownloadUrl(targetUrl);
-                                                                    setPendingDownloadUrl(downloadLink);
-                                                                    setDownloadPinInput('');
-                                                                    setDownloadPinError(false);
-                                                                    setShowDownloadPinModal(true);
-                                                                    window.history.pushState({ appState: 'download-modal' }, '');
-                                                                }}
+                                                                onClick={() => handleDownloadMovie(selectedItem)}
                                                                 className="flex flex-col items-center gap-1.5 text-white hover:text-cyan-400 transition-colors"
                                                             >
                                                                 <div className="w-9 h-9 flex items-center justify-center">
@@ -2512,7 +2505,7 @@
                             <PaymentsSection emailUsuario={emailUsuario} isSubscriberActive={isSubscriberActive} expiresAt={accessExpiresAt} onVerify={() => setShowPaywallModal(true)} />
                         ) : (
                             <>
-                                {activeTab === 'home' && !search && <FeaturedHome key={featuredItems.map(item => item.id || BoxHomeFeatures.key(item)).join('|')} items={featuredItems} onArtworkError={discardFeaturedArtwork} onPlay={handlePlay} isItemFavorite={isItemFavorite} onToggleFavorite={toggleFavorite} />}
+                                {activeTab === 'home' && !search && <FeaturedHome key={featuredItems.map(item => item.id || BoxHomeFeatures.key(item)).join('|')} items={featuredItems} onArtworkError={discardFeaturedArtwork} onPlay={handlePlayNow} onRate={handleRateMovie} onDownload={handleDownloadMovie} ratings={personalRatings} pending={loading || featuredLoading} isItemFavorite={isItemFavorite} onToggleFavorite={toggleFavorite} />}
                                 {activeTab === 'home' && !search ? (
                                     <div className="home-shelves">
                                         {continueWatching.length > 0 && <HomeShelf title="Continuar viendo" subtitle="Retoma lo que estabas disfrutando." items={continueWatching} onPlay={handleResume} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} resume />}

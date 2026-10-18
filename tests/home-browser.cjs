@@ -59,76 +59,89 @@ const server = http.createServer((req, res) => {
         await page.clock.install();
         await page.emulateMedia({reducedMotion:'reduce'});
         await page.setViewportSize({width:1440,height:1000});await page.goto(origin+'/');
-        await page.getByRole('button',{name:'Comenzar Experiencia'}).click();
+        await page.getByRole('button',{name:'Comenzar Experiencia'}).waitFor();await page.clock.fastForward(2100);
         const hero=page.getByRole('region',{name:'Película recomendada'});
-        const tabs=hero.getByRole('tab');await tabs.nth(4).waitFor();assert.equal(await tabs.count(),5);
-        const expected=H.candidates({movies2:originalReleases}).slice(0,5).map(item=>item.titulo).sort();
-        assert.deepEqual((await tabs.locator('strong').allTextContents()).sort(),expected);
+        await hero.locator('h1').waitFor();
+        const expected=H.candidates({movies2:originalReleases}).slice(0,5);
+        const selectedTitle=(await hero.locator('h1').textContent()).trim();
+        const selectedMovie=expected.find(item=>item.titulo===selectedTitle);assert(selectedMovie);
+        assert.equal(await hero.getByRole('tab').count(),0);
         assert(await hero.locator('.home-feature-backdrop').evaluate(image=>image.naturalWidth/image.naturalHeight>=1.5));
-        const titles=await tabs.allTextContents().then(labels=>labels.map(value=>value.trim()));assert.equal(new Set(titles).size,5);
-        await tabs.nth(3).click();const selectedTitle=(await tabs.nth(3).locator('strong').textContent()).trim();
-        assert.equal(await hero.getByRole('heading',{level:1}).innerText(),selectedTitle.toUpperCase());
-        assert.equal(await tabs.nth(3).getAttribute('aria-selected'),'true');
-        await tabs.nth(3).press('ArrowRight');assert.equal(await tabs.nth(4).getAttribute('aria-selected'),'true');
-        await tabs.nth(4).press('Home');assert.equal(await tabs.nth(0).getAttribute('aria-selected'),'true');
-        await tabs.nth(0).press('End');assert.equal(await tabs.nth(4).getAttribute('aria-selected'),'true');
-        const lastTitle=(await tabs.nth(4).locator('strong').textContent()).trim();
-        await hero.getByRole('button',{name:'Añadir a favoritos',exact:true}).click();
-        assert(await page.evaluate(title=>JSON.parse(localStorage.getItem('boxplay_favs')).some(entry=>entry.title===title),lastTitle));
-        await hero.getByRole('button',{name:'Ver ahora',exact:true}).click();
-        await page.locator('.box-detail-title').waitFor();assert.equal((await page.locator('.box-detail-title').innerText()).toLocaleUpperCase(),lastTitle.toLocaleUpperCase());
-        await page.getByRole('navigation',{name:'Secciones principales'}).getByRole('button',{name:'Inicio',exact:true}).click();
+        assert.equal(await hero.locator('.home-feature-backdrop').getAttribute('src'),selectedMovie.backdrop);
+        assert.equal(await hero.locator('.home-feature-description').textContent(),selectedMovie.descripcion||selectedMovie.sinopsis||selectedMovie.plot);
+        const play=hero.getByRole('button',{name:'Ver ahora',exact:true});
+        assert.equal(await play.evaluate(button=>getComputedStyle(button).backgroundColor),'rgb(255, 255, 255)');
+        await hero.getByRole('button',{name:'Mi lista',exact:true}).click();
+        assert(await page.evaluate(title=>JSON.parse(localStorage.getItem('boxplay_favs')).some(entry=>entry.title===title),selectedTitle));
+        assert.equal(await hero.getByRole('button',{name:'Quitar de favoritos',exact:true}).getAttribute('aria-pressed'),'true');
+        await hero.getByRole('button',{name:'Quitar de favoritos',exact:true}).click();
+        assert.equal(await hero.getByRole('button',{name:'Mi lista',exact:true}).getAttribute('aria-pressed'),'false');
+        await hero.getByRole('button',{name:'Mi lista',exact:true}).click();
+        page.once('dialog',dialog=>dialog.accept('4'));
+        await hero.getByRole('button',{name:'Calificar',exact:true}).click();
+        await hero.getByRole('button',{name:'Tu voto: 4/5',exact:true}).waitFor();
+        const savedRatings=await page.evaluate(()=>localStorage.getItem('boxplay_personal_ratings'));
+        assert(Object.values(JSON.parse(savedRatings)).includes(4));
+        // The home watch action must use the normal subscription gate.
+        await play.click();await page.getByRole('heading',{name:'Contenido Premium',exact:true}).waitFor();
+        assert.equal(await page.locator('video,iframe').count(),0);
+        await page.getByRole('button',{name:'✕',exact:true}).click();
+        if((selectedMovie.urlDrive||selectedMovie.url||'').includes('drive.google.com')){
+            await hero.getByRole('button',{name:'Descargar',exact:true}).click();
+            await page.getByRole('heading',{name:'Descarga Segura',exact:true}).waitFor();
+            assert(await page.getByPlaceholder('••••').isVisible());
+            await page.getByRole('button',{name:'Cancelar',exact:true}).click();
+        }
         await page.getByRole('region',{name:'Tendencias',exact:true}).getByRole('button',{name:'Explorar todo',exact:true}).click();
-        await page.getByRole('heading',{name:'Tendencias',exact:true}).waitFor();
-        assert(await page.locator('.card-glow').count()>16);
+        await page.getByRole('heading',{name:'Tendencias',exact:true}).waitFor();assert(await page.locator('.card-glow').count()>16);
         await page.getByRole('navigation',{name:'Secciones principales'}).getByRole('button',{name:'Inicio',exact:true}).click();
         for(const width of [320,390,430,1024,1440,1920]){
             await page.setViewportSize({width,height:1000});
-            await page.waitForFunction(()=>{const el=document.querySelector('.home-featured');return el?.getBoundingClientRect().width===innerWidth&&!document.querySelector('button[title="Actualizar catálogo"]').disabled;});
-            assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-            const metrics=await (await page.waitForFunction(()=>{const el=document.querySelector('.home-featured'),title=el?.querySelector('h1'),image=el?.querySelector('.home-feature-backdrop');return el?.getBoundingClientRect().width===innerWidth&&image?.complete?{width:el.getBoundingClientRect().width,titleFits:title.scrollWidth<=title.clientWidth+1,fit:getComputedStyle(image).objectFit}:false;})).jsonValue();
-            assert.equal(metrics.width,width);assert(metrics.titleFits);assert.equal(metrics.fit,'cover');
-            const fitted=await hero.locator('.home-feature-backdrop').evaluate(async image=>{
-                const original=image.src, checks=[];
+            const metrics=await (await page.waitForFunction(()=>{
+                const el=document.querySelector('.home-featured'),title=el?.querySelector('h1'),image=el?.querySelector('.home-feature-backdrop');
+                if(el?.getBoundingClientRect().width!==innerWidth||el.getAttribute('aria-busy')==='true'||!image?.complete||document.querySelector('button[title="Actualizar catálogo"]').disabled)return false;
+                const copy=el.querySelector('.home-feature-copy').getBoundingClientRect(),rect=el.getBoundingClientRect();
+                return {width:rect.width,height:rect.height,titleFits:title.scrollWidth<=title.clientWidth+1,fit:getComputedStyle(image).objectFit,copyLeft:copy.left,copyBottom:copy.bottom,heroBottom:rect.bottom,overflow:document.documentElement.scrollWidth>innerWidth};
+            })).jsonValue();
+            assert.equal(metrics.width,width);assert(metrics.titleFits);assert.equal(metrics.fit,'cover');assert(!metrics.overflow);
+            if(width>=1024){assert(metrics.height>=850);assert(metrics.copyLeft<=width*.04);assert(metrics.heroBottom-metrics.copyBottom<=41);}
+            // Use an inert DOM copy to test alternate source ratios without mutating React's live image.
+            const fitted=await hero.evaluate(async liveHero=>{
+                const copy=liveHero.cloneNode(true);
+                copy.style.cssText='position:fixed;left:0;top:0;width:100vw;z-index:10000;pointer-events:none';
+                document.body.appendChild(copy);
+                const image=copy.querySelector('.home-feature-backdrop'),checks=[],details=[];
+                try {
                 for(const [w,h] of [[1600,1000],[1920,1080],[2400,800]]){
                     image.src='data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="#164e63"/><circle cx="${w/2}" cy="${h*.1}" r="${Math.min(w,h)*.07}" fill="#67e8f9"/></svg>`);
                     await image.decode();
-                    const rect=image.getBoundingClientRect(), hero=image.closest('.home-featured'), style=getComputedStyle(image);
+                    const rect=image.getBoundingClientRect(),hero=image.closest('.home-featured'),style=getComputedStyle(image),heroRect=hero.getBoundingClientRect();
                     const factor=Math.max(rect.width/image.naturalWidth,rect.height/image.naturalHeight);
-                    const renderedWidth=image.naturalWidth*factor, renderedHeight=image.naturalHeight*factor;
-                    const heroRect=hero.getBoundingClientRect();
-                    checks.push(style.objectFit==='cover'&&renderedWidth>=rect.width-.1&&renderedHeight>=rect.height-.1&&Math.abs(rect.left-heroRect.left)<1&&Math.abs(rect.right-heroRect.right)<1&&Math.abs(rect.top-heroRect.top)<1&&Math.abs(rect.bottom-heroRect.bottom)<1);
-                    // Anchor to the top and place the copy over the full-width photo.
+                    checks.push(style.objectFit==='cover'&&image.naturalWidth*factor>=rect.width-.1&&image.naturalHeight*factor>=rect.height-.1&&Math.abs(rect.left-heroRect.left)<1&&Math.abs(rect.right-heroRect.right)<1&&Math.abs(rect.top-heroRect.top)<1&&Math.abs(rect.bottom-heroRect.bottom)<1);
                     checks.push(style.objectPosition==='50% 0%');
-                    const title=hero.querySelector('h1').getBoundingClientRect();
-                    checks.push(title.left>=rect.left&&title.right<=rect.right&&title.top>=rect.top&&title.bottom<=rect.bottom);
-                    const shade=hero.querySelector('.home-feature-shade');
-                    checks.push(getComputedStyle(shade).backgroundImage.includes('linear-gradient'));
+                    for(const element of hero.querySelectorAll('h1,.home-watch,.home-feature-description,.home-feature-tools button')){
+                        const bounds=element.getBoundingClientRect();checks.push(bounds.left>=rect.left&&bounds.right<=rect.right+.1&&bounds.top>=rect.top&&bounds.bottom<=rect.bottom+.1);
+                    }
+                    checks.push(getComputedStyle(hero.querySelector('.home-feature-shade')).backgroundImage.includes('linear-gradient'));
+                    details.push({w,h,attached:image.isConnected,fit:style.objectFit,position:style.objectPosition,rect:rect.toJSON(),hero:heroRect.toJSON(),elements:Array.from(hero.querySelectorAll('h1,.home-watch,.home-feature-description,.home-feature-tools button'),el=>({class:el.className,rect:el.getBoundingClientRect().toJSON()}))});
                 }
-                image.src=original;await image.decode();return checks.every(Boolean);
+                return {pass:checks.every(Boolean),details};
+                } finally { copy.remove(); }
             });
-            assert(fitted,`Panoramic background must cover the full hero behind the text at ${width}px`);
-
-            if(width>=1024){
-                const bounds=await tabs.evaluateAll(buttons=>buttons.map(button=>button.getBoundingClientRect().toJSON()));
-                assert(bounds.every(rect=>rect.left>=0&&rect.right<=width));assert(bounds.every(rect=>Math.abs(rect.top-bounds[0].top)<1));
-            }else{assert(await hero.locator('.home-feature-selectors').evaluate(el=>el.scrollWidth>el.clientWidth));}
+            assert(fitted.pass,`Full-screen premiere, text and controls must fit at ${width}px: ${JSON.stringify(fitted.details)}`);
         }
-        await page.setViewportSize({width:1440,height:1000});await page.screenshot({path:'/tmp/box-home-desktop.png',fullPage:true});
-        await page.setViewportSize({width:390,height:844});await page.screenshot({path:'/tmp/box-home-mobile.png',fullPage:true});
-        console.log('PASS: five unique featured titles, keyboard selection, favorites, detail playback, explore buttons and 320–1920px layouts');
-
+        await page.setViewportSize({width:1440,height:1000});await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));await page.screenshot({path:'/tmp/box-home-desktop.png',fullPage:true});
+        await page.setViewportSize({width:390,height:844});await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));await page.screenshot({path:'/tmp/box-home-mobile.png',fullPage:true});
+        console.log('PASS: reference-style full-screen premiere, white watch button, favorite synchronization, personal rating, protected download, subscription gate and 320–1920px layouts');
         await page.setViewportSize({width:1440,height:1000});
-
-        // Hard reloads must change the leading cover and keep its metadata together.
         for(let reload=0;reload<4;reload++){
             const previous=await page.evaluate(()=>localStorage.getItem('boxplay_home_feature_last'));
-            await page.reload();await page.getByRole('button',{name:'Comenzar Experiencia'}).click();
-            await hero.getByRole('tab').nth(4).waitFor();
+            await page.reload();await page.getByRole('button',{name:'Comenzar Experiencia'}).waitFor();await page.clock.fastForward(2100);await hero.locator('h1').waitFor();
             const next=await page.evaluate(()=>localStorage.getItem('boxplay_home_feature_last'));
             assert.notEqual(next,previous);
-            const title=await hero.locator('h1').textContent();
-            assert(next.startsWith(title.trim().toLocaleLowerCase('es').replace(/\s+/g,' ')));
+            const title=(await hero.locator('h1').textContent()).trim();assert(expected.some(item=>item.titulo===title));
+            assert(next.startsWith(title.toLocaleLowerCase('es').replace(/\s+/g,' ')));
+            assert.equal(await page.evaluate(()=>localStorage.getItem('boxplay_personal_ratings')),savedRatings);
         }
         const edge={...originalReleases[0],id:'newest-estreno-test',titulo:'Último estreno disponible',fechaEstreno:'2026-10-17',descripcion:'Sinopsis del estreno más reciente.',backdrop:'https://images.test/newest-wide.jpg'};
         files.set('peliculas2.json',JSON.stringify([...invalidReleases,...originalReleases,edge]));
@@ -144,24 +157,13 @@ const server = http.createServer((req, res) => {
         failCatalog=true;
         await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
         await page.getByRole('status').filter({hasText:'Se conservó el catálogo anterior'}).waitFor();
-        assert.equal(await hero.locator('h1').innerText(),retained);
-        failCatalog=false;
-        console.log('PASS: consecutive page reloads choose different covers; only the latest Estrenos with panoramic images are eligible; portrait, broken and missing backgrounds are excluded; focus/restoration refresh and failure retention work');
-        // Verify actual carousel timing with the browser clock; focus and reduced motion pause it.
-        await page.setViewportSize({width:1440,height:1000});
-        await page.evaluate(()=>document.activeElement?.blur());await page.mouse.move(0,0);
-        const before=await hero.locator('[aria-selected="true"]').getAttribute('id');
-        await page.clock.fastForward(10000);assert.equal(await hero.locator('[aria-selected="true"]').getAttribute('id'),before);
+        assert.equal(await hero.locator('h1').innerText(),retained);failCatalog=false;
+        console.log('PASS: every page opening chooses another recent Estreno; portrait/broken/missing backgrounds and other sections are excluded; restoration refresh and network failure retention work');
         await page.emulateMedia({reducedMotion:'no-preference'});
-        await hero.locator('[role=tabpanel][aria-live=off]').waitFor();
-        await page.clock.fastForward(10000);
-        await hero.locator('[aria-selected="true"]:not(#'+before+')').waitFor();
-        assert.notEqual(await hero.locator('[aria-selected="true"]').getAttribute('id'),before);
-        await hero.getByRole('button',{name:'Pausar cambio automático de destacados'}).click();
-        const paused=await hero.locator('[aria-selected="true"]').getAttribute('id');
-        await page.evaluate(()=>document.activeElement?.blur());await page.mouse.move(0,0);await page.clock.fastForward(20000);
-        assert.equal(await hero.locator('[aria-selected="true"]').getAttribute('id'),paused);
-        console.log('PASS: featured carousel advances automatically and respects pause/reduced motion');
+        await page.clock.fastForward(60000);
+        assert.equal(await hero.locator('h1').innerText(),retained);
+        assert.equal(await hero.locator('.home-feature-selectors,.home-carousel-controls').count(),0);
+        console.log('PASS: cover remains fixed while browsing instead of changing on a timer');
         assert.deepEqual(errors,[]);assert.deepEqual(requestsWithWrites,[]);
     } finally {await browser.close();await new Promise(resolve=>server.close(resolve));}
 })().catch(error=>{console.error(error);process.exitCode=1;server.close();});
