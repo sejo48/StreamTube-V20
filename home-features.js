@@ -1,6 +1,7 @@
-/* Home highlights use only recent Estrenos with verified panoramic artwork. */
+/* Home highlights use curated Estrenos or recent releases, with verified panoramic artwork. */
 (function (root) {
     'use strict';
+    const Covers = root.BoxHomeCovers || (typeof module !== 'undefined' ? require('./home-covers.js') : null);
     const label = item => String(item?.title || item?.titulo || item?.name || '').trim();
     const key = item => label(item) ? label(item).toLocaleLowerCase('es').replace(/\s+/g,' ') + '|' + String(item.year || item.anio || '').trim() : '';
     function unique(source) {
@@ -39,7 +40,7 @@
         }).sort((a,b) => releaseDay(b).localeCompare(releaseDay(a))));
     }
     function select(items, { previous = '', limit = 5, random = Math.random } = {}) {
-        // Take the latest valid releases BEFORE randomizing the initial cover.
+        // Keep the curated pool (or newest automatic choices) before randomizing the cover.
         const shuffled = items.slice(0, limit);
         for (let i = shuffled.length - 1; i > 0; i--) {
             const j = Math.min(i, Math.max(0, Math.floor(random() * (i + 1))));
@@ -68,8 +69,8 @@
             image.src = url;
         });
     }
-    async function load(content, { probe = probeImage, limit = 5, isCancelled = () => false, ...options } = {}) {
-        const source = candidates(content, options), valid = [];
+    async function load(content, { probe = probeImage, limit = 5, isCancelled = () => false, configuration = null, ...options } = {}) {
+        const source = configuration?.mode === 'manual' ? Covers.resolve(configuration, content.movies2) : candidates(content, options), valid = [];
         // Check in small batches, preserving release order even when images finish out of order.
         for (let start = 0; start < source.length && valid.length < limit && !isCancelled(); start += 5) {
             const batch = source.slice(start, start + 5);
