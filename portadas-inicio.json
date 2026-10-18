@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": "peliculas2.json",
   "mode": "manual",
-  "updatedAt": "2026-10-18T03:47:52.567Z",
+  "updatedAt": "2026-10-18T03:52:39.803Z",
   "items": [
     {
       "movieKey": "tmdb:1186350",
@@ -20,14 +20,14 @@
       "backdrop": "https://image.tmdb.org/t/p/w1280/5lQ4euO30sDin5nCifvi0vURFNd.jpg"
     },
     {
-      "movieKey": "tmdb:1148365",
-      "title": "Matchbox: La película",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/jdJsnhHfkIi3J7jwfiCFT4gXNx5.jpg"
-    },
-    {
       "movieKey": "tmdb:192139",
       "title": "Al borde de la guerra",
       "backdrop": "https://image.tmdb.org/t/p/w1280/E812GNXYQqjJwN0cVPY3icHpaj.jpg"
+    },
+    {
+      "movieKey": "tmdb:1153576",
+      "title": "Street Fighter ( CAM )",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/zDE9hd1SG9695YncbZGjSf7Z9Jk.jpg"
     }
   ]
 }
