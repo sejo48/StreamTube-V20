@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "source": "peliculas2.json",
   "mode": "manual",
-  "updatedAt": "2026-10-18T13:04:45.307Z",
+  "updatedAt": "2026-10-18T21:57:12.489Z",
   "items": [
     {
-      "movieKey": "tmdb:1712451",
-      "title": "Dead Residents Evil",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/yKx5gYrYgakKZuUWAsuFDStBroy.jpg"
+      "movieKey": "tmdb:1081003",
+      "title": "Supergirl",
+      "backdrop": "https://image.tmdb.org/t/p/original/lwL6r3M9IweP3Lc7XlOYIxb4Wxl.jpg"
     },
     {
       "movieKey": "tmdb:1377237",
@@ -15,19 +15,19 @@
       "backdrop": "https://image.tmdb.org/t/p/w1280/iXR79oKsLHwLno9jdzxxeFP21sy.jpg"
     },
     {
-      "movieKey": "tmdb:822119",
-      "title": "Capitán América: Brave New World",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/ce3prrjh9ZehEl5JinNqr4jIeaB.jpg"
+      "movieKey": "tmdb:1437195",
+      "title": "En vivo desde el infierno",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/eJ4vMJJlnxnKqdJCBDXvNmE0LVp.jpg"
     },
     {
-      "movieKey": "tmdb:1304313",
-      "title": "La momia de Lee Cronin",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/xugEpZk9YQ0DIz1aFvH5HGkqpZK.jpg"
+      "movieKey": "tmdb:1400837",
+      "title": "La otra madre",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/ncm7djsVTHQQMX2HEbEVxMUFchG.jpg"
     },
     {
-      "movieKey": "tmdb:1081003",
-      "title": "Supergirl",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/heZQmyNvkH236ha2M3JckdUQQqb.jpg"
+      "movieKey": "tmdb:1148365",
+      "title": "Matchbox: La película",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/jdJsnhHfkIi3J7jwfiCFT4gXNx5.jpg"
     }
   ]
 }
