@@ -10,6 +10,8 @@ const root = path.resolve(__dirname, '..');
 const moduleFile = (name, file) => path.join(path.dirname(require.resolve(name + '/package.json')), file);
 const styles = fs.readFileSync(process.env.BOXPLAY_TEST_CSS, 'utf8');
 const files = new Map();
+// This suite exercises automatic covers; curated covers have a separate integration suite.
+files.set('portadas-inicio.json',JSON.stringify({schemaVersion:1,source:'peliculas2.json',mode:'automatic',items:[]}));
 const originalReleases=JSON.parse(fs.readFileSync(path.join(root,'peliculas2.json'),'utf8'));
 const invalidReleases=[
  {...originalReleases[0],titulo:'No mostrar: fondo vertical',fechaEstreno:'2026-10-18',backdrop:'https://images.test/hero-portrait.jpg'},
@@ -61,6 +63,7 @@ const server = http.createServer((req, res) => {
         await page.setViewportSize({width:1440,height:1000});await page.goto(origin+'/');
         await page.getByRole('button',{name:'Comenzar Experiencia'}).waitFor();await page.clock.fastForward(2100);
         const hero=page.getByRole('region',{name:'Película recomendada'});
+        const shortcuts=page.getByRole('navigation',{name:'Accesos directos del inicio'});
         await hero.locator('h1').waitFor();
         const expected=H.candidates({movies2:originalReleases}).slice(0,5);
         const selectedTitle=(await hero.locator('h1').textContent()).trim();
@@ -129,10 +132,37 @@ const server = http.createServer((req, res) => {
                 } finally { copy.remove(); }
             });
             assert(fitted.pass,`Full-screen premiere, text and controls must fit at ${width}px: ${JSON.stringify(fitted.details)}`);
+            assert.deepEqual(await shortcuts.getByRole('button').evaluateAll(buttons=>buttons.map(button=>button.getAttribute('aria-label'))),['TV','Radio','Estrenos','Películas','Series']);
+            const quickLayout=await shortcuts.evaluate(nav=>{
+                const buttons=Array.from(nav.querySelectorAll('button')),hero=nav.previousElementSibling,firstShelf=document.querySelector('.home-shelves');
+                const rect=nav.getBoundingClientRect(),panorama=hero.getBoundingClientRect();
+                return hero.classList.contains('home-featured')&&Math.abs(rect.top-panorama.bottom)<1&&rect.bottom<=firstShelf.getBoundingClientRect().top+1&&buttons.every(button=>{
+                    const box=button.getBoundingClientRect(),label=button.querySelector('strong');
+                    return box.width>=44&&box.height>=44&&box.left>=0&&box.right<=innerWidth+.1&&Math.abs(box.top-buttons[0].getBoundingClientRect().top)<1&&label.scrollWidth<=label.clientWidth+1;
+                });
+            });
+            assert(quickLayout,`Five readable shortcut cards must sit below the panorama in one row at ${width}px`);
         }
         await page.setViewportSize({width:1440,height:1000});await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));await page.screenshot({path:'/tmp/box-home-desktop.png',fullPage:true});
         await page.setViewportSize({width:390,height:844});await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));await page.screenshot({path:'/tmp/box-home-mobile.png',fullPage:true});
         console.log('PASS: reference-style full-screen premiere, white watch button, favorite synchronization, personal rating, protected download, subscription gate and 320–1920px layouts');
+        for(const width of [390,1440]){
+            await page.setViewportSize({width,height:1000});
+            for(const [label,id] of [['TV','tv'],['Radio','radio'],['Estrenos','movies2'],['Películas','movies'],['Series','series']]){
+                const button=shortcuts.getByRole('button',{name:label,exact:true});
+                if(width===1440){await button.focus();await button.press('Enter');}else await button.click();
+                await page.waitForFunction(expected=>history.state?.activeTab===expected,id);
+                assert.equal(await shortcuts.count(),0);assert.equal(await hero.count(),0);
+                if(id==='radio'){
+                    await page.getByRole('heading',{name:'Radio Digital',exact:true}).waitFor();
+                    assert(await page.locator('audio').evaluateAll(elements=>elements.every(audio=>audio.paused)));
+                }
+                const menu=page.getByRole('navigation',{name:width===390?'Navegación principal móvil':'Secciones principales'});
+                await menu.getByRole('button',{name:'Inicio',exact:true}).click();
+                await shortcuts.waitFor();
+            }
+        }
+        console.log('PASS: five shortcut cards below the panorama remain readable at 320–1920px; touch and keyboard open TV, Radio, Estrenos, Películas and Series without starting radio playback');
         await page.setViewportSize({width:1440,height:1000});
         for(let reload=0;reload<4;reload++){
             const previous=await page.evaluate(()=>localStorage.getItem('boxplay_home_feature_last'));

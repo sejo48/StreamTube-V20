@@ -8,7 +8,7 @@
     <script src="./radio-engine.js?v=2026-2"></script>
     <script src="./radio-favorites.js?v=2026-1"></script>
     <link rel="stylesheet" href="./radio.css?v=2026-3">
-    <link rel="stylesheet" href="./home.css?v=2026-4">
+    <link rel="stylesheet" href="./home.css?v=2026-5">
     <script src="./home-features.js?v=2026-4"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -673,6 +673,22 @@
                     </div>
                 </div>
             </section>;
+        };
+
+        const HomeShortcuts = ({ onNavigate }) => {
+            const shortcuts = [
+                { id: 'tv', label: 'TV', icon: 'tv', description: 'Canales en vivo', color: '#22d3ee', glow: '34,211,238' },
+                { id: 'radio', label: 'Radio', icon: 'radio', description: 'Emisoras en directo', color: '#2dd4bf', glow: '45,212,191' },
+                { id: 'movies2', label: 'Estrenos', icon: 'star', description: 'Lo más reciente', color: '#fbbf24', glow: '251,191,36' },
+                { id: 'movies', label: 'Películas', icon: 'clapperboard', description: 'Explorar el catálogo', color: '#60a5fa', glow: '96,165,250' },
+                { id: 'series', label: 'Series', icon: 'film', description: 'Temporadas y episodios', color: '#c4b5fd', glow: '196,181,253' }
+            ];
+            return <nav className="home-shortcuts" aria-label="Accesos directos del inicio"><div className="home-shortcuts-grid">{shortcuts.map(shortcut =>
+                <button key={shortcut.id} className="home-shortcut-card" aria-label={shortcut.label} style={{ '--shortcut-color': shortcut.color, '--shortcut-glow': shortcut.glow }} onClick={() => { onNavigate(shortcut.id); window.scrollTo({ top: 0, behavior: 'instant' }); }}>
+                    <span className="home-shortcut-icon" aria-hidden="true"><Icon name={shortcut.icon} size={26}/></span>
+                    <span className="home-shortcut-copy"><strong>{shortcut.label}</strong><span>{shortcut.description}</span></span>
+                </button>
+            )}</div></nav>;
         };
 
         const HomeShelf = ({ title, subtitle, items, onPlay, favorites, tvFavorites, onToggleFavorite, onExplore, resume = false }) => {
@@ -2511,6 +2527,7 @@
                         ) : (
                             <>
                                 {activeTab === 'home' && !search && <FeaturedHome key={featuredItems.map(item => item.id || BoxHomeFeatures.key(item)).join('|')} items={featuredItems} onArtworkError={discardFeaturedArtwork} onPlay={handlePlayNow} onRate={handleRateMovie} onDownload={handleDownloadMovie} ratings={personalRatings} pending={loading || featuredLoading} isItemFavorite={isItemFavorite} onToggleFavorite={toggleFavorite} />}
+                                {activeTab === 'home' && !search && <HomeShortcuts onNavigate={id => handleTabClick(navTabs.find(tab => tab.id === id))} />}
                                 {activeTab === 'home' && !search ? (
                                     <div className="home-shelves">
                                         {continueWatching.length > 0 && <HomeShelf title="Continuar viendo" subtitle="Retoma lo que estabas disfrutando." items={continueWatching} onPlay={handleResume} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} resume />}
