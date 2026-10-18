@@ -8,7 +8,7 @@
     <script src="./radio-favorites.js?v=2026-1"></script>
     <link rel="stylesheet" href="./radio.css?v=2026-3">
     <link rel="stylesheet" href="./home.css?v=2026-2">
-    <script src="./home-features.js?v=2026-2"></script>
+    <script src="./home-features.js?v=2026-3"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="manifest" href="./manifest.webmanifest">
@@ -639,7 +639,7 @@
             );
         };
 
-        const FeaturedHome = ({ items, onPlay, isItemFavorite, onToggleFavorite }) => {
+        const FeaturedHome = ({ items, onPlay, isItemFavorite, onToggleFavorite, onArtworkError }) => {
             const [selected, setSelected] = useState(0);
             const [manualPause, setManualPause] = useState(false);
             const [hovered, setHovered] = useState(false);
@@ -681,10 +681,10 @@
                 event.preventDefault(); select(next); selectors.current[next]?.focus();
             };
             return <section className="home-featured" aria-label="Película recomendada" aria-roledescription="carrusel" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} onFocusCapture={() => setFocused(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
-                <div className="home-feature-art" aria-hidden="true"><RobustImage src={extractBackdropUrl(item) || extractImageUrl(item)} alt="" title={title} type="backdrop" className="home-feature-ambient"/><div className="home-feature-frame"><RobustImage key={item.id || title} src={extractBackdropUrl(item) || extractImageUrl(item)} alt="" title={title} type="backdrop" className="home-feature-backdrop"/></div></div><div className="home-feature-shade"/>
+                <div className="home-feature-art" aria-hidden="true"><img src={BoxHomeFeatures.panorama(item)} alt="" className="home-feature-ambient"/><div className="home-feature-frame"><img key={item.id || title} src={BoxHomeFeatures.panorama(item)} alt="" className="home-feature-backdrop" onError={() => onArtworkError(item)}/></div></div><div className="home-feature-shade"/>
                 <div className="home-feature-layout">
                     <div id="home-feature-panel" role="tabpanel" aria-live={paused ? 'polite' : 'off'} aria-labelledby={`home-feature-tab-${index}`} className="home-feature-copy">
-                        <p className="home-feature-eyebrow">DESTACADA {index + 1} / {items.length}</p>
+                        <p className="home-feature-eyebrow">ESTRENO DESTACADO {index + 1} / {items.length}</p>
                         <h1>{title}</h1>
                         <div className="home-feature-meta">{item.rating && <span className="home-rating">★ {item.rating}</span>}{item.year && <span>{item.year}</span>}{item.runtime && <span>{item.runtime}</span>}{item.generosTexto && <span>{item.generosTexto.split(',')[0]}</span>}</div>
                         <p className="home-feature-description">{description}</p>
@@ -1490,6 +1490,7 @@
                                     ...m,
                                     id: BoxCatalog.id(m, 'peliculas2.json'),
                                     type: 'movies2', 
+                                    panoramicImage: normalizeImageUrl(m.backdrop || m.banner || ''),
                                     title, 
                                     description: m.descripcion || m.sinopsis || m.plot || '',
                                     image: imgUrl || generatePlaceholder(title, 'poster'),
@@ -1736,7 +1737,16 @@
             const displayedItems = getDisplayContent();
             
             const homeTrends = useMemo(() => BoxHomeFeatures.pool(content), [content]);
-            const featuredItems = useMemo(() => BoxHomeFeatures.select(content, { previous: safeStorage.getItem('boxplay_home_feature_last') || '' }), [content]);
+            const [featuredItems, setFeaturedItems] = useState([]);
+            useEffect(() => {
+                let cancelled = false;
+                BoxHomeFeatures.load(content, {
+                    previous: safeStorage.getItem('boxplay_home_feature_last') || '',
+                    isCancelled: () => cancelled
+                }).then(items => { if (!cancelled) setFeaturedItems(items); });
+                return () => { cancelled = true; };
+            }, [content]);
+            const discardFeaturedArtwork = item => setFeaturedItems(items => items.filter(entry => BoxHomeFeatures.key(entry) !== BoxHomeFeatures.key(item)));
 
             const handleShowDetails = (item) => {
                 if (item.type === 'radio') { setSelectedItem(null); setActiveTab('radio'); handlePlayRadioStation(item); window.history.pushState({ appState: 'main', activeTab: 'radio' }, ''); return; }
@@ -2502,7 +2512,7 @@
                             <PaymentsSection emailUsuario={emailUsuario} isSubscriberActive={isSubscriberActive} expiresAt={accessExpiresAt} onVerify={() => setShowPaywallModal(true)} />
                         ) : (
                             <>
-                                {activeTab === 'home' && !search && <FeaturedHome key={featuredItems.map(item => item.id || BoxHomeFeatures.key(item)).join('|')} items={featuredItems} onPlay={handlePlay} isItemFavorite={isItemFavorite} onToggleFavorite={toggleFavorite} />}
+                                {activeTab === 'home' && !search && <FeaturedHome key={featuredItems.map(item => item.id || BoxHomeFeatures.key(item)).join('|')} items={featuredItems} onArtworkError={discardFeaturedArtwork} onPlay={handlePlay} isItemFavorite={isItemFavorite} onToggleFavorite={toggleFavorite} />}
                                 {activeTab === 'home' && !search ? (
                                     <div className="home-shelves">
                                         {continueWatching.length > 0 && <HomeShelf title="Continuar viendo" subtitle="Retoma lo que estabas disfrutando." items={continueWatching} onPlay={handleResume} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} resume />}

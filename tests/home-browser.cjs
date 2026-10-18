@@ -5,10 +5,18 @@ const http = require('node:http');
 const assert = require('node:assert/strict');
 const { chromium } = require('playwright');
 const C = require('../catalog.js');
+const H = require('../home-features.js');
 const root = path.resolve(__dirname, '..');
 const moduleFile = (name, file) => path.join(path.dirname(require.resolve(name + '/package.json')), file);
 const styles = fs.readFileSync(process.env.BOXPLAY_TEST_CSS, 'utf8');
 const files = new Map();
+const originalReleases=JSON.parse(fs.readFileSync(path.join(root,'peliculas2.json'),'utf8'));
+const invalidReleases=[
+ {...originalReleases[0],titulo:'No mostrar: fondo vertical',fechaEstreno:'2026-10-18',backdrop:'https://images.test/hero-portrait.jpg'},
+ {...originalReleases[0],titulo:'No mostrar: fondo roto',fechaEstreno:'2026-10-17',backdrop:'https://images.test/hero-broken.jpg'},
+ {...originalReleases[0],titulo:'No mostrar: solo póster',fechaEstreno:'2026-10-17',backdrop:'',banner:''}
+];
+files.set('peliculas2.json',JSON.stringify([...invalidReleases,...originalReleases]));
 let failCatalog = false, requestsWithWrites = [];
 const server = http.createServer((req, res) => {
     if (!['GET', 'HEAD'].includes(req.method)) { requestsWithWrites.push(req.method + ' ' + req.url); res.writeHead(405); return res.end(); }
@@ -38,7 +46,11 @@ const server = http.createServer((req, res) => {
         else if (url.includes('cdn.jsdelivr.net/npm/hls.js')) resource = moduleFile('hls.js', 'dist/hls.js');
         if (resource) return route.fulfill({ contentType: 'application/javascript', body: fs.readFileSync(resource) });
         if (url.includes('cdn.tailwindcss.com')) return route.fulfill({ contentType: 'application/javascript', body: `window.tailwind={};const style=document.createElement('style');style.textContent=${JSON.stringify(styles)};document.head.appendChild(style);` });
-        if (request.resourceType() === 'image') return route.fulfill({ contentType: 'image/png', body: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aZ1sAAAAASUVORK5CYII=', 'base64') });
+        if (request.resourceType() === 'image') {
+            if(url.includes('hero-broken'))return route.fulfill({status:404,body:''});
+            const [width,height]=url.includes('hero-portrait')?[900,1350]:[1920,1080];
+            return route.fulfill({contentType:'image/svg+xml',body:`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><rect width="100%" height="100%" fill="#164e63"/></svg>`});
+        }
         return route.abort();
     });
 
@@ -50,6 +62,9 @@ const server = http.createServer((req, res) => {
         await page.getByRole('button',{name:'Comenzar Experiencia'}).click();
         const hero=page.getByRole('region',{name:'Película recomendada'});
         const tabs=hero.getByRole('tab');await tabs.nth(4).waitFor();assert.equal(await tabs.count(),5);
+        const expected=H.candidates({movies2:originalReleases}).slice(0,5).map(item=>item.titulo).sort();
+        assert.deepEqual((await tabs.locator('strong').allTextContents()).sort(),expected);
+        assert(await hero.locator('.home-feature-backdrop').evaluate(image=>image.naturalWidth/image.naturalHeight>=1.5));
         const titles=await tabs.allTextContents().then(labels=>labels.map(value=>value.trim()));assert.equal(new Set(titles).size,5);
         await tabs.nth(3).click();const selectedTitle=(await tabs.nth(3).locator('strong').textContent()).trim();
         assert.equal(await hero.getByRole('heading',{level:1}).innerText(),selectedTitle.toUpperCase());
@@ -71,11 +86,11 @@ const server = http.createServer((req, res) => {
             await page.setViewportSize({width,height:1000});
             await page.waitForFunction(()=>{const el=document.querySelector('.home-featured');return el?.getBoundingClientRect().width===innerWidth&&!document.querySelector('button[title="Actualizar catálogo"]').disabled;});
             assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-            const metrics=await hero.evaluate(el=>{const title=el.querySelector('h1'),image=el.querySelector('.home-feature-backdrop');return{width:el.getBoundingClientRect().width, titleFits:title.scrollWidth<=title.clientWidth+1, fit:getComputedStyle(image).objectFit};});
+            const metrics=await (await page.waitForFunction(()=>{const el=document.querySelector('.home-featured'),title=el?.querySelector('h1'),image=el?.querySelector('.home-feature-backdrop');return el?.getBoundingClientRect().width===innerWidth&&image?.complete?{width:el.getBoundingClientRect().width,titleFits:title.scrollWidth<=title.clientWidth+1,fit:getComputedStyle(image).objectFit}:false;})).jsonValue();
             assert.equal(metrics.width,width);assert(metrics.titleFits);assert.equal(metrics.fit,'contain');
             const fitted=await hero.locator('.home-feature-backdrop').evaluate(async image=>{
                 const original=image.src, checks=[];
-                for(const [w,h] of [[900,1350],[1920,1080],[2400,800]]){
+                for(const [w,h] of [[1600,1000],[1920,1080],[2400,800]]){
                     image.src='data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="#164e63"/><circle cx="${w/2}" cy="${h*.1}" r="${Math.min(w,h)*.07}" fill="#67e8f9"/></svg>`);
                     await image.decode();
                     const rect=image.getBoundingClientRect(), hero=image.closest('.home-featured'), style=getComputedStyle(image);
@@ -88,7 +103,7 @@ const server = http.createServer((req, res) => {
                 }
                 image.src=original;await image.decode();return checks.every(Boolean);
             });
-            assert(fitted,`Portrait and landscape artwork must fit completely at ${width}px`);
+            assert(fitted,`Panoramic artwork must fit completely at ${width}px`);
 
             if(width>=1024){
                 const bounds=await tabs.evaluateAll(buttons=>buttons.map(button=>button.getBoundingClientRect().toJSON()));
@@ -111,24 +126,23 @@ const server = http.createServer((req, res) => {
             const title=await hero.locator('h1').textContent();
             assert(next.startsWith(title.trim().toLocaleLowerCase('es').replace(/\s+/g,' ')));
         }
-        const originalSeries=JSON.parse(fs.readFileSync(path.join(root,'playlist.json'),'utf8'));
-        const edge={...originalSeries[0],id:'full-pool-last-test',tituloSerie:'Título al final del catálogo completo',descripcion:'Sinopsis del título seleccionado al final de Trends.',backdrop:originalSeries[0].imagen||originalSeries[0].backdrop};
-        files.set('playlist.json',JSON.stringify([...originalSeries,edge]));
-        const chooseLast=async()=>page.evaluate(()=>{let first=true;Math.random=()=>{if(first){first=false;return 0;}return .999999999;};});
-        await chooseLast();await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
-        await hero.getByRole('heading',{level:1}).filter({hasText:edge.tituloSerie}).waitFor();
+        const edge={...originalReleases[0],id:'newest-estreno-test',titulo:'Último estreno disponible',fechaEstreno:'2026-10-17',descripcion:'Sinopsis del estreno más reciente.',backdrop:'https://images.test/newest-wide.jpg'};
+        files.set('peliculas2.json',JSON.stringify([...invalidReleases,...originalReleases,edge]));
+        const chooseNewest=async()=>page.evaluate(()=>{Math.random=()=>.999999999;});
+        await chooseNewest();await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
+        await hero.getByRole('heading',{level:1}).filter({hasText:edge.titulo}).waitFor();
         assert.equal(await hero.locator('.home-feature-description').innerText(),edge.descripcion);
-        const updated={...edge,tituloSerie:'Título actualizado al restaurar la página'};
-        files.set('playlist.json',JSON.stringify([...originalSeries,updated]));
-        await chooseLast();await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));
-        await hero.getByRole('heading',{level:1}).filter({hasText:updated.tituloSerie}).waitFor();
+        const updated={...edge,titulo:'Estreno actualizado al restaurar la página'};
+        files.set('peliculas2.json',JSON.stringify([...invalidReleases,...originalReleases,updated]));
+        await chooseNewest();await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow',{persisted:true})));
+        await hero.getByRole('heading',{level:1}).filter({hasText:updated.titulo}).waitFor();
         const retained=await hero.locator('h1').innerText();
         failCatalog=true;
         await page.clock.fastForward(1500);await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
         await page.getByRole('status').filter({hasText:'Se conservó el catálogo anterior'}).waitFor();
         assert.equal(await hero.locator('h1').innerText(),retained);
         failCatalog=false;
-        console.log('PASS: consecutive page reloads choose different covers; end-of-catalog entries are eligible with matching metadata; focus/restoration refresh and failure retention work');
+        console.log('PASS: consecutive page reloads choose different covers; only the latest Estrenos with panoramic images are eligible; portrait, broken and missing backgrounds are excluded; focus/restoration refresh and failure retention work');
         // Verify actual carousel timing with the browser clock; focus and reduced motion pause it.
         await page.setViewportSize({width:1440,height:1000});
         await page.evaluate(()=>document.activeElement?.blur());await page.mouse.move(0,0);
