@@ -87,23 +87,27 @@ const server = http.createServer((req, res) => {
             await page.waitForFunction(()=>{const el=document.querySelector('.home-featured');return el?.getBoundingClientRect().width===innerWidth&&!document.querySelector('button[title="Actualizar catálogo"]').disabled;});
             assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
             const metrics=await (await page.waitForFunction(()=>{const el=document.querySelector('.home-featured'),title=el?.querySelector('h1'),image=el?.querySelector('.home-feature-backdrop');return el?.getBoundingClientRect().width===innerWidth&&image?.complete?{width:el.getBoundingClientRect().width,titleFits:title.scrollWidth<=title.clientWidth+1,fit:getComputedStyle(image).objectFit}:false;})).jsonValue();
-            assert.equal(metrics.width,width);assert(metrics.titleFits);assert.equal(metrics.fit,'contain');
+            assert.equal(metrics.width,width);assert(metrics.titleFits);assert.equal(metrics.fit,'cover');
             const fitted=await hero.locator('.home-feature-backdrop').evaluate(async image=>{
                 const original=image.src, checks=[];
                 for(const [w,h] of [[1600,1000],[1920,1080],[2400,800]]){
                     image.src='data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="#164e63"/><circle cx="${w/2}" cy="${h*.1}" r="${Math.min(w,h)*.07}" fill="#67e8f9"/></svg>`);
                     await image.decode();
                     const rect=image.getBoundingClientRect(), hero=image.closest('.home-featured'), style=getComputedStyle(image);
-                    const factor=Math.min(rect.width/image.naturalWidth,rect.height/image.naturalHeight);
+                    const factor=Math.max(rect.width/image.naturalWidth,rect.height/image.naturalHeight);
                     const renderedWidth=image.naturalWidth*factor, renderedHeight=image.naturalHeight*factor;
                     const heroRect=hero.getBoundingClientRect();
-                    checks.push(style.objectFit==='contain'&&renderedWidth<=rect.width+.1&&renderedHeight<=rect.height+.1&&rect.left>=heroRect.left&&rect.right<=heroRect.right&&rect.top>=heroRect.top&&rect.bottom<=heroRect.bottom);
-                    if(innerWidth<640)checks.push(rect.bottom<=hero.querySelector('h1').getBoundingClientRect().top);
-                    else checks.push(rect.bottom<=hero.querySelector('.home-feature-selectors').getBoundingClientRect().top);
+                    checks.push(style.objectFit==='cover'&&renderedWidth>=rect.width-.1&&renderedHeight>=rect.height-.1&&Math.abs(rect.left-heroRect.left)<1&&Math.abs(rect.right-heroRect.right)<1&&Math.abs(rect.top-heroRect.top)<1&&Math.abs(rect.bottom-heroRect.bottom)<1);
+                    // Anchor to the top and place the copy over the full-width photo.
+                    checks.push(style.objectPosition==='50% 0%');
+                    const title=hero.querySelector('h1').getBoundingClientRect();
+                    checks.push(title.left>=rect.left&&title.right<=rect.right&&title.top>=rect.top&&title.bottom<=rect.bottom);
+                    const shade=hero.querySelector('.home-feature-shade');
+                    checks.push(getComputedStyle(shade).backgroundImage.includes('linear-gradient'));
                 }
                 image.src=original;await image.decode();return checks.every(Boolean);
             });
-            assert(fitted,`Panoramic artwork must fit completely at ${width}px`);
+            assert(fitted,`Panoramic background must cover the full hero behind the text at ${width}px`);
 
             if(width>=1024){
                 const bounds=await tabs.evaluateAll(buttons=>buttons.map(button=>button.getBoundingClientRect().toJSON()));
