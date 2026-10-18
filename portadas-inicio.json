@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": "peliculas2.json",
   "mode": "manual",
-  "updatedAt": "2026-10-18T21:57:12.489Z",
+  "updatedAt": "2026-10-18T22:53:54.623Z",
   "items": [
     {
       "movieKey": "tmdb:1081003",
@@ -20,14 +20,14 @@
       "backdrop": "https://image.tmdb.org/t/p/w1280/eJ4vMJJlnxnKqdJCBDXvNmE0LVp.jpg"
     },
     {
-      "movieKey": "tmdb:1400837",
-      "title": "La otra madre",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/ncm7djsVTHQQMX2HEbEVxMUFchG.jpg"
-    },
-    {
       "movieKey": "tmdb:1148365",
       "title": "Matchbox: La película",
       "backdrop": "https://image.tmdb.org/t/p/w1280/jdJsnhHfkIi3J7jwfiCFT4gXNx5.jpg"
+    },
+    {
+      "movieKey": "tmdb:1290821",
+      "title": "Shelter: El Protector",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/nHxWyy18SvAZ8jJeemtS8k1UNjM.jpg"
     }
   ]
 }
