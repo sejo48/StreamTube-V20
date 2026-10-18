@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": "peliculas2.json",
   "mode": "manual",
-  "updatedAt": "2026-10-18T03:42:13.100Z",
+  "updatedAt": "2026-10-18T03:47:52.567Z",
   "items": [
     {
       "movieKey": "tmdb:1186350",
@@ -20,14 +20,14 @@
       "backdrop": "https://image.tmdb.org/t/p/w1280/5lQ4euO30sDin5nCifvi0vURFNd.jpg"
     },
     {
-      "movieKey": "drive:16bfS9GsUivu30EzwfjKqf6hYHQf0VqkR",
-      "title": "Tadeo el explorador y la lámpara maravillosa",
-      "backdrop": "https://escribiendocine-s3.cdn.net.ar/s3i233/2026/09/escribiendocine/images/02/76/33/2763327_45ac5c3a3dcdc61d63e9d6421f263fc8b4aa00bc1c59b9d1cdd07479070e355e/md.webp"
-    },
-    {
       "movieKey": "tmdb:1148365",
       "title": "Matchbox: La película",
       "backdrop": "https://image.tmdb.org/t/p/w1280/jdJsnhHfkIi3J7jwfiCFT4gXNx5.jpg"
+    },
+    {
+      "movieKey": "tmdb:192139",
+      "title": "Al borde de la guerra",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/E812GNXYQqjJwN0cVPY3icHpaj.jpg"
     }
   ]
 }
