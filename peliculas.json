@@ -1,5 +1,288 @@
 [
   {
+    "titulo": "En pata de guerra",
+    "tituloOriginal": "Furry Vengeance",
+    "descripcion": "La empresa de un comercial inmobiliario lo manda a vender unas viviendas en una zona desierta y salvaje de Oregón. Allí tendrá que enfrentarse a unas extrañas criaturas que lo pondrán en serias dificultades.",
+    "imagen": "https://image.tmdb.org/t/p/w780/7CiiwQsbxIbUldeN1ehl27IQZIP.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/AwWMcB5lFPLe8nZVXrBqPdHQ26.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1HgLcWNPM8wks8O8jfr4PWMeiMQCnWEpQ/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2010",
+    "fechaEstreno": "2010-04-30",
+    "rating": "5.0",
+    "votos": 667,
+    "runtime": "1h 32min",
+    "genres": [
+      "Familia",
+      "Comedia"
+    ],
+    "generosTexto": "Familia, Comedia",
+    "clasificacion": "PG",
+    "tagline": "Él vino. El vió. Ellos conquistaron.",
+    "director": "Roger Kumble",
+    "guionistas": "Michael Carnes, Josh Gilbert",
+    "reparto": [
+      {
+        "nombre": "Brendan Fraser",
+        "personaje": "Dan Sanders",
+        "foto": "https://image.tmdb.org/t/p/w185/tFj5PaWWQbb8rHBBhu1EHklznph.jpg"
+      },
+      {
+        "nombre": "Brooke Shields",
+        "personaje": "Tammy Sanders",
+        "foto": "https://image.tmdb.org/t/p/w185/qpLcTp5D6t0S0TtNK85VOYwDmTL.jpg"
+      },
+      {
+        "nombre": "Ken Jeong",
+        "personaje": "Neal Lyman",
+        "foto": "https://image.tmdb.org/t/p/w185/dfuDZ2m2A8nBb0TdyeqmlPOobJA.jpg"
+      },
+      {
+        "nombre": "Matt Prokop",
+        "personaje": "Tyler Sanders",
+        "foto": "https://image.tmdb.org/t/p/w185/dR0iivJAiKYkxK1ugbLlgPqM9Bb.jpg"
+      },
+      {
+        "nombre": "Angela Kinsey",
+        "personaje": "Felder",
+        "foto": "https://image.tmdb.org/t/p/w185/qHFidnMcFqUWdMFyjmXufBlYckd.jpg"
+      },
+      {
+        "nombre": "Skyler Samuels",
+        "personaje": "Amber",
+        "foto": "https://image.tmdb.org/t/p/w185/4HeEvih8dRezHnnS1Ss9L7hKsLx.jpg"
+      },
+      {
+        "nombre": "Ricky Garcia",
+        "personaje": "Frank",
+        "foto": "https://image.tmdb.org/t/p/w185/hWAo9W7sxSYHm9VbnsTP3VMlnsC.jpg"
+      },
+      {
+        "nombre": "Eugene Cordero",
+        "personaje": "Cheese",
+        "foto": "https://image.tmdb.org/t/p/w185/waruLSR8lXBjhAFL0J6ihuVY62d.jpg"
+      },
+      {
+        "nombre": "Patrice O'Neal",
+        "personaje": "Gus",
+        "foto": "https://image.tmdb.org/t/p/w185/1y2LWXkM6b3YzUjfHLTta6UKTDv.jpg"
+      },
+      {
+        "nombre": "Jim Norton",
+        "personaje": "Hank",
+        "foto": "https://image.tmdb.org/t/p/w185/1eL6A0szDBn6gculvbBt0B0Sps0.jpg"
+      },
+      {
+        "nombre": "Billy Bush",
+        "personaje": "Drill Sergeant",
+        "foto": "https://image.tmdb.org/t/p/w185/b1CYHiB4KpGmx6qOIVhvQSZwCYk.jpg"
+      },
+      {
+        "nombre": "Samantha Bee",
+        "personaje": "Principal Baker",
+        "foto": "https://image.tmdb.org/t/p/w185/5qaonOzWVYV85EjDRdQqd3gctcL.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Robert Simonds Productions, Participant, Image Nation Studios",
+    "presupuesto": 35000000,
+    "recaudacion": 36236710,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "bear, animals, aftercreditsstinger, duringcreditsstinger, real estate, land developer, real estate developer",
+    "similares": [
+      {
+        "titulo": "Los tres chiflados",
+        "poster": "https://image.tmdb.org/t/p/w342/2rP8vjVp5nx4c9TxVW14jWlffW.jpg",
+        "year": "2012",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Alvin y las ardillas",
+        "poster": "https://image.tmdb.org/t/p/w342/xpInKihOnJZ9QePD5letvwDV9W8.jpg",
+        "year": "2007",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Paddington: Aventura en la selva",
+        "poster": "https://image.tmdb.org/t/p/w342/mlqvgdzoFkUULsQtXFkO7xHLFqF.jpg",
+        "year": "2024",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Carlitos y Snoopy: La película de Peanuts",
+        "poster": "https://image.tmdb.org/t/p/w342/2vh5QyyFgWCVNipA6C70BT3cRt0.jpg",
+        "year": "2015",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Paddington 2",
+        "poster": "https://image.tmdb.org/t/p/w342/r6Vg1xxFqaORvw4GuOLnxQAeVhV.jpg",
+        "year": "2017",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Tom y Jerry",
+        "poster": "https://image.tmdb.org/t/p/w342/orzPlWUbf0S5HeWmpP3TeHvduwn.jpg",
+        "year": "2021",
+        "rating": "6.7"
+      }
+    ],
+    "tmdbId": 35169,
+    "tmdbType": "movie",
+    "runtimeMin": 92,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Pitufos",
+    "tituloOriginal": "Smurfs",
+    "descripcion": "Película musical de animación centrada en las icónicas creaciones de Peyo. Cuando Papá Pitufo es secuestrado de forma misteriosa por los malvados brujos Razamel y Gargamel, Pitufina lleva a los Pitufos a una misión al mundo real para salvarle. Con la ayuda de nuevos amigos, los Pitufos deberán descubrir qué define su destino para salvar el universo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/zBdQclxQnEDOhDOjkKgKPW6jEHh.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/9whEVuKte4Qi0LI4TzPf7glinJW.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1kNj7qMkyzi--CnU3J7_q2MK4H66IVhIY/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-06-30",
+    "rating": "5.7",
+    "votos": 292,
+    "runtime": "1h 29min",
+    "genres": [
+      "Animación",
+      "Familia",
+      "Fantasía"
+    ],
+    "generosTexto": "Animación, Familia, Fantasía",
+    "clasificacion": "A",
+    "tagline": "RIHANNA IS SMURFETTE",
+    "director": "Chris Miller",
+    "guionistas": "Pam Brady",
+    "reparto": [
+      {
+        "nombre": "Rihanna",
+        "personaje": "Smurfette (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/piXUA7L0gWQNtnDPXtBe24C9FF6.jpg"
+      },
+      {
+        "nombre": "James Corden",
+        "personaje": "No Name (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/xGB0gfZ48M27gQjjL7inJIh1Pqj.jpg"
+      },
+      {
+        "nombre": "Nick Offerman",
+        "personaje": "Ken (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/f6z3mPVtaF40ewfdmZydprAjmYd.jpg"
+      },
+      {
+        "nombre": "JP Karliak",
+        "personaje": "Gargamel / Razamel (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/7Rc3n8KmKUaztqfsIpddO1a2ggn.jpg"
+      },
+      {
+        "nombre": "Dan Levy",
+        "personaje": "Joel (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/2O9KqgCLHHMw5xmUpNexfWr2QVA.jpg"
+      },
+      {
+        "nombre": "Amy Sedaris",
+        "personaje": "Jaunty (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/AjVjRYI1PaC11i4FqGSK1TkwOmq.jpg"
+      },
+      {
+        "nombre": "Natasha Lyonne",
+        "personaje": "Mama Poot (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/2QJoTBEIeYyjGSDot9qxv2ayPH3.jpg"
+      },
+      {
+        "nombre": "Sandra Oh",
+        "personaje": "Moxie Smurf (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/zU8vjebHxcP60ESEL5Ok68KWZvj.jpg"
+      },
+      {
+        "nombre": "Jimmy Kimmel",
+        "personaje": "Tardigrade (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/nBe0ByVL5hpPUby6rlU6DELgJ8Z.jpg"
+      },
+      {
+        "nombre": "Octavia Spencer",
+        "personaje": "Asmodius (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/zDGydyM1fmvNWzQlTAns9IZjNxT.jpg"
+      },
+      {
+        "nombre": "Nick Kroll",
+        "personaje": "Chernobog (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/fNiOuEKeBtELGdhKn4lxXq4O7YP.jpg"
+      },
+      {
+        "nombre": "Hannah Waddingham",
+        "personaje": "Jezebeth (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/eHAICyhvjiRZCgzKyJCk9hWnnjr.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Paramount Animation, Domain Entertainment, TyTy and Jay Brown Productions",
+    "presupuesto": 58000000,
+    "recaudacion": 124157356,
+    "trailerUrl": "https://www.youtube.com/watch?v=jYtjerVhaSA",
+    "coleccion": "",
+    "keywords": "musical, portal, based on comic, shocking, live action and animation, estranged brother, abduction, brother brother relationship, adventure, amused, mocking, art shift",
+    "similares": [
+      {
+        "titulo": "El regreso de Dorothy al mundo de Oz",
+        "poster": "https://image.tmdb.org/t/p/w342/1S88ihQkuUhLbuOTFGjbQfXHyTd.jpg",
+        "year": "2014",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "La casa mágica",
+        "poster": "https://image.tmdb.org/t/p/w342/2guiQR9Km3WzoZhBPvvKV9AAH28.jpg",
+        "year": "2013",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Monstruos, S.A.",
+        "poster": "https://image.tmdb.org/t/p/w342/g3SgHEb5ej2MioGfYLrZVshF909.jpg",
+        "year": "2001",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Trolls 3: Todos juntos",
+        "poster": "https://image.tmdb.org/t/p/w342/saGpA6u71TPA8DyTYoAqSBGVZW.jpg",
+        "year": "2023",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Los guardianes del diente mágico",
+        "poster": "https://image.tmdb.org/t/p/w342/dBWw71ndGxWZvRZDyuOdbvGOkjp.jpg",
+        "year": "2025",
+        "rating": "8.5"
+      },
+      {
+        "titulo": "Mulán 2",
+        "poster": "https://image.tmdb.org/t/p/w342/lQbZiWh4ZDSd2co0FMz8U3LGvL7.jpg",
+        "year": "2004",
+        "rating": "6.5"
+      }
+    ],
+    "tmdbId": 936108,
+    "tmdbType": "movie",
+    "runtimeMin": 89,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Ice Age: La edad de hielo",
     "tituloOriginal": "Ice Age",
     "descripcion": "Hace muchos, muchos años, tantos como 20.000, una pequeña ardirata de nombre Scrat quería esconder una bellota en el hielo. Pero lo que hace es provocar una semicatástrofe que provoca que todos los animales migren hacia el sur, hacia tierras más cálidas. Bueno, lo que se dice todos, todos, no. Porque hay uno que lleva la contraria: se trata del mamut Manfred, un auténtico lobo solitario vagabundo y soberbio que va hacia el norte sólo porque los demás están yendo hacia el sur.",
