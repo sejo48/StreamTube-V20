@@ -1,5 +1,146 @@
 [
   {
+    "titulo": "Tenzing",
+    "tituloOriginal": "Tenzing",
+    "descripcion": "Un hombre se embarca en una arriesgada expedición para, contra todo pronóstico, intentar cumplir el sueño de ser el primero en alcanzar la cima del Everest.",
+    "imagen": "https://image.tmdb.org/t/p/w780/5i3qw2aDNQP6SWl2hNQaiIoUYHE.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/sQUzXmaNgEDrRO6sOFGUZTuq0eE.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1-KnkNHkZPBVJw01WljRXM9y7j3Cq8JW7/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-10-09",
+    "rating": "8.3",
+    "votos": 83,
+    "runtime": "2h 6min",
+    "genres": [
+      "Drama",
+      "Historia"
+    ],
+    "generosTexto": "Drama, Historia",
+    "clasificacion": "12",
+    "tagline": "La primera expedición que hizo cumbre en el Everest.",
+    "director": "Jennifer Peedom",
+    "guionistas": "Luke Davies, Luke Davies, Jennifer Peedom",
+    "reparto": [
+      {
+        "nombre": "更登彭措",
+        "personaje": "Tenzing Norgay",
+        "foto": "https://image.tmdb.org/t/p/w185/2xsreNBuPpBZYJTlpuTapi2ZvP.jpg"
+      },
+      {
+        "nombre": "Tom Hiddleston",
+        "personaje": "Ed Hillary",
+        "foto": "https://image.tmdb.org/t/p/w185/mclHxMm8aPlCPKptP67257F5GPo.jpg"
+      },
+      {
+        "nombre": "Willem Dafoe",
+        "personaje": "John Hunt",
+        "foto": "https://image.tmdb.org/t/p/w185/ui8e4sgZAwMPi3hzEO53jyBJF9B.jpg"
+      },
+      {
+        "nombre": "Samdrup Dorje Lama",
+        "personaje": "Boy Tenzing (9 Yrs)",
+        "foto": ""
+      },
+      {
+        "nombre": "Bhuchung Kata",
+        "personaje": "Sherpa",
+        "foto": ""
+      },
+      {
+        "nombre": "Johnny Flynn",
+        "personaje": "George Mallory",
+        "foto": "https://image.tmdb.org/t/p/w185/tS3HIDFJbD8uSLAvaxZfrPc3aM0.jpg"
+      },
+      {
+        "nombre": "Lhakpa Tsamchoe",
+        "personaje": "Kinzom",
+        "foto": "https://image.tmdb.org/t/p/w185/kiodZp3zbkgHEIGfmXQDAug1V57.jpg"
+      },
+      {
+        "nombre": "Jampa Kalsang Tamang",
+        "personaje": "Mingma",
+        "foto": ""
+      },
+      {
+        "nombre": "Elizabeth Blackmore",
+        "personaje": "Mrs Ingram",
+        "foto": "https://image.tmdb.org/t/p/w185/8IFEnd9hBbrQOleqTvjyuTlfQXu.jpg"
+      },
+      {
+        "nombre": "Brandon McClelland",
+        "personaje": "Mr Ingram",
+        "foto": "https://image.tmdb.org/t/p/w185/cYZ3Sk95h3FzSwVm4MqF6AtDC32.jpg"
+      },
+      {
+        "nombre": "Caitríona Balfe",
+        "personaje": "Jill Henderson",
+        "foto": "https://image.tmdb.org/t/p/w185/lerCNTjO6FQIam2lF5SXHA4dY7H.jpg"
+      },
+      {
+        "nombre": "Thinley Lhamo",
+        "personaje": "Young Dawa (19–25 Yrs)",
+        "foto": "https://image.tmdb.org/t/p/w185/3GKt64WBoYR7qGPhRxtatfelGYd.jpg"
+      }
+    ],
+    "pais": "Australia, United Kingdom, United States of America",
+    "idioma": "en",
+    "productoras": "Cross City Films, See-Saw Films, Apple Studios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "nepal, based on true story, mountaineering, mount everest, 1950s, man vs nature, making history",
+    "similares": [
+      {
+        "titulo": "Everest",
+        "poster": "https://image.tmdb.org/t/p/w342/7SfhoXCc8LGfKvyNIw2nU0gEi3R.jpg",
+        "year": "2015",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Perdidos en el Ártico",
+        "poster": "https://image.tmdb.org/t/p/w342/xDJ1n9SvGaIk75Hwz4LRJgyNO3t.jpg",
+        "year": "2022",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Siete años en el Tíbet",
+        "poster": "https://image.tmdb.org/t/p/w342/g6XNFyyOBU1CqLRjFDeP7AfxK2X.jpg",
+        "year": "1997",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Múnich en vísperas de una guerra",
+        "poster": "https://image.tmdb.org/t/p/w342/15fka311mYDRsmu51Yj2gbtYJVZ.jpg",
+        "year": "2021",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "La vida inmortal de Henrietta Lacks",
+        "poster": "https://image.tmdb.org/t/p/w342/a46zzu58bSHXoXu1sEPY7qdQD5y.jpg",
+        "year": "2017",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "¡Viven!",
+        "poster": "https://image.tmdb.org/t/p/w342/6LwajIX2afh4N5dklu6Z5azaH3Y.jpg",
+        "year": "1993",
+        "rating": "6.9"
+      }
+    ],
+    "tmdbId": 1288069,
+    "tmdbType": "movie",
+    "runtimeMin": 126,
+    "homepage": "https://tv.apple.com/es/movie/umc.cmc.6lic0hhuxkrbem0n29vzjopii",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Кракен",
     "tituloOriginal": "Кракен",
     "descripcion": "",
