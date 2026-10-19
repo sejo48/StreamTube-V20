@@ -1,5 +1,288 @@
 [
   {
+    "titulo": "Кракен",
+    "tituloOriginal": "Кракен",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/3BK0RO4frAxh2eYb7nanRWOj73W.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/cFYUnAKGPoCAvQfyTgDi9w8m5GJ.jpg",
+    "urlDrive": "",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-04-17",
+    "rating": "6.9",
+    "votos": 133,
+    "runtime": "2h 14min",
+    "genres": [
+      "Ciencia ficción",
+      "Drama",
+      "Acción"
+    ],
+    "generosTexto": "Ciencia ficción, Drama, Acción",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Николай Лебедев",
+    "guionistas": "Алексей Сидоров, Николай Лебедев",
+    "reparto": [
+      {
+        "nombre": "Александр Петров",
+        "personaje": "Victor Voronin",
+        "foto": "https://image.tmdb.org/t/p/w185/3xFrEwihjNGWPR5tUFM3c1m55Zq.jpg"
+      },
+      {
+        "nombre": "Алексей Гуськов",
+        "personaje": "Rear Admiral Olshanskiy",
+        "foto": "https://image.tmdb.org/t/p/w185/vME3SjRo7y3u7CDpAjMVziLU7ei.jpg"
+      },
+      {
+        "nombre": "Виктор Добронравов",
+        "personaje": "Aleksandr Voronin",
+        "foto": "https://image.tmdb.org/t/p/w185/gC4rS0dhhsnd432pVsDtCuTD01q.jpg"
+      },
+      {
+        "nombre": "Сергей Гармаш",
+        "personaje": "Admiral Belousov",
+        "foto": "https://image.tmdb.org/t/p/w185/y2AntlTrbLQUSWZ4RjuUxkvD241.jpg"
+      },
+      {
+        "nombre": "Диана Пожарская",
+        "personaje": "Dzhuliya",
+        "foto": "https://image.tmdb.org/t/p/w185/zL5MCBl5OUadmEqfAqpTIC3tIiq.jpg"
+      },
+      {
+        "nombre": "Антон Риваль",
+        "personaje": "Oscar",
+        "foto": "https://image.tmdb.org/t/p/w185/ro0pSrjUH5lbFunzHQkjavNq6iO.jpg"
+      },
+      {
+        "nombre": "Александр Ратников",
+        "personaje": "Tatarinov",
+        "foto": "https://image.tmdb.org/t/p/w185/5ojjqWKxSOIg9S8mmNKx36AeeC9.jpg"
+      },
+      {
+        "nombre": "Сергей Кемпо",
+        "personaje": "Koshkin",
+        "foto": "https://image.tmdb.org/t/p/w185/7QDJYXJ7XxePUIVmoQooUARkS7N.jpg"
+      },
+      {
+        "nombre": "Антон Богданов",
+        "personaje": "Ryabov",
+        "foto": "https://image.tmdb.org/t/p/w185/apgZYMUxVJ20nYe8UWWVRjLTTtx.jpg"
+      },
+      {
+        "nombre": "Олег Гаас",
+        "personaje": "Ipatov",
+        "foto": "https://image.tmdb.org/t/p/w185/rwid1oOheWkkJZwKemi0m98qprA.jpg"
+      },
+      {
+        "nombre": "Даниил Попов",
+        "personaje": "Antushev",
+        "foto": ""
+      },
+      {
+        "nombre": "Владислав Хитрик",
+        "personaje": "Mishukov",
+        "foto": "https://image.tmdb.org/t/p/w185/4LO0lp3N72BXzaydJL2RWHiNx9S.jpg"
+      }
+    ],
+    "pais": "Russia",
+    "idioma": "ru",
+    "productoras": "Studio Trite, Russia 1, Central Partnership, Cinema Foundation of Russia",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "sea monster, kraken",
+    "similares": [
+      {
+        "titulo": "La luz de mi vida",
+        "poster": "https://image.tmdb.org/t/p/w342/lajVTMqoNxKINqebqQWPB4IHfUc.jpg",
+        "year": "2019",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Han Solo: Una historia de Star Wars",
+        "poster": "https://image.tmdb.org/t/p/w342/zBKHsO4kCIZOT8hRlGagKDL8sSF.jpg",
+        "year": "2018",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Doctor Who: La última Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/a5XHo7MQgX3V7nNlEnl5gwZURDL.jpg",
+        "year": "2014",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Omni Loop",
+        "poster": "https://image.tmdb.org/t/p/w342/eKfoBh5rJo422YrUdEXSugWQ2Tu.jpg",
+        "year": "2024",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Amenaza sobre la Tierra",
+        "poster": "https://image.tmdb.org/t/p/w342/bsCYTME9KGpzPuH9uzGCzun9jta.jpg",
+        "year": "2006",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Star Trek III. Más allá",
+        "poster": "https://image.tmdb.org/t/p/w342/2yfbpstJY4Fan8DSfPFDl05jx9.jpg",
+        "year": "2016",
+        "rating": "6.8"
+      }
+    ],
+    "tmdbId": 1258151,
+    "tmdbType": "movie",
+    "runtimeMin": 134,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Amusement: El juego del mal",
+    "tituloOriginal": "Amusement",
+    "descripcion": "Una mujer que ha sufrido un tremendo shock es investigada por la policía y un psiquiatra acerca de tres historias que la involucran a ella y a dos amigas de la infancia. Un payaso, un hotel y un convoy tienen mucho que decir en esas historias.",
+    "imagen": "https://image.tmdb.org/t/p/w780/gwm4btiaYP5VxeVZCTF1Zs0voGg.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/8TGMx7peMme8EMlP3VBHMwPg14K.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1JacKx5Ha_UNc5gGjxOMW2NWwSYAOpkwo/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2008",
+    "fechaEstreno": "2008-10-09",
+    "rating": "5.6",
+    "votos": 390,
+    "runtime": "1h 25min",
+    "genres": [
+      "Terror",
+      "Misterio"
+    ],
+    "generosTexto": "Terror, Misterio",
+    "clasificacion": "R",
+    "tagline": "Tu tortura. Tu sufrimiento. Es su pasatiempo.",
+    "director": "John Simpson",
+    "guionistas": "Jake Wade Wall",
+    "reparto": [
+      {
+        "nombre": "Keir O'Donnell",
+        "personaje": "The Laugh",
+        "foto": "https://image.tmdb.org/t/p/w185/1GYWx3q4QNXIIBdwirZPiSHFFfJ.jpg"
+      },
+      {
+        "nombre": "Tad Hilgenbrink",
+        "personaje": "Rob",
+        "foto": "https://image.tmdb.org/t/p/w185/cECyfEB8GI4zTYXEOLEpRTxINLo.jpg"
+      },
+      {
+        "nombre": "Katheryn Winnick",
+        "personaje": "Tabitha",
+        "foto": "https://image.tmdb.org/t/p/w185/vQSqH3ybDWZHZIqX4NZKhOCXAhQ.jpg"
+      },
+      {
+        "nombre": "Laura Breckenridge",
+        "personaje": "Shelby",
+        "foto": "https://image.tmdb.org/t/p/w185/r6v3C08nYQB94GaFQherkbKrhk.jpg"
+      },
+      {
+        "nombre": "Jessica Lucas",
+        "personaje": "Lisa",
+        "foto": "https://image.tmdb.org/t/p/w185/nYS2J93VapM1GW5UdqMFqCxVMUv.jpg"
+      },
+      {
+        "nombre": "Reid Scott",
+        "personaje": "Dan",
+        "foto": "https://image.tmdb.org/t/p/w185/kBAeDUDA7XJRXFLGNALlpE5d3lA.jpg"
+      },
+      {
+        "nombre": "Rena Owen",
+        "personaje": "Psychiatrist",
+        "foto": "https://image.tmdb.org/t/p/w185/648ZdDBmlx6OFDFRmgAbh6q5LBo.jpg"
+      },
+      {
+        "nombre": "Kevin Gage",
+        "personaje": "Tryton",
+        "foto": "https://image.tmdb.org/t/p/w185/nTaDLkN1RAhPGaM0AO1CFysnwUl.jpg"
+      },
+      {
+        "nombre": "Brennan Bailey",
+        "personaje": "Danny",
+        "foto": "https://image.tmdb.org/t/p/w185/4BW0xP1j6cQlmnQAl1YlM60YOQ4.jpg"
+      },
+      {
+        "nombre": "Preston Bailey",
+        "personaje": "Max",
+        "foto": "https://image.tmdb.org/t/p/w185/zRHivZKs5VzDdmI1dI6W0bGOKmX.jpg"
+      },
+      {
+        "nombre": "Fernanda Dorogi",
+        "personaje": "Cat",
+        "foto": "https://image.tmdb.org/t/p/w185/wgsPUb56rJVPwuFrpwSrhlEUn0P.jpg"
+      },
+      {
+        "nombre": "Karley Scott Collins",
+        "personaje": "Child Tabitha",
+        "foto": "https://image.tmdb.org/t/p/w185/cd0iFjqA9ApfA91oj08FcMs0tJS.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Macari/Edelstein, Picturehouse Entertainment, New Line Cinema",
+    "presupuesto": 6000000,
+    "recaudacion": 170255,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "stalker, little girl, killer, childhood friends, vengeance",
+    "similares": [
+      {
+        "titulo": "The Children",
+        "poster": "https://image.tmdb.org/t/p/w342/vTyc2ahe0qq7BVBlPD3L4zAl7WU.jpg",
+        "year": "2008",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "La llamada de un extraño",
+        "poster": "https://image.tmdb.org/t/p/w342/hnXsOsayMl13x8GonEEJKnVdzqq.jpg",
+        "year": "1993",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Scream. Vigila quién llama",
+        "poster": "https://image.tmdb.org/t/p/w342/pO39MWOrEmJYthKyWT79BYCVRrO.jpg",
+        "year": "1996",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "La noche de Halloween",
+        "poster": "https://image.tmdb.org/t/p/w342/6bsDpDL312h6vEGPOPWoweaZWUG.jpg",
+        "year": "1978",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Stephanie",
+        "poster": "https://image.tmdb.org/t/p/w342/8H4zWxkF2GgWgIyfcrBnrVYYK7G.jpg",
+        "year": "2017",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "La matanza de Texas",
+        "poster": "https://image.tmdb.org/t/p/w342/6GVnIHoUDsqf1ICQR9ovRReuNke.jpg",
+        "year": "2003",
+        "rating": "6.3"
+      }
+    ],
+    "tmdbId": 13803,
+    "tmdbType": "movie",
+    "runtimeMin": 85,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Marco",
     "tituloOriginal": "മാർക്കോ",
     "descripcion": "El hijo adoptivo de la familia Adattu, Marco, se embarca en una despiadada búsqueda de venganza después de que su hermano es brutalmente asesinado, encontrando solo traición, pérdida y una brutalidad inimaginable a cada paso.",
