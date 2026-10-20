@@ -1,5 +1,126 @@
 [
   {
+    "titulo": "La milicia",
+    "tituloOriginal": "The Militia",
+    "descripcion": "Daniel sueña con unirse a la milicia local junto a su padre. Pero cuando su padre se convierte en el objetivo del sheriff, Daniel y sus amigos forman su propia milicia en un esfuerzo desesperado por salvarlo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/yUa5I0Wb4pVbKcrIRBYrLF4guje.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/twI5fNZrX4UnUVu8mAeO1P7VAUk.jpg",
+    "urlDrive": "https://drive.google.com/file/d/13HoVvLSo3X2RzfIUW4gt2UGMGofkaYFG/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-09-08",
+    "rating": "7.5",
+    "votos": 2,
+    "runtime": "1h 57min",
+    "genres": [
+      "Drama",
+      "Suspense"
+    ],
+    "generosTexto": "Drama, Suspense",
+    "clasificacion": "B-15",
+    "tagline": "\"Vive libre o muere\"",
+    "director": "Dylan King Welter",
+    "guionistas": "Dylan King Welter",
+    "reparto": [
+      {
+        "nombre": "Sam Williamson",
+        "personaje": "Daniel Pierce",
+        "foto": ""
+      },
+      {
+        "nombre": "Michael Broderick",
+        "personaje": "Lee",
+        "foto": "https://image.tmdb.org/t/p/w185/2MaElb6nAwm6OTryXot6Ip2LJTp.jpg"
+      },
+      {
+        "nombre": "Luke Stratte-McClure",
+        "personaje": "Sheriff Webb",
+        "foto": "https://image.tmdb.org/t/p/w185/iYRht7FbwRlHPdhs6eMYRscIggE.jpg"
+      },
+      {
+        "nombre": "Chris Bylsma",
+        "personaje": "Nathan",
+        "foto": "https://image.tmdb.org/t/p/w185/ckGu8M5UdMZXrDKpxlkQCYLz5TC.jpg"
+      },
+      {
+        "nombre": "Laurel Feierbach",
+        "personaje": "Elinor",
+        "foto": ""
+      },
+      {
+        "nombre": "Solomon Puckett",
+        "personaje": "Tyler",
+        "foto": ""
+      },
+      {
+        "nombre": "Scott Callenberger",
+        "personaje": "Russ",
+        "foto": "https://image.tmdb.org/t/p/w185/hpIrCrhQIGXmJEX8RSLDIfwvrl8.jpg"
+      },
+      {
+        "nombre": "Noah Aronstein",
+        "personaje": "John",
+        "foto": "https://image.tmdb.org/t/p/w185/zdmQtcHSehMDrLTMPlFDneAXAzs.jpg"
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Chatroom",
+        "poster": "https://image.tmdb.org/t/p/w342/f5md4o6xEVVQ3kitZeiLmk0OHqD.jpg",
+        "year": "2010",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Generación perdida",
+        "poster": "https://image.tmdb.org/t/p/w342/sHbII8OHz2uoyOpPAVYe0LIJcdN.jpg",
+        "year": "1999",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Duplicidad, de Tyler Perry",
+        "poster": "https://image.tmdb.org/t/p/w342/k4fJun2pJ70BBFMgGAZddk3m7sg.jpg",
+        "year": "2025",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Hombres de hierro",
+        "poster": "https://image.tmdb.org/t/p/w342/27iADagjEjBvO3Lg10QGmzVSpLf.jpg",
+        "year": "1983",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Ángel de venganza",
+        "poster": "https://image.tmdb.org/t/p/w342/zGY41KlplvdPcUT0OeTu04ZPHke.jpg",
+        "year": "2015",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Una árida estación blanca",
+        "poster": "https://image.tmdb.org/t/p/w342/9cknhqPlJJyuopZ4v5SxwsGJGJB.jpg",
+        "year": "1989",
+        "rating": "6.7"
+      }
+    ],
+    "tmdbId": 1759875,
+    "tmdbType": "movie",
+    "runtimeMin": 117,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Tenzing",
     "tituloOriginal": "Tenzing",
     "descripcion": "Un hombre se embarca en una arriesgada expedición para, contra todo pronóstico, intentar cumplir el sueño de ser el primero en alcanzar la cima del Everest.",
