@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": "peliculas2.json",
   "mode": "manual",
-  "updatedAt": "2026-10-19T11:42:38.859Z",
+  "updatedAt": "2026-10-20T12:18:15.767Z",
   "items": [
     {
       "movieKey": "tmdb:1081003",
@@ -20,14 +20,14 @@
       "backdrop": "https://image.tmdb.org/t/p/w1280/eJ4vMJJlnxnKqdJCBDXvNmE0LVp.jpg"
     },
     {
-      "movieKey": "tmdb:1258151",
-      "title": "Кракен",
-      "backdrop": "https://image.tmdb.org/t/p/original/cFYUnAKGPoCAvQfyTgDi9w8m5GJ.jpg"
-    },
-    {
       "movieKey": "tmdb:13803",
       "title": "Amusement: El juego del mal",
       "backdrop": "https://image.tmdb.org/t/p/original/8TGMx7peMme8EMlP3VBHMwPg14K.jpg"
+    },
+    {
+      "movieKey": "tmdb:1465063",
+      "title": "La isla olvidada",
+      "backdrop": "https://image.tmdb.org/t/p/original/e2R2O5QLIdAEcAZih8tNjkDBtcH.jpg"
     }
   ]
 }
