@@ -1,5 +1,105 @@
 [
   {
+    "titulo": "Gatos en el museo 2: Tesoros de Egipto",
+    "tituloOriginal": "Коты Эрмитажа 2. Тайна египетского зала",
+    "descripcion": "Hace dos años, nuestros personajes, el ratón Maurice, y los gatos Vincent y Cleopatra, salvaron la Mona Lisa. Ahora están ansiosos por vivir nuevas aventuras. Maurice encuentra un antiguo papiro que revela la ubicación de un Genio egipcio, quien solo concede un deseo cada mil años. Todos los personajes quieren algo diferente, por lo que compiten para llegar al Genio primero. Durante su viaje por Egipto, visitan las Pirámides, navegan por el Nilo y exploran los túneles secretos de Luxor. A pesar de enfrentarse a peligros, descubren que no necesitan al Genio para cumplir sus deseos, ya que la verdadera riqueza está en la amistad y el trabajo en equipo. Por otro lado, Keisuke Fujiki, un neurocirujano, es acusado injustamente de empujar a su novia desde la azotea del hospital. Ahora es un fugitivo que busca descubrir la verdad detrás de la muerte de su novia.",
+    "imagen": "https://image.tmdb.org/t/p/w780/cmox8x2F12Fc6v50SpzBc5KWuZS.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/cEq9KqXxkGVFV5d7h5uP9ZMKg8d.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1AvfYWFvZ0SJk1rQLLVAyMvu8tcw5MLtV/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-03-26",
+    "rating": "6.2",
+    "votos": 4,
+    "runtime": "1h 30min",
+    "genres": [
+      "Animación"
+    ],
+    "generosTexto": "Animación",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Василий Ровенский",
+    "guionistas": "Эльвира Буштец, Федор Деревянский, Василий Ровенский",
+    "reparto": [
+      {
+        "nombre": "Роман Курцын",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/gvcPUusj3CFikNRyqquE4o5byjH.jpg"
+      },
+      {
+        "nombre": "Дарья Блохина",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/n5uclMPH5qWY8xo9dpnyfBOaMWn.jpg"
+      },
+      {
+        "nombre": "Снежана Самохина",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/42r18aoEQyA7zBdgtxmLGxKGBOv.jpg"
+      },
+      {
+        "nombre": "Диомид Виноградов",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/4VXryQlIAvpsXwUm2VTqsQI4ouJ.jpg"
+      }
+    ],
+    "pais": "Russia",
+    "idioma": "ru",
+    "productoras": "Licensing Brands, Cinema Foundation of Russia",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "Коты в музее",
+    "keywords": "cat, mouse",
+    "similares": [
+      {
+        "titulo": "Guardianes del Museo",
+        "poster": "https://image.tmdb.org/t/p/w342/cm0x47F6HsLYDuVzhna81ZGtASU.jpg",
+        "year": "2023",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Tom y Jerry: la película",
+        "poster": "https://image.tmdb.org/t/p/w342/7LVlL5My8lftjb3HKJdrxcDE586.jpg",
+        "year": "1992",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "10 vidas",
+        "poster": "https://image.tmdb.org/t/p/w342/4clvunwVxvwjem4y1BjuqImlPB.jpg",
+        "year": "2024",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Fievel y el nuevo mundo",
+        "poster": "https://image.tmdb.org/t/p/w342/jKADo2prqnosOMeh9ZEjRm8eUGI.jpg",
+        "year": "1986",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Tom y Jerry y el mago de Oz",
+        "poster": "https://image.tmdb.org/t/p/w342/xDgFAfmJoAg86TGdJSBEelBHRmZ.jpg",
+        "year": "2011",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Fievel, el misterio del monstruo nocturno",
+        "poster": "https://image.tmdb.org/t/p/w342/cxYyFe6EfUKjDUq1CLviQby2DKM.jpg",
+        "year": "1999",
+        "rating": "6.3"
+      }
+    ],
+    "tmdbId": 1264821,
+    "tmdbType": "movie",
+    "runtimeMin": 90,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Del cielo al infierno",
     "tituloOriginal": "Highest 2 Lowest",
     "descripcion": "Cuando un poderoso empresario musical es víctima de una extorsión, se ve obligado a luchar por su familia y su legado mientras afronta un dilema ético vital.",
