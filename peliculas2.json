@@ -1,5 +1,287 @@
 [
   {
+    "titulo": "Del cielo al infierno",
+    "tituloOriginal": "Highest 2 Lowest",
+    "descripcion": "Cuando un poderoso empresario musical es víctima de una extorsión, se ve obligado a luchar por su familia y su legado mientras afronta un dilema ético vital.",
+    "imagen": "https://image.tmdb.org/t/p/w780/b0AQYSM09AYVRKLZr6jIAP2xNq9.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/mBE9GdUOjYtJYphyFbdUyvngcGh.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1SXRsJOV7wrHnm671XRGFjgv1Wwy0t3Jn/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-08-14",
+    "rating": "5.5",
+    "votos": 553,
+    "runtime": "2h 13min",
+    "genres": [
+      "Crimen",
+      "Drama"
+    ],
+    "generosTexto": "Crimen, Drama",
+    "clasificacion": "16",
+    "tagline": "El dinero tiene un precio.",
+    "director": "Spike Lee",
+    "guionistas": "Alan Fox",
+    "reparto": [
+      {
+        "nombre": "Denzel Washington",
+        "personaje": "David King",
+        "foto": "https://image.tmdb.org/t/p/w185/jj2Gcobpopokal0YstuCQW0ldJ4.jpg"
+      },
+      {
+        "nombre": "Jeffrey Wright",
+        "personaje": "Paul Christopher",
+        "foto": "https://image.tmdb.org/t/p/w185/yGcuHGW4glqRpOPxgiCvjcren7F.jpg"
+      },
+      {
+        "nombre": "Ilfenesh Hadera",
+        "personaje": "Pam King",
+        "foto": "https://image.tmdb.org/t/p/w185/esa2Y2tE3TsoGZtN449IsGK3ZeG.jpg"
+      },
+      {
+        "nombre": "A$AP Rocky",
+        "personaje": "Yung Felon",
+        "foto": "https://image.tmdb.org/t/p/w185/gL0NFnIrqLosSbdxAHExOHAMkFH.jpg"
+      },
+      {
+        "nombre": "John Douglas Thompson",
+        "personaje": "Det. Earl Bridges",
+        "foto": "https://image.tmdb.org/t/p/w185/ieN9RkPSnsdaXWjarOhXkl4Jofm.jpg"
+      },
+      {
+        "nombre": "Dean Winters",
+        "personaje": "Det. Higgins",
+        "foto": "https://image.tmdb.org/t/p/w185/zxgOZAYGxa2qmiZkJKGRIhwbGhG.jpg"
+      },
+      {
+        "nombre": "LaChanze",
+        "personaje": "Sgt. Bell",
+        "foto": "https://image.tmdb.org/t/p/w185/u1JSaJ3joDqiNXXa1Dy73PSwpqv.jpg"
+      },
+      {
+        "nombre": "Aubrey Joseph",
+        "personaje": "Trey King",
+        "foto": "https://image.tmdb.org/t/p/w185/cUdkKvjf9JzgRKvA4snH2sdTbhP.jpg"
+      },
+      {
+        "nombre": "Elijah Wright",
+        "personaje": "Kyle Christopher",
+        "foto": "https://image.tmdb.org/t/p/w185/tjZcxfS8l2LII1PNdjYxFBj2zN4.jpg"
+      },
+      {
+        "nombre": "Michael Potts",
+        "personaje": "Patrick Bethea",
+        "foto": "https://image.tmdb.org/t/p/w185/3fgLuZkPH6F4RDjWeWt1s9bjy3v.jpg"
+      },
+      {
+        "nombre": "Wendell Pierce",
+        "personaje": "Gabe",
+        "foto": "https://image.tmdb.org/t/p/w185/r6yKahL6Z8l9aUX5qvWxTmWl8Nm.jpg"
+      },
+      {
+        "nombre": "Princess Nokia",
+        "personaje": "Rosa Fuentas",
+        "foto": "https://image.tmdb.org/t/p/w185/9fUXwTNx1xrcyT73BJGbojNF5Yu.jpg"
+      }
+    ],
+    "pais": "United States of America, Japan",
+    "idioma": "en",
+    "productoras": "A24, 40 Acres and a Mule Filmworks, Escape Artists, Mandalay Pictures, A/Vantage Pictures, Kurosawa Production",
+    "presupuesto": 25000000,
+    "recaudacion": 1500000,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "new york city, based on novel or book, ransom, remake, based on movie, moral dilemma, insecure, police procedural, absurd, arrogant, conceited, pretentious",
+    "similares": [
+      {
+        "titulo": "Supergolpe en Manhattan",
+        "poster": "https://image.tmdb.org/t/p/w342/3Zo8tL4bD5qGAuALxGc384fzO4r.jpg",
+        "year": "1971",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Gotti",
+        "poster": "https://image.tmdb.org/t/p/w342/96GU42rpVTSm3L2CzdWXPtPAjD6.jpg",
+        "year": "1996",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Pánico en la calle 110",
+        "poster": "https://image.tmdb.org/t/p/w342/8fo5frYGmd8IKBAbCIxMizMVZ3R.jpg",
+        "year": "1972",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Mob Town",
+        "poster": "https://image.tmdb.org/t/p/w342/1BL0X6TKtKuYjd6CsZLzZvAYRlb.jpg",
+        "year": "2019",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "American Psycho",
+        "poster": "https://image.tmdb.org/t/p/w342/ySPCri7VfAjbLLkMKs7Zjn6Njco.jpg",
+        "year": "2000",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Heat",
+        "poster": "https://image.tmdb.org/t/p/w342/kRfh1NCkDXGFrWzL6zDmVnHjRKh.jpg",
+        "year": "1995",
+        "rating": "7.9"
+      }
+    ],
+    "tmdbId": 1242434,
+    "tmdbType": "movie",
+    "runtimeMin": 133,
+    "homepage": "https://tv.apple.com/es/movie/umc.cmc.3rbg43tt2brl2cp5wwacfrmhx",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Shadow Force",
+    "tituloOriginal": "Shadow Force",
+    "descripcion": "Con una recompensa por sus cabezas, la pareja formada por Omar Sy y Kerry Washington, huye con su hijo para escapar de su antigua organización: una unidad de operaciones en la sombra que ha sido enviada para liquidarlos.",
+    "imagen": "https://image.tmdb.org/t/p/original/wgjK3pj8w2gfvHtYYcx4MeJBmRG.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/bs2Acs801r8EMURPbAshfBHMQ9u.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1139xLCt0soH0OOfvzFvaWIV9IjIsgu0g/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-05-01",
+    "rating": "6.3",
+    "votos": 329,
+    "runtime": "1h 43min",
+    "genres": [
+      "Acción",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Suspense",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "Joe Carnahan",
+    "guionistas": "Leon Chills, Joe Carnahan",
+    "reparto": [
+      {
+        "nombre": "Kerry Washington",
+        "personaje": "Kyrah",
+        "foto": "https://image.tmdb.org/t/p/w185/zgyjYlxmHG6Ntbg16JcTp8Vu8M3.jpg"
+      },
+      {
+        "nombre": "Omar Sy",
+        "personaje": "Isaac",
+        "foto": "https://image.tmdb.org/t/p/w185/Uuy6WuizieB4fOIGFp0gY90Yq2.jpg"
+      },
+      {
+        "nombre": "Jahleel Kamara",
+        "personaje": "Ky Sarr",
+        "foto": "https://image.tmdb.org/t/p/w185/1MqmHDuz8tUgfSlZOhcYbkU2Mj5.jpg"
+      },
+      {
+        "nombre": "Mark Strong",
+        "personaje": "Jack Cinder",
+        "foto": "https://image.tmdb.org/t/p/w185/3cNmatYsoifytg7TfQhI1EHow3v.jpg"
+      },
+      {
+        "nombre": "Da'Vine Joy Randolph",
+        "personaje": "Auntie",
+        "foto": "https://image.tmdb.org/t/p/w185/7RuYeGxTwFRt2q8fkT8nuEz1nIC.jpg"
+      },
+      {
+        "nombre": "Method Man",
+        "personaje": "Unc",
+        "foto": "https://image.tmdb.org/t/p/w185/mYJFxOcrda410rS5JHPf0nPuimZ.jpg"
+      },
+      {
+        "nombre": "Ed Quinn",
+        "personaje": "Parker",
+        "foto": "https://image.tmdb.org/t/p/w185/bG2FYOHVsDyNChBJk7goITz7w8T.jpg"
+      },
+      {
+        "nombre": "Natalia Reyes",
+        "personaje": "Moriti",
+        "foto": "https://image.tmdb.org/t/p/w185/9N7FNKUhjtinrNPy8ANvXrB7iEr.jpg"
+      },
+      {
+        "nombre": "Marvin Jones III",
+        "personaje": "Cysgod",
+        "foto": "https://image.tmdb.org/t/p/w185/nS4X8TP3idFsxDdV9UqTRbz585g.jpg"
+      },
+      {
+        "nombre": "Jénel Stevens",
+        "personaje": "Anino",
+        "foto": "https://image.tmdb.org/t/p/w185/rDluL1q4RTPY54J95NH7JAIq4ch.jpg"
+      },
+      {
+        "nombre": "Yoson An",
+        "personaje": "Varjo",
+        "foto": "https://image.tmdb.org/t/p/w185/2hYX4VOpJEGzaOrS9xwe8qPkKJQ.jpg"
+      },
+      {
+        "nombre": "Marshall Cook",
+        "personaje": "Patrick",
+        "foto": "https://image.tmdb.org/t/p/w185/pFGVXYnyRbK22xI1uPPzflDf7vO.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Lionsgate, Made With Love Media, Media Capital Technologies, Indian Meadows Productions, Simpson Street",
+    "presupuesto": 40000000,
+    "recaudacion": 5416976,
+    "trailerUrl": "https://www.youtube.com/watch?v=kzSue-HkBhA",
+    "coleccion": "",
+    "keywords": "espionage, spy, son, special forces, hunter are hunted, action thriller, bounty",
+    "similares": [
+      {
+        "titulo": "Sniper: La última resistencia",
+        "poster": "https://image.tmdb.org/t/p/w342/iEscED4NZCHsbA5maY4jnd3Z7xh.jpg",
+        "year": "2025",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Art of Eight Limbs",
+        "poster": "https://image.tmdb.org/t/p/w342/fMN3YAtIb8MgkGs46fhjxC7f5JG.jpg",
+        "year": "2024",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Red de traición",
+        "poster": "https://image.tmdb.org/t/p/w342/naYxXiVGudVNbJ3KgbG91Bg6xOQ.jpg",
+        "year": "2024",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Cúbrete",
+        "poster": "https://image.tmdb.org/t/p/w342/w1rPoRYXAX7q9IBeGcFJbr0ojFo.jpg",
+        "year": "2024",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Section 8",
+        "poster": "https://image.tmdb.org/t/p/w342/3rJDTaxBKLZ6XLvcVK7V20Eaj2d.jpg",
+        "year": "2022",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Rastreado",
+        "poster": "https://image.tmdb.org/t/p/w342/p54x9dKLWZQ78aSo5jPf2NodFVs.jpg",
+        "year": "2025",
+        "rating": "6.4"
+      }
+    ],
+    "tmdbId": 757725,
+    "tmdbType": "movie",
+    "runtimeMin": 103,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Operación Teherán",
     "tituloOriginal": "The Fix",
     "descripcion": "Tras el final de la guerra en Afganistán, un grupo de exoperadores de la CIA se han quedado marcados por la violencia, el abandono y la culpa. Sin patria ni propósitos a corto plazo, aceptan una última misión y viajan a Teherán para llevar a cabo un golpe arriesgado e ilegal que podría ser su opción para perdonarse a sí mismos o para acabar del todo. Mientras el pasado los persigue y la desconfianza entre ellos va en aumento, la operación se transforma en una prueba moral en la que tendrán que decidir si ser soldados obedientes o son hombres dispuestos a recuperar el control de sus vidas.",
