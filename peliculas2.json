@@ -1,5 +1,146 @@
 [
   {
+    "titulo": "Road Wars",
+    "tituloOriginal": "Road Wars",
+    "descripcion": "Cuando un amnésico se despierta en un mundo post apocalíptica asolado por un virus tipo rabia, debe unirse con un pequeño grupo de supervivientes.",
+    "imagen": "https://image.tmdb.org/t/p/w780/69JeTquZPBswYLxSH5KyEjz6EGQ.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/oHWB0Ph3JonGkS29Z66HHTKq28Z.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1GXxzOC8qRsoqX_hMPIvBPJVGjTrPN59z/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2015",
+    "fechaEstreno": "2015-05-05",
+    "rating": "3.9",
+    "votos": 32,
+    "runtime": "1h 30min",
+    "genres": [
+      "Ciencia ficción",
+      "Acción"
+    ],
+    "generosTexto": "Ciencia ficción, Acción",
+    "clasificacion": "NR",
+    "tagline": "",
+    "director": "Mark Atkins",
+    "guionistas": "Mark Atkins",
+    "reparto": [
+      {
+        "nombre": "Cole Parker",
+        "personaje": "Thorne",
+        "foto": ""
+      },
+      {
+        "nombre": "Chloe Farnworth",
+        "personaje": "Nakada",
+        "foto": "https://image.tmdb.org/t/p/w185/4KGJt2912t67hezWHvF7FF4mL3Q.jpg"
+      },
+      {
+        "nombre": "John Freeman",
+        "personaje": "Dallas",
+        "foto": "https://image.tmdb.org/t/p/w185/isvMR8Andqx92SHvsTSBsY0e1sQ.jpg"
+      },
+      {
+        "nombre": "Angela McNamee",
+        "personaje": "Sylvia",
+        "foto": ""
+      },
+      {
+        "nombre": "Nikki Bohm",
+        "personaje": "Macon",
+        "foto": ""
+      },
+      {
+        "nombre": "Kelcey Watson",
+        "personaje": "Dirk",
+        "foto": "https://image.tmdb.org/t/p/w185/cFTlpudiIAXGpE4wAln7uDERXUs.jpg"
+      },
+      {
+        "nombre": "Micah Fitzgerald",
+        "personaje": "Riever",
+        "foto": "https://image.tmdb.org/t/p/w185/lFL2RTBXVocFgQW5tgt6xHRADMU.jpg"
+      },
+      {
+        "nombre": "Tonia Marie Rosée",
+        "personaje": "Ason",
+        "foto": ""
+      },
+      {
+        "nombre": "Jerry G. Angelo",
+        "personaje": "Deerhead",
+        "foto": "https://image.tmdb.org/t/p/w185/yKcv3GMcemYxbHimOHtVdrDk4YL.jpg"
+      },
+      {
+        "nombre": "Victoria Clare",
+        "personaje": "Emily",
+        "foto": "https://image.tmdb.org/t/p/w185/wPuvCYJhE7Jf3CxkMYP90uh6mOB.jpg"
+      },
+      {
+        "nombre": "Marianne Bourg",
+        "personaje": "Orsini",
+        "foto": "https://image.tmdb.org/t/p/w185/ppnYHvg1042y6U4VO5Muc0NdBf.jpg"
+      },
+      {
+        "nombre": "Jane Hae Kim",
+        "personaje": "Susan",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "The Asylum",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "Road Wars Collection",
+    "keywords": "vampire, mutant, post-apocalyptic future",
+    "similares": [
+      {
+        "titulo": "The Stakelander",
+        "poster": "https://image.tmdb.org/t/p/w342/6dhYeltpxfYlEKX0uOGcEz0Fh0n.jpg",
+        "year": "2016",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Afterburn (Zona cero)",
+        "poster": "https://image.tmdb.org/t/p/w342/soZdshVi2nQpCWqQkS8qumUNNqO.jpg",
+        "year": "2025",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Extinction",
+        "poster": "https://image.tmdb.org/t/p/w342/h2peRx0F8tO8crFVkOeKUK2q8BR.jpg",
+        "year": "2015",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Stake Land",
+        "poster": "https://image.tmdb.org/t/p/w342/36DMvdao072GcqHynpqxSw9r2Lp.jpg",
+        "year": "2010",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Resident Evil III. Extinción",
+        "poster": "https://image.tmdb.org/t/p/w342/lP0cconRQqe6O4c6L2mVADDvFyt.jpg",
+        "year": "2007",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Huida a través del tiempo",
+        "poster": "https://image.tmdb.org/t/p/w342/rQz27bfvdpZZQ0qG3hyJKy91PXT.jpg",
+        "year": "1992",
+        "rating": "6.4"
+      }
+    ],
+    "tmdbId": 333545,
+    "tmdbType": "movie",
+    "runtimeMin": 90,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Traidor",
     "tituloOriginal": "Traitor",
     "descripcion": "El agente del FBI Roy Clayton (Guy Pearce) dirige una investigación sobre una organización terrorista cuyo cabecilla parece ser un agente de la CIA. Clayton buscará pistas y pruebas para descubrir si el agente es un traidor",
