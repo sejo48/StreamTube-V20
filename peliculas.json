@@ -1,5 +1,128 @@
 [
   {
+    "titulo": "Juan Pistolas",
+    "tituloOriginal": "Juan Pistolas",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/sq1kf6a3f7oHgpqxOyQzNZQZRLH.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/vmQ0ArtEGgkd5uRnc9yJxd9Po19.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1v_PzKg7tn9UJKNyIeV7Dno9hVPpUe6n1/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "1966",
+    "fechaEstreno": "1966-10-13",
+    "rating": "5.0",
+    "votos": 5,
+    "runtime": "1h 30min",
+    "genres": [
+      "Aventura",
+      "Comedia",
+      "Drama",
+      "Western"
+    ],
+    "generosTexto": "Aventura, Comedia, Drama, Western",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "René Cardona Jr.",
+    "guionistas": "Alfredo Zacarías",
+    "reparto": [
+      {
+        "nombre": "Javier Solís",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/7gz0hlEm5f661CBQ5i4iQcAB60B.jpg"
+      },
+      {
+        "nombre": "Eleazar García",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/5tPrI8AYwAjas1lEOsAqgZI1n81.jpg"
+      },
+      {
+        "nombre": "Eva Norvind",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/hQgOQHGtan3wyXonrsZkxdipz6z.jpg"
+      },
+      {
+        "nombre": "Crox Alvarado",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/6d4gfhViI56SEwYMa2dyHgwXzUx.jpg"
+      },
+      {
+        "nombre": "Carlos Agostí",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/nuLSPGTg1OzIpU2bZkqjJqaOWK2.jpg"
+      },
+      {
+        "nombre": "Antonio Raxel",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/1IevnkX5Ux3MSuY7DQbmQ64In6J.jpg"
+      },
+      {
+        "nombre": "Manuel Dondé",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/1nTh2RhETVbbslyF06f1IEWHnAO.jpg"
+      },
+      {
+        "nombre": "Guillermo Rivas",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/lwuOpUUDD2gg8Wo8OlXmIn2gX9j.jpg"
+      }
+    ],
+    "pais": "Mexico",
+    "idioma": "es",
+    "productoras": "Producciones Zacarías S.A. de C.V",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "El camino del guerrero",
+        "poster": "https://image.tmdb.org/t/p/w342/qkXo3NZhx2cASS1cjMKnsjJ1ftI.jpg",
+        "year": "2010",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "800 balas",
+        "poster": "https://image.tmdb.org/t/p/w342/yGMw9hg7amje8N2eoFKjJWu9FnB.jpg",
+        "year": "2002",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "El último tiro",
+        "poster": "https://image.tmdb.org/t/p/w342/gX212aetpiXKPtiyXQfy4SHuGJu.jpg",
+        "year": "2021",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Sangre en el rancho",
+        "poster": "https://image.tmdb.org/t/p/w342/ajyWycLPusr7CIsm3iZtym6S52q.jpg",
+        "year": "1957",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Padre de familia presenta: Stewie Griffin. La historia jamás contada",
+        "poster": "https://image.tmdb.org/t/p/w342/pgbMydwYuHlGcaASQMA963qpSH3.jpg",
+        "year": "2005",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Dear Eleanor",
+        "poster": "https://image.tmdb.org/t/p/w342/ebUMX7HElZY7AY3EoqTzLvjgttE.jpg",
+        "year": "2016",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 370160,
+    "tmdbType": "movie",
+    "runtimeMin": 90,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Los hijos de María Morales",
     "tituloOriginal": "Los hijos de María Morales",
     "descripcion": "Dos hermanos (Pedro Infante y Antonio Badú); parranderos, jugadores y mujeriegos; se pasan la vida de feria en feria; timando a la gente y enamorando a cuantas mujeres se les cruzan por el camino. Un buen día el amor les tender una trampa; y los famosos Morales queriendo ser gavilanes, fueron palomas.",
