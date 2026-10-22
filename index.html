@@ -1610,7 +1610,7 @@
                 if (item.type === 'tv' || item.type === 'radio') return;
                 const record = { ...item, lastEpisode: episode ? episode.title : null, lastEpisodeUrl: episode ? episode.url : null, timestamp: Date.now() };
                 const itemId = item.id || item.title;
-                const updated = [record, ...continueWatching.filter(c => (c.id || c.title) !== itemId)].slice(0, 6);
+                const updated = [record, ...continueWatching.filter(c => (c.id || c.title) !== itemId)].slice(0, 7);
                 setContinueWatching(updated);
                 safeStorage.setItem('boxplay_continue_watching', JSON.stringify(updated));
                 if (episode) markEpisodeAsWatched(item, episode, true);
