@@ -1,5 +1,126 @@
 [
   {
+    "titulo": "El metiche",
+    "tituloOriginal": "El metiche",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/quK59Kar6ujRYEq2GlS8Ly6fFnJ.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/xznwXF1xa2a7ictpw96khV5QAaq.jpg",
+    "urlDrive": "https://ssaimanifest.prod.boltdns.net/us-east-1/playback/once/v1/hls/v4/aes128/6314058757001/a93070b8-c14a-4b8d-982d-89d21918aad4/cbc7a0ad-a817-43cc-8f44-c00a30d7c59e/4aeb645b-24d7-48af-b565-947d5e85e0ce/default_video3500_5_1920x1080/media.m3u8?bc_token=NmFkYTEyNWNfODljNzJjMzU3OWQ2NjIwYWE0MjMwN2E3OWI5ZmU2MjI2YWZhYjM4MDBjNjFhMDgzN2MzMTQ2YTBlNDI4ZjI5Mg%3D%3D",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "1972",
+    "fechaEstreno": "1972-09-21",
+    "rating": "4.8",
+    "votos": 6,
+    "runtime": "1h 30min",
+    "genres": [
+      "Familia",
+      "Comedia"
+    ],
+    "generosTexto": "Familia, Comedia",
+    "clasificacion": "B-15",
+    "tagline": "",
+    "director": "Gilberto Martínez Solares",
+    "guionistas": "Gilberto Martínez Solares, Juan García",
+    "reparto": [
+      {
+        "nombre": "Gaspar Henaine",
+        "personaje": "Capulina",
+        "foto": "https://image.tmdb.org/t/p/w185/hU6LFPBPbIStdwYo3xJ88vxa5ST.jpg"
+      },
+      {
+        "nombre": "Mónica Serna",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/yikAF4nI70bA2RAhG01nMeWqQ8U.jpg"
+      },
+      {
+        "nombre": "Armando Acosta",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/8GZIepGg9GOvIgkmgt08cLBlvWv.jpg"
+      },
+      {
+        "nombre": "Ricardo Adalid",
+        "personaje": "",
+        "foto": ""
+      },
+      {
+        "nombre": "Carolina Barret",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/mlxHbNtkZjEAtHZQmk5Kx4tJPvX.jpg"
+      },
+      {
+        "nombre": "Queta Carrasco",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/qPTY3ApqegSbRlnLTBal630LI5U.jpg"
+      },
+      {
+        "nombre": "Jorge Casanova",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/19BtXcxtYcyvmOVQWBim7ZQS9zI.jpg"
+      },
+      {
+        "nombre": "Julián de Meriche",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/rK1tcBIGINqM6EKFXqNG0rQY9IK.jpg"
+      }
+    ],
+    "pais": "Mexico",
+    "idioma": "es",
+    "productoras": "Producciones Zacarías",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Clear history",
+        "poster": "https://image.tmdb.org/t/p/w342/ihWtbwCwtdUD8Fl6gmqEoRRboKf.jpg",
+        "year": "2013",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Reviviendo la Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/i8u3f6mMv7LvIbxkmrs0j3fuNN.jpg",
+        "year": "2022",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Loco México Mágico",
+        "poster": "https://image.tmdb.org/t/p/w342/aLufkmtCKCHwN6zrfQQ1jaJae9T.jpg",
+        "year": "2026",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Mamá se fue de viaje",
+        "poster": "https://image.tmdb.org/t/p/w342/g1S3IDPcoXvG7k0AAbDxLXGMe0P.jpg",
+        "year": "2017",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Matando Cabos",
+        "poster": "https://image.tmdb.org/t/p/w342/d6fY8CZH2UyFlFi8r8odbJR0YEt.jpg",
+        "year": "2004",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Ricky Gervais: Mortality",
+        "poster": "https://image.tmdb.org/t/p/w342/u54OhdSaaLBh02Y4Nf5cETkh8Ku.jpg",
+        "year": "2025",
+        "rating": "7.0"
+      }
+    ],
+    "tmdbId": 371325,
+    "tmdbType": "movie",
+    "runtimeMin": 90,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "¡Truco o trato Scooby-Doo!",
     "tituloOriginal": "Trick or Treat Scooby-Doo!",
     "descripcion": "¡Mystery Inc. ha descifrado el caso para superar todos los casos! Han rastreado a Coco Diablo, la cabeza de un notorio sindicato del crimen disfrazado. Con Coco y su gatito en prisión, Mystery Inc. piensa que finalmente podrán disfrutar de un descanso. ¡Equivocado! De repente, amenazantes fantasmas doppelgänger del equipo de Scooby y sus enemigos clásicos favoritos aparecen en Coolsville para amenazar Halloween. ¡Ahora depende de los niños entrometidos desenmascarar al último sinvergüenza y salvar Halloween!",
