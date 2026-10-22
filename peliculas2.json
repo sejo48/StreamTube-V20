@@ -1,5 +1,994 @@
 [
   {
+    "titulo": "Parking 2",
+    "tituloOriginal": "P2",
+    "descripcion": "Es Nochebuena y Angela (Rachel Nichols) sale tarde de trabajar. Cuando llega al parking de su oficina, el coche no arranca y las puertas están cerradas. En el edificio sólo quedan ella y Thomas (Wes Bentley), el guarda del aparcamiento, que le propone que cene con él. Ella rechaza la proposición e intenta salir para coger un taxi, pero antes de llegar al exterior, alguien la asalta por sorpresa y la duerme con cloroformo. Cuando despierta, se encuentra encadenada a una mesa y vestida para una terrorífica cena de Nochebuena.",
+    "imagen": "https://image.tmdb.org/t/p/w780/dXreaFYNKyI7JAAHzOKGOO94lO.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/aYMvNOHPozMqpRu76EmzCH0PksC.jpg",
+    "urlDrive": "",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2007",
+    "fechaEstreno": "2007-11-09",
+    "rating": "6.2",
+    "votos": 963,
+    "runtime": "1h 38min",
+    "genres": [
+      "Terror",
+      "Suspense"
+    ],
+    "generosTexto": "Terror, Suspense",
+    "clasificacion": "C",
+    "tagline": "",
+    "director": "Franck Khalfoun",
+    "guionistas": "Alexandre Aja, Franck Khalfoun, Alexandre Aja",
+    "reparto": [
+      {
+        "nombre": "Rachel Nichols",
+        "personaje": "Angela Bridges",
+        "foto": "https://image.tmdb.org/t/p/w185/bMv117SLOJoseim6qvuHFc1gntZ.jpg"
+      },
+      {
+        "nombre": "Wes Bentley",
+        "personaje": "Thomas",
+        "foto": "https://image.tmdb.org/t/p/w185/voD93lzFZrr9xfAggwFcPRBi84i.jpg"
+      },
+      {
+        "nombre": "Simon Reynolds",
+        "personaje": "Bob Harper",
+        "foto": "https://image.tmdb.org/t/p/w185/copSBlAEnHxjQGjRZuMeUIBV1eH.jpg"
+      },
+      {
+        "nombre": "Philip Akin",
+        "personaje": "Karl",
+        "foto": "https://image.tmdb.org/t/p/w185/6YLxKUiyCM4bckISIfCcHHSBEGc.jpg"
+      },
+      {
+        "nombre": "Miranda Edwards",
+        "personaje": "Jody",
+        "foto": "https://image.tmdb.org/t/p/w185/kO4QCcUMxlLgviH3Fcnuf4Y0ZvM.jpg"
+      },
+      {
+        "nombre": "Paul Sun-Hyung Lee",
+        "personaje": "Man in Elevator",
+        "foto": "https://image.tmdb.org/t/p/w185/qyJG3qC1TImpJYN0zCgnFSQzzOF.jpg"
+      },
+      {
+        "nombre": "Grace Lynn Kung",
+        "personaje": "Woman in Elevator",
+        "foto": "https://image.tmdb.org/t/p/w185/4iJEk5nwNOQGLOmLOHizvw5rorM.jpg"
+      },
+      {
+        "nombre": "Philip Williams",
+        "personaje": "Cop #1",
+        "foto": "https://image.tmdb.org/t/p/w185/fhFasn6OCkNJV3LUpTY9ovbvgg2.jpg"
+      },
+      {
+        "nombre": "Arnold Pinnock",
+        "personaje": "Cop #2",
+        "foto": "https://image.tmdb.org/t/p/w185/7AET3sstZdRgoWlqgXdBcE935HE.jpg"
+      },
+      {
+        "nombre": "Bathsheba Garnett",
+        "personaje": "Homeless Woman",
+        "foto": "https://image.tmdb.org/t/p/w185/dnMZ0mZYb2RcgBZ0ucUzhTHQ6mr.jpg"
+      },
+      {
+        "nombre": "Franck Khalfoun",
+        "personaje": "Newsman",
+        "foto": "https://image.tmdb.org/t/p/w185/nzXKV3T7fHMBzRWzfYozVl8ZfwQ.jpg"
+      },
+      {
+        "nombre": "Stephanie Moore",
+        "personaje": "Lorraine (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/yywrsHi8RTyzK7QiCpfILKkZT63.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Summit Entertainment, Aja / Levasseur Productions",
+    "presupuesto": 3500000,
+    "recaudacion": 7766240,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "kidnapping, psychopath, basement garage, parking garage, security guard, executive, christmas",
+    "similares": [
+      {
+        "titulo": "Navidades negras",
+        "poster": "https://image.tmdb.org/t/p/w342/ym0QcbrKNujzDyAU1IHGYUdRWub.jpg",
+        "year": "1974",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Abajo",
+        "poster": "https://image.tmdb.org/t/p/w342/ic3JHgGS9oXXYBwO8zE5d1BgtZH.jpg",
+        "year": "2019",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Área de descanso 2: No mires atrás",
+        "poster": "https://image.tmdb.org/t/p/w342/pWhiUJwmeoIXGec8GYwMqf7auqv.jpg",
+        "year": "2008",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Hellion, el ángel caído",
+        "poster": "https://image.tmdb.org/t/p/w342/pBTi4IDdoSQUERufXpDJewlAQVu.jpg",
+        "year": "2007",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "La última llamada",
+        "poster": "https://image.tmdb.org/t/p/w342/jcIsEq5OsPjlaXEgBwU2tqr3T7r.jpg",
+        "year": "2013",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "The Children",
+        "poster": "https://image.tmdb.org/t/p/w342/vTyc2ahe0qq7BVBlPD3L4zAl7WU.jpg",
+        "year": "2008",
+        "rating": "6.1"
+      }
+    ],
+    "tmdbId": 13474,
+    "tmdbType": "movie",
+    "runtimeMin": 98,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Feast: Atrapados",
+    "tituloOriginal": "Feast",
+    "descripcion": "Los clientes de un bar perdido en una carretera rural,  tendrán que luchar para salvar sus vidas de unas criaturas voladoras que quieren devorarlos a todos.",
+    "imagen": "https://image.tmdb.org/t/p/w780/2R7NfefBLiGYbewrONo4hqqxmPJ.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/x5Ekb7LKTy77xUODz9DMmf0JCf9.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1P5v0FfsHDh8gmgaeFgW_HxreQSEh1dc5/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2005",
+    "fechaEstreno": "2005-10-14",
+    "rating": "6.1",
+    "votos": 646,
+    "runtime": "1h 35min",
+    "genres": [
+      "Terror"
+    ],
+    "generosTexto": "Terror",
+    "clasificacion": "R",
+    "tagline": "",
+    "director": "John Gulager",
+    "guionistas": "Marcus Dunstan, Patrick Melton",
+    "reparto": [
+      {
+        "nombre": "Navi Rawat",
+        "personaje": "Heroine",
+        "foto": "https://image.tmdb.org/t/p/w185/bXCNzMxlDuuiuxKxzFx85MojRwW.jpg"
+      },
+      {
+        "nombre": "Balthazar Getty",
+        "personaje": "Bozo",
+        "foto": "https://image.tmdb.org/t/p/w185/xhj8GXVRe9h6U1Z9hum4GjyQjNS.jpg"
+      },
+      {
+        "nombre": "Jenny Wade",
+        "personaje": "Honey Pie",
+        "foto": "https://image.tmdb.org/t/p/w185/r6UtWNsvXXJAr6XGmKJXCkR5eql.jpg"
+      },
+      {
+        "nombre": "Henry Rollins",
+        "personaje": "Coach",
+        "foto": "https://image.tmdb.org/t/p/w185/2E0cZdoJsdt1Lv4waG3s6fsfJeU.jpg"
+      },
+      {
+        "nombre": "Duane Whitaker",
+        "personaje": "Boss Man",
+        "foto": "https://image.tmdb.org/t/p/w185/83nCcAaMYim24qWRwJcC1ZvfgK5.jpg"
+      },
+      {
+        "nombre": "Judah Friedlander",
+        "personaje": "Beer Guy",
+        "foto": "https://image.tmdb.org/t/p/w185/bwg3rqSxlHAUhpmRreSpECs0YZf.jpg"
+      },
+      {
+        "nombre": "Jason Mewes",
+        "personaje": "Edgy Cat",
+        "foto": "https://image.tmdb.org/t/p/w185/jVL4WC8NbJFL894Z2FBYY3XuHW5.jpg"
+      },
+      {
+        "nombre": "Krista Allen",
+        "personaje": "Tuffy",
+        "foto": "https://image.tmdb.org/t/p/w185/AfPWJ6Dg5C1gH51dOSB1fqKHuTX.jpg"
+      },
+      {
+        "nombre": "Josh Zuckerman",
+        "personaje": "Hot Wheels",
+        "foto": "https://image.tmdb.org/t/p/w185/kb0oEHc1a3lZUoPXaSyccfinFOP.jpg"
+      },
+      {
+        "nombre": "Clu Gulager",
+        "personaje": "Bartender",
+        "foto": "https://image.tmdb.org/t/p/w185/yknfEYk9ate8XdG3XnPr6WAEgwX.jpg"
+      },
+      {
+        "nombre": "Eric Dane",
+        "personaje": "Hero",
+        "foto": "https://image.tmdb.org/t/p/w185/4PsLKBKN4e0zRT2oS4BjE8Xu1un.jpg"
+      },
+      {
+        "nombre": "Treach",
+        "personaje": "Vet",
+        "foto": "https://image.tmdb.org/t/p/w185/iRMfIuyuJqmOwXfJZjuIuNVXmDo.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Maloof Motion Pictures, Neo Art & Logic, Dimension Films, LivePlanet, Five Course Films",
+    "presupuesto": 3200000,
+    "recaudacion": 658573,
+    "trailerUrl": "",
+    "coleccion": "Feast: Atrapados - Colección",
+    "keywords": "monster, rape, impregnation, duringcreditsstinger, disturbed, disgusted",
+    "similares": [
+      {
+        "titulo": "Barbarian",
+        "poster": "https://image.tmdb.org/t/p/w342/1YyGqOsEkWjdkBMeUrxhtiLRvlD.jpg",
+        "year": "2022",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "La Última Casa",
+        "poster": "https://image.tmdb.org/t/p/w342/CIGQ7ONbNaSDK3KGkXjBILcj1d.jpg",
+        "year": "2026",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "No tengas miedo a la oscuridad",
+        "poster": "https://image.tmdb.org/t/p/w342/htH3kWAEEW0RLhgA2P8LTBea3mk.jpg",
+        "year": "2010",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Jeepers Creepers",
+        "poster": "https://image.tmdb.org/t/p/w342/x2fWYlY2Ad2FL2Ad9p1HTgJEi8x.jpg",
+        "year": "2001",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "The Collector",
+        "poster": "https://image.tmdb.org/t/p/w342/ziEeH0ZoZl2SI60fgqDDcFS3N6m.jpg",
+        "year": "2009",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "La niebla",
+        "poster": "https://image.tmdb.org/t/p/w342/8gG0GP0TPnn91zIsNkwnQgBK8mh.jpg",
+        "year": "2007",
+        "rating": "7.0"
+      }
+    ],
+    "tmdbId": 10070,
+    "tmdbType": "movie",
+    "runtimeMin": 95,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Kiss Kiss Bang Bang",
+    "tituloOriginal": "Kiss Kiss Bang Bang",
+    "descripcion": "Harry Lockhart es en esencia un tipo decente. Es cierto que es un ladrón de poca monta, pero quiere hacer lo correcto. La eterna mala suerte de Harry empieza a mejorar cuando él y su socio están haciendo algunas \"compras\" navideñas fuera de horas en una tienda de juguetes de Nueva York y la alarma de seguridad acaba con la fiesta. En su frenética huída de la policía, Harry se ve metido sin querer en una audición para una película de detectives de Hollywood y, en un abrir y cerrar de ojos, el productor lo lleva en avión a Los Angeles para hacerle una prueba.",
+    "imagen": "https://image.tmdb.org/t/p/original/aPouJw3Ik05MsYOpa52ehfSZveA.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/lwVakBJCwhpgmfkZ0QeCbK5PYh8.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1tzobjbGEXsF6g8DOv_aUo9gna0Q0KKWQ/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2005",
+    "fechaEstreno": "2005-09-14",
+    "rating": "7.2",
+    "votos": 3156,
+    "runtime": "1h 42min",
+    "genres": [
+      "Comedia",
+      "Crimen",
+      "Misterio",
+      "Suspense"
+    ],
+    "generosTexto": "Comedia, Crimen, Misterio, Suspense",
+    "clasificacion": "",
+    "tagline": "SEXO. Asesinato. Misterio. Bienvenidos a la fiesta.",
+    "director": "Shane Black",
+    "guionistas": "Shane Black",
+    "reparto": [
+      {
+        "nombre": "Robert Downey Jr.",
+        "personaje": "Harry Lockhart",
+        "foto": "https://image.tmdb.org/t/p/w185/5qHNjhtjMD4YWH3UP0rm4tKwxCL.jpg"
+      },
+      {
+        "nombre": "Val Kilmer",
+        "personaje": "Gay Perry",
+        "foto": "https://image.tmdb.org/t/p/w185/j2bJH6rxZkJJt8tHsBFMOxIVZdE.jpg"
+      },
+      {
+        "nombre": "Michelle Monaghan",
+        "personaje": "Harmony Faith Lane",
+        "foto": "https://image.tmdb.org/t/p/w185/uK1qhSzKd9gkDh3p1H5e2PWMYyH.jpg"
+      },
+      {
+        "nombre": "Corbin Bernsen",
+        "personaje": "Harlan Dexter",
+        "foto": "https://image.tmdb.org/t/p/w185/zkftLlEO5fmKmcKienRKw9Gx0U9.jpg"
+      },
+      {
+        "nombre": "Dash Mihok",
+        "personaje": "Mr. Frying Pan",
+        "foto": "https://image.tmdb.org/t/p/w185/jnruNUJv57nNtO66SR3oJ5tQuM5.jpg"
+      },
+      {
+        "nombre": "Larry Miller",
+        "personaje": "Dabney Shaw",
+        "foto": "https://image.tmdb.org/t/p/w185/ajnXlXG20LJwAwxne8G94ucVj0v.jpg"
+      },
+      {
+        "nombre": "Rockmond Dunbar",
+        "personaje": "Mr. Fire",
+        "foto": "https://image.tmdb.org/t/p/w185/gim7zIrYkbKWsp2Kod7fp74fWyI.jpg"
+      },
+      {
+        "nombre": "Shannyn Sossamon",
+        "personaje": "Pink Hair Girl",
+        "foto": "https://image.tmdb.org/t/p/w185/h7oiKMaoq0J5DM3PBZxffF9uJo4.jpg"
+      },
+      {
+        "nombre": "Angela Lindvall",
+        "personaje": "Flicka",
+        "foto": "https://image.tmdb.org/t/p/w185/jklkI6QWdDWLeAyJaOW3HPdkjH2.jpg"
+      },
+      {
+        "nombre": "Indio Falconer Downey",
+        "personaje": "Harry Age 9",
+        "foto": ""
+      },
+      {
+        "nombre": "Ariel Winter",
+        "personaje": "Harmony Age 7",
+        "foto": "https://image.tmdb.org/t/p/w185/1h0XaXnieP5CdTAeRGuALBJmD4R.jpg"
+      },
+      {
+        "nombre": "Duane Carnahan",
+        "personaje": "Chainsaw Kid",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Silver Pictures",
+    "presupuesto": 15000000,
+    "recaudacion": 15785148,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "detective, loser, thief, crush, whodunit, los angeles, california, series of murders, hoodlum, female corpse, neo-noir, bumbling detective",
+    "similares": [
+      {
+        "titulo": "La casa torcida",
+        "poster": "https://image.tmdb.org/t/p/w342/lHDeiMLTlQEI26r0HrzV8L5cBIC.jpg",
+        "year": "2017",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Mystery Team",
+        "poster": "https://image.tmdb.org/t/p/w342/AbqRb1hlCb8jPVqFXL5hwrj8hQO.jpg",
+        "year": "2009",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Dos días en el valle",
+        "poster": "https://image.tmdb.org/t/p/w342/gdMtZw5Ah8fb928Dv4RB0l1FdF3.jpg",
+        "year": "1996",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "L.A. Confidential",
+        "poster": "https://image.tmdb.org/t/p/w342/3xQXLqCXMTizZ7ibSERqaBKvPhY.jpg",
+        "year": "1997",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "En la cuerda floja",
+        "poster": "https://image.tmdb.org/t/p/w342/3gSM8DO8YDzHGLBrLZ50zpObEti.jpg",
+        "year": "1984",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Arma letal",
+        "poster": "https://image.tmdb.org/t/p/w342/bOmKVohi6yjxBnoP7XvX6tpXR56.jpg",
+        "year": "1987",
+        "rating": "7.3"
+      }
+    ],
+    "tmdbId": 5236,
+    "tmdbType": "movie",
+    "runtimeMin": 102,
+    "homepage": "http://kisskiss-bangbang.warnerbros.com/",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Un día inesperado",
+    "tituloOriginal": "If Only",
+    "descripcion": "Samantha (Jennifer Love Hewitt) es una americana enamorada de su novio inglés Ian (Paul Nicholls), con el que vive en Londres. Ian también está enamorado de Sam, pero no puede o no sabe expresar lo que siente. Sam es impulsiva y poco convencional. Estudia violín en una escuela de música, y da clase a niños pequeños. Ian es un joven ejecutivo, centrado y sensato. En opinión de Sam, lo único que ama Ian es su trabajo. Han llegado a un momento crucial en su relación: Sam quiere que Ian exprese sus sentimientos y se comprometa, porque si no es muy posible que se vuelva a Estados Unidos, ya que ha terminado sus estudios.",
+    "imagen": "https://image.tmdb.org/t/p/w780/jV9N3dmUbGdV9UvF1gIOQ6uhDI8.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/rcJynPuUuSBuzOmahUTasliurzr.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1Yd6NPNJF5I4-GTYJ9m0Dpur5JBXP3M3y/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2004",
+    "fechaEstreno": "2004-01-23",
+    "rating": "7.0",
+    "votos": 683,
+    "runtime": "1h 32min",
+    "genres": [
+      "Drama",
+      "Romance",
+      "Fantasía"
+    ],
+    "generosTexto": "Drama, Romance, Fantasía",
+    "clasificacion": "PG-13",
+    "tagline": "",
+    "director": "Gil Junger",
+    "guionistas": "Christina Welsh",
+    "reparto": [
+      {
+        "nombre": "Jennifer Love Hewitt",
+        "personaje": "Samantha Andrews",
+        "foto": "https://image.tmdb.org/t/p/w185/kRySMLtckE7tl6136y0yzFYpUfE.jpg"
+      },
+      {
+        "nombre": "Paul Nicholls",
+        "personaje": "Ian Wyndham",
+        "foto": "https://image.tmdb.org/t/p/w185/l7OSgYpZvCv6WEBRLqbDUKock0g.jpg"
+      },
+      {
+        "nombre": "Tom Wilkinson",
+        "personaje": "Taxi Driver",
+        "foto": "https://image.tmdb.org/t/p/w185/d5yLk0PK8q7EKR3E3G2txO758IW.jpg"
+      },
+      {
+        "nombre": "Diana Hardcastle",
+        "personaje": "Claire",
+        "foto": "https://image.tmdb.org/t/p/w185/4QpTOWQccDZNfskFEHS8UzElihC.jpg"
+      },
+      {
+        "nombre": "Lucy Davenport",
+        "personaje": "Lottie",
+        "foto": "https://image.tmdb.org/t/p/w185/wrHH6PWFWIKIRcj7VIQlkD9Y7qC.jpg"
+      },
+      {
+        "nombre": "Roy Sampson",
+        "personaje": "Dunbar",
+        "foto": "https://image.tmdb.org/t/p/w185/3BpK44kprH3UWztQThnBmCR1NZE.jpg"
+      },
+      {
+        "nombre": "Kevin Moore",
+        "personaje": "Hotel Employee",
+        "foto": "https://image.tmdb.org/t/p/w185/vWvGVF8I53S3Iq7df7oBd1GcXWy.jpg"
+      },
+      {
+        "nombre": "Neville Phillips",
+        "personaje": "Concert MC",
+        "foto": "https://image.tmdb.org/t/p/w185/t3vIAKqdcMkt8MN0UdYxnD95H04.jpg"
+      },
+      {
+        "nombre": "Ben Ridgeway",
+        "personaje": "Teenage Boy",
+        "foto": ""
+      },
+      {
+        "nombre": "Teo-Wa Vuong",
+        "personaje": "Enriko",
+        "foto": "https://image.tmdb.org/t/p/w185/q8MzxdKoLftKG8bhmZ5dc13XMVW.jpg"
+      },
+      {
+        "nombre": "Terence Harvey",
+        "personaje": "Trahern",
+        "foto": "https://image.tmdb.org/t/p/w185/p9gjpEFyW6V92sVcd1SF5kXY6rz.jpg"
+      },
+      {
+        "nombre": "Al Wilde",
+        "personaje": "Oliver",
+        "foto": ""
+      }
+    ],
+    "pais": "United Kingdom, United States of America",
+    "idioma": "en",
+    "productoras": "Tapestry Films, Intermedia Films, Love Spell Entertainment, Box Film, Bondesen-Graup, If Only Production Services Ltd., Outlaw Productions",
+    "presupuesto": 532673,
+    "recaudacion": 3000000,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "london, england, workaholic, musician, loss of loved one, music teacher, sadness, relationship problems, violinist, love, aspiring singer, best friend, guitar player, music school, groundhog day, important meeting, self-absorbed, one day",
+    "similares": [
+      {
+        "titulo": "Belleza oculta",
+        "poster": "https://image.tmdb.org/t/p/w342/xuLU16v6fkaXHhnWcSYHlyIJaVi.jpg",
+        "year": "2016",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "A Ghost Story",
+        "poster": "https://image.tmdb.org/t/p/w342/kikj07p9HVHoZnHWgbHSURBM23Y.jpg",
+        "year": "2017",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Una cuestión de tiempo",
+        "poster": "https://image.tmdb.org/t/p/w342/dsop3YIrZJvDBwwCLplsB9PFuTQ.jpg",
+        "year": "2013",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Escucha mi voz",
+        "poster": "https://image.tmdb.org/t/p/w342/vBcn36KwwpajARYTqDz19DGm9bj.jpg",
+        "year": "2004",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Lo mejor de mí",
+        "poster": "https://image.tmdb.org/t/p/w342/47VDL1LRHXfofzXTLrGFe8QpxD4.jpg",
+        "year": "2014",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Toda una vida en un año",
+        "poster": "https://image.tmdb.org/t/p/w342/xGDbQI7Gtgurt9W5ez6Tim2lpS2.jpg",
+        "year": "2020",
+        "rating": "8.2"
+      }
+    ],
+    "tmdbId": 15775,
+    "tmdbType": "movie",
+    "runtimeMin": 92,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Loco México Mágico",
+    "tituloOriginal": "Loco México Mágico",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/aLufkmtCKCHwN6zrfQQ1jaJae9T.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/8gg1n99c3LC0SEq99FLIDDXVSa.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1QWpzBCVtm3ehiiYoCzqo3H_WVm_14DSo/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-07-27",
+    "rating": "7.5",
+    "votos": 60,
+    "runtime": "1h 45min",
+    "genres": [
+      "Comedia"
+    ],
+    "generosTexto": "Comedia",
+    "clasificacion": "B-15",
+    "tagline": "",
+    "director": "Carlos Santos",
+    "guionistas": "Carlos Santos",
+    "reparto": [
+      {
+        "nombre": "Silverio Palacios",
+        "personaje": "Benito",
+        "foto": "https://image.tmdb.org/t/p/w185/knRcubASXmakYNyY4G8BXEj12Rz.jpg"
+      },
+      {
+        "nombre": "Daniel Sosa",
+        "personaje": "Juan",
+        "foto": "https://image.tmdb.org/t/p/w185/3aDH9nLhuZJEpV0w8qZLHFLDlax.jpg"
+      },
+      {
+        "nombre": "Fernando Cuautle",
+        "personaje": "Pancho",
+        "foto": "https://image.tmdb.org/t/p/w185/yxGoMBPVvieHrSkA2A0LACWcr68.jpg"
+      },
+      {
+        "nombre": "Sofía Carrera",
+        "personaje": "Melinda",
+        "foto": "https://image.tmdb.org/t/p/w185/cv7vxKsFqODWeSc6wqRkBLQ52FT.jpg"
+      },
+      {
+        "nombre": "Rocío Guzmán",
+        "personaje": "Adri",
+        "foto": "https://image.tmdb.org/t/p/w185/1UMAusQkTD1sc0eLVpLZfrk95Wu.jpg"
+      },
+      {
+        "nombre": "Norma Reyna",
+        "personaje": "Pacha Nana",
+        "foto": "https://image.tmdb.org/t/p/w185/wXrgKUxzi0TAeUwOyaZ8cFyq20k.jpg"
+      },
+      {
+        "nombre": "Flor Benítez",
+        "personaje": "Marisela",
+        "foto": "https://image.tmdb.org/t/p/w185/buwnu68UpnZf9UCTXJZEF8pLWAs.jpg"
+      },
+      {
+        "nombre": "Shaní Lozano",
+        "personaje": "Toña",
+        "foto": "https://image.tmdb.org/t/p/w185/7uH0nR4BDJF4xUDNU46KMXz7OWS.jpg"
+      },
+      {
+        "nombre": "Alberto Gorgonio",
+        "personaje": "Fabio",
+        "foto": ""
+      },
+      {
+        "nombre": "John Michael DeWall",
+        "personaje": "Dickens",
+        "foto": "https://image.tmdb.org/t/p/w185/inRCS24a0edbrbUup6JkYYytd3L.jpg"
+      },
+      {
+        "nombre": "Steve Kisicki",
+        "personaje": "Tommy",
+        "foto": ""
+      },
+      {
+        "nombre": "Mauricio Gálvez",
+        "personaje": "Chambelán Brothers",
+        "foto": "https://image.tmdb.org/t/p/w185/3iuJ1dG4231WXQwUv9CL5VUPBFR.jpg"
+      }
+    ],
+    "pais": "Mexico",
+    "idioma": "es",
+    "productoras": "Cinépolis Producciones",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Louis C.K.: Ridiculous",
+        "poster": "https://image.tmdb.org/t/p/w342/7HDsSxJ4Vve54cNmpk7Qtmai77n.jpg",
+        "year": "2026",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "2 Minutes of Fame",
+        "poster": "https://image.tmdb.org/t/p/w342/yXzDyNVRMGinYFxblbIlpVY5nE6.jpg",
+        "year": "2020",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Quien tiene una suegra, tiene un tesoro",
+        "poster": "https://image.tmdb.org/t/p/w342/nREZhCfkUgl6XqMZAvd6DCbVj2c.jpg",
+        "year": "1983",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Louis C.K.: Oh My God",
+        "poster": "https://image.tmdb.org/t/p/w342/4roFbQgNik1M8oTN7anqihfNF2i.jpg",
+        "year": "2013",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Clear history",
+        "poster": "https://image.tmdb.org/t/p/w342/ihWtbwCwtdUD8Fl6gmqEoRRboKf.jpg",
+        "year": "2013",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "No manches, Frida",
+        "poster": "https://image.tmdb.org/t/p/w342/6HfyXfIEywLa2HvcswKi44dDKxL.jpg",
+        "year": "2016",
+        "rating": "7.7"
+      }
+    ],
+    "tmdbId": 1700680,
+    "tmdbType": "movie",
+    "runtimeMin": 105,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Caza al terrorista",
+    "tituloOriginal": "Dying of the Light",
+    "descripcion": "Evan Lake, un veterano agente de la CIA, recibió la orden de retirarse. Pero cuando su protegido descubre evidencia de que su némesis, Banir, ha vuelto Lake decide embarcarse en una peligrosa misión intercontinental para eliminar a su enemigo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/dcwbXDOmyPY3YOiED0s7behUoPI.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/oHXUsNT0rWHjovt0qX77m2mIez3.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1eCupmlL_aKlFDFuuzzAGGjMY28k84pJA/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2014",
+    "fechaEstreno": "2014-12-04",
+    "rating": "4.7",
+    "votos": 356,
+    "runtime": "1h 34min",
+    "genres": [
+      "Suspense",
+      "Drama"
+    ],
+    "generosTexto": "Suspense, Drama",
+    "clasificacion": "R",
+    "tagline": "Una misión que nunca olvidará...",
+    "director": "Paul Schrader",
+    "guionistas": "Paul Schrader",
+    "reparto": [
+      {
+        "nombre": "Nicolas Cage",
+        "personaje": "Evan Lake",
+        "foto": "https://image.tmdb.org/t/p/w185/y1RtezurZYveYkVNRht7CwEgSYY.jpg"
+      },
+      {
+        "nombre": "Anton Yelchin",
+        "personaje": "Milton Schultz",
+        "foto": "https://image.tmdb.org/t/p/w185/uOMWKYOLezo4ETMtrQt7uQBLSBh.jpg"
+      },
+      {
+        "nombre": "Alexander Karim",
+        "personaje": "Muhammad Banir",
+        "foto": "https://image.tmdb.org/t/p/w185/weqb7jkGhNfdEJsGArbvAqqhuXD.jpg"
+      },
+      {
+        "nombre": "Irène Jacob",
+        "personaje": "Michelle Zuberain",
+        "foto": "https://image.tmdb.org/t/p/w185/yDpLjFtglSDlq3pvITr7O5AQfvg.jpg"
+      },
+      {
+        "nombre": "Aymen Hamdouchi",
+        "personaje": "Aasim",
+        "foto": "https://image.tmdb.org/t/p/w185/nLd7tahohZO7pQP1EzRgCdQZ4Xn.jpg"
+      },
+      {
+        "nombre": "Tomiwa Edun",
+        "personaje": "Mbui",
+        "foto": "https://image.tmdb.org/t/p/w185/v6c64iaJWtUa4zkwvvo5msxvBlF.jpg"
+      },
+      {
+        "nombre": "Claudius Peters",
+        "personaje": "Ghedi",
+        "foto": "https://image.tmdb.org/t/p/w185/dfRPdF5BtpVqN6JKqHRAw1zKe06.jpg"
+      },
+      {
+        "nombre": "Robert G. Slade",
+        "personaje": "James Clifton",
+        "foto": "https://image.tmdb.org/t/p/w185/756w8isxnLHsfaL7M8MZUPi692A.jpg"
+      },
+      {
+        "nombre": "Derek Ezenagu",
+        "personaje": "Dr. Wangari",
+        "foto": "https://image.tmdb.org/t/p/w185/jk6rSMGxuaMKgSOEwxMv1CZA4ug.jpg"
+      },
+      {
+        "nombre": "Geff Francis",
+        "personaje": "Dr. Clayborne",
+        "foto": "https://image.tmdb.org/t/p/w185/a7DlC90cAFqhm9jBhwmbKaRNomj.jpg"
+      },
+      {
+        "nombre": "Tim Silano",
+        "personaje": "Mike Warner",
+        "foto": "https://image.tmdb.org/t/p/w185/zy7maE15Wp6h3Vn0JGFvxKRfarb.jpg"
+      },
+      {
+        "nombre": "Silas Carson",
+        "personaje": "Dr. Sanjar",
+        "foto": "https://image.tmdb.org/t/p/w185/kCAq5Ma1usCYLtJAFd2iwx6eQn1.jpg"
+      }
+    ],
+    "pais": "Bahamas, United States of America",
+    "idioma": "en",
+    "productoras": "TinRes Entertainment, Over Under Media, Grindstone Entertainment Group, Red Granite Pictures, Lionsgate",
+    "presupuesto": 15000000,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "central intelligence agency (cia), espionage, retirement, terrorism",
+    "similares": [
+      {
+        "titulo": "Spy Game (Juego de espías)",
+        "poster": "https://image.tmdb.org/t/p/w342/iTskKA7RkHPIAJqXAi1brYwdJsI.jpg",
+        "year": "2001",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Canario Negro",
+        "poster": "https://image.tmdb.org/t/p/w342/iCNkHfsB3mCOCwDLOmjIZotGPID.jpg",
+        "year": "2024",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "La conspiración de noviembre",
+        "poster": "https://image.tmdb.org/t/p/w342/9PdQXe2OW32jcESTl3ZSB7ZpUBq.jpg",
+        "year": "2014",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Malone",
+        "poster": "https://image.tmdb.org/t/p/w342/uzHXISY7gw9Ao1kUKvy2iexjij9.jpg",
+        "year": "1987",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "El agente invisible",
+        "poster": "https://image.tmdb.org/t/p/w342/6RU2Nj5zbVuPdCLGWiMZes0ZISO.jpg",
+        "year": "2022",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Operación Kandahar",
+        "poster": "https://image.tmdb.org/t/p/w342/qE2EsMv37IjXLjc6ixOU3LeRtZl.jpg",
+        "year": "2023",
+        "rating": "6.8"
+      }
+    ],
+    "tmdbId": 297596,
+    "tmdbType": "movie",
+    "runtimeMin": 94,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Acción Policial",
+    "tituloOriginal": "警察故事2013",
+    "descripcion": "Nueva entrega de la saga \"Police Story\". El capitán de la policía china Zhong Wen (Jackie Chan) va a visitar a su hija Miao Miao (Jing Tian), a la que hace mucho que no veía, para encontrarse con que está saliendo con Wu Jiang (Liu Ye), un tipo peligroso que quiere vengarse de Zhong",
+    "imagen": "https://image.tmdb.org/t/p/w780/49tAJI3EgjLUIR8BrZULTbJoHZy.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/thzbI5XLJngz8pS89eGcGlPnNlr.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1Xl5cduVHPmGiFOriiYeftBYe41jxWDQU/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2013",
+    "fechaEstreno": "2013-12-24",
+    "rating": "6.2",
+    "votos": 442,
+    "runtime": "2h 0min",
+    "genres": [
+      "Acción",
+      "Crimen",
+      "Drama"
+    ],
+    "generosTexto": "Acción, Crimen, Drama",
+    "clasificacion": "R",
+    "tagline": "Una Película de Ding Sheng",
+    "director": "Ding Sheng",
+    "guionistas": "Ding Sheng",
+    "reparto": [
+      {
+        "nombre": "Jackie Chan",
+        "personaje": "Zhong Wen",
+        "foto": "https://image.tmdb.org/t/p/w185/nraZoTzwJQPHspAVsKfgl3RXKKa.jpg"
+      },
+      {
+        "nombre": "刘烨",
+        "personaje": "Wu Jiang",
+        "foto": "https://image.tmdb.org/t/p/w185/viShE7lIq0EBZYSY8R64wRaYJus.jpg"
+      },
+      {
+        "nombre": "Jing Tian",
+        "personaje": "Miao Miao",
+        "foto": "https://image.tmdb.org/t/p/w185/7jP3VMJOMjx90EalALHnlWKU36n.jpg"
+      },
+      {
+        "nombre": "于荣光",
+        "personaje": "Captain Wu",
+        "foto": "https://image.tmdb.org/t/p/w185/qRPhrqPLYvca6Wdv9lMxwEm7ZD6.jpg"
+      },
+      {
+        "nombre": "殷桃",
+        "personaje": "Lan Lan",
+        "foto": "https://image.tmdb.org/t/p/w185/iSHgfG1hp3oTL1EklP3GTRZ4PC0.jpg"
+      },
+      {
+        "nombre": "那威",
+        "personaje": "Na Na",
+        "foto": "https://image.tmdb.org/t/p/w185/7z6FUeXEH4p07qDPBcxx1rwL3io.jpg"
+      },
+      {
+        "nombre": "Liu Yiwei",
+        "personaje": "General Manager Niu",
+        "foto": "https://image.tmdb.org/t/p/w185/s1Srvu0Fpk1lyrcoagBzXGI0upU.jpg"
+      },
+      {
+        "nombre": "Liu Hailong",
+        "personaje": "Pi Song",
+        "foto": "https://image.tmdb.org/t/p/w185/zKG0vURZ52fA47OqF16fKUwB4OY.jpg"
+      },
+      {
+        "nombre": "刘佩琦",
+        "personaje": "Chief Zhang",
+        "foto": "https://image.tmdb.org/t/p/w185/5AVVGJjyJixP6qKRic0pfDPvITr.jpg"
+      },
+      {
+        "nombre": "古力娜扎",
+        "personaje": "Xiao Wei",
+        "foto": "https://image.tmdb.org/t/p/w185/rDtnNzdHNZ7JmmYHqRfJksMcZXR.jpg"
+      },
+      {
+        "nombre": "周晓鸥",
+        "personaje": "Wei Xiao Fu",
+        "foto": "https://image.tmdb.org/t/p/w185/nAOEt5t1L5fECCs6FZsBGDOARcS.jpg"
+      },
+      {
+        "nombre": "吴樾",
+        "personaje": "A Yue",
+        "foto": "https://image.tmdb.org/t/p/w185/hRePA3mh9mfAqX7SJ4rGxrNrxT7.jpg"
+      }
+    ],
+    "pais": "China, Hong Kong",
+    "idioma": "zh",
+    "productoras": "Jackie & JJ Productions, Starlit HK Int'l Media Company Limited, China Film Co-Production, China Movie Channel, Xi'An Dragon Film and TV Culture Co., Ltd, Wanda Pictures, China Film Group Corporation",
+    "presupuesto": 35000000,
+    "recaudacion": 94249025,
+    "trailerUrl": "",
+    "coleccion": "Police Story - Colección",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "El asedio de Silverton",
+        "poster": "https://image.tmdb.org/t/p/w342/lNfiU8VrSXyp2hhZNlJyk4dm04R.jpg",
+        "year": "2022",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Hidden Man",
+        "poster": "https://image.tmdb.org/t/p/w342/cTq6MDrP4ighdavPDw3xyp8UWw7.jpg",
+        "year": "2018",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "El protector",
+        "poster": "https://image.tmdb.org/t/p/w342/6RehQHHXOPg6lNiYyVvTWRizXdQ.jpg",
+        "year": "2022",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Mi Amado Guardaespaldas",
+        "poster": "https://image.tmdb.org/t/p/w342/kF4myFLIDxqsuce5swGLWP6XKze.jpg",
+        "year": "2016",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "A la caza del zorro",
+        "poster": "https://image.tmdb.org/t/p/w342/1lavg9zjtpetPPmqyaHgMAd86DI.jpg",
+        "year": "2025",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "El padrino: The Latin Godfather",
+        "poster": "https://image.tmdb.org/t/p/w342/7Hl7Ys2INZ8NUq5wZMl8MbnVrzh.jpg",
+        "year": "2004",
+        "rating": "7.2"
+      }
+    ],
+    "tmdbId": 219572,
+    "tmdbType": "movie",
+    "runtimeMin": 120,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Gatos en el museo 2: Tesoros de Egipto",
     "tituloOriginal": "Коты Эрмитажа 2. Тайна египетского зала",
     "descripcion": "Hace dos años, nuestros personajes, el ratón Maurice, y los gatos Vincent y Cleopatra, salvaron la Mona Lisa. Ahora están ansiosos por vivir nuevas aventuras. Maurice encuentra un antiguo papiro que revela la ubicación de un Genio egipcio, quien solo concede un deseo cada mil años. Todos los personajes quieren algo diferente, por lo que compiten para llegar al Genio primero. Durante su viaje por Egipto, visitan las Pirámides, navegan por el Nilo y exploran los túneles secretos de Luxor. A pesar de enfrentarse a peligros, descubren que no necesitan al Genio para cumplir sus deseos, ya que la verdadera riqueza está en la amistad y el trabajo en equipo. Por otro lado, Keisuke Fujiki, un neurocirujano, es acusado injustamente de empujar a su novia desde la azotea del hospital. Ahora es un fugitivo que busca descubrir la verdad detrás de la muerte de su novia.",
