@@ -1,11 +1,278 @@
 [
   {
+    "titulo": "Los hijos de María Morales",
+    "tituloOriginal": "Los hijos de María Morales",
+    "descripcion": "Dos hermanos (Pedro Infante y Antonio Badú); parranderos, jugadores y mujeriegos; se pasan la vida de feria en feria; timando a la gente y enamorando a cuantas mujeres se les cruzan por el camino. Un buen día el amor les tender una trampa; y los famosos Morales queriendo ser gavilanes, fueron palomas.",
+    "imagen": "https://image.tmdb.org/t/p/original/zyW6ySKlglSXNWiYiqh11d5m3Fw.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/9ReTdIWFYaxNT85CPgMenpI4vvF.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1m3kHq0-fJSk_TYFAZucggj8_1N2XMwbH/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "1952",
+    "fechaEstreno": "1952-08-13",
+    "rating": "7.5",
+    "votos": 57,
+    "runtime": "1h 54min",
+    "genres": [
+      "Comedia",
+      "Romance",
+      "Música"
+    ],
+    "generosTexto": "Comedia, Romance, Música",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Fernando de Fuentes",
+    "guionistas": "Fernando Méndez",
+    "reparto": [
+      {
+        "nombre": "Pedro Infante",
+        "personaje": "José Morales (Pepe)",
+        "foto": "https://image.tmdb.org/t/p/w185/sfbbx0ZJiEdMPhSSK11qHMApD4H.jpg"
+      },
+      {
+        "nombre": "Antonio Badú",
+        "personaje": "Luis Morales",
+        "foto": "https://image.tmdb.org/t/p/w185/2711cJFZ5iyyCM5GkPSHmGeOt2d.jpg"
+      },
+      {
+        "nombre": "Andrés Soler",
+        "personaje": "Don Carlos Salvatierra",
+        "foto": "https://image.tmdb.org/t/p/w185/4wpTCqHf6wPAcCmF1bHNSQ9EUfL.jpg"
+      },
+      {
+        "nombre": "Irma Dorantes",
+        "personaje": "María Salvatierra",
+        "foto": "https://image.tmdb.org/t/p/w185/5FZ7NdCyqjNqFOczyjjt19T3yVc.jpg"
+      },
+      {
+        "nombre": "Emma Roldán",
+        "personaje": "Doña María Morales",
+        "foto": "https://image.tmdb.org/t/p/w185/yDXKuZZKy6UTAmb1HyUKs6pLnlx.jpg"
+      },
+      {
+        "nombre": "Carmelita González",
+        "personaje": "Gloria Magaña",
+        "foto": "https://image.tmdb.org/t/p/w185/bK3RoyHqSxcddVR5D7Us8RfwBaV.jpg"
+      },
+      {
+        "nombre": "Verónica Loyo",
+        "personaje": "Lola Gómez, La Torcasa",
+        "foto": ""
+      },
+      {
+        "nombre": "Tito Novaro",
+        "personaje": "Tomás Gutiérrez",
+        "foto": "https://image.tmdb.org/t/p/w185/6jGeo6s7dCrbyabt0KKA67JuSkK.jpg"
+      },
+      {
+        "nombre": "Humberto Rodríguez",
+        "personaje": "Don Serapio",
+        "foto": "https://image.tmdb.org/t/p/w185/itAJgUwPKSh9bvqMUSUsHbYJS4W.jpg"
+      }
+    ],
+    "pais": "Mexico",
+    "idioma": "es",
+    "productoras": "Producciones Dyana",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Stargirl en Hollywood",
+        "poster": "https://image.tmdb.org/t/p/w342/ySBDRXsZSKVBNtZZAEKccNHPZ5o.jpg",
+        "year": "2022",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Little Italy",
+        "poster": "https://image.tmdb.org/t/p/w342/zwlB4kHXK6IDhZMTALNOfohnr00.jpg",
+        "year": "2018",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Socias por accidente",
+        "poster": "https://image.tmdb.org/t/p/w342/sr1Yoj6XLPTWYcbDoBy67xivW4I.jpg",
+        "year": "2026",
+        "rating": "8.8"
+      },
+      {
+        "titulo": "¿Quieres ser mi... hijo?",
+        "poster": "https://image.tmdb.org/t/p/w342/9GuvODahvuFqdhuZ16aBLR4UJoP.jpg",
+        "year": "2023",
+        "rating": "8.4"
+      },
+      {
+        "titulo": "El multimillonario",
+        "poster": "https://image.tmdb.org/t/p/w342/jK1BFvvu8JpOBW8ILT2vT8pcGCx.jpg",
+        "year": "1960",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "El otro París",
+        "poster": "https://image.tmdb.org/t/p/w342/voSMS4SpnvRuDYovWosVDuz4eUo.jpg",
+        "year": "2025",
+        "rating": "6.7"
+      }
+    ],
+    "tmdbId": 314097,
+    "tmdbType": "movie",
+    "runtimeMin": 114,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Escuela para solteras",
+    "tituloOriginal": "Escuela para solteras",
+    "descripcion": "Un matrimonio decide que la menor de las hijas será la última en casarse, pero ella es la primera que consigue novio.",
+    "imagen": "https://image.tmdb.org/t/p/original/1mtJ1aEqECWQ01tdSIjrUOKr9vp.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/rXwj4WEJsSmQvqAr3J9o1AARa1k.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1fn1ByY2dQrCkmUPvIcwl-yyFYeXVoeza/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "1965",
+    "fechaEstreno": "1965-03-25",
+    "rating": "8.0",
+    "votos": 24,
+    "runtime": "2h 0min",
+    "genres": [
+      "Comedia"
+    ],
+    "generosTexto": "Comedia",
+    "clasificacion": "B-15",
+    "tagline": "",
+    "director": "Miguel Zacarías",
+    "guionistas": "Alfredo Zacarías",
+    "reparto": [
+      {
+        "nombre": "Luis Aguilar",
+        "personaje": "Luis Álvarez",
+        "foto": "https://image.tmdb.org/t/p/w185/rCjw9T5ZFRGo6lrPFPMrMCFGztN.jpg"
+      },
+      {
+        "nombre": "Antonio Aguilar",
+        "personaje": "Antonio Contreras",
+        "foto": "https://image.tmdb.org/t/p/w185/yaBvT37fAhYJn8LXE7Qs9yXSGL6.jpg"
+      },
+      {
+        "nombre": "Amador Bendayán",
+        "personaje": "Amador",
+        "foto": "https://image.tmdb.org/t/p/w185/aavB9UilQnPDLvXLRqpYlxqzAZq.jpg"
+      },
+      {
+        "nombre": "Javier Solís",
+        "personaje": "El médico",
+        "foto": "https://image.tmdb.org/t/p/w185/7gz0hlEm5f661CBQ5i4iQcAB60B.jpg"
+      },
+      {
+        "nombre": "Sara García",
+        "personaje": "Doña Bernarda",
+        "foto": "https://image.tmdb.org/t/p/w185/pmedIztQhET270fKDqRg0BdkK5L.jpg"
+      },
+      {
+        "nombre": "Fanny Cano",
+        "personaje": "Estrella",
+        "foto": "https://image.tmdb.org/t/p/w185/fxrLnDyoSL4LVKLUBsX7ARz2zN5.jpg"
+      },
+      {
+        "nombre": "Óscar Ortiz de Pinedo",
+        "personaje": "Don Filemón",
+        "foto": "https://image.tmdb.org/t/p/w185/6Qj2lFX0uDRtRWYPLiy0oNgLiPN.jpg"
+      },
+      {
+        "nombre": "Flor Silvestre",
+        "personaje": "Elisa / Felisa",
+        "foto": "https://image.tmdb.org/t/p/w185/8XgnhKgJYQZzt61LmqgXTwi1Uhx.jpg"
+      },
+      {
+        "nombre": "Lucha Moreno",
+        "personaje": "Lucha",
+        "foto": "https://image.tmdb.org/t/p/w185/q2bVtftQwxi9ERORMm9bGHFBEgD.jpg"
+      },
+      {
+        "nombre": "Alma Delia Fuentes",
+        "personaje": "Julieta",
+        "foto": "https://image.tmdb.org/t/p/w185/vuxgGTLVUi3sTUO2GkzkR3A6SeP.jpg"
+      },
+      {
+        "nombre": "José Alfredo Jiménez",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/sOr5ql2tvIxeTzTsueBD852oU8c.jpg"
+      },
+      {
+        "nombre": "Manuel López Ochoa",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/ltGH4gacE4Dx5Q31LrWgPr3PQWk.jpg"
+      }
+    ],
+    "pais": "Mexico",
+    "idioma": "es",
+    "productoras": "Producciones Zacarías",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "La Boda de Valentina",
+        "poster": "https://image.tmdb.org/t/p/w342/sD6o09KA4KyxWvvB8rKn8bQuuD5.jpg",
+        "year": "2018",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "No manches, Frida",
+        "poster": "https://image.tmdb.org/t/p/w342/6HfyXfIEywLa2HvcswKi44dDKxL.jpg",
+        "year": "2016",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Raw (El show de Eddie Murphy)",
+        "poster": "https://image.tmdb.org/t/p/w342/irVU3PHIdg36Rh8tSKnKCdmHLEO.jpg",
+        "year": "1987",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "No manches, Frida 2: paraíso destruido",
+        "poster": "https://image.tmdb.org/t/p/w342/rG7rDoTe1ZEa936eonDCkV76nkx.jpg",
+        "year": "2019",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Adam Sandler: Love You",
+        "poster": "https://image.tmdb.org/t/p/w342/qiLCOoJoMrheVzbgrurjp57upf8.jpg",
+        "year": "2024",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Loco México Mágico",
+        "poster": "https://image.tmdb.org/t/p/w342/aLufkmtCKCHwN6zrfQQ1jaJae9T.jpg",
+        "year": "2026",
+        "rating": "7.6"
+      }
+    ],
+    "tmdbId": 368770,
+    "tmdbType": "movie",
+    "runtimeMin": 120,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "El metiche",
     "tituloOriginal": "El metiche",
     "descripcion": "",
     "imagen": "https://image.tmdb.org/t/p/w780/quK59Kar6ujRYEq2GlS8Ly6fFnJ.jpg",
     "backdrop": "https://image.tmdb.org/t/p/w1280/xznwXF1xa2a7ictpw96khV5QAaq.jpg",
-    "urlDrive": "https://ssaimanifest.prod.boltdns.net/us-east-1/playback/once/v1/hls/v4/aes128/6314058757001/a93070b8-c14a-4b8d-982d-89d21918aad4/cbc7a0ad-a817-43cc-8f44-c00a30d7c59e/4aeb645b-24d7-48af-b565-947d5e85e0ce/default_video3500_5_1920x1080/media.m3u8?bc_token=NmFkYTEyNWNfODljNzJjMzU3OWQ2NjIwYWE0MjMwN2E3OWI5ZmU2MjI2YWZhYjM4MDBjNjFhMDgzN2MzMTQ2YTBlNDI4ZjI5Mg%3D%3D",
+    "urlDrive": "https://drive.google.com/file/d/1liUgtNiqVjmzsnwgivBveiqXbJPGIUg8/view?usp=sharing",
     "urlOkRu": "",
     "codigo": null,
     "qualityTag": "",
