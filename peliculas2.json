@@ -1,5 +1,102 @@
 [
   {
+    "titulo": "Basta Mamá",
+    "tituloOriginal": "Basta Mamá",
+    "descripcion": "Fernando, un hombre de 45 años que aún vive con su sobreprotectora madre, intenta ocultarle ese secreto a su moderna novia, quien además es su jefa. Lo que comienza como una pequeña mentira durante una cena de cumpleaños se convierte en un enredo de secretos, choques generacionales y divertidas situaciones que lo obligarán a elegir entre la comodidad de mamá y el amor de su vida.",
+    "imagen": "https://image.tmdb.org/t/p/w780/t8EarPqNvaAttgzEmaOWlyawsJF.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/mlq3sZRQzcUmkGJSX1PZ7EMN1Bz.jpg",
+    "urlDrive": "https://drive.google.com/file/d/17Nzji6gzfdJKrNtunfVI_7FHKq0HiAvg/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-02-12",
+    "rating": "6.4",
+    "votos": 7,
+    "runtime": "1h 17min",
+    "genres": [
+      "Comedia",
+      "Romance",
+      "Drama"
+    ],
+    "generosTexto": "Comedia, Romance, Drama",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Flora Martínez",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Flora Martínez",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/r2A4acUJEYit2Lh4ehT72a0RuNB.jpg"
+      },
+      {
+        "nombre": "Marcela Benjumea",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/bbOFOrea2VKNTFcaFS7xvviqNzt.jpg"
+      },
+      {
+        "nombre": "Bernardo García",
+        "personaje": "",
+        "foto": ""
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Conocerás al hombre de tus sueños",
+        "poster": "https://image.tmdb.org/t/p/w342/sVPe1hZusJF9y7NRgZSWnET3yuL.jpg",
+        "year": "2010",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Lo mejor de ti",
+        "poster": "https://image.tmdb.org/t/p/w342/kOBJ3m37I9tMmLwTUvCS4ensZ9S.jpg",
+        "year": "2025",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Cyrus",
+        "poster": "https://image.tmdb.org/t/p/w342/qkJ0rB1qf62TJ6thxEVRT7Eccqn.jpg",
+        "year": "2010",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Chéri",
+        "poster": "https://image.tmdb.org/t/p/w342/acPUuKyvdxqWWqrcCU0WqBeaQE0.jpg",
+        "year": "2009",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "¿Por qué me casé, entonces?",
+        "poster": "https://image.tmdb.org/t/p/w342/k76VBfJrLMuk25VLVNOyK2fA63G.jpg",
+        "year": "2026",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Cómo satisfacer a una mujer",
+        "poster": "https://image.tmdb.org/t/p/w342/4zWZCWFkHeQ6KYDQCud1cvVpn3D.jpg",
+        "year": "2022",
+        "rating": "6.3"
+      }
+    ],
+    "tmdbId": 1627217,
+    "tmdbType": "movie",
+    "runtimeMin": 77,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Road Wars",
     "tituloOriginal": "Road Wars",
     "descripcion": "Cuando un amnésico se despierta en un mundo post apocalíptica asolado por un virus tipo rabia, debe unirse con un pequeño grupo de supervivientes.",
