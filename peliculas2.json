@@ -1,5 +1,357 @@
 [
   {
+    "titulo": "Contrato Mortal",
+    "tituloOriginal": "China Salesman",
+    "descripcion": "Yan Jian, un joven ingeniero informático chino se ofrece como voluntario para ir al norte de África y ayudar a la empresa para la que trabaja a ganar un concurso que le concedería el control de las comunicaciones entre el norte y el sur del continente. Michael es un espía francés cuya misión es ganar el concurso y obtener también el control de los recursos minerales africanos. Para ello contrata al mercenario Lauder y a un antiguo general, Kabbah. Yan descubre la conspiración y es el único que puede detenerlos.",
+    "imagen": "https://image.tmdb.org/t/p/w780/g20tV3qAHG0aIM7awyKe5mAZ6Wu.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/fzRFn6wc5zYHpEo5KVt2h1KpdcB.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1lWuTlsB09uL_3_FUkzkck6nJpl-EBEMW/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2017",
+    "fechaEstreno": "2017-06-16",
+    "rating": "5.3",
+    "votos": 116,
+    "runtime": "1h 51min",
+    "genres": [
+      "Acción",
+      "Suspense",
+      "Aventura"
+    ],
+    "generosTexto": "Acción, Suspense, Aventura",
+    "clasificacion": "",
+    "tagline": "Un vendedor chino",
+    "director": "Tan Bing",
+    "guionistas": "Tan Bing, Sholom Gelt",
+    "reparto": [
+      {
+        "nombre": "李東學",
+        "personaje": "Yan Jian",
+        "foto": "https://image.tmdb.org/t/p/w185/8JJMRL6gqazfA3FLyvuM1i1FXJ0.jpg"
+      },
+      {
+        "nombre": "Mike Tyson",
+        "personaje": "Kabbah",
+        "foto": "https://image.tmdb.org/t/p/w185/7eI1WK9985q8XiUgg3rDjOwa3MR.jpg"
+      },
+      {
+        "nombre": "Janicke Askevold",
+        "personaje": "Susanna",
+        "foto": "https://image.tmdb.org/t/p/w185/mZZY57ApHnZkXseiTDeaI4R9YF.jpg"
+      },
+      {
+        "nombre": "Steven Seagal",
+        "personaje": "Lauder",
+        "foto": "https://image.tmdb.org/t/p/w185/fGNIEpn3JqOckY3ahnJX9x3qA94.jpg"
+      },
+      {
+        "nombre": "Li Ai",
+        "personaje": "Ruan Ling",
+        "foto": "https://image.tmdb.org/t/p/w185/593TENfJ4kRhVk6MHcVai7gbRch.jpg"
+      },
+      {
+        "nombre": "Ériq Ebouaney",
+        "personaje": "Sheik Asaid",
+        "foto": "https://image.tmdb.org/t/p/w185/7x8P4IL9DnVlsAB5KFmMB9gfzLX.jpg"
+      },
+      {
+        "nombre": "Wang Zijian",
+        "personaje": "Zheng Ming",
+        "foto": ""
+      },
+      {
+        "nombre": "Bryan Byrne",
+        "personaje": "Lauder Henchman",
+        "foto": ""
+      },
+      {
+        "nombre": "Sheri Cheng",
+        "personaje": "DH Female Representative",
+        "foto": ""
+      },
+      {
+        "nombre": "Anthony Gavard",
+        "personaje": "ONU Officer",
+        "foto": ""
+      },
+      {
+        "nombre": "Marc Philip Goodman",
+        "personaje": "Philip",
+        "foto": "https://image.tmdb.org/t/p/w185/gSMBosm2GpRz8sGGqKUic65fyN9.jpg"
+      },
+      {
+        "nombre": "Diana Hübel",
+        "personaje": "Lawyer",
+        "foto": ""
+      }
+    ],
+    "pais": "China",
+    "idioma": "en",
+    "productoras": "Wanda Pictures, TIK Films, China Film Group Corporation",
+    "presupuesto": 15119234,
+    "recaudacion": 1637776,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Atrapado",
+        "poster": "https://image.tmdb.org/t/p/w342/hRCPafF0QzdUpWgZhfGVsW8Z7oI.jpg",
+        "year": "2020",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Interceptor",
+        "poster": "https://image.tmdb.org/t/p/w342/jBKNAfANo4e3rzJtb7aHfYNd7b3.jpg",
+        "year": "2022",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Objetivo: Hamas (The Engineer)",
+        "poster": "https://image.tmdb.org/t/p/w342/cy2zghIDJZ4dBOzh3Xaba0kMrPt.jpg",
+        "year": "2023",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Campeón de campeones 4: Sin aliento",
+        "poster": "https://image.tmdb.org/t/p/w342/uXwY1TKs5uaJDQYFYW3bV7Qx73j.jpg",
+        "year": "1998",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "El último superviviente",
+        "poster": "https://image.tmdb.org/t/p/w342/bWifGZF9fkJ83zOVHPGaN4ZL2pQ.jpg",
+        "year": "2021",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "The Yacht: La pasajera",
+        "poster": "https://image.tmdb.org/t/p/w342/3Oi2xIzQ8c4AYJah229zAMqSfQp.jpg",
+        "year": "2022",
+        "rating": "6.0"
+      }
+    ],
+    "tmdbId": 461714,
+    "tmdbType": "movie",
+    "runtimeMin": 111,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "El Camino de un Psicópata",
+    "tituloOriginal": "A Psycho's Path",
+    "descripcion": "Un pequeño pueblo del desierto de California está siendo acechado por un psicópata que deambula por sus calles matando al azar. El capitán Peters y su pequeña fuerza policial están en el caso buscando su paradero antes de que vuelva a matar.",
+    "imagen": "https://image.tmdb.org/t/p/w780/Ao1IWiqNB3xUIEqwPE4WbSfhyV0.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/dzQs8wMHF61O9YvkDVXI9gNksjY.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1qQZlK3aO8CLCpZWMu1mwROetc55jvquA/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2019",
+    "fechaEstreno": "2019-11-15",
+    "rating": "3.4",
+    "votos": 6,
+    "runtime": "1h 23min",
+    "genres": [
+      "Terror"
+    ],
+    "generosTexto": "Terror",
+    "clasificacion": "PG-13",
+    "tagline": "",
+    "director": "Rocky Costanzo",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Quinton 'Rampage' Jackson",
+        "personaje": "John Doe",
+        "foto": "https://image.tmdb.org/t/p/w185/1FcZPbXNJRAUJTN2U6choOgaq51.jpg"
+      },
+      {
+        "nombre": "Steve De Forest",
+        "personaje": "Captain Peters",
+        "foto": ""
+      },
+      {
+        "nombre": "Noel Gugliemi",
+        "personaje": "Sergeant Torres",
+        "foto": "https://image.tmdb.org/t/p/w185/8jujXofjpSroMQ1R2JLB0GWIPor.jpg"
+      },
+      {
+        "nombre": "Derrick Redford",
+        "personaje": "Officer Allen",
+        "foto": "https://image.tmdb.org/t/p/w185/odvMeuqJ4DtxwNQfqWs9YWd7DeI.jpg"
+      },
+      {
+        "nombre": "Rowan Smyth",
+        "personaje": "Tommy Peters",
+        "foto": "https://image.tmdb.org/t/p/w185/mwIqNgSU5vtpcv7ZEPCdfYrBcBS.jpg"
+      },
+      {
+        "nombre": "Todd Bridges",
+        "personaje": "Haywood",
+        "foto": "https://image.tmdb.org/t/p/w185/r3lqiGtFU9jCbKCdbLeR72ZQlBw.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Noche de caza",
+        "poster": "https://image.tmdb.org/t/p/w342/2KOVYMSb66ORodkoOmehUOxIXtd.jpg",
+        "year": "2023",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "La bala de Dios",
+        "poster": "https://image.tmdb.org/t/p/w342/2PqgDnkxoUXbPOyqvMfgqoq0nQY.jpg",
+        "year": "2023",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Cosecha oscura (Dark Harvest)",
+        "poster": "https://image.tmdb.org/t/p/w342/cpbukMqjn96Vdw8bt4MPRF8h41T.jpg",
+        "year": "2023",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Espera hasta que se haga de noche",
+        "poster": "https://image.tmdb.org/t/p/w342/ca5mtCvUymCbwiOX0BobBzvQ98q.jpg",
+        "year": "2014",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Maniac Cop 2",
+        "poster": "https://image.tmdb.org/t/p/w342/cwKdgglX2bYsIMihEDvN1jREkKZ.jpg",
+        "year": "1990",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Abduction",
+        "poster": "https://image.tmdb.org/t/p/w342/iddL9qDsOLUyWNLbEYcEBPPfJNn.jpg",
+        "year": "2019",
+        "rating": "6.1"
+      }
+    ],
+    "tmdbId": 648819,
+    "tmdbType": "movie",
+    "runtimeMin": 83,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Space Ranger Origin",
+    "tituloOriginal": "Space Ranger Origin",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/gQ746rl5t11iBbfU6fn8TDjUqLC.jpg",
+    "backdrop": "",
+    "urlDrive": "",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-04-11",
+    "rating": "4.0",
+    "votos": 2,
+    "runtime": "1h 20min",
+    "genres": [
+      "Ciencia ficción"
+    ],
+    "generosTexto": "Ciencia ficción",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Brett Bentman",
+    "guionistas": "Brett Bentman",
+    "reparto": [
+      {
+        "nombre": "Tiffany McDonald",
+        "personaje": "Mrs. Will Crawford",
+        "foto": "https://image.tmdb.org/t/p/w185/xzXugx3uqZNERjBthrgLIzmc3ap.jpg"
+      },
+      {
+        "nombre": "Michael Phillips Rivera",
+        "personaje": "Scotch",
+        "foto": "https://image.tmdb.org/t/p/w185/cm6O1NC2aDNUH7EF23iZO8G9msC.jpg"
+      },
+      {
+        "nombre": "Melissa Chick",
+        "personaje": "Dakota",
+        "foto": "https://image.tmdb.org/t/p/w185/111rIyvTA0K6hwur22PCZmGyi9X.jpg"
+      },
+      {
+        "nombre": "Justin Ross Martin",
+        "personaje": "Roger",
+        "foto": "https://image.tmdb.org/t/p/w185/kKCU0UpSAyKoSFDqaOGg4eH7krZ.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "B22 Films, ITN Films, ITN Distribution, B22 Casting, Plaza Mayor Company",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Huida a través del tiempo",
+        "poster": "https://image.tmdb.org/t/p/w342/rQz27bfvdpZZQ0qG3hyJKy91PXT.jpg",
+        "year": "1992",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "La resurrección de Frankenstein",
+        "poster": "https://image.tmdb.org/t/p/w342/r5l1RDSOShMrUmRtiADxrq3ig00.jpg",
+        "year": "1990",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Han Solo: Una historia de Star Wars",
+        "poster": "https://image.tmdb.org/t/p/w342/zBKHsO4kCIZOT8hRlGagKDL8sSF.jpg",
+        "year": "2018",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Doctor Who: La novia fugitiva",
+        "poster": "https://image.tmdb.org/t/p/w342/8LQlTuvlDR44RMO09aZ1ejhdLET.jpg",
+        "year": "2006",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Doctor Who: Deep Breath",
+        "poster": "https://image.tmdb.org/t/p/w342/yH49xHhfkIQ0V1PulpU2t7lPT1r.jpg",
+        "year": "2014",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Titán A.E.",
+        "poster": "https://image.tmdb.org/t/p/w342/cFtHKAqpxRmwyaJydZ7YyK1dzP0.jpg",
+        "year": "2000",
+        "rating": "6.6"
+      }
+    ],
+    "tmdbId": 1360863,
+    "tmdbType": "movie",
+    "runtimeMin": 80,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Rastreado",
     "tituloOriginal": "Off the Grid",
     "descripcion": "Jack Guy es un brillante científico que desarrolla una revolucionaria fuente de energía limpia con potencial para cambiar el mundo. Cuando descubre que la empresa para la que trabaja pretende convertir su invento en un arma, decide desaparecer junto con sus investigaciones y vivir oculto lejos de la sociedad. Sin embargo, la compañía logra localizarlo y envía mercenarios para capturarlo. Obligado a luchar por su supervivencia, Jack utiliza su inteligencia, conocimientos técnicos y habilidades de combate para enfrentarse a quienes intentan apoderarse de su creación y evitar que sea utilizada con fines destructivos.",
