@@ -1,408 +1,285 @@
 [
   {
-    "tmdbId": 1255833,
-    "tmdbType": "movie",
-    "tituloOriginal": "Whalefall",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/shW2jHkQLZVv4Fko2rJDqTGU0gx.jpg",
+    "tmdbId": 213562,
+    "tmdbType": "tv",
+    "tituloOriginal": "Crystal Lake",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/wxiBsKFEOOFK8eQStWOykNORlXY.jpg",
     "year": "2026",
-    "fechaEstreno": "2026-10-14",
-    "runtime": "98 min",
-    "runtimeMin": 98,
-    "clasificacion": "PG-13",
-    "director": "Brian Duffield",
+    "fechaEstreno": "2026-10-15",
+    "runtime": "",
+    "runtimeMin": 0,
+    "clasificacion": "TV-MA",
+    "director": "",
     "reparto": [
       {
-        "nombre": "Austin Abrams",
-        "personaje": "Jay Gardiner",
-        "foto": "https://image.tmdb.org/t/p/w185/nvbJNwyhIICUFcS4lhxj9mGvL5z.jpg"
+        "nombre": "Linda Cardellini",
+        "personaje": "Pamela Voorhees",
+        "foto": "https://image.tmdb.org/t/p/w185/bcycvynDprC1rrhBNrnBjn5uOUd.jpg"
       },
       {
-        "nombre": "Josh Brolin",
-        "personaje": "Mitt Gardiner",
-        "foto": "https://image.tmdb.org/t/p/w185/sX2etBbIkxRaCsATyw5ZpOVMPTD.jpg"
+        "nombre": "William Catlett",
+        "personaje": "Levon Brooks",
+        "foto": "https://image.tmdb.org/t/p/w185/1GzaCfhYEfg2s2lQzlQykijlUY8.jpg"
       },
       {
-        "nombre": "Elisabeth Shue",
-        "personaje": "Zara Gardiner",
-        "foto": "https://image.tmdb.org/t/p/w185/1pmjDSLvOuqKW1P2KRPlpFMeUFe.jpg"
+        "nombre": "Gwendolyn Sundstrom",
+        "personaje": "Grace Snell",
+        "foto": "https://image.tmdb.org/t/p/w185/uJtJHjI4gHMK2GmfX8fuNYL4OuQ.jpg"
       },
       {
-        "nombre": "John Ortiz",
-        "personaje": "Hewey",
-        "foto": "https://image.tmdb.org/t/p/w185/o2SOFI53N6Gv5S3fDEBNbeimbzY.jpg"
+        "nombre": "Cameron Scoggins",
+        "personaje": "Dorf",
+        "foto": "https://image.tmdb.org/t/p/w185/eIJCzNXmW4qZZJJyiqwrubj8Si5.jpg"
       },
       {
-        "nombre": "Jane Levy",
-        "personaje": "Eva Gardiner",
-        "foto": "https://image.tmdb.org/t/p/w185/iYyWPOOpZgAqZK6IddSaD4R9QW3.jpg"
-      },
-      {
-        "nombre": "Emily Rudd",
-        "personaje": "Nan Gardiner",
-        "foto": "https://image.tmdb.org/t/p/w185/vVl4ABlqUuh5n1M2B9AOOa9r6kV.jpg"
-      },
-      {
-        "nombre": "Kamy D. Bruder",
-        "personaje": "Whale Watcher Man",
-        "foto": "https://image.tmdb.org/t/p/w185/zClbeBZWyCogpRZz9zRQnBSl5X9.jpg"
-      },
-      {
-        "nombre": "Mark Meloro Jr.",
-        "personaje": "Whale Watcher Man",
-        "foto": ""
-      },
-      {
-        "nombre": "Sam Franich",
-        "personaje": "Jay at 10",
-        "foto": ""
-      },
-      {
-        "nombre": "Nicholas Gould",
-        "personaje": "US Coast Guard Petty Officer Third Class Whaley",
-        "foto": ""
-      },
-      {
-        "nombre": "Laurel Lane Bowen",
-        "personaje": "Cafe Patron",
-        "foto": ""
-      },
-      {
-        "nombre": "Sam Skolnik",
-        "personaje": "",
-        "foto": "https://image.tmdb.org/t/p/w185/wTqS6v4AIa1X3T9bNv3dRhpZynW.jpg"
+        "nombre": "Devin Kessler",
+        "personaje": "Briana Brooks",
+        "foto": "https://image.tmdb.org/t/p/w185/fZV3fyduDDRoRsofiO3eCAr7CDf.jpg"
       }
     ],
-    "trailerUrl": "https://www.youtube.com/watch?v=5webTf9wplE",
+    "trailerUrl": "https://www.youtube.com/watch?v=kyJsEXCk_wg",
+    "creadores": [
+      "Brad Caleb Kane"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 8,
+    "title": "Crystal Lake",
+    "releaseDate": "14 de octubre de 2026",
+    "genre": "Drama, Misterio",
+    "synopsis": "Cuando dos desconocidos llegan a la puerta de Pam indagando en su pasado, se desencadenan inquietantes acontecimientos que lleva a los habitantes de Crystal Lake a preguntarse: ¿Quién es realmente Pam Voorhees?",
+    "image": "https://image.tmdb.org/t/p/w780/3ENhExiD2fcjk5FX0AcAXcvLu9N.jpg",
+    "availability": "Netflix (Serie)",
+    "score": "8.6 / 10"
+  },
+  {
+    "tmdbId": 95480,
+    "tmdbType": "tv",
+    "tituloOriginal": "Slow Horses",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/gPQppUnLx9vqPDLz3WwZ2HJsNbt.jpg",
+    "year": "2022",
+    "fechaEstreno": "2022-04-01",
+    "runtime": "",
+    "runtimeMin": 0,
+    "clasificacion": "TV-MA",
+    "director": "",
+    "reparto": [
+      {
+        "nombre": "Gary Oldman",
+        "personaje": "Jackson Lamb",
+        "foto": "https://image.tmdb.org/t/p/w185/yhaSM5habNNI1Tf4ALRwRk3VvSZ.jpg"
+      },
+      {
+        "nombre": "Jack Lowden",
+        "personaje": "River Cartwright",
+        "foto": "https://image.tmdb.org/t/p/w185/mQeiB35UBxjcO1D0pc8ZHKJW5dP.jpg"
+      },
+      {
+        "nombre": "Kristin Scott Thomas",
+        "personaje": "Diana Taverner",
+        "foto": "https://image.tmdb.org/t/p/w185/axksw0vAjBPSW02ZqpcC0V8rPD7.jpg"
+      },
+      {
+        "nombre": "Hugo Weaving",
+        "personaje": "Frank Harkness",
+        "foto": "https://image.tmdb.org/t/p/w185/lSC8Et0PYi5zeQb3IpPkFje7hgR.jpg"
+      },
+      {
+        "nombre": "Saskia Reeves",
+        "personaje": "Catherine Standish",
+        "foto": "https://image.tmdb.org/t/p/w185/1NM6rp95ec83tPa2Tnq66RV6Frc.jpg"
+      },
+      {
+        "nombre": "Christopher Chung",
+        "personaje": "Roddy Ho",
+        "foto": "https://image.tmdb.org/t/p/w185/wV4r6tVjP9Prk2acj7bYTmdtaMF.jpg"
+      },
+      {
+        "nombre": "Aimee-Ffion Edwards",
+        "personaje": "Shirley Dander",
+        "foto": "https://image.tmdb.org/t/p/w185/mpsq3UnNiFgmd3MY2Q6a3ZBMGQ8.jpg"
+      }
+    ],
+    "trailerUrl": "https://www.youtube.com/watch?v=F9nxON8GzMA",
+    "creadores": [],
+    "numeroTemporadas": 6,
+    "numeroEpisodios": 36,
+    "title": "Slow Horses",
+    "releaseDate": "31 de marzo de 2022",
+    "genre": "Crimen, Drama, Misterio",
+    "synopsis": "Drama de espías con tintes de comedia negra centrado en las andanzas de un incompetente equipo de agentes del MI5 y en su jefe, el irreverente Jackson Lamb, a medida que desmontan los artificios del espionaje para defender Inglaterra de las fuerzas del mal.",
+    "image": "https://image.tmdb.org/t/p/w780/3YwDLuIScomV0ea3RNL6kHpbi7Y.jpg",
+    "availability": "Netflix (Serie)",
+    "score": "8.1 / 10"
+  },
+  {
+    "tmdbId": 153312,
+    "tmdbType": "tv",
+    "tituloOriginal": "Tulsa King",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/mNHRGO1gFpR2CYZdANe72kcKq7G.jpg",
+    "year": "2022",
+    "fechaEstreno": "2022-11-13",
+    "runtime": "",
+    "runtimeMin": 0,
+    "clasificacion": "TV-MA",
+    "director": "",
+    "reparto": [
+      {
+        "nombre": "Sylvester Stallone",
+        "personaje": "Dwight 'The General' Manfredi",
+        "foto": "https://image.tmdb.org/t/p/w185/gn3pDWthJqR0VDYGViGD3048og7.jpg"
+      },
+      {
+        "nombre": "Martin Starr",
+        "personaje": "Lawrence 'Bodhi' Geigerman",
+        "foto": "https://image.tmdb.org/t/p/w185/cxGxr0S1jnvOpOHyZDYXrg2GHju.jpg"
+      },
+      {
+        "nombre": "Jay Will",
+        "personaje": "Tyson Mitchell",
+        "foto": "https://image.tmdb.org/t/p/w185/6ABA1136deiDOBMOHAtJIMsOnSM.jpg"
+      },
+      {
+        "nombre": "Vincent Piazza",
+        "personaje": "Vince Antonacci",
+        "foto": "https://image.tmdb.org/t/p/w185/cybUCnpnrvtfmJcF2vC2nBWzmKU.jpg"
+      },
+      {
+        "nombre": "Annabella Sciorra",
+        "personaje": "Joanne",
+        "foto": "https://image.tmdb.org/t/p/w185/p2dnBSjLzKxldrHCQZYmVq0LcFw.jpg"
+      },
+      {
+        "nombre": "Chris Caldovino",
+        "personaje": "Goodie Carangi",
+        "foto": "https://image.tmdb.org/t/p/w185/m1c4zItCH0LQccJZ3oTjCww4xJ.jpg"
+      },
+      {
+        "nombre": "McKenna Quigley Harrington",
+        "personaje": "Grace",
+        "foto": "https://image.tmdb.org/t/p/w185/zCucjO9kk169oOMn4jeoB1vAgBf.jpg"
+      },
+      {
+        "nombre": "Frank Grillo",
+        "personaje": "Bill Bevilaqua",
+        "foto": "https://image.tmdb.org/t/p/w185/kuEco4vo1xrsM8DyrNSZUEi593P.jpg"
+      },
+      {
+        "nombre": "Michael Walden",
+        "personaje": "Bigfoot",
+        "foto": "https://image.tmdb.org/t/p/w185/bFPr7XLkk9QL7Lb3NQAIeZL6ey5.jpg"
+      },
+      {
+        "nombre": "James Russo",
+        "personaje": "Quiet Ray Renzetti",
+        "foto": "https://image.tmdb.org/t/p/w185/nubhNb5OUkzsrndD1BNqzp7MGyo.jpg"
+      },
+      {
+        "nombre": "Kevin Pollak",
+        "personaje": "Special Agent Musso",
+        "foto": "https://image.tmdb.org/t/p/w185/ss4vL5itVF1I2AEC64k1vb79GEq.jpg"
+      },
+      {
+        "nombre": "Neal McDonough",
+        "personaje": "Cal Thresher",
+        "foto": "https://image.tmdb.org/t/p/w185/3mI3i1CpjATSCta1Tb2qsyl1KCh.jpg"
+      }
+    ],
+    "trailerUrl": "https://www.youtube.com/watch?v=AxL5v7q76sA",
+    "creadores": [
+      "Taylor Sheridan"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 39,
+    "title": "Tulsa King",
+    "releaseDate": "12 de noviembre de 2022",
+    "genre": "Crimen, Drama, Comedia",
+    "synopsis": "Justo después de ser liberado de prisión después de 25 años, el capo de la mafia de Nueva York, Dwight \"El General\" Manfredi, es exiliado sin contemplaciones por su jefe para instalarse en Tulsa, Oklahoma. Al darse cuenta de que su familia de la mafia puede no tener sus mejores intereses en mente, Dwight construye lentamente una \"tripulación\" a partir de un grupo de personajes inverosímiles, para ayudarlo a establecer un nuevo imperio criminal en un lugar que para él bien podría ser otro planeta.",
+    "image": "https://image.tmdb.org/t/p/w780/6ryay9RQfT5jrY9i1dveUUGryAO.jpg",
+    "availability": "Netflix (Serie)",
+    "score": "8.3 / 10"
+  },
+  {
+    "tmdbId": 1339713,
+    "tmdbType": "movie",
+    "tituloOriginal": "Obsession",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/5lTZyuBTNOfawsfPT8Q0cIg6qAF.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-05-13",
+    "runtime": "109 min",
+    "runtimeMin": 109,
+    "director": "Curry Barker",
+    "reparto": [
+      {
+        "nombre": "Michael Johnston",
+        "personaje": "Bear",
+        "foto": "https://image.tmdb.org/t/p/w185/fbpcCkBzu43kMdlXxEAMuLhseL8.jpg"
+      },
+      {
+        "nombre": "Inde Navarrette",
+        "personaje": "Nikki",
+        "foto": "https://image.tmdb.org/t/p/w185/qlNBUGON8FebgzcqVhhRSVFYSa5.jpg"
+      },
+      {
+        "nombre": "Cooper Tomlinson",
+        "personaje": "Ian",
+        "foto": "https://image.tmdb.org/t/p/w185/vBMQbYT1DyWPCUp11dIiqZR9zhd.jpg"
+      },
+      {
+        "nombre": "Megan Lawless",
+        "personaje": "Sarah",
+        "foto": "https://image.tmdb.org/t/p/w185/6qW63YEgB1qro01sM7T2HvhtFkh.jpg"
+      },
+      {
+        "nombre": "Andy Richter",
+        "personaje": "Carter",
+        "foto": "https://image.tmdb.org/t/p/w185/5Qr7N6TzC8cI0ULxDm6EC5GpZ4C.jpg"
+      },
+      {
+        "nombre": "Haley Fitzgerald",
+        "personaje": "Viola",
+        "foto": "https://image.tmdb.org/t/p/w185/xbKqZ5Epz0IaSCPLXDnByDACw2X.jpg"
+      },
+      {
+        "nombre": "Darin Toonder",
+        "personaje": "Harry",
+        "foto": "https://image.tmdb.org/t/p/w185/bD7Y9T7Y6XwDXjGJ8Suabyt1ZGo.jpg"
+      },
+      {
+        "nombre": "Anthony Pavone",
+        "personaje": "Reggie",
+        "foto": "https://image.tmdb.org/t/p/w185/hxiqY9gHgwXGYnXSD11Wacm5Nmi.jpg"
+      },
+      {
+        "nombre": "Justice",
+        "personaje": "Joe",
+        "foto": "https://image.tmdb.org/t/p/w185/YFxKf2HHJvyavQf54NO5wXFOJX.jpg"
+      },
+      {
+        "nombre": "Anthony Casabianca",
+        "personaje": "Chris",
+        "foto": "https://image.tmdb.org/t/p/w185/xNJUKqKQhMeyZ74erQvETr3AqV0.jpg"
+      },
+      {
+        "nombre": "Chloe Breen",
+        "personaje": "Ruthie",
+        "foto": "https://image.tmdb.org/t/p/w185/oKBTQeGcQBM5aHNHwAqVWPjDVfz.jpg"
+      },
+      {
+        "nombre": "Malcolm Kelner",
+        "personaje": "Bartender",
+        "foto": "https://image.tmdb.org/t/p/w185/xlojlX1dlu1OY0Vf2owDWv5PV3l.jpg"
+      }
+    ],
+    "trailerUrl": "https://www.youtube.com/watch?v=WbziExW1-i4",
     "creadores": [],
     "numeroTemporadas": 0,
     "numeroEpisodios": 0,
-    "title": "Whalefall",
-    "releaseDate": "13 de octubre de 2026",
-    "genre": "Suspense",
-    "synopsis": "Tras la muerte de su padre, Jay Gardiner se sumerge en la costa central de California en busca de sus restos, pero es tragado por una ballena. Atrapado en su interior con solo una hora de oxígeno restante, Jay se da cuenta de que las lecciones que su padre le enseñó pueden ser la clave para escapar.",
-    "image": "https://image.tmdb.org/t/p/w780/jmGVSLOrH9IxtcffbldrEHX4IfB.jpg",
+    "title": "Obsession",
+    "releaseDate": "12 de mayo de 2026",
+    "genre": "Terror, Suspense",
+    "synopsis": "El anhelo romántico desesperado de un chico por su amor platónico de toda la vida desencadena un siniestro hechizo: Nikki se vuelve irracionalmente obsesiva hasta convertirse en la sombra de Bear. Una fantasía aparentemente inofensiva que se convertirá en una perturbadora pesadilla.",
+    "image": "https://image.tmdb.org/t/p/w780/p1QFjQ8wwlXXlxwaWlehJ37uXVj.jpg",
     "availability": "Netflix (Película)",
-    "score": "6.8 / 10"
-  },
-  {
-    "tmdbId": 1153576,
-    "tmdbType": "movie",
-    "tituloOriginal": "Street Fighter",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/zDE9hd1SG9695YncbZGjSf7Z9Jk.jpg",
-    "year": "2026",
-    "fechaEstreno": "2026-10-13",
-    "rating": "6.7",
-    "votos": 14,
-    "runtime": "2h 5min",
-    "runtimeMin": 125,
-    "genres": [
-      "Acción",
-      "Fantasía"
-    ],
-    "generosTexto": "Acción, Fantasía",
-    "clasificacion": "16",
-    "tagline": "Listos. Preparados. ¡A luchar!",
-    "director": "Kitao Sakurai",
-    "guionistas": "Dalan Musson, Gary Dauberman, T.J. Fixman",
-    "reparto": [
-      {
-        "nombre": "Andrew Koji",
-        "personaje": "Ryu",
-        "foto": "https://image.tmdb.org/t/p/w185/oU53nWLQ6wFHzERwSi1fD53LxZB.jpg"
-      },
-      {
-        "nombre": "Noah Centineo",
-        "personaje": "Ken Masters",
-        "foto": "https://image.tmdb.org/t/p/w185/p1bcst401RyxfDGykx2iQLI7CV5.jpg"
-      },
-      {
-        "nombre": "Callina Liang",
-        "personaje": "Chun-Li",
-        "foto": "https://image.tmdb.org/t/p/w185/yiajT9WAsvuxF9uNJrkSuzVv3On.jpg"
-      },
-      {
-        "nombre": "Joe Anoa'i",
-        "personaje": "Akuma",
-        "foto": "https://image.tmdb.org/t/p/w185/6BKc77eAUBQdL9MmgBorBc4SMdE.jpg"
-      },
-      {
-        "nombre": "David Dastmalchian",
-        "personaje": "M. Bison",
-        "foto": "https://image.tmdb.org/t/p/w185/eLafwcpL64CqzwjjSgKpO7Rv4ae.jpg"
-      },
-      {
-        "nombre": "Cody Rhodes",
-        "personaje": "Guile",
-        "foto": "https://image.tmdb.org/t/p/w185/m9hfLcsQuESprcb7dJUj5lQLWCv.jpg"
-      },
-      {
-        "nombre": "Andrew Schulz",
-        "personaje": "Dan Hibiki",
-        "foto": "https://image.tmdb.org/t/p/w185/fdeYq1EraYvlYM3VmGXjIaSGoTz.jpg"
-      },
-      {
-        "nombre": "Eric Andre",
-        "personaje": "Don Sauvage",
-        "foto": "https://image.tmdb.org/t/p/w185/e9XlcFnZQiBSQ1vISQVyTOrkIaq.jpg"
-      },
-      {
-        "nombre": "विद्युत जामवाल",
-        "personaje": "Dhalsim",
-        "foto": "https://image.tmdb.org/t/p/w185/9iBEIKvn1GGzymF3kVPBHtaMkWy.jpg"
-      },
-      {
-        "nombre": "Mel Jarnson",
-        "personaje": "Cammy",
-        "foto": "https://image.tmdb.org/t/p/w185/8m0gnlADmLXkMkvSzDR2OhBfsCB.jpg"
-      },
-      {
-        "nombre": "Orville Peck",
-        "personaje": "Vega",
-        "foto": "https://image.tmdb.org/t/p/w185/oW989m8J8gWGCBDkjplkqQoMob6.jpg"
-      },
-      {
-        "nombre": "Olivier Richters",
-        "personaje": "Zangief",
-        "foto": "https://image.tmdb.org/t/p/w185/8Zz5WYE1Muc3AX9daxCxgNTRE5.jpg"
-      }
-    ],
-    "pais": "Japan, United States of America",
-    "idioma": "en",
-    "productoras": "Capcom, Legendary Pictures",
-    "presupuesto": 82000000,
-    "recaudacion": 0,
-    "trailerUrl": "https://www.youtube.com/watch?v=-MJAfIMUQ5s",
-    "coleccion": "",
-    "keywords": "martial arts, based on video game, martial arts tournament, wuxia, hand to hand combat, 1990s, battle royale, power, powers",
-    "similares": [
-      {
-        "titulo": "El reino prohibido",
-        "poster": "https://image.tmdb.org/t/p/w342/2Cl8oOuNiBPJGNYZzbyRR6BDhKd.jpg",
-        "year": "2008",
-        "rating": "6.7"
-      },
-      {
-        "titulo": "Gladiadores",
-        "poster": "https://image.tmdb.org/t/p/w342/mFslGVbAf1jHK5a2PsPrSQkuOt6.jpg",
-        "year": "2025",
-        "rating": "7.7"
-      },
-      {
-        "titulo": "Tigre y dragón 2: La espada del destino",
-        "poster": "https://image.tmdb.org/t/p/w342/6DkTKD3LPXD6QpWGNy87jhIX5fB.jpg",
-        "year": "2016",
-        "rating": "6.2"
-      },
-      {
-        "titulo": "Los Juegos del Hambre: Balada de pájaros cantores y serpientes",
-        "poster": "https://image.tmdb.org/t/p/w342/2vIK81ikjvdewSLmrwIg7AMoJIv.jpg",
-        "year": "2023",
-        "rating": "7.0"
-      },
-      {
-        "titulo": "Alita: Ángel de combate",
-        "poster": "https://image.tmdb.org/t/p/w342/gn2OqceeLGLrPy5Abz2dceB0po8.jpg",
-        "year": "2019",
-        "rating": "7.3"
-      },
-      {
-        "titulo": "La furia de Chicago",
-        "poster": "https://image.tmdb.org/t/p/w342/oQGcfsgCHmYvPMzraisRGjJUhOW.jpg",
-        "year": "1980",
-        "rating": "5.9"
-      }
-    ],
-    "homepage": "",
-    "creadores": [],
-    "numeroTemporadas": 0,
-    "numeroEpisodios": 0,
-    "temporadasTmdb": [],
-    "title": "Street Fighter",
-    "releaseDate": "2026-10-13",
-    "genre": "Acción, Fantasía",
-    "synopsis": "En 1993, los distanciados luchadores callejeros Ryu y Ken Masters se ven arrastrados de nuevo al combate cuando la misteriosa Chun-Li los recluta para el próximo Torneo World Warrior: un enfrentamiento brutal de puños, destino y furia. Sin embargo, tras esta gran batalla se esconde una conspiración mortal que los obliga a enfrentarse tanto entre sí como a los demonios de su pasado. Y si no lo logran... ¡será el fin de la partida!",
-    "image": "https://image.tmdb.org/t/p/w780/2kdEEUkbkJe08kTDMCUbBrZ71Aw.jpg",
-    "availability": "Costa Rica (Estreno)",
-    "score": "6.7"
-  },
-  {
-    "tmdbId": 1302904,
-    "tmdbType": "movie",
-    "tituloOriginal": "Practical Magic 2",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/oIglj0Jy9duG4LnrRUpH8n001Pk.jpg",
-    "year": "2026",
-    "fechaEstreno": "2026-09-09",
-    "runtime": "130 min",
-    "runtimeMin": 130,
-    "clasificacion": "PG-13",
-    "director": "Susanne Bier, Farhan Rana Rajpoot",
-    "reparto": [
-      {
-        "nombre": "Sandra Bullock",
-        "personaje": "Sally Owens",
-        "foto": "https://image.tmdb.org/t/p/w185/4rfjISL3Flx16jfiusXoHbpt87X.jpg"
-      },
-      {
-        "nombre": "Nicole Kidman",
-        "personaje": "Gillian Owens",
-        "foto": "https://image.tmdb.org/t/p/w185/4KSQDodyBtTDMaREYgMdWD1LbH1.jpg"
-      },
-      {
-        "nombre": "Joey King",
-        "personaje": "Kylie",
-        "foto": "https://image.tmdb.org/t/p/w185/94c69mPYSK9jFsAEu0OKB7Qs684.jpg"
-      },
-      {
-        "nombre": "Maisie Williams",
-        "personaje": "Antonia",
-        "foto": "https://image.tmdb.org/t/p/w185/zk1rlBVci2fmnFhMezaPpa4kwZF.jpg"
-      },
-      {
-        "nombre": "Xolo Maridueña",
-        "personaje": "Gideon",
-        "foto": "https://image.tmdb.org/t/p/w185/tJMI7BpjlhHSMpzSz9e1XxygnKd.jpg"
-      },
-      {
-        "nombre": "Lee Pace",
-        "personaje": "Ian Wright",
-        "foto": "https://image.tmdb.org/t/p/w185/eeTc0d2AX1vFYVxZ6Qw7qZpg4Tz.jpg"
-      },
-      {
-        "nombre": "Dianne Wiest",
-        "personaje": "Jet",
-        "foto": "https://image.tmdb.org/t/p/w185/p9mfzY68FtEbedOMNB5X4eBShhx.jpg"
-      },
-      {
-        "nombre": "Stockard Channing",
-        "personaje": "Franny",
-        "foto": "https://image.tmdb.org/t/p/w185/fsk0HkOVKtdcbHfsc99bQvMJep3.jpg"
-      },
-      {
-        "nombre": "Solly McLeod",
-        "personaje": "Tom Lockland",
-        "foto": "https://image.tmdb.org/t/p/w185/6aMA4kUV1ji4uu3zzBzQ9fwgUDO.jpg"
-      },
-      {
-        "nombre": "Ema Cavolli",
-        "personaje": "Maria Owens",
-        "foto": "https://image.tmdb.org/t/p/w185/mzAXiBoJeY1fA9Nc6KNsKNPfsgO.jpg"
-      },
-      {
-        "nombre": "Cassie Bradley",
-        "personaje": "Hannah Owens",
-        "foto": "https://image.tmdb.org/t/p/w185/u1rqfCyqHMjeOewKuaIaA9D3WqY.jpg"
-      },
-      {
-        "nombre": "Liz Kingsman",
-        "personaje": "Jane",
-        "foto": "https://image.tmdb.org/t/p/w185/sNCFfAVWGe4d4SLlUiNWvLk1Vwe.jpg"
-      }
-    ],
-    "trailerUrl": "https://www.youtube.com/watch?v=UOmntM7mHI8",
-    "creadores": [],
-    "numeroTemporadas": 0,
-    "numeroEpisodios": 0,
-    "title": "Prácticamente magia 2",
-    "releaseDate": "8 de septiembre de 2026",
-    "genre": "Romance, Fantasía, Comedia",
-    "synopsis": "Las hermanas Owens deben enfrentarse a la oscura maldición que amenaza con desintegrar a su familia de una vez por todas.",
-    "image": "https://image.tmdb.org/t/p/w780/xCXznyg1BOAKISMuduRJLtcAgCR.jpg",
-    "availability": "Netflix (Película)",
-    "score": "6.3 / 10"
-  },
-  {
-    "tmdbId": 969681,
-    "tmdbType": "movie",
-    "tituloOriginal": "Spider-Man: Brand New Day",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/4tjxYg2AbOzzG9G1YuiT2NzYhlH.jpg",
-    "year": "2026",
-    "fechaEstreno": "2026-07-29",
-    "runtime": "145 min",
-    "runtimeMin": 145,
-    "clasificacion": "12",
-    "director": "Destin Daniel Cretton",
-    "reparto": [
-      {
-        "nombre": "Tom Holland",
-        "personaje": "Peter Parker / Spider-Man",
-        "foto": "https://image.tmdb.org/t/p/w185/adwEBb2sCSzqwnpVgNEG7irl1Ne.jpg"
-      },
-      {
-        "nombre": "Sadie Sink",
-        "personaje": "Jean Grey",
-        "foto": "https://image.tmdb.org/t/p/w185/92FddzBfK50XOUbtwjqHPraoGHy.jpg"
-      },
-      {
-        "nombre": "Tramell Tillman",
-        "personaje": "William 'Bill' Metzger",
-        "foto": "https://image.tmdb.org/t/p/w185/2Uxa2M5HIoEuBb6gVOnNAuyn5wN.jpg"
-      },
-      {
-        "nombre": "Zendaya",
-        "personaje": "MJ",
-        "foto": "https://image.tmdb.org/t/p/w185/qGkBlyn1AwQpuFnRARMRwj0iHZp.jpg"
-      },
-      {
-        "nombre": "Jacob Batalon",
-        "personaje": "Ned Leeds",
-        "foto": "https://image.tmdb.org/t/p/w185/53YhaL4xw4Sb1ssoHkeSSBaO29c.jpg"
-      },
-      {
-        "nombre": "Jon Bernthal",
-        "personaje": "Frank Castle / Punisher",
-        "foto": "https://image.tmdb.org/t/p/w185/bjcglF1IpDcZNs1HwFxakGpzBo6.jpg"
-      },
-      {
-        "nombre": "Mark Ruffalo",
-        "personaje": "Bruce Banner / Hulk",
-        "foto": "https://image.tmdb.org/t/p/w185/5GilHMOt5PAQh6rlUKZzGmaKEI7.jpg"
-      },
-      {
-        "nombre": "Florence Pugh",
-        "personaje": "Yelena Belova / Black Widow",
-        "foto": "https://image.tmdb.org/t/p/w185/2URrZb95t3kY6pLroKny3Enmabp.jpg"
-      },
-      {
-        "nombre": "Liza Colón-Zayas",
-        "personaje": "Detective Jean DeWolff",
-        "foto": "https://image.tmdb.org/t/p/w185/q2gHcef0wckji0AS8ZEO6cYx065.jpg"
-      },
-      {
-        "nombre": "Marisa Tomei",
-        "personaje": "May Parker",
-        "foto": "https://image.tmdb.org/t/p/w185/vAQ10fvGfVyuJdMNKVMA4ZkacWL.jpg"
-      },
-      {
-        "nombre": "Naomi Watts",
-        "personaje": "E.V. (voice)",
-        "foto": "https://image.tmdb.org/t/p/w185/7ysvff7ZhW388SIh2YjQ0XIryOn.jpg"
-      },
-      {
-        "nombre": "Michael Mando",
-        "personaje": "Mac Gargan / Scorpion",
-        "foto": "https://image.tmdb.org/t/p/w185/gvM2wG66bjEpiirdeQdyG9EzUfv.jpg"
-      }
-    ],
-    "trailerUrl": "https://www.youtube.com/watch?v=o8EccyRIwQQ",
-    "creadores": [],
-    "numeroTemporadas": 0,
-    "numeroEpisodios": 0,
-    "title": "Spider-Man: Brand New Day",
-    "releaseDate": "28 de julio de 2026",
-    "genre": "Ciencia ficción, Acción, Aventura",
-    "synopsis": "Han pasado cuatro años desde los acontecimientos de No Way Home, y Peter Parker ahora es un adulto que vive completamente solo, ha desaparecido voluntariamente de las vidas y recuerdos de quienes ama. Combatiendo el crimen en una Nueva York que ya no conoce su nombre, se ha dedicado por completo a proteger su ciudad—un Spider-Man a tiempo completo—, pero a medida que aumentan las exigencias sobre él, la presión desencadena una evolución física que amenaza su existencia, al mismo tiempo que un extraño nuevo patrón de crímenes da lugar a una de las amenazas más poderosas a las que se ha enfrentado.",
-    "image": "https://image.tmdb.org/t/p/w780/9g0sEFhmvmK4nGhXj8DHuv2noYI.jpg",
-    "availability": "Netflix (Película)",
-    "score": "8.5 / 10"
-  },
-  {
-    "trailerUrl": "https://www.youtube.com/embed/Z5wVEGjR0c",
-    "title": "Vengadores: Doomsday",
-    "releaseDate": "15 de diciembre de 2026",
-    "genre": "Ciencia ficción, Acción, Aventura",
-    "synopsis": "Quinta entrega de la saga 'Vengadores' incluida en el Universo Cinematográfico Marvel (UCM). Sinopsis desconocido.",
-    "image": "https://image.tmdb.org/t/p/w780/7bQczUMnjz8iwxNP9YrmLkfI8od.jpg",
-    "availability": "Netflix (Película)",
-    "score": "Próximamente"
+    "score": "8.2 / 10"
   }
 ]
