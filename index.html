@@ -819,16 +819,16 @@
             const [error, setError] = React.useState('');
             const [airplay, setAirplay] = React.useState(false);
             const [guide, setGuide] = React.useState(() => /iPhone|iPad/i.test(navigator.userAgent) ? 'apple' : /Android/i.test(navigator.userAgent) ? 'android' : 'computer');
-            const dialogRef = React.useRef(null), triggerRef = React.useRef(null);
+            const dialogRef = React.useRef(null), triggerRef = React.useRef(null), lifetime = React.useRef(0);
             const current = castState.casting && castState.contentId === descriptor.url;
             React.useEffect(() => {
+                lifetime.current++;
                 const unsubscribe = api?.subscribe(setCastState);
                 if (api) setCastState(api.getState());
                 setAirplay(typeof videoRef.current?.webkitShowPlaybackTargetPicker === 'function');
                 setError('');
-                return () => { unsubscribe?.(); api?.cancelPending(descriptor.url); const state = api?.getState(); if (state?.casting && state.contentId === descriptor.url) api.stop(); };
+                return () => { lifetime.current++; unsubscribe?.(); api?.cancelPending(descriptor.url); const state = api?.getState(); if (state?.casting && state.contentId === descriptor.url) api.stop(); };
             }, [url]);
-            React.useEffect(() => { if (current) videoRef.current?.pause(); }, [current]);
             React.useEffect(() => {
                 const dialog = dialogRef.current;
                 if (!dialog) return;
@@ -838,8 +838,14 @@
             const close = () => { setOpen(false); triggerRef.current?.focus(); };
             const send = async () => {
                 setError('');
-                try { const result = await api.send(descriptor, videoRef.current?.currentTime || 0); if (result.sent) videoRef.current?.pause(); }
-                catch (problem) { setError(problem.message); }
+                const generation = lifetime.current;
+                try {
+                    const result = await api.send(descriptor, videoRef.current?.currentTime || 0);
+                    // Pause only after this player's explicit send succeeds. SDK reconnections
+                    // and a late response for a previous movie must not interrupt local playback.
+                    if (result.sent && generation === lifetime.current) videoRef.current?.pause();
+                }
+                catch (problem) { if (generation === lifetime.current) setError(problem.message); }
             };
             const useAirplay = () => {
                 try { videoRef.current.webkitShowPlaybackTargetPicker(); }
@@ -858,8 +864,8 @@
                     <span className="box-cast-label">{current ? 'En TV' : 'Transmitir'}</span>
                 </button>
                 <dialog ref={dialogRef} className="box-cast-dialog" aria-label="Transmitir al televisor" onCancel={event => {event.preventDefault();close();}} onClose={() => setOpen(false)}>
-                    <div className="box-cast-dialog-header"><div><h2>Disfruta BOXPLAYTV en tu TV</h2><p className="box-cast-subtitle">{descriptor.title || item.title || item.titulo}</p></div><button type="button" onClick={close} className="box-cast-close" aria-label="Cerrar opciones de transmisión" autoFocus>×</button></div>
-                    <div className="box-cast-state" role="status">{current ? `Reproduciendo en ${castState.device}. El video del celular o la computadora queda en pausa.` : !descriptor.supported ? descriptor.message : castState.ready ? 'Google Cast está preparado. Elige un televisor compatible conectado a tu misma red Wi-Fi.' : castState.error || 'Preparando Google Cast…'}</div>
+                    <div className="box-cast-dialog-header"><div><h2>Disfruta BOXPLAYTV en tu TV</h2><p className="box-cast-subtitle">{descriptor.title || item.title || item.titulo}</p></div><button type="button" onClick={close} className="box-cast-close" aria-label="Cerrar opciones de transmisión">×</button></div>
+                    <div className="box-cast-state" role="status">{current ? `Reproduciendo en ${castState.device}. Al enviar el video, se pausa la reproducción local.` : !descriptor.supported ? descriptor.message : castState.ready ? 'Google Cast está preparado. Elige un televisor compatible conectado a tu misma red Wi-Fi.' : castState.error || 'Preparando Google Cast…'}</div>
                     {(error || castState.error && descriptor.supported && castState.status !== 'starting') && <div role="alert" className="box-cast-state box-cast-error">{error || castState.error}</div>}
                     {descriptor.supported && !current && <div className="box-cast-buttons"><button type="button" className="box-cast-action" onClick={send} disabled={!castState.ready || castState.loading}>{castState.loading ? 'Conectando…' : castState.connected ? `Enviar a ${castState.device}` : 'Elegir televisor'}</button>{airplay && <button type="button" className="box-cast-action secondary" onClick={useAirplay}>Usar AirPlay</button>}</div>}
                     {current && <div className="box-cast-remote"><div className="box-cast-buttons"><button type="button" className="box-cast-action" onClick={() => api.playPause()}>{castState.paused ? 'Continuar en TV' : 'Pausar en TV'}</button><button type="button" className="box-cast-action box-cast-stop" onClick={() => api.stop()}>Detener envío</button></div>{castState.canSeek && castState.duration > 0 && <label>Avanzar o retroceder<input aria-label="Posición del video en el televisor" type="range" min="0" max={castState.duration} step="1" value={Math.min(castState.currentTime || 0,castState.duration)} onChange={event=>api.seek(event.target.value)}/><span className="box-cast-time"><span>{time(castState.currentTime)}</span><span>{time(castState.duration)}</span></span></label>}<label>Volumen del TV<input aria-label="Volumen del televisor" type="range" min="0" max="1" step="0.05" value={castState.volume ?? 1} onChange={event=>api.setVolume(event.target.value)}/></label></div>}
@@ -1766,15 +1772,16 @@
             };
 
             const toggleMovieFullscreen = () => {
-                if (movieContainerRef.current) {
-                    if (!document.fullscreenElement) {
-                        if (movieContainerRef.current.requestFullscreen) movieContainerRef.current.requestFullscreen().catch(() => {});
-                        else if (movieContainerRef.current.webkitRequestFullscreen) movieContainerRef.current.webkitRequestFullscreen();
-                    } else {
-                        if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
-                        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-                    }
-                }
+                const container = movieContainerRef.current;
+                if (!container) return;
+                const video = container.querySelector('video');
+                const nativeFullscreen = () => { try { video?.webkitEnterFullscreen?.(); } catch (_) {} };
+                if (document.fullscreenElement) document.exitFullscreen?.()?.catch?.(() => {});
+                else if (document.webkitFullscreenElement) document.webkitExitFullscreen?.();
+                else if (container.requestFullscreen) {
+                    try { container.requestFullscreen()?.catch?.(nativeFullscreen); } catch (_) { nativeFullscreen(); }
+                } else if (video?.webkitEnterFullscreen) nativeFullscreen();
+                else container.webkitRequestFullscreen?.();
             };
 
             const getDisplayContent = () => { 
@@ -1863,16 +1870,7 @@
                 window.history.pushState({ appState: 'player', item: item.title }, '');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
-                setTimeout(() => {
-                    const playerElement = movieContainerRef.current || document.querySelector('video') || document.querySelector('iframe');
-                    if (playerElement) {
-                        if (playerElement.requestFullscreen) {
-                            playerElement.requestFullscreen().catch(() => {});
-                        } else if (playerElement.webkitRequestFullscreen) {
-                            playerElement.webkitRequestFullscreen();
-                        }
-                    }
-                }, 300);
+                // Fullscreen is requested only by its button, within the user's gesture.
             };
 
             const handleRateMovie = item => {
