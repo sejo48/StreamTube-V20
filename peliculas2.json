@@ -1,5 +1,1116 @@
 [
   {
+    "titulo": "Rastreado",
+    "tituloOriginal": "Off the Grid",
+    "descripcion": "Jack Guy es un brillante científico que desarrolla una revolucionaria fuente de energía limpia con potencial para cambiar el mundo. Cuando descubre que la empresa para la que trabaja pretende convertir su invento en un arma, decide desaparecer junto con sus investigaciones y vivir oculto lejos de la sociedad. Sin embargo, la compañía logra localizarlo y envía mercenarios para capturarlo. Obligado a luchar por su supervivencia, Jack utiliza su inteligencia, conocimientos técnicos y habilidades de combate para enfrentarse a quienes intentan apoderarse de su creación y evitar que sea utilizada con fines destructivos.",
+    "imagen": "https://image.tmdb.org/t/p/w780/p54x9dKLWZQ78aSo5jPf2NodFVs.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/jpS4Hg1MjXgmIXYZhJwNPVGJaTG.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1D80ZiA8UfU1m71fiQB2jQ7RqbH8-tJa_/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-06-27",
+    "rating": "6.4",
+    "votos": 143,
+    "runtime": "1h 45min",
+    "genres": [
+      "Acción",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Suspense",
+    "clasificacion": "R",
+    "tagline": "",
+    "director": "Johnny Martin",
+    "guionistas": "Jim Agnew",
+    "reparto": [
+      {
+        "nombre": "Josh Duhamel",
+        "personaje": "Guy",
+        "foto": "https://image.tmdb.org/t/p/w185/5Rp9aeWdN2S623KCjwfii9MhDK1.jpg"
+      },
+      {
+        "nombre": "Greg Kinnear",
+        "personaje": "Ranish",
+        "foto": "https://image.tmdb.org/t/p/w185/iJezGc9XjY0DFPs00SypkuKImFK.jpg"
+      },
+      {
+        "nombre": "María Elisa Camargo",
+        "personaje": "Josey",
+        "foto": "https://image.tmdb.org/t/p/w185/3rkxKz7bylodgS0ITMjlLkBPvVK.jpg"
+      },
+      {
+        "nombre": "Peter Stormare",
+        "personaje": "Belcor",
+        "foto": "https://image.tmdb.org/t/p/w185/1rtpuUqBV29jDc1huUhtjGDbEwn.jpg"
+      },
+      {
+        "nombre": "Ricky Russert",
+        "personaje": "Marcus",
+        "foto": "https://image.tmdb.org/t/p/w185/5xDjMCq5qS6GwPRTbM5wvFC5Gk7.jpg"
+      },
+      {
+        "nombre": "Michael Zapesotsky",
+        "personaje": "Chase",
+        "foto": ""
+      },
+      {
+        "nombre": "Joe Bucaro III",
+        "personaje": "Chase’s Father",
+        "foto": "https://image.tmdb.org/t/p/w185/gvJs1YQZRrSbkiSGAiCAugaXyzl.jpg"
+      },
+      {
+        "nombre": "Daniel Farag",
+        "personaje": "Omar",
+        "foto": ""
+      },
+      {
+        "nombre": "Paul Sampson",
+        "personaje": "PAU",
+        "foto": "https://image.tmdb.org/t/p/w185/27KdZ5nuaVvDLsLR24h185HrcuD.jpg"
+      },
+      {
+        "nombre": "Talia Asseraf",
+        "personaje": "Mia",
+        "foto": "https://image.tmdb.org/t/p/w185/qO9bluzeNVtHqVeF5x8vc7QxfPP.jpg"
+      },
+      {
+        "nombre": "Michael Papajohn",
+        "personaje": "Sheriff",
+        "foto": "https://image.tmdb.org/t/p/w185/hdTJBfIXfvRdlD1p8y6rra207UP.jpg"
+      },
+      {
+        "nombre": "David Lipper",
+        "personaje": "Eddie",
+        "foto": "https://image.tmdb.org/t/p/w185/apAgZr1qU5Q99RFR1xCrpZ1CUL9.jpg"
+      }
+    ],
+    "pais": "Italy, United States of America",
+    "idioma": "en",
+    "productoras": "Buffalo 8, Iervolino & Lady Bacardi Entertainment, Eyevox, BondIt Media Capital, Latigo Films, Grindstone Entertainment Group",
+    "presupuesto": 13000000,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Rey de asesinos",
+        "poster": "https://image.tmdb.org/t/p/w342/59PHpiaLvVsCriuRzW8aftRoO5D.jpg",
+        "year": "2023",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Luces fuera",
+        "poster": "https://image.tmdb.org/t/p/w342/w77zHTSykW74c19rgV5JOA0nGmd.jpg",
+        "year": "2024",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Zip Wire",
+        "poster": "https://image.tmdb.org/t/p/w342/eLMHUOQ4mCMxePMbv0TIVB48zfe.jpg",
+        "year": "2026",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Perros de guerra",
+        "poster": "https://image.tmdb.org/t/p/w342/fks0SX3SAOjjV6Rd9sJhXPyI5ai.jpg",
+        "year": "2024",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Instinto peligroso",
+        "poster": "https://image.tmdb.org/t/p/w342/ubeZN7kWlr7Bl1OxdBPck43FhD3.jpg",
+        "year": "2021",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Marcados para morir",
+        "poster": "https://image.tmdb.org/t/p/w342/sIZo7dF3U7nsLAxlUhKCPAkFwjB.jpg",
+        "year": "2011",
+        "rating": "6.0"
+      }
+    ],
+    "tmdbId": 1371151,
+    "tmdbType": "movie",
+    "runtimeMin": 105,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Tiburón blanco: La bestia del mar",
+    "tituloOriginal": "Beast of War",
+    "descripcion": "Un grupo de jóvenes soldados australianos naufraga en plena Segunda Guerra Mundial mientras cruza el mar de Timor. Atrapados en una balsa que se hace cada vez más pequeña, deberán sobrevivir a las aguas implacables, a sus propios conflictos, a los ataques enemigos y a la amenaza constante de un enorme y hambriento tiburón blanco.",
+    "imagen": "https://image.tmdb.org/t/p/w780/58xC3Vj5Td1UXhNaOQDOj2ygAH6.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/gHdSsZ1Bs8dCcflFwZg7nFMTW73.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1P8pR4RdqhjHWMQDY3PoVepCuwA1kcOKr/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-08-22",
+    "rating": "6.2",
+    "votos": 168,
+    "runtime": "1h 27min",
+    "genres": [
+      "Suspense",
+      "Acción",
+      "Bélica",
+      "Terror"
+    ],
+    "generosTexto": "Suspense, Acción, Bélica, Terror",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "Kiah Roache-Turner",
+    "guionistas": "Kiah Roache-Turner",
+    "reparto": [
+      {
+        "nombre": "Mark Coles Smith",
+        "personaje": "Leo",
+        "foto": "https://image.tmdb.org/t/p/w185/mFGf5GruME5dnAuKBG1kgzK8PJs.jpg"
+      },
+      {
+        "nombre": "Joel Nankervis",
+        "personaje": "Will",
+        "foto": "https://image.tmdb.org/t/p/w185/p9gyKYXICMSMf6U7y2m2psQGoLX.jpg"
+      },
+      {
+        "nombre": "Sam Delich",
+        "personaje": "Des Kelly",
+        "foto": "https://image.tmdb.org/t/p/w185/5t0I4FBAQ5BRiZXUNnFJBOlyKc8.jpg"
+      },
+      {
+        "nombre": "Maximillian Johnson",
+        "personaje": "Stan",
+        "foto": "https://image.tmdb.org/t/p/w185/sjlNcH8ftVnbYzMkVw2tB1CVYuC.jpg"
+      },
+      {
+        "nombre": "Lee Tiger Halley",
+        "personaje": "Teddy",
+        "foto": "https://image.tmdb.org/t/p/w185/dEoFIS64jLAM5anf3A9DIs9vw6e.jpg"
+      },
+      {
+        "nombre": "Sam Parsonson",
+        "personaje": "Thompson",
+        "foto": "https://image.tmdb.org/t/p/w185/ta9h0LYwhyDTjUDhtwCuA8B8R9I.jpg"
+      },
+      {
+        "nombre": "Tristan McKinnon",
+        "personaje": "Bobby",
+        "foto": "https://image.tmdb.org/t/p/w185/2sMmWqtTEmUw8f8IgAHzFAu51se.jpg"
+      },
+      {
+        "nombre": "Aswan Reid",
+        "personaje": "Archie",
+        "foto": "https://image.tmdb.org/t/p/w185/oesXEXgDzwH9fPo8nqGhtjgNtF7.jpg"
+      },
+      {
+        "nombre": "マサ・ヤマグチ",
+        "personaje": "Commander Tetsuo Harada",
+        "foto": "https://image.tmdb.org/t/p/w185/nLyy3eNUmXY9UTZNYVdGhaZWps4.jpg"
+      },
+      {
+        "nombre": "Lauren Grimson",
+        "personaje": "Hazel",
+        "foto": "https://image.tmdb.org/t/p/w185/lgcVpfvG6azbOG5OanG4uXh6JxB.jpg"
+      },
+      {
+        "nombre": "Laura Brogan Browne",
+        "personaje": "Susan",
+        "foto": ""
+      },
+      {
+        "nombre": "Steve Le Marquand",
+        "personaje": "Sergeant",
+        "foto": "https://image.tmdb.org/t/p/w185/b6iPJ3duOxAe7Jvnj0olNFWejUR.jpg"
+      }
+    ],
+    "pais": "Australia",
+    "idioma": "en",
+    "productoras": "Bronte Pictures, Pictures in Paradise",
+    "presupuesto": 0,
+    "recaudacion": 336834,
+    "trailerUrl": "https://www.youtube.com/watch?v=kSCjdQcbGrg",
+    "coleccion": "",
+    "keywords": "world war ii, grave, based on true story, survival, great white shark, survival horror, 1940s, defiant, earnest, tragic",
+    "similares": [
+      {
+        "titulo": "Hombres de valor",
+        "poster": "https://image.tmdb.org/t/p/w342/5npFbuPaAtyrU6a24dzSVbFZTji.jpg",
+        "year": "2016",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "El último aliento",
+        "poster": "https://image.tmdb.org/t/p/w342/fyKkecH1we96Ko6N0gMbuhwVlGL.jpg",
+        "year": "2024",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Asesinos cibernéticos",
+        "poster": "https://image.tmdb.org/t/p/w342/fn9ze2ggUVYb5KnMcvpXLJI7pXU.jpg",
+        "year": "1995",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Primitive War",
+        "poster": "https://image.tmdb.org/t/p/w342/AcE1dni9WA1Uu2YlmCWuS5ltZBi.jpg",
+        "year": "2025",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Tiburón",
+        "poster": "https://image.tmdb.org/t/p/w342/aCqHb3eFQV8raX30OfGurqPlpjh.jpg",
+        "year": "1975",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Wolf Hound: lobos de acero",
+        "poster": "https://image.tmdb.org/t/p/w342/vbbikouQI91CcLdXTtFNMzmLv3z.jpg",
+        "year": "2022",
+        "rating": "6.4"
+      }
+    ],
+    "tmdbId": 1244531,
+    "tmdbType": "movie",
+    "runtimeMin": 87,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Zootrópolis 2",
+    "tituloOriginal": "Zootopia 2",
+    "descripcion": "Después de resolver el caso más importante en la historia de Zootrópolis, los policías novatos Judy Hopps y Nick Wilde descubren que su asociación no es tan sólida como pensaban cuando el Jefe Bogo les ordena unirse al programa de consejería \"Compañeros en Crisis\". Pero no pasa mucho tiempo para que su asociación se ponga a prueba al máximo, cuando la llegada de Gary, la serpiente, pone la ciudad patas arriba.",
+    "imagen": "https://image.tmdb.org/t/p/w780/4fRdfQPjHiuDSkzaxFAV44k7Iem.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/lgotja3xMoJZbynwHfcQcJAEMWH.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1U2kDtGT6WoRCs0x1EGk-4SKG1KpXhfnL/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-11-26",
+    "rating": "7.7",
+    "votos": 3601,
+    "runtime": "1h 47min",
+    "genres": [
+      "Animación",
+      "Aventura",
+      "Comedia",
+      "Misterio",
+      "Familia"
+    ],
+    "generosTexto": "Animación, Aventura, Comedia, Misterio, Familia",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "Jared Bush, Byron Howard",
+    "guionistas": "Jared Bush",
+    "reparto": [
+      {
+        "nombre": "Ginnifer Goodwin",
+        "personaje": "Judy Hopps (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/eByMpalFhQxUYuzA0srCN8rnfOZ.jpg"
+      },
+      {
+        "nombre": "Jason Bateman",
+        "personaje": "Nick Wilde (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/8e6mt0vGjPo6eW52gqRuXy5YnfN.jpg"
+      },
+      {
+        "nombre": "Ke Huy Quan",
+        "personaje": "Gary De'Snake (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/iestHyn7PLuVowj5Jaa1SGPboQ4.jpg"
+      },
+      {
+        "nombre": "Fortune Feimster",
+        "personaje": "Nibbles Maplestick (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/9f2p2T61K4pIvKQMLRlow8znkXU.jpg"
+      },
+      {
+        "nombre": "Andy Samberg",
+        "personaje": "Pawbert Lynxley (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/jMXU5oG3i93SH1yhkpbBGskFiJl.jpg"
+      },
+      {
+        "nombre": "David Strathairn",
+        "personaje": "Milton Lynxley (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/w5YM2cGefPnkoyIXCi2UrCQW53r.jpg"
+      },
+      {
+        "nombre": "Idris Elba",
+        "personaje": "Chief Bogo (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/be1bVF7qGX91a6c5WeRPs5pKXln.jpg"
+      },
+      {
+        "nombre": "Shakira",
+        "personaje": "Gazelle (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/20k7YtDH2iU3KdAysdDPlZz7uhf.jpg"
+      },
+      {
+        "nombre": "Patrick Warburton",
+        "personaje": "Mayor Winddancer (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/nDoOii5HaGwPxYa28xFC2sDkF8y.jpg"
+      },
+      {
+        "nombre": "Quinta Brunson",
+        "personaje": "Dr. Fuzzby (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/1oEdBc88XAN3Z9n2pdNvH1XIT71.jpg"
+      },
+      {
+        "nombre": "Danny Trejo",
+        "personaje": "Jesús (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/7JrUkRGBscZ1Hy5JinaaXjjzSCF.jpg"
+      },
+      {
+        "nombre": "Nate Torrence",
+        "personaje": "Clawhauser (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/yT9o149xPygdY0NsF9sNgiQwuru.jpg"
+      }
+    ],
+    "pais": "United States of America, Canada",
+    "idioma": "en",
+    "productoras": "Walt Disney Animation Studios, Walt Disney Animation Studios",
+    "presupuesto": 150000000,
+    "recaudacion": 1868208796,
+    "trailerUrl": "https://www.youtube.com/watch?v=VZU-glDcBAw",
+    "coleccion": "Zootrópolis - Colección",
+    "keywords": "snake, bunny, fox, cop, sequel, anthropomorphism, animals, displacement, buddy cop, buddy comedy, complex, playful, talking animal, 3d animation, embarrassed, excited",
+    "similares": [
+      {
+        "titulo": "Mascotas 2",
+        "poster": "https://image.tmdb.org/t/p/w342/dqGsG2uNV9JGgrfODbTafPUukci.jpg",
+        "year": "2019",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Tod y Toby 2",
+        "poster": "https://image.tmdb.org/t/p/w342/pqPdNJG8XC7cklobrB5pk8ML1Ij.jpg",
+        "year": "2006",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Colegas en el bosque 2",
+        "poster": "https://image.tmdb.org/t/p/w342/nbppDvunl6Mn8NAxYSHMPp3qkNo.jpg",
+        "year": "2008",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Madagascar 3: De marcha por Europa",
+        "poster": "https://image.tmdb.org/t/p/w342/8fKTIecTVNURB6CRFjYMypggRL2.jpg",
+        "year": "2012",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Policán",
+        "poster": "https://image.tmdb.org/t/p/w342/fYrX4Xn8hIaIBx5p1HRFJ3uG7uH.jpg",
+        "year": "2025",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "La Patrulla Canina: La superpelícula",
+        "poster": "https://image.tmdb.org/t/p/w342/74UljzdgFuYo0BqzuEO2s2azObe.jpg",
+        "year": "2023",
+        "rating": "7.0"
+      }
+    ],
+    "tmdbId": 1084242,
+    "tmdbType": "movie",
+    "runtimeMin": 107,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "El hombre menguante",
+    "tituloOriginal": "L'Homme qui rétrécit",
+    "descripcion": "Paul es un padre de familia ejemplar y el dueño de una empresa de construcción naval. Durante uno de sus habituales baños en el mar, es testigo de un extraño suceso meteorológico. A partir de ese momento, Paul empieza a encoger sin explicación científica posible. Por accidente, una mañana queda atrapado en su propio sótano. El hombre deberá luchar si quiere sobrevivir en un entorno cotidiano convertido, repentinamente, en un terreno letal.",
+    "imagen": "https://image.tmdb.org/t/p/w780/1hRdOzLWpXdNawaNhktTnRoM0w1.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/pgvn1tazqI9mZaRCNQUqNr3umvG.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1f7GavO_kX7uTNovkUQIAqqWNN03PGcks/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-10-22",
+    "rating": "6.0",
+    "votos": 181,
+    "runtime": "1h 39min",
+    "genres": [
+      "Aventura",
+      "Ciencia ficción"
+    ],
+    "generosTexto": "Aventura, Ciencia ficción",
+    "clasificacion": "12",
+    "tagline": "",
+    "director": "Jan Kounen",
+    "guionistas": "Jan Kounen, Christophe Deslandes",
+    "reparto": [
+      {
+        "nombre": "Jean Dujardin",
+        "personaje": "Paul",
+        "foto": "https://image.tmdb.org/t/p/w185/iPtSWWoO8vajj6fIUQLQeuGOCsk.jpg"
+      },
+      {
+        "nombre": "Marie-Josée Croze",
+        "personaje": "Élise",
+        "foto": "https://image.tmdb.org/t/p/w185/d7sRQCDFijXaSnyiZpURknJAQFi.jpg"
+      },
+      {
+        "nombre": "Daphné Richard",
+        "personaje": "Mia",
+        "foto": "https://image.tmdb.org/t/p/w185/rcjnsdNXwHBKLASwl7exwQYUxNA.jpg"
+      },
+      {
+        "nombre": "Serge Swysen",
+        "personaje": "Dr. Sicre",
+        "foto": "https://image.tmdb.org/t/p/w185/160fnVds8O8RYYRh2gzaPdqQlyc.jpg"
+      },
+      {
+        "nombre": "Salim Talbi",
+        "personaje": "Karim",
+        "foto": "https://image.tmdb.org/t/p/w185/3hqdnBmRK8l6q4M9MGfhwnfMTFW.jpg"
+      },
+      {
+        "nombre": "Miranda Raison",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/eEZi02e07nZ3qG6DA8dYRAVVEHh.jpg"
+      },
+      {
+        "nombre": "Stéphanie Van Vyve",
+        "personaje": "L'endocrinologue",
+        "foto": "https://image.tmdb.org/t/p/w185/wJSLWrz1jVemtN4MooPLU6cOOe3.jpg"
+      }
+    ],
+    "pais": "France, Belgium",
+    "idioma": "fr",
+    "productoras": "Pitchipoï Productions, TF1 Films Production, uMedia, La Production Dujardin, uFund, Proximus",
+    "presupuesto": 24350000,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=wsGd-nDCE-s",
+    "coleccion": "",
+    "keywords": "based on novel or book, shrinking, remake, survival, philosophical",
+    "similares": [
+      {
+        "titulo": "Chaos Walking",
+        "poster": "https://image.tmdb.org/t/p/w342/k3zMduK3u1ckKt1HHcvPDbdhOap.jpg",
+        "year": "2021",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "La Torre Oscura",
+        "poster": "https://image.tmdb.org/t/p/w342/eVTlk5O6simP30vTd3sA1BNQZgV.jpg",
+        "year": "2017",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Divergente",
+        "poster": "https://image.tmdb.org/t/p/w342/libmZ7xJBkVWmoixPyF3EdTmNtt.jpg",
+        "year": "2014",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Polizón",
+        "poster": "https://image.tmdb.org/t/p/w342/5wEKcx7g3YRocecq18MwZd4dTyd.jpg",
+        "year": "2021",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "La serie Divergente: Leal",
+        "poster": "https://image.tmdb.org/t/p/w342/mrzK6fJY6sCNjBdD3JY1AHGQWKS.jpg",
+        "year": "2016",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "El corredor del laberinto II. Las pruebas",
+        "poster": "https://image.tmdb.org/t/p/w342/43K7XwlFzO5PGdNMFY5s36jXdWo.jpg",
+        "year": "2015",
+        "rating": "6.7"
+      }
+    ],
+    "tmdbId": 1233506,
+    "tmdbType": "movie",
+    "runtimeMin": 99,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Icefall",
+    "tituloOriginal": "Icefall",
+    "descripcion": "Un exmarine y cazador furtivo llamado Harlan (Joel Kinnaman) descubre un avión cargado con millones de dólares que ha caído en un lago congelado. Tras ser arrestado por una guardabosques nativa, un grupo de criminales y policías corruptos se enteran de su paradero. Por ello, Harlan y la ranger se unen para luchar e intentar escapar a través del peligroso lago antes de que el hielo se derrita.",
+    "imagen": "https://image.tmdb.org/t/p/w780/8qQdun8426bfcQePFSZnucWGSbQ.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/gQimJqYMKCkwHIo8wwYKhmnCfBr.jpg",
+    "urlDrive": "",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-10-16",
+    "rating": "6.6",
+    "votos": 255,
+    "runtime": "1h 39min",
+    "genres": [
+      "Acción",
+      "Crimen",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Crimen, Suspense",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "Stefan Ruzowitzky",
+    "guionistas": "George Mahaffey, Steve Isles",
+    "reparto": [
+      {
+        "nombre": "Joel Kinnaman",
+        "personaje": "Harlan",
+        "foto": "https://image.tmdb.org/t/p/w185/cVfYzTyQdJ4xtxKPZe7IcW3BJN4.jpg"
+      },
+      {
+        "nombre": "Cara Jade Myers",
+        "personaje": "Ani",
+        "foto": "https://image.tmdb.org/t/p/w185/5oHV0iqIja1qmX5cKyQHWA0eVXB.jpg"
+      },
+      {
+        "nombre": "Danny Huston",
+        "personaje": "Rhodes",
+        "foto": "https://image.tmdb.org/t/p/w185/mNz9t7MNANopavbLgcsZMMQBJ0u.jpg"
+      },
+      {
+        "nombre": "Graham Greene",
+        "personaje": "Oz",
+        "foto": "https://image.tmdb.org/t/p/w185/ui1x4vGTiI9eANYM9BZ6R4oushJ.jpg"
+      },
+      {
+        "nombre": "Martin Sensmeier",
+        "personaje": "Pen",
+        "foto": "https://image.tmdb.org/t/p/w185/d25Mx8thmbgQWHR35S5s6MxjsCc.jpg"
+      },
+      {
+        "nombre": "Oliver Trevena",
+        "personaje": "Dax",
+        "foto": "https://image.tmdb.org/t/p/w185/j0ejU7vdE7lRxYKKrhA5aWw1zCT.jpg"
+      },
+      {
+        "nombre": "DeVaughn Nixon",
+        "personaje": "Drake",
+        "foto": "https://image.tmdb.org/t/p/w185/grqGei5XcuKNPjOTAZpepOcmmsW.jpg"
+      },
+      {
+        "nombre": "Frida Gustavsson",
+        "personaje": "Sirena",
+        "foto": "https://image.tmdb.org/t/p/w185/jtD5lJSSAc61AWCNKGlQmlyYNWv.jpg"
+      },
+      {
+        "nombre": "Башар Рахал",
+        "personaje": "Carl",
+        "foto": "https://image.tmdb.org/t/p/w185/qhUhE1WtPUCSjoU3A9YtJxosc78.jpg"
+      },
+      {
+        "nombre": "Michael Saccente",
+        "personaje": "Jed",
+        "foto": "https://image.tmdb.org/t/p/w185/iSOWUE2HzsR4KHBqzkRcvDkgb5H.jpg"
+      },
+      {
+        "nombre": "Euan Macnaughton",
+        "personaje": "Lowery",
+        "foto": "https://image.tmdb.org/t/p/w185/r4hFWEoB8bTxChHac6oRNYLpXhd.jpg"
+      },
+      {
+        "nombre": "Will Fletcher",
+        "personaje": "Ellis",
+        "foto": "https://image.tmdb.org/t/p/w185/muaodyITSCIODVh3xZvTd4OFy4x.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Arclight Films, Top Film",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "dreary, demeaning",
+    "similares": [
+      {
+        "titulo": "The System",
+        "poster": "https://image.tmdb.org/t/p/w342/6BZAYG6oooTLv72w9ePKvbpqDlj.jpg",
+        "year": "2022",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "The Island",
+        "poster": "https://image.tmdb.org/t/p/w342/l3ysmDejyuh4DKZYhY09R2e6StD.jpg",
+        "year": "2023",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Trap House",
+        "poster": "https://image.tmdb.org/t/p/w342/p9zbrDpAKyj3jeemkyAoBmlo3KG.jpg",
+        "year": "2025",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "El juego de la venganza",
+        "poster": "https://image.tmdb.org/t/p/w342/dzHcsmW6jTCXZdVKbaxV3m1crSg.jpg",
+        "year": "2026",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Hunting Season",
+        "poster": "https://image.tmdb.org/t/p/w342/lZZu0UEPtEeZ90fkX6i1pmEHOs8.jpg",
+        "year": "2025",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Los últimos días del crimen",
+        "poster": "https://image.tmdb.org/t/p/w342/jYIGKWo8GIHR08Lu3deka0YccvI.jpg",
+        "year": "2020",
+        "rating": "6.4"
+      }
+    ],
+    "tmdbId": 1242501,
+    "tmdbType": "movie",
+    "runtimeMin": 99,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Hunting Season",
+    "tituloOriginal": "Hunting Season",
+    "descripcion": "Cuando una misteriosa joven aparece en la orilla de un río local, tanto la niña de doce años que la descubre como su sobreprotector padre cambian para siempre con la llegada de esta extraña a su hogar. Mientras, un despiadado capo de la droga no se detendrá ante nada para matarla de una vez por todas.",
+    "imagen": "https://image.tmdb.org/t/p/w780/lZZu0UEPtEeZ90fkX6i1pmEHOs8.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/eJ0HooOOD1uzI39CfOQNWIiWKlJ.jpg",
+    "urlDrive": "https://drive.google.com/file/d/11wPvkkkGwUM-hwHJfrBRRy0p4L2LTiSX/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-12-05",
+    "rating": "7.4",
+    "votos": 479,
+    "runtime": "1h 40min",
+    "genres": [
+      "Acción",
+      "Drama",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Drama, Suspense",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Raja Collins",
+    "guionistas": "Adam Hampton",
+    "reparto": [
+      {
+        "nombre": "Mel Gibson",
+        "personaje": "Bowdrie",
+        "foto": "https://image.tmdb.org/t/p/w185/jnqHMaOslt8cef2atSmOpGRvNla.jpg"
+      },
+      {
+        "nombre": "Shelley Hennig",
+        "personaje": "January",
+        "foto": "https://image.tmdb.org/t/p/w185/bsqU5e9rVuLhP8l1GqUWjsBRQvq.jpg"
+      },
+      {
+        "nombre": "Jordi Mollà",
+        "personaje": "Alejandro",
+        "foto": "https://image.tmdb.org/t/p/w185/9XsTmWLJ2qMXoUpcb105h6h5OUX.jpg"
+      },
+      {
+        "nombre": "Sofia Hublitz",
+        "personaje": "Tag",
+        "foto": "https://image.tmdb.org/t/p/w185/A1nSqZXtKJwuQXDGrhmYa0CP0cZ.jpg"
+      },
+      {
+        "nombre": "A.J. Buckley",
+        "personaje": "Davenport",
+        "foto": "https://image.tmdb.org/t/p/w185/arGsJN4HuiNpFsRsNX81fDX1KJj.jpg"
+      },
+      {
+        "nombre": "James DuMont",
+        "personaje": "Sheriff Brake",
+        "foto": "https://image.tmdb.org/t/p/w185/8DLNFj3a4SJWdtw5daPBQm0qrOO.jpg"
+      },
+      {
+        "nombre": "Rocky Myers",
+        "personaje": "Jensen",
+        "foto": "https://image.tmdb.org/t/p/w185/eN5NK71ABZtso4QDrYFrhz2JRvZ.jpg"
+      },
+      {
+        "nombre": "Oliver Trevena",
+        "personaje": "Irish",
+        "foto": "https://image.tmdb.org/t/p/w185/j0ejU7vdE7lRxYKKrhA5aWw1zCT.jpg"
+      },
+      {
+        "nombre": "Scarlet Rose Stallone",
+        "personaje": "Lizzie",
+        "foto": "https://image.tmdb.org/t/p/w185/13f6FANe7TdbvjtZCbArygnDv1S.jpg"
+      },
+      {
+        "nombre": "Rob Moran",
+        "personaje": "Dale",
+        "foto": "https://image.tmdb.org/t/p/w185/lwGI1FIdRpwvKnZlD3dKhntP4i4.jpg"
+      },
+      {
+        "nombre": "Jaylen Moore",
+        "personaje": "Koontz",
+        "foto": "https://image.tmdb.org/t/p/w185/fFOu4NtqhxLaVoMi2xwRT6ofeaP.jpg"
+      },
+      {
+        "nombre": "Randall J. Bacon",
+        "personaje": "Elroy",
+        "foto": "https://image.tmdb.org/t/p/w185/6udR5ntbDRJ5aGNqrA6P9IPjq8G.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Beno Films (US), ETA films, Filmopoly, BondIt Media Capital, Buffalo 8, CaliWood Pictures, FluffyBear Media",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "hunting season, temporada de caza",
+    "similares": [
+      {
+        "titulo": "The System",
+        "poster": "https://image.tmdb.org/t/p/w342/6BZAYG6oooTLv72w9ePKvbpqDlj.jpg",
+        "year": "2022",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Zona prohibida",
+        "poster": "https://image.tmdb.org/t/p/w342/nXw8hYk0z7VgryoaUN3ApjcOoze.jpg",
+        "year": "2022",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Agentes 355",
+        "poster": "https://image.tmdb.org/t/p/w342/kgU2aIuDdPyKtEi8oZ6yzohpfVF.jpg",
+        "year": "2022",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "El juego de la venganza",
+        "poster": "https://image.tmdb.org/t/p/w342/dzHcsmW6jTCXZdVKbaxV3m1crSg.jpg",
+        "year": "2026",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Campeón de campeones 2",
+        "poster": "https://image.tmdb.org/t/p/w342/tKUVMnXGwtsDABdyYVv4GjPKnpm.jpg",
+        "year": "1993",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Icefall",
+        "poster": "https://image.tmdb.org/t/p/w342/8qQdun8426bfcQePFSZnucWGSbQ.jpg",
+        "year": "2025",
+        "rating": "6.6"
+      }
+    ],
+    "tmdbId": 1387382,
+    "tmdbType": "movie",
+    "runtimeMin": 100,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "A la deriva",
+    "tituloOriginal": "Not Without Hope",
+    "descripcion": "A causa de una enorme tormenta, el barco de pesca de un grupo de amigos naufraga frente a la costa de México y quedan solos, varados en el mar y luchando por sobrevivir.",
+    "imagen": "https://image.tmdb.org/t/p/w780/3g1WuB4GI2NhoqS7XTpbB5EvfxK.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/rJ7PB78ZcBaCPxQRLrZxh4M2Z0N.jpg",
+    "urlDrive": "https://drive.google.com/file/d/10pzk9YXKlQX1r7Ohl9y-YwPPHJetOYTM/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-12-04",
+    "rating": "6.6",
+    "votos": 151,
+    "runtime": "1h 59min",
+    "genres": [
+      "Suspense",
+      "Drama"
+    ],
+    "generosTexto": "Suspense, Drama",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "Joe Carnahan",
+    "guionistas": "Joe Carnahan, E. Nicholas Mariani",
+    "reparto": [
+      {
+        "nombre": "Zachary Levi",
+        "personaje": "Nick Schuyler",
+        "foto": "https://image.tmdb.org/t/p/w185/1W8L3kEMMPF9umT3ZGaNIiCYKfZ.jpg"
+      },
+      {
+        "nombre": "Josh Duhamel",
+        "personaje": "Timothy Close",
+        "foto": "https://image.tmdb.org/t/p/w185/5Rp9aeWdN2S623KCjwfii9MhDK1.jpg"
+      },
+      {
+        "nombre": "Quentin Plair",
+        "personaje": "Marquis Cooper",
+        "foto": "https://image.tmdb.org/t/p/w185/jCVuX3cB0iyjsYaz2RcuBtX2MaL.jpg"
+      },
+      {
+        "nombre": "Terrence Terrell",
+        "personaje": "Corey Smith",
+        "foto": "https://image.tmdb.org/t/p/w185/to5u2Mumj1zp9J9JSV1QCzI3XuN.jpg"
+      },
+      {
+        "nombre": "Marshall Cook",
+        "personaje": "Will Bleakley",
+        "foto": "https://image.tmdb.org/t/p/w185/pFGVXYnyRbK22xI1uPPzflDf7vO.jpg"
+      },
+      {
+        "nombre": "JoBeth Williams",
+        "personaje": "Marcia",
+        "foto": "https://image.tmdb.org/t/p/w185/nL9ZdnI50y1yRVvmz0P61TxjZsF.jpg"
+      },
+      {
+        "nombre": "Floriana Lima",
+        "personaje": "Paula",
+        "foto": "https://image.tmdb.org/t/p/w185/hiHqJwjzz6fT9QeTz0rG7MgdnOX.jpg"
+      },
+      {
+        "nombre": "Jessica Blackmore",
+        "personaje": "Rebekah Cooper",
+        "foto": "https://image.tmdb.org/t/p/w185/jEJzmYdZqf5PuwnylP78WAmYkUL.jpg"
+      },
+      {
+        "nombre": "James Martin Kelly",
+        "personaje": "Stu Schuyler",
+        "foto": "https://image.tmdb.org/t/p/w185/tEzKhyEa5SO3bUyvwV9yO521kKj.jpg"
+      },
+      {
+        "nombre": "Chris Dingli",
+        "personaje": "Coast Guard Radio Operator Davies",
+        "foto": "https://image.tmdb.org/t/p/w185/zzqT0ZDR67H1OjIRUTQJfCEgW5r.jpg"
+      },
+      {
+        "nombre": "Leeshon Alexander",
+        "personaje": "Lieutenant Commander Patrick Peschka",
+        "foto": "https://image.tmdb.org/t/p/w185/j7LcYj2SLpWnYBtwYgEneWtpM8M.jpg"
+      },
+      {
+        "nombre": "Davina Reeves",
+        "personaje": "Weatherwoman",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Volition Media Partners, K. JAM Media, Altit Media Group, Latigo Films, Prix Productions, Xtellus Partners",
+    "presupuesto": 18000000,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "absurd",
+    "similares": [
+      {
+        "titulo": "2073",
+        "poster": "https://image.tmdb.org/t/p/w342/l67ir3kU53FYd6Vjwhqrkih1H1P.jpg",
+        "year": "2024",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Agente oculto",
+        "poster": "https://image.tmdb.org/t/p/w342/xXKVwk2wbcmZoY1oqa483YGbwwk.jpg",
+        "year": "2022",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "El buen vecino",
+        "poster": "https://image.tmdb.org/t/p/w342/w1Pg71Z60BweXmJui2H8o49MohO.jpg",
+        "year": "2022",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Tormenta en el Lago",
+        "poster": "https://image.tmdb.org/t/p/w342/oyc5fDw1tBaE0d258sBNc9674WM.jpg",
+        "year": "2003",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Misión frontera",
+        "poster": "https://image.tmdb.org/t/p/w342/oCB0j331qr6CW1TtpgSgPccdYA7.jpg",
+        "year": "2025",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Suburbicon",
+        "poster": "https://image.tmdb.org/t/p/w342/dL1GOIX3gs3GzZLDs4mg3fjjUOV.jpg",
+        "year": "2017",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 339849,
+    "tmdbType": "movie",
+    "runtimeMin": 119,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Sin rastro",
+    "tituloOriginal": "Stolen Girl",
+    "descripcion": "El mundo de una madre decidida, Mara, se viene abajo cuando su ex marido, Karim, secuestra a su hija pequeña, Amina, y huye a Oriente Medio. Desesperada por traer a su hija a casa, Mara forma equipo con Robeson, un enigmático ex marine y especialista en secuestros de niños. Su misión les lleva a Beirut, donde se ven envueltos en una traicionera red de espionaje internacional, traición y corrupción. Cuando el tiempo se agota, Mara se enfrenta a la decisión más difícil de su vida: recuperar a su hija o dejarla atrás por su propia seguridad.",
+    "imagen": "https://image.tmdb.org/t/p/w780/fFKcNfjOUbfaC8hPuiMxJ8PAudy.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/l23DWcm586XAv97PDX6zZEH8Ofy.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1uz49Acir-JNZ8f0OroKzRZtj5V4m9iIh/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-09-04",
+    "rating": "6.4",
+    "votos": 211,
+    "runtime": "1h 50min",
+    "genres": [
+      "Suspense",
+      "Acción",
+      "Aventura"
+    ],
+    "generosTexto": "Suspense, Acción, Aventura",
+    "clasificacion": "R",
+    "tagline": "",
+    "director": "James Kent",
+    "guionistas": "Rebecca Pollock, Kas Graham",
+    "reparto": [
+      {
+        "nombre": "Kate Beckinsale",
+        "personaje": "Maureen",
+        "foto": "https://image.tmdb.org/t/p/w185/aoIQJzrWRtq9mOeaPadzpUCAaVd.jpg"
+      },
+      {
+        "nombre": "Scott Eastwood",
+        "personaje": "Robeson",
+        "foto": "https://image.tmdb.org/t/p/w185/tKJEy1bFNxvIj7sivsB7Us2ThmY.jpg"
+      },
+      {
+        "nombre": "Jordan Duvigneau",
+        "personaje": "Carl",
+        "foto": "https://image.tmdb.org/t/p/w185/radXw5TVvfcKLRptZTKewHXshdz.jpg"
+      },
+      {
+        "nombre": "Matt Craven",
+        "personaje": "Joe",
+        "foto": "https://image.tmdb.org/t/p/w185/tWF8B3Dj7zvKRmkTplp7ice6Wo9.jpg"
+      },
+      {
+        "nombre": "Nowar Yusuf",
+        "personaje": "Dasia",
+        "foto": ""
+      },
+      {
+        "nombre": "Arvin Kananian",
+        "personaje": "Karim",
+        "foto": "https://image.tmdb.org/t/p/w185/hcjxh1ouEnWgDGiiW7ihcEXE8ba.jpg"
+      },
+      {
+        "nombre": "Robert Farrior",
+        "personaje": "Lewis",
+        "foto": "https://image.tmdb.org/t/p/w185/e6oe7eswcUTYfeq2otaIgAtfzor.jpg"
+      },
+      {
+        "nombre": "Alejandra Howard",
+        "personaje": "Amina (11)",
+        "foto": "https://image.tmdb.org/t/p/w185/uQyvQlzqsBCe7t0SuLF6zYtRtCd.jpg"
+      },
+      {
+        "nombre": "ياسمين بوعبيد",
+        "personaje": "Isra",
+        "foto": "https://image.tmdb.org/t/p/w185/se6ekKmcLZEWrGhpk0XobwUTVu2.jpg"
+      },
+      {
+        "nombre": "Maria Laila Fernandez",
+        "personaje": "Maya",
+        "foto": ""
+      },
+      {
+        "nombre": "Zeljko Matovina",
+        "personaje": "Jd’s Father",
+        "foto": ""
+      },
+      {
+        "nombre": "Maria Georgette Saliba",
+        "personaje": "Grandmother",
+        "foto": ""
+      }
+    ],
+    "pais": "United Kingdom, United States of America",
+    "idioma": "en",
+    "productoras": "Voltage Pictures, Vigorous Pictures, Hangtime International Pictures, Anjulia Productions, Braven Films",
+    "presupuesto": 26000000,
+    "recaudacion": 92691,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "6 balas",
+        "poster": "https://image.tmdb.org/t/p/w342/1ArlTk9TosvIJVmy9fwpD9XFRkw.jpg",
+        "year": "2012",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Agentes 355",
+        "poster": "https://image.tmdb.org/t/p/w342/kgU2aIuDdPyKtEi8oZ6yzohpfVF.jpg",
+        "year": "2022",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Campeón de campeones 4: Sin aliento",
+        "poster": "https://image.tmdb.org/t/p/w342/uXwY1TKs5uaJDQYFYW3bV7Qx73j.jpg",
+        "year": "1998",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Atrapado",
+        "poster": "https://image.tmdb.org/t/p/w342/hRCPafF0QzdUpWgZhfGVsW8Z7oI.jpg",
+        "year": "2020",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Take Back",
+        "poster": "https://image.tmdb.org/t/p/w342/1BsH8rzfaYUDDmb8wiMmkcM5ze0.jpg",
+        "year": "2021",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "The Yacht: La pasajera",
+        "poster": "https://image.tmdb.org/t/p/w342/3Oi2xIzQ8c4AYJah229zAMqSfQp.jpg",
+        "year": "2022",
+        "rating": "6.0"
+      }
+    ],
+    "tmdbId": 1280450,
+    "tmdbType": "movie",
+    "runtimeMin": 110,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Dulce sabor a muerte",
     "tituloOriginal": "Ice Cream Man",
     "descripcion": "Lo que comienza siendo un verano idílico, en un pequeño y tranquilo pueblo vacacional, se convierte en una auténtica pesadilla cuando los más pequeños comienzan a mostrar instintos asesinos y deseos insaciables por acabar con todos los adultos. Son víctimas de una curiosa maldición provocada por los helados que comen que afecta a todos, menos a tres niños que tendrán que intentar escapar y salvar a todo el pueblo.",
