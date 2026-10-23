@@ -35,9 +35,6 @@
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="./tv-live.js?v=20261018-1"></script>
     <link rel="stylesheet" href="./tv-live.css?v=20261018-1">
-    <link rel="stylesheet" href="./cast.css?v=20261023-1">
-    <script src="./cast.js?v=20261023-1"></script>
-    <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1" async></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -811,71 +808,6 @@
             );
         }
 
-        function BoxCastControls({ url, item, episode, videoRef }) {
-            const api = window.BoxCast;
-            const descriptor = api?.mediaFor(url, item, episode) || {url, supported:false, message:'No se pudo cargar Google Cast. Consulta las opciones de duplicación.'};
-            const [castState, setCastState] = React.useState(() => api?.getState() || {ready:false, casting:false, connected:false, status:'unavailable', error:'Google Cast no está disponible.'});
-            const [open, setOpen] = React.useState(false);
-            const [error, setError] = React.useState('');
-            const [airplay, setAirplay] = React.useState(false);
-            const [guide, setGuide] = React.useState(() => /iPhone|iPad/i.test(navigator.userAgent) ? 'apple' : /Android/i.test(navigator.userAgent) ? 'android' : 'computer');
-            const dialogRef = React.useRef(null), triggerRef = React.useRef(null), lifetime = React.useRef(0);
-            const current = castState.casting && castState.contentId === descriptor.url;
-            React.useEffect(() => {
-                lifetime.current++;
-                const unsubscribe = api?.subscribe(setCastState);
-                if (api) setCastState(api.getState());
-                setAirplay(typeof videoRef.current?.webkitShowPlaybackTargetPicker === 'function');
-                setError('');
-                return () => { lifetime.current++; unsubscribe?.(); api?.cancelPending(descriptor.url); const state = api?.getState(); if (state?.casting && state.contentId === descriptor.url) api.stop(); };
-            }, [url]);
-            React.useEffect(() => {
-                const dialog = dialogRef.current;
-                if (!dialog) return;
-                if (open && !dialog.open) dialog.showModal();
-                if (!open && dialog.open) dialog.close();
-            }, [open]);
-            const close = () => { setOpen(false); triggerRef.current?.focus(); };
-            const send = async () => {
-                setError('');
-                const generation = lifetime.current;
-                try {
-                    const result = await api.send(descriptor, videoRef.current?.currentTime || 0);
-                    // Pause only after this player's explicit send succeeds. SDK reconnections
-                    // and a late response for a previous movie must not interrupt local playback.
-                    if (result.sent && generation === lifetime.current) videoRef.current?.pause();
-                }
-                catch (problem) { if (generation === lifetime.current) setError(problem.message); }
-            };
-            const useAirplay = () => {
-                try { videoRef.current.webkitShowPlaybackTargetPicker(); }
-                catch (_) { setError('No se pudo abrir AirPlay. Utiliza Duplicar pantalla desde el Centro de control.'); }
-            };
-            const time = value => { const n = Math.max(0,Math.floor(Number(value) || 0)); return `${Math.floor(n/60)}:${String(n%60).padStart(2,'0')}`; };
-            const guides = {
-                computer: {label:'PC / Chrome',steps:['Conecta la computadora y el TV con Google Cast a la misma red Wi-Fi.', 'En Chrome, abre el menú ⋮ → Enviar, guardar y compartir → Enviar. Selecciona la pestaña de BOXPLAYTV y el televisor.', 'Vuelve al video, pulsa Play y ponlo en pantalla completa. Para escuchar el audio en el TV, envía la pestaña.', 'Para terminar, abre el botón Enviar de Chrome y selecciona Detener envío.'], link:'https://support.google.com/chrome/answer/3228332?hl=es'},
-                android: {label:'Android',steps:['Conecta el celular y el TV con Google Cast a la misma red Wi-Fi.', 'Abre Google Home, selecciona el televisor o Chromecast y busca la opción para transmitir tu pantalla. Confirma la solicitud del teléfono.', 'Regresa a BOXPLAYTV, reproduce la película y gira el celular para verla horizontal.', 'Mantén la pantalla del celular encendida mientras duplicas. Finaliza la duplicación desde Google Home.'],link:'https://support.google.com/chromecast/answer/6050397?hl=es'},
-                fire: {label:'Fire TV Stick',steps:['Comprueba si tu Fire TV y el celular admiten duplicación mediante Miracast. El selector Google Cast no detecta un Fire TV sin un receptor compatible.', 'En el Fire TV, abre Configuración → Pantalla y audio → Activar duplicación de pantalla. Si esa opción no aparece, tu modelo no admite este método.', 'En un teléfono compatible, abre Smart View o la opción de duplicar pantalla, selecciona el Fire TV y sigue sus indicaciones.', 'Otra opción es instalar BOXPLAYTV directamente en el Fire TV con Downloader y el código 5134842. Las instrucciones están en «Instalar y dispositivos».'],link:'https://digprjsurvey.amazon.co.uk/csad/help/node/ToUjwyfVuffzVfbR6b'},
-                apple: {label:'iPhone / iPad',steps:['Conecta el iPhone o iPad y un TV compatible con AirPlay a la misma red Wi-Fi.', 'Si el video ofrece AirPlay, pulsa ese botón y selecciona el televisor.', 'También puedes abrir el Centro de control → Duplicar pantalla y elegir un TV compatible con AirPlay.', 'Si la pantalla queda negra o el proveedor bloquea la transmisión, abre BOXPLAYTV directamente en el televisor.'],link:'https://support.apple.com/es-es/102661'}
-            };
-            return <>
-                <button type="button" ref={triggerRef} className="box-cast-trigger" data-connected={!!current} onClick={() => setOpen(true)} title={current ? `Reproduciendo en ${castState.device}` : 'Transmitir al televisor'} aria-label={current ? `Controlar reproducción en ${castState.device}` : 'Transmitir al televisor'} aria-haspopup="dialog" aria-expanded={open}>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M3 8V5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-7"/><path d="M2 12a10 10 0 0 1 10 10M2 17a5 5 0 0 1 5 5"/><circle cx="2.5" cy="21.5" r=".7" fill="currentColor" stroke="none"/></svg>
-                    <span className="box-cast-label">{current ? 'En TV' : 'Transmitir'}</span>
-                </button>
-                <dialog ref={dialogRef} className="box-cast-dialog" aria-label="Transmitir al televisor" onCancel={event => {event.preventDefault();close();}} onClose={() => setOpen(false)}>
-                    <div className="box-cast-dialog-header"><div><h2>Disfruta BOXPLAYTV en tu TV</h2><p className="box-cast-subtitle">{descriptor.title || item.title || item.titulo}</p></div><button type="button" onClick={close} className="box-cast-close" aria-label="Cerrar opciones de transmisión">×</button></div>
-                    <div className="box-cast-state" role="status">{current ? `Reproduciendo en ${castState.device}. Al enviar el video, se pausa la reproducción local.` : !descriptor.supported ? descriptor.message : castState.ready ? 'Google Cast está preparado. Elige un televisor compatible conectado a tu misma red Wi-Fi.' : castState.error || 'Preparando Google Cast…'}</div>
-                    {(error || castState.error && descriptor.supported && castState.status !== 'starting') && <div role="alert" className="box-cast-state box-cast-error">{error || castState.error}</div>}
-                    {descriptor.supported && !current && <div className="box-cast-buttons"><button type="button" className="box-cast-action" onClick={send} disabled={!castState.ready || castState.loading}>{castState.loading ? 'Conectando…' : castState.connected ? `Enviar a ${castState.device}` : 'Elegir televisor'}</button>{airplay && <button type="button" className="box-cast-action secondary" onClick={useAirplay}>Usar AirPlay</button>}</div>}
-                    {current && <div className="box-cast-remote"><div className="box-cast-buttons"><button type="button" className="box-cast-action" onClick={() => api.playPause()}>{castState.paused ? 'Continuar en TV' : 'Pausar en TV'}</button><button type="button" className="box-cast-action box-cast-stop" onClick={() => api.stop()}>Detener envío</button></div>{castState.canSeek && castState.duration > 0 && <label>Avanzar o retroceder<input aria-label="Posición del video en el televisor" type="range" min="0" max={castState.duration} step="1" value={Math.min(castState.currentTime || 0,castState.duration)} onChange={event=>api.seek(event.target.value)}/><span className="box-cast-time"><span>{time(castState.currentTime)}</span><span>{time(castState.duration)}</span></span></label>}<label>Volumen del TV<input aria-label="Volumen del televisor" type="range" min="0" max="1" step="0.05" value={castState.volume ?? 1} onChange={event=>api.setVolume(event.target.value)}/></label></div>}
-                    {descriptor.supported && <p className="box-cast-note">El TV abrirá el enlace del video. El formato y los permisos del servidor deben permitir su reproducción.</p>}
-                    <section className="box-cast-guide"><h3>{descriptor.supported ? '¿No aparece tu televisor? Otras formas de verlo' : 'Cómo mostrar este video en tu televisor'}</h3><div className="box-cast-tabs" role="group" aria-label="Elegir dispositivo">{Object.entries(guides).map(([key,value])=><button type="button" key={key} aria-pressed={guide===key} onClick={()=>setGuide(key)}>{value.label}</button>)}</div><ol>{guides[guide].steps.map(step=><li key={step}>{step}</li>)}</ol><a href={guides[guide].link} target="_blank" rel="noopener noreferrer">Ver ayuda oficial →</a></section>
-                    <p className="box-cast-note">Si abriste BOXPLAYTV dentro de otra aplicación, prueba abrirla en Chrome para buscar televisores con Google Cast.</p>
-                </dialog>
-            </>;
-        }
-
         function BoxProPlayer({ item, episode, onBack, onFullscreen, containerRef }) {
             const videoRef = React.useRef(null);
             const hlsRef = React.useRef(null);
@@ -925,8 +857,8 @@
             return <div className="absolute inset-0 bg-black text-white flex flex-col" ref={containerRef}>
                 <div className="absolute top-0 left-0 right-0 z-20 px-3 sm:px-5 py-3 flex items-center justify-between bg-gradient-to-b from-black/90 to-transparent">
                     <button onClick={onBack} className="px-3 py-2 rounded-full bg-black/60 border border-white/20 hover:bg-cyan-700 text-xs font-bold"><i className="fa-solid fa-arrow-left mr-2"></i>Volver</button>
-                    <div className="text-xs sm:text-sm font-bold text-center px-2 truncate min-w-0 flex-1">{title}</div>
-                    <div className="flex items-center gap-2 shrink-0"><BoxCastControls url={url} item={item} episode={episode} videoRef={videoRef}/><button onClick={onFullscreen} aria-label="Pantalla completa" className="w-11 h-11 rounded-full bg-black/60 border border-white/20 hover:bg-cyan-700"><i className="fa-solid fa-expand"></i></button></div>
+                    <div className="text-xs sm:text-sm font-bold text-center px-2 truncate max-w-[40%]">{title}</div>
+                    <button onClick={onFullscreen} className="w-9 h-9 rounded-full bg-black/60 border border-white/20 hover:bg-cyan-700"><i className="fa-solid fa-expand"></i></button>
                 </div>
                 {isOk ? <iframe key={url} src={okEmbed} title={title} className="absolute inset-0 w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen referrerPolicy="no-referrer-when-downgrade" />
                 : isDrive ? <iframe key={url} src={driveEmbed} title={title} className="absolute inset-0 w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen />
@@ -1772,16 +1704,15 @@
             };
 
             const toggleMovieFullscreen = () => {
-                const container = movieContainerRef.current;
-                if (!container) return;
-                const video = container.querySelector('video');
-                const nativeFullscreen = () => { try { video?.webkitEnterFullscreen?.(); } catch (_) {} };
-                if (document.fullscreenElement) document.exitFullscreen?.()?.catch?.(() => {});
-                else if (document.webkitFullscreenElement) document.webkitExitFullscreen?.();
-                else if (container.requestFullscreen) {
-                    try { container.requestFullscreen()?.catch?.(nativeFullscreen); } catch (_) { nativeFullscreen(); }
-                } else if (video?.webkitEnterFullscreen) nativeFullscreen();
-                else container.webkitRequestFullscreen?.();
+                if (movieContainerRef.current) {
+                    if (!document.fullscreenElement) {
+                        if (movieContainerRef.current.requestFullscreen) movieContainerRef.current.requestFullscreen().catch(() => {});
+                        else if (movieContainerRef.current.webkitRequestFullscreen) movieContainerRef.current.webkitRequestFullscreen();
+                    } else {
+                        if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
+                        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+                    }
+                }
             };
 
             const getDisplayContent = () => { 
@@ -1870,7 +1801,16 @@
                 window.history.pushState({ appState: 'player', item: item.title }, '');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
-                // Fullscreen is requested only by its button, within the user's gesture.
+                setTimeout(() => {
+                    const playerElement = movieContainerRef.current || document.querySelector('video') || document.querySelector('iframe');
+                    if (playerElement) {
+                        if (playerElement.requestFullscreen) {
+                            playerElement.requestFullscreen().catch(() => {});
+                        } else if (playerElement.webkitRequestFullscreen) {
+                            playerElement.webkitRequestFullscreen();
+                        }
+                    }
+                }, 300);
             };
 
             const handleRateMovie = item => {
@@ -2627,5 +2567,4 @@
     </script>
 </body>
 </html>
-
 
