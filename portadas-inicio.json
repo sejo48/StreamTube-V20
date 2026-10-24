@@ -2,32 +2,32 @@
   "schemaVersion": 1,
   "source": "peliculas2.json",
   "mode": "manual",
-  "updatedAt": "2026-10-22T18:12:48.222Z",
+  "updatedAt": "2026-10-24T11:43:29.217Z",
   "items": [
     {
-      "movieKey": "tmdb:333545",
-      "title": "Road Wars",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/oHWB0Ph3JonGkS29Z66HHTKq28Z.jpg"
+      "movieKey": "tmdb:461714",
+      "title": "Contrato Mortal",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/fzRFn6wc5zYHpEo5KVt2h1KpdcB.jpg"
     },
     {
-      "movieKey": "tmdb:13291",
-      "title": "Traidor",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/dmIKpN5Pkgp9eZDBF7OyM5106Oy.jpg"
+      "movieKey": "tmdb:648819",
+      "title": "El Camino de un Psicópata",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/dzQs8wMHF61O9YvkDVXI9gNksjY.jpg"
     },
     {
-      "movieKey": "tmdb:535389",
-      "title": "La gran batalla",
-      "backdrop": "https://image.tmdb.org/t/p/original/yDerSjCUmMZhpWTFZodz5wmfRqe.jpg"
+      "movieKey": "tmdb:1242501",
+      "title": "Icefall",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/gQimJqYMKCkwHIo8wwYKhmnCfBr.jpg"
     },
     {
-      "movieKey": "tmdb:145221",
-      "title": "Monsters: El continente oscuro",
-      "backdrop": "https://image.tmdb.org/t/p/original/hnGUW2RWS8oV0YBy53a2FvxGdzV.jpg"
+      "movieKey": "tmdb:1387382",
+      "title": "Hunting Season",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/eJ0HooOOD1uzI39CfOQNWIiWKlJ.jpg"
     },
     {
-      "movieKey": "tmdb:13474",
-      "title": "Parking 2",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/aYMvNOHPozMqpRu76EmzCH0PksC.jpg"
+      "movieKey": "tmdb:1244531",
+      "title": "Tiburón blanco: La bestia del mar",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/gHdSsZ1Bs8dCcflFwZg7nFMTW73.jpg"
     }
   ]
 }
