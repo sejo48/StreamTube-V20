@@ -7,7 +7,7 @@
     <script src="./notices.js"></script>
     <script src="./radio-engine.js?v=2026-2"></script>
     <script src="./radio-favorites.js?v=2026-1"></script>
-    <link rel="stylesheet" href="./radio.css?v=2026-3">
+    <link rel="stylesheet" href="./radio.css?v=20261025-4">
     <link rel="stylesheet" href="./home.css?v=2026-5">
     <script src="./home-features.js?v=2026-4"></script>
     <meta charset="UTF-8">
@@ -1001,6 +1001,40 @@
         };
 
         const CyberRadioSection = ({ stations, currentStation, onPlayStation, onTogglePlayback, onRetry, volume, setVolume, engine, radioState, radioFilter, setRadioFilter, radioFavorites, onToggleFavorite, isItemFavorite }) => {
+            const studioRef = useRef(null);
+            const deckRef = useRef(null);
+            const directoryRef = useRef(null);
+            useEffect(() => {
+                const studio = studioRef.current;
+                const header = document.querySelector('.box-header');
+                const navigation = document.querySelector('.box-bottom-nav');
+                const measure = () => {
+                    studio.style.setProperty('--radio-header-height', `${Math.ceil(header?.getBoundingClientRect().height || 64)}px`);
+                    const bottom = navigation && getComputedStyle(navigation).display !== 'none' ? navigation.getBoundingClientRect().height : 0;
+                    studio.style.setProperty('--radio-navigation-height', `${Math.ceil(bottom)}px`);
+                };
+                measure();
+                document.body.classList.add('box-radio-open');
+                const observer = new ResizeObserver(measure);
+                if (header) observer.observe(header);
+                if (navigation) observer.observe(navigation);
+                window.addEventListener('resize', measure);
+                return () => {
+                    observer.disconnect();
+                    window.removeEventListener('resize', measure);
+                    document.body.classList.remove('box-radio-open');
+                };
+            }, []);
+            const selectStation = station => {
+                onPlayStation(station);
+                if (window.matchMedia('(max-width: 760px)').matches) {
+                    requestAnimationFrame(() => {
+                        deckRef.current?.scrollTo({ top: 0, behavior: 'instant' });
+                        directoryRef.current?.scrollTo({ top: 0, behavior: 'instant' });
+                        deckRef.current?.focus({ preventScroll: true });
+                    });
+                }
+            };
             const [view, setView] = useState('all');
             const [group, setGroup] = useState('all');
             const changeRadioView = next => { setRadioFilter(''); setGroup('all'); setView(next); };
@@ -1024,10 +1058,10 @@
             const failed = radioState.status === 'error', blocked = radioState.status === 'blocked';
             const statusLabel = failed ? 'No se pudo conectar' : blocked ? 'Pulsa reproducir para escuchar' : loading ? 'Conectando señal…' : playing ? 'En directo' : currentStation ? 'En pausa' : 'Elige una emisora';
             const favorite = currentStation && isItemFavorite({ ...currentStation, type: 'radio' });
-            return <section className="radio-studio" aria-labelledby="radio-title">
+            return <section ref={studioRef} className="radio-studio" aria-labelledby="radio-title">
                 <header className="radio-heading"><div><p className="radio-eyebrow">BOX PLAY TV · AUDIO EN DIRECTO</p><h1 id="radio-title">Radio <span>Digital</span></h1><p>Tu frecuencia. Tu momento.</p></div><div className="radio-clock"><span>{clock}</span><small>{stations.length} emisoras</small></div></header>
                 <div className="radio-layout">
-                    <div className="radio-deck">
+                    <div ref={deckRef} className="radio-deck" tabIndex={-1} role="region" aria-label="Reproductor de radio">
                         <div className="radio-deck-top"><span className={`radio-status ${playing ? 'is-live' : ''}`} role="status"><i />{statusLabel}</span><span className="radio-onair">LIVE AUDIO</span></div>
                         <div className="radio-now"><div className={`radio-art ${playing ? 'is-playing' : ''}`}>{currentStation?.image ? <RobustImage src={currentStation.image} alt={currentStation.title} title={currentStation.title} type="tv" className="radio-logo" /> : <Icon name="radio" size={38}/>}</div><p className="radio-eyebrow">{currentStation?.group || 'SEÑAL DIGITAL'}</p><h2>{currentStation?.title || 'Encuentra tu próxima emisora'}</h2><p>{currentStation?.genre || 'Música, voces e historias en vivo'}</p></div>
                         <div className="radio-display"><div className="radio-display-label"><span>{playing && !radioState.analysis ? 'AMBIENTE VISUAL' : 'ESPECTRO DE AUDIO'}</span><span>{playing ? (radioState.analysis ? 'ANÁLISIS EN VIVO' : 'SEÑAL EN DIRECTO') : 'EN ESPERA'}</span></div>
@@ -1048,13 +1082,13 @@
                         {currentStation && <button className={`radio-save ${favorite ? 'is-saved' : ''}`} aria-pressed={!!favorite} onClick={() => onToggleFavorite({ ...currentStation, type: 'radio' })}><Icon name="heart" size={16} fill={favorite ? 'currentColor' : 'none'}/>{favorite ? 'Guardada en favoritos' : 'Guardar emisora'}</button>}
                         <p className="radio-footnote">El audio se detiene al salir de Radio.</p>
                     </div>
-                    <div className="radio-directory">
+                    <div ref={directoryRef} className="radio-directory" role="region" aria-label="Buscar y elegir emisoras" tabIndex={0}>
                         <div className="radio-directory-heading"><h2>Explora las emisoras</h2><span>{displayed.length} {displayed.length === 1 ? 'señal' : 'señales'}</span></div>
                         <div className="radio-filters"><div className="radio-views" role="group" aria-label="Lista de emisoras"><button aria-pressed={view === 'all'} onClick={() => changeRadioView('all')} aria-controls="radio-station-results">Todas <span>{stations.length}</span></button><button aria-pressed={view === 'favorites'} onClick={() => changeRadioView('favorites')} aria-controls="radio-station-results">Favoritas <span>{savedStations.length}</span></button></div><label className="radio-search"><Icon name="search" size={17}/><input type="search" aria-label="Buscar emisora" placeholder="Nombre, género o país…" value={radioFilter} onChange={event => setRadioFilter(event.target.value)}/></label><label className="radio-group">Grupo<select aria-label="Filtrar emisoras por grupo" value={group} onChange={event => setGroup(event.target.value)}><option value="all">Todos los grupos</option>{groups.map(value => <option key={value}>{value}</option>)}</select></label></div>
                         <div id="radio-station-results" className="radio-stations">{displayed.map(station => {
                             const identity = BoxRadioFavorites.key(station);
                             const selected = !!identity && !!currentStation && BoxRadioFavorites.key(currentStation) === identity, saved = isItemFavorite({ ...station, type: 'radio' });
-                            return <article key={identity} className={`radio-station ${selected ? 'is-selected' : ''}`}><button className="radio-station-select" aria-label={`Escuchar ${station.title}`} aria-pressed={selected} onClick={() => onPlayStation(station)}><div className="radio-station-logo">{station.image ? <RobustImage src={station.image} alt="" type="tv" className="radio-logo"/> : <Icon name="radio" size={22}/>}</div><div><h3>{station.title}</h3><p>{station.genre || station.group || 'Radio en directo'}</p>{selected && <span>{statusLabel}</span>}</div><span className="radio-station-play"><Icon name="play" size={16}/></span></button><button className="radio-station-fav" aria-label={`${saved ? 'Quitar de favoritos' : 'Guardar en favoritos'} ${station.title}`} aria-pressed={saved} onClick={() => onToggleFavorite({ ...station, type: 'radio' })}><Icon name="heart" size={17} fill={saved ? 'currentColor' : 'none'}/></button></article>;
+                            return <article key={identity} className={`radio-station ${selected ? 'is-selected' : ''}`}><button className="radio-station-select" aria-label={`Escuchar ${station.title}`} aria-pressed={selected} onClick={() => selectStation(station)}><div className="radio-station-logo">{station.image ? <RobustImage src={station.image} alt="" type="tv" className="radio-logo"/> : <Icon name="radio" size={22}/>}</div><div><h3>{station.title}</h3><p>{station.genre || station.group || 'Radio en directo'}</p>{selected && <span>{statusLabel}</span>}</div><span className="radio-station-play"><Icon name="play" size={16}/></span></button><button className="radio-station-fav" aria-label={`${saved ? 'Quitar de favoritos' : 'Guardar en favoritos'} ${station.title}`} aria-pressed={saved} onClick={() => onToggleFavorite({ ...station, type: 'radio' })}><Icon name="heart" size={17} fill={saved ? 'currentColor' : 'none'}/></button></article>;
                         })}</div>
                         {!displayed.length && <div className="radio-empty"><Icon name="radio" size={32}/><h3>{view === 'favorites' && !savedStations.length ? 'Aún no tienes favoritas' : 'Sin coincidencias'}</h3><p>{view === 'favorites' && !savedStations.length ? 'Pulsa el corazón de una emisora o «Guardar emisora» para añadirla aquí.' : 'Hay filtros activos. Prueba otro nombre o limpia los filtros para ver tus emisoras.'}</p><button onClick={() => { setRadioFilter(''); setGroup('all'); if (view === 'favorites' && !savedStations.length) setView('all'); }}>{view === 'favorites' && !savedStations.length ? 'Explorar emisoras' : 'Limpiar filtros'}</button></div>}
                     </div>
@@ -2567,4 +2601,5 @@
     </script>
 </body>
 </html>
+
 
