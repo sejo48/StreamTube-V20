@@ -1,3 +1,4 @@
+import { createOpeningRecorder } from './app-openings.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getFirestore, doc, runTransaction, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 const firebaseConfig = {
@@ -10,6 +11,7 @@ const firebaseConfig = {
     appId: "1:165114643998:web:d12cb70574ac11f29a100f"
   };
 const db=getFirestore(initializeApp(firebaseConfig));
+const recordOpening=createOpeningRecorder({db,doc,setDoc});
 const get=k=>{try{return localStorage.getItem(k)||'';}catch(_){return '';}};
 const put=(k,v)=>{try{localStorage.setItem(k,v);}catch(_){}};
 let device=get('boxplay_device_id');
@@ -32,8 +34,11 @@ async function verify(address){
  else{until=0;checked=0;}
  return result;
 }
-async function presence(){if(!email||Date.now()>=until||document.hidden)return;try{await setDoc(doc(db,'presencia',encodeURIComponent(email)+'__'+device),{email,deviceId:device,lastSeenMs:Date.now(),estado:'online'},{merge:true});}catch(_){}}
+async function presence(){if(!email||Date.now()>=until||document.hidden)return;recordOpening(email,device).catch(error=>console.warn('No se pudo registrar la apertura; se reintentará:',error));try{await setDoc(doc(db,'presencia',encodeURIComponent(email)+'__'+device),{email,deviceId:device,lastSeenMs:Date.now(),estado:'online'},{merge:true});}catch(_){}}
 async function valid(){const address=email||get('boxplay_user_email');if(!address)return false;if(Date.now()<until&&Date.now()-checked<60000)return true;if(!checking)checking=verify(address).finally(()=>{checking=null;});return (await checking).activo;}
 window.boxTVAuth={verify,valid};
 setInterval(async()=>{if(!email||document.hidden||!until)return;try{if(!await valid())window.dispatchEvent(new Event('box-auth-expired'));else presence();}catch(_){/* A temporary network outage is checked again at the next interval. */}},30000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)presence();});
+
+// Validate a remembered subscriber on launch, even before starting playback.
+valid().catch(error=>console.warn('No se pudo validar el acceso al abrir Smart TV:',error));
