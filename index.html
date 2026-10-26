@@ -301,8 +301,11 @@
     appId: "1:165114643998:web:d12cb70574ac11f29a100f"
   };
 
+  import { createOpeningRecorder } from './app-openings.js';
+
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
+  window.registrarAperturaBoxplay = createOpeningRecorder({ db, doc, setDoc });
 
   // Diagnóstico interno: no mostrar avisos técnicos a los espectadores.
   window.mostrarDiagnosticoPresencia = function(mensaje, error = false) {
@@ -1401,6 +1404,10 @@
                         if (typeof window.registrarPresenciaBoxplay !== 'function') {
                             throw new Error('La función de presencia de Firebase no está disponible.');
                         }
+                        // Independent of presence: failure here must not interrupt playback.
+                        window.registrarAperturaBoxplay(emailNormalizado, deviceId).catch(error => {
+                            console.warn('No se pudo registrar la apertura; se reintentará:', error);
+                        });
                         await window.registrarPresenciaBoxplay(emailNormalizado, deviceId);
                         window.mostrarDiagnosticoPresencia?.('BOXPLAYTV: presencia registrada en Firebase para ' + emailNormalizado + '. El panel debería mostrarlo en línea.', false);
                         console.debug('Presencia BOXPLAYTV actualizada:', emailNormalizado);
