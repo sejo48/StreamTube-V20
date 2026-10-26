@@ -1,5 +1,553 @@
 [
   {
+    "titulo": "Blades of the Guardians: Wind Rises in the Desert",
+    "tituloOriginal": "镖人：风起大漠",
+    "descripcion": "Dao Ma, el segundo fugitivo más buscado, recibe del jefe del clan Mo una misión de escolta misteriosa: debe llevar al fugitivo más buscado hasta Chang'an.",
+    "imagen": "https://image.tmdb.org/t/p/w780/r3IXA6xxhG4UwRe8WCql2TlEtIv.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/29pJrsosphUdOMRDm4gCdhSkluI.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1S4j2UWPXS0Pc-UnYQE9CErOGKzDqLLUR/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-02-17",
+    "rating": "8.2",
+    "votos": 258,
+    "runtime": "2h 6min",
+    "genres": [
+      "Acción",
+      "Aventura"
+    ],
+    "generosTexto": "Acción, Aventura",
+    "clasificacion": "R",
+    "tagline": "",
+    "director": "袁和平",
+    "guionistas": "Su Chaobin, 杨子, 俞白眉",
+    "reparto": [
+      {
+        "nombre": "吴京",
+        "personaje": "Dao Ma",
+        "foto": "https://image.tmdb.org/t/p/w185/s7DOAkkBII5JuS7CcjaifGnJZlG.jpg"
+      },
+      {
+        "nombre": "謝霆鋒",
+        "personaje": "Di Ting",
+        "foto": "https://image.tmdb.org/t/p/w185/2oqpaOhEoKLdM4dePxOHJrI45n.jpg"
+      },
+      {
+        "nombre": "陈丽君",
+        "personaje": "Ayuya",
+        "foto": "https://image.tmdb.org/t/p/w185/wD9Y9ZXtaUI8ISJW3Q1YgJy3Gkk.jpg"
+      },
+      {
+        "nombre": "于适",
+        "personaje": "Shu",
+        "foto": "https://image.tmdb.org/t/p/w185/6BwBpYqt6VKrJB8GUQR2eCsdjfY.jpg"
+      },
+      {
+        "nombre": "孙艺洲",
+        "personaje": "Zhishilang",
+        "foto": "https://image.tmdb.org/t/p/w185/7LrjgcfjklPW6AyC4sxaNx6z089.jpg"
+      },
+      {
+        "nombre": "李云霄",
+        "personaje": "Ms. Yanzi",
+        "foto": "https://image.tmdb.org/t/p/w185/2miaRn7g9oPaJGZcx0QAS07ZyC9.jpg"
+      },
+      {
+        "nombre": "莒谦朗",
+        "personaje": "Xiao Qi",
+        "foto": "https://image.tmdb.org/t/p/w185/lK98SUxr7l89cFHYZHejngTFs6n.jpg"
+      },
+      {
+        "nombre": "此沙",
+        "personaje": "Heyi Xuan",
+        "foto": "https://image.tmdb.org/t/p/w185/eWytg5M0VUCb0aHEKpUDijQ7JxF.jpg"
+      },
+      {
+        "nombre": "梁家輝",
+        "personaje": "Old Mo",
+        "foto": "https://image.tmdb.org/t/p/w185/sPDShFDtDx1pMNwHEx14o4WHrEH.jpg"
+      },
+      {
+        "nombre": "Zhang Jin",
+        "personaje": "Double-headed Snake",
+        "foto": "https://image.tmdb.org/t/p/w185/vGJ0Jox8VCKpX4e6COT6KPYYeHJ.jpg"
+      },
+      {
+        "nombre": "李连杰",
+        "personaje": "Lord Chang",
+        "foto": "https://image.tmdb.org/t/p/w185/c4s8INzU0ZAujCQ1YmphCmcsNzl.jpg"
+      },
+      {
+        "nombre": "惠英紅",
+        "personaje": "Mrs. Yuchi",
+        "foto": "https://image.tmdb.org/t/p/w185/38Z4n6fkNme4hbcbpIGk1pdBzYt.jpg"
+      }
+    ],
+    "pais": "China",
+    "idioma": "zh",
+    "productoras": "Alibaba Pictures Group, DF Pictures, Damai Entertainment, Peace Film Production Co., Huaxia Film Distribution, China Film Group Corporation",
+    "presupuesto": 123000000,
+    "recaudacion": 203356793,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "martial arts, bounty hunter, nostalgic, wuxia, historical drama, historical epic, a.d. anno domini, based on manhua, grand, dramatic",
+    "similares": [
+      {
+        "titulo": "Reign of Assassins",
+        "poster": "https://image.tmdb.org/t/p/w342/jIQAm7YlBoZqllu4gbnagRlO9NY.jpg",
+        "year": "2010",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "14 Blades",
+        "poster": "https://image.tmdb.org/t/p/w342/y1VWOEN0UXFiSgCNvWO3lQuzLx.jpg",
+        "year": "2010",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "The Lost Bladesman",
+        "poster": "https://image.tmdb.org/t/p/w342/7JfgKo0Ipvu9AWO9y5Y56OGxPn0.jpg",
+        "year": "2011",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "El retorno del espadachín manco",
+        "poster": "https://image.tmdb.org/t/p/w342/qupi6LGWSMSTaZHWPYUyAyVplLx.jpg",
+        "year": "1969",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Retroceder nunca, rendirse jamás 2",
+        "poster": "https://image.tmdb.org/t/p/w342/2EX1oEuDy2oegNY8BL4JrD1ESrP.jpg",
+        "year": "1987",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Dynasty Warriors",
+        "poster": "https://image.tmdb.org/t/p/w342/1w0AkplNn51VZZ9ehA9I0hqJzLs.jpg",
+        "year": "2021",
+        "rating": "5.8"
+      }
+    ],
+    "tmdbId": 1305781,
+    "tmdbType": "movie",
+    "runtimeMin": 126,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Demonio ancestral",
+    "tituloOriginal": "రాకాస",
+    "descripcion": "Tras pasar diez años en Estados Unidos, Veerababu regresa a casa para asistir a una boda y, sin saberlo, despierta un espíritu ancestral que exige sacrificios humanos.",
+    "imagen": "https://image.tmdb.org/t/p/w780/vIyXdrVCgwHKLNCqU7TcLwLsqZF.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/hxCJcyDnR964ja5mzExvb8UlHLG.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1pLeL0pXdCuN2ygYnCTazKw1wWVB9h3Ac/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-04-03",
+    "rating": "5.5",
+    "votos": 22,
+    "runtime": "2h 10min",
+    "genres": [
+      "Fantasía",
+      "Comedia"
+    ],
+    "generosTexto": "Fantasía, Comedia",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Manasa Sharma",
+    "guionistas": "Manasa Sharma",
+    "reparto": [
+      {
+        "nombre": "సంగీత్ శోభన్",
+        "personaje": "Veerababu \"Veeru\"",
+        "foto": "https://image.tmdb.org/t/p/w185/7Vox31bH7XmgPNJzMKGa4uGyjW8.jpg"
+      },
+      {
+        "nombre": "Nayan Sarika",
+        "personaje": "Subbalakshmi \"Subbu\"",
+        "foto": "https://image.tmdb.org/t/p/w185/zqRsOp8N2XZMDYzNa6lLapWpJzU.jpg"
+      },
+      {
+        "nombre": "Vennela Kishore",
+        "personaje": "Somu",
+        "foto": "https://image.tmdb.org/t/p/w185/8a0mcxMPjD4KR15gyE5QmbDeTub.jpg"
+      },
+      {
+        "nombre": "Getup Srinu",
+        "personaje": "Kanne Pongula Balaraju \"Balu\"",
+        "foto": "https://image.tmdb.org/t/p/w185/xb2lJ213oU3DS6kMkDuqlf7EFeG.jpg"
+      },
+      {
+        "nombre": "Brahmaji",
+        "personaje": "Parasuram",
+        "foto": "https://image.tmdb.org/t/p/w185/xDTE7POq1bkyjLINxdy7rW4wQlg.jpg"
+      },
+      {
+        "nombre": "Tanikella Bharani",
+        "personaje": "Chari",
+        "foto": "https://image.tmdb.org/t/p/w185/zRjr0F64Eznbliz1RvN9icj3Lq1.jpg"
+      },
+      {
+        "nombre": "Ashish Vidhyarthi",
+        "personaje": "Ramesh",
+        "foto": "https://image.tmdb.org/t/p/w185/iBUUpfHZIfpC5afHrHwcyGTHKQF.jpg"
+      },
+      {
+        "nombre": "Rohini Reddy",
+        "personaje": "Savithri",
+        "foto": "https://image.tmdb.org/t/p/w185/85ZKckTl36xMSZhmpgapAnvxcl0.jpg"
+      },
+      {
+        "nombre": "Raadhya",
+        "personaje": "Sukanya",
+        "foto": ""
+      },
+      {
+        "nombre": "Varma Chaitanya",
+        "personaje": "Mahesh",
+        "foto": ""
+      }
+    ],
+    "pais": "India",
+    "idioma": "te",
+    "productoras": "Pink Elephant Pictures, Zee Studios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "human sacrifice, demon, ancestral curse",
+    "similares": [
+      {
+        "titulo": "El chico de oro",
+        "poster": "https://image.tmdb.org/t/p/w342/su5XS4TTnRJzRsElWmLjGEGYMU9.jpg",
+        "year": "1986",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Warcraft: El origen",
+        "poster": "https://image.tmdb.org/t/p/w342/r62koy47q5TpDfCVzH0opsk7ZXv.jpg",
+        "year": "2016",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Lady Halcón",
+        "poster": "https://image.tmdb.org/t/p/w342/4pzFDJCNuLweXkW2i0occEHnaB7.jpg",
+        "year": "1985",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Khaleja",
+        "poster": "https://image.tmdb.org/t/p/w342/rsQbJT4vjyQe6Mpry1i8Tnf86wp.jpg",
+        "year": "2010",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Bitelchús",
+        "poster": "https://image.tmdb.org/t/p/w342/fS9uBsxTs3TWdv0wSEpwyhhvCnO.jpg",
+        "year": "1988",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "El Ceniciento",
+        "poster": "https://image.tmdb.org/t/p/w342/g8pWgbr5EhdrvlxykLiC4JSFYT0.jpg",
+        "year": "1960",
+        "rating": "6.2"
+      }
+    ],
+    "tmdbId": 1451078,
+    "tmdbType": "movie",
+    "runtimeMin": 130,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "La silla",
+    "tituloOriginal": "La silla",
+    "descripcion": "Daniel Lonces es un joven escritor de novelas de misterio que ha conseguido todo lo que deseaba en la vida, (bueno casi todo). Ha alcanzado lo que siempre ha soñado: es popular, le requieren con frecuencia en los medios de comunicación, está casado con una mujer que le quiere, tiene un precioso niño pequeño y se dedica a lo que le gusta ¿qué más puede pedir?  Por supuesto, esta idílica (o quizá no tanto) existencia se verá inesperadamente truncada. Un día, realizando una pequeña prueba para una de sus novelas quedará accidentalmente atado a una silla sin posibilidad de soltarse. Poco a poco la situación se complicará de forma imprevisible y Daniel tendrá que luchar contra las circunstancias, en inferioridad de condiciones, para salvar su vida y la de los seres que ama. Una situación que progresivamente va adquiriendo tintes dramáticos, en una espiral de intriga, dolor y tensión.",
+    "imagen": "https://image.tmdb.org/t/p/w780/uC0yE8mjaEVFojev1taQiGDQTat.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/l2B2WTUqgePLN6kh9uLCYy63Pyk.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1qyG4BJ1CX_sLvfAxwkCb-0DZYgMjpB0T/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-05-29",
+    "rating": "6.0",
+    "votos": 3,
+    "runtime": "1h 16min",
+    "genres": [
+      "Suspense",
+      "Terror"
+    ],
+    "generosTexto": "Suspense, Terror",
+    "clasificacion": "",
+    "tagline": "Un día, realizando una pequeña prueba para una de sus novelas, quedará atado accidentalmente a una silla sin poder soltarse.",
+    "director": "Angel de la Cruz",
+    "guionistas": "Angel de la Cruz",
+    "reparto": [
+      {
+        "nombre": "Jaime Lorente",
+        "personaje": "Daniel Lonces",
+        "foto": "https://image.tmdb.org/t/p/w185/nLaxzU92z14FIbe25sE8jDMIThZ.jpg"
+      },
+      {
+        "nombre": "Christina Ochoa",
+        "personaje": "Irene",
+        "foto": "https://image.tmdb.org/t/p/w185/msIxEVC8HljvbigzzHVkJFCwuyA.jpg"
+      },
+      {
+        "nombre": "Eva Rufo",
+        "personaje": "Carla",
+        "foto": "https://image.tmdb.org/t/p/w185/Alpjl6bFXDafmvQOB2Q4j6sagFy.jpg"
+      },
+      {
+        "nombre": "Rodrigo Poisón",
+        "personaje": "Oliver",
+        "foto": "https://image.tmdb.org/t/p/w185/2fWGOpybjl8P54cTiH5DF60YgjX.jpg"
+      },
+      {
+        "nombre": "Alba de la Fuente",
+        "personaje": "Diana",
+        "foto": "https://image.tmdb.org/t/p/w185/8x482hNtr0AZVhBExvfkKavyUKD.jpg"
+      },
+      {
+        "nombre": "Marta Fuenar",
+        "personaje": "Rosa",
+        "foto": "https://image.tmdb.org/t/p/w185/pTfhKkC6ddiANKjtpba72Ereotk.jpg"
+      },
+      {
+        "nombre": "Estíbaliz Veiga",
+        "personaje": "Miriam",
+        "foto": "https://image.tmdb.org/t/p/w185/wVKOcTgF25ffD2oMIuDexKxa7Cu.jpg"
+      },
+      {
+        "nombre": "Iñaki Urriza",
+        "personaje": "Victor",
+        "foto": ""
+      },
+      {
+        "nombre": "Daniel Urriza",
+        "personaje": "Victor",
+        "foto": ""
+      },
+      {
+        "nombre": "Santiago Molero",
+        "personaje": "Lorenzo",
+        "foto": ""
+      },
+      {
+        "nombre": "Pedro Martell",
+        "personaje": "Vecino",
+        "foto": ""
+      }
+    ],
+    "pais": "Spain",
+    "idioma": "es",
+    "productoras": "AF Films, Ézaro",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=FPpWq5pQ4mw",
+    "coleccion": "",
+    "keywords": "based on novel or book, psychological thriller",
+    "similares": [
+      {
+        "titulo": "La casa del caracol",
+        "poster": "https://image.tmdb.org/t/p/w342/eVOtyEwQMXLTvjI6lWmjv3sbORp.jpg",
+        "year": "2021",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Blackwood",
+        "poster": "https://image.tmdb.org/t/p/w342/uqQT68BJ2Skiuk5S2elmvAijmfJ.jpg",
+        "year": "2014",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Bloodline",
+        "poster": "https://image.tmdb.org/t/p/w342/u9UfbDVilnhT3fa82aTFs3O0TsA.jpg",
+        "year": "2019",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Psicópata: El Asesino del Conejo Blanco",
+        "poster": "https://image.tmdb.org/t/p/w342/7tIgfsTWuzXKR2kLRUPrLRTbcuo.jpg",
+        "year": "2026",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Profecía diabólica (El poder de Satanás)",
+        "poster": "https://image.tmdb.org/t/p/w342/LmdVqM8DrCZmcghCyPZDHLI1Xm.jpg",
+        "year": "1978",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Play Dead",
+        "poster": "https://image.tmdb.org/t/p/w342/pVf8a0SYi6NjV5G5oa4zjLLp433.jpg",
+        "year": "2022",
+        "rating": "6.1"
+      }
+    ],
+    "tmdbId": 1480613,
+    "tmdbType": "movie",
+    "runtimeMin": 76,
+    "homepage": "https://www.afpictures.com/estrenos/la-silla",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "Marea oscura",
+    "tituloOriginal": "EB",
+    "descripcion": "Una ambiciosa ecologista regresa a Ameland, la isla holandesa de su infancia, solo para descubrir una peligrosa red de contrabando de drogas que opera en la zona. Atrapada en una espiral de amenazas y secretos familiares, se verá obligada a tomar una difícil decisión: exponer la verdad a las autoridades o guardar silencio para proteger a sus seres queridos.",
+    "imagen": "https://image.tmdb.org/t/p/w780/aUUQXiiGA3LFHHemf3UgHVF4y5C.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/vdGafAruKcmtR8jNjk5OpVDXUpX.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1Ohmnz7FTFHmEJ01Vxzu-hPyLyJs8ptdp/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-05-14",
+    "rating": "6.6",
+    "votos": 5,
+    "runtime": "1h 51min",
+    "genres": [
+      "Suspense"
+    ],
+    "generosTexto": "Suspense",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Klaas de Jong",
+    "guionistas": "Lars Boom",
+    "reparto": [
+      {
+        "nombre": "Vajèn van den Bosch",
+        "personaje": "Lynn",
+        "foto": "https://image.tmdb.org/t/p/w185/qg43H1hFRs3mDHbqfKOEMKtuqqA.jpg"
+      },
+      {
+        "nombre": "Juvat Westendorp",
+        "personaje": "Kevin",
+        "foto": "https://image.tmdb.org/t/p/w185/r4K1V17D4VJt9BTuPf1ga2gFpWy.jpg"
+      },
+      {
+        "nombre": "Mingus Dagelet",
+        "personaje": "Stefan",
+        "foto": "https://image.tmdb.org/t/p/w185/f7EPspepzyfTiOLZiD6oNNZ29rh.jpg"
+      },
+      {
+        "nombre": "Bart Harder",
+        "personaje": "Visser",
+        "foto": "https://image.tmdb.org/t/p/w185/lFDreOj7UopSf6F9Otv9MPl2i8t.jpg"
+      },
+      {
+        "nombre": "Jord Knotter",
+        "personaje": "Boris",
+        "foto": "https://image.tmdb.org/t/p/w185/f0ufZ6YbyWnu36kFg1d2OOjcM2S.jpg"
+      },
+      {
+        "nombre": "Mike Libanon",
+        "personaje": "Politie chef",
+        "foto": "https://image.tmdb.org/t/p/w185/m7TDUSmnYWJjhgNkcp0czaD8Eqx.jpg"
+      },
+      {
+        "nombre": "Peter Nillesen",
+        "personaje": "Man in het zwart",
+        "foto": ""
+      },
+      {
+        "nombre": "Mark Ryan",
+        "personaje": "Interpol-agent Smith",
+        "foto": "https://image.tmdb.org/t/p/w185/9I0mFMnJJutVwVsCJhh3PtfqtFv.jpg"
+      },
+      {
+        "nombre": "Raymond Thiry",
+        "personaje": "Jan",
+        "foto": "https://image.tmdb.org/t/p/w185/eta0sCxA0bTJMIVxkIYFVdwe47S.jpg"
+      },
+      {
+        "nombre": "Bertrie Wierenga",
+        "personaje": "Lies",
+        "foto": "https://image.tmdb.org/t/p/w185/p7qQHvTdqyoGOK33svx61jrhiBx.jpg"
+      },
+      {
+        "nombre": "Ellen Ten Damme",
+        "personaje": "Moeder van Lynn en Kevin",
+        "foto": ""
+      },
+      {
+        "nombre": "Pim Muda",
+        "personaje": "Barman",
+        "foto": "https://image.tmdb.org/t/p/w185/paiezhFCcjh74zz0rPvqroA37e7.jpg"
+      }
+    ],
+    "pais": "Netherlands",
+    "idioma": "nl",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Zip Wire",
+        "poster": "https://image.tmdb.org/t/p/w342/eLMHUOQ4mCMxePMbv0TIVB48zfe.jpg",
+        "year": "2026",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "En el silencio de la noche",
+        "poster": "https://image.tmdb.org/t/p/w342/gHQCFroGpj3Tj4PIU5qFu3ZnVVu.jpg",
+        "year": "1989",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Red de traición",
+        "poster": "https://image.tmdb.org/t/p/w342/naYxXiVGudVNbJ3KgbG91Bg6xOQ.jpg",
+        "year": "2024",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Lazareth",
+        "poster": "https://image.tmdb.org/t/p/w342/6J69iDonqx7sLURtwD9iOjYmr1d.jpg",
+        "year": "2024",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Blackwood",
+        "poster": "https://image.tmdb.org/t/p/w342/uqQT68BJ2Skiuk5S2elmvAijmfJ.jpg",
+        "year": "2014",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Instinto peligroso",
+        "poster": "https://image.tmdb.org/t/p/w342/ubeZN7kWlr7Bl1OxdBPck43FhD3.jpg",
+        "year": "2021",
+        "rating": "6.0"
+      }
+    ],
+    "tmdbId": 1662858,
+    "tmdbType": "movie",
+    "runtimeMin": 111,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Hot Wheels ¡A correr!: El ataque del T-Rex",
     "tituloOriginal": "Hot Wheels Let's Race: Attack of the T-Rex",
     "descripcion": "Cuando un gigantesco tiranosaurio amenaza la ciudad de Hot Wheels, Coop y sus amigos deben correr contrarreloj para rescatar a sus habitantes y salvar el día.",
@@ -1040,106 +1588,6 @@
     "tmdbId": 648819,
     "tmdbType": "movie",
     "runtimeMin": 83,
-    "homepage": "",
-    "creadores": [],
-    "numeroTemporadas": 0,
-    "numeroEpisodios": 0,
-    "temporadasTmdb": []
-  },
-  {
-    "titulo": "Space Ranger Origin",
-    "tituloOriginal": "Space Ranger Origin",
-    "descripcion": "",
-    "imagen": "https://image.tmdb.org/t/p/w780/gQ746rl5t11iBbfU6fn8TDjUqLC.jpg",
-    "backdrop": "",
-    "urlDrive": "",
-    "urlOkRu": "",
-    "codigo": null,
-    "qualityTag": "",
-    "year": "2025",
-    "fechaEstreno": "2025-04-11",
-    "rating": "4.0",
-    "votos": 2,
-    "runtime": "1h 20min",
-    "genres": [
-      "Ciencia ficción"
-    ],
-    "generosTexto": "Ciencia ficción",
-    "clasificacion": "",
-    "tagline": "",
-    "director": "Brett Bentman",
-    "guionistas": "Brett Bentman",
-    "reparto": [
-      {
-        "nombre": "Tiffany McDonald",
-        "personaje": "Mrs. Will Crawford",
-        "foto": "https://image.tmdb.org/t/p/w185/xzXugx3uqZNERjBthrgLIzmc3ap.jpg"
-      },
-      {
-        "nombre": "Michael Phillips Rivera",
-        "personaje": "Scotch",
-        "foto": "https://image.tmdb.org/t/p/w185/cm6O1NC2aDNUH7EF23iZO8G9msC.jpg"
-      },
-      {
-        "nombre": "Melissa Chick",
-        "personaje": "Dakota",
-        "foto": "https://image.tmdb.org/t/p/w185/111rIyvTA0K6hwur22PCZmGyi9X.jpg"
-      },
-      {
-        "nombre": "Justin Ross Martin",
-        "personaje": "Roger",
-        "foto": "https://image.tmdb.org/t/p/w185/kKCU0UpSAyKoSFDqaOGg4eH7krZ.jpg"
-      }
-    ],
-    "pais": "United States of America",
-    "idioma": "en",
-    "productoras": "B22 Films, ITN Films, ITN Distribution, B22 Casting, Plaza Mayor Company",
-    "presupuesto": 0,
-    "recaudacion": 0,
-    "trailerUrl": "",
-    "coleccion": "",
-    "keywords": "",
-    "similares": [
-      {
-        "titulo": "Huida a través del tiempo",
-        "poster": "https://image.tmdb.org/t/p/w342/rQz27bfvdpZZQ0qG3hyJKy91PXT.jpg",
-        "year": "1992",
-        "rating": "6.4"
-      },
-      {
-        "titulo": "La resurrección de Frankenstein",
-        "poster": "https://image.tmdb.org/t/p/w342/r5l1RDSOShMrUmRtiADxrq3ig00.jpg",
-        "year": "1990",
-        "rating": "5.9"
-      },
-      {
-        "titulo": "Han Solo: Una historia de Star Wars",
-        "poster": "https://image.tmdb.org/t/p/w342/zBKHsO4kCIZOT8hRlGagKDL8sSF.jpg",
-        "year": "2018",
-        "rating": "6.6"
-      },
-      {
-        "titulo": "Doctor Who: La novia fugitiva",
-        "poster": "https://image.tmdb.org/t/p/w342/8LQlTuvlDR44RMO09aZ1ejhdLET.jpg",
-        "year": "2006",
-        "rating": "7.8"
-      },
-      {
-        "titulo": "Doctor Who: Deep Breath",
-        "poster": "https://image.tmdb.org/t/p/w342/yH49xHhfkIQ0V1PulpU2t7lPT1r.jpg",
-        "year": "2014",
-        "rating": "7.8"
-      },
-      {
-        "titulo": "Titán A.E.",
-        "poster": "https://image.tmdb.org/t/p/w342/cFtHKAqpxRmwyaJydZ7YyK1dzP0.jpg",
-        "year": "2000",
-        "rating": "6.6"
-      }
-    ],
-    "tmdbId": 1360863,
-    "tmdbType": "movie",
-    "runtimeMin": 80,
     "homepage": "",
     "creadores": [],
     "numeroTemporadas": 0,
