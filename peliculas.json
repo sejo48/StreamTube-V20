@@ -1,5 +1,429 @@
 [
   {
+    "titulo": "El Noa Noa",
+    "tituloOriginal": "El Noa Noa",
+    "descripcion": "Relato biografico del compositor y cantante Juan Gabriel desde sus inicios en el cabaret Noa Noa. Los momentos mas interesantes de su vida, su ninez, la perdida de su padre, y su ingreso al internado de artes y oficios en donde le impartieron sus primeros conocimientos musicales hasta convertirse en un cantante popular.",
+    "imagen": "https://image.tmdb.org/t/p/w780/fotLAnEkqOoeVCjGe2e6LzYEQCK.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/nbrfY7CAoJuzkvDJr2MfPIRdiDh.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1Vh2Iz2gTt-wJhRvSMrXfiJt_CDduPO0Q/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "1981",
+    "fechaEstreno": "1981-02-19",
+    "rating": "7.1",
+    "votos": 8,
+    "runtime": "1h 30min",
+    "genres": [
+      "Drama",
+      "Música",
+      "Romance"
+    ],
+    "generosTexto": "Drama, Música, Romance",
+    "clasificacion": "B-15",
+    "tagline": "",
+    "director": "Gonzalo Martínez Ortega",
+    "guionistas": "Gonzalo Martínez Ortega",
+    "reparto": [
+      {
+        "nombre": "Juan Gabriel",
+        "personaje": "Alberto",
+        "foto": "https://image.tmdb.org/t/p/w185/jTnieD9o3BhLiZnlURmQLQVDqBf.jpg"
+      },
+      {
+        "nombre": "Mercedes Carreño",
+        "personaje": "Mercedes",
+        "foto": "https://image.tmdb.org/t/p/w185/mnrmJiYzqs2tu1CfFhtLJat91ix.jpg"
+      },
+      {
+        "nombre": "Federico Villa",
+        "personaje": "Lupillo",
+        "foto": "https://image.tmdb.org/t/p/w185/juk5VsEPIwuF9IZR4XC03blzXw0.jpg"
+      },
+      {
+        "nombre": "Leonor Llausás",
+        "personaje": "Madre de Alberto",
+        "foto": "https://image.tmdb.org/t/p/w185/xZpy3b8Yj3jjzWL1QhHjXSScdzB.jpg"
+      },
+      {
+        "nombre": "Dacia González",
+        "personaje": "María",
+        "foto": "https://image.tmdb.org/t/p/w185/iLLNSdZYcQ0WCCShhnWY7a11g0E.jpg"
+      },
+      {
+        "nombre": "Fernando Balzaretti",
+        "personaje": "Lupillo",
+        "foto": "https://image.tmdb.org/t/p/w185/6PPWOqt25du0XJQ9ekzU05Xarre.jpg"
+      },
+      {
+        "nombre": "Tito Junco",
+        "personaje": "Don David",
+        "foto": "https://image.tmdb.org/t/p/w185/oWTTywsKHenjp4rigfYBfL7b440.jpg"
+      },
+      {
+        "nombre": "Alba Margarita Cervera",
+        "personaje": "",
+        "foto": ""
+      },
+      {
+        "nombre": "Arlette Pacheco",
+        "personaje": "Chirri",
+        "foto": "https://image.tmdb.org/t/p/w185/9l7Tyez9ostfehWrjT5DVbTFNy2.jpg"
+      },
+      {
+        "nombre": "Amado Zumaya",
+        "personaje": "Juanito",
+        "foto": "https://image.tmdb.org/t/p/w185/bW9eKSTiTSqctxqHVbSxE5GtCkQ.jpg"
+      },
+      {
+        "nombre": "Inés Murillo",
+        "personaje": "Madre de Mercedes",
+        "foto": "https://image.tmdb.org/t/p/w185/ahNP2cCzo5nSUE2wStvj6oFtnZg.jpg"
+      },
+      {
+        "nombre": "Lilian Rosado González",
+        "personaje": "",
+        "foto": ""
+      }
+    ],
+    "pais": "Mexico",
+    "idioma": "es",
+    "productoras": "Producciones del Rey, Producciones Alarca",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "biography, based on true story",
+    "similares": [
+      {
+        "titulo": "Aaliyah: La princesa del r&b",
+        "poster": "https://image.tmdb.org/t/p/w342/czfLJDH44TRs7TZU19pOyt2UYtf.jpg",
+        "year": "2014",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Blaze",
+        "poster": "https://image.tmdb.org/t/p/w342/qnOFc0YtKA7Sqnoc3xPAihdE2i6.jpg",
+        "year": "2018",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "En el límite del amor",
+        "poster": "https://image.tmdb.org/t/p/w342/sRwgjMBEWoVYMvHU9tuszIkf5iW.jpg",
+        "year": "2008",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "All Eyez on Me",
+        "poster": "https://image.tmdb.org/t/p/w342/zmgsaKFWbmZ1Grz4SO0PLNxilv3.jpg",
+        "year": "2017",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Un diario para Jordan",
+        "poster": "https://image.tmdb.org/t/p/w342/abOGzIUAXZ6S1UDITXWWACzCN6X.jpg",
+        "year": "2021",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Newness",
+        "poster": "https://image.tmdb.org/t/p/w342/j6P9ErPK3PgX56nZukGGgTvSaUC.jpg",
+        "year": "2017",
+        "rating": "6.1"
+      }
+    ],
+    "tmdbId": 458717,
+    "tmdbType": "movie",
+    "runtimeMin": 90,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "El rey del barrio",
+    "tituloOriginal": "El rey del barrio",
+    "descripcion": "Caritativo y desprendido, el joven ferrocarrilero Tin Tan se empeña en proteger a su joven vecina Carmelita, a pesar de que ésta rechaza su ayuda. En realidad, Tin Tan es jefe de una banda de ladrones que se dedica a estafar a millonarias, haciéndose pasar por músicos, pintores y cantaores de flamenco. Éste moderno Robin Hood ve complicadas sus intenciones cuando la estrafalaria Nena, una de sus millonarias conquistas, se prenda de sus encantos y quiere casarse con él.",
+    "imagen": "https://image.tmdb.org/t/p/w780/7UFaB1yqgQBAS4o7hXHojfVNqyX.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/ghJPRcW7cnWnPGkomW8vEgAOXYP.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1he2Oz7Wcal8E31lefGRu1yAW5Ln9RRwP/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "1950",
+    "fechaEstreno": "1950-02-04",
+    "rating": "8.4",
+    "votos": 64,
+    "runtime": "1h 40min",
+    "genres": [
+      "Comedia",
+      "Crimen"
+    ],
+    "generosTexto": "Comedia, Crimen",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Gilberto Martínez Solares",
+    "guionistas": "Gilberto Martínez Solares, Juan García",
+    "reparto": [
+      {
+        "nombre": "Germán Valdés",
+        "personaje": "Tin-Tán",
+        "foto": "https://image.tmdb.org/t/p/w185/hLMmUBuc4E5Y6eqzZcaYNB2Dcs7.jpg"
+      },
+      {
+        "nombre": "Silvia Pinal",
+        "personaje": "Carmelita",
+        "foto": "https://image.tmdb.org/t/p/w185/1qa21MhlZ7vKCAjyrsfrS9hxniP.jpg"
+      },
+      {
+        "nombre": "Marcelo Chávez",
+        "personaje": "Policeman",
+        "foto": "https://image.tmdb.org/t/p/w185/jL7MlpKi5hsn13iFSaJRnmvxInP.jpg"
+      },
+      {
+        "nombre": "Fannie Kauffman",
+        "personaje": "Girl",
+        "foto": "https://image.tmdb.org/t/p/w185/fm42tWuTB8hapE8hzAWqyV2t30X.jpg"
+      },
+      {
+        "nombre": "Juan García",
+        "personaje": "El Peralvillo",
+        "foto": "https://image.tmdb.org/t/p/w185/kgrnuFc3dSKJliOdvlrQ6eFiT7.jpg"
+      },
+      {
+        "nombre": "Joaquín García Vargas",
+        "personaje": "Borolas",
+        "foto": "https://image.tmdb.org/t/p/w185/e0PrDDlQwwBSwxODOKZXjhLYzpU.jpg"
+      },
+      {
+        "nombre": "Ramón Valdés",
+        "personaje": "El Norteño",
+        "foto": "https://image.tmdb.org/t/p/w185/o8HLSzfsbPQMm5woy1iRj7KTslB.jpg"
+      },
+      {
+        "nombre": "José Ortega",
+        "personaje": "El Sapo",
+        "foto": ""
+      },
+      {
+        "nombre": "Ismael Pérez 'Poncianito'",
+        "personaje": "Pepito",
+        "foto": "https://image.tmdb.org/t/p/w185/nw20z3trxcMy0vv1job3qmM9g1f.jpg"
+      },
+      {
+        "nombre": "Alejandro Cobo",
+        "personaje": "Antonio",
+        "foto": "https://image.tmdb.org/t/p/w185/oQ7nZITiVTw7DRjotuZ2xnHSudK.jpg"
+      },
+      {
+        "nombre": "José Jasso",
+        "personaje": "Pepito's Party Guest",
+        "foto": "https://image.tmdb.org/t/p/w185/koxpeDc4urPCP8YNJjxofvHiEun.jpg"
+      },
+      {
+        "nombre": "Eugenia Galindo",
+        "personaje": "Carmelita's Aunt",
+        "foto": "https://image.tmdb.org/t/p/w185/y7Zm3eL9DUubbsZmn6m5EqLcdZr.jpg"
+      }
+    ],
+    "pais": "Mexico",
+    "idioma": "es",
+    "productoras": "AS Films",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "mexico, sacrifice, cabaret, robber, gang, poverty, neighborhood, tin tan",
+    "similares": [
+      {
+        "titulo": "Bandidas",
+        "poster": "https://image.tmdb.org/t/p/w342/mkSfRjRcld9BULXuxP3eA9cMMs3.jpg",
+        "year": "2006",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "El último encargo",
+        "poster": "https://image.tmdb.org/t/p/w342/lbpyI9nwzSVDjS7OnE0uC41UciP.jpg",
+        "year": "2025",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Toma el dinero y corre",
+        "poster": "https://image.tmdb.org/t/p/w342/gBcuFurlnFH8hAJeiQm9ildM0wS.jpg",
+        "year": "1969",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Bienvenidos a Collinwood",
+        "poster": "https://image.tmdb.org/t/p/w342/eR7IdWePomkLBR8Y9CxXlBir2jw.jpg",
+        "year": "2002",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Sucedió entre las 12 y las 3",
+        "poster": "https://image.tmdb.org/t/p/w342/qnSktr9yAotMctPwP1KWg8hyKC.jpg",
+        "year": "1976",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Las fronteras del crimen",
+        "poster": "https://image.tmdb.org/t/p/w342/2UhfadoA1FqLIiy6QWpYhczmk9Q.jpg",
+        "year": "1951",
+        "rating": "6.8"
+      }
+    ],
+    "tmdbId": 118003,
+    "tmdbType": "movie",
+    "runtimeMin": 100,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
+    "titulo": "La presidenta municipal",
+    "tituloOriginal": "La presidenta municipal",
+    "descripcion": "La India María Cruz es alfarera y vende sus figuras al estadounidense Peppermint. Un error en las papeletas electorales hace que aparezca su nombre en lugar del de cacique Mario y gana las elecciones para presidente municipal. Como tal decide abrir la iglesia, imponer tasas a la cantina y a los bebedores, promulga leyes para que la mitad de los jornales sean para las esposas de los trabajadores, organiza matrimonios colectivos y promueve la paternidad responsable. El cacique le ordena a un tipo que la enamore para que se despreocupe del gobierno, pero ella despide al galán. El cacique decide entonces secuestrarla, pero sus amigos Lencho y Peppermint la rescatan.",
+    "imagen": "https://image.tmdb.org/t/p/w780/6OqCbCOSPPlWA61yxGyyFKWsdPW.jpg",
+    "backdrop": "",
+    "urlDrive": "",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "1975",
+    "fechaEstreno": "1975-09-11",
+    "rating": "7.3",
+    "votos": 16,
+    "runtime": "1h 35min",
+    "genres": [
+      "Drama",
+      "Comedia"
+    ],
+    "generosTexto": "Drama, Comedia",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Fernando Cortés",
+    "guionistas": "Marco Antonio Almazan",
+    "reparto": [
+      {
+        "nombre": "María Elena Velasco",
+        "personaje": "María Nicolasa Cruz",
+        "foto": "https://image.tmdb.org/t/p/w185/oQ9IBfB38EepJZcuvsdNXSOHexg.jpg"
+      },
+      {
+        "nombre": "Adalberto Martínez",
+        "personaje": "Cabo Melquiades",
+        "foto": "https://image.tmdb.org/t/p/w185/7E4DNHWyo3kcsKewQdzPirAQqbM.jpg"
+      },
+      {
+        "nombre": "Pancho Córdova",
+        "personaje": "Mr. Peppermint",
+        "foto": "https://image.tmdb.org/t/p/w185/3aqUNccGsDMMt1tkwdueXl5hIUY.jpg"
+      },
+      {
+        "nombre": "Rolando Barral",
+        "personaje": "Rolando Barral",
+        "foto": ""
+      },
+      {
+        "nombre": "Fernando Soto",
+        "personaje": "Don Chepito Domínguez",
+        "foto": "https://image.tmdb.org/t/p/w185/eOSObzqiXrTwzrEDT0D8KMP1X1l.jpg"
+      },
+      {
+        "nombre": "Joaquín García Vargas",
+        "personaje": "Secretario López",
+        "foto": "https://image.tmdb.org/t/p/w185/e0PrDDlQwwBSwxODOKZXjhLYzpU.jpg"
+      },
+      {
+        "nombre": "Raúl Meraz",
+        "personaje": "Don Mario Nicanor Cruz",
+        "foto": "https://image.tmdb.org/t/p/w185/59UsfcaYSNwJUEfz5P4BFsW2hae.jpg"
+      },
+      {
+        "nombre": "José Chávez",
+        "personaje": "Pedro",
+        "foto": "https://image.tmdb.org/t/p/w185/2Kfry3c2paEALBoY3Apbq8IIMG3.jpg"
+      },
+      {
+        "nombre": "Polo Ortín",
+        "personaje": "Lic. Hugo Topillo",
+        "foto": "https://image.tmdb.org/t/p/w185/WXfIOurmNP0fQIDAF960n4h7PV.jpg"
+      },
+      {
+        "nombre": "Jesús González Leal 'Chis Chas'",
+        "personaje": "Pablo",
+        "foto": ""
+      },
+      {
+        "nombre": "Alfonso Zayas",
+        "personaje": "Secretario Rodríguez",
+        "foto": "https://image.tmdb.org/t/p/w185/pUxboVlf9GcLuv3xdxiyEJWSBx2.jpg"
+      },
+      {
+        "nombre": "Antonio Bravo",
+        "personaje": "Señor cura",
+        "foto": "https://image.tmdb.org/t/p/w185/az9wXfXVuACW972ZNLUR0sNALIE.jpg"
+      }
+    ],
+    "pais": "Mexico",
+    "idioma": "es",
+    "productoras": "Diana Films, América Films",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Los trapos sucios se lavan en casa",
+        "poster": "https://image.tmdb.org/t/p/w342/klmsgJ1gBsZSmeN7JbUcaBy1AAV.jpg",
+        "year": "2020",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "El abanico de Lady Windermere",
+        "poster": "https://image.tmdb.org/t/p/w342/fpDPAhrWuLiF28KMwDhYAj5ofTk.jpg",
+        "year": "1925",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Competencia oficial",
+        "poster": "https://image.tmdb.org/t/p/w342/jVRPUtO6i13YuFf6uk4RWYHzvBh.jpg",
+        "year": "2021",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Fin de semana en familia",
+        "poster": "https://image.tmdb.org/t/p/w342/yiABVBZmyrmMj2WTVUzoHirTgXn.jpg",
+        "year": "2013",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "No lo pienses",
+        "poster": "https://image.tmdb.org/t/p/w342/f8PuoewhI3qeROdfXSw2Utjf1On.jpg",
+        "year": "2016",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "¡Que viva México!",
+        "poster": "https://image.tmdb.org/t/p/w342/ieyUpr5ES9QEz1cn4clCnBf9XJl.jpg",
+        "year": "2023",
+        "rating": "7.4"
+      }
+    ],
+    "tmdbId": 74025,
+    "tmdbType": "movie",
+    "runtimeMin": 95,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Escuela de vagabundos",
     "tituloOriginal": "Escuela de vagabundos",
     "descripcion": "El vagabundo Luis Alberto llega a la mansión de los Valverde en busca de un teléfono y termina contratado como chofer por doña Emilia, quien tiene la manía de proteger a los vagabundos. Luis Alberto conoce a las hijas del matrimonio: la bella y altiva Susi y la joven y alegre Lala. En poco tiempo, José Antonio se enamora de Susi, quien lo considera un patán... muy atractivo.",
