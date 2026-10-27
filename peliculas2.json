@@ -1,5 +1,147 @@
 [
   {
+    "titulo": "La constelación del perro",
+    "tituloOriginal": "The Dog Stars",
+    "descripcion": "En un mundo postapocalíptico, un virus aniquila a prácticamente toda la humanidad. Los supervivientes se enfrentan a unos carroñeros errantes llamados \"Segadores\". El protagonista, Hig, un piloto, sobrevivió a la gripe pero perdió a su mujer.",
+    "imagen": "https://image.tmdb.org/t/p/original/unyqtCtZiLvcqAAbw3vvCuPwt78.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/joVtII9prX3MC4a2LfoKsiMWET3.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1A_STde2pexyql9Tdj_eelRLHaIEXGajf/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-08-26",
+    "rating": "6.6",
+    "votos": 329,
+    "runtime": "1h 59min",
+    "genres": [
+      "Suspense",
+      "Aventura",
+      "Ciencia ficción"
+    ],
+    "generosTexto": "Suspense, Aventura, Ciencia ficción",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "Ridley Scott",
+    "guionistas": "Mark L. Smith",
+    "reparto": [
+      {
+        "nombre": "Jacob Elordi",
+        "personaje": "Hig",
+        "foto": "https://image.tmdb.org/t/p/w185/9FGS8AGjVNtpWuUeoipYWR23sRZ.jpg"
+      },
+      {
+        "nombre": "Josh Brolin",
+        "personaje": "Bangley",
+        "foto": "https://image.tmdb.org/t/p/w185/7QpneI3HoZCCDVPyWx3p3t7yeo7.jpg"
+      },
+      {
+        "nombre": "Margaret Qualley",
+        "personaje": "Cima",
+        "foto": "https://image.tmdb.org/t/p/w185/4LeaweyyTXCNs9V5swAuU4gGgZC.jpg"
+      },
+      {
+        "nombre": "Guy Pearce",
+        "personaje": "Pops",
+        "foto": "https://image.tmdb.org/t/p/w185/vTqk6Nh3WgqPubkS23eOlMAwmwa.jpg"
+      },
+      {
+        "nombre": "Benedict Wong",
+        "personaje": "Aaron",
+        "foto": "https://image.tmdb.org/t/p/w185/yYfLyrC2CE6vBWSJfkpuVKL2POM.jpg"
+      },
+      {
+        "nombre": "Allison Janney",
+        "personaje": "Darlene",
+        "foto": "https://image.tmdb.org/t/p/w185/AnpevvFjyFPRL3vDGo7o1Woina1.jpg"
+      },
+      {
+        "nombre": "Ewen Bremner",
+        "personaje": "Crossbow Hunter",
+        "foto": "https://image.tmdb.org/t/p/w185/7ZayRqxxy5JsQpiUPA0iVeRHny6.jpg"
+      },
+      {
+        "nombre": "Sam Spruell",
+        "personaje": "John",
+        "foto": "https://image.tmdb.org/t/p/w185/5xQOHz3uUy20zsUMABaIsAXKFcI.jpg"
+      },
+      {
+        "nombre": "James Craze",
+        "personaje": "Logan",
+        "foto": "https://image.tmdb.org/t/p/w185/hxDWYepyFe0WmpMvuLV2FJXqdpP.jpg"
+      },
+      {
+        "nombre": "Sai Bennett",
+        "personaje": "Melissa",
+        "foto": "https://image.tmdb.org/t/p/w185/u1kUF1bM6Mppf5SpkqEWV49Ql4i.jpg"
+      },
+      {
+        "nombre": "Alara-Star Khan",
+        "personaje": "Matilda",
+        "foto": "https://image.tmdb.org/t/p/w185/9GFBpG1EWmd1mG33YU15E2fGXIB.jpg"
+      },
+      {
+        "nombre": "Sebastian Rokison-Woodall",
+        "personaje": "Ben",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "20th Century Studios, Scott Free Productions",
+    "presupuesto": 110000000,
+    "recaudacion": 37416959,
+    "trailerUrl": "https://www.youtube.com/watch?v=a8qEBr7eYmc",
+    "coleccion": "",
+    "keywords": "based on novel or book, dystopia, denver, colorado, pilot, colorado, grief, pandemic, detached, lonely man, death of wife, scavengers, loving, joyful, group, dogs, post-apocalyptic",
+    "similares": [
+      {
+        "titulo": "Soy leyenda",
+        "poster": "https://image.tmdb.org/t/p/w342/pO1SrJgf5BumqcIRkYviSGIFdmX.jpg",
+        "year": "2007",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Infierno blanco",
+        "poster": "https://image.tmdb.org/t/p/w342/qrLan9yN5LJbJYozrr5VarL1FVh.jpg",
+        "year": "2012",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "El último hombre... vivo",
+        "poster": "https://image.tmdb.org/t/p/w342/pR6gbM0uKtKeYZEvSdzoehyAEpU.jpg",
+        "year": "1971",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "127 horas",
+        "poster": "https://image.tmdb.org/t/p/w342/1XbNkZMLXD9dYGZJ87nmQ62Mp2l.jpg",
+        "year": "2010",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "12 monos",
+        "poster": "https://image.tmdb.org/t/p/w342/bXLwKCCMS2NCNlxAhSwn9HCymRl.jpg",
+        "year": "1995",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Greenland: El último refugio",
+        "poster": "https://image.tmdb.org/t/p/w342/9iFkwShRf5M29yLABAdsEZyr9w6.jpg",
+        "year": "2020",
+        "rating": "7.1"
+      }
+    ],
+    "tmdbId": 1384216,
+    "tmdbType": "movie",
+    "runtimeMin": 119,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": []
+  },
+  {
     "titulo": "Sacrifice",
     "tituloOriginal": "Sacrifice",
     "descripcion": "Durante una gala benéfica repleta de estrellas —entre ellas celebridades, multimillonarios y discursos vacíos—, una estrella de cine inmersa en una crisis existencial es tomada como rehén por una guerrera radical y sus fieles seguidores. A medida que la noche se precipita hacia el caos, se desarrollan simultáneamente un viaje interior y una aventura externa, donde la línea que separa la representación de la creencia, y la salvación del sacrificio, comienza a desdibujarse.",
