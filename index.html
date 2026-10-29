@@ -734,15 +734,12 @@
             )}</div></nav>;
         };
 
-        // Busca solo los datos de la película, sin confundir recomendaciones o nombres del reparto.
+        // Navidad incluye únicamente las películas seleccionadas manualmente en el administrador.
         const selectChristmasMovies = (content) => {
             const normalize = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-            const seasonal = /\b(navidad(?:es)?|naviden\w*|nochebuena|christmas|xmas|grinch|santa claus|papa noel)\b/;
             const seen = new Set();
             return [...(content.movies || []), ...(content.movies2 || [])].filter(item => {
-                const metadata = [item.title, item.titulo, item.tituloOriginal, item.original_title, item.description, item.descripcion, item.sinopsis, item.keywords, item.coleccion, item.tags, item.categoria].join(' ');
-                const included = typeof item.navidad === 'boolean' ? item.navidad : seasonal.test(normalize(metadata));
-                if (!included) return false;
+                if (item.navidad !== true) return false;
                 const key = item.tmdbId ? 'tmdb:' + item.tmdbId : normalize(item.title || item.titulo) + '|' + (item.year || item.anio || '');
                 if (seen.has(key)) return false;
                 seen.add(key);
