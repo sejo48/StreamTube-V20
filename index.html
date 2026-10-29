@@ -284,6 +284,43 @@
         .box-notification-item[data-unread="true"] { border-color: #06b6d4; background: rgba(6,182,212,.07); }
         .box-notification-item p { white-space: pre-wrap; overflow-wrap: anywhere; }
     </style>
+
+    <style id="boxplay-christmas">
+        /* Adornos ligeros: no capturan clics ni agregan movimiento. */
+        .box-christmas-lights {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 14px;
+            pointer-events: none;
+            user-select: none;
+            background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22160%22%20height%3D%2214%22%20viewBox%3D%220%200%20160%2014%22%3E%3Cpath%20d%3D%22M0%202Q40%207%2080%202T160%202%22%20fill%3D%22none%22%20stroke%3D%22%2363706a%22%20stroke-opacity%3D%22.55%22%2F%3E%3Cg%20fill%3D%22%23ffe0a3%22%3E%3Cellipse%20cx%3D%2220%22%20cy%3D%227%22%20rx%3D%222.5%22%20ry%3D%223.5%22%2F%3E%3Cellipse%20cx%3D%22100%22%20cy%3D%225%22%20rx%3D%222.5%22%20ry%3D%223.5%22%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%22%23ffbd95%22%3E%3Cellipse%20cx%3D%2260%22%20cy%3D%227%22%20rx%3D%222.5%22%20ry%3D%223.5%22%2F%3E%3Cellipse%20cx%3D%22140%22%20cy%3D%225%22%20rx%3D%222.5%22%20ry%3D%223.5%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+            background-repeat: repeat-x;
+            background-size: 160px 14px;
+            opacity: .82;
+            filter: drop-shadow(0 0 3px rgba(255, 210, 140, .5));
+        }
+        .box-christmas-logo { position: relative; }
+        .box-christmas-hat {
+            position: absolute;
+            width: 30px;
+            height: 25px;
+            top: -11px;
+            left: -5px;
+            transform: rotate(-14deg);
+            pointer-events: none;
+            user-select: none;
+            overflow: visible;
+        }
+        @media (max-width: 639px) {
+            .box-christmas-lights { background-size: 128px 12px; height: 12px; opacity: .72; }
+            .box-christmas-hat { width: 27px; height: 23px; top: -9px; left: -4px; }
+        }
+        @media print {
+            .box-christmas-lights, .box-christmas-hat { display: none; }
+        }
+    </style>
 </head>
 
 <!-- SDK y Funciones de Firebase Firestore para Validación SINPE -->
@@ -1926,7 +1963,13 @@
                     <header className="box-header fixed top-0 left-0 right-0 z-50 glass-header px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl w-full">
                         <div className="flex items-center gap-4 lg:gap-8">
                             <div className="flex items-center gap-2.5 cursor-pointer group" onClick={() => handleTabClick(navTabs[0])}>
-                                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.4)] group-hover:scale-105 transition-transform flex-shrink-0">
+                                <div className="box-christmas-logo w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-600 to-teal-500 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.4)] group-hover:scale-105 transition-transform flex-shrink-0">
+                                    <svg className="box-christmas-hat" viewBox="0 0 40 32" aria-hidden="true" focusable="false">
+                                        <path d="M7 23C8 14 11 5 23 4C29 4 32 9 33 16L27 16C25 10 22 11 21 15L24 23Z" fill="#dc3545"/>
+                                        <path d="M8 22C10 12 13 7 20 5C15 12 15 17 15 23Z" fill="#ef5260"/>
+                                        <rect x="5" y="21" width="23" height="8" rx="4" fill="#fff4e6"/>
+                                        <circle cx="32" cy="17" r="5" fill="#fff4e6"/>
+                                    </svg>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 fill-white"><polygon points="40,30 70,50 40,70"/></svg>
                                 </div>
                                 <span className="font-black text-base sm:text-lg tracking-tight">BOXPLAY<span className="text-cyan-400">TV</span></span>
@@ -1977,6 +2020,7 @@
                             </div>
 
                         </div>
+                        <span className="box-christmas-lights" aria-hidden="true" />
                     </header>
                     {showMobileSearch && <form className="box-phone-only box-search-panel" role="search" onSubmit={event => { event.preventDefault(); addRecentSearch(search); setShowMobileSearch(false); }}>
                         <input autoFocus type="search" aria-label="Buscar películas y series" placeholder="Buscar películas y series…" value={search} onChange={event => { setSearch(event.target.value); if (selectedItem) { setSelectedItem(null); setIsPlaying(false); } }} />
@@ -2608,5 +2652,6 @@
     </script>
 </body>
 </html>
+
 
 
