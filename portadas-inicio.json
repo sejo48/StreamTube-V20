@@ -2,32 +2,32 @@
   "schemaVersion": 1,
   "source": "peliculas2.json",
   "mode": "manual",
-  "updatedAt": "2026-10-29T12:03:20.925Z",
+  "updatedAt": "2026-10-30T00:38:31.024Z",
   "items": [
     {
-      "movieKey": "tmdb:413846",
-      "title": "1992",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/pbmlCNeOwvCqum8yvMERbgnrSr7.jpg"
+      "movieKey": "tmdb:1759875",
+      "title": "La milicia",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/twI5fNZrX4UnUVu8mAeO1P7VAUk.jpg"
     },
     {
-      "movieKey": "tmdb:1375646",
-      "title": "Colony",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/iGViga8sDCET1S6GfwOlAbuhSGQ.jpg"
+      "movieKey": "tmdb:757725",
+      "title": "Shadow Force",
+      "backdrop": "https://image.tmdb.org/t/p/original/bs2Acs801r8EMURPbAshfBHMQ9u.jpg"
     },
     {
-      "movieKey": "tmdb:1384216",
-      "title": "La constelación del perro",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/joVtII9prX3MC4a2LfoKsiMWET3.jpg"
+      "movieKey": "tmdb:1242434",
+      "title": "Del cielo al infierno",
+      "backdrop": "https://image.tmdb.org/t/p/original/mBE9GdUOjYtJYphyFbdUyvngcGh.jpg"
     },
     {
-      "movieKey": "tmdb:1284186",
-      "title": "Sacrifice",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/oAUf1pvGlafCZVlEuPt1JyONHR1.jpg"
+      "movieKey": "tmdb:219572",
+      "title": "Acción Policial",
+      "backdrop": "https://image.tmdb.org/t/p/original/thzbI5XLJngz8pS89eGcGlPnNlr.jpg"
     },
     {
-      "movieKey": "tmdb:1305781",
-      "title": "Blades of the Guardians: Wind Rises in the Desert",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/29pJrsosphUdOMRDm4gCdhSkluI.jpg"
+      "movieKey": "tmdb:297596",
+      "title": "Caza al terrorista",
+      "backdrop": "https://image.tmdb.org/t/p/original/oHXUsNT0rWHjovt0qX77m2mIez3.jpg"
     }
   ]
 }
