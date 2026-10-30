@@ -301,6 +301,10 @@
             opacity: .82;
             filter: drop-shadow(0 0 3px rgba(255, 210, 140, .5));
         }
+        .box-christmas-brand { display: flex; flex-direction: column; min-width: 0; line-height: 1.2; }
+        .box-christmas-countdown { display: block; margin-top: 3px; color: #f4d8a4; font-size: 11px; font-weight: 500; letter-spacing: 0; white-space: nowrap; }
+        .box-christmas-countdown strong { font-weight: 800; font-variant-numeric: tabular-nums; }
+        @media (max-width: 639px) { .box-christmas-countdown { font-size: 10px; margin-top: 2px; } }
         .box-christmas-logo { position: relative; }
         .box-christmas-hat {
             position: absolute;
@@ -745,6 +749,36 @@
                 seen.add(key);
                 return true;
             });
+        };
+
+        const getChristmasDays = (now = new Date()) => {
+            const parts = new Intl.DateTimeFormat('en-CA', {
+                timeZone: 'America/Costa_Rica', year: 'numeric', month: '2-digit', day: '2-digit'
+            }).formatToParts(now);
+            const part = name => Number(parts.find(value => value.type === name).value);
+            const year = part('year'), month = part('month'), day = part('day');
+            const targetYear = month === 12 && day > 25 ? year + 1 : year;
+            return Math.round((Date.UTC(targetYear, 11, 25) - Date.UTC(year, month - 1, day)) / 86400000);
+        };
+
+        const ChristmasCountdown = () => {
+            const [days, setDays] = useState(() => getChristmasDays());
+            useEffect(() => {
+                const refresh = () => setDays(getChristmasDays());
+                const onVisible = () => { if (!document.hidden) refresh(); };
+                const timer = setInterval(refresh, 60000);
+                document.addEventListener('visibilitychange', onVisible);
+                window.addEventListener('focus', refresh);
+                return () => {
+                    clearInterval(timer);
+                    document.removeEventListener('visibilitychange', onVisible);
+                    window.removeEventListener('focus', refresh);
+                };
+            }, []);
+            const message = days === 0 ? '¡Feliz Navidad!' : `Faltan ${days} ${days === 1 ? 'día' : 'días'} para Navidad`;
+            return <span className="box-christmas-countdown" aria-label={message}>
+                <span aria-hidden="true">🎄 </span>{days === 0 ? '¡Feliz Navidad!' : <><strong>{days}</strong> {days === 1 ? 'día' : 'días'} para Navidad</>}
+            </span>;
         };
 
         const HomeShelf = ({ title, subtitle, items, onPlay, favorites, tvFavorites, onToggleFavorite, onExplore, resume = false }) => {
@@ -1990,7 +2024,7 @@
                                     </svg>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-5 h-5 fill-white"><polygon points="40,30 70,50 40,70"/></svg>
                                 </div>
-                                <span className="font-black text-base sm:text-lg tracking-tight">BOXPLAY<span className="text-cyan-400">TV</span></span>
+                                <span className="box-christmas-brand"><span className="font-black text-base sm:text-lg tracking-tight">BOXPLAY<span className="text-cyan-400">TV</span></span><ChristmasCountdown /></span>
                             </div>
                             <nav aria-label="Secciones principales" className="hidden lg:flex items-center gap-1.5">
                                 {navTabs.filter(tab => !['devices', 'favorites'].includes(tab.id)).map(tab => (
