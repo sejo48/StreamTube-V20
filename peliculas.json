@@ -1,5 +1,284 @@
 [
   {
+    "titulo": "Mickey y Minnie y el deseo de Navidad",
+    "tituloOriginal": "Mickey and Minnie Wish Upon a Christmas",
+    "descripcion": "Después de una serie de contratiempos, Mickey, Minnie y la pandilla se separan en todo el mundo y deben intentar regresar a Hot Dog Hills para la víspera de Navidad. Un misterioso y alegre extraño aparece para contarles sobre The Wishing Star, que podría ser el secreto para llevar a todos a casa a tiempo para celebrar juntos.",
+    "imagen": "https://image.tmdb.org/t/p/w780/5mNwP4NsJisqLKbKVlil3OaZNQI.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/8fW0wqB3a6dvIoIBduCKocZi58a.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1F0_RHTh7A2wkDaIfSb7bfGdXdRefL4us/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2021",
+    "fechaEstreno": "2021-12-02",
+    "rating": "7.0",
+    "votos": 174,
+    "runtime": "47min",
+    "genres": [
+      "Animación",
+      "Película de TV",
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Animación, Película de TV, Comedia, Familia",
+    "clasificacion": "G",
+    "tagline": "",
+    "director": "Broni Likomanov",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Bret Iwan",
+        "personaje": "Mickey (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/14m82iewt4tDjaaOmsYWMr6TKQ8.jpg"
+      },
+      {
+        "nombre": "Kaitlyn Robrock",
+        "personaje": "Minnie / Jenny / Additional Voices (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/1joOQrgyU9ap9W1cvimh01XmKcO.jpg"
+      },
+      {
+        "nombre": "Bill Farmer",
+        "personaje": "Goofy / Additional Voices (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/lhezx68R12s5Bsv7d77BrQb7tWA.jpg"
+      },
+      {
+        "nombre": "Daniel Ross",
+        "personaje": "Donald / Additional Voices (voice)",
+        "foto": ""
+      },
+      {
+        "nombre": "Tress MacNeille",
+        "personaje": "Daisy (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/gI2LsgByvSffQY34vabVnPmrHzw.jpg"
+      },
+      {
+        "nombre": "Jim Cummings",
+        "personaje": "Pete (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/c0sQPRCM5Ri3F4gVyxPr4AcPmIq.jpg"
+      },
+      {
+        "nombre": "Nika Futterman",
+        "personaje": "Cuckoo-Loca / Additional Voices (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/6zfuSfLGtLXtFxXBUftMQbgfH6q.jpg"
+      },
+      {
+        "nombre": "Brock Powell",
+        "personaje": "Santa Claus / Henry / Additional Voices (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/8ge9ffuWkfzNup1XW6p5qaIouLa.jpg"
+      },
+      {
+        "nombre": "April Winchell",
+        "personaje": "Clarabelle (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/twx3xkmvRAuHHJp3xUd1sbxTZRS.jpg"
+      },
+      {
+        "nombre": "Dee Bradley Baker",
+        "personaje": "Additional Voices (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/9oFnToDZWp0I484s7Ua1EzNQQ2m.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Disney Television Animation, Disney Junior",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "christmas, christmas special",
+    "similares": [
+      {
+        "titulo": "Mickey salva la Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/67FJAZAwIcIDLiyku3sQMz3ToAJ.jpg",
+        "year": "2022",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Quiero un perro por Navidad, Carlitos",
+        "poster": "https://image.tmdb.org/t/p/w342/vKPNfKrBH9uD0HDRCUSqQKn8XeX.jpg",
+        "year": "2003",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Toy Story: El tiempo perdido",
+        "poster": "https://image.tmdb.org/t/p/w342/3m8SkdSzWOkNodITnuqXCGaIdFG.jpg",
+        "year": "2014",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Los Pitufos: Cuento de Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/mXGT32oOHNJobzXhTrXExcqdsep.jpg",
+        "year": "2011",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Llegó de nuevo la Navidad, Charlie Brown",
+        "poster": "https://image.tmdb.org/t/p/w342/oMoVuAWZi3cfjbqrp2a0zbSBFGa.jpg",
+        "year": "1992",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Feliz Mini-Bat-Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/9TIuqkEdEZtEpLMSC6JZ5wWEbR3.jpg",
+        "year": "2023",
+        "rating": "6.6"
+      }
+    ],
+    "tmdbId": 864390,
+    "tmdbType": "movie",
+    "runtimeMin": 47,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Atrapada en la Navidad",
+    "tituloOriginal": "Christmas...Again?!",
+    "descripcion": "Tras una celebración desastrosa, Rowena de 12 años pide un deseo e inesperadamente se encuentra reviviendo el Día de Navidad una y otra vez.",
+    "imagen": "https://image.tmdb.org/t/p/w780/nIWGp0jQzHvX6H3vEdPwOKwr931.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/mFDUO48v1Cik3MToFgBsF2Milvv.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1AijeaF0MmtbnmkCcW9rs1vDd0rycyHHA/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2021",
+    "fechaEstreno": "2021-12-03",
+    "rating": "6.5",
+    "votos": 121,
+    "runtime": "1h 34min",
+    "genres": [
+      "Familia",
+      "Comedia",
+      "Fantasía",
+      "Película de TV",
+      "Drama"
+    ],
+    "generosTexto": "Familia, Comedia, Fantasía, Película de TV, Drama",
+    "clasificacion": "G",
+    "tagline": "",
+    "director": "Andy Fickman",
+    "guionistas": "Doan La",
+    "reparto": [
+      {
+        "nombre": "Scarlett Estevez",
+        "personaje": "Rowena \"Ro\"",
+        "foto": "https://image.tmdb.org/t/p/w185/eGZsZRPJ0aUBGaght37a3pQXEjs.jpg"
+      },
+      {
+        "nombre": "Daniel Sunjata",
+        "personaje": "Mike",
+        "foto": "https://image.tmdb.org/t/p/w185/w3Wa0d7j2auA2R8FQvjrgfB3ozo.jpg"
+      },
+      {
+        "nombre": "Alexis Carra",
+        "personaje": "Carolina",
+        "foto": "https://image.tmdb.org/t/p/w185/qMwvtZVV24JYKcSDiqVjHvjHq8x.jpg"
+      },
+      {
+        "nombre": "Priscilla Lopez",
+        "personaje": "Abuela Sofia",
+        "foto": "https://image.tmdb.org/t/p/w185/pP2RnsD2twtt7Qv8km3EVLleiGo.jpg"
+      },
+      {
+        "nombre": "Ashlyn Jade Lopez",
+        "personaje": "Gabby",
+        "foto": "https://image.tmdb.org/t/p/w185/oNHSVm0ubyGsmjBfnYX1zlNLRrz.jpg"
+      },
+      {
+        "nombre": "Beth Lacke",
+        "personaje": "Diane",
+        "foto": "https://image.tmdb.org/t/p/w185/8MskRyLlMqwhFcvxr98lhULGmkZ.jpg"
+      },
+      {
+        "nombre": "Gary Anthony Williams",
+        "personaje": "Santa",
+        "foto": "https://image.tmdb.org/t/p/w185/96BbiV8rQOeGyoDxgrepRd6lUjm.jpg"
+      },
+      {
+        "nombre": "James McCracken",
+        "personaje": "Louie",
+        "foto": ""
+      },
+      {
+        "nombre": "Gabriel Ruiz",
+        "personaje": "Gerry",
+        "foto": ""
+      },
+      {
+        "nombre": "Sean Parris",
+        "personaje": "Bruce",
+        "foto": ""
+      },
+      {
+        "nombre": "Israel Idonije",
+        "personaje": "Israel Idonije",
+        "foto": "https://image.tmdb.org/t/p/w185/3GUTY42zVzuHVjWDXpKH0rexpgH.jpg"
+      },
+      {
+        "nombre": "Deanna Reed-Foster",
+        "personaje": "Linda",
+        "foto": "https://image.tmdb.org/t/p/w185/mbzYPaK37713chmszqJ3PrCdVAw.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "GWave Productions, Oops Doughnuts Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=0NRb7lRSXAw",
+    "coleccion": "",
+    "keywords": "time loop, christmas",
+    "similares": [
+      {
+        "titulo": "Navidad en Candy Cane Lane",
+        "poster": "https://image.tmdb.org/t/p/w342/8tpxgH4hAeG61dFfjPKiVZFTFoZ.jpg",
+        "year": "2023",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Click & Collect",
+        "poster": "https://image.tmdb.org/t/p/w342/rCAZcvvbHtI9M3EQ2qGXTjdBrLQ.jpg",
+        "year": "2018",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Las navidades pasadas de Kristin",
+        "poster": "https://image.tmdb.org/t/p/w342/m3QeiZlAbixGwddpAaEBBhThzmx.jpg",
+        "year": "2013",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "¡Menuda momia!",
+        "poster": "https://image.tmdb.org/t/p/w342/fwjDnIk9YgY76j5rX6EeobBPkUh.jpg",
+        "year": "2021",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Navidades, ¿bien o en familia?",
+        "poster": "https://image.tmdb.org/t/p/w342/zKxejlhprEm2N2ksvcZogCAc9b8.jpg",
+        "year": "2015",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Los Minions y sus amigos: Volumen 1",
+        "poster": "https://image.tmdb.org/t/p/w342/aJ41Lkz6zQ9kg6tyebXVNe9gnN5.jpg",
+        "year": "2022",
+        "rating": "7.0"
+      }
+    ],
+    "tmdbId": 762879,
+    "tmdbType": "movie",
+    "runtimeMin": 94,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
     "titulo": "El deseo de Navidad de Ángela",
     "tituloOriginal": "Angela's Christmas Wish",
     "descripcion": "El padre de Ángela trabaja lejos, en Australia. Para cumplir su deseo de reunir a su familia a tiempo para Navidad, ella traza un plan.",
