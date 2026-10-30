@@ -1,5 +1,836 @@
 [
   {
+    "titulo": "Christmas in the Wilds",
+    "tituloOriginal": "Christmas in the Wilds",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/ieiejf3mCIb0e4wUhmsfLnESmT7.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/wFJf9ZBJHuuuXJMQgxUJ8lc0b6m.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1bYKTn_QibBJdthosjbcnCvZydj5CQRAu/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2021",
+    "fechaEstreno": "2021-11-25",
+    "rating": "5.9",
+    "votos": 9,
+    "runtime": "1h 30min",
+    "genres": [
+      "Película de TV",
+      "Romance"
+    ],
+    "generosTexto": "Película de TV, Romance",
+    "clasificacion": "G",
+    "tagline": "",
+    "director": "Justin G. Dyck",
+    "guionistas": "Neale Kimmel",
+    "reparto": [
+      {
+        "nombre": "Kaitlyn Leeb",
+        "personaje": "Jessica",
+        "foto": "https://image.tmdb.org/t/p/w185/cvvRNlbgFlEvorYDoVqBXGcQFaC.jpg"
+      },
+      {
+        "nombre": "Victor Zinck Jr.",
+        "personaje": "Buck",
+        "foto": "https://image.tmdb.org/t/p/w185/fJ5bc7Dmd7FpRsVJYcshMJaoo1l.jpg"
+      },
+      {
+        "nombre": "Melinda Shankar",
+        "personaje": "Amara",
+        "foto": "https://image.tmdb.org/t/p/w185/8FrftIhneOyeoW2iLNmiAvSUCjy.jpg"
+      },
+      {
+        "nombre": "Anthony Grant",
+        "personaje": "Ted",
+        "foto": "https://image.tmdb.org/t/p/w185/nxIlWp6b8bBow0OzAx57FRN1Bhg.jpg"
+      },
+      {
+        "nombre": "Jennifer Mote",
+        "personaje": "Meg",
+        "foto": "https://image.tmdb.org/t/p/w185/cKcMYdgd1DPWSexACtpPY85g38T.jpg"
+      },
+      {
+        "nombre": "Laura Vandervoort",
+        "personaje": "Roma Thompson",
+        "foto": "https://image.tmdb.org/t/p/w185/y3geQGnFG8Sbr7smthUTa84fv9v.jpg"
+      },
+      {
+        "nombre": "Vanessa Sears",
+        "personaje": "Abi",
+        "foto": "https://image.tmdb.org/t/p/w185/fNU6zacL2JI7zotvd1jYw2mL5mu.jpg"
+      },
+      {
+        "nombre": "Isaak Bailey",
+        "personaje": "Marcus",
+        "foto": "https://image.tmdb.org/t/p/w185/5LgU8F5bW9iq9QBCIaSA6b2OKnR.jpg"
+      },
+      {
+        "nombre": "Maya Franzoi",
+        "personaje": "Rachel",
+        "foto": "https://image.tmdb.org/t/p/w185/xUn2MfQUTg957CaTLArhJTswVzu.jpg"
+      },
+      {
+        "nombre": "Danielle Chambers",
+        "personaje": "Vocalist",
+        "foto": "https://image.tmdb.org/t/p/w185/tpusoKIdZjjoXc7PvGciGkDNLtO.jpg"
+      },
+      {
+        "nombre": "Roy Lewis",
+        "personaje": "Bob",
+        "foto": "https://image.tmdb.org/t/p/w185/5QOGzehKi2sk7JhovyybyqPIfo9.jpg"
+      },
+      {
+        "nombre": "Corey Bright",
+        "personaje": "Polly",
+        "foto": ""
+      }
+    ],
+    "pais": "Canada, United States of America",
+    "idioma": "en",
+    "productoras": "INSP Films, Brain Power Studio",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "In the Wilds Collection",
+    "keywords": "survival, christmas",
+    "similares": [
+      {
+        "titulo": "Navidad bajo las estrellas",
+        "poster": "https://image.tmdb.org/t/p/w342/lkC12zKrnpiTgOuP72eBfAifIy6.jpg",
+        "year": "2014",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Write Before Christmas",
+        "poster": "https://image.tmdb.org/t/p/w342/jiC9CTgWVi9ytFrP01PtfvBamuK.jpg",
+        "year": "2019",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Check Inn to Christmas",
+        "poster": "https://image.tmdb.org/t/p/w342/fBf66qLun33OVdzjSOnQYJNWP1r.jpg",
+        "year": "2019",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "A Godwink Christmas: Meant For Love",
+        "poster": "https://image.tmdb.org/t/p/w342/qSAlA5PlKUGmn4S3sNszZ4iXFuM.jpg",
+        "year": "2019",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Navidades por encargo",
+        "poster": "https://image.tmdb.org/t/p/w342/zka5TJ5DXygvEOuoHyy2dhxKjW3.jpg",
+        "year": "2018",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Pide un deseo",
+        "poster": "https://image.tmdb.org/t/p/w342/4bn7xVSndMAO2TMZrSeY61dT7Bb.jpg",
+        "year": "2017",
+        "rating": "6.2"
+      }
+    ],
+    "tmdbId": 878670,
+    "tmdbType": "movie",
+    "runtimeMin": 90,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": true
+  },
+  {
+    "titulo": "Deseo de Navidad",
+    "tituloOriginal": "A Merry Christmas Wish",
+    "descripcion": "Janie regresa a su ciudad natal de Woodland Falls cuando fallece su tío abuelo. Allí es sorprendida con un regalo especial: la granja familiar, el hogar de su infancia.",
+    "imagen": "https://image.tmdb.org/t/p/w780/7WI2bcyEasmE4pvjI0mWlzs3XkJ.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/p3ng10hZIysyDgCyrqlFgMJCUpZ.jpg",
+    "urlDrive": "https://drive.google.com/file/d/13WvNER-WvCBFFhj497YgtfF05pbUnXSp/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2022",
+    "fechaEstreno": "2022-11-12",
+    "rating": "5.9",
+    "votos": 57,
+    "runtime": "1h 26min",
+    "genres": [
+      "Película de TV",
+      "Comedia",
+      "Romance"
+    ],
+    "generosTexto": "Película de TV, Comedia, Romance",
+    "clasificacion": "G",
+    "tagline": "",
+    "director": "Bradley Walsh",
+    "guionistas": "Blaine Chiappetta, Adam Rockoff",
+    "reparto": [
+      {
+        "nombre": "Jill Wagner",
+        "personaje": "Janie",
+        "foto": "https://image.tmdb.org/t/p/w185/gFtPDkS14CoDqNGnHsxNmaXZcGj.jpg"
+      },
+      {
+        "nombre": "Cameron Mathison",
+        "personaje": "Dylan",
+        "foto": "https://image.tmdb.org/t/p/w185/eJQPwuq2Hpcn6GySKpgpbGwZT4.jpg"
+      },
+      {
+        "nombre": "Neil Whitely",
+        "personaje": "Sidney",
+        "foto": "https://image.tmdb.org/t/p/w185/taPe9RjvEkgamMXiWqjC9EWSKRt.jpg"
+      },
+      {
+        "nombre": "Morgan David Jones",
+        "personaje": "Charles Meyer",
+        "foto": "https://image.tmdb.org/t/p/w185/yNAGddCYn2HtOZjxgHFYbRZtlB9.jpg"
+      },
+      {
+        "nombre": "Deanna Jarvis",
+        "personaje": "Nicole",
+        "foto": "https://image.tmdb.org/t/p/w185/ArGDvdTuoBr6bQQ0KUQ0Z1hcjVd.jpg"
+      },
+      {
+        "nombre": "Van Stewart",
+        "personaje": "Man",
+        "foto": "https://image.tmdb.org/t/p/w185/s4wmlK5TcXJ3wwCsXJsXsQH8XG1.jpg"
+      },
+      {
+        "nombre": "Taya Messier",
+        "personaje": "Gracie",
+        "foto": "https://image.tmdb.org/t/p/w185/A21BNZHDIbpas75OihgOTEFRSTD.jpg"
+      }
+    ],
+    "pais": "Canada, United States of America",
+    "idioma": "en",
+    "productoras": "Brad Krevoy Television, Motion Picture Corporation of America, HP Homestead Christmas Productions, Hideaway Pictures, Northern Ontario Film Studios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "christmas",
+    "similares": [
+      {
+        "titulo": "La Navidad está servida",
+        "poster": "https://image.tmdb.org/t/p/w342/jMIMfLwCRGO7tRVgdBlEUoZEd6k.jpg",
+        "year": "2022",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "The Mistle-Tones",
+        "poster": "https://image.tmdb.org/t/p/w342/5D4CFD8A4cQihp1siqMvQNAhWO1.jpg",
+        "year": "2012",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Una Generosa Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/7C1F3POESRqo4FpejDRXmh5b3d0.jpg",
+        "year": "2021",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Navidad en el Autocine",
+        "poster": "https://image.tmdb.org/t/p/w342/oLHxY3jJeaJOfAjnavyhHS4N3tc.jpg",
+        "year": "2022",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "As Luck Would Have It",
+        "poster": "https://image.tmdb.org/t/p/w342/dwvJj5qcdS75YttCHpAuxGxapmA.jpg",
+        "year": "2021",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Navidad en la avenida del molino",
+        "poster": "https://image.tmdb.org/t/p/w342/6EdG5Z40xUoI5bJZC2SeNkwsoZb.jpg",
+        "year": "2023",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 971503,
+    "tmdbType": "movie",
+    "runtimeMin": 86,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": true
+  },
+  {
+    "titulo": "Todo lo que deseo para Navidad",
+    "tituloOriginal": "All I Need for Christmas",
+    "descripcion": "En Navidad, una cantante que no acepta el mundo digital conoce a un informático cuyo trabajo le irrita, hasta que sus diferencias los unen.",
+    "imagen": "https://image.tmdb.org/t/p/w780/u7LDQzTsmiDFfCEPLlV29LLMH25.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/xXJ2KWQeC8PPHVOBsyRVXxYLi3D.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1YSivA2QzUAIrCXe7udG9W9p54zUselvO/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2024",
+    "fechaEstreno": "2024-12-12",
+    "rating": "6.1",
+    "votos": 33,
+    "runtime": "1h 24min",
+    "genres": [
+      "Comedia",
+      "Romance"
+    ],
+    "generosTexto": "Comedia, Romance",
+    "clasificacion": "NR",
+    "tagline": "",
+    "director": "David I. Strasser",
+    "guionistas": "Heidi R. Kling, Betsy Morris",
+    "reparto": [
+      {
+        "nombre": "Mallory Jansen",
+        "personaje": "Maggie",
+        "foto": "https://image.tmdb.org/t/p/w185/azShNsfOJnAf0MN3FaqBpxks7uP.jpg"
+      },
+      {
+        "nombre": "Dan Jeannotte",
+        "personaje": "Archer",
+        "foto": "https://image.tmdb.org/t/p/w185/j8njXZcmImI9xGqbGY5gZiRq8wC.jpg"
+      },
+      {
+        "nombre": "Emily Tennant",
+        "personaje": "Piper",
+        "foto": "https://image.tmdb.org/t/p/w185/feZDxU3OB9rJjqH3g7a3zH88mkG.jpg"
+      },
+      {
+        "nombre": "Mike Dopud",
+        "personaje": "Ed McKenzie",
+        "foto": "https://image.tmdb.org/t/p/w185/yOYOX3TnIaBrLdkAMznSK6SLY38.jpg"
+      },
+      {
+        "nombre": "Azriel Dalman",
+        "personaje": "Max",
+        "foto": "https://image.tmdb.org/t/p/w185/GxsR9LJFBJZeeDqMpqViMTLvcm.jpg"
+      },
+      {
+        "nombre": "Jaime M. Callica",
+        "personaje": "Carlos",
+        "foto": "https://image.tmdb.org/t/p/w185/bMdYe1mrsvLp638lNqTqQELroNr.jpg"
+      },
+      {
+        "nombre": "Veronica Long",
+        "personaje": "Clara",
+        "foto": "https://image.tmdb.org/t/p/w185/ytrg4NdduyNDqkwPoewYvWfcvpy.jpg"
+      },
+      {
+        "nombre": "Iris Quinn",
+        "personaje": "Janet McKenzie",
+        "foto": "https://image.tmdb.org/t/p/w185/rajESK5oqBRX5F0YA8T78Ticg95.jpg"
+      },
+      {
+        "nombre": "Kate Whiddington",
+        "personaje": "Mia",
+        "foto": "https://image.tmdb.org/t/p/w185/58gZlw6bhyFaehUM1QuUCg9lSWb.jpg"
+      },
+      {
+        "nombre": "Hudson Williams",
+        "personaje": "TJ",
+        "foto": "https://image.tmdb.org/t/p/w185/qahFJFc6RFExOlf0lDeHau0iEol.jpg"
+      },
+      {
+        "nombre": "Kurt Long",
+        "personaje": "Lewis",
+        "foto": "https://image.tmdb.org/t/p/w185/mIkFooEOxYU0AG26RFGWEb9CtEV.jpg"
+      },
+      {
+        "nombre": "Charles Jarman",
+        "personaje": "Hamish",
+        "foto": "https://image.tmdb.org/t/p/w185/luiErSVjm42RvRZbqZQ6uKYztkW.jpg"
+      }
+    ],
+    "pais": "Canada",
+    "idioma": "en",
+    "productoras": "Front Street Pictures, Hallmark Media",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "christmas",
+    "similares": [
+      {
+        "titulo": "Navidad contigo",
+        "poster": "https://image.tmdb.org/t/p/w342/5zHmgbWfqPBxhbzCdElryWek2OS.jpg",
+        "year": "2022",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "El encanto del champán",
+        "poster": "https://image.tmdb.org/t/p/w342/yey6ihLZVwx2sjMXhObUyFusqyX.jpg",
+        "year": "2025",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Romance navideño a domicilio",
+        "poster": "https://image.tmdb.org/t/p/w342/7VyM9eU0MoP4KA81meqt7UJoZAP.jpg",
+        "year": "2020",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Una Navidad en Hollywood",
+        "poster": "https://image.tmdb.org/t/p/w342/y0Gw3DeqKLvuSqa78GJh1Q15OgH.jpg",
+        "year": "2022",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "El multimillonario",
+        "poster": "https://image.tmdb.org/t/p/w342/jK1BFvvu8JpOBW8ILT2vT8pcGCx.jpg",
+        "year": "1960",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Una familia con clase",
+        "poster": "https://image.tmdb.org/t/p/w342/sTtzY7Xmeo69sWYiXha5KIGi5yA.jpg",
+        "year": "2008",
+        "rating": "6.5"
+      }
+    ],
+    "tmdbId": 1361253,
+    "tmdbType": "movie",
+    "runtimeMin": 84,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": true
+  },
+  {
+    "titulo": "Pesadilla antes de Navidad",
+    "tituloOriginal": "The Nightmare Before Christmas",
+    "descripcion": "Cuando Jack Skellington, el Señor de Halloween, descubre la Navidad, se queda fascinado y decide mejorarla. Sin embargo, su visión de la festividad es totalmente contraria al espíritu navideño. Sus planes incluyen el secuestro de Santa Claus y la introducción de cambios bastante macabros. Sólo su novia Sally es consciente del error que está cometiendo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/pqFPpQ77VZ0moRgRRsxx7p39CS3.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/dSfrsjhqC6lYe7LYDYnzWeXZmEl.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1ZAwPhJtPh8DeZ7YuiXgzZeJW95NghmsV/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "1993",
+    "fechaEstreno": "1993-10-09",
+    "rating": "7.9",
+    "votos": 10831,
+    "runtime": "1h 15min",
+    "genres": [
+      "Fantasía",
+      "Animación",
+      "Familia"
+    ],
+    "generosTexto": "Fantasía, Animación, Familia",
+    "clasificacion": "7",
+    "tagline": "Un macabro cuento de mal humor y excelente animación.",
+    "director": "Henry Selick",
+    "guionistas": "Caroline Thompson, Tim Burton",
+    "reparto": [
+      {
+        "nombre": "Danny Elfman",
+        "personaje": "Jack Skellington (singing) / Barrel / Clown with the Tear away Face (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/bcpur9bF56nLxzFzZowipA2wZhy.jpg"
+      },
+      {
+        "nombre": "Chris Sarandon",
+        "personaje": "Jack Skellington (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/jP92Lq3JHl8mbdxzcZ6PyCQDwa5.jpg"
+      },
+      {
+        "nombre": "Catherine O'Hara",
+        "personaje": "Sally / Shock (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/gI2RyymLJ9ZrhEyJSD5EqSvFpCX.jpg"
+      },
+      {
+        "nombre": "William Hickey",
+        "personaje": "Dr. Finkelstein (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/sqqmvSkDK6vDNrmEgUAjzWztg9c.jpg"
+      },
+      {
+        "nombre": "Glenn Shadix",
+        "personaje": "Mayor (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/iWh3R2F3ejiNZxE6tiFcPF5c6G9.jpg"
+      },
+      {
+        "nombre": "Paul Reubens",
+        "personaje": "Lock (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/7T0ExonMf6PAvphKVaTm73BXdLW.jpg"
+      },
+      {
+        "nombre": "Ken Page",
+        "personaje": "Oogie Boogie (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/pF2kpxQ9ycQyw3LvhmE5oJ4XQf1.jpg"
+      },
+      {
+        "nombre": "Edward Ivory",
+        "personaje": "Santa Claus (voice)",
+        "foto": ""
+      },
+      {
+        "nombre": "Susan McBride",
+        "personaje": "Big Witch / WWD. (voice)",
+        "foto": ""
+      },
+      {
+        "nombre": "Debi Durst",
+        "personaje": "Corpse Kid / Corpse Mom / Small Witch (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/eyciVzqLaB7qDxBJ20c0OaNBUSc.jpg"
+      },
+      {
+        "nombre": "Greg Proops",
+        "personaje": "Harlequin Demon / Devil / Sax Player (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/t3ImKdWc9eJz29Y9aStQa8aFiRB.jpg"
+      },
+      {
+        "nombre": "Kerry Katz",
+        "personaje": "Man Under Stairs / Vampire / Corpse Dad (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/sUmnnbcFpJWPjmDu8fFdErrBntB.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Touchstone Pictures, Skellington Productions",
+    "presupuesto": 18000000,
+    "recaudacion": 75634409,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "skeleton, fire, magic, holiday, santa claus, halloween, villain, musical, christmas tree, saving christmas, pumpkin, woods, stop motion, ghost, nostalgic, christmas horror, christmas",
+    "similares": [
+      {
+        "titulo": "Menuda Nochebuena",
+        "poster": "https://image.tmdb.org/t/p/w342/h4Spg43AjTrAkrX0LsBcaXpoZOQ.jpg",
+        "year": "2023",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Santa Claus 2",
+        "poster": "https://image.tmdb.org/t/p/w342/guvfz4sLlMU3JS9gS5zhwjxrIpM.jpg",
+        "year": "2002",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Aquella Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/4ADuaXSfhekuwxearn2D4fp6fLH.jpg",
+        "year": "2024",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Mickey: La mejor Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/5mrTyw3eE1lU9PEzlY7HcWi7uSv.jpg",
+        "year": "2004",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Halloweentown 3: Academia de brujas",
+        "poster": "https://image.tmdb.org/t/p/w342/bvaERDIkVtMhPBdQMlsoBleBNtP.jpg",
+        "year": "2004",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Ice Age: Navidades heladas",
+        "poster": "https://image.tmdb.org/t/p/w342/5bW5MlFqqqtZhqACfmJK4B6dGQ4.jpg",
+        "year": "2011",
+        "rating": "6.5"
+      }
+    ],
+    "tmdbId": 9479,
+    "tmdbType": "movie",
+    "runtimeMin": 75,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": true
+  },
+  {
+    "titulo": "¡Vaya Santa Claus!",
+    "tituloOriginal": "The Santa Clause",
+    "descripcion": "Scott Calvin es el padre divorciado de Charlie. La relación entre ellos se ha vuelto insoportable, pero en Nochebuena Santa Claus muere al caer del techo de su casa. Con la ayuda de Charlie, Scott será capaz de reemplazarle temporalmente.",
+    "imagen": "https://image.tmdb.org/t/p/w780/9MeuzcdtXtZtrggxq53ew5p1Ekb.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/p89QeYRc2u0rX0eKKU4TLJStwHO.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1MwmA_NnJ5dxRyk2N93Ic16U2sqIEq1Kv/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "1994",
+    "fechaEstreno": "1994-11-11",
+    "rating": "6.5",
+    "votos": 2397,
+    "runtime": "1h 37min",
+    "genres": [
+      "Fantasía",
+      "Drama",
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Fantasía, Drama, Comedia, Familia",
+    "clasificacion": "APTA",
+    "tagline": "¿Y si tu papá fuera Santa Claus?",
+    "director": "John Pasquin",
+    "guionistas": "Leo Benvenuti, Steve Rudnick",
+    "reparto": [
+      {
+        "nombre": "Tim Allen",
+        "personaje": "Scott Calvin",
+        "foto": "https://image.tmdb.org/t/p/w185/k8XPNHBO459FaqkqqM4tfX5GMKk.jpg"
+      },
+      {
+        "nombre": "Judge Reinhold",
+        "personaje": "Neal",
+        "foto": "https://image.tmdb.org/t/p/w185/6R0vCxzSx1CaDAM9y9ZgmejUdiL.jpg"
+      },
+      {
+        "nombre": "Wendy Crewson",
+        "personaje": "Laura",
+        "foto": "https://image.tmdb.org/t/p/w185/6hplkzK8KV5Cw8Z8SVKwlt3nU5I.jpg"
+      },
+      {
+        "nombre": "Eric Lloyd",
+        "personaje": "Charlie",
+        "foto": "https://image.tmdb.org/t/p/w185/huFLxPMJIPpOFDzdQR7JeQ4Nnr.jpg"
+      },
+      {
+        "nombre": "David Krumholtz",
+        "personaje": "Bernard",
+        "foto": "https://image.tmdb.org/t/p/w185/2vaimzfyPQVxZGHbQS5M3z3tZw0.jpg"
+      },
+      {
+        "nombre": "Larry Brandenburg",
+        "personaje": "Detective Nunzio",
+        "foto": "https://image.tmdb.org/t/p/w185/y13c1a4keaLnoTbi3dERwolQXWP.jpg"
+      },
+      {
+        "nombre": "Mary Gross",
+        "personaje": "Ms. Daniels",
+        "foto": "https://image.tmdb.org/t/p/w185/9s20j6Hg9WTnKH8dbjqgLUgwR9W.jpg"
+      },
+      {
+        "nombre": "Paige Tamada",
+        "personaje": "Elf-Judy",
+        "foto": "https://image.tmdb.org/t/p/w185/pORrZ9gppePMsZBHhwRHvNogFU7.jpg"
+      },
+      {
+        "nombre": "Peter Boyle",
+        "personaje": "Mr. Whittle",
+        "foto": "https://image.tmdb.org/t/p/w185/6TapQmC46mPDYrwm67tyJaEM97I.jpg"
+      },
+      {
+        "nombre": "Judith Scott",
+        "personaje": "Susan",
+        "foto": "https://image.tmdb.org/t/p/w185/h1oDVb4GuihdB1hgrr8Zqm9kagm.jpg"
+      },
+      {
+        "nombre": "Jayne Eastwood",
+        "personaje": "Waitress",
+        "foto": "https://image.tmdb.org/t/p/w185/cL75FbJRKDdpvkOJDUgUYPZHKks.jpg"
+      },
+      {
+        "nombre": "Melissa King",
+        "personaje": "Little Girl",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Walt Disney Pictures, Hollywood Pictures, Outlaw Productions",
+    "presupuesto": 22000000,
+    "recaudacion": 189833357,
+    "trailerUrl": "https://www.youtube.com/watch?v=9-d6L6u5594",
+    "coleccion": "Santa Claus - Colección",
+    "keywords": "chicago, illinois, elves, winter, holiday, christmas party, deal, santa claus, christmas tree, child custody, christmas, father son relationship, santa's elves, christmas eve, elf",
+    "similares": [
+      {
+        "titulo": "Elf",
+        "poster": "https://image.tmdb.org/t/p/w342/iJrvkckDP7MKfimogB6lNUfQRx.jpg",
+        "year": "2003",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Santa Claus 2",
+        "poster": "https://image.tmdb.org/t/p/w342/guvfz4sLlMU3JS9gS5zhwjxrIpM.jpg",
+        "year": "2002",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Noelle",
+        "poster": "https://image.tmdb.org/t/p/w342/ljxeeVQJra8O4slFsmmnf5NgFx4.jpg",
+        "year": "2019",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Una Navidad de locos",
+        "poster": "https://image.tmdb.org/t/p/w342/xwcvnwlVWuGefRCH7EMmciMfAjW.jpg",
+        "year": "2004",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Crónicas de Navidad 2",
+        "poster": "https://image.tmdb.org/t/p/w342/v07u8JbmLAIhaMcGnbHgzajohzZ.jpg",
+        "year": "2020",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Fred Claus, el hermano gamberro de Santa Claus",
+        "poster": "https://image.tmdb.org/t/p/w342/ipkhAexxfaTXEInrNzlhIeuel8p.jpg",
+        "year": "2007",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 11395,
+    "tmdbType": "movie",
+    "runtimeMin": 97,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": true
+  },
+  {
+    "titulo": "Una Navidad de locos",
+    "tituloOriginal": "Christmas with the Kranks",
+    "descripcion": "Luther Krank y su mujer deciden no celebrar la Navidad. Nada de arbolitos. ¿Lograrán manejar las reacciones que su decisión provoca en familiares y vecinos?",
+    "imagen": "https://image.tmdb.org/t/p/w780/xwcvnwlVWuGefRCH7EMmciMfAjW.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/lcFar2tdF9Lir12R0K3Dvw6uABu.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1fjS5EQ3ZMCyUX6TMSoCfa4FMrRyCJDuB/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2004",
+    "fechaEstreno": "2004-11-24",
+    "rating": "6.2",
+    "votos": 1351,
+    "runtime": "1h 39min",
+    "genres": [
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Comedia, Familia",
+    "clasificacion": "PG",
+    "tagline": "¡Su Navidad pondrá la ciudad patas arriba!",
+    "director": "Joe Roth",
+    "guionistas": "Chris Columbus",
+    "reparto": [
+      {
+        "nombre": "Tim Allen",
+        "personaje": "Luther Krank",
+        "foto": "https://image.tmdb.org/t/p/w185/k8XPNHBO459FaqkqqM4tfX5GMKk.jpg"
+      },
+      {
+        "nombre": "Jamie Lee Curtis",
+        "personaje": "Nora Krank",
+        "foto": "https://image.tmdb.org/t/p/w185/eWKubKAAssRzmFwCZKh1mdYqGCH.jpg"
+      },
+      {
+        "nombre": "Dan Aykroyd",
+        "personaje": "Vic Frohmeyer",
+        "foto": "https://image.tmdb.org/t/p/w185/iVMmeVJx8IpCEjlGBZWzIWvX5Qo.jpg"
+      },
+      {
+        "nombre": "M. Emmet Walsh",
+        "personaje": "Walt Scheel",
+        "foto": "https://image.tmdb.org/t/p/w185/fVWvBxvwyk4aTA9vKZOV9qHRNNk.jpg"
+      },
+      {
+        "nombre": "Elizabeth Franz",
+        "personaje": "Bev Scheel",
+        "foto": "https://image.tmdb.org/t/p/w185/mlNRhegXkx0dsPmFw3ftjAvVzng.jpg"
+      },
+      {
+        "nombre": "Erik Per Sullivan",
+        "personaje": "Spike Frohmeyer",
+        "foto": "https://image.tmdb.org/t/p/w185/alyd7YBgfCCQxUuYgChifjINToT.jpg"
+      },
+      {
+        "nombre": "Cheech Marin",
+        "personaje": "Officer Salino",
+        "foto": "https://image.tmdb.org/t/p/w185/eecHDNRn9K80ZcuSocsMhQb2G1i.jpg"
+      },
+      {
+        "nombre": "Jake Busey",
+        "personaje": "Officer Treen",
+        "foto": "https://image.tmdb.org/t/p/w185/3WknfRePAvwFJfrbYVvfYXTQCh9.jpg"
+      },
+      {
+        "nombre": "Austin Pendleton",
+        "personaje": "Umbrella Santa / Marty",
+        "foto": "https://image.tmdb.org/t/p/w185/nrXfqtXDDYzSFNLPQnfLkus4I7s.jpg"
+      },
+      {
+        "nombre": "Tom Poston",
+        "personaje": "Father Zabriskie",
+        "foto": "https://image.tmdb.org/t/p/w185/xNvufT5ITryTaJIerpxmgMAwEMH.jpg"
+      },
+      {
+        "nombre": "Julie Gonzalo",
+        "personaje": "Blair Krank",
+        "foto": "https://image.tmdb.org/t/p/w185/6clO3lFK6dn3lBXe8zZoRNPbERr.jpg"
+      },
+      {
+        "nombre": "René Lavan",
+        "personaje": "Enrique Decardenal",
+        "foto": "https://image.tmdb.org/t/p/w185/rmQGiLGgEelZNHIMWFOWhMIkxyH.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Revolution Studios, 1492 Pictures",
+    "presupuesto": 60000000,
+    "recaudacion": 96572480,
+    "trailerUrl": "https://www.youtube.com/watch?v=nZDRp41I2U0",
+    "coleccion": "",
+    "keywords": "chicago, illinois, husband wife relationship, based on novel or book, holiday, christmas party, christmas tree, christmas, sentimental, hilarious, celebratory, joyful",
+    "similares": [
+      {
+        "titulo": "Una nueva historia de Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/yFuMiYckriSGykmshy3o6n0thOq.jpg",
+        "year": "2022",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Historias de Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/6zQwRUJcDvLiLIrUjdTtt1WZUkJ.jpg",
+        "year": "1983",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "El Grinch",
+        "poster": "https://image.tmdb.org/t/p/w342/dj6U3KbuwcjMuDir1bUHp0yDcuB.jpg",
+        "year": "2000",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Doce fuera de casa",
+        "poster": "https://image.tmdb.org/t/p/w342/gf6xVuCM9lnMP4S6hhye8SC2K8p.jpg",
+        "year": "2005",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Doce en casa",
+        "poster": "https://image.tmdb.org/t/p/w342/pXww1FYiPe9gfVZuXj5ybJI3Zxw.jpg",
+        "year": "2003",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Familia revuelta",
+        "poster": "https://image.tmdb.org/t/p/w342/mDJiZua9gUzHRwefHhw2OaJ8HTF.jpg",
+        "year": "2023",
+        "rating": "6.4"
+      }
+    ],
+    "tmdbId": 13673,
+    "tmdbType": "movie",
+    "runtimeMin": 99,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": true
+  },
+  {
     "titulo": "Un padre en apuros",
     "tituloOriginal": "Jingle All the Way",
     "descripcion": "Howard Langston es un atareado hombre de negocios que llega tarde a la clase de karate de su hijo Jamie. Para que le perdone le promete que le regalará lo que le pida por navidad: Jamie le pide un muñeco Turboman. El problema es que el juguete es el más popular y está agotado en todas las jugueterías. Con sólo unas pocas horas para Navidad, Howie inicia una cómica odisea por toda la ciudad a la caza y captura del preciado objeto.",
