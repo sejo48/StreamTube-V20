@@ -1,5 +1,288 @@
 [
   {
+    "titulo": "Drive: Los farsantes",
+    "tituloOriginal": "Drive – The Pretenders",
+    "descripcion": "Una joven mecánica de coches de carreras finge estar comprometida con la estrella más escandalosa del mundo del automovilismo: oficialmente, por su reputación; pero, en secreto, para tener la oportunidad de ponerse al volante. Pronto, la mentira amenaza con lo destruir todo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/aSvA1Xat045jh8ck7U626PPkzH1.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/hbz4aeVsjnKb2HRoFbbr46Egh8y.jpg",
+    "urlDrive": "",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-10-27",
+    "rating": "7.9",
+    "votos": 34,
+    "runtime": "1h 43min",
+    "genres": [
+      "Romance",
+      "Suspense"
+    ],
+    "generosTexto": "Romance, Suspense",
+    "clasificacion": "R",
+    "tagline": "",
+    "director": "Sergej Moya",
+    "guionistas": "Chris Silber, Malina Nwabuonwor",
+    "reparto": [
+      {
+        "nombre": "Lisa-Marie Koroll",
+        "personaje": "Sarah Jenkins",
+        "foto": "https://image.tmdb.org/t/p/w185/5wgbyqv6MK3hQyeKdQrIf3k3nZW.jpg"
+      },
+      {
+        "nombre": "Amin Baahmed",
+        "personaje": "Dante Annunziata",
+        "foto": "https://image.tmdb.org/t/p/w185/oyFyPJkzefovbnRE6DnWwwYLZaD.jpg"
+      },
+      {
+        "nombre": "Gustav Schmidt",
+        "personaje": "Ruben Laroch",
+        "foto": "https://image.tmdb.org/t/p/w185/okAsgPvMjDEVkLg5S2lyfZbsGvD.jpg"
+      },
+      {
+        "nombre": "Mišel Matičević",
+        "personaje": "Alexander Bronson",
+        "foto": "https://image.tmdb.org/t/p/w185/jKYzgKIBs4O7eBBMDKk1T5RWYjN.jpg"
+      },
+      {
+        "nombre": "Lucie Heinze",
+        "personaje": "Tanya Stein",
+        "foto": "https://image.tmdb.org/t/p/w185/mOOEz6Xx06RGPn6Wqo2Thy4H2XI.jpg"
+      },
+      {
+        "nombre": "Frederic Linkemann",
+        "personaje": "Jack Schroder",
+        "foto": "https://image.tmdb.org/t/p/w185/wjjTwrOFcW3KZua8ah2j8qBqVFe.jpg"
+      },
+      {
+        "nombre": "Inka Friedrich",
+        "personaje": "Irene Jenkins",
+        "foto": "https://image.tmdb.org/t/p/w185/a90LTNdgFE5NHPGTNurWO2IXKhc.jpg"
+      },
+      {
+        "nombre": "Jeanette Hain",
+        "personaje": "Sofia Annunziata",
+        "foto": "https://image.tmdb.org/t/p/w185/6FkzcacM6wCKovrE7OIvN74KPMZ.jpg"
+      },
+      {
+        "nombre": "Philippe Brenninkmeyer",
+        "personaje": "Dr. Frederic Richter",
+        "foto": "https://image.tmdb.org/t/p/w185/cfYuU75rDWr5xnpodR7FLbzvv4o.jpg"
+      },
+      {
+        "nombre": "Leslie Malton",
+        "personaje": "Eva Maria Fischer",
+        "foto": "https://image.tmdb.org/t/p/w185/sC8tgPm1jF73u2eeK2ZiZ9uI3MA.jpg"
+      },
+      {
+        "nombre": "Sára Korbelová",
+        "personaje": "Gabriella Annunziata",
+        "foto": "https://image.tmdb.org/t/p/w185/5dRPCDcvQ1gr6pY40jcp0U2TZWL.jpg"
+      },
+      {
+        "nombre": "Steven Gätjen",
+        "personaje": "Red Carpet Host",
+        "foto": "https://image.tmdb.org/t/p/w185/4mCkEUgCeHtfsVnbwyjwPePTWAt.jpg"
+      }
+    ],
+    "pais": "Germany",
+    "idioma": "de",
+    "productoras": "Bavaria Fiction",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "based on novel or book, racing, ulterior motive dating, fake relationship, female mechanic",
+    "similares": [
+      {
+        "titulo": "Atracción peligrosa",
+        "poster": "https://image.tmdb.org/t/p/w342/sTexeAs91LXC3qp8SbI73pYsqVr.jpg",
+        "year": "2001",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Fast & Furious 7",
+        "poster": "https://image.tmdb.org/t/p/w342/yWG5W4tKCQweHEdnKV4YEvqOBGx.jpg",
+        "year": "2015",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Death Proof",
+        "poster": "https://image.tmdb.org/t/p/w342/7AEMH73JTb0qqAZgMj5orBGLUrO.jpg",
+        "year": "2007",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "La huella",
+        "poster": "https://image.tmdb.org/t/p/w342/vGZrvkCm0FSKvjuPnu1svE3pNls.jpg",
+        "year": "1972",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Death Race 2 (La carrera de la muerte: El origen)",
+        "poster": "https://image.tmdb.org/t/p/w342/scuGtS1xiKHIZ9g9QHNQzvXtyhI.jpg",
+        "year": "2010",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Odd Thomas, cazador de fantasmas",
+        "poster": "https://image.tmdb.org/t/p/w342/egzIA1QOVYiVzAlOKj7dDM5F2io.jpg",
+        "year": "2013",
+        "rating": "7.0"
+      }
+    ],
+    "tmdbId": 1596275,
+    "tmdbType": "movie",
+    "runtimeMin": 103,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Ali G: Kién es yo?",
+    "tituloOriginal": "Ali G: Who Iz I?",
+    "descripcion": "Tras veinte años dedicados a «relajarse, fumar y follar», Ali G se queda atónito al descubrir que Julie, su novia de toda la vida, está embarazada de ocho meses. Ante la perspectiva de tener una boca más que alimentar, deja de holgazanear y pone rumbo a Estados Unidos para recuperar su antigua gloria... pero pronto se topa con adversarios que acabarán amenazando su propia existencia y la de su hijo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/hAEYrq657G7oeNWDQBnRNPZMlxh.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/hJcGJLi34zE4RhzsiDR6f7pw50K.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1uqsCpm-zCHxS4wg2etpo1fpXazIduhQB/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-10-22",
+    "rating": "6.2",
+    "votos": 62,
+    "runtime": "1h 29min",
+    "genres": [
+      "Comedia"
+    ],
+    "generosTexto": "Comedia",
+    "clasificacion": "B-15",
+    "tagline": "Viviendo a lo grande.",
+    "director": "Sacha Baron Cohen",
+    "guionistas": "Sacha Baron Cohen, Anthony Hines, Peter Baynham",
+    "reparto": [
+      {
+        "nombre": "Sacha Baron Cohen",
+        "personaje": "Ali G / Dr. Nira Cain-N'Degeocello / Colonel Erran Morad",
+        "foto": "https://image.tmdb.org/t/p/w185/bGzXHu8zwWqUY5gEExSh3deQd2j.jpg"
+      },
+      {
+        "nombre": "Morgana Robinson",
+        "personaje": "Julie",
+        "foto": "https://image.tmdb.org/t/p/w185/guBJRfTPeLBd3RxbhzUIi3cl242.jpg"
+      },
+      {
+        "nombre": "Alpha Miknas",
+        "personaje": "Manu",
+        "foto": "https://image.tmdb.org/t/p/w185/iIfNQnMSnifN33yIZRR279YnA59.jpg"
+      },
+      {
+        "nombre": "Clive Russell",
+        "personaje": "Malcolm 'Rocky' Atkins",
+        "foto": "https://image.tmdb.org/t/p/w185/eC37Kmdo5YKNG2MyirCG4tWDxCS.jpg"
+      },
+      {
+        "nombre": "A$AP Rocky",
+        "personaje": "Himself",
+        "foto": "https://image.tmdb.org/t/p/w185/gL0NFnIrqLosSbdxAHExOHAMkFH.jpg"
+      },
+      {
+        "nombre": "Rihanna",
+        "personaje": "Herself",
+        "foto": "https://image.tmdb.org/t/p/w185/piXUA7L0gWQNtnDPXtBe24C9FF6.jpg"
+      },
+      {
+        "nombre": "Tiffany Haddish",
+        "personaje": "Lab Technician",
+        "foto": "https://image.tmdb.org/t/p/w185/8Db5Q34nvTlaTLnRlwXOiealCbE.jpg"
+      },
+      {
+        "nombre": "DJ Jazzy Jeff",
+        "personaje": "Himself",
+        "foto": "https://image.tmdb.org/t/p/w185/7k1zF7LAn4QgG5HdVBrLmscLMif.jpg"
+      },
+      {
+        "nombre": "C. Stewart Rodeheaver",
+        "personaje": "(uncredited)",
+        "foto": ""
+      },
+      {
+        "nombre": "Allan Lichtman",
+        "personaje": "(uncredited)",
+        "foto": "https://image.tmdb.org/t/p/w185/sHQ0PyyHoFGIbZfK7eXCWPQCm5L.jpg"
+      },
+      {
+        "nombre": "George Santos",
+        "personaje": "(uncredited)",
+        "foto": "https://image.tmdb.org/t/p/w185/ykAgjjc5UdhyTsp0PIKlbKoFIrV.jpg"
+      },
+      {
+        "nombre": "Newt Gingrich",
+        "personaje": "(uncredited)",
+        "foto": "https://image.tmdb.org/t/p/w185/A1ehXjF0gY8bax7tF1be9R1JbkM.jpg"
+      }
+    ],
+    "pais": "United Kingdom, United States of America",
+    "idioma": "en",
+    "productoras": "Four by Two Films, Amazon MGM Studios, Working Title",
+    "presupuesto": 0,
+    "recaudacion": 27280,
+    "trailerUrl": "",
+    "coleccion": "Ali G - Colección",
+    "keywords": "hidden camera, sequel, based on tv series, surrey, england",
+    "similares": [
+      {
+        "titulo": "Sextillizos",
+        "poster": "https://image.tmdb.org/t/p/w342/myUjOa4P3G5QLb5wrHtKbi0piD0.jpg",
+        "year": "2019",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "The Wrong Guy",
+        "poster": "https://image.tmdb.org/t/p/w342/9X22sqQI5UAwajmSNH293avRtFr.jpg",
+        "year": "1997",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Accident Man: De vacaciones",
+        "poster": "https://image.tmdb.org/t/p/w342/b5otfV0DzbtLlPIoZTpJd7pkWh8.jpg",
+        "year": "2022",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Peques",
+        "poster": "https://image.tmdb.org/t/p/w342/eFe1Yw3VbYdcl1Qvi71nZ2prPlE.jpg",
+        "year": "2024",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Balls Up: Con un par",
+        "poster": "https://image.tmdb.org/t/p/w342/50V1E3NE3UDFmq0fhMpByx1b4Ka.jpg",
+        "year": "2026",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Superdetective en Hollywood: Axel F.",
+        "poster": "https://image.tmdb.org/t/p/w342/3f28IXwRBEZjR75Pm4jCiBw3HZc.jpg",
+        "year": "2024",
+        "rating": "6.6"
+      }
+    ],
+    "tmdbId": 1727734,
+    "tmdbType": "movie",
+    "runtimeMin": 89,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
     "titulo": "1992",
     "tituloOriginal": "1992",
     "descripcion": "En 1992, Mercer intenta desesperadamente reconstruir su vida y su relación con su hijo en medio de los disturbios que sacudieron Los Ángeles tras el veredicto del caso de Rodney King. Al otro lado de la ciudad, otro padre y su hijo ponen a prueba su tensa relación al planear un peligroso robo para sustraer convertidores catalíticos, que contienen platino valioso, de la fábrica donde trabaja Mercer. A medida que aumentan las tensiones y estalla el caos, ambas familias llegan a su límite cuando sus mundos chocan.",
