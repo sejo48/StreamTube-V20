@@ -1,5 +1,554 @@
 [
   {
+    "titulo": "El deseo de Navidad de Ángela",
+    "tituloOriginal": "Angela's Christmas Wish",
+    "descripcion": "El padre de Ángela trabaja lejos, en Australia. Para cumplir su deseo de reunir a su familia a tiempo para Navidad, ella traza un plan.",
+    "imagen": "https://image.tmdb.org/t/p/w780/7f3SqkKMVYjpodmxOndnwz5oSMG.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/eo6pahstCYRUm0Lk4MORmfCs2SH.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1WWUaoylIQx2RCA7BenWmdlv5RCjvYcRM/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2020",
+    "fechaEstreno": "2020-01-01",
+    "rating": "6.4",
+    "votos": 117,
+    "runtime": "48min",
+    "genres": [
+      "Animación",
+      "Familia"
+    ],
+    "generosTexto": "Animación, Familia",
+    "clasificacion": "APTA",
+    "tagline": "",
+    "director": "Damien O'Connor",
+    "guionistas": "Damien O'Connor",
+    "reparto": [
+      {
+        "nombre": "Lucy O'Connell",
+        "personaje": "Angela",
+        "foto": "https://image.tmdb.org/t/p/w185/Oj9AZwT1Cq1MXsGtBUjVjpPqrl.jpg"
+      },
+      {
+        "nombre": "Ruth Negga",
+        "personaje": "Mother",
+        "foto": "https://image.tmdb.org/t/p/w185/eUnSUgbD050mKSCqOJvXplAiF9S.jpg"
+      },
+      {
+        "nombre": "Moe Dunford",
+        "personaje": "Father",
+        "foto": "https://image.tmdb.org/t/p/w185/tJ64S9CzXXuVQQo6jpxLool6okw.jpg"
+      },
+      {
+        "nombre": "Pat Kinevane",
+        "personaje": "Mr. McGinty / Bar Patron",
+        "foto": "https://image.tmdb.org/t/p/w185/7YYEyJDajVmVIzlenrH0vTWr2Ww.jpg"
+      },
+      {
+        "nombre": "Jared Harris",
+        "personaje": "The Vet",
+        "foto": "https://image.tmdb.org/t/p/w185/r9nIq0jPz1oBm4WwtlZhqlsX8p0.jpg"
+      },
+      {
+        "nombre": "Caitríona Balfe",
+        "personaje": "Dorothy's Mother",
+        "foto": "https://image.tmdb.org/t/p/w185/lerCNTjO6FQIam2lF5SXHA4dY7H.jpg"
+      },
+      {
+        "nombre": "Brendan Mullins",
+        "personaje": "",
+        "foto": ""
+      },
+      {
+        "nombre": "Lola Metcalfe",
+        "personaje": "",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America, Ireland",
+    "idioma": "en",
+    "productoras": "Brown Bag Films",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=WYIS0oCeMC8",
+    "coleccion": "Angela's Christmas Collection",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "PLOEY: Nunca Volarás Solo",
+        "poster": "https://image.tmdb.org/t/p/w342/hKuuSKUTw5SZ11ANfamPbCzkvS8.jpg",
+        "year": "2018",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Snoopy presenta: Hogar, dulce hogar",
+        "poster": "https://image.tmdb.org/t/p/w342/dEXPxwI0yi41pwbG94I1PRaeVZq.jpg",
+        "year": "2026",
+        "rating": "8.5"
+      },
+      {
+        "titulo": "La patrulla al rescate",
+        "poster": "https://image.tmdb.org/t/p/w342/qHcn3PbjVHxBweDZxWpYH3JfugS.jpg",
+        "year": "2020",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "La Navidad de Ángela",
+        "poster": "https://image.tmdb.org/t/p/w342/cbydzuHkKxrMIZN2O7XP6yQ4zcu.jpg",
+        "year": "2017",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Cat Pack: A PAW Patrol Exclusive Event",
+        "poster": "https://image.tmdb.org/t/p/w342/dISGpQk5AdAbijIFoU9W90teMkU.jpg",
+        "year": "2022",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Kung Fu Panda: Los secretos del pergamino",
+        "poster": "https://image.tmdb.org/t/p/w342/iNZMYuoVxFqVNgEH9QblVAfyKBV.jpg",
+        "year": "2016",
+        "rating": "6.9"
+      }
+    ],
+    "tmdbId": 752455,
+    "tmdbType": "movie",
+    "runtimeMin": 48,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": true
+  },
+  {
+    "titulo": "Scrooge: Cuento de Navidad",
+    "tituloOriginal": "Scrooge: A Christmas Carol",
+    "descripcion": "En la víspera de Navidad, el egoísta y avaro Ebenezer Scrooge tiene una única y fría noche para afrontar su pasado (y cambiar el futuro) antes de que sea tarde.",
+    "imagen": "https://image.tmdb.org/t/p/w780/jqMEPeRCPJFAXE3ZqWv4eBrdCA4.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/wMNY6tU9WOUeAMRfqbCYwceOl9u.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1CBLgaCB6f85TSkZHRd-7uI8oMFfktJHV/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2022",
+    "fechaEstreno": "2022-11-18",
+    "rating": "6.8",
+    "votos": 494,
+    "runtime": "1h 37min",
+    "genres": [
+      "Animación",
+      "Familia",
+      "Fantasía"
+    ],
+    "generosTexto": "Animación, Familia, Fantasía",
+    "clasificacion": "A",
+    "tagline": "",
+    "director": "Stephen Donnelly",
+    "guionistas": "Leslie Bricusse, Leslie Bricusse, Stephen Donnelly",
+    "reparto": [
+      {
+        "nombre": "Luke Evans",
+        "personaje": "Ebenezer Scrooge (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/qUkYJcrDc4M0LHNYASs30luFvw0.jpg"
+      },
+      {
+        "nombre": "Olivia Colman",
+        "personaje": "Ghost of Christmas Past (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/lawJUdbLb1YW0niaYjiVGR9IBG8.jpg"
+      },
+      {
+        "nombre": "Jessie Buckley",
+        "personaje": "Isabel Fezziwig (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/qbz9175DERSqsCQeYWGJWwqb38z.jpg"
+      },
+      {
+        "nombre": "Johnny Flynn",
+        "personaje": "Bob Cratchit (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/tS3HIDFJbD8uSLAvaxZfrPc3aM0.jpg"
+      },
+      {
+        "nombre": "Fra Fee",
+        "personaje": "Harry Huffam (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/1UnZxfqaRTpoqpafM9PEAvlHAc7.jpg"
+      },
+      {
+        "nombre": "Giles Terera",
+        "personaje": "Tom Jenkins (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/A7NUexegQjbQxSQ9cNB8bDQVHRW.jpg"
+      },
+      {
+        "nombre": "Trevor Dion Nicholas",
+        "personaje": "Ghost of Christmas Present (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/PxD3SqcoiSycxzAN5resMhTjUa.jpg"
+      },
+      {
+        "nombre": "James Cosmo",
+        "personaje": "Mr. Fezziwig (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/4QZnZ3wyGALVuwZ70HdXZk4O14W.jpg"
+      },
+      {
+        "nombre": "Jonathan Pryce",
+        "personaje": "Jacob Marley (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/3nQ01F9WPNPzzLblY7XyaihT9JT.jpg"
+      },
+      {
+        "nombre": "Oliver Jenkins",
+        "personaje": "Tiny Tim (voice)",
+        "foto": ""
+      },
+      {
+        "nombre": "Rupert Turnbull",
+        "personaje": "Tiny Tim (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/ugBI99ISNXQRVUJybMXniSWmYUk.jpg"
+      },
+      {
+        "nombre": "Devon Pomeroy",
+        "personaje": "Kathy Cratchit (voice)",
+        "foto": ""
+      }
+    ],
+    "pais": "United Kingdom",
+    "idioma": "en",
+    "productoras": "Timeless Films, Axis Studios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=SAEZSwjh27k",
+    "coleccion": "",
+    "keywords": "london, england, based on novel or book, holiday, musical, based on play or musical, victorian england, ghost, based on movie, christmas, 19th century, scrooge, 3d animation, animated remake",
+    "similares": [
+      {
+        "titulo": "Cuento de Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/meN97hs1BtmChq16NFhWxOI8och.jpg",
+        "year": "2009",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Muchas gracias, Mr. Scrooge",
+        "poster": "https://image.tmdb.org/t/p/w342/eadjJGFdbZdhXSjtokmay7NjVHi.jpg",
+        "year": "1970",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Los Teleñecos en Cuento de Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/lgYHWsO9g9reG9RXiXbVhoQ5DZW.jpg",
+        "year": "1992",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Un cuento de navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/uRTI1i5X7UfTjOu6hW4SWcwVas3.jpg",
+        "year": "1984",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "El regreso de Dorothy al mundo de Oz",
+        "poster": "https://image.tmdb.org/t/p/w342/1S88ihQkuUhLbuOTFGjbQfXHyTd.jpg",
+        "year": "2014",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "El diario de Greg: ¡Esto es el colmo!",
+        "poster": "https://image.tmdb.org/t/p/w342/xg6hPJGl130XkJgwWpBagMHojWz.jpg",
+        "year": "2025",
+        "rating": "6.8"
+      }
+    ],
+    "tmdbId": 1001865,
+    "tmdbType": "movie",
+    "runtimeMin": 97,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": true
+  },
+  {
+    "titulo": "Mickey salva la Navidad",
+    "tituloOriginal": "Mickey Saves Christmas",
+    "descripcion": "En este especial navideño, Mickey, Minnie y sus amigos intentan celebrar la Navidad perfecta en su cabaña nevada. Sin embargo, cuando Pluto hace que Santa Claus pierda todos los regalos de su trineo, los amigos viajan al Polo Norte para intentar salvar la Navidad y encontrar el verdadero significado de las fiestas.",
+    "imagen": "https://image.tmdb.org/t/p/w780/67FJAZAwIcIDLiyku3sQMz3ToAJ.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/b715d2B5hFIxqsaevm0cG6HtkPD.jpg",
+    "urlDrive": "Mickey salva la Navidad",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2022",
+    "fechaEstreno": "2022-11-27",
+    "rating": "7.3",
+    "votos": 54,
+    "runtime": "23min",
+    "genres": [
+      "Animación",
+      "Familia",
+      "Película de TV",
+      "Comedia"
+    ],
+    "generosTexto": "Animación, Familia, Película de TV, Comedia",
+    "clasificacion": "Ai",
+    "tagline": "",
+    "director": "David H. Brooks",
+    "guionistas": "Kim Duran",
+    "reparto": [
+      {
+        "nombre": "Bret Iwan",
+        "personaje": "Mickey Mouse (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/14m82iewt4tDjaaOmsYWMr6TKQ8.jpg"
+      },
+      {
+        "nombre": "Kaitlyn Robrock",
+        "personaje": "Minnie Mouse (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/1joOQrgyU9ap9W1cvimh01XmKcO.jpg"
+      },
+      {
+        "nombre": "Bill Farmer",
+        "personaje": "Goofy / Pluto (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/lhezx68R12s5Bsv7d77BrQb7tWA.jpg"
+      },
+      {
+        "nombre": "Tony Anselmo",
+        "personaje": "Donald Duck (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/8ocCq9OxVg7A0g7hf7EqeT0QenX.jpg"
+      },
+      {
+        "nombre": "Debra Wilson",
+        "personaje": "Daisy Duck (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/3anRgUtqohXRNM6HtwGl1ZFgCS8.jpg"
+      },
+      {
+        "nombre": "Brock Powell",
+        "personaje": "Santa Claus / Prancer (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/8ge9ffuWkfzNup1XW6p5qaIouLa.jpg"
+      },
+      {
+        "nombre": "Camryn Grimes",
+        "personaje": "Mrs. Claus (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/h3LSrTRlfLo7oERExeuOorpYbUj.jpg"
+      },
+      {
+        "nombre": "Natalie Coughlin",
+        "personaje": "Susie Beagleman (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/snDCwcw3fAuszfHJXiOxNNBVLB2.jpg"
+      },
+      {
+        "nombre": "Stella Edwards",
+        "personaje": "Pearl (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/naJ3vY7yp4K0TXdcfdQwB5l2Bo9.jpg"
+      },
+      {
+        "nombre": "David H. Kramer",
+        "personaje": "Additional voices",
+        "foto": ""
+      },
+      {
+        "nombre": "Nick Kishiyama",
+        "personaje": "Elray (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/xi7dB3XVEtKUZXn4AjI6vicmZkq.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Disney Television Animation, Stoopid Buddy Stoodios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "computer animation, christmas spirit, christmas, christmas special, christian tradition",
+    "similares": [
+      {
+        "titulo": "Los Pitufos: Cuento de Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/mXGT32oOHNJobzXhTrXExcqdsep.jpg",
+        "year": "2011",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Mickey y Minnie y el deseo de Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/5mNwP4NsJisqLKbKVlil3OaZNQI.jpg",
+        "year": "2021",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Toy Story: El tiempo perdido",
+        "poster": "https://image.tmdb.org/t/p/w342/3m8SkdSzWOkNodITnuqXCGaIdFG.jpg",
+        "year": "2014",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Ice Age: Navidades heladas",
+        "poster": "https://image.tmdb.org/t/p/w342/5bW5MlFqqqtZhqACfmJK4B6dGQ4.jpg",
+        "year": "2011",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Navidades con Garfield",
+        "poster": "https://image.tmdb.org/t/p/w342/eQD2VdPntQxHAWap3KMUXGsUTcw.jpg",
+        "year": "1987",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Shreketefeliz Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/3G2Xs4lKCkhTcechHSu85o7auXr.jpg",
+        "year": "2007",
+        "rating": "6.4"
+      }
+    ],
+    "tmdbId": 1037929,
+    "tmdbType": "movie",
+    "runtimeMin": 23,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": true
+  },
+  {
+    "titulo": "Aquella Navidad",
+    "tituloOriginal": "That Christmas",
+    "descripcion": "Está siendo una Navidad inolvidable para los habitantes de Wellington-on-Sea, pero la peor tormenta de nieve de la historia altera los planes de todos... incluidos los de Papá Noel.",
+    "imagen": "https://image.tmdb.org/t/p/w780/4ADuaXSfhekuwxearn2D4fp6fLH.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/1rpyQcniNIJgsE0wKLOqPk2n7b7.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1gPrhKaQkF_NKBJ64gWf6OD3tyoqGcAk_/view?usp=drive_link",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2024",
+    "fechaEstreno": "2024-11-27",
+    "rating": "7.1",
+    "votos": 458,
+    "runtime": "1h 35min",
+    "genres": [
+      "Animación",
+      "Comedia",
+      "Familia",
+      "Fantasía",
+      "Aventura"
+    ],
+    "generosTexto": "Animación, Comedia, Familia, Fantasía, Aventura",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "Simon Otto",
+    "guionistas": "Richard Curtis, Peter Souter",
+    "reparto": [
+      {
+        "nombre": "Brian Cox",
+        "personaje": "Santa (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/scSjbFCTRngXlkJRoKptM5kQGw7.jpg"
+      },
+      {
+        "nombre": "Bill Nighy",
+        "personaje": "Lighthouse Bill (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/ixFI2YCGNGJfwlpI8iyhvVZRg8C.jpg"
+      },
+      {
+        "nombre": "Fiona Shaw",
+        "personaje": "Ms. Trapper (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/8X7fZybxtwh2nTvYk6kjRYo9RIY.jpg"
+      },
+      {
+        "nombre": "Jack Wisniewski",
+        "personaje": "Danny Williams (voice)",
+        "foto": ""
+      },
+      {
+        "nombre": "Jodie Whittaker",
+        "personaje": "Mrs. Williams (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/zS6EO1GsfOiuyaa66YqmUPWDX78.jpg"
+      },
+      {
+        "nombre": "India Brown",
+        "personaje": "Bernadette McNutt (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/hqOxRR0DBJ8Z2IKFYThCV7xcsqv.jpg"
+      },
+      {
+        "nombre": "Guz Khan",
+        "personaje": "Dasher (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/pY2ND9eZhUtPuRBZPEoM1BRPZBd.jpg"
+      },
+      {
+        "nombre": "Lolly Adefope",
+        "personaje": "Mrs. McNutt (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/qPS57Mw1vjydSSfSYoMw8u81waI.jpg"
+      },
+      {
+        "nombre": "Zazie Hayhurst",
+        "personaje": "Sam Beccles (voice)",
+        "foto": ""
+      },
+      {
+        "nombre": "Sienna Sayer",
+        "personaje": "Charlie Beccles (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/wCWSIDF5gLKfiUkAVV9uaEER3SN.jpg"
+      },
+      {
+        "nombre": "Alex Macqueen",
+        "personaje": "Mr. Forrest (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/d8hfBJcYNXf3GJPFzKpOfkwLUg0.jpg"
+      },
+      {
+        "nombre": "Katherine Parkinson",
+        "personaje": "Mrs. Forrest (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/8broF5f3gZsySdtdbpbyiVtCn6n.jpg"
+      }
+    ],
+    "pais": "United Kingdom",
+    "idioma": "en",
+    "productoras": "Locksmith Animation, DNEG",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "holiday, santa claus, affectation, stage play, christmas, 3d animation, adoring",
+    "similares": [
+      {
+        "titulo": "El extra navideño del Bebé Jefazo",
+        "poster": "https://image.tmdb.org/t/p/w342/oYqSHD0bYRZFyZIocUsKXzDJULK.jpg",
+        "year": "2022",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Mickey: La mejor Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/5mrTyw3eE1lU9PEzlY7HcWi7uSv.jpg",
+        "year": "2004",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Polar Express",
+        "poster": "https://image.tmdb.org/t/p/w342/ja6QGEUkP8t3wjjoHYvpRStomlT.jpg",
+        "year": "2004",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "El Grinch",
+        "poster": "https://image.tmdb.org/t/p/w342/o3b6DOiePNlNOiqLCzCvqvDvHpL.jpg",
+        "year": "2018",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "La oveja Shaun: El vuelo antes de Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/pnLPGa9OGBsY61Xtp15cp7rXW1i.jpg",
+        "year": "2021",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Se armó el Belén",
+        "poster": "https://image.tmdb.org/t/p/w342/b39VGy2mOTRHbW8iV1fQQwb73wy.jpg",
+        "year": "2017",
+        "rating": "6.5"
+      }
+    ],
+    "tmdbId": 645757,
+    "tmdbType": "movie",
+    "runtimeMin": 95,
+    "homepage": "https://www.netflix.com/es/title/81309564",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": true
+  },
+  {
     "titulo": "Christmas in the Wilds",
     "tituloOriginal": "Christmas in the Wilds",
     "descripcion": "",
@@ -4596,7 +5145,8 @@
     "creadores": [],
     "numeroTemporadas": 0,
     "numeroEpisodios": 0,
-    "temporadasTmdb": []
+    "temporadasTmdb": [],
+    "navidad": true
   },
   {
     "titulo": "El Supersabio",
