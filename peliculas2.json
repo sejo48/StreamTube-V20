@@ -1,5 +1,507 @@
 [
   {
+    "titulo": "Hold the Fort",
+    "tituloOriginal": "Hold the Fort",
+    "descripcion": "La película sigue a Lucas y Jenny, quienes creen que su vida finalmente está tomando forma cuando la pareja se convierte en propietaria de una vivienda. Sin embargo, no saben que su nueva casa trae consigo una gran desventaja. Lucas y Jenny pronto se ven envueltos en una lucha por sus vidas al verse atrapados en una batalla entre la Asociación de Propietarios y una avalancha de monstruos infernales. Esta comedia de terror aborda la actual preocupación de ser propietario de una vivienda y la convierte en una emocionante aventura llena de acción.",
+    "imagen": "https://image.tmdb.org/t/p/w780/52d0TSCPYg6B6wQo8DCAoBdVsi4.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/2Czzw6qOeYAWhWnFEx8WSmA0E8F.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1Knxl0nNCD7UFih3OQ9vRoun2CEEPpx9f/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-07-16",
+    "rating": "6.3",
+    "votos": 39,
+    "runtime": "1h 24min",
+    "genres": [
+      "Terror",
+      "Comedia"
+    ],
+    "generosTexto": "Terror, Comedia",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "William Bagley",
+    "guionistas": "William Bagley, Scott Hawkins",
+    "reparto": [
+      {
+        "nombre": "Chris Mayers",
+        "personaje": "Lucas",
+        "foto": "https://image.tmdb.org/t/p/w185/efgM2mQHNQPdKmqYKBYc4VBNSCA.jpg"
+      },
+      {
+        "nombre": "Haley Leary",
+        "personaje": "Jenny",
+        "foto": "https://image.tmdb.org/t/p/w185/xN5WCnr7xlhCEXxcQiDTvh9RGWQ.jpg"
+      },
+      {
+        "nombre": "Julian Smith",
+        "personaje": "Jerry",
+        "foto": ""
+      },
+      {
+        "nombre": "Michelle I. Lamb",
+        "personaje": "Annette",
+        "foto": "https://image.tmdb.org/t/p/w185/y1TWj6rDImWxefnCehnNZX5nXM4.jpg"
+      },
+      {
+        "nombre": "Levi Burdick",
+        "personaje": "Ted",
+        "foto": "https://image.tmdb.org/t/p/w185/w6i8PHGdTe0lEEgQhnAdxEA5cxy.jpg"
+      },
+      {
+        "nombre": "Hamid-Reza Benjamin Thompson",
+        "personaje": "McScruffy",
+        "foto": "https://image.tmdb.org/t/p/w185/rOBcfuKyRp2mA6cAAOvxz8rfLIi.jpg"
+      },
+      {
+        "nombre": "Tordy Clark",
+        "personaje": "Leslie",
+        "foto": "https://image.tmdb.org/t/p/w185/7kddLvM0NrqjtjbelSEKz4f8Loc.jpg"
+      },
+      {
+        "nombre": "Alex McKelvey",
+        "personaje": "Blue Hat",
+        "foto": "https://image.tmdb.org/t/p/w185/d4sX7z2WXntpkpc8X4DemAUMacc.jpg"
+      },
+      {
+        "nombre": "Mark Ashworth",
+        "personaje": "Herbert",
+        "foto": "https://image.tmdb.org/t/p/w185/nfhUTghFe0izP9NguZsDVqmVgEk.jpg"
+      },
+      {
+        "nombre": "Ryan Monolopolus",
+        "personaje": "Hawaiian Shirt • Witch #2",
+        "foto": "https://image.tmdb.org/t/p/w185/uiOy9PsPJ0W3HJQlNdJ7xEaI26V.jpg"
+      },
+      {
+        "nombre": "Luke Michael Williams",
+        "personaje": "Marcus",
+        "foto": ""
+      },
+      {
+        "nombre": "Liam Day",
+        "personaje": "Glasses • Werewolf",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Blue Finch Films",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Porno",
+        "poster": "https://image.tmdb.org/t/p/w342/cnmR5lXN8xLDvvtqMviuRaKavnU.jpg",
+        "year": "2019",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Espontánea",
+        "poster": "https://image.tmdb.org/t/p/w342/7mj4FVZHZBTNh8687wtYocECRg8.jpg",
+        "year": "2020",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Hard to Die",
+        "poster": "https://image.tmdb.org/t/p/w342/sQPdz28o3LmEaknwwnKB8zqqIYF.jpg",
+        "year": "1990",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "El vengador tóxico IV: Ciudadano Toxie",
+        "poster": "https://image.tmdb.org/t/p/w342/dT9TjmI3ajlC37naax53DWvXsAF.jpg",
+        "year": "2001",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Villanos",
+        "poster": "https://image.tmdb.org/t/p/w342/387faJV4u59dUOh0Ce7UlxAYslp.jpg",
+        "year": "2019",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Nación salvaje",
+        "poster": "https://image.tmdb.org/t/p/w342/iOxF8dMdMSjyubsq2jdIvndepVI.jpg",
+        "year": "2018",
+        "rating": "6.2"
+      }
+    ],
+    "tmdbId": 1481603,
+    "tmdbType": "movie",
+    "runtimeMin": 84,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Hanging by a Wire",
+    "tituloOriginal": "Hanging by a Wire",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/bjuAx0fTZMOBIcH6v6oPbge4P6V.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/q90G7OV76xR7NOHu8m19iaudHO1.jpg",
+    "urlDrive": "https://drive.google.com/file/d/19VfsXMpI7SA2-mxHX6tg1SElXxFR2hI9/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-10-21",
+    "rating": "6.9",
+    "votos": 9,
+    "runtime": "1h 17min",
+    "genres": [
+      "Documental"
+    ],
+    "generosTexto": "Documental",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Mohammed Naqvi",
+    "guionistas": "Mohammed Naqvi, Bilal Sami",
+    "reparto": [],
+    "pais": "United Kingdom, United States of America, Pakistan",
+    "idioma": "en",
+    "productoras": "Mindhouse Productions, EverWonder Studio, 64th Street Media, Universal Pictures Content Group",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Especial Avatar: Inmersión total",
+        "poster": "https://image.tmdb.org/t/p/w342/gck5oeE9PvPtv1WNQ8U4NTX2JEW.jpg",
+        "year": "2022",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Mi mama Jayne: una película de Mariska Hargitay",
+        "poster": "https://image.tmdb.org/t/p/w342/9D86WFDCDLNGgGOig3lmZ8BzhIK.jpg",
+        "year": "2025",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "American Teen",
+        "poster": "https://image.tmdb.org/t/p/w342/3wyLydrkvf4BbfBOzpX9amhx5MU.jpg",
+        "year": "2008",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Así se hizo ‘El juego del calamar: El desafío'",
+        "poster": "https://image.tmdb.org/t/p/w342/78yTLvtsMntVN1cLfzBuZj870pe.jpg",
+        "year": "2023",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Reunidos: Así se hizo Ojo de Halcón",
+        "poster": "https://image.tmdb.org/t/p/w342/melrUNRTj0BYQKscOJMvcfYVVFX.jpg",
+        "year": "2022",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "En la piel de James Bond, (The Daniel Craig Story)",
+        "poster": "https://image.tmdb.org/t/p/w342/kKG9gieki5wgEcVXLfnX1lbOcrO.jpg",
+        "year": "2021",
+        "rating": "7.8"
+      }
+    ],
+    "tmdbId": 1480856,
+    "tmdbType": "movie",
+    "runtimeMin": 77,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Colisión",
+    "tituloOriginal": "Colisión",
+    "descripcion": "España, 2013. Tras atracar un banco, un fatal accidente de auto saca a la luz la cara oculta de una banda de ladrones y desvela que las traiciones comenzaron mucho antes del robo.",
+    "imagen": "https://image.tmdb.org/t/p/original/1qN4i4mu8oypuYUx4If7CczWHT9.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/uI3kWI7kGW5E0F8WduewgQYPt34.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1ZfVGb_eOhBktcROih3PVf2O_R2VjXLX3/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-10-30",
+    "rating": "6.8",
+    "votos": 9,
+    "runtime": "2h 2min",
+    "genres": [
+      "Drama",
+      "Acción",
+      "Crimen"
+    ],
+    "generosTexto": "Drama, Acción, Crimen",
+    "clasificacion": "R",
+    "tagline": "",
+    "director": "Daniel Sánchez Arévalo",
+    "guionistas": "Daniel Sánchez Arévalo, Ramón Campos",
+    "reparto": [
+      {
+        "nombre": "Laia Costa",
+        "personaje": "Carla Mencía",
+        "foto": "https://image.tmdb.org/t/p/w185/kSbdpHWLlfzvOfZKJ0dgP0ieVL6.jpg"
+      },
+      {
+        "nombre": "Karra Elejalde",
+        "personaje": "Pedro",
+        "foto": "https://image.tmdb.org/t/p/w185/kHODqgc2c7RaZz9Sp7cedgadvzG.jpg"
+      },
+      {
+        "nombre": "Luis Zahera",
+        "personaje": "Ernesto",
+        "foto": "https://image.tmdb.org/t/p/w185/ozfRIrvu8i93RJAaeWbaCLKAlPq.jpg"
+      },
+      {
+        "nombre": "Tamar Novas",
+        "personaje": "Tomás",
+        "foto": "https://image.tmdb.org/t/p/w185/3MpjB6lxeTUA9EunaV4kAyvOvIG.jpg"
+      },
+      {
+        "nombre": "Álvaro Cervantes",
+        "personaje": "Raúl",
+        "foto": "https://image.tmdb.org/t/p/w185/6RAiI4SXIMxLRM1RejLJzMPK7wa.jpg"
+      },
+      {
+        "nombre": "Lluís Homar",
+        "personaje": "Luis",
+        "foto": "https://image.tmdb.org/t/p/w185/p1AFBzyZRbHzA6S8q3RWw0YXoAf.jpg"
+      },
+      {
+        "nombre": "Luz Valdenebro",
+        "personaje": "Lola",
+        "foto": "https://image.tmdb.org/t/p/w185/mTmN3m2gII511LUYMHBRPmCdvdG.jpg"
+      },
+      {
+        "nombre": "Víctor Duplá",
+        "personaje": "Pablo",
+        "foto": "https://image.tmdb.org/t/p/w185/veMvq4qfmVriQpk7SicCk6tEIKa.jpg"
+      },
+      {
+        "nombre": "Jorge Cabrera",
+        "personaje": "Turrientes",
+        "foto": "https://image.tmdb.org/t/p/w185/lE1wXFPu11zyxCroaVfYNryvsHn.jpg"
+      },
+      {
+        "nombre": "Mónica Miranda",
+        "personaje": "Lucía",
+        "foto": "https://image.tmdb.org/t/p/w185/cSeiAVcFQ5BdG9W6WPt06TyoUT3.jpg"
+      },
+      {
+        "nombre": "Ismael Martínez",
+        "personaje": "Berni",
+        "foto": "https://image.tmdb.org/t/p/w185/yCmKNXBSdtBybQrWAIdMfW40fN1.jpg"
+      },
+      {
+        "nombre": "Chete Guzmán",
+        "personaje": "Portero Ernesto",
+        "foto": "https://image.tmdb.org/t/p/w185/6qtaU7rYeJCZZ9E0IVj0ro3e1H5.jpg"
+      }
+    ],
+    "pais": "Spain",
+    "idioma": "es",
+    "productoras": "Bambú Producciones",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=Jk12Xo0-oDc",
+    "coleccion": "",
+    "keywords": "robbery, madrid, spain, deception, heist, survival, gang, fear, bank robbery, economic crisis, bank heist, suspenseful, exciting",
+    "similares": [
+      {
+        "titulo": "The Vault",
+        "poster": "https://image.tmdb.org/t/p/w342/5lui7Y5v8Cc7loiYfXz3SM42myt.jpg",
+        "year": "2021",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Nacer para morir",
+        "poster": "https://image.tmdb.org/t/p/w342/zTKNlCPSQPmMGvltwmZ0AaFLHxw.jpg",
+        "year": "2003",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "La venganza (The Hit)",
+        "poster": "https://image.tmdb.org/t/p/w342/n8P13rEyvy6vPFmPaqUWAfbOZpk.jpg",
+        "year": "1984",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "La huida",
+        "poster": "https://image.tmdb.org/t/p/w342/jf83VqRRFpZte67FiZviq6U3Nfs.jpg",
+        "year": "1972",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Tarde de perros",
+        "poster": "https://image.tmdb.org/t/p/w342/ctcUXNlnddo9ndUK0w7w6CZQpig.jpg",
+        "year": "1975",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "The Town: Ciudad de ladrones",
+        "poster": "https://image.tmdb.org/t/p/w342/4VLzLzGr78AOnAUPv6iCcMNoFDB.jpg",
+        "year": "2010",
+        "rating": "7.2"
+      }
+    ],
+    "tmdbId": 1571955,
+    "tmdbType": "movie",
+    "runtimeMin": 122,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "This Is Not a Test",
+    "tituloOriginal": "This Is Not a Test",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/w9hlWR9jOVQPiWuMrWqDBirkfmI.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/dydvEc82Z6ptEx3aAubzJawesiQ.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1QL9bn5-djjsy90BdZhTlhLw2LmoZ8X3n/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-02-20",
+    "rating": "5.5",
+    "votos": 85,
+    "runtime": "1h 42min",
+    "genres": [
+      "Suspense",
+      "Terror"
+    ],
+    "generosTexto": "Suspense, Terror",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Adam MacDonald",
+    "guionistas": "Adam MacDonald",
+    "reparto": [
+      {
+        "nombre": "Olivia Holt",
+        "personaje": "Sloane",
+        "foto": "https://image.tmdb.org/t/p/w185/gOYenPpic8MJnfzszGyUWgsYHSC.jpg"
+      },
+      {
+        "nombre": "Froy Gutierrez",
+        "personaje": "Rhys",
+        "foto": "https://image.tmdb.org/t/p/w185/8sCm6Jl8jDUwRBin6k7CIFIm0yg.jpg"
+      },
+      {
+        "nombre": "Carson MacCormac",
+        "personaje": "Trace",
+        "foto": "https://image.tmdb.org/t/p/w185/nk38siBWAe8BRz7iDpyppBRyjlQ.jpg"
+      },
+      {
+        "nombre": "Corteon Moore",
+        "personaje": "Cary",
+        "foto": "https://image.tmdb.org/t/p/w185/6jHlhaUdAOKEMmODVyQOQB4YMwY.jpg"
+      },
+      {
+        "nombre": "Chloe Avakian",
+        "personaje": "Grace",
+        "foto": "https://image.tmdb.org/t/p/w185/kHHLdCWHTsNWCMrxX3zT8prIk1T.jpg"
+      },
+      {
+        "nombre": "Luke Macfarlane",
+        "personaje": "Mr. Baxter",
+        "foto": "https://image.tmdb.org/t/p/w185/CLWci74LczRxUhMfvwUk5kKvRf.jpg"
+      },
+      {
+        "nombre": "Krista Bridges",
+        "personaje": "Mrs. Casper",
+        "foto": "https://image.tmdb.org/t/p/w185/zFA8HVDbi7RO3cfk5oGjaQTAm9t.jpg"
+      },
+      {
+        "nombre": "Joelle Farrow",
+        "personaje": "Lilly",
+        "foto": "https://image.tmdb.org/t/p/w185/9VfmFQODCkjeSd4jjdLAbh94ajy.jpg"
+      },
+      {
+        "nombre": "Jeff Roop",
+        "personaje": "Sloane’s Dad",
+        "foto": "https://image.tmdb.org/t/p/w185/cbNfziruTcK06Ql1AnK0G2N8ISv.jpg"
+      },
+      {
+        "nombre": "Perez Tieku",
+        "personaje": "Man on Megaphone",
+        "foto": ""
+      },
+      {
+        "nombre": "Missy Peregrym",
+        "personaje": "Woman’s Voice Recording (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/buMPx9vULW4crzXI2W3hAt3yg7.jpg"
+      }
+    ],
+    "pais": "United States of America, Canada",
+    "idioma": "en",
+    "productoras": "Anova Pictures, BondIt Media Capital, North Avenue Pictures, WorldOne Entertainment",
+    "presupuesto": 0,
+    "recaudacion": 150000,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "high school, based on novel or book, post-apocalyptic future, melancholy, survival, suicidal, school, zombie, survival horror, zombie apocalypse, frantic",
+    "similares": [
+      {
+        "titulo": "Ecos mortales",
+        "poster": "https://image.tmdb.org/t/p/w342/hAsF1vuwkVZckLtc0N4yV0eUd7j.jpg",
+        "year": "2018",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "La caza",
+        "poster": "https://image.tmdb.org/t/p/w342/5WCuPRfa0h8jMT4Iu2jIIQXqllM.jpg",
+        "year": "2020",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "The Driver",
+        "poster": "https://image.tmdb.org/t/p/w342/eLYUdValh4JlojqCb0fogNMxK6b.jpg",
+        "year": "2019",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "El final de nuestros días",
+        "poster": "https://image.tmdb.org/t/p/w342/lWw56vQLL33rS3Hq19ECv28dj6a.jpg",
+        "year": "2024",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "La larga marcha",
+        "poster": "https://image.tmdb.org/t/p/w342/vH7WPEgHxy1JLKsjBgSfY7NIf9W.jpg",
+        "year": "2025",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Cosecha oscura (Dark Harvest)",
+        "poster": "https://image.tmdb.org/t/p/w342/cpbukMqjn96Vdw8bt4MPRF8h41T.jpg",
+        "year": "2023",
+        "rating": "6.1"
+      }
+    ],
+    "tmdbId": 1428990,
+    "tmdbType": "movie",
+    "runtimeMin": 102,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
     "titulo": "Feed",
     "tituloOriginal": "Feed",
     "descripcion": "",
