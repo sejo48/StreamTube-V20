@@ -1,5 +1,563 @@
 [
   {
+    "titulo": "Feed",
+    "tituloOriginal": "Feed",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/7rbcPfN9nOWMCTbeIJvTed5prBi.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/4ZeaWA6DzFVOjWTi70b9ZAaQktf.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1fHq65cFNpP7-VhMrr0os_iJXksE9XZqm/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-08-06",
+    "rating": "5.8",
+    "votos": 8,
+    "runtime": "1h 22min",
+    "genres": [
+      "Terror"
+    ],
+    "generosTexto": "Terror",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Marco van Belle",
+    "guionistas": "Marco van Belle",
+    "reparto": [
+      {
+        "nombre": "Grace Collender",
+        "personaje": "Orla Ryan",
+        "foto": "https://image.tmdb.org/t/p/w185/vRVJutQ6naoFHZumAV2qtrcrlCn.jpg"
+      },
+      {
+        "nombre": "Rhys Mannion",
+        "personaje": "Austin",
+        "foto": "https://image.tmdb.org/t/p/w185/tgPhudrDpN6AqmbGyOjjqqVrRJx.jpg"
+      },
+      {
+        "nombre": "Molly McCann",
+        "personaje": "Ciara Ryan",
+        "foto": "https://image.tmdb.org/t/p/w185/zj9W1ztt5sRnpwOwy7zicXjmLrA.jpg"
+      },
+      {
+        "nombre": "Charlotte Bradley",
+        "personaje": "Nora",
+        "foto": ""
+      },
+      {
+        "nombre": "Flynn Gray",
+        "personaje": "Cathal",
+        "foto": "https://image.tmdb.org/t/p/w185/nRz8kp8QqfXtyRjFPILNo9wSQAV.jpg"
+      },
+      {
+        "nombre": "Daisy Jelley",
+        "personaje": "Nessa",
+        "foto": "https://image.tmdb.org/t/p/w185/p9p1yCAIdSgvfIKdbjCLaXdUfSv.jpg"
+      },
+      {
+        "nombre": "Clinton Liberty",
+        "personaje": "Lorcan",
+        "foto": "https://image.tmdb.org/t/p/w185/aQVNOCTFpnTO2Cl9qlcm6RRcoVw.jpg"
+      },
+      {
+        "nombre": "Niamh Hogan",
+        "personaje": "Dearg Due",
+        "foto": "https://image.tmdb.org/t/p/w185/x1p0hxdmGNG2XIjUpBB5ws8De3A.jpg"
+      },
+      {
+        "nombre": "Noella Brennan",
+        "personaje": "Fiona Ryan",
+        "foto": "https://image.tmdb.org/t/p/w185/ivd8kgJYFA3CpNVvL2Httk0Ilb4.jpg"
+      },
+      {
+        "nombre": "Dominic Wright",
+        "personaje": "Gareth Ryan",
+        "foto": ""
+      },
+      {
+        "nombre": "Oskar Smith",
+        "personaje": "Sean",
+        "foto": "https://image.tmdb.org/t/p/w185/4SIE0AcHtb5jjv3LdOKj2p5IGrB.jpg"
+      },
+      {
+        "nombre": "Jacek Skalmierski",
+        "personaje": "Blind Folded Man #1",
+        "foto": ""
+      }
+    ],
+    "pais": "United Kingdom, Ireland, Belgium",
+    "idioma": "en",
+    "productoras": "Ripple World Pictures, Big Safari, Creativity Capital",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "vampire, forest, social media influencer",
+    "similares": [
+      {
+        "titulo": "Las Hijas de Drácula",
+        "poster": "https://image.tmdb.org/t/p/w342/8gJptHiGcLI6zelIfI8GQpvQ2DZ.jpg",
+        "year": "1974",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Las amantes del vampiro",
+        "poster": "https://image.tmdb.org/t/p/w342/raf3vszJk1DhJs0zfQFmXeAYt1k.jpg",
+        "year": "1970",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Regreso a Salem's Lot",
+        "poster": "https://image.tmdb.org/t/p/w342/rEDuULKCdIO1nIVnmoQCJIvD2SO.jpg",
+        "year": "1987",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Drácula negro II. Grita, Blácula, grita",
+        "poster": "https://image.tmdb.org/t/p/w342/lxzscvc7rBkvahgCCa4mxFeZZ8v.jpg",
+        "year": "1973",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Lujuria para un vampiro",
+        "poster": "https://image.tmdb.org/t/p/w342/3QeRTcCEDumuZpGTfFW8xV5DiwB.jpg",
+        "year": "1971",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "El misterio de Salem's Lot",
+        "poster": "https://image.tmdb.org/t/p/w342/lQj4jn6CmQ88Q7XsYvhenHjVIO.jpg",
+        "year": "2024",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 1128204,
+    "tmdbType": "movie",
+    "runtimeMin": 82,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Neglected",
+    "tituloOriginal": "Neglected",
+    "descripcion": "El detective Shaw descubre que un asesino en serie ha enterrado vivo a su hijo. Debe resolver tres asesinatos para encontrarle antes de que muera.",
+    "imagen": "https://image.tmdb.org/t/p/w780/ecUjyPn3MtcDb4JMVLoefpDdsU8.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/5nilYwx9jH6P27pnORwlrRdtCwZ.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1r6IVJJ8b_19RGhceu7_YgIV7bpnLZcGU/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-05-08",
+    "rating": "6.1",
+    "votos": 33,
+    "runtime": "1h 32min",
+    "genres": [
+      "Acción",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Suspense",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "David Lipper",
+    "guionistas": "David Lipper, Adam G. Levine",
+    "reparto": [
+      {
+        "nombre": "Josh Duhamel",
+        "personaje": "Shaw",
+        "foto": "https://image.tmdb.org/t/p/w185/5Rp9aeWdN2S623KCjwfii9MhDK1.jpg"
+      },
+      {
+        "nombre": "Dylan Sprouse",
+        "personaje": "AJ",
+        "foto": "https://image.tmdb.org/t/p/w185/gpfMji2v7BXtovSptxTkrk88s89.jpg"
+      },
+      {
+        "nombre": "David Lipper",
+        "personaje": "Mayor Richards",
+        "foto": "https://image.tmdb.org/t/p/w185/apAgZr1qU5Q99RFR1xCrpZ1CUL9.jpg"
+      },
+      {
+        "nombre": "Elena Sanchez",
+        "personaje": "Keyes",
+        "foto": "https://image.tmdb.org/t/p/w185/prhbHW3WWqnbpChZZIKPsdzS7ny.jpg"
+      },
+      {
+        "nombre": "Jason London",
+        "personaje": "Deacon",
+        "foto": "https://image.tmdb.org/t/p/w185/bFkC2ZRcurTQzbjBuuMljFCKfEv.jpg"
+      },
+      {
+        "nombre": "Jeremy London",
+        "personaje": "Sloan",
+        "foto": "https://image.tmdb.org/t/p/w185/2eSv6kcfWinz0xDoAclyCVsArhu.jpg"
+      },
+      {
+        "nombre": "Til Schweiger",
+        "personaje": "Haas",
+        "foto": "https://image.tmdb.org/t/p/w185/3Jk7y4sKgckrN9RzAAt0drlR0QG.jpg"
+      },
+      {
+        "nombre": "María Camila Giraldo",
+        "personaje": "Maria Hernandez",
+        "foto": "https://image.tmdb.org/t/p/w185/lXAL1DTMYJo4JWH3sKaGm80X1fs.jpg"
+      },
+      {
+        "nombre": "Corbin Pitts",
+        "personaje": "Aaron",
+        "foto": "https://image.tmdb.org/t/p/w185/kL87wIiTEpHfz5HOIRcNle33TgU.jpg"
+      },
+      {
+        "nombre": "Kristin Wollett",
+        "personaje": "Mandy",
+        "foto": "https://image.tmdb.org/t/p/w185/2T0mTHzQRb3A5l4a7Dj4QPxtMcT.jpg"
+      },
+      {
+        "nombre": "Sherri Eakin",
+        "personaje": "Claudia Richards",
+        "foto": "https://image.tmdb.org/t/p/w185/21SymCBUIDtYxvuPvjNopWisnNp.jpg"
+      },
+      {
+        "nombre": "Kipp Tribble",
+        "personaje": "O'Grady",
+        "foto": "https://image.tmdb.org/t/p/w185/9wrmzDG37Aann9h8h1xOcNKRjDE.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Red Sea Media, Latigo Films",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "baffled, bewildered",
+    "similares": [
+      {
+        "titulo": "Misión frontera",
+        "poster": "https://image.tmdb.org/t/p/w342/oCB0j331qr6CW1TtpgSgPccdYA7.jpg",
+        "year": "2025",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Red de traición",
+        "poster": "https://image.tmdb.org/t/p/w342/naYxXiVGudVNbJ3KgbG91Bg6xOQ.jpg",
+        "year": "2024",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Luces fuera",
+        "poster": "https://image.tmdb.org/t/p/w342/w77zHTSykW74c19rgV5JOA0nGmd.jpg",
+        "year": "2024",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Rastreado",
+        "poster": "https://image.tmdb.org/t/p/w342/p54x9dKLWZQ78aSo5jPf2NodFVs.jpg",
+        "year": "2025",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Zip Wire",
+        "poster": "https://image.tmdb.org/t/p/w342/eLMHUOQ4mCMxePMbv0TIVB48zfe.jpg",
+        "year": "2026",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Marcados para morir",
+        "poster": "https://image.tmdb.org/t/p/w342/sIZo7dF3U7nsLAxlUhKCPAkFwjB.jpg",
+        "year": "2011",
+        "rating": "6.0"
+      }
+    ],
+    "tmdbId": 1409853,
+    "tmdbType": "movie",
+    "runtimeMin": 92,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Mickey's Slayhouse",
+    "tituloOriginal": "Mickey's Slayhouse",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/s6ts9TOGZm41FcL4kmSGV8m1XNr.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/wFpNYYrdUsx4h5HzjBCWqr9yL6K.jpg",
+    "urlDrive": "https://drive.google.com/file/d/11azFCPX6mSPoy80JzMsGHWS8HKC8QOiF/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-01-07",
+    "rating": "",
+    "votos": 0,
+    "runtime": "1h 28min",
+    "genres": [
+      "Terror"
+    ],
+    "generosTexto": "Terror",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Kjell Dokkvarr",
+    "guionistas": "Kjell Dokkvarr",
+    "reparto": [
+      {
+        "nombre": "Kaitlyn Jackson",
+        "personaje": "Lucy",
+        "foto": ""
+      },
+      {
+        "nombre": "Matthew Perl",
+        "personaje": "Christian",
+        "foto": ""
+      },
+      {
+        "nombre": "Rebi Jordan",
+        "personaje": "Bianca",
+        "foto": ""
+      },
+      {
+        "nombre": "Levi Patterson",
+        "personaje": "Chad",
+        "foto": ""
+      },
+      {
+        "nombre": "Michael Robert House",
+        "personaje": "Psycho Bob",
+        "foto": ""
+      },
+      {
+        "nombre": "Brooklyn Evans",
+        "personaje": "Isabella",
+        "foto": ""
+      },
+      {
+        "nombre": "Jayd Swendseid",
+        "personaje": "Carter",
+        "foto": ""
+      },
+      {
+        "nombre": "James Hawthorn",
+        "personaje": "Jack",
+        "foto": "https://image.tmdb.org/t/p/w185/hWox4CZP5RiMsuWRLXxVEXgmdx3.jpg"
+      },
+      {
+        "nombre": "Lemuel Teferra",
+        "personaje": "Marcos",
+        "foto": ""
+      },
+      {
+        "nombre": "Jazlyn Nicolette Sward",
+        "personaje": "Suzee",
+        "foto": "https://image.tmdb.org/t/p/w185/p3CzKK3vVE8SYmv3AJWj3gcJlhR.jpg"
+      },
+      {
+        "nombre": "Adam Abdsameia",
+        "personaje": "Johnny",
+        "foto": ""
+      },
+      {
+        "nombre": "Annika Ross",
+        "personaje": "Sierra",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Grimewave, Sublimity Entertainment",
+    "presupuesto": 750000,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Saint Catherine",
+        "poster": "https://image.tmdb.org/t/p/w342/hBJdzKPeDaC96AzlrtMWBomYSZV.jpg",
+        "year": "2024",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "La casa del terror (Haunt)",
+        "poster": "https://image.tmdb.org/t/p/w342/6fuNWZzY0RijO1Xpw46soazDFMb.jpg",
+        "year": "2019",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Play Dead",
+        "poster": "https://image.tmdb.org/t/p/w342/5THjBLt4vE9lAnLODqXFf5qEwxa.jpg",
+        "year": "2025",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Pesadilla en Elm Street 2: La venganza de Freddy",
+        "poster": "https://image.tmdb.org/t/p/w342/54JsC5uy6l9HTeDmW1DGQ76dsc4.jpg",
+        "year": "1985",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "The Final",
+        "poster": "https://image.tmdb.org/t/p/w342/fL3AiFquKU3UKMB3gIDFn0tDwGt.jpg",
+        "year": "2010",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Barbarian",
+        "poster": "https://image.tmdb.org/t/p/w342/1YyGqOsEkWjdkBMeUrxhtiLRvlD.jpg",
+        "year": "2022",
+        "rating": "6.9"
+      }
+    ],
+    "tmdbId": 1393056,
+    "tmdbType": "movie",
+    "runtimeMin": 88,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "أوسكار: عودة الماموث",
+    "tituloOriginal": "أوسكار: عودة الماموث",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/oIMZzqP9scAxPOrlOYA5Vw9nlZn.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/6BnaQXB9C48LaPw0WaKr05W3d0I.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1tzRdqoO-tz6lHjhO6N0EYl7YNmKdXdte/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2025",
+    "fechaEstreno": "2025-10-22",
+    "rating": "8.5",
+    "votos": 2,
+    "runtime": "1h 50min",
+    "genres": [
+      "Fantasía",
+      "Familia",
+      "Ciencia ficción",
+      "Acción"
+    ],
+    "generosTexto": "Fantasía, Familia, Ciencia ficción, Acción",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Hisham Al Rashidi",
+    "guionistas": "Hamed ElSharrab, Ahmed Halim",
+    "reparto": [
+      {
+        "nombre": "أحمد صلاح حسني",
+        "personaje": "Adam",
+        "foto": "https://image.tmdb.org/t/p/w185/gGR1ZmdJmRdhBXJkQG90yVPQWZ4.jpg"
+      },
+      {
+        "nombre": "Hanady Mhana",
+        "personaje": "Dr.Arwa",
+        "foto": "https://image.tmdb.org/t/p/w185/42bF9WJX77hPFCkj4GS35YwHggu.jpg"
+      },
+      {
+        "nombre": "Mohamed Tharwat",
+        "personaje": "Dr. Saad Al-Sharbini",
+        "foto": "https://image.tmdb.org/t/p/w185/3uqttDmL1KH7811E3plwINeGtUs.jpg"
+      },
+      {
+        "nombre": "Leah Suwaidan",
+        "personaje": "Leila",
+        "foto": "https://image.tmdb.org/t/p/w185/5hSLO6IZugTA9K0UCr0ttfW6nqr.jpg"
+      },
+      {
+        "nombre": "Ahmed Al-Bayed",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/dNZ9QunnP1NtbtFonwmLpu4MUDB.jpg"
+      },
+      {
+        "nombre": "Mai Elkady",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/3vJ9tqCgl0vztpJbzeN8o3nzstw.jpg"
+      },
+      {
+        "nombre": "Ezzat Zain",
+        "personaje": "Adam's father",
+        "foto": "https://image.tmdb.org/t/p/w185/gNSDE13OC1MIi5BHA3XfYCYcI0u.jpg"
+      },
+      {
+        "nombre": "Mahmoud Abdel Moghny",
+        "personaje": "Guest",
+        "foto": "https://image.tmdb.org/t/p/w185/78NvDJqQ2X71GDKXDIpH0kqEdvp.jpg"
+      },
+      {
+        "nombre": "Sandy Tawfik",
+        "personaje": "",
+        "foto": ""
+      },
+      {
+        "nombre": "Chris Larter",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/jR9EXykhj6MvhVaPsgp7ZGtuwdB.jpg"
+      }
+    ],
+    "pais": "Egypt",
+    "idioma": "ar",
+    "productoras": "TREND VFX",
+    "presupuesto": 0,
+    "recaudacion": 218593,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "mammoth",
+    "similares": [
+      {
+        "titulo": "Momo",
+        "poster": "https://image.tmdb.org/t/p/w342/4RK77mDqTa5TOxVaVRNecfjhkAr.jpg",
+        "year": "2025",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Una casa de locos: La película",
+        "poster": "https://image.tmdb.org/t/p/w342/lacdPE1hVXqOtgNWc9z5WezR6b2.jpg",
+        "year": "2021",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Érase una vez: Anastasia",
+        "poster": "https://image.tmdb.org/t/p/w342/1g9R5lpmJ77kRcx4agxc3oIzN1C.jpg",
+        "year": "2020",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Babylon 5: La Leyenda de los Rangers",
+        "poster": "https://image.tmdb.org/t/p/w342/bIhOn8xKsOQGjiNCQ8sKoQyYmNa.jpg",
+        "year": "2002",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "El retorno de los magos: Alex vs. Alex",
+        "poster": "https://image.tmdb.org/t/p/w342/arSJXWb2MipcD9ksgG59fbQLFlB.jpg",
+        "year": "2013",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Casper y la mágica Wendy",
+        "poster": "https://image.tmdb.org/t/p/w342/gWfgCUHkJ4lOHJXp6gdC0pnd9uB.jpg",
+        "year": "1998",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 1284777,
+    "tmdbType": "movie",
+    "runtimeMin": 110,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
     "titulo": "Apocalipsis Z: Nuevo mundo",
     "tituloOriginal": "Apocalipsis Z: Nuevo mundo",
     "descripcion": "Cuando una misión especial parte hacia la península en busca de suministros vitales, Roberto se une al equipo con dudosas intenciones. La peligrosa operación se transforma en una carrera desesperada por la supervivencia, y Roberto y sus compañeros se encontrarán entre hordas de infectados y lealtades divididas.",
