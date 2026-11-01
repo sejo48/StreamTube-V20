@@ -16,4 +16,6 @@ NODE_PATH=/opt/codex/cua_node/lib/node_modules node tests/smart-tv-series-browse
 
 ## Recorrido con el mando
 
-En la ficha de una serie, pulsa Abajo desde la temporada para entrar a los episodios. Abajo avanza y Arriba retrocede: al terminar los dos episodios visibles, la página cambia automáticamente. El contador indica el tramo y el total de la temporada (por ejemplo, «Episodios 3–4 de 36»). También hay botones Anteriores y Siguientes. OK reproduce y Volver sale del reproductor o de la ficha. Se reconocen los códigos estándar de flechas/OK y los botones Volver de Samsung/LG, además de la interfaz nativa boxTV.
+En la ficha de una serie, pulsa Abajo desde la temporada para entrar a los episodios. Abajo avanza y Arriba retrocede: al terminar los episodios visibles, la página cambia automáticamente. El contador indica el tramo y el total de la temporada (por ejemplo, «Episodios 13–24 de 36»). También hay botones Anteriores y Siguientes. OK reproduce y Volver sale del reproductor o de la ficha. Se reconocen los códigos estándar de flechas/OK y los botones Volver de Samsung/LG, además de la interfaz nativa boxTV.
+
+La ficha muestra doce episodios por página en una cuadrícula de tres columnas, con filas compactas de tamaño fijo. Izquierda/Derecha recorre los episodios; Arriba/Abajo cambia de fila; al avanzar más allá de la página, se muestran los siguientes.

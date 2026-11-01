@@ -35,7 +35,7 @@ const server=http.createServer((req,res)=>{
   assert.equal(await page.locator('#watch').isVisible(),false);
   assert.equal(await page.locator('#seasons button').count(),3);
   await page.keyboard.press('ArrowRight');assert.equal(await page.evaluate(()=>document.activeElement.textContent),'Temporada 3');
-  await page.keyboard.press('Enter');assert.equal(await page.locator('#episodes button').first().textContent(),'1. Regreso');
+  await page.keyboard.press('Enter');assert.equal(await page.locator('#episodes button').first().getAttribute('aria-label'),'1. Regreso');
   await page.keyboard.press('ArrowLeft');await page.keyboard.press('Enter');
   assert(await page.getByRole('button',{name:'2. Sin enlace · Próximamente'}).isDisabled());
   await page.getByRole('button',{name:'1. Piloto',exact:true}).click();
@@ -50,7 +50,7 @@ const server=http.createServer((req,res)=>{
   assert.match(await page.locator('#screen iframe').getAttribute('src'),/test-episode\/preview/);
   assert.equal(await page.locator('#playing-title').textContent(),'Serie Águila · Piloto');
   await page.evaluate(()=>window.boxTV.back());
-  assert.equal(await page.evaluate(()=>document.activeElement.textContent),'1. Piloto');
+  assert.equal(await page.evaluate(()=>document.activeElement.getAttribute('aria-label')),'1. Piloto');
   await page.getByRole('button',{name:'Temporada 3',exact:true}).click();
   await page.getByRole('button',{name:'1. Regreso',exact:true}).click();
   await page.locator('#pin-value').fill('1234');await page.locator('#pin-form button.primary').click();
@@ -74,13 +74,17 @@ const server=http.createServer((req,res)=>{
   assert.match(await page.locator('#screen iframe').getAttribute('src'),/test-movie\/preview/);
   await page.evaluate(()=>{window.boxTV.back();window.boxTV.back();});
   await page.locator('#series').click();await page.getByRole('button',{name:'La isla de Gilligan',exact:true}).click();
+  if(process.env.TV_TEST_SCREENSHOT)await page.screenshot({path:process.env.TV_TEST_SCREENSHOT});
   for(const season of island.temporadas){
    await page.getByRole('button',{name:'Temporada '+season.numeroTemporada,exact:true}).click();
-   assert.equal(await page.locator('#episodes button').count(),Math.min(2,season.episodios.length));
+   assert.equal(await page.locator('#episodes button').count(),Math.min(12,season.episodios.length));
+   assert(await page.locator('#episodes button').evaluateAll(buttons=>buttons.every(button=>{const r=button.getBoundingClientRect(),p=button.parentElement.getBoundingClientRect();return r.height<=50&&r.top>=p.top&&r.bottom<=p.bottom;})),'All twelve compact cards fit without clipping');
    assert.match(await page.locator('#episode-count').textContent(),new RegExp('de '+season.episodios.length+'$'));
    await page.keyboard.press('ArrowDown');
    assert.equal(await page.evaluate(()=>document.activeElement.parentElement.id),'episodes');
-   for(let i=1;i<season.episodios.length;i++){await page.keyboard.press('ArrowDown');assert.equal(await page.evaluate(()=>Number(document.activeElement.dataset.episodeIndex)),i,'Remote reaches every episode across pages');}
+   await page.keyboard.press('ArrowDown');assert.equal(await page.evaluate(()=>Number(document.activeElement.dataset.episodeIndex)),3,'Down moves to the next grid row');
+   await page.keyboard.press('ArrowUp');assert.equal(await page.evaluate(()=>Number(document.activeElement.dataset.episodeIndex)),0);
+   for(let i=1;i<season.episodios.length;i++){await page.keyboard.press('ArrowRight');assert.equal(await page.evaluate(()=>Number(document.activeElement.dataset.episodeIndex)),i,'Remote reaches every episode across pages');}
    const visible=await page.locator('#episodes button').last().evaluate(button=>{const b=button.getBoundingClientRect(),p=button.parentElement.getBoundingClientRect();return document.activeElement===button&&b.top>=p.top&&b.bottom<=p.bottom;});
    assert(visible,'Last episode of La isla is reachable and visible with the remote');
   }

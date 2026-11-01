@@ -4,7 +4,7 @@
  let section='new',page=0,query='',items=[],current=null,returnFocus=null,hls=null,media=null,loadToken=0,tap=null,busy=false,authorized=false;
  const size=24, catalogs={},paths={new:'peliculas2.json',movies:'peliculas.json',series:'playlist.json'},labels={new:'Estrenos',movies:'Películas',series:'Series'};
  let detailItem=null,episodeFocus=null,seasonIndex=0,episodePage=0;
- const episodePageSize=2;
+ const episodePageSize=12;
  function text(id,value){$(id).textContent=value||'';}
  function storage(key,value){try{if(arguments.length>1)localStorage.setItem(key,value);else return localStorage.getItem(key);}catch(_){}return '';}
  function normalize(x,isSeries=false){return {isSeries:isSeries||Array.isArray(x.temporadas),seasons:Array.isArray(x.temporadas)?x.temporadas:[],title:x.tituloSerie||x.titulo||x.title||x.nombre||'Sin título',description:x.descripcion||x.description||x.sinopsis||'',image:x.imagen||x.image||x.poster||'',year:x.year||x.anio||'',runtime:x.runtime||'',pin:x.codigo||x.password||x.pin||'',url:x.urlOkRu||x.urlDrive||x.url||x.link||''};}
@@ -18,13 +18,13 @@
  function renderEpisodes(){
   const episodes=seasonEpisodes(),start=episodePage*episodePageSize;
   $('episodes').replaceChildren();episodeFocus=null;
-  text('episodes-message',episodes.length?'Usa ↑ ↓ para recorrer los episodios y OK para reproducir.':'Esta temporada todavía no tiene episodios.');
+  text('episodes-message',episodes.length?'':'Esta temporada todavía no tiene episodios.');
   $('episode-pages').hidden=!episodes.length;
   text('episode-count',episodes.length?'Episodios '+(start+1)+'–'+Math.min(start+episodePageSize,episodes.length)+' de '+episodes.length:'');
   $('episode-prev').disabled=episodePage===0;$('episode-next').disabled=start+episodePageSize>=episodes.length;
   episodes.slice(start,start+episodePageSize).forEach((episode,index)=>{
    const i=start+index,button=document.createElement('button'),title=episode.tituloEpisodio||episode.titulo||'Episodio '+(i+1),url=episode.urlDrive||episode.urlOkRu||episode.url||'';
-   button.textContent=(i+1)+'. '+title+(safeURL(url)?'':' · Próximamente');button.disabled=!safeURL(url);button.dataset.episodeIndex=i;
+   const number=document.createElement('span'),name=document.createElement('span');number.className='episode-number';number.textContent=String(i+1).padStart(2,'0');name.className='episode-name';name.textContent=title+(safeURL(url)?'':' · Próximamente');button.title=title;button.setAttribute('aria-label',(i+1)+'. '+title+(safeURL(url)?'':' · Próximamente'));button.append(number,name);button.disabled=!safeURL(url);button.dataset.episodeIndex=i;
    button.onclick=()=>{episodeFocus=button;current={...detailItem,title:detailItem.title+' · '+title,url};watch();};$('episodes').append(button);
   });
  }
@@ -95,7 +95,14 @@
  function focusables(){const scope=!$('player').hidden?$('player'):Array.from(document.querySelectorAll('dialog[open]')).pop()||document;return Array.from(scope.querySelectorAll('button,input')).filter(e=>!e.disabled&&e.getBoundingClientRect().width>0&&e.getBoundingClientRect().height>0);}
  function move(direction){if(playerOpen()&&providerFocused)return false;if(playerOpen()){if(controlsHidden()){showControls(true);return true;}showControls(false);}const active=document.activeElement;if(active&&active.tagName==='INPUT')return false;
   if(active&&active.parentElement?.id==='seasons'&&direction==='ArrowDown'){const first=$('episodes').querySelector('button:not(:disabled)');if(first){first.focus();return true;}if(!$('episode-next').disabled){$('episode-next').focus();return true;}}
-  if(active&&active.parentElement?.id==='episodes'&&['ArrowUp','ArrowDown'].includes(direction)){const episodes=Array.from($('episodes').querySelectorAll('button:not(:disabled)')),index=episodes.indexOf(active),next=episodes[index+(direction==='ArrowDown'?1:-1)];if(next){next.focus();next.scrollIntoView({block:'nearest'});return true;}if(direction==='ArrowUp'){if(changeEpisodePage(-1,true))return true;$('seasons').querySelector('button[aria-pressed="true"]')?.focus();return true;}if(changeEpisodePage(1))return true;$('detail-close').focus();return true;}
+  if(active&&active.parentElement?.id==='episodes'&&['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(direction)){
+   const buttons=Array.from($('episodes').children),index=buttons.indexOf(active),delta=direction==='ArrowDown'?3:direction==='ArrowUp'?-3:direction==='ArrowRight'?1:-1;
+   let next=index+delta;
+   while(next>=0&&next<buttons.length&&buttons[next].disabled)next+=delta;
+   if(next>=0&&next<buttons.length){buttons[next].focus();return true;}
+   if(direction==='ArrowRight'||direction==='ArrowDown'){if(changeEpisodePage(1))return true;$('detail-close').focus();return true;}
+   if(changeEpisodePage(-1,true))return true;$('seasons').querySelector('button[aria-pressed="true"]')?.focus();return true;
+  }
   const all=focusables();if(!all.length)return true;if(!all.includes(active)){all[0].focus();return true;}const b=active.getBoundingClientRect(),x=b.left+b.width/2,y=b.top+b.height/2;let best=null,score=Infinity;all.forEach(e=>{if(e===active)return;const r=e.getBoundingClientRect(),dx=r.left+r.width/2-x,dy=r.top+r.height/2-y;const horizontal=direction==='ArrowLeft'||direction==='ArrowRight',forward=direction==='ArrowLeft'?-dx:direction==='ArrowRight'?dx:direction==='ArrowUp'?-dy:dy;if(forward<=2)return;const cross=horizontal?Math.abs(dy):Math.abs(dx),s=forward+cross*4;if(s<score){score=s;best=e;}});if(best){best.focus();best.scrollIntoView({block:'nearest'});}return true;}
  function ok(){tap=null;if(playerOpen()&&providerFocused)return 'native';if(playerOpen()){if(controlsHidden()){showControls(true);return null;}showControls(false);}const active=document.activeElement;if(active&&active.tagName==='INPUT')return null;if(active&&active.tagName==='BUTTON'&&!active.disabled)active.click();else if(!$('player').hidden)playerOK();return tap;}
  $('player').addEventListener('pointermove',()=>showControls(false));
