@@ -31,6 +31,7 @@ const server=http.createServer((req,res)=>{
   await page.getByRole('button',{name:'Serie Águila',exact:true}).focus();await page.keyboard.press('Enter');
   const visibleEpisodes=await page.locator('#episodes button').first().evaluate(button=>{const r=button.getBoundingClientRect(),d=document.getElementById('details').getBoundingClientRect();return r.top>=d.top&&r.bottom<=d.bottom&&r.bottom<=innerHeight;});
   assert(visibleEpisodes,'Episodes must be visible on opening, even with a long synopsis');
+  assert(await page.locator('#episode-next').evaluate(button=>{const b=button.getBoundingClientRect(),d=document.getElementById('details').getBoundingClientRect();return b.top>=d.top&&b.bottom<=d.bottom;}),'Page controls fit inside the TV dialog');
   assert.equal(await page.locator('#watch').isVisible(),false);
   assert.equal(await page.locator('#seasons button').count(),3);
   await page.keyboard.press('ArrowRight');assert.equal(await page.evaluate(()=>document.activeElement.textContent),'Temporada 3');
@@ -75,14 +76,16 @@ const server=http.createServer((req,res)=>{
   await page.locator('#series').click();await page.getByRole('button',{name:'La isla de Gilligan',exact:true}).click();
   for(const season of island.temporadas){
    await page.getByRole('button',{name:'Temporada '+season.numeroTemporada,exact:true}).click();
-   assert.equal(await page.locator('#episodes button').count(),season.episodios.length);
+   assert.equal(await page.locator('#episodes button').count(),Math.min(2,season.episodios.length));
+   assert.match(await page.locator('#episode-count').textContent(),new RegExp('de '+season.episodios.length+'$'));
    await page.keyboard.press('ArrowDown');
    assert.equal(await page.evaluate(()=>document.activeElement.parentElement.id),'episodes');
-   for(let i=1;i<season.episodios.length;i++)await page.keyboard.press('ArrowDown');
+   for(let i=1;i<season.episodios.length;i++){await page.keyboard.press('ArrowDown');assert.equal(await page.evaluate(()=>Number(document.activeElement.dataset.episodeIndex)),i,'Remote reaches every episode across pages');}
    const visible=await page.locator('#episodes button').last().evaluate(button=>{const b=button.getBoundingClientRect(),p=button.parentElement.getBoundingClientRect();return document.activeElement===button&&b.top>=p.top&&b.bottom<=p.bottom;});
    assert(visible,'Last episode of La isla is reachable and visible with the remote');
   }
-  await page.evaluate(()=>window.boxTV.back());
+  await page.evaluate(()=>document.dispatchEvent(new KeyboardEvent('keydown',{key:'Unidentified',keyCode:10009,bubbles:true,cancelable:true})));
+  assert.equal(await page.locator('#details').getAttribute('open'),null,'TV Back key closes the series');
   // A failed series load can be retried from the same section.
   fail=true;await page.reload();await page.locator('#grid button').waitFor();await page.locator('#series').click();
   await page.waitForFunction(()=>document.getElementById('message').textContent.includes('No se pudo cargar'));
