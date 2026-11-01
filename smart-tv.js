@@ -16,7 +16,7 @@
  function showSeason(index){
   const season=detailItem.seasons[index];episodeFocus=null;
   Array.from($('seasons').children).forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
-  text('episodes-title','Temporada '+(season.numeroTemporada??index+1)+' · Episodios');$('episodes').replaceChildren();
+  text('episodes-title','Temporada '+(season.numeroTemporada??index+1)+' · Episodios');$('episodes').replaceChildren();$('episodes').scrollTop=0;
   const episodes=Array.isArray(season.episodios)?season.episodios:[];
   text('episodes-message',episodes.length?'':'Esta temporada todavía no tiene episodios.');
   episodes.forEach((episode,i)=>{
@@ -33,7 +33,7 @@
    item.seasons.forEach((season,index)=>{const button=document.createElement('button');button.textContent='Temporada '+(season.numeroTemporada??index+1);button.onclick=()=>showSeason(index);$('seasons').append(button);});
    if(item.seasons.length)showSeason(0);
   }
-  $('details').showModal();focusDetail();
+  $('details').classList.toggle('is-series',item.isSeries);$('details').showModal();focusDetail();
  }
  function closeDetails(){$('details').close();if(returnFocus&&returnFocus.isConnected)returnFocus.focus();}
  function openLogin(){text('login-message','');$('email').value=storage('boxplay_user_email');$('login').showModal();$('email').focus();}
@@ -77,7 +77,10 @@
  function stop(){if(nativePlaying){nativePlaying=false;location.href='boxplaytv://stop';}if(document.fullscreenElement&&$('player').contains(document.fullscreenElement)&&document.exitFullscreen){try{const result=document.exitFullscreen();if(result&&result.catch)result.catch(()=>{});}catch(_){}}cleanup();$('player').hidden=true;document.body.classList.remove('playing');if(current&&!$('details').open)$('details').showModal();focusDetail();}
  function back(){if(!$('player').hidden){stop();return true;}if($('pin').open){$('pin').close();focusDetail();return true;}if($('login').open){$('login').close();if($('details').open)focusDetail();else $('account').focus();return true;}if($('details').open){closeDetails();return true;}if(query){query='';$('search').value='';page=0;render();$('search').focus();return true;}return false;}
  function focusables(){const scope=!$('player').hidden?$('player'):Array.from(document.querySelectorAll('dialog[open]')).pop()||document;return Array.from(scope.querySelectorAll('button,input')).filter(e=>!e.disabled&&e.getBoundingClientRect().width>0&&e.getBoundingClientRect().height>0);}
- function move(direction){if(playerOpen()&&providerFocused)return false;if(playerOpen()){if(controlsHidden()){showControls(true);return true;}showControls(false);}const active=document.activeElement;if(active&&active.tagName==='INPUT')return false;const all=focusables();if(!all.length)return true;if(!all.includes(active)){all[0].focus();return true;}const b=active.getBoundingClientRect(),x=b.left+b.width/2,y=b.top+b.height/2;let best=null,score=Infinity;all.forEach(e=>{if(e===active)return;const r=e.getBoundingClientRect(),dx=r.left+r.width/2-x,dy=r.top+r.height/2-y;const horizontal=direction==='ArrowLeft'||direction==='ArrowRight',forward=direction==='ArrowLeft'?-dx:direction==='ArrowRight'?dx:direction==='ArrowUp'?-dy:dy;if(forward<=2)return;const cross=horizontal?Math.abs(dy):Math.abs(dx),s=forward+cross*4;if(s<score){score=s;best=e;}});if(best){best.focus();best.scrollIntoView({block:'nearest'});}return true;}
+ function move(direction){if(playerOpen()&&providerFocused)return false;if(playerOpen()){if(controlsHidden()){showControls(true);return true;}showControls(false);}const active=document.activeElement;if(active&&active.tagName==='INPUT')return false;
+  if(active&&active.parentElement?.id==='seasons'&&direction==='ArrowDown'){const first=$('episodes').querySelector('button:not(:disabled)');if(first){first.focus();first.scrollIntoView({block:'nearest'});return true;}}
+  if(active&&active.parentElement?.id==='episodes'&&['ArrowUp','ArrowDown'].includes(direction)){const episodes=Array.from($('episodes').querySelectorAll('button:not(:disabled)')),index=episodes.indexOf(active),next=episodes[index+(direction==='ArrowDown'?1:-1)];if(next){next.focus();next.scrollIntoView({block:'nearest'});return true;}if(direction==='ArrowUp'){$('seasons').querySelector('button[aria-pressed="true"]')?.focus();return true;}$('detail-close').focus();return true;}
+  const all=focusables();if(!all.length)return true;if(!all.includes(active)){all[0].focus();return true;}const b=active.getBoundingClientRect(),x=b.left+b.width/2,y=b.top+b.height/2;let best=null,score=Infinity;all.forEach(e=>{if(e===active)return;const r=e.getBoundingClientRect(),dx=r.left+r.width/2-x,dy=r.top+r.height/2-y;const horizontal=direction==='ArrowLeft'||direction==='ArrowRight',forward=direction==='ArrowLeft'?-dx:direction==='ArrowRight'?dx:direction==='ArrowUp'?-dy:dy;if(forward<=2)return;const cross=horizontal?Math.abs(dy):Math.abs(dx),s=forward+cross*4;if(s<score){score=s;best=e;}});if(best){best.focus();best.scrollIntoView({block:'nearest'});}return true;}
  function ok(){tap=null;if(playerOpen()&&providerFocused)return 'native';if(playerOpen()){if(controlsHidden()){showControls(true);return null;}showControls(false);}const active=document.activeElement;if(active&&active.tagName==='INPUT')return null;if(active&&active.tagName==='BUTTON'&&!active.disabled)active.click();else if(!$('player').hidden)playerOK();return tap;}
  $('player').addEventListener('pointermove',()=>showControls(false));
  $('player').addEventListener('pointerdown',()=>showControls(false));

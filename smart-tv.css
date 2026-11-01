@@ -3,3 +3,20 @@
 #player.controls-hidden #player-controls{visibility:hidden;opacity:0;pointer-events:none}#player.controls-hidden{cursor:none}#player:focus{outline:none}#player:fullscreen{width:100vw;height:100vh;background:#000}#player-controls{transition:opacity .15s linear}@media(prefers-reduced-motion:reduce){#player-controls{transition:none}}
 
 [hidden]{display:none!important}#series-browser{margin-top:22px}#series-browser h3{font-size:21px;margin:18px 0 12px}#seasons{display:flex;flex-wrap:wrap;gap:12px}#episodes{display:grid;gap:12px;margin-top:14px}#episodes button{text-align:left;white-space:normal;overflow-wrap:anywhere}#episodes-message{color:#94a3b8}#details:has(#series-browser:not([hidden])){width:min(1120px,92vw)}#details:has(#series-browser:not([hidden])) .actions{position:sticky;bottom:-30px;padding:14px 0;background:#090d1f}header{gap:14px}#search{width:200px}
+
+/* Keep episodes on screen instead of beneath a tall synopsis. */
+#details.is-series[open]{display:flex;flex-direction:column;width:min(1120px,92vw);height:88vh;max-height:88vh;overflow:hidden;padding:22px;gap:14px}
+#details.is-series .detail{grid-template-columns:90px minmax(0,1fr);gap:18px;flex-shrink:0}
+#details.is-series .detail img{width:90px;height:130px;aspect-ratio:auto}
+#details.is-series .eyebrow{margin:0 0 5px}
+#details.is-series h2{font-size:26px;margin:0 0 8px}
+#details.is-series #detail-meta{margin:5px 0;font-size:16px}
+#details.is-series #detail-description{font-size:16px;max-height:50px;margin:5px 0;overflow:auto}
+#details.is-series #series-browser{display:flex;flex-direction:column;flex:1;min-height:0;margin:0}
+#details.is-series #series-browser h3{font-size:18px;margin:0 0 10px;flex-shrink:0}
+#details.is-series #seasons{flex-shrink:0;max-height:116px;overflow:auto;padding:5px;gap:10px;margin-bottom:12px}
+#details.is-series #episodes{flex:1;min-height:0;overflow-y:auto;display:block;padding:7px;margin:0;scroll-padding:7px}
+#details.is-series #episodes button{display:block;width:100%;margin-bottom:12px;min-height:48px}
+#details.is-series #episodes-message{margin:0 0 8px;font-size:16px}
+#details.is-series .actions{position:static;flex-shrink:0;margin:0;padding:0;background:#090d1f}
+@media(max-height:600px){#details.is-series .detail{grid-template-columns:64px minmax(0,1fr)}#details.is-series .detail img{width:64px;height:90px}#details.is-series #detail-description{max-height:28px}#details.is-series .eyebrow{display:none}#details.is-series{gap:10px}#details.is-series #seasons{max-height:58px}}

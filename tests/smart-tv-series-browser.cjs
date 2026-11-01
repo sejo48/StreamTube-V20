@@ -3,7 +3,9 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
 const {chromium}=require('playwright');
 const root=path.resolve(__dirname,'..');
 let fail=false;
-const series=[{tituloSerie:'Serie Águila',imagen:'https://example.com/poster.jpg',descripcion:'Sinopsis de prueba',codigo:'1234',temporadas:[{numeroTemporada:1,episodios:[{tituloEpisodio:'Piloto',urlDrive:'https://drive.google.com/file/d/test-episode/view'},{tituloEpisodio:'Sin enlace',urlDrive:''}]},{numeroTemporada:3,episodios:[{tituloEpisodio:'Regreso',urlDrive:'https://ok.ru/video/123456'}]},{numeroTemporada:4,episodios:[]}]},{tituloSerie:'Sin temporadas',temporadas:[]}];
+const series=[{tituloSerie:'Serie Águila',imagen:'https://example.com/poster.jpg',descripcion:'Sinopsis extensa de la serie. '.repeat(40),codigo:'1234',temporadas:[{numeroTemporada:1,episodios:[{tituloEpisodio:'Piloto',urlDrive:'https://drive.google.com/file/d/test-episode/view'},{tituloEpisodio:'Sin enlace',urlDrive:''}]},{numeroTemporada:3,episodios:[{tituloEpisodio:'Regreso',urlDrive:'https://ok.ru/video/123456'}]},{numeroTemporada:4,episodios:[]}]},{tituloSerie:'Sin temporadas',temporadas:[]}];
+const island=JSON.parse(fs.readFileSync(path.join(root,'playlist.json'),'utf8')).find(item=>item.tituloSerie==='La isla de Gilligan');
+series.push(island);
 const movie={titulo:'Película de prueba',urlDrive:'https://drive.google.com/file/d/test-movie/view'};
 const server=http.createServer((req,res)=>{
  const name=new URL(req.url,'http://localhost').pathname.slice(1);
@@ -17,7 +19,7 @@ const server=http.createServer((req,res)=>{
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
  const browser=await chromium.launch({executablePath:'/usr/bin/chromium',args:['--no-sandbox']});
  try{
-  const page=await browser.newPage({viewport:{width:1280,height:720}}),errors=[];
+  const page=await browser.newPage({viewport:{width:1280,height:Number(process.env.TV_TEST_HEIGHT)||720}}),errors=[];
   page.on('pageerror',e=>errors.push(e.message));
   await page.route('https://**/*',route=>route.fulfill({contentType:'text/html',body:'<p>Reproductor simulado</p>'}));
   await page.goto('http://127.0.0.1:'+server.address().port+'/smart-tv.html');
@@ -27,6 +29,8 @@ const server=http.createServer((req,res)=>{
   await page.getByRole('button',{name:'Serie Águila',exact:true}).waitFor();
   assert.equal(await page.locator('#section-title').textContent(),'Series');
   await page.getByRole('button',{name:'Serie Águila',exact:true}).focus();await page.keyboard.press('Enter');
+  const visibleEpisodes=await page.locator('#episodes button').first().evaluate(button=>{const r=button.getBoundingClientRect(),d=document.getElementById('details').getBoundingClientRect();return r.top>=d.top&&r.bottom<=d.bottom&&r.bottom<=innerHeight;});
+  assert(visibleEpisodes,'Episodes must be visible on opening, even with a long synopsis');
   assert.equal(await page.locator('#watch').isVisible(),false);
   assert.equal(await page.locator('#seasons button').count(),3);
   await page.keyboard.press('ArrowRight');assert.equal(await page.evaluate(()=>document.activeElement.textContent),'Temporada 3');
@@ -62,12 +66,23 @@ const server=http.createServer((req,res)=>{
   await page.locator('#search').fill('aguila');await page.locator('#search').press('Enter');
   assert.equal(await page.locator('#grid button').count(),1,'Accent insensitive series search');
   await page.evaluate(()=>window.boxTV.back());
-  assert.equal(await page.locator('#grid button').count(),2);
+  assert.equal(await page.locator('#grid button').count(),3);
   await page.locator('#movies').click();await page.locator('#grid button').first().click();
   assert(await page.locator('#watch').isVisible());assert.equal(await page.locator('#series-browser').isVisible(),false);
   await page.locator('#watch').click();await page.locator('#screen iframe').waitFor();
   assert.match(await page.locator('#screen iframe').getAttribute('src'),/test-movie\/preview/);
   await page.evaluate(()=>{window.boxTV.back();window.boxTV.back();});
+  await page.locator('#series').click();await page.getByRole('button',{name:'La isla de Gilligan',exact:true}).click();
+  for(const season of island.temporadas){
+   await page.getByRole('button',{name:'Temporada '+season.numeroTemporada,exact:true}).click();
+   assert.equal(await page.locator('#episodes button').count(),season.episodios.length);
+   await page.keyboard.press('ArrowDown');
+   assert.equal(await page.evaluate(()=>document.activeElement.parentElement.id),'episodes');
+   for(let i=1;i<season.episodios.length;i++)await page.keyboard.press('ArrowDown');
+   const visible=await page.locator('#episodes button').last().evaluate(button=>{const b=button.getBoundingClientRect(),p=button.parentElement.getBoundingClientRect();return document.activeElement===button&&b.top>=p.top&&b.bottom<=p.bottom;});
+   assert(visible,'Last episode of La isla is reachable and visible with the remote');
+  }
+  await page.evaluate(()=>window.boxTV.back());
   // A failed series load can be retried from the same section.
   fail=true;await page.reload();await page.locator('#grid button').waitFor();await page.locator('#series').click();
   await page.waitForFunction(()=>document.getElementById('message').textContent.includes('No se pudo cargar'));
