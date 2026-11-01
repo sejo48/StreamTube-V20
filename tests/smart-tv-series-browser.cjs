@@ -72,7 +72,18 @@ const server=http.createServer((req,res)=>{
   assert(await page.locator('#watch').isVisible());assert.equal(await page.locator('#series-browser').isVisible(),false);
   await page.locator('#watch').click();await page.locator('#screen iframe').waitFor();
   assert.match(await page.locator('#screen iframe').getAttribute('src'),/test-movie\/preview/);
-  await page.evaluate(()=>{window.boxTV.back();window.boxTV.back();});
+  await page.locator('#player-go').click();
+  assert(await page.locator('#player').evaluate(el=>el.classList.contains('controls-hidden')),'Playback toolbar hides');
+  assert(await page.locator('#player-back').isVisible(),'Exit stays visible while toolbar hides');
+  assert.equal(await page.locator('#screen iframe').getAttribute('allowfullscreen'),null,'Provider cannot cover the application exit with its own fullscreen');
+  await page.waitForFunction(()=>document.activeElement.id==='player',null,{timeout:7000});
+  await page.locator('#screen iframe').focus();
+  await page.goBack();await page.locator('#details[open]').waitFor();
+  assert.equal(await page.locator('#player').isVisible(),false,'Browser/remote Back exits playback instead of leaving the application');
+  await page.locator('#watch').click();await page.locator('#screen iframe').waitFor();
+  await page.locator('#player-back').click();await page.locator('#details[open]').waitFor();
+  assert.equal(await page.locator('#screen iframe').count(),0,'Persistent exit cleans up playback');
+  await page.evaluate(()=>window.boxTV.back());
   await page.locator('#series').click();await page.getByRole('button',{name:'La isla de Gilligan',exact:true}).click();
   if(process.env.TV_TEST_SCREENSHOT)await page.screenshot({path:process.env.TV_TEST_SCREENSHOT});
   for(const season of island.temporadas){
