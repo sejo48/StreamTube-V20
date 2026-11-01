@@ -20,3 +20,9 @@
 #details.is-series #episodes-message{margin:0 0 8px;font-size:16px}
 #details.is-series .actions{position:static;flex-shrink:0;margin:0;padding:0;background:#090d1f}
 @media(max-height:600px){#details.is-series .detail{grid-template-columns:64px minmax(0,1fr)}#details.is-series .detail img{width:64px;height:90px}#details.is-series #detail-description{max-height:28px}#details.is-series .eyebrow{display:none}#details.is-series{gap:10px}#details.is-series #seasons{max-height:58px}}
+
+/* Explicit pages work with a TV remote even when only two rows fit on screen. */
+#details.is-series #episodes{overflow:hidden;display:grid;grid-template-columns:1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:8px;padding:5px;min-height:104px}
+#details.is-series #episodes button{margin:0;padding:8px 14px;min-height:44px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#episode-pages{display:flex;align-items:center;gap:12px;flex:1;min-width:0}#episode-count{color:#a5f3fc;font-size:17px;text-align:center;min-width:190px}#episode-pages button{white-space:nowrap}#details.is-series #episodes-message{font-size:14px;margin:0 0 6px}#details.is-series .actions{gap:18px;align-items:center}#details.is-series #detail-description{display:none}#details.is-series .detail img{height:75px;width:52px}#details.is-series .detail{grid-template-columns:52px minmax(0,1fr)}#details.is-series .eyebrow{display:none}#details.is-series #seasons{max-height:58px;margin-bottom:6px}#details.is-series #series-browser>h3:first-child{display:none}
+#details.is-series[open]{padding:16px;gap:10px}#details.is-series .detail img{height:64px}#details.is-series #series-browser h3{margin-bottom:8px}

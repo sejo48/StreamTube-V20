@@ -3,7 +3,8 @@
  const $=id=>document.getElementById(id), fold=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
  let section='new',page=0,query='',items=[],current=null,returnFocus=null,hls=null,media=null,loadToken=0,tap=null,busy=false,authorized=false;
  const size=24, catalogs={},paths={new:'peliculas2.json',movies:'peliculas.json',series:'playlist.json'},labels={new:'Estrenos',movies:'Películas',series:'Series'};
- let detailItem=null,episodeFocus=null;
+ let detailItem=null,episodeFocus=null,seasonIndex=0,episodePage=0;
+ const episodePageSize=2;
  function text(id,value){$(id).textContent=value||'';}
  function storage(key,value){try{if(arguments.length>1)localStorage.setItem(key,value);else return localStorage.getItem(key);}catch(_){}return '';}
  function normalize(x,isSeries=false){return {isSeries:isSeries||Array.isArray(x.temporadas),seasons:Array.isArray(x.temporadas)?x.temporadas:[],title:x.tituloSerie||x.titulo||x.title||x.nombre||'Sin título',description:x.descripcion||x.description||x.sinopsis||'',image:x.imagen||x.image||x.poster||'',year:x.year||x.anio||'',runtime:x.runtime||'',pin:x.codigo||x.password||x.pin||'',url:x.urlOkRu||x.urlDrive||x.url||x.link||''};}
@@ -13,21 +14,36 @@
  async function catalog(next){section=next;page=0;text('section-title',labels[next]);Object.keys(paths).forEach(key=>$(key).setAttribute('aria-pressed',String(next===key)));$('search').placeholder=next==='series'?'Buscar serie':'Buscar película';$('search').setAttribute('aria-label',$('search').placeholder);const token=++loadToken;text('message','Cargando catálogo…');$('grid').replaceChildren();try{if(!catalogs[next]){const r=await fetch(paths[next],{cache:'no-cache'});if(!r.ok)throw Error();const data=await r.json();if(!Array.isArray(data))throw Error();catalogs[next]=data.map(x=>normalize(x,next==='series'));}if(token!==loadToken)return;items=catalogs[next];render();}catch(_){if(token===loadToken){text('message','No se pudo cargar el catálogo. Selecciona de nuevo la sección para reintentar.');text('count','');$('pages').hidden=true;}}}
  function render(){const found=items.filter(x=>!query||fold(x.title).includes(fold(query)));page=Math.max(0,Math.min(page,Math.max(0,Math.ceil(found.length/size)-1)));$('grid').replaceChildren();found.slice(page*size,(page+1)*size).forEach(item=>{const b=document.createElement('button'),im=document.createElement('img'),name=document.createElement('span');im.loading='lazy';im.decoding='async';im.alt='';if(safeURL(item.image))im.src=poster(item.image);im.onerror=()=>{im.removeAttribute('src');im.onerror=null;};name.className='name';name.textContent=item.title;b.setAttribute('aria-label',item.title);b.append(im,name);b.onclick=()=>details(item,b);$('grid').append(b);});text('message',found.length?'':section==='series'?'No se encontraron series.':'No se encontraron películas.');text('count',found.length+' títulos');$('pages').hidden=!found.length;text('page-count',(page+1)+' / '+Math.max(1,Math.ceil(found.length/size)));$('prev').disabled=page===0;$('next').disabled=(page+1)*size>=found.length;}
  function focusDetail(){const target=detailItem?.isSeries?(episodeFocus?.isConnected&&!episodeFocus.disabled?episodeFocus:$('seasons').querySelector('button[aria-pressed="true"]')||$('detail-close')):$('watch');target.focus();}
- function showSeason(index){
-  const season=detailItem.seasons[index];episodeFocus=null;
-  Array.from($('seasons').children).forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
-  text('episodes-title','Temporada '+(season.numeroTemporada??index+1)+' · Episodios');$('episodes').replaceChildren();$('episodes').scrollTop=0;
-  const episodes=Array.isArray(season.episodios)?season.episodios:[];
-  text('episodes-message',episodes.length?'':'Esta temporada todavía no tiene episodios.');
-  episodes.forEach((episode,i)=>{
-   const button=document.createElement('button'),title=episode.tituloEpisodio||episode.titulo||'Episodio '+(i+1),url=episode.urlDrive||episode.urlOkRu||episode.url||'';
-   button.textContent=(i+1)+'. '+title+(safeURL(url)?'':' · Próximamente');button.disabled=!safeURL(url);
+ function seasonEpisodes(){const season=detailItem?.seasons[seasonIndex];return Array.isArray(season?.episodios)?season.episodios:[];}
+ function renderEpisodes(){
+  const episodes=seasonEpisodes(),start=episodePage*episodePageSize;
+  $('episodes').replaceChildren();episodeFocus=null;
+  text('episodes-message',episodes.length?'Usa ↑ ↓ para recorrer los episodios y OK para reproducir.':'Esta temporada todavía no tiene episodios.');
+  $('episode-pages').hidden=!episodes.length;
+  text('episode-count',episodes.length?'Episodios '+(start+1)+'–'+Math.min(start+episodePageSize,episodes.length)+' de '+episodes.length:'');
+  $('episode-prev').disabled=episodePage===0;$('episode-next').disabled=start+episodePageSize>=episodes.length;
+  episodes.slice(start,start+episodePageSize).forEach((episode,index)=>{
+   const i=start+index,button=document.createElement('button'),title=episode.tituloEpisodio||episode.titulo||'Episodio '+(i+1),url=episode.urlDrive||episode.urlOkRu||episode.url||'';
+   button.textContent=(i+1)+'. '+title+(safeURL(url)?'':' · Próximamente');button.disabled=!safeURL(url);button.dataset.episodeIndex=i;
    button.onclick=()=>{episodeFocus=button;current={...detailItem,title:detailItem.title+' · '+title,url};watch();};$('episodes').append(button);
   });
  }
+ function changeEpisodePage(delta,focusLast=false){
+  const next=episodePage+delta;if(next<0||next*episodePageSize>=seasonEpisodes().length)return false;
+  episodePage=next;renderEpisodes();const buttons=$('episodes').querySelectorAll('button:not(:disabled)');
+  const target=buttons.length?buttons[focusLast?buttons.length-1:0]:!$('episode-next').disabled?$('episode-next'):$('episode-prev');target.focus();return true;
+ }
+ function showSeason(index){
+  seasonIndex=index;episodePage=0;const season=detailItem.seasons[index];
+  Array.from($('seasons').children).forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));
+  text('episodes-title','Temporada '+(season.numeroTemporada??index+1)+' · Episodios');renderEpisodes();
+ }
+ $('episode-prev').onclick=()=>changeEpisodePage(-1);
+ $('episode-next').onclick=()=>changeEpisodePage(1);
+
  function details(item,b){
   current=item;detailItem=item;episodeFocus=null;returnFocus=b;text('detail-title',item.title);text('detail-description',item.description);text('detail-meta',[item.year,item.runtime,item.isSeries?item.seasons.length+' temporadas':''].filter(Boolean).join(' · '));$('detail-image').src=poster(item.image);
-  $('watch').hidden=item.isSeries;$('series-browser').hidden=!item.isSeries;$('seasons').replaceChildren();$('episodes').replaceChildren();
+  $('episode-pages').hidden=true;$('watch').hidden=item.isSeries;$('series-browser').hidden=!item.isSeries;$('seasons').replaceChildren();$('episodes').replaceChildren();
   if(item.isSeries){
    text('episodes-message',item.seasons.length?'':'Esta serie todavía no tiene temporadas disponibles.');text('episodes-title','Episodios');
    item.seasons.forEach((season,index)=>{const button=document.createElement('button');button.textContent='Temporada '+(season.numeroTemporada??index+1);button.onclick=()=>showSeason(index);$('seasons').append(button);});
@@ -78,15 +94,15 @@
  function back(){if(!$('player').hidden){stop();return true;}if($('pin').open){$('pin').close();focusDetail();return true;}if($('login').open){$('login').close();if($('details').open)focusDetail();else $('account').focus();return true;}if($('details').open){closeDetails();return true;}if(query){query='';$('search').value='';page=0;render();$('search').focus();return true;}return false;}
  function focusables(){const scope=!$('player').hidden?$('player'):Array.from(document.querySelectorAll('dialog[open]')).pop()||document;return Array.from(scope.querySelectorAll('button,input')).filter(e=>!e.disabled&&e.getBoundingClientRect().width>0&&e.getBoundingClientRect().height>0);}
  function move(direction){if(playerOpen()&&providerFocused)return false;if(playerOpen()){if(controlsHidden()){showControls(true);return true;}showControls(false);}const active=document.activeElement;if(active&&active.tagName==='INPUT')return false;
-  if(active&&active.parentElement?.id==='seasons'&&direction==='ArrowDown'){const first=$('episodes').querySelector('button:not(:disabled)');if(first){first.focus();first.scrollIntoView({block:'nearest'});return true;}}
-  if(active&&active.parentElement?.id==='episodes'&&['ArrowUp','ArrowDown'].includes(direction)){const episodes=Array.from($('episodes').querySelectorAll('button:not(:disabled)')),index=episodes.indexOf(active),next=episodes[index+(direction==='ArrowDown'?1:-1)];if(next){next.focus();next.scrollIntoView({block:'nearest'});return true;}if(direction==='ArrowUp'){$('seasons').querySelector('button[aria-pressed="true"]')?.focus();return true;}$('detail-close').focus();return true;}
+  if(active&&active.parentElement?.id==='seasons'&&direction==='ArrowDown'){const first=$('episodes').querySelector('button:not(:disabled)');if(first){first.focus();return true;}if(!$('episode-next').disabled){$('episode-next').focus();return true;}}
+  if(active&&active.parentElement?.id==='episodes'&&['ArrowUp','ArrowDown'].includes(direction)){const episodes=Array.from($('episodes').querySelectorAll('button:not(:disabled)')),index=episodes.indexOf(active),next=episodes[index+(direction==='ArrowDown'?1:-1)];if(next){next.focus();next.scrollIntoView({block:'nearest'});return true;}if(direction==='ArrowUp'){if(changeEpisodePage(-1,true))return true;$('seasons').querySelector('button[aria-pressed="true"]')?.focus();return true;}if(changeEpisodePage(1))return true;$('detail-close').focus();return true;}
   const all=focusables();if(!all.length)return true;if(!all.includes(active)){all[0].focus();return true;}const b=active.getBoundingClientRect(),x=b.left+b.width/2,y=b.top+b.height/2;let best=null,score=Infinity;all.forEach(e=>{if(e===active)return;const r=e.getBoundingClientRect(),dx=r.left+r.width/2-x,dy=r.top+r.height/2-y;const horizontal=direction==='ArrowLeft'||direction==='ArrowRight',forward=direction==='ArrowLeft'?-dx:direction==='ArrowRight'?dx:direction==='ArrowUp'?-dy:dy;if(forward<=2)return;const cross=horizontal?Math.abs(dy):Math.abs(dx),s=forward+cross*4;if(s<score){score=s;best=e;}});if(best){best.focus();best.scrollIntoView({block:'nearest'});}return true;}
  function ok(){tap=null;if(playerOpen()&&providerFocused)return 'native';if(playerOpen()){if(controlsHidden()){showControls(true);return null;}showControls(false);}const active=document.activeElement;if(active&&active.tagName==='INPUT')return null;if(active&&active.tagName==='BUTTON'&&!active.disabled)active.click();else if(!$('player').hidden)playerOK();return tap;}
  $('player').addEventListener('pointermove',()=>showControls(false));
  $('player').addEventListener('pointerdown',()=>showControls(false));
  $('player').addEventListener('focusin',()=>{if(!controlsHidden())showControls(false);});
  window.boxTV={move,ok,back,embedURL,normalize};
- document.addEventListener('keydown',e=>{if(e.defaultPrevented)return;if(e.key==='ContextMenu'&&playerOpen()){e.preventDefault();providerFocused=false;showControls(true);}else if(e.key==='Escape'){e.preventDefault();back();}else if(e.key.startsWith('Arrow')){if(move(e.key))e.preventDefault();}else if(e.key==='Enter'&&document.activeElement.tagName!=='INPUT'){const result=ok();if(result!=='native')e.preventDefault();}});
+ document.addEventListener('keydown',e=>{if(e.defaultPrevented)return;const code=e.keyCode||e.which,key=({37:'ArrowLeft',38:'ArrowUp',39:'ArrowRight',40:'ArrowDown',13:'Enter',23:'Enter',27:'Escape',4:'Escape',461:'Escape',10009:'Escape',166:'Escape'})[code]||e.key;if(key==='ContextMenu'&&playerOpen()){e.preventDefault();providerFocused=false;showControls(true);}else if(key==='Escape'){e.preventDefault();back();}else if(key?.startsWith('Arrow')){if(move(key))e.preventDefault();}else if(key==='Enter'&&document.activeElement.tagName!=='INPUT'){const result=ok();if(result!=='native')e.preventDefault();}});
  document.querySelectorAll('dialog').forEach(d=>d.addEventListener('cancel',e=>{e.preventDefault();back();}));
  Object.keys(paths).forEach(key=>$(key).onclick=()=>catalog(key));$('search-form').onsubmit=e=>{e.preventDefault();query=$('search').value.trim();page=0;render();$('grid').querySelector('button')?.focus();};$('prev').onclick=()=>{page--;render();$('grid').querySelector('button')?.focus();};$('next').onclick=()=>{page++;render();$('grid').querySelector('button')?.focus();};$('detail-close').onclick=closeDetails;$('watch').onclick=watch;$('account').onclick=openLogin;$('login-close').onclick=()=>{$('login').close();if($('details').open)focusDetail();else $('account').focus();};$('pin-close').onclick=()=>{$('pin').close();focusDetail();};$('player-go').onclick=playerOK;$('player-retry').onclick=watch;$('player-exit').onclick=stop;
  window.addEventListener('box-auth-expired',()=>{authorized=false;if(!$('player').hidden)stop();openLogin();text('login-message','Es necesario verificar tu suscripción para continuar.');});
