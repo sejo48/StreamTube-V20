@@ -1,5 +1,161 @@
 [
   {
+    "tmdbId": 289763,
+    "tmdbType": "tv",
+    "tituloOriginal": "내일도 출근!",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/zftF4KDGuhAGIA50bywcCXPjz5f.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-06-22",
+    "rating": "8.9",
+    "votos": 85,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Comedia",
+      "Drama"
+    ],
+    "generosTexto": "Comedia, Drama",
+    "clasificacion": "TV-14",
+    "tagline": "",
+    "director": "조은솔",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "서인국",
+        "personaje": "Kang Si-woo",
+        "foto": "https://image.tmdb.org/t/p/w185/gs7RRZt2tWBJ7OR9BD3TFSYteJj.jpg"
+      },
+      {
+        "nombre": "박지현",
+        "personaje": "Cha Ji-yoon",
+        "foto": "https://image.tmdb.org/t/p/w185/A3sGA6JjvkQbIvTjxhdukpIi8jC.jpg"
+      },
+      {
+        "nombre": "강미나",
+        "personaje": "Yoon No-ah",
+        "foto": "https://image.tmdb.org/t/p/w185/sIGBlUCXt8pBqZhjesm4PKthEIn.jpg"
+      },
+      {
+        "nombre": "원규빈",
+        "personaje": "Lee Jae-in",
+        "foto": "https://image.tmdb.org/t/p/w185/ijhPuQAGgPia6I5k1b6wsAl8qmw.jpg"
+      },
+      {
+        "nombre": "Choi Kyung-hoon",
+        "personaje": "Cho Ga-eul",
+        "foto": "https://image.tmdb.org/t/p/w185/xQT7YEgtJgN4Ta5nbWG4gDBJixs.jpg"
+      },
+      {
+        "nombre": "한태하",
+        "personaje": "Koo Seung-jun",
+        "foto": "https://image.tmdb.org/t/p/w185/yGqa1r8YGzZSNfeGoB2XnZZRp9k.jpg"
+      },
+      {
+        "nombre": "김정영",
+        "personaje": "Han Woo-jin",
+        "foto": "https://image.tmdb.org/t/p/w185/sJVUh3dzF1dgItQDPbWsZAsnfzL.jpg"
+      },
+      {
+        "nombre": "강기둥",
+        "personaje": "Jeon Gi-tae",
+        "foto": "https://image.tmdb.org/t/p/w185/488XqSA5N6bEb55yzKFmABERS92.jpg"
+      },
+      {
+        "nombre": "이재이",
+        "personaje": "Shin Na-ri",
+        "foto": "https://image.tmdb.org/t/p/w185/oEsPK4N1jHD09lAeC7oDYTs5HXd.jpg"
+      },
+      {
+        "nombre": "한재훈",
+        "personaje": "Kim Yeong-jin",
+        "foto": "https://image.tmdb.org/t/p/w185/4Fu873ZyxUUPXLdKaGAfel9YwkR.jpg"
+      },
+      {
+        "nombre": "염승이",
+        "personaje": "Yoon Da-ra",
+        "foto": "https://image.tmdb.org/t/p/w185/4qLquLZ6XSh7tiSnsIRrKRwJCpG.jpg"
+      }
+    ],
+    "pais": "South Korea",
+    "idioma": "ko",
+    "productoras": "Studio Dragon, Kross Pictures",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "romcom, romance, co-workers relationship, office romance, curious, calm, workplace romance, based on webcomic or webtoon, assertive, joyful",
+    "similares": [
+      {
+        "titulo": "Amor Bajo Auditoría",
+        "poster": "https://image.tmdb.org/t/p/w342/5dgTRxtP5g07RSH5LEOl367Fuwi.jpg",
+        "year": "2026",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Mi Querido Nemesis",
+        "poster": "https://image.tmdb.org/t/p/w342/j5FfJZq47BJqE2MdGNDsVVBMopI.jpg",
+        "year": "2025",
+        "rating": "8.2"
+      },
+      {
+        "titulo": "Incomplete Life",
+        "poster": "https://image.tmdb.org/t/p/w342/ii4FKpUdiS40oBh62YgeiyL2hx2.jpg",
+        "year": "2014",
+        "rating": "8.6"
+      },
+      {
+        "titulo": "Gaus Electronics",
+        "poster": "https://image.tmdb.org/t/p/w342/tnANewDiVkqXdu9QfKH9pZDwiaF.jpg",
+        "year": "2022",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Ground Floor",
+        "poster": "https://image.tmdb.org/t/p/w342/uQ95bGk8da1xbD6f6p7AyBI9Rng.jpg",
+        "year": "2013",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Celos Encarnados (Jealousy Incarnate)",
+        "poster": "https://image.tmdb.org/t/p/w342/pLui9BxmOnhn8puzX0lKVKFvKIf.jpg",
+        "year": "2016",
+        "rating": "8.1"
+      }
+    ],
+    "homepage": "https://tvn.cjenm.com/ko/SEE-YOU-AT-WORK-TOMORROW",
+    "creadores": [
+      "McQueen Studio"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 12,
+    "temporadasTmdb": [
+      {
+        "air_date": "2026-06-22",
+        "episode_count": 12,
+        "id": 453191,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/1ZYTOo1oDC9jMV9UEI8rfK8R2iH.jpg",
+        "season_number": 1,
+        "vote_average": 7.2
+      }
+    ],
+    "titulo": "¡Nos vemos en la oficina!",
+    "descripcion": "Cha Ji-yoon lleva 7 años trabajando en el mundo corporativo y está cansada del trabajo y de las citas. Kang Si-woo, un cínico jefe con mala reputación, se cruza en su camino. De forma inesperada, ella recupera la ilusión al ver la bondad detrás de sus duras palabras. En medio de trayectos al trabajo, accidentes laborales y relaciones fallidas, ambos se convierten en el principal apoyo del otro.",
+    "imagen": "https://image.tmdb.org/t/p/w780/1ZYTOo1oDC9jMV9UEI8rfK8R2iH.jpg",
+    "tituloSerie": "¡Nos vemos en la oficina!",
+    "image": "https://image.tmdb.org/t/p/w780/1ZYTOo1oDC9jMV9UEI8rfK8R2iH.jpg",
+    "urlDrive": "",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": []
+      }
+    ]
+  },
+  {
     "tmdbId": 289423,
     "tmdbType": "tv",
     "tituloOriginal": "나를 충전해줘",
@@ -115,28 +271,20 @@
         "numeroTemporada": 1,
         "episodios": [
           {
-            "tituloEpisodio": "Episodio 1",
-            "urlDrive": "https://drive.google.com/file/d/1oFIlsKgednEXH_7LVaXkNYCgIqnE4eyR/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 2",
-            "urlDrive": "https://drive.google.com/file/d/1fM7RBaPgT1h3G5_jIFe27KrPv1vsvI8a/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 3",
-            "urlDrive": "https://drive.google.com/file/d/13SQ9nxn05-q5uGG_FXH1pMwtqiEdb1uC/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 4",
-            "urlDrive": "https://drive.google.com/file/d/1_sW-mWPQfKhHfAV1Csu69dIYQ5r5CYBX/view?usp=sharing"
+            "tituloEpisodio": "Episodio 10",
+            "urlDrive": "https://drive.google.com/file/d/1HrFCamvfQKw9ciUzr3mopLCBCjaIc7na/view?usp=sharing"
           },
           {
             "tituloEpisodio": "Episodio 5",
             "urlDrive": "https://drive.google.com/file/d/1YmLTqjUv09lLqCYNH1gPzpE2ziYJth2f/view?usp=sharing"
           },
           {
-            "tituloEpisodio": "Episodio 6",
-            "urlDrive": "https://drive.google.com/file/d/1X71GFrqJ9-SEGZYvZjYa6dckJE491R_a/view?usp=sharing"
+            "tituloEpisodio": "Episodio 4",
+            "urlDrive": "https://drive.google.com/file/d/1_sW-mWPQfKhHfAV1Csu69dIYQ5r5CYBX/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 9",
+            "urlDrive": "https://drive.google.com/file/d/1hAvwq5kcn1_ppBpbnnEiezgtEjUkrJ9b/view?usp=sharing"
           },
           {
             "tituloEpisodio": "Episodio 7",
@@ -147,12 +295,20 @@
             "urlDrive": "https://drive.google.com/file/d/11WKZOL-Uc8B5wulHeAEIT5TBAiBhSTxQ/view?usp=sharing"
           },
           {
-            "tituloEpisodio": "Episodio 9",
-            "urlDrive": "https://drive.google.com/file/d/1hAvwq5kcn1_ppBpbnnEiezgtEjUkrJ9b/view?usp=sharing"
+            "tituloEpisodio": "Episodio 2",
+            "urlDrive": "https://drive.google.com/file/d/1fM7RBaPgT1h3G5_jIFe27KrPv1vsvI8a/view?usp=sharing"
           },
           {
-            "tituloEpisodio": "Episodio 10",
-            "urlDrive": "https://drive.google.com/file/d/1HrFCamvfQKw9ciUzr3mopLCBCjaIc7na/view?usp=sharing"
+            "tituloEpisodio": "Episodio 6",
+            "urlDrive": "https://drive.google.com/file/d/1X71GFrqJ9-SEGZYvZjYa6dckJE491R_a/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 1",
+            "urlDrive": "https://drive.google.com/file/d/1oFIlsKgednEXH_7LVaXkNYCgIqnE4eyR/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 3",
+            "urlDrive": "https://drive.google.com/file/d/13SQ9nxn05-q5uGG_FXH1pMwtqiEdb1uC/view?usp=sharing"
           }
         ]
       }
