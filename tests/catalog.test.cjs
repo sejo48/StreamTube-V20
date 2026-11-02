@@ -62,7 +62,7 @@ test('validation catches empty catalogs, duplicated IDs and invalid episode link
 });
 test('serialization preserves metadata and IDs, including episodes, tracks and TV', () => {
     const raw = baseline();
-    const serialized = C.serializeAll({ movies: raw['peliculas.json'], estrenos: raw['peliculas2.json'], series: raw['playlist.json'], animados: raw['animados.json'], radios: raw['radios.json'], tudumList: raw['tudum.json'], videoteca: raw['videoteca.json'], channels: C.parseM3U(raw['listaoficial.m3u']) });
+    const serialized = C.serializeAll({ movies: raw['peliculas.json'], estrenos: raw['peliculas2.json'], series: raw['playlist.json'], animados: raw['animados.json'], doramas: raw['doramas.json'], radios: raw['radios.json'], tudumList: raw['tudum.json'], videoteca: raw['videoteca.json'], channels: C.parseM3U(raw['listaoficial.m3u']) });
     assert.equal(serialized['peliculas.json'][0].id, raw['peliculas.json'][0].id);
     assert.equal(serialized['peliculas.json'][0].tmdbId, raw['peliculas.json'][0].tmdbId);
     assert.deepEqual(serialized['playlist.json'][0], raw['playlist.json'][0]);
@@ -81,4 +81,13 @@ test('catalog administration excludes the legacy GitHub token storage and direct
     assert(!admin.includes('boxplay_github_pat'));
     assert(!admin.includes('Authorization'));
     assert(!/method:\s*['"](?:PUT|POST|PATCH|DELETE)['"]/.test(admin));
+});
+
+test('Doramas accepts an empty new collection and validates movies and series separately', () => {
+ const datasets=baseline();
+ assert.equal(C.validate(datasets).some(x=>x.startsWith('doramas.json:')),false);
+ datasets['doramas.json']=C.identify([{titulo:'Película',tmdbType:'movie',urlDrive:'https://example.test/movie'},{titulo:'Serie',tmdbType:'tv',temporadas:[]}],'doramas.json');
+ assert(C.validate(datasets).some(x=>x.startsWith('doramas.json: serie sin temporadas')));
+ datasets['doramas.json'][1].temporadas=[{numeroTemporada:1,episodios:[{id:'one',tituloEpisodio:'Inicio',urlDrive:'https://example.test/episode'}]}];
+ assert.equal(C.validate(datasets).some(x=>x.startsWith('doramas.json:')),false);
 });

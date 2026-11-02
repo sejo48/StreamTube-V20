@@ -460,6 +460,7 @@
             MOVIES: './peliculas.json',
             MOVIES2: './peliculas2.json',
             ANIMADOS: './animados.json',
+            DORAMAS: './doramas.json',
             RADIOS: './radios.json',
             TUDUM: './tudum.json'
         };
@@ -842,7 +843,7 @@
                         <div style={{ fontSize: '2.5rem', marginBottom: '8px' }}>🎬</div>
                         <h2 style={{ color: '#06b6d4', marginBottom: '8px', fontSize: '1.4rem', fontWeight: '800' }}>Contenido Premium</h2>
                         <p style={{ color: '#94a3b8', marginBottom: '16px', fontSize: '0.85rem', lineHeight: '1.5' }}>
-                            Para ver <strong style={{ color: '#fff' }}>películas, series y animados</strong> necesitas un acceso de pago vigente.<br/>
+                            Para ver <strong style={{ color: '#fff' }}>películas, series, doramas y animados</strong> necesitas un acceso de pago vigente.<br/>
                             La <strong style={{ color: '#22d3ee' }}>TV en vivo</strong> y la <strong style={{ color: '#22d3ee' }}>Radio HD</strong> siguen siendo gratis. 🎁
                         </p>
 
@@ -901,7 +902,7 @@
             const videoRef = React.useRef(null);
             const hlsRef = React.useRef(null);
             const [message, setMessage] = React.useState('');
-            const targetUrl = (item?.type === 'series' || item?.type === 'animados') && episode
+            const targetUrl = (item?.type === 'series' || item?.type === 'animados' || item?.type === 'doramas') && episode
                 ? (episode.url || episode.urlDrive || episode.rawUrl || '')
                 : (item?.url || item?.urlDrive || item?.rawUrl || '');
             const url = String(targetUrl || '').trim();
@@ -1290,7 +1291,7 @@
 
             const [activeTab, setActiveTab] = useState('home');
             const [homeCoverConfig, setHomeCoverConfig] = useState(null);
-            const [content, setContent] = useState({ tv: [], series: [], movies: [], movies2: [], animados: [], tudum: [] });
+            const [content, setContent] = useState({ tv: [], series: [], movies: [], movies2: [], animados: [], doramas: [], tudum: [] });
             const [radioStations, setRadioStations] = useState(DEFAULT_RADIO_STATIONS);
             const [search, setSearch] = useState('');
             const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -1388,6 +1389,7 @@
                 { id: 'movies2', icon: 'star', label: 'Estrenos 2026' },
                 { id: 'movies', icon: 'clapperboard', label: 'Películas' }, 
                 { id: 'series', icon: 'film', label: 'Series' },
+                { id: 'doramas', icon: 'film', label: 'Doramas' },
                 { id: 'animados', icon: 'smile', label: 'Animados' },
                 { id: 'topshows', icon: 'star', label: 'Top Shows' },
                 { id: 'tv', icon: 'tv', label: 'TV' }, 
@@ -1575,10 +1577,11 @@
                     try {
                         setLoading(true);
                         setCatalogMessage('Actualizando catálogo…');
-                        const [dataTV, dataSeries, dataAnimados, dataRadios, dataMovies, dataMovies2, dataTudum, coverConfiguration] = await Promise.all([
+                        const [dataTV, dataSeries, dataAnimados, dataDoramas, dataRadios, dataMovies, dataMovies2, dataTudum, coverConfiguration] = await Promise.all([
                             fetchSmart(URLS.TV, RAW_URLS.TV, false),
                             fetchSmart(URLS.SERIES, RAW_URLS.SERIES, true),
                             fetchSmart(URLS.ANIMADOS, RAW_URLS.ANIMADOS, true),
+                            fetchSmart(URLS.DORAMAS, RAW_URLS.DORAMAS, true),
                             fetchSmart(URLS.RADIOS, RAW_URLS.RADIOS, true),
                             fetchSmart(URLS.MOVIES, RAW_URLS.MOVIES, true),
                             fetchSmart(URLS.MOVIES2, RAW_URLS.MOVIES2, true),
@@ -1649,6 +1652,16 @@
                             });
                         }
 
+                        let doramasList = [];
+                        if (dataDoramas) {
+                            const rawDoramas = Array.isArray(dataDoramas) ? dataDoramas : (dataDoramas.doramas || []);
+                            doramasList = rawDoramas.map((a, idx) => {
+                                const title = a.titulo || a.tituloSerie || a.title || a.name || `Dorama ${idx + 1}`;
+                                const imgUrl = extractImageUrl(a);
+                                return { ...a, id: BoxCatalog.id(a, 'doramas.json'), type: 'doramas', title, description: a.descripcion || a.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: a.backdrop || a.banner || imgUrl, url: convertUrl(a.urlDrive || a.urlOkRu || a.url), rawUrl: a.urlDrive || a.urlOkRu || a.url, seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: (t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, a.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })) })) };
+                            });
+                        }
+
                         let loadedStations = DEFAULT_RADIO_STATIONS;
                         if (dataRadios) {
                             const list = Array.isArray(dataRadios) ? dataRadios : (dataRadios.radios || dataRadios.emisoras || []);
@@ -1678,11 +1691,11 @@
                         const defaultStation = loadedStations.find(s => s.title.toLowerCase().includes('disco funk')) || loadedStations[0];
                         if (defaultStation && !catalogLoaded.current) setCurrentRadioStation(defaultStation);
 
-                        migratePersonalCatalog({ movies: moviesList, movies2: movies2List, series: seriesList, animados: animadosList, tv: tvChannels, radio: loadedStations });
+                        migratePersonalCatalog({ movies: moviesList, movies2: movies2List, series: seriesList, animados: animadosList, doramas: doramasList, tv: tvChannels, radio: loadedStations });
                         catalogLoaded.current = true;
                         setCatalogMessage('Catálogo actualizado.');
                         setHomeCoverConfig(coverConfiguration);
-                        setContent({ tv: tvChannels, movies: moviesList, movies2: movies2List, series: seriesList, animados: animadosList, tudum: tudumList });
+                        setContent({ tv: tvChannels, movies: moviesList, movies2: movies2List, series: seriesList, animados: animadosList, doramas: doramasList, tudum: tudumList });
                     } catch (err) {
                         console.error("Error cargando contenido", err);
                         if (!cancelled) setCatalogMessage('No se pudo actualizar. Se conservó el catálogo anterior. ' + err.message);
@@ -1846,7 +1859,7 @@
 
             const getDisplayContent = () => { 
                 let list = activeTab === 'home' 
-                    ? [...content.movies2, ...content.movies, ...content.series, ...content.animados, ...content.tv.slice(0,20)] 
+                    ? [...content.movies2, ...content.movies, ...content.series, ...content.animados, ...content.doramas, ...content.tv.slice(0,20)]
                     : activeTab === 'christmas' ? christmasMovies
                     : activeTab === 'trends' ? BoxHomeFeatures.pool(content)
                     : activeTab === 'favorites' 
@@ -1889,7 +1902,7 @@
                 setIsLocked(false);
                 setDetailTab('info');
                 setExpandedSeason(0);
-                if (item.type === 'series' || item.type === 'animados') {
+                if (item.type === 'series' || item.type === 'animados' || item.type === 'doramas') {
                     const firstEp = item.seasons?.[0]?.episodes?.[0] || null;
                     setSelectedEpisode(firstEp);
                 } else {
@@ -1916,7 +1929,7 @@
                 else { setIsLocked(false); } 
                 setExpandedSeason(0);
                 
-                if (item.type === 'series' || item.type === 'animados') {
+                if (item.type === 'series' || item.type === 'animados' || item.type === 'doramas') {
                     const targetEp = episode || item.seasons?.[0]?.episodes?.[0] || null;
                     setSelectedEpisode(targetEp);
                     recordContinueWatching(item, targetEp);
@@ -2105,7 +2118,7 @@
                                     <button aria-label="Cerrar menú" onClick={() => setShowMobileMoreMenu(false)} className="text-slate-400 hover:text-white"><Icon name="x" size={16}/></button>
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
-                                    {['christmas', 'tv', 'radio', 'topshows', 'favorites', 'series', 'animados', 'payments', 'devices'].map(id => navTabs.find(tab => tab.id === id)).map(tab => (
+                                    {['christmas', 'tv', 'radio', 'topshows', 'favorites', 'series', 'doramas', 'animados', 'payments', 'devices'].map(id => navTabs.find(tab => tab.id === id)).map(tab => (
                                         <button key={tab.id} onClick={() => handleTabClick(tab)} className={`box-more-option ${['series', 'animados'].includes(tab.id) ? 'box-phone-primary-duplicate' : ''} ${['payments', 'devices'].includes(tab.id) ? 'col-span-2' : ''} p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
                                             <Icon name={tab.icon} size={18}/>
                                             <span>{tab.id === 'favorites' ? 'Favoritos' : tab.label}</span>
@@ -2450,7 +2463,7 @@
                                                             </div>
                                                         )}
 
-                                                        {((selectedItem.type === 'series' || selectedItem.type === 'animados') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
+                                                        {((selectedItem.type === 'series' || selectedItem.type === 'animados' || selectedItem.type === 'doramas') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
                                                             <div className="glass-panel rounded-2xl p-5">
                                                                 <h3 className="font-black text-base text-white mb-4 flex items-center gap-2">
                                                                     <span className="w-1 h-5 bg-cyan-500 rounded-full"></span> Episodios
@@ -2573,7 +2586,8 @@
                                         <HomeShelf title="Estrenos 2026" subtitle="Las novedades del catálogo, en un solo lugar." items={content.movies2} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'movies2'))} />
                                         <HomeShelf title="Películas para ti" items={content.movies} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'movies'))} />
                                         <HomeShelf title="Series" subtitle="Encuentra tu próxima historia." items={content.series} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'series'))} />
-                                        <HomeShelf title="Animados" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'animados'))} />
+                                        <HomeShelf title="Doramas" items={content.doramas} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'doramas'))} />
+                                                        <HomeShelf title="Animados" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'animados'))} />
                                         <HomeShelf title="Mi lista" items={favorites.filter(item => item.type !== 'tv' && item.type !== 'radio')} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'favorites'))} />
                                         {content.tudum.length > 0 && <section className="home-shelf" aria-label="Próximamente"><div className="home-shelf-heading"><div className="home-shelf-title"><span className="home-shelf-mark" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m5 17 12-12M5 5h12v12"/></svg></span><div><h2>Próximamente</h2><p>Avances y próximos lanzamientos.</p></div></div></div><div className="home-coming">{content.tudum.slice(0, 6).map((item, index) => <article key={item.title + index}><RobustImage src={item.image} alt={item.title} title={item.title} type="poster" loading="lazy"/><div><h3>{item.title}</h3><p>{item.releaseDate}</p><p>{item.genre}</p><button onClick={() => handlePlayNow({ title: item.title, description: item.synopsis, image: item.image, url: item.trailerUrl, type: 'movies' })}><Icon name="play" size={12} fill="currentColor"/>Ver tráiler</button></div></article>)}</div></section>}
                                     </div>
@@ -2599,7 +2613,7 @@
                                         {loading ? (
                                             <div className="flex justify-center py-24"><div className="animate-spin rounded-full h-12 w-12 border-4 border-cyan-500 border-t-transparent shadow-[0_0_25px_#06b6d4]"></div></div>
                                         ) : displayedItems.length === 0 ? (
-                                            <div className="text-center py-24 text-slate-500 text-sm"><p>{activeTab === 'christmas' && !search ? 'Aún no hay películas navideñas en el catálogo.' : 'No se encontraron resultados para tu búsqueda.'}</p></div>
+                                            <div className="text-center py-24 text-slate-500 text-sm"><p>{activeTab === 'doramas' && !search ? 'Próximamente: películas y series asiáticas en Doramas.' : activeTab === 'christmas' && !search ? 'Aún no hay películas navideñas en el catálogo.' : 'No se encontraron resultados para tu búsqueda.'}</p></div>
                                         ) : (
                                             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5 animate-slide-up">
                                                 {displayedItems.map((item, i) => (<Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />))}

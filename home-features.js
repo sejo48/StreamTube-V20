@@ -14,7 +14,7 @@
     }
     // The discovery shelf retains its complete collection, independently of the hero.
     function pool(content) {
-        return unique(Array.isArray(content.trends) && content.trends.length ? content.trends : [...(content.movies2 || []), ...(content.movies || []), ...(content.series || [])]);
+        return unique(Array.isArray(content.trends) && content.trends.length ? content.trends : [...(content.movies2 || []), ...(content.movies || []), ...(content.series || []), ...(content.doramas || [])]);
     }
     function panorama(item) {
         // An explicit empty value prevents normalized poster fallbacks from becoming backgrounds.

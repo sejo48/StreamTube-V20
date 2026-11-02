@@ -2,7 +2,7 @@
 (function (root) {
     'use strict';
     const FILE = 'avisos.json';
-    const targets = ['home', 'movies', 'movies2', 'series', 'animados', 'tv', 'radio', 'payments'];
+    const targets = ['home', 'movies', 'movies2', 'series', 'animados', 'doramas', 'tv', 'radio', 'payments'];
     const validDate = value => typeof value === 'string' && Number.isFinite(Date.parse(value));
     function validate(feed) {
         if (!feed || feed.schemaVersion !== 1 || !Array.isArray(feed.notices) || feed.notices.length > 100) throw new Error('Formato de avisos inválido.');

@@ -1,7 +1,7 @@
 /* Shared catalog contract. This draft performs read requests only. */
 (function (root) {
     'use strict';
-    const files = ['peliculas.json', 'peliculas2.json', 'playlist.json', 'animados.json', 'radios.json', 'tudum.json', 'videoteca.json', 'listaoficial.m3u'];
+    const files = ['peliculas.json', 'peliculas2.json', 'playlist.json', 'animados.json', 'doramas.json', 'radios.json', 'tudum.json', 'videoteca.json', 'listaoficial.m3u'];
     const config = { repository: 'sejo48/StreamTube-V20', branch: 'main', mode: 'draft' };
     const clone = value => JSON.parse(JSON.stringify(value));
     function hash(value) {
@@ -83,7 +83,7 @@
         return Object.fromEntries(files.map((file, i) => [file, values[i]]));
     }
     function serializeAll(state) {
-        const names = { movies: 'peliculas.json', estrenos: 'peliculas2.json', series: 'playlist.json', animados: 'animados.json', radios: 'radios.json', tudumList: 'tudum.json', videoteca: 'videoteca.json' };
+        const names = { movies: 'peliculas.json', estrenos: 'peliculas2.json', series: 'playlist.json', animados: 'animados.json', doramas: 'doramas.json', radios: 'radios.json', tudumList: 'tudum.json', videoteca: 'videoteca.json' };
         const datasets = {};
         for (const [name, file] of Object.entries(names)) datasets[file] = identify(clone(state[name]), file);
         datasets['listaoficial.m3u'] = '#EXTM3U\n' + state.channels.map(ch => {
@@ -110,7 +110,7 @@
             const raw = datasets[file];
             if (raw === undefined) { errors.push(`${file}: falta el catálogo.`); continue; }
             const items = file.endsWith('.m3u') ? parseM3U(raw) : raw;
-            if (!Array.isArray(items) || !items.length) { errors.push(`${file}: catálogo vacío o inválido; requiere revisión.`); continue; }
+            if (!Array.isArray(items) || (!items.length && file !== 'doramas.json')) { errors.push(`${file}: catálogo vacío o inválido; requiere revisión.`); continue; }
             function check(list, scope) {
                 const local = new Set();
                 for (const item of list) {
@@ -135,8 +135,8 @@
                         check(season.episodios, `${file} / ${name}`);
                         for (const episode of season.episodios) if (!urlValid(episode.urlDrive || episode.url || episode.urlOkRu)) errors.push(`${file}: episodio sin enlace válido (${name} / ${title(episode)}).`);
                     }
-                } else if (file === 'playlist.json') errors.push(`${file}: serie sin temporadas (${name}).`);
-                else if (['peliculas.json', 'peliculas2.json', 'animados.json', 'radios.json', 'listaoficial.m3u'].includes(file) && !urlValid(item.urlDrive || item.url || item.urlOkRu || item.stream)) errors.push(`${file}: falta un enlace válido (${name}).`);
+                } else if (file === 'playlist.json' || (file === 'doramas.json' && item.tmdbType === 'tv')) errors.push(`${file}: serie sin temporadas (${name}).`);
+                else if (['peliculas.json', 'peliculas2.json', 'animados.json', 'doramas.json', 'radios.json', 'listaoficial.m3u'].includes(file) && !urlValid(item.urlDrive || item.url || item.urlOkRu || item.stream)) errors.push(`${file}: falta un enlace válido (${name}).`);
                 if (file === 'tudum.json' && !urlValid(item.trailerUrl || item.urlTrailer)) errors.push(`${file}: tráiler sin enlace válido (${name}).`);
                 if (file === 'videoteca.json') {
                     const tracks = item.tracks || item.pistas || [];
