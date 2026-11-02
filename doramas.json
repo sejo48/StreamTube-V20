@@ -1,1 +1,125 @@
-[]
+[
+  {
+    "tmdbId": 289423,
+    "tmdbType": "tv",
+    "tituloOriginal": "나를 충전해줘",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/cnb3SelfQKewpo0bw4HCNRHjwY4.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-10-09",
+    "rating": "8.7",
+    "votos": 57,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Comedia",
+      "Drama"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Comedia, Drama",
+    "clasificacion": "12",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "김영광",
+        "personaje": "Baek Ho-rang",
+        "foto": "https://image.tmdb.org/t/p/w185/z7tQSbWHEfXeWMYHNNDGXW9Idfl.jpg"
+      },
+      {
+        "nombre": "채수빈",
+        "personaje": "Na Bo-bae",
+        "foto": "https://image.tmdb.org/t/p/w185/uHVJPhxn9b9tHK30KTxQpdGIs9K.jpg"
+      },
+      {
+        "nombre": "Cha Woo-min",
+        "personaje": "Ji Eun-ho",
+        "foto": "https://image.tmdb.org/t/p/w185/z8Lz0Opnl4i7Aj8b7jC4qYP01xJ.jpg"
+      }
+    ],
+    "pais": "South Korea",
+    "idioma": "ko",
+    "productoras": "Whynot Media, Next Entertainment World",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "romcom, artificial heart, chaebol, based on web novel",
+    "similares": [
+      {
+        "titulo": "El hada y el pastor",
+        "poster": "https://image.tmdb.org/t/p/w342/85Yr6Sk3xnhm9pQYypOfLjyxj2S.jpg",
+        "year": "2025",
+        "rating": "8.7"
+      },
+      {
+        "titulo": "Humana por accidente",
+        "poster": "https://image.tmdb.org/t/p/w342/oOvc6cuT5V74DtoUhYRnOp3yTfF.jpg",
+        "year": "2026",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Jardín secreto",
+        "poster": "https://image.tmdb.org/t/p/w342/2G5m6cMGN5DR5GsGGdg9OcgNNlG.jpg",
+        "year": "2010",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Novata Clandestina",
+        "poster": "https://image.tmdb.org/t/p/w342/p9tkSneZ6fBZBNvVec1wOtq0b5a.jpg",
+        "year": "2020",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "La reina de las lágrimas",
+        "poster": "https://image.tmdb.org/t/p/w342/mQuANphvQwoXJ8B5zpyk9yvSbT.jpg",
+        "year": "2024",
+        "rating": "8.4"
+      },
+      {
+        "titulo": "Una odisea coreana",
+        "poster": "https://image.tmdb.org/t/p/w342/v5RYaPAP3Qp8FAMt2KClfIcse81.jpg",
+        "year": "2017",
+        "rating": "8.1"
+      }
+    ],
+    "homepage": "https://www.netflix.com/title/82016402",
+    "creadores": [
+      "송유채",
+      "Park Soo-won"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 10,
+    "temporadasTmdb": [
+      {
+        "air_date": "2026-10-09",
+        "episode_count": 10,
+        "id": 452643,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/eOuhRwFUaKpUdpnaN4dY6wlVklL.jpg",
+        "season_number": 1,
+        "vote_average": 8.3
+      }
+    ],
+    "titulo": "La chispa del amor",
+    "descripcion": "El heredero de una fortuna, cuyo corazón artificial funciona con una batería, llega a un acuerdo con una chica electrizante para que lo recargue. ¿Surgirán chispas?",
+    "imagen": "https://image.tmdb.org/t/p/w780/2KLblBXNDX05ZqLwubCyjeokGvZ.jpg",
+    "tituloSerie": "La chispa del amor",
+    "image": "https://image.tmdb.org/t/p/w780/2KLblBXNDX05ZqLwubCyjeokGvZ.jpg",
+    "urlDrive": "",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Episodio 10",
+            "urlDrive": "https://drive.google.com/file/d/1HrFCamvfQKw9ciUzr3mopLCBCjaIc7na/view?usp=sharing"
+          }
+        ]
+      }
+    ]
+  }
+]
