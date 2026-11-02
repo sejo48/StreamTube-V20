@@ -103,3 +103,10 @@ test('episode lists display 1 to 10 numerically without changing links, IDs or t
  assert.deepEqual(C.orderEpisodes([{title:'Capítulo 10'},special,{title:'Capítulo 2'}]).map(ep=>ep.title),['Capítulo 2',special.title,'Capítulo 10']);
  assert.deepEqual(C.orderEpisodes([]),[]);
 });
+
+test('a saved manual episode order takes precedence over numeric ordering', () => {
+ const source=[3,1,2].map(n=>({id:'ep-'+n,title:'Episodio '+n,url:'https://example.test/'+n}));
+ assert.deepEqual(C.orderEpisodes(source,'manual'),source);
+ assert.notEqual(C.orderEpisodes(source,'manual'),source);
+ assert.deepEqual(C.orderEpisodes(source).map(e=>e.title),['Episodio 1','Episodio 2','Episodio 3']);
+});

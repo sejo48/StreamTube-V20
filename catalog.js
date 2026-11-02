@@ -33,7 +33,8 @@
             return out;
         });
     }
-    function orderEpisodes(episodes) {
+    function orderEpisodes(episodes, order) {
+        if (order === 'manual') return episodes.slice();
         const number = episode => {
             const match = String(episode.title || episode.tituloEpisodio || episode.titulo || '').match(/^(?:episodio|cap[ií]tulo|episode|ep\.?|cap\.?)\s*#?\s*(\d+)\b/i);
             return match ? Number(match[1]) : null;
