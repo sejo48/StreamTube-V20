@@ -1638,7 +1638,7 @@
                             seriesList = rawSeries.map((s, idx) => {
                                 const title = s.tituloSerie || s.titulo || s.title || s.name || `Serie ${idx + 1}`;
                                 const imgUrl = extractImageUrl(s);
-                                return { ...s, id: BoxCatalog.id(s, 'playlist.json'), type: 'series', title, description: s.descripcion || s.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: s.backdrop || s.banner || imgUrl, seasons: (s.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: (t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, s.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })) })) };
+                                return { ...s, id: BoxCatalog.id(s, 'playlist.json'), type: 'series', title, description: s.descripcion || s.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: s.backdrop || s.banner || imgUrl, seasons: (s.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: BoxCatalog.orderEpisodes((t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, s.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url }))) })) };
                             });
                         }
 
@@ -1648,7 +1648,7 @@
                             animadosList = rawAnimados.map((a, idx) => {
                                 const title = a.titulo || a.tituloSerie || a.title || a.name || `Animado ${idx + 1}`;
                                 const imgUrl = extractImageUrl(a);
-                                return { ...a, id: BoxCatalog.id(a, 'animados.json'), type: 'animados', title, description: a.descripcion || a.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: a.backdrop || a.banner || imgUrl, url: convertUrl(a.urlDrive || a.url), rawUrl: a.urlDrive || a.url, seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: (t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, a.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })) })) };
+                                return { ...a, id: BoxCatalog.id(a, 'animados.json'), type: 'animados', title, description: a.descripcion || a.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: a.backdrop || a.banner || imgUrl, url: convertUrl(a.urlDrive || a.url), rawUrl: a.urlDrive || a.url, seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: BoxCatalog.orderEpisodes((t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, a.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url }))) })) };
                             });
                         }
 
@@ -1658,7 +1658,7 @@
                             doramasList = rawDoramas.map((a, idx) => {
                                 const title = a.titulo || a.tituloSerie || a.title || a.name || `Dorama ${idx + 1}`;
                                 const imgUrl = extractImageUrl(a);
-                                return { ...a, id: BoxCatalog.id(a, 'doramas.json'), type: 'doramas', title, description: a.descripcion || a.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: a.backdrop || a.banner || imgUrl, url: convertUrl(a.urlDrive || a.urlOkRu || a.url), rawUrl: a.urlDrive || a.urlOkRu || a.url, seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: (t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, a.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })) })) };
+                                return { ...a, id: BoxCatalog.id(a, 'doramas.json'), type: 'doramas', title, description: a.descripcion || a.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: a.backdrop || a.banner || imgUrl, url: convertUrl(a.urlDrive || a.urlOkRu || a.url), rawUrl: a.urlDrive || a.urlOkRu || a.url, seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: BoxCatalog.orderEpisodes((t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, a.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url }))) })) };
                             });
                         }
 

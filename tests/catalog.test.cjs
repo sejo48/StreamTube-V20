@@ -85,9 +85,21 @@ test('catalog administration excludes the legacy GitHub token storage and direct
 
 test('Doramas accepts an empty new collection and validates movies and series separately', () => {
  const datasets=baseline();
+ datasets['doramas.json']=[];
  assert.equal(C.validate(datasets).some(x=>x.startsWith('doramas.json:')),false);
  datasets['doramas.json']=C.identify([{titulo:'Película',tmdbType:'movie',urlDrive:'https://example.test/movie'},{titulo:'Serie',tmdbType:'tv',temporadas:[]}],'doramas.json');
  assert(C.validate(datasets).some(x=>x.startsWith('doramas.json: serie sin temporadas')));
  datasets['doramas.json'][1].temporadas=[{numeroTemporada:1,episodios:[{id:'one',tituloEpisodio:'Inicio',urlDrive:'https://example.test/episode'}]}];
  assert.equal(C.validate(datasets).some(x=>x.startsWith('doramas.json:')),false);
+});
+
+test('episode lists display 1 to 10 numerically without changing links, IDs or the source', () => {
+ const original=[10,5,4,9,7,8,2,6,1,3].map(n=>({id:'ep-'+n,title:'Episodio '+n,url:'https://example.test/'+n}));
+ const ordered=C.orderEpisodes(original);
+ assert.deepEqual(ordered.map(ep=>ep.title),Array.from({length:10},(_,i)=>'Episodio '+(i+1)));
+ assert.equal(original[0].title,'Episodio 10');
+ ordered.forEach((ep,i)=>{assert.equal(ep.id,'ep-'+(i+1));assert.equal(ep.url,'https://example.test/'+(i+1));});
+ const special={title:'Especial sin número'};
+ assert.deepEqual(C.orderEpisodes([{title:'Capítulo 10'},special,{title:'Capítulo 2'}]).map(ep=>ep.title),['Capítulo 2',special.title,'Capítulo 10']);
+ assert.deepEqual(C.orderEpisodes([]),[]);
 });

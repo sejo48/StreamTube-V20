@@ -33,6 +33,15 @@
             return out;
         });
     }
+    function orderEpisodes(episodes) {
+        const number = episode => {
+            const match = String(episode.title || episode.tituloEpisodio || episode.titulo || '').match(/^(?:episodio|cap[ií]tulo|episode|ep\.?|cap\.?)\s*#?\s*(\d+)\b/i);
+            return match ? Number(match[1]) : null;
+        };
+        const numbered = episodes.filter(episode => number(episode) !== null).sort((a, b) => number(a) - number(b));
+        let index = 0;
+        return episodes.map(episode => number(episode) === null ? episode : numbered[index++]);
+    }
     function restoreLocal(items, baseline, namespace) {
         const restored = items.map(item => {
             const matches = baseline.filter(candidate => title(candidate) === title(item));
@@ -178,7 +187,7 @@
         const errors = validate(after);
         return { schemaVersion: 1, mode: 'draft', published: false, repository: config.repository, branch: config.branch, createdAt: new Date().toISOString(), validation: { passed: !errors.length, errors }, summary: summarize(before, after), baseline: clone(before), datasets: clone(after) };
     }
-    const api = { files, config, ready, id, identify, restoreLocal, read, readAll, serializeAll, parseM3U, validate, summarize, makeDraft };
+    const api = { orderEpisodes, files, config, ready, id, identify, restoreLocal, read, readAll, serializeAll, parseM3U, validate, summarize, makeDraft };
     root.BoxCatalog = api;
     if (typeof module !== 'undefined') module.exports = api;
 })(typeof window !== 'undefined' ? window : globalThis);
