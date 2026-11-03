@@ -118,7 +118,48 @@
     "temporadas": [
       {
         "numeroTemporada": 1,
-        "episodios": []
+        "episodios": [
+          {
+            "tituloEpisodio": "Episodio 1",
+            "urlDrive": "https://drive.google.com/file/d/1tljn6vNeA7gq8CiG-0W0i256Zhxkqfvm/view?usp=drive_link"
+          },
+          {
+            "tituloEpisodio": "Episodio 2",
+            "urlDrive": "https://drive.google.com/file/d/1fkIOP7FxXgylL6lGqzJ2XA12lJXKaiNJ/view?usp=drive_link"
+          },
+          {
+            "tituloEpisodio": "Episodio 3",
+            "urlDrive": "https://drive.google.com/file/d/1fejkwozowrsoAy0idr7NFType_aiuPeo/view?usp=drive_link"
+          },
+          {
+            "tituloEpisodio": "Episodio 4",
+            "urlDrive": "https://drive.google.com/file/d/1-ulm93ALW0iunxRaynCte9RgkqSjqtuc/view?usp=drive_link"
+          },
+          {
+            "tituloEpisodio": "Episodio 5",
+            "urlDrive": "https://drive.google.com/file/d/1gis6SEYbieXy9USccEjs321SZlRu_UrW/view?usp=drive_link"
+          },
+          {
+            "tituloEpisodio": "Episodio 6",
+            "urlDrive": "https://drive.google.com/file/d/1I79WL5Nb_3HA14Sx4RcatxFIEsde7KaY/view?usp=drive_link"
+          },
+          {
+            "tituloEpisodio": "Episodio 7",
+            "urlDrive": "https://drive.google.com/file/d/1wJA9_Ioi_dGsluVtuU5j8H1vY7I-pmfF/view?usp=drive_link"
+          },
+          {
+            "tituloEpisodio": "Episodio 8",
+            "urlDrive": "https://drive.google.com/file/d/15YmwG5Vvybyp3320i38Dy2ZknQfxQ62p/view?usp=drive_link"
+          },
+          {
+            "tituloEpisodio": "Episodio 9",
+            "urlDrive": "https://drive.google.com/file/d/1kcDNUI2ZFuCYuySvul5bUBBY14c3YFHQ/view?usp=drive_link"
+          },
+          {
+            "tituloEpisodio": "Episodio 10",
+            "urlDrive": "https://drive.google.com/file/d/1AyhmcejVDQXlBXVeOoVd5UDOvT9JrE9N/view?usp=drive_link"
+          }
+        ]
       }
     ]
   },
