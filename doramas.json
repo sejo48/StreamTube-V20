@@ -1,5 +1,128 @@
 [
   {
+    "tmdbId": 281016,
+    "tmdbType": "tv",
+    "tituloOriginal": "월간남친",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/sjOTFlGapgXFjwV3LmD9eHZEp3d.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-03-06",
+    "rating": "8.4",
+    "votos": 162,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Comedia",
+      "Sci-Fi & Fantasy",
+      "Drama"
+    ],
+    "generosTexto": "Comedia, Sci-Fi & Fantasy, Drama",
+    "clasificacion": "12",
+    "tagline": "",
+    "director": "김정식",
+    "guionistas": "남궁도영",
+    "reparto": [
+      {
+        "nombre": "지수",
+        "personaje": "Seo Mi-rae",
+        "foto": "https://image.tmdb.org/t/p/w185/23qpgi6fFBjybTuIcKItQBEINb5.jpg"
+      },
+      {
+        "nombre": "서인국",
+        "personaje": "Park Kyeong-nam",
+        "foto": "https://image.tmdb.org/t/p/w185/gs7RRZt2tWBJ7OR9BD3TFSYteJj.jpg"
+      },
+      {
+        "nombre": "Gong Min-jeung",
+        "personaje": "Yoon Song",
+        "foto": "https://image.tmdb.org/t/p/w185/wkUiwCHq2Z2h4A7JDlhjrVGQiCk.jpg"
+      },
+      {
+        "nombre": "조한철",
+        "personaje": "Hwang Byung-hak",
+        "foto": "https://image.tmdb.org/t/p/w185/58DGEXFyWfaFdqL7yKKW0VdEg3R.jpg"
+      }
+    ],
+    "pais": "South Korea",
+    "idioma": "ko",
+    "productoras": "Whynot Media, Baram Pictures, Kakao Entertainment",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "affectation, miniseries, co-workers relationship, virtual world, secret",
+    "similares": [
+      {
+        "titulo": "La chispa del amor",
+        "poster": "https://image.tmdb.org/t/p/w342/2KLblBXNDX05ZqLwubCyjeokGvZ.jpg",
+        "year": "2026",
+        "rating": "8.7"
+      },
+      {
+        "titulo": "Humana por accidente",
+        "poster": "https://image.tmdb.org/t/p/w342/oOvc6cuT5V74DtoUhYRnOp3yTfF.jpg",
+        "year": "2026",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Vuelven los magos de Waverly Place",
+        "poster": "https://image.tmdb.org/t/p/w342/6fsgSYob9QAJjfcjjk27xhNlvzp.jpg",
+        "year": "2024",
+        "rating": "8.8"
+      },
+      {
+        "titulo": "Phineas y Ferb",
+        "poster": "https://image.tmdb.org/t/p/w342/vO5SGen5sf8ooqXG99f1MohvcfV.jpg",
+        "year": "2007",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "El laboratorio de Dexter",
+        "poster": "https://image.tmdb.org/t/p/w342/ko0CZnMZZZm19HHWwROB05gEKyr.jpg",
+        "year": "1996",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "¡Enróllate, Scooby-Doo!",
+        "poster": "https://image.tmdb.org/t/p/w342/nad2SFuRHKaZFtJu3NeHct4JK25.jpg",
+        "year": "2015",
+        "rating": "8.0"
+      }
+    ],
+    "homepage": "https://www.netflix.com/title/82007623",
+    "creadores": [
+      "남궁도영",
+      "김정식"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 10,
+    "temporadasTmdb": [
+      {
+        "air_date": "2026-03-06",
+        "episode_count": 10,
+        "id": 436023,
+        "name": "Miniserie",
+        "overview": "",
+        "poster_path": "/XSJJgMtNRh5547wKtpx67TF1tL.jpg",
+        "season_number": 1,
+        "vote_average": 9.8
+      }
+    ],
+    "titulo": "Un novio por suscripción",
+    "descripcion": "Seo Mi-rae vive absorbida por el trabajo —sin tiempo para el amor— hasta que un servicio de citas despierta sentimientos que creía dormidos y abre la puerta a un posible romance.",
+    "imagen": "https://image.tmdb.org/t/p/w780/ec87jRvLCXUryjUT2h2Xr5yDNIA.jpg",
+    "tituloSerie": "Un novio por suscripción",
+    "image": "https://image.tmdb.org/t/p/w780/ec87jRvLCXUryjUT2h2Xr5yDNIA.jpg",
+    "urlDrive": "",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": []
+      }
+    ]
+  },
+  {
     "tmdbId": 289763,
     "tmdbType": "tv",
     "tituloOriginal": "내일도 출근!",
@@ -151,7 +274,57 @@
     "temporadas": [
       {
         "numeroTemporada": 1,
-        "episodios": []
+        "episodios": [
+          {
+            "tituloEpisodio": "Episodio 1",
+            "urlDrive": "https://drive.google.com/file/d/1ncjBJZfSZpYkTszTO4yDes0tA0A9n9TJ/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 2",
+            "urlDrive": "https://drive.google.com/file/d/1d-2JK9rlRNbpTL4KaVafnml3AJHVpCos/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 3",
+            "urlDrive": "https://drive.google.com/file/d/1nPGDWcnUUy156a0ccTKuVKby1qFf6LqY/view?usp=drive_link"
+          },
+          {
+            "tituloEpisodio": "Episodio 4",
+            "urlDrive": "https://drive.google.com/file/d/1_ficHLyzp7-eHVTg-ofb20OwOBS4g-J3/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 5",
+            "urlDrive": "https://drive.google.com/file/d/1pBUBKHrPMNgudQEb6caAgeLL3bh0jNGF/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 6",
+            "urlDrive": "https://drive.google.com/file/d/1UYScqamv-LieC4LJWugVTxYVm7wTtoW1/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 7",
+            "urlDrive": "https://drive.google.com/file/d/1gcBBVRWPxrC5IaO5cUO1rPZz5iQyLu-0/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 8",
+            "urlDrive": "https://drive.google.com/file/d/1VWTG1Amyd5N3bk4NSccY6yeV9TJ5oNUu/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 9",
+            "urlDrive": "https://drive.google.com/file/d/1cMBrLkt2tdmArTRPXUSXQHLHA8AHs4eb/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 10",
+            "urlDrive": "https://drive.google.com/file/d/1buFADuLm4yBWba1jjadxGhVhV5IWrx3P/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 11",
+            "urlDrive": "https://drive.google.com/file/d/15HtpQ8p8wtwsnQjvORSRDwtkm4frRIqH/view?usp=sharing"
+          },
+          {
+            "tituloEpisodio": "Episodio 12",
+            "urlDrive": "https://drive.google.com/file/d/17xZ5UwsS9UEMaFvCUuL3lLbHEnoa4BuT/view?usp=sharing"
+          }
+        ],
+        "episodeOrder": "manual"
       }
     ]
   },
