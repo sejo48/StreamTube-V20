@@ -120,6 +120,7 @@
     "temporadas": [
       {
         "numeroTemporada": 1,
+        "episodeOrder": "manual",
         "episodios": [
           {
             "tituloEpisodio": "El juicio S01 E01 - Episodio 1",
@@ -128,6 +129,10 @@
           {
             "tituloEpisodio": "El juicio S01 E02 - Episodio 2",
             "urlDrive": "https://drive.google.com/file/d/1f74eSheeGxw5KGLgWtFJq0zl0dJo3bcx/view?usp=drive_link"
+          },
+          {
+            "tituloEpisodio": "El juicio S01 E08 - Episodio 3",
+            "urlDrive": "https://drive.google.com/file/d/1SojdwmoJ2F210CVJkyU57pCiFDOjsqVy/view?usp=drive_link"
           },
           {
             "tituloEpisodio": "El juicio S01 E04 - Episodio 4",
