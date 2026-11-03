@@ -1,5 +1,148 @@
 [
   {
+    "titulo": "El árbol muy muy lejano",
+    "tituloOriginal": "The Magic Faraway Tree",
+    "descripcion": "Polly, Tim, y sus tres hijos son una familia moderna que se ve obligada a mudarse a la remota campiña inglesa. Poco después de su llegada, los niños descubren un árbol mágico y a sus extraordinarios y excéntricos habitantes.",
+    "imagen": "https://image.tmdb.org/t/p/w780/fpW5GntifGxAG7Js99Wdhq9K0s5.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/3o7t1gF0wbXAtELCkIcYyPXoIxA.jpg",
+    "urlDrive": "",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-03-26",
+    "rating": "6.7",
+    "votos": 107,
+    "runtime": "1h 50min",
+    "genres": [
+      "Aventura",
+      "Familia",
+      "Fantasía"
+    ],
+    "generosTexto": "Aventura, Familia, Fantasía",
+    "clasificacion": "A",
+    "tagline": "",
+    "director": "Ben Gregor",
+    "guionistas": "Simon Farnaby",
+    "reparto": [
+      {
+        "nombre": "Billie Gadsdon",
+        "personaje": "Fran Thompson",
+        "foto": "https://image.tmdb.org/t/p/w185/3Xs8VgjGNCjFsIGaFcr3lIkYhrd.jpg"
+      },
+      {
+        "nombre": "Nicola Coughlan",
+        "personaje": "Silky",
+        "foto": "https://image.tmdb.org/t/p/w185/bhbFv73vlUM0hXlDdAGDrBBb40x.jpg"
+      },
+      {
+        "nombre": "Delilah Bennett-Cardy",
+        "personaje": "Beth Thompson",
+        "foto": "https://image.tmdb.org/t/p/w185/1qPiOcNNuREzA0BoiOgeEzLJnGF.jpg"
+      },
+      {
+        "nombre": "Phoenix Laroche",
+        "personaje": "Joe Thompson",
+        "foto": "https://image.tmdb.org/t/p/w185/kXl2nB3tNF9XBPvvkUZgwO0AiY3.jpg"
+      },
+      {
+        "nombre": "Nonso Anozie",
+        "personaje": "Moonface",
+        "foto": "https://image.tmdb.org/t/p/w185/5V5EGRRftkAMPAwRP3a0tu0Nlwe.jpg"
+      },
+      {
+        "nombre": "Andrew Garfield",
+        "personaje": "Tim Thompson",
+        "foto": "https://image.tmdb.org/t/p/w185/5ydZ6TluPtxlz5G8nlWMB7SGmow.jpg"
+      },
+      {
+        "nombre": "Rebecca Ferguson",
+        "personaje": "Dame Snap",
+        "foto": "https://image.tmdb.org/t/p/w185/ty8ZPzaCBBlqIr5qzpOXI24iC8j.jpg"
+      },
+      {
+        "nombre": "Claire Foy",
+        "personaje": "Polly Thompson",
+        "foto": "https://image.tmdb.org/t/p/w185/pI1lOswQWZRhc8TKu0MESulw9uF.jpg"
+      },
+      {
+        "nombre": "Jessica Gunning",
+        "personaje": "Dame Washalot",
+        "foto": "https://image.tmdb.org/t/p/w185/c4nC6usiZdRlw4VkOcHFLXtrPa0.jpg"
+      },
+      {
+        "nombre": "Dustin Demri-Burns",
+        "personaje": "Saucepan Man",
+        "foto": "https://image.tmdb.org/t/p/w185/m0yBhBOqO9HSvsBxj9JzdPfMf3d.jpg"
+      },
+      {
+        "nombre": "Jennifer Saunders",
+        "personaje": "Grandma",
+        "foto": "https://image.tmdb.org/t/p/w185/pTgxwHcz9L8SNVYvPJS0o0lgHya.jpg"
+      },
+      {
+        "nombre": "Simon Farnaby",
+        "personaje": "Farmer Brian",
+        "foto": "https://image.tmdb.org/t/p/w185/xslxzBfDYYHNFnAMWyjjxFUTlEk.jpg"
+      }
+    ],
+    "pais": "United Kingdom, United States of America",
+    "idioma": "en",
+    "productoras": "Neal Street Productions, Ashland Hill Media Finance, Palisades Park Pictures, Elysian Film Group, StudioCanal UK",
+    "presupuesto": 0,
+    "recaudacion": 32241102,
+    "trailerUrl": "https://www.youtube.com/watch?v=qsrMA7Eovaw",
+    "coleccion": "The Magic Faraway Tree Collection",
+    "keywords": "tree, based on children's book, children's adventure, estranged family",
+    "similares": [
+      {
+        "titulo": "La Leyenda de Ochi",
+        "poster": "https://image.tmdb.org/t/p/w342/vxqgIV6NBWGUZzwDQHgzSGz5DYN.jpg",
+        "year": "2025",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "El cascanueces y los cuatro reinos",
+        "poster": "https://image.tmdb.org/t/p/w342/eYDNJvFvjgVIklbf76St7ldnsaX.jpg",
+        "year": "2018",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Corazón de tinta",
+        "poster": "https://image.tmdb.org/t/p/w342/hMGNlzmgjFrPU4XIlkE0uDx7CU7.jpg",
+        "year": "2008",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Pan: Viaje a nunca jamás",
+        "poster": "https://image.tmdb.org/t/p/w342/gV3bDhG5Vn8HX2nJUNYeUqGoXcI.jpg",
+        "year": "2015",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Las nuevas aventuras de Pippi Calzaslargas",
+        "poster": "https://image.tmdb.org/t/p/w342/up4QvEZyrcVRZfBvVvv0RXd2Gn7.jpg",
+        "year": "1988",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Érase una vez: Anastasia",
+        "poster": "https://image.tmdb.org/t/p/w342/1g9R5lpmJ77kRcx4agxc3oIzN1C.jpg",
+        "year": "2020",
+        "rating": "5.9"
+      }
+    ],
+    "tmdbId": 1140521,
+    "tmdbType": "movie",
+    "runtimeMin": 110,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
     "titulo": "Bad Santa",
     "tituloOriginal": "Bad Santa",
     "descripcion": "Willie, un amargado y solitario alcohólico, trabaja cada temporada de Navidad en los centros comerciales disfrazado de Papá Noel junto su compañero Marcus, que hace de duende. Cada vispera de Navidad, desconectan la alarma de seguridad después de que el centro comercial cierra, y revientan la caja fuerte. En su nuevo destino se encontrarán con un jefe de seguridad que sospecha de ellos, y con un niño muy peculiar, en cuya casa Willie se hospedará.",
