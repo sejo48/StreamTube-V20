@@ -1,5 +1,260 @@
 [
   {
+    "tmdbId": 1712,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Munsters",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/cNgZbUkqhIxb2yrEKusHPOaAb4d.jpg",
+    "year": "1964",
+    "fechaEstreno": "1964-09-24",
+    "rating": "7.9",
+    "votos": 491,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "Comedia",
+      "Sci-Fi & Fantasy",
+      "Familia"
+    ],
+    "generosTexto": "Comedia, Sci-Fi & Fantasy, Familia",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Fred Gwynne",
+        "personaje": "Herman Munster",
+        "foto": "https://image.tmdb.org/t/p/w185/nO5ufGwURxJ20zYnSgb6l4nYDQO.jpg"
+      },
+      {
+        "nombre": "Yvonne De Carlo",
+        "personaje": "Lily Munster",
+        "foto": "https://image.tmdb.org/t/p/w185/cldx7C9iQlVJIdrPWbGlu2HidVW.jpg"
+      },
+      {
+        "nombre": "Butch Patrick",
+        "personaje": "Eddie Munster",
+        "foto": "https://image.tmdb.org/t/p/w185/wm2urgDBp4mWUocnME07zp9PIBe.jpg"
+      },
+      {
+        "nombre": "Al Lewis",
+        "personaje": "Grandpa",
+        "foto": "https://image.tmdb.org/t/p/w185/gZhCDtWYOZz8EF0wOIZM2HZTONe.jpg"
+      },
+      {
+        "nombre": "Pat Priest",
+        "personaje": "Marilyn Munster",
+        "foto": "https://image.tmdb.org/t/p/w185/naq1ZNHsRGlLmxeSOwNRxYxonOB.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Universal Television, Kayro-Vue Productions, Universal Television Entertainment",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "monster, vampire, halloween, house, werewolf, family, sitcom, eccentric family, cobwebs",
+    "similares": [
+      {
+        "titulo": "La familia Addams",
+        "poster": "https://image.tmdb.org/t/p/w342/9eqmCtAY9d2WwafLBYXRKYepgeA.jpg",
+        "year": "1964",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "The New Addams Family",
+        "poster": "https://image.tmdb.org/t/p/w342/ygyHj36qss3cE0W4wr0yMKlTW4D.jpg",
+        "year": "1998",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Los villanos de Valley View",
+        "poster": "https://image.tmdb.org/t/p/w342/vMTq27WeTHeBCtftS1OCtneI0jj.jpg",
+        "year": "2022",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "ALF",
+        "poster": "https://image.tmdb.org/t/p/w342/shRed7ZrCRjdIMEYNx2YBVFkkNu.jpg",
+        "year": "1986",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Mi niñera es un vampiro",
+        "poster": "https://image.tmdb.org/t/p/w342/qYSVVfEeAJsAc4eoda1mLZCEl3q.jpg",
+        "year": "2011",
+        "rating": "8.2"
+      },
+      {
+        "titulo": "Harry and the Hendersons",
+        "poster": "https://image.tmdb.org/t/p/w342/q8e08S5x9PW3UrKo3WzmK5NosU3.jpg",
+        "year": "1991",
+        "rating": "5.9"
+      }
+    ],
+    "homepage": "http://www.munsters.com/",
+    "creadores": [
+      "Chris Hayward",
+      "Bob Mosher",
+      "Allan Burns"
+    ],
+    "numeroTemporadas": 2,
+    "numeroEpisodios": 70,
+    "temporadasTmdb": [
+      {
+        "air_date": "1964-01-01",
+        "episode_count": 12,
+        "id": 4781,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/hM8ROWBtDnE9SAkkfUry5Y9pLrV.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1964-09-23",
+        "episode_count": 38,
+        "id": 4780,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/kLg76wAqphUzl6CkasJNKkDWUGs.jpg",
+        "season_number": 1,
+        "vote_average": 8
+      },
+      {
+        "air_date": "1965-09-15",
+        "episode_count": 32,
+        "id": 4779,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/6uQNgwCMWXJ9mODza8o635PcTTu.jpg",
+        "season_number": 2,
+        "vote_average": 8
+      }
+    ],
+    "tituloSerie": "La familia Monster",
+    "descripcion": "Popular teleserie de los años sesenta sobre una peculiar y divertida  familia de apariencias \"monstruosa\" que viven en una siniestra mansión  gótica. La familia está compuesta Herman Munster,  despistado y torpilón padre de familia; Lily Munster,  bella esposa y madre ejemplar; El Abuelo, antiguo conde que  aún disfruta comiéndose la vida a mordiscos, Eddie,  pequeño licántropo y único hijo del matrimonio Munster; y Marilyn, la joven sobrina de Lily.",
+    "imagen": "https://image.tmdb.org/t/p/w780/dF4P2k9XgeFUT3OetAJqJJ0uQUj.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "La Familia Monster 1x9 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1lwNWXNztn2NWYK0JiAuYsTijZjAC659j/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x10 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1Ynd0uZJ8y3R-7MPHoBkXwsVKtKIxnICC/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x11 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/16TULvi57UX6FEkn_MDUi2xx7ajxi8LQm/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x15 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/11xtBSKcKreT1CnprDp6kYROiogq6YNuI/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x23 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/19X18MnDwB55CQegi1Ksp8ghsXmKID4Ra/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x24 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1325ttdxIhrChjHLVDnSqikXA0uIY6juG/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x25 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1cuLnBKbNUj6ap_KFN5qaIpuosUR4YY5Q/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x27 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1Tosyb1vJPjFLy0RxdSEXpRzOz6PAb8Rs/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x30 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1-diFbtjMii5TejND5_-gLFNqiVPDLpnN/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x32 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1T3SaWolBLIUABR2hgYjeFKo424gw-XWR/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x33 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1FkBdMqry4FV28LA3jo0UCrlSiwWal9-V/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x34 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1949m2EKdqjAu-yTUUXr3peePOGGPfoD4/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x36 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1dxCkmYX2YBx5BF9hlG-H7ruil-gJXRyM/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x37 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1QOIVk3nptlwJn6I-Fe8DgmOLYp0NA6-D/view"
+          },
+          {
+            "tituloEpisodio": "La Familia Monster 1x38 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1dhUaS8acdw28Z02VOJsIk4W4KM0F-P7J/view"
+          },
+          {
+            "tituloEpisodio": "Ver La Familia Monster 1x1 Online Serie Gratis Latino Series Ret",
+            "urlDrive": "https://drive.google.com/file/d/15kbb-lmV4G_nZboTjej7YNGESJGA1gLl/view"
+          },
+          {
+            "tituloEpisodio": "Ver La Familia Monster 1x2 Online Descargar Gratis Latino",
+            "urlDrive": "https://drive.google.com/file/d/1-Qe1h_YyjGRD23gtQmycFILAVz1XTB6x/view"
+          },
+          {
+            "tituloEpisodio": "Ver La Familia Monster 1x3 Online Descargar Gratis Latino",
+            "urlDrive": "https://drive.google.com/file/d/1fgcWDJPlFd5o8FvlzSR0IvsbAi4ovXRX/view"
+          },
+          {
+            "tituloEpisodio": "Ver La Familia Monster 1x5 Online Descargar Gratis Latino",
+            "urlDrive": "https://drive.google.com/file/d/10FEAZpIG-wbd_Qerr4sBHWVYOVir47jg/view"
+          },
+          {
+            "tituloEpisodio": "Ver La Familia Monster 1x6 Online Descargar Gratis Latino",
+            "urlDrive": "https://drive.google.com/file/d/1KWLy4mqyQy1xnTPrISf2qoceQbHv2Tgx/view"
+          },
+          {
+            "tituloEpisodio": "Ver La Familia Monster 1x17 Online Descargar Latino Gratis Serie",
+            "urlDrive": "https://drive.google.com/file/d/1WLHgaCQQtD4KOlmRxi_U53eokdYxLC7C/view"
+          },
+          {
+            "tituloEpisodio": "Ver La Familia Monster 1x18 Online Descargar Latino Gratis Serie",
+            "urlDrive": "https://drive.google.com/file/d/1vn6IZgCG8T_UeLsqTuj-eeIcJ8JuTKJZ/view"
+          },
+          {
+            "tituloEpisodio": "Ver La Familia Monster 1x19 Online Descargar Latino Gratis Serie",
+            "urlDrive": "https://drive.google.com/file/d/1Q9QQRkSd6ZaOcTu7uzqL9c5zjEGM8FIw/view"
+          },
+          {
+            "tituloEpisodio": "Ver La Familia Monster 1x20 Online Descargar Latino Gratis Serie",
+            "urlDrive": "https://drive.google.com/file/d/18lASSxUPyCJFuqvS7YTTajBxKTYzd7XN/view"
+          },
+          {
+            "tituloEpisodio": "Ver La Familia Monster 1x21 Online Descargar Latino Gratis Serie",
+            "urlDrive": "https://drive.google.com/file/d/1aC-CuRLjVStYlFuFT0TZC48aTwifeD13/view"
+          },
+          {
+            "tituloEpisodio": "Ver La Familia Monster 1x22 Online Descargar Latino Gratis Serie",
+            "urlDrive": "https://drive.google.com/file/d/1Q3C16W_Z4A4jHRkOKjZVaruHbT2vdw_Z/view"
+          },
+          {
+            "tituloEpisodio": "Ver La Familia Monster 1x29 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1OEbm3fWBszPcaiGO2osiN2dzlwJ53oBF/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 260249,
     "tmdbType": "tv",
     "tituloOriginal": "El juicio",
