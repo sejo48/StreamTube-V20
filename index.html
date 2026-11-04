@@ -1301,6 +1301,20 @@
             const [isLocked, setIsLocked] = useState(false); 
             const [isPlaying, setIsPlaying] = useState(false);
             const [detailTab, setDetailTab] = useState('info');
+            const episodesSectionRef = useRef(null);
+            const [episodeNavigation, setEpisodeNavigation] = useState(0);
+            const isEpisodeContent = selectedItem && ['series', 'animados', 'doramas'].includes(selectedItem.type);
+            const episodeCount = (selectedItem?.seasons || []).reduce((total, season) => total + (season.episodes || []).length, 0);
+            useEffect(() => {
+                if (!episodeNavigation || !episodesSectionRef.current) return;
+                const section = episodesSectionRef.current;
+                section.focus({ preventScroll: true });
+                section.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+            }, [episodeNavigation]);
+            const handleViewEpisodes = () => {
+                setDetailTab('info');
+                setEpisodeNavigation(value => value + 1);
+            };
             const [favorites, setFavorites] = useState([]);
             const [personalRatings, setPersonalRatings] = useState(() => {
                 try { const saved = JSON.parse(safeStorage.getItem('boxplay_personal_ratings')); return saved && typeof saved === 'object' && !Array.isArray(saved) ? saved : {}; }
@@ -2259,12 +2273,18 @@
 
                                                     <div className="pt-3">
                                                         <button 
-                                                            onClick={() => handlePlayNow(selectedItem, selectedEpisode)} 
+                                                            onClick={() => isEpisodeContent ? handleViewEpisodes() : handlePlayNow(selectedItem, selectedEpisode)}
+                                                            aria-controls={isEpisodeContent ? 'box-series-episodes' : undefined}
                                                             className="w-full sm:w-auto bg-white hover:bg-slate-200 text-black px-6 sm:px-10 py-3.5 rounded-lg font-black text-sm sm:text-base flex items-center justify-center gap-3 active:scale-95 transition-all shadow-2xl"
                                                         >
                                                             <Icon fill="black" name="play" size={18}/> 
-                                                            <span>Ver ahora</span>
+                                                            <span>{isEpisodeContent ? 'Ver episodios' : 'Ver ahora'}</span>
                                                         </button>
+                                                        {isEpisodeContent && (
+                                                            <p className="mt-3 text-sm font-bold text-slate-200" role="status">
+                                                                {(selectedItem.seasons || []).length} {(selectedItem.seasons || []).length === 1 ? 'temporada' : 'temporadas'} · {episodeCount} {episodeCount === 1 ? 'episodio disponible' : 'episodios disponibles'}
+                                                            </p>
+                                                        )}
                                                     </div>
 
                                                     <div className="box-detail-actions flex items-center gap-8 pt-3">
@@ -2463,31 +2483,33 @@
                                                             </div>
                                                         )}
 
-                                                        {((selectedItem.type === 'series' || selectedItem.type === 'animados' || selectedItem.type === 'doramas') && selectedItem.seasons && selectedItem.seasons.length > 0) && (
-                                                            <div className="glass-panel rounded-2xl p-5">
+                                                        {isEpisodeContent && (
+                                                            <div id="box-series-episodes" ref={episodesSectionRef} tabIndex={-1} aria-label="Temporadas y episodios" style={{ scrollMarginTop: '130px' }} className="glass-panel rounded-2xl p-5 focus:outline-cyan-500">
                                                                 <h3 className="font-black text-base text-white mb-4 flex items-center gap-2">
                                                                     <span className="w-1 h-5 bg-cyan-500 rounded-full"></span> Episodios
                                                                 </h3>
+                                                                <p className="text-sm text-slate-300 mb-4">Elige una temporada y luego el episodio que quieres ver.</p>
                                                                 <div className="flex gap-2 mb-4 overflow-x-auto pb-2 no-scrollbar">
-                                                                    {selectedItem.seasons.map((season, sIdx) => (
-                                                                        <button key={sIdx} onClick={() => setExpandedSeason(sIdx)} className={`px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${expandedSeason === sIdx ? 'bg-cyan-600 text-white' : 'bg-white/5 text-slate-400 hover:text-white border border-slate-800'}`}>
-                                                                            Temporada {season.seasonNumber}
+                                                                    {(selectedItem.seasons || []).map((season, sIdx) => (
+                                                                        <button key={sIdx} aria-pressed={expandedSeason === sIdx} onClick={() => setExpandedSeason(sIdx)} className={`px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${expandedSeason === sIdx ? 'bg-cyan-600 text-white' : 'bg-white/5 text-slate-400 hover:text-white border border-slate-800'}`}>
+                                                                            Temporada {season.seasonNumber} · {(season.episodes || []).length} episodios
                                                                         </button>
                                                                     ))}
                                                                 </div>
                                                                 <div className="space-y-2">
-                                                                    {selectedItem.seasons[expandedSeason]?.episodes?.map((ep, eIdx) => (
-                                                                        <div 
+                                                                    {!(selectedItem.seasons || [])[expandedSeason]?.episodes?.length && <p className="text-sm text-slate-400">Aún no hay episodios disponibles en esta temporada.</p>}
+                                                                    {(selectedItem.seasons || [])[expandedSeason]?.episodes?.map((ep, eIdx) => (
+                                                                        <button type="button"
                                                                             key={ep.id || eIdx} 
                                                                             onClick={() => handlePlayNow(selectedItem, ep)} 
-                                                                            className="p-3 rounded-xl cursor-pointer flex items-center gap-3 bg-white/5 hover:bg-white/10 transition-colors border border-slate-800/50"
+                                                                            className="w-full text-left p-3 rounded-xl cursor-pointer flex items-center gap-3 bg-white/5 hover:bg-white/10 focus:ring-2 focus:ring-cyan-500 transition-colors border border-slate-800/50"
                                                                         >
                                                                             <div className="w-6 h-6 rounded-full bg-cyan-600 flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">
                                                                                 {eIdx + 1}
                                                                             </div>
                                                                             <span className="text-sm text-slate-200 truncate flex-1 font-medium">{ep.title}</span>
                                                                             <Icon name="play" size={14} className="text-slate-500 flex-shrink-0"/>
-                                                                        </div>
+                                                                        </button>
                                                                     ))}
                                                                 </div>
                                                             </div>
@@ -2719,6 +2741,7 @@
     </script>
 </body>
 </html>
+
 
 
 
