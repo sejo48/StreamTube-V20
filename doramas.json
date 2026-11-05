@@ -1,5 +1,318 @@
 [
   {
+    "tmdbId": 293610,
+    "tmdbType": "tv",
+    "tituloOriginal": "닥터X: 하얀 마피아의 시대",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/rjzbt01IVAJVp9WBdRl4mT3Yl2w.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-10-09",
+    "rating": "9.0",
+    "votos": 40,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Misterio",
+      "Drama",
+      "Crimen"
+    ],
+    "generosTexto": "Misterio, Drama, Crimen",
+    "clasificacion": "TV-MA",
+    "tagline": "",
+    "director": "이정림",
+    "guionistas": "편성근",
+    "reparto": [
+      {
+        "nombre": "Kim Ji-won",
+        "personaje": "Gye Su-jeong",
+        "foto": "https://image.tmdb.org/t/p/w185/lX7W1j9kg4jV6XNn5XEE3rKsd3x.jpg"
+      },
+      {
+        "nombre": "Lee Jung-eun",
+        "personaje": "Jeong Hee-sook",
+        "foto": "https://image.tmdb.org/t/p/w185/4r3K47UpSmzZ5t9cyTRRqRl9rdz.jpg"
+      },
+      {
+        "nombre": "손현주",
+        "personaje": "Bu Seung-gwon",
+        "foto": "https://image.tmdb.org/t/p/w185/pOpqydpiDrXvd9ynZEt8GQl6yJD.jpg"
+      },
+      {
+        "nombre": "김우석",
+        "personaje": "Park Tae-gyeong",
+        "foto": "https://image.tmdb.org/t/p/w185/pjuqZJRCw5BgAZf5CtjXNAmOAmd.jpg"
+      },
+      {
+        "nombre": "이진희",
+        "personaje": "Jo Won-jin",
+        "foto": "https://image.tmdb.org/t/p/w185/ejdN4VmStDyyhi7sN5Nox5VVh5x.jpg"
+      },
+      {
+        "nombre": "Kim Young-min",
+        "personaje": "Do Yoon-sik",
+        "foto": "https://image.tmdb.org/t/p/w185/xXbY65ATWU0VGd59Ry16o3mnxps.jpg"
+      },
+      {
+        "nombre": "이성욱",
+        "personaje": "Bae Heung-gon",
+        "foto": "https://image.tmdb.org/t/p/w185/erpOUfjadjH2duXd6XWDsa2kNfw.jpg"
+      },
+      {
+        "nombre": "권승우",
+        "personaje": "Ma Seong-gyoo",
+        "foto": "https://image.tmdb.org/t/p/w185/9XwjdLbetDegQdolJA91Wykkqdy.jpg"
+      },
+      {
+        "nombre": "허준석",
+        "personaje": "Kim Seong-jin",
+        "foto": "https://image.tmdb.org/t/p/w185/7UFyGXrKPDeAICdUUcmJaApyy9h.jpg"
+      },
+      {
+        "nombre": "김영아",
+        "personaje": "Lee Seon-ae",
+        "foto": "https://image.tmdb.org/t/p/w185/g21Pa5GKMHL99wYSFQqhJX9lMUl.jpg"
+      },
+      {
+        "nombre": "최덕문",
+        "personaje": "Yang Eung-goo",
+        "foto": "https://image.tmdb.org/t/p/w185/2yNTH3Dm1tmN795ExtNsIE1IaNA.jpg"
+      },
+      {
+        "nombre": "김정영",
+        "personaje": "Yoo Mi-kyeong",
+        "foto": "https://image.tmdb.org/t/p/w185/sJVUh3dzF1dgItQDPbWsZAsnfzL.jpg"
+      }
+    ],
+    "pais": "South Korea",
+    "idioma": "ko",
+    "productoras": "Studio Dragon, Studio S, HighZium Studio",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "surgeon, remake, hospital, doctor, medical drama",
+    "similares": [
+      {
+        "titulo": "Manipulado",
+        "poster": "https://image.tmdb.org/t/p/w342/fdpONR4YTmyOF0Q32zaXQSD5nM7.jpg",
+        "year": "2025",
+        "rating": "8.4"
+      },
+      {
+        "titulo": "Traición y redención",
+        "poster": "https://image.tmdb.org/t/p/w342/negN03J0NrRjE2zQWvZgbadbr5D.jpg",
+        "year": "2025",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Cross",
+        "poster": "https://image.tmdb.org/t/p/w342/5bPu59SvLNxW27UUKluGZ5FfpDL.jpg",
+        "year": "2024",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Dr. Death",
+        "poster": "https://image.tmdb.org/t/p/w342/pNnmxTSc2ixac4xk8T80wchec0r.jpg",
+        "year": "2021",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Sherlock & Daughter",
+        "poster": "https://image.tmdb.org/t/p/w342/ifh5NNMzUEqErsHmeKjjGblbOav.jpg",
+        "year": "2025",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "La muerte y esas cosas",
+        "poster": "https://image.tmdb.org/t/p/w342/dc2xRGXjtp1V1qVNSqAqP3fniq3.jpg",
+        "year": "2024",
+        "rating": "6.6"
+      }
+    ],
+    "homepage": "https://programs.sbs.co.kr/drama/doctorx",
+    "creadores": [
+      "편성근"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 12,
+    "temporadasTmdb": [
+      {
+        "air_date": "2026-10-09",
+        "episode_count": 12,
+        "id": 460408,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/9zMjvgGPokNYCYhSgMGCRQetMmC.jpg",
+        "season_number": 1,
+        "vote_average": 6.9
+      }
+    ],
+    "titulo": "Doctor X Mafia in White",
+    "descripcion": "En un hospital marcado por los egos y la corrupción, una enigmática y brillante cirujana asume casos que parecen imposibles pese a la férrea oposición.",
+    "imagen": "https://image.tmdb.org/t/p/w780/yIJO1M4sbYLa1HlmurXikO9TQm2.jpg",
+    "tituloSerie": "Doctor X Mafia in White",
+    "image": "https://image.tmdb.org/t/p/w780/yIJO1M4sbYLa1HlmurXikO9TQm2.jpg",
+    "urlDrive": "",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
+    "tmdbId": 332713,
+    "tmdbType": "tv",
+    "tituloOriginal": "南田南弁護士は天才肌",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/w7p0SUuixmEyf5a5wVKAgHNkh8e.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-10-19",
+    "rating": "6.0",
+    "votos": 3,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Drama"
+    ],
+    "generosTexto": "Drama",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "",
+    "guionistas": "Shigenori Tanabe",
+    "reparto": [
+      {
+        "nombre": "芦田愛菜",
+        "personaje": "Minamida Minami",
+        "foto": "https://image.tmdb.org/t/p/w185/GkmFEAuslzWJ4yYhj9KahmmGdE.jpg"
+      },
+      {
+        "nombre": "Fumiya Takahashi",
+        "personaje": "Funai Minato",
+        "foto": "https://image.tmdb.org/t/p/w185/aNdoFv1zPypM3nxR5T7LfpfKLZR.jpg"
+      },
+      {
+        "nombre": "細田佳央太",
+        "personaje": "Takuma Himi",
+        "foto": "https://image.tmdb.org/t/p/w185/jzAY3P40g705sXd3QEfM1BtwVul.jpg"
+      },
+      {
+        "nombre": "久保史緒里",
+        "personaje": "Koharu Asahi",
+        "foto": "https://image.tmdb.org/t/p/w185/ejAisLumalUEhMUuAvnlJAxNrbs.jpg"
+      },
+      {
+        "nombre": "柿原りんか",
+        "personaje": "Madoka Ririi",
+        "foto": "https://image.tmdb.org/t/p/w185/qqgIY5gE87874N2nVNRNGm1baqp.jpg"
+      },
+      {
+        "nombre": "竹内櫻",
+        "personaje": "Kaede Tsuchimura",
+        "foto": "https://image.tmdb.org/t/p/w185/h7EJtg4Xb20pfwlekcN0TAoVgbL.jpg"
+      },
+      {
+        "nombre": "山口馬木也",
+        "personaje": "Kengo Miyaji",
+        "foto": "https://image.tmdb.org/t/p/w185/cIaFLd1jUFgRUhkauwr6eQiKbwE.jpg"
+      },
+      {
+        "nombre": "平岩紙",
+        "personaje": "Nagisa Hirokawa",
+        "foto": "https://image.tmdb.org/t/p/w185/amqjs404ns5hQXwLUYXhPsck6AG.jpg"
+      },
+      {
+        "nombre": "角田晃広",
+        "personaje": "Minamida Makoto",
+        "foto": "https://image.tmdb.org/t/p/w185/y0amt9M8Aux2YOIVDgXvKvepspB.jpg"
+      }
+    ],
+    "pais": "Japan",
+    "idioma": "ja",
+    "productoras": "Kansai Television, Media Mix Japan",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "remake, based on tv series",
+    "similares": [
+      {
+        "titulo": "Toda la verdad",
+        "poster": "https://image.tmdb.org/t/p/w342/2YLg5PQ27kgRp6uncqUhKHoXXUC.jpg",
+        "year": "2018",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Descubriendo a Nina",
+        "poster": "https://image.tmdb.org/t/p/w342/m0lZo55EY4Mxf5MdkYoVoIkOR8W.jpg",
+        "year": "2010",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "For The People",
+        "poster": "https://image.tmdb.org/t/p/w342/a8QtXdn8d6yyoaCH2m5ZVrlJczk.jpg",
+        "year": "2018",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "London Kills",
+        "poster": "https://image.tmdb.org/t/p/w342/9YqT6OWah3zQfFMFQGLzQHDObcq.jpg",
+        "year": "2019",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Conviction",
+        "poster": "https://image.tmdb.org/t/p/w342/7GZAKNbm4e1ljnTuDNhdYNPzdyx.jpg",
+        "year": "2016",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Sullivan's Crossing",
+        "poster": "https://image.tmdb.org/t/p/w342/nYRnuQNR13nEYaXkOZaY0qIWl2K.jpg",
+        "year": "2023",
+        "rating": "8.1"
+      }
+    ],
+    "homepage": "https://www.ktv.jp/minamidaminami",
+    "creadores": [],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 10,
+    "temporadasTmdb": [
+      {
+        "air_date": "2026-10-19",
+        "episode_count": 10,
+        "id": 538546,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/ax4KpZOjZ59hp6IjYNOfJMAYge0.jpg",
+        "season_number": 1,
+        "vote_average": 6.8
+      }
+    ],
+    "titulo": "Minami, abogada extraordinaria",
+    "descripcion": "Con una memoria prodigiosa y una perspectiva única, Minami se enfrenta a retos dentro y fuera de los tribunales como abogada novata con trastorno del espectro autista",
+    "imagen": "https://image.tmdb.org/t/p/w780/ax4KpZOjZ59hp6IjYNOfJMAYge0.jpg",
+    "tituloSerie": "Minami, abogada extraordinaria",
+    "image": "https://image.tmdb.org/t/p/w780/ax4KpZOjZ59hp6IjYNOfJMAYge0.jpg",
+    "urlDrive": "",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Ver Extraordinary Attorney Minami 2026 Online -  (01)",
+            "urlDrive": "https://drive.google.com/file/d/1g3Kaedi6WZzhioNtDhUUG-tSlOqlwQle/view"
+          },
+          {
+            "tituloEpisodio": "Ver Extraordinary Attorney Minami 2026 Online -  (02)",
+            "urlDrive": "https://drive.google.com/file/d/1CNW2qGI1tg-qJNOfEiQmexcyn6iy57FQ/view"
+          },
+          {
+            "tituloEpisodio": "Ver Extraordinary Attorney Minami 2026 Online - (03)",
+            "urlDrive": "https://drive.google.com/file/d/11GGHOiK_WnVFVfZO7jS1FKdiWCxKQiUt/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 281016,
     "tmdbType": "tv",
     "tituloOriginal": "월간남친",
