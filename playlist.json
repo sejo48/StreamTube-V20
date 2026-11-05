@@ -1,5 +1,234 @@
 [
   {
+    "tmdbId": 2038,
+    "tmdbType": "tv",
+    "tituloOriginal": "Drake & Josh",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/kxo1T84BTJESTtIw80N984EbmWu.jpg",
+    "year": "2004",
+    "fechaEstreno": "2004-01-11",
+    "rating": "8.4",
+    "votos": 1990,
+    "runtime": "24min",
+    "runtimeMin": 24,
+    "genres": [
+      "Comedia"
+    ],
+    "generosTexto": "Comedia",
+    "clasificacion": "TV-G",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Drake Bell",
+        "personaje": "Drake Parker",
+        "foto": "https://image.tmdb.org/t/p/w185/6KxFiHrqiniS3oxV4NCz0sYNTuo.jpg"
+      },
+      {
+        "nombre": "Josh Peck",
+        "personaje": "Josh Nichols",
+        "foto": "https://image.tmdb.org/t/p/w185/qoapD8slSdb550o1JEoepv1SvT0.jpg"
+      },
+      {
+        "nombre": "Miranda Cosgrove",
+        "personaje": "Megan Parker",
+        "foto": "https://image.tmdb.org/t/p/w185/qIGeoyXEVu1LxTH34TWx1YSHyQr.jpg"
+      },
+      {
+        "nombre": "Jonathan Goldstein",
+        "personaje": "Walter Nichols",
+        "foto": "https://image.tmdb.org/t/p/w185/uH4QejDcayoFYVVWkLddDCbP8xo.jpg"
+      },
+      {
+        "nombre": "Nancy Sullivan",
+        "personaje": "Audrey Parker-Nichols",
+        "foto": "https://image.tmdb.org/t/p/w185/uATPtYUGfFAMstjVNjQm37n5obG.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Schneider's Bakery, Nickelodeon Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "sibling relationship, family, blended family",
+    "similares": [
+      {
+        "titulo": "Even Stevens",
+        "poster": "https://image.tmdb.org/t/p/w342/fkGktJb1v7qaVWBIJTVedN7v6Kq.jpg",
+        "year": "2000",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Madres forzosas",
+        "poster": "https://image.tmdb.org/t/p/w342/hNaKGIvHm1hEpHQHYQ3VGvCG1Ap.jpg",
+        "year": "2016",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Finales felices",
+        "poster": "https://image.tmdb.org/t/p/w342/pPzKQqwISw7YekGQbm0lLhoTYhG.jpg",
+        "year": "2011",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Half & Half",
+        "poster": "https://image.tmdb.org/t/p/w342/8TVku3ieyStr4mJihUZal2gay9I.jpg",
+        "year": "2002",
+        "rating": "8.3"
+      },
+      {
+        "titulo": "iCarly",
+        "poster": "https://image.tmdb.org/t/p/w342/ny0vxdc2733gQVpXvXNds9M9Kpo.jpg",
+        "year": "2007",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Modern Family",
+        "poster": "https://image.tmdb.org/t/p/w342/gabjqvbqXsg4KL5JaBoPKPipiys.jpg",
+        "year": "2009",
+        "rating": "7.9"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Dan Schneider"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 57,
+    "temporadasTmdb": [
+      {
+        "air_date": "2004-01-11",
+        "episode_count": 6,
+        "id": 6076,
+        "name": "Temporada 1",
+        "overview": "La primera temporada de la serie de televisión, Drake y Josh, emitida en Nickelodeon se estrenó el 11 de enero de 2004 en Estados Unidos, el 8 de julio en España y el el 3 de diciembre de 2004 del mismo año en Latinoamérica.",
+        "poster_path": "/vBYAGdP2Dq7QRe01cAvieVN0ylR.jpg",
+        "season_number": 1,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "2004-03-14",
+        "episode_count": 14,
+        "id": 6077,
+        "name": "Temporada 2",
+        "overview": "La segunda temporada de la serie de televisión Drake y Josh, se emitió por la cadena Nickelodeon estrenándose el 14 de marzo de 2004 en Estados Unidos. El 17 de diciembre de 2004 fue el estreno en Latinoamérica y en España, la temporada se estrenó el 20 de agosto de 2004.",
+        "poster_path": "/aPZhebeXX7NK949GRjl1xuEahjh.jpg",
+        "season_number": 2,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "2005-04-02",
+        "episode_count": 17,
+        "id": 6078,
+        "name": "Temporada 3",
+        "overview": "La tercera temporada de la serie de televisión, Drake y Josh, emitida en Nickelodeon fue estrenada el 2 de abril de 2005 en Estados Unidos, el 3 de octubre de 2005 fue el estreno en Latinoamérica y en España, la temporada se estrenó el 22 de julio de 2005.",
+        "poster_path": "/AcVPR6PmwJgWVi3oOSW1Fg7t3Uz.jpg",
+        "season_number": 3,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "2006-09-24",
+        "episode_count": 20,
+        "id": 6079,
+        "name": "Temporada 4",
+        "overview": "La cuarta y última temporada de la serie de televisión, Drake y Josh, emitida en Nickelodeon se estrenó el 24 de septiembre de 2006 en Estados Unidos, el 2 de diciembre de 2006 en Latinoamérica y en España y el 4 de enero de 2007.",
+        "poster_path": "/udCvGctktHvvf8w51XyTPfcmzDa.jpg",
+        "season_number": 4,
+        "vote_average": 7
+      }
+    ],
+    "tituloSerie": "Drake y Josh",
+    "descripcion": "Sin haber cruzado antes una palabra en el instituto, Drake y Josh se convierten en hermanastros de la noche a la mañana. Drake Parker toca la guitarra en su propia banda, llamada \"Drake y sus Notas Rockeras\". Es guapo y tiene éxito con las chicas, incluso sale a veces con dos chicas a la vez, y no le importa sacar malas notas, como le sucede a su hermanastro, Josh, un buen estudiante al que no le gustan los deportes, adora los trucos de magia, la cocina y los videojuegos. A Josh no le va bien con las chicas, y es fan de Oprah Winfrey. Viven con la madre de Drake y el padre de Josh y Megan, la hermana de Drake, a quien le gusta hacer bromas pesadas a los chicos. Todos forman una familia, con sus diferencias y sus distintas formas de ser.",
+    "imagen": "https://image.tmdb.org/t/p/w780/udCvGctktHvvf8w51XyTPfcmzDa.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Ver Drake Josh 1x1 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1-DU5CEMornW4Wkq3OOZcyLeOE_RKBUF1/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 1x2 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1g59ros3Do9XtnQiHdR14RNflfrqPdzu6/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 1x3 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1b7xHrEp-pM3OazNEIqyuJc5r9Ik7AbRC/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 1x4 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1auzqoGvBl4OgXeMt0CGRbefasyrsnJo1/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 1x5 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1saQKyrSAGn_s2VEcMjE1UQzfffbZS-UT/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 1x6 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1h7Kd3z6Xjv_PvDhGK13tYIMrJzFUk36J/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x1 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/18WqddQ6yxKFyZrBDylKxj7k64_T--BC0/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x2 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1DPwqYDXz_mHyjJXpfOQJpNyqvW-MAtdY/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x3 720p Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/18py7kr7i4mQb2oPijJo2T5u3zoeoTEAH/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x4 720p Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1ShPDVfGEaevMkXYx7WfcUQ8aN2mveNrV/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x5 720p Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1LHD6Za4s-jM_7DHBiwBOjidHhZ6txWYp/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x6 720p Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1nAQQrU45w9T_9ljTsbi7w8cQLmQbKFi3/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x7 720p Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1Kspcjmj9BwkaZjaMv24v5upataIR99Rf/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x9 720p Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1gUlo0l3sSxv1QqoNWpP1wLSiibRNHGtQ/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x10 720p Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/170-yY6vLcpVJZ0v7GsJuq9TWWhvY0UsG/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x11 720p Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1M6jKSiXA_ng2LKezmiYI10YPe1Oc36Zx/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x12 720p Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1Dj59jOnrpa3J-0J_9TEgST8Knivsg-df/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x13 720p Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1kmkZ0qohAN3pXpdmsWws5miHBLtZvstX/view"
+          },
+          {
+            "tituloEpisodio": "Ver Drake Josh 2x14 720p Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1nmL8TIV_whRKjFuiY3UxxEJYcAIATiEr/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 1712,
     "tmdbType": "tv",
     "tituloOriginal": "The Munsters",
@@ -5835,7 +6064,7 @@
     ],
     "tituloSerie": "Tierra de gigantes",
     "descripcion": "Serie de TV (1968–1970). 51 episodios. Serie creada por Irwin Allen con el sello de \"Lost in Space\", que narra las aventuras de la tripulación y pasajeros de una nave de transporte suborbital, que es accidentalmente transportada hacia un mundo en el cual toda forma de vida tiene enormes proporciones en comparación de los personajes principales. El aspecto de estos gigantes es enteramente humano, pero su sociedad es completamente dictatorial.",
-    "imagen": "https://image.tmdb.org/t/p/w780/ljbqDwgOoqYvQ6WRnuLr8QleEkH.jpg",
+    "imagen": "https://image.tmdb.org/t/p/original/5eefvjiXZUZ0K75eBtO8g3x4hhG.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
