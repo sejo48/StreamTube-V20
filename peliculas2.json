@@ -1,5 +1,282 @@
 [
   {
+    "titulo": "Los hombres lobo",
+    "tituloOriginal": "Loups-Garous",
+    "descripcion": "Tras descubrir un misterioso juego de naipes, una familia viaja en el tiempo a un pueblo medieval donde deben enfrentarse a peligrosos hombres lobo cada noche.",
+    "imagen": "https://image.tmdb.org/t/p/w780/pfSiYANe9z4Xot8DBYDjEFxr1PS.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/pFLs2qFhfp7k2zgT69fTkcl0uHF.jpg",
+    "urlDrive": "",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2024",
+    "fechaEstreno": "2024-10-22",
+    "rating": "5.6",
+    "votos": 578,
+    "runtime": "1h 35min",
+    "genres": [
+      "Aventura",
+      "Comedia",
+      "Fantasía",
+      "Acción",
+      "Familia"
+    ],
+    "generosTexto": "Aventura, Comedia, Fantasía, Acción, Familia",
+    "clasificacion": "12",
+    "tagline": "",
+    "director": "François Uzan",
+    "guionistas": "François Uzan, Céleste Balin",
+    "reparto": [
+      {
+        "nombre": "Franck Dubosc",
+        "personaje": "Jérôme Vassier",
+        "foto": "https://image.tmdb.org/t/p/w185/2sCXXZYrWSO1nGxuyVBGETj2wdE.jpg"
+      },
+      {
+        "nombre": "Jean Reno",
+        "personaje": "Gilbert Vassier",
+        "foto": "https://image.tmdb.org/t/p/w185/mw0EZJYz3kiFq9fNxsML773gotF.jpg"
+      },
+      {
+        "nombre": "Suzanne Clément",
+        "personaje": "Marie",
+        "foto": "https://image.tmdb.org/t/p/w185/e0mxmpWuRxT2PfIi8BAPvLU2P2t.jpg"
+      },
+      {
+        "nombre": "Lisa Do Couto Texeira",
+        "personaje": "Clara",
+        "foto": "https://image.tmdb.org/t/p/w185/sIKpFKM5avOXsNEyNzZj2DXiH3C.jpg"
+      },
+      {
+        "nombre": "Raphael Romand",
+        "personaje": "Théo",
+        "foto": "https://image.tmdb.org/t/p/w185/epc839G9YV3koVEjiZHzDw22Izd.jpg"
+      },
+      {
+        "nombre": "Alizée Caugnies",
+        "personaje": "Louise",
+        "foto": "https://image.tmdb.org/t/p/w185/r93cDdZPbKB4QzLsijLucNImVc3.jpg"
+      },
+      {
+        "nombre": "Jonathan Lambert",
+        "personaje": "Childéric Vassier",
+        "foto": "https://image.tmdb.org/t/p/w185/scQLnfutvoFLJ20qNklE2nW7ATA.jpg"
+      },
+      {
+        "nombre": "Grégory Fitoussi",
+        "personaje": "Le Capitaine",
+        "foto": "https://image.tmdb.org/t/p/w185/2jK6RptdXhIzi4HWufj1p4oPlCw.jpg"
+      },
+      {
+        "nombre": "Bruno Gouery",
+        "personaje": "Piero",
+        "foto": "https://image.tmdb.org/t/p/w185/w0JGP6mtph0PAaRmXagD9PcpQ5M.jpg"
+      },
+      {
+        "nombre": "Jaroslav Vundrle",
+        "personaje": "Blacksmith",
+        "foto": "https://image.tmdb.org/t/p/w185/aYjF9PGYniixkvav2bzlUHEg8qD.jpg"
+      },
+      {
+        "nombre": "Ophir Raray",
+        "personaje": "Werewolve Pere Esteve",
+        "foto": "https://image.tmdb.org/t/p/w185/zYLvGoydAsUMf4SEvG61yGElEh.jpg"
+      },
+      {
+        "nombre": "Victoire Dauxerre",
+        "personaje": "La Boulangère",
+        "foto": "https://image.tmdb.org/t/p/w185/kPGMwMXJXweTrs33s0gMTLgxoKg.jpg"
+      }
+    ],
+    "pais": "France",
+    "idioma": "fr",
+    "productoras": "Radar Films, Mediawan, Asmodee",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "magic, time travel, board game, werewolf, based on card game, amused, exhilarated",
+    "similares": [
+      {
+        "titulo": "El portal del guerrero",
+        "poster": "https://image.tmdb.org/t/p/w342/9cmOtEjmpwlyriZ2I5KVYraoRPv.jpg",
+        "year": "2016",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Una pandilla alucinante",
+        "poster": "https://image.tmdb.org/t/p/w342/lrQTy2WfoqoRPNGuVD4Blyjv60x.jpg",
+        "year": "1987",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Shorts: La piedra mágica",
+        "poster": "https://image.tmdb.org/t/p/w342/anPRfi0HlrSiJPv5ArzLtE65yEE.jpg",
+        "year": "2009",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Jumanji: Bienvenidos a la jungla",
+        "poster": "https://image.tmdb.org/t/p/w342/1uQaSgtHyTN3r2fecL0mSs6geQO.jpg",
+        "year": "2017",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "¡Menuda momia!",
+        "poster": "https://image.tmdb.org/t/p/w342/fwjDnIk9YgY76j5rX6EeobBPkUh.jpg",
+        "year": "2021",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Lady Halcón",
+        "poster": "https://image.tmdb.org/t/p/w342/4pzFDJCNuLweXkW2i0occEHnaB7.jpg",
+        "year": "1985",
+        "rating": "7.0"
+      }
+    ],
+    "tmdbId": 1091181,
+    "tmdbType": "movie",
+    "runtimeMin": 95,
+    "homepage": "https://www.netflix.com/es/title/81686180",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "No te muevas",
+    "tituloOriginal": "Don't Move",
+    "descripcion": "Una mujer destrozada topa en un bosque apartado con un asesino que le inyecta una droga paralizante. Mientras su cuerpo sucumbe, empieza su lucha por sobrevivir.",
+    "imagen": "https://image.tmdb.org/t/p/w780/icZSgPUdnUujp3clIoo9jQVTEY8.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/6Rjsm5khNaYa4Gnw4iHnGX2E34T.jpg",
+    "urlDrive": "",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2024",
+    "fechaEstreno": "2024-10-24",
+    "rating": "6.3",
+    "votos": 1089,
+    "runtime": "1h 32min",
+    "genres": [
+      "Terror",
+      "Suspense"
+    ],
+    "generosTexto": "Terror, Suspense",
+    "clasificacion": "16",
+    "tagline": "Puedes esconderte. Pero no puedes correr.",
+    "director": "Adam Schindler, Brian Netto",
+    "guionistas": "T.J. Cimfel, David White",
+    "reparto": [
+      {
+        "nombre": "Kelsey Asbille",
+        "personaje": "Iris",
+        "foto": "https://image.tmdb.org/t/p/w185/zOr1U00vGsPMsieAJIFyYVUw8wa.jpg"
+      },
+      {
+        "nombre": "Finn Wittrock",
+        "personaje": "Richard",
+        "foto": "https://image.tmdb.org/t/p/w185/gwGMGTmli0uBF7eAhhXePWhYNFJ.jpg"
+      },
+      {
+        "nombre": "Moray Treadwell",
+        "personaje": "Bill",
+        "foto": "https://image.tmdb.org/t/p/w185/hmaqML3iwGouEACUzjWDBJN6Sdz.jpg"
+      },
+      {
+        "nombre": "Daniel Francis",
+        "personaje": "Dontrell",
+        "foto": "https://image.tmdb.org/t/p/w185/ltLYFcQHcaS5wdxX085Lhn0vX5v.jpg"
+      },
+      {
+        "nombre": "Denis Kostadinov",
+        "personaje": "Mateo",
+        "foto": "https://image.tmdb.org/t/p/w185/v6hhJWRVK83IVUcNTb7cVST7LbX.jpg"
+      },
+      {
+        "nombre": "Kate Nichols",
+        "personaje": "Young Mom",
+        "foto": "https://image.tmdb.org/t/p/w185/l3xIf1uuk0ziE81NM87BVh8UyVv.jpg"
+      },
+      {
+        "nombre": "Skye Little Wing Dimova-Saw",
+        "personaje": "Boy",
+        "foto": "https://image.tmdb.org/t/p/w185/52LMUaDKTXqAe9TWLsMBGzoIWdN.jpg"
+      },
+      {
+        "nombre": "Dylan Beam",
+        "personaje": "Daughter (voice) (uncredited)",
+        "foto": "https://image.tmdb.org/t/p/w185/udzwdodFTx4dvfwoyUX4sU5XdNL.jpg"
+      },
+      {
+        "nombre": "Sarah Sarandos",
+        "personaje": "Selfie Girl (uncredited)",
+        "foto": "https://image.tmdb.org/t/p/w185/q1uh7VNgiTcC71a2IaSxRXgKuMq.jpg"
+      },
+      {
+        "nombre": "Zainab Azizi",
+        "personaje": "Selfie Girl (uncredited)",
+        "foto": "https://image.tmdb.org/t/p/w185/yBU2NGSBDO1DoMYN66JSBXnWFdT.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Capstone Studios, Hammerstone Studios, Raimi Productions",
+    "presupuesto": 0,
+    "recaudacion": 88489,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "paralysis, absurd, disheartening",
+    "similares": [
+      {
+        "titulo": "Regalo maldito",
+        "poster": "https://image.tmdb.org/t/p/w342/fiiQCt0EQhu9ZOLxu6Al6x8akTH.jpg",
+        "year": "2025",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Hunted",
+        "poster": "https://image.tmdb.org/t/p/w342/yfnm8mzNaa8SmCZRWxFv2l8z8IK.jpg",
+        "year": "2021",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Extinción",
+        "poster": "https://image.tmdb.org/t/p/w342/ljo1ocj3rQP6X9lpuxDWsW47iWd.jpg",
+        "year": "2022",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Play Dead",
+        "poster": "https://image.tmdb.org/t/p/w342/5THjBLt4vE9lAnLODqXFf5qEwxa.jpg",
+        "year": "2025",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Succubus",
+        "poster": "https://image.tmdb.org/t/p/w342/7AfBMebJS8mEtSV5ymdxEPpgvXb.jpg",
+        "year": "2024",
+        "rating": "8.3"
+      },
+      {
+        "titulo": "Hellion, el ángel caído",
+        "poster": "https://image.tmdb.org/t/p/w342/pBTi4IDdoSQUERufXpDJewlAQVu.jpg",
+        "year": "2007",
+        "rating": "6.3"
+      }
+    ],
+    "tmdbId": 1063877,
+    "tmdbType": "movie",
+    "runtimeMin": 92,
+    "homepage": "https://www.netflix.com/es/title/81767564",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
     "titulo": "El árbol muy muy lejano",
     "tituloOriginal": "The Magic Faraway Tree",
     "descripcion": "Polly, Tim, y sus tres hijos son una familia moderna que se ve obligada a mudarse a la remota campiña inglesa. Poco después de su llegada, los niños descubren un árbol mágico y a sus extraordinarios y excéntricos habitantes.",
