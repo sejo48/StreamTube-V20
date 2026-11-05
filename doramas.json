@@ -154,7 +154,25 @@
     "urlDrive": "",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Ver Extraordinary Attorney Minami 2026 Online -  (01)",
+            "urlDrive": "https://drive.google.com/file/d/1g3Kaedi6WZzhioNtDhUUG-tSlOqlwQle/view"
+          },
+          {
+            "tituloEpisodio": "Ver Extraordinary Attorney Minami 2026 Online -  (02)",
+            "urlDrive": "https://drive.google.com/file/d/1CNW2qGI1tg-qJNOfEiQmexcyn6iy57FQ/view"
+          },
+          {
+            "tituloEpisodio": "Ver Extraordinary Attorney Minami 2026 Online - (03)",
+            "urlDrive": "https://drive.google.com/file/d/11GGHOiK_WnVFVfZO7jS1FKdiWCxKQiUt/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 332713,
