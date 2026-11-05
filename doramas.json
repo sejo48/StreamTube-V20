@@ -1,5 +1,141 @@
 [
   {
+    "tmdbId": 279246,
+    "tmdbType": "tv",
+    "tituloOriginal": "재혼 황후",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/1ptukf8gx19U1HcBv3aRzzlXuyJ.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-11-03",
+    "rating": "8.3",
+    "votos": 6,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Drama",
+      "Sci-Fi & Fantasy"
+    ],
+    "generosTexto": "Drama, Sci-Fi & Fantasy",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "조수원",
+    "guionistas": "Hyeon Choong-yeol, 여지나",
+    "reparto": [
+      {
+        "nombre": "Shin Min-a",
+        "personaje": "Navier Ellie Trovi",
+        "foto": "https://image.tmdb.org/t/p/w185/6CjxjYvZBuvbAQTcuoPb8EeVrUI.jpg"
+      },
+      {
+        "nombre": "Ju Ji-hoon",
+        "personaje": "Sovieshu Vict",
+        "foto": "https://image.tmdb.org/t/p/w185/7PYfUrBBXhYv5PIsTalJhjbRteg.jpg"
+      },
+      {
+        "nombre": "이종석",
+        "personaje": "Heinrey Alles Lazlo",
+        "foto": "https://image.tmdb.org/t/p/w185/eW73DbmKQrqb6xDC52oMbVehw6G.jpg"
+      },
+      {
+        "nombre": "이세영",
+        "personaje": "Rashta Isqua",
+        "foto": "https://image.tmdb.org/t/p/w185/58jlu0lSO0rWEzsWPjGLoEI0NWr.jpg"
+      }
+    ],
+    "pais": "South Korea",
+    "idioma": "ko",
+    "productoras": "Studio N",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "adultery, emperor, arranged marriage, forbidden love, kingdom, imperial court, revenge, romance, divorce, social status, palace intrigue, based on web novel",
+    "similares": [
+      {
+        "titulo": "Amantes de la Luna Escarlata: Corazón Ryeo",
+        "poster": "https://image.tmdb.org/t/p/w342/sTW7wLyD95JRCyUEdTfxCWQWsvd.jpg",
+        "year": "2016",
+        "rating": "8.5"
+      },
+      {
+        "titulo": "El Rey, eterno monarca",
+        "poster": "https://image.tmdb.org/t/p/w342/xKlN63j8m5fGghHCejxiXR4T2Q8.jpg",
+        "year": "2020",
+        "rating": "8.2"
+      },
+      {
+        "titulo": "Outlander",
+        "poster": "https://image.tmdb.org/t/p/w342/wwxKbrMlwMrC06B7aCIkDy3SAo6.jpg",
+        "year": "2014",
+        "rating": "8.2"
+      },
+      {
+        "titulo": "El escándalo",
+        "poster": "https://image.tmdb.org/t/p/w342/1S2RIku5ECGN7USdE21Qw6yGuEr.jpg",
+        "year": "2026",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "El caballero de los Siete Reinos",
+        "poster": "https://image.tmdb.org/t/p/w342/pKWuCnx1DAjLFamTdYVRfK0cck6.jpg",
+        "year": "2026",
+        "rating": "8.4"
+      },
+      {
+        "titulo": "Sexo-Vida",
+        "poster": "https://image.tmdb.org/t/p/w342/7xKl8dPErKtu3wY41dWPnF2IhmC.jpg",
+        "year": "2021",
+        "rating": "7.1"
+      }
+    ],
+    "homepage": "https://www.disneyplus.com/browse/entity-b02d61cd-3aab-4412-b33d-3512712a91f0",
+    "creadores": [],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 10,
+    "temporadasTmdb": [
+      {
+        "air_date": "2026-11-03",
+        "episode_count": 10,
+        "id": 432651,
+        "name": "Temporada 1",
+        "overview": "La querida emperatriz Navier del Imperio Oriental ha construido y gobernado una tierra próspera junto a su esposo, el emperador Sovieshu. Pero un día todo se viene abajo cuando el emperador lleva a palacio a Rashta, una esclava fugitiva, con la intención de convertirla en su amante. Aunque la amenaza de un futuro hecho añicos se cierne sobre Navier, esta no se deja llevar por las emociones. Cuando el príncipe Heinrey, un líder rival del Reino Occidental, muestra su interés por ella, Navier tomará una decisión trascendental y reescribirá su destino.",
+        "poster_path": "/7cS90VaWOqQhgmsT0FYXYmIMcRp.jpg",
+        "season_number": 1,
+        "vote_average": 9.1
+      }
+    ],
+    "titulo": "La emperatriz divorciada",
+    "descripcion": "Navier, la querida emperatriz del Imperio Oriental, gobierna junto al emperador Sovieshu. Pero cuando Sovieshu se enamora de una esclava fugitiva y pide el divorcio, Navier accede con la condición de poder volver a casarse con su rival, el príncipe Heinrey del Reino Occidental.",
+    "imagen": "https://image.tmdb.org/t/p/w780/7cS90VaWOqQhgmsT0FYXYmIMcRp.jpg",
+    "tituloSerie": "La emperatriz divorciada",
+    "image": "https://image.tmdb.org/t/p/w780/7cS90VaWOqQhgmsT0FYXYmIMcRp.jpg",
+    "urlDrive": "",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "The Remarried Empress Cap 2 - Doramashoy.com",
+            "urlDrive": "https://drive.google.com/file/d/1EMXDxVRkGx2v_jTPj0IeD9h4G26ufQrv/view"
+          },
+          {
+            "tituloEpisodio": "The Remarried Empress Cap 3 - Doramashoy.com",
+            "urlDrive": "https://drive.google.com/file/d/1aYDP0EBoPaZXwdaITibLHMRND8b4QeqR/view"
+          },
+          {
+            "tituloEpisodio": "The Remarried Empress Cap 4 - Doramashoy.com",
+            "urlDrive": "https://drive.google.com/file/d/1oIvZsQdft1rkEyrBfnNHCTXm2aQKDuYj/view"
+          },
+          {
+            "tituloEpisodio": "The.Remarried.Empress Cap 1 - Doramashoy.com",
+            "urlDrive": "https://drive.google.com/file/d/1jv6YraPHYQCJyhTVfMNuiN3sxVMkIvSw/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 293610,
     "tmdbType": "tv",
     "tituloOriginal": "닥터X: 하얀 마피아의 시대",
