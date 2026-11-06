@@ -1,5 +1,225 @@
 [
   {
+    "tmdbId": 1835,
+    "tmdbType": "tv",
+    "tituloOriginal": "Kenan & Kel",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/aAHC2D9XaLcFtJ5cWPf1BYARuJn.jpg",
+    "year": "1996",
+    "fechaEstreno": "1996-08-17",
+    "rating": "8.1",
+    "votos": 413,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "Familia",
+      "Comedia",
+      "Kids"
+    ],
+    "generosTexto": "Familia, Comedia, Kids",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "Nick Cannon",
+    "reparto": [
+      {
+        "nombre": "Kenan Thompson",
+        "personaje": "Kenan Rockmore",
+        "foto": "https://image.tmdb.org/t/p/w185/vHPhDGc1om91TzoIQ4zMscpNmxF.jpg"
+      },
+      {
+        "nombre": "Kel Mitchell",
+        "personaje": "Kel Kimble",
+        "foto": "https://image.tmdb.org/t/p/w185/LKNYjjNtq5EbntZUKQWUHcTVji.jpg"
+      },
+      {
+        "nombre": "Vanessa Baden Kelly",
+        "personaje": "Kyra Rockmore",
+        "foto": "https://image.tmdb.org/t/p/w185/qywwmAIhNPKJnmwM4qVDjFnmCca.jpg"
+      },
+      {
+        "nombre": "Ken Foree",
+        "personaje": "Roger Rockmore",
+        "foto": "https://image.tmdb.org/t/p/w185/5u9Ou7RHx1vDe8SQFhX3Euxe2Ae.jpg"
+      },
+      {
+        "nombre": "Teal Marchande",
+        "personaje": "Sheryl Rockmore",
+        "foto": "https://image.tmdb.org/t/p/w185/jzhFkfzN2Vs4LS0DxjWH9JKfVi7.jpg"
+      },
+      {
+        "nombre": "Dan Frischman",
+        "personaje": "Christopher \"Chris\" Potter",
+        "foto": "https://image.tmdb.org/t/p/w185/hyxrFqoRRiOHbHvhPHEDZ8l5sjS.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Tollin/Robbins Productions, Nickelodeon Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "teen comedy, sitcom, hilarious",
+    "similares": [
+      {
+        "titulo": "Saved by the Bell: The New Class",
+        "poster": "https://image.tmdb.org/t/p/w342/swcPz0DvX09H3FEcNHhWhZp4fRN.jpg",
+        "year": "1993",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Lizzie McGuire",
+        "poster": "https://image.tmdb.org/t/p/w342/1ZOelP1XNP8eCwkhJvwRyVU9Ymd.jpg",
+        "year": "2001",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Coop y Cami",
+        "poster": "https://image.tmdb.org/t/p/w342/gZkJkJt3J2PISpK9HzR4upax54P.jpg",
+        "year": "2018",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Lab Rats",
+        "poster": "https://image.tmdb.org/t/p/w342/lcQMvn9ZptPd3dxn0a17viRfi7Y.jpg",
+        "year": "2012",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "The Weekenders",
+        "poster": "https://image.tmdb.org/t/p/w342/lMwynujZLqQw0Nlw9S48rYPpDtS.jpg",
+        "year": "2000",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Talking Tom y sus amigos",
+        "poster": "https://image.tmdb.org/t/p/w342/u6We7ht3z8bSIaUF8P7DEwopOPi.jpg",
+        "year": "2014",
+        "rating": "7.0"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Kim Bass"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 63,
+    "temporadasTmdb": [
+      {
+        "air_date": "1996-08-17",
+        "episode_count": 14,
+        "id": 5230,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/biUJ4rUORo0ZQKANERVLitGC6ep.jpg",
+        "season_number": 1,
+        "vote_average": 7
+      },
+      {
+        "air_date": "1997-09-06",
+        "episode_count": 13,
+        "id": 5232,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/enymPZWDfh2MOiJlJQaFhB4OncD.jpg",
+        "season_number": 2,
+        "vote_average": 6.6
+      },
+      {
+        "air_date": "1998-10-10",
+        "episode_count": 22,
+        "id": 5231,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/kCohQkR4yAW88N2QJRO1D2wjObo.jpg",
+        "season_number": 3,
+        "vote_average": 6.6
+      },
+      {
+        "air_date": "1999-07-31",
+        "episode_count": 14,
+        "id": 5229,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/fqbl889anMAsfVXYlOvmdVYupdo.jpg",
+        "season_number": 4,
+        "vote_average": 6.7
+      }
+    ],
+    "tituloSerie": "Kenan & Kel",
+    "descripcion": "Ambientada en Chicago, el programa sigue las desventuras infantiles de dos amigos de la escuela secundaria que siempre están planeando y soñando. Kenan, que trabaja en una tienda de comestibles, constantemente diseña planes locos para hacerse rico, mientras que Kel, su amigo amante de los refrescos de naranja, siempre es arrastrado a pesar de su historial de estropear las cosas.",
+    "imagen": "https://image.tmdb.org/t/p/w780/ftRkgMhF1CofVSLMeonh9Hjz7a4.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x1 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1Sg36LWvxMMlCJUpAEkpPJVr7W0441-Zo/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x3 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1R9PlgB7yRpTmBCwEg4_4-xdWB94f3Ma6/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x4 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1ZycXwP1aniJP5Ntg5lkOvitwl3IJqser/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x5 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1ahc_0CSskzRgChYp547kwI3G8fPq7wb8/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x6 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1s3LTgeCWtdp7S6j0xC1j0SNR2z-vEQe3/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x7 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1lmiVMq4Vtdv5gvY3KU142DuQrTHT3uVV/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x8 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1JDSq1b1qahiAYGl5KdV41bpl8h8oCKUo/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x9 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1dDsxjq330Pjk7yGgx5IWYSJzwr2hgwYJ/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x10 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1qoZpEk8aU_HkJd37bZLE1tkkmjhqpYr7/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x11 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1qznQ7siyYdgCNJzGZT1X4sfk6SwEaqMU/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x12 Online Gratis SeriesRetro.com (1)",
+            "urlDrive": "https://drive.google.com/file/d/1UggI7dTnOCl_W_EUkQPxYYuXhcyu3dBh/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x12 Online Gratis SeriesRetro.com (2)",
+            "urlDrive": "https://drive.google.com/file/d/1uSPdt_c1WW1utG8JSMsMCZ5MtOPXPT05/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x12 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1-xknz_WXdXdr9nPrY3DH_NbBLaTnBWoG/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x13 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1FV6VvoZQj_zxhXmkAvWlVQST2OwuMyfV/view"
+          },
+          {
+            "tituloEpisodio": "Ver Kenan Kel 1x14 Online Gratis SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1PbXCXKrOp69lOXJlH4cVvF_DciQ4JBCJ/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 1823,
     "tmdbType": "tv",
     "tituloOriginal": "The Love Boat",
