@@ -1,5 +1,483 @@
 [
   {
+    "tmdbId": 2352,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Nanny",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/hCUOckGQ4WnYRoCPFSTdxxErnr7.jpg",
+    "year": "1993",
+    "fechaEstreno": "1993-11-03",
+    "rating": "8.0",
+    "votos": 1360,
+    "runtime": "24min",
+    "runtimeMin": 24,
+    "genres": [
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Comedia, Familia",
+    "clasificacion": "TV-PG",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Fran Drescher",
+        "personaje": "Fran Fine",
+        "foto": "https://image.tmdb.org/t/p/w185/6IQlygYDyxuIRD5j9lPluknYoJp.jpg"
+      },
+      {
+        "nombre": "Charles Shaughnessy",
+        "personaje": "Maxwell Sheffield",
+        "foto": "https://image.tmdb.org/t/p/w185/dTgLchpZE68noJYkgKa43QijGnL.jpg"
+      },
+      {
+        "nombre": "Daniel Davis",
+        "personaje": "Niles",
+        "foto": "https://image.tmdb.org/t/p/w185/tzUjClFGhYDcTb2hYc8uk5oYfSs.jpg"
+      },
+      {
+        "nombre": "Lauren Lane",
+        "personaje": "C.C. Babcock",
+        "foto": "https://image.tmdb.org/t/p/w185/8qgllyegMpr2msgu2sdgz8boOcb.jpg"
+      },
+      {
+        "nombre": "Nicholle Tom",
+        "personaje": "Margaret Sheffield",
+        "foto": "https://image.tmdb.org/t/p/w185/wt0yMc6HE4BluslbJ7aHbAoAr3Y.jpg"
+      },
+      {
+        "nombre": "Benjamin Salisbury",
+        "personaje": "Brighton Sheffield",
+        "foto": "https://image.tmdb.org/t/p/w185/dZPHtFfha9DoxiGaQ34hVTzD0It.jpg"
+      },
+      {
+        "nombre": "Madeline Zima",
+        "personaje": "Grace Sheffield",
+        "foto": "https://image.tmdb.org/t/p/w185/6hmUs5Q1EETapn32yKNt3c3i1sn.jpg"
+      },
+      {
+        "nombre": "Renée Taylor",
+        "personaje": "Sylvia Fine",
+        "foto": "https://image.tmdb.org/t/p/w185/XSPvLgklOxoTQZNso2sEsawQdU.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "TriStar Television, Sternin & Fraser Ink, Highschool Sweethearts, Columbia TriStar Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "new york city, babysitter, family relationships, female protagonist, employer employee relationship, sitcom, domestic worker",
+    "similares": [
+      {
+        "titulo": "Los Jeffersons",
+        "poster": "https://image.tmdb.org/t/p/w342/iFjIaWr9qDKMLnnh8tHwO6Tzp6D.jpg",
+        "year": "1975",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Family Affair",
+        "poster": "https://image.tmdb.org/t/p/w342/ox29HlZkjVPAihnIr1tIL9fWcp9.jpg",
+        "year": "1966",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "La familia Hogan",
+        "poster": "https://image.tmdb.org/t/p/w342/2deFhQTN01DGG2ys9tNmRRB4SsY.jpg",
+        "year": "1986",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "¿Quién es el jefe?",
+        "poster": "https://image.tmdb.org/t/p/w342/g2DGlUraEwKxrsKtbtCYqUSz7zy.jpg",
+        "year": "1984",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Gimme a Break!",
+        "poster": "https://image.tmdb.org/t/p/w342/uiTirUoEoBAJeOtfh2xFpaV3io4.jpg",
+        "year": "1981",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "The Honeymooners",
+        "poster": "https://image.tmdb.org/t/p/w342/vBXD45yVIjvucXAwes8vu7SqgSy.jpg",
+        "year": "1955",
+        "rating": "7.4"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Fran Drescher",
+      "Peter Marc Jacobson"
+    ],
+    "numeroTemporadas": 6,
+    "numeroEpisodios": 144,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 3,
+        "id": 7333,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/69G4UmJyF5acE6Uh9GtkYkiAEEd.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1993-11-03",
+        "episode_count": 22,
+        "id": 7328,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/lXe3MmJ71uvdeEkepnyn6QaT4T5.jpg",
+        "season_number": 1,
+        "vote_average": 6.9
+      },
+      {
+        "air_date": "1994-09-12",
+        "episode_count": 26,
+        "id": 7327,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/kX7tWyMUbYPooLrBEHK1Kh6WABB.jpg",
+        "season_number": 2,
+        "vote_average": 6.4
+      },
+      {
+        "air_date": "1995-09-11",
+        "episode_count": 26,
+        "id": 7330,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/tvW70xkq6d3xyixp2IeisjSsSjJ.jpg",
+        "season_number": 3,
+        "vote_average": 6.3
+      },
+      {
+        "air_date": "1996-09-18",
+        "episode_count": 26,
+        "id": 7329,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/AoEV6qurj24gf2KYMOfzH9kceKV.jpg",
+        "season_number": 4,
+        "vote_average": 6
+      },
+      {
+        "air_date": "1997-10-01",
+        "episode_count": 23,
+        "id": 7331,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/nnVHqypMeoMeuw5wpyTTPXNQiOp.jpg",
+        "season_number": 5,
+        "vote_average": 6.1
+      },
+      {
+        "air_date": "1998-09-30",
+        "episode_count": 21,
+        "id": 7332,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/Aw66zMWctWNT1fZQ3OXLKyABE9t.jpg",
+        "season_number": 6,
+        "vote_average": 6.5
+      }
+    ],
+    "tituloSerie": "La niñera",
+    "descripcion": "Fran Fine (Fran Drescher), una joven judía del barrio de Queens de Nueva York, al ser despedida de la tienda donde trabajaba junto a su ex novio, encuentra un empleo como canguro en casa de Maxwell Sheffield (Charles Shaughnessy), un millonario productor de Broadway que vive solo con sus tres hijos. Fran vive una vida llena de sorpresas en la que trata de enamorar al padre de los niños que cuida.",
+    "imagen": "https://image.tmdb.org/t/p/w780/cCZcRBwslgiC0xoZ8CqEuJTymiX.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "La Niñera 1x1 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1eMEn2GseSajq6Z7I24jpA9O_Ql1iMMlD/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x2 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/12ZAIgelAbMetkKg6NVUWGd97Ri54b317/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x3 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/15mLuSLM0TMI2xMOhe3UOjmwqAehsDfOO/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x4 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1ANTaNq0u6k5PI9J0STGJULbYEMjoTf6J/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x5 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/12X866wpIfjHuonuMq2WslFA_fahOZ9_8/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x6 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1oXcxSTbln19tAYvtP51144-ClVAvuk_1/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x7 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1uUOydXs5-GDgZOOrfpR5wm_ICvZsZIx2/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x8 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1JR6XW0I1COB_Pvq1M7EdltkPSyNC-ijI/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x9 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1k2JR646gwUuaU5t_Kj7lPktognDczORp/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x10 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1dDQuYSi1VPMGsqtkzBotTOCWXjdw2vXX/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x11 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1Z3lF27PZ_ifwDGtUW6qv9pJ28-dyowPg/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x12 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1z_fVlzuy5YzVMNNboyrRDergLErspJ0N/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x13 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1LMyqqRZ0Hk-eRYbmeY_GWzy-k9hNQ_0G/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x14 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1jj4iJWjHMwX31QkImANZqj1d3rM8O10g/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x15 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1NruI9Ip4_t0ARWk22tJe-IWCVoIrjuRX/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x16 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1uq76kEouWJvAhnMF1pSR8VfMP8Uie0Nd/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x17 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1rpZ2f4zCRqaP0Y9_538uZwdgK8QzOi1n/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x18 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1Rlm_Oa1slLJpnQpV5Iu-oU1RWFhlw5Dn/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x20 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1ZGX7ERFq_e5l2WE4R1n9Xl8k0PbI-oJV/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x21 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1OajCAi9JmcTD4RqvhhPabKGEFh5KKR1i/view"
+          },
+          {
+            "tituloEpisodio": "La Niñera 1x22 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1WM0V8kHJ38Q8Z2soy_pIAoSBqOUWVYCE/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tmdbId": 1892,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Fresh Prince of Bel-Air",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/uyB27Tx3KtczuSo4tDfmiXhfuCp.jpg",
+    "year": "1990",
+    "fechaEstreno": "1990-09-10",
+    "rating": "7.9",
+    "votos": 2547,
+    "runtime": "23min",
+    "runtimeMin": 23,
+    "genres": [
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Comedia, Familia",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "Jeff Pollack",
+    "reparto": [
+      {
+        "nombre": "Will Smith",
+        "personaje": "Will Smith",
+        "foto": "https://image.tmdb.org/t/p/w185/8TlKqbXYgHmmaEoPBJ7djJ8Rxxa.jpg"
+      },
+      {
+        "nombre": "James Avery",
+        "personaje": "Philip Banks",
+        "foto": "https://image.tmdb.org/t/p/w185/kUKMAp8y5s4ZFNKERs9zVFckSJ6.jpg"
+      },
+      {
+        "nombre": "Daphne Maxwell Reid",
+        "personaje": "Vivian Banks",
+        "foto": "https://image.tmdb.org/t/p/w185/s4gJE64Y80dkWs3A5TetJdG0hzE.jpg"
+      },
+      {
+        "nombre": "Alfonso Ribeiro",
+        "personaje": "Carlton Banks",
+        "foto": "https://image.tmdb.org/t/p/w185/wHTa2UiS7xAJJchNLAcblGa19zP.jpg"
+      },
+      {
+        "nombre": "Karyn Parsons",
+        "personaje": "Hilary Banks",
+        "foto": "https://image.tmdb.org/t/p/w185/pZ7YnfeNZqgrIjFEm4u7qxaRiPa.jpg"
+      },
+      {
+        "nombre": "Tatyana Ali",
+        "personaje": "Ashley Banks",
+        "foto": "https://image.tmdb.org/t/p/w185/iYOxzhlIGyJfkwdNVxVney6Tb4J.jpg"
+      },
+      {
+        "nombre": "Joseph Marcell",
+        "personaje": "Geoffrey Butler",
+        "foto": "https://image.tmdb.org/t/p/w185/mbjY5qqeT9aV7weLzvbN1ikPq0M.jpg"
+      },
+      {
+        "nombre": "Ross Bagley",
+        "personaje": "Nicky Banks",
+        "foto": "https://image.tmdb.org/t/p/w185/modarNXEmohsS1cEstQ6ppVeMlX.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "The Stuffed Dog Company, NBC Productions, Quincy Jones-David Salzman Entertainment",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "california, rap music, family relationships, school, wealthy, misunderstanding, los angeles, california, family, teenage boy, teenage love, sitcom, family life, mischievous, playful, lighthearted, amused, exuberant, melodramatic",
+    "similares": [
+      {
+        "titulo": "Moesha",
+        "poster": "https://image.tmdb.org/t/p/w342/uOTVIUWWuORHpakT5FtOXLEbAvF.jpg",
+        "year": "1996",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Clarissa lo explica todo",
+        "poster": "https://image.tmdb.org/t/p/w342/7cWvpbCMiYHLvn8ra5YooOAfigc.jpg",
+        "year": "1991",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "A Different World",
+        "poster": "https://image.tmdb.org/t/p/w342/v7fuifcJjcqQxAsOjPviupcmFIZ.jpg",
+        "year": "1987",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "The Bernie Mac Show",
+        "poster": "https://image.tmdb.org/t/p/w342/auTnAsA5USO1901qti1mxbUIVoE.jpg",
+        "year": "2001",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "George Lopez",
+        "poster": "https://image.tmdb.org/t/p/w342/jV28WAGIqAKf4uoRK4IqJz4KMY0.jpg",
+        "year": "2002",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "La familia Hogan",
+        "poster": "https://image.tmdb.org/t/p/w342/2deFhQTN01DGG2ys9tNmRRB4SsY.jpg",
+        "year": "1986",
+        "rating": "6.8"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Andy Borowitz",
+      "Susan Borowitz"
+    ],
+    "numeroTemporadas": 6,
+    "numeroEpisodios": 148,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 7,
+        "id": 5433,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/hEDh0y3j4qhXHTiRH9AiNsc1ej0.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1990-09-10",
+        "episode_count": 25,
+        "id": 5428,
+        "name": "Temporada 1",
+        "overview": "La primera temporada de El Príncipe del Rap comenzó el 10 de Septiembre de 1990 y finalizó el 6 de Mayo de 1991 con un total de 25 episodios.",
+        "poster_path": "/cdjmDrcg14611kqNy9YE1YGAJgS.jpg",
+        "season_number": 1,
+        "vote_average": 7.6
+      },
+      {
+        "air_date": "1991-09-09",
+        "episode_count": 24,
+        "id": 5427,
+        "name": "Temporada 2",
+        "overview": "La segunda temporada de El Príncipe del Rap comenzó el 9 de Septiembre de 1991 y finalizó el 4 de Mayo de 1992 con un total de 24 episodios.",
+        "poster_path": "/9DuMIi4nCrDCYsNqAzXpYAT8PP9.jpg",
+        "season_number": 2,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "1992-09-14",
+        "episode_count": 24,
+        "id": 5429,
+        "name": "Temporada 3",
+        "overview": "La tercera temporada de El Príncipe del Rap comenzó el 14 de Septiembre de 1992 y finalizó el 10 de Mayo de 1993 con un total de 24 episodios.",
+        "poster_path": "/z57nvsZRVMHNQRMhYymDNXgtuXa.jpg",
+        "season_number": 3,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "1993-09-20",
+        "episode_count": 26,
+        "id": 5430,
+        "name": "Temporada 4",
+        "overview": "La cuarta temporada de El Príncipe del Rap comenzó el 20 de Septiembre de 1993 y finalizó el 23 de Mayo de 1994 con un total de 26 episodios.",
+        "poster_path": "/6wpOVUOcw1C2QwRLvbtRF0Ndvbb.jpg",
+        "season_number": 4,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "1994-09-19",
+        "episode_count": 25,
+        "id": 5432,
+        "name": "Temporada 5",
+        "overview": "La quinta temporada de El Príncipe del Rap comenzó el 19 de Septiembre de 1994 y finalizó el 15 de Mayo de 1995 con un total de 25 episodios.",
+        "poster_path": "/k1O62Vf9NKtqSty2flRyf9vdhk7.jpg",
+        "season_number": 5,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1995-09-18",
+        "episode_count": 24,
+        "id": 5431,
+        "name": "Temporada 6",
+        "overview": "La sexta temporada de El Príncipe del Rap comenzó el 18 de Septiembre de 1995 y finalizó el 20 de Mayo de 1996 con un total de 24 episodios.",
+        "poster_path": "/dlvhU9SsAeQd8AVYLYtanncxPJc.jpg",
+        "season_number": 6,
+        "vote_average": 7.3
+      }
+    ],
+    "tituloSerie": "El príncipe de Bel-Air",
+    "descripcion": "El príncipe de Bel-Air es una comedia de situación estadounidense, emitida originalmente en la NBC desde el 10 de septiembre de 1990 hasta el 20 de mayo de 1996. Will Smith protagoniza la serie interpretando a una versión ficticia de sí mismo, un adolescente de las calles de Filadelfia al que mandan con sus tíos ricos a una mansión de Bel-Air, en la cual su estilo de vida chocará con el de sus parientes. Los 148 episodios de la serie se emitieron en seis temporadas.",
+    "imagen": "https://image.tmdb.org/t/p/original/wsOXfgNXoXfC0EweIiYOZEMQaDB.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 1835,
     "tmdbType": "tv",
     "tituloOriginal": "Kenan & Kel",
