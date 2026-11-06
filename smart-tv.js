@@ -23,7 +23,7 @@
   text('episode-count',episodes.length?'Episodios '+(start+1)+'–'+Math.min(start+episodePageSize,episodes.length)+' de '+episodes.length:'');
   $('episode-prev').disabled=episodePage===0;$('episode-next').disabled=start+episodePageSize>=episodes.length;
   episodes.slice(start,start+episodePageSize).forEach((episode,index)=>{
-   const i=start+index,button=document.createElement('button'),title=episode.tituloEpisodio||episode.titulo||'Episodio '+(i+1),url=episode.urlDrive||episode.urlOkRu||episode.url||'';
+   const i=start+index,button=document.createElement('button'),title='Capítulo '+(i+1),url=episode.urlDrive||episode.urlOkRu||episode.url||'';
    const number=document.createElement('span'),name=document.createElement('span');number.className='episode-number';number.textContent=String(i+1).padStart(2,'0');name.className='episode-name';name.textContent=title+(safeURL(url)?'':' · Próximamente');button.title=title;button.setAttribute('aria-label',(i+1)+'. '+title+(safeURL(url)?'':' · Próximamente'));button.append(number,name);button.disabled=!safeURL(url);button.dataset.episodeIndex=i;
    button.onclick=()=>{episodeFocus=button;current={...detailItem,title:detailItem.title+' · '+title,url};watch();};$('episodes').append(button);
   });

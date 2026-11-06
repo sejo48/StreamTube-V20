@@ -956,7 +956,7 @@
                 : isDrive ? <iframe key={url} src={driveEmbed} title={title} className="absolute inset-0 w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen />
                 : isDirect ? <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <video ref={videoRef} controls autoPlay playsInline preload="metadata" className="w-full h-full object-contain" />
-                </div> : <div className="flex flex-col items-center justify-center text-center p-8 gap-4"><h3 className="font-bold">No se reconoce el enlace de vídeo</h3><a href={url} target="_blank" rel="noreferrer" className="px-4 py-2 bg-cyan-600 rounded-lg text-sm font-bold">Abrir enlace</a></div>}
+                </div> : <div className="flex flex-col items-center justify-center text-center p-8 gap-4"><h3 className="font-bold">No se pudo reproducir este video</h3><p className="text-sm text-slate-300">Vuelve al menú e intenta reproducir otro contenido.</p></div>}
                 {message && <div className="absolute z-30 bottom-14 left-3 right-3 bg-slate-900 border border-cyan-400/40 rounded-xl p-3 text-xs text-center">{message}</div>}
             </div>;
         }
@@ -1654,7 +1654,7 @@
                             seriesList = rawSeries.map((s, idx) => {
                                 const title = s.tituloSerie || s.titulo || s.title || s.name || `Serie ${idx + 1}`;
                                 const imgUrl = extractImageUrl(s);
-                                return { ...s, id: BoxCatalog.id(s, 'playlist.json'), type: 'series', title, description: s.descripcion || s.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: s.backdrop || s.banner || imgUrl, seasons: (s.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: BoxCatalog.orderEpisodes((t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, s.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })), t.episodeOrder) })) };
+                                return { ...s, id: BoxCatalog.id(s, 'playlist.json'), type: 'series', title, description: s.descripcion || s.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: s.backdrop || s.banner || imgUrl, seasons: (s.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: BoxCatalog.orderEpisodes((t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, s.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })), t.episodeOrder).map((episode, index) => ({ ...episode, title: `Capítulo ${index + 1}` })) })) };
                             });
                         }
 
@@ -1664,7 +1664,7 @@
                             animadosList = rawAnimados.map((a, idx) => {
                                 const title = a.titulo || a.tituloSerie || a.title || a.name || `Animado ${idx + 1}`;
                                 const imgUrl = extractImageUrl(a);
-                                return { ...a, id: BoxCatalog.id(a, 'animados.json'), type: 'animados', title, description: a.descripcion || a.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: a.backdrop || a.banner || imgUrl, url: convertUrl(a.urlDrive || a.url), rawUrl: a.urlDrive || a.url, seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: BoxCatalog.orderEpisodes((t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, a.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })), t.episodeOrder) })) };
+                                return { ...a, id: BoxCatalog.id(a, 'animados.json'), type: 'animados', title, description: a.descripcion || a.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: a.backdrop || a.banner || imgUrl, url: convertUrl(a.urlDrive || a.url), rawUrl: a.urlDrive || a.url, seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: BoxCatalog.orderEpisodes((t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, a.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })), t.episodeOrder).map((episode, index) => ({ ...episode, title: `Capítulo ${index + 1}` })) })) };
                             });
                         }
 
@@ -1674,7 +1674,7 @@
                             doramasList = rawDoramas.map((a, idx) => {
                                 const title = a.titulo || a.tituloSerie || a.title || a.name || `Dorama ${idx + 1}`;
                                 const imgUrl = extractImageUrl(a);
-                                return { ...a, id: BoxCatalog.id(a, 'doramas.json'), type: 'doramas', title, description: a.descripcion || a.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: a.backdrop || a.banner || imgUrl, url: convertUrl(a.urlDrive || a.urlOkRu || a.url), rawUrl: a.urlDrive || a.urlOkRu || a.url, seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: BoxCatalog.orderEpisodes((t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, a.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })), t.episodeOrder) })) };
+                                return { ...a, id: BoxCatalog.id(a, 'doramas.json'), type: 'doramas', title, description: a.descripcion || a.sinopsis || '', image: imgUrl || generatePlaceholder(title, 'poster'), backdrop: a.backdrop || a.banner || imgUrl, url: convertUrl(a.urlDrive || a.urlOkRu || a.url), rawUrl: a.urlDrive || a.urlOkRu || a.url, seasons: (a.temporadas || []).map((t, tIdx) => ({ seasonNumber: t.numeroTemporada || (tIdx + 1), episodes: BoxCatalog.orderEpisodes((t.episodios || []).map((ep, eIdx) => ({ id: ep.id || BoxCatalog.id(ep, a.id + '-episode'), legacyIds: ep.legacyIds || [], title: ep.tituloEpisodio || ep.titulo || `Episodio ${eIdx + 1}`, url: convertUrl(ep.urlDrive || ep.url), rawUrl: ep.urlDrive || ep.url })), t.episodeOrder).map((episode, index) => ({ ...episode, title: `Capítulo ${index + 1}` })) })) };
                             });
                         }
 
@@ -2476,7 +2476,7 @@
                                                                             <div className="w-6 h-6 rounded-full bg-cyan-600 flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">
                                                                                 {eIdx + 1}
                                                                             </div>
-                                                                            <span className="text-sm text-slate-200 truncate flex-1 font-medium">{ep.title}</span>
+                                                                            <span className="text-sm text-slate-200 truncate flex-1 font-medium">{`Capítulo ${eIdx + 1}`}</span>
                                                                             <Icon name="play" size={14} className="text-slate-500 flex-shrink-0"/>
                                                                         </button>
                                                                     ))}
