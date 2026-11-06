@@ -10,7 +10,8 @@ const component=jsx.slice(jsx.indexOf('function BoxProPlayer'),jsx.indexOf('cons
 const compiled=Babel.transform(convert+component,{presets:['react']}).code;
 const movie={type:'movies2',title:'Road Wars',urlDrive:'https://drive.google.com/file/d/1GXxzOC8qRsoqX_hMPIvBPJVGjTrPN59z/view?usp=sharing'};
 function player(userAgent='Android',extraWindow={}){
-    const sandbox={React,URL,navigator:{userAgent},window:extraWindow};
+    const sandbox={React,URL,navigator:{userAgent},window:extraWindow,setTimeout,clearTimeout,document:{addEventListener(){},removeEventListener(){},activeElement:null}};
+    vm.runInNewContext(fs.readFileSync(path.join(__dirname,'../player-ui.js'),'utf8'),sandbox);
     vm.runInNewContext(compiled+';globalThis.Player=BoxProPlayer;',sandbox);
     return sandbox.Player;
 }

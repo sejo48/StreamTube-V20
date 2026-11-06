@@ -65,8 +65,9 @@
   window.BoxTVLive = function BoxTVLive({ channels, favorites, selected, onSelect, onFavorite, onClose, loading }) {
     const [query, setQuery] = useState(''), [group, setGroup] = useState('Todas'), [view, setView] = useState('Todos');
     const [recent, setRecent] = useState(readRecent), [status, setStatus] = useState('idle'), [attempt, setAttempt] = useState(0);
-    const [full, setFull] = useState(false);
     const player = useRef(null), lastSelected = useRef('');
+    const ui = window.BoxPlayerUI.usePlayerUI(player, selected && key(selected));
+    const full = ui.full;
     const favoriteKeys = useMemo(() => new Set(favorites.map(key)), [favorites]);
     const groups = useMemo(() => ['Todas', ...Array.from(new Set(channels.map(category))).sort((a, b) => a.localeCompare(b, 'es'))], [channels]);
     const shown = useMemo(() => {
@@ -81,17 +82,9 @@
       lastSelected.current = id;
       setRecent(previous => { const next = [id, ...previous.filter(x => x !== id)].slice(0, 12); try { localStorage.setItem('boxplay_tv_recent', JSON.stringify(next)); } catch (_) {} return next; });
     }, [selected]);
-    useEffect(() => { const change = () => setFull(!!(document.fullscreenElement || document.webkitFullscreenElement)); document.addEventListener('fullscreenchange', change); document.addEventListener('webkitfullscreenchange', change); return () => { document.removeEventListener('fullscreenchange', change); document.removeEventListener('webkitfullscreenchange', change); }; }, []);
     const choose = c => { setStatus('loading'); setAttempt(x => x + 1); onSelect(c); };
     const next = direction => { const pool = shown.length ? shown : channels; if (!pool.length) return; const i = pool.findIndex(c => selected && key(c) === key(selected)); choose(pool[i < 0 ? (direction > 0 ? 0 : pool.length - 1) : (i + direction + pool.length) % pool.length]); };
-    const fullscreen = () => {
-      if (document.fullscreenElement) { document.exitFullscreen().catch(() => {}); return; }
-      if (document.webkitFullscreenElement && document.webkitExitFullscreen) { document.webkitExitFullscreen(); return; }
-      const node = player.current; const video = node && node.querySelector('video');
-      if (node && node.requestFullscreen) node.requestFullscreen().catch(() => { if (video && video.webkitEnterFullscreen) video.webkitEnterFullscreen(); });
-      else if (video && video.webkitEnterFullscreen) video.webkitEnterFullscreen();
-      else if (node && node.webkitRequestFullscreen) node.webkitRequestFullscreen();
-    };
+    const fullscreen = ui.toggleFullscreen;
     const error = ['error', 'unsupported'].includes(status);
     const statuses = { idle: 'Elige un canal', loading: 'Conectando con la señal…', playing: 'Reproduciendo en directo', paused: 'Pulsa reproducir para continuar', error: 'No se pudo reproducir esta señal', unsupported: 'Esta señal no es compatible con este navegador', external: 'Reproductor del canal' };
     const button = (label, action, text, disabled) => h('button', { type: 'button', title: label, 'aria-label': label, onClick: action, disabled: !!disabled }, text);
@@ -108,15 +101,16 @@
             h('button', { type: 'button', className: 'bxtv-channel-select', 'aria-pressed': !!selected && key(c) === key(selected), onClick: () => choose(c) }, h(Logo, { channel: c }), h('span', { className: 'bxtv-channel-copy' }, h('strong', null, c.title), h('small', null, category(c))), selected && key(c) === key(selected) && h('span', { className: 'bxtv-bars' + (status === 'playing' ? ' is-playing' : ''), 'aria-hidden': true }, h('i'), h('i'), h('i'))),
             h('button', { type: 'button', className: 'bxtv-favorite', 'aria-label': (favoriteKeys.has(key(c)) ? 'Quitar de favoritos: ' : 'Añadir a favoritos: ') + c.title, 'aria-pressed': favoriteKeys.has(key(c)), onClick: () => onFavorite(c) }, favoriteKeys.has(key(c)) ? '♥' : '♡'))) : h('div', { className: 'bxtv-empty' }, h('strong', null, view === 'Favoritos' ? 'Tu selección empieza aquí' : view === 'Recientes' ? 'Todavía no hay canales recientes' : 'No encontramos ese canal'), h('p', null, view === 'Favoritos' ? 'Toca el corazón de un canal para guardarlo.' : 'Prueba otra búsqueda o categoría.'), button('Mostrar todos los canales', () => { setQuery(''); setGroup('Todas'); setView('Todos'); }, 'Ver todos')))),
         h('div', { className: 'bxtv-stage' },
-          h('div', { className: 'bxtv-player', ref: player },
+          h('div', { className: 'bxtv-player box-player' + (full ? ' box-player-full' : ''), ref: player, ...ui.events },
+            h('button', { type: 'button', className: 'box-menu-toggle', 'aria-expanded': ui.visible, onClick: ui.toggleMenu }, ui.visible ? 'Ocultar menú' : 'Mostrar menú'),
             h('div', { className: 'bxtv-screen' },
               h(LivePlayer, { channel: selected, attempt, onStatus: setStatus }),
               status === 'playing' && h('span', { className: 'bxtv-live-badge' }, h('i'), 'EN DIRECTO'),
               (!selected || status === 'loading' || error) && h('div', { className: 'bxtv-overlay', role: 'status' },
                 status === 'loading' && selected ? h('span', { className: 'bxtv-spinner', 'aria-hidden': true }) : h('span', { className: 'bxtv-overlay-symbol', 'aria-hidden': true }, error ? '↻' : '▶'),
                 h('h2', null, selected ? statuses[status] : 'Elige qué quieres ver'), h('p', null, error ? 'La señal puede estar temporalmente fuera de servicio. Puedes reintentar o elegir otro canal.' : selected ? selected.title : 'Selecciona un canal de la lista para comenzar.'), error && button('Reintentar señal', () => { setStatus('loading'); setAttempt(x => x + 1); }, 'Reintentar'))),
-            h('div', { className: 'bxtv-now' }, h('div', { className: 'bxtv-now-title' }, selected && h(Logo, { channel: selected }), h('div', null, h('strong', null, selected ? selected.title : 'BOXPLAYTV en directo'), h('p', { 'aria-live': 'polite', className: error ? 'has-error' : '' }, statuses[status]))),
-              h('div', { className: 'bxtv-controls' }, button('Canal anterior', () => next(-1), '‹', !channels.length), button('Canal siguiente', () => next(1), '›', !channels.length), button('Reintentar señal', () => { setStatus('loading'); setAttempt(x => x + 1); }, '↻', !selected), button(full ? 'Salir de pantalla completa' : 'Pantalla completa', fullscreen, '⛶', !selected), button('Cerrar señal', onClose, '×', !selected)))),
+            h('div', { className: 'bxtv-now box-player-menu', hidden: full && !ui.visible }, h('div', { className: 'bxtv-now-title' }, selected && h(Logo, { channel: selected }), h('div', null, h('strong', null, selected ? selected.title : 'BOXPLAYTV en directo'), h('p', { 'aria-live': 'polite', className: error ? 'has-error' : '' }, statuses[status]))),
+              h('div', { className: 'bxtv-controls' }, button('Canal anterior', () => next(-1), '‹', !channels.length), button('Canal siguiente', () => next(1), '›', !channels.length), button('Reintentar señal', () => { setStatus('loading'); setAttempt(x => x + 1); }, '↻', !selected), button(full ? 'Salir de pantalla completa' : 'Pantalla completa', fullscreen, '⛶', !selected), button('Cerrar señal', () => { ui.exit(); onClose(); }, '×', !selected)))),
           h('div', { className: 'bxtv-caption' }, h('span', null, 'TU TELEVISIÓN, A TU RITMO'), h('p', null, 'Guarda tus favoritos y vuelve a tus canales recientes desde este dispositivo.')))));
   };
   window.BoxTVLive.category = category;

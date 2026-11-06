@@ -33,9 +33,10 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="./tv-live.js?v=20261018-1"></script>
-    <link rel="stylesheet" href="./tv-live.css?v=20261018-1">
-    <script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1" async></script>
+    <script src="./player-ui.js?v=20261106-1"></script>
+    <link rel="stylesheet" href="./player-ui.css?v=20261106-1">
+    <script src="./tv-live.js?v=20261106-1"></script>
+    <link rel="stylesheet" href="./tv-live.css?v=20261106-1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -898,15 +899,16 @@
             );
         }
 
-        function BoxProPlayer({ item, episode, onBack, onFullscreen, containerRef }) {
+        function BoxProPlayer({ item, episode, onBack, containerRef }) {
             const videoRef = React.useRef(null);
             const hlsRef = React.useRef(null);
             const [message, setMessage] = React.useState('');
+            const ui = window.BoxPlayerUI.usePlayerUI(containerRef, item?.id || item?.url || episode?.url);
             const targetUrl = (item?.type === 'series' || item?.type === 'animados' || item?.type === 'doramas') && episode
-                ? (episode.url || episode.urlDrive || episode.rawUrl || '')
-                : (item?.url || item?.urlDrive || item?.rawUrl || '');
+                ? (episode.url || episode.urlDrive || episode.urlOkRu || episode.rawUrl || '')
+                : (item?.url || item?.urlDrive || item?.urlOkRu || item?.rawUrl || '');
             const url = String(targetUrl || '').trim();
-            const isOk = /(^|\.)ok\.ru\//i.test(url) || /odnoklassniki/i.test(url);
+            const isOk = /^https?:\/\/(?:[a-z0-9-]+\.)*(?:ok\.ru|odnoklassniki\.ru)\//i.test(url);
             const isDrive = /drive\.google\.com/i.test(url);
             const isHls = /\.m3u8(?:$|[?#])/i.test(url);
             const isDirect = /\.(mp4|webm|ogg|m4v|mov)(?:$|[?#])/i.test(url) || isHls;
@@ -943,15 +945,16 @@
                 };
             }, [url, isDirect, isHls]);
 
-            return <div className="absolute inset-0 bg-black text-white flex flex-col" ref={containerRef}>
-                <div className="absolute top-0 left-0 right-0 z-20 px-3 sm:px-5 py-3 flex items-center justify-between bg-gradient-to-b from-black/90 to-transparent">
-                    <button onClick={onBack} className="px-3 py-2 rounded-full bg-black/60 border border-white/20 hover:bg-cyan-700 text-xs font-bold"><i className="fa-solid fa-arrow-left mr-2"></i>Volver</button>
+            return <div className={"box-player absolute inset-0 bg-black text-white flex flex-col" + (ui.full ? " box-player-full" : "")} ref={containerRef} {...ui.events}>
+                <button type="button" className="box-menu-toggle" aria-expanded={ui.visible} onClick={ui.toggleMenu}>{ui.visible ? "Ocultar menú" : "Mostrar menú"}</button>
+                <div hidden={!ui.visible} className="box-player-menu absolute top-0 left-0 right-0 z-20 px-3 sm:px-5 py-3 flex items-center justify-between bg-gradient-to-b from-black/90 to-transparent">
+                    <button onClick={() => { ui.exit(); onBack(); }} className="px-3 py-2 rounded-full bg-black/60 border border-white/20 hover:bg-cyan-700 text-xs font-bold"><i className="fa-solid fa-arrow-left mr-2"></i>Volver</button>
                     <div className="text-xs sm:text-sm font-bold text-center px-2 truncate max-w-[40%]">{title}</div>
-                    <button onClick={onFullscreen} className="w-9 h-9 rounded-full bg-black/60 border border-white/20 hover:bg-cyan-700"><i className="fa-solid fa-expand"></i></button>
+                    <button type="button" aria-label={ui.full ? "Salir de pantalla completa" : "Pantalla completa"} onClick={ui.toggleFullscreen} className="w-9 h-9 rounded-full bg-black/60 border border-white/20 hover:bg-cyan-700"><i className="fa-solid fa-expand"></i></button>
                 </div>
                 {isOk ? <iframe key={url} src={okEmbed} title={title} className="absolute inset-0 w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen referrerPolicy="no-referrer-when-downgrade" />
                 : isDrive ? <iframe key={url} src={driveEmbed} title={title} className="absolute inset-0 w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen />
-                : isDirect ? <div className="absolute inset-0 flex flex-col items-center justify-center pt-12 pb-4 px-2">
+                : isDirect ? <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <video ref={videoRef} controls autoPlay playsInline preload="metadata" className="w-full h-full object-contain" />
                 </div> : <div className="flex flex-col items-center justify-center text-center p-8 gap-4"><h3 className="font-bold">No se reconoce el enlace de vídeo</h3><a href={url} target="_blank" rel="noreferrer" className="px-4 py-2 bg-cyan-600 rounded-lg text-sm font-bold">Abrir enlace</a></div>}
                 {message && <div className="absolute z-30 bottom-14 left-3 right-3 bg-slate-900 border border-cyan-400/40 rounded-xl p-3 text-xs text-center">{message}</div>}
@@ -1384,7 +1387,6 @@
             const [installingApp, setInstallingApp] = useState(false);
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-            const tvContainerRef = useRef(null);
             const movieContainerRef = useRef(null);
             useEffect(() => {
                 const header = document.querySelector('.box-header');
@@ -1845,30 +1847,6 @@
                 return favorites.some(f => (f.id || f.title) === itemId);
             };
 
-            const toggleTvFullscreen = () => {
-                if (tvContainerRef.current) {
-                    if (!document.fullscreenElement) {
-                        if (tvContainerRef.current.requestFullscreen) tvContainerRef.current.requestFullscreen().catch(() => {});
-                        else if (tvContainerRef.current.webkitRequestFullscreen) tvContainerRef.current.webkitRequestFullscreen();
-                    } else {
-                        if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
-                        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-                    }
-                }
-            };
-
-            const toggleMovieFullscreen = () => {
-                if (movieContainerRef.current) {
-                    if (!document.fullscreenElement) {
-                        if (movieContainerRef.current.requestFullscreen) movieContainerRef.current.requestFullscreen().catch(() => {});
-                        else if (movieContainerRef.current.webkitRequestFullscreen) movieContainerRef.current.webkitRequestFullscreen();
-                    } else {
-                        if (document.exitFullscreen) document.exitFullscreen().catch(() => {});
-                        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-                    }
-                }
-            };
-
             const christmasMovies = useMemo(() => selectChristmasMovies(content), [content]);
 
             const getDisplayContent = () => { 
@@ -1958,16 +1936,7 @@
                 window.history.pushState({ appState: 'player', item: item.title }, '');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
 
-                setTimeout(() => {
-                    const playerElement = movieContainerRef.current || document.querySelector('video') || document.querySelector('iframe');
-                    if (playerElement) {
-                        if (playerElement.requestFullscreen) {
-                            playerElement.requestFullscreen().catch(() => {});
-                        } else if (playerElement.webkitRequestFullscreen) {
-                            playerElement.webkitRequestFullscreen();
-                        }
-                    }
-                }, 300);
+
             };
 
             const handleRateMovie = item => {
@@ -2219,12 +2188,12 @@
                         ) : selectedItem ? (
                             <div className="animate-fade-in flex flex-col min-h-screen bg-[#020617] w-full">
                                 {isPlaying ? (
-                                    <div className="w-full bg-black relative h-[60vh] sm:h-[70vh] md:h-screen flex items-center justify-center overflow-hidden video-container-fix" ref={movieContainerRef}>
+                                    <div className="w-full bg-black relative h-[60vh] sm:h-[70vh] md:h-screen flex items-center justify-center overflow-hidden video-container-fix">
                                         {isLocked ? (
                                             <LockScreen correctCode={selectedItem.codigo || selectedItem.password || selectedItem.pin} onUnlock={() => setIsLocked(false)} onCancel={() => { setIsPlaying(false); }} />
                                         ) : (
                                             <>
-                                                <BoxProPlayer item={selectedItem} episode={selectedEpisode} onBack={() => { if (document.fullscreenElement) document.exitFullscreen().catch(()=>{}); setIsPlaying(false); }} onFullscreen={toggleMovieFullscreen} containerRef={movieContainerRef} />
+                                                <BoxProPlayer item={selectedItem} episode={selectedEpisode} onBack={() => { if (document.fullscreenElement) document.exitFullscreen().catch(()=>{}); setIsPlaying(false); }} containerRef={movieContainerRef} />
                                             </>
                                         )}
                                     </div>

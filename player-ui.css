@@ -1,0 +1,9 @@
+.box-player{background:#000}
+.bxtv-player{position:relative}
+.box-player-full,.box-player:fullscreen,.box-player:-webkit-full-screen{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;max-width:none!important;max-height:none!important;z-index:2147483647!important;border:0!important;border-radius:0!important;background:#000}
+.box-player-full .bxtv-screen,.bxtv-player:fullscreen .bxtv-screen,.bxtv-player:-webkit-full-screen .bxtv-screen{height:100%!important;aspect-ratio:auto!important}
+.box-player-full .bxtv-now{position:absolute;bottom:0;left:0;right:0;background:#071019ed;z-index:30}
+.box-player-menu[hidden]{display:none!important}
+.box-menu-toggle{position:absolute;right:12px;top:70px;z-index:40;min-height:40px;padding:8px 12px;border:1px solid #ffffff55;border-radius:12px;background:#000b;color:white;font:600 12px system-ui;cursor:pointer;opacity:.65}
+.box-menu-toggle:hover,.box-menu-toggle:focus-visible{opacity:1;outline:2px solid #22d3ee}
+.video-container-fix .box-player video{object-fit:contain!important}
