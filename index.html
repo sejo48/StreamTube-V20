@@ -1306,7 +1306,8 @@
             const [detailTab, setDetailTab] = useState('info');
             const episodesSectionRef = useRef(null);
             const [episodeNavigation, setEpisodeNavigation] = useState(0);
-            const isEpisodeContent = selectedItem && ['series', 'animados', 'doramas'].includes(selectedItem.type);
+            const isEpisodeContent = selectedItem && ['series', 'animados', 'doramas'].includes(selectedItem.type)
+                && (selectedItem.seasons?.length > 0 || selectedItem.type === 'series' || (selectedItem.tmdbType === 'tv' && !selectedItem.url));
             const episodeCount = (selectedItem?.seasons || []).reduce((total, season) => total + (season.episodes || []).length, 0);
             useEffect(() => {
                 if (!episodeNavigation || !episodesSectionRef.current) return;
