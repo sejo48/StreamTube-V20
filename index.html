@@ -1770,18 +1770,19 @@
                 const updated = [record, ...continueWatching.filter(c => (c.id || c.title) !== itemId)].slice(0, 7);
                 setContinueWatching(updated);
                 safeStorage.setItem('boxplay_continue_watching', JSON.stringify(updated));
-                if (episode) markEpisodeAsWatched(item, episode, true);
             };
 
             const markEpisodeAsWatched = (item, episode, isWatched) => {
                 const itemId = item.id || item.title;
                 const epId = episode.id || episode.url;
-                const currentWatched = { ...watchedEpisodes };
-                if (!currentWatched[itemId]) currentWatched[itemId] = [];
-                if (isWatched) { if (!currentWatched[itemId].includes(epId)) currentWatched[itemId].push(epId); }
-                else { currentWatched[itemId] = currentWatched[itemId].filter(id => id !== epId); }
-                setWatchedEpisodes(currentWatched);
-                safeStorage.setItem('boxplay_watched_eps', JSON.stringify(currentWatched));
+                setWatchedEpisodes(previous => {
+                    const episodes = Array.isArray(previous[itemId]) ? previous[itemId] : [];
+                    const currentWatched = { ...previous, [itemId]: isWatched
+                        ? [...new Set([...episodes, epId])]
+                        : episodes.filter(id => id !== epId) };
+                    safeStorage.setItem('boxplay_watched_eps', JSON.stringify(currentWatched));
+                    return currentWatched;
+                });
             };
 
             const addRecentSearch = (term) => {
@@ -2469,10 +2470,10 @@
                                                                 <div className="space-y-2">
                                                                     {!(selectedItem.seasons || [])[expandedSeason]?.episodes?.length && <p className="text-sm text-slate-400">Aún no hay episodios disponibles en esta temporada.</p>}
                                                                     {(selectedItem.seasons || [])[expandedSeason]?.episodes?.map((ep, eIdx) => (
+                                                                        <div key={ep.id || eIdx} className="flex items-center gap-2">
                                                                         <button type="button"
-                                                                            key={ep.id || eIdx} 
                                                                             onClick={() => handlePlayNow(selectedItem, ep)} 
-                                                                            className="w-full text-left p-3 rounded-xl cursor-pointer flex items-center gap-3 bg-white/5 hover:bg-white/10 focus:ring-2 focus:ring-cyan-500 transition-colors border border-slate-800/50"
+                                                                            className="min-w-0 flex-1 text-left p-3 rounded-xl cursor-pointer flex items-center gap-3 bg-white/5 hover:bg-white/10 focus:ring-2 focus:ring-cyan-500 transition-colors border border-slate-800/50"
                                                                         >
                                                                             <div className="w-6 h-6 rounded-full bg-cyan-600 flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0">
                                                                                 {eIdx + 1}
@@ -2480,6 +2481,15 @@
                                                                             <span className="text-sm text-slate-200 truncate flex-1 font-medium">{`Capítulo ${eIdx + 1}`}</span>
                                                                             <Icon name="play" size={14} className="text-slate-500 flex-shrink-0"/>
                                                                         </button>
+                                                                            <button type="button"
+                                                                                aria-pressed={(watchedEpisodes[selectedItem.id || selectedItem.title] || []).includes(ep.id || ep.url)}
+                                                                                aria-label={`Visto: capítulo ${eIdx + 1}`}
+                                                                                onClick={() => markEpisodeAsWatched(selectedItem, ep, !(watchedEpisodes[selectedItem.id || selectedItem.title] || []).includes(ep.id || ep.url))}
+                                                                                className={`shrink-0 rounded-xl px-3 py-3 text-xs font-bold border focus:ring-2 focus:ring-cyan-500 transition-colors ${(watchedEpisodes[selectedItem.id || selectedItem.title] || []).includes(ep.id || ep.url) ? 'bg-cyan-600/20 text-cyan-300 border-cyan-500' : 'bg-white/5 text-slate-400 border-slate-800 hover:text-white'}`}
+                                                                            >
+                                                                                {(watchedEpisodes[selectedItem.id || selectedItem.title] || []).includes(ep.id || ep.url) ? '✓ Visto' : 'Visto'}
+                                                                            </button>
+                                                                        </div>
                                                                     ))}
                                                                 </div>
                                                             </div>
