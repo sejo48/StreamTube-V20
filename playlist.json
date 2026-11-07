@@ -1,5 +1,227 @@
 [
   {
+    "tmdbId": 2287,
+    "tmdbType": "tv",
+    "tituloOriginal": "Batman",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/c4zV2ysi5Qlns4CPjRJj3hBGMSx.jpg",
+    "year": "1966",
+    "fechaEstreno": "1966-01-12",
+    "rating": "7.3",
+    "votos": 628,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Comedia",
+      "Action & Adventure"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Comedia, Action & Adventure",
+    "clasificacion": "NR",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Adam West",
+        "personaje": "Batman",
+        "foto": "https://image.tmdb.org/t/p/w185/a3Yw8bb6AF7a8Zr7IyEZhZxWVWN.jpg"
+      },
+      {
+        "nombre": "Burt Ward",
+        "personaje": "Robin",
+        "foto": "https://image.tmdb.org/t/p/w185/13qUIbdB6D6BaTy3znHoHWdHuYN.jpg"
+      },
+      {
+        "nombre": "Yvonne Craig",
+        "personaje": "Batgirl",
+        "foto": "https://image.tmdb.org/t/p/w185/jkU04EqQgjvRVanHOQr4P7XdQrw.jpg"
+      },
+      {
+        "nombre": "Neil Hamilton",
+        "personaje": "Commissioner Gordon",
+        "foto": "https://image.tmdb.org/t/p/w185/23jm1XwaaBKWTp5fKs7kzThK4KZ.jpg"
+      },
+      {
+        "nombre": "Stafford Repp",
+        "personaje": "Chief O'Hara",
+        "foto": "https://image.tmdb.org/t/p/w185/8H43DClHBJWSiS4xFT6vxBIroMT.jpg"
+      },
+      {
+        "nombre": "Alan Napier",
+        "personaje": "Alfred",
+        "foto": "https://image.tmdb.org/t/p/w185/90TwBLqH94JqWeVBXqkkYR2wsp2.jpg"
+      },
+      {
+        "nombre": "William Dozier",
+        "personaje": "Narrator (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/81nnUI5ZF5qv3hQOZc09a1XH0MM.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "20th Century Fox, Greenway Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "superhero, based on comic, super power, campy, sidekick, eccentric millionaire, supervillain, dramatic, hilarious, cheerful, gadgets",
+    "similares": [
+      {
+        "titulo": "Las aventuras de Batman",
+        "poster": "https://image.tmdb.org/t/p/w342/iadtiyDdFRUyTzDQgmMaWNFOiUz.jpg",
+        "year": "1968",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "El intrépido Batman",
+        "poster": "https://image.tmdb.org/t/p/w342/tv2mOIRcPP4H0DhOH84xPgqui7d.jpg",
+        "year": "2008",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Marvel Spider-Man",
+        "poster": "https://image.tmdb.org/t/p/w342/dKdcyyHUR5WTMnrbPdYN5y9xPVp.jpg",
+        "year": "2017",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Los Vengadores unidos",
+        "poster": "https://image.tmdb.org/t/p/w342/r7C5c5Un1zsiAfixa8HEd5ebYmM.jpg",
+        "year": "2013",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Mighty Med",
+        "poster": "https://image.tmdb.org/t/p/w342/hCUPAY96rZdKTiwMM2JRsTTtdk5.jpg",
+        "year": "2013",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Justice League Action",
+        "poster": "https://image.tmdb.org/t/p/w342/AdTh5kAXYwo0dwHONqCFO7y8Jmf.jpg",
+        "year": "2016",
+        "rating": "7.2"
+      }
+    ],
+    "homepage": "https://www.warnerbros.com/tv/batman-complete-series",
+    "creadores": [
+      "William Dozier",
+      "Lorenzo Semple Jr."
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 120,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 26,
+        "id": 7131,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/2IHOsVNTqAAVDXh057yjrIru3Ga.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1966-01-12",
+        "episode_count": 34,
+        "id": 7128,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/jbzHuJ2nso1b9el4S0SmDnnxzww.jpg",
+        "season_number": 1,
+        "vote_average": 6.9
+      },
+      {
+        "air_date": "1966-09-07",
+        "episode_count": 60,
+        "id": 7129,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/5k8yWocIJsjYmyoM2DaevO5LTxR.jpg",
+        "season_number": 2,
+        "vote_average": 6.4
+      },
+      {
+        "air_date": "1967-09-14",
+        "episode_count": 26,
+        "id": 7130,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/ba1mXQ4HbO4UXkyd29O4tl3CJuT.jpg",
+        "season_number": 3,
+        "vote_average": 5.8
+      }
+    ],
+    "tituloSerie": "Batman",
+    "descripcion": "Batman es una serie televisiva exhibida entre 1966 y 1968 en el canal estadounidense ABC, con un total de 120 episodios.\n\nLa serie gira en torno a las aventuras contra el crimen de Batman (Adam West) y su ayudante Robin (Burt Ward) en Gotham City. La identidad secreta de Batman es la del elegante «filántropo millonario» Bruce Wayne (Bruno Díaz, en la versión traducida en México), que vivía en las afueras de la ciudad en la Mansión Wayne, con su joven pupilo Dick Grayson (Ricardo Tapia, en México), también conocido como Robin (Burt Ward), su fiel mayordomo Alfred (Alan Napier), y la tía Harriet Cooper (Madge Blake). Ayudaban a Batman: Batgirl (Yvonne Craig), el comisario de policía Gordon (Neil Hamilton), y el jefe de policía O'Hara (Stafford Repp).",
+    "imagen": "https://image.tmdb.org/t/p/w780/1ZEJuuDh0Zpi5ELM3Zev0GBhQ3R.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 3 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1--auUOmDCjv9nuRGfWBkag3u9J9ugD_-/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 4 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1UH786s7f_u1VKp5LCfSoiE3i3FVTX7iC/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 5 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1Rkhf_J115Sl-rgoJTAjjVbIe8cOsTPNY/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 7 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1noNDoodr-1w9odaGbZjIw76qOh00SR0D/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 8 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1pi6fzpVtUPpOV0A1ch54DQfbwJr49lMJ/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 9 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1GUt5lFYGEGm_0GLRNe4nXl6V15fkWhV0/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 10 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1Qp2C3QKekibzX1_DZUlHrs-EhwLsgSjK/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 11 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1vXC_ipjhTVjtwcfK4cPYf1QQB_OyUEMj/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 16 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1ikdHWM6Y-2MMM2MsYud91ShNLluRtWaW/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 18 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1MWNRnh5kHJM_vdLV9PZ20NQKByRkQSuW/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 20 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1ia53dAna3pCqf4RG1m5KBhE7-JddXMp9/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 21 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1JkTDN_2b1PfqPebhA2KW7GO6RS_LPUn3/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 30 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/12N6JOWjY_3iDAj_uRlhHSSpxsFc4OdTz/view"
+          },
+          {
+            "tituloEpisodio": "Ver Batman Temporada 1 - Episodio 33 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/12Fyj_w8ijTw9KgGxoLIL05mYLxkouaiu/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 2119,
     "tmdbType": "tv",
     "tituloOriginal": "Airwolf",
@@ -140,7 +362,49 @@
     "imagen": "https://image.tmdb.org/t/p/w780/2sxKI6P9jUrfHkm1vKs5AaMoucT.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "AW - 1x1-2.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1YbY2FcW18QFzg6tMuAzJcvInIf0L9fnb/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x3.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1fvJ0qG-6YS2ErnDjY5CpYwX982nVyjeC/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x4.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/16iye3akrQfWRTNjYDQ_klPyTlrbmVGxw/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x5.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1ycy8YHerNAXuKzTcTBXrBcGualSPNR1x/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x6.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1MbITzOGI5vSgyP6E84p6YPnIg1MGFBv2/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x7.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1RAmlosM1qhbVOlFq_WhbWCMNYlbLZBZG/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x8.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/13Fd0uXhsbUyBUGc6klDERMsOjIHwkuKI/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x9.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1DaQiad5MWAhxnIGwslzPG-jnXw1B_v53/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x10.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/18mpNvuPQ5diPlH6uxa5PJcN_ZIlXtq-D/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 1516,
