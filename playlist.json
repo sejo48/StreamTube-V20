@@ -1,9 +1,152 @@
 [
   {
+    "tmdbId": 2119,
+    "tmdbType": "tv",
+    "tituloOriginal": "Airwolf",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/8693rGsfkROQjiwlJD8O2WQV1Et.jpg",
+    "year": "1984",
+    "fechaEstreno": "1984-01-22",
+    "rating": "7.6",
+    "votos": 500,
+    "runtime": "48min",
+    "runtimeMin": 48,
+    "genres": [
+      "Action & Adventure",
+      "Sci-Fi & Fantasy"
+    ],
+    "generosTexto": "Action & Adventure, Sci-Fi & Fantasy",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Geraint Wyn Davies",
+        "personaje": "Mike Rivers",
+        "foto": "https://image.tmdb.org/t/p/w185/yEN9QnBKHEf6uq3rW0Yk6gk8Uu.jpg"
+      },
+      {
+        "nombre": "Michele Scarabelli",
+        "personaje": "Jo Santini",
+        "foto": "https://image.tmdb.org/t/p/w185/jYFQQttqfPjX0W0P1Z1lw7RrLBP.jpg"
+      },
+      {
+        "nombre": "Anthony Sherwood",
+        "personaje": "Jason Locke",
+        "foto": "https://image.tmdb.org/t/p/w185/lJhDCtTbEdC4FhRkVA3mbgj3OH7.jpg"
+      },
+      {
+        "nombre": "Barry Van Dyke",
+        "personaje": "St. John Hawke",
+        "foto": "https://image.tmdb.org/t/p/w185/dKadZ3uQCv6X0C1AUFA48Y5ZeFn.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Belisarius Productions, Universal Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "spy, helicopter, vietnam war, pilot, military",
+    "similares": [
+      {
+        "titulo": "El coche fantástico",
+        "poster": "https://image.tmdb.org/t/p/w342/sDt5jfNCfdeIbVyEoKXnosDwy03.jpg",
+        "year": "1982",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "MacGyver",
+        "poster": "https://image.tmdb.org/t/p/w342/zhgJNHbFxGkqdsKdkZLBrDWagOv.jpg",
+        "year": "1985",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "The Batman",
+        "poster": "https://image.tmdb.org/t/p/w342/3w7koeOR2x71XYMJDGpygxYtScI.jpg",
+        "year": "2004",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "El agente de CIPOL",
+        "poster": "https://image.tmdb.org/t/p/w342/a0nMOwNZXyJrMTPoaCzJJZeT0Yl.jpg",
+        "year": "1964",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "The Sweeney",
+        "poster": "https://image.tmdb.org/t/p/w342/8dIJo5P3d1soSxKJvjkxDX1816H.jpg",
+        "year": "1975",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Marina",
+        "poster": "https://image.tmdb.org/t/p/w342/9JYXvIo0Cr1HAATz8hl8kyNQ76O.jpg",
+        "year": "1964",
+        "rating": "6.9"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Donald P. Bellisario"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 80,
+    "temporadasTmdb": [
+      {
+        "air_date": "1984-01-22",
+        "episode_count": 12,
+        "id": 6433,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/2sxKI6P9jUrfHkm1vKs5AaMoucT.jpg",
+        "season_number": 1,
+        "vote_average": 6.5
+      },
+      {
+        "air_date": "1984-09-22",
+        "episode_count": 22,
+        "id": 6432,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/eLzHj8SNw7x3FR8g8xH9ahx7PPq.jpg",
+        "season_number": 2,
+        "vote_average": 6.4
+      },
+      {
+        "air_date": "1985-09-28",
+        "episode_count": 22,
+        "id": 6434,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/whjmXTNUEeYIVYeFcmgCvjq3BBG.jpg",
+        "season_number": 3,
+        "vote_average": 6.1
+      },
+      {
+        "air_date": "1987-01-23",
+        "episode_count": 24,
+        "id": 6431,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/hom89rw9DsgpNzdZ8KUO9MUelAR.jpg",
+        "season_number": 4,
+        "vote_average": 6.7
+      }
+    ],
+    "tituloSerie": "Lobo del aire",
+    "descripcion": "El Lobo del Aire (Airwolf en inglés) fue una serie televisiva estadounidense de los años 80s, acerca de un helicóptero militar supersónico del mismo nombre. Fue creado por Donald Bellisario, quien también creó Magnum, el Hombre Cuántico, JAG y otros. El reconocido tema musical de la serie es obra de Sylvester Levay, y contiene una sintetización del sonido de los rotores de un helicóptero en vuelo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/2sxKI6P9jUrfHkm1vKs5AaMoucT.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 1516,
     "tmdbType": "tv",
     "tituloOriginal": "The A-Team",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/t0RbyVHtPMkDGkQ7EAQpAf9syMp.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/i4Crl1CRXiTJP11ueLtwAxj22Zd.jpg",
     "year": "1983",
     "fechaEstreno": "1983-01-23",
     "rating": "7.5",
@@ -169,7 +312,7 @@
     ],
     "tituloSerie": "El Equipo A",
     "descripcion": "En 1972, cuatro de los mejores hombres del ejército americano, que formaban un comando, fueron encarcelados por un delito que no habían cometido. No tardaron en fugarse de la prisión en la que se encontraban recluidos. Hoy, buscados todavía por el gobierno, sobreviven como soldados de fortuna. Si tiene usted algún problema y si los encuentra, quizás pueda contratarlos.",
-    "imagen": "https://image.tmdb.org/t/p/w780/19cxroSASCfvbUkEqiEAEXzAFH4.jpg",
+    "imagen": "https://image.tmdb.org/t/p/original/i4Crl1CRXiTJP11ueLtwAxj22Zd.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -291,6 +434,47 @@
           {
             "tituloEpisodio": "LM - 4x23 - SeriesRetro.com",
             "urlDrive": "https://drive.google.com/file/d/1yHGHsXhDzGb_nEn893rtxlY0sU8w_sZG/view"
+          }
+        ]
+      },
+      {
+        "numeroTemporada": 2,
+        "episodios": [
+          {
+            "tituloEpisodio": "AW - 1x1-2.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1YbY2FcW18QFzg6tMuAzJcvInIf0L9fnb/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x3.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1fvJ0qG-6YS2ErnDjY5CpYwX982nVyjeC/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x4.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/16iye3akrQfWRTNjYDQ_klPyTlrbmVGxw/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x5.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1ycy8YHerNAXuKzTcTBXrBcGualSPNR1x/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x6.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1MbITzOGI5vSgyP6E84p6YPnIg1MGFBv2/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x7.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1RAmlosM1qhbVOlFq_WhbWCMNYlbLZBZG/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x8.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/13Fd0uXhsbUyBUGc6klDERMsOjIHwkuKI/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x9.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1DaQiad5MWAhxnIGwslzPG-jnXw1B_v53/view"
+          },
+          {
+            "tituloEpisodio": "AW - 1x10.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/18mpNvuPQ5diPlH6uxa5PJcN_ZIlXtq-D/view"
           }
         ]
       }
