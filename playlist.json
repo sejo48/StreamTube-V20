@@ -1,5 +1,597 @@
 [
   {
+    "tmdbId": 1516,
+    "tmdbType": "tv",
+    "tituloOriginal": "The A-Team",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/t0RbyVHtPMkDGkQ7EAQpAf9syMp.jpg",
+    "year": "1983",
+    "fechaEstreno": "1983-01-23",
+    "rating": "7.5",
+    "votos": 1134,
+    "runtime": "45min",
+    "runtimeMin": 45,
+    "genres": [
+      "Action & Adventure",
+      "Comedia",
+      "Crimen"
+    ],
+    "generosTexto": "Action & Adventure, Comedia, Crimen",
+    "clasificacion": "TP",
+    "tagline": "Me encanta que los planes salgan bien",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "George Peppard",
+        "personaje": "John 'Hannibal' Smith",
+        "foto": "https://image.tmdb.org/t/p/w185/td2SN1HGqgGsWLi4YhReMYvH2ik.jpg"
+      },
+      {
+        "nombre": "Dirk Benedict",
+        "personaje": "Templeton 'Faceman' Peck",
+        "foto": "https://image.tmdb.org/t/p/w185/lQG0YpiHdhQgs5DKS0185JA60mr.jpg"
+      },
+      {
+        "nombre": "Mr. T",
+        "personaje": "B.A. Baracus",
+        "foto": "https://image.tmdb.org/t/p/w185/pJbHlEsrhyW8dptDwBdXpoY9EmQ.jpg"
+      },
+      {
+        "nombre": "Dwight Schultz",
+        "personaje": "'Howling Mad' Murdock",
+        "foto": "https://image.tmdb.org/t/p/w185/kVXkC94gNdSWRvDAs0DqBCduJ4S.jpg"
+      },
+      {
+        "nombre": "Eddie Velez",
+        "personaje": "Frankie Santana",
+        "foto": "https://image.tmdb.org/t/p/w185/mnITDWkqvMWFdjtaXItRFKP0rv8.jpg"
+      },
+      {
+        "nombre": "Robert Vaughn",
+        "personaje": "General Hunt Stockwell",
+        "foto": "https://image.tmdb.org/t/p/w185/mYaQ9Qv2oC014lwMaXb76A5UL1n.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Stephen J. Cannell Productions, Universal Television, Universal Television Entertainment",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=5ajAKf_I3SQ",
+    "coleccion": "",
+    "keywords": "crime fighter, airplane, framed, special forces, ex soldier, escaped prisoner, mischievous, farcical",
+    "similares": [
+      {
+        "titulo": "El coche fantástico",
+        "poster": "https://image.tmdb.org/t/p/w342/sDt5jfNCfdeIbVyEoKXnosDwy03.jpg",
+        "year": "1982",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Los Persuasores",
+        "poster": "https://image.tmdb.org/t/p/w342/jDzoUNUwVKIPMaf67wAg4Nby3oo.jpg",
+        "year": "1971",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "M.I. High",
+        "poster": "https://image.tmdb.org/t/p/w342/yOqLG4MMaIIh7e4hH5ani1jgKlG.jpg",
+        "year": "2007",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Las aventuras (completamente inventadas) de Dick Turpin",
+        "poster": "https://image.tmdb.org/t/p/w342/zouTjOU5olZSaPbnfaXZCM9AyOX.jpg",
+        "year": "2024",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Profesión Peligro",
+        "poster": "https://image.tmdb.org/t/p/w342/q8IS76HrmnjwGAvMwcanxohNja4.jpg",
+        "year": "1981",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Batman",
+        "poster": "https://image.tmdb.org/t/p/w342/1ZEJuuDh0Zpi5ELM3Zev0GBhQ3R.jpg",
+        "year": "1966",
+        "rating": "7.3"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Frank Lupo",
+      "Stephen J. Cannell"
+    ],
+    "numeroTemporadas": 5,
+    "numeroEpisodios": 94,
+    "temporadasTmdb": [
+      {
+        "air_date": "2006-01-01",
+        "episode_count": 4,
+        "id": 4131,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/abuSALA1vZgPnm8ekteY8qA5Moy.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1983-01-23",
+        "episode_count": 13,
+        "id": 4130,
+        "name": "Temporada 1",
+        "overview": "Enviados a prisión por un tribunal militar por un delito que no cometieron, estos cuatro soldados escaparon de una prisión de máxima seguridad y ahora sobreviven en el mundo clandestino de Los Ángeles como soldados de fortuna. Así que, si tienes un problema y no hay nadie más que pueda ayudarte, y si crees que puedes encontrarlos, quizá puedas contratar al Equipo A.",
+        "poster_path": "/3iNuUmIiNKgwQHSjnjw9DeKded9.jpg",
+        "season_number": 1,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "1983-09-20",
+        "episode_count": 22,
+        "id": 4128,
+        "name": "Temporada 2",
+        "overview": "Súbete a la famosa furgoneta negra para vivir otra temporada de aventuras llenas de adrenalina con Hannibal, Fénix, Murdock y M.A. mientras luchan por la justicia contra peligrosos criminales y van un paso por delante de su acérrimo perseguidor, el coronel Decker.",
+        "poster_path": "/fRiYxSeCQSwG1ZZ85ElV2H9a0A6.jpg",
+        "season_number": 2,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "1984-09-18",
+        "episode_count": 24,
+        "id": 4129,
+        "name": "Temporada 3",
+        "overview": "En la temporada más popular de la historia, Hannibal, Fénix, Murdock y M.A. se enfrentan a nuevos criminales con los planes más escandalosos hasta la fecha: desde vertidos de residuos tóxicos hasta caza furtiva y sabotaje de restaurantes.",
+        "poster_path": "/4pzWXTnEeuXQzZOHHzh84ymVZ9h.jpg",
+        "season_number": 3,
+        "vote_average": 7.8
+      },
+      {
+        "air_date": "1985-09-24",
+        "episode_count": 22,
+        "id": 4127,
+        "name": "Temporada 4",
+        "overview": "Vuelve a formar equipo con M.A., Hannibal, Murdock y Fénix para enfrentarte a secuestradores despiadados, millonarios corruptos, narcotraficantes implacables e incluso a un capo de la mafia.",
+        "poster_path": "/vdOwW9ieGfcxwxCwnUQx9npqPje.jpg",
+        "season_number": 4,
+        "vote_average": 7.7
+      },
+      {
+        "air_date": "1986-09-26",
+        "episode_count": 13,
+        "id": 4126,
+        "name": "Temporada 5",
+        "overview": "M.A., Hannibal, Murdock y Fénix se enfrentan a sus mayores desafíos hasta la fecha cuando el misterioso General Stockwell se une a ellos para luchar contra los villanos que incluyen sicarios, secuestradores y monjes mercenarios.",
+        "poster_path": "/p3bFKd21YCiDgDbD02cR7AVUyRE.jpg",
+        "season_number": 5,
+        "vote_average": 7.5
+      }
+    ],
+    "tituloSerie": "El Equipo A",
+    "descripcion": "En 1972, cuatro de los mejores hombres del ejército americano, que formaban un comando, fueron encarcelados por un delito que no habían cometido. No tardaron en fugarse de la prisión en la que se encontraban recluidos. Hoy, buscados todavía por el gobierno, sobreviven como soldados de fortuna. Si tiene usted algún problema y si los encuentra, quizás pueda contratarlos.",
+    "imagen": "https://image.tmdb.org/t/p/w780/19cxroSASCfvbUkEqiEAEXzAFH4.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "LM - 3x1 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1AqkfIMb4c8GV2lpJ2ityE3fs5g1uo6Fs/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x2-3 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/106UmZCsrnW4EkeuYyiAsbmSb-0sH1sZP/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x4 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1AnkLvbqkt1cTxbdV4ykvNFWEcEboeknd/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x6 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/17rr6r-AavXORt8UcIzK3z9VaY_aEq5-Q/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x8 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1I0BiZQPobg98IetsTqpQDXK6S9tD9OFE/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x9 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1CNNEBjQtSgM451azjJpjgg8DAKvPUWh2/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x10 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/16AR8SYlkgFhlWPwkBmGrYh4dIKnIHOah/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x12 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/141Xb2iZN1knHes0QHIB5GDIs2u2JtcL4/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x14 - - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1g1AbwHjKQ5z5mJsK8J7IfcN4UtbhGpz4/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x16 - - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1NH6l05nKjhMbE-yiU5P2iEMNcJYht6PS/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x18 - - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1Clr87Z1EdSShGana6PP0-RYzLI0GOEV3/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x20 - - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1rlQD1oWHPVwsxEAYl7aNz67XGfldhay9/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x22 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1A9-WJliVHQGhaWz-1RBLHbvSLSuFKl-H/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x23 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/12yY6QoVKhmCDcYFBFtk69cw3bapRz_Kn/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x24 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1ndTUbFeIAx6P1hb5hiJ-trfii1-TXN2v/view"
+          },
+          {
+            "tituloEpisodio": "LM - 3x25 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1UE5c1T4r1nebvsfIQ1wexF6caP21Xgdh/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x1-2 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1AO-UaQyJmTtouo7EJWOP-hAVFzz9efB6/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x03 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1U6WdyFoK9_DOO90vZAGsVQQfLJiIYBzo/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x05 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1E0c92F_TyLI71L-50c-oRIdKFkOD3cu_/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x07 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1qIQA1jTL-nTUd4qD--wPhS0hIetAJK_V/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x09 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/17G-IW3Az_2dNGhuL1cOJyYZD_SG9IztR/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x13 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1L323NON_GKscbgB2UgpUo6Jt7hVs_nea/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x15 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1GqTvIV0DDPnhJILTltRdf72GEXSaGcGT/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x17 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1icKDcpNvpvWpWSR_aa7SkyJ7Tgmh_40Z/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x19 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1Lnng1t7TAV5qqMneTy7-8VW2TW0p8-Ig/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x21 - SeriesRetro.com (1)",
+            "urlDrive": "https://drive.google.com/file/d/1nGgX9W0HidGw9kCk1-zD2u2s0RNuBBMB/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x21 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1Bo22bWSsanay0LGqyFS2vbvnoCTUEWaB/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x22 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/16_WIF8GdagI29sdftDXZlrc5v7BUG2ID/view"
+          },
+          {
+            "tituloEpisodio": "LM - 4x23 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1yHGHsXhDzGb_nEn893rtxlY0sU8w_sZG/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tmdbId": 105,
+    "tmdbType": "tv",
+    "tituloOriginal": "Sex and the City",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/jvHw1zF20kYA9gbF2VprXD6uJpq.jpg",
+    "year": "1998",
+    "fechaEstreno": "1998-06-06",
+    "rating": "7.3",
+    "votos": 2221,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Drama",
+      "Comedia"
+    ],
+    "generosTexto": "Drama, Comedia",
+    "clasificacion": "18",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Sarah Jessica Parker",
+        "personaje": "Carrie Bradshaw",
+        "foto": "https://image.tmdb.org/t/p/w185/tEhHY7Uyn8VktwLhawBRuR0tdaJ.jpg"
+      },
+      {
+        "nombre": "Kim Cattrall",
+        "personaje": "Samantha Jones",
+        "foto": "https://image.tmdb.org/t/p/w185/6X6x8gLSOWxwhoquIi37769m0k0.jpg"
+      },
+      {
+        "nombre": "Cynthia Nixon",
+        "personaje": "Miranda Hobbes",
+        "foto": "https://image.tmdb.org/t/p/w185/sSl5zvn1R56nkbcL52JGO1BY7z0.jpg"
+      },
+      {
+        "nombre": "Kristin Davis",
+        "personaje": "Charlotte York",
+        "foto": "https://image.tmdb.org/t/p/w185/61TjappibaZ1i8pEFlqwK2yrR2W.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Darren Star Productions, HBO",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "new york city, beauty, female friendship, love, dating, newspaper reporter, manhattan, new york city, sitcom",
+    "similares": [
+      {
+        "titulo": "Younger",
+        "poster": "https://image.tmdb.org/t/p/w342/feWw6i09zaX2apzRqd7QbKEAsx9.jpg",
+        "year": "2015",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Master of None",
+        "poster": "https://image.tmdb.org/t/p/w342/AcJM86PhgHAfbrF4dMKBaqO3cHV.jpg",
+        "year": "2015",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "And Just Like That…",
+        "poster": "https://image.tmdb.org/t/p/w342/qnZSQ20bhyaSJ83y0qaw61lv8Ef.jpg",
+        "year": "2021",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "La maravillosa Sra. Maisel",
+        "poster": "https://image.tmdb.org/t/p/w342/xnUj7LiTJq2M5vbwJnzOZB2x4nc.jpg",
+        "year": "2017",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Girls",
+        "poster": "https://image.tmdb.org/t/p/w342/ikyT3hnELofnYRsPIqVGgUhDbOT.jpg",
+        "year": "2012",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Sigue soñando",
+        "poster": "https://image.tmdb.org/t/p/w342/8aiG4OUBXj5yMFrBIpYIXMtxCJv.jpg",
+        "year": "1990",
+        "rating": "6.9"
+      }
+    ],
+    "homepage": "http://www.hbo.com/sex-and-the-city",
+    "creadores": [
+      "Darren Star"
+    ],
+    "numeroTemporadas": 6,
+    "numeroEpisodios": 94,
+    "temporadasTmdb": [
+      {
+        "air_date": "2003-10-01",
+        "episode_count": 4,
+        "id": 105071,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/s3JtxAtad3z2rzyDj2PAsGJ0KW3.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1998-06-06",
+        "episode_count": 12,
+        "id": 60249,
+        "name": "Temporada 1",
+        "overview": "Carrie Bradshaw y sus amigas exploran el amor, el sexo y las relaciones en Nueva York, mostrando distintos puntos de vista femeninos sobre la vida sentimental y la independencia.",
+        "poster_path": "/jBjgh7udMNwJ8UWmRcsVQmqiV0H.jpg",
+        "season_number": 1,
+        "vote_average": 5.7
+      },
+      {
+        "air_date": "1999-06-06",
+        "episode_count": 18,
+        "id": 60250,
+        "name": "Temporada 2",
+        "overview": "Las protagonistas profundizan en relaciones más complejas, enfrentándose a inseguridades, rupturas y expectativas emocionales mientras avanzan en sus carreras y vidas personales.",
+        "poster_path": "/jXM2gzTwX8zf4pNai09HCtzhFul.jpg",
+        "season_number": 2,
+        "vote_average": 6.3
+      },
+      {
+        "air_date": "2000-06-04",
+        "episode_count": 18,
+        "id": 60251,
+        "name": "Temporada 3",
+        "overview": "El grupo se enfrenta a cambios importantes en el amor y la amistad, con relaciones más serias, conflictos emocionales y decisiones que empiezan a marcar su madurez.",
+        "poster_path": "/jFRiydIiIa7hURDcaevbFbo4Aev.jpg",
+        "season_number": 3,
+        "vote_average": 6.2
+      },
+      {
+        "air_date": "2001-06-03",
+        "episode_count": 18,
+        "id": 60252,
+        "name": "Temporada 4",
+        "overview": "Las historias se vuelven más introspectivas, abordando compromisos, crisis personales y el equilibrio entre vida profesional y sentimental.",
+        "poster_path": "/nfqfvqlYgijdBjRdCeZ3I3PZOxA.jpg",
+        "season_number": 4,
+        "vote_average": 6.2
+      },
+      {
+        "air_date": "2002-07-21",
+        "episode_count": 8,
+        "id": 60253,
+        "name": "Temporada 5",
+        "overview": "Las protagonistas lidian con transformaciones vitales, mudanzas, nuevas etapas emocionales y la redefinición de lo que significa el éxito personal y amoroso.",
+        "poster_path": "/xjYgiTTXoJGKnEaBB2SgJlICyVm.jpg",
+        "season_number": 5,
+        "vote_average": 6.3
+      },
+      {
+        "air_date": "2003-06-22",
+        "episode_count": 20,
+        "id": 60254,
+        "name": "Temporada 6",
+        "overview": "La serie cierra con decisiones definitivas en el amor y la vida, resolviendo los grandes dilemas sentimentales de las protagonistas y cerrando sus arcos personales.",
+        "poster_path": "/mlig5QgSTKkFA3QUgsch1FB4teC.jpg",
+        "season_number": 6,
+        "vote_average": 6
+      }
+    ],
+    "tituloSerie": "Sexo en Nueva York",
+    "descripcion": "Esta comedia muestra con una mirada fresca y divertida el mundo del sexo y las citas en Nueva York.",
+    "imagen": "https://image.tmdb.org/t/p/original/lVad9ardPS4qKU1trWzP5w4842S.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Sex and the City 1x1 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1ON9koEoJTbOGtuW-w6VIrt5vwkGvbQIk/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x3 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1Ks_ToGNqFqLUHH5JJTnIuIHg0u_tXKmy/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x4 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1KUtO7u-iRPgtC77OeLtQVIpZKmQsSHjG/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x5 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1_P675oubwJtCwA9rZs3kDmxPHOa58pND/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x6 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1HYVlXZzdnMX-YZnXtuQEosxgAnKicJcT/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x7 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1FPQ3bedCgOjnkWD5PmYdE2tp8f9RZC5m/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x8 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1ze8ZXI48DPfP5BXUMTg-SQd09BLSAcqF/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x9 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/17kiOeN_NBbuZgir7Jj4NbsOkqhZHKi2f/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x10 Archives - Series Retro (1)",
+            "urlDrive": "https://drive.google.com/file/d/1uItzz0BMHvMVkmmBSnZ-hZ49TPoFgzUf/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x10 Archives - Series Retro (2)",
+            "urlDrive": "https://drive.google.com/file/d/1gEGJLXzo0Mnl3gcGl5vfybRRXggUkvm6/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x10 Archives - Series Retro (3)",
+            "urlDrive": "https://drive.google.com/file/d/19hlK-8At8EtMblTh9KUF8-XKDDSi_CEg/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x10 Archives - Series Retro (4)",
+            "urlDrive": "https://drive.google.com/file/d/1TbHkeWucjHRcHEEC9n72dTWilkJCOfs3/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x10 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1pd34BR-0TKmT45zaUYQNIy27uD6LkKaC/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 1x11 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1MFDA_1UHuqcTsMSlMI0w5vlYshd_TlDH/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x1 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1UQe8TiRAqa39NiPt4j3o6m9dCJ0vBNFr/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x2 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/135d3Sz581S1am69MCeFnCmVY-EM4nkj1/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x3 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1g7t6xx_L2d-BxfFCkHsdsNX7uiT98Qxr/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x4 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/13RcXzZKwKXmPLssxUDRYep25R9AgsOe1/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x5 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1SDgPiVoD0NgonXHDBqvovNOSoGAR5S2n/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x6 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1aBZThWEAXWKmYNyflSVwUYsLFARBH3fu/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x7 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1oEqLngihj00hnzfAYw7V0G4RpR77_MCv/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x8 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1u-T6W1PCbuiVmiRc0hrmX9dHUMG9gi9E/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x9 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1sX9GJ82F7wOQkUuRQy71rOIT9YT5oLpr/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x10 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1A01FJQpdfuQ0MCuJfw6K4h4tR1ScgWGE/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x11 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1r-_D2XsFz1W87u7a-gbc6WrZgr_czSM8/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x12 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1erQ2ylBslzJA6LU3LWPS5uLSeBBapsNY/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x14 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1FvpXFlkJusWE7LKrhsiVm07m9ykPlO4O/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x17 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1h5NgevV4rr0GeRaOSsxHPLpe6yutlZKi/view"
+          },
+          {
+            "tituloEpisodio": "Sex and the City 2x18 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1EZJHN11CXSGNEGraRn7RyvNpDRCZEh5k/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 2352,
     "tmdbType": "tv",
     "tituloOriginal": "The Nanny",
