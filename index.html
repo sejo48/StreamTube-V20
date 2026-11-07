@@ -35,8 +35,8 @@
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="./player-ui.js?v=20261106-1"></script>
     <link rel="stylesheet" href="./player-ui.css?v=20261106-1">
-    <script src="./tv-live.js?v=20261106-1"></script>
-    <link rel="stylesheet" href="./tv-live.css?v=20261106-1">
+    <script src="./tv-live.js?v=20261107-1"></script>
+    <link rel="stylesheet" href="./tv-live.css?v=20261107-1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -2008,7 +2008,7 @@
             }}/>;
 
             return (
-                <div className="min-h-screen bg-[#020617] text-[#f8fafc] font-sans flex flex-col relative selection:bg-cyan-500 selection:text-white w-full max-w-[100vw] overflow-x-hidden">
+                <div className={`min-h-screen bg-[#020617] text-[#f8fafc] font-sans flex flex-col relative selection:bg-cyan-500 selection:text-white w-full max-w-[100vw] overflow-x-hidden ${(activeTab === 'tv' || selectedItem?.type === 'tv') ? 'box-tv-active' : ''}`}>
                     <header className="box-header fixed top-0 left-0 right-0 z-50 glass-header px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl w-full">
                         <div className="flex items-center gap-4 lg:gap-8">
                             <div className="flex items-center gap-2.5 cursor-pointer group" onClick={() => handleTabClick(navTabs[0])}>
@@ -2711,6 +2711,7 @@
     </script>
 </body>
 </html>
+
 
 
 

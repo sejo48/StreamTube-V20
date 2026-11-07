@@ -7,3 +7,13 @@
 @media(max-width:1023px){.bxtv{padding:22px 16px 96px}.bxtv-layout{grid-template-columns:minmax(0,1fr);gap:20px}.bxtv-stage{grid-row:1}.bxtv-directory{grid-row:2}.bxtv-heading{margin-bottom:20px}.bxtv-caption{display:none}.bxtv-channel-list{max-height:470px}.bxtv-filters{padding:16px}.bxtv-count{padding:8px 10px;font-size:10px}.bxtv-now{padding:13px}.bxtv-now-title strong{font-size:12px}.bxtv-controls button{width:40px;height:44px}.bxtv-search input{font-size:16px}.bxtv-category select{font-size:16px}.bxtv-channel-copy strong{font-size:14px}.bxtv-channel-copy small{font-size:11px}}
 @media(max-width:480px){.bxtv-heading{align-items:flex-start}.bxtv-subtitle{font-size:11px}.bxtv-eyebrow{font-size:9px;letter-spacing:.08em}.bxtv h1{font-size:24px}.bxtv-now{flex-wrap:wrap}.bxtv-now-title{flex-basis:100%}.bxtv-controls{width:100%;justify-content:space-between;padding-top:9px;border-top:1px solid #1e293b}.bxtv-controls button{flex:1;max-width:65px}.bxtv-player,.bxtv-directory{border-radius:16px}.bxtv-overlay{gap:6px;padding:12px}.bxtv-overlay p{font-size:10px}.bxtv-overlay-symbol{width:36px;height:36px;border-radius:12px;font-size:18px}.bxtv-overlay button{padding:8px 18px;min-height:38px}.bxtv-now .bxtv-logo{width:34px;height:34px}.bxtv-heading .bxtv-count{margin-top:3px}}
 @media(prefers-reduced-motion:reduce){.bxtv,.bxtv *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* Keep the mobile player above the directory, beneath the fixed app header.
+   Clip horizontal overflow without creating an ancestor scroll container. */
+@media(max-width:1023px){
+  .box-tv-active,.box-tv-active .box-main{overflow-x:clip;overflow-y:visible}
+  .bxtv-layout{display:flex;flex-direction:column;scroll-margin-top:calc(var(--box-header-height,132px) + 8px)}
+  .bxtv-directory{width:100%}
+  .bxtv-stage{order:-1;width:100%;position:sticky;top:calc(var(--box-header-height,132px) + 8px);z-index:20;background:#020617;border-radius:16px;box-shadow:0 12px 24px #020617}
+  .bxtv-screen{max-height:max(90px,calc(100dvh - var(--box-header-height,132px) - 210px))}
+}
+

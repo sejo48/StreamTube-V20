@@ -65,7 +65,7 @@
   window.BoxTVLive = function BoxTVLive({ channels, favorites, selected, onSelect, onFavorite, onClose, loading }) {
     const [query, setQuery] = useState(''), [group, setGroup] = useState('Todas'), [view, setView] = useState('Todos');
     const [recent, setRecent] = useState(readRecent), [status, setStatus] = useState('idle'), [attempt, setAttempt] = useState(0);
-    const player = useRef(null), lastSelected = useRef('');
+    const player = useRef(null), layout = useRef(null), lastSelected = useRef('');
     const ui = window.BoxPlayerUI.usePlayerUI(player, selected && key(selected));
     const full = ui.full;
     const favoriteKeys = useMemo(() => new Set(favorites.map(key)), [favorites]);
@@ -82,7 +82,15 @@
       lastSelected.current = id;
       setRecent(previous => { const next = [id, ...previous.filter(x => x !== id)].slice(0, 12); try { localStorage.setItem('boxplay_tv_recent', JSON.stringify(next)); } catch (_) {} return next; });
     }, [selected]);
-    const choose = c => { setStatus('loading'); setAttempt(x => x + 1); onSelect(c); };
+    const choose = c => {
+      setStatus('loading'); setAttempt(x => x + 1); onSelect(c);
+      if (window.matchMedia('(max-width: 1023px)').matches) {
+        requestAnimationFrame(() => {
+          if (!layout.current || document.fullscreenElement || document.webkitFullscreenElement || full) return;
+          layout.current.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+        });
+      }
+    };
     const next = direction => { const pool = shown.length ? shown : channels; if (!pool.length) return; const i = pool.findIndex(c => selected && key(c) === key(selected)); choose(pool[i < 0 ? (direction > 0 ? 0 : pool.length - 1) : (i + direction + pool.length) % pool.length]); };
     const fullscreen = ui.toggleFullscreen;
     const error = ['error', 'unsupported'].includes(status);
@@ -90,7 +98,7 @@
     const button = (label, action, text, disabled) => h('button', { type: 'button', title: label, 'aria-label': label, onClick: action, disabled: !!disabled }, text);
     return h('section', { className: 'bxtv', 'aria-label': 'Televisión en directo' },
       h('header', { className: 'bxtv-heading' }, h('div', null, h('p', { className: 'bxtv-eyebrow' }, 'BOXPLAY', h('span', null, 'TV'), ' / EN DIRECTO'), h('h1', null, 'Tu próxima señal favorita.'), h('p', { className: 'bxtv-subtitle' }, 'Noticias, cine y entretenimiento. TV gratuita en la web.')), h('span', { className: 'bxtv-count' }, channels.length, ' canales')),
-      h('div', { className: 'bxtv-layout' },
+      h('div', { className: 'bxtv-layout', ref: layout },
         h('aside', { className: 'bxtv-directory', 'aria-label': 'Lista de canales' },
           h('div', { className: 'bxtv-filters' },
             h('div', { className: 'bxtv-tabs', 'aria-label': 'Filtrar canales' }, ['Todos', 'Favoritos', 'Recientes'].map(tab => h('button', { key: tab, type: 'button', 'aria-pressed': view === tab, onClick: () => setView(tab) }, tab))),
@@ -116,3 +124,4 @@
   window.BoxTVLive.category = category;
   window.BoxTVLive.initialChannel = channels => { const recent = readRecent(); return channels.find(c => key(c) === recent[0]) || channels[0]; };
 })();
+
