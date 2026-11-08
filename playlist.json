@@ -1,5 +1,659 @@
 [
   {
+    "tmdbId": 1781,
+    "tmdbType": "tv",
+    "tituloOriginal": "Little House on the Prairie",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/uCvpgfY4oTeZxEcFqm1ATJkDDmu.jpg",
+    "year": "1974",
+    "fechaEstreno": "1974-09-11",
+    "rating": "8.0",
+    "votos": 1050,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Western",
+      "Drama",
+      "Familia"
+    ],
+    "generosTexto": "Western, Drama, Familia",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Dean Butler",
+        "personaje": "Almanzo James Wilder",
+        "foto": "https://image.tmdb.org/t/p/w185/jrHWO7rA0LQlpXQi7SoSFZ6rjgS.jpg"
+      },
+      {
+        "nombre": "Melissa Gilbert",
+        "personaje": "Laura Ingalls",
+        "foto": "https://image.tmdb.org/t/p/w185/ZiBlETdDLm8nWKx6N5C624Sn1O.jpg"
+      },
+      {
+        "nombre": "Katherine MacGregor",
+        "personaje": "Harriet Oleson",
+        "foto": "https://image.tmdb.org/t/p/w185/gR1W13KRLkyzP7Kd776lo599na5.jpg"
+      },
+      {
+        "nombre": "Richard Bull",
+        "personaje": "Nels Oleson",
+        "foto": "https://image.tmdb.org/t/p/w185/6Fe0rL1tPq9oWVxsBGcFKpoyL44.jpg"
+      },
+      {
+        "nombre": "Jonathan Gilbert",
+        "personaje": "Willie Oleson",
+        "foto": "https://image.tmdb.org/t/p/w185/9N27ki1uS3af9TbCNof2vYekG26.jpg"
+      },
+      {
+        "nombre": "Allison Balson",
+        "personaje": "Nancy Oleson",
+        "foto": "https://image.tmdb.org/t/p/w185/79mV5w2NMq5NToe7tDy0uwqEdRx.jpg"
+      },
+      {
+        "nombre": "Lindsay Kennedy",
+        "personaje": "Jeb Carter",
+        "foto": "https://image.tmdb.org/t/p/w185/wpDHfPrhvjhTDS3bAgo9cBSvY8z.jpg"
+      },
+      {
+        "nombre": "David Friedman",
+        "personaje": "Jason Carter",
+        "foto": "https://image.tmdb.org/t/p/w185/9sk9YX533Cj9UkVpjZ70IYq94GY.jpg"
+      },
+      {
+        "nombre": "Shannen Doherty",
+        "personaje": "Jenny Wilder",
+        "foto": "https://image.tmdb.org/t/p/w185/c3EXtxx7x4inTlf1O1GgKD5kYZa.jpg"
+      },
+      {
+        "nombre": "Pamela Roylance",
+        "personaje": "Sarah Reed Carter",
+        "foto": "https://image.tmdb.org/t/p/w185/lpJYXvuAK0yJsByRYJ87uUEGp1z.jpg"
+      },
+      {
+        "nombre": "Victor French",
+        "personaje": "Isaiah Edwards",
+        "foto": "https://image.tmdb.org/t/p/w185/nh65ug2feGjuxIp6vUhw2eR2enr.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Worldvision Enterprises, Ed Friendly Productions, NBC, NBC Studios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=wurpwfTPcIw",
+    "coleccion": "",
+    "keywords": "based on memoir or autobiography, period drama, family, wild west, pioneers, 19th century, early america, family life",
+    "similares": [
+      {
+        "titulo": "The Big Valley",
+        "poster": "https://image.tmdb.org/t/p/w342/wjDnSS8JTjSg9g61bkEJKkPug1F.jpg",
+        "year": "1965",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "La casa de la pradera",
+        "poster": "https://image.tmdb.org/t/p/w342/kLz26pPuuvHZjjpMx6TsH5QETZA.jpg",
+        "year": "2026",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Bonanza",
+        "poster": "https://image.tmdb.org/t/p/w342/wQ1iVrG871anxkEUwWTRdPRi0j1.jpg",
+        "year": "1959",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Caravana",
+        "poster": "https://image.tmdb.org/t/p/w342/csC6kMTKWmOcy9nKZEgdwd7Frb9.jpg",
+        "year": "1957",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "El gran Chaparral",
+        "poster": "https://image.tmdb.org/t/p/w342/2aiki9WLZWbv6PIl5CESOYdmOGj.jpg",
+        "year": "1967",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "La doctora Quinn",
+        "poster": "https://image.tmdb.org/t/p/w342/rF32uo83bzezkEUQ8VGarbCJi32.jpg",
+        "year": "1993",
+        "rating": "7.6"
+      }
+    ],
+    "homepage": "https://amzn.to/3NOyNNu",
+    "creadores": [
+      "Ed Friendly",
+      "Laura Ingalls Wilder"
+    ],
+    "numeroTemporadas": 9,
+    "numeroEpisodios": 200,
+    "temporadasTmdb": [
+      {
+        "air_date": "1974-03-30",
+        "episode_count": 20,
+        "id": 5039,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/ea6b2IMjH4RaPy1MvOisz91VVXN.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1974-09-11",
+        "episode_count": 23,
+        "id": 5030,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/l5KEhmg1SLvkJ9QTPzGx62rkLC8.jpg",
+        "season_number": 1,
+        "vote_average": 7.7
+      },
+      {
+        "air_date": "1975-09-10",
+        "episode_count": 22,
+        "id": 5029,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/f6k2Ym6FINhdzcvdaBI9wVBcUjn.jpg",
+        "season_number": 2,
+        "vote_average": 7.8
+      },
+      {
+        "air_date": "1976-09-27",
+        "episode_count": 21,
+        "id": 5032,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/vrdBOp8HXzho8jTL4dwtSE0P7q8.jpg",
+        "season_number": 3,
+        "vote_average": 6.4
+      },
+      {
+        "air_date": "1977-09-12",
+        "episode_count": 22,
+        "id": 5031,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/78BV9bsKTDIYsRgUnug8TOTEWLK.jpg",
+        "season_number": 4,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1978-09-10",
+        "episode_count": 24,
+        "id": 5036,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/kFJQdPYBqGdXZpA1tHhP9nJITk8.jpg",
+        "season_number": 5,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1979-09-16",
+        "episode_count": 23,
+        "id": 5037,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/o5suUKo66ixiqCjOs26f8WpCa3M.jpg",
+        "season_number": 6,
+        "vote_average": 7.1
+      },
+      {
+        "air_date": "1980-09-22",
+        "episode_count": 22,
+        "id": 5035,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/1aTEM8mVd1H6L2ZQXALBIaCGxIf.jpg",
+        "season_number": 7,
+        "vote_average": 7.1
+      },
+      {
+        "air_date": "1981-10-05",
+        "episode_count": 22,
+        "id": 5038,
+        "name": "Temporada 8",
+        "overview": "",
+        "poster_path": "/qwzoYrYNE8mzzUVosTLU5zRWAUi.jpg",
+        "season_number": 8,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "1982-09-27",
+        "episode_count": 21,
+        "id": 5034,
+        "name": "Temporada 9",
+        "overview": "",
+        "poster_path": "/4qMLLGNkHbToSS0YNOzh1k555ER.jpg",
+        "season_number": 9,
+        "vote_average": 8
+      }
+    ],
+    "tituloSerie": "La casa de la pradera",
+    "descripcion": "Basada en las novelas infantiles de Laura Ingalls Wilder, fue una popular serie de televisión de los años setenta que narraba las aventuras y desventuras de los Ingalls, una ejemplar, bondadosa y cristiana familia establecida en un pueblo fronterizo del Oeste americano hacia 1870.",
+    "imagen": "https://image.tmdb.org/t/p/w780/dRQ1B9nSsbtcLiMFSJDmX5MDsV3.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "1x04 El Señor Edwards Regresa al Hogar - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1dlBxHA5BspU0TxA2u6NrMOQo4Ngt3w10/view"
+          },
+          {
+            "tituloEpisodio": "1x05 El amor de Johnny Johnson - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1P0upvWWK3lYfZNZ-Cmuu7NmvKwJCSECi/view"
+          },
+          {
+            "tituloEpisodio": "1x08 Las vacaciones de mamá - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1FW7alZ5SWTlzwW6SQSIAnfS2i8SVIHL-/view"
+          },
+          {
+            "tituloEpisodio": "1x12 El premio - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1uvhWqP7jY9YLSkkHgRjeFH3rSEir-E5s/view"
+          },
+          {
+            "tituloEpisodio": "1x13 -14 El señor es mi pastor - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1dTz3yTPDRtxLKsEGJl2ykkjXI9u8ssbq/view"
+          },
+          {
+            "tituloEpisodio": "4x04 El Ambulante - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1IXas3q7Z9jWkZahIHnIeAeQpWEUHjrFQ/view"
+          },
+          {
+            "tituloEpisodio": "4x06 El Espectro de Walnut Grove - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1N7Tc1t-zChi_zjeINwuFST2Oxg0oKUsq/view"
+          },
+          {
+            "tituloEpisodio": "4x07 Huir de la Realidad - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/18iT4wOYafZQNBQG2jBva-xtIZiDhRGwI/view"
+          },
+          {
+            "tituloEpisodio": "4x08 Rescoldos de una Guerra - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1EcWLk1Ww033DewVp3W5cjgYKor86SOxU/view"
+          },
+          {
+            "tituloEpisodio": "4x13 Vuelo de Libertad - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1fLiqkgRSu_S9jn2aqrqhBxZPL6WEHduL/view"
+          },
+          {
+            "tituloEpisodio": "4x16 Recuerdo cuando... - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1gec8NaPfIKoEcObLexdnyRtAhuUQKObG/view"
+          },
+          {
+            "tituloEpisodio": "4x17 Sé Mi Amiga - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1DgqMscAYQjNAlmmM3sVohQaOdfDrFbFN/view"
+          },
+          {
+            "tituloEpisodio": "4x18 La Herencia - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1HxoV42EnSrhe-eM9TEuTUIwjDGlFd_Ag/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tmdbId": 1018,
+    "tmdbType": "tv",
+    "tituloOriginal": "Bonanza",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/61OxoiBHvGFOB4gufYfypHyCbI4.jpg",
+    "year": "1959",
+    "fechaEstreno": "1959-09-12",
+    "rating": "7.5",
+    "votos": 505,
+    "runtime": "49min",
+    "runtimeMin": 49,
+    "genres": [
+      "Western",
+      "Action & Adventure",
+      "Drama",
+      "Familia"
+    ],
+    "generosTexto": "Western, Action & Adventure, Drama, Familia",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Lorne Greene",
+        "personaje": "Ben Cartwright",
+        "foto": "https://image.tmdb.org/t/p/w185/8thOy0TS7tNDBcwPqjmOPw9Jgdx.jpg"
+      },
+      {
+        "nombre": "Michael Landon",
+        "personaje": "Joe Cartwright",
+        "foto": "https://image.tmdb.org/t/p/w185/8OvHdLOBKSqcZdeCpdYdhW0HFOO.jpg"
+      },
+      {
+        "nombre": "David Canary",
+        "personaje": "Candy Canaday",
+        "foto": "https://image.tmdb.org/t/p/w185/h2uTosyj3wP3DFdUvR9BaE17QIr.jpg"
+      },
+      {
+        "nombre": "Tim Matheson",
+        "personaje": "Griff King",
+        "foto": "https://image.tmdb.org/t/p/w185/6oexiiYLJYXU6NjIhzlpA3mqYGF.jpg"
+      },
+      {
+        "nombre": "Mitch Vogel",
+        "personaje": "Jamie Hunter Cartwright",
+        "foto": "https://image.tmdb.org/t/p/w185/22QR2qugbP3KG8CU8cDYTEPNUkl.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "NBC, NBC Studios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "nevada, ranch, family, single father, cowboy, wild west, 19th century, early america, inspirational",
+    "similares": [
+      {
+        "titulo": "El hombre del rifle",
+        "poster": "https://image.tmdb.org/t/p/w342/tYf5Sc83chWG2nBlo5xKdpBBwlI.jpg",
+        "year": "1958",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Randall, el justiciero",
+        "poster": "https://image.tmdb.org/t/p/w342/mYgwFT8JXW6J5YTs8DuzDDOKXlS.jpg",
+        "year": "1958",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Centennial",
+        "poster": "https://image.tmdb.org/t/p/w342/xh38j3lFuwpDxX6S22AmhaDMS92.jpg",
+        "year": "1978",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Into the West",
+        "poster": "https://image.tmdb.org/t/p/w342/x2fOIeDgzf9CkDLlF1rR7ekP1sV.jpg",
+        "year": "2005",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Jóvenes jinetes",
+        "poster": "https://image.tmdb.org/t/p/w342/kxGNeTAibWL6dmRD1t7vcptKFCo.jpg",
+        "year": "1989",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "La doctora Quinn",
+        "poster": "https://image.tmdb.org/t/p/w342/rF32uo83bzezkEUQ8VGarbCJi32.jpg",
+        "year": "1993",
+        "rating": "7.6"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "David Dortort"
+    ],
+    "numeroTemporadas": 14,
+    "numeroEpisodios": 431,
+    "temporadasTmdb": [
+      {
+        "air_date": "1959-09-12",
+        "episode_count": 32,
+        "id": 59954,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/y4VsAohp5e5VThbgqbgIdXX0Mib.jpg",
+        "season_number": 1,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1960-09-10",
+        "episode_count": 34,
+        "id": 59955,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/dxsOXeAQjPVD1s5hHDOgMvQh739.jpg",
+        "season_number": 2,
+        "vote_average": 5.5
+      },
+      {
+        "air_date": "1961-09-24",
+        "episode_count": 34,
+        "id": 59956,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/qMBKm2uR1q8D96KxqDuCn6ssaQK.jpg",
+        "season_number": 3,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "1962-09-23",
+        "episode_count": 34,
+        "id": 59957,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/ykmSCatbJvm3gvfyJy8X8rhM1E8.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1963-09-22",
+        "episode_count": 34,
+        "id": 59958,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/6lpxmgoS0kbDUBe6Zr20krUCwgz.jpg",
+        "season_number": 5,
+        "vote_average": 4.5
+      },
+      {
+        "air_date": "1964-09-20",
+        "episode_count": 34,
+        "id": 59959,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/8uiVEjq5K2fDl2Egk8gRqd70qWd.jpg",
+        "season_number": 6,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1965-09-12",
+        "episode_count": 33,
+        "id": 59960,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/6OK0jqLycKobNFedDabJP5ChVXV.jpg",
+        "season_number": 7,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1966-09-11",
+        "episode_count": 34,
+        "id": 59961,
+        "name": "Temporada 8",
+        "overview": "",
+        "poster_path": "/uQcNzQCVRH31LMBXN1fkbqrgVtp.jpg",
+        "season_number": 8,
+        "vote_average": 8
+      },
+      {
+        "air_date": "1967-09-17",
+        "episode_count": 34,
+        "id": 59962,
+        "name": "Temporada 9",
+        "overview": "",
+        "poster_path": "/lk9Xnthm34LaWBSwHX8hiJC8Idx.jpg",
+        "season_number": 9,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1968-09-15",
+        "episode_count": 30,
+        "id": 59963,
+        "name": "Temporada 10",
+        "overview": "",
+        "poster_path": "/z62Rv1SmaXhKA4vDbiExn03AIpG.jpg",
+        "season_number": 10,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1969-09-14",
+        "episode_count": 28,
+        "id": 59964,
+        "name": "Temporada 11",
+        "overview": "",
+        "poster_path": "/4IpifRQ72fxAmQJG6oGaTwQtVTT.jpg",
+        "season_number": 11,
+        "vote_average": 10
+      },
+      {
+        "air_date": "1970-09-13",
+        "episode_count": 28,
+        "id": 59965,
+        "name": "Temporada 12",
+        "overview": "",
+        "poster_path": "/mPtVAZsGaW0YSVkiEIh0KBuV7vl.jpg",
+        "season_number": 12,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1971-09-19",
+        "episode_count": 26,
+        "id": 59966,
+        "name": "Temporada 13",
+        "overview": "",
+        "poster_path": "/wnaQvTveZ3FjXrCpr3ivXyMzcG8.jpg",
+        "season_number": 13,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1972-09-12",
+        "episode_count": 16,
+        "id": 59967,
+        "name": "Temporada 14",
+        "overview": "",
+        "poster_path": "/2LhdGblcxpqcr3VArjb79scRYy3.jpg",
+        "season_number": 14,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Bonanza",
+    "descripcion": "Viejo Oeste americano (1860-1870). Todos los caminos pasan por La Ponderosa, el rancho de los Cartwight, que se encuentra en los alrededores de Virginia City, junto al Lago Tahoe (Nevada). Ben Cartwright es un viudo que cuida de sus tres hijos Adam, Hoss y Joe, cada uno de una esposa fallecida. Por allí pasan vaqueros polvorientos, predicadores, buscadores de fortuna, viudas ricas y una inacabable galería de personajes que van y vienen llenando la pantalla de aventuras.",
+    "imagen": "https://image.tmdb.org/t/p/w780/wQ1iVrG871anxkEUwWTRdPRi0j1.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Descargar Bonanza 1x2 Ver Serie Online Gratis Latino",
+            "urlDrive": "https://drive.google.com/file/d/1RIZiS39-HJGesMooOYWJKseiav2fVMQu/view"
+          },
+          {
+            "tituloEpisodio": "Descargar Bonanza 1x3 Ver Serie Online Gratis Latino",
+            "urlDrive": "https://drive.google.com/file/d/1JlnGnozVNAz5eIu9WAp8WBr6VGNDQs1E/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x4 Descargar Serie por MEGA Gratis Latino",
+            "urlDrive": "https://drive.google.com/file/d/1MPAw8p5j5l90FO7Cbxw8b314e7klU2VK/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x5 Descargar Serie por MEGA Gratis Latino",
+            "urlDrive": "https://drive.google.com/file/d/1YpxJrQoJN1s3Deh2SFbltPbeZAUvUw2p/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x6 Descargar Serie por MEGA Gratis Latino",
+            "urlDrive": "https://drive.google.com/file/d/1nnZOF4zPNTF7Zmoc8mB5CiptjAxjY3wv/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x7 Online Descargar Serie Online Gratis Español Lat",
+            "urlDrive": "https://drive.google.com/file/d/1jbpmfNab5WsJG0_8sP4qVb9weWV0Vin0/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x8 Online Descargar Serie Online Gratis Español Lat",
+            "urlDrive": "https://drive.google.com/file/d/1sTrY64nhlPsxj6N4Q4xcDMwXBC3FtFyg/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x9 Online Descargar Serie Online Gratis Español Lat",
+            "urlDrive": "https://drive.google.com/file/d/1vPpoC-3woQHyaQvi1E02YiLFx5oql48s/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x10 Online Descargar Serie Online Gratis Español La",
+            "urlDrive": "https://drive.google.com/file/d/1cRxYUDPSgzKMRsbaehXffB7vhkb-pHjy/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x11 Online Descargar Serie Online Gratis Español La",
+            "urlDrive": "https://drive.google.com/file/d/16qG3qUHk3TqM8W99pWOJhSNZqCezYe-y/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x12 Online Descargar Serie Online Gratis Español La",
+            "urlDrive": "https://drive.google.com/file/d/1OTgacfF7Tm9Xl34f6Bfl4mJOO0FCKS-K/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x13 Online Descargar Serie Online Gratis Español La",
+            "urlDrive": "https://drive.google.com/file/d/1imoMSYyM2KVvR1TaNoKX06rjoEpSUeo0/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x14 Online Descargar Serie Online Gratis Español La",
+            "urlDrive": "https://drive.google.com/file/d/13Oo4UDFS9Yu2m3ka541dwu76D2nlDvDF/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x15 Online Descargar Serie Gratis Español Latino",
+            "urlDrive": "https://drive.google.com/file/d/1KrI7k8dZMucJi-6B4Kl_eTYYsrqYvaKT/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x16 Online Descargar Serie Gratis Español Latino",
+            "urlDrive": "https://drive.google.com/file/d/1SlWjITiadGSiQ9R5H2N0O97lfIFgGEbi/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x17 Online Descargar Serie Gratis Español Latino",
+            "urlDrive": "https://drive.google.com/file/d/1tmin61I7xRhNLnGBr41voNheBD7-DImF/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x19 Online Descargar Serie Gratis Español Latino",
+            "urlDrive": "https://drive.google.com/file/d/1JQdVNkxeO6jZeMD4mZxjP1_EeiKGCiBP/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x22 Online Descargar Serie Gratis Español Latino",
+            "urlDrive": "https://drive.google.com/file/d/1ABiFqHQN7kd5yVbIMOeNWAVRimoGv-_B/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x23 Online Descargar Serie Gratis Español Latino",
+            "urlDrive": "https://drive.google.com/file/d/1kpd4jgrVOPAphUXvsAmh069CZyRNqIlc/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x24 Online Descargar Serie Gratis Español Latino",
+            "urlDrive": "https://drive.google.com/file/d/1r8oFiw8HKZQvplLqne86FPIkyEBPaM59/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x27 Online Descargar Serie Gratis Español Latino",
+            "urlDrive": "https://drive.google.com/file/d/1Hxb1BmTk9YwLVDGFzqnxaqwlpkva8Pva/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x28 Online Descargar Serie Gratis Español Latino",
+            "urlDrive": "https://drive.google.com/file/d/1XnjR8IkJpMEQQPhPHH-VziOn-MqzZFcL/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x30 Online Descargar Serie Gratis Latino",
+            "urlDrive": "https://drive.google.com/file/d/1qRPtjWQ9rL9_eqKnoEAWEmMTsEZjMUFN/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x31 Online Descargar Serie Gratis Latino",
+            "urlDrive": "https://drive.google.com/file/d/1oP6q2dWKT5uos9UakevkUcN5caKF6HIl/view"
+          },
+          {
+            "tituloEpisodio": "Ver Bonanza 1x32 Online Descargar Serie Gratis Latino",
+            "urlDrive": "https://drive.google.com/file/d/1it6EhJP7MA0CJZ3NjOj_bloPP-vPmxMk/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 2287,
     "tmdbType": "tv",
     "tituloOriginal": "Batman",
@@ -6804,84 +7458,6 @@
           {
             "tituloEpisodio": "Episodio",
             "urlDrive": "https://drive.google.com/file/d/1wFelmxJDIgYI4Co4OqfTgnHcHG7miShb/preview"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "tituloSerie": "El túnel del tiempo",
-    "descripcion": "Serie de TV de 30 capítulos (1966-1967). Tony Newman y Doug Phillips son los científicos que han creado el proyecto Tic-Toc, una instalación del gobierno enterrada en el desierto. Se trata de un túnel del tiempo que permite visitar cualquier época y lugar. Mientras preparan el túnel, Newman y Phillips quedan atrapados en el tiempo, y cada semana son testigos de un importante hecho histórico. El resto del equipo científico intentará traerlos de regreso sanos y salvos",
-    "imagen": "https://m.media-amazon.com/images/I/71BmlaQBvqL._UF894,1000_QL80_.jpg",
-    "codigo": null,
-    "qualityTag": "",
-    "temporadas": [
-      {
-        "numeroTemporada": 1,
-        "episodios": [
-          {
-            "tituloEpisodio": "Episodio 1",
-            "urlDrive": "https://drive.google.com/file/d/1fg0mXkUnLc1OlMVgujJEqk_rFLurmUc5/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 2",
-            "urlDrive": "https://drive.google.com/file/d/1j_fpdDDWUI2hP3yY3EjoS10f31HrmGqd/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 3",
-            "urlDrive": "https://drive.google.com/file/d/1v6BP2VsJ-vkakRiEsDqveOBSnagt9v9t/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 4",
-            "urlDrive": "https://drive.google.com/file/d/1Vimeah0RA3NdrwGsp-WmRXpxwCQ7-Fk2/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 4",
-            "urlDrive": "https://drive.google.com/file/d/1nDbEFOFGgR05H5zal_-vIQuxH81WEgDw/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 5",
-            "urlDrive": "https://drive.google.com/file/d/1zfbgik-cgctg7eWuzPHd6cp_tcDlvoE6/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 6",
-            "urlDrive": "https://drive.google.com/file/d/1LzoxntF8YkLAAqBw2YoFyvhyigbb9Sgv/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 7",
-            "urlDrive": "https://drive.google.com/file/d/1QIunA3pOC7Wn5DtvhNE04625x-1Kyr8h/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 8",
-            "urlDrive": "https://drive.google.com/file/d/1Ss5iILm9m08zNZ6id23aD-0Q9orO2gov/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 9",
-            "urlDrive": "https://drive.google.com/file/d/1rMmEAKgEjiQb_ntem9qPx8ELjvbEQg4N/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 10",
-            "urlDrive": "https://drive.google.com/file/d/1WQYDNGeVPuBJxLiVoW2H67SRUWyEJPnO/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 11",
-            "urlDrive": "https://drive.google.com/file/d/1I0smsTuHLPOKISjxu8z_VMJS7vvarY5D/preview\" width=\"640"
-          },
-          {
-            "tituloEpisodio": "Episodio 12",
-            "urlDrive": "https://drive.google.com/file/d/10jtsa2Qd4V5v5uCgi_a9ZAmVFOBgGe3S/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 13",
-            "urlDrive": "https://drive.google.com/file/d/15ipOGJiJFm4_9o9dnGWNvffpnZBxz9yK/preview\" width=\"640"
-          },
-          {
-            "tituloEpisodio": "Episodio 14",
-            "urlDrive": "https://drive.google.com/file/d/145XkijoOEWNBZoB91NP0BT7WQyCNXq81/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 15",
-            "urlDrive": "https://drive.google.com/file/d/14qiGpVpdQCntuvwbHxDeSVnhhweHva8G/preview"
           }
         ]
       }
