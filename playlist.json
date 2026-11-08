@@ -1,5 +1,251 @@
 [
   {
+    "tmdbId": 1660,
+    "tmdbType": "tv",
+    "tituloOriginal": "I Dream of Jeannie",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/8dGgunEwWsPcXHv87gI19QncLrw.jpg",
+    "year": "1965",
+    "fechaEstreno": "1965-09-18",
+    "rating": "7.8",
+    "votos": 853,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Comedia, Familia",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Barbara Eden",
+        "personaje": "Jeannie",
+        "foto": "https://image.tmdb.org/t/p/w185/wFTdqWI7RDAbOlcejwHwKUOn4mr.jpg"
+      },
+      {
+        "nombre": "Larry Hagman",
+        "personaje": "Tony Nelson",
+        "foto": "https://image.tmdb.org/t/p/w185/6z5tCuu0Qhq6a0YKpqXfHmiMbD4.jpg"
+      },
+      {
+        "nombre": "Bill Daily",
+        "personaje": "Capt. Roger Healey",
+        "foto": "https://image.tmdb.org/t/p/w185/2T3DCQyCTWzprDpZrlSPwMCTB10.jpg"
+      },
+      {
+        "nombre": "Hayden Rorke",
+        "personaje": "Dr Alfred Bellows",
+        "foto": "https://image.tmdb.org/t/p/w185/8HuJziNroZGIv6NFZMO6baifZSP.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Sidney Sheldon Productions, Screen Gems",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "jealousy, magic, time travel, wish, astronaut, genie, sitcom",
+    "similares": [
+      {
+        "titulo": "Una chica explosiva",
+        "poster": "https://image.tmdb.org/t/p/w342/vpYu5ofNtOQZB1pRlSxkkXsPFJn.jpg",
+        "year": "1994",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Phil del Futuro",
+        "poster": "https://image.tmdb.org/t/p/w342/4r1luaFylkK48JcXmCNpZ0yKNZW.jpg",
+        "year": "2004",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Los padrinos mágicos",
+        "poster": "https://image.tmdb.org/t/p/w342/dEMhp3WLscZj7bGTKnJIEMLdk2Y.jpg",
+        "year": "2001",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Mork & Mindy",
+        "poster": "https://image.tmdb.org/t/p/w342/6qZsNHd5Kafc9AMQyKR5W6RRqIf.jpg",
+        "year": "1978",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Lab Rats",
+        "poster": "https://image.tmdb.org/t/p/w342/lcQMvn9ZptPd3dxn0a17viRfi7Y.jpg",
+        "year": "2012",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "De otro mundo",
+        "poster": "https://image.tmdb.org/t/p/w342/qyvr4gE5RbIldFlVeJBHn60VQfd.jpg",
+        "year": "1987",
+        "rating": "7.3"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Sidney Sheldon"
+    ],
+    "numeroTemporadas": 5,
+    "numeroEpisodios": 139,
+    "temporadasTmdb": [
+      {
+        "air_date": "1985-10-20",
+        "episode_count": 4,
+        "id": 4572,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/20zjbg1k6Af2QF1LuiATvdazh8r.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1965-09-18",
+        "episode_count": 30,
+        "id": 4567,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/2OHyDMBUUmwE7b2OzgIa17K0Rp8.jpg",
+        "season_number": 1,
+        "vote_average": 5.3
+      },
+      {
+        "air_date": "1966-09-12",
+        "episode_count": 31,
+        "id": 4568,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/nSvzEyAu2o5jbzEnIoMRUWTYw1A.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1967-09-12",
+        "episode_count": 26,
+        "id": 4569,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/iKLzO6RLi6UzZzLmfts70efgnyT.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1968-09-16",
+        "episode_count": 26,
+        "id": 4570,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/SnZsjacPx3CQNW5OIur6RfVKMV.jpg",
+        "season_number": 4,
+        "vote_average": 5.5
+      },
+      {
+        "air_date": "1969-09-16",
+        "episode_count": 26,
+        "id": 4571,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/q8jyooaP7sZEDSDeTSRJfIKpxzB.jpg",
+        "season_number": 5,
+        "vote_average": 7.6
+      }
+    ],
+    "tituloSerie": "Mi bella genio",
+    "descripcion": "El astronauta Tony Nelson, enviado al espacio para realizar una misión, se ve obligado a lanzarse en paracaídas sobre una isla desierta. Mientras espera que lo rescaten, encuentra una botella semienterrada, de la que sale una mujer genio que, agradecida, acepta ser su sierva. Cuando Tony regresa a Co-Coa Beach (Florida), sabe muy bien que nadie creerá su aventura. El psicoanalista de la base, el doctor Bellows, esta convencido de que Tony ha sufrido alucinaciones. Además, Jeannie (así la llamó), se negó a mostrarse ante otras personas que no fueran su amo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/xxmtvp7WL70yjJO1beXD5WO5lpu.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x1 Online Castellano Latino Subtitu",
+            "urlDrive": "https://drive.google.com/file/d/1Yp3CoqR6aurYdiIId6mmVi4OZa-Q3gt6/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x2 Online Castellano Latino Subtitu",
+            "urlDrive": "https://drive.google.com/file/d/1cEUsOdCfdcGAiJYPp-9QOhR7BY-iV8Tr/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x3 Online Castellano Latino Subtitu",
+            "urlDrive": "https://drive.google.com/file/d/1gndSWR4-H3D6v0N___PEKvJg3udD2uMZ/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x4 Online Castellano Latino Subtitu",
+            "urlDrive": "https://drive.google.com/file/d/1KMPVBeKyF_8bkykg3LXQ7SYbengDrjY9/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x5 Online Castellano Latino Subtitu",
+            "urlDrive": "https://drive.google.com/file/d/1ffpAL4YE6fLCw8wuARVlJUI7b4LTln5j/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x6 Online Castellano Latino Subtitu",
+            "urlDrive": "https://drive.google.com/file/d/1ewhM_S9u_ox7PyrGBBrZR6RWytpw-JRz/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x7 Online Castellano Latino Subtitu",
+            "urlDrive": "https://drive.google.com/file/d/1OGAYY5Q3hT45H13RQA2dssDPvuxhj8wV/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x8 Online Castellano Latino Subtitu",
+            "urlDrive": "https://drive.google.com/file/d/1-oUeWkBGKvhULlWIFrBvLtiThwM0HmC8/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x9 Online Castellano Latino Subtitu",
+            "urlDrive": "https://drive.google.com/file/d/1Au8rPLtIYDjXRQZUfigCbxw2GdvXUjwe/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x10 Online Castellano Latino Subtit",
+            "urlDrive": "https://drive.google.com/file/d/1xuwoBvW_-DGoupNu0lv3rpsGYFltNDnl/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x11 Online Castellano Latino Subtit",
+            "urlDrive": "https://drive.google.com/file/d/15MrYZhNZ-bjGdHekB_ZAkdLF_QA13Zge/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x12 Online Castellano Latino Subtit",
+            "urlDrive": "https://drive.google.com/file/d/1DZQMsRFpI7rZQD1x7IUPSx-hiwQA1ZsH/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x13 Online Castellano Latino Subtit",
+            "urlDrive": "https://drive.google.com/file/d/1gjF3M22XYp8GAkIn6iclYJq3rouICpxq/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x14 Online Castellano Latino Subtit",
+            "urlDrive": "https://drive.google.com/file/d/1zTU5Hyhn_vV13OYD4YJ8UKJbTfn_zF-M/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x15 Online Castellano Latino Subtit",
+            "urlDrive": "https://drive.google.com/file/d/1MUhOT8kGEyyKfAR_x21Vva2KZC1Yb8zX/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x17 Online Castellano Latino Subtit",
+            "urlDrive": "https://drive.google.com/file/d/1q-T6JFOvLiMbuFo9eh1mYePE1Mb8GBXt/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x18 Online Castellano Latino Subtit",
+            "urlDrive": "https://drive.google.com/file/d/10xqJS6vjIMV3AhJyEAZfl_GH5CMRiKTQ/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x19 Online Castellano Latino Subtit",
+            "urlDrive": "https://drive.google.com/file/d/10_BFDHWon42SDlwK3wf9-UCz6ktPs_Ck/view"
+          },
+          {
+            "tituloEpisodio": "Ver Episodio Mi bella genio 1x20 Online Castellano Latino Subtit",
+            "urlDrive": "https://drive.google.com/file/d/1MIDTTEkZTFiQNsHqrajiBgl0T4386j0C/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 1781,
     "tmdbType": "tv",
     "tituloOriginal": "Little House on the Prairie",
@@ -292,6 +538,86 @@
           {
             "tituloEpisodio": "4x18 La Herencia - RetroTVE.com",
             "urlDrive": "https://drive.google.com/file/d/1HxoV42EnSrhe-eM9TEuTUIwjDGlFd_Ag/view"
+          },
+          {
+            "tituloEpisodio": "1x02 Chicas campesinas - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1Z5u1wTrsaoCATezrtBIbhCAOQdLgVaep/view"
+          },
+          {
+            "tituloEpisodio": "1x03 Una caminata de 100 millas - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1bumwIrzjLAUAjC-alj64n8nBEnGsn5yM/view"
+          },
+          {
+            "tituloEpisodio": "1x06 Si Despierto Antes de Morir - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1WAYeKY9U9Oo8pQHDfSgb5aiYYeF-GaDU/view"
+          },
+          {
+            "tituloEpisodio": "1x07 Fiesta en el campo - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1uOtPohyd7izkOChbOqL89jgVMx9TesL-/view"
+          },
+          {
+            "tituloEpisodio": "1x09 Mamá la maestra de escuela - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1yS71PAJaX7XqMCD-CKy_rqunts4lnTKQ/view"
+          },
+          {
+            "tituloEpisodio": "1x10 El mapache - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1zx9eGXZbr0cU_1eFeVl2DYIguSfwSlMz/view"
+          },
+          {
+            "tituloEpisodio": "1x11 La voz de Tinker Jones - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1HUbm42k3IXfmbEXV5k08GA437YYD6N6X/view"
+          },
+          {
+            "tituloEpisodio": "4x01 Lección de Amor - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/17juZCtXpKiNfuL13q4iUh9VOEPfpunGc/view"
+          },
+          {
+            "tituloEpisodio": "4x02 Época de Cambios - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1E4gPKSbnxpbQ_1Enct9nE3lKjCZAWASZ/view"
+          },
+          {
+            "tituloEpisodio": "4x03 Mi Ellen - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1tTKT9hdX1OUIzAN7OA8OgCaxRVe5eXq2/view"
+          },
+          {
+            "tituloEpisodio": "4x05 Los Lobos - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1Jq8ERfhpPbPjufRRIe51sW3hWrNcpeKH/view"
+          },
+          {
+            "tituloEpisodio": "4x09 El Alto Precio de Tener la Razón - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1rDuvdSdjnPc-ARVU1fi1PASq863HdMIb/view"
+          },
+          {
+            "tituloEpisodio": "4x10 El Boxeador - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1wviDnMKmWSM4b2y0uXI1E-Pu0aQ3GRAZ/view"
+          },
+          {
+            "tituloEpisodio": "4x11 Nos Veremos en la Feria - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1pVwJKoegwrsMToE3FjQNuAO_JruAcMTx/view"
+          },
+          {
+            "tituloEpisodio": "4x12 Llegaron Las Novias - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1I0I2NGPNP06fHeFG4Z5DqwWLiKXfucts/view"
+          },
+          {
+            "tituloEpisodio": "4x14 Las Rivales - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/11QsrmEjvXer4xROLbSW9J-W4vDUOO-sf/view"
+          },
+          {
+            "tituloEpisodio": "4x15 País de los Murmullos - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1xdluwYgqgE8R1O5hFoq1LQ6jIur0vBVJ/view"
+          },
+          {
+            "tituloEpisodio": "4x19 El Extraño - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1Qv31UQsbKIqT6x5dTmzC4rjKDpOlmd6a/view"
+          },
+          {
+            "tituloEpisodio": "4x20 El Regalo Más Precioso - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1rQrGHS8xkrGK6Yf4eBgxg0PshdJPl_d9/view"
+          },
+          {
+            "tituloEpisodio": "LFI - 1x01 - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/16V_4j-_pf8_4r9XpMUnT9O4fUzyU73kV/view"
           }
         ]
       }
