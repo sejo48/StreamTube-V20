@@ -1408,7 +1408,6 @@
                 { id: 'series', icon: 'film', label: 'Series' },
                 { id: 'doramas', icon: 'film', label: 'Doramas' },
                 { id: 'animados', icon: 'smile', label: 'Animados' },
-                { id: 'topshows', icon: 'star', label: 'Top Shows' },
                 { id: 'tv', icon: 'tv', label: 'TV' }, 
                 { id: 'radio', icon: 'radio', label: 'Radio HD' }, 
                 { id: 'payments', icon: 'star', label: 'Planes & Pagos' },
@@ -1858,8 +1857,6 @@
                     : activeTab === 'trends' ? BoxHomeFeatures.pool(content)
                     : activeTab === 'favorites' 
                     ? [...favorites.filter(item => item.type !== 'tv' && item.type !== 'radio'), ...tvFavorites] 
-                    : activeTab === 'topshows'
-                    ? [...content.series, ...content.animados].slice(0, 15)
                     : content[activeTab] || []; 
                 if (search && activeTab !== 'tv') return list.filter(i => (i.title || i.name || i.titulo || '').toLowerCase().includes(search.toLowerCase())); 
                 return list; 
@@ -2103,7 +2100,7 @@
                                     <button aria-label="Cerrar menú" onClick={() => setShowMobileMoreMenu(false)} className="text-slate-400 hover:text-white"><Icon name="x" size={16}/></button>
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
-                                    {['christmas', 'tv', 'radio', 'topshows', 'favorites', 'series', 'doramas', 'animados', 'payments', 'devices'].map(id => navTabs.find(tab => tab.id === id)).map(tab => (
+                                    {['christmas', 'tv', 'radio', 'favorites', 'series', 'doramas', 'animados', 'payments', 'devices'].map(id => navTabs.find(tab => tab.id === id)).map(tab => (
                                         <button key={tab.id} onClick={() => handleTabClick(tab)} className={`box-more-option ${['series', 'animados'].includes(tab.id) ? 'box-phone-primary-duplicate' : ''} ${['payments', 'devices'].includes(tab.id) ? 'col-span-2' : ''} p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
                                             <Icon name={tab.icon} size={18}/>
                                             <span>{tab.id === 'favorites' ? 'Favoritos' : tab.label}</span>
@@ -2592,19 +2589,6 @@
                                                         <HomeShelf title="Animados" items={content.animados} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'animados'))} />
                                         <HomeShelf title="Mi lista" items={favorites.filter(item => item.type !== 'tv' && item.type !== 'radio')} onPlay={handlePlay} favorites={favorites} tvFavorites={tvFavorites} onToggleFavorite={toggleFavorite} onExplore={() => handleTabClick(navTabs.find(tab => tab.id === 'favorites'))} />
                                         {content.tudum.length > 0 && <section className="home-shelf" aria-label="Próximamente"><div className="home-shelf-heading"><div className="home-shelf-title"><span className="home-shelf-mark" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m5 17 12-12M5 5h12v12"/></svg></span><div><h2>Próximamente</h2><p>Avances y próximos lanzamientos.</p></div></div></div><div className="home-coming">{content.tudum.slice(0, 6).map((item, index) => <article key={item.title + index}><RobustImage src={item.image} alt={item.title} title={item.title} type="poster" loading="lazy"/><div><h3>{item.title}</h3><p>{item.releaseDate}</p><p>{item.genre}</p><button onClick={() => handlePlayNow({ title: item.title, description: item.synopsis, image: item.image, url: item.trailerUrl, type: 'movies' })}><Icon name="play" size={12} fill="currentColor"/>Ver tráiler</button></div></article>)}</div></section>}
-                                    </div>
-                                ) : activeTab === 'topshows' ? (
-                                    <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
-                                        <div className="mb-6 flex items-center gap-3 border-b border-slate-800 pb-4">
-                                            <div className="p-2.5 bg-yellow-500/20 rounded-xl text-yellow-400 border border-yellow-500/30"><Icon fill="currentColor" name="star" size={20}/></div>
-                                            <div>
-                                                <h2 className="text-lg sm:text-2xl font-black text-white">Vista Superior / Top Shows</h2>
-                                                <p className="text-xs text-slate-400 mt-0.5">Los programas mejor valorados y más reproducidos por la comunidad.</p>
-                                            </div>
-                                        </div>
-                                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
-                                            {displayedItems.map((item, i) => (<Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />))}
-                                        </div>
                                     </div>
                                 ) : (
                                     <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
