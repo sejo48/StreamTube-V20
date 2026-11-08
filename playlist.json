@@ -1,5 +1,252 @@
 [
   {
+    "tmdbId": 103,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Time Tunnel",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/omPcylzcwlsser7aKTlsyoMJLyK.jpg",
+    "year": "1966",
+    "fechaEstreno": "1966-09-09",
+    "rating": "7.7",
+    "votos": 208,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Action & Adventure",
+      "Sci-Fi & Fantasy",
+      "Drama"
+    ],
+    "generosTexto": "Action & Adventure, Sci-Fi & Fantasy, Drama",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "James Darren",
+        "personaje": "Tony Newman",
+        "foto": "https://image.tmdb.org/t/p/w185/4ljvnQc75JVmyUHrSZsU7mBm4PT.jpg"
+      },
+      {
+        "nombre": "Robert Colbert",
+        "personaje": "Doug Phillipps",
+        "foto": "https://image.tmdb.org/t/p/w185/qaPLOIOopNf0o6WCFxnaRzVpai4.jpg"
+      },
+      {
+        "nombre": "Whit Bissell",
+        "personaje": "General Heywood Kirk",
+        "foto": "https://image.tmdb.org/t/p/w185/ctpL0dPAv6n9ArbWRK1Cet0wvqk.jpg"
+      },
+      {
+        "nombre": "Lee Meriwether",
+        "personaje": "Dr. Ann McGregor",
+        "foto": "https://image.tmdb.org/t/p/w185/ngVKAstVQxluHPprMSmuc58Fbjs.jpg"
+      },
+      {
+        "nombre": "John Zaremba",
+        "personaje": "Dr. Raymond Swain",
+        "foto": "https://image.tmdb.org/t/p/w185/6O2Y17y2cpaKJm7hCwuz6pJy6zm.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Irwin Allen Productions, 20th Century Fox Television, ABC, Kent Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Tierra de gigantes",
+        "poster": "https://image.tmdb.org/t/p/w342/ljbqDwgOoqYvQ6WRnuLr8QleEkH.jpg",
+        "year": "1968",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Automan",
+        "poster": "https://image.tmdb.org/t/p/w342/4dOlxvavpgpDyAFmLNIre1JmcCf.jpg",
+        "year": "1983",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "La mujer biónica",
+        "poster": "https://image.tmdb.org/t/p/w342/idou4N1oTTNkH5Pn3a9JJcZAQiE.jpg",
+        "year": "1976",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "El avispón verde",
+        "poster": "https://image.tmdb.org/t/p/w342/HLrCGIEoMADl3wD8gcB77iSz3D.jpg",
+        "year": "1966",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Doctor Who",
+        "poster": "https://image.tmdb.org/t/p/w342/lHfmc6d8pOVFrD0eOKPiDbjeucG.jpg",
+        "year": "2005",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "El halcón callejero",
+        "poster": "https://image.tmdb.org/t/p/w342/olhjVolMqwrfFbvCNHZ1ysoNa2z.jpg",
+        "year": "1985",
+        "rating": "7.0"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Irwin Allen"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 30,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 6,
+        "id": 303,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/uIJzawob4KSHsWX9ZLisbnTQGRC.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1966-09-09",
+        "episode_count": 30,
+        "id": 302,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/5KwiRHLzKPLJybCljDIGQpXoQmE.jpg",
+        "season_number": 1,
+        "vote_average": 6.8
+      }
+    ],
+    "tituloSerie": "El túnel del tiempo",
+    "descripcion": "Tony Newman y Doug Phillips son los científicos que han creado el proyecto Tic-Toc, una instalación del gobierno enterrada en el desierto. Se trata de un túnel del tiempo que permite visitar cualquier época y lugar. Mientras preparan el túnel, Newman y Phillips quedan atrapados en el tiempo, y cada semana son testigos de un importante hecho histórico. El resto del equipo científico intentará traerlos de regreso sanos y salvos.",
+    "imagen": "https://image.tmdb.org/t/p/w780/iwKeOmf7nzaHXJgWn7LwkRNoVEh.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x01 Encuentro con el pasado",
+            "urlDrive": "https://drive.google.com/file/d/1cBdK4b9AW3HMpEiJ7ddtevkvxIF0MWcf/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x02 Viaje a la luna",
+            "urlDrive": "https://drive.google.com/file/d/1uF5fA5GQYFJNkkREy3NQQvA3b8D44C6I/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x05 La ultima patrulla",
+            "urlDrive": "https://drive.google.com/file/d/1IAn5K5lLa5NCAUFQDdYDeHUPJ8n_LQH4/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x06 El juicio final",
+            "urlDrive": "https://drive.google.com/file/d/1bdGDQMJlHy7GsjzsuYYixUqJV-TGsaNM/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x07 La venganza de los dioses (1)",
+            "urlDrive": "https://drive.google.com/file/d/1v3U8ZgK3q6MjC8e3T9TY9_bi-UXBAG62/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x07 La venganza de los dioses",
+            "urlDrive": "https://drive.google.com/file/d/1NtYjwYbT1hynhIUMRiylx0BmE8y5gA_B/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x10 Reino de terror (1)",
+            "urlDrive": "https://drive.google.com/file/d/1oAHREV046nzDt01BPGZr1546uFH4OHcX/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x10 Reino de terror",
+            "urlDrive": "https://drive.google.com/file/d/1ru4ELuxmT9IYlALOf_3gy8Xb35e304n3/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x12 La trampa de la muerte",
+            "urlDrive": "https://drive.google.com/file/d/1PtKwpzWsrScyuwLMvSzA3-q--xwvyyp6/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x13 El Alamo",
+            "urlDrive": "https://drive.google.com/file/d/1QC0CcJLwM39OjfGWhCRAfBaIcvW6OY7O/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x14 La noche de la rebelion",
+            "urlDrive": "https://drive.google.com/file/d/1oJJfLoWkc7YgpCxsLev4L2mqoBkk7b1J/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x15 Invasion",
+            "urlDrive": "https://drive.google.com/file/d/1m-yIlhHUqiuU7kHaUdozvd2OdMNbukdC/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x16 La venganza de Robin Hood",
+            "urlDrive": "https://drive.google.com/file/d/1CMi-qjVHS4XeMaaU8etrCrLZe2_lGlJb/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x17 Matar de 2 en 2",
+            "urlDrive": "https://drive.google.com/file/d/1QIa2xPWUhSVDic2YRXmNJaiKB14ET3C_/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x18 Visitantes de otra galaxia",
+            "urlDrive": "https://drive.google.com/file/d/10yWc97M3B6VdSgWEgIxQ2eV0Fi_ydnj8/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x19 El fantasma de Neron",
+            "urlDrive": "https://drive.google.com/file/d/1_5iRozFcicesbeDVdTsh3SNaYVVKQacU/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x20 Las Murallas De Jerico",
+            "urlDrive": "https://drive.google.com/file/d/1pAv1vQ8EN90EWxlSn-cJLJDygVsWvSmt/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x21 El idolo de la muerte",
+            "urlDrive": "https://drive.google.com/file/d/1sZs36B_385wZrTJBfJdj8glpR9TELfQX/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x22 Billy The Kid",
+            "urlDrive": "https://drive.google.com/file/d/1zVZUn1751BJiuwBEyBnse53wEsXo7FBa/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x23 Piratas de la isla de los muertos",
+            "urlDrive": "https://drive.google.com/file/d/1rSC3du9uTyYs0gC-4ywPnwbdAQ_G-k-R/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x24 Persecucion a traves del tiempo",
+            "urlDrive": "https://drive.google.com/file/d/1EAuB0nhBqdfyRxDzE36sltmuQc_Mux1x/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x25 El mercader de la muerte",
+            "urlDrive": "https://drive.google.com/file/d/1gj9qcFVKYbAazSS_ikBwC7c3fctvJBT7/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x26 El ataque de los barbaros",
+            "urlDrive": "https://drive.google.com/file/d/139XuUZ1YR6TJBS4kenr0MNUlzwNLWQ5K/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x27 Merlin El Mago",
+            "urlDrive": "https://drive.google.com/file/d/1ohptAHufsqtO7Pe3CGaI84iMsUrIDbPG/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x28 Los raptores",
+            "urlDrive": "https://drive.google.com/file/d/1TS4jAkARyfgdLbauLDDVskUso4Y07HTm/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x29 Invasores del espacio",
+            "urlDrive": "https://drive.google.com/file/d/1hooY5Hpo_0TPn_mgrucw5mB47HcwYTiO/view"
+          },
+          {
+            "tituloEpisodio": "El tunel del tiempo 1x30 Pueblo de terror",
+            "urlDrive": "https://drive.google.com/file/d/1bBllpj_-MgKVY10aGHXl3C04pcPIYTON/view"
+          },
+          {
+            "tituloEpisodio": "tunel",
+            "urlDrive": "https://drive.google.com/file/d/128U-lz97br2PQ7pvYuWnHyD82oCQ4gkQ/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 1660,
     "tmdbType": "tv",
     "tituloOriginal": "I Dream of Jeannie",
