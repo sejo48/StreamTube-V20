@@ -1,5 +1,846 @@
 [
   {
+    "titulo": "La razón de estar contigo: Una Navidad perfecta",
+    "tituloOriginal": "A Dog's Perfect Christmas",
+    "descripcion": "Una urgencia médica separa a la familia Goss y Winstead, su fiel perro, hará todo lo posible por reunirlos de nuevo antes de Nochebuena.",
+    "imagen": "https://image.tmdb.org/t/p/w780/eixA3LDfxqMKpz2L8uIM1kTIJ8g.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/hhQT0TySg3LXCE8BEPpfPJ5zJA2.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1QcFLiGnNs-LrB6BHbzH-hKn55qJI64PY/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-11-04",
+    "rating": "8.2",
+    "votos": 22,
+    "runtime": "1h 42min",
+    "genres": [
+      "Comedia",
+      "Drama"
+    ],
+    "generosTexto": "Comedia, Drama",
+    "clasificacion": "PG-13",
+    "tagline": "",
+    "director": "Cathryn Michon",
+    "guionistas": "W. Bruce Cameron, Cathryn Michon",
+    "reparto": [
+      {
+        "nombre": "Dennis Quaid",
+        "personaje": "Sander",
+        "foto": "https://image.tmdb.org/t/p/w185/lMaDAJHzsKH7U3dln2B3kY3rOhE.jpg"
+      },
+      {
+        "nombre": "Milo Ventimiglia",
+        "personaje": "Hunter",
+        "foto": "https://image.tmdb.org/t/p/w185/9yFPsQCYi9sbPQ0xJGtoAF4Ar6v.jpg"
+      },
+      {
+        "nombre": "Brooke Lena Johnson",
+        "personaje": "Ello",
+        "foto": "https://image.tmdb.org/t/p/w185/gcidhYtCeH19FdpMjbVgjvBhbtA.jpg"
+      },
+      {
+        "nombre": "Kathleen Rose Perkins",
+        "personaje": "Juliana",
+        "foto": "https://image.tmdb.org/t/p/w185/A6bG3mffBZ7xsr6aszSF2RJ0zIC.jpg"
+      },
+      {
+        "nombre": "Jennifer Tilly",
+        "personaje": "Lucille",
+        "foto": "https://image.tmdb.org/t/p/w185/9vYoYF385cVq9oDO3pDpXihP4vz.jpg"
+      },
+      {
+        "nombre": "Thomas Haden Church",
+        "personaje": "Winstead (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/74NK9HCYvNafMggSp1PAK5Nwkpe.jpg"
+      },
+      {
+        "nombre": "Mary Steenburgen",
+        "personaje": "Claire",
+        "foto": "https://image.tmdb.org/t/p/w185/yJhfuqS3yXW7kLSyvRU6n3b35mq.jpg"
+      },
+      {
+        "nombre": "Ethan Loomis",
+        "personaje": "Sean",
+        "foto": "https://image.tmdb.org/t/p/w185/zuZC4J2bZQ4b89eRjI7b70hhfWi.jpg"
+      },
+      {
+        "nombre": "Marissa Jaret Winokur",
+        "personaje": "Nurse Miller",
+        "foto": "https://image.tmdb.org/t/p/w185/9a8Phgwhrjw4e2Fng1ItNDL7QS0.jpg"
+      },
+      {
+        "nombre": "Cathryn Michon",
+        "personaje": "Mrs. O'Brien",
+        "foto": "https://image.tmdb.org/t/p/w185/r2U72Cl2JO1M2FAdN3yBS7wPH5b.jpg"
+      },
+      {
+        "nombre": "W. Bruce Cameron",
+        "personaje": "Peter Altbef",
+        "foto": ""
+      },
+      {
+        "nombre": "Karen LeBlanc",
+        "personaje": "Allison",
+        "foto": "https://image.tmdb.org/t/p/w185/dV2UjuWh8fu9ZARfd5uJRExVA8V.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Fezziwig Studios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=hcAc873ZFxc",
+    "coleccion": "",
+    "keywords": "based on novel or book, dog, family holiday, pov (point of view)",
+    "similares": [
+      {
+        "titulo": "A Dog Year",
+        "poster": "https://image.tmdb.org/t/p/w342/gHV1B2wNGahuMCH7ST3osXGs2Cf.jpg",
+        "year": "2009",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Vidas en pedazos",
+        "poster": "https://image.tmdb.org/t/p/w342/78e639xf8o83eBBrHdeAwpVYVsf.jpg",
+        "year": "2019",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Nuestra canción de amor",
+        "poster": "https://image.tmdb.org/t/p/w342/hZfj8subLyGVLFrL6H5HvFfOKbH.jpg",
+        "year": "2010",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Terapia sexual",
+        "poster": "https://image.tmdb.org/t/p/w342/zEeDgvtvuTAoEoQbKl2VYWlTxnG.jpg",
+        "year": "2020",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Suburbia",
+        "poster": "https://image.tmdb.org/t/p/w342/7PdRbG09K9JHYyOwwCSn3OdJb0N.jpg",
+        "year": "1997",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "No lo pienses",
+        "poster": "https://image.tmdb.org/t/p/w342/f8PuoewhI3qeROdfXSw2Utjf1On.jpg",
+        "year": "2016",
+        "rating": "6.4"
+      }
+    ],
+    "tmdbId": 1570488,
+    "tmdbType": "movie",
+    "runtimeMin": 102,
+    "homepage": "https://www.netflix.com/es/title/82090597",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Frecuencia explosiva",
+    "tituloOriginal": "Frequency of Fear",
+    "descripcion": "Sigue una operación israelí encubierta dirigida a Hezbolá donde miles de localizador y walkie-talkies en posesión de sus operativos explotaron simultáneamente en el Líbano.",
+    "imagen": "https://image.tmdb.org/t/p/w780/4sIRIKRO4QJgSQKb0ALTk7kUveU.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/uhPybdQtmsHmzU7Fc3R8zaW1jZF.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1PJQLPn7QbSNZ6L7tUn8g_wQTbAak091x/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-11-05",
+    "rating": "8.0",
+    "votos": 2,
+    "runtime": "1h 22min",
+    "genres": [
+      "Drama",
+      "Suspense"
+    ],
+    "generosTexto": "Drama, Suspense",
+    "clasificacion": "",
+    "tagline": "\"Hay operaciones que se planean en silencio, pero cuyas consecuencias hacen ruido en todo el mundo\"",
+    "director": "Danny A. Abeckaser",
+    "guionistas": "Kosta Kondilopoulos",
+    "reparto": [
+      {
+        "nombre": "דורון בן דוד",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/bSrRVAKtmu6hOsvvsOTZsqlBZVx.jpg"
+      },
+      {
+        "nombre": "איציק כהן",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/tfjZLOyLAqbzn0X45mlDrka5YhQ.jpg"
+      },
+      {
+        "nombre": "Marina Maximilian Blumin",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/trPDIdpGW9Sa7qRselBpihmJE5s.jpg"
+      },
+      {
+        "nombre": "Daniella Pick",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/24MF2xkji63pJoEf1vaYK6BEKp4.jpg"
+      },
+      {
+        "nombre": "Ariel Yagen",
+        "personaje": "",
+        "foto": ""
+      },
+      {
+        "nombre": "Emily Austin",
+        "personaje": "",
+        "foto": ""
+      },
+      {
+        "nombre": "Angel Bonanni",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/3YJrxH2yeIwSQJb4bwKVZbSBjDs.jpg"
+      },
+      {
+        "nombre": "Herzl Tobey",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/hfFtjUH5pZhVtz3744WddSTfsyL.jpg"
+      },
+      {
+        "nombre": "Moran Attias",
+        "personaje": "",
+        "foto": ""
+      },
+      {
+        "nombre": "אקי אבני",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/dHH9PEWB72aDnEbYgsqmz23fkDQ.jpg"
+      },
+      {
+        "nombre": "Yarden Toussia-Cohen",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/tVXoaQt2MeXgQR26IRP46StnyQV.jpg"
+      }
+    ],
+    "pais": "Israel",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "based on true story, pager, terrorist plot, technology runs amok, lebanon",
+    "similares": [
+      {
+        "titulo": "Infiltrada",
+        "poster": "https://image.tmdb.org/t/p/w342/4ETiMBDsmviFK7vV9bTDUy1808Q.jpg",
+        "year": "2019",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Agente oculto",
+        "poster": "https://image.tmdb.org/t/p/w342/xXKVwk2wbcmZoY1oqa483YGbwwk.jpg",
+        "year": "2022",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Chatroom",
+        "poster": "https://image.tmdb.org/t/p/w342/f5md4o6xEVVQ3kitZeiLmk0OHqD.jpg",
+        "year": "2010",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "United 93",
+        "poster": "https://image.tmdb.org/t/p/w342/jRhRyQzksHja1XdF2aLeQl2tPwT.jpg",
+        "year": "2006",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Dejar el mundo atrás",
+        "poster": "https://image.tmdb.org/t/p/w342/7NJGZ0GP7S8uXCW2reguAOTwBB8.jpg",
+        "year": "2023",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "A descubierto",
+        "poster": "https://image.tmdb.org/t/p/w342/bQ2aNqcIGopI2AsTREc8sQlz6CN.jpg",
+        "year": "2021",
+        "rating": "6.3"
+      }
+    ],
+    "tmdbId": 1570467,
+    "tmdbType": "movie",
+    "runtimeMin": 82,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "El pez pucheros",
+    "tituloOriginal": "The Pout-Pout Fish",
+    "descripcion": "Cuando se produce una catástrofe, el huraño y susceptible Pez Pucheros y su hiperactivo compañero, el dragón marino Pip, deben embarcarse en una aventura en busca de un pez mítico que les conceda el deseo de salvar sus hogares.",
+    "imagen": "https://image.tmdb.org/t/p/w780/y1pNpAeVi4hmAV2R1qT10rt9UdJ.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/6qQQhhF87Rm1z2TYhXAmoPiEHME.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1MwOiyBhRCFt-IPWA0eEudAIOzL9tfDcF/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-01-01",
+    "rating": "5.4",
+    "votos": 19,
+    "runtime": "1h 31min",
+    "genres": [
+      "Animación",
+      "Familia",
+      "Aventura",
+      "Comedia"
+    ],
+    "generosTexto": "Animación, Familia, Aventura, Comedia",
+    "clasificacion": "PG",
+    "tagline": "",
+    "director": "Ricard Cussó",
+    "guionistas": "Elie Choufany, Elise Allen, Dominic Morris",
+    "reparto": [
+      {
+        "nombre": "Nick Offerman",
+        "personaje": "Mr. Fish (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/f6z3mPVtaF40ewfdmZydprAjmYd.jpg"
+      },
+      {
+        "nombre": "Nina Oyama",
+        "personaje": "Pip (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/n962NDYS5WVZQbx8urApmrlkQhT.jpg"
+      },
+      {
+        "nombre": "Miranda Otto",
+        "personaje": "Marin (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/szME1IBVTLgiKrO5D5wvOGnvUDW.jpg"
+      },
+      {
+        "nombre": "Amy Sedaris",
+        "personaje": "The Pink Dolphins – Brigitta, Greta and Karina (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/AjVjRYI1PaC11i4FqGSK1TkwOmq.jpg"
+      },
+      {
+        "nombre": "Jordin Sparks",
+        "personaje": "Shimmer (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/aScYc7I0vK0QmuXTr37N0nYtpbp.jpg"
+      },
+      {
+        "nombre": "Remy Hii",
+        "personaje": "Benji (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/nCXWaFzPNgkr5cwoHkmkqIsQsXJ.jpg"
+      },
+      {
+        "nombre": "Mark Coles Smith",
+        "personaje": "Hector (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/mFGf5GruME5dnAuKBG1kgzK8PJs.jpg"
+      },
+      {
+        "nombre": "Nazeem Hussain",
+        "personaje": "Archie (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/6UIv9axsMyhd7fklYOHWYH7gSIA.jpg"
+      },
+      {
+        "nombre": "Mel Buttle",
+        "personaje": "Shaz (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/1DGvIOLsq1lKpNmUKMmbUFFJZCm.jpg"
+      },
+      {
+        "nombre": "Bessie Holland",
+        "personaje": "Baz (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/pWjjlOAs61Rxy2KbAXACxL2eJ9w.jpg"
+      },
+      {
+        "nombre": "Grant Denyer",
+        "personaje": "Beautiful Mike (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/43PK7tU8TdpeVDZajIm4i3HmmlA.jpg"
+      },
+      {
+        "nombre": "Anne Edmonds",
+        "personaje": "Whale (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/9xreenJp3VSPCVcWw1h2M1tfLV2.jpg"
+      }
+    ],
+    "pais": "Australia, United States of America, Germany",
+    "idioma": "en",
+    "productoras": "MIMO Studios, Like A Photon Creative, Macmillan Films, Cosmic Dino Studio, Alceon Entertainment Partners, Eclectik Vision, Screen Queensland, Sola Media, Maslow Entertainment",
+    "presupuesto": 10000000,
+    "recaudacion": 4834402,
+    "trailerUrl": "https://www.youtube.com/watch?v=ATR0ZYclCp0",
+    "coleccion": "",
+    "keywords": "fish, based on novel or book, dolphin, based on children's book, children's book, children's adventure, grumpy man, cuttlefish, independent film",
+    "similares": [
+      {
+        "titulo": "Barbie y Los delfines mágicos",
+        "poster": "https://image.tmdb.org/t/p/w342/42MQwsJHg2iKos3yNUkWISzIDbD.jpg",
+        "year": "2017",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "En busca del valle encantado IX: Travesía a los océanos",
+        "poster": "https://image.tmdb.org/t/p/w342/cyVlm6lvjsCr3PtWHBq8VCHupwt.jpg",
+        "year": "2002",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "En busca del valle encantado IV: Viaje a la tierra de las brumas",
+        "poster": "https://image.tmdb.org/t/p/w342/auROSiN4VL3Ckjab1s8FiKDbXsh.jpg",
+        "year": "1996",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Buscando a Dory",
+        "poster": "https://image.tmdb.org/t/p/w342/wXBwo2DxTm6wZ8Cbu02t9kzzoK4.jpg",
+        "year": "2016",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "¡Nos hemos extinguido!",
+        "poster": "https://image.tmdb.org/t/p/w342/w0WmFfLOM2E3D8XK1cv7jVKgx6u.jpg",
+        "year": "2021",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "En busca del valle encantado V: La isla misteriosa",
+        "poster": "https://image.tmdb.org/t/p/w342/amNdOyHW9qFurPApnIwiV7LYlO8.jpg",
+        "year": "1997",
+        "rating": "6.3"
+      }
+    ],
+    "tmdbId": 1146058,
+    "tmdbType": "movie",
+    "runtimeMin": 91,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "¡Vaya numerito!",
+    "tituloOriginal": "แก๊งโอเวอร์",
+    "descripcion": "En su día, Winai fue un gran policía, de esos que no se amedrentan ante nada. Ahora está retirado, pero su memoria empieza a devolverlo a sus años de gloria… y a una vieja cuenta pendiente con el archienemigo al que persiguió toda su vida. Convencido de que ha llegado el momento de volver a impartir justicia, se enfunda otra vez el uniforme. Para protegerlo, su hija Woranuch, una actriz en horas bajas, se ve obligada a unir fuerzas con su pandilla de antiguos actores infantiles y con su ex, el sargento Toy, un joven agente de tráfico. Juntos montan el papel de sus vidas: misiones falsas, situaciones imposibles y todo un espectáculo pensado para mantener a Winai a salvo. Pero la farsa se convierte en un caos cuando Sua Hao, su verdadero archienemigo, reaparece y empieza a cometer delitos de verdad.",
+    "imagen": "https://image.tmdb.org/t/p/w780/bHZ0o9nXyHS9aw4jnJjV6BbGB8T.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/5pMZA0EdgE66jcSCkfDCAtWiizk.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1psU5BriTpM3iY8bvViklVkh2jZ-TQbzx/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-11-04",
+    "rating": "6.0",
+    "votos": 1,
+    "runtime": "1h 56min",
+    "genres": [
+      "Acción",
+      "Aventura",
+      "Comedia"
+    ],
+    "generosTexto": "Acción, Aventura, Comedia",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Prueksa Amaruji",
+    "guionistas": "Jarinee Thanomyat, ฤกษ์ชัย พวงเพ็ชร, Prueksa Amaruji",
+    "reparto": [
+      {
+        "nombre": "พงษ์ศักดิ์ พงษ์สุวรรณ",
+        "personaje": "Winai",
+        "foto": "https://image.tmdb.org/t/p/w185/7vPnrSW5acxAYbcAkQ1JKP9UGHX.jpg"
+      },
+      {
+        "nombre": "เมลดา สุศรี",
+        "personaje": "Woranuch",
+        "foto": "https://image.tmdb.org/t/p/w185/8yABH08obOp9A2QOKXm1AQEXGcy.jpg"
+      },
+      {
+        "nombre": "อัครเดช ยอดจำปา",
+        "personaje": "Sergeant Toy",
+        "foto": "https://image.tmdb.org/t/p/w185/5SCjK0otPkXnGeSc6qW10LoY5G6.jpg"
+      },
+      {
+        "nombre": "กรภพ จันทร์เจริญ",
+        "personaje": "Sua Hao",
+        "foto": "https://image.tmdb.org/t/p/w185/eR2SyVBjZPS9SFmubOynPSXEZlV.jpg"
+      },
+      {
+        "nombre": "ประกาศิต โบสุวรรณ",
+        "personaje": "Padej",
+        "foto": "https://image.tmdb.org/t/p/w185/iBo6x5jGTldCdYZiIuTfJVZwdiG.jpg"
+      },
+      {
+        "nombre": "ญาณวุฒิ จรรยหาญ",
+        "personaje": "Doctor Weng",
+        "foto": "https://image.tmdb.org/t/p/w185/nXKzoH1q2IiM4izSWJN6IXhuSQK.jpg"
+      },
+      {
+        "nombre": "ศุภชัย หนุมาศ",
+        "personaje": "Inspector Pao",
+        "foto": ""
+      },
+      {
+        "nombre": "อรุณวตี ฉัตรเท",
+        "personaje": "Yupin",
+        "foto": ""
+      },
+      {
+        "nombre": "Hwanjeab Thanarat",
+        "personaje": "Noodle Shop Owner",
+        "foto": "https://image.tmdb.org/t/p/w185/44K2HTbxV85hd3mg1i5iW7derts.jpg"
+      },
+      {
+        "nombre": "แต๋ง กฤษฏิ์กุล ชุมแก้ว",
+        "personaje": "Xing",
+        "foto": "https://image.tmdb.org/t/p/w185/mDd3ZyYKhXvVEmdmM8A5YQoiziS.jpg"
+      },
+      {
+        "nombre": "ธีรวิวัฒน์ บุตรตะยา",
+        "personaje": "Khe",
+        "foto": "https://image.tmdb.org/t/p/w185/AeE6b42MOmAtyEtOMNqxI1o4IIy.jpg"
+      },
+      {
+        "nombre": "Lattapon Rujirojjindakul",
+        "personaje": "Bo",
+        "foto": ""
+      }
+    ],
+    "pais": "Thailand",
+    "idioma": "th",
+    "productoras": "Raruek Production",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Campeón de campeones 4: Sin aliento",
+        "poster": "https://image.tmdb.org/t/p/w342/uXwY1TKs5uaJDQYFYW3bV7Qx73j.jpg",
+        "year": "1998",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Sheroes",
+        "poster": "https://image.tmdb.org/t/p/w342/g6aZwW7jhvXCKHDqPfnXbC2te7I.jpg",
+        "year": "2023",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Interceptor",
+        "poster": "https://image.tmdb.org/t/p/w342/jBKNAfANo4e3rzJtb7aHfYNd7b3.jpg",
+        "year": "2022",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "La conductora",
+        "poster": "https://image.tmdb.org/t/p/w342/nDNvZhJeMSwi8UH8jbpZvLMUfjp.jpg",
+        "year": "2025",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Giro inesperado",
+        "poster": "https://image.tmdb.org/t/p/w342/8NCrOJLIYsNTSZbswDQNu2QucW6.jpg",
+        "year": "2014",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Atrapado",
+        "poster": "https://image.tmdb.org/t/p/w342/hRCPafF0QzdUpWgZhfGVsW8Z7oI.jpg",
+        "year": "2020",
+        "rating": "6.7"
+      }
+    ],
+    "tmdbId": 1630420,
+    "tmdbType": "movie",
+    "runtimeMin": 116,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Un poco de compañía antes de morir",
+    "tituloOriginal": "余命一年、男をかう",
+    "descripcion": "Yui Katakura (Ko Shibasaki) tiene 40 años, está soltera y vive entregada a una afición muy particular: ahorrar. Poco a poco, ha ido reuniendo un buen colchón para disfrutar de una jubilación tranquila. Pero todos sus planes se desmoronan cuando, tras un chequeo gratuito, le diagnostican cáncer y le dan un año de vida. Todavía conmocionada por la noticia, se cruza de repente con Yoshitaka Sena, alias Ryuma (Eiji Akaso), un atractivo ‘host’ de pelo rosa que le pide dinero prestado. Si de todas formas se va a morir, ya no tiene sentido seguir ahorrando. Así que Yui acepta su insólita petición y «compra» a Sena por 720 000 yenes. Así comienza una relación tan insólita como imprevisible, que pronto dará un giro inesperado.",
+    "imagen": "https://image.tmdb.org/t/p/w780/4mdyjojUihFbw76GBl6ZO8E8bCh.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/6vGH7JZFLzFawpwCcnNweF8j3KD.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1QAbMgvtWBasVuG4m8tFj6fZXRpHGCgAI/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-11-05",
+    "rating": "7.6",
+    "votos": 17,
+    "runtime": "1h 49min",
+    "genres": [
+      "Romance",
+      "Drama",
+      "Comedia"
+    ],
+    "generosTexto": "Romance, Drama, Comedia",
+    "clasificacion": "PG-13",
+    "tagline": "",
+    "director": "Hiroki Kazama",
+    "guionistas": "岡田惠和",
+    "reparto": [
+      {
+        "nombre": "柴咲コウ",
+        "personaje": "Yui Katakura",
+        "foto": "https://image.tmdb.org/t/p/w185/eEBNceN1MsDFibWVV3VIcEHygUW.jpg"
+      },
+      {
+        "nombre": "赤楚衛二",
+        "personaje": "Sena",
+        "foto": "https://image.tmdb.org/t/p/w185/avmVUrCnFPQi8mhfz3LYKGIzaTO.jpg"
+      },
+      {
+        "nombre": "筒井道隆",
+        "personaje": "Masami Ikuyama",
+        "foto": "https://image.tmdb.org/t/p/w185/pufgt0lPJBUYr2AiMFXbFRh9nEj.jpg"
+      },
+      {
+        "nombre": "Naomi Nishida",
+        "personaje": "Mizuho Maruyama",
+        "foto": "https://image.tmdb.org/t/p/w185/oO9MWTZfBOKpFPuwWMiHFH9ksDJ.jpg"
+      },
+      {
+        "nombre": "鳴海唯",
+        "personaje": "Nachi",
+        "foto": "https://image.tmdb.org/t/p/w185/bj22Nu7mg4AU63IRkeU9d6909q5.jpg"
+      },
+      {
+        "nombre": "宮世琉弥",
+        "personaje": "Kiriya",
+        "foto": "https://image.tmdb.org/t/p/w185/1eEHt14GlxmMgnBpf0ZstRHceOE.jpg"
+      },
+      {
+        "nombre": "近藤公園",
+        "personaje": "Doctor",
+        "foto": "https://image.tmdb.org/t/p/w185/rU67cYxVbJDVYZ3LhG3eXdar9Rm.jpg"
+      },
+      {
+        "nombre": "濱田マリ",
+        "personaje": "Sena's Mother",
+        "foto": "https://image.tmdb.org/t/p/w185/nUSj8sL9pKmWoru0AxpS5b1pwA.jpg"
+      },
+      {
+        "nombre": "森口瑤子",
+        "personaje": "Yui's Mother",
+        "foto": "https://image.tmdb.org/t/p/w185/2npiaHIqeRojOw7QqKE9lTMjFFw.jpg"
+      },
+      {
+        "nombre": "尾碕真花",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/2yPqsjF4ns9A5dx3oxdhDvmuBf6.jpg"
+      }
+    ],
+    "pais": "Japan",
+    "idioma": "ja",
+    "productoras": "AOI Pro., Netflix",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "based on novel or book, self-discovery, terminal illness, romance, cancer, human relationship, host, comedy, middle age, limited time, remaining years, transactional relationship",
+    "similares": [
+      {
+        "titulo": "Pinceladas de amor",
+        "poster": "https://image.tmdb.org/t/p/w342/ciuW95pdPaiReudofHwyv6qYi12.jpg",
+        "year": "2024",
+        "rating": "8.4"
+      },
+      {
+        "titulo": "Todo me lleva a ti",
+        "poster": "https://image.tmdb.org/t/p/w342/8DyO5eu9HOdxpploeDfCfcrTdW3.jpg",
+        "year": "2023",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Las vueltas de la vida",
+        "poster": "https://image.tmdb.org/t/p/w342/mcGvcb65JdftAHxyhxd2dxCPNOa.jpg",
+        "year": "2006",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Noches de verano en Taipei",
+        "poster": "https://image.tmdb.org/t/p/w342/pAgWeXaG4J0tHuW1uD7kKTTnnsY.jpg",
+        "year": "2023",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "El padre de la novia",
+        "poster": "https://image.tmdb.org/t/p/w342/wuhRy3B36plwnAxAUKD0AgzZC7a.jpg",
+        "year": "2022",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Love Story",
+        "poster": "https://image.tmdb.org/t/p/w342/nXZIBFEp8nMjASqdLRAAHAAhtpt.jpg",
+        "year": "1970",
+        "rating": "6.8"
+      }
+    ],
+    "tmdbId": 1654940,
+    "tmdbType": "movie",
+    "runtimeMin": 109,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "La mangosta",
+    "tituloOriginal": "The Mongoose",
+    "descripcion": "Acusado de un delito que no cometió y sin nada que perder, un héroe de guerra llamado Ryan «Fang» Flanagan se enfrenta a las agresivas fuerzas del orden en una persecución en coche por todo el país, con la ayuda de sus compañeros de armas y de un público comprensivo que anima su huida.",
+    "imagen": "https://image.tmdb.org/t/p/w780/2UkYw2GCXif38KoX3vDFNZnVlbi.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/bySCyjQXNPgsnLTlgJpSMnRazPD.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1vXbXKMJMduqly6P0rbZYlLy05pgYTG2G/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-10-29",
+    "rating": "5.8",
+    "votos": 83,
+    "runtime": "1h 39min",
+    "genres": [
+      "Acción",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Suspense",
+    "clasificacion": "R",
+    "tagline": "",
+    "director": "Mark Vanselow",
+    "guionistas": "Thompson Evans",
+    "reparto": [
+      {
+        "nombre": "Liam Neeson",
+        "personaje": "Ryan 'Fang' Flanagan",
+        "foto": "https://image.tmdb.org/t/p/w185/sRLev3wJioBgun3ZoeAUFpkLy0D.jpg"
+      },
+      {
+        "nombre": "Marisa Tomei",
+        "personaje": "Tara",
+        "foto": "https://image.tmdb.org/t/p/w185/5NCCKQooVCQD36R6JL3a1hOeBVn.jpg"
+      },
+      {
+        "nombre": "Ving Rhames",
+        "personaje": "Tanker",
+        "foto": "https://image.tmdb.org/t/p/w185/tOVDvu1EQP78AwaUw6uh1wN818E.jpg"
+      },
+      {
+        "nombre": "Marcus Thomas",
+        "personaje": "Munch",
+        "foto": "https://image.tmdb.org/t/p/w185/wpsm5roIsSqaOX9ApIJqCxDAqgD.jpg"
+      },
+      {
+        "nombre": "Michael Chiklis",
+        "personaje": "Major Walter Pope",
+        "foto": "https://image.tmdb.org/t/p/w185/pAkKjbzxP6Z6Y5zAGpwmWQo1iji.jpg"
+      },
+      {
+        "nombre": "Maurice Marvel Meredith",
+        "personaje": "Major James Tilton",
+        "foto": "https://image.tmdb.org/t/p/w185/kM7vENDYHJQRhZh83F8IRCznIXP.jpg"
+      },
+      {
+        "nombre": "Brett Tucker",
+        "personaje": "Todd",
+        "foto": "https://image.tmdb.org/t/p/w185/6IUQyy2pA8PRXX1MEx088JH6pcu.jpg"
+      },
+      {
+        "nombre": "Ryan Morgan",
+        "personaje": "Wiz",
+        "foto": "https://image.tmdb.org/t/p/w185/zogTGGsLvQCxvuwkyOtwtbKAz3o.jpg"
+      },
+      {
+        "nombre": "Laura Coates",
+        "personaje": "Laura Coates",
+        "foto": "https://image.tmdb.org/t/p/w185/m7mBluZQoWKPvYqDKFsiS0oCnXm.jpg"
+      },
+      {
+        "nombre": "Geoff Morrell",
+        "personaje": "Ernie",
+        "foto": "https://image.tmdb.org/t/p/w185/zdbbOZPOb1VeAXh1idj9fKeHE87.jpg"
+      },
+      {
+        "nombre": "Charles Allen",
+        "personaje": "Truck Driver Roy",
+        "foto": "https://image.tmdb.org/t/p/w185/gVPFtWlef1tgT78t03MYMXXkB6J.jpg"
+      },
+      {
+        "nombre": "Jack Kenny",
+        "personaje": "Gas Station Employee Earl",
+        "foto": "https://image.tmdb.org/t/p/w185/v3A8RFnCNVloc7GIptPfSuJkhdp.jpg"
+      }
+    ],
+    "pais": "Australia",
+    "idioma": "en",
+    "productoras": "Code Entertainment, The Solution",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=ZloLYKUFuw0",
+    "coleccion": "",
+    "keywords": "fugitive, police pursuit, car chase",
+    "similares": [
+      {
+        "titulo": "Fuga mortal",
+        "poster": "https://image.tmdb.org/t/p/w342/ti2qTCtZ4CYC1RFus3kpIRVPhfL.jpg",
+        "year": "1993",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Misión frontera",
+        "poster": "https://image.tmdb.org/t/p/w342/oCB0j331qr6CW1TtpgSgPccdYA7.jpg",
+        "year": "2025",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Transporter III",
+        "poster": "https://image.tmdb.org/t/p/w342/A6jWpnsmiFJR9idlCOUCeP3m03I.jpg",
+        "year": "2008",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Halcones de la noche",
+        "poster": "https://image.tmdb.org/t/p/w342/oP5eNlaGcTpUY0K072y0d346iaY.jpg",
+        "year": "1981",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "One Ranger",
+        "poster": "https://image.tmdb.org/t/p/w342/6cVA4AGoex1PLZE8voy8ez7VWYb.jpg",
+        "year": "2023",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Exit Protocol",
+        "poster": "https://image.tmdb.org/t/p/w342/iZTUevEKSwMJPPUu04rqvNAngx7.jpg",
+        "year": "2025",
+        "rating": "6.8"
+      }
+    ],
+    "tmdbId": 1294189,
+    "tmdbType": "movie",
+    "runtimeMin": 99,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
     "titulo": "El último invierno",
     "tituloOriginal": "The Isolate Thief",
     "descripcion": "Una joven lucha por ocultar el oro que robó a unos forajidos violentos que han tomado el control de su remoto campamento, burlándolos en medio de un invierno letal en el que la supervivencia se convierte en un juego de astucia y traición.",
