@@ -1,5 +1,150 @@
 [
   {
+    "tmdbId": 321123,
+    "tmdbType": "tv",
+    "tituloOriginal": "Mighty Morphin Alien Rangers",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/rGcLus025rohVL959QDEUVjNQzl.jpg",
+    "year": "1996",
+    "fechaEstreno": "1996-02-05",
+    "rating": "",
+    "votos": 0,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [],
+    "generosTexto": "",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "La Patrulla Galáctica",
+        "poster": "https://image.tmdb.org/t/p/w342/xeEDA90HHD925AD0Henrln9N3o6.jpg",
+        "year": "1986",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Invasión",
+        "poster": "https://image.tmdb.org/t/p/w342/2iDGTCLRz1oWxU7cVRDsTqgJv7u.jpg",
+        "year": "2021",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "V: Los visitantes",
+        "poster": "https://image.tmdb.org/t/p/w342/o7QyRS0oZIwLgPbtSJAJEbbgh90.jpg",
+        "year": "2009",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "El gran héroe americano",
+        "poster": "https://image.tmdb.org/t/p/w342/kv4EC7CwNKvUeC9JXLCVDffxub4.jpg",
+        "year": "1981",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Star Trek: Lower Decks",
+        "poster": "https://image.tmdb.org/t/p/w342/i7Em3r7KCyNfkOwMkyqN8UMvK8S.jpg",
+        "year": "2020",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Defiance",
+        "poster": "https://image.tmdb.org/t/p/w342/4Xo2D2MX8v4FoHi70Y9jEghJGUI.jpg",
+        "year": "2013",
+        "rating": "6.8"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 10,
+    "temporadasTmdb": [
+      {
+        "air_date": "1996-02-05",
+        "episode_count": 10,
+        "id": 513753,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 1,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Mighty Morphin Alien Rangers",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/s2tDJa7jV55hdGCE4MZ2v4VNpi.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "MMAR 3.5X01 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/113NYXD5ottPz2kg7yb5XykTard0vcLTQ/view"
+          },
+          {
+            "tituloEpisodio": "MMAR 3.5X02 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1dVMKbgn6h5AVautCDCd3IrC-AMtgO8kX/view"
+          },
+          {
+            "tituloEpisodio": "MMAR 3.5X03 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1ZPczf8L1A6r2zqZizW3iJdFSohBO2Wnn/view"
+          },
+          {
+            "tituloEpisodio": "MMAR 3.5X04 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1QPwA10yzdrc6eCThvTrj3Jlzrj3X8hz4/view"
+          },
+          {
+            "tituloEpisodio": "MMAR 3.5X05 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/13sqbf0ZqCTS-pzUcjGLUPClUt351-o0z/view"
+          },
+          {
+            "tituloEpisodio": "MMAR 3.5X06 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1uiyEfkhWtMR06cS1Ew0cGv4_c6NGcCxq/view"
+          },
+          {
+            "tituloEpisodio": "MMAR 3.5X07 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/16VNbgE2zu8Mm8eBjawtIkYsnmN9rMraT/view"
+          },
+          {
+            "tituloEpisodio": "MMAR 3.5X08 - SeriesRetro.com (1)",
+            "urlDrive": "https://drive.google.com/file/d/12X3xiYFFEcEs2tTwl5jx_ird7QXGB8pN/view"
+          },
+          {
+            "tituloEpisodio": "MMAR 3.5X08 - SeriesRetro.com (2)",
+            "urlDrive": "https://drive.google.com/file/d/1VpR3A4wYDwXy08lgdQNzkRjDexL2mPm5/view"
+          },
+          {
+            "tituloEpisodio": "MMAR 3.5X08 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/18lT0Czaowhv0ahrwsSAssFB4ZcqBBuKT/view"
+          },
+          {
+            "tituloEpisodio": "MMAR 3.5X09 - SeriesRetro.com (1)",
+            "urlDrive": "https://drive.google.com/file/d/13BwIpfLxIEEB0Msyel7nVF3KLerU2eIJ/view"
+          },
+          {
+            "tituloEpisodio": "MMAR 3.5X09 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1D_cVG7Nslix_iMlLA9WDmf7PTNYscRs-/view"
+          },
+          {
+            "tituloEpisodio": "MMAR 3.5X10 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1zErLNg5V9YkahEqCq6Mk6Tjz0-FTuvR-/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 4068,
     "tmdbType": "tv",
     "tituloOriginal": "Hogan's Heroes ( inglés )",
