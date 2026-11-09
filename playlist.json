@@ -1,5 +1,283 @@
 [
   {
+    "tmdbId": 1663,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Six Million Dollar Man",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/kRRYafjTZh8gnZDLKSg5imj80es.jpg",
+    "year": "1974",
+    "fechaEstreno": "1974-01-18",
+    "rating": "7.3",
+    "votos": 450,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Action & Adventure",
+      "Drama"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Action & Adventure, Drama",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Lee Majors",
+        "personaje": "Steve Austin",
+        "foto": "https://image.tmdb.org/t/p/w185/ylu6EnPkQM2Q9xzBzjUCPrfeh1M.jpg"
+      },
+      {
+        "nombre": "Martin E. Brooks",
+        "personaje": "Dr. Rudy Wells",
+        "foto": "https://image.tmdb.org/t/p/w185/6AQuJJ38MIkUY3p7IypNDkBtAWb.jpg"
+      },
+      {
+        "nombre": "Richard Anderson",
+        "personaje": "Oscar Goldman",
+        "foto": "https://image.tmdb.org/t/p/w185/eNVusMxsfee5t79jXbYBP8JnVvm.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "secret organization, secret agent, bionic, superhuman abilities, cybernetics",
+    "similares": [
+      {
+        "titulo": "La mujer biónica",
+        "poster": "https://image.tmdb.org/t/p/w342/idou4N1oTTNkH5Pn3a9JJcZAQiE.jpg",
+        "year": "1976",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Jake 2.0",
+        "poster": "https://image.tmdb.org/t/p/w342/5v1ztY9py8pPgeMPYn606zsgjRI.jpg",
+        "year": "2003",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Mutante-X",
+        "poster": "https://image.tmdb.org/t/p/w342/yiKg027jdpkSsguVBI9WqliNWez.jpg",
+        "year": "2001",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "MacGyver",
+        "poster": "https://image.tmdb.org/t/p/w342/z3IpN86yJTmxCFz9KvoCDbB56Lp.jpg",
+        "year": "2016",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Max Steel",
+        "poster": "https://image.tmdb.org/t/p/w342/gltaRXRSp9B8Yyfb5iT56U2SSc7.jpg",
+        "year": "2000",
+        "rating": "8.2"
+      },
+      {
+        "titulo": "Loki",
+        "poster": "https://image.tmdb.org/t/p/w342/mLNTzVTF6lREjMWYaCVrhdvnF3C.jpg",
+        "year": "2021",
+        "rating": "8.2"
+      }
+    ],
+    "homepage": "https://www.nbc.com/the-six-million-dollar-man",
+    "creadores": [
+      "Kenneth Johnson",
+      "Martin Caidin"
+    ],
+    "numeroTemporadas": 5,
+    "numeroEpisodios": 99,
+    "temporadasTmdb": [
+      {
+        "air_date": "1973-03-07",
+        "episode_count": 6,
+        "id": 70521,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/hGL4j03cK9k3P3kTlj7qU0GFkGE.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1974-01-18",
+        "episode_count": 13,
+        "id": 61150,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/jASyczo9c0q5ME3ANbUtxR8LBjg.jpg",
+        "season_number": 1,
+        "vote_average": 6.5
+      },
+      {
+        "air_date": "1974-09-13",
+        "episode_count": 22,
+        "id": 61151,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/xrpDvKCOWQeCTGPOnOxt4zVxthg.jpg",
+        "season_number": 2,
+        "vote_average": 9
+      },
+      {
+        "air_date": "1975-09-14",
+        "episode_count": 21,
+        "id": 61152,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/bk8naHohjuD5QvwnV6ktvd3Grrb.jpg",
+        "season_number": 3,
+        "vote_average": 9.5
+      },
+      {
+        "air_date": "1976-09-19",
+        "episode_count": 22,
+        "id": 61153,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/22W5BAbW6DmYK1tNfCJPs9WB1SS.jpg",
+        "season_number": 4,
+        "vote_average": 8.2
+      },
+      {
+        "air_date": "1977-09-11",
+        "episode_count": 21,
+        "id": 61154,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/eJNcqW6fVH4QkUGzvEdW342hPvK.jpg",
+        "season_number": 5,
+        "vote_average": 9
+      }
+    ],
+    "tituloSerie": "El hombre de los seis millones de dólares",
+    "descripcion": "Durante un vuelo experimental, Steve Austin, piloto de pruebas y astronauta, sufrió un terrible accidente que le hizo perder las dos piernas, un brazo y la visión del ojo derecho. Su amigo el doctor Rudy Wells trabajaba entonces en un proyecto secreto llamado Biónica (mezcla de BIOlogía y electrÓNICA), gracias al cual los miembros amputados fueron sustituidos por partes biónicas que le dieron a Steve una fuerza y una velocidad enormes además de una visión envidiable. Para compensar a sus benefactores, Steve se hace agente especializado en el cumplimiento de peligrosas misiones.",
+    "imagen": "https://image.tmdb.org/t/p/w780/185KSzKHk9FyRYDhjHEwX0qfROX.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "EHM 1x4-Día del robot - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1EOQuKd-0DPB2MixZl_5nVB6X7ckyW790/view"
+          },
+          {
+            "tituloEpisodio": "EHM 1x11 Quemando luminosamente - RetroTVE.com (1)",
+            "urlDrive": "https://drive.google.com/file/d/1_6DpjKXJaM3VyrkXJUXBWSqGmpaPQ5nx/view"
+          },
+          {
+            "tituloEpisodio": "EHM 1x11 Quemando luminosamente - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1egRXNF_VctOvAnp-UQk8kM-8Q1XgINPb/view"
+          },
+          {
+            "tituloEpisodio": "EHM- 13-Operación Luciérnaga - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1JVZqJe-44WkV7fPiXpkPLiuHo54B376I/view"
+          },
+          {
+            "tituloEpisodio": "EHM- 15-Un pequeño huérfano del Aire - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1dnEXmpigtfLLyeJH335rgOhvGGRnQ9PM/view"
+          },
+          {
+            "tituloEpisodio": "EHM- 109-Dr. Wells esta perdido - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1p22P6_Vl3sLwp7nDLXfJERuunE5qshT2/view"
+          },
+          {
+            "tituloEpisodio": "EHM- 112-El Cobarde - RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1C_2f_ZjGk85tbjMj3XzxCM1BPDGUN109/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 14 - Nuclear Alert- SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/11aOLjb6Mz866xNBLtpYXEbCKLCiJCI83/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 15 - The Pioneers- SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/13OE-u9NhZMKyRDkfKLvy-gHEPg-kuCi7/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 16 - Pilot Error- SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/18Un-h0lASlgWRHObADK5gBb8vDWP21pG/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 17 - The Pal-Mir Escort- SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1uojuMtkZAN5rWh6XcRBNwQ3cz2z1Wphn/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 19 - Straight On til Morning- SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/17sB5Dvl4z5PssNDiovHDvsMTaOA3ZEK6/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 20 - The Midas Touch- SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1IhuSiV4SkoPz0MKfbRJqFzlEaHdEKgNn/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 21 - The Deadly Replay- SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1NEbQasyFYd5IUCOunDnVv3ot6dZDqg53/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 25 - The Cross-Country Kidnap- SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1xKjQSJ3tOKYZz39A-QL6M3BJnl1LteyO/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 26 - Lost Love- SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1fxeRUGEYyUP1czBU4UOSy5tFxlmH71pb/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 37 - The Return of the Bionic Woman Part 2 - SeriesRetro.c",
+            "urlDrive": "https://drive.google.com/file/d/1Wk4k1yaDxjUMw7GBna8Ip0ikS1gUTCsM/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 38 - The Price of Liberty - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/135qTlJ50DEp3owEuFKB5eIAvw-GsKOhl/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 39 - The Song and Dance Spy - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1mUKIfUn6mRNFiPaIXL5ju1n5s_GcGKI_/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 43 - One of Our Running Backs is Missing - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1fbrD0rI74FENqhtT1sxy3FWi1UyyPbN0/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 45 - The Blue Flash - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1BK6QnETqMqD3z3pOeLysHkPUHL2inItH/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 46 - The White Lightning War - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1B42o9vmtKk0ZPB7VWR2WrbT-H9gC1uj4/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 47 - Divided Loyalty - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1UqU3gPsREJ8uZR3BUN0OLgj4ZzP-LmdM/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 48 - Clark Templeton OFlaherty - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1i8Qd1XUsR37N3Ugl-hxqrEHN6I_RtmAK/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 51 - The Secret of Bigfoot Part 1 - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1JjBkyN-kJ-TtfdZZ6H5wRSX4kUZU1V3h/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 55 - The Bionic Badge - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1SVlHEIjSp1YtTVBb1ogdjtvilk_1YOiI/view"
+          },
+          {
+            "tituloEpisodio": "EHN - 56 - Big Brother - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1gLoLi7CU7V8lv4od2bax_PnsMYv3eKnc/view"
+          },
+          {
+            "tituloEpisodio": "EHN - Eps 40 - The Wolf Boy - SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1IhD7njcNo6auxaCiQuRhuAUmC-Npugiv/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 321123,
     "tmdbType": "tv",
     "tituloOriginal": "Mighty Morphin Alien Rangers",
