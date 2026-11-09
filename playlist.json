@@ -1,5 +1,247 @@
 [
   {
+    "tmdbId": 4068,
+    "tmdbType": "tv",
+    "tituloOriginal": "Hogan's Heroes ( inglés )",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/a97Q8f3dWiaMg2nq79zG5oZVotp.jpg",
+    "year": "1965",
+    "fechaEstreno": "1965-09-17",
+    "rating": "7.5",
+    "votos": 197,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "War & Politics",
+      "Comedia"
+    ],
+    "generosTexto": "War & Politics, Comedia",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Bob Crane",
+        "personaje": "Robert Hogan",
+        "foto": "https://image.tmdb.org/t/p/w185/8ydGYL1z23s5KWuGq2K9yVWnOCS.jpg"
+      },
+      {
+        "nombre": "Werner Klemperer",
+        "personaje": "Wilhelm Klink",
+        "foto": "https://image.tmdb.org/t/p/w185/sPvGHN5KEGUfi8cnSPFpmHndqwe.jpg"
+      },
+      {
+        "nombre": "John Banner",
+        "personaje": "Hans Schultz",
+        "foto": "https://image.tmdb.org/t/p/w185/jS5KIXhSCH5eKnuPJ4JJiPiJPME.jpg"
+      },
+      {
+        "nombre": "Robert Clary",
+        "personaje": "Louis LeBeau",
+        "foto": "https://image.tmdb.org/t/p/w185/nmJcGwT8taR3PVn2xy2FNkr0Rsi.jpg"
+      },
+      {
+        "nombre": "Richard Dawson",
+        "personaje": "Peter Newkirk",
+        "foto": "https://image.tmdb.org/t/p/w185/6rGawHl92otg0vMNbay6QOiwvfU.jpg"
+      },
+      {
+        "nombre": "Larry Hovis",
+        "personaje": "Andrew Carter",
+        "foto": "https://image.tmdb.org/t/p/w185/9AVzaL6TazWNWzczGYd3Iy7KzCF.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Alfran Productions, Bing Crosby Productions, CBS",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "germany, world war ii, prisoner of war, military, sitcom, war absurdity, nazi parody, period sitcom",
+    "similares": [
+      {
+        "titulo": "Decker",
+        "poster": "https://image.tmdb.org/t/p/w342/kYGzp7bQEeUhqOwml09uyWDJSK6.jpg",
+        "year": "2014",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Reno 911!",
+        "poster": "https://image.tmdb.org/t/p/w342/jIoeMgmcGdgTDqQUq4sDWFNsPUD.jpg",
+        "year": "2003",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Drop the Dead Donkey",
+        "poster": "https://image.tmdb.org/t/p/w342/btHvMfyEoFJaoJeCaOFWhC1kUzC.jpg",
+        "year": "1990",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Sí, ministro",
+        "poster": "https://image.tmdb.org/t/p/w342/2tFCZsypLY6UuRVEZVUeKqJsJAZ.jpg",
+        "year": "1980",
+        "rating": "8.3"
+      },
+      {
+        "titulo": "Garth Marenghi's Darkplace",
+        "poster": "https://image.tmdb.org/t/p/w342/4aSD7ssvpkmNqOxenPiWaLpq4vg.jpg",
+        "year": "2004",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Hi-de-Hi!",
+        "poster": "https://image.tmdb.org/t/p/w342/aXzCWbwDBCMnKcDvoI0JJ8Qf0L6.jpg",
+        "year": "1980",
+        "rating": "7.0"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Bernard Fein",
+      "Albert S. Ruddy"
+    ],
+    "numeroTemporadas": 6,
+    "numeroEpisodios": 168,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 6,
+        "id": 12049,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1965-09-17",
+        "episode_count": 32,
+        "id": 12043,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/hI8W4kmgUmJ9G8H8aeMyWp1CGqy.jpg",
+        "season_number": 1,
+        "vote_average": 8.4
+      },
+      {
+        "air_date": "1966-09-16",
+        "episode_count": 30,
+        "id": 12044,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/sfeu1cqQZsvhlAHot8zWZj2QzEZ.jpg",
+        "season_number": 2,
+        "vote_average": 8.8
+      },
+      {
+        "air_date": "1967-09-09",
+        "episode_count": 30,
+        "id": 12045,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/7xW29hmZXLppiOEyVqmjyv68dLp.jpg",
+        "season_number": 3,
+        "vote_average": 8.7
+      },
+      {
+        "air_date": "1968-09-28",
+        "episode_count": 26,
+        "id": 12046,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/8RmdPAyPc4Tava4vGmTe2rVF1RA.jpg",
+        "season_number": 4,
+        "vote_average": 8.8
+      },
+      {
+        "air_date": "1969-09-26",
+        "episode_count": 26,
+        "id": 12047,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/jsvlBOxBoCaiDezvp8Pnzz7OLMg.jpg",
+        "season_number": 5,
+        "vote_average": 9.1
+      },
+      {
+        "air_date": "1970-09-20",
+        "episode_count": 24,
+        "id": 12048,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/l1h8yvzEGnzJeeAyKa0SXHJL4D1.jpg",
+        "season_number": 6,
+        "vote_average": 8.9
+      }
+    ],
+    "tituloSerie": "Los héroes de Hogan( Subtitulos español )",
+    "descripcion": "En medio de la Segunda Guerra Mundial, el coronel Hogan y sus hombres fueron capturados como prisioneros de guerra por los alemanes. No obstante, debido a la torpeza de los germanos (dirigidos por el coronel Klink), ellos son capaces de llevar a cabo una operación de espionaje y sabotaje en la misma prisión, sin levantar sospechas entre los carceleros.",
+    "imagen": "https://image.tmdb.org/t/p/w780/qifpp3AmNx54Ko4obdwxOWNf0lo.jpg",
+    "codigo": null,
+    "qualityTag": "Subtitulos español",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Hogans Heroes 1x02 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/13eczANmWS5etSyHRQ3rw3M4v2ebRusTU/view"
+          },
+          {
+            "tituloEpisodio": "Hogans Heroes 1x04 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/1u8z3WaRfn1LqALtKnyZu8TkRWGC6peY9/view"
+          },
+          {
+            "tituloEpisodio": "Hogans Heroes 1x05 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/1u7T2U3S5JMPvs1tIk0upLUG1dCPTRnFt/view"
+          },
+          {
+            "tituloEpisodio": "Hogans Heroes 1x07 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/14Zet_faKjZP4kkMGXQgpiRZSaMEppAy7/view"
+          },
+          {
+            "tituloEpisodio": "Hogans Heroes 1x09 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/1MDSOwtFxZYe-xHeolaN1dR8_0ejoidXq/view"
+          },
+          {
+            "tituloEpisodio": "Hogans Heroes 1x11 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/1zN8APkb8YI_kgL8eOYvj9SK8PuwOsPC7/view"
+          },
+          {
+            "tituloEpisodio": "Hogans Heroes 1x12 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/1wWOvAoQTzXyPsQ5UedqKUXd-031FrZpU/view"
+          },
+          {
+            "tituloEpisodio": "Hogans Heroes 1x13 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/13F06dH3TZjzII1Y8nJc8gTMcfCBUe3nw/view"
+          },
+          {
+            "tituloEpisodio": "Hogans Heroes 1x14 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/1MB5hBiFFBJzaiNH94OmHYYMGpRwOfsTr/view"
+          },
+          {
+            "tituloEpisodio": "Hogans Heroes 1x15 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/1t1Tts667h8WGvjNjvcf__fXR8p2YWjib/view"
+          },
+          {
+            "tituloEpisodio": "Hogans Heroes 1x16 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/1K4OYRlrNNso4KKHZAQHRIiIuUNgZkvy4/view"
+          },
+          {
+            "tituloEpisodio": "Hogans Heroes 1x17 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/16v7AQgIJB7Bx74NJiuiJYHW63om4fvil/view"
+          },
+          {
+            "tituloEpisodio": "Hogans Heroes 1x18 VOSE",
+            "urlDrive": "https://drive.google.com/file/d/1RBd_VojXHA8z1jRUktKCi8dDXBVfU7uE/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 103,
     "tmdbType": "tv",
     "tituloOriginal": "The Time Tunnel",
