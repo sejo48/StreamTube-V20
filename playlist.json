@@ -5687,7 +5687,7 @@
     "tmdbId": 321,
     "tmdbType": "tv",
     "tituloOriginal": "Voyage to the Bottom of the Sea",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/58JWKf2FjsXwuiIS4wngeFG5A6e.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/duN3VHi5nKVpQqpC2QxOavzgSyJ.jpg",
     "year": "1964",
     "fechaEstreno": "1964-09-14",
     "rating": "7.8",
@@ -5852,56 +5852,10 @@
     ],
     "tituloSerie": "Viaje al fondo del mar",
     "descripcion": "La serie narra las aventuras del submarino nuclear Seaview, mientras investiga el fondo del mar y realiza todo tipo de misiones.  La tripulación del Seaview, comandada por el almirante Nelson y el capitán Crane, deberán enfrentarse a todo tipo de peligros. Submarinos enemigos, monstruos marinos, saboteadores u organizaciones desconocidas, intentarán destruir el submarino más moderno que surca el fondo del mar.",
-    "imagen": "https://image.tmdb.org/t/p/w780/m0NdwZheYAPCqw6aa7GASbIpDvG.jpg",
+    "imagen": "https://image.tmdb.org/t/p/original/y8EkyHnKPsG7WHfM0ENfzfabVp1.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": [
-      {
-        "numeroTemporada": 1,
-        "episodios": [
-          {
-            "tituloEpisodio": "Episodio 1",
-            "urlDrive": "https://drive.google.com/file/d/1dHJe9S8ghlORRfeUxF3dxlTbcskGS_fz/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 2",
-            "urlDrive": "https://drive.google.com/file/d/1octWi3UJJph4CDjK6E7NhJ85zjHAGtFw/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 3",
-            "urlDrive": "https://drive.google.com/file/d/1RXaHfcQaAB9v0O7tbE6o1Tryr7DGjBA-/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 4",
-            "urlDrive": "https://drive.google.com/file/d/1u5MhRB0oYJLHuhBLvklbs4qw-T2THaNi/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 5",
-            "urlDrive": "https://drive.google.com/file/d/1dL9h1e9taU-qFFSvXc-vRvsO8Khxw3gV/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 6",
-            "urlDrive": "https://drive.google.com/file/d/1DtOJ4DqxY3YbkwMfjRQrscfAxIRy07iE/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 7",
-            "urlDrive": "https://drive.google.com/file/d/1IzBRzQhZX2aE0is9WpXlDbwsZAb9N2gA/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 8",
-            "urlDrive": "https://drive.google.com/file/d/1cA5AKQHgz36fvGw0OaVvrO7J7U3wtsyg/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 9",
-            "urlDrive": "https://drive.google.com/file/d/1yhXYatyJEIskksHlI6Smx2FrkZPhDbc2/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 10",
-            "urlDrive": "https://drive.google.com/file/d/1Do1S4EGIs74hsACHDPVzR5Zb0v0ImgZU/preview"
-          }
-        ]
-      }
-    ]
+    "temporadas": []
   },
   {
     "tituloSerie": "La marina de mackey",
@@ -6399,9 +6353,155 @@
     ]
   },
   {
-    "tituloSerie": "STARSKY & HUTCH",
-    "descripcion": "Starsky y Hutch llegaron a nuestros televisores en 1975, llevando toda la acción y emoción de la gran pantalla a la pequeña, en lo que se convertiría en la serie por excelencia de la época",
-    "imagen": "https://pics.filmaffinity.com/starsky_hutch-931984672-mmed.jpg",
+    "tmdbId": 1532,
+    "tmdbType": "tv",
+    "tituloOriginal": "Starsky & Hutch",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/9GEghzkUfxWNQ65BbRwfysKOVoS.jpg",
+    "year": "1975",
+    "fechaEstreno": "1975-09-10",
+    "rating": "7.4",
+    "votos": 221,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Action & Adventure",
+      "Drama",
+      "Crimen"
+    ],
+    "generosTexto": "Action & Adventure, Drama, Crimen",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "David Soul",
+        "personaje": "Kenneth Hutchinson",
+        "foto": "https://image.tmdb.org/t/p/w185/y7fW77RzeqgBYeoTswsMfwy8FwI.jpg"
+      },
+      {
+        "nombre": "Paul Michael Glaser",
+        "personaje": "David Starsky",
+        "foto": "https://image.tmdb.org/t/p/w185/c5YHce8dG9dLu8ngnHVlt5HgGeA.jpg"
+      },
+      {
+        "nombre": "Antonio Fargas",
+        "personaje": "Huggy Bear Brown",
+        "foto": "https://image.tmdb.org/t/p/w185/tolJfiTpIsVfqijPZ2UroUswwyr.jpg"
+      },
+      {
+        "nombre": "Bernie Hamilton",
+        "personaje": "Harold Dobey",
+        "foto": "https://image.tmdb.org/t/p/w185/Lz9W5WIlyPOvwWdc4MWX6USsr.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "ABC Network Productions, Columbia Pictures Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "police, comforting",
+    "similares": [
+      {
+        "titulo": "Police Story",
+        "poster": "https://image.tmdb.org/t/p/w342/wfhiGakYfjk8XeDKRpya9P4tNu9.jpg",
+        "year": "1973",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "The Sweeney",
+        "poster": "https://image.tmdb.org/t/p/w342/8dIJo5P3d1soSxKJvjkxDX1816H.jpg",
+        "year": "1975",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Canción triste de Hill Street",
+        "poster": "https://image.tmdb.org/t/p/w342/w3ck59ERLzEATqRFe1Nd2ZMQvtZ.jpg",
+        "year": "1981",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "The Listener",
+        "poster": "https://image.tmdb.org/t/p/w342/8408RJvs3zRjA0e69I1zJTRxQye.jpg",
+        "year": "2009",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Patrulla juvenil",
+        "poster": "https://image.tmdb.org/t/p/w342/c5HaIPOSZitasqNlLRp8ZzuUsSn.jpg",
+        "year": "1968",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "T. J. Hooker",
+        "poster": "https://image.tmdb.org/t/p/w342/zcHUwD20mqMD4g8LKdpKD12QRhE.jpg",
+        "year": "1982",
+        "rating": "6.5"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "William Blinn"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 92,
+    "temporadasTmdb": [
+      {
+        "air_date": "1975-04-23",
+        "episode_count": 7,
+        "id": 4194,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/4SxI4rlGeF7yMwcaYScipaOMgdF.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1975-09-10",
+        "episode_count": 22,
+        "id": 4190,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/yepsg0EBRkOlkkhrYbUaoVfaP93.jpg",
+        "season_number": 1,
+        "vote_average": 8.3
+      },
+      {
+        "air_date": "1976-09-25",
+        "episode_count": 25,
+        "id": 4191,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/4leD7xZuW4c0BnSCu2gLfIbgpKd.jpg",
+        "season_number": 2,
+        "vote_average": 7.6
+      },
+      {
+        "air_date": "1977-09-17",
+        "episode_count": 23,
+        "id": 4192,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/s3y2RyRE8w3S8aMRkmCPybQTqxj.jpg",
+        "season_number": 3,
+        "vote_average": 7.6
+      },
+      {
+        "air_date": "1978-09-12",
+        "episode_count": 22,
+        "id": 4193,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/9RBZeY7R7gmGOyhpsOtDmDRM26M.jpg",
+        "season_number": 4,
+        "vote_average": 10
+      }
+    ],
+    "tituloSerie": "Starsky y Hutch",
+    "descripcion": "Starsky y Hutch, una pareja de policías particularmente expeditivos, trabajan a las órdenes del singular capitán Harold Dobey, un tipo que además regenta un club nocturno. Patrullando las calles en su \"Zebra Three\" un llamativo Ford Gran Torino rojo, la pareja combate el crimen sin descanso.",
+    "imagen": "https://image.tmdb.org/t/p/w780/aBj5oTi1uibVcXDoCJeKseJNY2d.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
@@ -10636,7 +10736,7 @@
     ],
     "tituloSerie": "Tierra de gigantes",
     "descripcion": "Serie de TV (1968–1970). 51 episodios. Serie creada por Irwin Allen con el sello de \"Lost in Space\", que narra las aventuras de la tripulación y pasajeros de una nave de transporte suborbital, que es accidentalmente transportada hacia un mundo en el cual toda forma de vida tiene enormes proporciones en comparación de los personajes principales. El aspecto de estos gigantes es enteramente humano, pero su sociedad es completamente dictatorial.",
-    "imagen": "https://image.tmdb.org/t/p/original/5eefvjiXZUZ0K75eBtO8g3x4hhG.jpg",
+    "imagen": "https://image.tmdb.org/t/p/original/ljbqDwgOoqYvQ6WRnuLr8QleEkH.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": [
