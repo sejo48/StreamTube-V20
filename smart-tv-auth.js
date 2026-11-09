@@ -1,4 +1,5 @@
 import { createOpeningRecorder } from './app-openings.js';
+import { verifyDeviceAccess } from './device-access.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getFirestore, doc, runTransaction, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 const firebaseConfig = {
@@ -20,17 +21,8 @@ let email='',until=0,checked=0,checking=null;
 async function verify(address){
  const target=String(address||'').trim().toLowerCase();
  if(!target)return {activo:false,razon:'no_existe'};
- const result=await runTransaction(db,async transaction=>{
-  const ref=doc(db,'suscripciones',target),snapshot=await transaction.get(ref);
-  if(!snapshot.exists())return {activo:false,razon:'no_existe'};
-  const data=snapshot.data(),expiration=new Date(data.expires_at).getTime();
-  if(data.status!=='active'||!Number.isFinite(expiration)||expiration<=Date.now())return {activo:false,razon:'vencida'};
-  const devices=Array.isArray(data.devices)?data.devices:[];
-  if(devices.length&&!devices.includes(device))return {activo:false,razon:'dispositivo_no_autorizado'};
-  if(!devices.length)transaction.update(ref,{devices:[device]});
-  return {activo:true,expiresAt:expiration};
- });
- if(result.activo){email=target;until=result.expiresAt;checked=Date.now();put('boxplay_user_email',target);presence();}
+ const result=await verifyDeviceAccess({db,doc,runTransaction},target,device);
+ if(result.activo){email=target;until=new Date(result.expiresAt).getTime();checked=Date.now();put('boxplay_user_email',target);presence();}
  else{until=0;checked=0;}
  return result;
 }

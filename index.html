@@ -331,7 +331,7 @@
 <!-- SDK y Funciones de Firebase Firestore para Validación SINPE -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getFirestore, doc, getDoc, updateDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+  import { getFirestore, doc, getDoc, updateDoc, setDoc, runTransaction } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyAaa4Rs4vk2xq0PzXnb9tdLnt1oqqj4qa4",
@@ -344,6 +344,7 @@
   };
 
   import { createOpeningRecorder } from './app-openings.js';
+  import { verifyDeviceAccess } from './device-access.js';
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
@@ -376,34 +377,7 @@
   // Verifica suscripción Y valida deviceId (1 dispositivo por cuenta)
   window.verificarSuscripcion = async function(emailUsuario, deviceId) {
     try {
-      const email = String(emailUsuario || '').trim().toLowerCase();
-      if (!email) return { activo: false, razon: 'no_existe' };
-
-      const docRef = doc(db, "suscripciones", email);
-      const docSnap = await getDoc(docRef);
-
-      if (!docSnap.exists()) return { activo: false, razon: 'no_existe' };
-
-      const data = docSnap.data();
-      const hoy = new Date();
-      const expiracion = new Date(data.expires_at);
-
-      if (data.status !== "active" || !Number.isFinite(expiracion.getTime()) || hoy >= expiracion) {
-        return { activo: false, razon: 'vencida', expiresAt: Number.isFinite(expiracion.getTime()) ? expiracion.toISOString() : null };
-      }
-
-      const devices = Array.isArray(data.devices) ? data.devices : [];
-
-      if (devices.length === 0) {
-        try { await updateDoc(docRef, { devices: [deviceId] }); } catch (e) {}
-        return { activo: true, razon: 'ok', primerDispositivo: true, expiresAt: expiracion.toISOString() };
-      }
-
-      if (devices.includes(deviceId)) {
-        return { activo: true, razon: 'ok', expiresAt: expiracion.toISOString() };
-      }
-
-      return { activo: false, razon: 'dispositivo_no_autorizado' };
+      return await verifyDeviceAccess({ db, doc, runTransaction }, emailUsuario, deviceId);
 
     } catch (error) {
       console.error("Error al verificar la suscripción:", error);

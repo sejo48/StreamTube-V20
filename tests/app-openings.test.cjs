@@ -38,11 +38,12 @@ test('Costa Rica day boundary is 06:00 UTC, including new year', async () => {
 test('Smart TV launch validates remembered accounts; rejected accounts never create openings', async () => {
     const vm = require('node:vm');
     const { createOpeningRecorder } = await load();
+    const { verifyDeviceAccess } = await import('data:text/javascript;base64,' + fs.readFileSync(require('node:path').join(__dirname, '../device-access.js')).toString('base64'));
     const auth = fs.readFileSync(require('node:path').join(__dirname, '../smart-tv-auth.js'), 'utf8').replace(/^import .*;\n/gm, '');
     for (const active of [true, false]) {
         const writes = []; const timers = [];
         const sandbox = {
-            createOpeningRecorder, initializeApp: () => ({}), getFirestore: () => ({}),
+            createOpeningRecorder, verifyDeviceAccess, initializeApp: () => ({}), getFirestore: () => ({}),
             doc: (_, collection, id) => ({ collection, id }),
             setDoc: async (ref, data) => { writes.push({ ref, data }); },
             runTransaction: async (_, callback) => callback({
