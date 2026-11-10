@@ -1,5 +1,396 @@
 [
   {
+    "tmdbId": 4239,
+    "tmdbType": "tv",
+    "tituloOriginal": "Married... with Children",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/y6nEgbjMUpYLnVUwZDzX95wH5Vj.jpg",
+    "year": "1987",
+    "fechaEstreno": "1987-04-05",
+    "rating": "7.7",
+    "votos": 1294,
+    "runtime": "22min",
+    "runtimeMin": 22,
+    "genres": [
+      "Comedia"
+    ],
+    "generosTexto": "Comedia",
+    "clasificacion": "13",
+    "tagline": "¡La felicidad doméstica nunca fue así!",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Ed O'Neill",
+        "personaje": "Al Bundy",
+        "foto": "https://image.tmdb.org/t/p/w185/4RrxSno3UEtGWuMm4yJoaFzckpL.jpg"
+      },
+      {
+        "nombre": "Katey Sagal",
+        "personaje": "Peggy Bundy",
+        "foto": "https://image.tmdb.org/t/p/w185/sHUOn4iF35X3qinAUqZPpZq9sxl.jpg"
+      },
+      {
+        "nombre": "Amanda Bearse",
+        "personaje": "Marcy D'Arcy",
+        "foto": "https://image.tmdb.org/t/p/w185/vsigj6WmFdm6w7O7uA7UOWuxuxG.jpg"
+      },
+      {
+        "nombre": "Christina Applegate",
+        "personaje": "Kelly Bundy",
+        "foto": "https://image.tmdb.org/t/p/w185/ncWS3iguCMCQ53ewacGpMGA6MHv.jpg"
+      },
+      {
+        "nombre": "David Faustino",
+        "personaje": "Bud Bundy",
+        "foto": "https://image.tmdb.org/t/p/w185/dNqoFIPkusGDUjjIAX0jmtQV47v.jpg"
+      },
+      {
+        "nombre": "Ted McGinley",
+        "personaje": "Jefferson D'Arcy",
+        "foto": "https://image.tmdb.org/t/p/w185/nUeN0vYFDgqX6LtLf29TgvnNhnJ.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Columbia Pictures Television, Embassy Communications, ELP Communications",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "chicago, illinois, slapstick comedy, dysfunctional family, family relationships, social satire, family, family conflict, shoe salesman, sitcom, family life, amused",
+    "similares": [
+      {
+        "titulo": "Black-ish",
+        "poster": "https://image.tmdb.org/t/p/w342/lGnzTz4ypRumSfTHMtygcsNXzH1.jpg",
+        "year": "2014",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "American Housewife",
+        "poster": "https://image.tmdb.org/t/p/w342/qozlVZ3DmC7xvOvXRNq33L4v5PW.jpg",
+        "year": "2016",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Tyler Perry's House of Payne",
+        "poster": "https://image.tmdb.org/t/p/w342/2NdUdJnZnwI6skvm6OXWrK2D42U.jpg",
+        "year": "2007",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Los Jeffersons",
+        "poster": "https://image.tmdb.org/t/p/w342/iFjIaWr9qDKMLnnh8tHwO6Tzp6D.jpg",
+        "year": "1975",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Father Knows Best",
+        "poster": "https://image.tmdb.org/t/p/w342/5uvDdhz7Fq2OceIbmmOVpk2cSwx.jpg",
+        "year": "1954",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Sin Pegar Ojo",
+        "poster": "https://image.tmdb.org/t/p/w342/5JyUoqVp34jmfvstRJc3fAVigrF.jpg",
+        "year": "2011",
+        "rating": "6.0"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Michael G. Moye",
+      "Ron Leavitt"
+    ],
+    "numeroTemporadas": 11,
+    "numeroEpisodios": 258,
+    "temporadasTmdb": [
+      {
+        "air_date": "1986-12-12",
+        "episode_count": 14,
+        "id": 12440,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/8Q51MQ02WyJYxbYcVViOcJDO3pt.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1987-04-05",
+        "episode_count": 13,
+        "id": 12441,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/gKv8xIiLzWSNKqJYkREAtdiZr6V.jpg",
+        "season_number": 1,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1987-09-27",
+        "episode_count": 22,
+        "id": 12442,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/8p9pIW27AHzmH9gT0bCr86GTBW2.jpg",
+        "season_number": 2,
+        "vote_average": 7.1
+      },
+      {
+        "air_date": "1988-11-06",
+        "episode_count": 21,
+        "id": 12443,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/8wrkmSdjqbbS599WyYE5HY6M2Ot.jpg",
+        "season_number": 3,
+        "vote_average": 7.1
+      },
+      {
+        "air_date": "1989-09-03",
+        "episode_count": 23,
+        "id": 12444,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/vjHfD6RGGJo9GdVCOCK9YU3NJnr.jpg",
+        "season_number": 4,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "1990-09-23",
+        "episode_count": 25,
+        "id": 12445,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/9wjKGYLyjzqF2uelQrg0rGH1yQz.jpg",
+        "season_number": 5,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "1991-09-08",
+        "episode_count": 26,
+        "id": 12446,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/13qLwrcelAjliNXAM1p4H1C6aBp.jpg",
+        "season_number": 6,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1992-09-13",
+        "episode_count": 26,
+        "id": 12447,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/udrjZJahtjzrb0puSunQ8H2YioR.jpg",
+        "season_number": 7,
+        "vote_average": 7
+      },
+      {
+        "air_date": "1993-09-05",
+        "episode_count": 26,
+        "id": 12448,
+        "name": "Temporada 8",
+        "overview": "",
+        "poster_path": "/81TSP3ZH6VzpNesVQX73BCVBoyo.jpg",
+        "season_number": 8,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "1994-09-04",
+        "episode_count": 26,
+        "id": 12449,
+        "name": "Temporada 9",
+        "overview": "",
+        "poster_path": "/i3Klm6zCkVFL9tPkNAiUKsD3rWn.jpg",
+        "season_number": 9,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "1995-09-17",
+        "episode_count": 26,
+        "id": 12450,
+        "name": "Temporada 10",
+        "overview": "",
+        "poster_path": "/2qb3jADS6GsPfUzV48EbhVECOtl.jpg",
+        "season_number": 10,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "1996-09-28",
+        "episode_count": 24,
+        "id": 12451,
+        "name": "Temporada 11",
+        "overview": "",
+        "poster_path": "/wn4JcByzDTIRzDUDpCxEugVQAuK.jpg",
+        "season_number": 11,
+        "vote_average": 7.2
+      }
+    ],
+    "tituloSerie": "Matrimonio Con Hijos",
+    "descripcion": "En \"Matrimonio con hijos\" se parodiaba la familia norteamericana de los años 80: un marido al que poco le importaba su familia; la señora, una impulsiva compradora; la hija, que era el estereotipo de \"rubia sexy y tonta\"; y el hijo, un perdedor que busca ser atractivo. Posteriormente se unirían a la familia Seven, un hijo adoptado. Los Bundy viven en Chicago y, aunque no podría afirmarse que se aprecien particularmente, siempre se mantienen juntos. Tal y como el mismo Al Bundy explica: \"Amor, odio... mira, somos una familia, ¿cuál es la diferencia?\". Su convivencia, y la relación con sus vecinos, una pareja de recién casados idealistas y poco conscientes de la realidad del matrimonio, fue el punto de partida para una de las series más sarcásticas, desvergonzadas y cáusticas de la historia de la televisión norteamericana.",
+    "imagen": "https://image.tmdb.org/t/p/original/rV501Xe1tRWGCeAHTpH4HRVJgak.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x1 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/10HM60jDV2L5N6lL4tK3sbkg98-lEIO_c/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x2 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1HglZ-VaTPZSMUDEPka3rMASqGhNZy8ZV/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x3 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1XIs-WtIG0gm4RMk3LexlQkXMyOUenjWb/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x4 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1aWV3PMwoVow_TZUMWTub5r1sPd9eT9qO/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x5 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1Q4UDmPftUPvpBy5F1HLUz6Q7mOQ7AjSO/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x6 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1m9DdRBa1nREBoUnKbpgsUpfQ5VJUSW-v/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x7 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1hoflq1-ar8HiAw-MwLVYZLv3NMMo196z/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x8 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1wNjRfhtw-GLP8OX9AVjqGrjRrNimTSKx/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x9 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1jsiQjNnAtUJsbXqnhPE0rSfkLD9saGoy/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x10 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1-QrsLNzKBFz3fGTtrZlRh-h4eBYcfdw3/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x11 Archives - Series Retro (1)",
+            "urlDrive": "https://drive.google.com/file/d/1A8mpRf3Y1r2Hqa_f0yRzA2oqNbemKrzE/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x11 Archives - Series Retro (2)",
+            "urlDrive": "https://drive.google.com/file/d/1fHTM-NJH0EmSY0RLdUUsWidKzwxo1N7W/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x11 Archives - Series Retro (3)",
+            "urlDrive": "https://drive.google.com/file/d/1LiT-BemK2tfSBFIwrpnpr91nTIsxH8rN/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x11 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1kME_pO621nrvehFy3xNfIkrk2S7vFIYn/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 1x12 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1-zDImBXB_LunKaDV5Xy0EcXJy5vUjjcj/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x1 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/16gWPB-P6cUeV2KkQU09opQzaBzZOyc8Z/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x2 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/19XsF3WP5PXea-0PY-68Hy3neNH_5BGn-/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x3 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1KQptGbTyxHxEW3jNipFbzv0JcKAMF4G8/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x4 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1tcAnvzJ52PxhnRIJgCZGVOmC505vXW-q/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x5 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1zomAN8Lr6NrDBpCi-zfuqph665cu5L0p/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x6 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1QHLUKbu7wMg74ZXFj-da97j96UhSF3EI/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x7 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1byzfYLnSlVw0PiKY6f92i071puCzWo2E/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x8 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1X81RollJHCx8gtl_K4DgOxokpI424lMq/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x9 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1lCudFG6P212EcE8VCOcQt_wCVPhABTiF/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x10 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1qsqd-Qbah2mJiuGEPUvsB1xzFFGd3U2R/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x11 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1uXOcl1SV-1H9QaILaMn1_PtxjWJBmjNC/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x12 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1iH_o_L6Zm1VmGkzUOncaAyVN_QH7tRM5/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x13 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/10aL--LGY680qS86tTRYerv1rGBIv0K-u/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x14 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1DtyeZCwCPo5s64Ap-J13e8Yu-BPxkS-y/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x15 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1GH5JSh9M9syqNCC-lBE667pEQLUiJxG1/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x16 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1TN9v_QApiDbxC9Pz-vE-QFNNbaQendHu/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x17 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1Nq6AG-5_ok-8b5rKZhhOohIz8vgqSYZH/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x18 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1KxFZKfGVZQMi5FKxSqk9Iuq8K8fjrliS/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x19 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1lP52BhGPhk36WJ9M4DeArHExC2HGL9lN/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x20 Archives - Series Retro (1)",
+            "urlDrive": "https://drive.google.com/file/d/19PJAk76m3ATEtLM8utr8j49BHeRAajiC/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x20 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1fRXero6fv2RoHZDKpr09WQa5qaZ7kr2U/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x21 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1uIZOSJcUM-dDOr8Wa1lGtfeUvzldn08S/view"
+          },
+          {
+            "tituloEpisodio": "Matrimonio con hijos 2x22 Archives - Series Retro",
+            "urlDrive": "https://drive.google.com/file/d/1eOBAXKrpSPpOCgPB6GevBPVBDaoGNb9T/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 1663,
     "tmdbType": "tv",
     "tituloOriginal": "The Six Million Dollar Man",
@@ -9829,16 +10220,76 @@
         "numeroTemporada": 1,
         "episodios": [
           {
-            "tituloEpisodio": "Episodio 1",
-            "urlDrive": "https://drive.google.com/file/d/1ogSVSoq7MDYbZpbmTpv-CgO3lcGqr70Q/view?usp=sharing"
+            "tituloEpisodio": "LIF - 1x01 E.Piloto.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1L6oeiFPjiWUulQwzydvkuiN6IBc_dhoQ/view"
           },
           {
-            "tituloEpisodio": "Episodio 2",
-            "urlDrive": "https://drive.google.com/file/d/11JQDLTt5wZP-Aj8KWp8ne1YMRFFylWnQ/view?usp=sharing"
+            "tituloEpisodio": "LIF - 1x04.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/13n-5mM2WWhCcrXsnkVQRgTl31ywesMwn/view"
           },
           {
-            "tituloEpisodio": "Episodio 3",
-            "urlDrive": "https://drive.google.com/file/d/1zQ5M75f9pyFLDBWiiBBIm729T0v3aC8R/view?usp=sharing"
+            "tituloEpisodio": "LIF - 1x05.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1yisiPV1VZ1GZwOPgPhDdK5DnLbFtQ3jZ/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x06.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1ru0ZKk9Be5h76Cq4NDa06LanndXsQ9n_/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x07.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1AI-20L7mkDNuL38ozoT68QvGELu1MlbT/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x08.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1Z0du12nVddWiUa05ok5_aJ-GSRI28SeD/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x09.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1CFXWDmARNolZiTTEQXxvXUYGbaCTLrXm/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x10.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1HesNXqZc5sZ7Wuny8DdK_cHN2L9BsWcX/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x11.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1k0FktVQXWlWdcR1iROMcoMSK7TLvVDRu/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x12.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1KKOZ2OAm6I1NHmMbZ4hdg8G7hKJCVfwJ/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x13.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1Ukr97WyTVk6jjC3V5KN4zIvqSQeNfX1A/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x14.SeriesRetro.com (1)",
+            "urlDrive": "https://drive.google.com/file/d/1vhsFCVn7d72sieewpCjXo41V0xIKyyXp/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x14.SeriesRetro.com (2)",
+            "urlDrive": "https://drive.google.com/file/d/1Ddxmw2aHOYzI5fesl698QDyNxR7Tf8i8/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x14.SeriesRetro.com (3)",
+            "urlDrive": "https://drive.google.com/file/d/12WCF0DNcgCr85MMLYC2yzoP60aVEK0ZE/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x14.SeriesRetro.com (4)",
+            "urlDrive": "https://drive.google.com/file/d/1JsBa2O1fYijdfqBRIDN7OP7dhYFip_QK/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x14.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1aePI-Lln5jOOu5CKAPKgNo-qdRPRDOyC/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x15.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/16PUoDihZhrxuUzzS-H0FKxnMGMkgpv79/view"
+          },
+          {
+            "tituloEpisodio": "LIF - 1x16.SeriesRetro.com",
+            "urlDrive": "https://drive.google.com/file/d/1773F1BR4sAqeEky5n970OCO2MO6KK6Rm/view"
           }
         ]
       }
