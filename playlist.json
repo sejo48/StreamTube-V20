@@ -1,5 +1,139 @@
 [
   {
+    "tmdbId": 4331,
+    "tmdbType": "tv",
+    "tituloOriginal": "Wonder Woman",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/qwPc8zjwUYTcpKWzvw7ux4cwClB.jpg",
+    "year": "1975",
+    "fechaEstreno": "1975-11-07",
+    "rating": "7.0",
+    "votos": 505,
+    "runtime": "50min",
+    "runtimeMin": 50,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Action & Adventure",
+      "Drama"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Action & Adventure, Drama",
+    "clasificacion": "NR",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Lynda Carter",
+        "personaje": "Wonder Woman / Diana Prince",
+        "foto": "https://image.tmdb.org/t/p/w185/qZJgjBKEL4ioZywSGzYzxldEAvf.jpg"
+      },
+      {
+        "nombre": "Lyle Waggoner",
+        "personaje": "Steve Trevor",
+        "foto": "https://image.tmdb.org/t/p/w185/nWSX6rRhxBHBGXY2iHA5y1FG5oq.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Warner Bros. Television, Bruce Lansbury Productions, Douglas S. Cramer Company",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "strong woman, superhero, based on comic, super power",
+    "similares": [
+      {
+        "titulo": "Supergirl",
+        "poster": "https://image.tmdb.org/t/p/w342/VsvR3ykugenhyRzz1Uf91V9U0c.jpg",
+        "year": "2015",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "El intrépido Batman",
+        "poster": "https://image.tmdb.org/t/p/w342/tv2mOIRcPP4H0DhOH84xPgqui7d.jpg",
+        "year": "2008",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Xena, la princesa guerrera",
+        "poster": "https://image.tmdb.org/t/p/w342/3SRTblGC16nuyFVvGKIkIVxN89S.jpg",
+        "year": "1995",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "La mujer biónica",
+        "poster": "https://image.tmdb.org/t/p/w342/idou4N1oTTNkH5Pn3a9JJcZAQiE.jpg",
+        "year": "1976",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Stargirl",
+        "poster": "https://image.tmdb.org/t/p/w342/qbtwQpzZSmjbq9767KKHH1qoO5y.jpg",
+        "year": "2020",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "X Men, La Serie Animada",
+        "poster": "https://image.tmdb.org/t/p/w342/2OFwsFhAobczgJWnVdwd9oZAF2N.jpg",
+        "year": "1992",
+        "rating": "8.2"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Stanley Ralph Ross"
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 60,
+    "temporadasTmdb": [
+      {
+        "air_date": "2004-06-29",
+        "episode_count": 5,
+        "id": 12798,
+        "name": "Especiales",
+        "overview": "Estos especiales, consistentes en entrevistas a diversos talentos del elenco y producción de la serie, así como a diversas celebridades del mundo del comic y la literatura, fueron presentados como extras en los DVD de la serie, distribuidos entre junio de 2004 y junio de 2005. Las entrevistas se centran en la realización de la serie, su adaptación del comic a la TV y las actitudes proto-feministas de “La Mujer Maravilla”",
+        "poster_path": "/u32Xkv0YXn2vArSAdWGyRwq6myJ.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1975-11-07",
+        "episode_count": 14,
+        "id": 12795,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/r7r2VKDzwEo666FAxMbt4Gm23Kl.jpg",
+        "season_number": 1,
+        "vote_average": 6
+      },
+      {
+        "air_date": "1977-09-16",
+        "episode_count": 22,
+        "id": 12796,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/h8ojYEaxZpJRCNjXHIU0taInMiJ.jpg",
+        "season_number": 2,
+        "vote_average": 5.5
+      },
+      {
+        "air_date": "1978-09-22",
+        "episode_count": 24,
+        "id": 12797,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/gYdJHP1ZGjmq9zf8iKI3itFvaIv.jpg",
+        "season_number": 3,
+        "vote_average": 5.4
+      }
+    ],
+    "tituloSerie": "La mujer maravilla",
+    "descripcion": "Segunda Guerra Mundial. El piloto estadounidense Steve Trevor (Lyle Waggoner) es derribado en un duelo aéreo contra un avión nazi, y cae en paracaídas sobre una isla del Triángulo de las Bermudas, la Isla Paraíso, tierra de las amazonas. Una de ellas, la princesa Diana (Lynda Carter), lo acompañará de vuelta a Washington, donde, bajo la identidad secreta de Diana Prince, lo ayudará a combatir a los nazis convirtiéndose cuando hace falta en la mujer maravilla, Wonder Woman.",
+    "imagen": "https://image.tmdb.org/t/p/w780/bycfgtZ60TiLOcAIOJJj7RLGvtK.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 2384,
     "tmdbType": "tv",
     "tituloOriginal": "Knight Rider",
@@ -3034,7 +3168,7 @@
     "tmdbId": 1516,
     "tmdbType": "tv",
     "tituloOriginal": "The A-Team",
-    "backdrop": "https://image.tmdb.org/t/p/original/i4Crl1CRXiTJP11ueLtwAxj22Zd.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/t0RbyVHtPMkDGkQ7EAQpAf9syMp.jpg",
     "year": "1983",
     "fechaEstreno": "1983-01-23",
     "rating": "7.5",
