@@ -1,5 +1,270 @@
 [
   {
+    "tmdbId": 2384,
+    "tmdbType": "tv",
+    "tituloOriginal": "Knight Rider",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/6QRnGINFJQ4iWQQeELnqgzqyYsN.jpg",
+    "year": "1982",
+    "fechaEstreno": "1982-09-26",
+    "rating": "7.5",
+    "votos": 1486,
+    "runtime": "48min",
+    "runtimeMin": 48,
+    "genres": [
+      "Action & Adventure",
+      "Sci-Fi & Fantasy",
+      "Crimen"
+    ],
+    "generosTexto": "Action & Adventure, Sci-Fi & Fantasy, Crimen",
+    "clasificacion": "7",
+    "tagline": "¡Michael Knight es el héroe de hoy! ¡Conduciendo el coche del mañana! ¡Juntos, son los mejores!",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "David Hasselhoff",
+        "personaje": "Michael Knight",
+        "foto": "https://image.tmdb.org/t/p/w185/gRcqYNBUQWFxRoAVRNY7xHzOONP.jpg"
+      },
+      {
+        "nombre": "Edward Mulhare",
+        "personaje": "Devon Miles",
+        "foto": "https://image.tmdb.org/t/p/w185/eu18hWkcfG0R2Hkhqu9cQ89MmNg.jpg"
+      },
+      {
+        "nombre": "William Daniels",
+        "personaje": "KITT (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/1SCR6im2maiASfTD5h7r0g9dU78.jpg"
+      },
+      {
+        "nombre": "Patricia McPherson",
+        "personaje": "Bonnie Barstow",
+        "foto": "https://image.tmdb.org/t/p/w185/yI0dMAkx1Dt5BBnH7ETxl8JZxeB.jpg"
+      },
+      {
+        "nombre": "Peter Parros",
+        "personaje": "RC3",
+        "foto": "https://image.tmdb.org/t/p/w185/lfV40MwIUAFsFhk7RL2dCoahgOM.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Universal Television, Glen A. Larson Productions, Universal Television Entertainment",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=F5iRCD5gzZY",
+    "coleccion": "",
+    "keywords": "vigilante, ex-cop, witty, whimsical",
+    "similares": [
+      {
+        "titulo": "The Batman",
+        "poster": "https://image.tmdb.org/t/p/w342/3w7koeOR2x71XYMJDGpygxYtScI.jpg",
+        "year": "2004",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Riptide",
+        "poster": "https://image.tmdb.org/t/p/w342/1bw5CgVgGDbPSX6YMo81x1ND9s2.jpg",
+        "year": "1984",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "El avispón verde",
+        "poster": "https://image.tmdb.org/t/p/w342/HLrCGIEoMADl3wD8gcB77iSz3D.jpg",
+        "year": "1966",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Los Persuasores",
+        "poster": "https://image.tmdb.org/t/p/w342/jDzoUNUwVKIPMaf67wAg4Nby3oo.jpg",
+        "year": "1971",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Hardcastle and McCormick",
+        "poster": "https://image.tmdb.org/t/p/w342/d3ZWBPAlcmYwvA183aI5z1mosv7.jpg",
+        "year": "1983",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "El santo",
+        "poster": "https://image.tmdb.org/t/p/w342/ep281gu4yv8an9xYsn2x8amZC72.jpg",
+        "year": "1962",
+        "rating": "7.4"
+      }
+    ],
+    "homepage": "https://www.nbc.com/knight-rider-classic",
+    "creadores": [
+      "Glen A. Larson"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 84,
+    "temporadasTmdb": [
+      {
+        "air_date": "1991-05-19",
+        "episode_count": 6,
+        "id": 7433,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/8BXrfOCsfeiRfuIWhPXcdhwFj78.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1982-09-26",
+        "episode_count": 21,
+        "id": 7431,
+        "name": "Temporada 1",
+        "overview": "La serie sigue las aventuras de Michael Knight, un detective dado por muerto al que dan una nueva cara y una nueva identidad. Su misión: Luchar contra el crimen con la ayuda de un coche artificialmente inteligente y hablador con propia personalidad.",
+        "poster_path": "/wpJlEpwenzX575GQQrwcOu1KLiR.jpg",
+        "season_number": 1,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "1983-10-02",
+        "episode_count": 21,
+        "id": 7430,
+        "name": "Temporada 2",
+        "overview": "La segunda temporada de el coche fantástico se emitió el 2 de octubre de 1983 y finalizó el 27 de mayo de 1984. Se emitió en la NBC. El DVD de la región 1 fue lanzado el 12 de abril de 2005.\n\nEn la segunda temporada veremos la salida de la serie  de Patricia McPherson como Bonnie Barstow, y como fue reemplazada por Rebecca Holden como April Curtis, quien se convirtió en la nueva técnico de KITT. En esta temporada también se verá un cambio en las relaciones entre Devon y Michael. Devon siempre parece molesto y argumentativo con Michael, sin embargo su amistad será más sólida y menos formal durante la segunda temporada. Michael tampoco coquetea tanto con April como lo había hecho con Bonnie.",
+        "poster_path": "/d477lC8gbDXQWxbzUPbJXB7BLda.jpg",
+        "season_number": 2,
+        "vote_average": 7.8
+      },
+      {
+        "air_date": "1984-09-30",
+        "episode_count": 21,
+        "id": 7432,
+        "name": "Temporada 3",
+        "overview": "La tercera temporada de el coche fantástico se emitió el 30 de septiembre de 1984 y finalizó el 5 de mayo de 1985. Se emitió en la NBC. El DVD de la región 1 fue lanzado el 31 de enero de 2006.\n\nEn esta temporada KITT evoluciona con nuevas habilidades, Patricia McPherson vuelve al reparto como Bonnie Barstow y se mantendría hasta el final de la serie. Michael y Devon también se convertirán en amigos más cercanos y para así poder confiar entre ellos para trabajar y conspirar juntos y en secreto sin ser descubiertos por KITT o Bonnie. El prototipo renegado de KITT, KARR finalmente resurgirá.",
+        "poster_path": "/6oNxXo58yneUroF8Vws7RRSPrvI.jpg",
+        "season_number": 3,
+        "vote_average": 7.6
+      },
+      {
+        "air_date": "1985-09-20",
+        "episode_count": 21,
+        "id": 7429,
+        "name": "Temporada 4",
+        "overview": "La cuarta y última temporada de el coche fantástico se emitió el 20 de septiembre de 1985 y finalizó el 4 de abril de 1986. Se emitió en la NBC. El DVD de la región 1 fue lanzado el 4 de abril de 2006.\n\nEl interés por la serie fue a menos, llevando a su cancelación al termino de la temporada. Hasselhoff, sabiendo que la serie estaba llegando a su fin, intentó hacer un fin de serie y ayudó a concebir el capitulo  \"El olor de las rosas\", con su esposa en el momento, Catherine Hickland, que interpretó al amor de Michael Stephanie \"Stevie\" Mason en episodios anteriores. La cadena emitió en cambio \"La noche del voodoo\" como episodio final. Un nuevo mecánico de la calle, interpretado por Peter Parros, fue agregado al reparto además de Bonnie. De todas las características de KITT añadidas en la cuarta temporada, la más importante de ellas es el \"Modo super persecución\". KITT también podría convertirse en descapotable.",
+        "poster_path": "/brkWpudg1rUz6n1VV5CCmcF4eOs.jpg",
+        "season_number": 4,
+        "vote_average": 6.5
+      }
+    ],
+    "tituloSerie": "El coche fantástico",
+    "descripcion": "Michael Knight es un detective dado por muerto que ha sido reclutado por la Fundación para la Ley y el Orden, proporcionándole un nuevo rostro bajo otra identidad. Su misión será luchar contra el crimen con la ayuda de un coche inteligente y parlanchín dotado de personalidad propia: KITT, un arma futurista de alta tecnología y gran capacidad de respuesta para enfrentar las situaciones más peligrosas. Impulsados por el deber de hacer justicia, la pareja se dedica a perseguir a aquellos criminales que actúen por encima de la ley.",
+    "imagen": "https://image.tmdb.org/t/p/original/t57NXzTrwp5rnPXiaX4BThrDxt1.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 1 - Episodio 1 y 2 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1INpiPvc6VEyxgJfR7VY6dzOT_HaYo4z2/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 1 - Episodio 4 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1M6hpQ8GU5P5mksC9plArnNUUIR3_IjxD/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 1 - Episodio 5 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1i5Ek2Ax2dJ_CmEnj1Eg2HFR2OiECuke4/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 1 - Episodio 6 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1ftg8wO59z8aie9vOAw9Ezy-XkKn5C8ZP/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 1 - Episodio 7 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1IcJ-dZQGorePNK--8OuF4NNxJnJWo_q6/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 1 - Episodio 8 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1QdPbZf055QO0xZnZk8s-1rlprad-QtaN/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 2 - Episodio 1 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1ECjuvE5Yenpq852CAgq2xsA1sn7KVWAW/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 3 - Episodio 1 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1FpdgU75OzZq-y3Q3ScrIPE3KGodSyQAD/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 3 - Episodio 2 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/13GiCP8D-GF9j6WAy0TR8dM2TbGO8x9l8/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 3 - Episodio 3 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1EQPIVpUE_nxYXTTuhyby0wQOG1XfUT9E/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 3 - Episodio 4 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1u9Rm6WVRPZAEYKHENIN9aRmPwq2ntfx6/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 3 - Episodio 5 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1U09N965Kc4bjkF9TFIJENdCBkppFtL3Q/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 3 - Episodio 6 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1gnCjN2v9AWEMfOHHuBcewlXlSyuH9m0b/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 3 - Episodio 7 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/11cP57kyQZO6DNBB-MsmNEJDzvsV6e6Cl/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 3 - Episodio 8 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1QL0kmAaQCLkvVQNpQ8xFaQEByB1ykove/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 3 - Episodio 9 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1SfY5yYx8txlgh8F5D6XKw_BYcmZP62-y/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 3 - Episodio 10 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1ZEvwG9U6-9uhyZbw9h_ikuo1ga4HKxaO/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 3 - Episodio 11 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1gScpe0fRz9gEtgKwyDTS8zg_wxjjvLrU/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 3 - Episodio 12 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/117urrl0KESFDqPfEGRZzayOsMdATVrYR/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 4 - Episodio 1 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1a35PascIHNZkYQzjBmuCt1NStPO-KXxc/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 4 - Episodio 2 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1FgLWmFPjKM0s9zcNeA5InM0iQGI3YYyO/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 4 - Episodio 3 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1zX5HVxW-IMDo7Y7B8RbmRMiW_rInq4_N/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 4 - Episodio 4 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/15pU_Fo5pyHwt0sTj0T3kiOe8nKUAMtlH/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 4 - Episodio 5 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1tgN7RbThtd0oj5KpW2t4qiGB6iaiVwCl/view"
+          },
+          {
+            "tituloEpisodio": "Ver El Auto Fantástico Temporada 4 - Episodio 6 RetroTVE.com",
+            "urlDrive": "https://drive.google.com/file/d/1uALAvQR5SZyEcR8A4YxIpE4_Tp4TnqAG/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 4239,
     "tmdbType": "tv",
     "tituloOriginal": "Married... with Children",
