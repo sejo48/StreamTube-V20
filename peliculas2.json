@@ -1,5 +1,149 @@
 [
   {
+    "titulo": "Ángel y el pistolero",
+    "tituloOriginal": "Angel and the Badman",
+    "descripcion": "Un forajido herido encuentra una misericordia inesperada al ser cuidado por la hija de un ranchero. La esperanza del amor lo atrae hacia una vida diferente, hasta que la ley y su violento pasado acechan su nuevo hogar. Ahora debe elegir qué clase de hombre quiere llegar a ser.",
+    "imagen": "https://image.tmdb.org/t/p/w780/p7k8kcBWZT2Vr9utq0f99BiLPG5.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/hULWeQoEJUhiZ6NlANxsLoMJJ5p.jpg",
+    "urlDrive": "",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-10-08",
+    "rating": "8.1",
+    "votos": 7,
+    "runtime": "1h 45min",
+    "genres": [
+      "Western",
+      "Acción",
+      "Aventura",
+      "Romance"
+    ],
+    "generosTexto": "Western, Acción, Aventura, Romance",
+    "clasificacion": "PG-13",
+    "tagline": "",
+    "director": "Julio Quintana",
+    "guionistas": "James Edward Grant, Kevin Townsend, Christopher Tuffin",
+    "reparto": [
+      {
+        "nombre": "Zachary Levi",
+        "personaje": "Quirt Evans",
+        "foto": "https://image.tmdb.org/t/p/w185/1W8L3kEMMPF9umT3ZGaNIiCYKfZ.jpg"
+      },
+      {
+        "nombre": "Neal McDonough",
+        "personaje": "Laredo",
+        "foto": "https://image.tmdb.org/t/p/w185/3mI3i1CpjATSCta1Tb2qsyl1KCh.jpg"
+      },
+      {
+        "nombre": "Tommy Lee Jones",
+        "personaje": "Marshal McClintock",
+        "foto": "https://image.tmdb.org/t/p/w185/mCiZNRAzbnPojJEZwVZWLw9kzxR.jpg"
+      },
+      {
+        "nombre": "Meg Fraser",
+        "personaje": "Penny Worth",
+        "foto": "https://image.tmdb.org/t/p/w185/rzMNsajma2lGnnUI3aF5vXoZE7D.jpg"
+      },
+      {
+        "nombre": "Jean Louisa Kelly",
+        "personaje": "Irene Worth",
+        "foto": "https://image.tmdb.org/t/p/w185/hUaXI2x27HNIKc4WXcnvNkl4wF9.jpg"
+      },
+      {
+        "nombre": "Barrett Ellis Luca",
+        "personaje": "Johnny Worth",
+        "foto": ""
+      },
+      {
+        "nombre": "Melissa Chambers",
+        "personaje": "Harriet",
+        "foto": "https://image.tmdb.org/t/p/w185/1d2rGqa7lDmHDxAIYiVqPPe3mgn.jpg"
+      },
+      {
+        "nombre": "Maurice Greene",
+        "personaje": "Tully",
+        "foto": "https://image.tmdb.org/t/p/w185/3I3IbLb8jFndNaCrseD0FEW0luT.jpg"
+      },
+      {
+        "nombre": "Jesús Carús",
+        "personaje": "Hondo",
+        "foto": ""
+      },
+      {
+        "nombre": "Sean Bridgers",
+        "personaje": "Deputy Eli",
+        "foto": "https://image.tmdb.org/t/p/w185/iUxN34HqjjUMgtETexAvrocY0e1.jpg"
+      },
+      {
+        "nombre": "Manny Greenfield",
+        "personaje": "Dr. Mangram",
+        "foto": "https://image.tmdb.org/t/p/w185/8ScOjLQFRuNk319l01dolisDMYm.jpg"
+      },
+      {
+        "nombre": "Eric T. Esparza",
+        "personaje": "Nelson",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Angel Studios",
+    "presupuesto": 0,
+    "recaudacion": 3895726,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "remake",
+    "similares": [
+      {
+        "titulo": "Tiroteo en Rio Bravo",
+        "poster": "https://image.tmdb.org/t/p/w342/vJXJEKg9k0tTXsAgH0V5ahMa4qO.jpg",
+        "year": "2023",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Fuera de la ley",
+        "poster": "https://image.tmdb.org/t/p/w342/uiZvQBewiElwyNqsWr0LCpiyqlm.jpg",
+        "year": "2021",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Pistoleros",
+        "poster": "https://image.tmdb.org/t/p/w342/15nIlGhkJ1fVt0J4DA4xpDGR6r5.jpg",
+        "year": "2025",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "The Last Stand of Ellen Cole",
+        "poster": "https://image.tmdb.org/t/p/w342/oq1pGVQ2t3Cy4v7sA4LRhNjtZuJ.jpg",
+        "year": "2024",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Ajuste de cuentas",
+        "poster": "https://image.tmdb.org/t/p/w342/af5mcUPylOFNcrWSd4OCImC71Mf.jpg",
+        "year": "2025",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Los siete magníficos",
+        "poster": "https://image.tmdb.org/t/p/w342/uotXQy2IKigAA6vvUIUsBPNHkH0.jpg",
+        "year": "2016",
+        "rating": "6.5"
+      }
+    ],
+    "tmdbId": 1669915,
+    "tmdbType": "movie",
+    "runtimeMin": 105,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
     "titulo": "Por todos los medios",
     "tituloOriginal": "By Any Means",
     "descripcion": "En el Mississippi de 1966, un joven agente negro del FBI es enviado a investigar una oleada de brutales asesinatos de líderes de los derechos civiles. Obligado a trabajar junto al famoso sicario de la mafia Greg Scarpa, se ve arrastrado a una caza mortal en la que la justicia y la venganza empiezan a confundirse.",
