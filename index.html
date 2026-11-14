@@ -277,6 +277,55 @@
             .box-catalog-success { display: none; }
         }
 
+        /* Mobile More menu: BoxPlay cyan, teal and blue brand palette. */
+        @media (max-width: 1023px) {
+            .box-more-panel.glass-panel {
+                background: linear-gradient(145deg, #183b53, #10283f 60%, #123a43);
+                border: 1px solid #368da3;
+                box-shadow: 0 18px 60px #0008, inset 0 3px 0 #22d3ee;
+            }
+            .box-more-panel > div:first-child { border-color: #36849a; }
+            .box-more-panel > div:first-child > span { color: #67e8f9; font-size: 16px; }
+            .box-more-panel button[aria-label="Cerrar menú"] {
+                min-width: 44px; min-height: 44px; border-radius: 12px;
+                color: #e0faff; background: #1b4b60; border: 1px solid #368da3;
+            }
+            .box-more-panel .box-more-option {
+                min-height: 54px; background: linear-gradient(120deg, #20516b, #193d57);
+                color: #fff; border: 1px solid #408ca6; font-weight: 800;
+                box-shadow: inset 0 1px 0 #ffffff12; text-align: left;
+                transition: background .15s, border-color .15s, color .15s;
+            }
+            .box-more-panel .box-more-option > svg { color: #67e8f9; flex-shrink: 0; }
+            .box-more-panel .box-more-option[data-section="christmas"] { border-color: #409b8c; }
+            .box-more-panel .box-more-option[data-section="christmas"] > svg { color: #86efac; }
+            .box-more-panel .box-more-option[data-section="christmas"] > span {
+                text-decoration: underline; text-decoration-color: #fb7185; text-underline-offset: 6px;
+            }
+            .box-more-panel .box-more-option[aria-current="page"],
+            .box-more-panel .box-more-option:active {
+                background: linear-gradient(110deg, #22d3ee, #2dd4bf);
+                color: #062536; border-color: #a5f3fc; box-shadow: 0 0 16px #06b6d433;
+            }
+            .box-more-panel .box-more-option[aria-current="page"] > svg,
+            .box-more-panel .box-more-option:active > svg { color: #062536; }
+            .box-more-panel button:focus-visible { outline: 3px solid #a5f3fc; outline-offset: 2px; }
+            .box-more-panel .box-phone-tools { border-color: #36849a; }
+            .box-more-panel .box-phone-tools > p { color: #c8eff8; }
+            .box-more-panel .box-phone-tools button {
+                color: #062536; background: #22d3ee; border-color: #67e8f9; font-weight: 800;
+            }
+            .box-more-panel .box-phone-tools button:disabled {
+                opacity: 1; color: #c7dfe8; background: #203e52; border-color: #527589; cursor: default;
+            }
+        }
+        @media (hover: hover) and (max-width: 1023px) {
+            .box-more-panel .box-more-option:hover { background: #24647b; border-color: #67e8f9; color: #fff; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .box-more-panel .box-more-option { transition: none; }
+        }
+
         .box-notification-toggle { position: relative; display: flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; border: 1px solid #164e63; border-radius: 12px; }
         .box-notification-count { position: absolute; top: -5px; right: -5px; min-width: 20px; height: 20px; padding: 0 4px; border-radius: 20px; background: #ef4444; color: white; font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
         .box-notification-dialog { width: 100%; max-width: 520px; max-height: 85dvh; overflow-y: auto; background: #0f172a; border: 1px solid #334155; border-radius: 24px; padding: 24px; }
@@ -2075,7 +2124,7 @@
                                 </div>
                                 <div className="grid grid-cols-2 gap-2">
                                     {['christmas', 'tv', 'radio', 'favorites', 'series', 'doramas', 'animados', 'payments', 'devices'].map(id => navTabs.find(tab => tab.id === id)).map(tab => (
-                                        <button key={tab.id} onClick={() => handleTabClick(tab)} className={`box-more-option ${['series', 'animados'].includes(tab.id) ? 'box-phone-primary-duplicate' : ''} ${['payments', 'devices'].includes(tab.id) ? 'col-span-2' : ''} p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
+                                        <button key={tab.id} data-section={tab.id} aria-current={activeTab === tab.id ? 'page' : undefined} onClick={() => handleTabClick(tab)} className={`box-more-option ${['series', 'animados'].includes(tab.id) ? 'box-phone-primary-duplicate' : ''} ${['payments', 'devices'].includes(tab.id) ? 'col-span-2' : ''} p-3 rounded-2xl flex items-center gap-3 text-xs font-bold transition-all border ${activeTab === tab.id ? 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40' : 'bg-black/40 text-slate-300 border-slate-800 hover:bg-white/5'}`}>
                                             <Icon name={tab.icon} size={18}/>
                                             <span>{tab.id === 'favorites' ? 'Favoritos' : tab.label}</span>
                                         </button>
