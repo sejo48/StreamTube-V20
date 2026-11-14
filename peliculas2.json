@@ -1,5 +1,432 @@
 [
   {
+    "titulo": "Girls Like Girls",
+    "tituloOriginal": "Girls Like Girls",
+    "descripcion": "Coley, una joven de 17 años del rural Oregón, enfrenta la intimidad tras la muerte de su madre. Conocer a Sonya despierta nuevos sentimientos, pero las dudas sobre sí misma dificultan su conexión.",
+    "imagen": "https://image.tmdb.org/t/p/w780/xSqTUmD1gABnhQ0ciT735y1IVlF.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/hSdK33Mjsdfb8TpoUTI3A3OE3RO.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1BWXJtv84APdn8SfTx0ZtOHuApPyVF6-o/view?usp=sharing&t=3.412",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-06-18",
+    "rating": "7.5",
+    "votos": 92,
+    "runtime": "1h 35min",
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "generosTexto": "Romance, Drama",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Hayley Kiyoko",
+    "guionistas": "Hayley Kiyoko, Chloe Okuno, Hayley Kiyoko",
+    "reparto": [
+      {
+        "nombre": "Maya da Costa",
+        "personaje": "Coley",
+        "foto": "https://image.tmdb.org/t/p/w185/o9zEfcpeTtJopA0XDg2W5ZfJj8x.jpg"
+      },
+      {
+        "nombre": "Myra Molloy",
+        "personaje": "Sonya",
+        "foto": "https://image.tmdb.org/t/p/w185/2c0fdDWWwZm6Mpymr03LpE7Z2nr.jpg"
+      },
+      {
+        "nombre": "Zach Braff",
+        "personaje": "Curtis",
+        "foto": "https://image.tmdb.org/t/p/w185/koIHwqE6hWIXuOIDHNADwSuGq6N.jpg"
+      },
+      {
+        "nombre": "Levon Hawke",
+        "personaje": "Trenton",
+        "foto": "https://image.tmdb.org/t/p/w185/1WqRWDunsCfpJo3pxUzxc7OzRMW.jpg"
+      },
+      {
+        "nombre": "Alozie LaRose",
+        "personaje": "Alex",
+        "foto": "https://image.tmdb.org/t/p/w185/1vUnXV7QQ6MVNZzfF1WTDP2jiA3.jpg"
+      },
+      {
+        "nombre": "Sierra Sidwell",
+        "personaje": "SJ",
+        "foto": "https://image.tmdb.org/t/p/w185/kliDqOtvDOaTYXCUnef663nzQmu.jpg"
+      },
+      {
+        "nombre": "Hunter Dillon",
+        "personaje": "Goose",
+        "foto": "https://image.tmdb.org/t/p/w185/oyS0TEPIm0dN489rFc2epzZmRxA.jpg"
+      },
+      {
+        "nombre": "Sophia Carriere",
+        "personaje": "Brooke",
+        "foto": "https://image.tmdb.org/t/p/w185/ng7Juz5PFDWcqlMxuw5hYPVOv7M.jpg"
+      },
+      {
+        "nombre": "Alexa Mareka",
+        "personaje": "Blake",
+        "foto": "https://image.tmdb.org/t/p/w185/uMbjjeK5oXzMU9rPLuBzZMDZlZ4.jpg"
+      },
+      {
+        "nombre": "Maya Ford",
+        "personaje": "Tracy",
+        "foto": "https://image.tmdb.org/t/p/w185/557nAhr3Qbr1tWiFQrhDPqw59F3.jpg"
+      },
+      {
+        "nombre": "Remy Marthaller",
+        "personaje": "Emma",
+        "foto": "https://image.tmdb.org/t/p/w185/oN4Eedj1tZcYJ9F6k9HIi3iERbL.jpg"
+      },
+      {
+        "nombre": "Kareem Malcolm",
+        "personaje": "Kendrick",
+        "foto": "https://image.tmdb.org/t/p/w185/turCyivFMoICKB0XHYsu3xObHbr.jpg"
+      }
+    ],
+    "pais": "United States of America, Canada",
+    "idioma": "en",
+    "productoras": "Marc Platt Productions, BuzzFeed Studios, CR8IV DNA",
+    "presupuesto": 0,
+    "recaudacion": 1913765,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "based on novel or book, coming of age, based on song, poem or rhyme, first love, lgbt, queer, lesbian, girls' love (gl), sapphic",
+    "similares": [
+      {
+        "titulo": "Departure",
+        "poster": "https://image.tmdb.org/t/p/w342/6TZ4H3iOHcpWr9zmClps3jZGhQV.jpg",
+        "year": "2016",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "La probabilidad estadística del amor a primera vista",
+        "poster": "https://image.tmdb.org/t/p/w342/jrVNYtEUU9TCsteJGIQ3MSjHjLi.jpg",
+        "year": "2023",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Mucho más que amigos",
+        "poster": "https://image.tmdb.org/t/p/w342/e5AepsJiNbkTi65cCXGJhJJjhw.jpg",
+        "year": "1998",
+        "rating": "5.8"
+      },
+      {
+        "titulo": "Todo lo que nunca fuimos",
+        "poster": "https://image.tmdb.org/t/p/w342/sibLxfckIiI821iG00YpXopY4LG.jpg",
+        "year": "2026",
+        "rating": "8.3"
+      },
+      {
+        "titulo": "Hola, adiós y todo lo que pasó",
+        "poster": "https://image.tmdb.org/t/p/w342/47G6RFyjg9KoTkAtl3JDoPV5DSC.jpg",
+        "year": "2022",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Get Real",
+        "poster": "https://image.tmdb.org/t/p/w342/k7KCBnt1VXFhPjoTSt4MePr1MpI.jpg",
+        "year": "1998",
+        "rating": "7.0"
+      }
+    ],
+    "tmdbId": 1397485,
+    "tmdbType": "movie",
+    "runtimeMin": 95,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Heartland",
+    "tituloOriginal": "Heartland",
+    "descripcion": "La antigua estrella del country Misty Jones sale de su retiro de 20 años para investigar la desaparición de su sobrina, Charlie Heart, una prometedora cantante, y acaba enfrentándose tanto a su propio pasado como al lado más turbio de Nashville. Su búsqueda la lleva a descubrir una ciudad donde nadie, ni siquiera ella, es quien parece ser.",
+    "imagen": "https://image.tmdb.org/t/p/w780/zhxlzxBlO1sWB1rPn7RmAoeQ2na.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/psTMZj8gvsfYVfvd7FZCHH4xL6P.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1PPDi3rUiehE3_KchyQTYUfsnK6SKNM9f/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-11-13",
+    "rating": "7.3",
+    "votos": 25,
+    "runtime": "1h 54min",
+    "genres": [
+      "Suspense",
+      "Misterio"
+    ],
+    "generosTexto": "Suspense, Misterio",
+    "clasificacion": "R",
+    "tagline": "",
+    "director": "Shana Feste",
+    "guionistas": "Shana Feste",
+    "reparto": [
+      {
+        "nombre": "Jessica Chastain",
+        "personaje": "Misty Jones",
+        "foto": "https://image.tmdb.org/t/p/w185/lodMzLKSdrPcBry6TdoDsMN3Vge.jpg"
+      },
+      {
+        "nombre": "Garrett Hedlund",
+        "personaje": "Roy Combs",
+        "foto": "https://image.tmdb.org/t/p/w185/9zec61HuFJgiUEzPSt0NfPIj0Xv.jpg"
+      },
+      {
+        "nombre": "Carter Faith",
+        "personaje": "Charlie Heart",
+        "foto": "https://image.tmdb.org/t/p/w185/163TNSZfms4EYiXDY0wkUGWwHWa.jpg"
+      },
+      {
+        "nombre": "Ross Lynch",
+        "personaje": "Jace",
+        "foto": "https://image.tmdb.org/t/p/w185/AlCEYF6SbZtCoOWBkVZvzdufMjs.jpg"
+      },
+      {
+        "nombre": "Jennifer Nettles",
+        "personaje": "Winnie Jo Lean",
+        "foto": "https://image.tmdb.org/t/p/w185/s6IDogtE93cMaMe4EYBjUeXVOV4.jpg"
+      },
+      {
+        "nombre": "Paul Sparks",
+        "personaje": "Donny",
+        "foto": "https://image.tmdb.org/t/p/w185/cQnCJI94lje55gZ7kEQ7YZUQPDb.jpg"
+      },
+      {
+        "nombre": "Ben Dickey",
+        "personaje": "Buck",
+        "foto": "https://image.tmdb.org/t/p/w185/ovyVt7Z4Y6IsLAmnMIFPXncsbTs.jpg"
+      },
+      {
+        "nombre": "Norbert Leo Butz",
+        "personaje": "Detective White",
+        "foto": "https://image.tmdb.org/t/p/w185/2SMyLebGOemP26yL9pp7IFKfqG5.jpg"
+      },
+      {
+        "nombre": "Hill Harper",
+        "personaje": "Detective Kinsey",
+        "foto": "https://image.tmdb.org/t/p/w185/gMfTsyGHOBDBw9596ZMpVWAJ0B7.jpg"
+      },
+      {
+        "nombre": "John Hawkes",
+        "personaje": "Clark",
+        "foto": "https://image.tmdb.org/t/p/w185/nJZ0womUC7r5vKWGkLclQuo8qIi.jpg"
+      },
+      {
+        "nombre": "J.P. Edwards",
+        "personaje": "Jared Granger",
+        "foto": "https://image.tmdb.org/t/p/w185/rTVbSOUXZLebibhtN5Lvbmz6Xdi.jpg"
+      },
+      {
+        "nombre": "Wynn Everett",
+        "personaje": "Kelly Lovell",
+        "foto": "https://image.tmdb.org/t/p/w185/hWLWcoqXumM9NY9vfByvQmmcFdb.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Chernin Entertainment, Bronx Moving Co., Sandbox Studios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "country music, disappearance, nashville, tennessee, country singer",
+    "similares": [
+      {
+        "titulo": "El hombre de las sombras",
+        "poster": "https://image.tmdb.org/t/p/w342/cz2bh9ekwhnVbaybjNZR8QpQb0R.jpg",
+        "year": "2012",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "La viuda negra",
+        "poster": "https://image.tmdb.org/t/p/w342/tgmNdAQvLxLcSni35oP0nd8W3bq.jpg",
+        "year": "2025",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "A Working Man",
+        "poster": "https://image.tmdb.org/t/p/w342/eLBWBW4hariYCgTS5BL1tpMAYiG.jpg",
+        "year": "2025",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "La máquina infernal",
+        "poster": "https://image.tmdb.org/t/p/w342/7VuQopunJnHKI1xejbdRUyDbP0S.jpg",
+        "year": "2022",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Verónica",
+        "poster": "https://image.tmdb.org/t/p/w342/lrf3U5RGTDZFIgjZhGZFqG6QX43.jpg",
+        "year": "2017",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Mister Arkadin",
+        "poster": "https://image.tmdb.org/t/p/w342/8vOGOAbeddnqulXLEwqFSUumCej.jpg",
+        "year": "1955",
+        "rating": "6.8"
+      }
+    ],
+    "tmdbId": 1543469,
+    "tmdbType": "movie",
+    "runtimeMin": 114,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Allen",
+    "tituloOriginal": "Allen",
+    "descripcion": "El mejor amigo de la infancia de Petey, un extraterrestre llamado Allen, desapareció sin despedirse. Dos décadas más tarde, Allen regresa con un secreto que podría cambiar el mundo, lo que obliga a Petey a madurar de una vez por todas y ayudar a salvarlo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/alhhrpj1PSAn5bfz4Os1k7Bweoj.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/51fGmBW7WjyJouP9TjIcxRpCUNk.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1Ajpjv1gIKE805oe_H4ZqNA_gcTMWtob8/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-11-12",
+    "rating": "6.9",
+    "votos": 21,
+    "runtime": "1h 45min",
+    "genres": [
+      "Ciencia ficción",
+      "Aventura",
+      "Comedia"
+    ],
+    "generosTexto": "Ciencia ficción, Aventura, Comedia",
+    "clasificacion": "PG-13",
+    "tagline": "",
+    "director": "Daley Pearson, Jeffrey Walker",
+    "guionistas": "Daley Pearson, Sophie Miller",
+    "reparto": [
+      {
+        "nombre": "T.J. Power",
+        "personaje": "Petey",
+        "foto": "https://image.tmdb.org/t/p/w185/v7SPjOZx9gIFXK3LmtFzYeXP1He.jpg"
+      },
+      {
+        "nombre": "Charlotte Nicdao",
+        "personaje": "Carly",
+        "foto": "https://image.tmdb.org/t/p/w185/rCqf3HcEr4GmSYAMqmdEpo6cZwr.jpg"
+      },
+      {
+        "nombre": "Josh Helman",
+        "personaje": "Jaden",
+        "foto": "https://image.tmdb.org/t/p/w185/1thwLjrgvFv7ifjyVtTKQh23OCh.jpg"
+      },
+      {
+        "nombre": "Emily Barclay",
+        "personaje": "Sarah",
+        "foto": "https://image.tmdb.org/t/p/w185/xGX91Byjuxa83yGadH375Ep9fgm.jpg"
+      },
+      {
+        "nombre": "Benedict Hardie",
+        "personaje": "Rory",
+        "foto": "https://image.tmdb.org/t/p/w185/bf02Dz4LMV23scJC6c8P4R6xji6.jpg"
+      },
+      {
+        "nombre": "Elijah Tamati",
+        "personaje": "Cameron",
+        "foto": "https://image.tmdb.org/t/p/w185/rFGB97FgZDQ7t01NtMdb4n6vkgg.jpg"
+      },
+      {
+        "nombre": "Edward A O'Sullivan",
+        "personaje": "Young Petey",
+        "foto": "https://image.tmdb.org/t/p/w185/rGPpaqlcwkODYhO7C6thTr9a5Vm.jpg"
+      },
+      {
+        "nombre": "Caitlin Niemotko",
+        "personaje": "Young Carly",
+        "foto": ""
+      },
+      {
+        "nombre": "Tommy Broadmore",
+        "personaje": "Young Jaden",
+        "foto": "https://image.tmdb.org/t/p/w185/gMqTFigUdUCiqaIl6Jmfhoc52aI.jpg"
+      },
+      {
+        "nombre": "Kelly Butler",
+        "personaje": "Gaye",
+        "foto": ""
+      },
+      {
+        "nombre": "Mark Doggett",
+        "personaje": "Chief Fireman",
+        "foto": ""
+      },
+      {
+        "nombre": "Christopher Sommers",
+        "personaje": "Deputy Officer Gary Foots",
+        "foto": "https://image.tmdb.org/t/p/w185/e86eKSvV5gr1qihDfG8Lpya04OC.jpg"
+      }
+    ],
+    "pais": "Australia",
+    "idioma": "en",
+    "productoras": "Ludo Studio, Screen Queensland, Queensland Government",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "friendship, nostalgic, buddy comedy, alien friendship, imaginative, heartfelt, directorial debut, sci‑fi drama, sci-fi comedy, coming-of-age, alien sci-fi",
+    "similares": [
+      {
+        "titulo": "Estrella oscura",
+        "poster": "https://image.tmdb.org/t/p/w342/bG1uIsiyEoypwlw6Yde8GopmzfV.jpg",
+        "year": "1974",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "CIA: Operación especial",
+        "poster": "https://image.tmdb.org/t/p/w342/e5wSrUjQNmHk0pWtSJiKaGm0QRu.jpg",
+        "year": "1987",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Star Trek II. En la oscuridad",
+        "poster": "https://image.tmdb.org/t/p/w342/7ncnBVignnCQ4vFNxiSLWDpFUcs.jpg",
+        "year": "2013",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Star Trek III. Más allá",
+        "poster": "https://image.tmdb.org/t/p/w342/2yfbpstJY4Fan8DSfPFDl05jx9.jpg",
+        "year": "2016",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Campamento alienígena",
+        "poster": "https://image.tmdb.org/t/p/w342/xrobfFPe3Qy3LBra4dyKX4onR5l.jpg",
+        "year": "2019",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Oblivion",
+        "poster": "https://image.tmdb.org/t/p/w342/eO3r38fwnhb58M1YgcjQBd3VNcp.jpg",
+        "year": "2013",
+        "rating": "6.7"
+      }
+    ],
+    "tmdbId": 1518204,
+    "tmdbType": "movie",
+    "runtimeMin": 105,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
     "titulo": "Ángel y el pistolero",
     "tituloOriginal": "Angel and the Badman",
     "descripcion": "Un forajido herido encuentra una misericordia inesperada al ser cuidado por la hija de un ranchero. La esperanza del amor lo atrae hacia una vida diferente, hasta que la ley y su violento pasado acechan su nuevo hogar. Ahora debe elegir qué clase de hombre quiere llegar a ser.",
