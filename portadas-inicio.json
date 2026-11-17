@@ -2,13 +2,8 @@
   "schemaVersion": 1,
   "source": "peliculas2.json",
   "mode": "manual",
-  "updatedAt": "2026-11-17T11:47:05.059Z",
+  "updatedAt": "2026-11-17T11:58:44.274Z",
   "items": [
-    {
-      "movieKey": "tmdb:1378742",
-      "title": "En Ruta de Escape",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/8Tw90S4hVrvUoqmQWDoO6U4toZT.jpg"
-    },
     {
       "movieKey": "tmdb:87513",
       "title": "Motor City",
@@ -28,6 +23,11 @@
       "movieKey": "tmdb:1757324",
       "title": "Insecta",
       "backdrop": "https://image.tmdb.org/t/p/w1280/9RrHsR3lIIdxN0GY0luzu3h3cRS.jpg"
+    },
+    {
+      "movieKey": "tmdb:1378742",
+      "title": "En Ruta de Escape",
+      "backdrop": "https://image.tmdb.org/t/p/w1280/8Tw90S4hVrvUoqmQWDoO6U4toZT.jpg"
     }
   ]
 }
