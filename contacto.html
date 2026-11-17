@@ -8,7 +8,7 @@
     <title>Correo de BOXPLAYTV · Contacto</title>
     <link rel="icon" href="./favicon.png">
     <link rel="stylesheet" href="./contacto.css?v=20261117-1">
-    <script src="./contacto.js?v=20261117-1" defer></script>
+    <script src="./contacto.js?v=20261117-2" defer></script>
 </head>
 <body>
     <header class="contact-header">
@@ -34,6 +34,7 @@
                 <form id="box-contact-form" action="https://formsubmit.co/sejo48@gmail.com" method="POST">
                     <input type="hidden" name="_subject" value="Correo de BOXPLAYTV · Nuevo mensaje">
                     <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_url" value="https://boxplaytv.com/contacto.html">
                     <input type="hidden" name="_next" value="https://boxplaytv.com/contacto.html?enviado=1">
                     <div class="contact-honey" aria-hidden="true"><label>Dejar vacío<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
@@ -43,7 +44,7 @@
                     </div>
                     <div class="contact-field">
                         <label for="contact-email">Tu correo electrónico</label>
-                        <input id="contact-email" name="email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" placeholder="nombre@ejemplo.com" aria-describedby="contact-email-hint" required>
+                        <input id="contact-email" name="email" type="email" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" placeholder="nombre@ejemplo.com" aria-describedby="contact-email-hint" required>
                         <small id="contact-email-hint">Escribe un correo donde puedas recibir nuestra respuesta.</small>
                     </div>
                     <div class="contact-field">
@@ -53,7 +54,6 @@
                     <p class="contact-data-note">Usaremos estos datos para atender tu consulta. No incluyas contraseñas ni datos de tarjetas.</p>
                     <p id="contact-status" class="contact-status" role="status" aria-live="polite" aria-atomic="true" hidden></p>
                     <button class="contact-send" id="contact-send" type="submit">Enviar mensaje</button>
-                    <noscript><p class="contact-data-note">Al continuar, puede aparecer una comprobación de seguridad. Después volverás a BOXPLAYTV.</p></noscript>
                 </form>
                 <section id="contact-success" class="contact-success" aria-labelledby="contact-success-title" tabindex="-1" hidden>
                     <div class="contact-success-icon" aria-hidden="true">✓</div>
