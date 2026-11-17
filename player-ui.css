@@ -7,3 +7,13 @@
 .box-menu-toggle{position:absolute;right:12px;top:70px;z-index:40;min-height:40px;padding:8px 12px;border:1px solid #ffffff55;border-radius:12px;background:#000b;color:white;font:600 12px system-ui;cursor:pointer;opacity:.65}
 .box-menu-toggle:hover,.box-menu-toggle:focus-visible{opacity:1;outline:2px solid #22d3ee}
 .video-container-fix .box-player video{object-fit:contain!important}
+
+
+.box-picture-controls{position:absolute;left:12px;top:70px;right:170px;z-index:35;display:flex;flex-wrap:wrap;gap:8px;pointer-events:none}
+.box-picture-controls button,.box-picture-controls span{pointer-events:auto;color:#fff;background:#071019e8;border:1px solid #67e8f980;border-radius:10px;padding:10px 12px;font:600 13px system-ui;max-width:100%}
+.box-picture-controls button{cursor:pointer;min-height:44px}
+.box-picture-controls button:focus{outline:3px solid #22d3ee;outline-offset:3px}
+.box-picture-controls [hidden]{display:none!important}
+.box-player:has(.box-player-menu[hidden]) .box-picture-controls,#player.controls-hidden .box-picture-controls{display:none}
+#player .box-picture-controls{top:auto;bottom:110px;right:16px}
+@media(max-width:600px){.box-picture-controls{top:120px;right:12px}.box-picture-controls button,.box-picture-controls span{font-size:11px;padding:8px}.box-picture-controls span{max-width:240px}}

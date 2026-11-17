@@ -24,3 +24,9 @@ Películas y TV comparten `player-ui.js` y `player-ui.css`. El botón de pantall
 El menú de películas se oculta tras 3,5 segundos de inactividad. En TV, la barra se oculta automáticamente durante pantalla completa. El botón «Mostrar/Ocultar menú» permanece accesible sobre los reproductores integrados. Los controles conservan el menú mientras tienen foco del teclado. Los iframes y videos permanecen montados al ocultar el menú y cambiar de modo. Se conserva la proporción del video directo.
 
 Verificación: 66 pruebas Node, incluidas entrada/salida estándar y WebKit, rechazo de la API, alternativa sin soporte, Escape, temporizadores y recuperación del menú. No se ejecutó navegador ni hardware real en esta sesión; los controles internos de Drive/OK.ru siguen dependiendo del proveedor y no pueden manipularse desde la página principal.
+
+## Imagen y calidad (17 de noviembre de 2026)
+
+La web, TV en vivo y smart-tv.html cargan picture-quality.js. En video directo, Imagen alterna entre ajustar a pantalla (contain) y tamaño original sin ampliar (scale-down), conservando proporciones. La elección se guarda por dispositivo. No se recarga el video al cambiarla. En HLS con varias variantes, Calidad alterna automática y máxima; máxima elige por resolución y bitrate y consume más datos. Automática permite bajar calidad si la conexión lo necesita. Los reproductores integrados de Drive/OK.ru conservan sus controles: no se manipulan ni se promete aumentar su resolución. La aplicación Android TV que abre un reproductor nativo sigue usando los ajustes de ese reproductor; estas opciones pertenecen al reproductor web. No se añade IA ni filtros de nitidez.
+
+Los botones de Smart TV entran en la navegación con flechas/OK y conservan la barra mientras tienen foco. Pruebas: node tests/picture-quality.test.cjs y node --check de los scripts modificados. Pendiente verificación visual en móvil, PC y hardware Smart TV real.

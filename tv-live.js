@@ -44,6 +44,7 @@
       if (/\.m3u8(?:[?#]|$)/i.test(url) && !video.canPlayType('application/vnd.apple.mpegurl')) {
         if (window.Hls && Hls.isSupported()) {
           engine = new Hls({ maxBufferLength: 30, maxMaxBufferLength: 60, capLevelToPlayerSize: true });
+          window.BoxPicture.bind(video, engine);
           engine.on(Hls.Events.MEDIA_ATTACHED, () => engine.loadSource(url));
           engine.on(Hls.Events.MANIFEST_PARSED, play);
           engine.on(Hls.Events.ERROR, (_, data) => { if (data.fatal) { engine.stopLoad(); failed(); } });
@@ -124,4 +125,5 @@
   window.BoxTVLive.category = category;
   window.BoxTVLive.initialChannel = channels => { const recent = readRecent(); return channels.find(c => key(c) === recent[0]) || channels[0]; };
 })();
+
 

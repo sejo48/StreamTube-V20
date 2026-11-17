@@ -33,9 +33,10 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="./picture-quality.js?v=20261117-1"></script>
     <script src="./player-ui.js?v=20261106-1"></script>
-    <link rel="stylesheet" href="./player-ui.css?v=20261106-1">
-    <script src="./tv-live.js?v=20261107-1"></script>
+    <link rel="stylesheet" href="./player-ui.css?v=20261117-1">
+    <script src="./tv-live.js?v=20261117-1"></script>
     <link rel="stylesheet" href="./tv-live.css?v=20261107-1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -947,6 +948,7 @@
                 if (isHls && window.Hls && window.Hls.isSupported()) {
                     hls = new window.Hls({ enableWorker: true, lowLatencyMode: false });
                     hlsRef.current = hls;
+                    window.BoxPicture.bind(v, hls);
                     hls.loadSource(url);
                     hls.attachMedia(v);
                     hls.on(window.Hls.Events.ERROR, (_, data) => {
@@ -2734,6 +2736,7 @@
     </script>
 </body>
 </html>
+
 
 
 
