@@ -1,5 +1,664 @@
 [
   {
+    "titulo": "Sueños galácticos",
+    "tituloOriginal": "星河入梦",
+    "descripcion": "Un sistema de IA defectuoso pone en peligro una nave espacial. Ahora, un técnico debe entrar en el sueño de un miembro de la tripulación para extraer un código y salvar al pasaje.",
+    "imagen": "https://image.tmdb.org/t/p/w780/yeXvd6Sx5CG5NfYHUiNUQEMh6z7.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/AdsSM2GIlub3dB74ibSnWLJYsT0.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1OqoKvLT3CSk9pLueHEnIWHKvqPTgZdC9/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-02-17",
+    "rating": "8.2",
+    "votos": 94,
+    "runtime": "1h 51min",
+    "genres": [
+      "Ciencia ficción",
+      "Drama",
+      "Aventura"
+    ],
+    "generosTexto": "Ciencia ficción, Drama, Aventura",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "韩延",
+    "guionistas": "韩延, 钱宁黄, 高璐",
+    "reparto": [
+      {
+        "nombre": "王鹤棣",
+        "personaje": "Xu Tianbiao",
+        "foto": "https://image.tmdb.org/t/p/w185/7YITQE9XpeaOIWJsV6TTzaPilSW.jpg"
+      },
+      {
+        "nombre": "宋茜",
+        "personaje": "Li Simeng",
+        "foto": "https://image.tmdb.org/t/p/w185/lexicOUyWiXzjSMv3mHiAgZFDHn.jpg"
+      },
+      {
+        "nombre": "祖峰",
+        "personaje": "Lao Bai",
+        "foto": "https://image.tmdb.org/t/p/w185/dg6Bccw3Xs7Ui0xv6dbJhp8Kxnv.jpg"
+      },
+      {
+        "nombre": "罗海琼",
+        "personaje": "Simeng's Mom",
+        "foto": "https://image.tmdb.org/t/p/w185/9N91rXFoll4iqIgpxHWO7jePo0p.jpg"
+      },
+      {
+        "nombre": "汪铎",
+        "personaje": "Ge Yang",
+        "foto": "https://image.tmdb.org/t/p/w185/JtXQpABR1Vf2MDm3GhjwHWnvov.jpg"
+      },
+      {
+        "nombre": "Jia Ba",
+        "personaje": "Sailor",
+        "foto": "https://image.tmdb.org/t/p/w185/8r1z7Pt4vZF0NnJuesL56lYCMkk.jpg"
+      }
+    ],
+    "pais": "China",
+    "idioma": "zh",
+    "productoras": "Zhejiang Hengdian Film Production, Lian Ray Pictures, 深定格文化传媒无锡有限公司, Shanghai Film Group 上海电影（集团）(SFG), 浙江影视（集团）有限公司, Weibo Corporation, Guava Pictures Limited, China Film Group Corporation",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "virtual reality, dream realm, near future",
+    "similares": [
+      {
+        "titulo": "Strawberry Mansion",
+        "poster": "https://image.tmdb.org/t/p/w342/xJtBlQIJaioDugwl5ZQbgrMRSi5.jpg",
+        "year": "2021",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Resurrection",
+        "poster": "https://image.tmdb.org/t/p/w342/vQZK421erWKR5PgF4pbz0lp4o3o.jpg",
+        "year": "2025",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Matrix Resurrections",
+        "poster": "https://image.tmdb.org/t/p/w342/dLIwpCTf4QoW01pp85KP9jcfTpu.jpg",
+        "year": "2021",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Teorema zero",
+        "poster": "https://image.tmdb.org/t/p/w342/ctDh7A7toIdCrOzUdfozLbC1tn7.jpg",
+        "year": "2013",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "La evaluación",
+        "poster": "https://image.tmdb.org/t/p/w342/3tIE8BcUfousuV3pxyRxuRCptDM.jpg",
+        "year": "2025",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Huida a través del tiempo",
+        "poster": "https://image.tmdb.org/t/p/w342/rQz27bfvdpZZQ0qG3hyJKy91PXT.jpg",
+        "year": "1992",
+        "rating": "6.4"
+      }
+    ],
+    "tmdbId": 1359005,
+    "tmdbType": "movie",
+    "runtimeMin": 111,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Motor City",
+    "tituloOriginal": "Motor City",
+    "descripcion": "En el Detroit de los años 70, el romántico de clase trabajadora John Miller es incriminado por un despiadado gángster tras enamorarse de su novia. Tras pasar años en prisión, regresa con una única misión: vengarse.",
+    "imagen": "https://image.tmdb.org/t/p/original/rgkzsXHBWc6bAFLfqamEs6IPLvY.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/l7asYmqOad01F2u0oCMM8nQjoEP.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1CLVXZvQn7cuu_7Vqf5YJtyQU8BAE4F_l/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-07-23",
+    "rating": "6.2",
+    "votos": 148,
+    "runtime": "1h 44min",
+    "genres": [
+      "Acción",
+      "Suspense",
+      "Crimen"
+    ],
+    "generosTexto": "Acción, Suspense, Crimen",
+    "clasificacion": "18",
+    "tagline": "El amor te volverá loco.",
+    "director": "Potsy Ponciroli",
+    "guionistas": "Chad St. John",
+    "reparto": [
+      {
+        "nombre": "Alan Ritchson",
+        "personaje": "John Miller",
+        "foto": "https://image.tmdb.org/t/p/w185/92YNEEpCyugkTzPprJwZpvVtvuK.jpg"
+      },
+      {
+        "nombre": "Ben Foster",
+        "personaje": "Reynolds",
+        "foto": "https://image.tmdb.org/t/p/w185/p5FlM9OOStD9I0Nm3GGlhaiAC5r.jpg"
+      },
+      {
+        "nombre": "Shailene Woodley",
+        "personaje": "Sophia",
+        "foto": "https://image.tmdb.org/t/p/w185/gL2NvHKW9wAH3qkZuJ76ULUiArB.jpg"
+      },
+      {
+        "nombre": "Lionel Boyce",
+        "personaje": "Youngblood",
+        "foto": "https://image.tmdb.org/t/p/w185/sTxjfODyzgOiQD8OgeMjpdjfdJ4.jpg"
+      },
+      {
+        "nombre": "Amar Chadha-Patel",
+        "personaje": "Singh",
+        "foto": "https://image.tmdb.org/t/p/w185/6SZXUfn5A2IzwrWhpBDw99gC4uQ.jpg"
+      },
+      {
+        "nombre": "Pablo Schreiber",
+        "personaje": "Lieutenant Savick",
+        "foto": "https://image.tmdb.org/t/p/w185/trKW3kwhwx4UeCNZg43A1x1h4Uv.jpg"
+      },
+      {
+        "nombre": "Dominic Bogart",
+        "personaje": "Porthos",
+        "foto": "https://image.tmdb.org/t/p/w185/dUb5kOCWVHIYmoAfMEGR3hunTiD.jpg"
+      },
+      {
+        "nombre": "Mister Fitzgerald",
+        "personaje": "Aramis",
+        "foto": "https://image.tmdb.org/t/p/w185/nwopnmyVGhJFlkGzl1PHcZdANUE.jpg"
+      },
+      {
+        "nombre": "Rafael Cebrian",
+        "personaje": "Athos",
+        "foto": "https://image.tmdb.org/t/p/w185/aIvCv51Jh55neKPiGFvXql9CuvA.jpg"
+      },
+      {
+        "nombre": "Ben McKenzie",
+        "personaje": "Detective Kent",
+        "foto": "https://image.tmdb.org/t/p/w185/2jlwhOXKakL6gk365u4gPkTtHHi.jpg"
+      },
+      {
+        "nombre": "Jack White",
+        "personaje": "Piano Player",
+        "foto": "https://image.tmdb.org/t/p/w185/6PqErDcEyAWR4kfjyBSuiQTNqYu.jpg"
+      },
+      {
+        "nombre": "Elliott Mayer",
+        "personaje": "P. Garrett",
+        "foto": "https://image.tmdb.org/t/p/w185/pRi2bZhUuSlkd4Rsr1nV86IxGA4.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Stampede Ventures, Gramercy Park Media, Peachtree Media Partners, Ace of Spades, Syndicate Entertainment, Third Man Records, Black Bear Pictures",
+    "presupuesto": 30000000,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=KhcHL4BdIGE",
+    "coleccion": "",
+    "keywords": "gangster, 1970s, revenge, detroit, michigan, joyous, awestruck",
+    "similares": [
+      {
+        "titulo": "Una noche para sobrevivir",
+        "poster": "https://image.tmdb.org/t/p/w342/iSjOGNQY34qIOfYk5heCc1gAlEY.jpg",
+        "year": "2015",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "La captura",
+        "poster": "https://image.tmdb.org/t/p/w342/my8euQR37XeJ8lfLz3XgBR03R45.jpg",
+        "year": "2026",
+        "rating": "8.7"
+      },
+      {
+        "titulo": "Código de silencio",
+        "poster": "https://image.tmdb.org/t/p/w342/hKplcfFKJV4mBntrhdncvgveND4.jpg",
+        "year": "1985",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Absolución",
+        "poster": "https://image.tmdb.org/t/p/w342/26D1gPCZkDB94NHcIzK7vXJeXca.jpg",
+        "year": "2024",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "The Black Book",
+        "poster": "https://image.tmdb.org/t/p/w342/hAmuzFUmdrKmRnCHcrN3imWpbTt.jpg",
+        "year": "2023",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "12 balas",
+        "poster": "https://image.tmdb.org/t/p/w342/9tc4I4zMzw4CZZ8GSfuj5bmk9l3.jpg",
+        "year": "2015",
+        "rating": "6.0"
+      }
+    ],
+    "tmdbId": 87513,
+    "tmdbType": "movie",
+    "runtimeMin": 104,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Insecta",
+    "tituloOriginal": "Insecta",
+    "descripcion": "Al regresar a una finca aislada para despedirse de su padre moribundo, una escritora de terror descubre que el monstruoso insecto imaginario que la atormentó en su infancia acaso sea más real de lo que pensaba.",
+    "imagen": "https://image.tmdb.org/t/p/w780/3FzjY7P79R5sb3hCQUWEy7MT6Fs.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/9RrHsR3lIIdxN0GY0luzu3h3cRS.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1pkfzKDRwujYhLQnUv91ruomP1Qg8oTej/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-08-18",
+    "rating": "6.8",
+    "votos": 10,
+    "runtime": "1h 24min",
+    "genres": [
+      "Terror"
+    ],
+    "generosTexto": "Terror",
+    "clasificacion": "",
+    "tagline": "\"El horror siempre encuentra la manera de volver\"",
+    "director": "Martín Florio",
+    "guionistas": "Martín Florio, Leonel D'Agostino, Andrea Gobera Fajer",
+    "reparto": [
+      {
+        "nombre": "Mayra Hermosillo",
+        "personaje": "Mercedes Vega",
+        "foto": "https://image.tmdb.org/t/p/w185/3EFBG83M8YOPUynZv6QDsJZPjdu.jpg"
+      },
+      {
+        "nombre": "Rocío de la Mañana",
+        "personaje": "Belén",
+        "foto": ""
+      },
+      {
+        "nombre": "Luis Felipe Tovar",
+        "personaje": "Jaime Vega",
+        "foto": "https://image.tmdb.org/t/p/w185/sKwjgOOVfOUKlZ124P6OsmsxzFR.jpg"
+      },
+      {
+        "nombre": "Martha Claudia Moreno",
+        "personaje": "Luisa",
+        "foto": "https://image.tmdb.org/t/p/w185/eRRRgbYG6Wmnq3GTEfDBIbRbUmp.jpg"
+      },
+      {
+        "nombre": "José Antonio Becerril",
+        "personaje": "Jesús",
+        "foto": "https://image.tmdb.org/t/p/w185/4Iamt2nl7W7wt3Vlrp7ycrvqGTW.jpg"
+      },
+      {
+        "nombre": "Julián Ache",
+        "personaje": "Julián Vega",
+        "foto": "https://image.tmdb.org/t/p/w185/dD3m0sqEo4vP5kkxLkt2HfitTln.jpg"
+      },
+      {
+        "nombre": "Antonia Drolas",
+        "personaje": "Mercedes Niña",
+        "foto": ""
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "Creepy Van Films",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=hjD7pDVjX-4",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Two Witches",
+        "poster": "https://image.tmdb.org/t/p/w342/l8Pxpd3EJ23OZxS2MppeLVimfa2.jpg",
+        "year": "2023",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "En la oscuridad",
+        "poster": "https://image.tmdb.org/t/p/w342/8j5iJdzvobpnUZ3GES0L6VkLLt6.jpg",
+        "year": "2019",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "El diablo viene de noche",
+        "poster": "https://image.tmdb.org/t/p/w342/6QIeZuKirT4cXVpW7ilVZmcRmdK.jpg",
+        "year": "2023",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Atrapando a un monstruo",
+        "poster": "https://image.tmdb.org/t/p/w342/mfWPUc2izmwjLvljMDvuYhcUDLL.jpg",
+        "year": "2025",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "The Ghost Within",
+        "poster": "https://image.tmdb.org/t/p/w342/lJfibFGADF7e0m70lMtmXPPrz5a.jpg",
+        "year": "2023",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "No regreses a casa",
+        "poster": "https://image.tmdb.org/t/p/w342/vuTemK1FIyozgJZbatBp6nBgQQC.jpg",
+        "year": "2020",
+        "rating": "6.7"
+      }
+    ],
+    "tmdbId": 1757324,
+    "tmdbType": "movie",
+    "runtimeMin": 84,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "Peleas a domicilio",
+    "tituloOriginal": "Bagarre",
+    "descripcion": "Naim es un encanto en su vida diaria, pero un monstruo cuando se trata de pelear. Para pagar el tratamiento de su perra enferma, se ve obligado a unirse a \"Allo Bagarre\", un grupo de combatientes callejeros que resuelven disputas a puñetazos. Pero el día que descubre que los conflictos se resuelven mediante el diálogo, a Naim le resultará difícil hacerse oír.",
+    "imagen": "https://image.tmdb.org/t/p/w780/kq5RJr8i0V2Jt8tyGV82mn0BZDc.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/w4ISfPkFLdG0ew07XcrlQSB4O4q.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1yYMU0dBHHzVOFqWK5GhfKGTMm5xXcwd2/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-04-15",
+    "rating": "6.0",
+    "votos": 43,
+    "runtime": "1h 38min",
+    "genres": [
+      "Acción",
+      "Aventura",
+      "Comedia"
+    ],
+    "generosTexto": "Acción, Aventura, Comedia",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Julien Royal",
+    "guionistas": "Julien Royal, Nassim Lyes",
+    "reparto": [
+      {
+        "nombre": "Nassim Lyes",
+        "personaje": "Naïm",
+        "foto": "https://image.tmdb.org/t/p/w185/nMJ1qjhdfgRT8JuyUfFEkEwihOW.jpg"
+      },
+      {
+        "nombre": "Anaïde Rozam",
+        "personaje": "Laëticia",
+        "foto": "https://image.tmdb.org/t/p/w185/loZwn8wEJP5QTh2ujGi1RR9xnKa.jpg"
+      },
+      {
+        "nombre": "Ramzy Bedia",
+        "personaje": "Gary",
+        "foto": "https://image.tmdb.org/t/p/w185/fzGqj63WW6NFAK43oVjtYzVy75y.jpg"
+      },
+      {
+        "nombre": "Hedi Bouchenafa",
+        "personaje": "Kevlar",
+        "foto": "https://image.tmdb.org/t/p/w185/isbkfBuMRwoF6y0BqvWQzIeyFTt.jpg"
+      },
+      {
+        "nombre": "Arriles Amrani",
+        "personaje": "Rafik",
+        "foto": "https://image.tmdb.org/t/p/w185/jPHDD8cnRdskksJyqEQxjJf2BSU.jpg"
+      },
+      {
+        "nombre": "Matthieu Longatte",
+        "personaje": "JB",
+        "foto": "https://image.tmdb.org/t/p/w185/uhYWDmlnToiUEfVVweh9JlxREra.jpg"
+      },
+      {
+        "nombre": "Marina Foïs",
+        "personaje": "Dr. Couffard",
+        "foto": "https://image.tmdb.org/t/p/w185/dLPo5cyKoH4Y8TNRkl2GIrd4Oae.jpg"
+      },
+      {
+        "nombre": "Hatik",
+        "personaje": "Blanka",
+        "foto": "https://image.tmdb.org/t/p/w185/7NWaGZ7rmPUsZH6qukvu1Dre73N.jpg"
+      },
+      {
+        "nombre": "Hakim Jemili",
+        "personaje": "Gaëtan",
+        "foto": "https://image.tmdb.org/t/p/w185/w7Cn5MNRdzeUl41LuEJAg1ldeTM.jpg"
+      },
+      {
+        "nombre": "Laminé Ba",
+        "personaje": "Thanos",
+        "foto": ""
+      },
+      {
+        "nombre": "Ichem Bougheraba",
+        "personaje": "Moundir",
+        "foto": "https://image.tmdb.org/t/p/w185/3EUsdenS8qhvxXgz6Zrs1a1ggeW.jpg"
+      },
+      {
+        "nombre": "Paul Deby",
+        "personaje": "Quentin",
+        "foto": "https://image.tmdb.org/t/p/w185/nA85EHsuWynDutpEmeFdcLlld0n.jpg"
+      }
+    ],
+    "pais": "France",
+    "idioma": "fr",
+    "productoras": "Chi-Fou-Mi Productions, C-Kwa 7 Prod",
+    "presupuesto": 0,
+    "recaudacion": 4710000,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Airborne",
+        "poster": "https://image.tmdb.org/t/p/w342/4TPCzvOoQmmParPjgHCiqqiVYIJ.jpg",
+        "year": "1993",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "The Paper Tigers",
+        "poster": "https://image.tmdb.org/t/p/w342/x54tAgLfS51fO5EcipNJJ9tfSRK.jpg",
+        "year": "2020",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Super... Quien?",
+        "poster": "https://image.tmdb.org/t/p/w342/9IO3a6pBom1gk2xahd7kijBzn5L.jpg",
+        "year": "2022",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Marvel Rising: Jugando Con Fuego",
+        "poster": "https://image.tmdb.org/t/p/w342/iCiaRZUwMddvUmQcUtbZwu808g.jpg",
+        "year": "2019",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Kali",
+        "poster": "https://image.tmdb.org/t/p/w342/q6G2asNhF8v9htu53JkmtHge23f.jpg",
+        "year": "2024",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Don't Die Too Hard!",
+        "poster": "https://image.tmdb.org/t/p/w342/4QmPJAQWEqiBIwGTNivK8NYLhes.jpg",
+        "year": "2001",
+        "rating": "6.3"
+      }
+    ],
+    "tmdbId": 1418709,
+    "tmdbType": "movie",
+    "runtimeMin": 98,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
+    "titulo": "La familia Proud: Especial de navidad",
+    "tituloOriginal": "A Proud Family Wizmas",
+    "descripcion": "Tras arruinar accidentalmente la Navidad, Penny Proud debe hacer lo necesario para salvarla en Emilyville y el resto del mundo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/8JY6G5DSp8NUweUz5xJ5NtyqSp3.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/a8syGZWwgV4ofi70OtvoIGsNjFz.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1ndVWwFxvPK_Nyik330_EasxFAR_jphL0/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-11-14",
+    "rating": "5.2",
+    "votos": 9,
+    "runtime": "51min",
+    "genres": [
+      "Animación",
+      "Comedia",
+      "Música",
+      "Película de TV"
+    ],
+    "generosTexto": "Animación, Comedia, Música, Película de TV",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "David H. Brooks",
+    "guionistas": "Ralph Farquhar",
+    "reparto": [
+      {
+        "nombre": "Kyla Pratt",
+        "personaje": "Penny Proud (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/y02hmYVndLlJbOYkNDu3Ksdsiib.jpg"
+      },
+      {
+        "nombre": "Tommy Davidson",
+        "personaje": "Oscar Proud / Wizard Kelly (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/p4v6LGzFkQPT4qhJ5dI2ZhPPTqM.jpg"
+      },
+      {
+        "nombre": "Paula Jai Parker",
+        "personaje": "Trudy Proud (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/rhVirscmHtZvI3v7ZMD1TdJfDcE.jpg"
+      },
+      {
+        "nombre": "Jo Marie Payton",
+        "personaje": "Suga Mama (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/26XyFaCjA1vYa1vMh9tZEEUiL0B.jpg"
+      },
+      {
+        "nombre": "Cedric the Entertainer",
+        "personaje": "Bobby (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/s6UrY5uofyxXsU5PydWBoLFReK0.jpg"
+      },
+      {
+        "nombre": "Karen Malina White",
+        "personaje": "Dijonay Jones (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/bZR8SBZa8SL0NicIlSAAb4OElbt.jpg"
+      },
+      {
+        "nombre": "Soleil Moon Frye",
+        "personaje": "Zoey Howzer (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/j3PW3GlJYyPj77mK9VAXZXlFCVv.jpg"
+      },
+      {
+        "nombre": "Alisa Reyes",
+        "personaje": "LaCienega Boulevardez (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/adLKzMml127ioxQXcubg92trTDI.jpg"
+      },
+      {
+        "nombre": "Carlos Mencia",
+        "personaje": "Felix Boulevardez (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/fPxfQcGw6iu31UYk0qLtczQ3H9i.jpg"
+      },
+      {
+        "nombre": "Alvaro Guttierez",
+        "personaje": "Papi (voice)",
+        "foto": ""
+      },
+      {
+        "nombre": "Raquel Lee",
+        "personaje": "Nubia Gross (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/eBRrmN6jwrpdfjXdH0Z97Gzpwaw.jpg"
+      },
+      {
+        "nombre": "Melissa De Sousa",
+        "personaje": "Sunset Boulevardez (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/jheJMUyabZBFfcoeRCWm8XDrj0r.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Disney Television Animation, BaR Productions, Disney Kids & Family, HOUSE Special, Stoopid Buddy Stoodios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=zg-xJY9RuC8",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "My Little Pony: Best Gift Ever",
+        "poster": "https://image.tmdb.org/t/p/w342/f1A7aOL13YvC2zkLhLv2Fiq7GR3.jpg",
+        "year": "2018",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Tadeo Jones y La Lámpara Maravillosa",
+        "poster": "https://image.tmdb.org/t/p/w342/71G1b8bqa7gzP9yU7q2fgNf2t0D.jpg",
+        "year": "2026",
+        "rating": "8.3"
+      },
+      {
+        "titulo": "Mickey y Minnie y el deseo de Navidad",
+        "poster": "https://image.tmdb.org/t/p/w342/5mNwP4NsJisqLKbKVlil3OaZNQI.jpg",
+        "year": "2021",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "It Was a Short Summer, Charlie Brown",
+        "poster": "https://image.tmdb.org/t/p/w342/iGweonkq5kDEdK6AiaDZPggNEy6.jpg",
+        "year": "1969",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Los hermanos Willoughby",
+        "poster": "https://image.tmdb.org/t/p/w342/v1W9uSS3W7oil0Lo9QUJesey0i5.jpg",
+        "year": "2020",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Hopper, el polloliebre",
+        "poster": "https://image.tmdb.org/t/p/w342/zL8H9aRiSJogF0GQsXPaIjwUvYL.jpg",
+        "year": "2022",
+        "rating": "7.2"
+      }
+    ],
+    "tmdbId": 1716604,
+    "tmdbType": "movie",
+    "runtimeMin": 51,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": true
+  },
+  {
     "titulo": "En Ruta de Escape",
     "tituloOriginal": "Drive Through Fire",
     "descripcion": "Un veterano de guerra adicto convertido en conductor de viajes compartidos intenta ayudar a un pasajero aterrorizado a escapar de una red de trata de personas que atiende a clientes adinerados.",
