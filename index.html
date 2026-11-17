@@ -915,7 +915,7 @@
                         </form>
 
                         <p style={{ color: '#64748b', fontSize: '0.7rem', marginTop: '16px', lineHeight: '1.4' }}>
-                            ¿Problemas para activar? Contacta directamente con el administrador que te facilitó el acceso.
+                            ¿Problemas para activar? <a href="./contacto.html" style={{ color: '#67e8f9', textDecoration: 'underline', fontWeight: 'bold' }}>Enviar mensaje a BOXPLAYTV</a>.
                         </p>
                     </div>
                 </div>
@@ -2054,6 +2054,9 @@
                             </nav>
                         </div>
                         <div className="box-header-actions flex items-center gap-2 sm:gap-3">
+                            <a href="./contacto.html" aria-label="Enviar mensaje a BOXPLAYTV" title="Enviar mensaje" className="hidden lg:flex p-2 sm:px-3 sm:py-2 rounded-xl bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 text-xs font-bold items-center gap-1.5" style={{ minHeight: '44px' }}>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg><span className="hidden xl:inline">Enviar mensaje</span>
+                            </a>
                             <button className="box-notification-toggle" aria-label={`Avisos${unreadNoticeCount ? ', ' + unreadNoticeCount + ' sin leer' : ''}`} aria-expanded={showNotices} onClick={() => { setShowNotices(true); refreshNotices(); }}>
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>
                                 {unreadNoticeCount > 0 && <span className="box-notification-count" aria-hidden="true">{unreadNoticeCount > 99 ? '99+' : unreadNoticeCount}</span>}
@@ -2129,6 +2132,9 @@
                                             <span>{tab.id === 'favorites' ? 'Favoritos' : tab.label}</span>
                                         </button>
                                     ))}
+                                    <a href="./contacto.html" className="box-more-option col-span-2 p-3 rounded-2xl flex items-center gap-3 text-xs font-bold border border-cyan-500/40 bg-cyan-500/15 text-cyan-200">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg><span>Enviar mensaje a BOXPLAYTV</span>
+                                    </a>
                                     <div className="box-phone-only col-span-2"><div className="box-phone-tools"><p className="text-xs text-slate-400 font-bold">Aplicación</p>
                                         <button disabled={loading} onClick={() => { setCatalogRefresh(value => value + 1); setShowMobileMoreMenu(false); }}>Actualizar catálogo</button>
                                         <button disabled={isAppInstalled || installingApp} onClick={() => { handleInstallApp(); setShowMobileMoreMenu(false); }} className="flex items-center justify-center gap-2 disabled:opacity-60"><Icon name="download" size={18}/>{isAppInstalled ? 'Aplicación agregada' : installingApp ? 'Abriendo instalación…' : 'Agregar a pantalla de inicio'}</button>
