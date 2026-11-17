@@ -6,66 +6,63 @@
     const status = document.getElementById('contact-status');
     const success = document.getElementById('contact-success');
     const another = document.getElementById('contact-another');
+    const mail = document.getElementById('contact-mail');
     let sending = false;
 
-    const showStatus = message => {
+    const showStatus = (state, message) => {
+        status.dataset.state = state;
         status.textContent = message;
         status.hidden = false;
     };
-    const resetSending = () => {
-        sending = false;
-        send.disabled = false;
-        send.textContent = 'Enviar mensaje';
-        form.removeAttribute('aria-busy');
-        status.hidden = true;
-    };
-
-    // Only the provider's successful POST returns to this confirmation URL.
-    // Native navigation avoids a cross-origin fetch acknowledgement and its timeout.
-    const currentUrl = new URL(window.location.href);
-    if (currentUrl.searchParams.get('enviado') === '1') {
-        currentUrl.searchParams.delete('enviado');
-        window.history.replaceState(null, '', currentUrl.pathname + currentUrl.search + currentUrl.hash);
+    const showSuccess = () => {
         form.reset();
         form.hidden = true;
         success.hidden = false;
         success.focus();
-    }
-
-    another.addEventListener('click', () => {
-        success.hidden = true;
-        form.hidden = false;
-        resetSending();
-        form.elements.namedItem('name').focus();
-    });
-
-    // Returning with Back after a network/provider error preserves the entered
-    // fields. Re-enable the form even when the browser restores it from BFCache.
-    window.addEventListener('pageshow', resetSending);
-
-    form.addEventListener('submit', event => {
-        if (sending) {
-            event.preventDefault();
-            return;
-        }
+    };
+    const validate = () => {
         for (const field of ['name', 'email', 'message']) {
             const input = form.elements.namedItem(field);
             input.value = input.value.trim();
         }
-        if (!form.reportValidity()) {
+        return form.reportValidity();
+    };
+
+    const currentUrl = new URL(window.location.href);
+    if (currentUrl.searchParams.get('enviado') === '1') {
+        currentUrl.searchParams.delete('enviado');
+        window.history.replaceState(null, '', currentUrl.pathname + currentUrl.search + currentUrl.hash);
+        showSuccess();
+    }
+    another.addEventListener('click', () => {
+        success.hidden = true;
+        form.hidden = false;
+        status.hidden = true;
+        form.elements.namedItem('name').focus();
+    });
+
+    // This opens a draft only. Delivery is never announced until confirmed.
+    mail.addEventListener('click', event => {
+        if (sending || !validate()) {
             event.preventDefault();
             return;
         }
+        const value = name => form.elements.namedItem(name).value;
+        const body = 'Nombre: ' + value('name') + '\nCorreo: ' + value('email') + '\n\n' + value('message');
+        mail.href = 'mailto:sejo48@gmail.com?subject=' + encodeURIComponent('Correo de BOXPLAYTV · Nuevo mensaje') + '&body=' + encodeURIComponent(body);
+        showStatus('sending', 'Se abrirá un borrador en tu aplicación de correo. Allí debes tocar Enviar para completar el envío.');
+    });
+
+    if (typeof window.fetch !== 'function' || typeof window.AbortController !== 'function') return;
+    form.addEventListener('submit', async event => {
+        event.preventDefault();
+        if (sending || !validate()) return;
         if (form.elements.namedItem('_honey').value) {
-            event.preventDefault();
-            status.dataset.state = 'error';
-            showStatus('No se pudo enviar la consulta. Recarga la página e intenta de nuevo.');
+            showStatus('error', 'No se pudo enviar la consulta. Recarga la página e intenta de nuevo.');
             return;
         }
         if (navigator.onLine === false) {
-            event.preventDefault();
-            status.dataset.state = 'error';
-            showStatus('No hay conexión a Internet. Tu texto sigue aquí; envíalo cuando vuelva la conexión.');
+            showStatus('error', 'No hay conexión a Internet. Tu texto sigue aquí; envíalo cuando vuelva la conexión.');
             return;
         }
 
@@ -73,9 +70,38 @@
         send.disabled = true;
         send.textContent = 'Enviando…';
         form.setAttribute('aria-busy', 'true');
-        status.dataset.state = 'sending';
-        showStatus('Estamos enviando tu consulta. Al finalizar volverás a BOXPLAYTV.');
-        // Allow the browser's normal POST. No automatic fallback/retry can
-        // duplicate an email already accepted by the provider.
+        showStatus('sending', 'Enviando tu consulta. Espera la confirmación antes de volver a enviarla.');
+        const controller = new AbortController();
+        const slowTimer = window.setTimeout(() => showStatus('sending', 'El servicio está tardando en responder. Tu consulta sigue en proceso; no vuelvas a enviarla todavía.'), 15000);
+        const timeout = window.setTimeout(() => controller.abort(), 90000);
+        try {
+            const data = new URLSearchParams(new FormData(form));
+            data.delete('_next');
+            const endpoint = new URL(form.action);
+            endpoint.pathname = '/ajax' + endpoint.pathname;
+            // URL-encoded browser form data avoids an unnecessary JSON preflight.
+            const response = await window.fetch(endpoint.href, {
+                method: 'POST', headers: { Accept: 'application/json' },
+                body: data, signal: controller.signal
+            });
+            const result = await response.json();
+            const activation = /activat|actived|confirm.{0,30}email/i.test(String(result && result.message || ''));
+            if (!response.ok || !result || (result.success !== true && result.success !== 'true') || activation) {
+                showStatus('error', activation
+                    ? 'El servicio de contacto está pendiente de activación. Puedes usar «Enviar desde mi correo» para escribirnos.'
+                    : 'El servicio de correo no confirmó el envío. Tu consulta podría haber llegado; espera unos minutos antes de repetirla. También puedes usar «Enviar desde mi correo».');
+                return;
+            }
+            showSuccess();
+        } catch (_) {
+            showStatus('error', 'No recibimos la confirmación del servicio de correo. Tu consulta podría haber llegado; espera unos minutos antes de repetirla. También puedes usar «Enviar desde mi correo».');
+        } finally {
+            window.clearTimeout(slowTimer);
+            window.clearTimeout(timeout);
+            sending = false;
+            send.disabled = false;
+            send.textContent = 'Enviar mensaje';
+            form.removeAttribute('aria-busy');
+        }
     });
 })();

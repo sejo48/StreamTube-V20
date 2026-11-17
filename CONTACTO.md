@@ -4,13 +4,13 @@ El contacto web y móvil está en `contacto.html`, enlazado desde la cabecera, e
 
 - Destinatario: `sejo48@gmail.com`.
 - Asunto: `Correo de BOXPLAYTV · Nuevo mensaje`.
-- Campos: nombre, correo para responder y mensaje. No solicita teléfono.
-- Envío: FormSubmit, sin credenciales en el navegador. El campo `email` configura Reply-To para responder al visitante.
-- Se requiere confirmar el correo con el enlace de activación que envía FormSubmit en el primer envío. Hasta entonces la interfaz no anuncia que el mensaje se haya enviado.
-- El formulario envía mediante un POST HTML normal y el servicio devuelve al visitante a `contacto.html?enviado=1` al completar el envío. La confirmación no depende de una respuesta AJAX ni de un temporizador local: las primeras pruebas mostraron que el correo podía llegar aunque el navegador no recibiera esa respuesta.
-- La protección del proveedor y el campo honeypot filtran los envíos. No se añade un desafío reCAPTCHA al flujo, como en el envío AJAX anterior. Nombre, correo completo y mensaje son obligatorios.
-- El formulario sigue funcionando sin JavaScript, evita envíos simultáneos cuando está habilitado y no reintenta automáticamente. Al volver con Atrás desde un error de red o del proveedor se habilita nuevamente el botón sin borrar los campos.
-- Las notificaciones del móvil se configuran en Gmail/Android. El formulario no puede habilitar los permisos del teléfono. El asunto identifica los avisos de BOXPLAYTV.
+- Campos: nombre, correo completo para responder y mensaje. No solicita teléfono.
+- Servicio de envío: FormSubmit, con el correo ya confirmado para `boxplaytv.com`. El campo `email` configura Reply-To.
+- El envío principal usa datos de formulario URL-encoded, sin preflight JSON. Permite hasta 90 segundos para recibir la confirmación y avisa a los 15 segundos si el servicio tarda. No repite solicitudes ni cambia automáticamente de canal.
+- La pantalla de éxito aparece únicamente con confirmación explícita del proveedor. Un error HTTP, respuesta no JSON, activación pendiente o pérdida de conexión mantiene los campos y advierte que el correo podría haber llegado, para evitar duplicados. Se comprobó que el proveedor puede devolver un error del servidor incluso cuando otros envíos llegan correctamente.
+- La alternativa «Enviar desde mi correo» abre un borrador con destinatario, asunto y consulta. El visitante debe pulsar Enviar en su aplicación de correo. Abrir ese borrador no muestra una confirmación de entrega ni borra los campos. La dirección también queda visible para escribir manualmente.
+- Honeypot y filtros del proveedor protegen el formulario. Si no hay JavaScript, queda disponible el POST HTML y el enlace de correo.
+- Las notificaciones del móvil se configuran en Gmail/Android. El formulario no puede habilitar los permisos del teléfono.
 
 Documentación del proveedor: https://formsubmit.co/documentation
 
