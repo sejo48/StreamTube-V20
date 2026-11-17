@@ -1,5 +1,148 @@
 [
   {
+    "titulo": "En Ruta de Escape",
+    "tituloOriginal": "Drive Through Fire",
+    "descripcion": "Un veterano de guerra adicto convertido en conductor de viajes compartidos intenta ayudar a un pasajero aterrorizado a escapar de una red de trata de personas que atiende a clientes adinerados.",
+    "imagen": "https://image.tmdb.org/t/p/w780/27mH567ddebuOOGGsDB8zvGf0x5.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/8Tw90S4hVrvUoqmQWDoO6U4toZT.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1leNT9tuO0eKXLbiZqVSt4H1HL5b8jPo4/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-09-11",
+    "rating": "6.8",
+    "votos": 7,
+    "runtime": "1h 27min",
+    "genres": [
+      "Acción",
+      "Crimen",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Crimen, Suspense",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Lauren Bond",
+    "guionistas": "Jim Carlson",
+    "reparto": [
+      {
+        "nombre": "Michael Jai White",
+        "personaje": "Tommy Poole",
+        "foto": "https://image.tmdb.org/t/p/w185/YPoHYuzR37wFpPpwEXZYQlhLln.jpg"
+      },
+      {
+        "nombre": "Dan Bakkedahl",
+        "personaje": "Victor",
+        "foto": "https://image.tmdb.org/t/p/w185/zHDMTZe3Xjvut57oTZixURBNDHi.jpg"
+      },
+      {
+        "nombre": "Jim Carlson",
+        "personaje": "Jason",
+        "foto": "https://image.tmdb.org/t/p/w185/ex4wTvmJ1WJD8VtjQudHfXn9N1t.jpg"
+      },
+      {
+        "nombre": "Jennifer Bond",
+        "personaje": "Kristina",
+        "foto": "https://image.tmdb.org/t/p/w185/2DJgkUKuA8M9iZ5ucye4fUVfA6t.jpg"
+      },
+      {
+        "nombre": "Kate Duffy",
+        "personaje": "Jaime",
+        "foto": "https://image.tmdb.org/t/p/w185/wvFcRc155rfwFQDXHgE217mhb5e.jpg"
+      },
+      {
+        "nombre": "Todd Jenkins",
+        "personaje": "Willard",
+        "foto": "https://image.tmdb.org/t/p/w185/jcIey9TN3dh5EIYBZeXhvvcyPdu.jpg"
+      },
+      {
+        "nombre": "Cale Schultz",
+        "personaje": "Ray",
+        "foto": "https://image.tmdb.org/t/p/w185/fjbYJtD0Ci2k7ImRgcKpNBbiruM.jpg"
+      },
+      {
+        "nombre": "James Logan",
+        "personaje": "Joseph",
+        "foto": "https://image.tmdb.org/t/p/w185/lDU0RO7bn4v0ebpH0wHvxYJ2RQp.jpg"
+      },
+      {
+        "nombre": "Leanna Tallmeister",
+        "personaje": "Recovery Nurse",
+        "foto": "https://image.tmdb.org/t/p/w185/sn8FB2Uo9iGygTAys3HMO8HkhPZ.jpg"
+      },
+      {
+        "nombre": "Chandler Ryan",
+        "personaje": "Officer Chapman",
+        "foto": "https://image.tmdb.org/t/p/w185/9KLEQVE7Dfce0M7T3c1TDUIpAJC.jpg"
+      },
+      {
+        "nombre": "David Goryl",
+        "personaje": "Pete",
+        "foto": "https://image.tmdb.org/t/p/w185/lCwa56XnTghAsJRDA2c2XHJ1xCK.jpg"
+      },
+      {
+        "nombre": "Justin Parks",
+        "personaje": "Jesse",
+        "foto": "https://image.tmdb.org/t/p/w185/mke0FKQ9Vf2syB9WEcUIt9GvCd3.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Red Sea Media",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "escape, war veteran, human trafficking, crime thriller, rideshare driver",
+    "similares": [
+      {
+        "titulo": "Exceso de equipaje",
+        "poster": "https://image.tmdb.org/t/p/w342/fErmglnsVdQOK7vQI7Ac5ijshFA.jpg",
+        "year": "1997",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Oscar Shaw",
+        "poster": "https://image.tmdb.org/t/p/w342/tsE3nySukwrfUjouz8vzvKTcXNC.jpg",
+        "year": "2026",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Vidas en pedazos",
+        "poster": "https://image.tmdb.org/t/p/w342/78e639xf8o83eBBrHdeAwpVYVsf.jpg",
+        "year": "2019",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "¡Te pillé! (Gotcha!)",
+        "poster": "https://image.tmdb.org/t/p/w342/lWIhNKAbC5zOH4CXDN9NXdquDsa.jpg",
+        "year": "1985",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "La gran fuga",
+        "poster": "https://image.tmdb.org/t/p/w342/zACGrzQxMs24fJdj45pbaKjRGXC.jpg",
+        "year": "2017",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Man of War",
+        "poster": "https://image.tmdb.org/t/p/w342/vt0RqHlqfUzeiBEVQvp43yY2076.jpg",
+        "year": "2026",
+        "rating": "6.5"
+      }
+    ],
+    "tmdbId": 1378742,
+    "tmdbType": "movie",
+    "runtimeMin": 87,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
     "titulo": "El intercambio navideño",
     "tituloOriginal": "Bara till jul",
     "descripcion": "Dos hermanas que son como la noche y el día se ven obligadas a intercambiar sus vidas unas semanas antes de Navidad. En su nuevo entorno, ambas lidian con lo que han hecho hasta ahora y encuentran el amor donde menos se lo esperan.",
