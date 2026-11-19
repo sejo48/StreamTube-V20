@@ -1,5 +1,431 @@
 [
   {
+    "tmdbId": 3763,
+    "tmdbType": "tv",
+    "tituloOriginal": "Dinosaurs",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/e1mgahsZE1t1lXzuDIvaZY24lSN.jpg",
+    "year": "1991",
+    "fechaEstreno": "1991-04-26",
+    "rating": "7.8",
+    "votos": 1127,
+    "runtime": "23min",
+    "runtimeMin": 23,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Comedia, Familia",
+    "clasificacion": "10",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Stuart Pankin",
+        "personaje": "Earl Sinclair (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/9Zjv5YDfjrBKwCCEslb4Rkrx87V.jpg"
+      },
+      {
+        "nombre": "Jessica Walter",
+        "personaje": "Fran Sinclair (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/dR7b2FmJGgjfSpwfz3AZzm6X13O.jpg"
+      },
+      {
+        "nombre": "Jason Willinger",
+        "personaje": "Robbie Sinclair (voice)",
+        "foto": ""
+      },
+      {
+        "nombre": "Sally Struthers",
+        "personaje": "Charlene Sinclair (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/9EeuFTEUG1mfPiZwNw38U3ovUa.jpg"
+      },
+      {
+        "nombre": "Kevin Clash",
+        "personaje": "Baby Sinclair (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/yZ5EdQQvjifJ0hLh8CU7Ug7kz1e.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Walt Disney Television, Jim Henson Productions, Michael Jacobs Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "family relationships, prehistory, puppetry, dinosaur, employer employee relationship, sitcom, management training",
+    "similares": [
+      {
+        "titulo": "El amanecer de los Croods",
+        "poster": "https://image.tmdb.org/t/p/w342/yeDauLZAsosMpyptekbTQ5SiIRh.jpg",
+        "year": "2015",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Los Picapiedra",
+        "poster": "https://image.tmdb.org/t/p/w342/aLAGnSe7XCTTIXHlsbkTbtLEjG3.jpg",
+        "year": "1960",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "El bebé jefazo: Vuelta al curro",
+        "poster": "https://image.tmdb.org/t/p/w342/srcTHuIiuNPSSH7htqFZRjqpbLG.jpg",
+        "year": "2018",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Las maravillosas desventuras de Flapjack",
+        "poster": "https://image.tmdb.org/t/p/w342/awwNiRmntNOguvc86jmrHxMf6RS.jpg",
+        "year": "2008",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Animaniacs",
+        "poster": "https://image.tmdb.org/t/p/w342/c1b2UtrhbMOdHKISB2ZvINo9eyc.jpg",
+        "year": "1993",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Miles del futuro",
+        "poster": "https://image.tmdb.org/t/p/w342/wK3sqd7mep4RtE3FKjUg9AitWAR.jpg",
+        "year": "2015",
+        "rating": "7.0"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Bob Young",
+      "Michael Jacobs"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 65,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 12,
+        "id": 11275,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/kKGUgbZLBSIeeJQfuI2WpmiBVCy.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1991-04-26",
+        "episode_count": 5,
+        "id": 11271,
+        "name": "Temporada 1",
+        "overview": "Este programa narra la vida de una familia de dinosaurios que viven en un mundo moderno. Tienen televisores, refrigeradores, etcétera. Los únicos humanos que los rodean son hombres de las cavernas, a quienes se considera mascotas y animales salvajes. La primera temporada de Dinosaurs se estrenó el 26 de abril de 1991.",
+        "poster_path": "/6R72UO6jXbGqayMYeM8RpmU4Rh6.jpg",
+        "season_number": 1,
+        "vote_average": 7.6
+      },
+      {
+        "air_date": "1991-09-18",
+        "episode_count": 24,
+        "id": 11272,
+        "name": "Temporada 2",
+        "overview": "Este programa narra la vida de una familia de dinosaurios que viven en un mundo moderno. Tienen televisores, refrigeradores, etcétera. Los únicos humanos que los rodean son hombres de las cavernas, a quienes se considera mascotas y animales salvajes. La segunda temporada de Dinosaurs se estrenó el 18 de septiembre de 1991.",
+        "poster_path": "/uLtY2TpeAsQaBNpSaLmhVxcCZ9K.jpg",
+        "season_number": 2,
+        "vote_average": 7.6
+      },
+      {
+        "air_date": "1992-09-18",
+        "episode_count": 22,
+        "id": 11273,
+        "name": "Temporada 3",
+        "overview": "Este programa narra la vida de una familia de dinosaurios que viven en un mundo moderno. Tienen televisores, refrigeradores, etcétera. Los únicos humanos que los rodean son hombres de las cavernas, a quienes se considera mascotas y animales salvajes. La segunda temporada de Dinosaurs se estrenó el 18 de septiembre de 1991.",
+        "poster_path": "/1EA30NtYVMlzlyIdUOoRQEr9wFt.jpg",
+        "season_number": 3,
+        "vote_average": 7.6
+      },
+      {
+        "air_date": "1994-06-01",
+        "episode_count": 14,
+        "id": 11274,
+        "name": "Temporada 4",
+        "overview": "Este programa narra la vida de una familia de dinosaurios que viven en un mundo moderno. Tienen televisores, refrigeradores, etcétera. Los únicos humanos que los rodean son hombres de las cavernas, a quienes se considera mascotas y animales salvajes. La segunda temporada de Dinosaurs se estrenó el 18 de septiembre de 1991.",
+        "poster_path": "/oxrUCAVADELRM0M3sg6tg2n5Dei.jpg",
+        "season_number": 4,
+        "vote_average": 8
+      }
+    ],
+    "tituloSerie": "Dinosaurios",
+    "descripcion": "Dinosaurios es una serie ambientada en el 60.000.003 aC. que muestra a una familia similar a los Los Simpson (padres, tres hijos y abuela). Los miembros de la familia son dinosaurios representados con características humanas, (viven con televisión, electrodomésticos, hablan, etc.), por lo que se califica como una parodia de nuestra sociedad. La madre es ama de casa, los hijos estudiantes (a excepción del más pequeño) y el padre trabaja como obrero en un bosque.",
+    "imagen": "https://image.tmdb.org/t/p/original/xk1u5JGA8KU7nyg7aIaVFiCM6OT.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 01 - El poderoso megalosaurio (The mighty megalosaurus) [8145898375914]",
+            "urlDrive": "https://drive.google.com/file/d/18k6O3mBkdUi7IU9DiUrJqK1ddJOclcU0/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 02 - El baile del cortejo (The mating dance) [8145898900202]",
+            "urlDrive": "https://drive.google.com/file/d/1IVCQLdRHhJZe4vw0ncRHJ5e2C_ss9a6E/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 03 - El lanzamiento (Hurling day) [8145899490026]",
+            "urlDrive": "https://drive.google.com/file/d/1mVYznDrXjFkwyzfsz5T-7e6bf1DETGne/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 04 - El duelo (High noon) [8145899817706]",
+            "urlDrive": "https://drive.google.com/file/d/1JdHsk_U3eYFAVvs2e8nmUAovY1DoHG75/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 05 - El aullido (The howling) [8145900341994]",
+            "urlDrive": "https://drive.google.com/file/d/1__gWkitJ6P6exN7daTyIy4EQ7p48qqbL/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 06 - El niño dorado (The golden child) [8145900669674]",
+            "urlDrive": "https://drive.google.com/file/d/15MRmG2MZnR4byhBdWhKlflRSSZxLXYf_/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 07 - Concurso familiar (Family challenge) [8145900800746]",
+            "urlDrive": "https://drive.google.com/file/d/1ocZMajyXaONm87oJfp1AxgBVZIq6Cpmf/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 08 - Nunca comi por mi padre (I never ate for my father) [8145901456106]",
+            "urlDrive": "https://drive.google.com/file/d/1ad9EW1Ve_JJ9_5pxHD96M4PxHj4Femhi/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 09 - La cola de Charlene (Charlene's tale) [8145901062890]",
+            "urlDrive": "https://drive.google.com/file/d/18imJig4Pt-gENGwa4LQsNPiA0ddfDXtH/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 10 - Especies en peligro (Endangered species) [8145901849322]",
+            "urlDrive": "https://drive.google.com/file/d/1xdvBYGqkae-DjM-bYzzQYUEGm_ODcYI9/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 11 - Empleado del mes (Employee of the month) [8145902242538]",
+            "urlDrive": "https://drive.google.com/file/d/1ihh0i4a8wsipYZDpWcsvxBBJW_ZZ85G6/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 12 - Cuando la comida es mala (When food goes bad) [8145902635754]",
+            "urlDrive": "https://drive.google.com/file/d/1LYyksSxvVkhP5RzdrduQo1I3_8luDMRl/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 13 - Oportunidades de trabajo (Career opportunities) [8145902766826]",
+            "urlDrive": "https://drive.google.com/file/d/1Pr-QM2gDhu6-DIvq9X9OhbCCeY8G64sh/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 14 - Soltero   Con hijos (Unmarried With children) [8145903028970]",
+            "urlDrive": "https://drive.google.com/file/d/1M9D7xu8It5SzTCW--1Jwbbw-5qZGcIuH/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 15 - Cómo conquistar chicas (How to pick up girls) [8145903291114]",
+            "urlDrive": "https://drive.google.com/file/d/1lHjZEwf0aVvPBRIZq4R5O2GN-dELNQ12/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 16 - Cambio de bebes (Switched at birth) [8145903553258]",
+            "urlDrive": "https://drive.google.com/file/d/1mgueL_hmaE9fw1WZJGhQrqSDMNujN07s/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 17 - Día del refrigerador (Refrigerator day) [8145903618794]",
+            "urlDrive": "https://drive.google.com/file/d/17kWt61nNt1AwpvMal8olmX3i1Atd9bqE/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 18 - Lo que quiso decir Casanova (What 'Sexual Harris' meant) [8145903815402]",
+            "urlDrive": "https://drive.google.com/file/d/1kTWyoXZMtjjImzKt1MOY9YsSjir7CgBm/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 19 - Fran en vivo (Fran live) [8145904012010]",
+            "urlDrive": "https://drive.google.com/file/d/1ygUU_qaPB0WybsSNZQSMVln4ZN2dnd1Q/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 20 - Energía es poder (Power erupts) [8145904143082]",
+            "urlDrive": "https://drive.google.com/file/d/1JjsyTazTunq0CVSN2fxKlAv7Q5PN167J/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 21 - Videoclip (The clip show) [8145904798442]",
+            "urlDrive": "https://drive.google.com/file/d/1LK7Q2jsdXkvmpWz2cH2Nl3zr4ueNUk3X/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 22 - Hierba mala (A new leaf) [8145905453802]",
+            "urlDrive": "https://drive.google.com/file/d/1Q2UuB4xpNtyS3fBXWnVtBCsp2DHPciq5/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 23 - La ultima tentación de Ethyl (The last temptation of Ethyl) [8145905781482]",
+            "urlDrive": "https://drive.google.com/file/d/1xNpGDETJoOEBUvKyemQRBfZ8XytP9RWl/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 24 - La guerra de las nueces- 1ra parte (Nuts of war- part 1) [8145905847018]",
+            "urlDrive": "https://drive.google.com/file/d/1y4EDyb4sbs0KPkNArOmowkxCXmEf0Q-c/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 25 - La guerra de las nueces- 2da parte (Nuts of war- part 2) [8145906043626]",
+            "urlDrive": "https://drive.google.com/file/d/1623MHODCh18eNTpgLizBQ-3r8nQsLicy/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 26 - Esclava a la moda (Slave to fashion) [8145906109162]",
+            "urlDrive": "https://drive.google.com/file/d/1N9gPoEuv9PmRKBjN6T3Cqj9EsopBGrCE/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 27 - Y el ganador es  (And the winner is ) [8145906305770]",
+            "urlDrive": "https://drive.google.com/file/d/1nbJ8LC65W8D-ZwyO_LINPM4Ur5FVDfdu/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 28 - Jefe de la banda (Leader of the pack) [8145906633450]",
+            "urlDrive": "https://drive.google.com/file/d/1M6Yo7c708gvuPQ-7tSROvM2vUOsOhrY8/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 29 - Yo lo digo sabe mejor (Wesayso knows best) [8145906895594]",
+            "urlDrive": "https://drive.google.com/file/d/1gMCPhgP2MQ0s9ptzjQP2HLavXCnhT-YN/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 30 - Hacer o no hacer (Nature calls) [8145907092202]",
+            "urlDrive": "https://drive.google.com/file/d/1gQthfBU16AaxhH9DMlUtTAfPKdbTDZVF/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 31 - Lenguaje infantil (Baby talk) [8145907878634]",
+            "urlDrive": "https://drive.google.com/file/d/1mLIWNpmj17AWA3SfbE6Uu640BW1C0j7c/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 32 - Genio de redes (Network genius) [8145908140778]",
+            "urlDrive": "https://drive.google.com/file/d/1iElvT25ARx2hIay-yhtm62Ce1pwYpM2l/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 33 - El descubrimiento (The discovery) [8145908402922]",
+            "urlDrive": "https://drive.google.com/file/d/1Gg_PP6Q7hNEvDUOai4E7-C4DRLdLjOfc/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 34 - Pequeño Boe (Little boy Boo) [8145908665066]",
+            "urlDrive": "https://drive.google.com/file/d/1u5Hr8ZlH2nHfcwvG5xTRzcJV2-A4yJH3/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 35 - Guerra bacteriologica (Germ warfare) [8145908861674]",
+            "urlDrive": "https://drive.google.com/file/d/1YPxuHLU3yFcZfynrKDeQX-rJhIxtrLDC/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 36 - La hija del Sr. Richfield (Hungry for love) [8145933765354]",
+            "urlDrive": "https://drive.google.com/file/d/15aczSGUc5OMol-rRixALAoPJKWv1UOn1/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 37 - Permiso para padres (License to parent) [8145933896426]",
+            "urlDrive": "https://drive.google.com/file/d/1ppxs6NBeKL9iaNjLPP2gKzaeqqEz4kNI/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 38 - El mundo plano de Charlene (Charlene's flat world) [8145934027498]",
+            "urlDrive": "https://drive.google.com/file/d/1k4yE-Ub8nOYAdVQf0rlTqX2VqIdnF8kY/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 39 - Fin de semana en el Yerno (Wilderness weekend) [8145934289642]",
+            "urlDrive": "https://drive.google.com/file/d/1rMyYAV64ihRJJYDlQt4A_qRhKiLjD3At/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 40 - El hijo tambien se levanta (The son also rises) [8145934420714]",
+            "urlDrive": "https://drive.google.com/file/d/1l3sXge6wbr-3Q1RvSheSrXW2bVel9zFe/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 41 - Conociéndote (Getting to know you) [8145934551786]",
+            "urlDrive": "https://drive.google.com/file/d/1kNVcXslcelh5boG7QMm2gLHivklI8q_6/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 42 - Tarjeta verde (Green card) [8145934617322]",
+            "urlDrive": "https://drive.google.com/file/d/1qoTmEFHZCgTBQ9mG4ui8DJv5C7K-w96K/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 43 - Saliendo de la sartén (Out of the frying pan) [8145934813930]",
+            "urlDrive": "https://drive.google.com/file/d/1p0K4DHgdnlW6gclfmV0Z0lBeL6I5k6ZZ/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 44 - Esteroides al cielo (Steroids to heaven) [8145934879466]",
+            "urlDrive": "https://drive.google.com/file/d/1iWzrIekdi2vxNF9kKWXGUAhpxn51M7_U/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 45 - Cariño, extraño a los niños (Honey, i miss the kids) [8145935010538]",
+            "urlDrive": "https://drive.google.com/file/d/1vXvsGlxR8PcrGRTLZ2ARIavfwn71iYjC/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 46 - Música de pantano (Swamp music) [8145936124650]",
+            "urlDrive": "https://drive.google.com/file/d/1TIC4pqdVNSbgBbkgPWOwvSLR4SCmXSMr/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 47 - El baile del amor (Dirty dancing) [8145936386794]",
+            "urlDrive": "https://drive.google.com/file/d/15aaglmVtk66PBoV5ieueNGLL6kq85Jpy/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 48 - Si fueras un árbol (If i were a tree) [8145936517866]",
+            "urlDrive": "https://drive.google.com/file/d/1wnMgUF7JS-WTR6oW2uIl1BPk3eB93OGL/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 49 - No estamos sólos (We are not alone) [8145936648938]",
+            "urlDrive": "https://drive.google.com/file/d/1_fDRE8gBtdSG16OoVsLVrNzgBs0Wt1ry/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 50 - Charlene y sus seres humanos increibles (Charlene and her amazing humans [8145936976618]",
+            "urlDrive": "https://drive.google.com/file/d/1FgVeOx-jSTdfij5ULLBE0jWk2uJK5BpF/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 51 - Videoclip 2 (The clip show 2) [8145937107690]",
+            "urlDrive": "https://drive.google.com/file/d/1sJTIGPPtyYdzpgehXci0aG8yfgXcqkg0/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 52 - El monstruo debajo de la cama (Monster under the bed) [8145937238762]",
+            "urlDrive": "https://drive.google.com/file/d/1ar_JR9xFC_PfCD6NNNfQpPzzCfSYPXe-/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 53 - Earl, no seas un héroe (Earl, don't be a hero) [8145941629674]",
+            "urlDrive": "https://drive.google.com/file/d/1DCJnxad8gTwu_n6kXz0c2ULRmGklcF7S/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 54 - La historia más grandiosa jamás vendida (The greatest story ever sold) [8145941760746]",
+            "urlDrive": "https://drive.google.com/file/d/1WKeDxYvHR1ThrSOR1ce2W5b7vsoerqWF/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 55 - Conduciendo señorita Ethyl (Driving miss Ethyl) [8145941957354]",
+            "urlDrive": "https://drive.google.com/file/d/1DXlu0XLTXaqTqxwvbYXbC4Ysz6Fr1eag/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 56 - La loteria de Earl (Earl's big jackpot) [8145942153962]",
+            "urlDrive": "https://drive.google.com/file/d/1jnfPKxd4QA0-MFTMjA7yNfdcAY_Dets8/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 57 - Los terribles 2 años (The terrible twos) [8145942416106]",
+            "urlDrive": "https://drive.google.com/file/d/1605mCn2kEzKdvkYw8D_uKXDjanjVOR9m/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 58 - Naturaleza alterada (Changing nature) [8145942678250]",
+            "urlDrive": "https://drive.google.com/file/d/1NBz-4QdJH7hYMVKdT_60tjp2t0xcbK9T/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 59 - Aroma de réptil (Scent of a reptile) [8145942874858]",
+            "urlDrive": "https://drive.google.com/file/d/1an9yUXAx3uBB5sU9tDSmKOLqQHx8EwuU/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 60 - Earl y Pearl (Earl & Pearl) [8145943005930]",
+            "urlDrive": "https://drive.google.com/file/d/16DKkVHjRUtKR7MAjIGqslL7PTnww6ULQ/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 61 - El tatro maldito (Life in the Faust lane) [8145943268074]",
+            "urlDrive": "https://drive.google.com/file/d/18bKbnTlaqJqdjU1umzEa-XjyQs_D-1JL/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 62 - Variaciones de parque de diversiones (Variations on a theme park) [8145943530218]",
+            "urlDrive": "https://drive.google.com/file/d/1GBrH_4SFykVyNyPaXpV53wQRHwP3HMnJ/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 63 - La trabajadora (Working girl) [8145943792362]",
+            "urlDrive": "https://drive.google.com/file/d/1fcG0iJMSL6M8rVsZ8Axmbo6JvGvsWfr6/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 64 - Vamos al bosque (Into the woods) [8145943857898]",
+            "urlDrive": "https://drive.google.com/file/d/19hnawSwneb7eGjdvkCcCIO_25RYSZPdD/view"
+          },
+          {
+            "tituloEpisodio": "DINOSAURIOS - Capítulo 65 - Georgie tiene morir (Georgie must die!) (Último capítulo) [8145944054506]",
+            "urlDrive": "https://drive.google.com/file/d/1Z33hyDPe9Z4xb7qqaWh2JEK4_cxdoyhL/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 253,
     "tmdbType": "tv",
     "tituloOriginal": "Star Trek",
@@ -158,248 +584,7 @@
     "temporadas": [
       {
         "numeroTemporada": 1,
-        "episodios": [
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 12 - La Conciencia Del Rey - Paramount Televis [5056857901802]",
-            "urlDrive": "https://drive.google.com/file/d/1cMnmYUGYuI4ZXar3VK4loMrowsfOvZDz/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 13 - El Galileo Siete - Paramount Television ( [5056858098410]",
-            "urlDrive": "https://drive.google.com/file/d/1xVf_KduRohgevcdKuIpiiif3Xdl4H613/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 14 - Consejo De Guerra - Paramount Television [5056858557162]",
-            "urlDrive": "https://drive.google.com/file/d/1z3pc2EauA8KGgFHJPf9f-1WUpZBuT9KC/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 16 - La Colección De Fieras  Parte 2 - Paramou [5056859278058]",
-            "urlDrive": "https://drive.google.com/file/d/124Tm_tYlNaVLMdSM3vPYUILpMaFi9q3E/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 17 - El Permiso - Paramount Television (1966) [5056859409130]",
-            "urlDrive": "https://drive.google.com/file/d/1APqHIhxK-1Bp6nKGt8bz4H2wsXyycZNM/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 18 - El Escudero De Gothos - Paramount Televis [5056859540202]",
-            "urlDrive": "https://drive.google.com/file/d/1PQ34pZmqeRCL2PJ4cAsBsKdXTeejBNpA/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 19 - Arena - Paramount Television (1966) [5056859867882]",
-            "urlDrive": "https://drive.google.com/file/d/1yeWvlLuuYITzpoVfnG7paCY_73Us26D4/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 20 - El Factor Alternativo - Paramount Televis [5056859933418]",
-            "urlDrive": "https://drive.google.com/file/d/14Iwlt0bxisM7N30XEko67w0LGV1959X5/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 21 - El Mañana Es Ayer - Paramount Television [5056860195562]",
-            "urlDrive": "https://drive.google.com/file/d/1jn0PBmzkrKzYlWG8sTqx6YTBy2rlJx1r/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 23 - El Apocalipsis - Paramount Television (19 [5056860457706]",
-            "urlDrive": "https://drive.google.com/file/d/1dxuc7Hu-P6t5JVgczTTWoZmjdkDxCgG2/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 24 - Semilla Espacial - Paramount Television ( [5056860654314]",
-            "urlDrive": "https://drive.google.com/file/d/1iouQhSK7gBgWR_H8gxbOS0DoEBovA9xa/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 25 - Esa Cara Del Paraíso - Paramount Televisi [5056860785386]",
-            "urlDrive": "https://drive.google.com/file/d/1m_qv5L1H0eYr0R-SYCdfEzCfdwIN9Jc7/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 26 - El Diablo En La Oscuridad - Paramount Tel [5056861047530]",
-            "urlDrive": "https://drive.google.com/file/d/1YrmmW13nw95KdL8Ix1fw2h16I5VzuS6X/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 27 - Tentativa De Salvamento - Paramount Telev [5056861113066]",
-            "urlDrive": "https://drive.google.com/file/d/1GQs2JmIuHHC5pMfb4jJ2Y36PEEYBDTMt/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T1 - 29 - Operación  Aniquilación - Paramount Telev [5056861309674]",
-            "urlDrive": "https://drive.google.com/file/d/1T44aPgbTrWP-6x2AmhbVnTH6SquxrgvB/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 01 - La época de Amok [5057210944234]",
-            "urlDrive": "https://drive.google.com/file/d/1kWeypDgPaZ3tWp6lMvbToc-T2wb7hsv-/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 02 - ¿Quién llora por Adonaís [5057211009770]",
-            "urlDrive": "https://drive.google.com/file/d/1vBVCGigtVb3Vhx1FluNt46ZCMCoWXa2C/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 03 - Hijo De Un Jefe - Paramount Television (1 [5056861702890]",
-            "urlDrive": "https://drive.google.com/file/d/1SUpwdCPF-P-qxY4uOXk3QPwyruu2Wy2z/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 04 - ¿Quién Llora Por Adonis - Paramount Telev [5056861899498]",
-            "urlDrive": "https://drive.google.com/file/d/1dGWJMXTB3E5ozGMYpntZCJk7-lv7IWnN/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 05 - La Época De Amok - Paramount Television ( [5056862292714]",
-            "urlDrive": "https://drive.google.com/file/d/108LFmq0Ege7yESYYvUAMNoD-8_3lyT-o/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 06 - La Máquina Del Juicio Final - Paramount T [5056862358250]",
-            "urlDrive": "https://drive.google.com/file/d/1kBDrmNki85T-GgR5LYMwzm_KKIn9sxHe/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 07 - El Lobo en el Redil - Paramount Televisio [5056862554858]",
-            "urlDrive": "https://drive.google.com/file/d/1wt9UHshWeyulQq8BfVJndyX6qwJAROy9/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 08 - El Suplantador - Paramount Television (19 [5056862948074]",
-            "urlDrive": "https://drive.google.com/file/d/1uoTfJTvVKBUkaacjigHcLpVh4qW349pB/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 09 - La Manzana - Paramount Television (1966) [5056863537898]",
-            "urlDrive": "https://drive.google.com/file/d/1-6LMNJqLa0TQI2AauX908xmBwpr_TSSR/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 10 - Espejo, Espejito - Paramount Television ( [5056863668970]",
-            "urlDrive": "https://drive.google.com/file/d/10BVePu5JNaQ8t7HD1SRRebc4e_sXnt2t/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 11 - Los Años De La Muerte - Paramount Televis [5056863800042]",
-            "urlDrive": "https://drive.google.com/file/d/1mtn0d_3zM1rJm27lyj0k74qqdDPb5xXT/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 12 - Yo, Mudd - Paramount Television (1966) [5056863865578]",
-            "urlDrive": "https://drive.google.com/file/d/1bAVkWJi4kIbuXYZPOtrk0Tvo9-BCSYkF/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 13 - Los Tribbles y Sus Tribulaciones - Paramo [5056864389866]",
-            "urlDrive": "https://drive.google.com/file/d/1Vc5IeH1tlT2ZRX75EnbPuXIDQPdGapjG/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 14 - Pan y Circo - Paramount Television (1967) [5056864455402]",
-            "urlDrive": "https://drive.google.com/file/d/1_rIdrrhYHFKD6xwfegRZsxH5jZHjoWgt/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 15 - Viaje A Babel - Paramount Television (196 [5056864652010]",
-            "urlDrive": "https://drive.google.com/file/d/1Gd2s6X_V_ekjYNJJNatSSVRnBQYJ5Ovq/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 16 - La Pequeña Guerra Privada - Paramount Tel [5056864783082]",
-            "urlDrive": "https://drive.google.com/file/d/1WJVRcW1HLkDHFN0L58As7nqXCN0tOODJ/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 17 - Los Jugadores De Triskelion - Paramount T [5056864979690]",
-            "urlDrive": "https://drive.google.com/file/d/1gHcELjk62Dr7Z-HNVD4PNb6Q0o5XqNGr/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 19 - El Síndrome De Inmunidad - Paramount Tele [5056897813226]",
-            "urlDrive": "https://drive.google.com/file/d/1BPhvB03N6ck3wn72pjVxo4Dik5kUCFK2/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 20 - Una Tajada - Paramount Television (1967) [5056897944298]",
-            "urlDrive": "https://drive.google.com/file/d/1Dj0OApUI_fcptRLLDjQ7LadlddDiiHxI/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 21 - Por medio de la fuerza [5057211271914]",
-            "urlDrive": "https://drive.google.com/file/d/17PhJUazBLKgNj8WJm3hdjEQCUjpmS5H9/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 22 - Retorno Al Mañana - Paramount Television [5056898009834]",
-            "urlDrive": "https://drive.google.com/file/d/17D-xRlLTHO4wA4Nj-UpoDjgapABWdCJH/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 23 - Por Medio De La Fuerza - Paramount Televi [5056898206442]",
-            "urlDrive": "https://drive.google.com/file/d/1NGuRCCH9bsbK9Bl-dGYYLmoP64PS0pVn/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 24 - El Mejor Ordenador - Paramount Television [5056898337514]",
-            "urlDrive": "https://drive.google.com/file/d/1QJNQG1dJZ6bjxNuwLgtlP3JYoDD9hXGy/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 25 - La Gloria de Omega - Paramount Television [5056898665194]",
-            "urlDrive": "https://drive.google.com/file/d/1dUpANcltv4PPjSzM6GhutPhC1WtOi6Zk/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T2 - 26 - Misión  La Tierra - Paramount Television [5056898861802]",
-            "urlDrive": "https://drive.google.com/file/d/1Ut7-2OVjgowWo_MaTl8kQglis_BrwE_5/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 01 - Espectros - Paramount Television (1968) [5056899320554]",
-            "urlDrive": "https://drive.google.com/file/d/1TTp5jAZPvWcmC2qwn2NTuJka3_UmQPqq/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 02 - Elena De Troya - Paramount Television (19 [5056899386090]",
-            "urlDrive": "https://drive.google.com/file/d/1a2W_Q7Nn_0LxqvHct5ArqsY_fp6zKD4-/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 03 - El Síndrome Del Paraíso - Paramount Telev [5056899451626]",
-            "urlDrive": "https://drive.google.com/file/d/14k4dGUDlMn6EfpIbFI7C5Yd15m7Ak64x/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 04 - El Incidente Del Enterprise - Paramount T [5056899582698]",
-            "urlDrive": "https://drive.google.com/file/d/1X4R7Evik77j0LRJoHscykCrrAXkQ7e-o/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 05 - Y Los Niños Dirigirán - Paramount Televis [5056899844842]",
-            "urlDrive": "https://drive.google.com/file/d/1iJmVkRXxcs0aPzUARGBPlY2BnnTTXnU8/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 07 - ¿No Hay, En Verdad, Belleza - Paramount T [5057108642538]",
-            "urlDrive": "https://drive.google.com/file/d/1VWVD1HSbX1vbGVz4hJRPDp-LHd6DL7uh/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 08 - La Empática - Paramount Television (1968) [5057109101290]",
-            "urlDrive": "https://drive.google.com/file/d/1f1f16oN-VBWZsl4QaqZaxf8xnUyai6YM/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 09 - La Telaraña Tholiana - Paramount Televisi [5057110084330]",
-            "urlDrive": "https://drive.google.com/file/d/19SY_E_NR5iCUOkTYZeCrq5D7CtXuPHDL/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 10 - Pues El Mundo Es Hueco Y Yo He Tocado El [5057110674154]",
-            "urlDrive": "https://drive.google.com/file/d/1qe-HPTJPgNRGq0zC7HLI_XsUFd-4kYU7/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 11 - El Día De La Paloma - Paramount Televisio [5057110739690]",
-            "urlDrive": "https://drive.google.com/file/d/1vOS4oYWiIzsPkbqgi1uP3lJB-2rJrt6N/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 12 - Los Hijastros De Platón - Paramount Telev [5057112115946]",
-            "urlDrive": "https://drive.google.com/file/d/1W89Hyr7l6bDLh3X9vwt2FMpNHPIoXYB3/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 14 - Aquello Que Sobrevive - Paramount Televis [5057112181482]",
-            "urlDrive": "https://drive.google.com/file/d/1J6izB1Cd29lmmSgXu4WUIzUdYNW4rRpY/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 15 - Que Ése Sea Su Último Campo De Batalla - [5057112312554]",
-            "urlDrive": "https://drive.google.com/file/d/1IDjdnDE1c60C1KRUNFMi-Xvqo-5HxQyt/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 17 - La Marca De Gideón - Paramount Television [5057112378090]",
-            "urlDrive": "https://drive.google.com/file/d/1od2OD32nMtqVx-ZIHwGCPJ1sD2QBMxUz/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 18 - Las Luces De Zetar - Paramount Television [5057112574698]",
-            "urlDrive": "https://drive.google.com/file/d/1zxx6ee_RfPfTQkBbPGRiTJN6WfzF2mEh/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 19 - Los Guardianes De La Nube - Paramount Tel [5057112640234]",
-            "urlDrive": "https://drive.google.com/file/d/1h3jrXcW4yhfvOc89wKWnXGvSn5wkHToT/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 20 - El Camino A Edén - Paramount Television ( [5057112836842]",
-            "urlDrive": "https://drive.google.com/file/d/1QOEDWiz_4dpaZvLR_IouXXq0efLDBPmG/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 21 - Réquiem Por Matusalén - Paramount Televis [5057114606314]",
-            "urlDrive": "https://drive.google.com/file/d/1USOi38sJ_fyBrIkecLgRChKftHQ8Bq8z/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 22 - El Telón Salvaje - Paramount Television ( [5057112902378]",
-            "urlDrive": "https://drive.google.com/file/d/1Fw38GLoQguAi63ccXnip_wRDSQzQ6Qdu/view"
-          },
-          {
-            "tituloEpisodio": "Star Trek (Serie Original) - T3 - 23 - Todos Nuestros Ayeres - Paramount Televis [5057113098986]",
-            "urlDrive": "https://drive.google.com/file/d/1jK2bu5wNyY9rOBFnpuW-rQcBIC0MX1kI/view"
-          }
-        ]
+        "episodios": []
       }
     ]
   },
