@@ -1,5 +1,389 @@
 [
   {
+    "tmdbId": 4681,
+    "tmdbType": "tv",
+    "tituloOriginal": "Zorro",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/dtTaLgRQPEQW1TQjLhPKI7mc6WC.jpg",
+    "year": "1957",
+    "fechaEstreno": "1957-10-10",
+    "rating": "7.6",
+    "votos": 218,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Western",
+      "Action & Adventure"
+    ],
+    "generosTexto": "Western, Action & Adventure",
+    "clasificacion": "TV-G",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Guy Williams",
+        "personaje": "Don Diego de la Vega / Zorro",
+        "foto": "https://image.tmdb.org/t/p/w185/wAUDr5CsLZKyYluLLissLedGkFt.jpg"
+      },
+      {
+        "nombre": "Gene Sheldon",
+        "personaje": "Bernardo",
+        "foto": "https://image.tmdb.org/t/p/w185/bA8XYjRQIjedCATNTpRv1VLCm09.jpg"
+      },
+      {
+        "nombre": "Henry Calvin",
+        "personaje": "Demetrio López García",
+        "foto": "https://image.tmdb.org/t/p/w185/17yLUc2GxVhVQKa2LB7iyyVadlu.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Walt Disney Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "secret identity, vigilante, superhero, masked man, wild west, swashbuckler, masked vigilante, old california, the old west",
+    "similares": [
+      {
+        "titulo": "Jim West",
+        "poster": "https://image.tmdb.org/t/p/w342/4LSZNCSxDodwCP8EsKRTgMDUKY4.jpg",
+        "year": "1965",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Randall, el justiciero",
+        "poster": "https://image.tmdb.org/t/p/w342/mYgwFT8JXW6J5YTs8DuzDDOKXlS.jpg",
+        "year": "1958",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "The Lone Ranger",
+        "poster": "https://image.tmdb.org/t/p/w342/sAQSKgrYC0l5kQbLk8QXINAK6F4.jpg",
+        "year": "1949",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "El hombre del rifle",
+        "poster": "https://image.tmdb.org/t/p/w342/tYf5Sc83chWG2nBlo5xKdpBBwlI.jpg",
+        "year": "1958",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "El coche fantástico",
+        "poster": "https://image.tmdb.org/t/p/w342/sDt5jfNCfdeIbVyEoKXnosDwy03.jpg",
+        "year": "1982",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "El gran Chaparral",
+        "poster": "https://image.tmdb.org/t/p/w342/2aiki9WLZWbv6PIl5CESOYdmOGj.jpg",
+        "year": "1967",
+        "rating": "6.7"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 2,
+    "numeroEpisodios": 78,
+    "temporadasTmdb": [
+      {
+        "air_date": "1960-10-30",
+        "episode_count": 4,
+        "id": 14269,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/3BGc0ykjDjV5yjQETPvl2TFJjB4.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1957-10-10",
+        "episode_count": 39,
+        "id": 14267,
+        "name": "Temporada 1",
+        "overview": "Durante la mayor parte de su breve recorrido, los episodios de Zorro fueron parte de arcos narrativos continuos , cada uno de unos trece episodios de duración, lo que lo hizo casi como una serie . El primero de ellos narra la llegada de Zorro / Diego a California en 1820 y su batalla de ingenio con el codicioso y cruel comandante local, el capitán Enrique Sánchez Monastario. Después de la derrota final de Monastario, en la segunda historia, Zorro debe descubrir y contrarrestar las maquinaciones del malvado Magistrado Carlos Galindo, quien es parte de un complot para gobernar California. El tercer arco narrativo se refiere al líder de esa conspiración, la figura sombría de \"El Águila\", revelada como el vanidoso e inseguro José Sebastián de Varga. Se revela que el plan para hacerse con el control de California es para que él pueda entregarlo a otro país, que se supone que es Rusia, para obtener una gran ganancia. La primera temporada concluye con la muerte de Varga.",
+        "poster_path": "/yqhnAfh5yBIsb8b2MhQ4dyXp5AS.jpg",
+        "season_number": 1,
+        "vote_average": 9.5
+      },
+      {
+        "air_date": "1958-10-09",
+        "episode_count": 39,
+        "id": 14268,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/iTRyfujQXtUUZXtRBaSQbTw0Z6p.jpg",
+        "season_number": 2,
+        "vote_average": 9
+      }
+    ],
+    "tituloSerie": "El Zorro",
+    "descripcion": "California, 1820. Diego de la Vega, el único hijo de Don Alejandro, regresa a casa para luchar contra la injusticia y la corrupción reinantes. Durante el día es un dandy presumido y por las noches un espadachín enmascarado llamado El Zorro.",
+    "imagen": "https://image.tmdb.org/t/p/w780/1i4HdLMCRfEXLeA6JGTsQj6WU3k.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "1X01 PRESENTADO AL ZORRO [10171515603690]",
+            "urlDrive": "https://drive.google.com/file/d/1IXAKNvMtz4CDTnzueEtFHGwdb9nPvOft/view"
+          },
+          {
+            "tituloEpisodio": "1X02 PASADIZO SECRETO DEL ZORRO [10171515734762]",
+            "urlDrive": "https://drive.google.com/file/d/1L3lZ7CSd-JxV2J3GpDF3L5pX1IahtCYt/view"
+          },
+          {
+            "tituloEpisodio": "1X03 EL ZORRO CABALGA A LA MISIÓN [10171515865834]",
+            "urlDrive": "https://drive.google.com/file/d/1q1ZD3o-Ggzragg5QXveRcy_frhMuYTfX/view"
+          },
+          {
+            "tituloEpisodio": "1X04 EL FANTASMA DE LA MISIÓN [10171516127978]",
+            "urlDrive": "https://drive.google.com/file/d/1uZS2UH6q-qgYb7Fz8wlv6NrRINZkHlLc/view"
+          },
+          {
+            "tituloEpisodio": "1X05 EL ROMANCE DEL ZORRO [10171516324586]",
+            "urlDrive": "https://drive.google.com/file/d/1Pl8S28uEpDfeRT-vOJ-F7zcyLadgBgZJ/view"
+          },
+          {
+            "tituloEpisodio": "1X06 EL ZORRO SALVA A UN AMIGO [10171516521194]",
+            "urlDrive": "https://drive.google.com/file/d/1HFav4wlV9BzRD3k9LoUNghRxwW6PnK-v/view"
+          },
+          {
+            "tituloEpisodio": "1X07 MONASTERIO TIENDE UNA TRAMPA [10171516717802]",
+            "urlDrive": "https://drive.google.com/file/d/1ygeMEWuLFbZWd6pNG_n-sA4wGfcJhZ1J/view"
+          },
+          {
+            "tituloEpisodio": "1X08 EL ZORRO CABALGA HACIA EL TERROR [10171516914410]",
+            "urlDrive": "https://drive.google.com/file/d/1QyzWgjm2maWXft8uv7_CL8lERLoaJR5H/view"
+          },
+          {
+            "tituloEpisodio": "1X09 UN JUICIO JUSTO [10171517111018]",
+            "urlDrive": "https://drive.google.com/file/d/12NAUFLzzo0xpugINNx3Q1I3bkwQQiXj3/view"
+          },
+          {
+            "tituloEpisodio": "1X10 LA MISIÓN SECRETA DE GARCÍA [10171517176554]",
+            "urlDrive": "https://drive.google.com/file/d/13b-vRRePt6zn26i9mnG7QaDDlBMHvz-U/view"
+          },
+          {
+            "tituloEpisodio": "1X11 DOBLE PROBLEMA PARA EL ZORRO [10171517307626]",
+            "urlDrive": "https://drive.google.com/file/d/1-H62rXfJRG4hYeU7Ka22JysBR7a5-S3d/view"
+          },
+          {
+            "tituloEpisodio": "1X12 EL ESPADACHÍN CON MÁS SUERTE [10171517504234]",
+            "urlDrive": "https://drive.google.com/file/d/1g-FezKZpdyCN8QIIv5tgDSu6KxBmFRyd/view"
+          },
+          {
+            "tituloEpisodio": "1X13 EL FINAL DE MONASTERIO [10171517766378]",
+            "urlDrive": "https://drive.google.com/file/d/1axmD3LGUuoU7QMWcoocQxpeEy2bhYke8/view"
+          },
+          {
+            "tituloEpisodio": "1X14 SOMBRA DE DUDA [10171518225130]",
+            "urlDrive": "https://drive.google.com/file/d/1SS4RBPedpq3FfV0n9kGcJr2FhWhS77Jj/view"
+          },
+          {
+            "tituloEpisodio": "1X15 GARCÍA ACUSADO [10171518618346]",
+            "urlDrive": "https://drive.google.com/file/d/1fPxZ5XEaAgsC159oDXIMWD3_lZVGFH7E/view"
+          },
+          {
+            "tituloEpisodio": "1X16 ESCLAVOS DEL AGUILA [10171518880490]",
+            "urlDrive": "https://drive.google.com/file/d/1nvaR4LNanR8WGB6I9fP1iU6eSrooA92M/view"
+          },
+          {
+            "tituloEpisodio": "1X17 DULCE ROSTRO DEL PELIGRO [10171519011562]",
+            "urlDrive": "https://drive.google.com/file/d/1Qxm_ramrHjj9XZbg3eOdPDpRbh8-iaNH/view"
+          },
+          {
+            "tituloEpisodio": "1X18 EL ZORRO SE ENFRENTA A SU PADRE [10171519208170]",
+            "urlDrive": "https://drive.google.com/file/d/1FfJszkxDFyeVyiz8RuVmkjqXjKSo9Neu/view"
+          },
+          {
+            "tituloEpisodio": "1X19 LA MUERTE REPARTE SUERTE [10171519470314]",
+            "urlDrive": "https://drive.google.com/file/d/1nnMl9UQypPQWTvsI7ntUZL4AQH_G0p99/view"
+          },
+          {
+            "tituloEpisodio": "1X20 AGENTE DEL ÁGUILA [10171519797994]",
+            "urlDrive": "https://drive.google.com/file/d/16s1A3btLt4_qlO8KQYgl0Y14HDXqo9I7/view"
+          },
+          {
+            "tituloEpisodio": "1X21 EL ZORRO ACCIONA UNA TRAMPA [10171519929066]",
+            "urlDrive": "https://drive.google.com/file/d/1u3DWZsUZ1g7H3zU2oniYmg2CgvdlCO1R/view"
+          },
+          {
+            "tituloEpisodio": "1X22 EL DESENMASCARAMIENTO DEL ZORRO [10171520191210]",
+            "urlDrive": "https://drive.google.com/file/d/1KyllX5ZL3c_dFQWOztnzoAvjY2XR6AGV/view"
+          },
+          {
+            "tituloEpisodio": "1X23 EL SECRETO DE LA SIERRA [10171520453354]",
+            "urlDrive": "https://drive.google.com/file/d/1O4onLiSB30w6ZedH2cK_bzrxW3J2dzph/view"
+          },
+          {
+            "tituloEpisodio": "1X24 EL NUEVO COMANDANTE [10171520781034]",
+            "urlDrive": "https://drive.google.com/file/d/138B9vTmVR1LIm98GGulu9irvkXKSWpfj/view"
+          },
+          {
+            "tituloEpisodio": "1X25 EL ZORRO Y EL COYOTE [10171520977642]",
+            "urlDrive": "https://drive.google.com/file/d/1IxUKRRWqeJaiW3U-Pd4vxA1s5ymzO8-6/view"
+          },
+          {
+            "tituloEpisodio": "1X26 ADIÓS SEÑOR MAGISTRADO [10171521108714]",
+            "urlDrive": "https://drive.google.com/file/d/1QbD6eXAeytWA9OZ9P6U_5GuyrdmYbCr_/view"
+          },
+          {
+            "tituloEpisodio": "1X27 LA PROLE DE EL ÁGUILA [10171521305322]",
+            "urlDrive": "https://drive.google.com/file/d/1dID82QKeRscFyVJxCZ9tNW1H7Pa-HlSu/view"
+          },
+          {
+            "tituloEpisodio": "1X28 ZORRO POR PODERES [10171521829610]",
+            "urlDrive": "https://drive.google.com/file/d/1udFJr48l4S4tgU7k9gAEMqpl6OVofxwP/view"
+          },
+          {
+            "tituloEpisodio": "1X29 QUINTANA ELIGE [10171521895146]",
+            "urlDrive": "https://drive.google.com/file/d/1OLwEI3OJb-dSaudO-7oudke1ZYFBS8Cy/view"
+          },
+          {
+            "tituloEpisodio": "1X30 EL ZORRO ENCIENDE LA MECHA [10171522157290]",
+            "urlDrive": "https://drive.google.com/file/d/1nhWP1NSmfvfjLLYjnrFWXWdezhyGoOSG/view"
+          },
+          {
+            "tituloEpisodio": "1X31 EL HOMBRE DEL LÁTIGO [10171522288362]",
+            "urlDrive": "https://drive.google.com/file/d/1osysr2V9NfLGzRWGswzESM8QlAHv8_9a/view"
+          },
+          {
+            "tituloEpisodio": "1X32 LA CRUZ DE LOS ANDES [10171522550506]",
+            "urlDrive": "https://drive.google.com/file/d/1bBMxEIMI2KeMT4m92h6UMS2g-LSnWwRy/view"
+          },
+          {
+            "tituloEpisodio": "1X33 BOLEADORAS MORTALES [10171522812650]",
+            "urlDrive": "https://drive.google.com/file/d/1-_MxogeqQH-xn0LVYqC3C1T21X6Cku-D/view"
+          },
+          {
+            "tituloEpisodio": "1X34 EL POZO DE LA MUERTE [10171522943722]",
+            "urlDrive": "https://drive.google.com/file/d/1MktUPkJ0k4UtGvSc3fvvXA4Jg7aJMu4W/view"
+          },
+          {
+            "tituloEpisodio": "1X35 LA SOGA AL CUELLO [10171523009258]",
+            "urlDrive": "https://drive.google.com/file/d/1rjnw2L-585hZdQ7S2vJRNuHWsOlKeEmD/view"
+          },
+          {
+            "tituloEpisodio": "1X36 EL SARGENTO SE ARREPIENTE [10171523271402]",
+            "urlDrive": "https://drive.google.com/file/d/11XHR4SpTmFLbiaqUc5wFQZfVkjoFiWTz/view"
+          },
+          {
+            "tituloEpisodio": "1X37 EL ÁGUILA ABANDONA EL NIDO [10171523599082]",
+            "urlDrive": "https://drive.google.com/file/d/1iTSeDSTG8xdenUGkbN437l9jc041qhBc/view"
+          },
+          {
+            "tituloEpisodio": "1X38 BERNARDO SE ENFRENTA A LA MUERTE [10171523795690]",
+            "urlDrive": "https://drive.google.com/file/d/11FZHOSGEGS76Uu3GPp-irGj07hrIaUY1/view"
+          },
+          {
+            "tituloEpisodio": "1X39 EL VUELO DEL AGUILA [10171523861226]",
+            "urlDrive": "https://drive.google.com/file/d/1faikYAkWoZwg5YkCVER8IyHW_eGi_4PX/view"
+          },
+          {
+            "tituloEpisodio": "2X01 BIENVENIDO A MONTERREY [10175095966442]",
+            "urlDrive": "https://drive.google.com/file/d/18q4ZWZzHZ8ial4er54WILbw707M5aSTv/view"
+          },
+          {
+            "tituloEpisodio": "2X03 EL CABALLO DE OTRO COLOR [10175096097514]",
+            "urlDrive": "https://drive.google.com/file/d/1qVef9akn6YI8pZI4-MQ-g3GO0WHKmNpj/view"
+          },
+          {
+            "tituloEpisodio": "2X04 LA SEÑORITA HACE UNA ELECCIÓN [10175096163050]",
+            "urlDrive": "https://drive.google.com/file/d/1W7tDKTQzlit4vYn2UZ2crsYuCmPXiJcN/view"
+          },
+          {
+            "tituloEpisodio": "2X05 REUNIÓN AL ATARDECER [10175096228586]",
+            "urlDrive": "https://drive.google.com/file/d/1TuRFHfpF0YIgxPvywyOmK3K88c7hd7kt/view"
+          },
+          {
+            "tituloEpisodio": "2X06 LA NUEVA ORDEN [10175096294122]",
+            "urlDrive": "https://drive.google.com/file/d/1bBuxAAE6EZIQaT-OYlvKtzI51bz1FFfP/view"
+          },
+          {
+            "tituloEpisodio": "2X07 OJO POR OJO [10175096359658]",
+            "urlDrive": "https://drive.google.com/file/d/1ihZXg6DamQbR-SrlHaeyNeIBtN5wr4Xf/view"
+          },
+          {
+            "tituloEpisodio": "2X08 EL ZORRO Y LA BANDERA DE TREGUA [10175096425194]",
+            "urlDrive": "https://drive.google.com/file/d/1cLrtAk7Zt1csA1id6X0RyY6UUJ49DFpU/view"
+          },
+          {
+            "tituloEpisodio": "2X09 EMBOSCADA [10175096556266]",
+            "urlDrive": "https://drive.google.com/file/d/1VPq6EsIHAtNlJVbFfdYsl7Cho3iGARMh/view"
+          },
+          {
+            "tituloEpisodio": "2X10 EL BROMISTA [10175096621802]",
+            "urlDrive": "https://drive.google.com/file/d/1E4Vb4YN7dVyMhSL0nb-hWRYsKQad-jL0/view"
+          },
+          {
+            "tituloEpisodio": "2X11 LA FLECHA DE FUEGO [10175096752874]",
+            "urlDrive": "https://drive.google.com/file/d/1jaanm2e6957STwo7fAAxmvFy00g96bI-/view"
+          },
+          {
+            "tituloEpisodio": "2X12 EL ZORRO SE BATE A DUELO [10175096883946]",
+            "urlDrive": "https://drive.google.com/file/d/1_Zzhm5nW0zc8qzVizcgntemNCNl8MgU7/view"
+          },
+          {
+            "tituloEpisodio": "2X13 AMNISTÍA PARA EL ZORRO [10175096949482]",
+            "urlDrive": "https://drive.google.com/file/d/1iXb4qjj5fLbXady7VfEHSJqyp5bqiGGz/view"
+          },
+          {
+            "tituloEpisodio": "2X14 FUGADOS [10175097015018]",
+            "urlDrive": "https://drive.google.com/file/d/1wQgNWQ15PfZw1YTWlrnrpeP6WORlLWED/view"
+          },
+          {
+            "tituloEpisodio": "2X15 LA CAJA DE HIERRO [10175097080554]",
+            "urlDrive": "https://drive.google.com/file/d/18jBNvtd576orIJF1oNb0XiXmPtwxyAd3/view"
+          },
+          {
+            "tituloEpisodio": "2X16 EL CABALLERO DIVERTIDO [10175097342698]",
+            "urlDrive": "https://drive.google.com/file/d/1ycef4yifdR-Yl67mzZzi1N4XTklPAWJM/view"
+          },
+          {
+            "tituloEpisodio": "2X17 TORNADO DESAPARECIDO [10175097539306]",
+            "urlDrive": "https://drive.google.com/file/d/17HQ6cVGkCXtnGWuxy2sJRYUdAGBtYZzI/view"
+          },
+          {
+            "tituloEpisodio": "2X18 EL ZORRO VERSUS CUPIDO [10175097670378]",
+            "urlDrive": "https://drive.google.com/file/d/1RFrFr3Ss7KKr1oWvU1R3BC4pHeEijEeM/view"
+          },
+          {
+            "tituloEpisodio": "2X19 LA LEYENDA DEL ZORRO [10175097735914]",
+            "urlDrive": "https://drive.google.com/file/d/1NEIgYpyryH6GNPmLfeU3ecNtZfIofs0g/view"
+          },
+          {
+            "tituloEpisodio": "2X20 CHISPA DE VENGANZA [10175097801450]",
+            "urlDrive": "https://drive.google.com/file/d/12pPhyiw8xhCslYgSkMwEgmszTFLBg6LZ/view"
+          },
+          {
+            "tituloEpisodio": "2X21 EL PADRE DESAPARECIDO [10175097866986]",
+            "urlDrive": "https://drive.google.com/file/d/1sbZiUk9fWUD2Zzxhwh_1W0sRwrNdpFpF/view"
+          },
+          {
+            "tituloEpisodio": "2X22 POR FAVOR, CRÉANME [10175097932522]",
+            "urlDrive": "https://drive.google.com/file/d/1M_0cOBtR8VkxHt_PE7BoD41A5e1-FiCi/view"
+          },
+          {
+            "tituloEpisodio": "2X23 EL BROCHE [10175098129130]",
+            "urlDrive": "https://drive.google.com/file/d/1X36rQ8fuzEuNtsr2bGPdkcA34ekKOpKd/view"
+          },
+          {
+            "tituloEpisodio": "2X24 EL ZORRO Y EL HOMBRE DE LA MONTAÑA [10175098194666]",
+            "urlDrive": "https://drive.google.com/file/d/1zAulouBuUTXCa_2qXfAYy4VjOkX0Iu7V/view"
+          },
+          {
+            "tituloEpisodio": "2X25 EL SABUESO DE LAS SIERRAS [10175098325738]",
+            "urlDrive": "https://drive.google.com/file/d/1Mg3NWgB9EFkBgQk4KMhRWqeRAptFie5I/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 3763,
     "tmdbType": "tv",
     "tituloOriginal": "Dinosaurs",
