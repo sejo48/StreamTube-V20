@@ -1,5 +1,255 @@
 [
   {
+    "tmdbId": 4579,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Champions",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/3uU2xfwDQzxmpOB0XIr3VuP0ZFF.jpg",
+    "year": "1968",
+    "fechaEstreno": "1968-09-25",
+    "rating": "6.5",
+    "votos": 24,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Action & Adventure"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Action & Adventure",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "",
+    "guionistas": "Dennis Spooner",
+    "reparto": [
+      {
+        "nombre": "Alexandra Bastedo",
+        "personaje": "Sharron Macready",
+        "foto": "https://image.tmdb.org/t/p/w185/hKflpBezpRpP0pnBrxqXi7QIFSM.jpg"
+      },
+      {
+        "nombre": "William Gaunt",
+        "personaje": "Richard Barrett",
+        "foto": "https://image.tmdb.org/t/p/w185/fJuZODaWxH4505s7RZOnGEsnuC.jpg"
+      },
+      {
+        "nombre": "Stuart Damon",
+        "personaje": "Craig Stirling",
+        "foto": "https://image.tmdb.org/t/p/w185/cckZQcmMA8f7UrUXmQdsuwEZZsz.jpg"
+      },
+      {
+        "nombre": "Anthony Nicholls",
+        "personaje": "Cmdr. W.L. Tremayne",
+        "foto": "https://image.tmdb.org/t/p/w185/kHTuYeYns9XbjwHtZTBV71Lagf6.jpg"
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "agent",
+    "similares": [
+      {
+        "titulo": "The Boys",
+        "poster": "https://image.tmdb.org/t/p/w342/5kgY14oisiHcJ4zq0Xgq1e97PHm.jpg",
+        "year": "2019",
+        "rating": "8.4"
+      },
+      {
+        "titulo": "La mujer biónica",
+        "poster": "https://image.tmdb.org/t/p/w342/idou4N1oTTNkH5Pn3a9JJcZAQiE.jpg",
+        "year": "1976",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Marina",
+        "poster": "https://image.tmdb.org/t/p/w342/9JYXvIo0Cr1HAATz8hl8kyNQ76O.jpg",
+        "year": "1964",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "El hombre de los seis millones de dólares",
+        "poster": "https://image.tmdb.org/t/p/w342/185KSzKHk9FyRYDhjHEwX0qfROX.jpg",
+        "year": "1974",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "El agente de CIPOL",
+        "poster": "https://image.tmdb.org/t/p/w342/a0nMOwNZXyJrMTPoaCzJJZeT0Yl.jpg",
+        "year": "1964",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Covert Affairs",
+        "poster": "https://image.tmdb.org/t/p/w342/pRWUGSGdByQHW93DH2braqkRjZa.jpg",
+        "year": "2010",
+        "rating": "6.9"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Monty Berman",
+      "Dennis Spooner"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 30,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 7,
+        "id": 13872,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/A7jl9BaOpk8T3sLeYPISBdRI66S.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1968-09-25",
+        "episode_count": 30,
+        "id": 13871,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/e05NuBsZtQgV8m1BS1kx92gnA1W.jpg",
+        "season_number": 1,
+        "vote_average": 6.5
+      }
+    ],
+    "tituloSerie": "Los invencibles de Némesis",
+    "descripcion": "Serie de TV (1968-1969). Craig Stirling (Damon), Sharron Macready (Bastedo) y Richard Barrett (Gaunt) son agentes secretos de Némesis, una organización de inteligencia internacional con sede en Ginebra. Su primera misión como equipo era investigar algunos experimentos potencialmente letales en la China comunista, pero cuando estaban escapando, su avión fue dañado. Se estrelló en una remota zona del Himalaya, donde fueron rescatados por los miembros de una civilización desconocida. Ellos salieron del encuentro con poderes sobrehumanos (telepatía, fuerza superior, memoria extraordinaria, etc.) y regresaron como \"Campeones de la ley, el orden y la justicia\".",
+    "imagen": "https://image.tmdb.org/t/p/w780/qv9HNUyVK2u3U7PxdIzlKvwC63a.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x01 El comienzo [6889010891498]",
+            "urlDrive": "https://drive.google.com/file/d/1jpDmAb9f-VAwUZIPyCCLyJ2DyLVaaiiE/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x02 El hombre invisible [6889011284714]",
+            "urlDrive": "https://drive.google.com/file/d/1x1GKyQwuRzR0J0peJEPXpwj38sCISffo/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x03 Apartado de correo 666 [6889011350250]",
+            "urlDrive": "https://drive.google.com/file/d/1_t98_Qcpj6Xf58fbCTdztOmtCymPSg19/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x04 El experimento [6889011612394]",
+            "urlDrive": "https://drive.google.com/file/d/1ucVXGeSu251_5ihLOwqrNc559HXYhjrI/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x05 El gran suceso [6889011743466]",
+            "urlDrive": "https://drive.google.com/file/d/1Z7TCRauiczEyDMrqJsQdt5xuEK2oFOXN/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x06 Operacion bajo cero [6889012005610]",
+            "urlDrive": "https://drive.google.com/file/d/1PliboE9uMeYZyI2hu_fxYv_BOrYJavLK/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x07 Los sobrevivientes [6889012267754]",
+            "urlDrive": "https://drive.google.com/file/d/1LjUxvXXrqx4RAAv9mu06-iJPoZ3YwzY-/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x08 Preparando la trampa [6889012595434]",
+            "urlDrive": "https://drive.google.com/file/d/1Jt8uJ9VrtwUTRPWTfaGCPST7xdbZNelO/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x09 Mano de hierro [6889012792042]",
+            "urlDrive": "https://drive.google.com/file/d/16-gWk0rhcun-PMkmNj8XLqI1pVHH0SQf/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x10 El avion fantasma [6889013119722]",
+            "urlDrive": "https://drive.google.com/file/d/185O5BC9YGU6qgE86DOdkg_MpnEKDiZSM/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x11 La isla secreta [6889013381866]",
+            "urlDrive": "https://drive.google.com/file/d/1PEvTyrBIWudEXOTD8mJ2q9D0ENTVZ5JV/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x12 Los fanaticos [6889013775082]",
+            "urlDrive": "https://drive.google.com/file/d/1QU58411zrHOvYiIlZhtxnMKkAZBc5Hra/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x13 12 horas de prueba [6889013971690]",
+            "urlDrive": "https://drive.google.com/file/d/1dRJKrLXm56X4j9Wp0VSzsbL5vdMnSo1-/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x14 La busqueda [6889014102762]",
+            "urlDrive": "https://drive.google.com/file/d/1xwCkw5ZgFjcGBMNjlB0ZsB3WbX-gk0VF/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x15 Traiccion que acecha [6889014233834]",
+            "urlDrive": "https://drive.google.com/file/d/1xyrC_vW2Ls6kOSaPalJ6aEUfZXQ8e2h8/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x16 La sombra de la pantera [6889014495978]",
+            "urlDrive": "https://drive.google.com/file/d/1gZ2WBv8kL4Zq-cDKFZEsKBbaoonrpr50/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x17 Ansias de morir [6889014758122]",
+            "urlDrive": "https://drive.google.com/file/d/1b28LS9077ohG-FAlx3CHld2Ai7C0px9S/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x18 La pregunta [6889014954730]",
+            "urlDrive": "https://drive.google.com/file/d/1qRunzxLhE8D9kxdISGF1ehiLAoCRvE3q/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x19 La mision [6889015085802]",
+            "urlDrive": "https://drive.google.com/file/d/1wBLIQ5T2j0FDsetdHC7enSi_2vcBBxkU/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x20 El enemigo silencioso [6889015413482]",
+            "urlDrive": "https://drive.google.com/file/d/1A_m5frotooEWMUfFKJyGT-0rrOJq094Y/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x21 Ladrones de cuerpos [6889016724202]",
+            "urlDrive": "https://drive.google.com/file/d/1nlPEHQRt7Dq8wkf727qvJbzL2QKVXXzZ/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x22 Secuestro en el caribe [6889016920810]",
+            "urlDrive": "https://drive.google.com/file/d/1z4qqp5X-BcIS3gDHiy-J1-jWGUqybjXh/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x23 Complot siniestro [6889017182954]",
+            "urlDrive": "https://drive.google.com/file/d/1ol_U_JtAzXktQgcDrOr4CG26A1RNlUQH/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x24 Proyecto cero [6889017314026]",
+            "urlDrive": "https://drive.google.com/file/d/1gDWX4yE_-dyy1Uh6-THsAIcwDEwO-9CY/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x25 Jornada peligrosa [6889017576170]",
+            "urlDrive": "https://drive.google.com/file/d/10NtP1Fy0keGGndcmF2X6HtxfUk52UkkP/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x26 El error fatal [6889018559210]",
+            "urlDrive": "https://drive.google.com/file/d/1gKCfeBwzL0F_3ikNTA_krOZW0O5oKvqJ/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x27 Rompecabezas [6889018821354]",
+            "urlDrive": "https://drive.google.com/file/d/1cbTT_wZlFQSDkAVngw14HA-Mj2EKMjsj/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x28 La ultima batalla [6889019083498]",
+            "urlDrive": "https://drive.google.com/file/d/1HS3XWGL5V6tvMj_c1UpNuYvn4MruIKZU/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x29 Contrabando de armas [6889019411178]",
+            "urlDrive": "https://drive.google.com/file/d/1hvCmlrM0kQ53yvTEaDPCbLi5EhCEg6pW/view"
+          },
+          {
+            "tituloEpisodio": "Los Invencibles de Némesis 01x30 Impulso de matar [6889019607786]",
+            "urlDrive": "https://drive.google.com/file/d/184JBzopeltron7iWmJfUI5uM8fA7zrF0/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 10794,
     "tmdbType": "tv",
     "tituloOriginal": "The Adventures of Rin Tin Tin",
