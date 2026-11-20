@@ -1,5 +1,469 @@
 [
   {
+    "tmdbId": 10794,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Adventures of Rin Tin Tin",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/99iqOtitg8njtuxja2jnRyOE0ft.jpg",
+    "year": "1954",
+    "fechaEstreno": "1954-10-15",
+    "rating": "7.0",
+    "votos": 22,
+    "runtime": "30min",
+    "runtimeMin": 30,
+    "genres": [
+      "Western",
+      "Familia"
+    ],
+    "generosTexto": "Western, Familia",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "James Brown",
+        "personaje": "Lt. Rip Masters",
+        "foto": "https://image.tmdb.org/t/p/w185/u2p8vDXhgYEZu36HOvXqHh3VyMi.jpg"
+      },
+      {
+        "nombre": "Lee Aaker",
+        "personaje": "Cpl. Rusty",
+        "foto": "https://image.tmdb.org/t/p/w185/rMJzyycOPoKXrfpEHMVv3vZdady.jpg"
+      },
+      {
+        "nombre": "Joe Sawyer",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/ct5dfzO05LnrJ4EBANBK2y8FPGN.jpg"
+      },
+      {
+        "nombre": "Rand Brooks",
+        "personaje": "Cpl. Boone",
+        "foto": "https://image.tmdb.org/t/p/w185/mwZQYR7h2vydfAdLJgUYnh0mv5q.jpg"
+      },
+      {
+        "nombre": "Rin-Tin-Tin II",
+        "personaje": "Rinty",
+        "foto": ""
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "bounty hunter, arizona, apache nation, army, native american, dog, animals, german shepherd, wild west, boy and dog, american indian, dog hero",
+    "similares": [
+      {
+        "titulo": "Cheyenne",
+        "poster": "https://image.tmdb.org/t/p/w342/osdglTGStAMbThkUsVJ0DRzvwrq.jpg",
+        "year": "1955",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Cuero crudo",
+        "poster": "https://image.tmdb.org/t/p/w342/lz5B4BoaOxNJuvjGe9LcS3GpBEK.jpg",
+        "year": "1959",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "La casa de la pradera",
+        "poster": "https://image.tmdb.org/t/p/w342/dRQ1B9nSsbtcLiMFSJDmX5MDsV3.jpg",
+        "year": "1974",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Have Gun, Will Travel",
+        "poster": "https://image.tmdb.org/t/p/w342/6aJRq7FGs2axLOdZNJ2G4IOQtMx.jpg",
+        "year": "1957",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "The Big Valley",
+        "poster": "https://image.tmdb.org/t/p/w342/wjDnSS8JTjSg9g61bkEJKkPug1F.jpg",
+        "year": "1965",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "El gran Chaparral",
+        "poster": "https://image.tmdb.org/t/p/w342/2aiki9WLZWbv6PIl5CESOYdmOGj.jpg",
+        "year": "1967",
+        "rating": "6.7"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 5,
+    "numeroEpisodios": 164,
+    "temporadasTmdb": [
+      {
+        "air_date": "1954-10-15",
+        "episode_count": 34,
+        "id": 21130,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/qhRM67Oa0RnKF5mAYXM0SWPS2Py.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1955-09-09",
+        "episode_count": 38,
+        "id": 21126,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/2jpiBlrDab0QwlGn2GQU7I2eAsC.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1956-09-07",
+        "episode_count": 40,
+        "id": 21128,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/khMtkdXc4WplELbFwicDS1pc09L.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1957-09-20",
+        "episode_count": 26,
+        "id": 21129,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/elt6uHT72h6npGeU2COQpSHjSSV.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1958-09-19",
+        "episode_count": 26,
+        "id": 21127,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/pd3ZQlx00fe02cunekJt9dz3GBo.jpg",
+        "season_number": 5,
+        "vote_average": 7.5
+      }
+    ],
+    "tituloSerie": "Rin Tin Tin",
+    "descripcion": "Clásica serie de TV ambientada en el Salvaje Oeste. Rin-Tin-Tin es un perro luchador, inteligente y fiel que protegerá a su amigo Rusty de todos los peligros que le acechan en Fuerte Apache. Ni los animales más feroces, ni los enemigos más temibles son rival para Rin-Tin-Tin.",
+    "imagen": "https://image.tmdb.org/t/p/w780/325dZgSWTdsu2xlSJIlhkDBteUa.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 01 Conoce a Rin Tin Tin [5197348932330]",
+            "urlDrive": "https://drive.google.com/file/d/12R42QZNmZeRy_-7IQ1hVzwJp6MMf7WaB/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 02 Rio salvaje [5197349063402]",
+            "urlDrive": "https://drive.google.com/file/d/197tln1YSLL77DeAzxAVtWrd9rrQd8OWx/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 03 El puma [5197349260010]",
+            "urlDrive": "https://drive.google.com/file/d/1q9m7thbMl_7nQuocmxRJ9sUd-S33mfVw/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 04 El hombre medicina [5197349325546]",
+            "urlDrive": "https://drive.google.com/file/d/1rb8XtExXUMcBrI_cwim2zIe7-RQu--IQ/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 05 Rin Tin Tin Culpable [5197349522154]",
+            "urlDrive": "https://drive.google.com/file/d/1dYSq-jCIxLUJzNJNrUfJ17sJOXAY3hGF/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 06 El proscrito de fort apache [5197349653226]",
+            "urlDrive": "https://drive.google.com/file/d/1mbhUc-YwnjOesK6_7biy3g_9qg9_EReY/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 07 El nuevo recluta [5197349784298]",
+            "urlDrive": "https://drive.google.com/file/d/1wF3MiwIWzDZ3BoBx4m7gp_gqHn3cdKSa/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 08 Hermanos de sangre [5197349980906]",
+            "urlDrive": "https://drive.google.com/file/d/1aMSP2ZnEQalug2KS4GH4ru0DPkB2dbjj/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 09 El cargamentode oro [5197350111978]",
+            "urlDrive": "https://drive.google.com/file/d/19B0U3m26xyqxpZsX2iYkgA4KIz3SU9SL/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 10 Un bebe en el bosque [5197350243050]",
+            "urlDrive": "https://drive.google.com/file/d/147JFxlRmtcTe3o8OmZQESWWBZs9R5OqP/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 11 Rusty deja el ejercito [5197350505194]",
+            "urlDrive": "https://drive.google.com/file/d/1aXKxCT5B7uvXB5CfMxHWfYWSvi7cSl7i/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 12 El pueblo fantasma [5197350636266]",
+            "urlDrive": "https://drive.google.com/file/d/1g-iJuRhWrngLgv-mS_wEUovEibGPhA5n/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 13 El escoces perdido [5197350963946]",
+            "urlDrive": "https://drive.google.com/file/d/14cnlmSDv-2FgXoCRpegF-gSFK5zpE91l/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 14 El toque de corneta [5197351029482]",
+            "urlDrive": "https://drive.google.com/file/d/1_tdflItUEuxwJbEFhgHEt410wRcfYsiq/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 15 Rin Tin Tin conoce a Shakespeare [5197351095018]",
+            "urlDrive": "https://drive.google.com/file/d/1elAvgmH7qQgdpGFQGRKPALR6ZHLZS2DP/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 16 Caballo salvaje [5197351226090]",
+            "urlDrive": "https://drive.google.com/file/d/1KwzdVqeSVzzn0w2LH30kX9dqaYg1KTwq/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 17 Rusty se enamora [5197351422698]",
+            "urlDrive": "https://drive.google.com/file/d/1JRdoN3lR-8dJ4uIH6an4oDEA4-zuigV4/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 18 Rin Tin T in y el lobo blanco [5197351488234]",
+            "urlDrive": "https://drive.google.com/file/d/1_yuBuKEwbz5RYHXATEthwqGwNIPpSvpv/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 19 El regreso de rin tin tin [5197351684842]",
+            "urlDrive": "https://drive.google.com/file/d/1-sijZR7Xv2Pu2ZgdSKu50vUHCrBCpDj7/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 20 El barbero de sevilla [5197351815914]",
+            "urlDrive": "https://drive.google.com/file/d/1WeNjthOqSq2el-vIK0qEcPMF_gJXHDJj/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 21 Rin Tin Tin y el nido del aguila [5197351946986]",
+            "urlDrive": "https://drive.google.com/file/d/1-__ePAXMQfhUteNpnxAhSbVsaGwwtHnF/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 22 Rusty hace de cupido [5197352078058]",
+            "urlDrive": "https://drive.google.com/file/d/15UGjxFJQ_xHNTDkpWl8na3-EBkWNOgZv/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 23 Un chico de la ciudad [5197352340202]",
+            "urlDrive": "https://drive.google.com/file/d/1H45ByIMgw_tLWlBnKdl0LzYQoKrkWLcU/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 24 Tormenta de arena [5197352536810]",
+            "urlDrive": "https://drive.google.com/file/d/1CYO_IkK9dQnv3Q_IF5aYWWAvFNS2qYOT/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 25 El heredero perdido [5197352602346]",
+            "urlDrive": "https://drive.google.com/file/d/1AKoGMCFE1CTQKJAegcxpce0bjF-0HF-3/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 26 Rin Tin Tin vuelve a casa [5197352667882]",
+            "urlDrive": "https://drive.google.com/file/d/1nZ5BpBFn2sfTrXy2PAZsckfkPS8g7bs8/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 27 Homer el grande [5197352798954]",
+            "urlDrive": "https://drive.google.com/file/d/1f5ZkkoxH-79wIx7Nzg4OT_Z3JwHWoNpp/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 28 La herencia del tio Sean [5197352864490]",
+            "urlDrive": "https://drive.google.com/file/d/19WhorqvyL67Yg33wo2v9f5BYsZR80Pec/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 29 El Fotografo [5197352930026]",
+            "urlDrive": "https://drive.google.com/file/d/1-1Synb9L2uFncXaYDRlX1YolIBLvZd_O/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 30 Rin Tin Tin va de boda [5197352995562]",
+            "urlDrive": "https://drive.google.com/file/d/1d0L9zej1OB46OUp3jsOlgEIXzNH_VVVx/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 31 El dia de la boda de Boone [5200371387114]",
+            "urlDrive": "https://drive.google.com/file/d/11ErUTZpJEAbl-761UApnzDN8ZV5hLM_7/view"
+          },
+          {
+            "tituloEpisodio": "Rin Tin Tin Cap 32 El nido del aguila [5200371452650]",
+            "urlDrive": "https://drive.google.com/file/d/17N4RDt2x1bq703NTAcB7r3qvmIa9ZKA8/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tmdbId": 2875,
+    "tmdbType": "tv",
+    "tituloOriginal": "MacGyver",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/dW58Jn2Fi29P5tC0oSJ6YWhiV9E.jpg",
+    "year": "1985",
+    "fechaEstreno": "1985-09-29",
+    "rating": "7.7",
+    "votos": 994,
+    "runtime": "45min",
+    "runtimeMin": 45,
+    "genres": [
+      "Drama",
+      "Action & Adventure",
+      "Crimen"
+    ],
+    "generosTexto": "Drama, Action & Adventure, Crimen",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Richard Dean Anderson",
+        "personaje": "Angus MacGyver",
+        "foto": "https://image.tmdb.org/t/p/w185/e1wWDXNuL44suxtb1ZTCWEmEVtl.jpg"
+      },
+      {
+        "nombre": "Dana Elcar",
+        "personaje": "Pete Thornton",
+        "foto": "https://image.tmdb.org/t/p/w185/iYYbcpWCikPFPvLWCqwKVvNVvrC.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Paramount Television, Henry Winkler/John Rich Productions, Columbia TriStar Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "spy, crime fighter, hero, secret agent, espionage, vigilante, escape, terrorism, one man army, calm, good versus evil, inspirational, comforting",
+    "similares": [
+      {
+        "titulo": "The Sweeney",
+        "poster": "https://image.tmdb.org/t/p/w342/8dIJo5P3d1soSxKJvjkxDX1816H.jpg",
+        "year": "1975",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Último aviso",
+        "poster": "https://image.tmdb.org/t/p/w342/xH4NPJeYzg3BS7OWYh7vx2atBAG.jpg",
+        "year": "2007",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Misión: imposible",
+        "poster": "https://image.tmdb.org/t/p/w342/4AZwDa0RZLIVsOgZxlgOqNUw3U6.jpg",
+        "year": "1988",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "MacGyver",
+        "poster": "https://image.tmdb.org/t/p/w342/z3IpN86yJTmxCFz9KvoCDbB56Lp.jpg",
+        "year": "2016",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Misión. Imposible",
+        "poster": "https://image.tmdb.org/t/p/w342/1PnUBKbDR1F2w5qicblLg1QGTif.jpg",
+        "year": "1966",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Police Story",
+        "poster": "https://image.tmdb.org/t/p/w342/wfhiGakYfjk8XeDKRpya9P4tNu9.jpg",
+        "year": "1973",
+        "rating": "7.0"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Lee David Zlotoff"
+    ],
+    "numeroTemporadas": 7,
+    "numeroEpisodios": 139,
+    "temporadasTmdb": [
+      {
+        "air_date": "1994-05-14",
+        "episode_count": 5,
+        "id": 9278,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/mKOXiQh8JlD1iLDnykrv4Yh3h4G.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1985-09-29",
+        "episode_count": 22,
+        "id": 9273,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/seA6FlTahMdgZjqopNjdEHMHfe8.jpg",
+        "season_number": 1,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "1986-09-22",
+        "episode_count": 22,
+        "id": 9274,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/qoYJ1w1OItaKZATvxOsHaY8a8pA.jpg",
+        "season_number": 2,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1987-09-21",
+        "episode_count": 20,
+        "id": 9272,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/qC8WDOSSwQJlk21uanrvsOS4gRu.jpg",
+        "season_number": 3,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "1988-10-31",
+        "episode_count": 19,
+        "id": 9271,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/2B7DKZ9Br2FVDkEyJ8XJB4pDxfK.jpg",
+        "season_number": 4,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1989-09-18",
+        "episode_count": 21,
+        "id": 9277,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/2ycRCSmMCJdlCi4I7nF70QKJTpM.jpg",
+        "season_number": 5,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1990-09-17",
+        "episode_count": 21,
+        "id": 9276,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/1SfzufevYJSrk92K77hw8qlYZxD.jpg",
+        "season_number": 6,
+        "vote_average": 7
+      },
+      {
+        "air_date": "1991-09-16",
+        "episode_count": 14,
+        "id": 9275,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/5400cxPHTnIwZuz5PO5NHOLoybL.jpg",
+        "season_number": 7,
+        "vote_average": 7.3
+      }
+    ],
+    "tituloSerie": "MacGyver",
+    "descripcion": "La serie gira en torno a las misiones que realiza el personaje principal Angus MacGyver para distintas instituciones, sobre todo para la Fundación Phoenix. En la serie, MacGyver resuelve todos los problemas que se le plantean haciendo uso de su gran inteligencia, su conocimiento académico en ciencias e ingeniería y su habilidad para la construcción de herramientas con elementos cotidianos de su entorno.",
+    "imagen": "https://image.tmdb.org/t/p/w780/zhgJNHbFxGkqdsKdkZLBrDWagOv.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 4681,
     "tmdbType": "tv",
     "tituloOriginal": "Zorro",
@@ -9195,58 +9659,172 @@
     ]
   },
   {
+    "tmdbId": 11053,
+    "tmdbType": "tv",
+    "tituloOriginal": "Daniel Boone",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/ocGIgjb53YKuPoLykhxO2orKrlc.jpg",
+    "year": "1964",
+    "fechaEstreno": "1964-09-24",
+    "rating": "7.0",
+    "votos": 34,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Action & Adventure",
+      "Western"
+    ],
+    "generosTexto": "Action & Adventure, Western",
+    "clasificacion": "TV-PG",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Fess Parker",
+        "personaje": "Daniel Boone",
+        "foto": "https://image.tmdb.org/t/p/w185/z72Gh4aWood5nFj3S1iO3sTvAdR.jpg"
+      },
+      {
+        "nombre": "Ed Ames",
+        "personaje": "Mingo",
+        "foto": "https://image.tmdb.org/t/p/w185/9EqiBVqjtlzIVdJdpHBY0wBBsED.jpg"
+      },
+      {
+        "nombre": "Patricia Blair",
+        "personaje": "Rebecca Boone",
+        "foto": "https://image.tmdb.org/t/p/w185/uV5o9IlO5gWQEZx8CbY6brsZat4.jpg"
+      },
+      {
+        "nombre": "Darby Hinton",
+        "personaje": "Israel Boone",
+        "foto": "https://image.tmdb.org/t/p/w185/awm3TSVTJv02G2s0Aiy6SYvc2BR.jpg"
+      },
+      {
+        "nombre": "Dal McKennon",
+        "personaje": "Cincinnatus",
+        "foto": "https://image.tmdb.org/t/p/w185/7ke4WPwpxVsSsYfoibCKEmrI56V.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "20th Century Fox Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "kentucky, frontiersman, 18th century, american revolution, cherokee",
+    "similares": [
+      {
+        "titulo": "Cheyenne",
+        "poster": "https://image.tmdb.org/t/p/w342/osdglTGStAMbThkUsVJ0DRzvwrq.jpg",
+        "year": "1955",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "La ley del revólver",
+        "poster": "https://image.tmdb.org/t/p/w342/x7WjYizqcrA64xi9XLqUWCz5DNk.jpg",
+        "year": "1955",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Randall, el justiciero",
+        "poster": "https://image.tmdb.org/t/p/w342/mYgwFT8JXW6J5YTs8DuzDDOKXlS.jpg",
+        "year": "1958",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "The Lone Ranger",
+        "poster": "https://image.tmdb.org/t/p/w342/sAQSKgrYC0l5kQbLk8QXINAK6F4.jpg",
+        "year": "1949",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "El hombre del rifle",
+        "poster": "https://image.tmdb.org/t/p/w342/tYf5Sc83chWG2nBlo5xKdpBBwlI.jpg",
+        "year": "1958",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Have Gun, Will Travel",
+        "poster": "https://image.tmdb.org/t/p/w342/6aJRq7FGs2axLOdZNJ2G4IOQtMx.jpg",
+        "year": "1957",
+        "rating": "7.3"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Borden Chase"
+    ],
+    "numeroTemporadas": 6,
+    "numeroEpisodios": 165,
+    "temporadasTmdb": [
+      {
+        "air_date": "1964-09-24",
+        "episode_count": 29,
+        "id": 21486,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/aasCV4wmgXJLXOjoUQ2rhMwHvgQ.jpg",
+        "season_number": 1,
+        "vote_average": 10
+      },
+      {
+        "air_date": "1965-09-16",
+        "episode_count": 30,
+        "id": 21487,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/arschtJtTjJ6T0MwzDqueAc6QxJ.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1966-09-15",
+        "episode_count": 28,
+        "id": 21488,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/u9kHYSlzYpE04KV9AqdG8pBmAKx.jpg",
+        "season_number": 3,
+        "vote_average": 1
+      },
+      {
+        "air_date": "1967-09-14",
+        "episode_count": 26,
+        "id": 21491,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/8rQ76Lm5GJtqvbz9GKqcPvFCs2i.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1968-09-19",
+        "episode_count": 26,
+        "id": 21490,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/t5QFfY6i7rP7JlighMXfnMgxCek.jpg",
+        "season_number": 5,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1969-09-18",
+        "episode_count": 26,
+        "id": 21489,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/23ZXPFSvzFVupFK3BbLAdeGda9G.jpg",
+        "season_number": 6,
+        "vote_average": 0
+      }
+    ],
     "tituloSerie": "Daniel Boone",
-    "descripcion": "Aventuras del explorador Daniel Boone, mediador entre colonos e indios",
-    "imagen": "https://www.lavanguardia.com/peliculas-series/images/serie/poster/1964/9/w1280/lL4XDk4wRELIqciMtjcrD4TQ5m6.jpg",
+    "descripcion": "Daniel Boone es una serie de televisión estadounidense de acción-aventura protagonizada por Fess Parker como Daniel Boone que se emitió del 24 de septiembre de 1964 al 10 de septiembre de 1970 en NBC durante 165 episodios, y fue realizada por 20th Century Fox Television. Ed Ames coprotagonizó como Mingo, amigo cherokee de Boone, durante las primeras cuatro temporadas de la serie. Albert Salmi retrató al compañero Yadkin de Boone en la primera temporada. Dallas McKennon retrató al posadero Cincinnatus. El cantante de country Western Jimmy Dean fue un actor destacado como Josh Clements durante las temporadas de 1968-1970. El actor y ex jugador de fútbol de la NFL Rosey Grier hizo apariciones regulares como Gabe Cooper en la temporada 1969 a 1970. El programa se transmitió 'en color viviente' a partir del otoño de 1965, la segunda temporada, y fue filmado por completo en California y Kanab, Utah.",
+    "imagen": "https://image.tmdb.org/t/p/w780/lL4XDk4wRELIqciMtjcrD4TQ5m6.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": [
-      {
-        "numeroTemporada": 1,
-        "episodios": [
-          {
-            "tituloEpisodio": "Daniel Boone    T1 E01 Kentucky",
-            "urlDrive": "https://drive.google.com/file/d/1NI2XbnrEMAiWeZWeQ3uFjOan6X5P0tQV/preview"
-          },
-          {
-            "tituloEpisodio": "Daniel Boone    T1  E02 Tekawitha Mcleod",
-            "urlDrive": "https://drive.google.com/file/d/1sIiem4Cj-uY-5GR5hYLHnbwOOj803kwh/preview"
-          },
-          {
-            "tituloEpisodio": "Daniel Boone 1x03 Un Corto camino hacia Salem",
-            "urlDrive": "https://drive.google.com/file/d/10DI_w9_ZHZuXJ7_6KSJzJGCWfz2tebi8/preview"
-          },
-          {
-            "tituloEpisodio": "Daniel Boone    1x05 Pompeya",
-            "urlDrive": "https://drive.google.com/file/d/1nEmJj2DYbEy96gABbSK2W2Han28Xk2uf/preview"
-          },
-          {
-            "tituloEpisodio": "Daniel Boone    1x06 La Eleccion",
-            "urlDrive": "https://drive.google.com/file/d/1T8CPC-g9CJi1eoXjkOmo0VytHXSFkrnC/preview"
-          },
-          {
-            "tituloEpisodio": "Daniel Boone    1x04 Lac Duquesne",
-            "urlDrive": "https://drive.google.com/file/d/1uGZUlcZv3y24pc7MKk1WtwtMnoxbgdGy/preview"
-          },
-          {
-            "tituloEpisodio": "Daniel Boone    1x08 Mi hermano Keeper",
-            "urlDrive": "https://drive.google.com/file/d/1TWaDKtj9ig4WeyIq9-dhKMp-GqjFkWCA/preview"
-          },
-          {
-            "tituloEpisodio": "Daniel Boone    1x10 El Sonido de las alas",
-            "urlDrive": "https://drive.google.com/file/d/1CbDC3YbBRfI3UQPAFLC0hvulZ4EsUCXj/preview"
-          },
-          {
-            "tituloEpisodio": "Daniel Boone    1x07 La familia Fluellen",
-            "urlDrive": "https://drive.google.com/file/d/1nY9RWvB4fndTDi56btHMNjooBLb3jLtj/preview"
-          },
-          {
-            "tituloEpisodio": "Daniel Boone    1x11 Las hermanas OHannrahan",
-            "urlDrive": "https://drive.google.com/file/d/1mJUtiSz78wumEPBwqhyVPCk55EWHtQH5/preview"
-          }
-        ]
-      }
-    ]
+    "temporadas": []
   },
   {
     "tituloSerie": "Patrulla motorizada",
