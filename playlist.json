@@ -1,5 +1,176 @@
 [
   {
+    "tmdbId": 2251,
+    "tmdbType": "tv",
+    "tituloOriginal": "Taxi",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/8Y8vn9feCVUoJRXpWK6xno5VrUz.jpg",
+    "year": "1978",
+    "fechaEstreno": "1978-09-12",
+    "rating": "7.3",
+    "votos": 190,
+    "runtime": "30min",
+    "runtimeMin": 30,
+    "genres": [
+      "Comedia",
+      "Drama"
+    ],
+    "generosTexto": "Comedia, Drama",
+    "clasificacion": "TV-PG",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Judd Hirsch",
+        "personaje": "Alex Reiger",
+        "foto": "https://image.tmdb.org/t/p/w185/7rJ0TZfMoPLTcO203tHhE6tcPKP.jpg"
+      },
+      {
+        "nombre": "Danny DeVito",
+        "personaje": "Louie De Palma",
+        "foto": "https://image.tmdb.org/t/p/w185/6kO4IN7ndoIGw2JhyhAQN3SFmdx.jpg"
+      },
+      {
+        "nombre": "Marilu Henner",
+        "personaje": "Elaine O'Connor-Nardo",
+        "foto": "https://image.tmdb.org/t/p/w185/fuuVDigwqg5D2pioextPJJ4tLWg.jpg"
+      },
+      {
+        "nombre": "Tony Danza",
+        "personaje": "Tony Banta",
+        "foto": "https://image.tmdb.org/t/p/w185/qoUp1mtEFvrWHG3kEM35coysf5y.jpg"
+      },
+      {
+        "nombre": "Andy Kaufman",
+        "personaje": "Latka Gravas",
+        "foto": "https://image.tmdb.org/t/p/w185/pRLaMOjkir5CxRpZlvYq0x8gve.jpg"
+      },
+      {
+        "nombre": "Christopher Lloyd",
+        "personaje": "Jim Ignatowski",
+        "foto": "https://image.tmdb.org/t/p/w185/nxVjpyb3UrfbPZnEyDNlQVlFAs5.jpg"
+      },
+      {
+        "nombre": "Carol Kane",
+        "personaje": "Simka Gravas",
+        "foto": "https://image.tmdb.org/t/p/w185/dm3Ci8XuVYZBqqlYtaLgth94VUe.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Paramount Television, John-Charles-Walters Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "new york city, taxi driver, sitcom",
+    "similares": [
+      {
+        "titulo": "Seinfeld",
+        "poster": "https://image.tmdb.org/t/p/w342/aCw8ONfyz3AhngVQa1E2Ss4KSUQ.jpg",
+        "year": "1989",
+        "rating": "8.2"
+      },
+      {
+        "titulo": "Hermanas",
+        "poster": "https://image.tmdb.org/t/p/w342/9UtwdSXDkDMvqAdMJsbB8JLlBEH.jpg",
+        "year": "2019",
+        "rating": "8.4"
+      },
+      {
+        "titulo": "The Dick Van Dyke Show",
+        "poster": "https://image.tmdb.org/t/p/w342/3eiFZrarzOd08323sHX7RbR7vdn.jpg",
+        "year": "1961",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "The Facts of Life",
+        "poster": "https://image.tmdb.org/t/p/w342/45i9VujUbQITmHl3QE3eNs9ZUv3.jpg",
+        "year": "1979",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Broad City",
+        "poster": "https://image.tmdb.org/t/p/w342/fRu9zQFdWHjEVyHwnIYqm0LRoKA.jpg",
+        "year": "2014",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Benson",
+        "poster": "https://image.tmdb.org/t/p/w342/pXQIwDfMMDF6GVJdgLm68Exm5wo.jpg",
+        "year": "1979",
+        "rating": "7.0"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Stan Daniels",
+      "Ed. Weinberger",
+      "James L. Brooks",
+      "David Davis"
+    ],
+    "numeroTemporadas": 5,
+    "numeroEpisodios": 114,
+    "temporadasTmdb": [
+      {
+        "air_date": "1978-09-12",
+        "episode_count": 22,
+        "id": 6958,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/rUfGaYQx8ssrzw5xRSqrxxQgAKk.jpg",
+        "season_number": 1,
+        "vote_average": 6.8
+      },
+      {
+        "air_date": "1979-09-11",
+        "episode_count": 24,
+        "id": 6959,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/gcvBahC461Qwunk6lGHLw3PTisE.jpg",
+        "season_number": 2,
+        "vote_average": 7.6
+      },
+      {
+        "air_date": "1980-11-19",
+        "episode_count": 20,
+        "id": 6960,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/nOtwITyCNb7x5185ZzCfnO6Ex2Z.jpg",
+        "season_number": 3,
+        "vote_average": 6.7
+      },
+      {
+        "air_date": "1981-10-08",
+        "episode_count": 24,
+        "id": 6961,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/fl8ilkHdkH0nmxaeQtXlrp4mLEz.jpg",
+        "season_number": 4,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "1982-09-30",
+        "episode_count": 24,
+        "id": 6962,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/wn18hDdAxtKeIZ5ofnNtagnzDRf.jpg",
+        "season_number": 5,
+        "vote_average": 7.6
+      }
+    ],
+    "tituloSerie": "Taxi",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/pua3A2XSaO6bP6WhVDBRbcyRTAS.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 4579,
     "tmdbType": "tv",
     "tituloOriginal": "The Champions",
@@ -711,7 +882,145 @@
     "imagen": "https://image.tmdb.org/t/p/w780/zhgJNHbFxGkqdsKdkZLBrDWagOv.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "MacGyver S01E06 WEB-DL 1080p [7399407618794]",
+            "urlDrive": "https://drive.google.com/file/d/1IJnK1NyA5D4gEwwawpUUF8BzdDqG-zh7/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E07 WEB-DL 1080p [7399408012010]",
+            "urlDrive": "https://drive.google.com/file/d/1Ry1UIiBRTHaGnjy0Goy_f1yYx0Pi5777/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E08 WEB-DL 1080p [7399408208618]",
+            "urlDrive": "https://drive.google.com/file/d/1DjbQMEDsC6CGQb9REkmEBfms3povytW_/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E09 WEB-DL 1080p [7399408667370]",
+            "urlDrive": "https://drive.google.com/file/d/1fP8HwvfpL60vEmtwsorL7iYN-cJ2VyKH/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E10 WEB-DL 1080p [7399408995050]",
+            "urlDrive": "https://drive.google.com/file/d/1DrWA_pKkYeEv1Ph211TE4hHLMuekm9_k/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E11 WEB-DL 1080p [7399409453802]",
+            "urlDrive": "https://drive.google.com/file/d/1Vzd-fAz2zc0X_dg3bqKMXUba08HWqgea/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E12 WEB-DL 1080p [7399409715946]",
+            "urlDrive": "https://drive.google.com/file/d/1zUvvll_5vp0lhy8rM76ccXXBfBrZ1Abm/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E13 WEB-DL 1080p [7399409912554]",
+            "urlDrive": "https://drive.google.com/file/d/1ZoKc9Mm3VpdnYC3cnSpY6NFa8DEDKkZe/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E14 WEB-DL 1080p [7399410109162]",
+            "urlDrive": "https://drive.google.com/file/d/1Pp47qsC2KXHmlay8zjKamgHuvXsKhZ8S/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E15 WEB-DL 1080p [7399410371306]",
+            "urlDrive": "https://drive.google.com/file/d/1AY52zxI9-J7PgXt47oRTam8rr3-qcpnu/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E16 WEB-DL 1080p [7399410502378]",
+            "urlDrive": "https://drive.google.com/file/d/19asP4ocx4Rk1GjqI12sKRC0cytua9WEN/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E17 WEB-DL 1080p [7399410633450]",
+            "urlDrive": "https://drive.google.com/file/d/1ChulUG_1KPqIAnzZsHrKarkWbMyxBkte/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E19 WEB-DL 1080p [7399411157738]",
+            "urlDrive": "https://drive.google.com/file/d/14R_Vn7GMHqwyCXDIwPHEQRluRiGOOLL0/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E20 WEB-DL 1080p [7399411550954]",
+            "urlDrive": "https://drive.google.com/file/d/1lmNfUP5MlA54B9wUvIz06AZ9nYvw1eIe/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E21 WEB-DL 1080p [7399411682026]",
+            "urlDrive": "https://drive.google.com/file/d/1MGD52YAHqi4W-pLT6-DVYmhI0w6ypLEv/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S02E08 [7399538690794]",
+            "urlDrive": "https://drive.google.com/file/d/1_NypVSgNjLymlFPvvWx0ySSPzK1sWXhN/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S02E10 [7399539280618]",
+            "urlDrive": "https://drive.google.com/file/d/1Y3KrTFHx_uhoBDI77dXajAcLA8sRyYNQ/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E03 [7402772302570]",
+            "urlDrive": "https://drive.google.com/file/d/1Z0oEhUweBix8-zTRK3KsB59zeBIV1wrs/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E04 [7402772433642]",
+            "urlDrive": "https://drive.google.com/file/d/1qCHXVGtNmQRXlAOaX2btzW-MNgAr4qL9/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E06 [7402772826858]",
+            "urlDrive": "https://drive.google.com/file/d/1cFMJRg04IJ0aap17TUpcvzf2uZ-fi_2E/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E07 [7402773023466]",
+            "urlDrive": "https://drive.google.com/file/d/1ERYqVuWJL5GkcUq8LSC42B_pqarLFNZy/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E08 [7402773351146]",
+            "urlDrive": "https://drive.google.com/file/d/1p0RCPdEefcE8Qv_4UXKVlSzWU3ZJqqIs/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E10 [7402773809898]",
+            "urlDrive": "https://drive.google.com/file/d/16JYS_B_ZbYQbVeO9oD3Wm_UjSmj5Daql/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E11 [7402774006506]",
+            "urlDrive": "https://drive.google.com/file/d/1ECbvNVjrzcZa7-zk_wtZMWfe9_ALT5dg/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E13 [7402774530794]",
+            "urlDrive": "https://drive.google.com/file/d/1kiw09PBLfZ8gXuBkxno_AcKqwS5xpVwp/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E15 [7402774924010]",
+            "urlDrive": "https://drive.google.com/file/d/1PAW_sVhNlua9rU0IuV-0ndr93tTkoK_H/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E16 [7402775120618]",
+            "urlDrive": "https://drive.google.com/file/d/1jTHNInc4TrJnTfrg7swKUCiDQ_6CK5eC/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E18 [7402775448298]",
+            "urlDrive": "https://drive.google.com/file/d/1A6vu1TUwsaX1M5-EtvqfegZ1t0w3s3vw/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E20 [7402775841514]",
+            "urlDrive": "https://drive.google.com/file/d/1DyldT5TSFXfLxZq3bz60W1qaRbcIoUCJ/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S05E05 [7405849414378]",
+            "urlDrive": "https://drive.google.com/file/d/1KRH2r7DdjOzVQ6MDEkB3e7duLx-ni4ce/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S05E09 [7405850266346]",
+            "urlDrive": "https://drive.google.com/file/d/1aCnme4CJErNxZURCN9zuOxVb9n7PlW-G/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S06E17 [7406173293290]",
+            "urlDrive": "https://drive.google.com/file/d/1cr0rhXupLkftSxUfZNXo6qFEKh8P28E5/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S07E09 [7406638336746]",
+            "urlDrive": "https://drive.google.com/file/d/1dXgCqLwFwnfF13wTvU_3atR6UQQVc29X/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 4681,
