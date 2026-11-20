@@ -1,5 +1,208 @@
 [
   {
+    "tmdbId": 236,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Flash",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/4yqH859U1oklGm4O5mFhrmtabKL.jpg",
+    "year": "1990",
+    "fechaEstreno": "1990-09-20",
+    "rating": "7.4",
+    "votos": 537,
+    "runtime": "45min",
+    "runtimeMin": 45,
+    "genres": [
+      "Action & Adventure",
+      "Sci-Fi & Fantasy"
+    ],
+    "generosTexto": "Action & Adventure, Sci-Fi & Fantasy",
+    "clasificacion": "12",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "John Wesley Shipp",
+        "personaje": "Barry Allen / Flash",
+        "foto": "https://image.tmdb.org/t/p/w185/rFSYEKK5X5j662RvDq1Q5azsQ6I.jpg"
+      },
+      {
+        "nombre": "Amanda Pays",
+        "personaje": "Christina 'Tina' McGee",
+        "foto": "https://image.tmdb.org/t/p/w185/ryDAKAA5bR8dqB7rDp7pDvTqT7z.jpg"
+      },
+      {
+        "nombre": "Alex Désert",
+        "personaje": "Julio Mendez",
+        "foto": "https://image.tmdb.org/t/p/w185/iz5fLxrOTKYUkpUmGXgVfCfIZxn.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Warner Bros. Television, Pet Fly Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "superhero, based on comic, one man army, super power",
+    "similares": [
+      {
+        "titulo": "The Flash",
+        "poster": "https://image.tmdb.org/t/p/w342/2O8tlUzKS3uddGW5D2B9XM6b4e.jpg",
+        "year": "2014",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "El intrépido Batman",
+        "poster": "https://image.tmdb.org/t/p/w342/tv2mOIRcPP4H0DhOH84xPgqui7d.jpg",
+        "year": "2008",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Los Vengadores unidos",
+        "poster": "https://image.tmdb.org/t/p/w342/r7C5c5Un1zsiAfixa8HEd5ebYmM.jpg",
+        "year": "2013",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Iron Man, La serie animada",
+        "poster": "https://image.tmdb.org/t/p/w342/i8bNw4L6PkEn9hkIVX3oxNISrr9.jpg",
+        "year": "1994",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Linterna Verde: La Serie Animada",
+        "poster": "https://image.tmdb.org/t/p/w342/xNrJgBSjVLFaQcxkFbkWtjIuq01.jpg",
+        "year": "2011",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Spiderman",
+        "poster": "https://image.tmdb.org/t/p/w342/cwgW8j4yh5hNMnvokozpVkjuSu2.jpg",
+        "year": "1994",
+        "rating": "8.3"
+      }
+    ],
+    "homepage": "https://www.dc.com/tv/the-flash-1990-1991",
+    "creadores": [
+      "Danny Bilson",
+      "Paul De Meo"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 22,
+    "temporadasTmdb": [
+      {
+        "air_date": "1990-09-20",
+        "episode_count": 22,
+        "id": 751,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/hEbLyeUokKUCwmmpdueZpfczqee.jpg",
+        "season_number": 1,
+        "vote_average": 7.3
+      }
+    ],
+    "tituloSerie": "The Flash",
+    "descripcion": "John Wesley Shipp interpreta a Barry Allen, un tecnólogo criminalista, dotado de repentinos talentos tras un imprevisto accidente de laboratorio. Promete utilizar sus poderes para hacer el bien, poderes que incluyen reflejos de ultravelocidad y la capacidad para hacer vibrar sus moléculas tan rápido que puede atravesar muros. Amanda Pays es la investigadora médica Tina McGee, que sigue el metabolistmo acelerado de Allen y oculta su identidad secreta. El embaucador, el Capitán Frío, el Fantasma, inventores locos: Central City está plagada de criminales. Ahora hay un héroe que les sigue el ritmo: Se llama Flash.",
+    "imagen": "https://image.tmdb.org/t/p/w780/fi1GEdCbyWRDHpyJcB25YYK7fh4.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "01- Pilot (September 20, 1990) [9531742882538]",
+            "urlDrive": "https://drive.google.com/file/d/1Gg2mtfuHMSWg9ejnApZMZwN1QALTgOqE/view"
+          },
+          {
+            "tituloEpisodio": "02- Out of Control (September 27, 1990) x264 [9531743931114]",
+            "urlDrive": "https://drive.google.com/file/d/1VR1L25UcQ855Trq84iEA9-FGPB6aXkHN/view"
+          },
+          {
+            "tituloEpisodio": "03- Watching the Detectives (October 4, 1990) x264 [9531745045226]",
+            "urlDrive": "https://drive.google.com/file/d/1ZJ4oj7BtroJlsAq1wONk4ADuPdiUniQi/view"
+          },
+          {
+            "tituloEpisodio": "04 - Honor Among Thieves (October 25, 1990) x264 [9531745897194]",
+            "urlDrive": "https://drive.google.com/file/d/13Q8TIYp8EsyDynBNyPKaV7TZf-BZn5Rk/view"
+          },
+          {
+            "tituloEpisodio": "05 - Double Vision (November 1, 1990) x264 [9531746945770]",
+            "urlDrive": "https://drive.google.com/file/d/1c6QKPwG7ZRA8NS2ofZwMuXw4NrPzKlBe/view"
+          },
+          {
+            "tituloEpisodio": "06 - Sins of the Father (November 8, 1990) x264 [9531748059882]",
+            "urlDrive": "https://drive.google.com/file/d/107oDW_Ztf9BKJJkE3R6qaC3Gl55DrFvh/view"
+          },
+          {
+            "tituloEpisodio": "07- Child’s Play (November 1, 1990) x264 [9531748977386]",
+            "urlDrive": "https://drive.google.com/file/d/1rNfSAOYCdnMeu-QL0GXT8OZoe7TPNSES/view"
+          },
+          {
+            "tituloEpisodio": "08- Shroud of Death (November 8, 1990) x264 [9531750222570]",
+            "urlDrive": "https://drive.google.com/file/d/13M21TNMb2yZsW8N8WfsLHYkYJC6KAtQ5/view"
+          },
+          {
+            "tituloEpisodio": "09- Ghost in the Machine (November 15, 1990) x264 [9531751598826]",
+            "urlDrive": "https://drive.google.com/file/d/1tDnVjqAIEseRwOYVjLvNUAgrK_QgM_nK/view"
+          },
+          {
+            "tituloEpisodio": "010- Sight Unseen (January 10, 1991) x264 [9531752450794]",
+            "urlDrive": "https://drive.google.com/file/d/1HHui8vR3rYvxhWQLqMqPXZCNVkDGc-y2/view"
+          },
+          {
+            "tituloEpisodio": "011- Beat the Clock (January 31, 1991) x264 [9531753171690]",
+            "urlDrive": "https://drive.google.com/file/d/1au-7QCstuoR7q3g4yrxBJ8iH-WnFvlv8/view"
+          },
+          {
+            "tituloEpisodio": "012- The Trickster (February 7, 1991) x264 [9531754089194]",
+            "urlDrive": "https://drive.google.com/file/d/11WbCBTkN2jxsHluIR5mEDLll8GDJfJ0N/view"
+          },
+          {
+            "tituloEpisodio": "013- Tina, Is That You (February 14, 1991) x264 [9531755530986]",
+            "urlDrive": "https://drive.google.com/file/d/1Ci3kAZffSmv1pC7mcPE_bG3QysGk_EqT/view"
+          },
+          {
+            "tituloEpisodio": "014- Be My Baby (February 20, 1991) x264 [9531757169386]",
+            "urlDrive": "https://drive.google.com/file/d/1aZ8RvIYQRwMZdEx7uYLJkouyNCQIZDDG/view"
+          },
+          {
+            "tituloEpisodio": "015- Fast Forward (February 27, 1991) x264 [9531758021354]",
+            "urlDrive": "https://drive.google.com/file/d/1s3Ip2xD4gs8fO1Yul53Ry-Pn6QsOmKBc/view"
+          },
+          {
+            "tituloEpisodio": "016- Deadly Nightshade (March 28, 1991) x264 [9531758873322]",
+            "urlDrive": "https://drive.google.com/file/d/1cjDji7wfI8oEh3WRpGcrF7yiEfq11B2E/view"
+          },
+          {
+            "tituloEpisodio": "017- Captain Cold (April 5, 1991) x264 [9531759463146]",
+            "urlDrive": "https://drive.google.com/file/d/11Q8UHyQ38KpKAT9Ih-dvDWE96SyggoqD/view"
+          },
+          {
+            "tituloEpisodio": "018- Twin Streaks (April 12, 1991) x264 [9531760511722]",
+            "urlDrive": "https://drive.google.com/file/d/1hzcpTS7Gs_PMU1bFxuEumxj7N-vMWCSa/view"
+          },
+          {
+            "tituloEpisodio": "019- Done with Mirrors (April 26, 1991) x264 [9531761494762]",
+            "urlDrive": "https://drive.google.com/file/d/1H4X7f1vbzW3r5Z0X6PwVus7WRh_dTfqV/view"
+          },
+          {
+            "tituloEpisodio": "020- Good Night, Central City (May 3, 1991) x264 [9531762412266]",
+            "urlDrive": "https://drive.google.com/file/d/1iBbDV0Ww9AF-T_UNeykZCTCVIPp_voW4/view"
+          },
+          {
+            "tituloEpisodio": "021- Alpha (May 18, 1991) x264 [9531763395306]",
+            "urlDrive": "https://drive.google.com/file/d/1gZjUBp-4DVIm7evPoBRdaM7PnReGl9rH/view"
+          },
+          {
+            "tituloEpisodio": "022 - The Trial of the Trickster (May 18, 1991) x264 [9531764443882]",
+            "urlDrive": "https://drive.google.com/file/d/1POxh5QyHGGtPLzDpfUGC2L5XlGuIHhqP/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 71993,
     "tmdbType": "tv",
     "tituloOriginal": "The Three Stooges: Hey Moe! Hey Dad!",
