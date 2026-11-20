@@ -1,5 +1,233 @@
 [
   {
+    "tmdbId": 4313,
+    "tmdbType": "tv",
+    "tituloOriginal": "Full House",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/btUwsz9ttVBVyqtEyZvFBQFyJgv.jpg",
+    "year": "1987",
+    "fechaEstreno": "1987-09-22",
+    "rating": "7.5",
+    "votos": 1200,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Comedia, Familia",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "John Stamos",
+        "personaje": "Jesse Katsopolis",
+        "foto": "https://image.tmdb.org/t/p/w185/5hFEsxkqI6uGa9ltX2soVqt8r1M.jpg"
+      },
+      {
+        "nombre": "Bob Saget",
+        "personaje": "Danny Tanner",
+        "foto": "https://image.tmdb.org/t/p/w185/yxTuHygLUF8h2927bP3dYDEYwwP.jpg"
+      },
+      {
+        "nombre": "Dave Coulier",
+        "personaje": "Joey Gladstone",
+        "foto": "https://image.tmdb.org/t/p/w185/mpWFTLJqVh3Wa42CG6X4tAND2bB.jpg"
+      },
+      {
+        "nombre": "Candace Cameron Bure",
+        "personaje": "D.J. Tanner",
+        "foto": "https://image.tmdb.org/t/p/w185/sDNFyYgyVmE5AGFCeLR0DVDzCji.jpg"
+      },
+      {
+        "nombre": "Jodie Sweetin",
+        "personaje": "Stephanie Tanner",
+        "foto": "https://image.tmdb.org/t/p/w185/tzeuWuShOHnDWVaZ0gN02QQvUU5.jpg"
+      },
+      {
+        "nombre": "Lori Loughlin",
+        "personaje": "Rebecca Katsopolis",
+        "foto": "https://image.tmdb.org/t/p/w185/uelwtzItSLYEgaSjfzxfQ1AE1YK.jpg"
+      },
+      {
+        "nombre": "Blake Tuomy-Wilhoit",
+        "personaje": "Nicky Katsopolis",
+        "foto": "https://image.tmdb.org/t/p/w185/sbHsPe5UXtcVsz2o2WxXrkjLkxz.jpg"
+      },
+      {
+        "nombre": "Dylan Tuomy-Wilhoit",
+        "personaje": "Alex Katsopolis",
+        "foto": ""
+      },
+      {
+        "nombre": "Andrea Barber",
+        "personaje": "Kimmy Gibbler",
+        "foto": "https://image.tmdb.org/t/p/w185/bdoXVaOWgdv1ugNwUdfdFJR3bwQ.jpg"
+      },
+      {
+        "nombre": "Mary-Kate Olsen",
+        "personaje": "Michelle Tanner",
+        "foto": "https://image.tmdb.org/t/p/w185/AsoqQdZiBBSfbNAP8HPuzu7ePUP.jpg"
+      },
+      {
+        "nombre": "Ashley Olsen",
+        "personaje": "Michelle Tanner",
+        "foto": "https://image.tmdb.org/t/p/w185/sebAhEGSCSsmrdLWDKiz8n0Vkww.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Miller/Boyett Productions, Jeff Franklin Productions, Lorimar Television, Warner Bros. Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "baby, friendship, friends, family, single father, sitcom, father daughter relationship",
+    "similares": [
+      {
+        "titulo": "My Three Sons",
+        "poster": "https://image.tmdb.org/t/p/w342/2BGjuEKFtq43P3HeYSPWcX9E5et.jpg",
+        "year": "1960",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Hope",
+        "poster": "https://image.tmdb.org/t/p/w342/uoQlWrYVERlifyUjDVUHiSu2ELo.jpg",
+        "year": "2010",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Man with a Plan",
+        "poster": "https://image.tmdb.org/t/p/w342/fCJMHR0GmR4layd4KQXC1HUPMlf.jpg",
+        "year": "2016",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "All of Us",
+        "poster": "https://image.tmdb.org/t/p/w342/5ydBzxhOhJKI8sGtYKuMP7wEele.jpg",
+        "year": "2003",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Sin Pegar Ojo",
+        "poster": "https://image.tmdb.org/t/p/w342/5JyUoqVp34jmfvstRJc3fAVigrF.jpg",
+        "year": "2011",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Finales felices",
+        "poster": "https://image.tmdb.org/t/p/w342/pPzKQqwISw7YekGQbm0lLhoTYhG.jpg",
+        "year": "2011",
+        "rating": "6.9"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Jeff Franklin"
+    ],
+    "numeroTemporadas": 8,
+    "numeroEpisodios": 192,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 5,
+        "id": 12724,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/67oS6dBvenapDnldSfsSBQMJxF6.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1987-09-22",
+        "episode_count": 22,
+        "id": 12718,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/umq7MTkXrk002awH0DTFdCfXee8.jpg",
+        "season_number": 1,
+        "vote_average": 7.9
+      },
+      {
+        "air_date": "1988-10-14",
+        "episode_count": 22,
+        "id": 12721,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/qldsNDPr3AO2vQxCOgztj9dQU2h.jpg",
+        "season_number": 2,
+        "vote_average": 8
+      },
+      {
+        "air_date": "1989-09-22",
+        "episode_count": 24,
+        "id": 12723,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/wGMAu8q6R6PNdz8DIEQj718yh0Q.jpg",
+        "season_number": 3,
+        "vote_average": 3.9
+      },
+      {
+        "air_date": "1990-09-21",
+        "episode_count": 26,
+        "id": 12717,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/a0NYQJTW2ED7vjwY4bFj4PQ1oMR.jpg",
+        "season_number": 4,
+        "vote_average": 8.4
+      },
+      {
+        "air_date": "1991-09-17",
+        "episode_count": 26,
+        "id": 12720,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/5ajVNfl5gdkC9rKDGpltxCrhNrc.jpg",
+        "season_number": 5,
+        "vote_average": 9.7
+      },
+      {
+        "air_date": "1992-09-22",
+        "episode_count": 24,
+        "id": 12722,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/1AOy9dJEiGnSiFRunDMqRq8IL9p.jpg",
+        "season_number": 6,
+        "vote_average": 6.5
+      },
+      {
+        "air_date": "1993-09-14",
+        "episode_count": 24,
+        "id": 12716,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/2cAFB59H7QA0mycADG22nGUWNC.jpg",
+        "season_number": 7,
+        "vote_average": 5.8
+      },
+      {
+        "air_date": "1994-09-27",
+        "episode_count": 24,
+        "id": 12719,
+        "name": "Temporada 8",
+        "overview": "",
+        "poster_path": "/437jZdGXmYzyl9p4QtIFsm89rL5.jpg",
+        "season_number": 8,
+        "vote_average": 4.3
+      }
+    ],
+    "tituloSerie": "Padres forzosos",
+    "descripcion": "Tras la muerte de su esposa en un accidente de coche, Danny Tanner, un periodista de San Francisco, tiene que sacar adelante a sus tres hijas pequeñas: D.J., Stephanie y Michelle. Su cuñado Jesse y su mejor amigo, Joey, le ayudarán en la diaria y difícil tarea de criar, cuidar y educar a las niñas.",
+    "imagen": "https://image.tmdb.org/t/p/w780/437jZdGXmYzyl9p4QtIFsm89rL5.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 236,
     "tmdbType": "tv",
     "tituloOriginal": "The Flash",
