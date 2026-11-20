@@ -1,5 +1,128 @@
 [
   {
+    "tmdbId": 71993,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Three Stooges: Hey Moe! Hey Dad!",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/uZf80gFlAK69C3TuSiYCvgTyZMq.jpg",
+    "year": "2015",
+    "fechaEstreno": "2015-05-05",
+    "rating": "8.7",
+    "votos": 7,
+    "runtime": "55min",
+    "runtimeMin": 55,
+    "genres": [
+      "Documental"
+    ],
+    "generosTexto": "Documental",
+    "clasificacion": "NR",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Moe Howard",
+        "personaje": "Moe (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/93l6M2P42vracu6cfzuOqmYBYk1.jpg"
+      },
+      {
+        "nombre": "Larry Fine",
+        "personaje": "Larry (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/zdT16UWESRhhT48KGeXibmQzslQ.jpg"
+      },
+      {
+        "nombre": "Curly Howard",
+        "personaje": "Curly (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/ozWdyoTNqWy55bOglIFqR4ZalwZ.jpg"
+      },
+      {
+        "nombre": "Shemp Howard",
+        "personaje": "Shemp (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/b6L3kV2qnputHSsd7uYirjKEMBC.jpg"
+      },
+      {
+        "nombre": "Joe Besser",
+        "personaje": "Joe (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/hA30z8oW6X1u6agbQM9E4bRNIlq.jpg"
+      },
+      {
+        "nombre": "Joe DeRita",
+        "personaje": "Curly-Joe (archive footage)",
+        "foto": "https://image.tmdb.org/t/p/w185/cQHAGZuAxtOtQi7bnLvsWIhABLc.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "C3 Entertainment, Inc.",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Biography",
+        "poster": "https://image.tmdb.org/t/p/w342/8R9gswhn3Cpul7dmjMpLv4aPYrK.jpg",
+        "year": "1987",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "La historia del cine: una odisea",
+        "poster": "https://image.tmdb.org/t/p/w342/aRwDa2xEgbFVH3KGWT5tj07icV5.jpg",
+        "year": "2011",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Leaving Neverland",
+        "poster": "https://image.tmdb.org/t/p/w342/mIU9T1FUd9nVYuKgUb0MA0io6Gk.jpg",
+        "year": "2019",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Doctor Who Confidential",
+        "poster": "https://image.tmdb.org/t/p/w342/3TAO5VgSyICVTL5Hvv6L4V12nig.jpg",
+        "year": "2005",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Planeta nocturno: A todo color",
+        "poster": "https://image.tmdb.org/t/p/w342/nNPezHMni7kGhGCWGTh07yZVvvI.jpg",
+        "year": "2020",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "De viaje con los Derbez",
+        "poster": "https://image.tmdb.org/t/p/w342/uRGtSHP3tSQ2XsHhguCREWt7dXA.jpg",
+        "year": "2019",
+        "rating": "7.5"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Paul Howard",
+      "Frank Basile"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 24,
+    "temporadasTmdb": [
+      {
+        "air_date": "2015-05-05",
+        "episode_count": 24,
+        "id": 88887,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/fzXwSf8Mggl039e5elefJxXMv3v.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Los Tres Chiflados",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/2s0mOdJMfIgzgn8Q9HvWHptgCKi.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 2251,
     "tmdbType": "tv",
     "tituloOriginal": "Taxi",
@@ -168,7 +291,145 @@
     "imagen": "https://image.tmdb.org/t/p/w780/pua3A2XSaO6bP6WhVDBRbcyRTAS.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "MacGyver S01E06 WEB-DL 1080p [7399407618794]",
+            "urlDrive": "https://drive.google.com/file/d/1IJnK1NyA5D4gEwwawpUUF8BzdDqG-zh7/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E07 WEB-DL 1080p [7399408012010]",
+            "urlDrive": "https://drive.google.com/file/d/1Ry1UIiBRTHaGnjy0Goy_f1yYx0Pi5777/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E08 WEB-DL 1080p [7399408208618]",
+            "urlDrive": "https://drive.google.com/file/d/1DjbQMEDsC6CGQb9REkmEBfms3povytW_/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E09 WEB-DL 1080p [7399408667370]",
+            "urlDrive": "https://drive.google.com/file/d/1fP8HwvfpL60vEmtwsorL7iYN-cJ2VyKH/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E10 WEB-DL 1080p [7399408995050]",
+            "urlDrive": "https://drive.google.com/file/d/1DrWA_pKkYeEv1Ph211TE4hHLMuekm9_k/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E11 WEB-DL 1080p [7399409453802]",
+            "urlDrive": "https://drive.google.com/file/d/1Vzd-fAz2zc0X_dg3bqKMXUba08HWqgea/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E12 WEB-DL 1080p [7399409715946]",
+            "urlDrive": "https://drive.google.com/file/d/1zUvvll_5vp0lhy8rM76ccXXBfBrZ1Abm/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E13 WEB-DL 1080p [7399409912554]",
+            "urlDrive": "https://drive.google.com/file/d/1ZoKc9Mm3VpdnYC3cnSpY6NFa8DEDKkZe/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E14 WEB-DL 1080p [7399410109162]",
+            "urlDrive": "https://drive.google.com/file/d/1Pp47qsC2KXHmlay8zjKamgHuvXsKhZ8S/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E15 WEB-DL 1080p [7399410371306]",
+            "urlDrive": "https://drive.google.com/file/d/1AY52zxI9-J7PgXt47oRTam8rr3-qcpnu/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E16 WEB-DL 1080p [7399410502378]",
+            "urlDrive": "https://drive.google.com/file/d/19asP4ocx4Rk1GjqI12sKRC0cytua9WEN/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E17 WEB-DL 1080p [7399410633450]",
+            "urlDrive": "https://drive.google.com/file/d/1ChulUG_1KPqIAnzZsHrKarkWbMyxBkte/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E19 WEB-DL 1080p [7399411157738]",
+            "urlDrive": "https://drive.google.com/file/d/14R_Vn7GMHqwyCXDIwPHEQRluRiGOOLL0/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E20 WEB-DL 1080p [7399411550954]",
+            "urlDrive": "https://drive.google.com/file/d/1lmNfUP5MlA54B9wUvIz06AZ9nYvw1eIe/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S01E21 WEB-DL 1080p [7399411682026]",
+            "urlDrive": "https://drive.google.com/file/d/1MGD52YAHqi4W-pLT6-DVYmhI0w6ypLEv/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S02E08 [7399538690794]",
+            "urlDrive": "https://drive.google.com/file/d/1_NypVSgNjLymlFPvvWx0ySSPzK1sWXhN/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S02E10 [7399539280618]",
+            "urlDrive": "https://drive.google.com/file/d/1Y3KrTFHx_uhoBDI77dXajAcLA8sRyYNQ/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E03 [7402772302570]",
+            "urlDrive": "https://drive.google.com/file/d/1Z0oEhUweBix8-zTRK3KsB59zeBIV1wrs/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E04 [7402772433642]",
+            "urlDrive": "https://drive.google.com/file/d/1qCHXVGtNmQRXlAOaX2btzW-MNgAr4qL9/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E06 [7402772826858]",
+            "urlDrive": "https://drive.google.com/file/d/1cFMJRg04IJ0aap17TUpcvzf2uZ-fi_2E/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E07 [7402773023466]",
+            "urlDrive": "https://drive.google.com/file/d/1ERYqVuWJL5GkcUq8LSC42B_pqarLFNZy/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E08 [7402773351146]",
+            "urlDrive": "https://drive.google.com/file/d/1p0RCPdEefcE8Qv_4UXKVlSzWU3ZJqqIs/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E10 [7402773809898]",
+            "urlDrive": "https://drive.google.com/file/d/16JYS_B_ZbYQbVeO9oD3Wm_UjSmj5Daql/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E11 [7402774006506]",
+            "urlDrive": "https://drive.google.com/file/d/1ECbvNVjrzcZa7-zk_wtZMWfe9_ALT5dg/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E13 [7402774530794]",
+            "urlDrive": "https://drive.google.com/file/d/1kiw09PBLfZ8gXuBkxno_AcKqwS5xpVwp/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E15 [7402774924010]",
+            "urlDrive": "https://drive.google.com/file/d/1PAW_sVhNlua9rU0IuV-0ndr93tTkoK_H/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E16 [7402775120618]",
+            "urlDrive": "https://drive.google.com/file/d/1jTHNInc4TrJnTfrg7swKUCiDQ_6CK5eC/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E18 [7402775448298]",
+            "urlDrive": "https://drive.google.com/file/d/1A6vu1TUwsaX1M5-EtvqfegZ1t0w3s3vw/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S03E20 [7402775841514]",
+            "urlDrive": "https://drive.google.com/file/d/1DyldT5TSFXfLxZq3bz60W1qaRbcIoUCJ/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S05E05 [7405849414378]",
+            "urlDrive": "https://drive.google.com/file/d/1KRH2r7DdjOzVQ6MDEkB3e7duLx-ni4ce/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S05E09 [7405850266346]",
+            "urlDrive": "https://drive.google.com/file/d/1aCnme4CJErNxZURCN9zuOxVb9n7PlW-G/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S06E17 [7406173293290]",
+            "urlDrive": "https://drive.google.com/file/d/1cr0rhXupLkftSxUfZNXo6qFEKh8P28E5/view"
+          },
+          {
+            "tituloEpisodio": "MacGyver S07E09 [7406638336746]",
+            "urlDrive": "https://drive.google.com/file/d/1dXgCqLwFwnfF13wTvU_3atR6UQQVc29X/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 4579,
