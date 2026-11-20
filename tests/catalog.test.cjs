@@ -53,7 +53,7 @@ test('validation catches empty catalogs, duplicated IDs and invalid episode link
     const datasets = baseline();
     datasets['peliculas.json'] = [];
     datasets['peliculas2.json'][1].id = datasets['peliculas2.json'][0].id;
-    datasets['playlist.json'][0].temporadas[0].episodios[0].urlDrive = 'javascript:alert(1)';
+    datasets['playlist.json'].find(s => s.temporadas?.[0]?.episodios?.length).temporadas[0].episodios[0].urlDrive = 'javascript:alert(1)';
     const errors = C.validate(datasets);
     assert(errors.some(error => error.includes('catálogo vacío')));
     assert(errors.some(error => error.includes('ID ausente o duplicado')));

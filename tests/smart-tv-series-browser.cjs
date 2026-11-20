@@ -27,7 +27,7 @@ const server=http.createServer((req,res)=>{
   // Native shell API / remote OK opens Series and its first item.
   await page.locator('#series').focus();await page.evaluate(()=>window.boxTV.ok());
   await page.getByRole('button',{name:'Serie Águila',exact:true}).waitFor();
-  assert.equal(await page.locator('#section-title').textContent(),'Series');
+  assert.equal(await page.locator('#section-title').textContent(),'Series retro');
   await page.getByRole('button',{name:'Serie Águila',exact:true}).focus();await page.keyboard.press('Enter');
   const visibleEpisodes=await page.locator('#episodes button').first().evaluate(button=>{const r=button.getBoundingClientRect(),d=document.getElementById('details').getBoundingClientRect();return r.top>=d.top&&r.bottom<=d.bottom&&r.bottom<=innerHeight;});
   assert(visibleEpisodes,'Episodes must be visible on opening, even with a long synopsis');

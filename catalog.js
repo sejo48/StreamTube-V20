@@ -75,7 +75,7 @@
     ready.catch(() => {});
     async function read(file, fetcher = root.fetch.bind(root)) {
         await ready;
-        if (!files.includes(file)) throw new Error('Catálogo desconocido.');
+        if (![...files, 'series.json'].includes(file)) throw new Error('Catálogo desconocido.');
         let response = await fetcher('./' + file, { cache: 'no-store' });
         // Only a missing local file permits the configured remote fallback.
         if (response.status === 404) response = await fetcher(rawUrl(file), { cache: 'no-store' });

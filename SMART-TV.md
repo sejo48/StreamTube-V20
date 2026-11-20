@@ -21,3 +21,7 @@ En la ficha de una serie, pulsa Abajo desde la temporada para entrar a los episo
 La ficha muestra doce episodios por página en una cuadrícula de tres columnas, con filas compactas de tamaño fijo. Izquierda/Derecha recorre los episodios; Arriba/Abajo cambia de fila; al avanzar más allá de la página, se muestran los siguientes.
 
 Durante la reproducción, «← Volver» permanece visible en la esquina superior izquierda aunque se oculte la barra inferior. Atrás del navegador/mando sale del reproductor y regresa a la ficha. En el navegador, el foco vuelve a los controles de la aplicación después de activar el reproductor externo; el proveedor no puede abrir un fullscreen propio que tape la salida.
+
+## Series y Series retro
+
+Series retro conserva el catálogo existente de playlist.json. La nueva sección Series comienza vacía y utiliza series.json. Ambas permiten navegar por temporadas y capítulos con el control remoto. El administrador ofrece las mismas secciones para guardar y publicar sus títulos por separado.
