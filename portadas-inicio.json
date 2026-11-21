@@ -2,12 +2,13 @@
   "schemaVersion": 2,
   "source": "peliculas2.json",
   "mode": "manual",
-  "updatedAt": "2026-11-21T15:01:52.562Z",
+  "updatedAt": "2026-11-21T17:25:33.896Z",
   "items": [
     {
-      "movieKey": "tmdb:87513",
-      "title": "Motor City",
-      "backdrop": "https://image.tmdb.org/t/p/w1280/l7asYmqOad01F2u0oCMM8nQjoEP.jpg"
+      "movieKey": "tmdb:1288069",
+      "title": "Tenzing",
+      "backdrop": "https://image.tmdb.org/t/p/original/sQUzXmaNgEDrRO6sOFGUZTuq0eE.jpg",
+      "posterPosition": "left"
     }
   ]
 }
