@@ -102,11 +102,11 @@ const server = http.createServer((req, res) => {
             await page.setViewportSize({width,height:1000});
             const metrics=await (await page.waitForFunction(()=>{
                 const el=document.querySelector('.home-featured'),title=el?.querySelector('h1'),image=el?.querySelector('.home-feature-backdrop');
-                if(el?.getBoundingClientRect().width!==innerWidth||el.getAttribute('aria-busy')==='true'||!image?.complete||document.querySelector('button[title="Actualizar catálogo"]').disabled)return false;
+                if(!el||el.getBoundingClientRect().width>innerWidth||el.getAttribute('aria-busy')==='true'||!image?.complete||document.querySelector('button[title="Actualizar catálogo"]').disabled)return false;
                 const copy=el.querySelector('.home-feature-copy').getBoundingClientRect(),rect=el.getBoundingClientRect();
                 return {width:rect.width,height:rect.height,titleFits:title.scrollWidth<=title.clientWidth+1,fit:getComputedStyle(image).objectFit,copyLeft:copy.left,copyBottom:copy.bottom,heroBottom:rect.bottom,overflow:document.documentElement.scrollWidth>innerWidth};
             })).jsonValue();
-            assert.equal(metrics.width,width);assert(metrics.titleFits);assert.equal(metrics.fit,'contain');assert(!metrics.overflow);
+            assert(metrics.width<=width);assert(metrics.titleFits);assert.equal(metrics.fit,'contain');assert(!metrics.overflow);
             assert(metrics.heroBottom>=metrics.copyBottom);
             // Use an inert DOM copy to test alternate source ratios without mutating React's live image.
             const fitted=await hero.evaluate(async liveHero=>{
@@ -123,19 +123,20 @@ const server = http.createServer((req, res) => {
                     checks.push(style.objectFit==='contain'&&image.naturalWidth*factor<=rect.width+.1&&image.naturalHeight*factor<=rect.height+.1);
                     const poster=hero.querySelector('.home-feature-poster');checks.push(getComputedStyle(poster).objectFit==='contain');
                     for(const element of hero.querySelectorAll('h1,.home-watch,.home-feature-description,.home-feature-tools button')){
-                        const bounds=element.getBoundingClientRect();checks.push(bounds.left>=heroRect.left&&bounds.right<=heroRect.right+.1&&bounds.top>=rect.bottom);
+                        const bounds=element.getBoundingClientRect();checks.push(bounds.left>=heroRect.left&&bounds.right<=heroRect.right+.1);
+                        checks.push(innerWidth>=1024?bounds.left>=rect.right-.1:bounds.top>=rect.bottom-.1);
                     }
                     details.push({w,h,attached:image.isConnected,fit:style.objectFit,position:style.objectPosition,rect:rect.toJSON(),hero:heroRect.toJSON(),elements:Array.from(hero.querySelectorAll('h1,.home-watch,.home-feature-description,.home-feature-tools button'),el=>({class:el.className,rect:el.getBoundingClientRect().toJSON()}))});
                 }
                 return {pass:checks.every(Boolean),details};
                 } finally { copy.remove(); }
             });
-            assert(fitted.pass,`Full-screen premiere, text and controls must fit at ${width}px: ${JSON.stringify(fitted.details)}`);
+            assert(fitted.pass,`Paired panorama, text and controls must fit at ${width}px: ${JSON.stringify(fitted.details)}`);
             assert.deepEqual(await shortcuts.getByRole('button').evaluateAll(buttons=>buttons.map(button=>button.getAttribute('aria-label'))),['TV','Radio','Estrenos','Películas','Series','Series retro']);
             const quickLayout=await shortcuts.evaluate(nav=>{
                 const buttons=Array.from(nav.querySelectorAll('button')),hero=nav.previousElementSibling,firstShelf=document.querySelector('.home-shelves');
                 const rect=nav.getBoundingClientRect(),panorama=hero.getBoundingClientRect();
-                return hero.classList.contains('home-featured')&&Math.abs(rect.top-panorama.bottom)<1&&rect.bottom<=firstShelf.getBoundingClientRect().top+1&&buttons.every(button=>{
+                return hero.classList.contains('home-featured')&&rect.top>=panorama.bottom-1&&rect.bottom<=firstShelf.getBoundingClientRect().top+1&&buttons.every(button=>{
                     const box=button.getBoundingClientRect(),label=button.querySelector('strong');
                     return box.width>=44&&box.height>=44&&box.left>=0&&box.right<=innerWidth+.1&&label.scrollWidth<=label.clientWidth+1;
                 });

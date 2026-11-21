@@ -8,7 +8,7 @@
     <script src="./radio-engine.js?v=2026-2"></script>
     <script src="./radio-favorites.js?v=2026-1"></script>
     <link rel="stylesheet" href="./radio.css?v=20261025-4">
-    <link rel="stylesheet" href="./home.css?v=20261121-1">
+    <link rel="stylesheet" href="./home.css?v=20261121-2">
     <script src="./home-features.js?v=20261121-1"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -729,10 +729,11 @@
             return <section className="home-featured" aria-label="Película recomendada" aria-busy={pending}>
                 <div className="home-feature-art"><div className="home-feature-frame"><img key={BoxHomeFeatures.panorama(item)} src={BoxHomeFeatures.panorama(item)} alt={'Imagen panorámica de ' + title} className="home-feature-backdrop" onError={() => onArtworkError(item)}/></div></div>
                 <div className="home-feature-layout">
-                    <img className="home-feature-poster" src={item.image || item.imagen || generatePlaceholder(title)} alt={'Portada de ' + title} onError={event => { event.currentTarget.src = generatePlaceholder(title); }}/>
                     <div className="home-feature-copy">
-                        <p className="home-feature-kicker">Película destacada</p>
-                        <h1>{title}</h1>
+                        <div className="home-feature-heading">
+                            <img className="home-feature-poster" src={item.image || item.imagen || generatePlaceholder(title)} alt={'Portada de ' + title} onError={event => { event.currentTarget.src = generatePlaceholder(title); }}/>
+                            <div><p className="home-feature-kicker">Película destacada</p><h1>{title}</h1></div>
+                        </div>
                         <div className="home-feature-meta">{item.clasificacion && <span>{item.clasificacion}</span>}{item.runtime && <span>{item.runtime}</span>}{item.year && <span>{item.year}</span>}{item.rating && <span className="home-rating">★ {item.rating}</span>}</div>
                         {item.generosTexto && <p className="home-feature-genres">{item.generosTexto}</p>}
                         <div className="home-feature-actions">
