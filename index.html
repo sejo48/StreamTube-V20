@@ -7,7 +7,7 @@
     <script src="./notices.js"></script>
     <script src="./radio-engine.js?v=2026-2"></script>
     <script src="./radio-favorites.js?v=2026-1"></script>
-    <link rel="stylesheet" href="./radio.css?v=20261121-1">
+    <link rel="stylesheet" href="./radio.css?v=20261121-2">
     <link rel="stylesheet" href="./home.css?v=20261121-2">
     <script src="./home-features.js?v=20261121-1"></script>
     <meta charset="UTF-8">
@@ -1148,6 +1148,7 @@
             const selectStation = station => {
                 onPlayStation(station);
                 if (window.matchMedia('(max-width: 760px)').matches) {
+                    setFiltersOpen(false);
                     requestAnimationFrame(() => {
                         deckRef.current?.scrollTo({ top: 0, behavior: 'instant' });
                         directoryRef.current?.scrollTo({ top: 0, behavior: 'instant' });
@@ -1157,7 +1158,8 @@
             };
             const [view, setView] = useState('all');
             const [group, setGroup] = useState('all');
-            const changeRadioView = next => { setRadioFilter(''); setGroup('all'); setView(next); };
+            const [filtersOpen, setFiltersOpen] = useState(false);
+            const changeRadioView = next => { setRadioFilter(''); setGroup('all'); setFiltersOpen(false); setView(next); };
             const [muted, setMuted] = useState(false);
             const radioTime = () => new Date().toLocaleTimeString('es-CR', { timeZone: 'America/Costa_Rica', hour: '2-digit', minute: '2-digit' });
             const [clock, setClock] = useState(radioTime);
@@ -1200,12 +1202,18 @@
                         {failed && <div className="radio-error"><p>La emisora no respondió. Puedes reintentar o elegir otra.</p><button onClick={onRetry}>Reintentar conexión</button></div>}
                         <div className="radio-transport"><button aria-label="Emisora anterior" title="Emisora anterior" onClick={() => move(-1)} disabled={!displayed.length}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M5 5v14M19 5 8 12l11 7Z"/></svg></button><button className="radio-play" onClick={onTogglePlayback} disabled={!currentStation && !stations.length} aria-label={playing || loading ? 'Pausar radio' : 'Reproducir radio'}><Icon name={playing || loading ? 'pause' : 'play'} size={22}/><span>{loading ? 'Conectando…' : playing ? 'Pausar' : 'Reproducir'}</span></button><button aria-label="Emisora siguiente" title="Emisora siguiente" onClick={() => move(1)} disabled={!displayed.length}><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M19 5v14M5 5l11 7-11 7Z"/></svg></button></div>
                         <div className="radio-volume"><button aria-label={muted || volume === 0 ? 'Activar sonido de radio' : 'Silenciar radio'} onClick={() => { if (volume > 0) { lastVolume.current = volume; setVolume(0); setMuted(true); } else { setVolume(lastVolume.current || .8); setMuted(false); } }}><Icon name="volume" size={20}/>{volume === 0 && <span>×</span>}</button><input aria-label="Volumen de radio" type="range" min="0" max="1" step="0.01" value={volume} style={{ '--volume-percent': `${Math.round(volume * 100)}%` }} onChange={event => setVolume(Number(event.target.value))}/><output>{Math.round(volume * 100)}%</output></div>
-                        {currentStation && <button className={`radio-save ${favorite ? 'is-saved' : ''}`} aria-pressed={!!favorite} onClick={() => onToggleFavorite({ ...currentStation, type: 'radio' })}><Icon name="heart" size={16} fill={favorite ? 'currentColor' : 'none'}/>{favorite ? 'Guardada en favoritos' : 'Guardar emisora'}</button>}
+                        {currentStation && <button className={`radio-save ${favorite ? 'is-saved' : ''}`} aria-label={favorite ? 'Guardada en favoritos' : 'Guardar emisora'} title={favorite ? 'Quitar de favoritas' : 'Guardar emisora'} aria-pressed={!!favorite} onClick={() => onToggleFavorite({ ...currentStation, type: 'radio' })}><Icon name="heart" size={16} fill={favorite ? 'currentColor' : 'none'}/><span className="radio-save-label">{favorite ? 'Guardada en favoritos' : 'Guardar emisora'}</span></button>}
                         <p className="radio-footnote">El audio se detiene al salir de Radio.</p>
                     </div>
                     <div ref={directoryRef} className="radio-directory" role="region" aria-label="Buscar y elegir emisoras" tabIndex={0}>
                         <div className="radio-directory-heading"><div><p className="radio-eyebrow">ENCUENTRA TU FRECUENCIA</p><h2>Explora las emisoras</h2></div><span aria-live="polite">{displayed.length} {displayed.length === 1 ? 'emisora' : 'emisoras'}</span></div>
-                        <div className="radio-filters"><div className="radio-views" role="group" aria-label="Lista de emisoras"><button aria-pressed={view === 'all'} onClick={() => changeRadioView('all')} aria-controls="radio-station-results"><Icon name="radio" size={16}/>Todas <span>{stations.length}</span></button><button aria-pressed={view === 'favorites'} onClick={() => changeRadioView('favorites')} aria-controls="radio-station-results"><Icon name="heart" size={16}/>Favoritas <span>{savedStations.length}</span></button></div><div className="radio-filter-fields"><label className="radio-search"><Icon name="search" size={18}/><input type="search" aria-label="Buscar emisora" placeholder="Busca tu emisora o género…" value={radioFilter} onChange={event => setRadioFilter(event.target.value)}/></label><label className="radio-group"><span>Grupo</span><select aria-label="Filtrar emisoras por grupo" value={group} onChange={event => setGroup(event.target.value)}><option value="all">Todos los grupos</option>{groups.map(value => <option key={value}>{value}</option>)}</select></label></div></div>
+                        <div className="radio-filters">
+                            <div className="radio-directory-toolbar">
+                                <div className="radio-views" role="group" aria-label="Lista de emisoras"><button aria-pressed={view === 'all'} onClick={() => changeRadioView('all')} aria-controls="radio-station-results"><Icon name="radio" size={16}/>Todas <span>{stations.length}</span></button><button aria-pressed={view === 'favorites'} onClick={() => changeRadioView('favorites')} aria-controls="radio-station-results"><Icon name="heart" size={16}/>Favoritas <span>{savedStations.length}</span></button></div>
+                                <button className={`radio-tools-toggle ${query || group !== 'all' ? 'has-filters' : ''}`} aria-label={filtersOpen ? 'Ocultar búsqueda y filtros' : 'Buscar y filtrar emisoras'} aria-expanded={filtersOpen} aria-controls="radio-filter-fields" onClick={() => setFiltersOpen(value => !value)}><Icon name={filtersOpen ? 'x' : 'search'} size={20}/>{(query || group !== 'all') && <span className="radio-filter-indicator" aria-label="Filtros activos"/>}</button>
+                            </div>
+                            <div id="radio-filter-fields" className={`radio-filter-fields ${filtersOpen ? 'is-open' : ''}`}><label className="radio-search"><Icon name="search" size={18}/><input type="search" aria-label="Buscar emisora" placeholder="Buscar emisora o género…" value={radioFilter} onChange={event => setRadioFilter(event.target.value)}/></label><label className="radio-group"><span>Grupo</span><select aria-label="Filtrar emisoras por grupo" value={group} onChange={event => setGroup(event.target.value)}><option value="all">Todos los grupos</option>{groups.map(value => <option key={value}>{value}</option>)}</select></label></div>
+                        </div>
                         <div id="radio-station-results" className="radio-stations" tabIndex={0} role="region" aria-label="Resultados de emisoras">{displayed.map((station, stationIndex) => {
                             const identity = BoxRadioFavorites.key(station);
                             const selected = !!identity && !!currentStation && BoxRadioFavorites.key(currentStation) === identity, saved = isItemFavorite({ ...station, type: 'radio' });
