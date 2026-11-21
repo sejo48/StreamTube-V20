@@ -1,1 +1,156 @@
-[]
+[
+  {
+    "tmdbId": 316752,
+    "tmdbType": "tv",
+    "tituloOriginal": "Somos así",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/fyJ1B8Yj7dFGjG0jfBpsHjBwgvT.jpg",
+    "year": "2026",
+    "fechaEstreno": "2026-11-18",
+    "rating": "9.0",
+    "votos": 3,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Comedia"
+    ],
+    "generosTexto": "Comedia",
+    "clasificacion": "16",
+    "tagline": "\"Donde cualquier parecido con la realidad no es pura coincidencia\"",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Nicolás Occhiato",
+        "personaje": "Matías",
+        "foto": "https://image.tmdb.org/t/p/w185/871CqoBxM30wwrHbVurrJTJZgOt.jpg"
+      },
+      {
+        "nombre": "Flor Jazmín Peña",
+        "personaje": "Chía",
+        "foto": "https://image.tmdb.org/t/p/w185/2pl6s7UrhFTYgr0K7LvNvRtY3Xd.jpg"
+      },
+      {
+        "nombre": "Momi Giardina",
+        "personaje": "Guillermina",
+        "foto": "https://image.tmdb.org/t/p/w185/a4tIoeyDrglAm3gv86JaLXaaN6V.jpg"
+      },
+      {
+        "nombre": "Martín Garabal",
+        "personaje": "Leo",
+        "foto": "https://image.tmdb.org/t/p/w185/hFgj2qDmVOS9oqjFZymyuYHeLZI.jpg"
+      },
+      {
+        "nombre": "Santiago Talledo",
+        "personaje": "Lucas",
+        "foto": "https://image.tmdb.org/t/p/w185/mafJmdtxrLrUqPZt4KrTKuwWGBG.jpg"
+      }
+    ],
+    "pais": "Argentina",
+    "idioma": "es",
+    "productoras": "Pampa Films",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "https://www.youtube.com/watch?v=qG2hNd8iDlU",
+    "coleccion": "",
+    "keywords": "adulthood, adult friends",
+    "similares": [
+      {
+        "titulo": "Coupling",
+        "poster": "https://image.tmdb.org/t/p/w342/cfHQwmPUrCbm6XAPnuuBAVZpC94.jpg",
+        "year": "2000",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "One Day at a Time",
+        "poster": "https://image.tmdb.org/t/p/w342/zheJWmmDRUYuApz83ZVrrPUjL2F.jpg",
+        "year": "1975",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Son of a Critch",
+        "poster": "https://image.tmdb.org/t/p/w342/ufw98SF9HdcZevXbEOTpHOmJF6Y.jpg",
+        "year": "2022",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "The Unicorn",
+        "poster": "https://image.tmdb.org/t/p/w342/464MyJvlG2Po8J1ObAwRljf2Exf.jpg",
+        "year": "2019",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Love Bites",
+        "poster": "https://image.tmdb.org/t/p/w342/HFIutOGJgr5LtUn89ltq3iZbTi.jpg",
+        "year": "2011",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Cómo conocí a vuestra madre",
+        "poster": "https://image.tmdb.org/t/p/w342/82DxDd43B7F1JunSlbZ7vkWFgej.jpg",
+        "year": "2005",
+        "rating": "8.1"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 8,
+    "temporadasTmdb": [
+      {
+        "air_date": "2026-11-18",
+        "episode_count": 8,
+        "id": 505504,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/uue3RcBiafA88oUQZ54eh18lECw.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Somos así",
+    "descripcion": "Un grupo de amigos atraviesa un momento en que todo parece desajustarse al mismo tiempo. Trabajos que tambalean, vínculos que se redefinen, citas fallidas y secretos que salen a la luz los llevan a preguntarse quiénes son y qué están dispuestos a sostener. A lo largo de ocho episodios vivirán situaciones delirantes que amenazan con cambiarlo todo, porque crecer no vino con manual de instrucciones.",
+    "imagen": "https://image.tmdb.org/t/p/w780/p9dfUH3jSgdpVzrwdGZtBG1TADS.jpg",
+    "image": "https://image.tmdb.org/t/p/w780/p9dfUH3jSgdpVzrwdGZtBG1TADS.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Somos así 11",
+            "urlDrive": "https://drive.google.com/file/d/1VoCMHNL6XrgDN01i4y4pVtxSFt33orDV/view"
+          },
+          {
+            "tituloEpisodio": "Somos así 12",
+            "urlDrive": "https://drive.google.com/file/d/1G2eWTOfxQnds9baJspJ6LTLgqSXmkVON/view"
+          },
+          {
+            "tituloEpisodio": "Somos así 13",
+            "urlDrive": "https://drive.google.com/file/d/1xkVW1ATC__phy6Sa9Xai4LBjV7MTyUUq/view"
+          },
+          {
+            "tituloEpisodio": "Somos así 14",
+            "urlDrive": "https://drive.google.com/file/d/1lm3Gzsg88BtXtvU9dmV8B5x-WrXFZYR7/view"
+          },
+          {
+            "tituloEpisodio": "Somos así 15",
+            "urlDrive": "https://drive.google.com/file/d/1oqvPwpAdeJtz__fGYmkD6q6HET0z5uka/view"
+          },
+          {
+            "tituloEpisodio": "Somos así 16",
+            "urlDrive": "https://drive.google.com/file/d/16JW_cREdDa42E6-i3MjiJGABSPOZqXyl/view"
+          },
+          {
+            "tituloEpisodio": "Somos así 17",
+            "urlDrive": "https://drive.google.com/file/d/1UFphi_NCdG8WMWSQO8vD2F_2EnZpuubW/view"
+          },
+          {
+            "tituloEpisodio": "Somos así 18",
+            "urlDrive": "https://drive.google.com/file/d/16Opree0bXOhZUrpsm8zbXNufUnFlG_F4/view"
+          }
+        ]
+      }
+    ]
+  }
+]
