@@ -29527,7 +29527,7 @@
     "tituloOriginal": "Supergirl",
     "descripcion": "Kara Zor-El es una heroína errabunda que decide aliarse a regañadientes con un compañero improbable para comenzar un viaje épico e interestelar de venganza y justicia, en el cual deberá decidir si su fuerza sirve para destruir o para proteger.",
     "imagen": "https://image.tmdb.org/t/p/w780/Ao9ucdnMaBhNt528Z5S4Wxovgnf.jpg",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/heZQmyNvkH236ha2M3JckdUQQqb.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/original/lwL6r3M9IweP3Lc7XlOYIxb4Wxl.jpg",
     "urlDrive": "https://drive.google.com/file/d/1qkuy7qQX-ipoetBdZNhBrsYCu1gKCD6A/view?usp=drive_link",
     "urlOkRu": "",
     "codigo": null,
@@ -29655,7 +29655,10 @@
         "rating": "7.0"
       }
     ],
-    "tmdbId": 1081003
+    "tmdbId": 1081003,
+    "runtimeMin": 0,
+    "homepage": "",
+    "navidad": false
   },
   {
     "titulo": "El botín",
