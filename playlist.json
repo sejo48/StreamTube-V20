@@ -1,5 +1,173 @@
 [
   {
+    "tmdbId": 453,
+    "tmdbType": "tv",
+    "tituloOriginal": "Mister Ed",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/luppCk9XUcs0gUEf9Sv7MhiJv4H.jpg",
+    "year": "1961",
+    "fechaEstreno": "1961-01-05",
+    "rating": "6.7",
+    "votos": 58,
+    "runtime": "30min",
+    "runtimeMin": 30,
+    "genres": [
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Comedia, Familia",
+    "clasificacion": "TV-G",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Alan Young",
+        "personaje": "Wilbur Post",
+        "foto": "https://image.tmdb.org/t/p/w185/9sMQDRksfRxXysHCSP98S8Z9mf8.jpg"
+      },
+      {
+        "nombre": "Connie Hines",
+        "personaje": "Carol Post",
+        "foto": "https://image.tmdb.org/t/p/w185/k3YdNnyqv7KdBorckwaD85RSOtq.jpg"
+      },
+      {
+        "nombre": "Allan Lane",
+        "personaje": "Mister Ed (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/fjkAyBItp9uxVZmEVKQUffSlpPv.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Filmways Television, The Mister Ed Company",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "horse, speaking horse, sitcom",
+    "similares": [
+      {
+        "titulo": "Jellystone!",
+        "poster": "https://image.tmdb.org/t/p/w342/7SwSAG48QvvMy8jlAgm3LGt3VGq.jpg",
+        "year": "2021",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Vaca y Pollo",
+        "poster": "https://image.tmdb.org/t/p/w342/wsBSKe9QAs4Gq1nCD8619qTtnKy.jpg",
+        "year": "1997",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "My Three Sons",
+        "poster": "https://image.tmdb.org/t/p/w342/2BGjuEKFtq43P3HeYSPWcX9E5et.jpg",
+        "year": "1960",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Los Tipos Malos: La Serie",
+        "poster": "https://image.tmdb.org/t/p/w342/ojiGyVF7v9SiGLF9g6RRPYvf9TU.jpg",
+        "year": "2025",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Petticoat Junction",
+        "poster": "https://image.tmdb.org/t/p/w342/2kTGzz870hmdmQ074CYTdKFRqSm.jpg",
+        "year": "1963",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "Benson",
+        "poster": "https://image.tmdb.org/t/p/w342/pXQIwDfMMDF6GVJdgLm68Exm5wo.jpg",
+        "year": "1979",
+        "rating": "7.0"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Walter R. Brooks"
+    ],
+    "numeroTemporadas": 6,
+    "numeroEpisodios": 143,
+    "temporadasTmdb": [
+      {
+        "air_date": "1964-01-01",
+        "episode_count": 3,
+        "id": 1315,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/yLBK7kOPG4JlgDAyT0JbyxmeCtY.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1961-01-05",
+        "episode_count": 26,
+        "id": 1317,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/nU8rhfumLfI75ewI0mjmfdjrBz0.jpg",
+        "season_number": 1,
+        "vote_average": 6.8
+      },
+      {
+        "air_date": "1961-10-01",
+        "episode_count": 26,
+        "id": 1319,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/j9cUq9QmJxPMsgc3UZHKK1NWwD3.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1962-09-27",
+        "episode_count": 26,
+        "id": 1314,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/c72c2GZTEaW72Xm48Tz8jS66vFK.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1963-09-29",
+        "episode_count": 26,
+        "id": 1318,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/jvE23qbeHeD8P1jAJ4mqylHEO3J.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1964-10-04",
+        "episode_count": 26,
+        "id": 1316,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/opQYqE9PqvMwKaEGLVrBPq1MxUh.jpg",
+        "season_number": 5,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1965-09-12",
+        "episode_count": 13,
+        "id": 1313,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/8233VBpcmEobjfu62iV4sWc1QfW.jpg",
+        "season_number": 6,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Mister Ed",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/ykGlIpjTiyd4wYk617X73TL5FTS.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 94764,
     "tmdbType": "tv",
     "tituloOriginal": "コメットさん",
@@ -10307,242 +10475,6 @@
     ]
   },
   {
-    "tmdbId": 4232,
-    "tmdbType": "tv",
-    "tituloOriginal": "Top Cat",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/82czKnq7CcHaGjNSkxlHLwanE2k.jpg",
-    "year": "1961",
-    "fechaEstreno": "1961-09-27",
-    "rating": "7.5",
-    "votos": 373,
-    "runtime": "",
-    "runtimeMin": 0,
-    "genres": [
-      "Animación",
-      "Comedia",
-      "Kids"
-    ],
-    "generosTexto": "Animación, Comedia, Kids",
-    "clasificacion": "7",
-    "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [
-      {
-        "nombre": "Arnold Stang",
-        "personaje": "Top Cat  (voice)",
-        "foto": "https://image.tmdb.org/t/p/w185/oJCqwzVa65BgqrdNZh7Hf0QnQlq.jpg"
-      },
-      {
-        "nombre": "Maurice Gosfield",
-        "personaje": "Benny the Ball  (voice)",
-        "foto": "https://image.tmdb.org/t/p/w185/ihaiSnNgWN7ZUJOSWQKm063BGqG.jpg"
-      },
-      {
-        "nombre": "Leo De Lyon",
-        "personaje": "Brain / Spook  (voice)",
-        "foto": "https://image.tmdb.org/t/p/w185/fIIM9YxJ4Wy003KXd3ZBi495Lbo.jpg"
-      },
-      {
-        "nombre": "Marvin Kaplan",
-        "personaje": "Choo Choo  (voice)",
-        "foto": "https://image.tmdb.org/t/p/w185/jQ64Eu8L7RPiT5l9IujkwwxadkS.jpg"
-      },
-      {
-        "nombre": "John Stephenson",
-        "personaje": "Fancy-Fancy  (voice)",
-        "foto": "https://image.tmdb.org/t/p/w185/7Tl0KkH3Sw7RMmsvTIv3Alz9vrn.jpg"
-      },
-      {
-        "nombre": "Allen Jenkins",
-        "personaje": "Officer Dibble  (voice)",
-        "foto": "https://image.tmdb.org/t/p/w185/5Sx6PnCGo2NIDYqWwP3P2BCejqd.jpg"
-      },
-      {
-        "nombre": "Lars Thiesgaard",
-        "personaje": "Top Cat (voice)",
-        "foto": "https://image.tmdb.org/t/p/w185/9OmxmNGNpyEuZSqmgSSB9JSHpoA.jpg"
-      },
-      {
-        "nombre": "Paul Hüttel",
-        "personaje": "Choo Choo / Brain (voice)",
-        "foto": "https://image.tmdb.org/t/p/w185/uTspGautQqFXf8wHS8sqbM7mhs8.jpg"
-      },
-      {
-        "nombre": "Kjeld Nørgaard",
-        "personaje": "Politibetjent Charlie Dibble (voice)",
-        "foto": "https://image.tmdb.org/t/p/w185/d3dd2CITZPvAdFXJQlJvRdTyTFC.jpg"
-      }
-    ],
-    "pais": "United States of America",
-    "idioma": "en",
-    "productoras": "Hanna-Barbera Cartoons, Screen Gems",
-    "presupuesto": 0,
-    "recaudacion": 0,
-    "trailerUrl": "https://www.youtube.com/watch?v=YgbUEnNf7y8",
-    "coleccion": "",
-    "keywords": "cat, human animal relationship, police, surrealism, police officer, cartoon cat, animal human friendship, animation, new york's alley",
-    "similares": [
-      {
-        "titulo": "Isidoro",
-        "poster": "https://image.tmdb.org/t/p/w342/42g79zNS43oZNiuTasiL1sEOnDK.jpg",
-        "year": "1984",
-        "rating": "6.4"
-      },
-      {
-        "titulo": "El show de Garfield",
-        "poster": "https://image.tmdb.org/t/p/w342/jBAXfUHvVTBCsCwP1xNG6B3bZ0d.jpg",
-        "year": "2009",
-        "rating": "6.5"
-      },
-      {
-        "titulo": "Catscratch",
-        "poster": "https://image.tmdb.org/t/p/w342/9OoaYeRxgzV530mKuPOx2N8AMSI.jpg",
-        "year": "2005",
-        "rating": "7.5"
-      },
-      {
-        "titulo": "CatDog",
-        "poster": "https://image.tmdb.org/t/p/w342/fkSCg9negcHAVO3gXohqEidqrsX.jpg",
-        "year": "1998",
-        "rating": "7.1"
-      },
-      {
-        "titulo": "Los pequeños Tom & Jerry",
-        "poster": "https://image.tmdb.org/t/p/w342/pApniCXhegDnhxQda7RcpG8gFP0.jpg",
-        "year": "1990",
-        "rating": "6.4"
-      },
-      {
-        "titulo": "Garfield y sus amigos",
-        "poster": "https://image.tmdb.org/t/p/w342/3HyTfZ9sSCoZPYrYHMffhRVm3Af.jpg",
-        "year": "1988",
-        "rating": "7.3"
-      }
-    ],
-    "homepage": "",
-    "creadores": [
-      "Joseph Barbera",
-      "William Hanna"
-    ],
-    "numeroTemporadas": 1,
-    "numeroEpisodios": 30,
-    "temporadasTmdb": [
-      {
-        "air_date": null,
-        "episode_count": 6,
-        "id": 12419,
-        "name": "Especiales",
-        "overview": "",
-        "poster_path": "/vFKKJA55QnkLU4bVOysw9sFiCt6.jpg",
-        "season_number": 0,
-        "vote_average": 0
-      },
-      {
-        "air_date": "1961-09-27",
-        "episode_count": 30,
-        "id": 12418,
-        "name": "Temporada 1",
-        "overview": "",
-        "poster_path": "/nuxQmYvGFEHWJMnqmeSF6Y2cbcF.jpg",
-        "season_number": 1,
-        "vote_average": 7.2
-      }
-    ],
-    "tituloSerie": "Don Gato y su pandilla",
-    "descripcion": "El personaje principal Don Gato, es el líder de una pandilla felina callejera de Manhattan: Panza, Espanto, Benito Bodoque, Demóstenes y Cucho. Por su parte, el Oficial Matute, policía del vecindario, trata infructuosamente de atraparlos y llevarlos a la cárcel.",
-    "imagen": "https://image.tmdb.org/t/p/w780/f30lAglX7X0VXLnkYO62inqc7ww.jpg",
-    "codigo": null,
-    "qualityTag": "",
-    "temporadas": [
-      {
-        "numeroTemporada": 1,
-        "episodios": [
-          {
-            "tituloEpisodio": "Todos a Hawai",
-            "urlDrive": "https://ok.ru/video/8924286814746"
-          },
-          {
-            "tituloEpisodio": "El maraja de Pookajee",
-            "urlDrive": "https://ok.ru/video/8924286552602"
-          },
-          {
-            "tituloEpisodio": "Ese Jazz",
-            "urlDrive": "https://ok.ru/video/8924286290458"
-          },
-          {
-            "tituloEpisodio": "Día de carreras",
-            "urlDrive": "https://ok.ru/video/8924286093850"
-          },
-          {
-            "tituloEpisodio": "El violinista",
-            "urlDrive": "https://ok.ru/video/8924285962778"
-          },
-          {
-            "tituloEpisodio": "El heredero perdido",
-            "urlDrive": "https://ok.ru/video/8924285766170"
-          },
-          {
-            "tituloEpisodio": "Don Gato se enamora",
-            "urlDrive": "https://ok.ru/video/8924285504026"
-          },
-          {
-            "tituloEpisodio": "La visita de mamá",
-            "urlDrive": "https://ok.ru/video/8924285372954"
-          },
-          {
-            "tituloEpisodio": "Una película realista",
-            "urlDrive": "https://ok.ru/video/8924285176346"
-          },
-          {
-            "tituloEpisodio": "Don Gato policía",
-            "urlDrive": "https://ok.ru/video/8924235893274"
-          },
-          {
-            "tituloEpisodio": " Amores peligrosos",
-            "urlDrive": "https://ok.ru/video/8924235762202"
-          },
-          {
-            "tituloEpisodio": "Diamante delicioso",
-            "urlDrive": "https://ok.ru/video/8924235500058"
-          },
-          {
-            "tituloEpisodio": "La pandilla y el escarabajo",
-            "urlDrive": "https://ok.ru/video/8924235303450"
-          },
-          {
-            "tituloEpisodio": "El magnate",
-            "urlDrive": "https://ok.ru/video/8924234975770"
-          },
-          {
-            "tituloEpisodio": "Invierno caliente",
-            "urlDrive": "https://ok.ru/video/8924234582554"
-          },
-          {
-            "tituloEpisodio": "Salvando al osito hormiguero",
-            "urlDrive": "https://ok.ru/video/8924232550938"
-          },
-          {
-            "tituloEpisodio": "La pandilla niñera",
-            "urlDrive": "https://ok.ru/video/8924232354330"
-          },
-          {
-            "tituloEpisodio": "La tormenta de multas",
-            "urlDrive": "https://ok.ru/video/8924232157722"
-          },
-          {
-            "tituloEpisodio": " Turistas en Nueva York",
-            "urlDrive": "https://ok.ru/video/8924231764506"
-          },
-          {
-            "tituloEpisodio": "La estafa",
-            "urlDrive": "https://ok.ru/video/8924231698970"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "tmdbId": 1921,
     "tmdbType": "tv",
     "tituloOriginal": "Gilligan's Island",
@@ -11667,36 +11599,100 @@
         "numeroTemporada": 1,
         "episodios": [
           {
-            "tituloEpisodio": "Episodio 1",
-            "urlDrive": "https://drive.google.com/file/d/120gfQhevwvPG7zrH0SWxqwCZC3fhZCHl/preview"
+            "tituloEpisodio": "La Marina de McHale    Serie de TV  Español Latino-01",
+            "urlDrive": "https://drive.google.com/file/d/120gfQhevwvPG7zrH0SWxqwCZC3fhZCHl/view"
           },
           {
-            "tituloEpisodio": "Episodio 2",
-            "urlDrive": "https://drive.google.com/file/d/1OrUveHhRRZDpM1SUq3zQl49V3bgzeD9_/preview"
+            "tituloEpisodio": "La Marina de McHale    Serie de TV  Español Latino-02",
+            "urlDrive": "https://drive.google.com/file/d/1OrUveHhRRZDpM1SUq3zQl49V3bgzeD9_/view"
           },
           {
-            "tituloEpisodio": "Episodio 3",
-            "urlDrive": "https://drive.google.com/file/d/1wYBH9ZI-EuIjVhbEFvKgyAykjVulKyIv/preview"
+            "tituloEpisodio": "La Marina de McHale    Serie de TV  Español Latino-03",
+            "urlDrive": "https://drive.google.com/file/d/1wYBH9ZI-EuIjVhbEFvKgyAykjVulKyIv/view"
           },
           {
-            "tituloEpisodio": "Episodio 4",
-            "urlDrive": "https://drive.google.com/file/d/1num-k0yn5XwymAf9tlZrlBzu9-4AZnHW/preview"
+            "tituloEpisodio": "La Marina de McHale    Serie de TV  Español Latino-04",
+            "urlDrive": "https://drive.google.com/file/d/1num-k0yn5XwymAf9tlZrlBzu9-4AZnHW/view"
           },
           {
-            "tituloEpisodio": "Episodio 5",
-            "urlDrive": "https://drive.google.com/file/d/1ckwf_p5g0etaW4gw5KDDHmdhO-6ZLZ04/preview"
+            "tituloEpisodio": "La Marina de McHale    Serie de TV  Español Latino-05",
+            "urlDrive": "https://drive.google.com/file/d/1ckwf_p5g0etaW4gw5KDDHmdhO-6ZLZ04/view"
           },
           {
-            "tituloEpisodio": "Episodio 6",
-            "urlDrive": "https://drive.google.com/file/d/1hTKAx-xamEX5pDD0fyh5MB_xXnRPBJXX/preview"
+            "tituloEpisodio": "La Marina de McHale    Serie de TV  Español Latino-06",
+            "urlDrive": "https://drive.google.com/file/d/1hTKAx-xamEX5pDD0fyh5MB_xXnRPBJXX/view"
           },
           {
-            "tituloEpisodio": "Episodio 7",
-            "urlDrive": "https://drive.google.com/file/d/1hTKAx-xamEX5pDD0fyh5MB_xXnRPBJXX/preview"
+            "tituloEpisodio": "La Marina de McHale    Serie de TV  Español Latino-07",
+            "urlDrive": "https://drive.google.com/file/d/1OaqPqc5hqUhIXonU32XDPBUgeXLRsxPN/view"
           },
           {
-            "tituloEpisodio": "Episodio 8",
-            "urlDrive": "https://drive.google.com/file/d/1OaqPqc5hqUhIXonU32XDPBUgeXLRsxPN/preview"
+            "tituloEpisodio": "La marina de McHale  1x20   el juego de la confianza  [2329650531013]",
+            "urlDrive": "https://drive.google.com/file/d/1aT9fY7QIocnihk_gflaM4sewb_lzqw59/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x01  un estandarte para McHale  [2200417340101]",
+            "urlDrive": "https://drive.google.com/file/d/161uCn4gDg1UkIYTpAE_jrlBcxICjl52P/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x02  Un corazón púrpura para Grube  [2207196842693]",
+            "urlDrive": "https://drive.google.com/file/d/1gtvicCGzyh0SAWPInZu3CYo-KIMxvAfO/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x03  McHale y sus siete cupidos  [2214082448069]",
+            "urlDrive": "https://drive.google.com/file/d/1ig8a84l4DpuEjmTf8jSi-6YLbsBbUs13/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x05  Las películas son tu mejor diversión  [2227132041925]",
+            "urlDrive": "https://drive.google.com/file/d/1oCkAbgD5egZlPbWdueQ8bTuJwtlNotQd/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x06.Operación Fiesta de bodas [2233620105925]",
+            "urlDrive": "https://drive.google.com/file/d/10T1jxDGZgeHtIyzHZuv0dlB1-8ReDuHe/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x08 Tres chicas en una isla [2242800126661]",
+            "urlDrive": "https://drive.google.com/file/d/1_ol8WM1F56CuCPDWvoKigv9vE0jZe5iw/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x09   Paradise Motel  [2259464686277]",
+            "urlDrive": "https://drive.google.com/file/d/1N19eIPaHYjMdrtCxWjXqMKX8x2afd_nF/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x13  la misión del capitán  [2278834047685]",
+            "urlDrive": "https://drive.google.com/file/d/1ctLflKxjGnYveCW1PLJhaz2U17iH7Z9e/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x14  Envíanos un héroe  [2295826483909]",
+            "urlDrive": "https://drive.google.com/file/d/18zRE_0TyCTSJoszDPzD7y5DW7JRoyr_0/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x16  El alférez obtiene un Zeron  [2304941558469]",
+            "urlDrive": "https://drive.google.com/file/d/1fLjJzB_n-lzYv7bksGc1Owd3wCKKypzC/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x19  Los nativos se inquietan  [2318636616389]",
+            "urlDrive": "https://drive.google.com/file/d/1-X_Eu32SBlQki1aDd3pRGcRjmnLjC6BU/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x22   Lavadora Charlie  [2335737776837]",
+            "urlDrive": "https://drive.google.com/file/d/1EVTiz3BHF9LPlFQPbtf0oszr8AX8Iffy/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x23  Nippon Nancy llamando  [2345354595013]",
+            "urlDrive": "https://drive.google.com/file/d/1SRqIDyItBL0XwL68XlqHlQzMyyXdU6H-/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x26 HMS 73 [2356365429445]",
+            "urlDrive": "https://drive.google.com/file/d/1dfyQFaDqBQwvAm5nnULrDMbLAPcN-HHX/view"
+          },
+          {
+            "tituloEpisodio": "La marina de McHale 1x27 Una corona para McHale [2367634344645]",
+            "urlDrive": "https://drive.google.com/file/d/1QE_IKjLGdcZAftZpj8gH5N9usPhogKa1/view"
+          },
+          {
+            "tituloEpisodio": "La Marina de McHale. La Película (1964) [2304943721157]",
+            "urlDrive": "https://drive.google.com/file/d/1TpnfRTTcinnvCwJiAlDzL-RB3M57It0K/view"
           }
         ]
       }
