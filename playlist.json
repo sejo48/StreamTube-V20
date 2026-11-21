@@ -1,5 +1,115 @@
 [
   {
+    "tmdbId": 227609,
+    "tmdbType": "tv",
+    "tituloOriginal": "Los Polivoces",
+    "backdrop": "",
+    "year": "1971",
+    "fechaEstreno": "1971-01-01",
+    "rating": "9.3",
+    "votos": 11,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Comedia"
+    ],
+    "generosTexto": "Comedia",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Eduardo Manzano",
+        "personaje": "Gordolfo Gelatino",
+        "foto": "https://image.tmdb.org/t/p/w185/jEDV378uaO98GSr7NyuVkhpuYza.jpg"
+      },
+      {
+        "nombre": "Enrique Cuenca",
+        "personaje": "Doña Naborita",
+        "foto": "https://image.tmdb.org/t/p/w185/uwjQuRird7ZVS3cLDlgMEZfjlzs.jpg"
+      }
+    ],
+    "pais": "Mexico",
+    "idioma": "es",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Rowan & Martin's Laugh-In",
+        "poster": "https://image.tmdb.org/t/p/w342/abMymAYr5R1yVeNl9NZs3x27RoY.jpg",
+        "year": "1968",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "All That",
+        "poster": "https://image.tmdb.org/t/p/w342/x0yb77hjP0W5bRPJFL0FNMsd5uK.jpg",
+        "year": "1994",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Hasta que la muerte nos separe",
+        "poster": "https://image.tmdb.org/t/p/w342/trOymv1SiVmMeWlCmV0EiOC6E6v.jpg",
+        "year": "2006",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Nick Cannon Presents: Wild 'N Out",
+        "poster": "https://image.tmdb.org/t/p/w342/9I00u4M54u5tulUQT6qVFOZKMvt.jpg",
+        "year": "2005",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "40 y 20",
+        "poster": "https://image.tmdb.org/t/p/w342/6a5tGXaGimIBWntQUKKWyZcyj68.jpg",
+        "year": "2016",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "A Black Lady Sketch Show",
+        "poster": "https://image.tmdb.org/t/p/w342/sf1BjG7dZGqJCSwEt25v2lzjqVr.jpg",
+        "year": "2019",
+        "rating": "6.8"
+      }
+    ],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 2,
+    "numeroEpisodios": 1,
+    "temporadasTmdb": [
+      {
+        "air_date": "1971-01-01",
+        "episode_count": 1,
+        "id": 343285,
+        "name": "Season 1",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": null,
+        "episode_count": 0,
+        "id": 343288,
+        "name": "season 2",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 2,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Los Polivoces",
+    "descripcion": "Eduardo Manzano y Enrique Cuenca protagonizan un clásico de programa cómico en el que le dan vida a multiples personajes que han hecho reir a varias generaciones.\n\ndiviertete con las talentosas imitaciones de los cantantes talentosos de la epoca.",
+    "imagen": "https://image.tmdb.org/t/p/w780/u9yRXNqKasdTrDCiPb3uSxe3Kjk.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 13858,
     "tmdbType": "tv",
     "tituloOriginal": "Maya",
@@ -11617,7 +11727,153 @@
     "imagen": "https://www.lavanguardia.com/peliculas-series/images/serie/poster/1952/12/w300/vorrWqNL7alMqScKhrNLdZZcMOt.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 1 Jonas El Barco y la Ballena [16340345227973]",
+            "urlDrive": "https://drive.google.com/file/d/1w3BpVSN_l2TnEYhTlnmObrW5uZuZYyhX/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 2  Dolor de Muela [16340344900293]",
+            "urlDrive": "https://drive.google.com/file/d/1_pMXOAfWtem34Q50HU07RBdUqiA0yODv/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 3 - La Carcel (jail) sub [16340310821573]",
+            "urlDrive": "https://drive.google.com/file/d/1tzdHwCUzNEybAXVUX-uo_NJtn8Iv2V06/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 4 'Las Vacaciones' [16340310493893]",
+            "urlDrive": "https://drive.google.com/file/d/1VpDJ6h5ze2Z0OzAv18vRFvss3YNnG8dk/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 6 La Mina de oro [16340310166213]",
+            "urlDrive": "https://drive.google.com/file/d/1tNQEx1zrelqQCCi3UNp0sJfw82nVWZvz/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 07 El Vendedor [16340270385861]",
+            "urlDrive": "https://drive.google.com/file/d/1K0wwypGJP0o4SGkVA7JYngWzCzU7kj7J/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 8 'Los Reclutas' [16340269730501]",
+            "urlDrive": "https://drive.google.com/file/d/1BGnOm4lbjgM22W8PWSnrDoNTxgWJH8Ej/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 9 'Una Gran Cena' [16340269468357]",
+            "urlDrive": "https://drive.google.com/file/d/1Uh-UbigZeKcDWof6be4RQ0AhfqYXeXjQ/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 11 La historia Western [16340237617861]",
+            "urlDrive": "https://drive.google.com/file/d/1CawzHJO-iOmQYzcLIZKOczwSge4eyYHg/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 12 La mansion siniestra [16340233882309]",
+            "urlDrive": "https://drive.google.com/file/d/1ZuJ3-9Wv_khVFmh41yDt4uPrtwS8mnqC/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 13 Insomnio [16340233620165]",
+            "urlDrive": "https://drive.google.com/file/d/1SBcIXSAm_v43ZYtd_9L_pTObOCDcA4Ec/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 14 Abbott se Retira [16340232833733]",
+            "urlDrive": "https://drive.google.com/file/d/1fg6etyMXl-WO-MNfzmDwq199cUWrfYZj/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 15 Los amantes de la música [16340183681733]",
+            "urlDrive": "https://drive.google.com/file/d/1q4vyEtPMei2_GomQVA1rEQlQiNGQO5VF/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 16  El Politico [16340181977797]",
+            "urlDrive": "https://drive.google.com/file/d/1h_wbOIGstWFgLxnBMDpXcDrsIdrPVgUq/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 17 'La Lucha' [16340181322437]",
+            "urlDrive": "https://drive.google.com/file/d/1Cc9Kdgu45_Y9zsG9-oNJomqFBDQ3gEqt/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 18  Un gran Empleo [16340180798149]",
+            "urlDrive": "https://drive.google.com/file/d/1tGQwmVWqxD9ZdpyxEAE8bZmASCvrIPyu/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 19 El chimpancé [16340180470469]",
+            "urlDrive": "https://drive.google.com/file/d/1BpD7GQsVnt1cfQkhR__hJrT5-k08872x/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 20 El Cumpleaños de Hillary's [16340170574533]",
+            "urlDrive": "https://drive.google.com/file/d/1TxI2dwEK2ImE8ZKj6HkFjQqGR5PiUaFR/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 21  El concurso de televisión [16340137151173]",
+            "urlDrive": "https://drive.google.com/file/d/1xDUwhnxy2BTF9McMEs_m3vdv6RQMKzWn/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 22 'Las Vegas' [16340136823493]",
+            "urlDrive": "https://drive.google.com/file/d/1Y9w30Y-fBUSFCSqQL389_Xz_WyqdQHo5/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 23  'La Pequeña Anciana' [16340136495813]",
+            "urlDrive": "https://drive.google.com/file/d/14_khDzKK_zEIk5z-Uz4DYazz0QctXMhs/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 24 – Abbott se Retira [16340135840453]",
+            "urlDrive": "https://drive.google.com/file/d/17Q8czMgp7w-KqN3Y7NKQwg7lMvh9gCJc/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 25 Policias Novatos [16340134333125]",
+            "urlDrive": "https://drive.google.com/file/d/1qz6ndH1Mt-eU3dqO1mwapVG6thGllveJ/view"
+          },
+          {
+            "tituloEpisodio": "El Show de Abbott y Costello Cap 26 Safari [16328938949317]",
+            "urlDrive": "https://drive.google.com/file/d/1amg2zza5Djh4HIWpM_l6O22x3I27I481/view"
+          },
+          {
+            "tituloEpisodio": "The Abbott And Costello Show 2x01 - The Paperhangers [16328920861381]",
+            "urlDrive": "https://drive.google.com/file/d/16BDL_17atmbS3-raxED4ZyXxZ5pHiBh9/view"
+          },
+          {
+            "tituloEpisodio": "The Abbott And Costello Show 2x02 - Uncle Bozzo's Visit [16328920730309]",
+            "urlDrive": "https://drive.google.com/file/d/1-c6MlrKytWAXSg_IOaFk2cE_XjcsNg-S/view"
+          },
+          {
+            "tituloEpisodio": "The Abbott And Costello Show 2x03 - In Society [16328909458117]",
+            "urlDrive": "https://drive.google.com/file/d/1Jt48d8rN1uFlvNx9uQOc0spdDSNmcFy0/view"
+          },
+          {
+            "tituloEpisodio": "The Abbott And Costello Show 2x04 - Life Insurance [16328903035589]",
+            "urlDrive": "https://drive.google.com/file/d/1QdodfPZygnT4-uQk2FlWhNW4wopZaD9-/view"
+          },
+          {
+            "tituloEpisodio": "The Abbott And Costello Show 2x05 Pest Exterminators [16328895957701]",
+            "urlDrive": "https://drive.google.com/file/d/1-3yEx3dhfnmHv3QKKHZEP07N0KxxHRRk/view"
+          },
+          {
+            "tituloEpisodio": "The Abbott And Costello Show 2x06 - Killer's Wife [16328885275333]",
+            "urlDrive": "https://drive.google.com/file/d/1Ds3rzaQN_eA82ZDAtJzrkOhN1e0jJNmW/view"
+          },
+          {
+            "tituloEpisodio": "The Abbott And Costello Show 2x07 - Cheapskates [16328881212101]",
+            "urlDrive": "https://drive.google.com/file/d/1lXx8qStVe1ZGOxVyMHsCjRaLLM4MnokF/view"
+          },
+          {
+            "tituloEpisodio": "The Abbott And Costello Show 2x08 - South of Dixie [16328880753349]",
+            "urlDrive": "https://drive.google.com/file/d/1Vu-hB-_LNOjXEVRZAs-nl078du6L-CuR/view"
+          },
+          {
+            "tituloEpisodio": "The Abbott And Costello Show 2x09 - From Bed to Worse [16328262617797]",
+            "urlDrive": "https://drive.google.com/file/d/1vA8-rxVxP8PifRvaJfjCkt9b0ATLz4yt/view"
+          },
+          {
+            "tituloEpisodio": "The Abbott And Costello Show 2x10 - $1000 TV Prize [16328262421189]",
+            "urlDrive": "https://drive.google.com/file/d/1z366h0xYFGesnXeBGw4P-GKe5mtIMT9m/view"
+          },
+          {
+            "tituloEpisodio": "The Abbott And Costello Show 2x13 - Car Trouble [16328261700293]",
+            "urlDrive": "https://drive.google.com/file/d/1gMxJvCEy5LIv8MnOmah6mJajjh8r2dgv/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 11053,
