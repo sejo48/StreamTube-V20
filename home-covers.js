@@ -2,6 +2,8 @@
 (function (root) {
     'use strict';
     const FILE = 'portadas-inicio.json', SOURCE = 'peliculas2.json';
+    const positions = Object.freeze(['left','right','inline']);
+    const position = item => positions.includes(item?.posterPosition) ? item.posterPosition : 'left';
     const automatic = () => ({ schemaVersion: 2, source: SOURCE, mode: 'automatic', items: [] });
     const title = item => String(item?.titulo || item?.title || item?.name || '').trim();
     const image = item => String(item && Object.prototype.hasOwnProperty.call(item,'panoramicImage') ? item.panoramicImage : item?.backdrop || item?.banner || '').trim();
@@ -28,24 +30,30 @@
         const seen = new Set();
         for (const item of config.items) {
             if (!item || typeof item.movieKey !== 'string' || !item.movieKey || item.movieKey.length > 3000 || seen.has(item.movieKey) || typeof item.title !== 'string' || !item.title.trim() || item.title.length > 300 || !validImage(item.backdrop)) throw new Error('La película debe tener una referencia, un título y una imagen HTTPS válidos.');
+            if (item.posterPosition !== undefined && !positions.includes(item.posterPosition)) throw new Error('Elige una posición válida para la portada.');
             seen.add(item.movieKey);
         }
         return config;
     }
     function make(items, now = new Date().toISOString()) {
-        return validate({schemaVersion:2,source:SOURCE,mode:'manual',updatedAt:now,items:items.map(item=>({movieKey:item.movieKey || key(item),title:title(item),backdrop:image(item)}))});
+        return validate({schemaVersion:2,source:SOURCE,mode:'manual',updatedAt:now,items:items.map(item=>({movieKey:item.movieKey || key(item),title:title(item),backdrop:image(item),posterPosition:item.posterPosition === undefined ? 'left' : item.posterPosition}))});
     }
-    function selection(config) { validate(config); return config.items.slice(0,1); }
+    function selection(config) { validate(config); return config.items.slice(0,1).map(item=>({...item,posterPosition:position(item)})); }
     const revision = config => {
         validate(config);
-        return JSON.stringify([config.mode, config.updatedAt || '', config.items.map(item => [item.movieKey,item.title,item.backdrop])]);
+        // Keep pre-position draft revisions compatible with the default left position.
+        return JSON.stringify([config.mode, config.updatedAt || '', config.items.map(item => {
+            const values = [item.movieKey,item.title,item.backdrop];
+            if (position(item) !== 'left') values.push(position(item));
+            return values;
+        })]);
     };
     function resolve(config, catalog) {
         validate(config);
         const movies = new Map((catalog || []).map(item => [key(item),item]));
         return selection(config).flatMap(selection => {
             const item = movies.get(selection.movieKey);
-            return item ? [{...item,panoramicImage:selection.backdrop}] : [];
+            return item ? [{...item,panoramicImage:selection.backdrop,homePosterPosition:position(selection)}] : [];
         });
     }
     const checked = new Map();
@@ -107,6 +115,6 @@
         if(!response.ok)throw failure(response.status);
         const data=await response.json();if(!data.commit?.sha||!data.content?.sha)throw failure(0);return data;
     }
-    const api={FILE,SOURCE,automatic,title,image,key,validate,make,selection,revision,resolve,probe,panoramic,read,catalog,repository,publish,encode,decode};
+    const api={FILE,SOURCE,positions,position,automatic,title,image,key,validate,make,selection,revision,resolve,probe,panoramic,read,catalog,repository,publish,encode,decode};
     root.BoxHomeCovers=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

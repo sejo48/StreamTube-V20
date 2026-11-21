@@ -1,12 +1,16 @@
 /* One panel: complete artwork on the left, compact information on the right. */
 .home-featured{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(350px,1fr);align-items:center;width:calc(100% - clamp(32px,6.4vw,104px));max-width:1450px;margin:24px auto 28px;border:1px solid #203047;border-radius:18px;overflow:hidden;background:#0a1220;color:#f8fafc}
 .home-feature-art{min-width:0;width:100%;margin:0;padding:0}
-.home-feature-frame{width:100%;aspect-ratio:16/9;background:transparent;overflow:hidden}
+.home-feature-frame{position:relative;width:100%;aspect-ratio:16/9;background:transparent;overflow:hidden}
 .home-feature-backdrop{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
 .home-feature-layout{min-width:0;padding:26px}
 .home-feature-heading{display:flex;align-items:center;gap:16px;margin-bottom:18px}
 .home-feature-heading>div{min-width:0;flex:1}
 .home-feature-poster{display:block;width:58px;aspect-ratio:2/3;flex-shrink:0;object-fit:contain;background:#0f172a;border:1px solid #26364b;border-radius:7px}
+.home-feature-frame>.home-feature-poster-floating{position:absolute;left:4%;top:50%;transform:translateY(-50%);width:22%;max-width:160px;max-height:70%;height:auto;border:2px solid #e2e8f080;border-radius:10px;box-shadow:0 12px 30px #0009;pointer-events:none}
+.home-featured[data-poster-position=right] .home-feature-poster-floating{left:auto;right:4%}
+.home-featured[data-poster-position=inline] .home-feature-poster-floating{display:none}
+@media(min-width:1024px){.home-featured:not([data-poster-position=inline]) .home-feature-poster-inline{display:none}}
 .home-feature-copy{min-width:0}
 .home-feature-kicker{margin:0 0 6px;color:#67e8f9;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .home-feature-copy h1{margin:0;font-size:clamp(23px,1.8vw,30px);font-weight:700;line-height:1.2;letter-spacing:-.02em;overflow-wrap:anywhere;text-wrap:balance}
@@ -22,6 +26,7 @@
 .home-feature-tools button:hover,.home-feature-tools button[aria-pressed=true]{color:#67e8f9;border-color:#155e75}
 .home-feature-description{margin:14px 0 0;font-size:16px;line-height:1.55;color:#cbd5e1;overflow-wrap:anywhere}
 @media(max-width:1023px){
+ .home-feature-frame>.home-feature-poster-floating{display:none}
  .home-featured{grid-template-columns:minmax(0,1fr);max-width:760px}
  .home-feature-layout{padding:22px}
 }

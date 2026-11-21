@@ -56,3 +56,19 @@ test('a broken manually chosen panorama never substitutes another movie',async()
  const config=C.make([movies[0]]);
  for(const size of [null,{width:900,height:1350}])assert.deepEqual(await H.load({movies2:movies},{configuration:config,probe:async()=>size}),[]);
 });
+test('poster placement is validated, preserved on the chosen movie and included in revision checks',()=>{
+ const legacy={schemaVersion:2,source:C.SOURCE,mode:'manual',updatedAt:'2026-01-01',items:[{movieKey:C.key(movies[0]),title:C.title(movies[0]),backdrop:C.image(movies[0])}]};
+ const before=JSON.stringify(movies);
+ assert.equal(C.selection(legacy)[0].posterPosition,'left');
+ assert.equal(C.revision(legacy),JSON.stringify([legacy.mode,legacy.updatedAt,legacy.items.map(m=>[m.movieKey,m.title,m.backdrop])]));
+ const revisions=[];
+ for(const posterPosition of ['left','right','inline']){
+  const config=C.make([{...movies[0],posterPosition}],'2026-01-01');
+  const resolved=C.resolve(C.decode(C.encode(config)),movies);
+  assert.equal(resolved.length,1);assert.equal(resolved[0].tmdbId,movies[0].tmdbId);assert.equal(resolved[0].homePosterPosition,posterPosition);
+  revisions.push(C.revision(config));
+ }
+ assert.equal(new Set(revisions).size,3);
+ for(const posterPosition of ['diagonal','',null])assert.throws(()=>C.make([{...movies[0],posterPosition}]),/posición válida/);
+ assert.equal(JSON.stringify(movies),before);
+});
