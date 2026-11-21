@@ -1,5 +1,86 @@
 [
   {
+    "tmdbId": 94764,
+    "tmdbType": "tv",
+    "tituloOriginal": "コメットさん",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/bZ7PZmBJpsRHEwQMeeToMl3gPqf.jpg",
+    "year": "1967",
+    "fechaEstreno": "1967-07-03",
+    "rating": "8.6",
+    "votos": 17,
+    "runtime": "22min",
+    "runtimeMin": 22,
+    "genres": [],
+    "generosTexto": "",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "芦野宏",
+        "personaje": "Dad",
+        "foto": ""
+      },
+      {
+        "nombre": "Yukari Asai",
+        "personaje": "Betan",
+        "foto": ""
+      },
+      {
+        "nombre": "Yumiko Kokonoe",
+        "personaje": "Cometo-san",
+        "foto": "https://image.tmdb.org/t/p/w185/1yAtWMQ8j9s3y4E3MHZtMIfLUXe.jpg"
+      },
+      {
+        "nombre": "Hiromi Tsuru",
+        "personaje": "O-Tae",
+        "foto": "https://image.tmdb.org/t/p/w185/oFU9CCNLUhklLhEuLutM0FyTUbt.jpg"
+      },
+      {
+        "nombre": "馬渕晴子",
+        "personaje": "Mom",
+        "foto": "https://image.tmdb.org/t/p/w185/2IOxU4bheBeabmDvIaoQlJ0Dpyz.jpg"
+      },
+      {
+        "nombre": "大倉忠義",
+        "personaje": "Takeshi",
+        "foto": "https://image.tmdb.org/t/p/w185/dnQB3xxywWL5UL32lNIN2kP9soK.jpg"
+      }
+    ],
+    "pais": "Japan",
+    "idioma": "es",
+    "productoras": "TBS",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [],
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 79,
+    "temporadasTmdb": [
+      {
+        "air_date": "1967-07-03",
+        "episode_count": 79,
+        "id": 134527,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 1,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Senorita Cometa",
+    "descripcion": "Una princesa (Miss Comet) del planeta Beta es enviada a la Tierra debido a su comportamiento travieso para que pueda aprender a ayudar a otros y ganar puntos para que un día pueda ser enviada de regreso a su planeta de origen. A pesar de que es una niña en su planeta, al llegar a la Tierra tiene 18 años. Ella se queda con la familia Ishihara, donde siempre se mete en problemas junto con los dos niños, ya que no está tratando de hacer el bien con tanto éxito, todavía es una niña juguetona de corazón.",
+    "imagen": "https://image.tmdb.org/t/p/w780/9aUJoxAtEcPicDmC6q2yWxwwtMh.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 227609,
     "tmdbType": "tv",
     "tituloOriginal": "Los Polivoces",
@@ -105,106 +186,6 @@
     "tituloSerie": "Los Polivoces",
     "descripcion": "Eduardo Manzano y Enrique Cuenca protagonizan un clásico de programa cómico en el que le dan vida a multiples personajes que han hecho reir a varias generaciones.\n\ndiviertete con las talentosas imitaciones de los cantantes talentosos de la epoca.",
     "imagen": "https://image.tmdb.org/t/p/w780/u9yRXNqKasdTrDCiPb3uSxe3Kjk.jpg",
-    "codigo": null,
-    "qualityTag": "",
-    "temporadas": []
-  },
-  {
-    "tmdbId": 13858,
-    "tmdbType": "tv",
-    "tituloOriginal": "Maya",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/mCf6O2xLso9bEGi0rkCsMxRqJ8W.jpg",
-    "year": "1967",
-    "fechaEstreno": "1967-09-16",
-    "rating": "6.7",
-    "votos": 3,
-    "runtime": "1h 0min",
-    "runtimeMin": 60,
-    "genres": [
-      "Action & Adventure"
-    ],
-    "generosTexto": "Action & Adventure",
-    "clasificacion": "",
-    "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [
-      {
-        "nombre": "Jay North",
-        "personaje": "Terry Bowen",
-        "foto": "https://image.tmdb.org/t/p/w185/3NLDfYondmYCxjQpR4Qa67AHYNl.jpg"
-      },
-      {
-        "nombre": "Sajid Khan",
-        "personaje": "Raji",
-        "foto": "https://image.tmdb.org/t/p/w185/xVwRJ5xY5QnZ211aHlhW9BR2w0p.jpg"
-      }
-    ],
-    "pais": "",
-    "idioma": "en",
-    "productoras": "MGM Television, King Brothers Productions",
-    "presupuesto": 0,
-    "recaudacion": 0,
-    "trailerUrl": "",
-    "coleccion": "",
-    "keywords": "tiger, jungle, india, missing person, missing parent",
-    "similares": [
-      {
-        "titulo": "El hombre del rifle",
-        "poster": "https://image.tmdb.org/t/p/w342/tYf5Sc83chWG2nBlo5xKdpBBwlI.jpg",
-        "year": "1958",
-        "rating": "7.1"
-      },
-      {
-        "titulo": "Monarch: El legado de los monstruos",
-        "poster": "https://image.tmdb.org/t/p/w342/ufFSOyMYcuPhZpVs1obeYIzcnYY.jpg",
-        "year": "2023",
-        "rating": "7.7"
-      },
-      {
-        "titulo": "Invasión Jurásica",
-        "poster": "https://image.tmdb.org/t/p/w342/1GYtDXUmAJuzb5vycfpkqIqbD3J.jpg",
-        "year": "2007",
-        "rating": "7.5"
-      },
-      {
-        "titulo": "Runaways",
-        "poster": "https://image.tmdb.org/t/p/w342/hnHEhbzh0F7kN3Ah1lzRjtQuW16.jpg",
-        "year": "2017",
-        "rating": "7.2"
-      },
-      {
-        "titulo": "Danger Man",
-        "poster": "https://image.tmdb.org/t/p/w342/5wCJ8Rt9PA1j6jzzmUQg0EjsxwV.jpg",
-        "year": "1960",
-        "rating": "7.3"
-      },
-      {
-        "titulo": "La Búsqueda: más allá de la historia",
-        "poster": "https://image.tmdb.org/t/p/w342/1MnW5Q1g2tgvPhcNactwWnnKFW9.jpg",
-        "year": "2022",
-        "rating": "6.7"
-      }
-    ],
-    "homepage": "",
-    "creadores": [],
-    "numeroTemporadas": 1,
-    "numeroEpisodios": 18,
-    "temporadasTmdb": [
-      {
-        "air_date": "1967-09-16",
-        "episode_count": 18,
-        "id": 25049,
-        "name": "Temporada 1",
-        "overview": "",
-        "poster_path": null,
-        "season_number": 1,
-        "vote_average": 0
-      }
-    ],
-    "tituloSerie": "Maya",
-    "descripcion": "",
-    "imagen": "https://image.tmdb.org/t/p/w780/ry75YQwD0R9pjz8VaLzR01vKz2L.jpg",
     "codigo": null,
     "qualityTag": "",
     "temporadas": []
@@ -13493,6 +13474,158 @@
           {
             "tituloEpisodio": "Episodio 9",
             "urlDrive": "https://drive.google.com/file/d/1RnuRzKwXmZvw4tx9Artl8rCqpUtDI4T3/preview"
+          },
+          {
+            "tituloEpisodio": "T01E01 - [7069880421061]",
+            "urlDrive": "https://drive.google.com/file/d/1iqth-TI93we6Fu62Gxuccn0g1pHC3TcR/view"
+          },
+          {
+            "tituloEpisodio": "T01E02 [7069880486597]",
+            "urlDrive": "https://drive.google.com/file/d/1yQDNO7CBKx8IeF77CF7iRk4yzr4NubHk/view"
+          },
+          {
+            "tituloEpisodio": "T01E03 [7069880552133]",
+            "urlDrive": "https://drive.google.com/file/d/1TMcMmX8_PlDf4HMdfTCMNpZ6u1CbhaTM/view"
+          },
+          {
+            "tituloEpisodio": "T01E04 [7069886778053]",
+            "urlDrive": "https://drive.google.com/file/d/1vkTvhYfwGcVUWk2be4lV__eBmB_p2vT9/view"
+          },
+          {
+            "tituloEpisodio": "T01E05 [7069886843589]",
+            "urlDrive": "https://drive.google.com/file/d/1sM1XsYrn5Yk8cpB6ejXULT3S7KLhdJea/view"
+          },
+          {
+            "tituloEpisodio": "T01E06 - [7069886909125]",
+            "urlDrive": "https://drive.google.com/file/d/1LUZaBfEbkUtx0ZVxPXYjGAX3yL_f-LG7/view"
+          },
+          {
+            "tituloEpisodio": "T01E07 [7069891562181]",
+            "urlDrive": "https://drive.google.com/file/d/1RPU3pv-xOxnRzm87I35mORO1JJaXG0pU/view"
+          },
+          {
+            "tituloEpisodio": "T01E08 [7069891627717]",
+            "urlDrive": "https://drive.google.com/file/d/1BrEwzcKW0mBSoVAdt679iN6t3xfMBxDY/view"
+          },
+          {
+            "tituloEpisodio": "T01E09 [7069891693253]",
+            "urlDrive": "https://drive.google.com/file/d/1qt17OQWWIkmZIjw0oEgHcggRXHrRt0Qx/view"
+          },
+          {
+            "tituloEpisodio": "T01E10 [7069893135045]",
+            "urlDrive": "https://drive.google.com/file/d/1QoRFRq67cvM2iEzPBjtFzaoiohoYjCAc/view"
+          },
+          {
+            "tituloEpisodio": "T01E11 [7072835111621]",
+            "urlDrive": "https://drive.google.com/file/d/1p4w7_ctCdRFjJw6XJlLazAFaigce8LeV/view"
+          },
+          {
+            "tituloEpisodio": "T01E12 - [7072835308229]",
+            "urlDrive": "https://drive.google.com/file/d/1bP-kLmuQDNk-wAeBbEnSL3wVau36nHFr/view"
+          },
+          {
+            "tituloEpisodio": "T01E13 [7072835504837]",
+            "urlDrive": "https://drive.google.com/file/d/1BgW0mBBYz_OaqWBJWjKtqZWORPMHFkiu/view"
+          },
+          {
+            "tituloEpisodio": "T01E14 [7072835701445]",
+            "urlDrive": "https://drive.google.com/file/d/1cqtmRweajmIcD7KBcWJXo7p4HMtqNYVN/view"
+          },
+          {
+            "tituloEpisodio": "T01E15 [7072835766981]",
+            "urlDrive": "https://drive.google.com/file/d/1KoUqgoF7js0n4OYTNLAy0IY16mQyBBan/view"
+          },
+          {
+            "tituloEpisodio": "T01E16 - [7072854248133]",
+            "urlDrive": "https://drive.google.com/file/d/1u-8RkQFEDQMJv8GBfDYuVEo-Ay9OUgV7/view"
+          },
+          {
+            "tituloEpisodio": "T01E17 - [7072854444741]",
+            "urlDrive": "https://drive.google.com/file/d/12tM16c5kesQpC7KRi3Fv3UbNQvdlQsUE/view"
+          },
+          {
+            "tituloEpisodio": "T01E18 - [7072854575813]",
+            "urlDrive": "https://drive.google.com/file/d/1oNFX_YqufAv1cwHwsbjaq55t_Z_frn_9/view"
+          },
+          {
+            "tituloEpisodio": "T01E22 [7075786525381]",
+            "urlDrive": "https://drive.google.com/file/d/1IifZt2812WSYyWQ0b5JZJUPj-n_bxe_N/view"
+          },
+          {
+            "tituloEpisodio": "T01E24 [7075786656453]",
+            "urlDrive": "https://drive.google.com/file/d/1osx8l6I3P2YTXKyVa3F7NGaFKJEMrnb6/view"
+          },
+          {
+            "tituloEpisodio": "T01E25 [7075786721989]",
+            "urlDrive": "https://drive.google.com/file/d/1_7FCdPYMaYXbjE0n5sonz2eC0jfMhMlb/view"
+          },
+          {
+            "tituloEpisodio": "T01E28 [7075789474501]",
+            "urlDrive": "https://drive.google.com/file/d/1P48NEaUDxQel0JtZR4MSYQoPAafzlaMn/view"
+          },
+          {
+            "tituloEpisodio": "T01E31 [7075824077509]",
+            "urlDrive": "https://drive.google.com/file/d/1tcZRGKWAar25cVkJT_o6UAd-cMDllVbw/view"
+          },
+          {
+            "tituloEpisodio": "T01E32 [7075824208581]",
+            "urlDrive": "https://drive.google.com/file/d/1Z6rK26Bxgmsw5H2wAFxvM1ktc-A36n7F/view"
+          },
+          {
+            "tituloEpisodio": "T01E34 [7075824667333]",
+            "urlDrive": "https://drive.google.com/file/d/1MiWv_ze6gcxDXzgydq7IT7eFHccP-Ftg/view"
+          },
+          {
+            "tituloEpisodio": "T01E35 [7075824732869]",
+            "urlDrive": "https://drive.google.com/file/d/1O1MtFeu-4rThia_CM6DtD3qHn76eBcR2/view"
+          },
+          {
+            "tituloEpisodio": "T01E36 [7075824798405]",
+            "urlDrive": "https://drive.google.com/file/d/1hN51RArnh-QsLw1jDMjIqOkvVY3PSntV/view"
+          },
+          {
+            "tituloEpisodio": "T02E01 [7078294784709]",
+            "urlDrive": "https://drive.google.com/file/d/1tHIEDhC_2QzZPz4YRkKAxrzI1ZBWVZtO/view"
+          },
+          {
+            "tituloEpisodio": "T02E02 [7078294915781]",
+            "urlDrive": "https://drive.google.com/file/d/16U5JxZvg89xYZf_hHLYdDrLhFNR18W2f/view"
+          },
+          {
+            "tituloEpisodio": "T02E03 [7078294981317]",
+            "urlDrive": "https://drive.google.com/file/d/1f8nopCq6-L1mAbDFnYUXbI9URYhy2nGi/view"
+          },
+          {
+            "tituloEpisodio": "T02E04 [7078295046853]",
+            "urlDrive": "https://drive.google.com/file/d/1bF7QPPkdWdt5uEO5asGsXsXWPx-ytua8/view"
+          },
+          {
+            "tituloEpisodio": "T02E05 [7078295308997]",
+            "urlDrive": "https://drive.google.com/file/d/1rgIawy-yTbyYGdci69iZbLSNaZhLnTnF/view"
+          },
+          {
+            "tituloEpisodio": "T02E06 [7078295440069]",
+            "urlDrive": "https://drive.google.com/file/d/1NhYnpkEECd3uJM6FbsTvs6zS-8AfCq2N/view"
+          },
+          {
+            "tituloEpisodio": "T02E07 [7078301010629]",
+            "urlDrive": "https://drive.google.com/file/d/1BAhSNOBD1l8LUEurwxBYR8j0oYDbEnQY/view"
+          },
+          {
+            "tituloEpisodio": "T02E08 [7078301076165]",
+            "urlDrive": "https://drive.google.com/file/d/1ESApZyPl5QsAGXkmXQL5P2s6nIzcy_-T/view"
+          },
+          {
+            "tituloEpisodio": "T02E09 [7078301207237]",
+            "urlDrive": "https://drive.google.com/file/d/1t_feBeVenc1bRwQWzvzV_zZI65SNT7QX/view"
+          },
+          {
+            "tituloEpisodio": "T02E10 [7078301272773]",
+            "urlDrive": "https://drive.google.com/file/d/1-ttE1-Alz8LtOUrFJRhsfku6v3XpPRFP/view"
+          },
+          {
+            "tituloEpisodio": "T02E12 [7081001618117]",
+            "urlDrive": "https://drive.google.com/file/d/1siyWA-zknnTJeSJ88oOuqlrWqRj2TwTq/view"
           }
         ]
       }
