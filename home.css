@@ -26,7 +26,8 @@
 .home-feature-tools button:hover,.home-feature-tools button[aria-pressed=true]{color:#67e8f9;border-color:#155e75}
 .home-feature-description{margin:14px 0 0;font-size:16px;line-height:1.55;color:#cbd5e1;overflow-wrap:anywhere}
 @media(max-width:1023px){
- .home-feature-frame>.home-feature-poster-floating{display:none}
+ .home-featured .home-feature-frame>.home-feature-poster-floating{display:block;left:4%;right:auto;width:20%;max-width:84px;max-height:64%;border-width:1px;border-radius:7px;box-shadow:0 6px 16px #0008}
+ .home-featured .home-feature-poster-inline{display:none}
  .home-featured{grid-template-columns:minmax(0,1fr);max-width:760px}
  .home-feature-layout{padding:22px}
 }
