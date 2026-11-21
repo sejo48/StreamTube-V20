@@ -1,5 +1,172 @@
 [
   {
+    "tmdbId": 2132,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Dick Van Dyke Show",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/1t4m2WWx581A8jEwp2LG6cCjzrY.jpg",
+    "year": "1961",
+    "fechaEstreno": "1961-10-03",
+    "rating": "7.6",
+    "votos": 113,
+    "runtime": "30min",
+    "runtimeMin": 30,
+    "genres": [
+      "Comedia"
+    ],
+    "generosTexto": "Comedia",
+    "clasificacion": "TV-PG",
+    "tagline": "",
+    "director": "",
+    "guionistas": "Bill Persky, Sam Denoff",
+    "reparto": [
+      {
+        "nombre": "Dick Van Dyke",
+        "personaje": "Rob Petrie",
+        "foto": "https://image.tmdb.org/t/p/w185/jXAeNx7mYdirzMHcqPyj5VXxcXi.jpg"
+      },
+      {
+        "nombre": "Mary Tyler Moore",
+        "personaje": "Laura Petrie",
+        "foto": "https://image.tmdb.org/t/p/w185/v4tIqWFbCcvqLrFhhHbeelR5f1l.jpg"
+      },
+      {
+        "nombre": "Rose Marie",
+        "personaje": "Sally Rogers",
+        "foto": "https://image.tmdb.org/t/p/w185/z8bPH025VNc4xCy55h1PMFvtDzC.jpg"
+      },
+      {
+        "nombre": "Morey Amsterdam",
+        "personaje": "Buddy Sorrell",
+        "foto": "https://image.tmdb.org/t/p/w185/oCNNUg4qDQvfjBQcAVeCeyGm6FX.jpg"
+      },
+      {
+        "nombre": "Larry Mathews",
+        "personaje": "Richie Petrie",
+        "foto": ""
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "Calvada Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "writer, sitcom",
+    "similares": [
+      {
+        "titulo": "Episodes",
+        "poster": "https://image.tmdb.org/t/p/w342/yyaU6cayJQCr555VgYYETbDHu1E.jpg",
+        "year": "2011",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "$#*! My Dad Says",
+        "poster": "https://image.tmdb.org/t/p/w342/rNaDgCmn16Bdy0EbU1gY6ZJpnhA.jpg",
+        "year": "2010",
+        "rating": "6.0"
+      },
+      {
+        "titulo": "Benson",
+        "poster": "https://image.tmdb.org/t/p/w342/pXQIwDfMMDF6GVJdgLm68Exm5wo.jpg",
+        "year": "1979",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Rowan & Martin's Laugh-In",
+        "poster": "https://image.tmdb.org/t/p/w342/abMymAYr5R1yVeNl9NZs3x27RoY.jpg",
+        "year": "1968",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Casados con hijos",
+        "poster": "https://image.tmdb.org/t/p/w342/dtH2Rn6MqZ8pstFzvEC2XGROKpt.jpg",
+        "year": "2005",
+        "rating": "8.2"
+      },
+      {
+        "titulo": "NewsRadio",
+        "poster": "https://image.tmdb.org/t/p/w342/nP698ZfQ9OqCXnxhEPapa8QOgdX.jpg",
+        "year": "1995",
+        "rating": "7.4"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Carl Reiner"
+    ],
+    "numeroTemporadas": 5,
+    "numeroEpisodios": 158,
+    "temporadasTmdb": [
+      {
+        "air_date": "1960-07-19",
+        "episode_count": 10,
+        "id": 6510,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1961-10-03",
+        "episode_count": 30,
+        "id": 6505,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/c7FdN55TLFU8x7Mlutkxm6VgKx1.jpg",
+        "season_number": 1,
+        "vote_average": 8
+      },
+      {
+        "air_date": "1962-09-26",
+        "episode_count": 32,
+        "id": 6509,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/fzB5tVp9vHzQjo3Wb1yZ7l2q6Ao.jpg",
+        "season_number": 2,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "1963-09-25",
+        "episode_count": 32,
+        "id": 6506,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/qlLIS7YI05bFiOg5jHhjAF1ZAOm.jpg",
+        "season_number": 3,
+        "vote_average": 6.1
+      },
+      {
+        "air_date": "1964-09-23",
+        "episode_count": 32,
+        "id": 6508,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/gSGp38hFw3SEloOEQjBGhRwgRwp.jpg",
+        "season_number": 4,
+        "vote_average": 6.1
+      },
+      {
+        "air_date": "1965-09-15",
+        "episode_count": 32,
+        "id": 6507,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/9kWwFHmZgTC8WpfE1agPrXSNeKk.jpg",
+        "season_number": 5,
+        "vote_average": 6.3
+      }
+    ],
+    "tituloSerie": "The Dick Van Dyke Show",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/3eiFZrarzOd08323sHX7RbR7vdn.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 4313,
     "tmdbType": "tv",
     "tituloOriginal": "Full House",
@@ -9507,165 +9674,6 @@
           {
             "tituloEpisodio": "Ver La Familia Monster 1x29 Online Gratis SeriesRetro.com",
             "urlDrive": "https://drive.google.com/file/d/1OEbm3fWBszPcaiGO2osiN2dzlwJ53oBF/view"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "tmdbId": 260249,
-    "tmdbType": "tv",
-    "tituloOriginal": "El juicio",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/bLcF9mcinphgFlXEfk7RkCSfqCv.jpg",
-    "year": "2026",
-    "fechaEstreno": "2026-09-11",
-    "rating": "9.2",
-    "votos": 80,
-    "runtime": "",
-    "runtimeMin": 0,
-    "genres": [
-      "Drama"
-    ],
-    "generosTexto": "Drama",
-    "clasificacion": "TV-MA",
-    "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [
-      {
-        "nombre": "Eugenio Derbez",
-        "personaje": "Miguel",
-        "foto": "https://image.tmdb.org/t/p/w185/6o1w3mYF947N6TTakQXcs3NNy4w.jpg"
-      },
-      {
-        "nombre": "Pedro Alonso",
-        "personaje": "Huerta",
-        "foto": "https://image.tmdb.org/t/p/w185/38HeVKeOBztVYrLJOWzAtEZiB02.jpg"
-      },
-      {
-        "nombre": "Karla Gaytán",
-        "personaje": "Andrea Portillo",
-        "foto": "https://image.tmdb.org/t/p/w185/brrYnEezWDbjM4aLbRXT4iCwnd5.jpg"
-      },
-      {
-        "nombre": "Íker Sánchez Solano",
-        "personaje": "Carlos Huerta",
-        "foto": "https://image.tmdb.org/t/p/w185/eHvL807cehcshUoxwJMSCod8IjR.jpg"
-      },
-      {
-        "nombre": "Sergio Gava",
-        "personaje": "Agente MP",
-        "foto": "https://image.tmdb.org/t/p/w185/zWGEgeP8rA6vZ4toS5NmfDl5xbK.jpg"
-      },
-      {
-        "nombre": "Héctor Jiménez",
-        "personaje": "Joaquín Portillo",
-        "foto": "https://image.tmdb.org/t/p/w185/i6Q6G8HWLof7zXNbTgvpI6MuC3P.jpg"
-      }
-    ],
-    "pais": "Mexico, United States of America",
-    "idioma": "es",
-    "productoras": "Amazon MGM Studios, 3Pas Studios, Visceral, Reclaim Entertainment Ventures",
-    "presupuesto": 0,
-    "recaudacion": 0,
-    "trailerUrl": "",
-    "coleccion": "",
-    "keywords": "",
-    "similares": [
-      {
-        "titulo": "Bel-Air",
-        "poster": "https://image.tmdb.org/t/p/w342/j8tbXWXrL15RucA6H4khq87dEXa.jpg",
-        "year": "2022",
-        "rating": "7.7"
-      },
-      {
-        "titulo": "Ambitions",
-        "poster": "https://image.tmdb.org/t/p/w342/yZR31jvMgGwG4i0Z6Jee2iRUHyI.jpg",
-        "year": "2019",
-        "rating": "7.3"
-      },
-      {
-        "titulo": "Entre padre e hijo",
-        "poster": "https://image.tmdb.org/t/p/w342/oYG6EAnRalQRf0w1JQSGtCpcrNR.jpg",
-        "year": "2026",
-        "rating": "6.9"
-      },
-      {
-        "titulo": "Tyler Perry's Ruthless",
-        "poster": "https://image.tmdb.org/t/p/w342/c2sBZga1A6cQnKfsDjSXddhmkad.jpg",
-        "year": "2020",
-        "rating": "8.4"
-      },
-      {
-        "titulo": "Ni una más",
-        "poster": "https://image.tmdb.org/t/p/w342/poeF8MRkSJQSoJ5uMVBkKEXADxF.jpg",
-        "year": "2024",
-        "rating": "7.7"
-      },
-      {
-        "titulo": "Jenni Rivera: Mariposa de Barrio",
-        "poster": "https://image.tmdb.org/t/p/w342/vIHwoZF3YjLkoFKJGJMIiIO4HsF.jpg",
-        "year": "2017",
-        "rating": "7.9"
-      }
-    ],
-    "homepage": "",
-    "creadores": [],
-    "numeroTemporadas": 1,
-    "numeroEpisodios": 8,
-    "temporadasTmdb": [
-      {
-        "air_date": "2026-09-10",
-        "episode_count": 8,
-        "id": 404296,
-        "name": "Temporada 1",
-        "overview": "",
-        "poster_path": "/ruBoYMwK3ODdREJZgNSg1UhE94K.jpg",
-        "season_number": 1,
-        "vote_average": 0
-      }
-    ],
-    "tituloSerie": "El juicio",
-    "descripcion": "Una joven y su padre buscan justicia después de que ella fuese víctima de abuso sexual. Además de lidiar con las secuelas del delito, ambos luchan contra un fallido sistema judicial y el propio padre del joven agresor: un exitoso hombre dispuesto a usar todo su poder para proteger a su hijo y evitar que pague por su crimen.",
-    "imagen": "https://image.tmdb.org/t/p/w780/bFg26U2rS3TmcYRPSYY7FRkVWHc.jpg",
-    "codigo": null,
-    "qualityTag": "HD",
-    "temporadas": [
-      {
-        "numeroTemporada": 1,
-        "episodeOrder": "manual",
-        "episodios": [
-          {
-            "tituloEpisodio": "El juicio S01 E01 - Episodio 1",
-            "urlDrive": "https://drive.google.com/file/d/1L1F7CtsQt4wiDOhSs4hpFfmW2ksmkoZb/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "El juicio S01 E02 - Episodio 2",
-            "urlDrive": "https://drive.google.com/file/d/1f74eSheeGxw5KGLgWtFJq0zl0dJo3bcx/view?usp=drive_link"
-          },
-          {
-            "tituloEpisodio": "El juicio S01 E08 - Episodio 3",
-            "urlDrive": "https://drive.google.com/file/d/1SojdwmoJ2F210CVJkyU57pCiFDOjsqVy/view?usp=drive_link"
-          },
-          {
-            "tituloEpisodio": "El juicio S01 E04 - Episodio 4",
-            "urlDrive": "https://drive.google.com/file/d/1ThKqevYxSk0DWSmcR1Hq4jWprsNcKqf9/view?usp=drive_link"
-          },
-          {
-            "tituloEpisodio": "El juicio S01 E06 - Episodio 5",
-            "urlDrive": "https://drive.google.com/file/d/1NNsab_J9L-Mvk_im2ioEmk50f8JIpnXH/view?usp=drive_link"
-          },
-          {
-            "tituloEpisodio": "El juicio S01 E07 - Episodio 6",
-            "urlDrive": "https://drive.google.com/file/d/1JWjH3iXMF8SjD86m2b2u6S0BF1f0r2ry/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "El juicio S01 E07 - Episodio 7",
-            "urlDrive": "https://drive.google.com/file/d/1q2F7jayEjvUR_wF10_NW_PYuuJ2kKRh_/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "El juicio S01 E08 - Episodio 8",
-            "urlDrive": "https://drive.google.com/file/d/1efdlmNWdAT7ZzBw11PE2iaiBVWuQfyDh/view?usp=drive_link"
           }
         ]
       }
