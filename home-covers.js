@@ -1,8 +1,8 @@
-/* Shared home-cover contract. Only references to the published Estrenos catalog are allowed. */
+/* Shared featured-movie contract. Legacy five-cover files remain readable during upgrades. */
 (function (root) {
     'use strict';
     const FILE = 'portadas-inicio.json', SOURCE = 'peliculas2.json';
-    const automatic = () => ({ schemaVersion: 1, source: SOURCE, mode: 'automatic', items: [] });
+    const automatic = () => ({ schemaVersion: 2, source: SOURCE, mode: 'automatic', items: [] });
     const title = item => String(item?.titulo || item?.title || item?.name || '').trim();
     const image = item => String(item && Object.prototype.hasOwnProperty.call(item,'panoramicImage') ? item.panoramicImage : item?.backdrop || item?.banner || '').trim();
     const validImage = value => { try { return typeof value === 'string' && value.length < 3000 && new URL(value).protocol === 'https:'; } catch { return false; } };
@@ -22,18 +22,20 @@
         return 'title:' + title(item).toLocaleLowerCase('es').replace(/\s+/g, ' ') + '|' + String(item.year || item.anio || '');
     }
     function validate(config) {
-        if (!config || config.schemaVersion !== 1 || config.source !== SOURCE || !['automatic','manual'].includes(config.mode) || !Array.isArray(config.items)) throw new Error('Formato de portadas de inicio inválido.');
-        if (config.mode === 'manual' ? config.items.length !== 5 : config.items.length !== 0) throw new Error('Selecciona exactamente cinco películas de Estrenos.');
+        if (!config || ![1,2].includes(config.schemaVersion) || config.source !== SOURCE || !['automatic','manual'].includes(config.mode) || !Array.isArray(config.items)) throw new Error('Formato de película de inicio inválido.');
+        const count = config.schemaVersion === 1 ? 5 : 1;
+        if (config.mode === 'manual' ? config.items.length !== count : config.items.length !== 0) throw new Error('Selecciona una sola película de Estrenos.');
         const seen = new Set();
         for (const item of config.items) {
-            if (!item || typeof item.movieKey !== 'string' || !item.movieKey || item.movieKey.length > 3000 || seen.has(item.movieKey) || typeof item.title !== 'string' || !item.title.trim() || item.title.length > 300 || !validImage(item.backdrop)) throw new Error('Las cinco portadas deben ser distintas y tener un título e imagen HTTPS válidos.');
+            if (!item || typeof item.movieKey !== 'string' || !item.movieKey || item.movieKey.length > 3000 || seen.has(item.movieKey) || typeof item.title !== 'string' || !item.title.trim() || item.title.length > 300 || !validImage(item.backdrop)) throw new Error('La película debe tener una referencia, un título y una imagen HTTPS válidos.');
             seen.add(item.movieKey);
         }
         return config;
     }
     function make(items, now = new Date().toISOString()) {
-        return validate({schemaVersion:1,source:SOURCE,mode:'manual',updatedAt:now,items:items.map(item=>({movieKey:item.movieKey || key(item),title:title(item),backdrop:image(item)}))});
+        return validate({schemaVersion:2,source:SOURCE,mode:'manual',updatedAt:now,items:items.map(item=>({movieKey:item.movieKey || key(item),title:title(item),backdrop:image(item)}))});
     }
+    function selection(config) { validate(config); return config.items.slice(0,1); }
     const revision = config => {
         validate(config);
         return JSON.stringify([config.mode, config.updatedAt || '', config.items.map(item => [item.movieKey,item.title,item.backdrop])]);
@@ -41,7 +43,7 @@
     function resolve(config, catalog) {
         validate(config);
         const movies = new Map((catalog || []).map(item => [key(item),item]));
-        return config.items.flatMap(selection => {
+        return selection(config).flatMap(selection => {
             const item = movies.get(selection.movieKey);
             return item ? [{...item,panoramicImage:selection.backdrop}] : [];
         });
@@ -99,11 +101,12 @@
     async function publish({token,config,sha},fetcher=root.fetch.bind(root)) {
         validate(config);if(!sha)throw new Error('Primero comprueba la conexión y carga la selección publicada.');
         const {repository,branch}=await destination();let response;
-        try { response=await fetcher(`https://api.github.com/repos/${repository}/contents/${FILE}`,{method:'PUT',headers:{...headers(token),'Content-Type':'application/json'},body:JSON.stringify({message:'Actualizar cinco portadas de inicio de Box Play TV',branch,sha,content:encode(config)})}); }
+        if(config.schemaVersion!==2)throw new Error('Selecciona una sola película antes de publicar.');
+        try { response=await fetcher(`https://api.github.com/repos/${repository}/contents/${FILE}`,{method:'PUT',headers:{...headers(token),'Content-Type':'application/json'},body:JSON.stringify({message:'Actualizar película destacada de inicio de Box Play TV',branch,sha,content:encode(config)})}); }
         catch {throw failure(0);}
         if(!response.ok)throw failure(response.status);
         const data=await response.json();if(!data.commit?.sha||!data.content?.sha)throw failure(0);return data;
     }
-    const api={FILE,SOURCE,automatic,title,image,key,validate,make,revision,resolve,probe,panoramic,read,catalog,repository,publish,encode,decode};
+    const api={FILE,SOURCE,automatic,title,image,key,validate,make,selection,revision,resolve,probe,panoramic,read,catalog,repository,publish,encode,decode};
     root.BoxHomeCovers=api;if(typeof module!=='undefined')module.exports=api;
 })(typeof window!=='undefined'?window:globalThis);

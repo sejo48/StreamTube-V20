@@ -65,7 +65,7 @@ const server = http.createServer((req, res) => {
         const hero=page.getByRole('region',{name:'Película recomendada'});
         const shortcuts=page.getByRole('navigation',{name:'Accesos directos del inicio'});
         await hero.locator('h1').waitFor();
-        const expected=H.candidates({movies2:originalReleases}).slice(0,5);
+        const expected=H.candidates({movies2:originalReleases}).slice(0,1);
         const selectedTitle=(await hero.locator('h1').textContent()).trim();
         const selectedMovie=expected.find(item=>item.titulo===selectedTitle);assert(selectedMovie);
         assert.equal(await hero.getByRole('tab').count(),0);
@@ -73,11 +73,11 @@ const server = http.createServer((req, res) => {
         assert.equal(await hero.locator('.home-feature-backdrop').getAttribute('src'),selectedMovie.backdrop);
         assert.equal(await hero.locator('.home-feature-description').textContent(),selectedMovie.descripcion||selectedMovie.sinopsis||selectedMovie.plot);
         const play=hero.getByRole('button',{name:'Ver ahora',exact:true});
-        assert.equal(await play.evaluate(button=>getComputedStyle(button).backgroundColor),'rgb(255, 255, 255)');
+        assert.equal(await play.evaluate(button=>getComputedStyle(button).backgroundColor),'rgb(34, 211, 238)');
         await hero.getByRole('button',{name:'Mi lista',exact:true}).click();
         assert(await page.evaluate(title=>JSON.parse(localStorage.getItem('boxplay_favs')).some(entry=>entry.title===title),selectedTitle));
-        assert.equal(await hero.getByRole('button',{name:'Quitar de favoritos',exact:true}).getAttribute('aria-pressed'),'true');
-        await hero.getByRole('button',{name:'Quitar de favoritos',exact:true}).click();
+        assert.equal(await hero.getByRole('button',{name:'En Mi lista',exact:true}).getAttribute('aria-pressed'),'true');
+        await hero.getByRole('button',{name:'En Mi lista',exact:true}).click();
         assert.equal(await hero.getByRole('button',{name:'Mi lista',exact:true}).getAttribute('aria-pressed'),'false');
         await hero.getByRole('button',{name:'Mi lista',exact:true}).click();
         page.once('dialog',dialog=>dialog.accept('4'));
@@ -106,8 +106,8 @@ const server = http.createServer((req, res) => {
                 const copy=el.querySelector('.home-feature-copy').getBoundingClientRect(),rect=el.getBoundingClientRect();
                 return {width:rect.width,height:rect.height,titleFits:title.scrollWidth<=title.clientWidth+1,fit:getComputedStyle(image).objectFit,copyLeft:copy.left,copyBottom:copy.bottom,heroBottom:rect.bottom,overflow:document.documentElement.scrollWidth>innerWidth};
             })).jsonValue();
-            assert.equal(metrics.width,width);assert(metrics.titleFits);assert.equal(metrics.fit,'cover');assert(!metrics.overflow);
-            if(width>=1024){assert(metrics.height>=850);assert(metrics.copyLeft<=width*.04);assert(metrics.heroBottom-metrics.copyBottom<=41);}
+            assert.equal(metrics.width,width);assert(metrics.titleFits);assert.equal(metrics.fit,'contain');assert(!metrics.overflow);
+            assert(metrics.heroBottom>=metrics.copyBottom);
             // Use an inert DOM copy to test alternate source ratios without mutating React's live image.
             const fitted=await hero.evaluate(async liveHero=>{
                 const copy=liveHero.cloneNode(true);
@@ -119,36 +119,35 @@ const server = http.createServer((req, res) => {
                     image.src='data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><rect width="100%" height="100%" fill="#164e63"/><circle cx="${w/2}" cy="${h*.1}" r="${Math.min(w,h)*.07}" fill="#67e8f9"/></svg>`);
                     await image.decode();
                     const rect=image.getBoundingClientRect(),hero=image.closest('.home-featured'),style=getComputedStyle(image),heroRect=hero.getBoundingClientRect();
-                    const factor=Math.max(rect.width/image.naturalWidth,rect.height/image.naturalHeight);
-                    checks.push(style.objectFit==='cover'&&image.naturalWidth*factor>=rect.width-.1&&image.naturalHeight*factor>=rect.height-.1&&Math.abs(rect.left-heroRect.left)<1&&Math.abs(rect.right-heroRect.right)<1&&Math.abs(rect.top-heroRect.top)<1&&Math.abs(rect.bottom-heroRect.bottom)<1);
-                    checks.push(style.objectPosition==='50% 0%');
+                    const factor=Math.min(rect.width/image.naturalWidth,rect.height/image.naturalHeight);
+                    checks.push(style.objectFit==='contain'&&image.naturalWidth*factor<=rect.width+.1&&image.naturalHeight*factor<=rect.height+.1);
+                    const poster=hero.querySelector('.home-feature-poster');checks.push(getComputedStyle(poster).objectFit==='contain');
                     for(const element of hero.querySelectorAll('h1,.home-watch,.home-feature-description,.home-feature-tools button')){
-                        const bounds=element.getBoundingClientRect();checks.push(bounds.left>=rect.left&&bounds.right<=rect.right+.1&&bounds.top>=rect.top&&bounds.bottom<=rect.bottom+.1);
+                        const bounds=element.getBoundingClientRect();checks.push(bounds.left>=heroRect.left&&bounds.right<=heroRect.right+.1&&bounds.top>=rect.bottom);
                     }
-                    checks.push(getComputedStyle(hero.querySelector('.home-feature-shade')).backgroundImage.includes('linear-gradient'));
                     details.push({w,h,attached:image.isConnected,fit:style.objectFit,position:style.objectPosition,rect:rect.toJSON(),hero:heroRect.toJSON(),elements:Array.from(hero.querySelectorAll('h1,.home-watch,.home-feature-description,.home-feature-tools button'),el=>({class:el.className,rect:el.getBoundingClientRect().toJSON()}))});
                 }
                 return {pass:checks.every(Boolean),details};
                 } finally { copy.remove(); }
             });
             assert(fitted.pass,`Full-screen premiere, text and controls must fit at ${width}px: ${JSON.stringify(fitted.details)}`);
-            assert.deepEqual(await shortcuts.getByRole('button').evaluateAll(buttons=>buttons.map(button=>button.getAttribute('aria-label'))),['TV','Radio','Estrenos','Películas','Series']);
+            assert.deepEqual(await shortcuts.getByRole('button').evaluateAll(buttons=>buttons.map(button=>button.getAttribute('aria-label'))),['TV','Radio','Estrenos','Películas','Series','Series retro']);
             const quickLayout=await shortcuts.evaluate(nav=>{
                 const buttons=Array.from(nav.querySelectorAll('button')),hero=nav.previousElementSibling,firstShelf=document.querySelector('.home-shelves');
                 const rect=nav.getBoundingClientRect(),panorama=hero.getBoundingClientRect();
                 return hero.classList.contains('home-featured')&&Math.abs(rect.top-panorama.bottom)<1&&rect.bottom<=firstShelf.getBoundingClientRect().top+1&&buttons.every(button=>{
                     const box=button.getBoundingClientRect(),label=button.querySelector('strong');
-                    return box.width>=44&&box.height>=44&&box.left>=0&&box.right<=innerWidth+.1&&Math.abs(box.top-buttons[0].getBoundingClientRect().top)<1&&label.scrollWidth<=label.clientWidth+1;
+                    return box.width>=44&&box.height>=44&&box.left>=0&&box.right<=innerWidth+.1&&label.scrollWidth<=label.clientWidth+1;
                 });
             });
-            assert(quickLayout,`Five readable shortcut cards must sit below the panorama in one row at ${width}px`);
+            assert(quickLayout,`Readable shortcut cards must sit below the panorama at ${width}px`);
         }
         await page.setViewportSize({width:1440,height:1000});await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));await page.screenshot({path:'/tmp/box-home-desktop.png',fullPage:true});
         await page.setViewportSize({width:390,height:844});await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));await page.screenshot({path:'/tmp/box-home-mobile.png',fullPage:true});
-        console.log('PASS: reference-style full-screen premiere, white watch button, favorite synchronization, personal rating, protected download, subscription gate and 320–1920px layouts');
+        console.log('PASS: reference-style complete panorama with separate information, cyan watch button, favorite synchronization, personal rating, protected download, subscription gate and 320–1920px layouts');
         for(const width of [390,1440]){
             await page.setViewportSize({width,height:1000});
-            for(const [label,id] of [['TV','tv'],['Radio','radio'],['Estrenos','movies2'],['Películas','movies'],['Series','series']]){
+            for(const [label,id] of [['TV','tv'],['Radio','radio'],['Estrenos','movies2'],['Películas','movies'],['Series','seriesNew'],['Series retro','series']]){
                 const button=shortcuts.getByRole('button',{name:label,exact:true});
                 if(width===1440){await button.focus();await button.press('Enter');}else await button.click();
                 await page.waitForFunction(expected=>history.state?.activeTab===expected,id);
@@ -162,15 +161,14 @@ const server = http.createServer((req, res) => {
                 await shortcuts.waitFor();
             }
         }
-        console.log('PASS: five shortcut cards below the panorama remain readable at 320–1920px; touch and keyboard open TV, Radio, Estrenos, Películas and Series without starting radio playback');
+        console.log('PASS: shortcut cards below the panorama remain readable at 320–1920px; touch and keyboard open TV, Radio, Estrenos, Películas and Series without starting radio playback');
         await page.setViewportSize({width:1440,height:1000});
         for(let reload=0;reload<4;reload++){
-            const previous=await page.evaluate(()=>localStorage.getItem('boxplay_home_feature_last'));
+            const previous=(await hero.locator('h1').textContent()).trim();
             await page.reload();await page.getByRole('button',{name:'Comenzar Experiencia'}).waitFor();await page.clock.fastForward(2100);await hero.locator('h1').waitFor();
-            const next=await page.evaluate(()=>localStorage.getItem('boxplay_home_feature_last'));
-            assert.notEqual(next,previous);
+            const next=(await hero.locator('h1').textContent()).trim();
+            assert.equal(next,previous);
             const title=(await hero.locator('h1').textContent()).trim();assert(expected.some(item=>item.titulo===title));
-            assert(next.startsWith(title.toLocaleLowerCase('es').replace(/\s+/g,' ')));
             assert.equal(await page.evaluate(()=>localStorage.getItem('boxplay_personal_ratings')),savedRatings);
         }
         const edge={...originalReleases[0],id:'newest-estreno-test',titulo:'Último estreno disponible',fechaEstreno:'2026-10-17',descripcion:'Sinopsis del estreno más reciente.',backdrop:'https://images.test/newest-wide.jpg'};

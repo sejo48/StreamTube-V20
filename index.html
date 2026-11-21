@@ -3,13 +3,13 @@
 <head>
     <script src="./install.js" defer></script>
     <script src="./catalog.js"></script>
-    <script src="./home-covers.js?v=2026-1"></script>
+    <script src="./home-covers.js?v=20261121-1"></script>
     <script src="./notices.js"></script>
     <script src="./radio-engine.js?v=2026-2"></script>
     <script src="./radio-favorites.js?v=2026-1"></script>
     <link rel="stylesheet" href="./radio.css?v=20261025-4">
-    <link rel="stylesheet" href="./home.css?v=2026-5">
-    <script src="./home-features.js?v=2026-4"></script>
+    <link rel="stylesheet" href="./home.css?v=20261121-1">
+    <script src="./home-features.js?v=20261121-1"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="manifest" href="./manifest.webmanifest">
@@ -720,7 +720,6 @@
         const FeaturedHome = ({ items, onPlay, isItemFavorite, onToggleFavorite, onArtworkError, onRate, onDownload, ratings, pending }) => {
             const item = items[0];
             const coverKey = item ? BoxHomeFeatures.key(item) : '';
-            useEffect(() => { if (coverKey) safeStorage.setItem('boxplay_home_feature_last', coverKey); }, [coverKey]);
             if (!item) return null;
             const title = item.title || item.titulo || item.name || 'Estreno';
             const description = item.description || item.descripcion || item.sinopsis || 'Descubre este estreno en Box Play TV.';
@@ -728,22 +727,23 @@
             const personalRating = ratings[item.id || coverKey];
             const downloadable = (item.urlDrive || item.rawUrl || item.url || '').includes('drive.google.com');
             return <section className="home-featured" aria-label="Película recomendada" aria-busy={pending}>
-                <div className="home-feature-art" aria-hidden="true"><img src={BoxHomeFeatures.panorama(item)} alt="" className="home-feature-ambient"/><div className="home-feature-frame"><img key={item.id || title} src={BoxHomeFeatures.panorama(item)} alt="" className="home-feature-backdrop" onError={() => onArtworkError(item)}/></div></div>
-                <div className="home-feature-shade"/>
-                <button className="home-save" aria-label={favorite ? 'Quitar de favoritos' : 'Añadir a favoritos'} aria-pressed={favorite} onClick={() => onToggleFavorite(item)}><Icon name="heart" size={20} fill={favorite ? 'currentColor' : 'none'}/></button>
+                <div className="home-feature-art"><div className="home-feature-frame"><img key={BoxHomeFeatures.panorama(item)} src={BoxHomeFeatures.panorama(item)} alt={'Imagen panorámica de ' + title} className="home-feature-backdrop" onError={() => onArtworkError(item)}/></div></div>
                 <div className="home-feature-layout">
+                    <img className="home-feature-poster" src={item.image || item.imagen || generatePlaceholder(title)} alt={'Portada de ' + title} onError={event => { event.currentTarget.src = generatePlaceholder(title); }}/>
                     <div className="home-feature-copy">
+                        <p className="home-feature-kicker">Película destacada</p>
                         <h1>{title}</h1>
                         <div className="home-feature-meta">{item.clasificacion && <span>{item.clasificacion}</span>}{item.runtime && <span>{item.runtime}</span>}{item.year && <span>{item.year}</span>}{item.rating && <span className="home-rating">★ {item.rating}</span>}</div>
                         {item.generosTexto && <p className="home-feature-genres">{item.generosTexto}</p>}
-                        <button className="home-watch" onClick={() => onPlay(item)}><Icon name="play" size={18} fill="currentColor"/>Ver ahora</button>
-                        <div className="home-feature-tools">
+                        <div className="home-feature-actions">
+                            <button className="home-watch" onClick={() => onPlay(item)}><Icon name="play" size={18} fill="currentColor"/>Ver ahora</button>
+                            <div className="home-feature-tools">
                             <button aria-pressed={favorite} onClick={() => onToggleFavorite(item)}><Icon name={favorite ? 'check' : 'plus'} size={26}/><span>{favorite ? 'En Mi lista' : 'Mi lista'}</span></button>
                             <button onClick={() => onRate(item)}><Icon name="thumbsUp" size={24}/><span>{personalRating ? `Tu voto: ${personalRating}/5` : 'Calificar'}</span></button>
                             {downloadable && <button onClick={() => onDownload(item)}><Icon name="download" size={24}/><span>Descargar</span></button>}
+                            </div>
                         </div>
                         <p className="home-feature-description">{description}</p>
-                        {item.generosTexto && <p className="home-feature-category">{item.generosTexto.split(',')[0].trim()}</p>}
                     </div>
                 </div>
             </section>;
@@ -1910,7 +1910,6 @@
                 setFeaturedLoading(true);
                 BoxHomeFeatures.load(content, {
                     configuration: homeCoverConfig,
-                    previous: safeStorage.getItem('boxplay_home_feature_last') || '',
                     isCancelled: () => cancelled
                 }).then(items => { if (!cancelled) { setFeaturedItems(items); setFeaturedLoading(false); } });
                 return () => { cancelled = true; };
