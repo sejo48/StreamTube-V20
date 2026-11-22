@@ -1,5 +1,137 @@
 [
   {
+    "tmdbId": 313678,
+    "tmdbType": "tv",
+    "tituloOriginal": "Aprendiendo a vivir",
+    "backdrop": "https://image.tmdb.org/t/p/original/fFvYy26gzhJfMWQ5jlHRngchlN0.jpg",
+    "year": "1984",
+    "fechaEstreno": "1984-03-19",
+    "rating": "9.0",
+    "votos": 1,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Drama"
+    ],
+    "generosTexto": "Drama",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "Rafael Banquells",
+    "guionistas": "Estela Calderón",
+    "reparto": [
+      {
+        "nombre": "Julio Alemán",
+        "personaje": "Rafael",
+        "foto": "https://image.tmdb.org/t/p/w185/vC7pjqqLfQRNhvZxKqdcTyOSHIP.jpg"
+      },
+      {
+        "nombre": "Sonia Furió",
+        "personaje": "Gloria",
+        "foto": "https://image.tmdb.org/t/p/w185/f6GDMKhjwPLYjKOjGwAVUyjUApt.jpg"
+      },
+      {
+        "nombre": "Miguel Gómez Checa",
+        "personaje": "Pepe",
+        "foto": ""
+      },
+      {
+        "nombre": "Octavio Galindo",
+        "personaje": "Raul",
+        "foto": ""
+      },
+      {
+        "nombre": "Tina Romero",
+        "personaje": "Silvia",
+        "foto": "https://image.tmdb.org/t/p/w185/gzeysO6gLolZXUFg0Ja1C34waWd.jpg"
+      },
+      {
+        "nombre": "Rosa Furman",
+        "personaje": "Leonor",
+        "foto": "https://image.tmdb.org/t/p/w185/m6IPRlsM9KfMEIeZNZRsHhQCbEv.jpg"
+      },
+      {
+        "nombre": "Dina de Marco",
+        "personaje": "Perla",
+        "foto": ""
+      },
+      {
+        "nombre": "Silvia Mariscal",
+        "personaje": "Martha",
+        "foto": "https://image.tmdb.org/t/p/w185/kP8gumKFe2qlrkDJMcVTIGsiVfj.jpg"
+      }
+    ],
+    "pais": "Mexico",
+    "idioma": "es",
+    "productoras": "Televisa",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "romance, telenovela",
+    "similares": [
+      {
+        "titulo": "Barrera de amor",
+        "poster": "https://image.tmdb.org/t/p/w342/wIjgujWZLbnV919BUwqZCsCpLuy.jpg",
+        "year": "2005",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Te Sigo Amando",
+        "poster": "https://image.tmdb.org/t/p/w342/mUKLVH0U62EB4P7gkeuOo7iGYgV.jpg",
+        "year": "1996",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Corazón Salvaje",
+        "poster": "https://image.tmdb.org/t/p/w342/r7O2OTPM6xU6YAIVkHdhETLeqEb.jpg",
+        "year": "1992",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "El Manantial",
+        "poster": "https://image.tmdb.org/t/p/w342/y3ZcSZwgXKL5ycBVl04llvYKh3b.jpg",
+        "year": "2001",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Dame Chocolate",
+        "poster": "https://image.tmdb.org/t/p/w342/aChguKWl7Vhgsq9xnkCHvapHmds.jpg",
+        "year": "2007",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Amar sin límites",
+        "poster": "https://image.tmdb.org/t/p/w342/tt1mZBiXTs4SvYnRMwvRcpZxHL8.jpg",
+        "year": "2006",
+        "rating": "6.4"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Estela Calderón"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 135,
+    "temporadasTmdb": [
+      {
+        "air_date": "1984-03-19",
+        "episode_count": 135,
+        "id": 499760,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 1,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Aprendiendo a vivir",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/original/Q8tR8IKppQGlrdIsq7acApKdbp.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 2553,
     "tmdbType": "tv",
     "tituloOriginal": "Punky Brewster",
@@ -155,7 +287,197 @@
     "imagen": "https://image.tmdb.org/t/p/w780/zvzhXpcJhTBR2f189ZdQkemk3SS.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "1x02 Punky encuentra un hogar, parte 2 [3022815038149]",
+            "urlDrive": "https://drive.google.com/file/d/1ZvrIqnasDD9wJXOGj940bUFHusAIpANh/view"
+          },
+          {
+            "tituloEpisodio": "1x03 Punky encuentra un hogar, parte 3 [3022815103685]",
+            "urlDrive": "https://drive.google.com/file/d/1qZDAPprZJr0uEQyJq2Bsyd9822J6gzVh/view"
+          },
+          {
+            "tituloEpisodio": "1x04 Objetos perdidos [3022815300293]",
+            "urlDrive": "https://drive.google.com/file/d/1K51-YNafXUd8YzQ-sC2OBvLfYplCDTU3/view"
+          },
+          {
+            "tituloEpisodio": "1x05 Punky consigue su propia habitación [3022815431365]",
+            "urlDrive": "https://drive.google.com/file/d/1FFzwhttimWHsjPz0_To7K7Odz95sVOIO/view"
+          },
+          {
+            "tituloEpisodio": "1x06 Camino del colegio [3022815562437]",
+            "urlDrive": "https://drive.google.com/file/d/1pwYGn6g9vOjmDJS5KKre1qP12E6V7pA5/view"
+          },
+          {
+            "tituloEpisodio": "1x07 Un día de pesca [3022815693509]",
+            "urlDrive": "https://drive.google.com/file/d/1y1pSkhmw3WvcxqGKk6joCsKDrdqYsvDR/view"
+          },
+          {
+            "tituloEpisodio": "1x08 El partido del siglo [3022816021189]",
+            "urlDrive": "https://drive.google.com/file/d/1vuaqG1YI29x37N7scgV1OosornlDJctQ/view"
+          },
+          {
+            "tituloEpisodio": "1x09 Padres adoptivos [3022816348869]",
+            "urlDrive": "https://drive.google.com/file/d/1cJ7M0AL8MKbtEkc6nrfDr_y7-wSbHLfa/view"
+          },
+          {
+            "tituloEpisodio": "1x10 A la cama [3022871988933]",
+            "urlDrive": "https://drive.google.com/file/d/1YJRiKWaFFpgGsuNs3dUCnyahTB7J99w-/view"
+          },
+          {
+            "tituloEpisodio": "1x11 La inyección [3022872316613]",
+            "urlDrive": "https://drive.google.com/file/d/1SPG0kzk5YGljRnABz8xygJwjahyue5J8/view"
+          },
+          {
+            "tituloEpisodio": "1x12 Miss encanto [3022872447685]",
+            "urlDrive": "https://drive.google.com/file/d/1_X5PDZqqbFKFiVQ10vzT2bL3plQaTvPo/view"
+          },
+          {
+            "tituloEpisodio": "1x13 Una tarde de perros [3022872709829]",
+            "urlDrive": "https://drive.google.com/file/d/1pNapPQs-3onl3xPESiw1j8hGnkBq36MD/view"
+          },
+          {
+            "tituloEpisodio": "1x14 La muñeca [3022872971973]",
+            "urlDrive": "https://drive.google.com/file/d/1NpaSWjXAqQ9cH62T2bmckzt7mbxbdGoL/view"
+          },
+          {
+            "tituloEpisodio": "1x15 Sí, punky, hay un Santa Claus, parte 1 [3022873037509]",
+            "urlDrive": "https://drive.google.com/file/d/1w1lphm_eSoBrpUM-t5d5hwKAm_p5-Fbq/view"
+          },
+          {
+            "tituloEpisodio": "1x16 Sí, punky, hay un Santa Claus, parte 2 [3022905543365]",
+            "urlDrive": "https://drive.google.com/file/d/1HDTxBKKmynuWu0jQ4cgtqXw-asx7GsEF/view"
+          },
+          {
+            "tituloEpisodio": "1x17 Punky agente artística [3022905805509]",
+            "urlDrive": "https://drive.google.com/file/d/1m8rSAvB7ILWBDAIiCe40dt0pnJZFb9XF/view"
+          },
+          {
+            "tituloEpisodio": "1x18 Henry se enamora, parte 1 [3022905936581]",
+            "urlDrive": "https://drive.google.com/file/d/1-J6NZTdo2C6KoxFRvDu50KVWxUtvm00C/view"
+          },
+          {
+            "tituloEpisodio": "1x19 Henry se enamora, parte 2 [3022910130885]",
+            "urlDrive": "https://drive.google.com/file/d/1WlGbosyYbfZ4O7NkIR7-B-_tTSAP0eZC/view"
+          },
+          {
+            "tituloEpisodio": "1x20 San Valentín [3022910393029]",
+            "urlDrive": "https://drive.google.com/file/d/1QiKQem4L8f1ENncgHoSr-lBWDnFBizJ2/view"
+          },
+          {
+            "tituloEpisodio": "1x21 Te quiero Brandon [3022928808645]",
+            "urlDrive": "https://drive.google.com/file/d/1Cld1SZ95bWTvXJd0XULYIjgDXoLVj4ea/view"
+          },
+          {
+            "tituloEpisodio": "1x22 En forma con Punky [3022928874181]",
+            "urlDrive": "https://drive.google.com/file/d/14NAFk_UVeGP8QtGyZo_3rPYo1v-02IN_/view"
+          },
+          {
+            "tituloEpisodio": "1x23 Tres madres y un biberón [3022928939717]",
+            "urlDrive": "https://drive.google.com/file/d/1wVVbjTkUwEbzl3CbxeFSgmfdrrEOjY0q/view"
+          },
+          {
+            "tituloEpisodio": "1x24 La subasta, parte 1 [3022929136325]",
+            "urlDrive": "https://drive.google.com/file/d/1e2hJq-KrotKzp3NxfQy_3UndkNylEwug/view"
+          },
+          {
+            "tituloEpisodio": "1x25 La subasta, parte 2 [3022929464005]",
+            "urlDrive": "https://drive.google.com/file/d/15uQOAqiXzATcq7N-OxYZoUYEcz6r4WRU/view"
+          },
+          {
+            "tituloEpisodio": "2x01. La niña K.O [3027200117445]",
+            "urlDrive": "https://drive.google.com/file/d/1MQJvfd3xmGGasKvE_B9dBxQavFqyG7Ay/view"
+          },
+          {
+            "tituloEpisodio": "2x02. La casa en árbol [3027200314053]",
+            "urlDrive": "https://drive.google.com/file/d/1jRDJBFuBrkN4AO_pZb_TAN_IinzA3y5y/view"
+          },
+          {
+            "tituloEpisodio": "2x03. Los tramposos no ganan [3027200576197]",
+            "urlDrive": "https://drive.google.com/file/d/1WDK8BfhEBxz9u1mFoYg-CPG4RQSYlRCC/view"
+          },
+          {
+            "tituloEpisodio": "2x04. Amigas de los bebés [3027201100485]",
+            "urlDrive": "https://drive.google.com/file/d/1Q1jtQTcRrXRfK3525Uj4G57M6L6NGEyw/view"
+          },
+          {
+            "tituloEpisodio": "2x05. Bailar y vuestros problemas se irán [3027201231557]",
+            "urlDrive": "https://drive.google.com/file/d/1BMrymyE5CxbckBbeuPsd5r62plbzcoXI/view"
+          },
+          {
+            "tituloEpisodio": "2x06. La gran aventura de Punky (1° parte) [3027207391941]",
+            "urlDrive": "https://drive.google.com/file/d/1UN4u2k0C48g1L5xvhIDsOBXn7OaapXs4/view"
+          },
+          {
+            "tituloEpisodio": "2x07. La gran aventura de Punky (2° parte) [3027207785157]",
+            "urlDrive": "https://drive.google.com/file/d/1t5QWW9VE25pUs89QA96hlgk_jhPL8aA6/view"
+          },
+          {
+            "tituloEpisodio": "2x08. Solo di no [3027208112837]",
+            "urlDrive": "https://drive.google.com/file/d/10UKJMm_jZDYqBw46yPVnzEqEqBhsxetp/view"
+          },
+          {
+            "tituloEpisodio": "2x09. La búsqueda [3027208243909]",
+            "urlDrive": "https://drive.google.com/file/d/1g6ke1ehfdt-1DYLBtikkvAyv1TD4vfnJ/view"
+          },
+          {
+            "tituloEpisodio": "2x10. Amar a tu vecino [3027208702661]",
+            "urlDrive": "https://drive.google.com/file/d/1Tq1jOwcA3ggBYLllB8-47O8TTjup_PBq/view"
+          },
+          {
+            "tituloEpisodio": "2x11. El don [3027256412869]",
+            "urlDrive": "https://drive.google.com/file/d/1-m2MbsnKNcUqG_-_TPeNTiZEettBpjY7/view"
+          },
+          {
+            "tituloEpisodio": "2x12. La verdad oculta [3027256543941]",
+            "urlDrive": "https://drive.google.com/file/d/1qIfPl-QWTFi1OjwY2CwjGU4cObRH_In6/view"
+          },
+          {
+            "tituloEpisodio": "2x13. Robo de navidad [3027256806085]",
+            "urlDrive": "https://drive.google.com/file/d/1TJeYSa34RMvYT8cowsCFdL45v6NPTqdR/view"
+          },
+          {
+            "tituloEpisodio": "2x14. El cazador urbano [3027257133765]",
+            "urlDrive": "https://drive.google.com/file/d/1sk0jgD3LAvhRVl07FKePOd6pLI8xXkLL/view"
+          },
+          {
+            "tituloEpisodio": "2x15. La igualdad [3027257526981]",
+            "urlDrive": "https://drive.google.com/file/d/19SOEoJIpiDypODKzAVJFbDbKyZXZLNUd/view"
+          },
+          {
+            "tituloEpisodio": "2x16. Primeros auxilios [3027257920197]",
+            "urlDrive": "https://drive.google.com/file/d/1MKNgdA5qB2ht2EoK4QJb7p8Tfvfl-h5T/view"
+          },
+          {
+            "tituloEpisodio": "3x17. El cerdo de Punky [3027498437317]",
+            "urlDrive": "https://drive.google.com/file/d/1FxQjtM1a_aAKxFsTMXw0x-ZwFfI8SG1G/view"
+          },
+          {
+            "tituloEpisodio": "4x05. El anuncio de Brandon [3032832477893]",
+            "urlDrive": "https://drive.google.com/file/d/1BI-Yz2OvXwLFxCxzuGCpWQBspy_A_SQA/view"
+          },
+          {
+            "tituloEpisodio": "4x06. Ocurrió en el rincón de Punky [3032832805573]",
+            "urlDrive": "https://drive.google.com/file/d/1Dk_Xpzatqr1vcZ4IKm5dmDzJ5KobweWT/view"
+          },
+          {
+            "tituloEpisodio": "4x07. Héroe de navidad [3032833198789]",
+            "urlDrive": "https://drive.google.com/file/d/1tt6fUWq3VX1Ri6s6l6E6_9Kpk0n7iy36/view"
+          },
+          {
+            "tituloEpisodio": "4x08. Estafa cosmética, lección de belleza [3032833526469]",
+            "urlDrive": "https://drive.google.com/file/d/1qrRQ5e-aWNp_D-p71Ar7J2ygBNjffF9a/view"
+          },
+          {
+            "tituloEpisodio": "4x09. Nos vemos en los tribunales [3032833985221]",
+            "urlDrive": "https://drive.google.com/file/d/1eUJ7f6fzr4CIivLM9Y8a05wL2JfviG97/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 3477,
