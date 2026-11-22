@@ -1,5 +1,15 @@
 # Reproducción de películas y episodios
 
+## Propuesta: controles discretos y reconexión de Drive (22 de noviembre de 2026)
+
+Los controles de BoxPlayTV pasan a una barra debajo de la imagen, que se oculta con el temporizador existente. El botón lateral se reduce a un acceso de puntos suspensivos con etiqueta accesible. Se retira el rótulo de calidad superpuesto en los reproductores integrados; los ajustes de calidad y tamaño se conservan para video directo.
+
+En Drive, «Reconectar» vuelve a montar únicamente el iframe cuando la persona lo pulsa. No sale de BoxPlayTV ni cambia la película, episodio, suscripción o PIN. Ocultar el menú y actualizar el catálogo no recarga el video. Puede ser necesario pulsar Play y volver manualmente al minuto anterior: la página principal no puede leer la posición del reproductor de Drive.
+
+Esta propuesta conserva el reproductor integrado de Drive y sus controles propios. No es un reemplazo completo del reproductor ni confirma la solución del congelamiento; faltan la prueba del usuario y una vía de acceso directo al video para sustituir también el visor de Google. El usuario reporta que el mismo video funciona directamente en Drive y se recupera tras cerrar Chrome y abrirlo de nuevo; la causa de las transferencias incompletas sigue sin confirmarse.
+
+Validación: 17 pruebas Node aprobadas, compilación del JSX y comprobación de sintaxis de picture-quality.js. Prueba visual con iframe simulado a 1363 px, 360 px y 640 × 360 px: barra fuera de la imagen, controles móviles de al menos 44 px y reconexión manual. La simulación no ejecuta la reproducción remota ni verifica la recuperación de un video congelado en Google Drive.
+
 Se retira la integración de Google Cast a petición del propietario, tras pausas repetidas reportadas tanto en Android como en el televisor después de activarla. La causa concreta dentro del SDK o del dispositivo no está confirmada.
 
 El reproductor recupera el comportamiento anterior a esa integración: Drive y OK.ru usan sus reproductores integrados, y MP4/HLS utilizan el elemento de video. Se conservan la detección correcta del dominio de OK.ru y su campo alternativo `urlOkRu`. No se carga el SDK de Cast, no se inicializan sesiones remotas y no se muestra su botón. Se eliminan el módulo, los estilos y las pruebas específicas de esa función. No se incorpora el cambio experimental que abría Drive por separado en móviles.

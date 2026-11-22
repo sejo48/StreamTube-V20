@@ -17,3 +17,17 @@
 .box-player:has(.box-player-menu[hidden]) .box-picture-controls,#player.controls-hidden .box-picture-controls{display:none}
 #player .box-picture-controls{top:auto;bottom:110px;right:16px}
 @media(max-width:600px){.box-picture-controls{top:120px;right:12px}.box-picture-controls button,.box-picture-controls span{font-size:11px;padding:8px}.box-picture-controls span{max-width:240px}}
+
+/* Movie controls sit below the picture and collapse during playback. */
+.box-player-cinema .box-player-screen{position:relative;flex:1 1 0%;min-height:0;overflow:hidden}
+.box-player-cinema .box-player-toolbar{flex:none;display:flex;align-items:center;gap:8px;min-height:56px;padding:6px 10px;background:#030b14;border-top:1px solid #164e63}
+.box-player-cinema .box-player-toolbar[hidden],.box-player-cinema .box-player-message[hidden]{display:none}
+.box-player-cinema .box-player-toolbar button{flex:none;min-width:44px;min-height:44px;padding:8px 12px;border:1px solid #155e75;border-radius:10px;background:#082f49;color:#ecfeff;font:600 14px system-ui;cursor:pointer}
+.box-player-cinema .box-player-toolbar button:hover{background:#155e75}
+.box-player-cinema .box-player-toolbar button:focus-visible{outline:3px solid #22d3ee;outline-offset:2px}
+.box-player-cinema .box-player-title{flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center;font:500 14px system-ui;color:#cbd5e1}
+.box-player-cinema .box-menu-toggle{top:50%;right:4px;min-width:44px;min-height:44px;width:44px;padding:0;transform:translateY(-50%);border-radius:12px;font:700 26px system-ui;opacity:.25}
+.box-player-cinema .box-menu-toggle:hover,.box-player-cinema .box-menu-toggle:focus-visible{opacity:1;background:#083344}
+.box-player-cinema .box-player-message{flex:none;padding:8px 12px;background:#082f49;color:#e0f2fe;text-align:center;font:400 14px/1.4 system-ui}
+.box-player-cinema .box-picture-controls{position:static;flex:none;gap:8px;margin:0;padding:6px 10px;background:#030b14}
+@media(max-width:420px){.box-player-cinema .box-player-toolbar{gap:6px;padding-inline:6px}.box-player-cinema .box-player-toolbar button{padding-inline:10px}.box-player-cinema .box-player-title{font-size:14px}}

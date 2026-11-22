@@ -33,9 +33,9 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="./picture-quality.js?v=20261121-2"></script>
+    <script src="./picture-quality.js?v=20261122-controls"></script>
     <script src="./player-ui.js?v=20261106-1"></script>
-    <link rel="stylesheet" href="./player-ui.css?v=20261117-1">
+    <link rel="stylesheet" href="./player-ui.css?v=20261122-controls">
     <script src="./tv-live.js?v=20261117-1"></script>
     <link rel="stylesheet" href="./tv-live.css?v=20261107-1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -934,6 +934,7 @@
             const videoRef = React.useRef(null);
             const hlsRef = React.useRef(null);
             const [message, setMessage] = React.useState('');
+            const [driveAttempt, setDriveAttempt] = React.useState(0);
             const ui = window.BoxPlayerUI.usePlayerUI(containerRef, item?.id || item?.url || episode?.url);
             const targetUrl = (item?.type === 'series' || item?.type === 'seriesNew' || item?.type === 'animados' || item?.type === 'doramas') && episode
                 ? (episode.url || episode.urlDrive || episode.urlOkRu || episode.rawUrl || '')
@@ -948,10 +949,10 @@
             const title = item?.title || item?.titulo || item?.name || 'Reproduciendo';
 
             React.useEffect(() => {
+                setMessage('');
                 const v = videoRef.current;
                 if (!v || !isDirect) return;
                 let hls;
-                setMessage('');
                 if (isHls && window.Hls && window.Hls.isSupported()) {
                     hls = new window.Hls({ enableWorker: true, lowLatencyMode: false });
                     hlsRef.current = hls;
@@ -977,19 +978,25 @@
                 };
             }, [url, isDirect, isHls]);
 
-            return <div className={"box-player absolute inset-0 bg-black text-white flex flex-col" + (ui.full ? " box-player-full" : "")} ref={containerRef} {...ui.events}>
-                <button type="button" className="box-menu-toggle" aria-expanded={ui.visible} onClick={ui.toggleMenu}>{ui.visible ? "Ocultar menú" : "Mostrar menú"}</button>
-                <div hidden={!ui.visible} className="box-player-menu absolute top-0 left-0 right-0 z-20 px-3 sm:px-5 py-3 flex items-center justify-between bg-gradient-to-b from-black/90 to-transparent">
-                    <button onClick={() => { ui.exit(); onBack(); }} className="px-3 py-2 rounded-full bg-black/60 border border-white/20 hover:bg-cyan-700 text-xs font-bold"><i className="fa-solid fa-arrow-left mr-2"></i>Volver</button>
-                    <div className="text-xs sm:text-sm font-bold text-center px-2 truncate max-w-[40%]">{title}</div>
-                    <button type="button" aria-label={ui.full ? "Salir de pantalla completa" : "Pantalla completa"} onClick={ui.toggleFullscreen} className="w-9 h-9 rounded-full bg-black/60 border border-white/20 hover:bg-cyan-700"><i className="fa-solid fa-expand"></i></button>
-                </div>
+            return <div className={"box-player box-player-cinema absolute inset-0 bg-black text-white flex flex-col" + (ui.full ? " box-player-full" : "")} ref={containerRef} {...ui.events}>
+                <button type="button" className="box-menu-toggle" title={ui.visible ? "Ocultar controles" : "Mostrar controles"} aria-label={ui.visible ? "Ocultar controles" : "Mostrar controles"} aria-expanded={ui.visible} onClick={ui.toggleMenu}>⋯</button>
+                <div className="box-player-screen relative flex-1 min-h-0">
                 {isOk ? <iframe key={url} src={okEmbed} title={title} className="absolute inset-0 w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen referrerPolicy="no-referrer-when-downgrade" />
-                : isDrive ? <iframe key={url} src={driveEmbed} title={title} className="absolute inset-0 w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen />
+                : isDrive ? <iframe key={url + ':' + driveAttempt} src={driveEmbed} title={title} className="absolute inset-0 w-full h-full border-0" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowFullScreen />
                 : isDirect ? <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <video ref={videoRef} controls autoPlay playsInline preload="metadata" className="w-full h-full object-contain" />
                 </div> : <div className="flex flex-col items-center justify-center text-center p-8 gap-4"><h3 className="font-bold">No se pudo reproducir este video</h3><p className="text-sm text-slate-300">Vuelve al menú e intenta reproducir otro contenido.</p></div>}
-                {message && <div className="absolute z-30 bottom-14 left-3 right-3 bg-slate-900 border border-cyan-400/40 rounded-xl p-3 text-xs text-center">{message}</div>}
+                </div>
+                <div hidden={!ui.visible} className="box-player-menu box-player-toolbar">
+                    <button type="button" onClick={() => { ui.exit(); onBack(); }}>Volver</button>
+                    <div className="box-player-title">{title}</div>
+                    {isDrive && <button type="button" aria-label="Reconectar video" title="Vuelve a cargar el reproductor. Puede ser necesario avanzar hasta donde estabas." onClick={() => {
+                        setDriveAttempt(attempt => attempt + 1);
+                        setMessage('Cargando de nuevo. Pulsa Play y vuelve al minuto donde estabas si hace falta.');
+                    }}>Reconectar</button>}
+                    <button type="button" aria-label={ui.full ? "Salir de pantalla completa" : "Pantalla completa"} title={ui.full ? "Salir de pantalla completa" : "Pantalla completa"} onClick={ui.toggleFullscreen}><i className="fa-solid fa-expand" aria-hidden="true"></i></button>
+                </div>
+                {message && <div role="status" hidden={isDrive && !ui.visible} className="box-player-message">{message}</div>}
             </div>;
         }
 
