@@ -1,5 +1,426 @@
 [
   {
+    "tmdbId": 10496,
+    "tmdbType": "tv",
+    "tituloOriginal": "It Takes a Thief",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/KulnfimeXzQuyi7tHTbBd6VV82.jpg",
+    "year": "1968",
+    "fechaEstreno": "1968-01-09",
+    "rating": "7.2",
+    "votos": 27,
+    "runtime": "50min",
+    "runtimeMin": 50,
+    "genres": [
+      "Action & Adventure",
+      "Drama"
+    ],
+    "generosTexto": "Action & Adventure, Drama",
+    "clasificacion": "NR",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Robert Wagner",
+        "personaje": "Alexander Mundy",
+        "foto": "https://image.tmdb.org/t/p/w185/dgIN3MrOfX8Q4pzchO58dhMgrFb.jpg"
+      },
+      {
+        "nombre": "Malachi Throne",
+        "personaje": "Noah Bain",
+        "foto": "https://image.tmdb.org/t/p/w185/189a3Rllzlz5ZRfi6kMuO93cGHT.jpg"
+      },
+      {
+        "nombre": "Edward Binns",
+        "personaje": "Wallie Powers",
+        "foto": "https://image.tmdb.org/t/p/w185/s3fk0d0fwuj6bDVP9AcPUXFsGmK.jpg"
+      },
+      {
+        "nombre": "Fred Astaire",
+        "personaje": "Alister Mundy",
+        "foto": "https://image.tmdb.org/t/p/w185/6gw9PCrKi19I5QOwjEPaOYW9uLI.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "undercover, thief, government agent",
+    "similares": [
+      {
+        "titulo": "El santo",
+        "poster": "https://image.tmdb.org/t/p/w342/ep281gu4yv8an9xYsn2x8amZC72.jpg",
+        "year": "1962",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Covert Affairs",
+        "poster": "https://image.tmdb.org/t/p/w342/pRWUGSGdByQHW93DH2braqkRjZa.jpg",
+        "year": "2010",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "The Sweeney",
+        "poster": "https://image.tmdb.org/t/p/w342/8dIJo5P3d1soSxKJvjkxDX1816H.jpg",
+        "year": "1975",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Renegado",
+        "poster": "https://image.tmdb.org/t/p/w342/9ESXaOpVv2EsORITmUz9z26hqC8.jpg",
+        "year": "1992",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "El robo",
+        "poster": "https://image.tmdb.org/t/p/w342/txcrTTjG5hCo7oYl4J8hsIyBFxu.jpg",
+        "year": "2026",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "La mujer policia",
+        "poster": "https://image.tmdb.org/t/p/w342/eKqO6PMfSW4YUJYhZrB82TSjwor.jpg",
+        "year": "1974",
+        "rating": "6.5"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Roland Kibbee"
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 66,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 1,
+        "id": 127622,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/aQzzPAY5C8zGCISt6DVMtzt67kv.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1968-01-09",
+        "episode_count": 16,
+        "id": 69639,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/tslNicncjLf8B7TKhd6V4FJeUDc.jpg",
+        "season_number": 1,
+        "vote_average": 6.5
+      },
+      {
+        "air_date": "1968-09-24",
+        "episode_count": 26,
+        "id": 69640,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/cZVQjRtAkzEqOFQfq8CdVpynZFJ.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1969-09-25",
+        "episode_count": 24,
+        "id": 69641,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/7vBph26PzCH5uPDrT2LQDxbamh4.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Ladrón sin destino",
+    "descripcion": "Alexander Mundy es un sofisticado ladrón de guante blanco. Tras ser arrestado durante un robo, las autoridades le hacen una propuesta: le conceden la libertad condicional a cambio de que se comprometa a trabajar para los servicios de inteligencia de los Estados Unidos.",
+    "imagen": "https://image.tmdb.org/t/p/w780/17OV310dMUvJXN0YAgwtDUwYM5b.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Ladrón sin destino   2X20 The Funeral Is On Mundy [3535370586821]",
+            "urlDrive": "https://drive.google.com/file/d/1vBzf-33CbiuhKsz6zv2jV1Ncykw1hS0g/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   2X25 The Great Chess [3535381531333]",
+            "urlDrive": "https://drive.google.com/file/d/1IBqk-UFWk8S6JFM2pwgWaa5lkepd4N34/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x03 The Beautiful People [3541377878725]",
+            "urlDrive": "https://drive.google.com/file/d/1Ds4JoWIxIqSEj5NwhcQXr0ivPcVjoczi/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x04 The great casino caper [3541378206405]",
+            "urlDrive": "https://drive.google.com/file/d/1c8RnFdB_tJztLxjE1kx2ktV4YvtNtKpU/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x05 Flores de Alexander [3541379320517]",
+            "urlDrive": "https://drive.google.com/file/d/1lNrrftDC4_TqBoHh7rXJOfm9epuhPOiP/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x06 The Blue, Blue Danube [3541380238021]",
+            "urlDrive": "https://drive.google.com/file/d/1wElD1dCL03haUqB0p7V2j7peXEb4XGPJ/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x07 Las tres vírgenes de Roma [3541380762309]",
+            "urlDrive": "https://drive.google.com/file/d/1swFphTxFcAi_J5rnUF5cqF2Sx3t_04yT/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x08 Payoff In The Piazza [3541535623877]",
+            "urlDrive": "https://drive.google.com/file/d/124LEEEdNFkYW8axKZJnsw7TknP3HotBT/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x09 The King Of Thieves [3541535820485]",
+            "urlDrive": "https://drive.google.com/file/d/1WdJZ2F7cMGZY3YeKOJRLDBI6PgJOIoli/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x10 A Friend In Deed [3541535886021]",
+            "urlDrive": "https://drive.google.com/file/d/18yBm1y0eo_N60qQToqWcJQwCK9uRJe-Q/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x11 The Second Time Around [3541536213701]",
+            "urlDrive": "https://drive.google.com/file/d/1hDaTU0xyp-CdtH4d_FUWhRA6qvOZUCvn/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x12 El antiguo que viene de espia [3541536672453]",
+            "urlDrive": "https://drive.google.com/file/d/1DNboLjWSImLa5rZglc182jERcuio56SJ/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x13 Para atraer a un hombre [3541536737989]",
+            "urlDrive": "https://drive.google.com/file/d/1-x3js5dXG5TKbAiDn_Zn9I0jLHmXZDFH/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x14 The Scorpio Drop [3541537917637]",
+            "urlDrive": "https://drive.google.com/file/d/1W-06iG5-P8oYeFLlksueM-MUhZFF0gBH/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x15 Nice Girls Marry Stockbrokers [3541537983173]",
+            "urlDrive": "https://drive.google.com/file/d/1yeJWxtkBPBWjKO8JhPc31-XNQWOW0AK2/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x18 Fortune City [3547840252613]",
+            "urlDrive": "https://drive.google.com/file/d/1KyjoBMU9Oxs_FucylYPMN1PF4Gng4nOr/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x20 To Sing A Song Of Murder [3547851721413]",
+            "urlDrive": "https://drive.google.com/file/d/1YYZS-82pQ6jCZcLvabIH8ScbD3PqyCDu/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x21 The Suzie Simone Caper [3547851786949]",
+            "urlDrive": "https://drive.google.com/file/d/1TPk0SqJwWmtJqYJwTJw8qYHQYlp1ljVx/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino   3x24 Project X [3547852245701]",
+            "urlDrive": "https://drive.google.com/file/d/1EYlJDrAUnaEYf4YxF4n5QdTsPDexqOI4/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  1x13. La miniatura de radomir [2548511738565]",
+            "urlDrive": "https://drive.google.com/file/d/1dot2G_z4AhfPTvzo9WwJwR3QlliA3AgC/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  2X07 [3531030727365]",
+            "urlDrive": "https://drive.google.com/file/d/1pPcwtAdTCYZbrQpiugCKDnG6deEVRidX/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  2X10 [3531032562373]",
+            "urlDrive": "https://drive.google.com/file/d/1HXhlx6nwd2AVBK9kZEGWMYklvsYYxB6V/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  2X14 [3531092921029]",
+            "urlDrive": "https://drive.google.com/file/d/1XYqM_dvMx3ncNlib8UtB86ZYQ317GYAJ/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  2X18 Catspaw [3535370455749]",
+            "urlDrive": "https://drive.google.com/file/d/1Nk2ZOOvyapjfN7WDFycWj594zfWJXpI6/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  2X19 Boom At The Top [3535370521285]",
+            "urlDrive": "https://drive.google.com/file/d/1vGAkoJ9CIQMdQlDABvSETgtgK9ZbLZde/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  2X21 The Baranoff Timetable [3535370717893]",
+            "urlDrive": "https://drive.google.com/file/d/1LqbL3m930nzqXut9NQydYh82IX6oFlhJ/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  2X22 Rock-A-Bye, Bye, Baby [3535375370949]",
+            "urlDrive": "https://drive.google.com/file/d/11QBRl8PvyPvA8wPSbFlgCfxbD_s0RGk-/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  2X23 The Family [3535383759557]",
+            "urlDrive": "https://drive.google.com/file/d/18lYe1l0k5MswU_oY6vZiECKw5foDggAW/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  2X24 38-23-36 [3535379565253]",
+            "urlDrive": "https://drive.google.com/file/d/1ykDYh94Drxh4Ptm8iDzPdvpWjAkLUgy7/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  2X26 Made In Japan [3535375502021]",
+            "urlDrive": "https://drive.google.com/file/d/1vO1aGJPE1wsAN9-M3RGxFT8IfaQ7JhCM/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  3x01 Saturday Night In Venice [3535375698629]",
+            "urlDrive": "https://drive.google.com/file/d/1ALZQWBk1eQhEs5yZ8IZqlNSsOkBwvD91/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  3x02 Wholl Bid Two Million Dollars [3535413906117]",
+            "urlDrive": "https://drive.google.com/file/d/1uCr21CeaOB-a6L_fIblikxgLYIG9ePD6/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  3x19 Situation Red [3547840318149]",
+            "urlDrive": "https://drive.google.com/file/d/1-a2QnzorLlK_iBfqMMXdpZH2GscVEp6z/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino  3x22 An Evening With Alister Mundy [3547851852485]",
+            "urlDrive": "https://drive.google.com/file/d/1WBGFzgx9cUpwSoRYxLsUr_MFo6IPZARF/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino - 1x10. Alejandro el grande [2544096971461]",
+            "urlDrive": "https://drive.google.com/file/d/1KuuXcTYDzB1Sw975IY299RhlhUoPYtLV/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x1 Un ladrón es un ladrón [2541759630021]",
+            "urlDrive": "https://drive.google.com/file/d/1y_ZfyWvkDcQObRXaSnBlRyi_SUCZZfkk/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x2  Ladron que roba a ladron [2540443994821]",
+            "urlDrive": "https://drive.google.com/file/d/1Nm-0LsvwM0m64S7nos4mpP_qZIuNIFUL/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x3 La bella durmiente [2540474075845]",
+            "urlDrive": "https://drive.google.com/file/d/1aDClrd5Bonze9M8R76Gi8Tm5zsl6H4OG/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x4  Una recepcion muy calida [2540444650181]",
+            "urlDrive": "https://drive.google.com/file/d/1kFG5zzUfx-kF-TUlAmeg9P7Bi5EaBCXj/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x5  Un angel ilegal [2540446288581]",
+            "urlDrive": "https://drive.google.com/file/d/1RWT-RkCYzW_ZKrOadlfVcbGcrOgyDjVM/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x06  Hecho a la medida [2544058174149]",
+            "urlDrive": "https://drive.google.com/file/d/1FoR98rAgrb8-2TMHDpN9WZCs8MKEHjXL/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x07 Dios los cria [2544080849605]",
+            "urlDrive": "https://drive.google.com/file/d/1arHA6I6lL7urWzuUa9Q36LSkv8_cbioS/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x08 Un problema minusculo [2544088058565]",
+            "urlDrive": "https://drive.google.com/file/d/1XSZwgY-jcGFSPCwt3eRZ3YCCMgo24Aso/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x09  Alejandro el grande [2544096840389]",
+            "urlDrive": "https://drive.google.com/file/d/1T7NqUWK_m4k_pCEOBvzNcLD9Ued7Q-G4/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x11. Robar una nave de guerra [2548511476421]",
+            "urlDrive": "https://drive.google.com/file/d/13aMLriAGEsTQu785rt6t2QaIHcSyqVST/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x12   El suplente [2548836076229]",
+            "urlDrive": "https://drive.google.com/file/d/1RzcCaR-OLwXCahnpBtC43V1MmQaPYpK6/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x14  El desertor [2548512000709]",
+            "urlDrive": "https://drive.google.com/file/d/1-DW1HLHJz0PZ7VSSTvEn82CAvRi8iNB-/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x15  Un caso de urto real [2548512131781]",
+            "urlDrive": "https://drive.google.com/file/d/1IyeE06uL2cxLjPlVyeO-FFjepa6TYOOm/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 1x16 Secreto de alcoba [2548512197317]",
+            "urlDrive": "https://drive.google.com/file/d/1lTle9OAehzJfABHspDBPp0u7WcW0r5kV/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2x1 Una noche en soledade [2550577629893]",
+            "urlDrive": "https://drive.google.com/file/d/1_9uQLK_Lwd38CzbHl4PmyOvrxFAAN518/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2x2 Una nota amarga [2550578023109]",
+            "urlDrive": "https://drive.google.com/file/d/1cD6jhFOqNphaOHxOK4Kb90Gg2jJgDBet/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2x3  El proyecto de ley está en comisión [2550577957573]",
+            "urlDrive": "https://drive.google.com/file/d/1UcuNSGXj-bfzf_a3csXHLVbaMiLA0B3F/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2x03 [3531023125189]",
+            "urlDrive": "https://drive.google.com/file/d/1z845gLMEANwv1A-jC2XOojEMr9t7Z_Fy/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2x4  El atraco de Thingamabob [2550577826501]",
+            "urlDrive": "https://drive.google.com/file/d/1OVCyxsYySxJcvoxYJMW3KEiy1_D4rwnW/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2x04 [3531023387333]",
+            "urlDrive": "https://drive.google.com/file/d/1kUQbG-Z2mj9iloT9U7Aqc98XIbKS9xZN/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2X05 [3531023452869]",
+            "urlDrive": "https://drive.google.com/file/d/1sMV3ItAy2LZ7X5V5bLKUM_61DpuIVf12/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2x06 El paquete [3531024632517]",
+            "urlDrive": "https://drive.google.com/file/d/13ZfOKkA9KuRQ9QTLxCJAOQ5Vr7-hEbtU/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2X08 [3531030923973]",
+            "urlDrive": "https://drive.google.com/file/d/17Pdr-Je8TTqaegRnukwggb5fxiigIpjw/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2X09 Un caso de nabos rojos [3531031775941]",
+            "urlDrive": "https://drive.google.com/file/d/13DXaF2SCOWEGJR9u4nsAo0xbEK5WPY7R/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2X11 [3531068672709]",
+            "urlDrive": "https://drive.google.com/file/d/1xRP-L7xfUDJ-ikxOiIGgj8dEzbbnbw1i/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2X12 [3531068803781]",
+            "urlDrive": "https://drive.google.com/file/d/1xDtL7MyEm8pkA70ISr6VOgG1hasnJWr6/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2X13 [3531069000389]",
+            "urlDrive": "https://drive.google.com/file/d/1UXVUrtncvBda9k9kCYvhqzQePAycOpjI/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2X15 The Naked Billionaire [3531093248709]",
+            "urlDrive": "https://drive.google.com/file/d/1UWECTPj6F3e8-bd9YbCr-8VMH2DZB4xe/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2X16 A Matter Of Grey Matter - Part 1 [3531093379781]",
+            "urlDrive": "https://drive.google.com/file/d/1jUNZcTp5c6KpefMNgHnF0bHzWbf2GgRL/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 2X17 A Matter Of Grey Matter - Part 2 [3531093510853]",
+            "urlDrive": "https://drive.google.com/file/d/1EF6qW8cGRIiHkvrrGPumsVaXxG5xpHmz/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 3x16 The Steal-Driving Man [3547821181637]",
+            "urlDrive": "https://drive.google.com/file/d/1UP9Kb0q9xdtiWsBneyNR5yXpsITGDpvf/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 3x17 Touch Of Magic [3547826490053]",
+            "urlDrive": "https://drive.google.com/file/d/1YkBmI4vcQRcxZ5r9zsP3937gtzPA4qzc/view"
+          },
+          {
+            "tituloEpisodio": "Ladrón sin destino 3x23 Beyond A Treasonable Doubt [3547852180165]",
+            "urlDrive": "https://drive.google.com/file/d/13f6suc7La2ULe7gfZIz-N57GOcTvizN2/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 509,
     "tmdbType": "tv",
     "tituloOriginal": "CHiPs",
