@@ -1,5 +1,244 @@
 [
   {
+    "tmdbId": 3477,
+    "tmdbType": "tv",
+    "tituloOriginal": "Joe 90",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/u5o17eZyIkxde5aqLI3JHI4rX85.jpg",
+    "year": "1968",
+    "fechaEstreno": "1968-09-29",
+    "rating": "7.0",
+    "votos": 14,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "Action & Adventure"
+    ],
+    "generosTexto": "Action & Adventure",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Len Jones",
+        "personaje": "Joe 90 (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/jdfpKe7PLLQCRedm4TzGobJSqT1.jpg"
+      },
+      {
+        "nombre": "Rupert Davies",
+        "personaje": "Professor Ian \"Mac\" McClaine (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/t6eAo7kE4D3O0NufFl1vCPcYltY.jpg"
+      },
+      {
+        "nombre": "Keith Alexander",
+        "personaje": "Sam Loover (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/58kABBtHAQVXQIOp78hXpokWNnm.jpg"
+      },
+      {
+        "nombre": "David Healy",
+        "personaje": "Shane Weston (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/raDEMRIL0jSMtNdzpxAGy5woFaU.jpg"
+      }
+    ],
+    "pais": "United Kingdom",
+    "idioma": "en",
+    "productoras": "Century 21 Productions, ITC Entertainment",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "supermarionation",
+    "similares": [
+      {
+        "titulo": "Danger Man",
+        "poster": "https://image.tmdb.org/t/p/w342/5wCJ8Rt9PA1j6jzzmUQg0EjsxwV.jpg",
+        "year": "1960",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Patrulla juvenil",
+        "poster": "https://image.tmdb.org/t/p/w342/c5HaIPOSZitasqNlLRp8ZzuUsSn.jpg",
+        "year": "1968",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "The Sweeney",
+        "poster": "https://image.tmdb.org/t/p/w342/8dIJo5P3d1soSxKJvjkxDX1816H.jpg",
+        "year": "1975",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Covert Affairs",
+        "poster": "https://image.tmdb.org/t/p/w342/pRWUGSGdByQHW93DH2braqkRjZa.jpg",
+        "year": "2010",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Kung Fu: la leyenda continúa",
+        "poster": "https://image.tmdb.org/t/p/w342/ncY99oMyS8kZvFcloSV4WNxqYjE.jpg",
+        "year": "1993",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Ladrón sin destino",
+        "poster": "https://image.tmdb.org/t/p/w342/17OV310dMUvJXN0YAgwtDUwYM5b.jpg",
+        "year": "1968",
+        "rating": "7.2"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Sylvia Anderson",
+      "Gerry Anderson"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 30,
+    "temporadasTmdb": [
+      {
+        "air_date": "1968-09-29",
+        "episode_count": 30,
+        "id": 10623,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/tiZyigLUQww0J4baLqH7hma6Xem.jpg",
+        "season_number": 1,
+        "vote_average": 6.8
+      }
+    ],
+    "tituloSerie": "Joe 90",
+    "descripcion": "Joe 90 es una serie de televisión británica de ciencia ficción de la década de 1960 que sigue las aventuras de un niño de nueve años, Joe McClaine, que comienza una doble vida como un escolar convertido en espía cuando su padre científico inventa un dispositivo capaz de duplicar y transferir conocimiento experto y experiencia de un cerebro humano a otro. Equipado con las habilidades de las mentes académicas y militares más importantes, Joe es reclutado por la Red de Inteligencia Mundial y, convirtiéndose en su \"Agente más especial\", persigue el ideal de la paz mundial y la salvación de la vida humana.",
+    "imagen": "https://image.tmdb.org/t/p/original/h53fl47SQpU0mWEimNbNWXLg086.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "01 - The Most Special Agent [3001242356421]",
+            "urlDrive": "https://drive.google.com/file/d/1roInv5W8X2bboqoXKq6OWDQN6RKChp7G/view"
+          },
+          {
+            "tituloEpisodio": "02 - Hi-jacked [3001242159813]",
+            "urlDrive": "https://drive.google.com/file/d/1rAtOzfJXdo7pSqBfubyxPE9_U1V06dse/view"
+          },
+          {
+            "tituloEpisodio": "03 - Splashdown [3001241897669]",
+            "urlDrive": "https://drive.google.com/file/d/1JgE_JeEwUi8_Qnm6_L3patjzdJ8Wg87u/view"
+          },
+          {
+            "tituloEpisodio": "04 - International Concerto [3001241438917]",
+            "urlDrive": "https://drive.google.com/file/d/1kdqEHaQ99kxBklQq1vd6v9tbSOBpAAix/view"
+          },
+          {
+            "tituloEpisodio": "05 - Operation McClaine [3001240980165]",
+            "urlDrive": "https://drive.google.com/file/d/1bBA4yE4AT5dCBoOm33nQczdIBzka1Sx2/view"
+          },
+          {
+            "tituloEpisodio": "06 - Big Fish [3001240914629]",
+            "urlDrive": "https://drive.google.com/file/d/1ugwoDDDqDOk8l1dDxvhWXdIQXjMGuDjL/view"
+          },
+          {
+            "tituloEpisodio": "07 - Relative Danger [3001240521413]",
+            "urlDrive": "https://drive.google.com/file/d/1vsLfooKBHsSHjEC6lGOOGTFdkTiYo-jT/view"
+          },
+          {
+            "tituloEpisodio": "08 - The Unorthodox Shepherd [3001240259269]",
+            "urlDrive": "https://drive.google.com/file/d/1b3xI6amLnITc8vurkpBA9obqfC34707l/view"
+          },
+          {
+            "tituloEpisodio": "09 - King for a Day [3001240193733]",
+            "urlDrive": "https://drive.google.com/file/d/1s9o_G5i5VVXd4Bc4cDRLaTSmhmWpE3Cs/view"
+          },
+          {
+            "tituloEpisodio": "10 - Business Holiday [3001240062661]",
+            "urlDrive": "https://drive.google.com/file/d/1hX4-fvEfZyr7rrW3GqwNXFmdbB5tSi7G/view"
+          },
+          {
+            "tituloEpisodio": "11 - Most Special Astronaut [3001239734981]",
+            "urlDrive": "https://drive.google.com/file/d/1ihyH80Q6e3czBVlmp3tdqWThl-Kmtk1Q/view"
+          },
+          {
+            "tituloEpisodio": "12 - Three's a Crowd [3001239472837]",
+            "urlDrive": "https://drive.google.com/file/d/1Yx6bAro5MyqNvPQVF6drEOHzxYKqTImP/view"
+          },
+          {
+            "tituloEpisodio": "13 - Double Agent [3001239341765]",
+            "urlDrive": "https://drive.google.com/file/d/1T248DHVJPAqL9SpvcM3CUUxHYZhprNCi/view"
+          },
+          {
+            "tituloEpisodio": "14 - Arctic Adventure [3001239014085]",
+            "urlDrive": "https://drive.google.com/file/d/1u53i66YzyaqWotuvaBK4JwpVlAzqVWB7/view"
+          },
+          {
+            "tituloEpisodio": "15 - The Fortress [3001238555333]",
+            "urlDrive": "https://drive.google.com/file/d/138bloWkAf05iZBEJbkmTSQblKHO6cuvk/view"
+          },
+          {
+            "tituloEpisodio": "16 - Project 90 [3001238096581]",
+            "urlDrive": "https://drive.google.com/file/d/1cY_BQ7zwsS_wmKmVsc4KvA8nAt14U4-M/view"
+          },
+          {
+            "tituloEpisodio": "17 - Colonel McClaine [3001237899973]",
+            "urlDrive": "https://drive.google.com/file/d/1y2IKn3Ru8OUKT2bJoK0kD0_jofGbpuuT/view"
+          },
+          {
+            "tituloEpisodio": "18 - Lone-Handed 90 [3001237703365]",
+            "urlDrive": "https://drive.google.com/file/d/1oxpP7jh-mBu7IawrjN0j7XSBFX8Hxsui/view"
+          },
+          {
+            "tituloEpisodio": "19 - The Race [3001237506757]",
+            "urlDrive": "https://drive.google.com/file/d/1iOLL0IyJMHJ8_nSVF1xVMTpuoFPbt1Yk/view"
+          },
+          {
+            "tituloEpisodio": "20 - The Professional [3001236982469]",
+            "urlDrive": "https://drive.google.com/file/d/1MzYUHQYtSKqYKetg7fGcf257hyi1a5e-/view"
+          },
+          {
+            "tituloEpisodio": "21 - Talkdown [3001236916933]",
+            "urlDrive": "https://drive.google.com/file/d/1nxYfuXkN5fARHoqz8I72f677lFM-tT--/view"
+          },
+          {
+            "tituloEpisodio": "22 - Breakout [3001236720325]",
+            "urlDrive": "https://drive.google.com/file/d/1h91dW1-_hVxlsWjU617D2tDKnuIOILRl/view"
+          },
+          {
+            "tituloEpisodio": "23 - Child of the Sun God [3001236196037]",
+            "urlDrive": "https://drive.google.com/file/d/1ORgWMy6ELYuSfb3qokvd6pKkj-2gRxZY/view"
+          },
+          {
+            "tituloEpisodio": "24 - Trial At Sea [3001235475141]",
+            "urlDrive": "https://drive.google.com/file/d/1uSBLga2VwvMsgHZ1-S9bOx4j4rMBd00D/view"
+          },
+          {
+            "tituloEpisodio": "25 - Viva Cordova [3001235212997]",
+            "urlDrive": "https://drive.google.com/file/d/14C8TOGqsn8KRHUJ8-0Od40-J7SbpU_By/view"
+          },
+          {
+            "tituloEpisodio": "26 - Attack of the Tiger [3001235016389]",
+            "urlDrive": "https://drive.google.com/file/d/1F-ONvA9Ch6X7OGCS-MINTSnYDBqIftPj/view"
+          },
+          {
+            "tituloEpisodio": "27 - Mission X-41 [3001234885317]",
+            "urlDrive": "https://drive.google.com/file/d/1MdIi3M3Bbkk1fNj1ZZul2MB11wcSWFdQ/view"
+          },
+          {
+            "tituloEpisodio": "28 - Test Flight [3001234754245]",
+            "urlDrive": "https://drive.google.com/file/d/1zusNAXFOVhx6nDfEmqIjSCLrdquvGa6l/view"
+          },
+          {
+            "tituloEpisodio": "29 - See You Down There [3001234098885]",
+            "urlDrive": "https://drive.google.com/file/d/1FPqKSTUS98aZLe7Dx5N3fdgaXrTTfghb/view"
+          },
+          {
+            "tituloEpisodio": "30 - The Birthday [3001234033349]",
+            "urlDrive": "https://drive.google.com/file/d/1P_nnPcrOAUxNUDWyGIauXbX5P7jq6C2z/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 2177,
     "tmdbType": "tv",
     "tituloOriginal": "Land of the Lost",
