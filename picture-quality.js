@@ -38,10 +38,18 @@
       const video = root.querySelector('video');
       const frame = root.querySelector('iframe');
       const target = video || frame;
+      const source = frame ? frame.getAttribute('src') || '' : '';
       let state = mounted.get(root);
-      if (state && state.target === target) { state.refresh(); return; }
-      if (state) state.bar.remove();
+      if (state && state.target === target && state.source === source) { state.refresh(); return; }
+      if (state) {
+        if (state.timer) clearTimeout(state.timer);
+        state.bar.remove();
+      }
       if (!target) { mounted.delete(root); return; }
+      if (!video && !/^https?:\/\/(?:drive\.google\.com|(?:[a-z0-9-]+\.)*(?:ok\.ru|odnoklassniki\.ru))\//i.test(source)) {
+        mounted.delete(root);
+        return;
+      }
 
       const bar = document.createElement('div');
       bar.className = 'box-picture-controls';
@@ -86,13 +94,19 @@
             ? 'Calidad: máxima fija (más datos)'
             : 'Calidad: automática (prioriza máxima)';
         }
-        state = { target, bar, refresh };
+        state = { target, source, bar, refresh };
         refresh();
       } else {
+        bar.className = 'box-quality-hint';
+        bar.setAttribute('role', 'status');
+        bar.setAttribute('aria-label', 'Consejo de calidad');
+        bar.setAttribute('aria-live', 'polite');
+        bar.setAttribute('aria-atomic', 'true');
         const note = document.createElement('span');
-        note.textContent = 'Calidad: controlada por Google Drive u OK.ru';
+        note.textContent = '⚙️ Para una mejor imagen, entrá en Configuración → Calidad y elegí la resolución más alta.';
         bar.append(note);
-        state = { target, bar, refresh: function () {} };
+        const timer = setTimeout(function () { bar.hidden = true; }, 6000);
+        state = { target, source, bar, timer, refresh: function () {} };
       }
       mounted.set(root, state);
       root.append(bar);
@@ -102,11 +116,13 @@
   function start() {
     scan();
     new MutationObserver(records => {
-      if (records.some(r => Array.from(r.addedNodes).concat(Array.from(r.removedNodes)).some(n =>
+      if (records.some(r => (r.type === 'attributes' && r.target.tagName === 'IFRAME') ||
+        Array.from(r.addedNodes).concat(Array.from(r.removedNodes)).some(n =>
         n.nodeType === 1 && (n.matches('video,iframe,.box-player,#player') ||
         n.querySelector('video,iframe,.box-player,#player'))))) scan();
-    }).observe(document.body, { childList: true, subtree: true });
+    }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
   else start();
 })();
+

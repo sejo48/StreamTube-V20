@@ -17,3 +17,11 @@
 .box-player:has(.box-player-menu[hidden]) .box-picture-controls,#player.controls-hidden .box-picture-controls{display:none}
 #player .box-picture-controls{top:auto;bottom:110px;right:16px}
 @media(max-width:600px){.box-picture-controls{top:120px;right:12px}.box-picture-controls button,.box-picture-controls span{font-size:11px;padding:8px}.box-picture-controls span{max-width:240px}}
+
+.box-quality-hint{position:absolute;left:16px;bottom:96px;z-index:35;box-sizing:border-box;width:calc(100% - 32px);max-width:25rem;padding:10px 12px;border:1px solid #ffffff24;border-radius:10px;background:#071019c9;color:#f1f5f9;font:400 .875rem/1.45 system-ui,sans-serif;box-shadow:0 4px 18px #0003;pointer-events:none;animation:box-quality-hint-in .18s ease-out}
+.box-quality-hint[hidden]{display:none!important}
+#player .box-quality-hint{left:24px;bottom:120px;max-width:32rem;font-size:1.125rem}
+@keyframes box-quality-hint-in{from{opacity:0}to{opacity:1}}
+@media(max-width:600px){.box-quality-hint{left:12px;bottom:84px;width:calc(100% - 24px);max-width:24rem}}
+@media(prefers-reduced-motion:reduce){.box-quality-hint{animation:none}}
+
