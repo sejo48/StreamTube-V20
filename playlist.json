@@ -1,5 +1,243 @@
 [
   {
+    "tmdbId": 2303,
+    "tmdbType": "tv",
+    "tituloOriginal": "Hawaii Five-O",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/9as2hYKrhbKWj4ePtFMftQfEsEX.jpg",
+    "year": "1969",
+    "fechaEstreno": "1969-06-04",
+    "rating": "7.2",
+    "votos": 169,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Action & Adventure",
+      "Drama"
+    ],
+    "generosTexto": "Action & Adventure, Drama",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Jack Lord",
+        "personaje": "Det. Steve McGarrett",
+        "foto": "https://image.tmdb.org/t/p/w185/laGKjiYuFGtmFFYPyZaJZJ0xBT5.jpg"
+      },
+      {
+        "nombre": "Herman Wedemeyer",
+        "personaje": "Duke",
+        "foto": "https://image.tmdb.org/t/p/w185/qSnbGEEkAlvskT3uFSmOJHCfTKT.jpg"
+      },
+      {
+        "nombre": "William Smith",
+        "personaje": "Det. James 'Kimo' Carew",
+        "foto": "https://image.tmdb.org/t/p/w185/iyIc5xoLPzcy73nQWIZH2nlTarg.jpg"
+      },
+      {
+        "nombre": "Richard Denning",
+        "personaje": "Governor",
+        "foto": "https://image.tmdb.org/t/p/w185/xBDoxyNeRyi4uOvnH2OsmkvJQYi.jpg"
+      },
+      {
+        "nombre": "Sharon Farrell",
+        "personaje": "Lori Wilson",
+        "foto": "https://image.tmdb.org/t/p/w185/42dQ4WRePvqrdNwLjoRfimngWdo.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Leonard Freeman Production, CBS Studios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "hawaii, police",
+    "similares": [
+      {
+        "titulo": "Patrulla juvenil",
+        "poster": "https://image.tmdb.org/t/p/w342/c5HaIPOSZitasqNlLRp8ZzuUsSn.jpg",
+        "year": "1968",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Magnum",
+        "poster": "https://image.tmdb.org/t/p/w342/hN7DKusbmKPqSZnMG5hemioMAiE.jpg",
+        "year": "2018",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Hunter",
+        "poster": "https://image.tmdb.org/t/p/w342/kmC8d3KQozh1SlIih0hdfXsGLe8.jpg",
+        "year": "1984",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Los hombres de Harrelson",
+        "poster": "https://image.tmdb.org/t/p/w342/dweZx97UEDy6UTivtf404qdPyei.jpg",
+        "year": "1975",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Danger Man",
+        "poster": "https://image.tmdb.org/t/p/w342/5wCJ8Rt9PA1j6jzzmUQg0EjsxwV.jpg",
+        "year": "1960",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Starsky y Hutch",
+        "poster": "https://image.tmdb.org/t/p/w342/aBj5oTi1uibVcXDoCJeKseJNY2d.jpg",
+        "year": "1975",
+        "rating": "7.4"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Leonard Freeman"
+    ],
+    "numeroTemporadas": 12,
+    "numeroEpisodios": 284,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 3,
+        "id": 7195,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/qUgwsrj5ZidXt3BNkzhJfVtiLJ3.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1969-06-04",
+        "episode_count": 25,
+        "id": 7188,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/cWWCqPvlY4DMFzAyGZzyuRYgJrw.jpg",
+        "season_number": 1,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "1969-09-24",
+        "episode_count": 25,
+        "id": 7190,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/x5PRZOlXgyOGlzRlz6dP9EeyoQa.jpg",
+        "season_number": 2,
+        "vote_average": 7.9
+      },
+      {
+        "air_date": "1970-09-16",
+        "episode_count": 24,
+        "id": 7185,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/uNGb3U6YE6Td2zUkKHYcXH2HrE0.jpg",
+        "season_number": 3,
+        "vote_average": 7.2
+      },
+      {
+        "air_date": "1971-09-14",
+        "episode_count": 24,
+        "id": 7191,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/hMs1KoEm3pPcRk0VoqYKZF2L4I4.jpg",
+        "season_number": 4,
+        "vote_average": 6.4
+      },
+      {
+        "air_date": "1972-09-12",
+        "episode_count": 24,
+        "id": 7183,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/mCldal66Zs8U7a9X0LixAGRFml.jpg",
+        "season_number": 5,
+        "vote_average": 6.3
+      },
+      {
+        "air_date": "1973-09-11",
+        "episode_count": 24,
+        "id": 7186,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/7S406GDU4CjeyQXMdYpngJpMtMq.jpg",
+        "season_number": 6,
+        "vote_average": 6.3
+      },
+      {
+        "air_date": "1974-09-09",
+        "episode_count": 24,
+        "id": 7184,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/2EfawENx5ykN5JapndfhJwgbpY6.jpg",
+        "season_number": 7,
+        "vote_average": 7.1
+      },
+      {
+        "air_date": "1975-09-11",
+        "episode_count": 24,
+        "id": 7187,
+        "name": "Temporada 8",
+        "overview": "",
+        "poster_path": "/3hnu4JuRVsHmi9RBtUthe3dcXf3.jpg",
+        "season_number": 8,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1976-09-29",
+        "episode_count": 24,
+        "id": 7189,
+        "name": "Temporada 9",
+        "overview": "",
+        "poster_path": "/fP9DQMMkhA386FEJQC18qiMVhaw.jpg",
+        "season_number": 9,
+        "vote_average": 8
+      },
+      {
+        "air_date": "1977-09-14",
+        "episode_count": 24,
+        "id": 7194,
+        "name": "Temporada 10",
+        "overview": "",
+        "poster_path": "/y8rzvK0JMiaJiBzFuM8Mgo0gDIr.jpg",
+        "season_number": 10,
+        "vote_average": 7
+      },
+      {
+        "air_date": "1978-09-27",
+        "episode_count": 22,
+        "id": 7193,
+        "name": "Temporada 11",
+        "overview": "",
+        "poster_path": "/8G1D40H5j7EAJuIl4JkMgkoLVuF.jpg",
+        "season_number": 11,
+        "vote_average": 5.8
+      },
+      {
+        "air_date": "1979-10-03",
+        "episode_count": 20,
+        "id": 7192,
+        "name": "Temporada 12",
+        "overview": "",
+        "poster_path": "/w5OCdEq5Vg5prvEdAsmNoQbg5P5.jpg",
+        "season_number": 12,
+        "vote_average": 7.5
+      }
+    ],
+    "tituloSerie": "Hawaii 5-0",
+    "descripcion": "Sigue las investigaciones del grupo Hawai 5-0, un grupo de élite que responde directamente a las órdenes del gobernador y del detective que les lidera, Steve McGarrett. En 2010 la CBS estrenó un remake basado en el mismo concepto y personajes",
+    "imagen": "https://image.tmdb.org/t/p/w780/8iFAlqhfY1D0ithTrfKTxObPlUH.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 10496,
     "tmdbType": "tv",
     "tituloOriginal": "It Takes a Thief",
@@ -2150,7 +2388,325 @@
     "imagen": "https://image.tmdb.org/t/p/w780/9aUJoxAtEcPicDmC6q2yWxwwtMh.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Señorita Cometa 1x 60 Locura Monstruosa [3128453827269]",
+            "urlDrive": "https://drive.google.com/file/d/1ykJL_tL1HP0vtxBYvsUSQmN2UAuxPBtW/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x1 La Niñera del espacio [3125479541445]",
+            "urlDrive": "https://drive.google.com/file/d/174zpu-meNfrk2DEhA0QKjs17-UyjrhEH/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x2 Mama usa tu imaginación [3125479606981]",
+            "urlDrive": "https://drive.google.com/file/d/1wQX-F-5XR8Yj3BbPat6zbdDmr8Pjb2UO/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x3 soy Un Pelotero [3125479672517]",
+            "urlDrive": "https://drive.google.com/file/d/1SgHGKpX6Uzlv6GmP6OiVRHqhrn6qxZFe/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x4 El ladron misterioso [3125479803589]",
+            "urlDrive": "https://drive.google.com/file/d/1kldKS4sUAeWqB18fY3OL6rWdq5BYERQ1/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x5 Come Numeros devora las letras [3125479869125]",
+            "urlDrive": "https://drive.google.com/file/d/10SPf0TQ85UalqW2v6_3BgTmlxkBsG1vt/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x6 Terricols Obstinados [3125479934661]",
+            "urlDrive": "https://drive.google.com/file/d/1QJvct7yRHLTD9j7hNQRndACKHfKt8581/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x7 Salud por el cachorro [3125480196805]",
+            "urlDrive": "https://drive.google.com/file/d/1YmG1l0ltx7HqblZbUO09Vhj-_pofgitk/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x8 No le temo a los Fantasmas [3125482228421]",
+            "urlDrive": "https://drive.google.com/file/d/1dXDYODRRlITiFmSX8tDrrJIAW2J0raSa/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x9 La Torpe Ayudante [3125482425029]",
+            "urlDrive": "https://drive.google.com/file/d/1mdmwL68i91CSbQCWrUvlyknVItg0QhSu/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x10 Sombrilla eb el Cielo [3125482687173]",
+            "urlDrive": "https://drive.google.com/file/d/1pUDj_LftmjBdpgCbWMkTanN0bJiHJ1Rn/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x11 Una Chica Muy Misteriosa [3125483211461]",
+            "urlDrive": "https://drive.google.com/file/d/1469zmVXzCvItak7uRroLsAU1T0Rpmc0Q/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x12 Si,a Todo !! [3125483408069]",
+            "urlDrive": "https://drive.google.com/file/d/1sC9piBKnq-LxKhVubGcBvdijesTesxuf/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x13 Salvados por la Campana [3125483801285]",
+            "urlDrive": "https://drive.google.com/file/d/1XFu5aKn2_S9qwGXxYaBYMmcgI6e0tYtP/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x14 Paseo en  Yate [3125483997893]",
+            "urlDrive": "https://drive.google.com/file/d/1GZmxwbBycK9ui_tQZjRlo0p8ww--yWw1/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x15 Encontre un Huevo de oro [3125484128965]",
+            "urlDrive": "https://drive.google.com/file/d/18COw9kpxILkry686N1BHfD9OBhw24dud/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x16 La Rebelión [3125486291653]",
+            "urlDrive": "https://drive.google.com/file/d/177q9KT1a2XgiJ3CIr9AOlwg4xkq6Vk7z/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x17 La llegada de una formidable Enemiga [3125486422725]",
+            "urlDrive": "https://drive.google.com/file/d/1lbt6mCnjG6RKoPnxxKiKRO5krZxVtGG1/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x18 Ya veras !! [3125486684869]",
+            "urlDrive": "https://drive.google.com/file/d/1-2REWFZTGHW4OXLs_1I8KVSYiktdC45_/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x19 mentir es malo [3125486881477]",
+            "urlDrive": "https://drive.google.com/file/d/1XhhbdYArb7o3l481ncSsnavhi-LwmPT-/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x20 La Revolución de los juguetes [3125487078085]",
+            "urlDrive": "https://drive.google.com/file/d/1gSxP18ueWPOL7StsXKbdGbdKDCf1mCdr/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x21 es dificil ser un superheroe [3125487733445]",
+            "urlDrive": "https://drive.google.com/file/d/11iGBIuqEhnMmlLdbC4YJuACVbdUf3AG_/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x22 Ya no soy un Niño pequeño [3125488061125]",
+            "urlDrive": "https://drive.google.com/file/d/1Yy9ywysCUpPVFLvvhtV5tbohkoro8Dxx/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x23 Los dentistas dan miedo [3125488192197]",
+            "urlDrive": "https://drive.google.com/file/d/1rr5_X0BT3ziE1R2BW2qmPziLjrsKNYAs/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x24 No Quiero ser un esclavo [3125488323269]",
+            "urlDrive": "https://drive.google.com/file/d/1_riRTFsBSKU4pVrHUXPDipXVDJOPpKb8/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x25 Solicito su valioso voto [3125488519877]",
+            "urlDrive": "https://drive.google.com/file/d/11QqB9sp-4yb0Q8e4NmbuNZR1Byxvwge6/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x26 Por Favor ven Santa claus [3125519715013]",
+            "urlDrive": "https://drive.google.com/file/d/1vhGuIAef2pvETa5jf2dcxzqvN_CqYvgV/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x27 Vuela un cometa en año nuevo [3125519911621]",
+            "urlDrive": "https://drive.google.com/file/d/1bASqeljpkEGlAUivnAAsb-VA9nHKqVmw/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x28 nuestro sedreto [3125520566981]",
+            "urlDrive": "https://drive.google.com/file/d/1vZjbeqvnSGRtxuC4YzrL93f8NecoUi2i/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x29 No te enojes [3125521746629]",
+            "urlDrive": "https://drive.google.com/file/d/194BiVSi-jJ0NxGHsl8IbCb9u7XHBygUx/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x30 No seas un hermano Mandon [3125521877701]",
+            "urlDrive": "https://drive.google.com/file/d/1cnWqL2txgn6FpN_7KMrgVolBR8Ghju1w/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x31 Resiste Pequeño 007 [3125999241925]",
+            "urlDrive": "https://drive.google.com/file/d/1gWrsaevwn3S3hreGngh3kfKcHH7NuUDr/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x32 Nosotros cuidamos la casa [3125999504069]",
+            "urlDrive": "https://drive.google.com/file/d/14EuVEAnFnCHIc1kl2xLbKy2XNfWhRO8_/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x33 La batalla de las Bromas [3125999766213]",
+            "urlDrive": "https://drive.google.com/file/d/1lfPqYmnWoz5orGbPICRTe2eFwqfKshbU/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x34 Nos quiero ser su mama [3125999831749]",
+            "urlDrive": "https://drive.google.com/file/d/1zP1i6nPWrIC4kDG1X5stfPuElNbr3NmH/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x35 La visita de la Abuela [3125999962821]",
+            "urlDrive": "https://drive.google.com/file/d/1c9L4cbrqOeX8smYEF-rnxbCRulzCdepH/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x36 Es un Mounstruo de las nieves [3126000290501]",
+            "urlDrive": "https://drive.google.com/file/d/1lsFSkhx-s4JQMiODKxJiikJJYW0Gm2X4/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x37 Guerra de Niños [3126000421573]",
+            "urlDrive": "https://drive.google.com/file/d/1tMLdlU_iLFlztmrCV82nmsdD1hfAu1Yb/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x38 Navidada en Primavera [3126000487109]",
+            "urlDrive": "https://drive.google.com/file/d/1O5LCj37we0dbTYMlEFS4GJInKOBVX0Fh/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x39 Los crayones Magicos [3126000618181]",
+            "urlDrive": "https://drive.google.com/file/d/1KbfKcQf_r4UeBEcc_RVdn5fIJxPf8LzE/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x40 Viva nos Vamos de Casa [3126000749253]",
+            "urlDrive": "https://drive.google.com/file/d/1UgJUTo0vC9N5ZFgXxObfzmwX3TO8LVye/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x41 quien es el ladron de Huevos [3126422473413]",
+            "urlDrive": "https://drive.google.com/file/d/1pwve8YYMnN4yQvg1mWvCZai1jS_y4X_g/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x42 la Marcha del Pato [3126422670021]",
+            "urlDrive": "https://drive.google.com/file/d/1-_llAPoceLEIGIq-NbRVVJcFA1o2xkfQ/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x43 Estrategia de apoyo [3126422932165]",
+            "urlDrive": "https://drive.google.com/file/d/1cl-t2PFwJHGDo3HPqzxLtVUSqb6l0cuY/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x44 Vamos vamos Carr [3126423063237]",
+            "urlDrive": "https://drive.google.com/file/d/15XKTdmV0YFTxztS_8yBWUwgaxGh3DyXe/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x45 Vuela carpa Voladora [3126423128773]",
+            "urlDrive": "https://drive.google.com/file/d/1b84-5RnwbotRy7AeyNMuLNawRyZIS54n/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x46 Quien es el flojo [3126423194309]",
+            "urlDrive": "https://drive.google.com/file/d/1NmbZsEHY9sxqZSaLgVzsV3D9nok1f_td/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x47 Capturemos a Chekman [3126423325381]",
+            "urlDrive": "https://drive.google.com/file/d/1qpmjZJA_axZqeTZTuKzdfrjXeqCdWqQl/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x48 Vimos fantasmas [3126427060933]",
+            "urlDrive": "https://drive.google.com/file/d/1oTvmeiDaS6BTOjXXs_2j-uohA6lrDMeE/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x49 El auto que volo al cielo [3126427192005]",
+            "urlDrive": "https://drive.google.com/file/d/1U44BPncKK78F6alBSJuOc_kdxPrd77YM/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x50 Explorando el Mundo de las Hormigas [3126434400965]",
+            "urlDrive": "https://drive.google.com/file/d/11uwwAA-jbbnXV3fhHs5oVquEhouY_g01/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x51 El  Misterioso barco de Hoja de bambu [3128452385477]",
+            "urlDrive": "https://drive.google.com/file/d/182Lhii0_gzL9TkZIy30Da9FgB2feZK5Z/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x52 el Ataque de las Muñecas del clima [3128452451013]",
+            "urlDrive": "https://drive.google.com/file/d/178KtHjBDeKtFuTSofqkO8spcXKWqAq8o/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x53 Venciendo al Monstruo [3128452516549]",
+            "urlDrive": "https://drive.google.com/file/d/1A3-SCCwMSr_2f6RyEEkZQeApegYxFJ0I/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x54 S.O.S El Globo Despega [3128452713157]",
+            "urlDrive": "https://drive.google.com/file/d/1Ckb_eX4Nj3QPyLrJLlvYJLjMmTW8HoxJ/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x55 Uba Familia de sinverguenzas [3128453040837]",
+            "urlDrive": "https://drive.google.com/file/d/1KsmYWVrFGpeLYtQz8VI0m__LAoUnTzx3/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x56 La amenaza de  Doger Kong, Atrapa a los Ladrones [3128453237445]",
+            "urlDrive": "https://drive.google.com/file/d/1sOos6cMBrt_zfefbh9eZ4CTorW4ZM8_u/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x57 Eliminando Al Monstruo , Luchando contra las caries [3128453434053]",
+            "urlDrive": "https://drive.google.com/file/d/1vJqY-88mCYSYXOkqam7SfsAE0HdZBM7d/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x58 Rrscatando a Chivigon [3128453565125]",
+            "urlDrive": "https://drive.google.com/file/d/1bRkzczkDhr5OMSxpFQekirxOjlWZlPRI/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x59 Hay que hacer la tarea [3128453630661]",
+            "urlDrive": "https://drive.google.com/file/d/1q3Rq7MTdzM0X-KjRI7TK4WCy_pmgbKye/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x61  El Gato Taro y Su Sombrero De Punta [3128516020933]",
+            "urlDrive": "https://drive.google.com/file/d/1EdOoTXexLmx1_S72UX3Yz79-cU08cuqO/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x62 La Gran cita de Cometa [3128516152005]",
+            "urlDrive": "https://drive.google.com/file/d/1pHE4-TLUJiLdZWscKiyx2p4aePEIU_rE/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x63 El bosque de Monstruos [3128516610757]",
+            "urlDrive": "https://drive.google.com/file/d/1p95V3UzeqJXsuwhKFyPX85YFCWUG6Nmg/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x64 duelo en el fuerte Calavera [3128516807365]",
+            "urlDrive": "https://drive.google.com/file/d/12GyxothufE8i-atL087W8ndPKJ3td4Bx/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x65 Salven al niño abeja [3128516872901]",
+            "urlDrive": "https://drive.google.com/file/d/1jMUymzPSgMaUH25P_mxGq8sNeoX6RzPx/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x66 Otra Oportunidad a un terrible final [3128517069509]",
+            "urlDrive": "https://drive.google.com/file/d/1nqHBBdQKMEX8eh9WW064dhO5Ay5Ia-8L/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x67 El corredor del siglo [3128519559877]",
+            "urlDrive": "https://drive.google.com/file/d/1b09rTmH76XvEDhpqo01cneo0w6C_uto-/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x68 Unas compras llenas de aventuras [3128519690949]",
+            "urlDrive": "https://drive.google.com/file/d/12qm4aDxACNqUxgF-leXWIPBsK_Ig15MP/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x69 Estafa con las cartas de amor [3128519756485]",
+            "urlDrive": "https://drive.google.com/file/d/1Dw4me0udW2ZLRgY59az5QvKt2EVJzD-A/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x70 aproveche la Oportunidad [3128520018629]",
+            "urlDrive": "https://drive.google.com/file/d/1v_kAijawqujogv3VwZBvWhCnCG8nOiPU/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x71 Una avenura Super Maravillosa [3128950852293]",
+            "urlDrive": "https://drive.google.com/file/d/1aM7kVY_w8M9kr7slro4MrbpFITVULbCh/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x72 Soy Un retador [3128951179973]",
+            "urlDrive": "https://drive.google.com/file/d/1uxUOqWvpYVdV2jpOFMHCe5-Dd9D9n-W0/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x73 como ser Un buen Hijo [3128951245509]",
+            "urlDrive": "https://drive.google.com/file/d/12s13A_V4CmygOZH-_0omMAmsJyQ1r5x9/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x74 Un debil Anciano [3128951376581]",
+            "urlDrive": "https://drive.google.com/file/d/1vAE3qbYNQeH7_kg7ly3pdzPeI4qJG6Hm/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x75 Takeshi Estudia para sus examenes [3128951507653]",
+            "urlDrive": "https://drive.google.com/file/d/1U1f1_YOLcmKvIa7tdM7GqW3vJTrZA_QW/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x76 El espiritu de un Diminuto ser [3128952097477]",
+            "urlDrive": "https://drive.google.com/file/d/1-TfAFYPWAtHYXWoTduCcToM-hmytAsuk/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x77 Adios Señor Hoja Caida [3128952228549]",
+            "urlDrive": "https://drive.google.com/file/d/1QUbpmVFCAf3xRIhcbfDdvvGovQ8rA9x1/view"
+          },
+          {
+            "tituloEpisodio": "Señorita Cometa 1x78 La Ciuda que visite una vez [3128952359621]",
+            "urlDrive": "https://drive.google.com/file/d/1kV7kqhOalZUuI59vW0hgQS0xrVPf1jHR/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 227609,
