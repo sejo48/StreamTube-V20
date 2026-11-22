@@ -1,5 +1,163 @@
 [
   {
+    "tmdbId": 2553,
+    "tmdbType": "tv",
+    "tituloOriginal": "Punky Brewster",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/ir1J00Kk3kzBKw7uEGm8CwBjh1t.jpg",
+    "year": "1984",
+    "fechaEstreno": "1984-09-16",
+    "rating": "7.2",
+    "votos": 104,
+    "runtime": "23min",
+    "runtimeMin": 23,
+    "genres": [
+      "Comedia",
+      "Kids"
+    ],
+    "generosTexto": "Comedia, Kids",
+    "clasificacion": "TP",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Soleil Moon Frye",
+        "personaje": "Punky Brewster",
+        "foto": "https://image.tmdb.org/t/p/w185/j3PW3GlJYyPj77mK9VAXZXlFCVv.jpg"
+      },
+      {
+        "nombre": "George Gaynes",
+        "personaje": "Henry Warnimont",
+        "foto": "https://image.tmdb.org/t/p/w185/6NrhrTrjwpR55wffPDdCz7lNNHA.jpg"
+      },
+      {
+        "nombre": "Cherie Johnson",
+        "personaje": "Cherie Johnson",
+        "foto": "https://image.tmdb.org/t/p/w185/hE2SrfoEoprYJOioT2d92TebriY.jpg"
+      },
+      {
+        "nombre": "Susie Garrett",
+        "personaje": "Betty Johnson",
+        "foto": ""
+      },
+      {
+        "nombre": "Ami Foster",
+        "personaje": "Margaux Kramer",
+        "foto": "https://image.tmdb.org/t/p/w185/A3uYQK6IYjosn8DQCvhUXp6TCVs.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "NBC Productions, Columbia Pictures Television, Lightkeeper Productions, Coca-Cola Telecommunications, Ruby-Spears Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "friendship, family relationships, orphan, dog, foster child, sitcom",
+    "similares": [
+      {
+        "titulo": "Padres forzosos",
+        "poster": "https://image.tmdb.org/t/p/w342/437jZdGXmYzyl9p4QtIFsm89rL5.jpg",
+        "year": "1987",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Escuela de cachorros",
+        "poster": "https://image.tmdb.org/t/p/w342/28GEw8ebGgDcWkTbW5BpW6E83J5.jpg",
+        "year": "2019",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "¿Quién es el jefe?",
+        "poster": "https://image.tmdb.org/t/p/w342/g2DGlUraEwKxrsKtbtCYqUSz7zy.jpg",
+        "year": "1984",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Los Jeffersons",
+        "poster": "https://image.tmdb.org/t/p/w342/iFjIaWr9qDKMLnnh8tHwO6Tzp6D.jpg",
+        "year": "1975",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Kenan & Kel",
+        "poster": "https://image.tmdb.org/t/p/w342/ftRkgMhF1CofVSLMeonh9Hjz7a4.jpg",
+        "year": "1996",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "The Bernie Mac Show",
+        "poster": "https://image.tmdb.org/t/p/w342/auTnAsA5USO1901qti1mxbUIVoE.jpg",
+        "year": "2001",
+        "rating": "6.7"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "David W. Duclon"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 91,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 6,
+        "id": 8159,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1984-09-16",
+        "episode_count": 25,
+        "id": 8156,
+        "name": "Temporada 1",
+        "overview": "Tras ser abandonada por su madre, Punky, una niña alegre y creativa, encuentra refugio en un edificio donde conoce a Henry Warnimont, un fotógrafo solitario. A lo largo de la temporada, Punky transforma la vida de Henry con su energía contagiosa, mientras ambos enfrentan desafíos legales, escolares y emocionales para convertirse en una verdadera familia. Con la ayuda de sus amigos y su inseparable perro Brandon, Punky aprende a crecer sin perder su esencia.",
+        "poster_path": "/tgupYwNyL1ygX1JsVTvj9AGOVzI.jpg",
+        "season_number": 1,
+        "vote_average": 0.8
+      },
+      {
+        "air_date": "1985-09-15",
+        "episode_count": 22,
+        "id": 8157,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/v4oi9oa8EWZbbFk7UeXFa6MRhLr.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1987-10-30",
+        "episode_count": 22,
+        "id": 8155,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/tsvFLIINXctg7LlAX1efjjweNCi.jpg",
+        "season_number": 3,
+        "vote_average": 4.7
+      },
+      {
+        "air_date": "1988-04-27",
+        "episode_count": 22,
+        "id": 8158,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/uuUSqhyvUnXmSBtBqWUIwW58vrH.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Punky Brewster",
+    "descripcion": "Serie de TV (1984-1988). 4 temporadas. 88 episodios. Penélope “Punky” Brewster es una niña de siete años que es abandonada por su madre. La pequeña, acompañada de su inseparable perro Brandon, se refugia en un apartamento vacío, donde pronto es descubierta por Henry, administrador del edificio. Éste, que es un hombre de avanzada edad y acostumbrado a vivir solo, se ve conmovido por la dulzura y simpatía de la niña y decide acogerla en su hogar.",
+    "imagen": "https://image.tmdb.org/t/p/w780/zvzhXpcJhTBR2f189ZdQkemk3SS.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 3477,
     "tmdbType": "tv",
     "tituloOriginal": "Joe 90",
