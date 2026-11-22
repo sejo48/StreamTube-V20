@@ -1,5 +1,205 @@
 [
   {
+    "tmdbId": 2177,
+    "tmdbType": "tv",
+    "tituloOriginal": "Land of the Lost",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/kJB50LyeILumAAhSJetPtpiHLmD.jpg",
+    "year": "1974",
+    "fechaEstreno": "1974-09-07",
+    "rating": "7.0",
+    "votos": 55,
+    "runtime": "22min",
+    "runtimeMin": 22,
+    "genres": [
+      "Action & Adventure",
+      "Sci-Fi & Fantasy",
+      "Familia",
+      "Comedia"
+    ],
+    "generosTexto": "Action & Adventure, Sci-Fi & Fantasy, Familia, Comedia",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Spencer Milligan",
+        "personaje": "Rick Marshall",
+        "foto": "https://image.tmdb.org/t/p/w185/iIWab1lUaXsVVDXjMSB4TjiWNzV.jpg"
+      },
+      {
+        "nombre": "Wesley Eure",
+        "personaje": "Will Marshall",
+        "foto": "https://image.tmdb.org/t/p/w185/7Mamyx7AY2bBVanZcyTdlPsMIGS.jpg"
+      },
+      {
+        "nombre": "Philip Paley",
+        "personaje": "Cha-Ka",
+        "foto": "https://image.tmdb.org/t/p/w185/rycFP7BuVoZMyRATfdBcu2XmV6X.jpg"
+      },
+      {
+        "nombre": "Kathy Coleman",
+        "personaje": "Holly Marshall",
+        "foto": "https://image.tmdb.org/t/p/w185/bJ0YDDFjBuQfN7L3HHyJgVBZvcG.jpg"
+      },
+      {
+        "nombre": "Walker Edmiston",
+        "personaje": "Enik",
+        "foto": "https://image.tmdb.org/t/p/w185/lmViV10dtIIubC7JcTKEJIksilz.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Sid & Marty Krofft Television Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "dinosaur, uncharted, alternate universe",
+    "similares": [
+      {
+        "titulo": "Jurassic World: Teoría del dinocaos",
+        "poster": "https://image.tmdb.org/t/p/w342/zIXmEg77XSext9oBE3JswBDRVL.jpg",
+        "year": "2024",
+        "rating": "8.3"
+      },
+      {
+        "titulo": "Zona Tiza",
+        "poster": "https://image.tmdb.org/t/p/w342/MuylmYxxXnTBCmASj9586Ug1mk.jpg",
+        "year": "2002",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "LEGO Star Wars: Reconstruye la galaxia",
+        "poster": "https://image.tmdb.org/t/p/w342/bIKeD69XqfkO3FMTbO711MEMobD.jpg",
+        "year": "2024",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Bravest Warriors",
+        "poster": "https://image.tmdb.org/t/p/w342/ciZExmj32noHG2bsevKQxHIDkAC.jpg",
+        "year": "2012",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "Dragones",
+        "poster": "https://image.tmdb.org/t/p/w342/lfGCjbfUK7isQ1tBBGu1dyZOM2q.jpg",
+        "year": "2012",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Marvel's Moon Girl y Dinosaurio Diabólico",
+        "poster": "https://image.tmdb.org/t/p/w342/nYzwstTEPz8qmjeQB8tduWBo63j.jpg",
+        "year": "2023",
+        "rating": "7.4"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Marty Krofft",
+      "Sid Krofft",
+      "Alan Foshko"
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 43,
+    "temporadasTmdb": [
+      {
+        "air_date": "1974-09-07",
+        "episode_count": 17,
+        "id": 6645,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/cQfkrvxtJNOtG6VE8jqcTVxYt0b.jpg",
+        "season_number": 1,
+        "vote_average": 6.5
+      },
+      {
+        "air_date": "1975-09-06",
+        "episode_count": 13,
+        "id": 6646,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/8qFPcI3yS61eXXp4OBfKTC3OUwd.jpg",
+        "season_number": 2,
+        "vote_average": 7.7
+      },
+      {
+        "air_date": "1976-09-11",
+        "episode_count": 13,
+        "id": 6647,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/dsAdKJYKFTBxZpup9DiXTNHn2Vb.jpg",
+        "season_number": 3,
+        "vote_average": 7.4
+      }
+    ],
+    "tituloSerie": "Land of the Lost",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/4AvO1tZUsoupwSQ0Aetr93JJJIf.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E01 - Tar Pit [5213518695109]",
+            "urlDrive": "https://drive.google.com/file/d/1M3YqvGb_hnvQHyrlc55ayvtJMbK90eHT/view"
+          },
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E02 - The Zarn [5213518564037]",
+            "urlDrive": "https://drive.google.com/file/d/1KP3dY6FEp1NwLFBgl9LDFLRi2yCBvrGi/view"
+          },
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E03 - Fair Trade [5213518432965]",
+            "urlDrive": "https://drive.google.com/file/d/1s8gHIX0ah-x_lWLszup4T_kbPhesCAUj/view"
+          },
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E04 - One of Our Pylons is Missing [5213518301893]",
+            "urlDrive": "https://drive.google.com/file/d/1BepnEgD92LBbcyAFDTJpejvZX3r-az_w/view"
+          },
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E05 - The Test [5213518105285]",
+            "urlDrive": "https://drive.google.com/file/d/1uE8rg5qVnR_vRMFRmyN--dfCKD0ttCio/view"
+          },
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E06 - Gravity Storm [5213517777605]",
+            "urlDrive": "https://drive.google.com/file/d/1ldH_GevnqfTycxP19gvAyQP4fqN-VmKb/view"
+          },
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E07 - The Longest Day [5213517515461]",
+            "urlDrive": "https://drive.google.com/file/d/1a3mnemQrp5_P2T-tnvZfvrylvdrAMBUr/view"
+          },
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E08 - The Pylon Express [5213517384389]",
+            "urlDrive": "https://drive.google.com/file/d/1Yn-aGRoDxJ_doH4lUOSAYmlJs7cxpEKc/view"
+          },
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E09 - A Nice Day [5213516401349]",
+            "urlDrive": "https://drive.google.com/file/d/12vbZi1ji7pW6Kkmp7x1N7rufEndXr46I/view"
+          },
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E10 - Baby Sitter [5213516270277]",
+            "urlDrive": "https://drive.google.com/file/d/1lkDIFeuYB8Le4VKpXXtrtWB9l9m3v1Go/view"
+          },
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E11 - The Musician [5213516073669]",
+            "urlDrive": "https://drive.google.com/file/d/1R3XVOHV9NcQj1Rb_VZZEYN7csyJCOwV2/view"
+          },
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E12 - Split Personality [5213515680453]",
+            "urlDrive": "https://drive.google.com/file/d/1JrqtoHCssXpp7zVWYWJMXld5gNpp4zcJ/view"
+          },
+          {
+            "tituloEpisodio": "Land Of The Lost - S02E13 - Blackout [5213515418309]",
+            "urlDrive": "https://drive.google.com/file/d/1yc9T1dwXaLYlixghW2gyBFzK5VZjkZz0/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 23365,
     "tmdbType": "tv",
     "tituloOriginal": "Sergeant Preston of the Yukon",
@@ -117,7 +317,141 @@
     "imagen": "https://image.tmdb.org/t/p/original/i6sMs2rQmeeN18J46Hvh98QgmCA.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "SGPRT 1x23 [2906244975301]",
+            "urlDrive": "https://drive.google.com/file/d/1V8uPW4llCois59A7jndGvbzS9Qf2RbcF/view"
+          },
+          {
+            "tituloEpisodio": "SGPRT 1x25 [2906245106373]",
+            "urlDrive": "https://drive.google.com/file/d/1p1ODrXXWlwmphbF9SEUJzuaIE-cr_Fpt/view"
+          },
+          {
+            "tituloEpisodio": "SGPRT1x22 [2887304022725]",
+            "urlDrive": "https://drive.google.com/file/d/1EX2dJO-DBX-xVrGSJrVE5Iskvv3Pd3TS/view"
+          },
+          {
+            "tituloEpisodio": "SGPRT1x24 [2906245040837]",
+            "urlDrive": "https://drive.google.com/file/d/1m06wjJxPlLzhSBFviyCXxf1YojIofzGi/view"
+          },
+          {
+            "tituloEpisodio": "SGPRT1x26 [2908632255173]",
+            "urlDrive": "https://drive.google.com/file/d/1IrpTC1NsvkVcAUuOBixKcWeXCqN28Zq6/view"
+          },
+          {
+            "tituloEpisodio": "SGPRT1x27 [2908632320709]",
+            "urlDrive": "https://drive.google.com/file/d/1tajc_TB8V8wx8n2AJDzIo78pZkJLyfMB/view"
+          },
+          {
+            "tituloEpisodio": "SGPRT1x29 [2995528993477]",
+            "urlDrive": "https://drive.google.com/file/d/1ODDs2i8R2v6W-0zQYiSE4P55AfB_668s/view"
+          },
+          {
+            "tituloEpisodio": "SGPRT1x30 [2930050206405]",
+            "urlDrive": "https://drive.google.com/file/d/1VH8AoLa9QIowdQneMhwD6yofx0TwzkcV/view"
+          },
+          {
+            "tituloEpisodio": "SGPRT1x31 [2930051254981]",
+            "urlDrive": "https://drive.google.com/file/d/1VLEpFaAQ-9XFmqLukwhFKlZ_5YJtAlFy/view"
+          },
+          {
+            "tituloEpisodio": "SGPRT1x32 [2995529190085]",
+            "urlDrive": "https://drive.google.com/file/d/12FXmvGawDIPM3EXYECr7dBKh1gSaeJbE/view"
+          },
+          {
+            "tituloEpisodio": "SGPRT1x33 [2930051844805]",
+            "urlDrive": "https://drive.google.com/file/d/148kzg_zqGUOXX_mS67JPlAUwxksYw66M/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x01 [2825168423621]",
+            "urlDrive": "https://drive.google.com/file/d/1huSK4Pt2tziDlT-0w7ot8f5PC5Y7BTNt/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x02 [2830683474629]",
+            "urlDrive": "https://drive.google.com/file/d/17GO8GYvZBJuB1BH-WJgsrnEmSTPj4gqP/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x03 [2830683605701]",
+            "urlDrive": "https://drive.google.com/file/d/1XI059LYIuEW5vGAM3XBfW3Qh5qxaVAnI/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x04 [2830683736773]",
+            "urlDrive": "https://drive.google.com/file/d/1GuNhYlwOknllKVAfThuDpIbnrtcR76lW/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x05 [2830683998917]",
+            "urlDrive": "https://drive.google.com/file/d/175iM2cnLi71_jrZuvDWjJ0gYRTBya3Hu/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x06 [2831908342469]",
+            "urlDrive": "https://drive.google.com/file/d/1hPEkoTreP7-P-nnEpvPkmMEZ7LFz4Dua/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x07 [2831908473541]",
+            "urlDrive": "https://drive.google.com/file/d/1F-w5wRi4Pc_PYQdFLbC0uJA0Yix7cvJa/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x08 [2838954838725]",
+            "urlDrive": "https://drive.google.com/file/d/1V_x8vzkxZFvZ12Rj2jCRFdbewaSfsUb5/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x09 [2838955035333]",
+            "urlDrive": "https://drive.google.com/file/d/1bKIF9QwCTIWeUYX0Qn5sFEu4vQq2thhz/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x10 [2838955166405]",
+            "urlDrive": "https://drive.google.com/file/d/1JK42smw83B1G_KIkP2zPFP0rLKJ2Morw/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x11 [2842924026565]",
+            "urlDrive": "https://drive.google.com/file/d/1YaGbex1HsCTFzIZF3KV3puTMNLP5wd1h/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x12 [2842924092101]",
+            "urlDrive": "https://drive.google.com/file/d/1N8ywV_wVprYlQYqS5k8El6wSasJtXT4H/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x13 [2842924157637]",
+            "urlDrive": "https://drive.google.com/file/d/1Gtz0oV37HJn8wvO2N3CHXcA2yj-v3gii/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x14 [2842928614085]",
+            "urlDrive": "https://drive.google.com/file/d/1_21pwpvSQl4NXvj6ZLL4ljMYF4PPUiBX/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x15 [2854328535749]",
+            "urlDrive": "https://drive.google.com/file/d/1ZedYkg2cPFa5usDV66qgSVZwba25mBRb/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x16 [2854329191109]",
+            "urlDrive": "https://drive.google.com/file/d/1uJoN2ACDggOZn-szYMDxb8SZYlX8KkoJ/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x17 [2854329584325]",
+            "urlDrive": "https://drive.google.com/file/d/1grWum_1oCq28TnxJv8bSqleeYh5mhdBu/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x18 [2854330632901]",
+            "urlDrive": "https://drive.google.com/file/d/1Srv9tPxKZT0P0vHo8pWnQ1XoYebauyQM/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x19 [2866040343237]",
+            "urlDrive": "https://drive.google.com/file/d/1lVoyecmRbMIeHWG4Wim_SiR8BBwXk7gI/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x20 [2866041326277]",
+            "urlDrive": "https://drive.google.com/file/d/1XyCfNjEkjI6pggbpkF3lEHagibGD3NeF/view"
+          },
+          {
+            "tituloEpisodio": "SPr1x21 [2866041391813]",
+            "urlDrive": "https://drive.google.com/file/d/1HPyEpVNteF91av8gR2PmIj45JYoUA9RL/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 5391,
