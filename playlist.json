@@ -1,5 +1,367 @@
 [
   {
+    "tmdbId": 4530,
+    "tmdbType": "tv",
+    "tituloOriginal": "Daktari",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/xwS5QqRrauhbq4L4nZEuHPIPry0.jpg",
+    "year": "1966",
+    "fechaEstreno": "1966-01-11",
+    "rating": "7.3",
+    "votos": 32,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Familia",
+      "Drama"
+    ],
+    "generosTexto": "Familia, Drama",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Marshall Thompson",
+        "personaje": "Dr. Marsh Tracy",
+        "foto": "https://image.tmdb.org/t/p/w185/iCsjRJPXGOUNIrIuWRxqrAdx6hq.jpg"
+      },
+      {
+        "nombre": "Hari Rhodes",
+        "personaje": "Mike Makula",
+        "foto": "https://image.tmdb.org/t/p/w185/tYEmkxghF55Bv2GcyIVbyOyn36P.jpg"
+      },
+      {
+        "nombre": "Yale Summers",
+        "personaje": "Jack Dane",
+        "foto": "https://image.tmdb.org/t/p/w185/6zanDaXYdLMrnBbj83nFQkMD4eU.jpg"
+      },
+      {
+        "nombre": "Ross Hagen",
+        "personaje": "Bart Jason",
+        "foto": "https://image.tmdb.org/t/p/w185/4P9IRSv4XR2n3319pVrjepJJlbE.jpg"
+      },
+      {
+        "nombre": "Erin Moran",
+        "personaje": "Jenny Jones",
+        "foto": "https://image.tmdb.org/t/p/w185/9cFaXepgapZrAfOlbq0exel2J5o.jpg"
+      },
+      {
+        "nombre": "Hedley Mattingly",
+        "personaje": "District Officer Hedley",
+        "foto": "https://image.tmdb.org/t/p/w185/jDGsHEh5JqqLZIbhXXbksOh7gei.jpg"
+      },
+      {
+        "nombre": "Cheryl Miller",
+        "personaje": "Paula Tracy",
+        "foto": "https://image.tmdb.org/t/p/w185/s0SR9546jdnoJKhHWx50EbZxNUt.jpg"
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "MGM Television, Ivan Tors Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "africa, veterinarian, jungle, wild animal, suspenseful, cheerful, informative",
+    "similares": [
+      {
+        "titulo": "Baretta",
+        "poster": "https://image.tmdb.org/t/p/w342/xayGSRT2GbcFTwNIqt6l355v29F.jpg",
+        "year": "1975",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Jorge el curioso",
+        "poster": "https://image.tmdb.org/t/p/w342/85GFJWgPbOzfRq6xZPPEhW5r2c9.jpg",
+        "year": "2006",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "The Haunting Hour: La Serie",
+        "poster": "https://image.tmdb.org/t/p/w342/keZqyr8EQLCjHejuZ3U4HAopxrY.jpg",
+        "year": "2010",
+        "rating": "8.2"
+      },
+      {
+        "titulo": "Smother",
+        "poster": "https://image.tmdb.org/t/p/w342/liE0KylYp5uzqONbDT07bVUUNUa.jpg",
+        "year": "2021",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Tyler Perry's The Oval",
+        "poster": "https://image.tmdb.org/t/p/w342/l0u0L1ekz6VVBvbZDWM1XizNEes.jpg",
+        "year": "2019",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Daniel Tigre y su mundo",
+        "poster": "https://image.tmdb.org/t/p/w342/pUbHrEFTWegyhIxFmtpOpAQsbfT.jpg",
+        "year": "2012",
+        "rating": "7.1"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Ivan Tors",
+      "Art Arthur"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 89,
+    "temporadasTmdb": [
+      {
+        "air_date": "1965-12-17",
+        "episode_count": 1,
+        "id": 13650,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/gCNd33N2vaQCgZXpBdN2Pr2xmfK.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1966-01-10",
+        "episode_count": 18,
+        "id": 13652,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/wfDqUaxiKjnUY0IRwIKq6IiY1fd.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1966-09-13",
+        "episode_count": 29,
+        "id": 13653,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/eLwtwYCsewt3weahrHHjGsc8ydb.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1967-09-05",
+        "episode_count": 27,
+        "id": 13651,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/emT1Waum7H69HmwBSMP5REeL9u1.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1968-09-25",
+        "episode_count": 15,
+        "id": 13649,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/6UrybnxUQMHwjwzV1ZOSA2iOR9Q.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Daktari",
+    "descripcion": "Daktari es una serie dramática infantil estadounidense que se emitió en CBS entre 1966 y 1969. La serie, una producción de Ivan Tors Films en asociación con MGM Television, está protagonizada por Marshall Thompson como el Dr. Marsh Tracy, un veterinario del ficticio Centro de estudios Wameru para el comportamiento animal. en África Oriental.",
+    "imagen": "https://image.tmdb.org/t/p/w780/snopJzlOhhjG5LKkW2SZ6A9YA0W.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
+    "tmdbId": 3575,
+    "tmdbType": "tv",
+    "tituloOriginal": "Man from Atlantis",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/dv2gfbwAPCAUgSSsAyMPZ2dta1R.jpg",
+    "year": "1977",
+    "fechaEstreno": "1977-09-22",
+    "rating": "6.4",
+    "votos": 79,
+    "runtime": "1h 30min",
+    "runtimeMin": 90,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Drama",
+      "Action & Adventure"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Drama, Action & Adventure",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Patrick Duffy",
+        "personaje": "Mark Harris",
+        "foto": "https://image.tmdb.org/t/p/w185/wgjqdyWEpMXpeVNkyw4XDtlpz1E.jpg"
+      },
+      {
+        "nombre": "Belinda Montgomery",
+        "personaje": "Dr. Elizabeth Merrill",
+        "foto": "https://image.tmdb.org/t/p/w185/vlzzPjjhqvYpnrAMPTBOvCkkYFN.jpg"
+      },
+      {
+        "nombre": "Alan Fudge",
+        "personaje": "Dr. Crawford",
+        "foto": "https://image.tmdb.org/t/p/w185/9oBfOFlcDMSy32NddmsRdKM3Rt9.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Solow Production Company",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "atlantis, superhuman, supernatural creature, underwater world, supernatural being",
+    "similares": [
+      {
+        "titulo": "SeaQuest DSV",
+        "poster": "https://image.tmdb.org/t/p/w342/azbnl41bGqTcp2ajyfm9JYekEHp.jpg",
+        "year": "1993",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Alphas",
+        "poster": "https://image.tmdb.org/t/p/w342/IOV9jgW2BcWbCVQvaeGgr9KBE5.jpg",
+        "year": "2011",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Viaje al fondo del mar",
+        "poster": "https://image.tmdb.org/t/p/w342/m0NdwZheYAPCqw6aa7GASbIpDvG.jpg",
+        "year": "1964",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "Los invasores",
+        "poster": "https://image.tmdb.org/t/p/w342/a6hE0lx1ploE0bLw8R9nv3IrI5T.jpg",
+        "year": "1967",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Psi Factor: Chronicles of the Paranormal",
+        "poster": "https://image.tmdb.org/t/p/w342/x50gAb47tkzWtaWQnk7zMPlyjAn.jpg",
+        "year": "1996",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "La liga de la justicia",
+        "poster": "https://image.tmdb.org/t/p/w342/caIAQIoM9NLZofT8fz8t47W1gYe.jpg",
+        "year": "2001",
+        "rating": "8.2"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Mayo Simon"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 13,
+    "temporadasTmdb": [
+      {
+        "air_date": "1977-03-04",
+        "episode_count": 4,
+        "id": 76594,
+        "name": "Especiales",
+        "overview": "Tras cuatro películas para televisión -emitidas entre marzo y junio de 1977- “El Hombre de la Atlántida” al fin se convirtió en una serie semanal. Parece que la cadena estaba siendo muy precavida antes de dar inicio al programa, ya que hacer cuatro pilotos de prueba es bastante inusual. En todo caso, los telefilmes obtuvieron el rating necesario, y en septiembre de 1977 “El Hombre de la Atlántida” regreso a la pantalla chica como una serie propiamente dicha. En esta colección de especiales se presentan los 4 telefilms que dieron origen a la serie.",
+        "poster_path": "/ugqvvlSzrdvvhwFm9GZO9Kq3QiE.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1977-09-22",
+        "episode_count": 13,
+        "id": 10849,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/23hHYl1Qv6XCQR8QFcbESGb4o1V.jpg",
+        "season_number": 1,
+        "vote_average": 6.5
+      }
+    ],
+    "tituloSerie": "El hombre de la Atlantida",
+    "descripcion": "Las aventuras de un hombre con habilidades anfibias. Adaptado a la vida submarina, Mark Harris es el único sobreviviente del legendario continente sumergido de la Atlántida. ",
+    "imagen": "https://image.tmdb.org/t/p/original/f5WOAtEMUdQMVQJKVfMge6GBaBQ.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x1  El Hombre de la Atlantida [2675564612293]",
+            "urlDrive": "https://drive.google.com/file/d/1f_QzuX7EmB2YK5KK5EFVvgKTppnDjlBR/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x2 Exploradores de la Muerte [2675564808901]",
+            "urlDrive": "https://drive.google.com/file/d/1kUnK-oCeXN4JakAMaSk0LLkpy7VjxCfW/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x3 Esporas Asesinas [2675564939973]",
+            "urlDrive": "https://drive.google.com/file/d/1Tp4gpJ0fjYhlBE3DQZB8SrSnKGjt48kI/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x4 La Desapariciones [2675565857477]",
+            "urlDrive": "https://drive.google.com/file/d/1JTJ8UhkjRp--D8iQ91d8BhKxbSpjbFzl/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x5 Operacion Inundacion [2675565923013]",
+            "urlDrive": "https://drive.google.com/file/d/18ODYx1EQkFGkzJo6SjDhWXN31aTwgj48/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x6 La Lombriz [2675636308677]",
+            "urlDrive": "https://drive.google.com/file/d/1Z0f3dtNbPFQJv4Ip2IEg63cTTsF_RNnr/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x7 El Halcon de Mu [2675636374213]",
+            "urlDrive": "https://drive.google.com/file/d/14o0NHBAYQZ-DOCSiRqAsCqbLFa-UPZHK/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x8 La Medusa [2675636570821]",
+            "urlDrive": "https://drive.google.com/file/d/1t10m27y7zM29NW_2jEYiV5LWc_IvCpci/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x9 Tiroteo en Land´s End [2675636964037]",
+            "urlDrive": "https://drive.google.com/file/d/1UbAW-IYXDC8tlTEoK6_uSBY9xt11xBoz/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x10 Agua Clara, Muerte Subita [2675637160645]",
+            "urlDrive": "https://drive.google.com/file/d/1Zyqn2Yhhb8AXCA_7NIG1Ktuhlp3JTI7e/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x11 El Montesco Desnudo [2675690310341]",
+            "urlDrive": "https://drive.google.com/file/d/1MZAGbm6wmkKJrrTILpvY5hTawLWW3pAT/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x12 C.W. Hyde [2675730090693]",
+            "urlDrive": "https://drive.google.com/file/d/1bIy0AIcKHrEaHi32A7SibaGt5tpbf-w6/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x13 El Poderoso [2675691489989]",
+            "urlDrive": "https://drive.google.com/file/d/1nj-DflDcinC1YK9wfJwLtymY1WKqj42-/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x15 La Sirena [2675691621061]",
+            "urlDrive": "https://drive.google.com/file/d/1I08PwfYLYeUcP520TADsjKWmfY1DNgzy/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x16 Giant  subt [2675691817669]",
+            "urlDrive": "https://drive.google.com/file/d/19jxVNYzUMp7XLgZeNDbLJOB_R39t6XWG/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida 1x17 Deadly Carnival [2675758402245]",
+            "urlDrive": "https://drive.google.com/file/d/1PKOeSD-LtRDcTrnrwjyl-MeEa3XNiMX2/view"
+          },
+          {
+            "tituloEpisodio": "El hombre de la Atlantida-1x14 El Duende [2675691555525]",
+            "urlDrive": "https://drive.google.com/file/d/1ybsKzb2m2M9vQJnINiYly80AifKOTWd4/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 2275,
     "tmdbType": "tv",
     "tituloOriginal": "The Bionic Woman",
