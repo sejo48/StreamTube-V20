@@ -1,5 +1,1170 @@
 [
   {
+    "tmdbId": 509,
+    "tmdbType": "tv",
+    "tituloOriginal": "CHiPs",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/r2T5JhXySW6EdTO76hG6gbITD7O.jpg",
+    "year": "1977",
+    "fechaEstreno": "1977-09-15",
+    "rating": "6.8",
+    "votos": 161,
+    "runtime": "48min",
+    "runtimeMin": 48,
+    "genres": [
+      "Drama",
+      "Action & Adventure"
+    ],
+    "generosTexto": "Drama, Action & Adventure",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Erik Estrada",
+        "personaje": "Frank Poncherello",
+        "foto": "https://image.tmdb.org/t/p/w185/tz6WeBwL435g8xoXrteQLejGe7n.jpg"
+      },
+      {
+        "nombre": "Robert Pine",
+        "personaje": "Joseph Getraer",
+        "foto": "https://image.tmdb.org/t/p/w185/xZM1qLqmRprnZYXa8Ugsmo00zL9.jpg"
+      },
+      {
+        "nombre": "Tom Reilly",
+        "personaje": "Bobby 'Hot Dog' Nelson",
+        "foto": "https://image.tmdb.org/t/p/w185/8w1Gd7FGJMvT0VwKbyaum1yDcB3.jpg"
+      },
+      {
+        "nombre": "Paul Linke",
+        "personaje": "Arthur Grossman",
+        "foto": "https://image.tmdb.org/t/p/w185/ksad6V2Qktz4BjANiDyyEOlJA5W.jpg"
+      },
+      {
+        "nombre": "Lou Wagner",
+        "personaje": "Harlan Arliss",
+        "foto": "https://image.tmdb.org/t/p/w185/m3Ox9KLNVY4c4urgpV2DXpTWiMq.jpg"
+      },
+      {
+        "nombre": "Bruce Penhall",
+        "personaje": "Bruce Nelson",
+        "foto": "https://image.tmdb.org/t/p/w185/iWPD2UAn7NrPRUdNeEDUN8pFsfo.jpg"
+      },
+      {
+        "nombre": "Tina Gayle",
+        "personaje": "Kathy Linahan",
+        "foto": "https://image.tmdb.org/t/p/w185/48QPYtw4PwfLcNRXKzqaW0sGVMs.jpg"
+      },
+      {
+        "nombre": "Clarence Gilyard Jr.",
+        "personaje": "Benjamin Webster",
+        "foto": "https://image.tmdb.org/t/p/w185/mTxlCE2RqtRK4NehoX70n2NKmjO.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Rosner Television, MGM Television, NBC Studios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "california, police, los angeles, california, motorcycle, buddy cop, highway patrol, motorcycle cop",
+    "similares": [
+      {
+        "titulo": "Área 12",
+        "poster": "https://image.tmdb.org/t/p/w342/jXlPZz943xMbqfp2Ne1OvOWaPo.jpg",
+        "year": "1968",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Starsky y Hutch",
+        "poster": "https://image.tmdb.org/t/p/w342/aBj5oTi1uibVcXDoCJeKseJNY2d.jpg",
+        "year": "1975",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Patrulla juvenil",
+        "poster": "https://image.tmdb.org/t/p/w342/c5HaIPOSZitasqNlLRp8ZzuUsSn.jpg",
+        "year": "1968",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "La mujer policia",
+        "poster": "https://image.tmdb.org/t/p/w342/eKqO6PMfSW4YUJYhZrB82TSjwor.jpg",
+        "year": "1974",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "T. J. Hooker",
+        "poster": "https://image.tmdb.org/t/p/w342/zcHUwD20mqMD4g8LKdpKD12QRhE.jpg",
+        "year": "1982",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Hawaii 5-0",
+        "poster": "https://image.tmdb.org/t/p/w342/8iFAlqhfY1D0ithTrfKTxObPlUH.jpg",
+        "year": "1969",
+        "rating": "7.2"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Rick Rosner"
+    ],
+    "numeroTemporadas": 6,
+    "numeroEpisodios": 139,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 1,
+        "id": 1516,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/5VZP1S06GePMPLzYlQyhL2zUHYd.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1977-09-15",
+        "episode_count": 22,
+        "id": 1510,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/tsjLXycFNtcAbCzq1GCEyQv8K8a.jpg",
+        "season_number": 1,
+        "vote_average": 6.9
+      },
+      {
+        "air_date": "1978-09-16",
+        "episode_count": 23,
+        "id": 1512,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/tIx9c4xhOsVlBys1By9r9Q5H9Ng.jpg",
+        "season_number": 2,
+        "vote_average": 9.5
+      },
+      {
+        "air_date": "1979-09-22",
+        "episode_count": 24,
+        "id": 1515,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/3KcPe8mFo2YGKcPa7vTkBS7QqSP.jpg",
+        "season_number": 3,
+        "vote_average": 9.5
+      },
+      {
+        "air_date": "1980-09-21",
+        "episode_count": 21,
+        "id": 1514,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/obY2A4KXXztXjviEEZ7QBo76yxy.jpg",
+        "season_number": 4,
+        "vote_average": 10
+      },
+      {
+        "air_date": "1981-10-04",
+        "episode_count": 27,
+        "id": 1511,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/5NPtslxiyOwdYqe0XJY6T1cFiIr.jpg",
+        "season_number": 5,
+        "vote_average": 8.9
+      },
+      {
+        "air_date": "1982-10-10",
+        "episode_count": 22,
+        "id": 1513,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/wVO8nAOZjaZP2UFu222yl1JiXtN.jpg",
+        "season_number": 6,
+        "vote_average": 10
+      }
+    ],
+    "tituloSerie": "CHiPs",
+    "descripcion": "",
+    "imagen": "https://image.tmdb.org/t/p/w780/1464ScbUZQ22RjFtRtGiv4i2Zrs.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "1×07 [2421872659141]",
+            "urlDrive": "https://drive.google.com/file/d/1n1k1jRptU6MwYuSfvOT3ZEc6MPh9HaDk/view"
+          },
+          {
+            "tituloEpisodio": "Chips  .2x20 [2448240544453]",
+            "urlDrive": "https://drive.google.com/file/d/1wdErhbL_MuUqIMycuRvVulafWJopGZ2j/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1×10 [2421873052357]",
+            "urlDrive": "https://drive.google.com/file/d/1X7wzYtV_7nhT8zyWjecNR_BBgWo1zTXV/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1×12 [2426352175813]",
+            "urlDrive": "https://drive.google.com/file/d/1GGr1PQ7uymPERHyG49k4wfAKvpAqRPPQ/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1×17 [2430466591429]",
+            "urlDrive": "https://drive.google.com/file/d/1ZvxwZPQRR42cPmnUxVYWn9MV9A86fesP/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1×18 [2430466788037]",
+            "urlDrive": "https://drive.google.com/file/d/1VdW2o0-bPEGmfum8slvOuOD_3fzyAQ3v/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1x08 [2421872724677]",
+            "urlDrive": "https://drive.google.com/file/d/1ze2KfptJhvaQx7D1LembOhXI0Z0RNjpK/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1x09 [2421872855749]",
+            "urlDrive": "https://drive.google.com/file/d/19YRHJeUCS8qtiGoPHG6KCJlw3LZ_8rtx/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1x11 [2426351979205]",
+            "urlDrive": "https://drive.google.com/file/d/1Pkcyp9FZ6rcNFi5sEZrhWjG_deYvZAMF/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1x14 [2426383960773]",
+            "urlDrive": "https://drive.google.com/file/d/1r_42XwAP5_VXEVSZQCRVa18sX-8C3k8C/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1x16 [2430466525893]",
+            "urlDrive": "https://drive.google.com/file/d/1HDvxQpIm8Al_JGbgEjYckvGFfGq2vUfQ/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1x19 [2430466984645]",
+            "urlDrive": "https://drive.google.com/file/d/1JHRYaVBPogcIRhqE7e4I2W0XZCcl-Wtn/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1x20 [2430467050181]",
+            "urlDrive": "https://drive.google.com/file/d/1THRc2kAN2caOEk1XjIDjE_d3382RXBOB/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1X21 [2430467181253]",
+            "urlDrive": "https://drive.google.com/file/d/1Yooirt2C8x-EylGEZGbDa7qahLTGoHpX/view"
+          },
+          {
+            "tituloEpisodio": "Chips  1x22 [2430467377861]",
+            "urlDrive": "https://drive.google.com/file/d/14D8qM23TxmckCnffUL8kZ8lL9xEu33DM/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x01 [2434537163461]",
+            "urlDrive": "https://drive.google.com/file/d/1KWya-ytrFR1Dk1czNRy3zlDZQI1_6FOU/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x02 [2434537425605]",
+            "urlDrive": "https://drive.google.com/file/d/1_TR9833KQzWPgVQvr5CvakvZ0zHAvnEf/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x04 [2434541095621]",
+            "urlDrive": "https://drive.google.com/file/d/1RNALw7ejaTvWGwI76RMBhELTQ0r6sHfX/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x06 [2436938992325]",
+            "urlDrive": "https://drive.google.com/file/d/1vwtNq2sDXP5aaexIA00uYxud-iuXJT0-/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x07 [2436939254469]",
+            "urlDrive": "https://drive.google.com/file/d/1km3atbKsD3IsJA0FxuvHpLPGrgK82cw_/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x09 [2436939582149]",
+            "urlDrive": "https://drive.google.com/file/d/1TfJk3svIExTU1FS7dPJIERKy0loqWFbp/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x13 [2439841778373]",
+            "urlDrive": "https://drive.google.com/file/d/1W3rhbU_UhL1V9190WcXowdH8td8QSNbO/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x14 [2439841843909]",
+            "urlDrive": "https://drive.google.com/file/d/1HfJRR52i_C3otNyOvFCtR_9gARyXjGSY/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x16 [2443658398405]",
+            "urlDrive": "https://drive.google.com/file/d/1E3U3HqLbIfOUv8lGrEhj9C8kSP9bMqJy/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x17 [2443658463941]",
+            "urlDrive": "https://drive.google.com/file/d/1_7KxjyVsGjDkFltCbsytcw5LeqwZgE4r/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x18 [2443658660549]",
+            "urlDrive": "https://drive.google.com/file/d/1pNBHKgrSLtjTS8L5XPFIw3Jv1Aqu-PlE/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x19 [2443658791621]",
+            "urlDrive": "https://drive.google.com/file/d/1UJSV1nEJvqF17WdnfrBbilboZrRSVoGw/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x21 [2448240675525]",
+            "urlDrive": "https://drive.google.com/file/d/1xit7R4VwBSuLMqfm0Hh6wK-0zTz-Vqvg/view"
+          },
+          {
+            "tituloEpisodio": "Chips .2x22 [2448240806597]",
+            "urlDrive": "https://drive.google.com/file/d/1YAzCO6c29ItJXNUoYOIgDSmEtYBJ6yNj/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x01 [3360863750853]",
+            "urlDrive": "https://drive.google.com/file/d/11DcSs6cIPM0FYXTXzwYoj7695MeSSXD9/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x02 [3360863816389]",
+            "urlDrive": "https://drive.google.com/file/d/1iBNZ4iMFk18qMi1fl7ihlXDvhJSsiz3I/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x04 [3360864012997]",
+            "urlDrive": "https://drive.google.com/file/d/1QbcsZZFlD0NZJBb0ujGWWUoyXpE-Jmom/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x05 [3360864078533]",
+            "urlDrive": "https://drive.google.com/file/d/1B3AqpprSYHWxkMtbHx5d7fr_P72NnE-K/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x06 [3360866831045]",
+            "urlDrive": "https://drive.google.com/file/d/1y7CJtF-VX0kfjNSnzNPGNNRz37idxqTI/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x07 [3360867027653]",
+            "urlDrive": "https://drive.google.com/file/d/1pYJRAfGM0p7EYpGcdj7D43oU13OerA2s/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x08 [3360867093189]",
+            "urlDrive": "https://drive.google.com/file/d/18Y40gH_lkAmpDb1EYA76N8g9Cr8UnB8W/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x09 [3360867486405]",
+            "urlDrive": "https://drive.google.com/file/d/1ba4nXgLnVzctrVjBvqyZ53putgOA-b5r/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x10 [3360867551941]",
+            "urlDrive": "https://drive.google.com/file/d/1OlC_u_YBTX9MpAj-EbIE7Z9y9_lFkbdU/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x11 [3360909560517]",
+            "urlDrive": "https://drive.google.com/file/d/1ZQcE-Ps5W7Lzbup9ZK9FfbqUjpFB1Zac/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x12 [3360909691589]",
+            "urlDrive": "https://drive.google.com/file/d/1tfkY4GkGOMhDphgwj9ySqL1cvEPZo6dg/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x13 [3360909822661]",
+            "urlDrive": "https://drive.google.com/file/d/1g1VZVyCI-U7QX1yw8ZvIaM9c8L4b9WN2/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x16 [3360910019269]",
+            "urlDrive": "https://drive.google.com/file/d/1qsP11ix6PFDonll9DmD9LeMVjoQaH46-/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x17 [3360910084805]",
+            "urlDrive": "https://drive.google.com/file/d/12EPtWK7UhQYvsoXnInRd6J9jH45MP0Nf/view"
+          },
+          {
+            "tituloEpisodio": "Chips .6x18 [3360910150341]",
+            "urlDrive": "https://drive.google.com/file/d/19nA2HL9MEopW70H75x4Q8VmALddLbgVU/view"
+          },
+          {
+            "tituloEpisodio": "Chips 1×03 [2421768850117]",
+            "urlDrive": "https://drive.google.com/file/d/13PuLKZIj0Wt-uy_rl-s0CCwgPnPpnFCc/view"
+          },
+          {
+            "tituloEpisodio": "Chips 1x01 Piloto [2421768719045]",
+            "urlDrive": "https://drive.google.com/file/d/1ktRyfLfpX-T-IcgfMF6fgk5WTFSsGt9Z/view"
+          },
+          {
+            "tituloEpisodio": "Chips 1x02 [2421768784581]",
+            "urlDrive": "https://drive.google.com/file/d/1Jh0jmj_yr-AL8qD7ncORqCAGw3uQTaBj/view"
+          },
+          {
+            "tituloEpisodio": "Chips 1x04 [2421768915653]",
+            "urlDrive": "https://drive.google.com/file/d/1w16fWB42ejdoW9UiT0VfNkVcx01mgnxv/view"
+          },
+          {
+            "tituloEpisodio": "Chips 1x05 [2421768981189]",
+            "urlDrive": "https://drive.google.com/file/d/10pskqGHwztVwD4auoL4wvuyM-RLgzhH4/view"
+          },
+          {
+            "tituloEpisodio": "Chips 1x06 [2421775534789]",
+            "urlDrive": "https://drive.google.com/file/d/1N9lM47z0s-cHCFfHhPsqriC0YG1RQk3B/view"
+          },
+          {
+            "tituloEpisodio": "Chips 1x13 [2426354469573]",
+            "urlDrive": "https://drive.google.com/file/d/1V3Lsw3HFcfRzWMNnQATdEWVI1bSCNUqK/view"
+          },
+          {
+            "tituloEpisodio": "Chips 1x15 [2426389859013]",
+            "urlDrive": "https://drive.google.com/file/d/1JN6DR5XO9fLLdo9k2i826QZY3Wd36yF6/view"
+          },
+          {
+            "tituloEpisodio": "Chips 2X03 [2434537491141]",
+            "urlDrive": "https://drive.google.com/file/d/15kcKJEelgWKuXJDmjx-QIoH7Q1TKz1Zb/view"
+          },
+          {
+            "tituloEpisodio": "Chips 2x08 [2436939516613]",
+            "urlDrive": "https://drive.google.com/file/d/1rr6B7iaITtI7pYvbghbiMDAB-GXS_7wZ/view"
+          },
+          {
+            "tituloEpisodio": "Chips 2x10 [2436939778757]",
+            "urlDrive": "https://drive.google.com/file/d/1L7TFsI3586h82jYej3UqBUIWfFu-dg-E/view"
+          },
+          {
+            "tituloEpisodio": "Chips 2x11 [2439841581765]",
+            "urlDrive": "https://drive.google.com/file/d/1JnXVm1U0f_yjPL783gBftK0YNGEL5UEi/view"
+          },
+          {
+            "tituloEpisodio": "Chips 2x12 [2439841647301]",
+            "urlDrive": "https://drive.google.com/file/d/16rBTO9p3pzzjRLdCESFkveVHd1nOHOzk/view"
+          },
+          {
+            "tituloEpisodio": "Chips.2x15 [2443658136261]",
+            "urlDrive": "https://drive.google.com/file/d/1K73Pxe1p0_-3V2FITHJaAZv09-S6MULL/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x6 [16579968240325]",
+            "urlDrive": "https://drive.google.com/file/d/1NfM3xTG1onb9CqjU_bkUomY8zI_bZWCM/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x7 [16579968174789]",
+            "urlDrive": "https://drive.google.com/file/d/1hDZEPcm2WCBrRnVBrr4A_e1NiaJsg7WY/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x8 [16579956837061]",
+            "urlDrive": "https://drive.google.com/file/d/17iG7kuggRivzZ2HIViNmlsK5UTSZ0CjM/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x9 [16579956705989]",
+            "urlDrive": "https://drive.google.com/file/d/1V7UnfuZCSa_54FKiyPkOzTrVWhrWcPSd/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x10 [16579956574917]",
+            "urlDrive": "https://drive.google.com/file/d/1hzIp67n-N4i-EXFIfH0FhGY6AXTvOD_Y/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x11 [16579956378309]",
+            "urlDrive": "https://drive.google.com/file/d/19X6N3RCqgzS6jCMjHfIHQSqBaawVJGgw/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x12 [16579956050629]",
+            "urlDrive": "https://drive.google.com/file/d/1qFuC9mRVDdTsJS-5_WojFico16RDGf-3/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x13 [16579955919557]",
+            "urlDrive": "https://drive.google.com/file/d/1BcCSMsxC_MIW-j6yBIQ1NCkzlN0F-Hjd/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x15 [16579955722949]",
+            "urlDrive": "https://drive.google.com/file/d/1KPHPaktneC89z5omWK4OAm75H2cmmIM2/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x16 [16579943467717]",
+            "urlDrive": "https://drive.google.com/file/d/13DcuvLs14e0v9PvITY50Dx8cszwicTgU/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x18 [16579943402181]",
+            "urlDrive": "https://drive.google.com/file/d/1cURXZDLVMbD3icsoo7ktxNriyM44kRxd/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x19 [16579943205573]",
+            "urlDrive": "https://drive.google.com/file/d/1Z5pSwzTwVkgATV03f2_nadkU2ghNU7cu/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x20 [16579943074501]",
+            "urlDrive": "https://drive.google.com/file/d/1NahmKIQKK24KWKdgRmy_BsU9tT8y9cB6/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x22 [16579942681285]",
+            "urlDrive": "https://drive.google.com/file/d/1mFR8IZut0EbwzTWvCQNkrdeMxLOJe82N/view"
+          },
+          {
+            "tituloEpisodio": "CHP.3x23 [16579942419141]",
+            "urlDrive": "https://drive.google.com/file/d/1LB6uwz3FxSh8_COQraOzjYH9_TLCgv_X/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tmdbId": 2468,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Streets of San Francisco",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/eE8q2gfFrcvk99dbr8i3a62SjjW.jpg",
+    "year": "1972",
+    "fechaEstreno": "1972-09-23",
+    "rating": "7.1",
+    "votos": 109,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Crimen",
+      "Drama",
+      "Action & Adventure"
+    ],
+    "generosTexto": "Crimen, Drama, Action & Adventure",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Karl Malden",
+        "personaje": "Mike Stone",
+        "foto": "https://image.tmdb.org/t/p/w185/njDua2jZ1X1f5SYLzpxDt0hIhYu.jpg"
+      },
+      {
+        "nombre": "Michael Douglas",
+        "personaje": "Steve Keller",
+        "foto": "https://image.tmdb.org/t/p/w185/kVYGPIZowzXLEQfAGUNOqKjAbBb.jpg"
+      },
+      {
+        "nombre": "Richard Hatch",
+        "personaje": "Dan Robbins",
+        "foto": "https://image.tmdb.org/t/p/w185/58CZHjwGoEfUhT5c5EI6Sh8YxzV.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Quinn Martin Productions (QM), Warner Bros. Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "police, police detective, older man younger man relationship, police inspector, homicide detective, police lieutenant, cops",
+    "similares": [
+      {
+        "titulo": "Baretta",
+        "poster": "https://image.tmdb.org/t/p/w342/xayGSRT2GbcFTwNIqt6l355v29F.jpg",
+        "year": "1975",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Los asesinatos de Midsomer",
+        "poster": "https://image.tmdb.org/t/p/w342/pz7tsWxe0TTdfJnWPjZAEnrSl5M.jpg",
+        "year": "1997",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Crime Story",
+        "poster": "https://image.tmdb.org/t/p/w342/he4iKKlgXnT7kPAjvYFeREiHPmj.jpg",
+        "year": "1986",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "T. J. Hooker",
+        "poster": "https://image.tmdb.org/t/p/w342/zcHUwD20mqMD4g8LKdpKD12QRhE.jpg",
+        "year": "1982",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Grace",
+        "poster": "https://image.tmdb.org/t/p/w342/r9hE4eF8IGbcoyl419Nfllkv6Ag.jpg",
+        "year": "2021",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "The Inspector Lynley Mysteries",
+        "poster": "https://image.tmdb.org/t/p/w342/d68bISjO6e6cOtgeygJO471FUIh.jpg",
+        "year": "2002",
+        "rating": "7.4"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Edward Hume"
+    ],
+    "numeroTemporadas": 5,
+    "numeroEpisodios": 119,
+    "temporadasTmdb": [
+      {
+        "air_date": "1972-09-16",
+        "episode_count": 3,
+        "id": 7806,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/3TYrmT4mFU0o7qkltpnxry5GWLr.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1972-09-23",
+        "episode_count": 26,
+        "id": 7803,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/wREfCDSgS38YSDKLYrMisutdHEP.jpg",
+        "season_number": 1,
+        "vote_average": 6.9
+      },
+      {
+        "air_date": "1973-09-13",
+        "episode_count": 23,
+        "id": 7804,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/1Am0dngsBiShI7ywTC7lxJZIjGB.jpg",
+        "season_number": 2,
+        "vote_average": 5.9
+      },
+      {
+        "air_date": "1974-09-12",
+        "episode_count": 23,
+        "id": 7802,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/13dSuID6iBnthXu3Izub8DZn0R4.jpg",
+        "season_number": 3,
+        "vote_average": 6.8
+      },
+      {
+        "air_date": "1975-09-11",
+        "episode_count": 23,
+        "id": 7801,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/bdSJQzeicP4PXqbohI0AhUPHwtT.jpg",
+        "season_number": 4,
+        "vote_average": 5.8
+      },
+      {
+        "air_date": "1976-09-30",
+        "episode_count": 24,
+        "id": 7805,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/mHkEspgJqKaUZl1OBF9M7CYLwg6.jpg",
+        "season_number": 5,
+        "vote_average": 5.8
+      }
+    ],
+    "tituloSerie": "Las calles de San Francisco",
+    "descripcion": "San Francisco, la ciudad de la bahía, hogar de los funiculares, el dorado puente Golden Gate, las calles inclinadas... y los asesinatos, necesita de quienes se ocupen de mantener la seguridad. Ellos son el detective Mike Stone (Karl Malden) con 23 años en el cuerpo de policia y su joven y guapo (muy, pero que muy guapo) compañero, el inspector Steve Keller (Michael Douglas).\n\nLas Calles de San Francisco fue una de las series más populares de los años 70, una época repleta de dramas policiales de buena calidad en la televisión.El gran éxito que tuvo la serie entre el público se debió mayormente a la química entre los dos protagonistas, el veterano con mas de 20 años de carrera y el novato educado en la universidad, que además le valió 16 nominaciones a los premios Emmy durante los cinco años en que se transmitió, incluídos cuatro para Malden como actor principal y tres para Douglas como actor de reparto en una serie dramática.\n\nEn la quinta temporada se incorporó al reparto el actor Richard Hacth (conocido posteriormente como el \"Capitán Apolo\"en la serie \"Galactica:Estrella de combate\") en el papel de el inspector \"Dan Robbins\" sustituyendo a Michael Douglas tras abandonar la serie.",
+    "imagen": "https://image.tmdb.org/t/p/w780/vQa0d3aMYQ0bsGITY0Z5XfSc6OZ.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Las Calles de san francisco  2x03  por el amor de Dios [1962733537989]",
+            "urlDrive": "https://drive.google.com/file/d/1RO1ahtNfPzeYF4fwzu6DwQVs4MsTgy-s/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles de San Francisco  2X10 La muerte de un soplón [1962757393093]",
+            "urlDrive": "https://drive.google.com/file/d/1GcUcUifAKcjwonD82am-QIzFLD9L_wK2/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles de San Francisco 2x01 Muerto por error [1962713025221]",
+            "urlDrive": "https://drive.google.com/file/d/1tFWuWd5cb644E4QCH4KhtXTr4-MSorTG/view"
+          },
+          {
+            "tituloEpisodio": "Las calles de San Francisco 2x02 Traición [1962723117765]",
+            "urlDrive": "https://drive.google.com/file/d/1brJj6cfG-0L72UlWuD6MharVUBip7BF7/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles de San francisco 2x04 Antes de morir [1962735897285]",
+            "urlDrive": "https://drive.google.com/file/d/1G-pok4u_txZ0Jn_qyZgeWJlWIJ8QaJ3j/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles de San francisco 2x05 De vuelta a casa [1962737273541]",
+            "urlDrive": "https://drive.google.com/file/d/1lcr1ZpuRzsdHNrd0HkzaB1auAg9YOtZ4/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles de San francisco 2x06 El sello de la muerte [1962739043013]",
+            "urlDrive": "https://drive.google.com/file/d/1oN9e6hU37TncbKxoe3golBSE8L5Pc-BX/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles De San Francisco 2x07  El harem  [2523379337925]",
+            "urlDrive": "https://drive.google.com/file/d/1SJ8gT2Yc4Phrq_tdtsulgMQFEWNkjLc4/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles de San Francisco 2X07 El harem [1962745793221]",
+            "urlDrive": "https://drive.google.com/file/d/11h7HDTXYwM2bpQyDXzFXVw3fOFv1p1J6/view"
+          },
+          {
+            "tituloEpisodio": "Las calles de San Francisco 2X08  No habrá placa para Benji [1962750446277]",
+            "urlDrive": "https://drive.google.com/file/d/1ZERvMTFpzAlrfzuHmaRg1bkJmqajeyX5/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles de San Francisco 2X09 La plaga de los 24 kilates [1962756868805]",
+            "urlDrive": "https://drive.google.com/file/d/1ESQFnQYYewhJN3W-Yv7JFUw4bWcG0SFC/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles De San Francisco 2X16-Capilla de los malditos [Latino] [1997080496837]",
+            "urlDrive": "https://drive.google.com/file/d/1xX_l63zY_q-g22lfPIPY9HgCzJt0vbPC/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles De San Francisco 2X17-Bloqueo [Latino] [1997080758981]",
+            "urlDrive": "https://drive.google.com/file/d/1Xj1eLhZ5BTp3layylaKFzAaRrVidmZPD/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles De San Francisco 2X18-Fuego cruzado [Latino] [1997081021125]",
+            "urlDrive": "https://drive.google.com/file/d/1HbKVOMEkQaNsEnpa_RVwpc9_P0h-Zjyr/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles De San Francisco 2X19-Una cadena de los títeres [Latino] [1997081152197]",
+            "urlDrive": "https://drive.google.com/file/d/1MWdYNkCl0aqoK6MGs4qpqMOuAaduU12s/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles De San Francisco 2X20-Inferno [Latino] [1997081479877]",
+            "urlDrive": "https://drive.google.com/file/d/1CEpDDhwy0peblB0z1Ct0QA4aBP5poCvY/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles De San Francisco 2x21-La raza duro-a [2030177422021]",
+            "urlDrive": "https://drive.google.com/file/d/1bFzqWsixUrK1lkx_YcLIUeUFuWfCAtvc/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles De San Francisco 2x22-Rampage [2030177553093]",
+            "urlDrive": "https://drive.google.com/file/d/1egcO3RsAndFILw5GiZoaxoubvj1fdpHy/view"
+          },
+          {
+            "tituloEpisodio": "Las Calles De San Francisco 2x23-La muerte y los pocos favorecidos [2030177815237]",
+            "urlDrive": "https://drive.google.com/file/d/1HzEnhlYJInWER7eMsC0d5K1MV01JXSdc/view"
+          },
+          {
+            "tituloEpisodio": "Las calles de san francisco 3x01 - One Last Shot [2030201080517]",
+            "urlDrive": "https://drive.google.com/file/d/1lrPeeJPFa8JHTO_oZH7EeBwcqxouaasm/view"
+          },
+          {
+            "tituloEpisodio": "Las calles de San Francisco 3x02 Las especies más mortíferas [2030201211589]",
+            "urlDrive": "https://drive.google.com/file/d/1QTXp23ueoj2aUPwpSsCkE_d50PoJHuDU/view"
+          },
+          {
+            "tituloEpisodio": "las calles de san francisco 3x03.Target.Red [2030201277125]",
+            "urlDrive": "https://drive.google.com/file/d/16D63GOYr2_eOU6kqAhI4iwOAxWzjzGSq/view"
+          },
+          {
+            "tituloEpisodio": "las calles de san francisco 3x04 Mask Of Death [2030201604805]",
+            "urlDrive": "https://drive.google.com/file/d/1lap5O9oLOPLvug8z-n6aP0NeRbOM-Icb/view"
+          },
+          {
+            "tituloEpisodio": "las calles de San Francisco 3X05 ya no marcho [2030202063557]",
+            "urlDrive": "https://drive.google.com/file/d/1nOsZurZRTIlV4qQ9eq2vod7yTIFo8pCF/view"
+          },
+          {
+            "tituloEpisodio": "las calles de san francisco 3x06 One Chance To Live [2030202391237]",
+            "urlDrive": "https://drive.google.com/file/d/1bCr0kNk7TBTpS-K_H_28yPf1BLFuM7_0/view"
+          },
+          {
+            "tituloEpisodio": "las calles de san francisco 3X07 Jacob's Boy [2050155612869]",
+            "urlDrive": "https://drive.google.com/file/d/17aJIEwH84RFRCaPTbaL5paTe7_UNxL6B/view"
+          },
+          {
+            "tituloEpisodio": "las calles de san francisco 3X08 - Flags Of Terror [2050155743941]",
+            "urlDrive": "https://drive.google.com/file/d/1pni4SAJMUqnsffSTioFFGqYC152Q97WU/view"
+          },
+          {
+            "tituloEpisodio": "Las calles de san francisco 3X09 Cry help! [2050156006085]",
+            "urlDrive": "https://drive.google.com/file/d/1IQ2BNSw9RVEN0v9Q1Gh0BpvB5UHYIVBy/view"
+          },
+          {
+            "tituloEpisodio": "las calles de san francisco 3X10 para bien o para mal [2050156268229]",
+            "urlDrive": "https://drive.google.com/file/d/1F87frOTgbd1ICiDm3EeXgaTAcYy_4EBp/view"
+          },
+          {
+            "tituloEpisodio": "las calles de san francisco 3x11 Ave de Rapiña en español [2050156726981]",
+            "urlDrive": "https://drive.google.com/file/d/1BjqKgZKJjGhwVZ72plyx0VwBwa7f0LPa/view"
+          },
+          {
+            "tituloEpisodio": "Las calles de San Francisco 3x12 Licencia para matar [2050156989125]",
+            "urlDrive": "https://drive.google.com/file/d/1F9_vBUMByKJ57mJdqiPr5X6awZTreoIc/view"
+          },
+          {
+            "tituloEpisodio": "las calles de san francisco 3x13 La plaga del calibre veinticinco [2050158234309]",
+            "urlDrive": "https://drive.google.com/file/d/1_YSkubzbeYnymoB28vzueTM1IHSm71SB/view"
+          },
+          {
+            "tituloEpisodio": "las calles de san francisco 3x14 Mister Nobody [2050158299845]",
+            "urlDrive": "https://drive.google.com/file/d/1k_e0sj1Y3qJWGl1Xm8Z5pkM0cnScVK3Y/view"
+          },
+          {
+            "tituloEpisodio": "Las calles de San Francisco 3x15 Falso Testigo [2050158627525]",
+            "urlDrive": "https://drive.google.com/file/d/1-J3GFiFv4Tfb81kmokN81fyzjCZhCRcJ/view"
+          },
+          {
+            "tituloEpisodio": "Las calles de San Francisco 3x16 Cartas de la tumba [2058315762373]",
+            "urlDrive": "https://drive.google.com/file/d/13Nz3xVZdpeNNpZku6-Ox-spakvqGkL3k/view"
+          },
+          {
+            "tituloEpisodio": "Las calles de San Francisco 3x17 Endgame [2058315893445]",
+            "urlDrive": "https://drive.google.com/file/d/1T1WauForgCmUlTtnbVnohkHUDll2yprD/view"
+          },
+          {
+            "tituloEpisodio": "Las calles de San Francisco 3x18 Un Asesinato de Diez dólares [2058315958981]",
+            "urlDrive": "https://drive.google.com/file/d/1wSDKPOT5erF1c-wKoH-s7ukc0I2DFC97/view"
+          },
+          {
+            "tituloEpisodio": "las calles de san francisco 3x19 La programación de Charlie Blake [2058316090053]",
+            "urlDrive": "https://drive.google.com/file/d/1ThzyffEWQjvut6OYYEYhIgBrPEkPfe2k/view"
+          },
+          {
+            "tituloEpisodio": "las calles de san francisco 3x20 River of Fear [2058316155589]",
+            "urlDrive": "https://drive.google.com/file/d/1wLYThppBvJy9hZq87qQQvmMF62MRO2Tb/view"
+          },
+          {
+            "tituloEpisodio": "las calles de san francisco 3x21 Asylum [2058316286661]",
+            "urlDrive": "https://drive.google.com/file/d/1Ih-EivYZM1UTLgjDnoXBPYn8iuQApfy2/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tmdbId": 2730,
+    "tmdbType": "tv",
+    "tituloOriginal": "I Love Lucy",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/5tGYbT3irV4ZuO7M65HewlVT6fx.jpg",
+    "year": "1951",
+    "fechaEstreno": "1951-10-15",
+    "rating": "7.9",
+    "votos": 272,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Comedia",
+      "Familia"
+    ],
+    "generosTexto": "Comedia, Familia",
+    "clasificacion": "TV-G",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Lucille Ball",
+        "personaje": "Lucy Ricardo",
+        "foto": "https://image.tmdb.org/t/p/w185/gcJ5Qwg9lcadvdCxC22AjFuJC4A.jpg"
+      },
+      {
+        "nombre": "Desi Arnaz",
+        "personaje": "Ricky Ricardo",
+        "foto": "https://image.tmdb.org/t/p/w185/5XLcxJCZYUX2t7PuCwvE9hOOYzI.jpg"
+      },
+      {
+        "nombre": "Vivian Vance",
+        "personaje": "Ethel Mertz",
+        "foto": "https://image.tmdb.org/t/p/w185/yQLSRUQOOM88Tunu879cYFuQTrl.jpg"
+      },
+      {
+        "nombre": "William Frawley",
+        "personaje": "Fred Mertz",
+        "foto": "https://image.tmdb.org/t/p/w185/mPCnAsN2GbBoLl34nrviZ4aCCe1.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Desilu Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "new york city, husband wife relationship, housewife, friendship, slapstick comedy, neighbor, singer, bandleader, nightclub entertainer, sitcom, grand, redhead",
+    "similares": [
+      {
+        "titulo": "Los Jeffersons",
+        "poster": "https://image.tmdb.org/t/p/w342/iFjIaWr9qDKMLnnh8tHwO6Tzp6D.jpg",
+        "year": "1975",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "El rey de Queens",
+        "poster": "https://image.tmdb.org/t/p/w342/e718w2IAG0Svh80AHop44NFvNka.jpg",
+        "year": "1998",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Loco por ti",
+        "poster": "https://image.tmdb.org/t/p/w342/3h7UQfYwhPSJPuMaz2C7nxxvwtI.jpg",
+        "year": "1992",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "227",
+        "poster": "https://image.tmdb.org/t/p/w342/yoIFuErMvCb4ZTSnQ079cIcWYjf.jpg",
+        "year": "1985",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Apartamento 23",
+        "poster": "https://image.tmdb.org/t/p/w342/4o6PIuE00USoBaCz7FAmSCE2I94.jpg",
+        "year": "2012",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "The Danny Thomas Show",
+        "poster": "https://image.tmdb.org/t/p/w342/l2ovIZjDq2PelProVtBXmK2SkkY.jpg",
+        "year": "1953",
+        "rating": "6.2"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Bob Carroll Jr.",
+      "Jess Oppenheimer",
+      "Madelyn Pugh"
+    ],
+    "numeroTemporadas": 6,
+    "numeroEpisodios": 180,
+    "temporadasTmdb": [
+      {
+        "air_date": "1990-04-30",
+        "episode_count": 18,
+        "id": 8869,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/5HXXBLdPJEn6qIcqFxZYeHmZapd.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1951-10-15",
+        "episode_count": 35,
+        "id": 8867,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/n2hHVHoSJb6cx65J0CME2drE66i.jpg",
+        "season_number": 1,
+        "vote_average": 7.4
+      },
+      {
+        "air_date": "1952-09-15",
+        "episode_count": 31,
+        "id": 8868,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/6xRq6KW6uGLIAHkWH6yFh7ONshu.jpg",
+        "season_number": 2,
+        "vote_average": 8.7
+      },
+      {
+        "air_date": "1953-10-05",
+        "episode_count": 31,
+        "id": 8866,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/rV6TsknL6l3F44kE1HK8MTyc9f0.jpg",
+        "season_number": 3,
+        "vote_average": 8.7
+      },
+      {
+        "air_date": "1954-10-04",
+        "episode_count": 30,
+        "id": 8863,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/ihVqENEyrnvxsD00EUslWrWblZK.jpg",
+        "season_number": 4,
+        "vote_average": 8.8
+      },
+      {
+        "air_date": "1955-10-03",
+        "episode_count": 26,
+        "id": 8865,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/ue3TG3vHlMIkfclcZWzUVf6IGi4.jpg",
+        "season_number": 5,
+        "vote_average": 8.9
+      },
+      {
+        "air_date": "1956-10-01",
+        "episode_count": 27,
+        "id": 8864,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/mgAnyKRKvLI9cj8Yb7cCULrkQOm.jpg",
+        "season_number": 6,
+        "vote_average": 8.8
+      }
+    ],
+    "tituloSerie": "Te quiero, Lucy",
+    "descripcion": "\"I Love Lucy\" (\"Te quiero, Lucy\" en España) es una serie televisiva estadounidense de la CBS que se emitió durante la década de los 50, desde 1951 a 1957. Fue la serie más vista en Estados Unidos.  Se retransmitió en numerosos países y ganó importantes galardones, entre ellos cinco premios Emmy. La comedia llevó la fama a su actriz principal Lucille Désirée Ball Morton, conocida como Lucille Ball, quien cautivó al público demostrando sus habilidades como intérprete cómica.\n\nFue el primer programa de televisión en haber sido grabado en estudio,  frente a una audiencia, y en película de 35 mm",
+    "imagen": "https://image.tmdb.org/t/p/w780/mPUSrFTvQqwEqTtfukxJBtkbxWj.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "1x02lu [5216973949637]",
+            "urlDrive": "https://drive.google.com/file/d/1QIXug-ccoyhyJn3wvzdNasB0RcEmRDn0/view"
+          },
+          {
+            "tituloEpisodio": "1x03lu [5216989678277]",
+            "urlDrive": "https://drive.google.com/file/d/1bSarYRsiWK_Wm368KTDsjc2GfGG0GmgG/view"
+          },
+          {
+            "tituloEpisodio": "1x4lu [5221190208197]",
+            "urlDrive": "https://drive.google.com/file/d/1_nYM4f1nTDjhxyQxz7s9GDcvj4_AwDqG/view"
+          },
+          {
+            "tituloEpisodio": "1x5lu [5221206461125]",
+            "urlDrive": "https://drive.google.com/file/d/1YRvNFf1YhcETikjv22W19MKSe_zRqONT/view"
+          },
+          {
+            "tituloEpisodio": "1x7lu [5224551549637]",
+            "urlDrive": "https://drive.google.com/file/d/1SfO1lwRpw_l9aFjW0bDxvXNe6OQ4Qtek/view"
+          },
+          {
+            "tituloEpisodio": "1x8lu [5227843226309]",
+            "urlDrive": "https://drive.google.com/file/d/1CtH2D_MYPSbekNbO9uAvmDwN9lDvanxR/view"
+          },
+          {
+            "tituloEpisodio": "1x9lu [5227843291845]",
+            "urlDrive": "https://drive.google.com/file/d/1d3Kh8MFGH6AvjraNwUIKAZSW4LLm0pld/view"
+          },
+          {
+            "tituloEpisodio": "1x10lu [5233673505477]",
+            "urlDrive": "https://drive.google.com/file/d/1h6tZk5h0uHr6NNwRSUAsAtry22rDVzOG/view"
+          },
+          {
+            "tituloEpisodio": "1x11lu [5233681042117]",
+            "urlDrive": "https://drive.google.com/file/d/1GYkXisK6KpjZ58Tt0uYWXirta_LLgmf4/view"
+          },
+          {
+            "tituloEpisodio": "1x12 [6656450104005]",
+            "urlDrive": "https://drive.google.com/file/d/1MZJ0dlcSFxHdDY4ZMubAPIKCG4YoJuO2/view"
+          },
+          {
+            "tituloEpisodio": "1x13lu [5238181595845]",
+            "urlDrive": "https://drive.google.com/file/d/1wGw06o3M7McfXVbGnEawgzfUGnwE5IbY/view"
+          },
+          {
+            "tituloEpisodio": "1x14lu [5241765628613]",
+            "urlDrive": "https://drive.google.com/file/d/19RInONKRDkpW-I3-V-bTp9cI1jVBZxwz/view"
+          },
+          {
+            "tituloEpisodio": "1x15lu [5241789745861]",
+            "urlDrive": "https://drive.google.com/file/d/1Wnu6oUFqcbe7KHUNg39JNyqPq9Ca7Vmu/view"
+          },
+          {
+            "tituloEpisodio": "1x16lu [5254576605893]",
+            "urlDrive": "https://drive.google.com/file/d/1-HJHT6MPjfUrD8Lec55eun6GLNmYhkNm/view"
+          },
+          {
+            "tituloEpisodio": "1x17lu [5254577064645]",
+            "urlDrive": "https://drive.google.com/file/d/1smISHGwHj56lGPMYAh8YRtyPakWRHi-g/view"
+          },
+          {
+            "tituloEpisodio": "1X18lu [5266378918597]",
+            "urlDrive": "https://drive.google.com/file/d/1uYsu-u3TaG_L_-OHD_xvOpVefQ20aBOc/view"
+          },
+          {
+            "tituloEpisodio": "1x20lu [5267625151173]",
+            "urlDrive": "https://drive.google.com/file/d/1wbRBdmuGhqrU912tn-uLGTlRZtitBi-w/view"
+          },
+          {
+            "tituloEpisodio": "1x21lu [5267625347781]",
+            "urlDrive": "https://drive.google.com/file/d/1F7qJqgXDunyobBuOBbqGrlUOQsbW3QpR/view"
+          },
+          {
+            "tituloEpisodio": "1x22lu [5279252875973]",
+            "urlDrive": "https://drive.google.com/file/d/1PXbQBR6Tl05DcEmQq4oSjmARX9nGaJ_P/view"
+          },
+          {
+            "tituloEpisodio": "1x23lu [5279243438789]",
+            "urlDrive": "https://drive.google.com/file/d/1FgPqmzJEb6fLZG7MjWkGTKTG_11NmXTX/view"
+          },
+          {
+            "tituloEpisodio": "1x24lu [5287429016261]",
+            "urlDrive": "https://drive.google.com/file/d/1tRc_gAA18lH-9cmoYLjF8P4kURYYlUh8/view"
+          },
+          {
+            "tituloEpisodio": "1x25lu [5287510280901]",
+            "urlDrive": "https://drive.google.com/file/d/18vFr6TxdgR-2ggcZesCsDqlYp8UCiJ-X/view"
+          },
+          {
+            "tituloEpisodio": "1X26 [6656457312965]",
+            "urlDrive": "https://drive.google.com/file/d/1SepkTsJ_lH6sq7afe_x2kmKic8b4ykiv/view"
+          },
+          {
+            "tituloEpisodio": "1x27lu [5301774256837]",
+            "urlDrive": "https://drive.google.com/file/d/1QsG9aThb-To6P2qxOakgsbDEsoG56D-i/view"
+          },
+          {
+            "tituloEpisodio": "1x28lu [5334859254469]",
+            "urlDrive": "https://drive.google.com/file/d/1B6WGn3Jxa4QAU3ck7PxUcn9tWsSrAhwc/view"
+          },
+          {
+            "tituloEpisodio": "1x29lu [5334859844293]",
+            "urlDrive": "https://drive.google.com/file/d/1gFT2IAMe44hgsYrn4VioPjcguWwX-PwM/view"
+          },
+          {
+            "tituloEpisodio": "1x30lu [5370641582789]",
+            "urlDrive": "https://drive.google.com/file/d/1mLJG78gd0nJqXRfnsFKYCsqLUAbzz27D/view"
+          },
+          {
+            "tituloEpisodio": "1x31lu [5370641844933]",
+            "urlDrive": "https://drive.google.com/file/d/1_9PcyupA_iGB8ok3BbtttBys0nl-m0oz/view"
+          },
+          {
+            "tituloEpisodio": "1x32lu [5370641910469]",
+            "urlDrive": "https://drive.google.com/file/d/1KDDdizprqmUMKC_NkEqKf93N2eXza-0X/view"
+          },
+          {
+            "tituloEpisodio": "1x33lu [5383554403013]",
+            "urlDrive": "https://drive.google.com/file/d/1Ipc1IuSCAz_DkvjsAqm_nJ7Jsru4oATV/view"
+          },
+          {
+            "tituloEpisodio": "1x34lu [5383554468549]",
+            "urlDrive": "https://drive.google.com/file/d/1RfCFOGDo888jS1Fkc2W5Md9Vmur-PDhx/view"
+          },
+          {
+            "tituloEpisodio": "1x35lu [5671047924421]",
+            "urlDrive": "https://drive.google.com/file/d/1iAYNjWvEAJfPrWFYQM6IKQdK5A0inXLk/view"
+          },
+          {
+            "tituloEpisodio": "2x'01 [6647342238405]",
+            "urlDrive": "https://drive.google.com/file/d/1y39UvGQvimuLhRtv6H6RjSPOpedGiURg/view"
+          },
+          {
+            "tituloEpisodio": "2X03 [6647497493189]",
+            "urlDrive": "https://drive.google.com/file/d/14FL_V3y9Y73I-lJddf_SdmT7U6tZNUFC/view"
+          },
+          {
+            "tituloEpisodio": "2x04 [6650299222725]",
+            "urlDrive": "https://drive.google.com/file/d/1rG7vXFIILI7jRKRKxSwVbCfg744odCno/view"
+          },
+          {
+            "tituloEpisodio": "2x07 [6653305621189]",
+            "urlDrive": "https://drive.google.com/file/d/1iP0xFfuoPpqnEvgxD2gvIm2lBaZA64xn/view"
+          },
+          {
+            "tituloEpisodio": "2x08 [6653400713925]",
+            "urlDrive": "https://drive.google.com/file/d/1XrQTjLEus9IYV0fO1ok_-gUA2T7P-gl-/view"
+          },
+          {
+            "tituloEpisodio": "2x09 [6653400910533]",
+            "urlDrive": "https://drive.google.com/file/d/1OFQiBSq_CalFSlAkVZp88BsJ0NALZWop/view"
+          },
+          {
+            "tituloEpisodio": "2x10 [6653514418885]",
+            "urlDrive": "https://drive.google.com/file/d/1lpRSNUsZyPXk69k_57l7dONZGhQ5AzIP/view"
+          },
+          {
+            "tituloEpisodio": "ILVLY.2x02 [2336660982469]",
+            "urlDrive": "https://drive.google.com/file/d/13p8-PK9EkVmH4FGYe-XC6frNA01cfWUY/view"
+          },
+          {
+            "tituloEpisodio": "lv 2x15 [6997396556485]",
+            "urlDrive": "https://drive.google.com/file/d/1LOADzOi8ovefP_IBRAmDx_fNCQi5D-rF/view"
+          },
+          {
+            "tituloEpisodio": "LV 2X22 [7001962187461]",
+            "urlDrive": "https://drive.google.com/file/d/1tMV_fTQkmJW5m4rGzIej2Qpj-zPwjmx8/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 453,
     "tmdbType": "tv",
     "tituloOriginal": "Mister Ed",
