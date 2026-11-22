@@ -1,5 +1,125 @@
 [
   {
+    "tmdbId": 23365,
+    "tmdbType": "tv",
+    "tituloOriginal": "Sergeant Preston of the Yukon",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/eOvomZmZjAh4pdWE2WZ9SsLaWil.jpg",
+    "year": "1955",
+    "fechaEstreno": "1955-09-29",
+    "rating": "6.8",
+    "votos": 8,
+    "runtime": "30min",
+    "runtimeMin": 30,
+    "genres": [
+      "Action & Adventure",
+      "Western",
+      "Drama"
+    ],
+    "generosTexto": "Action & Adventure, Western, Drama",
+    "clasificacion": "",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Dick Simmons",
+        "personaje": "Sergeant William Preston",
+        "foto": "https://image.tmdb.org/t/p/w185/x3gpfJMPTN6bBv40rtOVtgTIzzF.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Charles E. Skinner Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "gold rush, canadian stereotype, yukon, canada, royal canadian mounted police (mountie), klondike gold rush, northern canada, based on radio drama, canadian northwest, 1890s, yukon gold rush",
+    "similares": [
+      {
+        "titulo": "Klondike",
+        "poster": "https://image.tmdb.org/t/p/w342/2GefrF8K5fqyiHoMF0M5Qh8LCi5.jpg",
+        "year": "2014",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Randall, el justiciero",
+        "poster": "https://image.tmdb.org/t/p/w342/mYgwFT8JXW6J5YTs8DuzDDOKXlS.jpg",
+        "year": "1958",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Have Gun, Will Travel",
+        "poster": "https://image.tmdb.org/t/p/w342/6aJRq7FGs2axLOdZNJ2G4IOQtMx.jpg",
+        "year": "1957",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "The Lone Ranger",
+        "poster": "https://image.tmdb.org/t/p/w342/sAQSKgrYC0l5kQbLk8QXINAK6F4.jpg",
+        "year": "1949",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "Into the West",
+        "poster": "https://image.tmdb.org/t/p/w342/x2fOIeDgzf9CkDLlF1rR7ekP1sV.jpg",
+        "year": "2005",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "El gran Chaparral",
+        "poster": "https://image.tmdb.org/t/p/w342/2aiki9WLZWbv6PIl5CESOYdmOGj.jpg",
+        "year": "1967",
+        "rating": "6.7"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "George W. Trendle",
+      "Fran Striker"
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 75,
+    "temporadasTmdb": [
+      {
+        "air_date": "1955-09-29",
+        "episode_count": 33,
+        "id": 33334,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1956-09-13",
+        "episode_count": 23,
+        "id": 33335,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1957-10-03",
+        "episode_count": 22,
+        "id": 33336,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 3,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Sargento Preston",
+    "descripcion": "Serie de TV (1955-1958). 78 episodios. El sargento Preston es un \"mountie\" de la Policía Montada de Canadá, que patrulla el Territorio del Yukon con su caballo Rex y su fiel perro Yukon King (un husky siberiano), cuidando la ley y el orden. La serie está basada en un programa de radio serial llamado originalmente \"Challenge of the Yukon\" que se empezó a transmitir en 1938 por Radio WXYZ de Detroit, y en un cómic creado en 1951 por Gaylord Du Bois y Alberto Giolitti para Dell Comics.",
+    "imagen": "https://image.tmdb.org/t/p/original/i6sMs2rQmeeN18J46Hvh98QgmCA.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 5391,
     "tmdbType": "tv",
     "tituloOriginal": "Voyagers!",
@@ -99,7 +219,85 @@
     "imagen": "https://image.tmdb.org/t/p/original/9OcmPpcyiUzEGHFWkTvnqegHt4N.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Daktari 1x1 - The Elephant Thieves [2768532409029]",
+            "urlDrive": "https://drive.google.com/file/d/1FELwkUP7OYWQl-0_zlhmiQY95AOnKdJ1/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x2 - Predator of Wameru [2768531884741]",
+            "urlDrive": "https://drive.google.com/file/d/1tc61lvgW0ekeDJpR20WkeJ7Hn2xGCkR9/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x3  - The Killer Lion [2768531622597]",
+            "urlDrive": "https://drive.google.com/file/d/1M4Z0ArtdYpl_XI-Chz05vXFnYNcOsHrl/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x4 - Adventure of the Lions Cubs [2768531360453]",
+            "urlDrive": "https://drive.google.com/file/d/1b8TGvJAUQbOZmv5y6Hz5ld4uoiDK1z7f/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x5- Trail of the Cheetah [2768530967237]",
+            "urlDrive": "https://drive.google.com/file/d/1Mjbs4SAftgCB_YvI7VdWrif2BHC6E-bE/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x6 - Leopard of Mdala Gorge [2768530705093]",
+            "urlDrive": "https://drive.google.com/file/d/18fx8qPgcedRrhFcFzwc1lvEs9mXGsi7f/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x7 - The Diamond Smugglers [2768530311877]",
+            "urlDrive": "https://drive.google.com/file/d/1vdY0s3Wfh4xwN67oU-bRKu6zwsXlMJAs/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x8- The Chimp Who Went Ape [2768529984197]",
+            "urlDrive": "https://drive.google.com/file/d/1AOHVmmSZXte-PuR2d2HtV2MCrMfERS_9/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x9  - The Killer Dog [2768529722053]",
+            "urlDrive": "https://drive.google.com/file/d/1wqvqUMAjRIJ9oIYxtnZGi3v6sy5eabK9/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x10- Return Of The Killer, Part 1 [2768529263301]",
+            "urlDrive": "https://drive.google.com/file/d/1hgr8OHAA7S48g6YxPzy1V9ROXZ6_4HhG/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x11 -  Return Of The Killer, Part 2 [2768528673477]",
+            "urlDrive": "https://drive.google.com/file/d/1bZEPWixPbPXDs22Bm9Mmz2IbvXlP1Gbk/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x12  - The Maneater Of Wameru [2768528214725]",
+            "urlDrive": "https://drive.google.com/file/d/1aRKiVm8kW4LX675n5mOssQGSGWtRxvDP/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x13 - Crisis At The Compound [2768525658821]",
+            "urlDrive": "https://drive.google.com/file/d/1_sjWafc8O6sSoV2FT4tVfdKcpkNk2JH5/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x14  - The Hostages [2768525396677]",
+            "urlDrive": "https://drive.google.com/file/d/14H9NcVVgCWL4gt4k0RKlzmPkzkuzaFSj/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x15 - Judy And The Hyena [2768525068997]",
+            "urlDrive": "https://drive.google.com/file/d/1hQCN2quHagxsiXJzvGKPlTatoYFH6dgf/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x16- Wall Of Flames, Part 1 [2768524741317]",
+            "urlDrive": "https://drive.google.com/file/d/1HHuzWyQ2-71jhMmOZgYi3ybc6_W5Qtjz/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x17  - Wall Of Flames, Part 2 [2768524544709]",
+            "urlDrive": "https://drive.google.com/file/d/1C6x03yHIEmVirzyWB3pnSyJK6CpKtC5H/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x18 - Judy And The Gun-runners [2768524217029]",
+            "urlDrive": "https://drive.google.com/file/d/16SoCVm92DAZA6tNwlY1Bil4RiZFpBXbj/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 4530,
