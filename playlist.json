@@ -1,5 +1,107 @@
 [
   {
+    "tmdbId": 5391,
+    "tmdbType": "tv",
+    "tituloOriginal": "Voyagers!",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/te5zhQ26Eu5OmvQtkOOnX0L62St.jpg",
+    "year": "1982",
+    "fechaEstreno": "1982-10-03",
+    "rating": "7.7",
+    "votos": 100,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Sci-Fi & Fantasy"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy",
+    "clasificacion": "16",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Jon-Erik Hexum",
+        "personaje": "Phineas Bogg",
+        "foto": "https://image.tmdb.org/t/p/w185/dBZtnmLTARyhuwXUfJGvKOGYWbX.jpg"
+      },
+      {
+        "nombre": "Meeno Peluce",
+        "personaje": "Jeffrey Jones",
+        "foto": "https://image.tmdb.org/t/p/w185/cWtI9QpK7batUOH4EtixOpZpuDX.jpg"
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "Universal Television, James D. Parriott Productions, Scholastic Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "time travel, time machine, alternate history, speculative, lighthearted, grand",
+    "similares": [
+      {
+        "titulo": "Torchwood",
+        "poster": "https://image.tmdb.org/t/p/w342/bv7C5r7QyXGsaMxvU40FVY7SvrD.jpg",
+        "year": "2006",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Future Man",
+        "poster": "https://image.tmdb.org/t/p/w342/49mOgAEa4eKpPsoBH8UvvXwEMDT.jpg",
+        "year": "2017",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Viajeros",
+        "poster": "https://image.tmdb.org/t/p/w342/jgIRsrkSRFIA00RvSqhSUhePbAf.jpg",
+        "year": "2016",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Plan B",
+        "poster": "https://image.tmdb.org/t/p/w342/jP81t2WwpQVLZ8dqPJSPvH0r79z.jpg",
+        "year": "2023",
+        "rating": "5.9"
+      },
+      {
+        "titulo": "12 monos",
+        "poster": "https://image.tmdb.org/t/p/w342/pWbfF5gMAvybRhsCDFVat1gZgqz.jpg",
+        "year": "2015",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Continuum",
+        "poster": "https://image.tmdb.org/t/p/w342/ckeF0gNdw9mvjiNEebNbeoKZcwt.jpg",
+        "year": "2012",
+        "rating": "7.5"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "James D. Parriott"
+    ],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 20,
+    "temporadasTmdb": [
+      {
+        "air_date": "1982-10-03",
+        "episode_count": 20,
+        "id": 15517,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/mG0nvkEs6QdmRDfPFDn7PUt7O9m.jpg",
+        "season_number": 1,
+        "vote_average": 8.6
+      }
+    ],
+    "tituloSerie": "Viajeros",
+    "descripcion": "Phineas Bogg (Jon-Eric Hexum) es un viajero temporal que utiliza un artefacto del tamaño de un huevo de gallina llamado Omni que lo transporta a distintas épocas de la historia de la humanidad, permitiéndosele cambiar la historia cuando considera necesaria tal medida. Es acompañado por un huérfano (Meeno Peluce), que es un alumno estudioso y conoce hechos históricos que son útiles para el viajero.",
+    "imagen": "https://image.tmdb.org/t/p/original/9OcmPpcyiUzEGHFWkTvnqegHt4N.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 4530,
     "tmdbType": "tv",
     "tituloOriginal": "Daktari",
@@ -166,7 +268,85 @@
     "imagen": "https://image.tmdb.org/t/p/w780/snopJzlOhhjG5LKkW2SZ6A9YA0W.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Daktari 1x1 - The Elephant Thieves [2768532409029]",
+            "urlDrive": "https://drive.google.com/file/d/1FELwkUP7OYWQl-0_zlhmiQY95AOnKdJ1/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x2 - Predator of Wameru [2768531884741]",
+            "urlDrive": "https://drive.google.com/file/d/1tc61lvgW0ekeDJpR20WkeJ7Hn2xGCkR9/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x3  - The Killer Lion [2768531622597]",
+            "urlDrive": "https://drive.google.com/file/d/1M4Z0ArtdYpl_XI-Chz05vXFnYNcOsHrl/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x4 - Adventure of the Lions Cubs [2768531360453]",
+            "urlDrive": "https://drive.google.com/file/d/1b8TGvJAUQbOZmv5y6Hz5ld4uoiDK1z7f/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x5- Trail of the Cheetah [2768530967237]",
+            "urlDrive": "https://drive.google.com/file/d/1Mjbs4SAftgCB_YvI7VdWrif2BHC6E-bE/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x6 - Leopard of Mdala Gorge [2768530705093]",
+            "urlDrive": "https://drive.google.com/file/d/18fx8qPgcedRrhFcFzwc1lvEs9mXGsi7f/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x7 - The Diamond Smugglers [2768530311877]",
+            "urlDrive": "https://drive.google.com/file/d/1vdY0s3Wfh4xwN67oU-bRKu6zwsXlMJAs/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x8- The Chimp Who Went Ape [2768529984197]",
+            "urlDrive": "https://drive.google.com/file/d/1AOHVmmSZXte-PuR2d2HtV2MCrMfERS_9/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x9  - The Killer Dog [2768529722053]",
+            "urlDrive": "https://drive.google.com/file/d/1wqvqUMAjRIJ9oIYxtnZGi3v6sy5eabK9/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x10- Return Of The Killer, Part 1 [2768529263301]",
+            "urlDrive": "https://drive.google.com/file/d/1hgr8OHAA7S48g6YxPzy1V9ROXZ6_4HhG/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x11 -  Return Of The Killer, Part 2 [2768528673477]",
+            "urlDrive": "https://drive.google.com/file/d/1bZEPWixPbPXDs22Bm9Mmz2IbvXlP1Gbk/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x12  - The Maneater Of Wameru [2768528214725]",
+            "urlDrive": "https://drive.google.com/file/d/1aRKiVm8kW4LX675n5mOssQGSGWtRxvDP/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x13 - Crisis At The Compound [2768525658821]",
+            "urlDrive": "https://drive.google.com/file/d/1_sjWafc8O6sSoV2FT4tVfdKcpkNk2JH5/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x14  - The Hostages [2768525396677]",
+            "urlDrive": "https://drive.google.com/file/d/14H9NcVVgCWL4gt4k0RKlzmPkzkuzaFSj/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x15 - Judy And The Hyena [2768525068997]",
+            "urlDrive": "https://drive.google.com/file/d/1hQCN2quHagxsiXJzvGKPlTatoYFH6dgf/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x16- Wall Of Flames, Part 1 [2768524741317]",
+            "urlDrive": "https://drive.google.com/file/d/1HHuzWyQ2-71jhMmOZgYi3ybc6_W5Qtjz/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x17  - Wall Of Flames, Part 2 [2768524544709]",
+            "urlDrive": "https://drive.google.com/file/d/1C6x03yHIEmVirzyWB3pnSyJK6CpKtC5H/view"
+          },
+          {
+            "tituloEpisodio": "Daktari 1x18 - Judy And The Gun-runners [2768524217029]",
+            "urlDrive": "https://drive.google.com/file/d/16SoCVm92DAZA6tNwlY1Bil4RiZFpBXbj/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 3575,
