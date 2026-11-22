@@ -223,6 +223,8 @@
             .box-header-actions { grid-column: 2; grid-row: 1; justify-self: end; min-width: 0; }
             main.box-main { padding-top: var(--box-header-height, 132px); }
             .box-catalog-status { top: calc(var(--box-header-height, 132px) + 8px); }
+            main .box-catalog { max-width: none; padding-inline: clamp(24px, 3vw, 56px); }
+            .box-catalog .box-catalog-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 24px; }
         }
 
         /* Phone layout only; desktop and tablet styles retain their existing rules. */
@@ -458,7 +460,7 @@
     </div>
 
     <script type="text/babel" data-presets="react-classic">
-        const { useState, useEffect, useRef, useMemo } = React;
+        const { useState, useEffect, useLayoutEffect, useRef, useMemo } = React;
 
         const safeStorage = {
             getItem: (key) => { try { return localStorage.getItem(key); } catch (e) { return null; } },
@@ -1428,6 +1430,9 @@
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
             const movieContainerRef = useRef(null);
+            useLayoutEffect(() => {
+                if (!showIntro) window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            }, [activeTab, showIntro]);
             useEffect(() => {
                 const header = document.querySelector('.box-header');
                 if (!header) return;
@@ -2032,6 +2037,7 @@
 
 
             const handleTabClick = (tab) => {
+                if (tab.id === activeTab) window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
                 if (tab.id === 'home' && activeTab === 'home' && !loading) { lastHomeWake.current = Date.now(); setCatalogRefresh(value => value + 1); }
                 if (tab.id !== 'radio') { radioEngineRef.current?.stop(); setIsRadioPlaying(false); }
                 setActiveTab(tab.id); setSearch(''); setShowMobileSearch(false); setIsLocked(false); setIsPlaying(false); setShowMobileMoreMenu(false);
@@ -2179,7 +2185,7 @@
                                 radioState={radioState} radioFilter={radioFilter} setRadioFilter={setRadioFilter}
                                 radioFavorites={radioFavorites} onToggleFavorite={toggleFavorite} isItemFavorite={isItemFavorite} />
                         ) : activeTab === 'favorites' && !selectedItem ? (
-                            <div className="p-4 sm:p-10 animate-fade-in max-w-7xl mx-auto w-full space-y-10">
+                            <div className="box-catalog p-4 sm:p-10 animate-fade-in max-w-7xl mx-auto w-full space-y-10">
                                 <div className="space-y-4">
                                     <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
                                         <div className="p-2.5 bg-cyan-500/15 rounded-xl text-cyan-400 border border-cyan-500/30"><Icon fill="currentColor" name="heart" size={22}/></div>
@@ -2188,7 +2194,7 @@
                                             <p className="text-xs text-slate-400">Tu colección personal de cine y series</p>
                                         </div>
                                     </div>
-                                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
+                                    <div className="box-catalog-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5">
                                         {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').map((item, i) => (<Card isFavorite={isItemFavorite(item)} item={item} key={item.id || item.title || i} onClick={handlePlay} onToggleFavorite={toggleFavorite}/>))}
                                     </div>
                                     {favorites.filter(item => item.type !== 'tv' && item.type !== 'radio').length === 0 && (
@@ -2647,7 +2653,7 @@
                                         {content.tudum.length > 0 && <section className="home-shelf" aria-label="Próximamente"><div className="home-shelf-heading"><div className="home-shelf-title"><span className="home-shelf-mark" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="m5 17 12-12M5 5h12v12"/></svg></span><div><h2>Próximamente</h2><p>Avances y próximos lanzamientos.</p></div></div></div><div className="home-coming">{content.tudum.slice(0, 6).map((item, index) => <article key={item.title + index}><RobustImage src={item.image} alt={item.title} title={item.title} type="poster" loading="lazy"/><div><h3>{item.title}</h3><p>{item.releaseDate}</p><p>{item.genre}</p><button onClick={() => handlePlayNow({ title: item.title, description: item.synopsis, image: item.image, url: item.trailerUrl, type: 'movies' })}><Icon name="play" size={12} fill="currentColor"/>Ver tráiler</button></div></article>)}</div></section>}
                                     </div>
                                 ) : (
-                                    <div className="p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
+                                    <div className="box-catalog p-3 sm:p-10 max-w-7xl mx-auto w-full animate-fade-in">
                                         <div className="mb-6 flex items-center gap-3">
                                             <div className="w-1.5 h-6 sm:h-7 bg-cyan-500 rounded-full shadow-[0_0_15px_#06b6d4]"></div>
                                             <h2 className="text-lg sm:text-2xl font-black uppercase tracking-wide text-white">{activeTab === 'home' ? 'Resultados de Búsqueda' : activeTab === 'movies2' ? 'Estrenos 2026' : activeTab === 'trends' ? 'Tendencias' : activeTab === 'christmas' ? 'Navidad' : activeTab === 'seriesNew' ? 'Series' : activeTab === 'series' ? 'Series retro' : activeTab}</h2>
@@ -2657,7 +2663,7 @@
                                         ) : displayedItems.length === 0 ? (
                                             <div className="text-center py-24 text-slate-500 text-sm"><p>{activeTab === 'seriesNew' && !search ? 'Próximamente: nuevas series. Aún no hay publicaciones.' : activeTab === 'doramas' && !search ? 'Próximamente: películas y series asiáticas en Doramas.' : activeTab === 'christmas' && !search ? 'Aún no hay películas navideñas en el catálogo.' : 'No se encontraron resultados para tu búsqueda.'}</p></div>
                                         ) : (
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5 animate-slide-up">
+                                            <div className="box-catalog-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-5 animate-slide-up">
                                                 {displayedItems.map((item, i) => (<Card item={item} key={item.id || item.title || i} onClick={handlePlay} isFavorite={isItemFavorite(item)} onToggleFavorite={toggleFavorite} />))}
                                             </div>
                                         )}
