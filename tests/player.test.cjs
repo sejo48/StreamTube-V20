@@ -66,3 +66,47 @@ test('El video directo no recibe pausas ni recargas mientras sigue seleccionado'
     assert.deepEqual({pauses,loads,writes},{pauses:0,loads:0,writes:1});
     act(()=>renderer.unmount());assert.equal(pauses,1);assert.equal(loads,1);assert.equal(events.size,0);
 });
+
+test('Reconectar vuelve a montar solo el iframe de Drive tras una acción del usuario',t=>{
+    const Player=player();let renderer,backs=0;
+    act(()=>{renderer=Renderer.create(React.createElement(Player,{item:movie,onBack:()=>backs++}));});
+    t.after(()=>act(()=>renderer.unmount()));
+    const frame=renderer.root.findByType('iframe');
+    const source=frame.props.src;
+    const screen=frame.parent;
+    const retry=renderer.root.findByProps({'aria-label':'Reconectar video'});
+    act(()=>retry.props.onClick());
+    const next=renderer.root.findByType('iframe');
+    assert.notEqual(next,frame);
+    assert.equal(next.props.src,source);
+    assert.equal(next.parent,screen);
+    assert.equal(renderer.root.findAllByType('iframe').length,1);
+    assert.equal(backs,0);
+    assert.match(renderer.root.findByProps({role:'status'}).children.join(''),/vuelve al minuto/);
+    for(let i=0;i<5;i++)act(()=>renderer.update(React.createElement(Player,{item:{...movie,title:'Road Wars '+i},onBack:()=>backs++})));
+    assert.equal(renderer.root.findByType('iframe'),next);
+});
+
+test('Mostrar y ocultar controles no reemplaza el iframe ni reinicia el video',()=>{
+    const Player=player();let renderer;
+    act(()=>{renderer=Renderer.create(React.createElement(Player,{item:movie}));});
+    const frame=renderer.root.findByType('iframe');
+    for(let i=0;i<6;i++){
+        const toggle=renderer.root.findByProps({className:'box-menu-toggle'});
+        act(()=>toggle.props.onClick());
+        assert.equal(renderer.root.findByType('iframe'),frame);
+        assert.equal(renderer.root.findByProps({className:'box-player-menu box-player-toolbar'}).props.hidden,i%2===0);
+    }
+    act(()=>renderer.unmount());
+});
+
+test('Reconectar solo se ofrece para Drive y se limpian mensajes al cambiar de fuente',()=>{
+    const Player=player();let renderer;
+    act(()=>{renderer=Renderer.create(React.createElement(Player,{item:movie}));});
+    act(()=>renderer.root.findByProps({'aria-label':'Reconectar video'}).props.onClick());
+    assert.equal(renderer.root.findAllByProps({role:'status'}).length,1);
+    act(()=>renderer.update(React.createElement(Player,{item:{urlOkRu:'https://ok.ru/video/123',title:'Otro video'}})));
+    assert.equal(renderer.root.findAllByProps({'aria-label':'Reconectar video'}).length,0);
+    assert.equal(renderer.root.findAllByProps({role:'status'}).length,0);
+    act(()=>renderer.unmount());
+});
