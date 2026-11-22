@@ -1,5 +1,373 @@
 [
   {
+    "tmdbId": 2275,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Bionic Woman",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/hK7iYSziOzETEok7kRPvZ2y0P2p.jpg",
+    "year": "1976",
+    "fechaEstreno": "1976-01-14",
+    "rating": "7.0",
+    "votos": 289,
+    "runtime": "48min",
+    "runtimeMin": 48,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Action & Adventure",
+      "Drama"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Action & Adventure, Drama",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Lindsay Wagner",
+        "personaje": "Jaime Sommers",
+        "foto": "https://image.tmdb.org/t/p/w185/x1UwRfJt9Th5KJwZgKIcjDKmIo9.jpg"
+      },
+      {
+        "nombre": "Richard Anderson",
+        "personaje": "Oscar Goldman",
+        "foto": "https://image.tmdb.org/t/p/w185/eNVusMxsfee5t79jXbYBP8JnVvm.jpg"
+      },
+      {
+        "nombre": "Martin E. Brooks",
+        "personaje": "Dr. Rudy Wells",
+        "foto": "https://image.tmdb.org/t/p/w185/6AQuJJ38MIkUY3p7IypNDkBtAWb.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Harve Bennett Productions, Universal Television Entertainment, NBC Studios, David Eick Productions",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "",
+    "similares": [
+      {
+        "titulo": "Tierra de gigantes",
+        "poster": "https://image.tmdb.org/t/p/w342/ljbqDwgOoqYvQ6WRnuLr8QleEkH.jpg",
+        "year": "1968",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "El hombre de los seis millones de dólares",
+        "poster": "https://image.tmdb.org/t/p/w342/185KSzKHk9FyRYDhjHEwX0qfROX.jpg",
+        "year": "1974",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "El túnel del tiempo",
+        "poster": "https://image.tmdb.org/t/p/w342/iwKeOmf7nzaHXJgWn7LwkRNoVEh.jpg",
+        "year": "1966",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Space: Above and Beyond",
+        "poster": "https://image.tmdb.org/t/p/w342/1nE5C8ivFXhwMgLOpFPvbXKpDnB.jpg",
+        "year": "1995",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Automan",
+        "poster": "https://image.tmdb.org/t/p/w342/4dOlxvavpgpDyAFmLNIre1JmcCf.jpg",
+        "year": "1983",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Star Wars: Clone Wars",
+        "poster": "https://image.tmdb.org/t/p/w342/jKfAVTGkf9qpGPZ4E1pNKdW6vra.jpg",
+        "year": "2003",
+        "rating": "7.8"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Martin Caidin",
+      "Kenneth Johnson"
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 58,
+    "temporadasTmdb": [
+      {
+        "air_date": "1976-01-13",
+        "episode_count": 14,
+        "id": 7090,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/wAXLWSYqFMSR0UTs9bnsl76GvSt.jpg",
+        "season_number": 1,
+        "vote_average": 8.1
+      },
+      {
+        "air_date": "1976-09-22",
+        "episode_count": 22,
+        "id": 7091,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/1bB6JCfhYHQdAmNbGHl089DcUHY.jpg",
+        "season_number": 2,
+        "vote_average": 8.3
+      },
+      {
+        "air_date": "1977-09-09",
+        "episode_count": 22,
+        "id": 7092,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/9LBfXweM6iBiPp5xnnHsHxuhado.jpg",
+        "season_number": 3,
+        "vote_average": 8.4
+      }
+    ],
+    "tituloSerie": "La mujer biónica",
+    "descripcion": "Serie de televisión estadounidense que nació como un spin-off de la popular serie \"The Six Million Dollar Man\". Jaime Sommers es una tenista profesional de 28 años que tras un accidente en paracaídas queda lisiada, y que es convertida en un organismo cibernético por el funcionario del gobierno Oscar Goldman y por el Dr. Rudy Wells, quien le implantó un oído mejorado ultrasensible, un brazo artificial de enorme fuerza y ambas piernas biónicas que le permitían correr a altas velocidades.",
+    "imagen": "https://image.tmdb.org/t/p/w780/idou4N1oTTNkH5Pn3a9JJcZAQiE.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "LMB  1x1 [2636602739397]",
+            "urlDrive": "https://drive.google.com/file/d/19GaxGsflKWfc2tPn7qraexn807kW0PYu/view"
+          },
+          {
+            "tituloEpisodio": "LMB  1x3 [2636603329221]",
+            "urlDrive": "https://drive.google.com/file/d/1pVuMpuEGPUu2zq2B9r1eJG-Ly-VfyDJ4/view"
+          },
+          {
+            "tituloEpisodio": "LMB  1x11 [2639813479109]",
+            "urlDrive": "https://drive.google.com/file/d/1iVIFzXE0pm7vw9tUnyLQiiLqExQL7BMt/view"
+          },
+          {
+            "tituloEpisodio": "LMB  1x12 [2639813544645]",
+            "urlDrive": "https://drive.google.com/file/d/1Z_HBxfUf-lNZWApm69IBceUix-RRf6za/view"
+          },
+          {
+            "tituloEpisodio": "LMB  1x13 [2639813806789]",
+            "urlDrive": "https://drive.google.com/file/d/1jX3Z-5PHzBvT9Lb5O4xUH2eLJCYuFmi2/view"
+          },
+          {
+            "tituloEpisodio": "LMB  1x14 [2639813872325]",
+            "urlDrive": "https://drive.google.com/file/d/1EBWkCx2OfK2nleSnYnCloJxoFyinTIxA/view"
+          },
+          {
+            "tituloEpisodio": "LMB  2x06 Maten a Oscar parte 3 [2647654927045]",
+            "urlDrive": "https://drive.google.com/file/d/1eFrXCTCPUKidcaFcygai0fZiEVxizL7y/view"
+          },
+          {
+            "tituloEpisodio": "LMB  3x03 Fembots en Las Vegas(1) [2781512600261]",
+            "urlDrive": "https://drive.google.com/file/d/1Kb-m4R9xH63yhmjL7sbVSCVcgYz4t7Rz/view"
+          },
+          {
+            "tituloEpisodio": "LMB  3x05 rodeo [2781514173125]",
+            "urlDrive": "https://drive.google.com/file/d/1QMMt-klzAeqRICordjalOXC-a5ypGDcM/view"
+          },
+          {
+            "tituloEpisodio": "LMB  3x06 Misión Africa [2781514828485]",
+            "urlDrive": "https://drive.google.com/file/d/12w8aFf9jkUcVmzL5HlQJI8EtXLk2rxl6/view"
+          },
+          {
+            "tituloEpisodio": "LMB  3x11 Espía sobre la colina [2794980117189]",
+            "urlDrive": "https://drive.google.com/file/d/1JxuDpri43tYUJi9ixk92n5c1nT0iPlEM/view"
+          },
+          {
+            "tituloEpisodio": "LMB  3X20  Dios salve al rey [2816616696517]",
+            "urlDrive": "https://drive.google.com/file/d/1tTDdc8_suxA2kavUYzXRNQ6a8JBRqItf/view"
+          },
+          {
+            "tituloEpisodio": "LMB - 2x02 En esta esquina jamie sommers [2643244026565]",
+            "urlDrive": "https://drive.google.com/file/d/1JhkuLZ2mGkpSgB7Rj7xclYpO3RpB7fGu/view"
+          },
+          {
+            "tituloEpisodio": "LMB - 2x03 Asalto al princesa louise - [2643244092101]",
+            "urlDrive": "https://drive.google.com/file/d/1NGK6R1w3Wnuw_KbdsNxGyTY_zSQX-d6-/view"
+          },
+          {
+            "tituloEpisodio": "LMB - 2x04 Camino a Nashville [2643244485317]",
+            "urlDrive": "https://drive.google.com/file/d/1KT6kmAUa8x_E4g1QH-U7RMZ2CWjEchfm/view"
+          },
+          {
+            "tituloEpisodio": "LMB - 2x05 Maten a Oscar - [2643245009605]",
+            "urlDrive": "https://drive.google.com/file/d/1i6TtHKof_lgOW62G9urXW5L2s7I7weF_/view"
+          },
+          {
+            "tituloEpisodio": "LMB - 2x07 Magia Negra [2647655189189]",
+            "urlDrive": "https://drive.google.com/file/d/1XDHsCZmwZN-YvwhksYgT0xhmG37EhCnC/view"
+          },
+          {
+            "tituloEpisodio": "LMB - 2x08 La Hermana Jamie [2647655254725]",
+            "urlDrive": "https://drive.google.com/file/d/11K0k0b4LFOhxycUyMtuaGWclSF8o_KQj/view"
+          },
+          {
+            "tituloEpisodio": "LMB - 2x09 La Influencia Vega [2647655320261]",
+            "urlDrive": "https://drive.google.com/file/d/1OrDeQFk-e4Cjw4_0FY6nLmdqPHl6IqlY/view"
+          },
+          {
+            "tituloEpisodio": "LMB - 2x10 El Escudo de Jamie [2647655451333]",
+            "urlDrive": "https://drive.google.com/file/d/1DowDLt4rHHB85DxTpC-tzARh4RGZoCeU/view"
+          },
+          {
+            "tituloEpisodio": "LMB - 2x16 Parecido Mortal parte 2 [2660144384709]",
+            "urlDrive": "https://drive.google.com/file/d/19wvbyQBzmY04eGjZ7_dgdMnFtOoJecLv/view"
+          },
+          {
+            "tituloEpisodio": "LMB - 2x17 Jaimie y el Rey [2660144515781]",
+            "urlDrive": "https://drive.google.com/file/d/10XpEFbpgNnhXarTcWbPQJV7ZkoPQTrgI/view"
+          },
+          {
+            "tituloEpisodio": "LMB - 2x18 Mas Alla del Deber [2660144581317]",
+            "urlDrive": "https://drive.google.com/file/d/1BumlWFLU5gUvbnByh3U0QFBF_O64Rvoc/view"
+          },
+          {
+            "tituloEpisodio": "LMB - 2x19 El Falso Dejon [2660144712389]",
+            "urlDrive": "https://drive.google.com/file/d/1nARTkatYwcNU6_RqnPrqXThIMb9n7JkP/view"
+          },
+          {
+            "tituloEpisodio": "LMB 1x2 [2636602936005]",
+            "urlDrive": "https://drive.google.com/file/d/1BTeoQsv8zyVsEJwjLQUKd0Mx-OFaZrjH/view"
+          },
+          {
+            "tituloEpisodio": "LMB 1x04 [2636603394757]",
+            "urlDrive": "https://drive.google.com/file/d/1BEOMoHHiT-xcsKJ3RnD7GNhs94LWlOhO/view"
+          },
+          {
+            "tituloEpisodio": "LMB 1x05 [2636603460293]",
+            "urlDrive": "https://drive.google.com/file/d/1AT-zJp5lVftb2w-DnkHbmYeOWM4ZIGHR/view"
+          },
+          {
+            "tituloEpisodio": "LMB 1x06 [2639806728901]",
+            "urlDrive": "https://drive.google.com/file/d/1kMtU7voK4JTTJHfMgx2q4iYXTfBR6adB/view"
+          },
+          {
+            "tituloEpisodio": "LMB 1x07 [2639806597829]",
+            "urlDrive": "https://drive.google.com/file/d/1HjJ2SpK2LKLUkOGYXQfoQD5wEAt-e8WC/view"
+          },
+          {
+            "tituloEpisodio": "LMB 1x08 [2639806859973]",
+            "urlDrive": "https://drive.google.com/file/d/1YoRrhBHHCbELW5jdUDMfLqGhT3rdzBMq/view"
+          },
+          {
+            "tituloEpisodio": "LMB 1x09 [2639806991045]",
+            "urlDrive": "https://drive.google.com/file/d/13sbIKM5kFn3YRtex5GnaMW8P451WZyt5/view"
+          },
+          {
+            "tituloEpisodio": "LMB 1x10 [2639813282501]",
+            "urlDrive": "https://drive.google.com/file/d/1UIyfG15j7afNnQ6u4n2yO1LB3ZOViFp-/view"
+          },
+          {
+            "tituloEpisodio": "LMB 2x1 [2643243961029]",
+            "urlDrive": "https://drive.google.com/file/d/1JcGk-4V2g3Ajzmr0hUrZej_YdNvhEcBG/view"
+          },
+          {
+            "tituloEpisodio": "LMB 2x11 El Escudo de Jamie parte 2 [2654917888709]",
+            "urlDrive": "https://drive.google.com/file/d/1d1jUcFUNjO3Ycv_7z2n-XXBJGA6LQUA7/view"
+          },
+          {
+            "tituloEpisodio": "LMB 2x12 La Retroalimentacion Biologica [2654918019781]",
+            "urlDrive": "https://drive.google.com/file/d/1jtWBN0Td7jS_W6FgTqAPiVeqn5HHF1P4/view"
+          },
+          {
+            "tituloEpisodio": "LMB 2x13  Mañana es el Fin del Mundo [2654918544069]",
+            "urlDrive": "https://drive.google.com/file/d/1l4XzC0a-UZmfyYMLBGpU1r20-eAhC5_d/view"
+          },
+          {
+            "tituloEpisodio": "LMB 2x14 Mañana es el Fin del Mundo parte 2 [2654918871749]",
+            "urlDrive": "https://drive.google.com/file/d/13Kgpun_adw0L-tB3ikJUMsQf_GJED-0B/view"
+          },
+          {
+            "tituloEpisodio": "LMB 2x15 Parecido Mortal [2654919199429]",
+            "urlDrive": "https://drive.google.com/file/d/15nztTk_8BGisPoZLi3WHHLiedpW4OYFo/view"
+          },
+          {
+            "tituloEpisodio": "LMB 2x20 El Demonio Nocturno [2660144777925]",
+            "urlDrive": "https://drive.google.com/file/d/1K8doRLDV-FDgk95IMka9gtPCSLWpljpG/view"
+          },
+          {
+            "tituloEpisodio": "LMB 2x21 El Hermano de Oscar [2664708311749]",
+            "urlDrive": "https://drive.google.com/file/d/1Jf3Vjss26tPB_r1zLwhY87GgtciF2bTZ/view"
+          },
+          {
+            "tituloEpisodio": "LMB 2x22 Habia una vez un Ladron [2664708377285]",
+            "urlDrive": "https://drive.google.com/file/d/1GWXUq-cpoqwdgOmLcNBgvgnDyar_ww8n/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x01 El perro bionico Part 1 [2781511617221]",
+            "urlDrive": "https://drive.google.com/file/d/13YnEqxumCQ-mDFmruTJjDZxryA9UL04_/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x02 El perro bionico Part 2 [2781511879365]",
+            "urlDrive": "https://drive.google.com/file/d/1ZEgkL-Xnm6BDoXMG09NfNHd4UXJJiDP4/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x04 Fembots en Las Vegas(2) [2781513255621]",
+            "urlDrive": "https://drive.google.com/file/d/1b7TzUBJDg-B_r9dOhiH_kbd1CHB6tv3Q/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x07 Boogie de motocicleta [2794979658437]",
+            "urlDrive": "https://drive.google.com/file/d/1hHhim2lmlUJbk2-_E1fFS2U3f-uHCWq0/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x08 Lavado de cerebro [2794979723973]",
+            "urlDrive": "https://drive.google.com/file/d/19nzRPGdd6XLR-bZea-qOlg-b8gR_C-vt/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x09  Un asunto de Amor o muerte [2794979920581]",
+            "urlDrive": "https://drive.google.com/file/d/1ra7vaj7Wf12KGnbaGiPoYJS4Nhwt1hmZ/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x10 Max [2794980051653]",
+            "urlDrive": "https://drive.google.com/file/d/1_wiW_WVQDaUX1uQWxigShxKbZiN7lVfJ/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x12 Todos para uno [2808561339077]",
+            "urlDrive": "https://drive.google.com/file/d/1ZHMXeSBIiufgfxNaN3-PdBGRCBLgFIV-/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x13 La pirámide [2808561470149]",
+            "urlDrive": "https://drive.google.com/file/d/1sEk-cEGyRS6Lt01HMgAowebhlZjQu7Za/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x14 El antídoto [2808561928901]",
+            "urlDrive": "https://drive.google.com/file/d/1HArnQK4dvEkCy1tj2tO2N5_WdriTubM6/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x15 llegaron Los Marcianos [2808562584261]",
+            "urlDrive": "https://drive.google.com/file/d/1glzF5iqGJO82E-CAqQnDTb0gnt5hQcPy/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x16 Refugio tierra [2808562715333]",
+            "urlDrive": "https://drive.google.com/file/d/1OHDXYnotAgZo9AT0X6cjwZHOYu5BXQee/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x17 Musica Mortal [2808562780869]",
+            "urlDrive": "https://drive.google.com/file/d/1-ja5UPc7k-qMzxaOSOA3tyyExdWlgMh3/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x18 Which One is Jaime [2808564353733]",
+            "urlDrive": "https://drive.google.com/file/d/1fdgfhejxewCnFVUqGwz2IRRmmyCpRCQV/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x19 Out of Body [2816616499909]",
+            "urlDrive": "https://drive.google.com/file/d/1gNvcPvzAtK6mq54slJrpBNc6VvPCIbhX/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3X21 Rancho Outcast [2816616762053]",
+            "urlDrive": "https://drive.google.com/file/d/1cgl-M7BCmtZgmRJl_GpHj1-eQBRlTvXZ/view"
+          },
+          {
+            "tituloEpisodio": "LMB 3x22 En Carrera [3548240677573]",
+            "urlDrive": "https://drive.google.com/file/d/1W9BahLxFFvTj19r4--amv3uAkeitwRlS/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 2303,
     "tmdbType": "tv",
     "tituloOriginal": "Hawaii Five-O",
@@ -13629,28 +13997,6 @@
           {
             "tituloEpisodio": "E30: Episodio 30",
             "urlDrive": "https://drive.google.com/file/d/1TxfkgNZ3lCgNyQDu0gBW3cL6WFB6R4t4/preview"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "tituloSerie": "Minecraft película",
-    "descripcion": "\"Una película de Minecraft\"",
-    "imagen": "https://preview.redd.it/some-more-posters-for-a-minecraft-movie-v0-d1slryxvlvle1.png?width=640&crop=smart&auto=webp&s=0f331faeddf7bf281f6aaccc8a66096bdc168966",
-    "codigo": null,
-    "qualityTag": "",
-    "temporadas": [
-      {
-        "numeroTemporada": 1,
-        "episodios": [
-          {
-            "tituloEpisodio": "Minecraft Película inglés",
-            "urlDrive": "https://drive.google.com/file/d/1i5QFodXejARRYy2hExZZQ2hQS_atTaX0/preview"
-          },
-          {
-            "tituloEpisodio": "Minecraft Película español",
-            "urlDrive": "https://drive.google.com/file/d/12IThUvooNjZSLNItRkHtpLUBgC5wUiBR/preview"
           }
         ]
       }
