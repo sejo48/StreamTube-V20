@@ -1,5 +1,139 @@
 [
   {
+    "tmdbId": 9894,
+    "tmdbType": "tv",
+    "tituloOriginal": "Mission: Impossible",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/7XNP4WdsWA9iorQJtXQxZScljmt.jpg",
+    "year": "1988",
+    "fechaEstreno": "1988-10-23",
+    "rating": "7.6",
+    "votos": 232,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Drama",
+      "Action & Adventure",
+      "Crimen"
+    ],
+    "generosTexto": "Drama, Action & Adventure, Crimen",
+    "clasificacion": "TV-PG",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Peter Graves",
+        "personaje": "Jim Phelps",
+        "foto": "https://image.tmdb.org/t/p/w185/ySLwIT6L9mWIjFcCagmNENQGq7J.jpg"
+      },
+      {
+        "nombre": "Thaao Penghlis",
+        "personaje": "Nicholas Black",
+        "foto": "https://image.tmdb.org/t/p/w185/vNHYrgo9GetIhiHf2jBKWKYsebz.jpg"
+      },
+      {
+        "nombre": "Antony Hamilton",
+        "personaje": "Max Harte",
+        "foto": "https://image.tmdb.org/t/p/w185/yP6w3v1lvrAxJsjQzK4I9Q3GQ5z.jpg"
+      },
+      {
+        "nombre": "Phil Morris",
+        "personaje": "Grant Collier",
+        "foto": "https://image.tmdb.org/t/p/w185/iZADKc1QdCFpTvu0KnU3BZBwtrE.jpg"
+      },
+      {
+        "nombre": "Jane Badler",
+        "personaje": "Shannon Reed",
+        "foto": "https://image.tmdb.org/t/p/w185/1y3ULLRX3Ga4BqmxJBmWKbkN6m.jpg"
+      },
+      {
+        "nombre": "Bob Johnson",
+        "personaje": "Voice on Disc",
+        "foto": "https://image.tmdb.org/t/p/w185/emaIvNXoX3j0xXNBjRJ7kOdFaDr.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Jeffrey Hayes Productions, CBS Studios",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "spy",
+    "similares": [
+      {
+        "titulo": "Scarecrow and Mrs. King",
+        "poster": "https://image.tmdb.org/t/p/w342/36oUFRNJQORpL9fmnrSXdFqEGty.jpg",
+        "year": "1983",
+        "rating": "6.6"
+      },
+      {
+        "titulo": "Danger Man",
+        "poster": "https://image.tmdb.org/t/p/w342/5wCJ8Rt9PA1j6jzzmUQg0EjsxwV.jpg",
+        "year": "1960",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Misión. Imposible",
+        "poster": "https://image.tmdb.org/t/p/w342/1PnUBKbDR1F2w5qicblLg1QGTif.jpg",
+        "year": "1966",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "The Sweeney",
+        "poster": "https://image.tmdb.org/t/p/w342/8dIJo5P3d1soSxKJvjkxDX1816H.jpg",
+        "year": "1975",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Walker",
+        "poster": "https://image.tmdb.org/t/p/w342/9uW1W9q0zKPzPdRwIcL3eCDJsfw.jpg",
+        "year": "2021",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Police Story",
+        "poster": "https://image.tmdb.org/t/p/w342/wfhiGakYfjk8XeDKRpya9P4tNu9.jpg",
+        "year": "1973",
+        "rating": "7.0"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Bruce Geller"
+    ],
+    "numeroTemporadas": 2,
+    "numeroEpisodios": 35,
+    "temporadasTmdb": [
+      {
+        "air_date": "1988-10-23",
+        "episode_count": 19,
+        "id": 19767,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/z2lb4acC2IKmbQb9yGxpzB3i2Gd.jpg",
+        "season_number": 1,
+        "vote_average": 6.6
+      },
+      {
+        "air_date": "1989-09-21",
+        "episode_count": 16,
+        "id": 19768,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/4W0S1knTM7BlRuw8V0XPZwqsunB.jpg",
+        "season_number": 2,
+        "vote_average": 6.4
+      }
+    ],
+    "tituloSerie": "Misión: imposible",
+    "descripcion": "Veinte años después, Jim Phelps se reincorpora al servicio para misiones siempre imposibles, rodeado de nuevos agentes.",
+    "imagen": "https://image.tmdb.org/t/p/w780/4AZwDa0RZLIVsOgZxlgOqNUw3U6.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 313678,
     "tmdbType": "tv",
     "tituloOriginal": "Aprendiendo a vivir",
@@ -129,7 +263,133 @@
     "imagen": "https://image.tmdb.org/t/p/original/Q8tR8IKppQGlrdIsq7acApKdbp.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "1x1 Piloto [3352173284037]",
+            "urlDrive": "https://drive.google.com/file/d/1SiS6Ns3v_YIhbfeX8Rj-Y5ggtlO31VNj/view"
+          },
+          {
+            "tituloEpisodio": "1x2  En la valla [3352173152965]",
+            "urlDrive": "https://drive.google.com/file/d/1Z4OP7eJX-EbmxHzmF6fJBm8J_55m3fq_/view"
+          },
+          {
+            "tituloEpisodio": "1x3  Los padres no saben nada [3352172825285]",
+            "urlDrive": "https://drive.google.com/file/d/1eV4U0LdTMSk_BlGW5ekCSxFlTjLvafTt/view"
+          },
+          {
+            "tituloEpisodio": "1x4 Mis otros amigos [3352172759749]",
+            "urlDrive": "https://drive.google.com/file/d/1gDhV2Hw6s2Hr2SiJ67NlN_zv6ff3sw4Q/view"
+          },
+          {
+            "tituloEpisodio": "1x5 La abeja asesina - [3352172628677]",
+            "urlDrive": "https://drive.google.com/file/d/1Yta55QRXxbVynUT7NCcO9WrlIRvJtfno/view"
+          },
+          {
+            "tituloEpisodio": "1x6  No vale hacer trampas [3352169220805]",
+            "urlDrive": "https://drive.google.com/file/d/19BVPOJSIf-UeLpEqKKlXScjvOPnxmZmt/view"
+          },
+          {
+            "tituloEpisodio": "1x7 La abuela era una bala perdida [3352168958661]",
+            "urlDrive": "https://drive.google.com/file/d/1gmSb-GhNx2a46tYizhaL6KGTY1y5p3AV/view"
+          },
+          {
+            "tituloEpisodio": "1x8  La apuesta del profesor [3352168893125]",
+            "urlDrive": "https://drive.google.com/file/d/1m7YZ7xKxcAtZd5g6DImJ3eitmo-_4rlr/view"
+          },
+          {
+            "tituloEpisodio": "1x9  El pre-encuentro de la clase [3352168630981]",
+            "urlDrive": "https://drive.google.com/file/d/1fZhn_J2Zp6qMfgZ75i2GW3vE8UFEqI0W/view"
+          },
+          {
+            "tituloEpisodio": "1x10 El pequeño ayudante de Santa Claus [3352168565445]",
+            "urlDrive": "https://drive.google.com/file/d/1DOCKHn-Ovqb0PEDH6pWxvrBXqVEmGlQG/view"
+          },
+          {
+            "tituloEpisodio": "1x11 El partido padre-hijo [3352164240069]",
+            "urlDrive": "https://drive.google.com/file/d/1_Y49O1i325pDfZ4RcxR1XqLmFv2TU6S6/view"
+          },
+          {
+            "tituloEpisodio": "1x12 Enamorado de Amy [3352164043461]",
+            "urlDrive": "https://drive.google.com/file/d/1RPi8q4CmISIaVRqKUa3-hKP0txfHGfpc/view"
+          },
+          {
+            "tituloEpisodio": "1x13 Me quiere, no me quiere [3352163715781]",
+            "urlDrive": "https://drive.google.com/file/d/1d_ul2Y46o9a09Arzf9TbBAMXmcYimfzQ/view"
+          },
+          {
+            "tituloEpisodio": "1x14 La vida de un suplente [3352163453637]",
+            "urlDrive": "https://drive.google.com/file/d/17ct_pBqezi8tWStHTCEv0L4cAD4M3Euv/view"
+          },
+          {
+            "tituloEpisodio": "1x15 La familia modelo [3352163388101]",
+            "urlDrive": "https://drive.google.com/file/d/1SFoHMu6JlKnhkwf00A5vhwiWvPt53Elk/view"
+          },
+          {
+            "tituloEpisodio": "1x16 Negocios arriesgados [3352163060421]",
+            "urlDrive": "https://drive.google.com/file/d/1pCZU_SBol3gmfvHmo4FkWudCW4kvPBet/view"
+          },
+          {
+            "tituloEpisodio": "1x17 El fugitivo [3352162863813]",
+            "urlDrive": "https://drive.google.com/file/d/1ZzL48QGG2rzPSkVVwWMU2PYa7rzJUUec/view"
+          },
+          {
+            "tituloEpisodio": "1x18 Una noche maravillosa [3352159193797]",
+            "urlDrive": "https://drive.google.com/file/d/1aO7tquZ4802db4a4_aVy9wzt5WbOefan/view"
+          },
+          {
+            "tituloEpisodio": "1x19  Guantes de niño [3352158997189]",
+            "urlDrive": "https://drive.google.com/file/d/1xJE2gh1XXHKjfSeCVidLZJ7ByL-eUIQu/view"
+          },
+          {
+            "tituloEpisodio": "1x20 La obra es la cosa [3352158931653]",
+            "urlDrive": "https://drive.google.com/file/d/1DReZCdf8LihsKGFN3tFcW8HSW38BK9iE/view"
+          },
+          {
+            "tituloEpisodio": "1x21 Chico conoce a chica [3352158866117]",
+            "urlDrive": "https://drive.google.com/file/d/1o-4RMQTBaLoYBqWvCP4x_rbV9FxkfydY/view"
+          },
+          {
+            "tituloEpisodio": "1x22 El sueño de Feeny [3352158538437]",
+            "urlDrive": "https://drive.google.com/file/d/1wyoUmfzNeW42nLY7ie9kK8gRJmNNFrdA/view"
+          },
+          {
+            "tituloEpisodio": "Aprendiendo a vivir 2x1 La vuelta al cole [3362514668229]",
+            "urlDrive": "https://drive.google.com/file/d/1zcwCXVLzu4QsxWvkVzJ0SX1aO8Biknx_/view"
+          },
+          {
+            "tituloEpisodio": "Aprendiendo a vivir 2x2 En la valla [3362514930373]",
+            "urlDrive": "https://drive.google.com/file/d/19e4QhPXeAaa1_zOj8u9s752wm18fG37a/view"
+          },
+          {
+            "tituloEpisodio": "Aprendiendo a vivir 2x3 Los padres no saben nada [3362516437701]",
+            "urlDrive": "https://drive.google.com/file/d/1CqRYh1DSD02R3nEcKE7Hjh6fB7RyQgB2/view"
+          },
+          {
+            "tituloEpisodio": "Aprendiendo a vivir 2x4 Mis otros amigos [3362516699845]",
+            "urlDrive": "https://drive.google.com/file/d/1BAWwF6oHBUI_nLXAmexR4_TYp8WFNGeF/view"
+          },
+          {
+            "tituloEpisodio": "Aprendiendo a vivir 2x5 La abeja asesina [3362519976645]",
+            "urlDrive": "https://drive.google.com/file/d/1SA2sXCgbIwu7MP4GLgdfomFux3hNgGZL/view"
+          },
+          {
+            "tituloEpisodio": "Aprendiendo a vivir 2x7 - [3362530200261]",
+            "urlDrive": "https://drive.google.com/file/d/1ST_wtU8lKDzpgkGhOMpBdip95WztHK6T/view"
+          },
+          {
+            "tituloEpisodio": "Aprendiendo a vivir 2x8 Banda en camino [3362531904197]",
+            "urlDrive": "https://drive.google.com/file/d/1Jy0psYslIUY_DsM57PrSxl7vyWlqUrt8/view"
+          },
+          {
+            "tituloEpisodio": "Aprendiendo a vivir 2x9 El miedo aparece [3362559298245]",
+            "urlDrive": "https://drive.google.com/file/d/175_sU10sWq9NSYLLM_8-kTQCf46Yl3bD/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 2553,
