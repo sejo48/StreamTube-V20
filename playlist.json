@@ -1,5 +1,547 @@
 [
   {
+    "tmdbId": 734,
+    "tmdbType": "tv",
+    "tituloOriginal": "Magnum, P.I.",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/nOIMQQi5nwoIJzBegRBlmDkSZS1.jpg",
+    "year": "1980",
+    "fechaEstreno": "1980-12-11",
+    "rating": "7.3",
+    "votos": 476,
+    "runtime": "45min",
+    "runtimeMin": 45,
+    "genres": [
+      "Crimen",
+      "Drama",
+      "Misterio"
+    ],
+    "generosTexto": "Crimen, Drama, Misterio",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Tom Selleck",
+        "personaje": "Thomas Magnum",
+        "foto": "https://image.tmdb.org/t/p/w185/s9QR2FMnXSpq8Blx1KbbbaTrWee.jpg"
+      },
+      {
+        "nombre": "John Hillerman",
+        "personaje": "Jonathan Higgins",
+        "foto": "https://image.tmdb.org/t/p/w185/zRuuhcWG1jjzZaQaeUEV76guU7D.jpg"
+      },
+      {
+        "nombre": "Roger E. Mosley",
+        "personaje": "Terry 'TC' Calvin",
+        "foto": "https://image.tmdb.org/t/p/w185/yfwVeu1cPAFgRJEo8WaiBj6dWTS.jpg"
+      },
+      {
+        "nombre": "Larry Manetti",
+        "personaje": "Rick Wright",
+        "foto": "https://image.tmdb.org/t/p/w185/dMvNdXKMC0hHl0pvnKq1o2OYKyv.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Belisarius Productions, Glen A. Larson Productions, Universal Television Entertainment, Universal Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "helicopter, hawaii, private investigator, police procedural, ferrari, dobermann",
+    "similares": [
+      {
+        "titulo": "77 Sunset Strip",
+        "poster": "https://image.tmdb.org/t/p/w342/xfBM3mXae0OvaBt2i4yo47MLAtu.jpg",
+        "year": "1958",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Barnaby Jones",
+        "poster": "https://image.tmdb.org/t/p/w342/wn1kkCGHJcUQ7C8umfQH9LL2zXR.jpg",
+        "year": "1973",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Los casos de Rockford",
+        "poster": "https://image.tmdb.org/t/p/w342/fniHEsTeqHMg41GlCYJxZVgtn7H.jpg",
+        "year": "1974",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Vega$",
+        "poster": "https://image.tmdb.org/t/p/w342/myE2ubvyqnX8ToL0KmC6TTBT7c4.jpg",
+        "year": "1978",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Los misterios de Brokenwood",
+        "poster": "https://image.tmdb.org/t/p/w342/rvrTqaNTE5m0FVGrGA37FDK0ArB.jpg",
+        "year": "2014",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Baretta",
+        "poster": "https://image.tmdb.org/t/p/w342/xayGSRT2GbcFTwNIqt6l355v29F.jpg",
+        "year": "1975",
+        "rating": "6.5"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Donald P. Bellisario",
+      "Glen A. Larson"
+    ],
+    "numeroTemporadas": 8,
+    "numeroEpisodios": 162,
+    "temporadasTmdb": [
+      {
+        "air_date": "1980-12-11",
+        "episode_count": 18,
+        "id": 2156,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/lXazHB518w3hrhGM9Ov6odTG74e.jpg",
+        "season_number": 1,
+        "vote_average": 6.8
+      },
+      {
+        "air_date": "1981-10-08",
+        "episode_count": 22,
+        "id": 2157,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/qSYCzBUCcXEB31mAnwtjecRbwyf.jpg",
+        "season_number": 2,
+        "vote_average": 6.5
+      },
+      {
+        "air_date": "1982-09-30",
+        "episode_count": 23,
+        "id": 2158,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/b1drAl36txU7J0Rp5nTD9a4nqaJ.jpg",
+        "season_number": 3,
+        "vote_average": 6.7
+      },
+      {
+        "air_date": "1983-09-29",
+        "episode_count": 21,
+        "id": 2161,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/ntmQjKYba2VDn2bpB7L4D7qN5bE.jpg",
+        "season_number": 4,
+        "vote_average": 6.8
+      },
+      {
+        "air_date": "1984-09-27",
+        "episode_count": 22,
+        "id": 2163,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/avxWXBSTLWAJ4kYCj5Zryl1x4WJ.jpg",
+        "season_number": 5,
+        "vote_average": 6.8
+      },
+      {
+        "air_date": "1985-09-26",
+        "episode_count": 21,
+        "id": 2162,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/9lYbsnz3YBL49cIVlsykBrF85b9.jpg",
+        "season_number": 6,
+        "vote_average": 6.7
+      },
+      {
+        "air_date": "1986-10-01",
+        "episode_count": 22,
+        "id": 2159,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/rqUkPtrGZPpyh7XIDRhV9LmQu2y.jpg",
+        "season_number": 7,
+        "vote_average": 7.3
+      },
+      {
+        "air_date": "1987-10-07",
+        "episode_count": 13,
+        "id": 2160,
+        "name": "Temporada 8",
+        "overview": "",
+        "poster_path": "/mwK7ZYzW0BuqVPjbpbfjWTkbc5e.jpg",
+        "season_number": 8,
+        "vote_average": 7.8
+      }
+    ],
+    "tituloSerie": "Magnum",
+    "descripcion": "Serie de TV (1980-1988). 8 temporadas. 162 episodios. Tom Selleck interpreta al detective privado Thomas Magnum, en esta serie que narra sus aventuras en Hawai. Allí vive con el mayordomo Higgins, un exmilitar con el que se lleva como el perro y el gato, pero a pesar de todo siempre terminan haciendo las paces. Magnum se dedica a resolver grandes casos, contando siempre con la incondicional ayuda de sus compañeros Rick y TC, e incluso con la ayuda de Higgins. ",
+    "imagen": "https://image.tmdb.org/t/p/original/kZimJzrQqvOWja6Za1KWYjWD1jQ.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "S03E01-02 - Did You See the Sunrise [4163449784982]",
+            "urlDrive": "https://drive.google.com/file/d/16BxFwyoT2sW1bPE6Q4108fP1UVgApjQ7/view"
+          },
+          {
+            "tituloEpisodio": "S03E03 - Ki' i's Don't Lie [4163450440342]",
+            "urlDrive": "https://drive.google.com/file/d/10afAGvZhk6pdZlSwdXjVVEldPt9kKDQ0/view"
+          },
+          {
+            "tituloEpisodio": "S03E04 - The Eighth Part of the Village [4163450768022]",
+            "urlDrive": "https://drive.google.com/file/d/1TDdrEMQBkN1i1VtJAfhtoX97DekDBuo-/view"
+          },
+          {
+            "tituloEpisodio": "S03E05 - Past Tense [4163451095702]",
+            "urlDrive": "https://drive.google.com/file/d/1xaN_oPLLjcB5r9EgAH902OPrMfu_JyXY/view"
+          },
+          {
+            "tituloEpisodio": "S03E06 - Black on White [4163451292310]",
+            "urlDrive": "https://drive.google.com/file/d/1vHWgTS-6Mhs7UP2H31QhIMi9frxkG1Xj/view"
+          },
+          {
+            "tituloEpisodio": "S03E07 - Flashback [4163451423382]",
+            "urlDrive": "https://drive.google.com/file/d/1oitZ2Yr9jIV-_j_Hj5JUIBmzybY2fAcz/view"
+          },
+          {
+            "tituloEpisodio": "S03E08 - Foiled Again [4163451554454]",
+            "urlDrive": "https://drive.google.com/file/d/1DVTdT1u9dItAzRESNnWL2mzrThzFrJvY/view"
+          },
+          {
+            "tituloEpisodio": "S03E09 - Mr White Death [4163451619990]",
+            "urlDrive": "https://drive.google.com/file/d/1ETYM1v3Lf2OZRQ64Lv7a7sfmfuWtsfh2/view"
+          },
+          {
+            "tituloEpisodio": "S03E10 - Mixed Doubles [4163451816598]",
+            "urlDrive": "https://drive.google.com/file/d/13glPEYTx--N-IEXiCD7RdA8T2EgkdVOp/view"
+          },
+          {
+            "tituloEpisodio": "S03E11 - Almost Home [4163451882134]",
+            "urlDrive": "https://drive.google.com/file/d/1FFwKZLGBeeze7KBaNT3j7oYaeAuSS4GT/view"
+          },
+          {
+            "tituloEpisodio": "S03E12 - Heal Thyself [4163452013206]",
+            "urlDrive": "https://drive.google.com/file/d/1eoul745Pm_gUDCUjNFJFsWRvZBxd3LXF/view"
+          },
+          {
+            "tituloEpisodio": "S03E13 - Of Sound Mind [4163452340886]",
+            "urlDrive": "https://drive.google.com/file/d/1BwZBjollKqQ-xGA7w-3LF12TF47gZI9e/view"
+          },
+          {
+            "tituloEpisodio": "S03E14 - The Arrow That is Not Aimed [4163452734102]",
+            "urlDrive": "https://drive.google.com/file/d/1bxCyd3aJrOUJLyJAIAtiWFhYlGvw-Wl7/view"
+          },
+          {
+            "tituloEpisodio": "S03E15 - Basket Case [4163452865174]",
+            "urlDrive": "https://drive.google.com/file/d/1iFe-HMxrSy5knXNVWFBHP-blXmqlcj64/view"
+          },
+          {
+            "tituloEpisodio": "S03E16 - Birdman of Budapest [4163452996246]",
+            "urlDrive": "https://drive.google.com/file/d/1j4TGqJDIHApdk0cN_T5qa8GBRQ6s2aBy/view"
+          },
+          {
+            "tituloEpisodio": "S03E17 - I Do-003 [4163453061782]",
+            "urlDrive": "https://drive.google.com/file/d/1LD3MTKWeYZ5oLFQEI0ObQBe-3znRoM54/view"
+          },
+          {
+            "tituloEpisodio": "S03E18 - Forty Years from Sand Island [4163453127318]",
+            "urlDrive": "https://drive.google.com/file/d/1zhhC-H2C7EwIMiyHgQ-3nk0KMBQ5Q_v6/view"
+          },
+          {
+            "tituloEpisodio": "S03E19 - Legacy from a Friend [4163453258390]",
+            "urlDrive": "https://drive.google.com/file/d/1Xjd7DimuuawKgAPJ8jz-PQC3dMVbIDEh/view"
+          },
+          {
+            "tituloEpisodio": "S03E20 - Two Birds of a Feather [4163453323926]",
+            "urlDrive": "https://drive.google.com/file/d/14MUyQ4LALyVCrCdNSGMO9codT5LYzYVI/view"
+          },
+          {
+            "tituloEpisodio": "S03E21 - By Its Cover [4163453389462]",
+            "urlDrive": "https://drive.google.com/file/d/196jGx-3GXjChzem-JndQXVnso-DOBk1Z/view"
+          },
+          {
+            "tituloEpisodio": "S03E22 - The Big Blow [4163453454998]",
+            "urlDrive": "https://drive.google.com/file/d/1osLJUVGI7NxLO9QrZ30yTit-yIdJSVtx/view"
+          },
+          {
+            "tituloEpisodio": "S03E23 - Faith and Begorrah [4163453520534]",
+            "urlDrive": "https://drive.google.com/file/d/1vTFRna0gGGmaoF9Vl8IPDQ5toqwA_wgo/view"
+          },
+          {
+            "tituloEpisodio": "S04E18 - Holmes is Where the Heart is (Sub Español) [4163830221462]",
+            "urlDrive": "https://drive.google.com/file/d/11D_MJvSxGGtqvOrkbjZO55NJ8gPOcFVU/view"
+          },
+          {
+            "tituloEpisodio": "S04E19 - On Face Value [4163830286998]",
+            "urlDrive": "https://drive.google.com/file/d/1dPDO9YRfwymRALWRcnAcGWzfIJ8v4ZBY/view"
+          },
+          {
+            "tituloEpisodio": "S04E20 - Dream a Little Dream [4163830418070]",
+            "urlDrive": "https://drive.google.com/file/d/1LAwZNDC80RP0M8LfDEVJH6i0oFJoLHJo/view"
+          },
+          {
+            "tituloEpisodio": "S04E21 - I Witness [4163830483606]",
+            "urlDrive": "https://drive.google.com/file/d/1MVCQWqoqDnK0ZbZl-D43iG4Yw56gyAkb/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tmdbId": 3425,
+    "tmdbType": "tv",
+    "tituloOriginal": "ウルトラマン",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/dIgS1BkwZ8hze6qhLuI8nPdLz3u.jpg",
+    "year": "1966",
+    "fechaEstreno": "1966-07-17",
+    "rating": "8.3",
+    "votos": 66,
+    "runtime": "25min",
+    "runtimeMin": 25,
+    "genres": [
+      "Action & Adventure",
+      "Sci-Fi & Fantasy",
+      "Misterio"
+    ],
+    "generosTexto": "Action & Adventure, Sci-Fi & Fantasy, Misterio",
+    "clasificacion": "TV-PG",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "黒部進",
+        "personaje": "Shin Hayata / Ultraman",
+        "foto": "https://image.tmdb.org/t/p/w185/iMRdCBvpP7KPpb9EVNFWcAoEyL2.jpg"
+      },
+      {
+        "nombre": "小林昭二",
+        "personaje": "Captain 'Cap' Toshio Muramatsu",
+        "foto": "https://image.tmdb.org/t/p/w185/yW9v9sIDGmox7RfF7wFqqrlIKDU.jpg"
+      },
+      {
+        "nombre": "毒蝮三太夫",
+        "personaje": "Daisuke Arashi",
+        "foto": ""
+      },
+      {
+        "nombre": "桜井浩子",
+        "personaje": "Akiko Fuji",
+        "foto": "https://image.tmdb.org/t/p/w185/lSLY1Z9aZikNj4rqORoaIVoaz3w.jpg"
+      },
+      {
+        "nombre": "二瓶正也",
+        "personaje": "Mitsuhiro Ide",
+        "foto": "https://image.tmdb.org/t/p/w185/qVxSEH1H1UfQhxfnEjIkCCORmHT.jpg"
+      },
+      {
+        "nombre": "津沢彰秀",
+        "personaje": "Isamu Hoshino",
+        "foto": "https://image.tmdb.org/t/p/w185/pKUI7gEEsbFqc7BDulEvDIBkPV5.jpg"
+      },
+      {
+        "nombre": "平田昭彦",
+        "personaje": "Dr. Iwamoto",
+        "foto": "https://image.tmdb.org/t/p/w185/3V1wX7HeB8ejmuwrHMMwoymqEqb.jpg"
+      },
+      {
+        "nombre": "石坂浩二",
+        "personaje": "Narrator",
+        "foto": "https://image.tmdb.org/t/p/w185/7GNWhEzs3mvOkxR6rM7J2NmbD3q.jpg"
+      },
+      {
+        "nombre": "浦野光",
+        "personaje": "Narrator",
+        "foto": ""
+      },
+      {
+        "nombre": "古谷敏",
+        "personaje": "Ultraman",
+        "foto": "https://image.tmdb.org/t/p/w185/wqayUJRJlBP07p5pIHyzkSrOKYv.jpg"
+      },
+      {
+        "nombre": "中曽根雅夫",
+        "personaje": "Ultraman (Grunts)",
+        "foto": ""
+      }
+    ],
+    "pais": "Japan",
+    "idioma": "ja",
+    "productoras": "Tsuburaya Productions, TBS",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "japan, martial arts, hero, villain, investigation, friendship, superhero, extraterrestrial, alien, disaster, giant monster, alien invasion, fighting, super power, kaiju, hidden identity, giant, supervillain, anomaly, organization, kyodai hero, ultraman, teamwork, henshin heroes, tokusatsu",
+    "similares": [
+      {
+        "titulo": "Ultra Siete",
+        "poster": "https://image.tmdb.org/t/p/w342/4HEtZZY4OISae6vpMCzREyzXFQi.jpg",
+        "year": "1967",
+        "rating": "7.9"
+      },
+      {
+        "titulo": "Ultraman Ace",
+        "poster": "https://image.tmdb.org/t/p/w342/pvzz5aYJvGMBu3BVTf0vkIsZ3rY.jpg",
+        "year": "1972",
+        "rating": "8.0"
+      },
+      {
+        "titulo": "Ultraman Dyna",
+        "poster": "https://image.tmdb.org/t/p/w342/gUoe3ZGS2am6obGeKltUkwF7UO.jpg",
+        "year": "1997",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Ultraman Tiga",
+        "poster": "https://image.tmdb.org/t/p/w342/lYvAiTqXFGuLqos0Wi7899scn6z.jpg",
+        "year": "1996",
+        "rating": "8.2"
+      },
+      {
+        "titulo": "Escuadrón de las Súper Bestias Liveman",
+        "poster": "https://image.tmdb.org/t/p/w342/hbMV06yJ6nHWj0LweEQCDXWhXcq.jpg",
+        "year": "1988",
+        "rating": "8.3"
+      },
+      {
+        "titulo": "Hyakujū Sentai Gaoranger",
+        "poster": "https://image.tmdb.org/t/p/w342/yrErA1GiQcZikGG3c0bITFlCO6f.jpg",
+        "year": "2001",
+        "rating": "7.5"
+      }
+    ],
+    "homepage": "https://m-78.jp/",
+    "creadores": [],
+    "numeroTemporadas": 1,
+    "numeroEpisodios": 39,
+    "temporadasTmdb": [
+      {
+        "air_date": "1966-07-10",
+        "episode_count": 4,
+        "id": 10478,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/nGrEoYb07hzAsvyNurxfMEeJJyE.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1966-07-17",
+        "episode_count": 39,
+        "id": 10479,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/6MmMm5skOY7wZzLRUDO1wFhVaJa.jpg",
+        "season_number": 1,
+        "vote_average": 7.3
+      }
+    ],
+    "tituloSerie": "Ultraman",
+    "descripcion": "Mientras investigaba lo que aparentemente eran dos bolas brillantes que se perseguían una a otra, el oficial patrullero científico Hayata resulta muerto cuando uno de los ovnis choca accidentalmente con el Mini-VTOL que pilotaba. El ser que maneja el ovni, un gigantesco alien rojo y plateado procedente de la Tierra de la Luz en la galaxia Nebula M78, se siente responsable de la muerte. En compensación, decide entregar su fuerza vital al terrícola, devolviéndole así la vida. Al mismo tiempo le entrega un artilugio, llamado la Cápsula Beta, la cual, cuando es necesario, transforma en secreto a Hayata en un gigante alienígena que será conocido como Ultraman",
+    "imagen": "https://image.tmdb.org/t/p/w780/6MmMm5skOY7wZzLRUDO1wFhVaJa.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "02 DISPAREN AL INVASOR ESPACIAL - LATINO [5190406441622]",
+            "urlDrive": "https://drive.google.com/file/d/1GsoEBM3gnRdrHX2RvGWCznYKJpNR-dDa/view"
+          },
+          {
+            "tituloEpisodio": "03 ¡VAMOS, AGENTES DE LA CIA! - LATINO [5190406572694]",
+            "urlDrive": "https://drive.google.com/file/d/17UD4xmmcnDuUqDzuxbvDumeT9SxlbRHU/view"
+          },
+          {
+            "tituloEpisodio": "05 ELMONSTRUO VERDE - LATINO [5190406900374]",
+            "urlDrive": "https://drive.google.com/file/d/1m7SelXKkOlm3okntxurCxSR851Qr0faY/view"
+          },
+          {
+            "tituloEpisodio": "06 GRANOS DE CACAO - LATINO BDRip [5190407162518]",
+            "urlDrive": "https://drive.google.com/file/d/1lAnO_YmhDLKRc99bCJU4GgP4uQ5fFvmq/view"
+          },
+          {
+            "tituloEpisodio": "07 LA PIEDRA AZUL - LATINO [5190411553430]",
+            "urlDrive": "https://drive.google.com/file/d/1nLCIZtRob3WregN7GaoVt02JLOC11Vfz/view"
+          },
+          {
+            "tituloEpisodio": "08 DONDE GOBIERNAN LOS MONSTRUOS - LATINO [5190411946646]",
+            "urlDrive": "https://drive.google.com/file/d/1P5WE0efBqIfX1ij0Q3jWs1ii3EKS-xJi/view"
+          },
+          {
+            "tituloEpisodio": "09 OPERACIÓN ATAQUE RELÁMPAGO - LATINO [5190412208790]",
+            "urlDrive": "https://drive.google.com/file/d/1gFYCeyGQTh9KTJJN-Hj8xQWVA2WleaSx/view"
+          },
+          {
+            "tituloEpisodio": "10 EL CIENTÍFICO MALVADO - LATINO [5190412339862]",
+            "urlDrive": "https://drive.google.com/file/d/1J1dVVGSuUY0v-N7m8WIwT7lv7r9Ovnlp/view"
+          },
+          {
+            "tituloEpisodio": "14 LA PERLA - Subt Lat [5190413257366]",
+            "urlDrive": "https://drive.google.com/file/d/1wPuHO57NLE19pIK8CCkGIaGF8AjJkFkL/view"
+          },
+          {
+            "tituloEpisodio": "15 LOS TERRIBLES RAYOS CÓSMICOS - CASTELLANO [5190413585046]",
+            "urlDrive": "https://drive.google.com/file/d/1EpyVXNvF0SXdkVkaDycMbIz3lzsw3Ck9/view"
+          },
+          {
+            "tituloEpisodio": "17 AL INFINITO Y MÁS ALLÁ - LATINO [5190414174870]",
+            "urlDrive": "https://drive.google.com/file/d/1WdlY-Zpe6I4ZkJrQPz6iO6HGe4vFawwT/view"
+          },
+          {
+            "tituloEpisodio": "19 RESURRECCIÓN DE LOS DEMONIOS - Subt Lat [5190414502550]",
+            "urlDrive": "https://drive.google.com/file/d/16_DDySRD15uW5YZJ2WV92AJ3AKhfCERS/view"
+          },
+          {
+            "tituloEpisodio": "21 EL MONSTRUO DE HUMO - Subt Lat [5190415092374]",
+            "urlDrive": "https://drive.google.com/file/d/1X_HZsiDHFYfSccNMIdDqhT9bv86JTZ0z/view"
+          },
+          {
+            "tituloEpisodio": "26 EL PRÍNCIPE DE LOS MONSTRUOS, 1º PARTE - Subt Lat [5190416206486]",
+            "urlDrive": "https://drive.google.com/file/d/1S7tkQSns248Wp6xcCvUF3fFLlX8cCngA/view"
+          },
+          {
+            "tituloEpisodio": "27 EL PRÍNCIPE DE LOS MONSTRUOS, 2º PARTE - Subt Lat [5190416403094]",
+            "urlDrive": "https://drive.google.com/file/d/1Mw3rQtLMkQ5NC6CuNCkybRAqh5SRTIRK/view"
+          },
+          {
+            "tituloEpisodio": "28 HUMANO 5-6 - Subt Lat [5190416534166]",
+            "urlDrive": "https://drive.google.com/file/d/1WRZOVYRvLxreXQTZFZdkxsArzlWfgNEH/view"
+          },
+          {
+            "tituloEpisodio": "29 EN EL CENTRO DE LA TIERRA - Subt Lat [5190416730774]",
+            "urlDrive": "https://drive.google.com/file/d/1nZhCnb6q69L0I0NDjkP7x8KpDYaFEphR/view"
+          },
+          {
+            "tituloEpisodio": "33 MALAS PALABRAS - Subt Lat [5254509365910]",
+            "urlDrive": "https://drive.google.com/file/d/14juMIHEAOx4TahwIXXqQ9EMRol8xsEsH/view"
+          },
+          {
+            "tituloEpisodio": "34 EL REGALO DEL CIELO - LATINO BDRip [5254509759126]",
+            "urlDrive": "https://drive.google.com/file/d/1p-wgOCDrYHwZKorP1BMFpkb98si5P0CR/view"
+          },
+          {
+            "tituloEpisodio": "38 RESCATEN A LA NAVE ESPACIAL - Subt Lat [5254512839318]",
+            "urlDrive": "https://drive.google.com/file/d/1T19jsru6yGEWXd8Yg1Yext-BZZdFb43D/view"
+          },
+          {
+            "tituloEpisodio": "39 ADIÓS, ULTRAMAN HAYATA - LATINO BDRip [5254513035926]",
+            "urlDrive": "https://drive.google.com/file/d/1VcRrRoC5IdU1yrrImoLC6JBepZIEe8IN/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 648,
     "tmdbType": "tv",
     "tituloOriginal": "The Incredible Hulk",
