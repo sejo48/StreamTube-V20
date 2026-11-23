@@ -1,5 +1,169 @@
 [
   {
+    "tmdbId": 648,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Incredible Hulk",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/vl2lLJcbbnTcvWH6ZfHlXuLxIaP.jpg",
+    "year": "1977",
+    "fechaEstreno": "1977-11-04",
+    "rating": "7.2",
+    "votos": 530,
+    "runtime": "50min",
+    "runtimeMin": 50,
+    "genres": [
+      "Sci-Fi & Fantasy",
+      "Action & Adventure",
+      "Drama"
+    ],
+    "generosTexto": "Sci-Fi & Fantasy, Action & Adventure, Drama",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "Jack Kirby, Stan Lee, Richard Christian Matheson",
+    "reparto": [
+      {
+        "nombre": "Bill Bixby",
+        "personaje": "David Banner",
+        "foto": "https://image.tmdb.org/t/p/w185/eKcpqTutiVxQeAPbwupjSV5DXE.jpg"
+      },
+      {
+        "nombre": "Lou Ferrigno",
+        "personaje": "Incredible Hulk",
+        "foto": "https://image.tmdb.org/t/p/w185/obTtRrm8EbDzuiKpLjAd9s1i9v5.jpg"
+      },
+      {
+        "nombre": "Jack Colvin",
+        "personaje": "Jack McGee",
+        "foto": "https://image.tmdb.org/t/p/w185/muGB3L9Nn7CAVeKnZwm79BVr1P3.jpg"
+      },
+      {
+        "nombre": "Charles Napier",
+        "personaje": "Hulk (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/w16LEJlHDtqGWeFCk5a7a2GDeBK.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Universal Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "hero, transformation, superhero, based on comic, tragic hero, scientist, rage, anger, physician, metamorphosis, strength, lonely, investigative reporter, green, smash, don't make me angry, david banner, gamma radiation, iconic character",
+    "similares": [
+      {
+        "titulo": "El increíble Hulk",
+        "poster": "https://image.tmdb.org/t/p/w342/wa60s9NSvrH87NFCArmobnIyNnh.jpg",
+        "year": "1996",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "The Flash",
+        "poster": "https://image.tmdb.org/t/p/w342/fi1GEdCbyWRDHpyJcB25YYK7fh4.jpg",
+        "year": "1990",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Las Increíbles Aventuras de Spiderman",
+        "poster": "https://image.tmdb.org/t/p/w342/mFcSBC5ckNJ1BSFBjSJmpDTtrXw.jpg",
+        "year": "2003",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "Stargirl",
+        "poster": "https://image.tmdb.org/t/p/w342/qbtwQpzZSmjbq9767KKHH1qoO5y.jpg",
+        "year": "2020",
+        "rating": "7.7"
+      },
+      {
+        "titulo": "Linterna Verde: La Serie Animada",
+        "poster": "https://image.tmdb.org/t/p/w342/xNrJgBSjVLFaQcxkFbkWtjIuq01.jpg",
+        "year": "2011",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "El intrépido Batman",
+        "poster": "https://image.tmdb.org/t/p/w342/tv2mOIRcPP4H0DhOH84xPgqui7d.jpg",
+        "year": "2008",
+        "rating": "7.7"
+      }
+    ],
+    "homepage": "https://www.nbc.com/the-incredible-hulk",
+    "creadores": [
+      "Kenneth Johnson"
+    ],
+    "numeroTemporadas": 5,
+    "numeroEpisodios": 82,
+    "temporadasTmdb": [
+      {
+        "air_date": "1977-11-04",
+        "episode_count": 2,
+        "id": 1954,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/bXOWmJL1oSqmdenRlIystF4OWo5.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1977-11-04",
+        "episode_count": 12,
+        "id": 1949,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/b2oVBGDFG7FaAKGkXIwadN4Sn7A.jpg",
+        "season_number": 1,
+        "vote_average": 6
+      },
+      {
+        "air_date": "1978-09-22",
+        "episode_count": 22,
+        "id": 1950,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/sVrBMT28xOBlNCdgF8Uo1idutMv.jpg",
+        "season_number": 2,
+        "vote_average": 6
+      },
+      {
+        "air_date": "1979-09-21",
+        "episode_count": 23,
+        "id": 1951,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/xjJYdXRCTewz2hNSCe5hKxsnXPr.jpg",
+        "season_number": 3,
+        "vote_average": 6.2
+      },
+      {
+        "air_date": "1980-11-07",
+        "episode_count": 18,
+        "id": 1952,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/8N8RfbDIZ0Wn2WGWTHMgqX9ZwOl.jpg",
+        "season_number": 4,
+        "vote_average": 6
+      },
+      {
+        "air_date": "1981-10-02",
+        "episode_count": 7,
+        "id": 1953,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/wxTDW9hakq8kH5oGL8iM0PjJ6P7.jpg",
+        "season_number": 5,
+        "vote_average": 5.6
+      }
+    ],
+    "tituloSerie": "El increíble Hulk",
+    "descripcion": "El Dr. David Banner durante años ha estado investigando los casos de personas que en circunstancias de peligro hacen muestra de forma ocasional de una fuerza increíble. Cuando por fin llega a la conclusión de que se debe a los efectos de los rayos gamma de la luz solar decide sobre exponer su cuerpo a dicha radiación en laboratorio. Sin embargo David no sabe que otros trabajadores del laboratorio han elevado el calibre de radiación gamma de la maquina. Aunque David cree que el experimento ha sido fallido poco tardará en descubrir que se ha expuesto una radiación inmensa y lo que ello ha desencadenado.",
+    "imagen": "https://image.tmdb.org/t/p/w780/qejqK8MeYq1ZslH1aOMb9dxFIBM.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 1786,
     "tmdbType": "tv",
     "tituloOriginal": "Perfect Strangers",
