@@ -1,5 +1,373 @@
 [
   {
+    "tmdbId": 1786,
+    "tmdbType": "tv",
+    "tituloOriginal": "Perfect Strangers",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/o76eZkTfIAtcGsN3MCVtKDfDTNf.jpg",
+    "year": "1986",
+    "fechaEstreno": "1986-03-25",
+    "rating": "6.7",
+    "votos": 130,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Comedia"
+    ],
+    "generosTexto": "Comedia",
+    "clasificacion": "TP",
+    "tagline": "¡Ahora estamos tan felices, que haremos la Danza de la Alegría!",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Bronson Pinchot",
+        "personaje": "Balki Bartokomous",
+        "foto": "https://image.tmdb.org/t/p/w185/wjroQcpf1wCYGz5f59xBY56e10y.jpg"
+      },
+      {
+        "nombre": "Mark Linn-Baker",
+        "personaje": "Larry Appleton",
+        "foto": "https://image.tmdb.org/t/p/w185/pUNprACr5X9v8xZPLerV4QMqRfL.jpg"
+      },
+      {
+        "nombre": "Melanie Wilson",
+        "personaje": "Jennifer Lyons",
+        "foto": "https://image.tmdb.org/t/p/w185/xQgk1YoqO4BuPFygKiQAw8extKd.jpg"
+      },
+      {
+        "nombre": "Rebeca Arthur",
+        "personaje": "Mary Anne Spencer",
+        "foto": "https://image.tmdb.org/t/p/w185/koznSS7GsuF2muJwgxYil3tT48O.jpg"
+      },
+      {
+        "nombre": "Belita Moreno",
+        "personaje": "Lydia Markham",
+        "foto": ""
+      },
+      {
+        "nombre": "Sam Anderson",
+        "personaje": "Sam Gorpley",
+        "foto": "https://image.tmdb.org/t/p/w185/AnSyGuhjALUwUzMfQFhYMSJp4ra.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "chicago, illinois, newspaper, roommates, friendship, cousin relationship, sitcom",
+    "similares": [
+      {
+        "titulo": "Lo que me gusta de ti",
+        "poster": "https://image.tmdb.org/t/p/w342/mh6aty4BtxIAT9UBtSTvtiPjmVy.jpg",
+        "year": "2002",
+        "rating": "6.4"
+      },
+      {
+        "titulo": "Apartamento para tres",
+        "poster": "https://image.tmdb.org/t/p/w342/6xn9XQ5iwJIa1FkoZAFtnh5tAQl.jpg",
+        "year": "1977",
+        "rating": "7.5"
+      },
+      {
+        "titulo": "New Girl",
+        "poster": "https://image.tmdb.org/t/p/w342/8oCqMlKKomCArVtyOjRzMN6g40Z.jpg",
+        "year": "2011",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "Finales felices",
+        "poster": "https://image.tmdb.org/t/p/w342/pPzKQqwISw7YekGQbm0lLhoTYhG.jpg",
+        "year": "2011",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Cosas de casa",
+        "poster": "https://image.tmdb.org/t/p/w342/dBKoWVRgUwtoovFz4LeUO7heI0i.jpg",
+        "year": "1989",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "El rey de Queens",
+        "poster": "https://image.tmdb.org/t/p/w342/e718w2IAG0Svh80AHop44NFvNka.jpg",
+        "year": "1998",
+        "rating": "7.1"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Dale McRaven"
+    ],
+    "numeroTemporadas": 8,
+    "numeroEpisodios": 150,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 1,
+        "id": 5051,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1986-03-25",
+        "episode_count": 6,
+        "id": 5043,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/5M3isQYG3stWXYy19VD6exgAykf.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1986-09-17",
+        "episode_count": 22,
+        "id": 5045,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/v76hwR6gQSZSiAcZEYCeRlIhVgU.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1987-09-22",
+        "episode_count": 22,
+        "id": 5046,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/uhsMI7paw1n2k9lNuhpAIdMtGPh.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1988-10-14",
+        "episode_count": 22,
+        "id": 5047,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/uc4pZE3ogMZN79vWoNR8W20QIYb.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1989-09-22",
+        "episode_count": 24,
+        "id": 5044,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/7IWRBDREmO9T6OaZwqyIbGMZKOr.jpg",
+        "season_number": 5,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1990-09-28",
+        "episode_count": 24,
+        "id": 5049,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/2qGKKPD0bCDSJwPCw15gmJbqGpn.jpg",
+        "season_number": 6,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1991-09-20",
+        "episode_count": 24,
+        "id": 5048,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/n5nD1dSYJvnuTTgljnvaoZk3Z7x.jpg",
+        "season_number": 7,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1993-07-09",
+        "episode_count": 6,
+        "id": 5050,
+        "name": "Temporada 8",
+        "overview": "",
+        "poster_path": "/gBQRgg3E8ItMFm4GFgzFkPIcBWm.jpg",
+        "season_number": 8,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Primos lejanos",
+    "descripcion": "Perfect Strangers, también llamada en castellano Dos perfectos desconocidos (América) y Primos lejanos (España), es unasitcom protagonizada por Bronson Pinchot y Mark Linn-Baker. Fue creada el 25 de marzo de 1986 por la cadena ABC y finalizó el 6 de agosto de 1993. En total cuenta con 150 episodios repartidos en ocho temporadas, cada uno dura entre 22 y 23 minaproximadamente.",
+    "imagen": "https://image.tmdb.org/t/p/w780/wZ7RomWxcrdMwK63XzVeQGFK6Dy.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Primos lejanos  1x01 [3666654202565]",
+            "urlDrive": "https://drive.google.com/file/d/1FMmiIbkjG1uDJ4M3v2t5aIPy_lDmahXQ/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos  1x02 [3666654268101]",
+            "urlDrive": "https://drive.google.com/file/d/1VzWK-er6BSQ-GWjCYc-9BqZDm-wWwV_l/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos  1x03 [3666654333637]",
+            "urlDrive": "https://drive.google.com/file/d/1Bq30v4OkPNPv49lxb4oBviW7jWgfM6a4/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos  1x04 [3666654399173]",
+            "urlDrive": "https://drive.google.com/file/d/1Hug15sGfu2S2BsCXHCjFfyIFjXVsWj6t/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos  1x05 [3666654464709]",
+            "urlDrive": "https://drive.google.com/file/d/1oVAj7amsose3iW82Ls53oyzdQQjr1_sv/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos  1x06 [3666654726853]",
+            "urlDrive": "https://drive.google.com/file/d/17wahJQgelpSX332Bezz8hnCPBZYoykq4/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos  2x12 [3667899255493]",
+            "urlDrive": "https://drive.google.com/file/d/1a-kuTLs_uQgexbivnLbP8Qj0P2CteAOk/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos  2x14 [3667899517637]",
+            "urlDrive": "https://drive.google.com/file/d/1EqbHeGI_zm-p5fCc7I_apksJXyLEK8AX/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos  2x18 [3667919833797]",
+            "urlDrive": "https://drive.google.com/file/d/1s_CKayCoUtV8FmtqWtBvfcOMnHKm8uwY/view"
+          },
+          {
+            "tituloEpisodio": "Primos Lejanos - 3x11 [3670304164549]",
+            "urlDrive": "https://drive.google.com/file/d/1mZsKbIvwfrYM-1mqwbrGcqh4bQx9uyHL/view"
+          },
+          {
+            "tituloEpisodio": "Primos Lejanos - 3x12 [3670304295621]",
+            "urlDrive": "https://drive.google.com/file/d/1s11p84O2A1g4lmRRS4DTpnFcYyUU5MKl/view"
+          },
+          {
+            "tituloEpisodio": "Primos Lejanos - 3x13 [3670304361157]",
+            "urlDrive": "https://drive.google.com/file/d/1ksuTvuUdDGYCp-dz4LwO7oVxA9iRMMhh/view"
+          },
+          {
+            "tituloEpisodio": "Primos Lejanos - 3x14 [3670304557765]",
+            "urlDrive": "https://drive.google.com/file/d/1Dgeebb-irJhEMFspDJvrtkQsWU_jPVMV/view"
+          },
+          {
+            "tituloEpisodio": "Primos Lejanos - 3x15 [3670304623301]",
+            "urlDrive": "https://drive.google.com/file/d/1bFiEHKsK6yKfivRHjZOp5xenh4oGFaJr/view"
+          },
+          {
+            "tituloEpisodio": "Primos Lejanos - 3x16 [3670315895493]",
+            "urlDrive": "https://drive.google.com/file/d/1d2rMNxCHg3Yx0iON3qLL07p0XnnQe7VD/view"
+          },
+          {
+            "tituloEpisodio": "Primos Lejanos - 3x17 [3670315961029]",
+            "urlDrive": "https://drive.google.com/file/d/1xysfQ8S18Mx2MHkMO-DRIZxrPh44RARs/view"
+          },
+          {
+            "tituloEpisodio": "Primos Lejanos - 3x18 [3670316092101]",
+            "urlDrive": "https://drive.google.com/file/d/1qUTewyQi5Qg1RxuB4K4JL46ppMi4RhX6/view"
+          },
+          {
+            "tituloEpisodio": "Primos Lejanos - 3x19 [3670316288709]",
+            "urlDrive": "https://drive.google.com/file/d/1UyLo7n6l3kpjg3scCiPfUmUHApxQo10p/view"
+          },
+          {
+            "tituloEpisodio": "Primos Lejanos - 3x21 [3670316485317]",
+            "urlDrive": "https://drive.google.com/file/d/1BAczYuav5ePvlO31hYbuyuaBu-VST6Up/view"
+          },
+          {
+            "tituloEpisodio": "Primos Lejanos - 3x22 [3670326577861]",
+            "urlDrive": "https://drive.google.com/file/d/1WxJ_KrqZYLsHGHh0x4Jb-7_xGfjYlR0P/view"
+          },
+          {
+            "tituloEpisodio": "Primos Lejanos -3x20 [3670316354245]",
+            "urlDrive": "https://drive.google.com/file/d/1hOlRiDMk7rYrmvSr_QDNEaH4_N2ZZcdH/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x01 [3667888507589]",
+            "urlDrive": "https://drive.google.com/file/d/1e95WdFnLoIX7RmZWxlpSnvv_fdHaDbd4/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x02 [3667888638661]",
+            "urlDrive": "https://drive.google.com/file/d/13-fy91zC_u0FVRfhq8aCYE74RYhav1rK/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x03 [3667888704197]",
+            "urlDrive": "https://drive.google.com/file/d/16do2hBwbr9s19uCDdX7RKT-k6bcFKRQg/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x04 [3667888769733]",
+            "urlDrive": "https://drive.google.com/file/d/1vb1KatObex5Lj6SzZj5bHscc-qzi7Fzq/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x05 [3667888835269]",
+            "urlDrive": "https://drive.google.com/file/d/1ymObvo_H_vaY1dI_BizNaZX2adomv7YU/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x06 [3667891456709]",
+            "urlDrive": "https://drive.google.com/file/d/1Oo_G64gLkziBb8UUuYT8J4fV8IyMHbJE/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x07 [3667891522245]",
+            "urlDrive": "https://drive.google.com/file/d/17_ercGW4FlyJNi0Dw3gganSvOJ-Mjea8/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x08 [3667891653317]",
+            "urlDrive": "https://drive.google.com/file/d/1Da0SPgCjuhXSu6mmM7EtWM-ziaKX7iL4/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x09 [3667891915461]",
+            "urlDrive": "https://drive.google.com/file/d/1Bm4hyn9EKHi9dwlHPnPMWyrWhPLsTPrF/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x10 [3667892112069]",
+            "urlDrive": "https://drive.google.com/file/d/1y8Sd14pi68rEJklzcsCQ8d_z2_AYKcd7/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x11 [3667899189957]",
+            "urlDrive": "https://drive.google.com/file/d/13ySDTpEJDdd01Db4mNwM-MMWrVg62_47/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x13 [3667899386565]",
+            "urlDrive": "https://drive.google.com/file/d/12A1Z9HvnhHl6loUBmnRtSq3y1B7I5ykg/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x15 [3667899583173]",
+            "urlDrive": "https://drive.google.com/file/d/1rvWZ20Lgh_SMlxyNRZZmOhclF0zojsxh/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x16 [3667919506117]",
+            "urlDrive": "https://drive.google.com/file/d/1Ww5QbITcXmaID1yHC8m3PLFS6ORyQCjD/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x17 [3667919702725]",
+            "urlDrive": "https://drive.google.com/file/d/12eypc-sxuqFNePWDZ0eYgmcEHKrrNQj-/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x19 [3667919964869]",
+            "urlDrive": "https://drive.google.com/file/d/1CzQBqCGqPYV9lrgQy8w4FBiVIimPg2t9/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x20 [3667920161477]",
+            "urlDrive": "https://drive.google.com/file/d/1sUsWxU22jonOPsSd3-hXAkJVUS27PcE0/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x21 [3667920227013]",
+            "urlDrive": "https://drive.google.com/file/d/1BeCQDFN2audp_IeDCDxtRJ0sQR39IQf4/view"
+          },
+          {
+            "tituloEpisodio": "Primos lejanos 2x22 [3667920358085]",
+            "urlDrive": "https://drive.google.com/file/d/1yXPPm_-66K4--_Lg392QWzEiNIOSz28i/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 9894,
     "tmdbType": "tv",
     "tituloOriginal": "Mission: Impossible",
