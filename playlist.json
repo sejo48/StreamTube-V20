@@ -1,5 +1,134 @@
 [
   {
+    "tmdbId": 11129,
+    "tmdbType": "tv",
+    "tituloOriginal": "S.W.A.T.",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/zJUldDj1immG5ppySDNKElfDgci.jpg",
+    "year": "1975",
+    "fechaEstreno": "1975-02-24",
+    "rating": "7.2",
+    "votos": 74,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Action & Adventure",
+      "Drama"
+    ],
+    "generosTexto": "Action & Adventure, Drama",
+    "clasificacion": "13",
+    "tagline": "“Cuando estés en problemas, llama a la policía; cuando la policía está en problemas, ellos llaman a los hombres de Harrelson”.",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Steve Forrest",
+        "personaje": "Lt. Dan \"Hondo\" Harrelson",
+        "foto": "https://image.tmdb.org/t/p/w185/gIAQMiYS5n9ULS7D363kJvStqlR.jpg"
+      },
+      {
+        "nombre": "Robert Urich",
+        "personaje": "Officer Jim Street",
+        "foto": "https://image.tmdb.org/t/p/w185/uXxUEkCvYaylw6wNDtMsQzB7OXV.jpg"
+      },
+      {
+        "nombre": "Rod Perry",
+        "personaje": "Sgt. David \"Deacon\" Kay",
+        "foto": "https://image.tmdb.org/t/p/w185/dmrS3knjugxtIPW7DJDDoSYPmok.jpg"
+      },
+      {
+        "nombre": "Mark Shera",
+        "personaje": "Officer Dominic Luca",
+        "foto": "https://image.tmdb.org/t/p/w185/dE7Swvlbvlb1mdOR47O2ps5ZWvR.jpg"
+      },
+      {
+        "nombre": "James Coleman",
+        "personaje": "Officer T.J. McCabe",
+        "foto": ""
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "police force",
+    "similares": [
+      {
+        "titulo": "Danger Man",
+        "poster": "https://image.tmdb.org/t/p/w342/5wCJ8Rt9PA1j6jzzmUQg0EjsxwV.jpg",
+        "year": "1960",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Patrulla juvenil",
+        "poster": "https://image.tmdb.org/t/p/w342/c5HaIPOSZitasqNlLRp8ZzuUsSn.jpg",
+        "year": "1968",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Hunter",
+        "poster": "https://image.tmdb.org/t/p/w342/kmC8d3KQozh1SlIih0hdfXsGLe8.jpg",
+        "year": "1984",
+        "rating": "7.1"
+      },
+      {
+        "titulo": "Police Story",
+        "poster": "https://image.tmdb.org/t/p/w342/wfhiGakYfjk8XeDKRpya9P4tNu9.jpg",
+        "year": "1973",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "The Sweeney",
+        "poster": "https://image.tmdb.org/t/p/w342/8dIJo5P3d1soSxKJvjkxDX1816H.jpg",
+        "year": "1975",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "Los nuevos vengadores",
+        "poster": "https://image.tmdb.org/t/p/w342/bk1J1bvfBVbvchK3RFSpHO9eXcg.jpg",
+        "year": "1976",
+        "rating": "7.1"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Lee Stanley",
+      "Robert Hamner"
+    ],
+    "numeroTemporadas": 2,
+    "numeroEpisodios": 37,
+    "temporadasTmdb": [
+      {
+        "air_date": "1975-02-24",
+        "episode_count": 13,
+        "id": 21602,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/nGqGTERA8GiU6DtE149PORpdRzu.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1975-09-13",
+        "episode_count": 24,
+        "id": 21601,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/61wqfssfWTHh7zA2HLMicrj4XrD.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Los hombres de Harrelson",
+    "descripcion": "Relata las misiones de un departamento especial de asalto de la policía de Los Ángeles, un grupo de hombres muy entrenados para actuar en todo tipo de situaciones peligrosas al mando del teniente Harrison.",
+    "imagen": "https://image.tmdb.org/t/p/original/u3DbvKamBWkchckwioak3PvN8j1.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 734,
     "tmdbType": "tv",
     "tituloOriginal": "Magnum, P.I.",
@@ -22695,172 +22824,6 @@
           {
             "tituloEpisodio": "LIF - 1x16.SeriesRetro.com",
             "urlDrive": "https://drive.google.com/file/d/1773F1BR4sAqeEky5n970OCO2MO6KK6Rm/view"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "tituloSerie": "La bella y la bestia",
-    "descripcion": "as aventuras y el romance de un hombre-león sensible y culto y un asistente del fiscal de distrito cruzado en Manhattan, Ciudad de Nueva York",
-    "imagen": "https://www.lavanguardia.com/peliculas-series/images/serie/poster/1987/9/w1280/zCt2Pnz2w9bFj4H1Sq7ZzfdMo8o.jpg",
-    "codigo": null,
-    "qualityTag": "",
-    "temporadas": [
-      {
-        "numeroTemporada": 1,
-        "episodios": [
-          {
-            "tituloEpisodio": "Episodio",
-            "urlDrive": "https://drive.google.com/file/d/1i-9g2RqoOz4dLAHXifif8AnCorC_eNf0/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 2",
-            "urlDrive": "https://drive.google.com/file/d/1Jx07Ea4CI9TlB02B-DvL_e8hTicvfVxG/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 3",
-            "urlDrive": "https://drive.google.com/file/d/1GPulcOV9Bx-wA6V4fAZ1R9sfBx4SwwVT/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 4",
-            "urlDrive": "https://drive.google.com/file/d/1GPulcOV9Bx-wA6V4fAZ1R9sfBx4SwwVT/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 5",
-            "urlDrive": "https://drive.google.com/file/d/1lYy3TqODFP_7s4AOPhiMaJo_UYMi3QYz/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 6",
-            "urlDrive": "https://drive.google.com/file/d/1nrunBmP5IJ0Rj4HMAG4oNOgjQPZhFsSv/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 7",
-            "urlDrive": "https://drive.google.com/file/d/1zE3IqE1765Ct4_DzuJmcHiYxm66rQM1Q/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 8",
-            "urlDrive": "https://drive.google.com/file/d/1O8CjJ_QdR596Fy7bnQbcn-RtCmKxV7ie/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 9",
-            "urlDrive": "https://drive.google.com/file/d/1Bt90SqqdnheNAQN2tFAug0uwJ7kOvM52/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 10",
-            "urlDrive": "https://drive.google.com/file/d/1M3LlVXN79EV3Qvcnj_Xr1vIMOWKs23DX/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 11",
-            "urlDrive": "https://drive.google.com/file/d/1H6BZU-J4iDYHIVrPdn22P3lQqIFYUlO6/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 12",
-            "urlDrive": "https://drive.google.com/file/d/1pUqkzHLxbMiCH9OwWh4so88djfPinjJL/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 13",
-            "urlDrive": "https://drive.google.com/file/d/1JaWHL8TUcbD4aETzOIVY1GcraVsrW53R/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 14",
-            "urlDrive": "https://drive.google.com/file/d/1kyrcmkKKwVhBUa1DjjcCMJemWVNuxyN2/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 15",
-            "urlDrive": "https://drive.google.com/file/d/1n4v87OUKZm7MGaxiBKCet3jgi2KQCBXq/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 16",
-            "urlDrive": "https://drive.google.com/file/d/1M1xiGCgphVDJJuwm9ZwNaFQcewZf73-s/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 17",
-            "urlDrive": "https://drive.google.com/file/d/1vzroLCen21ep9w6TvzTfgpXY0ysqFw6j/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 18",
-            "urlDrive": "https://drive.google.com/file/d/1s49xstXd0nxAxmKH447hiINyX6KmqxQi/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E01 Érase una vez en la ciudad de Nueva York - RetroTVE.",
-            "urlDrive": "https://drive.google.com/file/d/1iuQtbxBjMlHwoOprLlXkJtoAz7M0k41q/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E02 Terrible Salvador - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1GZEO_dHewr5Fzl-OVEqRFsmU7xv8umgT/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E03 Cerco - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1sHramrQBGH3qdaUAGnYQwjw-E8N4zm98/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E04 Sin camino hacia abajo - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1xQoqE8yTYB5wxg9_5ZKlcuwpKSXrxNb2/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E05 Masques - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1b2qBte9qeHMj8EkD-cdtmbcFjvQyEMFS/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E06 La bestia en el interior - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1SV-FO2XtkqEgKkOOd9wt093ab5SDV5FF/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E07 Ni el hierro barra una jaula - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1o4U396zVDhz93Nb31rKm1ylAmJx7IJeh/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E08 Canción de Orfeo - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/11RwCbAn7_1kNDccPtSwZQExhRpcFLh__/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E09 Espiritu oscuro - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1GC8HUq3hM6n0izZFNKTXrWY0XX4CdJz1/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E10 Una historia para niños - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1OzhgkoUuoV0dakeRM5iahDSz3j0xEDYS/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E11 Un silencio imposible - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1j_c7oyvrqWb9S3AyL8Jf6mM92n_ZWdvd/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E12 Sombras de Grey - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/18CQH0iC-adVFzGuZAI_vjF8GS4R3C2ty/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E14 El alquimista - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1jSnDQyyaakwtkQT7EAAyrVBw3EDDhcdc/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E15 Tentación - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1MUHyDvajcU009AYOTACGwHct0hw0YnR2/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E16 Promesas de algún día - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/17z-PUqwaE9fsmhmz-JTE4YjAdOSEqbtC/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E17 Abajo a un mar sin sol - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1YfeL1LK2Jjt7BWAMslANUHzejV_QuhQi/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E18 Fiebre - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1u5LW42WNuhD-y4SAPnvQc53_ojU6zSa-/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E20 Para reinar en el infierno - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1_D_iWDEa4VFs9NXBGmvhlkB3w82mJ4kS/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E21 Ozymandias - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1rb4vaIXmcSmJTvNUTyW-0Yhv2owrZH07/view"
-          },
-          {
-            "tituloEpisodio": "LBB -S01E22 Una vida feliz - RetroTVE.com",
-            "urlDrive": "https://drive.google.com/file/d/1lwH-ZvqLcaKvq8evlca7t_BDniOJzAHn/view"
           }
         ]
       }
