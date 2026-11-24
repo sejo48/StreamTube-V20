@@ -126,7 +126,49 @@
     "imagen": "https://image.tmdb.org/t/p/w780/dweZx97UEDy6UTivtf404qdPyei.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "El Soldado En La Colina [4272215755444]",
+            "urlDrive": "https://drive.google.com/file/d/1E34W8U4wjPBycXrbn0dN0QEyIBLo9FIu/view"
+          },
+          {
+            "tituloEpisodio": "Fuerza De Choque [4274354391732]",
+            "urlDrive": "https://drive.google.com/file/d/1Cv3jZEWfqJf3lioM3B7_OOJb-sWjAmWY/view"
+          },
+          {
+            "tituloEpisodio": "Jusgo Superviviente [4298336570036]",
+            "urlDrive": "https://drive.google.com/file/d/1ClCwTA7s_1p53DKFucCA6tRLf6YW_H-u/view"
+          },
+          {
+            "tituloEpisodio": "La Coneccion China [4272327822004]",
+            "urlDrive": "https://drive.google.com/file/d/1PM9VUpkJ0RDVa2RyihJmAmMxd7MAV14-/view"
+          },
+          {
+            "tituloEpisodio": "Luca, Eres Hombre Muerto [4272428681908]",
+            "urlDrive": "https://drive.google.com/file/d/1zkTkyfCL03_OoWePAtv6keq2WDpjg3Dn/view"
+          },
+          {
+            "tituloEpisodio": "Noche De Paz,Noche De Muerte [4273927883444]",
+            "urlDrive": "https://drive.google.com/file/d/1Y4B7g2Tsp2Rpus93BwFfz2ktw3C_61Ur/view"
+          },
+          {
+            "tituloEpisodio": "Plan Omega [4298333358772]",
+            "urlDrive": "https://drive.google.com/file/d/1ef0OJkvL2rcL4bG6hWGXdeZ2jLDQHLk_/view"
+          },
+          {
+            "tituloEpisodio": "Recuerdos Peligrosos [4272415509172]",
+            "urlDrive": "https://drive.google.com/file/d/1NkhqMq2xnPQmuVmnczacqiQXUjP5i8iX/view"
+          },
+          {
+            "tituloEpisodio": "The Bravo Enigma [4299219405492]",
+            "urlDrive": "https://drive.google.com/file/d/1I41aMCGoVvmN2CDJrV-GCyslMnVHnbKO/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 734,
