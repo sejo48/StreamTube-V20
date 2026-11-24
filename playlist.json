@@ -1,5 +1,342 @@
 [
   {
+    "tmdbId": 3002,
+    "tmdbType": "tv",
+    "tituloOriginal": "The Benny Hill Show",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/bp30imMTFKAcxrZMi4hjBwY91A6.jpg",
+    "year": "1969",
+    "fechaEstreno": "1969-11-19",
+    "rating": "7.2",
+    "votos": 189,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Comedia"
+    ],
+    "generosTexto": "Comedia",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Benny Hill",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/i3Yw1laJhKw104a2lGtjDVVtHN8.jpg"
+      },
+      {
+        "nombre": "Henry McGee",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/pX6kUVsf2mqQwLUbQ9gQEPuv41f.jpg"
+      },
+      {
+        "nombre": "Bob Todd",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/wsbJt5OFV7OA4OKqNGr31LXmhdP.jpg"
+      },
+      {
+        "nombre": "Nicholas Parsons",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/o6k9uFee2rgBv7mciFCHG2hPzZc.jpg"
+      },
+      {
+        "nombre": "Jackie Wright",
+        "personaje": "",
+        "foto": ""
+      },
+      {
+        "nombre": "Helen Horton",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/ghK0UV1cMPThtRmx5vn9dbDwRYb.jpg"
+      },
+      {
+        "nombre": "Bella Emberg",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/gSOFwGxklZ12WvWOJW2zXHWho9D.jpg"
+      },
+      {
+        "nombre": "Patricia Hayes",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/osNIQPTHJ9e5ct7r1Q1G4tzRceu.jpg"
+      },
+      {
+        "nombre": "Anna Dawson",
+        "personaje": "",
+        "foto": ""
+      },
+      {
+        "nombre": "Felicity Buirski",
+        "personaje": "",
+        "foto": ""
+      },
+      {
+        "nombre": "Helli Louise",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/uZ3RSsAm3dUXx9lCj4fRaTIIS7i.jpg"
+      }
+    ],
+    "pais": "United Kingdom",
+    "idioma": "en",
+    "productoras": "Thames Television, BBC",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "slapstick comedy, parody, sketch comedy, double entendre, naughty",
+    "similares": [
+      {
+        "titulo": "Portlandia",
+        "poster": "https://image.tmdb.org/t/p/w342/pfaxCP6YqlFHCL3QytnTanwRTL5.jpg",
+        "year": "2011",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Tim and Eric Awesome Show, Great Job!",
+        "poster": "https://image.tmdb.org/t/p/w342/1dzPN5M6BbT44CTMaXqqkIdhOWK.jpg",
+        "year": "2007",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "A Black Lady Sketch Show",
+        "poster": "https://image.tmdb.org/t/p/w342/sf1BjG7dZGqJCSwEt25v2lzjqVr.jpg",
+        "year": "2019",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Monty Python's Flying Circus",
+        "poster": "https://image.tmdb.org/t/p/w342/uff1OUInp82RiGuEUA06JBGSdQi.jpg",
+        "year": "1969",
+        "rating": "8.3"
+      },
+      {
+        "titulo": "In Living Color",
+        "poster": "https://image.tmdb.org/t/p/w342/u5BZEJ9X6L24a1MUAun1SdkOFTn.jpg",
+        "year": "1990",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "The Whitest Kids U' Know",
+        "poster": "https://image.tmdb.org/t/p/w342/7nBZbpqjImz5azIM91ZUaFjTdVR.jpg",
+        "year": "2007",
+        "rating": "8.3"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Benny Hill"
+    ],
+    "numeroTemporadas": 19,
+    "numeroEpisodios": 58,
+    "temporadasTmdb": [
+      {
+        "air_date": null,
+        "episode_count": 36,
+        "id": 9638,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1969-11-19",
+        "episode_count": 4,
+        "id": 9621,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/uUg003XdkrQs9jGXPRosFnTLw8b.jpg",
+        "season_number": 1,
+        "vote_average": 9
+      },
+      {
+        "air_date": "1970-10-28",
+        "episode_count": 5,
+        "id": 9619,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/uUg003XdkrQs9jGXPRosFnTLw8b.jpg",
+        "season_number": 2,
+        "vote_average": 8.3
+      },
+      {
+        "air_date": "1971-11-24",
+        "episode_count": 4,
+        "id": 9620,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/kO5KZxKx5HdfC7eBad2XXCG4KNh.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1972-10-25",
+        "episode_count": 4,
+        "id": 9628,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/kO5KZxKx5HdfC7eBad2XXCG4KNh.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1973-12-05",
+        "episode_count": 4,
+        "id": 9623,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/kO5KZxKx5HdfC7eBad2XXCG4KNh.jpg",
+        "season_number": 5,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1975-01-08",
+        "episode_count": 3,
+        "id": 9631,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/adsLCO9H7No5jmCF1TbV7XqGBfV.jpg",
+        "season_number": 6,
+        "vote_average": 8
+      },
+      {
+        "air_date": "1975-12-17",
+        "episode_count": 4,
+        "id": 9626,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/adsLCO9H7No5jmCF1TbV7XqGBfV.jpg",
+        "season_number": 7,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1977-01-26",
+        "episode_count": 3,
+        "id": 9624,
+        "name": "Temporada 8",
+        "overview": "",
+        "poster_path": "/adsLCO9H7No5jmCF1TbV7XqGBfV.jpg",
+        "season_number": 8,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1978-05-30",
+        "episode_count": 1,
+        "id": 9629,
+        "name": "Temporada 9",
+        "overview": "",
+        "poster_path": "/kznPz0iK6Uy3FrrWPdRxTmexQHJ.jpg",
+        "season_number": 9,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1978-12-26",
+        "episode_count": 3,
+        "id": 9630,
+        "name": "Temporada 10",
+        "overview": "",
+        "poster_path": "/kznPz0iK6Uy3FrrWPdRxTmexQHJ.jpg",
+        "season_number": 10,
+        "vote_average": 9
+      },
+      {
+        "air_date": "1980-02-06",
+        "episode_count": 3,
+        "id": 9622,
+        "name": "Temporada 11",
+        "overview": "",
+        "poster_path": "/kznPz0iK6Uy3FrrWPdRxTmexQHJ.jpg",
+        "season_number": 11,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1981-01-07",
+        "episode_count": 3,
+        "id": 9627,
+        "name": "Temporada 12",
+        "overview": "",
+        "poster_path": "/kznPz0iK6Uy3FrrWPdRxTmexQHJ.jpg",
+        "season_number": 12,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1982-01-06",
+        "episode_count": 2,
+        "id": 9625,
+        "name": "Temporada 13",
+        "overview": "",
+        "poster_path": "/1X02B9aeItocWRORT6XAXnRGDZj.jpg",
+        "season_number": 13,
+        "vote_average": 8.5
+      },
+      {
+        "air_date": "1983-01-05",
+        "episode_count": 2,
+        "id": 9633,
+        "name": "Temporada 14",
+        "overview": "",
+        "poster_path": "/1X02B9aeItocWRORT6XAXnRGDZj.jpg",
+        "season_number": 14,
+        "vote_average": 7.5
+      },
+      {
+        "air_date": "1984-01-16",
+        "episode_count": 2,
+        "id": 9632,
+        "name": "Temporada 15",
+        "overview": "",
+        "poster_path": "/1X02B9aeItocWRORT6XAXnRGDZj.jpg",
+        "season_number": 15,
+        "vote_average": 9.5
+      },
+      {
+        "air_date": "1985-01-02",
+        "episode_count": 3,
+        "id": 9634,
+        "name": "Temporada 16",
+        "overview": "",
+        "poster_path": "/1X02B9aeItocWRORT6XAXnRGDZj.jpg",
+        "season_number": 16,
+        "vote_average": 7
+      },
+      {
+        "air_date": "1986-03-12",
+        "episode_count": 3,
+        "id": 9637,
+        "name": "Temporada 17",
+        "overview": "",
+        "poster_path": "/uya4Pf2MsALRAT4xCQE2cOmrt7A.jpg",
+        "season_number": 17,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1988-01-13",
+        "episode_count": 2,
+        "id": 9635,
+        "name": "Temporada 18",
+        "overview": "",
+        "poster_path": "/uya4Pf2MsALRAT4xCQE2cOmrt7A.jpg",
+        "season_number": 18,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1989-02-08",
+        "episode_count": 3,
+        "id": 9636,
+        "name": "Temporada 19",
+        "overview": "",
+        "poster_path": "/uya4Pf2MsALRAT4xCQE2cOmrt7A.jpg",
+        "season_number": 19,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "El show de Benny Hill",
+    "descripcion": "Popular serie cómica formada por sketches presentados y protagonizados por Benny Hill (1924-1992), un cómico británico cuyo humor se caracterizaba principalmente por su comportamiento pícaro, casi infantil, y su debilidad por las mujeres ligeras de ropa",
+    "imagen": "https://image.tmdb.org/t/p/w780/y3mGj6YAy7CRWMq06gjsXf3rIJ1.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 3572,
     "tmdbType": "tv",
     "tituloOriginal": "Kojak",
