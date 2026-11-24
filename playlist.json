@@ -1,5 +1,433 @@
 [
   {
+    "tmdbId": 3572,
+    "tmdbType": "tv",
+    "tituloOriginal": "Kojak",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/lt6sueOPDt721p9nqtpXKa3VZGu.jpg",
+    "year": "1973",
+    "fechaEstreno": "1973-10-24",
+    "rating": "7.3",
+    "votos": 160,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Crimen",
+      "Drama",
+      "Misterio"
+    ],
+    "generosTexto": "Crimen, Drama, Misterio",
+    "clasificacion": "TV-PG",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Telly Savalas",
+        "personaje": "Theo Kojak",
+        "foto": "https://image.tmdb.org/t/p/w185/pdJfRVsCdKgrRFXODXkaOfJzAtH.jpg"
+      },
+      {
+        "nombre": "Dan Frazer",
+        "personaje": "Frank McNeill",
+        "foto": "https://image.tmdb.org/t/p/w185/tBe7tZ4Hyzs7cnGFSpBiEGcwQII.jpg"
+      },
+      {
+        "nombre": "Kevin Dobson",
+        "personaje": "Bobby Crocker",
+        "foto": "https://image.tmdb.org/t/p/w185/vur5OEi36P2relSZ4pfam4v6hu.jpg"
+      },
+      {
+        "nombre": "George Savalas",
+        "personaje": "Curly Stavors",
+        "foto": "https://image.tmdb.org/t/p/w185/6LldftjuRCfldm56DOVEUump48j.jpg"
+      },
+      {
+        "nombre": "Mark Russell",
+        "personaje": "Percy Saperstein",
+        "foto": "https://image.tmdb.org/t/p/w185/trlBsJk0zZGfXT3R5yWidh2NcTE.jpg"
+      },
+      {
+        "nombre": "Vince Conti",
+        "personaje": "Det. Rizzo",
+        "foto": ""
+      }
+    ],
+    "pais": "",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "new york city, police, police detective, nypd",
+    "similares": [
+      {
+        "titulo": "Dragnet",
+        "poster": "https://image.tmdb.org/t/p/w342/tvozcbojiCAHIFar7kdaGfwSWew.jpg",
+        "year": "1967",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Baretta",
+        "poster": "https://image.tmdb.org/t/p/w342/xayGSRT2GbcFTwNIqt6l355v29F.jpg",
+        "year": "1975",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "77 Sunset Strip",
+        "poster": "https://image.tmdb.org/t/p/w342/xfBM3mXae0OvaBt2i4yo47MLAtu.jpg",
+        "year": "1958",
+        "rating": "7.2"
+      },
+      {
+        "titulo": "T. J. Hooker",
+        "poster": "https://image.tmdb.org/t/p/w342/zcHUwD20mqMD4g8LKdpKD12QRhE.jpg",
+        "year": "1982",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Elementary",
+        "poster": "https://image.tmdb.org/t/p/w342/q9dObe29W4bDpgzUfOOH3ZnzDbR.jpg",
+        "year": "2012",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Castle",
+        "poster": "https://image.tmdb.org/t/p/w342/kQPTXQbh4gob7fDwAoacnREwZTe.jpg",
+        "year": "2009",
+        "rating": "8.0"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Abby Mann"
+    ],
+    "numeroTemporadas": 5,
+    "numeroEpisodios": 118,
+    "temporadasTmdb": [
+      {
+        "air_date": "1973-03-08",
+        "episode_count": 8,
+        "id": 10840,
+        "name": "Especiales",
+        "overview": "",
+        "poster_path": "/6xzgmTOAlmF4MPvK0zZZrrkMBBA.jpg",
+        "season_number": 0,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1973-10-24",
+        "episode_count": 22,
+        "id": 10838,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/z04huPERHzCahM4VxuKXATvc2pe.jpg",
+        "season_number": 1,
+        "vote_average": 8.1
+      },
+      {
+        "air_date": "1974-09-15",
+        "episode_count": 25,
+        "id": 10836,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/i3Xz6JCDpdwtSXmMX7iBoGHBIFz.jpg",
+        "season_number": 2,
+        "vote_average": 8.6
+      },
+      {
+        "air_date": "1975-09-14",
+        "episode_count": 24,
+        "id": 10837,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/q0fdcYY5PuMBIbWMI8LwyVfECYI.jpg",
+        "season_number": 3,
+        "vote_average": 7.8
+      },
+      {
+        "air_date": "1976-09-26",
+        "episode_count": 25,
+        "id": 10835,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/fAlgWr2lGQNgbRp6er9JBjpXEx3.jpg",
+        "season_number": 4,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1977-10-02",
+        "episode_count": 22,
+        "id": 10839,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/wrlOuXShPV1kJdLV9SNrJevGLwV.jpg",
+        "season_number": 5,
+        "vote_average": 5
+      }
+    ],
+    "tituloSerie": "Kojak",
+    "descripcion": "El teniente Theo Kojak es un incorruptible y poco ortodoxo policía de Manhattan, sagaz y sin pelos en la lengua, de excelente humor e inimitable estilo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/7F1eH97Bpi8zQbc172drbJCsOsG.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Kojak.1x01.Situacion.de.Terror. · ∫ℯ∫ℯ ™️ [16871475055311]",
+            "urlDrive": "https://drive.google.com/file/d/1HG_dGYbOWESU69-8rIeIgjFD1Cw2Yhcm/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x02.La.telaraña.de.la.muerte. · ∫ℯ∫ℯ ™️ [16871474924239]",
+            "urlDrive": "https://drive.google.com/file/d/1pEJVbiQIBc2WKGeWwqD_GyM_1Ig4SWSM/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x03.Al.deposito.de.cadaveres. · ∫ℯ∫ℯ ™️ [16871475448527]",
+            "urlDrive": "https://drive.google.com/file/d/1_zdiaw-R5DR19zW58heBjBSsnyiUPN6D/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x04.El.Atraco. · ∫ℯ∫ℯ ™️ [16871475645135]",
+            "urlDrive": "https://drive.google.com/file/d/13EUoCg_eRuFKuSKmuTSgFTUQVj4nFw9H/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x05.Chica.en.el.rio. · ∫ℯ∫ℯ ™️ [16871475579599]",
+            "urlDrive": "https://drive.google.com/file/d/1C_gh545tORG1wg5ciYxNR94_JogWGXcp/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x06.Requiem.por.un.policia. · ∫ℯ∫ℯ ™️ [16871475710671]",
+            "urlDrive": "https://drive.google.com/file/d/159_qt5_Gd-u481sRTBdaediOzBVhCgt2/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x07.El.Corruptor. · ∫ℯ∫ℯ ™️ [16871475120847]",
+            "urlDrive": "https://drive.google.com/file/d/1vvWPtwIwDmScSI-3osVIrXh4TEYb1dF6/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x08.Domingo.Negro. · ∫ℯ∫ℯ ™️ [16871475382991]",
+            "urlDrive": "https://drive.google.com/file/d/1CrKRivYzH223g8tOwjT1DdEVmoQSQStc/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x09.Conspiracion.Intimidatoria. · ∫ℯ∫ℯ ™️ [16871475514063]",
+            "urlDrive": "https://drive.google.com/file/d/1lkyqcIGWCHOCl21D3QX6EiTlljSc1dNa/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x10.Policia.enjaulado. · ∫ℯ∫ℯ ™️ [16871475251919]",
+            "urlDrive": "https://drive.google.com/file/d/1NxpqSEu1FSFzS1Wl_-yvuX86FTxGsXAM/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x11.Un.pagare.para.un.corredor.muerto. · ∫ℯ∫ℯ ™️ [16873174665935]",
+            "urlDrive": "https://drive.google.com/file/d/1Cpimxr3RsBhR8IyKqA4Fj3oDi1diM6A1/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x12.Extremauncion.para.un.sacerdote.muerto. · ∫ℯ∫ℯ ™️ [16873174272719]",
+            "urlDrive": "https://drive.google.com/file/d/1P73FKLjIM99ixUnQB3CHZ6hZ0EiOGAFa/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x13.La.muerte.no.es.un.examen.que.se.pueda.aprobar. · ∫ℯ∫ℯ ™️ [16873174469327]",
+            "urlDrive": "https://drive.google.com/file/d/1m8gtYHuu6g88mXE8jpw9Qgw5i-uDhrei/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x14.Muerte.antes.de.que.despierte. · ∫ℯ∫ℯ ™️ [16873174862543]",
+            "urlDrive": "https://drive.google.com/file/d/1uSsTaJo6C3fnZ1jfHfPBenwi9j5C1ZCK/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x15.Danos.un.poco.de.maldad. · ∫ℯ∫ℯ ™️ [16873831729871]",
+            "urlDrive": "https://drive.google.com/file/d/1hWsjTU1HbyQ_rKC9SeBe1rNSpJ7q4T_6/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x16.Dieciocho.horas.de.miedo. · ∫ℯ∫ℯ ™️ [16873174928079]",
+            "urlDrive": "https://drive.google.com/file/d/1nwB-tbf1H4VvFUiyGsGhXdmsL0RPgHy8/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x17.Antes.de.que.el.diablo.lo.sepa. · ∫ℯ∫ℯ ™️ [16873174403791]",
+            "urlDrive": "https://drive.google.com/file/d/1ARmm75RTpfLDh2KzI2JrrcMfJRCRYpSu/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x18.Con.la.muerte.en.los.talones. · ∫ℯ∫ℯ ™️ [16873174207183]",
+            "urlDrive": "https://drive.google.com/file/d/1GbeywqUJGCAdPgq1_Q5lAFFTupVIZceb/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x19.Por.un.largo.y.solitario.rio. · ∫ℯ∫ℯ ™️ [16873174076111]",
+            "urlDrive": "https://drive.google.com/file/d/1MsKWEyQSyMUll9N4BxTonqNWiYCK4efC/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x20.Morfina. · ∫ℯ∫ℯ ™️ [16873174600399]",
+            "urlDrive": "https://drive.google.com/file/d/1JP9HnOzF9Hlz3xmHAZ7mWxvxyPi1tyfU/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x21.Terapia.con.dinamita. · ∫ℯ∫ℯ ™️ [16873174797007]",
+            "urlDrive": "https://drive.google.com/file/d/1ld7JcagSKYYCMgfbGU0FTzUieZecSFPj/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.1x22.Unica.Salida. · ∫ℯ∫ℯ ™️ [16873174141647]",
+            "urlDrive": "https://drive.google.com/file/d/1eVSxOi3j1J7KatRg6et3AapCM2YO5nHy/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x01. Los.asesinatos.de.Chinatown. Parte.1. · ∫ℯ∫ℯ ™️ [16887150217935]",
+            "urlDrive": "https://drive.google.com/file/d/1ZOo1fMVXkqdMS8RC0VRXp2aLmmGaCwHL/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x02. Los.asesinatos.de.Chinatown. Parte.2. · ∫ℯ∫ℯ ™️ [16887150349007]",
+            "urlDrive": "https://drive.google.com/file/d/1jXDTAsijpG4JePsov2X4UfrPdL_6hq0U/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x03. Silencio,.no.te.mueras VOSE. · ∫ℯ∫ℯ ™️ [16887150283471]",
+            "urlDrive": "https://drive.google.com/file/d/1ffaHp9TPIXU9L_OrVIE7e_Qo6pnal7ys/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x04. Un.juego.muy.mortal. · ∫ℯ∫ℯ ™️ [16887150414543]",
+            "urlDrive": "https://drive.google.com/file/d/1FNVbyt15E48EfUzfX3ucxK7qvJ3Cm1W6/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x05. El.pistolero.de.Wall.Street VOSE. · ∫ℯ∫ℯ ™️ [16887175908047]",
+            "urlDrive": "https://drive.google.com/file/d/1O5G2f8TlJrgKXazgq5e6G6MWk54IkPwe/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x06. Paseo.asesino. · ∫ℯ∫ℯ ™️ [16887150545615]",
+            "urlDrive": "https://drive.google.com/file/d/1pFb9b-pWRxciIQATsGHJLA0sDqaQuXBD/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x07. Niñera. · ∫ℯ∫ℯ ™️ [16887150611151]",
+            "urlDrive": "https://drive.google.com/file/d/1JRhWMfw9HW6kAcKKhLA9V7Kg5rSROsSi/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x08. No.puedes.decirle.a.un.hombre.herido.como.gritar. · ∫ℯ∫ℯ ™️ [16887150676687]",
+            "urlDrive": "https://drive.google.com/file/d/1AOEpYzgVX5AB5UsWxOtFrdTNxl6cFnRC/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x09. El.mejor.juez.que.el.dinero.puede.comprar. · ∫ℯ∫ℯ ™️ [16887150742223]",
+            "urlDrive": "https://drive.google.com/file/d/1I6xhZer5oa3L7otb2183GUrLjQQfIYOC/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x10. Un.recuerdo.de.Atlantic.City. · ∫ℯ∫ℯ ™️ [16887150807759]",
+            "urlDrive": "https://drive.google.com/file/d/1HGUTD7QeBkvLpWXGBpIROe9XdPYoKxB1/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x11. Un.asesinato.en.la.segunda.casa. · ∫ℯ∫ℯ ™️ [16887175842511]",
+            "urlDrive": "https://drive.google.com/file/d/1aXUCC9tklCdh7vr_WNw4X1Ih4p8VnJUk/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x12. La.mejor.guerra.de.la.ciudad. · ∫ℯ∫ℯ ™️ [16887175711439]",
+            "urlDrive": "https://drive.google.com/file/d/1c3fKgsWvK7lrM5K1XWZpZjmBjNPM0zpv/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x13. Cruza.tu.corazon.y.espera.morir. · ∫ℯ∫ℯ ™️ [16887175645903]",
+            "urlDrive": "https://drive.google.com/file/d/1obej3avcpJ5KSy2U1INdMwXcMNho8tSY/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x14. La.traicion. · ∫ℯ∫ℯ ™️ [16887175973583]",
+            "urlDrive": "https://drive.google.com/file/d/1smcQau-1BVUJT1jxcsB9LeHMwxcmv3e4/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x15. El.perdedor.se.lo.lleva.todo. · ∫ℯ∫ℯ ™️ [16887237839567]",
+            "urlDrive": "https://drive.google.com/file/d/11mbvHlVzb-WfaRWjxsgHcYLFNMkYSijZ/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x16. Cierra.la.tapa.antes.de.matar. · ∫ℯ∫ℯ ™️ [16887237970639]",
+            "urlDrive": "https://drive.google.com/file/d/1SC-sCzbCUIk4_eKAC0W28ayW-WCfoZpK/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.2x17. Actos.de.hombres.desesperados. · ∫ℯ∫ℯ ™️ [16887237905103]",
+            "urlDrive": "https://drive.google.com/file/d/1iZYZXpKv4ry-OTP1Nv87jZE0t4P4Z71d/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x11. El.orgullo.y.la.princesa. · ∫ℯ∫ℯ ™️ [16887742925519]",
+            "urlDrive": "https://drive.google.com/file/d/198UoRURl0vidqpAc9MO9HwR7KtSd4mZX/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x12. Espina.negra. · ∫ℯ∫ℯ ™️ [16887743187663]",
+            "urlDrive": "https://drive.google.com/file/d/1kF0ODz6IJEJirFE6P1b2pWnoGXv_tCOe/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x13. ¿Donde.vas.cuando.no.tienes.donde.ir . · ∫ℯ∫ℯ ™️ [16887743253199]",
+            "urlDrive": "https://drive.google.com/file/d/1oeYjtX_KeAAjEZs25c-ITWynjrPkaZDO/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x14. Morir.de.nuevo. · ∫ℯ∫ℯ ™️ [16887743056591]",
+            "urlDrive": "https://drive.google.com/file/d/18LlZBOrFXGgRiPvxSJliwdT6cnCWoGm5/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x15. El.ahijado. · ∫ℯ∫ℯ ™️ [16887743318735]",
+            "urlDrive": "https://drive.google.com/file/d/1VDWuQywIGsP-IGO3A70Qh1Oy_dXcrRwK/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x16. Los.condenados. · ∫ℯ∫ℯ ™️ [16887743384271]",
+            "urlDrive": "https://drive.google.com/file/d/11Dmo6mJEsh1iXpetGNoe6NGPolyscQdo/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x17. Cuando.oigas.la.señal, .muere. · ∫ℯ∫ℯ ™️ [16887743449807]",
+            "urlDrive": "https://drive.google.com/file/d/1X2rDvY_kDkOSTXYy23CLq9VypIixV16R/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x18. Era.feliz.donde.estaba. · ∫ℯ∫ℯ ™️ [16887743515343]",
+            "urlDrive": "https://drive.google.com/file/d/1FBj82EzxoKpbIhTFgCjOlrLFEEeD_VgT/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x19. Dias.de.+Kojak. Primera.parte. · ∫ℯ∫ℯ ™️ [16887743580879]",
+            "urlDrive": "https://drive.google.com/file/d/15B0FpFSdxWlIgTB7UQYfwyza6ZGAzJKP/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x20. Dias.de.+Kojak. Segunda.parte. · ∫ℯ∫ℯ ™️ [16887743646415]",
+            "urlDrive": "https://drive.google.com/file/d/1hbKfYN5mMzJj83M4RdstsQVSF4_RfaTl/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x21. Como.mono.de.organillero. · ∫ℯ∫ℯ ™️ [16887743711951]",
+            "urlDrive": "https://drive.google.com/file/d/1VJJ8zh4ClzJXPHurY7BXPpTlAgUf28g_/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x22. Un.beso.de.despedida. · ∫ℯ∫ℯ ™️ [16887743777487]",
+            "urlDrive": "https://drive.google.com/file/d/1iM0q95dnXt8tcV7Zt4wCMwDRb7uIXbSi/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x23. Una.mujer.en.el.escuadron. · ∫ℯ∫ℯ ™️ [16887743843023]",
+            "urlDrive": "https://drive.google.com/file/d/1Zy0Pyk0F05JazwaQ8lLp00lmibkWlvxV/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x24. Hermana.Maria. · ∫ℯ∫ℯ ™️ [16887743908559]",
+            "urlDrive": "https://drive.google.com/file/d/1Wudte8oFffqY3cHwevDg9qPWMYbqGZI1/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.4x25. Otra.reina.de.los.gitanos. · ∫ℯ∫ℯ ™️ [16887743974095]",
+            "urlDrive": "https://drive.google.com/file/d/1i4xMYWnbbko8jaJdgvmJx4WqEAGT0kGP/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.5x01. La.reina.de.corazones.es.un.comodin [16887990389455]",
+            "urlDrive": "https://drive.google.com/file/d/1ZtCHSnz_l3jPZkeM5SMjDyBBrtFZGf2E/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.5x02. Una.extrana.clase.de.amor. · ∫ℯ∫ℯ ™️ [16887990454991]",
+            "urlDrive": "https://drive.google.com/file/d/1IsPNB5BFq788Bd2HGh9q-55VryeQnjC_/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.5x03. El.despido. · ∫ℯ∫ℯ ™️ [16887990520527]",
+            "urlDrive": "https://drive.google.com/file/d/1YSXIVVjV-zjqP76IiHRYbrz46m9vjPRf/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.5x04. Llorar.por.los.chicos. · ∫ℯ∫ℯ ™️ [16887990323919]",
+            "urlDrive": "https://drive.google.com/file/d/1sGbd5GG4glD0lFutazANUwVDeaIvE8dk/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.5x05. Una.vez.mas.desde.Birdland [16887990586063]",
+            "urlDrive": "https://drive.google.com/file/d/1uecLgxZT9BVnhCyoh-51ZMUmLf9a50Ye/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.5x06. Detencion.en.una.calle.tranquila. · ∫ℯ∫ℯ ™️ [16887990651599]",
+            "urlDrive": "https://drive.google.com/file/d/1-TFN9vlDN6uyctXPQ0G0pCSStcBPk-oU/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.5x07. Cartas.de.muerte. · ∫ℯ∫ℯ ™️ [16887990717135]",
+            "urlDrive": "https://drive.google.com/file/d/1pm2KTjns1eA--S7bJ8YM5ABd_LNcSt-U/view"
+          },
+          {
+            "tituloEpisodio": "Kojak.5x08. Lagrimas.para.todos.los.que.las.quieran. · ∫ℯ∫ℯ ™️ [16887990782671]",
+            "urlDrive": "https://drive.google.com/file/d/1ijBncdJjan1CuzWLrlrBCESAhjQyUqgH/view"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "tmdbId": 3216,
     "tmdbType": "tv",
     "tituloOriginal": "Baretta",
@@ -20919,41 +21347,7 @@
     "imagen": "https://image.tmdb.org/t/p/w780/4LSZNCSxDodwCP8EsKRTgMDUKY4.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": [
-      {
-        "numeroTemporada": 1,
-        "episodios": [
-          {
-            "tituloEpisodio": "Episodio 1",
-            "urlDrive": "https://drive.google.com/file/d/1ddyyUWRSvdNbH4qCqf6C3Qo9QCtc8ml-/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 2",
-            "urlDrive": "https://drive.google.com/file/d/17P341LHP7aT9ocYar02uSv7yQ6-cdZ25/preview"
-          },
-          {
-            "tituloEpisodio": "Episodio 3",
-            "urlDrive": "https://drive.google.com/file/d/1i0HaQjy7YLrSDYbiBObyF6nwbAMb0CCf/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 4",
-            "urlDrive": "https://drive.google.com/file/d/1vdz28sLdANisANiYfkoeNv7XmZ1ef0p0/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 5",
-            "urlDrive": "https://drive.google.com/file/d/11Ix_DRlb396utcByhy7ZkW-J3Z6NepfO/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 6",
-            "urlDrive": "https://drive.google.com/file/d/1A_5_b-jOwvlYNoU3zhaDKqkzE-eFNqV3/view?usp=sharing"
-          },
-          {
-            "tituloEpisodio": "Episodio 7",
-            "urlDrive": "https://drive.google.com/file/d/1_Yqp3NttsALBms5-jy_vciljSNIeZiSS/view?usp=sharing"
-          }
-        ]
-      }
-    ]
+    "temporadas": []
   },
   {
     "tituloSerie": "El avispón verde",
