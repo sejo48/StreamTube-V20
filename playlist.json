@@ -1,5 +1,140 @@
 [
   {
+    "tmdbId": 2886,
+    "tmdbType": "tv",
+    "tituloOriginal": "Flipper",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/sJYv5oQGqhNSsZFPITHEOLUTJpo.jpg",
+    "year": "1964",
+    "fechaEstreno": "1964-09-19",
+    "rating": "6.2",
+    "votos": 59,
+    "runtime": "26min",
+    "runtimeMin": 26,
+    "genres": [
+      "Action & Adventure",
+      "Familia",
+      "Drama"
+    ],
+    "generosTexto": "Action & Adventure, Familia, Drama",
+    "clasificacion": "7",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Luke Halpin",
+        "personaje": "Sandy Ricks",
+        "foto": "https://image.tmdb.org/t/p/w185/ssB7IeIbCMWHALtpgayohTsk3DS.jpg"
+      },
+      {
+        "nombre": "Brian Kelly",
+        "personaje": "Porter Ricks",
+        "foto": "https://image.tmdb.org/t/p/w185/50MQSWCQan9dLEDGWMO6xdHaYny.jpg"
+      },
+      {
+        "nombre": "Tommy Norden",
+        "personaje": "Bud Ricks",
+        "foto": "https://image.tmdb.org/t/p/w185/lNjDemgnXZQdEo08AVJe6yroHfB.jpg"
+      },
+      {
+        "nombre": "Andy Devine",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/rBCv7cszfbo2dkQbGxxff9xTppL.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Miami Seaquarium, Ivan Tors Films, MGM Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "dolphin, sea, florida, park ranger, animals, single father",
+    "similares": [
+      {
+        "titulo": "Flipper",
+        "poster": "https://image.tmdb.org/t/p/w342/xqlE8PFHg7trmNoN02pmGre87iK.jpg",
+        "year": "1995",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Starsky y Hutch",
+        "poster": "https://image.tmdb.org/t/p/w342/aBj5oTi1uibVcXDoCJeKseJNY2d.jpg",
+        "year": "1975",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "The Sweeney",
+        "poster": "https://image.tmdb.org/t/p/w342/8dIJo5P3d1soSxKJvjkxDX1816H.jpg",
+        "year": "1975",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "War of the Worlds",
+        "poster": "https://image.tmdb.org/t/p/w342/aooe8m3ZHey7WKNdmlllRYeinpa.jpg",
+        "year": "1988",
+        "rating": "6.5"
+      },
+      {
+        "titulo": "Mannix",
+        "poster": "https://image.tmdb.org/t/p/w342/8Nh2D2dHKJnUbRHqLS5QsKWJuPb.jpg",
+        "year": "1967",
+        "rating": "6.8"
+      },
+      {
+        "titulo": "Police Story",
+        "poster": "https://image.tmdb.org/t/p/w342/wfhiGakYfjk8XeDKRpya9P4tNu9.jpg",
+        "year": "1973",
+        "rating": "7.0"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Ricou Browning",
+      "Jack Cowden"
+    ],
+    "numeroTemporadas": 3,
+    "numeroEpisodios": 88,
+    "temporadasTmdb": [
+      {
+        "air_date": "1964-09-19",
+        "episode_count": 30,
+        "id": 9312,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/3yYJovxbiCx0hlc551SrWhWxbXy.jpg",
+        "season_number": 1,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1965-09-18",
+        "episode_count": 30,
+        "id": 9313,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/ex12I9hqQ9keECbmhh75KJUhCn4.jpg",
+        "season_number": 2,
+        "vote_average": 0
+      },
+      {
+        "air_date": "1966-09-17",
+        "episode_count": 28,
+        "id": 9314,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/2pGzqSRqCzS8oydKtQmquVLpFNM.jpg",
+        "season_number": 3,
+        "vote_average": 0
+      }
+    ],
+    "tituloSerie": "Flipper",
+    "descripcion": "Flipper, de Ivan Tors Films en asociación con Metro-Goldwyn-Mayer Television, es una serie de televisión estadounidense emitido por primera vez en NBC desde el 19 de septiembre de 1964 hasta el 15 de abril de 1967. Flipper, un delfín nariz de botella, es el animal de compañía de Porter Ricks. , El director en jefe en el ficticio Coral Key Park y Marine Preserve en el sur de Florida, y sus dos hijos pequeños, Sandy y Bud. El espectáculo ha sido denominado \"Lassie acuático\", y durante su primera edición se produjo una considerable cantidad de mercancía juvenil inspirada en el espectáculo.",
+    "imagen": "https://image.tmdb.org/t/p/w780/20EltUp6f3dqY3YQBcVY8T2scuH.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 3002,
     "tmdbType": "tv",
     "tituloOriginal": "The Benny Hill Show",
@@ -334,7 +469,209 @@
     "imagen": "https://image.tmdb.org/t/p/w780/y3mGj6YAy7CRWMq06gjsXf3rIJ1.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "01-Benny Hill [2262307441178]",
+            "urlDrive": "https://drive.google.com/file/d/1AisU-LNn4IWs9QfrrmJ9lWfoQzS0oeDW/view"
+          },
+          {
+            "tituloEpisodio": "02-Benny Hill [2262307965466]",
+            "urlDrive": "https://drive.google.com/file/d/1agCgS2y7x7WzitER_IpCIiKUdGmCuqLR/view"
+          },
+          {
+            "tituloEpisodio": "03-Benny Hill [2262305802778]",
+            "urlDrive": "https://drive.google.com/file/d/1eqn_GsP4jCErKIHro9tgW6qEt85E9GvU/view"
+          },
+          {
+            "tituloEpisodio": "04-Benny Hill [2262306458138]",
+            "urlDrive": "https://drive.google.com/file/d/1negQNyOruTCkw02ijFoQyaQgKwC7TcIN/view"
+          },
+          {
+            "tituloEpisodio": "05-Benny Hill [2262307572250]",
+            "urlDrive": "https://drive.google.com/file/d/1z1NFcC9N7jle1ytX9RTPjtZmTTt-kQPL/view"
+          },
+          {
+            "tituloEpisodio": "06-Benny Hill [2262306523674]",
+            "urlDrive": "https://drive.google.com/file/d/1dilFmtK3EGYn7Jb8OjqF2edzagUnqitj/view"
+          },
+          {
+            "tituloEpisodio": "07-Benny Hill [2262306589210]",
+            "urlDrive": "https://drive.google.com/file/d/1n256xq3qvytTr8dM5qwsjhDSPfvHyCC1/view"
+          },
+          {
+            "tituloEpisodio": "08-Benny Hill [2262304688666]",
+            "urlDrive": "https://drive.google.com/file/d/1iMAoJ25-hZp_LhTWsbhwF-n13QpYrxBF/view"
+          },
+          {
+            "tituloEpisodio": "09-Benny Hill [2262307310106]",
+            "urlDrive": "https://drive.google.com/file/d/1eZvuukDv-dEu-RnpfO8QWIGkFYjdZh07/view"
+          },
+          {
+            "tituloEpisodio": "10-Benny Hill [2262307899930]",
+            "urlDrive": "https://drive.google.com/file/d/1QlQ0yxAFAO0fprK4EjwKO1zt93c0aTYu/view"
+          },
+          {
+            "tituloEpisodio": "11-Benny Hill [2262307703322]",
+            "urlDrive": "https://drive.google.com/file/d/17oEyCsAknX9y7Clw8daODVa1H9Ydo3AI/view"
+          },
+          {
+            "tituloEpisodio": "12-Benny Hill [2262307113498]",
+            "urlDrive": "https://drive.google.com/file/d/1lGKs_IwyLQckZOz1GBMqlA3NHszeSIxX/view"
+          },
+          {
+            "tituloEpisodio": "13-Benny Hill [2262306261530]",
+            "urlDrive": "https://drive.google.com/file/d/1gtZBE8j_3o4ZTiFYWs5ZP3ABRTEsGVfu/view"
+          },
+          {
+            "tituloEpisodio": "14-Benny Hill [2262305409562]",
+            "urlDrive": "https://drive.google.com/file/d/1cjKOSo9NZDjHQLvgIYJUw6eoUsIOEmyG/view"
+          },
+          {
+            "tituloEpisodio": "15-Benny Hill [2262307834394]",
+            "urlDrive": "https://drive.google.com/file/d/1f1J0wSt9DCA9dzKe9VYWIIltnnLDTK7r/view"
+          },
+          {
+            "tituloEpisodio": "16-Benny Hill [2262306327066]",
+            "urlDrive": "https://drive.google.com/file/d/1269G8zuQ1L2Qg0SRFJQon6PLrkXZrTY5/view"
+          },
+          {
+            "tituloEpisodio": "17-Benny Hill [2262306064922]",
+            "urlDrive": "https://drive.google.com/file/d/1qfv626Ce81XYtoraDkfGurbQp16qHtD_/view"
+          },
+          {
+            "tituloEpisodio": "18-Benny Hill [2262306392602]",
+            "urlDrive": "https://drive.google.com/file/d/1QczrqXGB_5dwHqyMzfWCkJvbcc86rcZ1/view"
+          },
+          {
+            "tituloEpisodio": "19-Benny Hill [2262306720282]",
+            "urlDrive": "https://drive.google.com/file/d/1p-XAo6G3QwkF6_raOoUIu5FdDl0UGMwC/view"
+          },
+          {
+            "tituloEpisodio": "20-Benny Hill [2262305868314]",
+            "urlDrive": "https://drive.google.com/file/d/1jPfI5nKyTmJRIIvyO33Gok1drMs1LQcv/view"
+          },
+          {
+            "tituloEpisodio": "21-Benny Hill [2262305540634]",
+            "urlDrive": "https://drive.google.com/file/d/1e4xx-JN3gHOg6607TdtmcLoEakx8-FdK/view"
+          },
+          {
+            "tituloEpisodio": "22-Benny Hill [2262305999386]",
+            "urlDrive": "https://drive.google.com/file/d/1Uhq88UtotcoAp0mnFGvEgAUcOTsRI8mC/view"
+          },
+          {
+            "tituloEpisodio": "24-Benny Hill [2262306982426]",
+            "urlDrive": "https://drive.google.com/file/d/1diUA79PPM0KC1TGnKBk9fzN2Kpz1Wabw/view"
+          },
+          {
+            "tituloEpisodio": "25-Benny Hill [2262307179034]",
+            "urlDrive": "https://drive.google.com/file/d/1WU8yiiDJwlheKzfoN8istw0nwHtqgfeb/view"
+          },
+          {
+            "tituloEpisodio": "26-Benny Hill [2262305147418]",
+            "urlDrive": "https://drive.google.com/file/d/1ws2LU7dWUlYbzjvBy47k0kLP_H-Prr7c/view"
+          },
+          {
+            "tituloEpisodio": "27-Benny Hill [2262305671706]",
+            "urlDrive": "https://drive.google.com/file/d/1PMlk-cJdEeAw8gFoQ-pEzhI_EyLw5-KD/view"
+          },
+          {
+            "tituloEpisodio": "28-Benny Hill [2262307637786]",
+            "urlDrive": "https://drive.google.com/file/d/1l5ynlC62iZS16Dx3p0YaZuNquI7NE5vJ/view"
+          },
+          {
+            "tituloEpisodio": "29-Benny Hill [2262306130458]",
+            "urlDrive": "https://drive.google.com/file/d/1MiMeMqS_2Z0dxWPksjWlXiaSHz45fgGo/view"
+          },
+          {
+            "tituloEpisodio": "30-Benny Hill [2262306195994]",
+            "urlDrive": "https://drive.google.com/file/d/1jMq0wPSDa0XZBouOadOx9Qc3ryiBxE6L/view"
+          },
+          {
+            "tituloEpisodio": "31-Benny Hill [2262305016346]",
+            "urlDrive": "https://drive.google.com/file/d/1d0eCD5AVktWMq4BK9s5YY7C4vvtKRcjm/view"
+          },
+          {
+            "tituloEpisodio": "32-Benny Hill [2262305081882]",
+            "urlDrive": "https://drive.google.com/file/d/16MqVhP1lAH_xd5uBbiSSb3uKYZcp3wrK/view"
+          },
+          {
+            "tituloEpisodio": "35-Benny Hill [2262307375642]",
+            "urlDrive": "https://drive.google.com/file/d/1AnEvG_ZokIVUe8PHyt6Alxuoohun8PX1/view"
+          },
+          {
+            "tituloEpisodio": "36-Benny Hill [2262305737242]",
+            "urlDrive": "https://drive.google.com/file/d/1RjefhA6hTJlHdlduXL_vCjH-VsYz7eN8/view"
+          },
+          {
+            "tituloEpisodio": "37-Benny Hill [2262305212954]",
+            "urlDrive": "https://drive.google.com/file/d/1vv_aCcvOt-GSomjv1nUiwE5G9k84kwHi/view"
+          },
+          {
+            "tituloEpisodio": "38-Benny Hill [2262306654746]",
+            "urlDrive": "https://drive.google.com/file/d/1T18Fygfns8pfU6y6gg4ZVA9sQ7Xtma81/view"
+          },
+          {
+            "tituloEpisodio": "39-Benny Hill [2262307047962]",
+            "urlDrive": "https://drive.google.com/file/d/1S0QG2qrvjauewyBoZdHNpr9gjJtXxjOw/view"
+          },
+          {
+            "tituloEpisodio": "40-Benny Hill [2262305606170]",
+            "urlDrive": "https://drive.google.com/file/d/1bRecaz0M5gqK7JZ2EqlV6rq14mGwk5xO/view"
+          },
+          {
+            "tituloEpisodio": "41-Benny Hill [2262307506714]",
+            "urlDrive": "https://drive.google.com/file/d/1rvdhsJvRmn2bRJD62bo4qMvGKv8X8cYU/view"
+          },
+          {
+            "tituloEpisodio": "42-Benny Hill [2262306851354]",
+            "urlDrive": "https://drive.google.com/file/d/1Wmfk_gzB378qB8_uk_KAXln35j8Ui_9l/view"
+          },
+          {
+            "tituloEpisodio": "43-Benny Hill [2262306785818]",
+            "urlDrive": "https://drive.google.com/file/d/1nETY0MarJZm5WO9p7zpK-CXqqMEc_5Eq/view"
+          },
+          {
+            "tituloEpisodio": "44-Benny Hill [2262305278490]",
+            "urlDrive": "https://drive.google.com/file/d/1PVlFT6phncOfFn7JfFhMQ53JJ9YjWNQ1/view"
+          },
+          {
+            "tituloEpisodio": "45-Benny Hill [2262304950810]",
+            "urlDrive": "https://drive.google.com/file/d/1ptCv0GqgORJslg3uSVRxnveiuf86Z-Nv/view"
+          },
+          {
+            "tituloEpisodio": "46-Benny Hill [2262304754202]",
+            "urlDrive": "https://drive.google.com/file/d/17AvVqipf0BapJ0b_3vRxSEl05qyoMlM7/view"
+          },
+          {
+            "tituloEpisodio": "47-Benny Hill [2262304885274]",
+            "urlDrive": "https://drive.google.com/file/d/1DZyO7VHw8luz_ICXEz_L9LfWsgIcUDyo/view"
+          },
+          {
+            "tituloEpisodio": "48-Benny Hill [2262305475098]",
+            "urlDrive": "https://drive.google.com/file/d/1PTS1YNrw7Vhq3xeVKe73-GCM5u6TaFgh/view"
+          },
+          {
+            "tituloEpisodio": "49-Benny Hill [2262304819738]",
+            "urlDrive": "https://drive.google.com/file/d/1owekHxeGJWMefQ_o1UWv1IS1Lv6L1IHq/view"
+          },
+          {
+            "tituloEpisodio": "50-Benny Hill [2262307768858]",
+            "urlDrive": "https://drive.google.com/file/d/1S9na10ivtGBbd6otW6YHIGKCogXURCsE/view"
+          },
+          {
+            "tituloEpisodio": "51-Benny Hill [2262306916890]",
+            "urlDrive": "https://drive.google.com/file/d/1DT2MeUU1rXIFMyXl1kKjgZpWyvU00tf4/view"
+          },
+          {
+            "tituloEpisodio": "52-Benny Hill [2262305933850]",
+            "urlDrive": "https://drive.google.com/file/d/10Dg0Z8eMkS_9aexdWeMX7s9Er-sXRfWj/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 3572,
