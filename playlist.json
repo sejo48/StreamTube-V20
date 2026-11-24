@@ -1,5 +1,328 @@
 [
   {
+    "tmdbId": 3216,
+    "tmdbType": "tv",
+    "tituloOriginal": "Baretta",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/wixjwQv8aPfIwbc7euj0fPPsMjT.jpg",
+    "year": "1975",
+    "fechaEstreno": "1975-01-17",
+    "rating": "6.5",
+    "votos": 43,
+    "runtime": "1h 0min",
+    "runtimeMin": 60,
+    "genres": [
+      "Crimen",
+      "Drama",
+      "Misterio"
+    ],
+    "generosTexto": "Crimen, Drama, Misterio",
+    "clasificacion": "TV-PG",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Robert Blake",
+        "personaje": "Det. Tony Baretta",
+        "foto": "https://image.tmdb.org/t/p/w185/gxhVHS4qhVp1xJiCy9s08ltIiPu.jpg"
+      },
+      {
+        "nombre": "Dana Elcar",
+        "personaje": "Inspector Shiller",
+        "foto": "https://image.tmdb.org/t/p/w185/iYYbcpWCikPFPvLWCqwKVvNVvrC.jpg"
+      },
+      {
+        "nombre": "Sharon Cintron",
+        "personaje": "",
+        "foto": ""
+      },
+      {
+        "nombre": "Burt Young",
+        "personaje": "",
+        "foto": "https://image.tmdb.org/t/p/w185/6QWnsSbjYog0D6hkPhg7Frty54D.jpg"
+      }
+    ],
+    "pais": "Brazil, United States of America",
+    "idioma": "en",
+    "productoras": "",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "police detective, cynical, suspenseful, amused",
+    "similares": [
+      {
+        "titulo": "Barnaby Jones",
+        "poster": "https://image.tmdb.org/t/p/w342/wn1kkCGHJcUQ7C8umfQH9LL2zXR.jpg",
+        "year": "1973",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Canción triste de Hill Street",
+        "poster": "https://image.tmdb.org/t/p/w342/w3ck59ERLzEATqRFe1Nd2ZMQvtZ.jpg",
+        "year": "1981",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Dragnet",
+        "poster": "https://image.tmdb.org/t/p/w342/tvozcbojiCAHIFar7kdaGfwSWew.jpg",
+        "year": "1967",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Agatha Christie: Poirot",
+        "poster": "https://image.tmdb.org/t/p/w342/vWxDau7LyMhy6Te0jLIybyoxhSP.jpg",
+        "year": "1989",
+        "rating": "8.2"
+      },
+      {
+        "titulo": "Murder in a Small Town",
+        "poster": "https://image.tmdb.org/t/p/w342/9oE2YKjY9mo7LVEUVm8NuaKFiEw.jpg",
+        "year": "2024",
+        "rating": "6.7"
+      },
+      {
+        "titulo": "El crimen de Pazos",
+        "poster": "https://image.tmdb.org/t/p/w342/pk7ewQL2vAxtit0YmDEURmAInS9.jpg",
+        "year": "2026",
+        "rating": "6.5"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Stephen J. Cannell"
+    ],
+    "numeroTemporadas": 4,
+    "numeroEpisodios": 83,
+    "temporadasTmdb": [
+      {
+        "air_date": "1975-01-17",
+        "episode_count": 12,
+        "id": 10085,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/8mIQcuWUofIn5SpDHzQxnXkbftB.jpg",
+        "season_number": 1,
+        "vote_average": 10
+      },
+      {
+        "air_date": "1975-09-10",
+        "episode_count": 22,
+        "id": 10086,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/umqGxtUPGOP6LMfCji8hwNBKKxb.jpg",
+        "season_number": 2,
+        "vote_average": 10
+      },
+      {
+        "air_date": "1976-09-22",
+        "episode_count": 25,
+        "id": 10088,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/s4J7K8oLnslO4HWppjPOxafmiTR.jpg",
+        "season_number": 3,
+        "vote_average": 10
+      },
+      {
+        "air_date": "1977-09-28",
+        "episode_count": 24,
+        "id": 10087,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/9ipWufK1vFrLkw8CSxojYMr0dco.jpg",
+        "season_number": 4,
+        "vote_average": 10
+      }
+    ],
+    "tituloSerie": "Baretta",
+    "descripcion": "Serie de TV (1975-1978). Antony Vincenzo, apodado \"Tony\" Baretta, es un detective que trabaja para el departamento de policía de una ciudad estadounidense. Viste de manera informal y comparte su apartamento con una cacatúa llamada Fred, que suele contestar el teléfono antes que su dueño. Aunque para resolver los casos, usa métodos poco ortodoxos que suelen causarle tensiones con sus superiores, éstos, al final, respaldan sus actos.",
+    "imagen": "https://image.tmdb.org/t/p/w780/xayGSRT2GbcFTwNIqt6l355v29F.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
+    "tmdbId": 4357,
+    "tmdbType": "tv",
+    "tituloOriginal": "Mission: Impossible",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/com4DoP6rNkf1fs5KiuLPCRVK6V.jpg",
+    "year": "1966",
+    "fechaEstreno": "1966-09-17",
+    "rating": "7.6",
+    "votos": 334,
+    "runtime": "",
+    "runtimeMin": 0,
+    "genres": [
+      "Action & Adventure",
+      "Crimen",
+      "Drama"
+    ],
+    "generosTexto": "Action & Adventure, Crimen, Drama",
+    "clasificacion": "13",
+    "tagline": "",
+    "director": "",
+    "guionistas": "",
+    "reparto": [
+      {
+        "nombre": "Peter Graves",
+        "personaje": "Jim Phelps",
+        "foto": "https://image.tmdb.org/t/p/w185/ySLwIT6L9mWIjFcCagmNENQGq7J.jpg"
+      },
+      {
+        "nombre": "Greg Morris",
+        "personaje": "Barney Collier",
+        "foto": "https://image.tmdb.org/t/p/w185/l4pyAMumC6p1V4aqxBra7PWlTvN.jpg"
+      },
+      {
+        "nombre": "Peter Lupus",
+        "personaje": "Willy Armitage",
+        "foto": "https://image.tmdb.org/t/p/w185/6GxndAwamcoQJqpK5MwYdiYj5be.jpg"
+      },
+      {
+        "nombre": "Lynda Day George",
+        "personaje": "Lisa Casey",
+        "foto": "https://image.tmdb.org/t/p/w185/9mLkUcq8wfaKWEFafIuwLpsq1JX.jpg"
+      },
+      {
+        "nombre": "Bob Johnson",
+        "personaje": "Man on Tape (voice)",
+        "foto": "https://image.tmdb.org/t/p/w185/emaIvNXoX3j0xXNBjRJ7kOdFaDr.jpg"
+      }
+    ],
+    "pais": "United States of America",
+    "idioma": "en",
+    "productoras": "Desilu Productions, Paramount Television",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "secret agent, disguises, foreign intrigue, teamwork, elaborate deception",
+    "similares": [
+      {
+        "titulo": "The Sweeney",
+        "poster": "https://image.tmdb.org/t/p/w342/8dIJo5P3d1soSxKJvjkxDX1816H.jpg",
+        "year": "1975",
+        "rating": "8.1"
+      },
+      {
+        "titulo": "MacGyver",
+        "poster": "https://image.tmdb.org/t/p/w342/z3IpN86yJTmxCFz9KvoCDbB56Lp.jpg",
+        "year": "2016",
+        "rating": "7.3"
+      },
+      {
+        "titulo": "Misión: imposible",
+        "poster": "https://image.tmdb.org/t/p/w342/4AZwDa0RZLIVsOgZxlgOqNUw3U6.jpg",
+        "year": "1988",
+        "rating": "7.6"
+      },
+      {
+        "titulo": "Police Story",
+        "poster": "https://image.tmdb.org/t/p/w342/wfhiGakYfjk8XeDKRpya9P4tNu9.jpg",
+        "year": "1973",
+        "rating": "7.0"
+      },
+      {
+        "titulo": "Los vengadores",
+        "poster": "https://image.tmdb.org/t/p/w342/7D2DosFWqmNc0vfZJPqwY5uIvsR.jpg",
+        "year": "1961",
+        "rating": "7.8"
+      },
+      {
+        "titulo": "MacGyver",
+        "poster": "https://image.tmdb.org/t/p/w342/zhgJNHbFxGkqdsKdkZLBrDWagOv.jpg",
+        "year": "1985",
+        "rating": "7.7"
+      }
+    ],
+    "homepage": "",
+    "creadores": [
+      "Bruce Geller"
+    ],
+    "numeroTemporadas": 7,
+    "numeroEpisodios": 171,
+    "temporadasTmdb": [
+      {
+        "air_date": "1966-09-17",
+        "episode_count": 28,
+        "id": 12890,
+        "name": "Temporada 1",
+        "overview": "",
+        "poster_path": "/eKcnwMMQJ7LXirLcfhwRCJdSbw9.jpg",
+        "season_number": 1,
+        "vote_average": 6.4
+      },
+      {
+        "air_date": "1967-09-10",
+        "episode_count": 25,
+        "id": 12889,
+        "name": "Temporada 2",
+        "overview": "",
+        "poster_path": "/eQY9PWTuc2mJaynaKRLTKrWefwi.jpg",
+        "season_number": 2,
+        "vote_average": 5.1
+      },
+      {
+        "air_date": "1968-09-29",
+        "episode_count": 25,
+        "id": 12892,
+        "name": "Temporada 3",
+        "overview": "",
+        "poster_path": "/5kGsGR2a17vDDGvsH8i02oTj8FA.jpg",
+        "season_number": 3,
+        "vote_average": 5.1
+      },
+      {
+        "air_date": "1969-09-28",
+        "episode_count": 26,
+        "id": 12893,
+        "name": "Temporada 4",
+        "overview": "",
+        "poster_path": "/6iCZl9Fi7Gi2v1227ruflKRDPld.jpg",
+        "season_number": 4,
+        "vote_average": 6.3
+      },
+      {
+        "air_date": "1970-09-19",
+        "episode_count": 23,
+        "id": 12888,
+        "name": "Temporada 5",
+        "overview": "",
+        "poster_path": "/gtucVMKUmreVQVSiSEbcATjFnk5.jpg",
+        "season_number": 5,
+        "vote_average": 6.5
+      },
+      {
+        "air_date": "1971-09-18",
+        "episode_count": 22,
+        "id": 12891,
+        "name": "Temporada 6",
+        "overview": "",
+        "poster_path": "/32Dn4lBPCgDdoc9OQ8sQh9LBGJv.jpg",
+        "season_number": 6,
+        "vote_average": 6.2
+      },
+      {
+        "air_date": "1972-09-16",
+        "episode_count": 22,
+        "id": 12887,
+        "name": "Temporada 7",
+        "overview": "",
+        "poster_path": "/2TuEYj4Jq3h7s6yx3uOWTFeZoNX.jpg",
+        "season_number": 7,
+        "vote_average": 6.5
+      }
+    ],
+    "tituloSerie": "Misión. Imposible",
+    "descripcion": "La Fuerza de Misiones Imposibles es un grupo de extraordinarios espías que son los mejores en sus respectivos ámbitos: el 'líder', el 'experto en tecnología', el 'músculo', el 'maestro del disfraz' y la 'mujer fatal'. Día tras día, esta fuerza de élite se enfrenta al fracaso, al apresamiento y a la muerte, pero nada importa más que su misión, anunciada en un mensaje que se autodestruirá tras emitirse...",
+    "imagen": "https://image.tmdb.org/t/p/w780/1PnUBKbDR1F2w5qicblLg1QGTif.jpg",
+    "codigo": null,
+    "qualityTag": "",
+    "temporadas": []
+  },
+  {
     "tmdbId": 11129,
     "tmdbType": "tv",
     "tituloOriginal": "S.W.A.T.",
