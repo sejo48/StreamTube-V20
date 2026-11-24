@@ -320,7 +320,69 @@
     "imagen": "https://image.tmdb.org/t/p/w780/1PnUBKbDR1F2w5qicblLg1QGTif.jpg",
     "codigo": null,
     "qualityTag": "",
-    "temporadas": []
+    "temporadas": [
+      {
+        "numeroTemporada": 1,
+        "episodios": [
+          {
+            "tituloEpisodio": "Mission Impossible S04e01 [3604921846469]",
+            "urlDrive": "https://drive.google.com/file/d/1nborRsuslS8w4OAa6WWc3TcxHTm-Mt1F/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e04 [3604922108613]",
+            "urlDrive": "https://drive.google.com/file/d/1JiC_hov5XH2aJChXE4BNIC3DY4ltMLTD/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e05 [3604922174149]",
+            "urlDrive": "https://drive.google.com/file/d/1W2P_KJhpC9EvkYjZltfy-0tEmWZ8bhOD/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e06 [3604951665349]",
+            "urlDrive": "https://drive.google.com/file/d/1VjqtWb3T59ny_JceKe2IFtDO5sB0eHT2/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e08 [3604951993029]",
+            "urlDrive": "https://drive.google.com/file/d/1aO-9LZVmpW-hb06SbQcUrRumFg-C4HRB/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e09 [3604952189637]",
+            "urlDrive": "https://drive.google.com/file/d/1GEXCqVELNWXrwjNRUqqrU16SIf-etpII/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e10 [3604952386245]",
+            "urlDrive": "https://drive.google.com/file/d/141T9R64SJM_2lYTr8yuS7hl54g8svJOR/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e11 [3606146517701]",
+            "urlDrive": "https://drive.google.com/file/d/1NjTslAd_--ENXXa3X1oEe-phqHPyI-jU/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e12 [3606148942533]",
+            "urlDrive": "https://drive.google.com/file/d/1yLvqiVFKXbfXfvSWF0daH_UmZXZiWtTx/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e13 [3606147566277]",
+            "urlDrive": "https://drive.google.com/file/d/1itcmC0NkwAQUQmu0ig9M2gKlNRWH4y8g/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e15 [3606169717445]",
+            "urlDrive": "https://drive.google.com/file/d/1Ofa_BoFmsnqwOXiZi1nOQmAqiyqURqRp/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e16 [3606188853957]",
+            "urlDrive": "https://drive.google.com/file/d/1Y4gyYTlm1QsU_6Z7mC5NF-x3fdQGvEuH/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e17 [3606262385349]",
+            "urlDrive": "https://drive.google.com/file/d/1dhKHKtYd-mKV65bLegHkw2psjUHYxgDz/view"
+          },
+          {
+            "tituloEpisodio": "Mission Impossible S04e18 [3606262581957]",
+            "urlDrive": "https://drive.google.com/file/d/1ObCuq-Nd4iwrhxWHEVuMubKCr5oDsWKH/view"
+          }
+        ]
+      }
+    ]
   },
   {
     "tmdbId": 11129,
@@ -1317,140 +1379,6 @@
         ]
       }
     ]
-  },
-  {
-    "tmdbId": 9894,
-    "tmdbType": "tv",
-    "tituloOriginal": "Mission: Impossible",
-    "backdrop": "https://image.tmdb.org/t/p/w1280/7XNP4WdsWA9iorQJtXQxZScljmt.jpg",
-    "year": "1988",
-    "fechaEstreno": "1988-10-23",
-    "rating": "7.6",
-    "votos": 232,
-    "runtime": "1h 0min",
-    "runtimeMin": 60,
-    "genres": [
-      "Drama",
-      "Action & Adventure",
-      "Crimen"
-    ],
-    "generosTexto": "Drama, Action & Adventure, Crimen",
-    "clasificacion": "TV-PG",
-    "tagline": "",
-    "director": "",
-    "guionistas": "",
-    "reparto": [
-      {
-        "nombre": "Peter Graves",
-        "personaje": "Jim Phelps",
-        "foto": "https://image.tmdb.org/t/p/w185/ySLwIT6L9mWIjFcCagmNENQGq7J.jpg"
-      },
-      {
-        "nombre": "Thaao Penghlis",
-        "personaje": "Nicholas Black",
-        "foto": "https://image.tmdb.org/t/p/w185/vNHYrgo9GetIhiHf2jBKWKYsebz.jpg"
-      },
-      {
-        "nombre": "Antony Hamilton",
-        "personaje": "Max Harte",
-        "foto": "https://image.tmdb.org/t/p/w185/yP6w3v1lvrAxJsjQzK4I9Q3GQ5z.jpg"
-      },
-      {
-        "nombre": "Phil Morris",
-        "personaje": "Grant Collier",
-        "foto": "https://image.tmdb.org/t/p/w185/iZADKc1QdCFpTvu0KnU3BZBwtrE.jpg"
-      },
-      {
-        "nombre": "Jane Badler",
-        "personaje": "Shannon Reed",
-        "foto": "https://image.tmdb.org/t/p/w185/1y3ULLRX3Ga4BqmxJBmWKbkN6m.jpg"
-      },
-      {
-        "nombre": "Bob Johnson",
-        "personaje": "Voice on Disc",
-        "foto": "https://image.tmdb.org/t/p/w185/emaIvNXoX3j0xXNBjRJ7kOdFaDr.jpg"
-      }
-    ],
-    "pais": "United States of America",
-    "idioma": "en",
-    "productoras": "Jeffrey Hayes Productions, CBS Studios",
-    "presupuesto": 0,
-    "recaudacion": 0,
-    "trailerUrl": "",
-    "coleccion": "",
-    "keywords": "spy",
-    "similares": [
-      {
-        "titulo": "Scarecrow and Mrs. King",
-        "poster": "https://image.tmdb.org/t/p/w342/36oUFRNJQORpL9fmnrSXdFqEGty.jpg",
-        "year": "1983",
-        "rating": "6.6"
-      },
-      {
-        "titulo": "Danger Man",
-        "poster": "https://image.tmdb.org/t/p/w342/5wCJ8Rt9PA1j6jzzmUQg0EjsxwV.jpg",
-        "year": "1960",
-        "rating": "7.3"
-      },
-      {
-        "titulo": "Misión. Imposible",
-        "poster": "https://image.tmdb.org/t/p/w342/1PnUBKbDR1F2w5qicblLg1QGTif.jpg",
-        "year": "1966",
-        "rating": "7.6"
-      },
-      {
-        "titulo": "The Sweeney",
-        "poster": "https://image.tmdb.org/t/p/w342/8dIJo5P3d1soSxKJvjkxDX1816H.jpg",
-        "year": "1975",
-        "rating": "8.1"
-      },
-      {
-        "titulo": "Walker",
-        "poster": "https://image.tmdb.org/t/p/w342/9uW1W9q0zKPzPdRwIcL3eCDJsfw.jpg",
-        "year": "2021",
-        "rating": "7.1"
-      },
-      {
-        "titulo": "Police Story",
-        "poster": "https://image.tmdb.org/t/p/w342/wfhiGakYfjk8XeDKRpya9P4tNu9.jpg",
-        "year": "1973",
-        "rating": "7.0"
-      }
-    ],
-    "homepage": "",
-    "creadores": [
-      "Bruce Geller"
-    ],
-    "numeroTemporadas": 2,
-    "numeroEpisodios": 35,
-    "temporadasTmdb": [
-      {
-        "air_date": "1988-10-23",
-        "episode_count": 19,
-        "id": 19767,
-        "name": "Temporada 1",
-        "overview": "",
-        "poster_path": "/z2lb4acC2IKmbQb9yGxpzB3i2Gd.jpg",
-        "season_number": 1,
-        "vote_average": 6.6
-      },
-      {
-        "air_date": "1989-09-21",
-        "episode_count": 16,
-        "id": 19768,
-        "name": "Temporada 2",
-        "overview": "",
-        "poster_path": "/4W0S1knTM7BlRuw8V0XPZwqsunB.jpg",
-        "season_number": 2,
-        "vote_average": 6.4
-      }
-    ],
-    "tituloSerie": "Misión: imposible",
-    "descripcion": "Veinte años después, Jim Phelps se reincorpora al servicio para misiones siempre imposibles, rodeado de nuevos agentes.",
-    "imagen": "https://image.tmdb.org/t/p/w780/4AZwDa0RZLIVsOgZxlgOqNUw3U6.jpg",
-    "codigo": null,
-    "qualityTag": "",
-    "temporadas": []
   },
   {
     "tmdbId": 313678,
