@@ -6,7 +6,7 @@ https://k20.usastreams.com:8081/telered/index.m3u8
 #EXTINF:-1 tvg-name="TDTV" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIo1iQW2AJvIdVjUFVAwAxLgPALnvBMwGYFw&s" group-title="Canal Local de Turrialba.",TDTV
 https://cloudvideo.servers10.com:8081/8230/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-name="Retro TV" tvg-logo="https://play-lh.googleusercontent.com/zLkTnFfdGGq5-cuY0DBvsCoiRUToWFA8rcm_Z3ieUr7rwgmzyojRXIfqMXt9dm4ocjs" group-title="Canal Retro.",Retro TV
-https://stream.enlineatv.net/hls/retrotv/1_2/index.m3u8?tkn=3610870340
+https://stream.enlineatv.net/hls/retrotv/1_2/index.m3u8?tkn=3683502364
 #EXTINF:-1 tvg-name="Dreiko TV" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF4WjCv7VeLbrEAtDzziTPFnO02S87ck8eLA&s" group-title="Entretenimiento.",Dreiko TV
 https://cloudvideo.servers10.com:8081/8020/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-name="Canal 8" tvg-logo="https://pbs.twimg.com/profile_images/1510311834800246787/sfWgWmqk_400x400.jpg" group-title="Multimedios Costa Rica",Canal 8
@@ -20,7 +20,7 @@ https://stmv3.voxtvhd.com.br/xtremaretrocartoons/xtremaretrocartoons/playlist.m3
 #EXTINF:-1 tvg-name="Latino Clásica" tvg-logo="https://cdn.rudo.video/assets/canal-13/live/logoApi_151f8e8d0c9e2a144f59f11ec492c3e91710874647.png" group-title="Películas Clásicas Latinas.",Latino Clásica
 https://streams2.sofast.tv/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/4d419a88-a62c-496f-b8a1-984e746f8259/manifest.m3u8
 #EXTINF:-1 tvg-name="TV Retro" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBsKLLZbFpvVQrOzRAnA9BCRraLxP3-GLwvBv30iNI6TpPz1o51sa1de7pGKS40Quzajw&usqp=CAU" group-title="Canal de Series Retro.",TV Retro
-https://live20.bozztv.com/akamaissh101/ssh101/tvretropalm2020/chunks.m3u8
+https://183.giatvcdn.com/ssh101/ssh101/tvretropalm2020/chunks.m3u8
 #EXTINF:-1 tvg-name="Nicoya TV" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNtuYqz3KCkvM3aBb-Lg3YRtfoaVaDe9srK_6QZaajqCb7jS0RBcJ1lBUJaEIqJo21ahY&usqp=CAU" group-title="Canal Local de Nicoya.",Nicoya TV
 https://59ef525c24caa.streamlock.net/nicoyatv/nicoyatv/chunklist_w1674958038.m3u8
 #EXTINF:-1 tvg-name="BEST CLASICOS TV" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3896-800x450-FFFFFF.jpg" group-title="General",BEST CLASICOS TV
@@ -29,8 +29,8 @@ https://acceso.mediosdecostarica.com:3873/hybrid/play.m3u8
 https://amogonetworx-grjngo-2-eu.plex.wurl.tv/2000.m3u8
 #EXTINF:-1 tvg-name="Costa Rica Channel" tvg-logo="https://radiocostarica.net/sites/default/files/styles/player_image/public/2024-05/Costa%20Rica%20Channel-Costa%20Rica.png.webp?itok=jdj8aeqR" group-title="Costa Rica Channel",Costa Rica Channel
 https://video0.rogohosting.com:19360/8006/8006.m3u8
-#EXTINF:-1 tvg-name="Canal 10 Costa Rica" tvg-logo="https://oirahora.com/uploads/6a664fb1855aa-1785089969.webp" group-title="Entretenimiento",Canal 10 Costa Rica
-https://acceso.mediosdecostarica.com:3606/hybrid/play.m3u8
+#EXTINF:-1 tvg-name="Canal 10 Costa Rica" tvg-logo="https://costaricatelevision.com/sites/default/files/styles/tv_list/public/2026-11/Canal%252010%2520Costa%2520Rica-Costa-Rica-v2.png.webp?itok=X2Gwj1HY" group-title="Entretenimiento",Canal 10 Costa Rica
+https://acceso.mediosdecostarica.com:3417/hybrid/play.m3u8
 #EXTINF:-1 tvg-name="Megacine TV" tvg-logo="https://cigars.roku.com/v1/contain/800x454/https%3A%2F%2Fimage.roku.com%2Fdeveloper_channels%2Fprod%2Ffec8403b690ee3d6bb645b6e8d9e1e85070e865bc1b4ad14e8af28261e6ce1ad.png" group-title="Canal Retro TV.",Megacine TV
 https://edge.essastream.com/megacinetv/tracks-v1a1/mono.m3u8
 #EXTINF:-1 tvg-name="Canal 36" tvg-logo="https://sicultura-live.s3.amazonaws.com/public/2022-11/313401143_527193602751613_1789836145711014030_n.png" group-title="Canal de Noticias Regional.",Canal 36
@@ -62,7 +62,7 @@ https://59ef525c24caa.streamlock.net/vmtv/tvvintage/playlist.m3u8
 #EXTINF:-1 tvg-name="Extrema TV" tvg-logo="https://xtrematv.com/wp-content/uploads/2023/05/LOGO-2023-XT-chico.png" group-title="Sin Grupo",Extrema TV
 https://627bb251f23c7.streamlock.net:444/ExtremaTV/ExtremaTV/playlist.m3u8
 #EXTINF:-1 tvg-name="¡OPA! CANAL 38" tvg-logo="https://yt3.googleusercontent.com/FHXMY9wH7GFpJiWrArhiZwmbpPsLvRgP68iy0Nx89cC0cHOk20zY6bEdA6mId-BqgnBRSAxy=s900-c-k-c0x00ffffff-no-rj" group-title="Sin Grupo",¡OPA! CANAL 38
-https://5fe2654d6127d.streamlock.net/genteopabackup/videogenteopabackup/chunklist_w1703569323.m3u8
+https://genteopa.com/wp-content/uploads/2026/08/gente-opa-vertical-home.mp4
 #EXTINF:-1 tvg-name="EnergyTV Latino" tvg-logo="https://www.vivalivetv.com/public/files/shows/0/1/3519-294x165-FFFFFF.jpg" group-title="Sin Grupo",EnergyTV Latino
 https://59ec5453559f0.streamlock.net/energytvlatino/smil:VIVALIVETV/chunklist_w527843109_b1896000.m3u8
 #EXTINF:-1 tvg-name="Max Anime" tvg-logo="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCRyIeb5IY-BbZf4GL-ljuAxXmg2Y8Mttf5ZlEauL6LL1ainsD_Ly8-atcCtLZQAghALzHpJmRfDdY6pGjGxyLkbCWqmPlxqvyxuGK9EBdAz8nvJ41GDIB7ijVrgBj99pbuIvhA48c7eqncuN21Boz6_qkdhgER098nZkyp41u-LggItFxnv5Cit6U9Lg/s800/max-anime.jpg" group-title="Sin Grupo",Max Anime
@@ -80,7 +80,7 @@ https://run-rt-es.otteravision.com/run/rt_es/rt_es_720p_high.m3u8
 #EXTINF:-1 tvg-name="Family TV" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/234cb338df1b00f91cc1827a9a9a1a75.webp" group-title="Sin Grupo",Family TV
 https://tv.webmedialive.com/familytv/live/playlist.m3u8
 #EXTINF:-1 tvg-name="TUTV en Vivo" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/178c759ece43186a94e69f30b17dca2d.webp" group-title="Sin Grupo",TUTV en Vivo
-https://stream.giostreaming.app/canal11/canal11.m3u8
+https://astl-mainstr.qvixsolutions.com/asltvtu_ext/tracks-v1a1/mono.ts.m3u8
 #EXTINF:-1 tvg-name="15 TV en Vivo" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/e277fbff1d036a1c11aa18f8befee081.webp" group-title="Sin Grupo",15 TV en Vivo
 https://wowza.ucr.ac.cr/quinceucr/_definst_/quinceucr.stream/chunklist_w37959280_vo.m3u8
 #EXTINF:-1 tvg-name="Rockola Televisión" tvg-logo="https://www.cxtv.com.br/img/Tvs/Logo/webp-l/89fde3072167c8eca735a5b9b6a0be59.webp" group-title="Sin Grupo",Rockola Televisión
