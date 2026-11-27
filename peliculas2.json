@@ -1,5 +1,147 @@
 [
   {
+    "titulo": "Territorio salvaje",
+    "tituloOriginal": "The Get Out",
+    "descripcion": "El dueño de un club nocturno está a punto de dejar atrás su peligroso pasado para volver a vivir con su novia. Cuando unos pistoleros enmascarados le roban y se ve acorralado por despiadados cárteles, llega un misterioso hombre interesado en comprar el negocio. Con el peligro acechándole por todos lados, deberá atravesar una mortífera red de engaños, poder y supervivencia, de la que escapar puede que ya no sea una opción.",
+    "imagen": "https://image.tmdb.org/t/p/w780/8xwEJ5BGQz5CNS07RGjmQmiIoAS.jpg",
+    "backdrop": "https://image.tmdb.org/t/p/w1280/9Bv4Oki9u3aKZxDCNDcU4N2mttb.jpg",
+    "urlDrive": "https://drive.google.com/file/d/1ba0-g9BC9zXky3ekVZv6_Fa886GCst3f/view?usp=sharing",
+    "urlOkRu": "",
+    "codigo": null,
+    "qualityTag": "",
+    "year": "2026",
+    "fechaEstreno": "2026-06-18",
+    "rating": "6.2",
+    "votos": 173,
+    "runtime": "1h 36min",
+    "genres": [
+      "Acción",
+      "Suspense"
+    ],
+    "generosTexto": "Acción, Suspense",
+    "clasificacion": "B-15",
+    "tagline": "",
+    "director": "Derrick Borte",
+    "guionistas": "Daniel Forte, Derrick Borte",
+    "reparto": [
+      {
+        "nombre": "Russell Crowe",
+        "personaje": "Manco Kapak",
+        "foto": "https://image.tmdb.org/t/p/w185/3IBZF0qCZMZ7zJYlgrH0sQzNZV.jpg"
+      },
+      {
+        "nombre": "Luke Evans",
+        "personaje": "Joe Carver",
+        "foto": "https://image.tmdb.org/t/p/w185/qUkYJcrDc4M0LHNYASs30luFvw0.jpg"
+      },
+      {
+        "nombre": "Teresa Palmer",
+        "personaje": "Sunny",
+        "foto": "https://image.tmdb.org/t/p/w185/sjSiLSCp9LS1Z0nyGpmquTBuUyr.jpg"
+      },
+      {
+        "nombre": "Daniel Zovatto",
+        "personaje": "Rodriguez",
+        "foto": "https://image.tmdb.org/t/p/w185/oDD8ioAU8w7Lhp92DpU9lU1XkXX.jpg"
+      },
+      {
+        "nombre": "Josh McConville",
+        "personaje": "Slosser",
+        "foto": "https://image.tmdb.org/t/p/w185/3Au004X5BsV5KIpOLMB8g9DuevT.jpg"
+      },
+      {
+        "nombre": "Benedict Hardie",
+        "personaje": "Spence",
+        "foto": "https://image.tmdb.org/t/p/w185/bf02Dz4LMV23scJC6c8P4R6xji6.jpg"
+      },
+      {
+        "nombre": "Nina Dobrev",
+        "personaje": "Carrie",
+        "foto": "https://image.tmdb.org/t/p/w185/euHNgS3z3M3OTzLhQQAezViQddq.jpg"
+      },
+      {
+        "nombre": "Aaron Paul",
+        "personaje": "Jeff",
+        "foto": "https://image.tmdb.org/t/p/w185/8Ac9uuoYwZoYVAIJfRLzzLsGGJn.jpg"
+      },
+      {
+        "nombre": "Kartiah Vergara",
+        "personaje": "Irena",
+        "foto": "https://image.tmdb.org/t/p/w185/je5XTyAj7gqev0j9CxENW4JLx0j.jpg"
+      },
+      {
+        "nombre": "Steffi Gil",
+        "personaje": "Lola",
+        "foto": ""
+      },
+      {
+        "nombre": "Nikki Shiels",
+        "personaje": "Becky",
+        "foto": ""
+      },
+      {
+        "nombre": "Tennyson Crowe",
+        "personaje": "Nick",
+        "foto": ""
+      }
+    ],
+    "pais": "United States, Australia, United Kingdom",
+    "idioma": "en",
+    "productoras": "Nickel City Pictures, A Higher Standard, G2 Dispatch, Life & Soul Pictures, Fifth Season",
+    "presupuesto": 0,
+    "recaudacion": 0,
+    "trailerUrl": "",
+    "coleccion": "",
+    "keywords": "based on novel or book, drug cartel, cliché",
+    "similares": [
+      {
+        "titulo": "Zona de caza",
+        "poster": "https://image.tmdb.org/t/p/w342/u6DNzvz4y3XS5QYqsvvauIx4Xvc.jpg",
+        "year": "2025",
+        "rating": "6.9"
+      },
+      {
+        "titulo": "Misión frontera",
+        "poster": "https://image.tmdb.org/t/p/w342/oCB0j331qr6CW1TtpgSgPccdYA7.jpg",
+        "year": "2025",
+        "rating": "6.2"
+      },
+      {
+        "titulo": "Dos duros sobre ruedas",
+        "poster": "https://image.tmdb.org/t/p/w342/wimgbZSfDW78r0DXaBXCBl3Ueiy.jpg",
+        "year": "1991",
+        "rating": "6.3"
+      },
+      {
+        "titulo": "Dura de matar",
+        "poster": "https://image.tmdb.org/t/p/w342/wK62dUZEsLAJSEKOzV6NlcOoZrl.jpg",
+        "year": "2026",
+        "rating": "7.4"
+      },
+      {
+        "titulo": "El mejor padrino",
+        "poster": "https://image.tmdb.org/t/p/w342/vLdKyqdHFdcPRm9xtzfz2DeZOv1.jpg",
+        "year": "2023",
+        "rating": "6.1"
+      },
+      {
+        "titulo": "Asalto a la comisaría",
+        "poster": "https://image.tmdb.org/t/p/w342/AsOJbUiulx9Qzl9IWUwVYlQFT4X.jpg",
+        "year": "2024",
+        "rating": "6.2"
+      }
+    ],
+    "tmdbId": 1279493,
+    "tmdbType": "movie",
+    "runtimeMin": 96,
+    "homepage": "",
+    "creadores": [],
+    "numeroTemporadas": 0,
+    "numeroEpisodios": 0,
+    "temporadasTmdb": [],
+    "navidad": false
+  },
+  {
     "titulo": "Hermanastras",
     "tituloOriginal": "Steps",
     "descripcion": "En esta encantadora e inusual comedia de acción, la hermanastra «malvada» de Cenicienta roba la varita del Hada Madrina y destruye la historia que conoce todo el mundo.",
